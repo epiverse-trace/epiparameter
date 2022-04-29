@@ -1,5 +1,5 @@
 # epiparameter
-`R` package with epidemiological parameter distributions for infectious diseases
+`R` package with epidemiological parameter distributions for infectious diseases. Eventually it will include a range of pathogens and natural history processes, as well as functions to extract parameters from reported statistics.
 
 ## Installation
 
