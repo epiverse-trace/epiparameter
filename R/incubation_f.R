@@ -9,10 +9,10 @@
 #' @examples
 #' incubation_f()
 
-incubation_f <- function(pathogen,study,pmf){
+incubation_f <- function(pathogen,study = NULL, pmf = T){
   
   # DEBUG
-  # pathogen="MERS_CoV"; study=NULL; pmf = T
+  # pathogen="influenza_H7N9"; study=NULL; pmf = T
   
   #inc_vals <- load("data/inc_params.rds")
   
@@ -32,7 +32,7 @@ incubation_f <- function(pathogen,study,pmf){
   
   if(pick_study$distribution=="gamma"){
     p_function <- function(x){pgamma(x,shape = pick_study$shape,scale = pick_study$scale)}
-    if(pmf==T){ out_function <- function(x){out_function(x+1)-out_function(x)} }
+    if(pmf==T){ out_function <- function(x){p_function(x+1)-p_function(x)} }
     if(pmf==F){ out_function <- p_function }
   }
   

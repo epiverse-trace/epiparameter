@@ -4,7 +4,7 @@
 \alias{incubation_f}
 \title{Incubation period}
 \usage{
-incubation_f(pathogen, study, pmf)
+incubation_f(pathogen, study = NULL, pmf = T)
 }
 \arguments{
 \item{pathogen}{A \code{character} specifying pathogen of interest}
