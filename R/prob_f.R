@@ -1,23 +1,23 @@
-#' Incubation period
+#' Parameter probability mass function
 #'
-#' Incubation period probability distribution (i.e. exposure-to-onset by day)
+#' Parameter probability distribution by day
 #' @param pathogen A \code{character} specifying pathogen of interest
+#' @param pathogen A \code{character} specifying type of parameter: "incubation" or "onset_to_admission"
 #' @param study A \code{character} specifying dataset to use. Defaults to study with largest sample size.
 #' @param pmf A \code{logical} specifying whether to output probability mass function (\code{TRUE}) or cumulative mass function (\code{FALSE}). Defaults to \code{TRUE}.
 #' @keywords incubation
 #' @export
 #' @examples
-#' incubation_f()
+#' prob_f()
 
-incubation_f <- function(pathogen,study = NULL, pmf = T){
+prob_f <- function(pathogen, type, study = NULL, pmf = T){
   
   # DEBUG
-  # pathogen="influenza_H7N9"; study=NULL; pmf = T
-  
-  #inc_vals <- load("data/inc_params.rds")
+  # pathogen="influenza_H7N9"; type="incubation"; study=NULL; pmf = T
   
   # Extract pathogen
-  pick_path <- incubation_vals %>% filter(pathogen_ID==pathogen)
+  if(type=="incubation"){ pick_path <- incubation_vals %>% filter(pathogen_ID==pathogen)  }
+  if(type=="onset_to_admission"){ pick_path <- onset_to_admission_vals %>% filter(pathogen_ID==pathogen)  }
   
   # Extract study or default to largest sample size
   if( is.null(study) ){pick_study <- pick_path %>% filter(size==max(size))}
@@ -39,5 +39,3 @@ incubation_f <- function(pathogen,study = NULL, pmf = T){
   out_function
   
 }
-
-# incubation_mers <- incubation_f(pathogen="influenza_H7N9", study=NULL, pmf = F)
