@@ -21,7 +21,7 @@ To view the available distributions, then define the desired function, e.g. to e
 list_distributions(type="incubation")
 
 # Extract probability mass function for incubation period
-incubation_H7N9 <- prob_f_(pathogen="influenza_H7N9",type="incubation")
+incubation_H7N9 <- prob_f(pathogen="influenza_H7N9",type="incubation")
 
 # Plot probability mass function
 plot(0:10,incubation_H7N9(0:10),xlab="time since infection")
