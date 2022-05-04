@@ -10,7 +10,6 @@ The easiest way to install the development version of `epiparameter` is to use t
 library(devtools)
 install_github("epiverse-trace/epiparameter")
 library(datadelay)
-
 ```
 
 ## Quick start
