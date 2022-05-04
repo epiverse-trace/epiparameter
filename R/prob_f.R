@@ -2,7 +2,7 @@
 #'
 #' Parameter probability distribution by day
 #' @param pathogen A \code{character} specifying pathogen of interest
-#' @param pathogen A \code{character} specifying type of parameter: "incubation" or "onset_to_admission"
+#' @param pathogen A \code{character} specifying type of parameter: "incubation", "onset_to_admission", "onset_to_death"
 #' @param study A \code{character} specifying dataset to use. Defaults to study with largest sample size.
 #' @param pmf A \code{logical} specifying whether to output probability mass function (\code{TRUE}) or cumulative mass function (\code{FALSE}). Defaults to \code{TRUE}.
 #' @keywords incubation
@@ -15,10 +15,9 @@ prob_f <- function(pathogen, type, study = NULL, pmf = T){
   # DEBUG
   # pathogen="influenza_H7N9"; type="incubation"; study=NULL; pmf = T
   
-  # Extract pathogen
-  if(type=="incubation"){ pick_path <- incubation_vals %>% filter(pathogen_ID==pathogen)  }
-  if(type=="onset_to_admission"){ pick_path <- onset_to_admission_vals %>% filter(pathogen_ID==pathogen)  }
-  
+  # Extract pathogen and parameter type
+  pick_path <- param_vals %>% filter(pathogen_ID==pathogen & type_ID==type)  
+
   # Extract study or default to largest sample size
   if( is.null(study) ){pick_study <- pick_path %>% filter(size==max(size))}
   if(!is.null(study) ){pick_study <- pick_path %>% filter(study_ID==study)}

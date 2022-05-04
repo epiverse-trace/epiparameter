@@ -7,7 +7,7 @@
 prob_f(pathogen, type, study = NULL, pmf = T)
 }
 \arguments{
-\item{pathogen}{A \code{character} specifying type of parameter: "incubation" or "onset_to_admission"}
+\item{pathogen}{A \code{character} specifying type of parameter: "incubation", "onset_to_admission", "onset_to_death"}
 
 \item{study}{A \code{character} specifying dataset to use. Defaults to study with largest sample size.}
 

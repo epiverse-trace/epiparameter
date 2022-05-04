@@ -7,7 +7,7 @@
 list_distributions(type = "incubation", parameters = F)
 }
 \arguments{
-\item{type}{A \code{character} defining parameter to be listed: "incubation" or "onset_to_admission"}
+\item{type}{A \code{character} defining parameter to be listed: "incubation", "onset_to_admission" or "onset_to_death"}
 
 \item{parameters}{A \code{logical} defining whether to show parameter values}
 }
