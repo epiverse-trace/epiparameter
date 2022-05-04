@@ -4,10 +4,12 @@
 \alias{list_distributions}
 \title{List distributions}
 \usage{
-list_distributions(type = "incubation")
+list_distributions(type = "incubation", parameters = F)
 }
 \arguments{
 \item{type}{A \code{character} defining parameter to be listed}
+
+\item{parameters}{A \code{logical} defining whether to show parameter values}
 }
 \description{
 List distributions included in package
