@@ -12,17 +12,18 @@
 extract_param <- function(type,values,distribution){
   
   # DEBUG:
-  # type = "median"; values = c(3.2,3.5); distribution = "lnorm"
+  # type = "median"; values = c(0.6,0.7); distribution = "lnorm"
   
   # Validate inputs
   #if(type=="median" & length(values)!=3){stop("Need 'values' to be vector length 3")}
   if(length(values)!=2){stop("Need 'values' to be vector length 2")}
 
   # Extract distribution parameters using optimisation
-  
   param = c(a = 1, b = 1)
-  result2 = optim(param, fit_function, method="L-BFGS-B", val=values, lower=c(0,0), hessian=FALSE) #, control=list(trace=1))
+  result2 = optim(param, fit_function, method="L-BFGS-B", val=values, lower=c(-1,0), hessian=FALSE) #, control=list(trace=1))
   
+  # Output parameters
+  result2$par
   
 }
 

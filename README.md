@@ -14,9 +14,15 @@ library(datadelay)
 
 ## Quick start
 
-Use `list_distributions` to view the available distributions, then define the desired function, e.g. to extract and plot the daily probability mass function for the incubation period of influenza H7N9:
+To view the available distributions, then define the desired function, e.g. to extract and plot the daily probability mass function for the incubation period of influenza H7N9:
 
-```
-incubation_H7N9 <- incubation_f(pathogen="influenza_H7N9")
-plot(0:10,incubation_H7N9(0:10))
+```r
+# View available distributions
+list_distributions(type="incubation")
+
+# Extract probability mass function for incubation period
+incubation_H7N9 <- incubation_f(pathogen="influenza_H7N9",pmf=T)
+
+# Plot probability mass function
+plot(0:10,incubation_H7N9(0:10),xlab="time since infection")
 ```

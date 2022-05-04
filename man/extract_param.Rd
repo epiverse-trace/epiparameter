@@ -9,7 +9,7 @@ extract_param(type, values, distribution)
 \arguments{
 \item{type}{A \code{character} defining whether summary statistics based around \code{median} and 95\% CI (default) or \code{mean} and variance.}
 
-\item{values}{A \code{vector} with three elements if \code{type=median}: c(median, lower 25\% CI, upper 75\% CI); and with two elements if \code{type=mean}: c(mean, variance)}
+\item{values}{A \code{vector} with two elements. If \code{type=median}: c(median, upper 75\% CI); and if \code{type=mean}: c(mean, variance)}
 
 \item{distribution}{A \code{character} specifying distribution to use. Default is \code{lognormal}; also takes \code{gamma}.}
 }
