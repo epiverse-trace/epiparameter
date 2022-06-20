@@ -1,2 +1,2 @@
 pathogen_ID,type_ID,study_ID,year,size,distribution,shape,scale,meanlog,sdlog,notes
-SARS_CoV_2,onset_to_death,Linton_etal,2020,23,lnorm,,,2.863179,0.5338606,
+SARS_CoV_2_wildtype,onset_to_death,Linton_etal,2020,23,lnorm,,,2.863179,0.5338606,
