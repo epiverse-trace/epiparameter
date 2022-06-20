@@ -1,0 +1,6 @@
+pathogen_ID,type_ID,study_ID,year,size,distribution,shape,scale,meanlog,sdlog,notes
+ebola,onset_to_admission,WHO_team,2014,500,gamma,5.53404,0.921569,,,
+influenza_H1N1p,onset_to_admission,Tuite_etal,2010,316,lnorm,,,2.17531,0.330773,
+influenza_H7N9,onset_to_admission,Cowling_etal,2013,32,gamma,9.65,0.45,,,
+MERS_CoV,onset_to_admission,Assiri_etal,2013,23,lnorm,7,0.75,,,
+SARS_CoV,onset_to_admission,Donnelly_etal,2003,57,gamma,1.929655,2.513402,,,Feb-26 to Mar-25
