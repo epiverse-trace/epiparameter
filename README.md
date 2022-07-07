@@ -23,7 +23,6 @@ list_distributions(type="incubation")
 # Extract incubation period distribution
 incubation_H7N9 <- epiparam(pathogen="influenza_H7N9",type="incubation")
 
-
 # Plot probability mass function
 plot(0:10,incubation_H7N9$pmf(0:10),xlab="time since infection")
 ```
