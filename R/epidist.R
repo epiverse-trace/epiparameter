@@ -26,13 +26,13 @@ epidist  <- function(pathogen, type, study = NULL, pmf = T){
   if(pick_study$distribution=="lnorm"){
     param_vector <- c(meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
     cmf_function <- function(x){plnorm(x,meanlog = pick_study$meanlog,sdlog = pick_study$sdlog)}
-    pmf_function <- function(x){pmf_function(x+1)-pmf_function(x)} 
+    pmf_function <- function(x){cmf_function(x+1)-cmf_function(x)} 
   }
   
   if(pick_study$distribution=="gamma"){
     param_vector <- c(shape = pick_study$shape,scale = pick_study$scale)
     cmf_function <- function(x){pgamma(x,shape = pick_study$shape,scale = pick_study$scale)}
-    pmf_function <- function(x){pmf_function(x+1)-pmf_function(x)} 
+    pmf_function <- function(x){cmf_function(x+1)-cmf_function(x)} 
   }
   
   out <- list(dist = pick_study$distribution,
