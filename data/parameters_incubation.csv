@@ -1,19 +1,20 @@
-pathogen_ID,type_ID,study_ID,year,size,distribution,shape,scale,meanlog,sdlog,notes,PMID,DOI
-adenovirus,incubation,Lessler_etal,2009,14,lnorm,,,1.722764351,0.220967322,,19393959,10.1016/S1473-3099(09)70069-6 
-ebola,incubation,WHO_team,2014,500,gamma,5.53404,0.921569,,,,25564903,10.1056/NEJMc1413884 
-human_CoV,incubation,Lessler_etal,2009,13,lnorm,,,1.163146247,0.132870468,,19393959,10.1016/S1473-3099(09)70069-6 
-influenza_A_seasonal,incubation,Lessler_etal,2009,122,lnorm,,,0.336470843,0.452763354,,19393959,10.1016/S1473-3099(09)70069-6 
-influenza_B_seasonal,incubation,Lessler_etal,2009,76,lnorm,,,-0.510828006,0.228551515,,19393959,10.1016/S1473-3099(09)70069-6 
-influenza_H1N1p,incubation,Ghani_etal,2009,16,gamma,8.40278,0.654545,,,,20029668,10.1371/currents.RRN1130 
-influenza_H1N1p,incubation,Tuite_etal,2010,316,lnorm,,,1.42947,0.241453,,19959592,10.1503/cmaj.091807 
-influenza_H7N9,incubation,Cowling_etal,2013,32,gamma,4.93,0.63,,,,23803488,10.1016/S0140-6736(13)61171-X
-marburg,incubation,Martini_etal,1973,5,gamma,43.2671,0.157163,,,,4207635,10.1136/pgmj.49.574.542 
-measles,incubation,Lessler_etal,2009,56,lnorm,,,2.525726032,0.209795153,,19393959,10.1016/S1473-3099(09)70069-6 
-MERS_CoV,incubation,Cauchemez_et_al,2014,7,lnorm,,,1.70475,1.70475,,24239323,10.1016/S1473-3099(13)70304-9
-MERS_CoV,incubation,Assiri_etal,2013,23,lnorm,,,1.54304,0.459607,,23782161,10.1056/NEJMoa1306742 
-parainfluenza,incubation,Lessler_etal,2009,11,lnorm,,,0.955512271,0.307852764,,19393959,10.1016/S1473-3099(09)70069-6 
-rhinovirus,incubation,Lessler_etal,2009,28,lnorm,,,0.64185289,0.520987175,,19393959,10.1016/S1473-3099(09)70069-6 
-RSV,incubation,Lessler_etal,2009,24,lnorm,,,1.481602055,0.218892675,,19393959,10.1016/S1473-3099(09)70069-6 
-SARS_CoV,incubation,Donnelly_etal,2003,57,gamma,2.43121,2.62009,,,,12781533,10.1016/S0140-6736(03)13410-1 
-SARS_CoV,incubation,Lessler_etal,2009,157,lnorm,,,1.3862935,0.5762278,,19393959,10.1016/S1473-3099(09)70069-6 
-SARS_CoV_2_wildtype,incubation,McAloon_etal,2020,1269,lnorm,,,1.63,0.5,,32801208,10.1136/bmjopen-2020-039652
+pathogen_ID,type_ID,study_ID,year,size,distribution,mean,sd,median,75_quantile,95_quantile,shape,scale,meanlog,sdlog,extracted,discretised,phase_bias_adjusted,notes,PMID,DOI,added_by
+adenovirus,incubation,Lessler_etal,2009,14,lnorm,,,5.6,6.5,,,,1.722764351,0.220967322,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
+ebola,incubation,WHO_team,2014,500,gamma,,,,,,5.53404,0.921569,,,,,,,25564903,10.1056/NEJMc1413884 ,Adam Kucharski
+human_CoV,incubation,Lessler_etal,2009,13,lnorm,,,3.2,3.5,,,,1.163146247,0.132870468,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
+influenza_A_seasonal,incubation,Lessler_etal,2009,122,lnorm,,,1.4,1.9,,,,0.336470843,0.452763354,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
+influenza_B_seasonal,incubation,Lessler_etal,2009,76,lnorm,,,0.6,0.7,,,,-0.510828006,0.228551515,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
+influenza_H1N1p,incubation,Ghani_etal,2009,16,gamma,,,,,,8.40278,0.654545,,,,,,,20029668,10.1371/currents.RRN1130 ,Adam Kucharski
+influenza_H1N1p,incubation,Tuite_etal,2010,316,lnorm,,,,,,,,1.42947,0.241453,,,,,19959592,10.1503/cmaj.091807 ,Adam Kucharski
+influenza_H7N9,incubation,Cowling_etal,2013,32,gamma,,,,,,4.93,0.63,,,,,,,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
+marburg,incubation,Martini_etal,1973,5,gamma,,,,,,43.2671,0.157163,,,,,,,4207635,10.1136/pgmj.49.574.542 ,Adam Kucharski
+measles,incubation,Lessler_etal,2009,56,lnorm,,,12.5,14.4,,,,2.525726032,0.209795153,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
+MERS_CoV,incubation,Cauchemez_et_al,2014,7,lnorm,,,,,,,,1.70475,1.70475,,,,,24239323,10.1016/S1473-3099(13)70304-9,Adam Kucharski
+MERS_CoV,incubation,Assiri_etal,2013,23,lnorm,,,,,,,,1.54304,0.459607,,,,,23782161,10.1056/NEJMoa1306742 ,Adam Kucharski
+parainfluenza,incubation,Lessler_etal,2009,11,lnorm,,,2.6,3.2,,,,0.955512271,0.307852764,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
+rhinovirus,incubation,Lessler_etal,2009,28,lnorm,,,1.9,2.7,,,,0.64185289,0.520987175,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
+RSV,incubation,Lessler_etal,2009,24,lnorm,,,4.4,5.1,,,,1.481602055,0.218892675,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
+SARS_CoV,incubation,Donnelly_etal,2003,57,gamma,4.85,3.49,,,,2.43121,2.62009,,,yes,no,no,,12781533,10.1016/S0140-6736(03)13410-1 ,Adam Kucharski
+SARS_CoV,incubation,Lessler_etal,2009,157,lnorm,,,4,5.9,,,,1.3862935,0.5762278,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
+SARS_CoV_2_wildtype,incubation,McAloon_etal,2020,1269,lnorm,,,,,,,,1.63,0.5,no,no,no,,32801208,10.1136/bmjopen-2020-039652,Adam Kucharski
+monkeypox,incubation,Nolen,2016,,lnorm,,,,,,,,2.1783545,0.3360684,yes,no,,"Extracted taking c(6,13) as central 75% range",,10.3201/eid2206.150579,Seb Funk

@@ -4,14 +4,21 @@
 \alias{extract_param}
 \title{Extract parameters}
 \usage{
-extract_param(type, values, distribution)
+extract_param(
+  type = "median",
+  values,
+  distribution,
+  percentiles = c(0.5, 0.95)
+)
 }
 \arguments{
-\item{type}{A \code{character} defining whether summary statistics based around \code{median} and 95\% CI (default) or \code{mean} and variance.}
+\item{type}{A \code{character} defining whether summary statistics based around \code{median} and 95\% quantile (default) or \code{mean} and variance.}
 
-\item{values}{A \code{vector} with two elements. If \code{type=median}: c(median, upper 75\% CI); and if \code{type=mean}: c(mean, variance)}
+\item{values}{A \code{vector} with two elements. If \code{type=median}: c(median, upper quantile); and if \code{type=mean}: c(mean, variance)}
 
-\item{distribution}{A \code{character} specifying distribution to use. Default is \code{lognormal}; also takes \code{gamma}.}
+\item{distribution}{A \code{character} specifying distribution to use. Default is \code{lognormal}; also takes \code{gamma} and \code{weibull}.}
+
+\item{percentiles}{A \code{vector} with two elements specifying the quantiles to compare to if using \code{type="median"}.}
 }
 \description{
 Extract parameters from summary data (e.g. in meta analysis)

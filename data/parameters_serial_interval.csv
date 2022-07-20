@@ -1,3 +1,3 @@
-pathogen_ID,type_ID,study_ID,year,size,distribution,shape,scale,meanlog,sdlog,notes,PMID,DOI
-ebola,serial_interval,WHO_response_team,2014,92,gamma,2.706555671,5.652941176,,,,25564903,10.1056/NEJMc1413884 
-SARS_CoV_2_wildtype,serial_interval,Ferretti_etal,2020,191,lnorm,,,1.386294361,0.697059795,20/1/2020-21/3/2020,32234805,10.1126/science.abb6936 
+pathogen_ID,type_ID,study_ID,year,size,distribution,mean,sd,median,75_quantile,95_quantile,shape,scale,meanlog,sdlog,extracted,discretised,phase_bias_adjusted,notes,PMID,DOI,added_by
+ebola,serial_interval,WHO_response_team,2014,92,gamma,,,,,,2.706555671,5.652941176,,,yes,,,,25564903,10.1056/NEJMc1413884 ,Adam Kucharski
+SARS_CoV_2_wildtype,serial_interval,Ferretti_etal,2020,191,lnorm,,,,,,,,1.386294361,0.697059795,no,,,20/1/2020-21/3/2020,32234805,10.1126/science.abb6936 ,Rachael Pung

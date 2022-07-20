@@ -4,14 +4,12 @@
 \alias{epidist}
 \title{Parameter probability mass function}
 \usage{
-epidist(pathogen, type, study = NULL, pmf = T)
+epidist(pathogen, type, study = NULL)
 }
 \arguments{
 \item{pathogen}{A \code{character} specifying type of parameter: "incubation", "onset_to_admission", "onset_to_death"}
 
 \item{study}{A \code{character} specifying dataset to use. Defaults to study with largest sample size.}
-
-\item{pmf}{A \code{logical} specifying whether to output probability mass function (\code{TRUE}) or cumulative mass function (\code{FALSE}). Defaults to \code{TRUE}.}
 }
 \description{
 Parameter probability distribution by day

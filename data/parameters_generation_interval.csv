@@ -1,0 +1,2 @@
+pathogen_ID,type_ID,study_ID,year,size,distribution,mean,sd,median,75_quantile,95_quantile,shape,scale,meanlog,sdlog,extracted,discretised,phase_bias_adjusted,notes,PMID,DOI,added_by
+monkeypox,generation_interval,UKHSA,2022,,lnorm,,,,,,,,2.4191716,0.3286863,yes,no,,"Extracted taking c(5.9,21.4) as 95% CI",,https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1,Seb Funk
