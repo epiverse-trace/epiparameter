@@ -27,21 +27,21 @@ epidist  <- function(pathogen, type, study = NULL){
   if(pick_study$distribution=="lnorm"){
     param_vector <- c(meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
     cdf_function <- function(x){plnorm(x,meanlog = pick_study$meanlog,sdlog = pick_study$sdlog)}
-    pmf_function <- function(x){cmf_function(x+1)-cmf_function(x)} 
+    pmf_function <- function(x){cdf_function(x+1)-cdf_function(x)} 
     pdf_function <- function(x){dlnorm(x,meanlog = pick_study$meanlog,sdlog = pick_study$sdlog)} 
   }
   
   if(pick_study$distribution=="gamma"){
     param_vector <- c(shape = pick_study$shape,scale = pick_study$scale)
     cdf_function <- function(x){pgamma(x,shape = pick_study$shape,scale = pick_study$scale)}
-    pmf_function <- function(x){cmf_function(x+1)-cmf_function(x)} 
+    pmf_function <- function(x){cdf_function(x+1)-cdf_function(x)} 
     pdf_function <- function(x){dgamma(x,shape = pick_study$shape,scale = pick_study$scale)} 
   }
   
   if(pick_study$distribution=="weibull"){
     param_vector <- c(shape = pick_study$shape,scale = pick_study$scale)
     cdf_function <- function(x){pweibull(x,shape = pick_study$shape,scale = pick_study$scale)}
-    pmf_function <- function(x){cmf_function(x+1)-cmf_function(x)} 
+    pmf_function <- function(x){cdf_function(x+1)-cdf_function(x)} 
     pdf_function <- function(x){dweibull(x,shape = pick_study$shape,scale = pick_study$scale)} 
   }
   

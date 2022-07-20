@@ -17,4 +17,4 @@ RSV,incubation,Lessler_etal,2009,24,lnorm,,,4.4,5.1,,,,1.481602055,0.218892675,y
 SARS_CoV,incubation,Donnelly_etal,2003,57,gamma,4.85,3.49,,,,2.43121,2.62009,,,yes,no,no,,12781533,10.1016/S0140-6736(03)13410-1 ,Adam Kucharski
 SARS_CoV,incubation,Lessler_etal,2009,157,lnorm,,,4,5.9,,,,1.3862935,0.5762278,yes,no,no,,19393959,10.1016/S1473-3099(09)70069-6 ,Adam Kucharski
 SARS_CoV_2_wildtype,incubation,McAloon_etal,2020,1269,lnorm,,,,,,,,1.63,0.5,no,no,no,,32801208,10.1136/bmjopen-2020-039652,Adam Kucharski
-monkeypox,incubation,Nolen,2016,,lnorm,,,,,,,,2.1783545,0.3360684,yes,no,,"Extracted taking c(6,13) as central 75% range",,10.3201/eid2206.150579,Seb Funk
+monkeypox,incubation,Nolen,2016,16,lnorm,9.6,,9,,,,,2.1783545,0.3360684,yes,no,,"Extracted taking c(6,13) as central 75% range",27191380,10.3201/eid2206.150579,Seb Funk
