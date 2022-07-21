@@ -5,20 +5,23 @@
 \title{Extract parameters}
 \usage{
 extract_param(
-  type = "median",
+  type = "percentiles",
   values,
-  distribution,
-  percentiles = c(0.5, 0.95)
+  distribution = "lnorm",
+  percentiles,
+  samples
 )
 }
 \arguments{
-\item{type}{A \code{character} defining whether summary statistics based around \code{median} and 95\% quantile (default) or \code{mean} and variance.}
+\item{type}{A \code{character} defining whether summary statistics based around \code{percentiles} (default) or \code{range}}
 
-\item{values}{A \code{vector} with two elements. If \code{type=median}: c(median, upper quantile); and if \code{type=mean}: c(mean, variance)}
+\item{values}{A \code{vector}. If \code{type=percentiles}: c(percentile_1, percentile_2); and if \code{type=range}: c(median, min, max)}
 
-\item{distribution}{A \code{character} specifying distribution to use. Default is \code{lognormal}; also takes \code{gamma} and \code{weibull}.}
+\item{distribution}{A \code{character} specifying distribution to use. Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}
 
-\item{percentiles}{A \code{vector} with two elements specifying the quantiles to compare to if using \code{type="median"}.}
+\item{percentiles}{A \code{vector} with two elements specifying the percentiles defined in \code{values} if using \code{type="percentiles"}.}
+
+\item{samples}{A \code{numeric} specifying the sample size if using \code{type="range"}.}
 }
 \description{
 Extract parameters from summary data (e.g. in meta analysis)
