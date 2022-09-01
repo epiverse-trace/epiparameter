@@ -15,7 +15,7 @@ epidist  <- function(pathogen, type, study = NULL){
   # pathogen="SARS1"; type="incubation"; study=NULL; pmf = T
   
   # Extract pathogen and parameter type
-  pick_path <- param_vals %>% dplyr::filter(pathogen_ID==pathogen & type_ID==type)  
+  pick_path <- epiparameter:::param_vals %>% dplyr::filter(pathogen_ID==pathogen & type_ID==type)  
   
   if(nrow(pick_path)==0){stop("Need to select pathogen and distribution in the dataset")}
   

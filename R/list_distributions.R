@@ -14,7 +14,7 @@ list_distributions <- function(type="incubation",parameters=F){
   #if(type=="onset_to_admission"){ show_values <- onset_to_admission_vals }
   
   # Extract relevant values
-  show_values <- param_vals %>% dplyr::filter(type_ID==type)
+  show_values <- epiparameter:::param_vals %>% dplyr::filter(type_ID==type)
   
   if(parameters==T){ output <- show_values}
   if(parameters==F){ output <- show_values  %>% select(pathogen_ID,study_ID,year,size,distribution)}
