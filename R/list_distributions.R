@@ -17,7 +17,7 @@ list_distributions <- function(type="incubation",parameters=F){
   show_values <- epiparameter:::param_vals %>% dplyr::filter(type_ID==type)
   
   if(parameters==T){ output <- show_values}
-  if(parameters==F){ output <- show_values  %>% select(pathogen_ID,study_ID,year,size,distribution)}
+  if(parameters==F){ output <- show_values  %>% dplyr::select(pathogen_ID,study_ID,year,size,distribution)}
   
   output
   
