@@ -117,7 +117,7 @@ fit_function_weibull_range <- function(param, val) {
   # Probability of obtaining min, max and range:
   min_p <- dweibull(val[2], shape = param[["a"]],scale = param[["b"]])
   max_p <- dweibull(val[3], shape = param[["a"]],scale = param[["b"]])
-  range_p <- (pweibull(val[3], shape = param[["a"]],scale = param[["b"]]) - pweibull(val[2], scale = param[["a"]],scale = param[["b"]]))^(val[["n"]]-2)
+  range_p <- (pweibull(val[3], shape = param[["a"]],scale = param[["b"]]) - pweibull(val[2], shape = param[["a"]],scale = param[["b"]]))^(val[["n"]]-2)
   
   # Range likelihood
   range_sr <- -(min_p*max_p*range_p)
