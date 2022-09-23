@@ -25,7 +25,7 @@ epidist  <- function(pathogen, type, study = NULL){
   # pathogen="SARS1"; type="incubation"; study=NULL; pmf = T
   
   # Extract pathogen and parameter type
-  pick_path <- read.csv(file = system.file(
+  pick_path <- utils::read.csv(file = system.file(
     "extdata", 
     "parameters.csv", 
     package = "epiparameter", 

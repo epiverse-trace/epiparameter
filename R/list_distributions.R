@@ -26,7 +26,7 @@ list_distributions <- function(type="incubation",parameters=F){
   #if(type=="onset_to_admission"){ show_values <- onset_to_admission_vals }
   
   # Extract relevant values
-  show_values <- read.csv(system.file(
+  show_values <- utils::read.csv(system.file(
     "extdata", 
     "parameters.csv", 
     package = "epiparameter", 
