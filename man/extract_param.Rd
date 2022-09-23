@@ -27,6 +27,20 @@ extract_param(
 Extract parameters from summary data (e.g. in meta analysis)
 }
 \examples{
-extract_param()
+# extract parameters of a lognormal distribution from the 75 percentiles
+extract_param(
+  type = "percentiles", 
+  values = c(6, 13), 
+  distribution = "lnorm", 
+  percentiles = c(0.125, 0.875)
+)
+
+# extract parameters of a gamma distribution from median and range
+extract_param(
+  type = "range", 
+  values = c(8, 6, 13), 
+  distribution = "gamma", 
+  samples = 20
+)
 }
 \keyword{extract}

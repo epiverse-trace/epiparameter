@@ -6,7 +6,19 @@
 #' @keywords distributions
 #' @export
 #' @examples
+#' # the default for list_distributions() without any arguments is to return the 
+#' # incubation period
 #' list_distributions()
+#' 
+#' # metrics can be chosen using the `type` argument, for example incubation period
+#' # or onset to death
+#' list_distributions(type = "incubation")
+#' list_distributions(type = "onset_to_death")
+#' 
+#' # by default list_distributions() will return a filtered table, but if the full
+#' # table including extra information (e.g. parameters of the distribution) the 
+#' # `parameters` argument can be set to `TRUE`
+#' list_distributions(type = "onset_to_admission", parameters = TRUE)
 
 list_distributions <- function(type="incubation",parameters=F){
   

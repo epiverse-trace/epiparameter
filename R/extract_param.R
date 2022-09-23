@@ -9,8 +9,21 @@
 #' @keywords extract
 #' @export
 #' @examples
-#' extract_param()
-
+#' # extract parameters of a lognormal distribution from the 75 percentiles
+#' extract_param(
+#'   type = "percentiles", 
+#'   values = c(6, 13), 
+#'   distribution = "lnorm", 
+#'   percentiles = c(0.125, 0.875)
+#' )
+#' 
+#' # extract parameters of a gamma distribution from median and range
+#' extract_param(
+#'   type = "range", 
+#'   values = c(8, 6, 13), 
+#'   distribution = "gamma", 
+#'   samples = 20
+#' )
 extract_param <- function(type="percentiles",
                           values,
                           distribution="lnorm",

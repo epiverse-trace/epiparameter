@@ -7,7 +7,9 @@
 epidist(pathogen, type, study = NULL)
 }
 \arguments{
-\item{pathogen}{A \code{character} specifying type of parameter: "incubation", "onset_to_admission", "onset_to_death"}
+\item{pathogen}{A \code{character} specifying pathogen of interest}
+
+\item{type}{A \code{character} specifying type of parameter: "incubation", "onset_to_admission", "onset_to_death"}
 
 \item{study}{A \code{character} specifying dataset to use. Defaults to study with largest sample size.}
 }
@@ -15,6 +17,17 @@ epidist(pathogen, type, study = NULL)
 Parameter probability distribution by day
 }
 \examples{
-epidist()
+# list_distributions() will show which pathogens are available for each metric
+# here we search for which incubation periods are available
+list_distributions(type = "incubation")
+
+# example of epidist() using incubation period for ebola
+epidist(pathogen = "ebola", type = "incubation")
+
+# when more than one study is available in the database a study can be specified
+epidist(pathogen = "MERS_CoV", type = "incubation", study = "Cauchemez_et_al")
+
+# example using onset to admission as the metric
+epidist(pathogen = "ebola", type = "onset_to_admission")
 }
 \keyword{incubation}
