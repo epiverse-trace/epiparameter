@@ -25,6 +25,13 @@ list_distributions <- function(type="incubation",parameters=F){
   #if(type=="incubation"){ show_values <- incubation_vals }
   #if(type=="onset_to_admission"){ show_values <- onset_to_admission_vals }
   
+  type_ID <- NULL # remove global variable note
+  pathogen_ID <- NULL # remove global variable note
+  study_ID <- NULL # remove global variable note
+  year <- NULL # remove global variable note
+  size <- NULL # remove global variable note
+  distribution <- NULL # remove global variable note
+  
   # Extract relevant values
   show_values <- utils::read.csv(system.file(
     "extdata", 

@@ -24,6 +24,11 @@ epidist  <- function(pathogen, type, study = NULL){
   # DEBUG
   # pathogen="SARS1"; type="incubation"; study=NULL; pmf = T
   
+  pathogen_ID <- NULL # remove global variable note
+  type_ID <- NULL # remove global variable note
+  size <- NULL # remove global variable note
+  study_ID <- NULL # remove global variable note
+  
   # Extract pathogen and parameter type
   pick_path <- utils::read.csv(file = system.file(
     "extdata", 
