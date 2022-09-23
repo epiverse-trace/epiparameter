@@ -1,6 +1,6 @@
 test_that("list_distributions works for incubation, params = FALSE", {
   incub_tbl <- list_distributions(type = "incubation", parameters = FALSE)
-  expect_true(inherits(incub_tbl, "tbl_df"))
+  expect_true(is.data.frame(incub_tbl))
   expect_equal(dim(incub_tbl), c(19, 5))
   expect_equal(
     colnames(incub_tbl), 
@@ -13,12 +13,12 @@ test_that("list_distributions works for incubation, params = FALSE", {
 
 test_that("list_distributions works for incubation, params = TRUE", {
   incub_tbl <- list_distributions(type = "incubation", parameters = TRUE)
-  expect_true(inherits(incub_tbl, "tbl_df"))
+  expect_true(is.data.frame(incub_tbl))
   expect_equal(dim(incub_tbl), c(19, 22))
   expect_equal(
     colnames(incub_tbl), 
     c("pathogen_ID", "type_ID", "study_ID", "year", "size", "distribution", 
-      "mean", "sd", "median", "75_quantile", "95_quantile", "shape", "scale", 
+      "mean", "sd", "median", "quantile_75", "quantile_95", "shape", "scale", 
       "meanlog", "sdlog", "extracted", "discretised", "phase_bias_adjusted",
       "notes", "PMID", "DOI", "added_by")
   )
@@ -32,7 +32,7 @@ test_that("list_distributions works for onset_to_admission, params = FALSE", {
     type = "onset_to_admission", 
     parameters = FALSE
   )
-  expect_true(inherits(on_to_ad_tbl, "tbl_df"))
+  expect_true(is.data.frame(on_to_ad_tbl))
   expect_equal(dim(on_to_ad_tbl), c(5, 5))
   expect_equal(
     colnames(on_to_ad_tbl), 
@@ -48,12 +48,12 @@ test_that("list_distributions works for onset_to_admission, params = TRUE", {
     type = "onset_to_admission", 
     parameters = TRUE
   )
-  expect_true(inherits(on_to_ad_tbl, "tbl_df"))
+  expect_true(is.data.frame(on_to_ad_tbl))
   expect_equal(dim(on_to_ad_tbl), c(5, 22))
   expect_equal(
     colnames(on_to_ad_tbl), 
     c("pathogen_ID", "type_ID", "study_ID", "year", "size", "distribution", 
-      "mean", "sd", "median", "75_quantile", "95_quantile", "shape", "scale", 
+      "mean", "sd", "median", "quantile_75", "quantile_95", "shape", "scale", 
       "meanlog", "sdlog", "extracted", "discretised", "phase_bias_adjusted",
       "notes", "PMID", "DOI", "added_by")
   )
@@ -67,7 +67,7 @@ test_that("list_distributions works for onset_to_death, params = FALSE", {
     type = "onset_to_death", 
     parameters = FALSE
   )
-  expect_true(inherits(on_to_death_tbl, "tbl_df"))
+  expect_true(is.data.frame(on_to_death_tbl))
   expect_equal(dim(on_to_death_tbl), c(1, 5))
   expect_equal(
     colnames(on_to_death_tbl),
@@ -83,12 +83,12 @@ test_that("list_distributions works for onset_to_death, params = TRUE", {
     type = "onset_to_death", 
     parameters = TRUE
   )
-  expect_true(inherits(on_to_death_tbl, "tbl_df"))
+  expect_true(is.data.frame(on_to_death_tbl))
   expect_equal(dim(on_to_death_tbl), c(1, 22))
   expect_equal(
     colnames(on_to_death_tbl),
     c("pathogen_ID", "type_ID", "study_ID", "year", "size", "distribution", 
-      "mean", "sd", "median", "75_quantile", "95_quantile", "shape", "scale", 
+      "mean", "sd", "median", "quantile_75", "quantile_95", "shape", "scale", 
       "meanlog", "sdlog", "extracted", "discretised", "phase_bias_adjusted",
       "notes", "PMID", "DOI", "added_by")
   )
@@ -102,7 +102,7 @@ test_that("list_distributions works for serial_interval, params = FALSE", {
     type = "serial_interval", 
     parameters = FALSE
   )
-  expect_true(inherits(serial_inter_tbl, "tbl_df"))
+  expect_true(is.data.frame(serial_inter_tbl))
   expect_equal(dim(serial_inter_tbl), c(3, 5))
   expect_equal(
     colnames(serial_inter_tbl),
@@ -118,12 +118,12 @@ test_that("list_distributions works for serial_interval, params = TRUE", {
     type = "serial_interval", 
     parameters = TRUE
   )
-  expect_true(inherits(serial_inter_tbl, "tbl_df"))
+  expect_true(is.data.frame(serial_inter_tbl))
   expect_equal(dim(serial_inter_tbl), c(3, 22))
   expect_equal(
     colnames(serial_inter_tbl),
     c("pathogen_ID", "type_ID", "study_ID", "year", "size", "distribution", 
-      "mean", "sd", "median", "75_quantile", "95_quantile", "shape", "scale", 
+      "mean", "sd", "median", "quantile_75", "quantile_95", "shape", "scale", 
       "meanlog", "sdlog", "extracted", "discretised", "phase_bias_adjusted",
       "notes", "PMID", "DOI", "added_by")
   )
