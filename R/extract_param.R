@@ -83,7 +83,17 @@ extract_param <- function(type="percentiles",
   
 }
 
-#' @rdname fit_function_lnorm_range
+#' Set of functions that can be used to estimate the parameters of a 
+#' distribution (lognormal, gamma, weibull) via optimisation from either the 
+#' percentiles or the median and ranges.
+#' 
+#' @param param Named numeric vector of the distribution parameters to be 
+#' optimised
+#' @param val Numeric vector, in the case of using percentiles it contains the 
+#' values at the percentiles and the percentiles, in the case of median and 
+#' range it contains the median, lower range, upper range and the number of 
+#' sample points to evaluate the function at
+#' @keywords internal
 fit_function_lnorm_range <- function(param, val) {
   
   # Median square residual
@@ -102,7 +112,7 @@ fit_function_lnorm_range <- function(param, val) {
   
 }
 
-#' @rdname fit_function_gamma_range
+#' @rdname fit_function_lnorm_range
 fit_function_gamma_range <- function(param, val) {
   
   # Median square residual
@@ -121,7 +131,7 @@ fit_function_gamma_range <- function(param, val) {
   
 }
 
-#' @rdname fit_function_weibull_range
+#' @rdname fit_function_lnorm_range
 fit_function_weibull_range <- function(param, val) {
   
   # Median square residual
@@ -140,25 +150,23 @@ fit_function_weibull_range <- function(param, val) {
   
 }
 
-#' @rdname fit_function_lnorm
+#' @rdname fit_function_lnorm_range
 fit_function_lnorm <- function(param, val) {
 
   (stats::plnorm(val[1], meanlog = param[["a"]],sdlog = param[["b"]]) - val[["q1"]])^2 + (stats::plnorm(val[2], meanlog = param[["a"]],sdlog = param[["b"]]) - val[["q2"]])^2
   
 }
 
-#' @rdname fit_function_gamma
+#' @rdname fit_function_lnorm_range
 fit_function_gamma <- function(param, val) {
   
   (stats::pgamma(val[1], shape = param[["a"]],scale = param[["b"]]) - val[["q1"]])^2 + (stats::pgamma(val[2], shape = param[["a"]],scale = param[["b"]]) - val[["q2"]])^2
   
 }
 
-#' @rdname fit_function_weibull
+#' @rdname fit_function_lnorm_range
 fit_function_weibull <- function(param, val) {
   
   (stats::pweibull(val[1], shape = param[["a"]],scale = param[["b"]]) - val[["q1"]])^2 + (stats::pweibull(val[2], shape = param[["a"]],scale = param[["b"]]) - val[["q2"]])^2
   
 }
-
-
