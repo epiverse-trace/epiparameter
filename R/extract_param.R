@@ -93,7 +93,7 @@ fit_function_lnorm_range <- function(param, val) {
 fit_function_gamma_range <- function(param, val) {
   
   # Median square residual
-  median_sr <- (pgamma(val[1], meanlog = param[["a"]],scale = param[["b"]]) - 0.5)^2 
+  median_sr <- (pgamma(val[1], shape = param[["a"]], scale = param[["b"]]) - 0.5)^2 
   
   # Probability of obtaining min, max and range:
   min_p <- dgamma(val[2], shape = param[["a"]],scale = param[["b"]])

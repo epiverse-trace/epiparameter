@@ -29,14 +29,13 @@ test_that("extract_param works for gamma from percentiles", {
 })
 
 test_that("extract_param works for gamma from median and range", {
-  skip("bug in fit_function_gamma_range() will fix after initial testing")
   gamma_params <- extract_param(
     type = "range", 
     values = c(8, 4, 13), 
     distribution = "gamma", 
     samples = 20
   )
-  expect_equal(gamma_params, c(a = 2.17835445066, b = 0.33606841584))
+  expect_equal(gamma_params, c(a = 2.28598128108, b = 4.07606184746))
 })
 
 test_that("extract_param works for weibull from percentiles", {
@@ -72,12 +71,13 @@ test_that("fit_function_lnorm_range works for valid input", {
 })
 
 test_that("fit_function_gamma_range works for valid input", {
-  skip("bug in fit_function_gamma_range will fix after initial testing")
   gamma_range <- fit_function_gamma_range(
     param = c(a = 2.0, b = 0.5), 
     val = c(8, 4, 13, n = 20)
   )
-  expect_equal(gamma_range, 0.00396181460097)
+  reference <- 0.249998086906
+  names(reference) <- ""
+  expect_equal(gamma_range, reference)
 })
 
 test_that("fit_function_weibull_range works for valid input", {
