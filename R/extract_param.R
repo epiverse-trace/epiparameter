@@ -34,13 +34,13 @@ extract_param <- function(type="percentiles",
     values_in <- c(values,q1 = percentiles[1], q2 = percentiles[2])
     
     if(distribution == "lnorm"){
-      result2 = optim(param, fit_function_lnorm, method="L-BFGS-B", val=values_in, lower=c(-1,0))
+      result2 = stats::optim(param, fit_function_lnorm, method="L-BFGS-B", val=values_in, lower=c(-1,0))
     }
     if(distribution == "gamma"){
-      result2 = optim(param, fit_function_gamma, method="L-BFGS-B", val=values_in, lower=c(-1,0))
+      result2 = stats::optim(param, fit_function_gamma, method="L-BFGS-B", val=values_in, lower=c(-1,0))
     }
     if(distribution == "weibull"){
-      result2 = optim(param, fit_function_weibull, method="L-BFGS-B", val=values_in, lower=c(-1,0))
+      result2 = stats::optim(param, fit_function_weibull, method="L-BFGS-B", val=values_in, lower=c(-1,0))
     }
   
   }
@@ -54,13 +54,13 @@ extract_param <- function(type="percentiles",
     values_in <- c(values,n = samples)
     
     if(distribution == "lnorm"){
-      result2 = optim(param, fit_function_lnorm_range, method="L-BFGS-B", val=values_in, lower=c(-1,0))
+      result2 = stats::optim(param, fit_function_lnorm_range, method="L-BFGS-B", val=values_in, lower=c(-1,0))
     }
     if(distribution == "gamma"){
-      result2 = optim(param, fit_function_gamma_range, method="L-BFGS-B", val=values_in, lower=c(-1,0))
+      result2 = stats::optim(param, fit_function_gamma_range, method="L-BFGS-B", val=values_in, lower=c(-1,0))
     }
     if(distribution == "weibull"){
-      result2 = optim(param, fit_function_weibull_range, method="L-BFGS-B", val=values_in, lower=c(-1,0))
+      result2 = stats::optim(param, fit_function_weibull_range, method="L-BFGS-B", val=values_in, lower=c(-1,0))
     }
     
   }
@@ -74,12 +74,12 @@ extract_param <- function(type="percentiles",
 fit_function_lnorm_range <- function(param, val) {
   
   # Median square residual
-  median_sr <- (plnorm(val[1], meanlog = param[["a"]],sdlog = param[["b"]]) - 0.5)^2 
+  median_sr <- (stats::plnorm(val[1], meanlog = param[["a"]],sdlog = param[["b"]]) - 0.5)^2 
 
   # Probability of obtaining min, max and range:
-  min_p <- dlnorm(val[2], meanlog = param[["a"]],sdlog = param[["b"]])
-  max_p <- dlnorm(val[3], meanlog = param[["a"]],sdlog = param[["b"]])
-  range_p <- (plnorm(val[3], meanlog = param[["a"]],sdlog = param[["b"]]) - plnorm(val[2], meanlog = param[["a"]],sdlog = param[["b"]]))^(val[["n"]]-2)
+  min_p <- stats::dlnorm(val[2], meanlog = param[["a"]],sdlog = param[["b"]])
+  max_p <- stats::dlnorm(val[3], meanlog = param[["a"]],sdlog = param[["b"]])
+  range_p <- (stats::plnorm(val[3], meanlog = param[["a"]],sdlog = param[["b"]]) - stats::plnorm(val[2], meanlog = param[["a"]],sdlog = param[["b"]]))^(val[["n"]]-2)
   
   # Range likelihood
   range_sr <- -(min_p*max_p*range_p)
@@ -93,12 +93,12 @@ fit_function_lnorm_range <- function(param, val) {
 fit_function_gamma_range <- function(param, val) {
   
   # Median square residual
-  median_sr <- (pgamma(val[1], shape = param[["a"]], scale = param[["b"]]) - 0.5)^2 
+  median_sr <- (stats::pgamma(val[1], shape = param[["a"]], scale = param[["b"]]) - 0.5)^2 
   
   # Probability of obtaining min, max and range:
-  min_p <- dgamma(val[2], shape = param[["a"]],scale = param[["b"]])
-  max_p <- dgamma(val[3], shape = param[["a"]],scale = param[["b"]])
-  range_p <- (pgamma(val[3], shape = param[["a"]],scale = param[["b"]]) - pgamma(val[2], shape = param[["a"]],scale = param[["b"]]))^(val[["n"]]-2)
+  min_p <- stats::dgamma(val[2], shape = param[["a"]],scale = param[["b"]])
+  max_p <- stats::dgamma(val[3], shape = param[["a"]],scale = param[["b"]])
+  range_p <- (stats::pgamma(val[3], shape = param[["a"]],scale = param[["b"]]) - stats::pgamma(val[2], shape = param[["a"]],scale = param[["b"]]))^(val[["n"]]-2)
   
   # Range likelihood
   range_sr <- -(min_p*max_p*range_p)
@@ -112,12 +112,12 @@ fit_function_gamma_range <- function(param, val) {
 fit_function_weibull_range <- function(param, val) {
   
   # Median square residual
-  median_sr <- (pweibull(val[1], shape = param[["a"]],scale = param[["b"]]) - 0.5)^2 
+  median_sr <- (stats::pweibull(val[1], shape = param[["a"]],scale = param[["b"]]) - 0.5)^2 
   
   # Probability of obtaining min, max and range:
-  min_p <- dweibull(val[2], shape = param[["a"]],scale = param[["b"]])
-  max_p <- dweibull(val[3], shape = param[["a"]],scale = param[["b"]])
-  range_p <- (pweibull(val[3], shape = param[["a"]],scale = param[["b"]]) - pweibull(val[2], shape = param[["a"]],scale = param[["b"]]))^(val[["n"]]-2)
+  min_p <- stats::dweibull(val[2], shape = param[["a"]],scale = param[["b"]])
+  max_p <- stats::dweibull(val[3], shape = param[["a"]],scale = param[["b"]])
+  range_p <- (stats::pweibull(val[3], shape = param[["a"]],scale = param[["b"]]) - stats::pweibull(val[2], shape = param[["a"]],scale = param[["b"]]))^(val[["n"]]-2)
   
   # Range likelihood
   range_sr <- -(min_p*max_p*range_p)
@@ -130,21 +130,21 @@ fit_function_weibull_range <- function(param, val) {
 #' @rdname fit_function_lnorm
 fit_function_lnorm <- function(param, val) {
 
-  (plnorm(val[1], meanlog = param[["a"]],sdlog = param[["b"]]) - val[["q1"]])^2 + (plnorm(val[2], meanlog = param[["a"]],sdlog = param[["b"]]) - val[["q2"]])^2
+  (stats::plnorm(val[1], meanlog = param[["a"]],sdlog = param[["b"]]) - val[["q1"]])^2 + (stats::plnorm(val[2], meanlog = param[["a"]],sdlog = param[["b"]]) - val[["q2"]])^2
   
 }
 
 #' @rdname fit_function_gamma
 fit_function_gamma <- function(param, val) {
   
-  (pgamma(val[1], shape = param[["a"]],scale = param[["b"]]) - val[["q1"]])^2 + (pgamma(val[2], shape = param[["a"]],scale = param[["b"]]) - val[["q2"]])^2
+  (stats::pgamma(val[1], shape = param[["a"]],scale = param[["b"]]) - val[["q1"]])^2 + (stats::pgamma(val[2], shape = param[["a"]],scale = param[["b"]]) - val[["q2"]])^2
   
 }
 
 #' @rdname fit_function_weibull
 fit_function_weibull <- function(param, val) {
   
-  (pweibull(val[1], shape = param[["a"]],scale = param[["b"]]) - val[["q1"]])^2 + (pweibull(val[2], shape = param[["a"]],scale = param[["b"]]) - val[["q2"]])^2
+  (stats::pweibull(val[1], shape = param[["a"]],scale = param[["b"]]) - val[["q1"]])^2 + (stats::pweibull(val[2], shape = param[["a"]],scale = param[["b"]]) - val[["q2"]])^2
   
 }
 
