@@ -12,6 +12,7 @@
 #' @param samples A \code{numeric} specifying the sample size if using
 #' \code{type="range"}.
 #' @keywords extract
+#' @author Adam Kucharski
 #' @export
 #' @examples
 #' # extract parameters of a lognormal distribution from the 75 percentiles
@@ -144,6 +145,7 @@ extract_param <- function(type = "percentiles",
 #' range it contains the median, lower range, upper range and the number of
 #' sample points to evaluate the function at
 #' @keywords internal
+#' @author Adam Kucharski
 fit_function_lnorm_range <- function(param, val) {
 
   # Median square residual

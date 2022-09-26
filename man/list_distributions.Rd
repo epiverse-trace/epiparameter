@@ -30,4 +30,7 @@ list_distributions(type = "onset_to_death")
 # distribution) the `parameters` argument can be set to `TRUE`
 list_distributions(type = "onset_to_admission", parameters = TRUE)
 }
+\author{
+Adam Kucharski
+}
 \keyword{distributions}

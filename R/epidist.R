@@ -7,6 +7,7 @@
 #' @param study A \code{character} specifying dataset to use. Defaults to study
 #' with largest sample size.
 #' @keywords incubation
+#' @author Adam Kucharski
 #' @export
 #' @examples
 #' # list_distributions() will show which pathogens are available for each

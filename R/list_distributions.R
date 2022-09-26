@@ -5,6 +5,7 @@
 #' "onset_to_admission" or "onset_to_death"
 #' @param parameters A \code{logical} defining whether to show parameter values
 #' @keywords distributions
+#' @author Adam Kucharski
 #' @export
 #' @examples
 #' # the default for list_distributions() without any arguments is to return the

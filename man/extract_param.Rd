@@ -48,4 +48,7 @@ extract_param(
   samples = 20
 )
 }
+\author{
+Adam Kucharski
+}
 \keyword{extract}

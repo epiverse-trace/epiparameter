@@ -37,4 +37,7 @@ epidist(
 # example using onset to admission as the metric
 epidist(pathogen = "ebola", type = "onset_to_admission")
 }
+\author{
+Adam Kucharski
+}
 \keyword{incubation}

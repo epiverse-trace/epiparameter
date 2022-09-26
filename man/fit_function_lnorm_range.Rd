@@ -37,4 +37,7 @@ Set of functions that can be used to estimate the parameters of a
 distribution (lognormal, gamma, weibull) via optimisation from either the
 percentiles or the median and ranges.
 }
+\author{
+Adam Kucharski
+}
 \keyword{internal}
