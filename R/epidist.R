@@ -42,7 +42,7 @@ epidist  <- function(pathogen, type, study = NULL) {
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
-    )) %>% dplyr::filter(pathogen_ID == pathogen & type_ID == type)
+    )) |> dplyr::filter(pathogen_ID == pathogen & type_ID == type)
 
   if (nrow(pick_path) == 0) {
     stop("Need to select pathogen and distribution in the dataset")
@@ -50,10 +50,10 @@ epidist  <- function(pathogen, type, study = NULL) {
 
   # Extract study or default to largest sample size
   if (is.null(study)) {
-    pick_study <- pick_path %>% dplyr::filter(size == max(size))
+    pick_study <- pick_path |> dplyr::filter(size == max(size))
   }
   if (!is.null(study)) {
-    pick_study <- pick_path %>% dplyr::filter(study_ID == study)
+    pick_study <- pick_path |> dplyr::filter(study_ID == study)
   }
 
   # Define distribution

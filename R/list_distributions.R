@@ -39,13 +39,13 @@ list_distributions <- function(type = "incubation", parameters = FALSE) {
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
-  )) %>% dplyr::filter(type_ID == type)
+  )) |> dplyr::filter(type_ID == type)
 
   if (parameters == TRUE) {
     output <- show_values
   }
   if (parameters == FALSE) {
-    output <- show_values  %>%
+    output <- show_values  |>
       dplyr::select(pathogen_ID, study_ID, year, size, distribution)
   }
   output
