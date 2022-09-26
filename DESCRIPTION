@@ -16,7 +16,7 @@ Authors@R: c(
 Description: Library of epidemiological paramters for infectious diseases.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Imports: dplyr, magrittr
+Imports: dplyr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Depends: 
