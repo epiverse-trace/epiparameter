@@ -4,7 +4,7 @@
 \alias{list_distributions}
 \title{List distributions}
 \usage{
-list_distributions(type = "incubation", parameters = F)
+list_distributions(type = "incubation", parameters = FALSE)
 }
 \arguments{
 \item{type}{A \code{character} defining parameter to be listed: "incubation", "onset_to_admission" or "onset_to_death"}
@@ -24,9 +24,9 @@ list_distributions()
 list_distributions(type = "incubation")
 list_distributions(type = "onset_to_death")
 
-# by default list_distributions() will return a filtered table, but if the full
-# table including extra information (e.g. parameters of the distribution) the 
-# `parameters` argument can be set to `TRUE`
+# by default list_distributions() will return a filtered table, but if the 
+# full table including extra information (e.g. parameters of the 
+# distribution) the `parameters` argument can be set to `TRUE`
 list_distributions(type = "onset_to_admission", parameters = TRUE)
 }
 \keyword{distributions}

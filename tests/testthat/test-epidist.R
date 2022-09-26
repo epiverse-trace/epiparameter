@@ -3,7 +3,7 @@ test_that("epidist works with valid input", {
   expect_s3_class(ebola_dist, class = "epidist")
   expect_length(ebola_dist, 7)
   expect_equal(
-    names(ebola_dist), 
+    names(ebola_dist),
     c("pathogen", "dist", "type", "param", "pmf", "pdf", "cdf")
   )
   expect_true(is.character(ebola_dist$pathogen))
@@ -25,15 +25,15 @@ test_that("epidist prob functions work", {
 test_that("epidist works with specific study", {
   mers_dist1 <- epidist(pathogen = "MERS_CoV", type = "incubation")
   mers_dist2 <- epidist(
-    pathogen = "MERS_CoV", 
-    type = "incubation", 
+    pathogen = "MERS_CoV",
+    type = "incubation",
     study = "Cauchemez_et_al"
   )
   expect_false(identical(mers_dist1, mers_dist2))
   expect_s3_class(mers_dist2, class = "epidist")
   expect_length(mers_dist2, 7)
   expect_equal(
-    names(mers_dist2), 
+    names(mers_dist2),
     c("pathogen", "dist", "type", "param", "pmf", "pdf", "cdf")
   )
 })
@@ -49,6 +49,3 @@ test_that("epidist works with lognorm dist", {
 test_that("epidist.print works as expected", {
   expect_snapshot(epidist(pathogen = "RSV", type = "incubation"))
 })
-
-
-
