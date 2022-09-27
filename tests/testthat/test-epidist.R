@@ -1,0 +1,51 @@
+test_that("epidist works with valid input", {
+  ebola_dist <- epidist(pathogen = "ebola", type = "incubation")
+  expect_s3_class(ebola_dist, class = "epidist")
+  expect_length(ebola_dist, 7)
+  expect_equal(
+    names(ebola_dist),
+    c("pathogen", "dist", "type", "param", "pmf", "pdf", "cdf")
+  )
+  expect_true(is.character(ebola_dist$pathogen))
+  expect_true(is.character(ebola_dist$dist))
+  expect_true(is.character(ebola_dist$type))
+  expect_true(is.vector(ebola_dist$param))
+  expect_true(is.function(ebola_dist$pmf))
+  expect_true(is.function(ebola_dist$pdf))
+  expect_true(is.function(ebola_dist$cdf))
+})
+
+test_that("epidist prob functions work", {
+  marburg_dist <- epidist(pathogen = "marburg", type = "incubation")
+  expect_equal(marburg_dist$pmf(5), 0.19445393887)
+  expect_equal(marburg_dist$pdf(5), 0.0822904644827)
+  expect_equal(marburg_dist$cdf(5), 0.0305977451594)
+})
+
+test_that("epidist works with specific study", {
+  mers_dist1 <- epidist(pathogen = "MERS_CoV", type = "incubation")
+  mers_dist2 <- epidist(
+    pathogen = "MERS_CoV",
+    type = "incubation",
+    study = "Cauchemez_et_al"
+  )
+  expect_false(identical(mers_dist1, mers_dist2))
+  expect_s3_class(mers_dist2, class = "epidist")
+  expect_length(mers_dist2, 7)
+  expect_equal(
+    names(mers_dist2),
+    c("pathogen", "dist", "type", "param", "pmf", "pdf", "cdf")
+  )
+})
+
+test_that("epidist works with lognorm dist", {
+  adenovirus_dist <- epidist(pathogen = "adenovirus", type = "incubation")
+  expect_s3_class(adenovirus_dist, "epidist")
+  expect_equal(adenovirus_dist$pmf(5), 0.318548590046)
+  expect_equal(adenovirus_dist$pdf(5), 0.316588858382)
+  expect_equal(adenovirus_dist$cdf(5), 0.304022826688)
+})
+
+test_that("epidist.print works as expected", {
+  expect_snapshot(epidist(pathogen = "RSV", type = "incubation"))
+})

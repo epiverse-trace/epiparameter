@@ -13,20 +13,42 @@ extract_param(
 )
 }
 \arguments{
-\item{type}{A \code{character} defining whether summary statistics based around \code{percentiles} (default) or \code{range}}
+\item{type}{A \code{character} defining whether summary statistics based
+around \code{percentiles} (default) or \code{range}}
 
-\item{values}{A \code{vector}. If \code{type=percentiles}: c(percentile_1, percentile_2); and if \code{type=range}: c(median, min, max)}
+\item{values}{A \code{vector}. If \code{type=percentiles}: c(percentile_1,
+percentile_2); and if \code{type=range}: c(median, min, max)}
 
-\item{distribution}{A \code{character} specifying distribution to use. Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}
+\item{distribution}{A \code{character} specifying distribution to use.
+Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}
 
-\item{percentiles}{A \code{vector} with two elements specifying the percentiles defined in \code{values} if using \code{type="percentiles"}.}
+\item{percentiles}{A \code{vector} with two elements specifying the
+percentiles defined in \code{values} if using \code{type="percentiles"}.}
 
-\item{samples}{A \code{numeric} specifying the sample size if using \code{type="range"}.}
+\item{samples}{A \code{numeric} specifying the sample size if using
+\code{type="range"}.}
 }
 \description{
 Extract parameters from summary data (e.g. in meta analysis)
 }
 \examples{
-extract_param()
+# extract parameters of a lognormal distribution from the 75 percentiles
+extract_param(
+  type = "percentiles",
+  values = c(6, 13),
+  distribution = "lnorm",
+  percentiles = c(0.125, 0.875)
+)
+
+# extract parameters of a gamma distribution from median and range
+extract_param(
+  type = "range",
+  values = c(8, 6, 13),
+  distribution = "gamma",
+  samples = 20
+)
+}
+\author{
+Adam Kucharski
 }
 \keyword{extract}

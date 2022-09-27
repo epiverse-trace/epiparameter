@@ -2,49 +2,101 @@
 #'
 #' Parameter probability distribution by day
 #' @param pathogen A \code{character} specifying pathogen of interest
-#' @param pathogen A \code{character} specifying type of parameter: "incubation", "onset_to_admission", "onset_to_death"
-#' @param study A \code{character} specifying dataset to use. Defaults to study with largest sample size.
+#' @param type A \code{character} specifying type of parameter: "incubation",
+#' "onset_to_admission", "onset_to_death"
+#' @param study A \code{character} specifying dataset to use. Defaults to study
+#' with largest sample size.
 #' @keywords incubation
+#' @author Adam Kucharski
 #' @export
 #' @examples
-#' epidist()
+#' # list_distributions() will show which pathogens are available for each
+#' # metric here we search for which incubation periods are available
+#' list_distributions(type = "incubation")
+#'
+#' # example of epidist() using incubation period for ebola
+#' epidist(pathogen = "ebola", type = "incubation")
+#'
+#' # when more than one study is available in the database a study can be
+#' # specified
+#' epidist(
+#'   pathogen = "MERS_CoV",
+#'   type = "incubation",
+#'   study = "Cauchemez_et_al"
+#' )
+#'
+#' # example using onset to admission as the metric
+#' epidist(pathogen = "ebola", type = "onset_to_admission")
+epidist  <- function(pathogen, type, study = NULL) {
 
-epidist  <- function(pathogen, type, study = NULL){
-  
   # DEBUG
   # pathogen="SARS1"; type="incubation"; study=NULL; pmf = T
-  
+
+  pathogen_ID <- NULL # remove global variable note
+  type_ID <- NULL # remove global variable note
+  size <- NULL # remove global variable note
+  study_ID <- NULL # remove global variable note
+
   # Extract pathogen and parameter type
-  pick_path <- epiparameter:::param_vals %>% dplyr::filter(pathogen_ID==pathogen & type_ID==type)  
-  
-  if(nrow(pick_path)==0){stop("Need to select pathogen and distribution in the dataset")}
-  
+  pick_path <- utils::read.csv(file = system.file(
+    "extdata",
+    "parameters.csv",
+    package = "epiparameter",
+    mustWork = TRUE
+    )) |> dplyr::filter(pathogen_ID == pathogen & type_ID == type)
+
+  if (nrow(pick_path) == 0) {
+    stop("Need to select pathogen and distribution in the dataset")
+  }
+
   # Extract study or default to largest sample size
-  if( is.null(study) ){pick_study <- pick_path %>% dplyr::filter(size==max(size))}
-  if(!is.null(study) ){pick_study <- pick_path %>% dplyr::filter(study_ID==study)}
+  if (is.null(study)) {
+    pick_study <- pick_path |> dplyr::filter(size == max(size))
+  }
+  if (!is.null(study)) {
+    pick_study <- pick_path |> dplyr::filter(study_ID == study)
+  }
 
   # Define distribution
-  if(pick_study$distribution=="lnorm"){
+  if (pick_study$distribution == "lnorm") {
     param_vector <- c(meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
-    cdf_function <- function(x){plnorm(x,meanlog = pick_study$meanlog,sdlog = pick_study$sdlog)}
-    pmf_function <- function(x){cdf_function(x+1)-cdf_function(x)} 
-    pdf_function <- function(x){dlnorm(x,meanlog = pick_study$meanlog,sdlog = pick_study$sdlog)} 
+    cdf_function <- function(x) {
+      stats::plnorm(x, meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
+    }
+    pmf_function <- function(x) {
+      cdf_function(x + 1) - cdf_function(x)
+    }
+    pdf_function <- function(x) {
+      stats::dlnorm(x, meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
+    }
   }
-  
-  if(pick_study$distribution=="gamma"){
-    param_vector <- c(shape = pick_study$shape,scale = pick_study$scale)
-    cdf_function <- function(x){pgamma(x,shape = pick_study$shape,scale = pick_study$scale)}
-    pmf_function <- function(x){cdf_function(x+1)-cdf_function(x)} 
-    pdf_function <- function(x){dgamma(x,shape = pick_study$shape,scale = pick_study$scale)} 
+
+  if (pick_study$distribution == "gamma") {
+    param_vector <- c(shape = pick_study$shape, scale = pick_study$scale)
+    cdf_function <- function(x) {
+      stats::pgamma(x, shape = pick_study$shape, scale = pick_study$scale)
+    }
+    pmf_function <- function(x) {
+      cdf_function(x + 1) - cdf_function(x)
+    }
+    pdf_function <- function(x) {
+      stats::dgamma(x, shape = pick_study$shape, scale = pick_study$scale)
+    }
   }
-  
-  if(pick_study$distribution=="weibull"){
-    param_vector <- c(shape = pick_study$shape,scale = pick_study$scale)
-    cdf_function <- function(x){pweibull(x,shape = pick_study$shape,scale = pick_study$scale)}
-    pmf_function <- function(x){cdf_function(x+1)-cdf_function(x)} 
-    pdf_function <- function(x){dweibull(x,shape = pick_study$shape,scale = pick_study$scale)} 
+
+  if (pick_study$distribution == "weibull") {
+    param_vector <- c(shape = pick_study$shape, scale = pick_study$scale)
+    cdf_function <- function(x) {
+      stats::pweibull(x, shape = pick_study$shape, scale = pick_study$scale)
+    }
+    pmf_function <- function(x) {
+      cdf_function(x + 1) - cdf_function(x)
+    }
+    pdf_function <- function(x) {
+      stats::dweibull(x, shape = pick_study$shape, scale = pick_study$scale)
+    }
   }
-  
+
   out <- list(pathogen = pathogen,
               dist = pick_study$distribution,
               type = type,
@@ -52,23 +104,20 @@ epidist  <- function(pathogen, type, study = NULL){
               pmf = pmf_function,
               pdf = pdf_function,
               cdf = cdf_function)
-  
+
   class(out) <- "epidist"
   out
-  
 }
 
 ##' @export
-print.epidist <- function(x, ...){
+print.epidist <- function(x, ...) {
 
   cat(sprintf("Pathogen: %s\n", x$pathogen))
   cat(sprintf("Type: %s\n", x$type))
   cat(sprintf("Distribution: %s\n", x$dist))
   p_vals <- x$param
   cat(sprintf("Parameters:\n"))
-  cat(sprintf("  %s: %s\n",names(p_vals),as.character(p_vals)))
+  cat(sprintf("  %s: %s\n", names(p_vals), as.character(p_vals)))
 
   invisible(x)
 }
-
-

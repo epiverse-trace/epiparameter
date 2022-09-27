@@ -1,10 +1,27 @@
 Package: epiparameter
 Title: Library of epidemiological parameters
-Version: 0.1
-Authors@R: person("Adam", "Kucharski", , "adam.kucharski@lshtm.ac.uk", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8814-9421"))
-Description: Library of epidemiological paramters for infectious diseases
-License: `use_mit_license()`
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given = "Adam", 
+           family = "Kucharski",
+           email = "adam.kucharski@lshtm.ac.uk", 
+           role = c("aut", "cre"), 
+           comment = c(ORCID = "0000-0001-8814-9421")),
+    person(given = "Joshua",
+           family = "Lambert",
+           email = "joshua.lambert@lshtm.ac.uk",
+           role = c("ctb"),
+           comment = c(ORCID = "0000-0001-5218-3046"))
+           )
+Description: Library of epidemiological paramters for infectious diseases.
+License: MIT + file LICENSE
 Encoding: UTF-8
-Imports: dplyr, magrittr
+Imports: dplyr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
+Depends: 
+    R (>= 3.5.0)
+Suggests: 
+    covr,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

@@ -1,6 +1,0 @@
-pathogen_ID,type_ID,study_ID,year,size,distribution,mean,sd,median,75_quantile,95_quantile,shape,scale,meanlog,sdlog,extracted,discretised,phase_bias_adjusted,notes,PMID,DOI,added_by
-ebola,onset_to_admission,WHO_team,2014,500,gamma,,,,,,5.53404,0.921569,,,yes,,,,25564903,10.1056/NEJMc1413884 ,Adam Kucharski
-influenza_H1N1p,onset_to_admission,Tuite_etal,2010,316,lnorm,,,,,,,,2.17531,0.330773,,,,,19959592,10.1503/cmaj.091807 ,Adam Kucharski
-influenza_H7N9,onset_to_admission,Cowling_etal,2013,32,gamma,,,,,,9.65,0.45,,,,,,,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
-MERS_CoV,onset_to_admission,Assiri_etal,2013,23,lnorm,,,,,,7,0.75,,,,,,,23782161,10.1056/NEJMoa1306742 ,Adam Kucharski
-SARS_CoV,onset_to_admission,Donnelly_etal,2003,57,gamma,,,,,,1.929655,2.513402,,,,,,Feb-26 to Mar-25,12781533,10.1016/S0140-6736(03)13410-1 ,Adam Kucharski
