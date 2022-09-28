@@ -27,4 +27,4 @@ SARS_CoV_2_wildtype,onset_to_death,Linton_etal,2020,23,lnorm,NA,NA,NA,NA,NA,NA,N
 ebola,serial_interval,WHO_response_team,2014,92,gamma,NA,NA,NA,NA,NA,2.706555671,5.652941176,NA,NA,yes,NA,NA,NA,25564903,10.1056/NEJMc1413884,Adam Kucharski
 SARS_CoV_2_wildtype,serial_interval,Ferretti_etal,2020,191,lnorm,NA,NA,NA,NA,NA,NA,NA,1.386294361,0.697059795,no,NA,NA,20/1/2020-21/3/2020,32234805,10.1126/science.abb6936,Rachael Pung
 monkeypox,serial_interval,UKHSA,2022,336,lnorm,NA,NA,NA,NA,NA,NA,NA,2.4191716,0.3286863,yes,no,NA,"Extracted taking c(5.9,21.4) as 95% CI",NA,https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1,Seb Funk
-ebola,onset_to_death,Kerkhove,2015,,,,,,,,,,,,,,,,,,
+ebola,onset_to_death,Kerkhove,2015,50 studies,multiple,NA,NA,6,NA,NA,NA,NA,NA,NA,no,no,NA,Not reviewed yet,26029377,10.1038/sdata.2015.19,Carmen Tamayo
