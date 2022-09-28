@@ -7,7 +7,7 @@ name: render-readme
 # - on changes to readme.Rmd
 
 on:
-  workflow_dispath:
+  workflow_dispatch:
   push:
     branches:
       - 'main'
