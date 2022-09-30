@@ -2,7 +2,8 @@
 % Please edit documentation in R/extract_param.R
 \name{extract_param}
 \alias{extract_param}
-\title{Extract parameters}
+\title{Calculate the parameters of a parametric probability distribution from
+reported values of percentiles, or median and range}
 \usage{
 extract_param(
   type = "percentiles",
@@ -16,20 +17,24 @@ extract_param(
 \item{type}{A \code{character} defining whether summary statistics based
 around \code{percentiles} (default) or \code{range}}
 
-\item{values}{A \code{vector}. If \code{type=percentiles}: c(percentile_1,
-percentile_2); and if \code{type=range}: c(median, min, max)}
+\item{values}{A \code{vector}. If \code{type = percentiles}: \code{c(percentile_1, percentile_2)}; and if \code{type = range}: \code{c(median, min, max)}}
 
 \item{distribution}{A \code{character} specifying distribution to use.
 Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}
 
 \item{percentiles}{A \code{vector} with two elements specifying the
-percentiles defined in \code{values} if using \code{type="percentiles"}.}
+percentiles defined in \code{values} if using \code{type = "percentiles"}.}
 
 \item{samples}{A \code{numeric} specifying the sample size if using
-\code{type="range"}.}
+\code{type = "range"}.}
+}
+\value{
+A \code{numeric} vector with the parameter values of the distribution
 }
 \description{
-Extract parameters from summary data (e.g. in meta analysis)
+Summary data of distributions, as provided by reports and meta-analyses, can
+be used to extract the parameters of a chosen distribution. Currently
+available distributions are: lognormal, gamma and weibull.
 }
 \examples{
 # extract parameters of a lognormal distribution from the 75 percentiles

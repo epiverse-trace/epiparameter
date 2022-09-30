@@ -1,11 +1,30 @@
-#' Parameter probability mass function
+#' Distribution (PDF, CDF, PMF) and its parameters for epidemiological 
+#' characteristics of a pathogen
 #'
-#' Parameter probability distribution by day
-#' @param pathogen A \code{character} specifying pathogen of interest
-#' @param type A \code{character} specifying type of parameter: "incubation",
-#' "onset_to_admission", "onset_to_death"
-#' @param study A \code{character} specifying dataset to use. Defaults to study
+#' Parametric probability distribution (lognormal, gamma, or weibull) for the 
+#' epidemiological characteristics (incubation period, onset to admission, 
+#' onset to death, and serial interval) of various pathogens. The distributions 
+#' and associated best-fit parameters can be used to inform modelling and 
+#' estimation of other epidemiological metrics (e.g. reproduction number) and 
+#' public health decisions (e.g. quarantine period).
+#' 
+#' @param pathogen A `character` specifying pathogen of interest
+#' @param type A `character` specifying type of parameter: `"incubation"`,
+#' `"onset_to_admission"`, `"onset_to_death"`
+#' @param study A `character` specifying dataset to use. Defaults to study
 #' with largest sample size.
+#' 
+#' @return Produces an object of class `epidist` which is composed of:
+#' - `pathogen`: The pathogen of interest
+#' - `dist`: The best-fit distribution from the literature, either from the 
+#' study with the largest sample size (default) or a specific study (using the 
+#' `study` argument)
+#' - `type`: The metric of interest, could be either "incubation", 
+#' "onset_to_admission", or "onset_to_death"
+#' - `param`: The parameters of the distribution
+#' - `pmf`, `pdf`, `cdf`: The distributions: probability mass function (`pmf`), 
+#' probability density function (`pdf`) and cumulative distribution function 
+#' (`cdf`)
 #' @keywords incubation
 #' @author Adam Kucharski
 #' @export

@@ -1,16 +1,22 @@
-#' Extract parameters
+#' Calculate the parameters of a parametric probability distribution from 
+#' reported values of percentiles, or median and range
 #'
-#' Extract parameters from summary data (e.g. in meta analysis)
-#' @param type A \code{character} defining whether summary statistics based
-#' around \code{percentiles} (default) or \code{range}
-#' @param values A \code{vector}. If \code{type=percentiles}: c(percentile_1,
-#' percentile_2); and if \code{type=range}: c(median, min, max)
-#' @param distribution A \code{character} specifying distribution to use.
-#' Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.
-#' @param percentiles A \code{vector} with two elements specifying the
-#' percentiles defined in \code{values} if using \code{type="percentiles"}.
-#' @param samples A \code{numeric} specifying the sample size if using
-#' \code{type="range"}.
+#' Summary data of distributions, as provided by reports and meta-analyses, can
+#' be used to extract the parameters of a chosen distribution. Currently
+#' available distributions are: lognormal, gamma and weibull.
+#' 
+#' @param type A `character` defining whether summary statistics based
+#' around `percentiles` (default) or `range`
+#' @param values A `vector`. If `type = percentiles`: `c(percentile_1,
+#' percentile_2)`; and if `type = range`: `c(median, min, max)`
+#' @param distribution A `character` specifying distribution to use.
+#' Default is `lnorm`; also takes `gamma` and `weibull`.
+#' @param percentiles A `vector` with two elements specifying the
+#' percentiles defined in `values` if using `type = "percentiles"`.
+#' @param samples A `numeric` specifying the sample size if using 
+#' `type = "range"`.
+#' 
+#' @return A `numeric` vector with the parameter values of the distribution
 #' @keywords extract
 #' @author Adam Kucharski
 #' @export

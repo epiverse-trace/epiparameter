@@ -2,21 +2,42 @@
 % Please edit documentation in R/epidist.R
 \name{epidist}
 \alias{epidist}
-\title{Parameter probability mass function}
+\title{Distribution (PDF, CDF, PMF) and its parameters for epidemiological
+characteristics of a pathogen}
 \usage{
 epidist(pathogen, type, study = NULL)
 }
 \arguments{
 \item{pathogen}{A \code{character} specifying pathogen of interest}
 
-\item{type}{A \code{character} specifying type of parameter: "incubation",
-"onset_to_admission", "onset_to_death"}
+\item{type}{A \code{character} specifying type of parameter: \code{"incubation"},
+\code{"onset_to_admission"}, \code{"onset_to_death"}}
 
 \item{study}{A \code{character} specifying dataset to use. Defaults to study
 with largest sample size.}
 }
+\value{
+Produces an object of class \code{epidist} which is composed of:
+\itemize{
+\item \code{pathogen}: The pathogen of interest
+\item \code{dist}: The best-fit distribution from the literature, either from the
+study with the largest sample size (default) or a specific study (using the
+\code{study} argument)
+\item \code{type}: The metric of interest, could be either "incubation",
+"onset_to_admission", or "onset_to_death"
+\item \code{param}: The parameters of the distribution
+\item \code{pmf}, \code{pdf}, \code{cdf}: The distributions: probability mass function (\code{pmf}),
+probability density function (\code{pdf}) and cumulative distribution function
+(\code{cdf})
+}
+}
 \description{
-Parameter probability distribution by day
+Parametric probability distribution (lognormal, gamma, or weibull) for the
+epidemiological characteristics (incubation period, onset to admission,
+onset to death, and serial interval) of various pathogens. The distributions
+and associated best-fit parameters can be used to inform modelling and
+estimation of other epidemiological metrics (e.g. reproduction number) and
+public health decisions (e.g. quarantine period).
 }
 \examples{
 # list_distributions() will show which pathogens are available for each
