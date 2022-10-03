@@ -16,7 +16,7 @@ If you’ve found a bug, please file an issue that illustrates the bug with a mi
 
 ### Pull request process
 
-See [pull request template](../.github/PULL_REQUEST_TEMPLATE/pull_requst_template.md)
+See [pull request template](../.github/PULL_REQUEST_TEMPLATE/pull_request_template.md)
 
 *   Fork the package and clone onto your computer. If you haven't done this before, we recommend using `usethis::create_from_github("epiverse-trace/epiparameter", fork = TRUE)`.
 
