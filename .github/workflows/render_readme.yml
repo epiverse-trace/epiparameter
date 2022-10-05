@@ -23,18 +23,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup R
-        uses: r-lib/actions/setup-r@v1
+        uses: r-lib/actions/setup-r@v2
 
       - name: Setup pandoc
-        uses: r-lib/actions/setup-pandoc@v1
+        uses: r-lib/actions/setup-pandoc@v2
     
       - name: Install dependencies
-        run: |
-          Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS = "true")
-          options(install.packages.check.source = "no")
-          pkgs <- c("rmarkdown", "devtools")
-          install.packages(pkgs, repos = "https://cloud.r-project.org/")
-        shell: Rscript {0}
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rmarkdown, local::.
  
       - name: Compile the readme
         run: |
