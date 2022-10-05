@@ -1,8 +1,8 @@
 #' List distributions
 #'
 #' List distributions included in package
-#' @param type A \code{character} defining parameter to be listed: "incubation",
-#' "onset_to_admission" or "onset_to_death"
+#' @param delay_dist A \code{character} defining parameter to be listed:
+#' "incubation", "onset_to_admission" or "onset_to_death"
 #' @param parameters A \code{logical} defining whether to show parameter values
 #' @keywords distributions
 #' @author Adam Kucharski
@@ -12,24 +12,21 @@
 #' # incubation period
 #' list_distributions()
 #'
-#' # metrics can be chosen using the `type` argument, for example incubation
-#' # period or onset to death
-#' list_distributions(type = "incubation")
-#' list_distributions(type = "onset_to_death")
+#' # metrics can be chosen using the `delay_dist` argument, for example
+#' # incubation period or onset to death
+#' list_distributions(delay_dist = "incubation")
+#' list_distributions(delay_dist = "onset_to_death")
 #'
 #' # by default list_distributions() will return a filtered table, but if the
 #' # full table including extra information (e.g. parameters of the
 #' # distribution) the `parameters` argument can be set to `TRUE`
-#' list_distributions(type = "onset_to_admission", parameters = TRUE)
+#' list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
 
-list_distributions <- function(type = "incubation", parameters = FALSE) {
+list_distributions <- function(delay_dist = "incubation", parameters = FALSE) {
 
-  #if(type=="incubation"){ show_values <- incubation_vals }
-  #if(type=="onset_to_admission"){ show_values <- onset_to_admission_vals }
-
-  type_ID <- NULL # remove global variable note
-  pathogen_ID <- NULL # remove global variable note
-  study_ID <- NULL # remove global variable note
+  type_id <- NULL # remove global variable note
+  pathogen_id <- NULL # remove global variable note
+  study_id <- NULL # remove global variable note
   year <- NULL # remove global variable note
   size <- NULL # remove global variable note
   distribution <- NULL # remove global variable note
@@ -40,14 +37,14 @@ list_distributions <- function(type = "incubation", parameters = FALSE) {
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
-  )) |> dplyr::filter(type_ID == type)
+  )) |> dplyr::filter(type_id == delay_dist)
 
   if (parameters == TRUE) {
     output <- show_values
   }
   if (parameters == FALSE) {
     output <- show_values  |>
-      dplyr::select(pathogen_ID, study_ID, year, size, distribution)
+      dplyr::select(pathogen_id, study_id, year, size, distribution)
   }
   output
 }
