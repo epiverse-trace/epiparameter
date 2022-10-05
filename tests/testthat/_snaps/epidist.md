@@ -1,10 +1,10 @@
 # epidist.print works as expected
 
     Code
-      epidist(pathogen = "RSV", type = "incubation")
+      epidist(pathogen = "RSV", delay_dist = "incubation")
     Output
       Pathogen: RSV
-      Type: incubation
+      Delay Distribution: incubation
       Distribution: lnorm
       Parameters:
         meanlog: 1.481602055

@@ -1,4 +1,4 @@
-﻿pathogen_ID,type_ID,study_ID,year,size,distribution,mean,sd,median,quantile_75,quantile_95,shape,scale,meanlog,sdlog,extracted,discretised,phase_bias_adjusted,notes,PMID,DOI,added_by
+﻿pathogen_id,type_id,study_id,year,size,distribution,mean,sd,median,quantile_75,quantile_95,shape,scale,meanlog,sdlog,extracted,discretised,phase_bias_adjusted,notes,PMID,DOI,added_by
 adenovirus,incubation,Lessler_etal,2009,14,lnorm,NA,NA,5.6,6.5,NA,NA,NA,1.722764351,0.220967322,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
 ebola,incubation,WHO_team,2014,500,gamma,NA,NA,NA,NA,NA,5.53404,0.921569,NA,NA,NA,NA,NA,NA,25564903,10.1056/NEJMc1413884,Adam Kucharski
 human_CoV,incubation,Lessler_etal,2009,13,lnorm,NA,NA,3.2,3.5,NA,NA,NA,1.163146247,0.132870468,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski

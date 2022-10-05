@@ -5,12 +5,12 @@
 \title{Distribution (PDF, CDF, PMF) and its parameters for epidemiological
 characteristics of a pathogen}
 \usage{
-epidist(pathogen, type, study = NULL)
+epidist(pathogen, delay_dist, study = NULL)
 }
 \arguments{
 \item{pathogen}{A \code{character} specifying pathogen of interest}
 
-\item{type}{A \code{character} specifying type of parameter: \code{"incubation"},
+\item{delay_dist}{A \code{character} specifying type of parameter: \code{"incubation"},
 \code{"onset_to_admission"}, \code{"onset_to_death"}}
 
 \item{study}{A \code{character} specifying dataset to use. Defaults to study
@@ -23,7 +23,7 @@ Produces an object of class \code{epidist} which is composed of:
 \item \code{dist}: The best-fit distribution from the literature, either from the
 study with the largest sample size (default) or a specific study (using the
 \code{study} argument)
-\item \code{type}: The metric of interest, could be either "incubation",
+\item \code{delay_dist}: The metric of interest, could be either "incubation",
 "onset_to_admission", or "onset_to_death"
 \item \code{param}: The parameters of the distribution
 \item \code{pmf}, \code{pdf}, \code{cdf}: The distributions: probability mass function (\code{pmf}),
@@ -42,21 +42,21 @@ public health decisions (e.g. quarantine period).
 \examples{
 # list_distributions() will show which pathogens are available for each
 # metric here we search for which incubation periods are available
-list_distributions(type = "incubation")
+list_distributions(delay_dist = "incubation")
 
 # example of epidist() using incubation period for ebola
-epidist(pathogen = "ebola", type = "incubation")
+epidist(pathogen = "ebola", delay_dist = "incubation")
 
 # when more than one study is available in the database a study can be
 # specified
 epidist(
   pathogen = "MERS_CoV",
-  type = "incubation",
+  delay_dist = "incubation",
   study = "Cauchemez_et_al"
 )
 
 # example using onset to admission as the metric
-epidist(pathogen = "ebola", type = "onset_to_admission")
+epidist(pathogen = "ebola", delay_dist = "onset_to_admission")
 }
 \author{
 Adam Kucharski

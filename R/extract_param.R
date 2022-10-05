@@ -1,10 +1,10 @@
-#' Calculate the parameters of a parametric probability distribution from 
+#' Calculate the parameters of a parametric probability distribution from
 #' reported values of percentiles, or median and range
 #'
 #' Summary data of distributions, as provided by reports and meta-analyses, can
 #' be used to extract the parameters of a chosen distribution. Currently
 #' available distributions are: lognormal, gamma and weibull.
-#' 
+#'
 #' @param type A `character` defining whether summary statistics based
 #' around `percentiles` (default) or `range`
 #' @param values A `vector`. If `type = percentiles`: `c(percentile_1,
@@ -13,9 +13,9 @@
 #' Default is `lnorm`; also takes `gamma` and `weibull`.
 #' @param percentiles A `vector` with two elements specifying the
 #' percentiles defined in `values` if using `type = "percentiles"`.
-#' @param samples A `numeric` specifying the sample size if using 
+#' @param samples A `numeric` specifying the sample size if using
 #' `type = "range"`.
-#' 
+#'
 #' @return A `numeric` vector with the parameter values of the distribution
 #' @keywords extract
 #' @author Adam Kucharski
@@ -41,9 +41,6 @@ extract_param <- function(type = "percentiles",
                           distribution = "lnorm",
                           percentiles,
                           samples) {
-
-  # DEBUG:
-  # type = "range"; values = c(7,3,20); distribution = "lnorm"; samples=20
 
   # Validate inputs
   if (type == "percentiles") {

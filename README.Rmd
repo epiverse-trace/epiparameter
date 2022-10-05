@@ -40,10 +40,13 @@ To view the available distributions, then define the desired function, e.g. to e
 
 ```{r example}
 # View available distributions
-epiparameter::list_distributions(type="incubation")
+epiparameter::list_distributions(delay_dist = "incubation")
 
 # Extract incubation period distribution
-incubation_H7N9 <- epiparameter::epidist(pathogen="influenza_H7N9",type="incubation")
+incubation_H7N9 <- epiparameter::epidist(
+  pathogen = "influenza_H7N9", 
+  delay_dist = "incubation"
+)
 
 # Plot probability mass function
 plot(0:10,incubation_H7N9$pmf(0:10),xlab="time since infection")
