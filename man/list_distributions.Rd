@@ -7,8 +7,8 @@
 list_distributions(delay_dist = "incubation", parameters = FALSE)
 }
 \arguments{
-\item{delay_dist}{A \code{character} defining parameter to be listed: "incubation",
-"onset_to_admission" or "onset_to_death"}
+\item{delay_dist}{A \code{character} defining parameter to be listed:
+"incubation", "onset_to_admission" or "onset_to_death"}
 
 \item{parameters}{A \code{logical} defining whether to show parameter values}
 }
@@ -20,8 +20,8 @@ List distributions included in package
 # incubation period
 list_distributions()
 
-# metrics can be chosen using the `delay_dist` argument, for example incubation
-# period or onset to death
+# metrics can be chosen using the `delay_dist` argument, for example
+# incubation period or onset to death
 list_distributions(delay_dist = "incubation")
 list_distributions(delay_dist = "onset_to_death")
 
