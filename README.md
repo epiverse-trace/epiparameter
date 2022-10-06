@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![R-CMD-check](https://github.com/epiverse-trace/epiparameter/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/epiverse-trace/epiparameter/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/epiverse-trace/epiparameter/branch/main/graph/badge.svg)](https://app.codecov.io/gh/epiverse-trace/epiparameter?branch=main)
@@ -35,8 +37,8 @@ incubation period of influenza H7N9:
 
 ``` r
 # View available distributions
-epiparameter::list_distributions(type="incubation")
-#>             pathogen_ID        study_ID year size distribution
+epiparameter::list_distributions(delay_dist = "incubation")
+#>             pathogen_id        study_id year size distribution
 #> 1            adenovirus    Lessler_etal 2009   14        lnorm
 #> 2                 ebola        WHO_team 2014  500        gamma
 #> 3             human_CoV    Lessler_etal 2009   13        lnorm
@@ -58,7 +60,10 @@ epiparameter::list_distributions(type="incubation")
 #> 19            monkeypox           Nolen 2016   16        lnorm
 
 # Extract incubation period distribution
-incubation_H7N9 <- epiparameter::epidist(pathogen="influenza_H7N9",type="incubation")
+incubation_H7N9 <- epiparameter::epidist(
+  pathogen = "influenza_H7N9", 
+  delay_dist = "incubation"
+)
 
 # Plot probability mass function
 plot(0:10,incubation_H7N9$pmf(0:10),xlab="time since infection")
