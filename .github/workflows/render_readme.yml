@@ -9,45 +9,33 @@ name: render-readme
 on:
   workflow_dispatch:
   push:
-    branches:
-      - 'main'
-    paths: 
+    paths:
       - 'README.Rmd'
-      
-# A workflow is made up of one or more jobs that can run sequentially or in parallel
-# Important: ubuntu-latest is not set up properly for R, so use macOS
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   render-readme:
     runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Checkout repo
+      - name: Checkout repos
         uses: actions/checkout@v2
-        with:
-          ref: main
-          fetch-depth: 0
-          persist-credentials: false # to avoid reusing these credentials when pushing
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
-      
+
       - name: Setup pandoc
         uses: r-lib/actions/setup-pandoc@v2
-      
+    
       - name: Install dependencies
-        run: |
-          Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNNINGS = "true")
-          options(install.packages.check.source = "no")
-          pkgs <- c("rmarkdown", "remotes")
-          install.packages(pkgs, repos = "https://cloud.r-project.org/")
-          remotes::install_github("epiverse-trace/epiparameter")
-        shell: Rscript {0}
-        
-        
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rmarkdown, local::.
+ 
       - name: Compile the readme
         run: |
-          rmarkdown::render("readme.Rmd")
+          rmarkdown::render("README.Rmd")
         shell: Rscript {0}
         
       - name: Commit files
@@ -56,11 +44,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add README.md
           git diff-index --quiet HEAD || git commit -m "Automatic readme update"
-          
-          
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: {{ secrets.GITHUB_TOKEN }}
-          branch: 'main'
-          force: true
+          git push origin || echo "No changes to push"
