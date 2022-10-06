@@ -1,0 +1,179 @@
+---
+title: "Introduction to epiparameter"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{epiparameter}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(epiparameter)
+```
+
+`epiparameter` is an R package that contains a range of delay distributions
+collated from a range of peer-reviewed reports and meta-analyses. 
+
+Definitions:
+ - incubation period
+ - onset to admission
+ - onset to death
+ - serial interval
+
+
+Relation of incubation period to latency period
+Relation of serial interval with generation time
+
+`epiparameter` in the epidemiological analysis pipeline.
+
+## Extract distribution parameters from percentiles or median and range
+
+The parameters of a distribution can be estimated using either the percentiles or the median and the range. This functionality is useful when new data arises but only the percentiles or median and range are reported.
+
+Below is an example of the 75th percentiles reported for a lognormal distribution for the incubation period for Monkeypox.
+
+```{r, extract_param for monkeypox}
+# Monkeypox lnorm from 75% percentiles in WHO data
+extract_param(
+  type = "percentiles", 
+  values = c(6, 13), 
+  distribution = "lnorm", 
+  percentiles = c(0.125, 0.875)
+)
+
+# Monkeypox lnorm from median and range in 2022 UK data:
+extract_param(
+  type = "range", 
+  values = c(7, 3, 20), 
+  distribution = "lnorm", 
+  samples = 23
+)
+```
+
+```{r, convert parameters, eval=FALSE}
+# SARS gamma shape/scale from mean and CV
+library(epitrix)
+gamma_mucv2shapescale(4.85,sqrt(12.19)/4.85)
+```
+
+## Delay distributions for informing quarantine period
+
+In epidemics understanding the delay between becoming exposed to an infectious 
+disease and the onset of symptoms (i.e. incubation period) is informative for
+defining the necessary quarantine period. Quarantine for exposed individuals 
+are one of the most widely used nonpharmaceutical intervetions (NPIs) to suppress 
+the transmission and bring the basic reproduction number ($R_0$) down and ideally below 1. It is of course possible to implement a quarantine periods that exceeds the maximum possible incubation period, however, this faces both ethical and economic issues. Additionally, as pointed out by Nishiura (2009) using a probability distribution there is a non-zero probability of having extremely large quarantine periods (e.g. 100 days).
+
+The `epiparameter` packages contains a range of distributions for a variety
+of infectious diseases which can be used to determine a quarantine period. This
+period will be defined by the desired proportion of people that exit quarantine without later going on to develop symptoms. 
+
+Here we will illustrate with an example using the SARS-CoV-2 pathogen. We can check what information we have in the `epiparameter` database on the incubation period of SARS-CoV-2:
+
+```{r, check database}
+list_distributions(delay_dist = "incubation")
+```
+
+We can see that on rows 16-18 we have three studies reporting the incubation period for SARS-CoV-2. Here we will use the Lessler et al. (2009). This will be the default when specifying `SARS_CoV` as our pathogen of interest due to it having the largest sample size (not including McAloon et al. (2020) as this is only for the SARS-CoV-2 wildtype). To be sure we are extracting the correct study we can also specify which study to use.
+
+```{r, get delay dist}
+# get epidemiological parameters for incubation period without specifying study
+sars_cov_incub <- epidist(pathogen = "SARS_CoV", delay_dist = "incubation")
+
+# get epidemiological parameters for incubation period specifying study
+epidist(pathogen = "SARS_CoV", delay_dist = "incubation", study = "Lessler_etal")
+
+# specify a different study 
+epidist(pathogen = "SARS_CoV", delay_dist = "incubation", study = "Donnelly_etal")
+```
+
+Now we have a distribution, in this case the lognormal distribution and its best-fit parameters for the incubation period we can plot the distributions.
+
+```{r, plot epidist, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+plot(sars_cov_incub)
+```
+
+In order to determine the duration of a quarantine period for SARS-CoV-2 we can calculate the percentles of the distribution. For example, if we calculate the 95th percentile of the lognormal distribution for our SARS-CoV-2 example it is the number of days within which 95% of individuals will have their incubation period elapsed.
+
+```{r, calc percentiles}
+# 90th percentile
+qlnorm(
+  p = 0.9, 
+  meanlog = sars_cov_incub$param[["meanlog"]], 
+  sdlog = sars_cov_incub$param[["sdlog"]]
+)
+
+# 95th percentile
+qlnorm(
+  p = 0.95, 
+  meanlog = sars_cov_incub$param[["meanlog"]], 
+  sdlog = sars_cov_incub$param[["sdlog"]]
+)
+
+# 99th percentile
+qlnorm(
+  p = 0.99, 
+  meanlog = sars_cov_incub$param[["meanlog"]], 
+  sdlog = sars_cov_incub$param[["sdlog"]]
+)
+```
+
+Given the steps outlined above and the database of infectious diseases that are provided in `epiparameter` it is possible to juxtapose the incubation periods of different pathogens. Here we demonstrate this with a comparison of SARS-CoV-2 and MERS-CoV. Both are corona viruses, both have had outbreaks in the past decade to different effects. 
+
+```{r, compare sars and mers, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+mers_cov_incub <- epidist(pathogen = "MERS_CoV", delay_dist = "incubation")
+
+plot(mers_cov_incub)
+
+# 95th percentile for SARS-CoV-2
+qlnorm(
+  p = 0.95, 
+  meanlog = sars_cov_incub$param[["meanlog"]], 
+  sdlog = sars_cov_incub$param[["sdlog"]]
+)
+
+# 95th percentile for MERS-CoV
+qlnorm(
+  p = 0.95, 
+  meanlog = mers_cov_incub$param[["meanlog"]], 
+  sdlog = mers_cov_incub$param[["sdlog"]]
+)
+```
+
+There is often uncertainty in the estimates of mean, median and percentiles of a parametric distribution, such as the lognormal (e.g. ref). Currently, `epiparameter` does not handle this uncertainty, but future versions will incorporate this and allow the uncertainty to be propogated.
+
+## Delay distributions for estimating R0 and forecasting
+
+## Comparison of different epidemiological parameters
+
+The `epiparameter` database stores information on several delay distributions.
+
+Comparison of the incubation period and serial interval for monkeypox.
+
+```{r, compare monkeyox}
+epidist(pathogen = "monkeypox", delay_dist = "incubation")
+epidist(pathogen = "monkeypox", delay_dist = "serial_interval")
+```
+
+Comparison of incubation period, serial interval and onset to hospital admission for ebola.
+
+```{r, compare ebola}
+epidist(pathogen = "ebola", delay_dist = "incubation")
+epidist(pathogen = "ebola", delay_dist = "serial_interval")
+epidist(pathogen = "ebola", delay_dist = "onset_to_admission")
+```
+
+## Plotting 
+
+The default plotting range for time since infection is from zero to ten days. This can be altered by specifying the `day_range` argument when plotting an `epidist` object.
+
+```{r plotting range epidist, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+plot(sars_cov_incub, day_range = 1:20)
+```
