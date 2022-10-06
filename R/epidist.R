@@ -137,3 +137,80 @@ print.epidist <- function(x, ...) {
 
   invisible(x)
 }
+
+#' @export
+plot.epidist <- function(x, day_range = 0:10, ...) {
+  
+  # set plotting parameters to plot on a 2x2 grid
+  par(mfrow = c(2, 2))
+  
+  # plot PMF
+  plot(
+    day_range,
+    x$pmf(day_range),
+    ylab = expression("P(X">="x)"),
+    xlab = "time since infection",
+    type = "p", 
+    pch = 16,
+    main = "Probability Mass Function"
+  )
+  
+  # plot PDF
+  plot(
+    day_range,
+    x$pdf(day_range),
+    ylab = "",
+    xlab = "time since infection",
+    type = "p",
+    pch = 16,
+    main = "Probability Density Function"
+  )
+  
+  # plot CDF
+  plot(
+    day_range,
+    x$cdf(day_range),
+    ylab = "",
+    xlab = "time since infection",
+    type = "p",
+    pch = 16,
+    ylim = c(0, 1),
+    main = "Cumulative Distribution Function"
+  )
+  
+  # add a plot title
+  title("Distributions", outer = TRUE, line = -1)
+  
+  # get full name of distribution depending on epidist object
+  if (x$dist == "lnorm") {
+    dist <- "Lognormal"
+  } else if (x$dist == "gamma") {
+    dist <- "Gamma"
+  } else if (x$dist == "weibull") {
+    dist <- "Weibull"
+  }
+  
+  # get full name of delay distribution depending on epidist object
+  if (x$delay_dist == "incubation") {
+    delay_dist <- "incubation period"
+  } else if (x$delay_dist == "onset_to_admission") {
+    delay_dist <- "onset to admission"
+  } else if (x$delay_dist == "onset_to_death") {
+    delay_dist <- "onset to death"
+  }
+  
+  # add text to plot
+  mtext(
+    text = paste(
+      "Delay distribution for", x$pathogen, "\n", 
+      dist, "distribution for", delay_dist, "\n",
+      "Distribution parameters", x$param[1], x$param[2]
+    ), 
+    side = 3, 
+    at = 18, 
+    line = -2
+  )
+  
+  # reset plotting parameters to not affect users session
+  par(mfrow = c(1,1))
+}
