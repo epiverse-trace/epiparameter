@@ -71,8 +71,8 @@
 <p>To view the available distributions, then define the desired function, e.g. to extract and plot the daily probability mass function for the incubation period of influenza H7N9:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># View available distributions</span></span>
-<span><span class="fu">epiparameter</span><span class="fu">::</span><span class="fu"><a href="reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"incubation"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             pathogen_ID        study_ID year size distribution</span></span>
+<span><span class="fu">epiparameter</span><span class="fu">::</span><span class="fu"><a href="reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>delay_dist <span class="op">=</span> <span class="st">"incubation"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;             pathogen_id        study_id year size distribution</span></span>
 <span><span class="co">#&gt; 1            adenovirus    Lessler_etal 2009   14        lnorm</span></span>
 <span><span class="co">#&gt; 2                 ebola        WHO_team 2014  500        gamma</span></span>
 <span><span class="co">#&gt; 3             human_CoV    Lessler_etal 2009   13        lnorm</span></span>
@@ -94,7 +94,10 @@
 <span><span class="co">#&gt; 19            monkeypox           Nolen 2016   16        lnorm</span></span>
 <span></span>
 <span><span class="co"># Extract incubation period distribution</span></span>
-<span><span class="va">incubation_H7N9</span> <span class="op">&lt;-</span> <span class="fu">epiparameter</span><span class="fu">::</span><span class="fu"><a href="reference/epidist.html">epidist</a></span><span class="op">(</span>pathogen<span class="op">=</span><span class="st">"influenza_H7N9"</span>,type<span class="op">=</span><span class="st">"incubation"</span><span class="op">)</span></span>
+<span><span class="va">incubation_H7N9</span> <span class="op">&lt;-</span> <span class="fu">epiparameter</span><span class="fu">::</span><span class="fu"><a href="reference/epidist.html">epidist</a></span><span class="op">(</span></span>
+<span>  pathogen <span class="op">=</span> <span class="st">"influenza_H7N9"</span>, </span>
+<span>  delay_dist <span class="op">=</span> <span class="st">"incubation"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Plot probability mass function</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">10</span>,<span class="va">incubation_H7N9</span><span class="op">$</span><span class="fu">pmf</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>,xlab<span class="op">=</span><span class="st">"time since infection"</span><span class="op">)</span></span></code></pre></div>
@@ -135,6 +138,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></li>
 <li><a href="https://github.com/epiverse-trace/epiparameter/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/epiverse-trace/epiparameter/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://app.codecov.io/gh/epiverse-trace/epiparameter?branch=main" class="external-link"><img src="https://codecov.io/gh/epiverse-trace/epiparameter/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
