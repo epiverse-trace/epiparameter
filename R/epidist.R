@@ -142,7 +142,7 @@ print.epidist <- function(x, ...) {
 plot.epidist <- function(x, day_range = 0:10, ...) {
   
   # set plotting parameters to plot on a 2x2 grid
-  par(mfrow = c(2, 2))
+  par(mfrow = c(2, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))
   
   # plot PMF
   plot(
@@ -202,15 +202,18 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
   # add text to plot
   mtext(
     text = paste(
-      "Delay distribution for", x$pathogen, "\n", 
+      "Delay distribution for", x$pathogen, "\n",
       dist, "distribution for", delay_dist, "\n",
       "Distribution parameters", x$param[1], x$param[2]
-    ), 
-    side = 3, 
-    at = 18, 
-    line = -2
+    ),
+    side = 3,
+    at = length(day_range),
+    adj = 0,
+    line = -2, 
+    cex = 0.8
   )
   
   # reset plotting parameters to not affect users session
   par(mfrow = c(1,1))
 }
+
