@@ -142,7 +142,7 @@ print.epidist <- function(x, ...) {
 plot.epidist <- function(x, day_range = 0:10, ...) {
   
   # set plotting parameters to plot on a 2x2 grid
-  par(mfrow = c(2, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))
+  graphics::par(mfrow = c(2, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))
   
   # plot PMF
   plot(
@@ -179,7 +179,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
   )
   
   # add a plot title
-  title("Distributions", outer = TRUE, line = -1)
+  graphics::title("Distributions", outer = TRUE, line = -1)
   
   # get full name of distribution depending on epidist object
   if (x$dist == "lnorm") {
@@ -200,7 +200,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
   }
   
   # add text to plot
-  mtext(
+  graphics::mtext(
     text = paste(
       "Delay distribution for", x$pathogen, "\n",
       dist, "distribution for", delay_dist, "\n",
@@ -214,6 +214,6 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
   )
   
   # reset plotting parameters to not affect users session
-  par(mfrow = c(1,1))
+  graphics::par(mfrow = c(1,1))
 }
 
