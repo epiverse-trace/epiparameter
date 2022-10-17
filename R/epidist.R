@@ -138,8 +138,24 @@ print.epidist <- function(x, ...) {
   invisible(x)
 }
 
+#' Plots an `epidist` object by displaying the probability mass function (PMF),
+#' probability density function (PDF) and cumulative distribution function (CDF)
+#' 
+#' @param x An `epidist` object
+#' @param day_range A vector with the sequence of days to be plotted on the 
+#' x-axis of the distribution
+#' @param ... Allow other graphical parameters
+#'
+#' @author Joshua W. Lambert
 #' @export
+#' 
+#' @examples
+#' ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
+#' plot(ebola_si)
 plot.epidist <- function(x, day_range = 0:10, ...) {
+  
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
   
   # set plotting parameters to plot on a 2x2 grid
   graphics::par(mfrow = c(2, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))
@@ -203,7 +219,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
   graphics::mtext(
     text = paste(
       "Delay distribution for", x$pathogen, "\n",
-      dist, "distribution for", delay_dist, "\n",
+      dist, "distribution for", x$delay_dist, "\n",
       "Distribution parameters", x$param[1], x$param[2]
     ),
     side = 3,
@@ -212,8 +228,5 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     line = -2, 
     cex = 0.8
   )
-  
-  # reset plotting parameters to not affect users session
-  graphics::par(mfrow = c(1,1))
 }
 
