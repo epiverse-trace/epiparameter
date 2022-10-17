@@ -148,7 +148,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
   plot(
     day_range,
     x$pmf(day_range),
-    ylab = expression("P(X">="x)"),
+    ylab = "",
     xlab = "time since infection",
     type = "p", 
     pch = 16,
