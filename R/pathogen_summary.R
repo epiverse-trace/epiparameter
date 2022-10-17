@@ -14,6 +14,8 @@
 #' pathogen_summary(pathogen = "SARS_CoV")
 pathogen_summary <- function(pathogen) {
   
+  pathogen_id <- NULL # remove global variable note
+  
   # Extract pathogen and parameter type
   pathogen_data <- utils::read.csv(file = system.file(
     "extdata",
