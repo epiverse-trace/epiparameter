@@ -68,7 +68,7 @@ pathogen_summary <- function(pathogen) {
     pathogen_tbl = pathogen_tbl
   )
   
-  class(out) <- "epidist_tbl"
+  class(out) <- c("epidist_tbl", "list")
   
   out
 }
