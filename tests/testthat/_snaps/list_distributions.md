@@ -135,102 +135,102 @@
     Code
       list_distributions(delay_dist = "onset_to_admission", parameters = FALSE)
     Output
-            pathogen_id      study_id year size distribution
-      1           ebola      WHO_team 2014  500        gamma
-      2 influenza_H1N1p    Tuite_etal 2010  316        lnorm
-      3  influenza_H7N9  Cowling_etal 2013   32        gamma
-      4        MERS_CoV   Assiri_etal 2013   23        lnorm
-      5        SARS_CoV Donnelly_etal 2003   57        gamma
+             pathogen_id      study_id year size distribution
+      20           ebola      WHO_team 2014  500        gamma
+      21 influenza_H1N1p    Tuite_etal 2010  316        lnorm
+      22  influenza_H7N9  Cowling_etal 2013   32        gamma
+      23        MERS_CoV   Assiri_etal 2013   23        lnorm
+      24        SARS_CoV Donnelly_etal 2003   57        gamma
 
 # list_distributions works for onset_to_admission, params = TRUE
 
     Code
       list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
     Output
-            pathogen_id            type_id      study_id year size distribution mean
-      1           ebola onset_to_admission      WHO_team 2014  500        gamma   NA
-      2 influenza_H1N1p onset_to_admission    Tuite_etal 2010  316        lnorm   NA
-      3  influenza_H7N9 onset_to_admission  Cowling_etal 2013   32        gamma   NA
-      4        MERS_CoV onset_to_admission   Assiri_etal 2013   23        lnorm   NA
-      5        SARS_CoV onset_to_admission Donnelly_etal 2003   57        gamma   NA
-        sd median quantile_75 quantile_95    shape    scale meanlog    sdlog
-      1 NA     NA          NA          NA 5.534040 0.921569      NA       NA
-      2 NA     NA          NA          NA       NA       NA 2.17531 0.330773
-      3 NA     NA          NA          NA 9.650000 0.450000      NA       NA
-      4 NA     NA          NA          NA       NA       NA 7.00000 0.750000
-      5 NA     NA          NA          NA 1.929655 2.513402      NA       NA
-        extracted discretised phase_bias_adjusted            notes     PMID
-      1       yes        <NA>                <NA>             <NA> 25564903
-      2      <NA>        <NA>                <NA>             <NA> 19959592
-      3      <NA>        <NA>                <NA>             <NA> 23803488
-      4      <NA>        <NA>                <NA>             <NA> 23782161
-      5      <NA>        <NA>                <NA> Feb-26 to Mar-25 12781533
-                                  DOI       added_by
-      1          10.1056/NEJMc1413884 Adam Kucharski
-      2           10.1503/cmaj.091807 Adam Kucharski
-      3 10.1016/S0140-6736(13)61171-X Adam Kucharski
-      4         10.1056/NEJMoa1306742 Adam Kucharski
-      5 10.1016/S0140-6736(03)13410-1 Adam Kucharski
+             pathogen_id            type_id      study_id year size distribution mean
+      20           ebola onset_to_admission      WHO_team 2014  500        gamma   NA
+      21 influenza_H1N1p onset_to_admission    Tuite_etal 2010  316        lnorm   NA
+      22  influenza_H7N9 onset_to_admission  Cowling_etal 2013   32        gamma   NA
+      23        MERS_CoV onset_to_admission   Assiri_etal 2013   23        lnorm   NA
+      24        SARS_CoV onset_to_admission Donnelly_etal 2003   57        gamma   NA
+         sd median quantile_75 quantile_95    shape    scale meanlog    sdlog
+      20 NA     NA          NA          NA 5.534040 0.921569      NA       NA
+      21 NA     NA          NA          NA       NA       NA 2.17531 0.330773
+      22 NA     NA          NA          NA 9.650000 0.450000      NA       NA
+      23 NA     NA          NA          NA       NA       NA 7.00000 0.750000
+      24 NA     NA          NA          NA 1.929655 2.513402      NA       NA
+         extracted discretised phase_bias_adjusted            notes     PMID
+      20       yes        <NA>                <NA>             <NA> 25564903
+      21      <NA>        <NA>                <NA>             <NA> 19959592
+      22      <NA>        <NA>                <NA>             <NA> 23803488
+      23      <NA>        <NA>                <NA>             <NA> 23782161
+      24      <NA>        <NA>                <NA> Feb-26 to Mar-25 12781533
+                                   DOI       added_by
+      20          10.1056/NEJMc1413884 Adam Kucharski
+      21           10.1503/cmaj.091807 Adam Kucharski
+      22 10.1016/S0140-6736(13)61171-X Adam Kucharski
+      23         10.1056/NEJMoa1306742 Adam Kucharski
+      24 10.1016/S0140-6736(03)13410-1 Adam Kucharski
 
 # list_distributions works for onset_to_death, params = FALSE
 
     Code
       list_distributions(delay_dist = "onset_to_death", parameters = FALSE)
     Output
-                pathogen_id    study_id year size distribution
-      1 SARS_CoV_2_wildtype Linton_etal 2020   23        lnorm
+                 pathogen_id    study_id year size distribution
+      25 SARS_CoV_2_wildtype Linton_etal 2020   23        lnorm
 
 # list_distributions works for onset_to_death, params = TRUE
 
     Code
       list_distributions(delay_dist = "onset_to_death", parameters = TRUE)
     Output
-                pathogen_id        type_id    study_id year size distribution mean sd
-      1 SARS_CoV_2_wildtype onset_to_death Linton_etal 2020   23        lnorm   NA NA
-        median quantile_75 quantile_95 shape scale  meanlog     sdlog extracted
-      1     NA          NA          NA    NA    NA 2.863179 0.5338606        no
-        discretised phase_bias_adjusted notes     PMID                DOI
-      1        <NA>                <NA>  <NA> 32079150 10.3390/jcm9020538
-              added_by
-      1 Adam Kucharski
+                 pathogen_id        type_id    study_id year size distribution mean
+      25 SARS_CoV_2_wildtype onset_to_death Linton_etal 2020   23        lnorm   NA
+         sd median quantile_75 quantile_95 shape scale  meanlog     sdlog extracted
+      25 NA     NA          NA          NA    NA    NA 2.863179 0.5338606        no
+         discretised phase_bias_adjusted notes     PMID                DOI
+      25        <NA>                <NA>  <NA> 32079150 10.3390/jcm9020538
+               added_by
+      25 Adam Kucharski
 
 # list_distributions works for serial_interval, params = FALSE
 
     Code
       list_distributions(delay_dist = "serial_interval", parameters = FALSE)
     Output
-                pathogen_id          study_id year size distribution
-      1               ebola WHO_response_team 2014   92        gamma
-      2 SARS_CoV_2_wildtype     Ferretti_etal 2020  191        lnorm
-      3           monkeypox             UKHSA 2022  336        lnorm
+                 pathogen_id          study_id year size distribution
+      26               ebola WHO_response_team 2014   92        gamma
+      27 SARS_CoV_2_wildtype     Ferretti_etal 2020  191        lnorm
+      28           monkeypox             UKHSA 2022  336        lnorm
 
 # list_distributions works for serial_interval, params = TRUE
 
     Code
       list_distributions(delay_dist = "serial_interval", parameters = TRUE)
     Output
-                pathogen_id         type_id          study_id year size distribution
-      1               ebola serial_interval WHO_response_team 2014   92        gamma
-      2 SARS_CoV_2_wildtype serial_interval     Ferretti_etal 2020  191        lnorm
-      3           monkeypox serial_interval             UKHSA 2022  336        lnorm
-        mean sd median quantile_75 quantile_95    shape    scale  meanlog     sdlog
-      1   NA NA     NA          NA          NA 2.706556 5.652941       NA        NA
-      2   NA NA     NA          NA          NA       NA       NA 1.386294 0.6970598
-      3   NA NA     NA          NA          NA       NA       NA 2.419172 0.3286863
-        extracted discretised phase_bias_adjusted
-      1       yes        <NA>                <NA>
-      2        no        <NA>                <NA>
-      3       yes          no                <NA>
-                                         notes     PMID
-      1                                   <NA> 25564903
-      2                    20/1/2020-21/3/2020 32234805
-      3 Extracted taking c(5.9,21.4) as 95% CI       NA
-                                                                                                                                                            DOI
-      1                                                                                                                                    10.1056/NEJMc1413884
-      2                                                                                                                                 10.1126/science.abb6936
-      3 https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1
-              added_by
-      1 Adam Kucharski
-      2   Rachael Pung
-      3       Seb Funk
+                 pathogen_id         type_id          study_id year size distribution
+      26               ebola serial_interval WHO_response_team 2014   92        gamma
+      27 SARS_CoV_2_wildtype serial_interval     Ferretti_etal 2020  191        lnorm
+      28           monkeypox serial_interval             UKHSA 2022  336        lnorm
+         mean sd median quantile_75 quantile_95    shape    scale  meanlog     sdlog
+      26   NA NA     NA          NA          NA 2.706556 5.652941       NA        NA
+      27   NA NA     NA          NA          NA       NA       NA 1.386294 0.6970598
+      28   NA NA     NA          NA          NA       NA       NA 2.419172 0.3286863
+         extracted discretised phase_bias_adjusted
+      26       yes        <NA>                <NA>
+      27        no        <NA>                <NA>
+      28       yes          no                <NA>
+                                          notes     PMID
+      26                                   <NA> 25564903
+      27                    20/1/2020-21/3/2020 32234805
+      28 Extracted taking c(5.9,21.4) as 95% CI       NA
+                                                                                                                                                             DOI
+      26                                                                                                                                    10.1056/NEJMc1413884
+      27                                                                                                                                 10.1126/science.abb6936
+      28 https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1
+               added_by
+      26 Adam Kucharski
+      27   Rachael Pung
+      28       Seb Funk
 

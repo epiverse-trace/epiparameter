@@ -16,11 +16,8 @@ Authors@R: c(
 Description: Library of epidemiological paramters for infectious diseases.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Imports: dplyr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
-Depends: 
-    R (>= 3.5.0)
 Suggests: 
     EpiEstim,
     EpiNow2,

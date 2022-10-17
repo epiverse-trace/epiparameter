@@ -37,14 +37,19 @@ list_distributions <- function(delay_dist = "incubation", parameters = FALSE) {
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
-  )) |> dplyr::filter(type_id == delay_dist)
+  )) 
+  
+  # filter by delay distribution
+  show_values <- show_values[show_values$type_id == delay_dist, ]
 
   if (parameters == TRUE) {
     output <- show_values
   }
   if (parameters == FALSE) {
-    output <- show_values  |>
-      dplyr::select(pathogen_id, study_id, year, size, distribution)
+    # return only the important columns
+    output <- show_values[, c(
+      "pathogen_id", "study_id", "year", "size", "distribution"
+    )]
   }
   output
 }

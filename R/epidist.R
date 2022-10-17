@@ -59,7 +59,11 @@ epidist  <- function(pathogen, delay_dist, study = NULL) {
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
-    )) |> dplyr::filter(pathogen_id == pathogen & type_id == delay_dist)
+  ))
+  
+  # filter based on pathogen and delay distribution
+  pick_path <- pick_path[pick_path$pathogen_id == pathogen, ]
+  pick_path <- pick_path[pick_path$type_id == delay_dist, ]
 
   if (nrow(pick_path) == 0) {
     stop("Need to select pathogen and distribution in the dataset")
@@ -67,10 +71,10 @@ epidist  <- function(pathogen, delay_dist, study = NULL) {
 
   # Extract study or default to largest sample size
   if (is.null(study)) {
-    pick_study <- pick_path |> dplyr::filter(size == max(size))
+    pick_study <- pick_path[pick_path$size == max(pick_path$size), ]
   }
   if (!is.null(study)) {
-    pick_study <- pick_path |> dplyr::filter(study_id == study)
+    pick_study <- pick_path[pick_path$study_id == study, ]
   }
 
   # Define distribution
@@ -154,8 +158,8 @@ print.epidist <- function(x, ...) {
 #' plot(ebola_si)
 plot.epidist <- function(x, day_range = 0:10, ...) {
   
-  oldpar <- par(no.readonly = TRUE)
-  on.exit(par(oldpar))
+  oldpar <- graphics::par(no.readonly = TRUE)
+  on.exit(graphics::par(oldpar))
   
   # set plotting parameters to plot on a 2x2 grid
   graphics::par(mfrow = c(2, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))

@@ -22,6 +22,9 @@ pathogen_summary <- function(pathogen) {
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
+  ))
+  
+  # filter based on pathogen
   pathogen_data <- pathogen_data[pathogen_data$pathogen_id == pathogen, ]
   
   mean_sd <- apply(pathogen_data, 1, FUN = function(x) { 
