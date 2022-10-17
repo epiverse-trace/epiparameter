@@ -2,6 +2,12 @@
 
 S3method(plot,epidist)
 S3method(print,epidist)
+S3method(print,epidist_tbl)
 export(epidist)
 export(extract_param)
+export(gamma_meansd2shapescale)
+export(gamma_shapescale2meansd)
 export(list_distributions)
+export(lnorm_meansd2musigma)
+export(lnorm_musigma2meansd)
+export(pathogen_summary)

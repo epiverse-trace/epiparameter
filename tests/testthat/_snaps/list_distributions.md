@@ -157,7 +157,7 @@
       1 NA     NA          NA          NA 5.534040 0.921569      NA       NA
       2 NA     NA          NA          NA       NA       NA 2.17531 0.330773
       3 NA     NA          NA          NA 9.650000 0.450000      NA       NA
-      4 NA     NA          NA          NA 7.000000 0.750000      NA       NA
+      4 NA     NA          NA          NA       NA       NA 7.00000 0.750000
       5 NA     NA          NA          NA 1.929655 2.513402      NA       NA
         extracted discretised phase_bias_adjusted            notes     PMID
       1       yes        <NA>                <NA>             <NA> 25564903
