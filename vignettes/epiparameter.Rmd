@@ -81,6 +81,8 @@ extract_param(
 )
 ```
 
+## Conversion of distribution parameters from mean and standard deviation
+
 `epiparameter` provides functions to convert between the parameters of a distribution and the mean and standard deviation of the distribution. In the case where the mean and standard deviation for the gamma distribution are provided, but the shape and scale are required the `gamma_meansd2shapescale()` function can be used to convert between the two. @donnelly_epidemiological_2003 provides the mean and variance of the gamma distribution for the incubation period of SARS.
 
 ```{r, convert parameters}
@@ -339,7 +341,7 @@ out <- epinow(
 )
 ```
 
-## Estimating $R_t$ using `R0`
+### Estimating $R_t$ using `R0`
 
 The R package `R0` contains a set of functions to estimate the basic reproduction number ($R_0$) and the effective reproduction number ($R_t$). Here we demonstrate a calculate of the time-varying $R_t$ using the method of @wallinga_different_2004. This method uses the epidemic curve of incidence data over the course of an epidemic and the generation time. 
 
