@@ -64,6 +64,7 @@ pathogen_summary <- function(pathogen) {
   )
   
   pathogen_tbl <- data.frame(
+    pathogen_data$pathogen_id,
     pathogen_data$type_id, 
     pathogen_data$distribution, 
     mean_sd_df, 
@@ -71,22 +72,8 @@ pathogen_summary <- function(pathogen) {
     pathogen_data$DOI
   )
   colnames(pathogen_tbl) <- c(
-    "delay_dist", "distribution", "mean", "sd", "study", "DOI"
+    "pathogen", "delay_dist", "distribution", "mean", "sd", "study", "DOI"
   )
   
-  out <- list(
-    pathogen = pathogen,
-    pathogen_tbl = pathogen_tbl
-  )
-  
-  class(out) <- c("epidist_tbl", "list")
-  
-  out
-}
-
-#' @export
-print.epidist_tbl <- function(x, ...) {
-  cat(sprintf("Pathogen: %s\n", x$pathogen))
-  print(x$pathogen_tbl, row.names = FALSE)
-  invisible(x)
+  pathogen_tbl
 }

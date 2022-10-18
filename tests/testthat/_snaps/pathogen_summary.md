@@ -1,15 +1,28 @@
-# epidist_summary print method works
+# pathogen_summary works with valid input
 
     Code
-      print(ebola_summary)
+      pathogen_summary(pathogen = "ebola")
     Output
-      Pathogen: ebola
-               delay_dist distribution mean       sd             study
-               incubation        gamma  5.1 2.167949          WHO_team
-       onset_to_admission        gamma  5.1 2.167949          WHO_team
-          serial_interval        gamma 15.3 9.300000 WHO_response_team
-                        DOI
-       10.1056/NEJMc1413884
-       10.1056/NEJMc1413884
-       10.1056/NEJMc1413884
+        pathogen         delay_dist distribution mean       sd             study
+      1    ebola         incubation        gamma  5.1 2.167949          WHO_team
+      2    ebola onset_to_admission        gamma  5.1 2.167949          WHO_team
+      3    ebola    serial_interval        gamma 15.3 9.300000 WHO_response_team
+                         DOI
+      1 10.1056/NEJMc1413884
+      2 10.1056/NEJMc1413884
+      3 10.1056/NEJMc1413884
+
+# pathogen_summary works with pathogen with gamma and lnorm
+
+    Code
+      pathogen_summary(pathogen = "SARS_CoV")
+    Output
+        pathogen         delay_dist distribution     mean       sd         study
+      1 SARS_CoV         incubation        gamma 6.369989 4.085333 Donnelly_etal
+      2 SARS_CoV         incubation        lnorm 4.722382 2.963483  Lessler_etal
+      3 SARS_CoV onset_to_admission        gamma 4.849999 3.491418 Donnelly_etal
+                                  DOI
+      1 10.1016/S0140-6736(03)13410-1
+      2 10.1016/S1473-3099(09)70069-6
+      3 10.1016/S0140-6736(03)13410-1
 
