@@ -1,6 +1,6 @@
 test_that("pathogen_summary works with valid input", {
   ebola_summary <- pathogen_summary(pathogen = "ebola")
-  expect_true(is.data.frame(ebola_summary))
+  expect_s3_class(ebola_summary, "data.frame")
   expect_equal(nrow(ebola_summary), 3)
   expect_equal(ncol(ebola_summary), 7)
   expect_equal(
