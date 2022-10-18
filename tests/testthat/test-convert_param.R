@@ -1,7 +1,7 @@
 test_that("lnorm_musigma2meansd works as expected", {
   params <- lnorm_musigma2meansd(mu = 1, sigma = 0.5)
-  expect_true(is.list(params))
-  expect_equal(names(params), c("mean", "sd"))
+  expect_type(params, "list")
+  expect_named(params, c("mean", "sd"))
   expect_equal(params, list(mean = 3.08021684891803, sd = 1.64157184562387))
 })
 
