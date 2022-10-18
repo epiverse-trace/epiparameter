@@ -30,8 +30,6 @@ library(incidence2)
 
 `epiparameter` is an R package that contains a range of delay distributions collated from peer-reviewed reports and meta-analyses, as well as functions to extract the parameters of a right-skewed parametric probability distribution from its percentiles or a median and range. If you would like to contribute to the database on delay distributions in this R package see the [contributing section](#contributing) at the end of this document.
 
-Definitions:
-
 Delay distributions included in `epiparameter`:
 
 -   incubation period: The time delay between the time of infection and the onset of symptoms
