@@ -343,33 +343,7 @@ out <- epinow(
 
 ### Estimating $R_t$ using `R0`
 
-The R package `R0` contains a set of functions to estimate the basic reproduction number ($R_0$) and the effective reproduction number ($R_t$). Here we demonstrate a calculate of the time-varying $R_t$ using the method of @wallinga_different_2004. This method uses the epidemic curve of incidence data over the course of an epidemic and the generation time. 
-
-```{r generate generation time}
-# load data 
-data("Germany.1918")
-
-# generate generation times from discrete gamma distribution with mean 3 and 
-# standard deviation 1.5
-mGT <- generation.time("gamma", c(3, 1.5))
-```
-
-```{r, estimate Rt with R0}
-out <- estimate.R(
-  epid = Germany.1918, 
-  GT = mGT, 
-  begin = 1, 
-  end = 27, 
-  methods = "TD", 
-  nsim = 1e4
-)
-```
-
-```{r plot R0, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="Estimated value of $R_t$ for the incidence data of Spanish flu for Germany 1918-1919."}
-plot(out$estimates$TD)
-```
-
-Using the same method to calculate $R_t$ but this time using the data on the outbreak of ebola from Sierra Leone from 2014 and using the a serial interval from `epiparameter` we can again estimate $R_t$.
+The R package `R0` contains a set of functions to estimate the basic reproduction number ($R_0$) and the effective reproduction number ($R_t$). Here we demonstrate a calculate of the time-varying $R_t$ using the method of @wallinga_different_2004. This method uses the epidemic curve of incidence data over the course of an epidemic and the generation time. Here we calculate $R_t$ using data on the outbreak of ebola from Sierra Leone from 2014 from `outbreaks`, and using the a serial interval from `epiparameter` as a proxy for the generation time.
 
 ```{r R0 with epiparameter}
 data("ebola_sierraleone_2014")
@@ -393,23 +367,16 @@ si_mean_sd <- gamma_shapescale2meansd(
 mGT <- generation.time(type = "gamma", val = c(si_mean_sd$mean, si_mean_sd$sd))
 ```
 
-```{r, load R0 data, echo=FALSE}
-load(system.file(
-  "extdata", 
-  "R0_data.rda", 
-  package = "epiparameter", 
-  mustWork = TRUE
-))
-```
+The confidence interval for $R_t$ is calculated using simulations and the number of iterations specified by the argument `nsim`. Here we run a small number of simulations for the purpose of demonstration, however, a larger number of iterations is recommended (e.g. 10,000).
 
-```{r, run R0 ebola, eval=FALSE}
+```{r, estimate Rt with R0 for ebola}
 out <- estimate.R(
   epid = ebola_incidence_R0, 
   GT = mGT, 
   begin = 1, 
   end = 27, 
   methods = "TD", 
-  nsim = 1000
+  nsim = 100
 )
 ```
 
