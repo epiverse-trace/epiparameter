@@ -7,7 +7,7 @@ test_that("pathogen_summary works with valid input", {
     ebola_summary,
     c("pathogen", "delay_dist", "distribution", "mean", "sd", "study", "DOI")
   )
-  expect_true(is.character(ebola_summary$pathogen))
+  expect_type(ebola_summary$pathogen, "character")
   expect_true(is.character(ebola_summary$delay_dist))
   expect_true(is.character(ebola_summary$distribution))
   expect_true(is.numeric(ebola_summary$mean))
