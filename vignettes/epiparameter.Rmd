@@ -129,7 +129,7 @@ Now we have a distribution, in this case the lognormal distribution and its best
 plot(sars_cov_incub)
 ```
 
-In order to determine the duration of a quarantine period for SARS-CoV we can calculate the percentles of the distribution. For example, if we calculate the 95th percentile of the lognormal distribution for our SARS-CoV example it is the number of days within which 95% of individuals will have their incubation period elapsed.
+In order to determine the duration of a quarantine period for SARS-CoV we can calculate the percentiles of the distribution. For example, if we calculate the 95th percentile of the lognormal distribution for our SARS-CoV example it is the number of days within which 95% of individuals will have their incubation period elapsed.
 
 ```{r, calc percentiles}
 # 90th, 95th and 99th percentile percentile
