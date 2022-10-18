@@ -186,7 +186,7 @@
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 <text x='360.00' y='11.95' text-anchor='middle' style='font-size: 11.95px; font-weight: bold; font-family: sans;' textLength='65.77px' lengthAdjust='spacingAndGlyphs'>Distributions</text>
 <text x='365.39' y='322.33' style='font-size: 9.60px; font-family: sans;' textLength='116.33px' lengthAdjust='spacingAndGlyphs'>Delay distribution for ebola </text>
-<text x='365.39' y='333.85' style='font-size: 9.60px; font-family: sans;' textLength='148.88px' lengthAdjust='spacingAndGlyphs'> Gamma distribution for incubation </text>
+<text x='365.39' y='333.85' style='font-size: 9.60px; font-family: sans;' textLength='178.24px' lengthAdjust='spacingAndGlyphs'> Gamma distribution for incubation period </text>
 <text x='365.39' y='345.37' style='font-size: 9.60px; font-family: sans;' textLength='182.00px' lengthAdjust='spacingAndGlyphs'> Distribution parameters 5.53404 0.921569</text>
 </g>
 <defs>

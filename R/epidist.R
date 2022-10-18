@@ -231,6 +231,8 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     delay_dist <- "onset to admission"
   } else if (x$delay_dist == "onset_to_death") {
     delay_dist <- "onset to death"
+  } else if (x$delay_dist == "serial_interval") {
+    delay_dist <- "serial interval"
   }
 
   # add text to plot
