@@ -2,7 +2,7 @@
 #'
 #' List distributions included in package
 #' @param delay_dist A character defining parameter to be listed:
-#' `"incubation"`, `"onset_to_admission"`, `"onset_to_death"`, or 
+#' `"incubation"`, `"onset_to_admission"`, `"onset_to_death"`, or
 #' `"serial_interval"`
 #' @param parameters A logical defining whether to show parameter values,
 #' default is `FALSE`
@@ -25,12 +25,12 @@
 #' list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
 
 list_distributions <- function(
-    delay_dist = c("incubation", 
-                   "onset_to_admission", 
-                   "onset_to_death", 
-                   "serial_interval"), 
+    delay_dist = c("incubation",
+                   "onset_to_admission",
+                   "onset_to_death",
+                   "serial_interval"),
     parameters = FALSE) {
-  
+
   delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
 
   # Extract relevant values
@@ -39,8 +39,8 @@ list_distributions <- function(
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
-  )) 
-  
+  ))
+
   # filter by delay distribution
   show_values <- show_values[show_values$type_id == delay_dist, ]
 

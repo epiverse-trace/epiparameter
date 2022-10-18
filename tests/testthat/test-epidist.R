@@ -52,10 +52,10 @@ test_that("epidist.print works as expected", {
 
 test_that("epidist.plot does not produce an error", {
   expect_silent(plot(epidist(pathogen = "ebola", delay_dist = "incubation")))
-  
+
   f <- function() plot(epidist(pathogen = "ebola",  delay_dist = "incubation"))
   vdiffr::expect_doppelganger(
-    title = "epidist.plot", 
+    title = "epidist.plot",
     fig = f
   )
 })
@@ -63,22 +63,21 @@ test_that("epidist.plot does not produce an error", {
 test_that("epidist.plot works with non-default day_range", {
   expect_silent(
     plot(epidist(
-      pathogen = "ebola", 
+      pathogen = "ebola",
       delay_dist = "incubation"
-    ), 
+    ),
     day_range = 0:20
     )
   )
-  
-  f <- function() { 
+
+  f <- function() {
     plot(
-      epidist(pathogen = "ebola",  delay_dist = "incubation"), 
+      epidist(pathogen = "ebola",  delay_dist = "incubation"),
       day_range = 0:20
     )
   }
   vdiffr::expect_doppelganger(
-    title = "epidist.plot non-default range", 
+    title = "epidist.plot non-default range",
     fig = f
   )
 })
-

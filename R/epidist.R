@@ -47,23 +47,23 @@
 #' # example using onset to admission as the metric
 #' epidist(pathogen = "ebola", delay_dist = "onset_to_admission")
 epidist  <- function(pathogen, delay_dist, study = NULL) {
-  
+
   pathogen <- match.arg(
-    arg = pathogen, 
+    arg = pathogen,
     choices = c(
-      "adenovirus", "ebola", "human_CoV", "influenza_A_seasonal", 
-      "influenza_B_seasonal", "influenza_H1N1p", "influenza_H7N9", "marburg", 
-      "measles", "MERS_CoV", "parainfluenza", "rhinovirus", "RSV", "SARS_CoV", 
+      "adenovirus", "ebola", "human_CoV", "influenza_A_seasonal",
+      "influenza_B_seasonal", "influenza_H1N1p", "influenza_H7N9", "marburg",
+      "measles", "MERS_CoV", "parainfluenza", "rhinovirus", "RSV", "SARS_CoV",
       "SARS_CoV_2_wildtype", "monkeypox"
-    ), 
+    ),
     several.ok = FALSE
   )
-  
+
   delay_dist <- match.arg(
-    arg = delay_dist, 
+    arg = delay_dist,
     choices = c(
       "incubation", "onset_to_admission", "onset_to_death", "serial_interval"
-    ), 
+    ),
     several.ok = FALSE
   )
 
@@ -74,7 +74,7 @@ epidist  <- function(pathogen, delay_dist, study = NULL) {
     package = "epiparameter",
     mustWork = TRUE
   ))
-  
+
   # filter based on pathogen and delay distribution
   pick_path <- pick_path[pick_path$pathogen_id == pathogen, ]
   pick_path <- pick_path[pick_path$type_id == delay_dist, ]
@@ -158,37 +158,37 @@ print.epidist <- function(x, ...) {
 
 #' Plots an `epidist` object by displaying the probability mass function (PMF),
 #' probability density function (PDF) and cumulative distribution function (CDF)
-#' 
+#'
 #' @param x An `epidist` object
-#' @param day_range A vector with the sequence of days to be plotted on the 
+#' @param day_range A vector with the sequence of days to be plotted on the
 #' x-axis of the distribution
 #' @param ... Allow other graphical parameters
 #'
 #' @author Joshua W. Lambert
 #' @export
-#' 
+#'
 #' @examples
 #' ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
 #' plot(ebola_si)
 plot.epidist <- function(x, day_range = 0:10, ...) {
-  
+
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(graphics::par(oldpar))
-  
+
   # set plotting parameters to plot on a 2x2 grid
   graphics::par(mfrow = c(2, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))
-  
+
   # plot PMF
   plot(
     day_range,
     x$pmf(day_range),
     ylab = "",
     xlab = "time since infection",
-    type = "p", 
+    type = "p",
     pch = 16,
     main = "Probability Mass Function"
   )
-  
+
   # plot PDF
   plot(
     day_range,
@@ -199,7 +199,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     pch = 16,
     main = "Probability Density Function"
   )
-  
+
   # plot CDF
   plot(
     day_range,
@@ -211,10 +211,10 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     ylim = c(0, 1),
     main = "Cumulative Distribution Function"
   )
-  
+
   # add a plot title
   graphics::title("Distributions", outer = TRUE, line = -1)
-  
+
   # get full name of distribution depending on epidist object
   if (x$dist == "lnorm") {
     dist <- "Lognormal"
@@ -223,7 +223,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
   } else if (x$dist == "weibull") {
     dist <- "Weibull"
   }
-  
+
   # get full name of delay distribution depending on epidist object
   if (x$delay_dist == "incubation") {
     delay_dist <- "incubation period"
@@ -232,19 +232,18 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
   } else if (x$delay_dist == "onset_to_death") {
     delay_dist <- "onset to death"
   }
-  
+
   # add text to plot
   graphics::mtext(
     text = paste(
       "Delay distribution for", x$pathogen, "\n",
-      dist, "distribution for", x$delay_dist, "\n",
+      dist, "distribution for", delay_dist, "\n",
       "Distribution parameters", x$param[1], x$param[2]
     ),
     side = 3,
     at = length(day_range),
     adj = 0,
-    line = -2, 
+    line = -2,
     cex = 0.8
   )
 }
-

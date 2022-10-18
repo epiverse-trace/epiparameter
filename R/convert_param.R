@@ -1,9 +1,9 @@
-#' Converts the mu (mean log) and sigma (standard deviation log) parameters of 
+#' Converts the mu (mean log) and sigma (standard deviation log) parameters of
 #' the lognormal distribution to the mean and standard deviation
 #'
-#' @param mu The mu parameter (mean of natural logarithm) of the lognormal 
+#' @param mu The mu parameter (mean of natural logarithm) of the lognormal
 #' distribution
-#' @param sigma The sigma parameter (standard deviation of the natural 
+#' @param sigma The sigma parameter (standard deviation of the natural
 #' logarithm) of the distribution
 #'
 #' @return A named list with mean and standard deviation
@@ -17,7 +17,7 @@ lnorm_musigma2meansd <- function(mu, sigma) {
   list(mean = mean, sd = sd)
 }
 
-#' Converts the mean and standard deviation of a lognormal distribution into the 
+#' Converts the mean and standard deviation of a lognormal distribution into the
 #' standard parameterisation of mu (mean log) and sigma (standard deviation log)
 #'
 #' @param mean Mean (expectation) of the lognormal distribution
@@ -34,8 +34,8 @@ lnorm_meansd2musigma <- function(mean, sd) {
   list(mu = mu, sigma = sigma)
 }
 
-#' Converts the shape and scale parameters of the gamma distribution to the 
-#' mean and standard deviation. 
+#' Converts the shape and scale parameters of the gamma distribution to the
+#' mean and standard deviation.
 #'
 #' @param shape The shape parameter of the gamma distribution
 #' @param scale The scale parameter of the gamma distribution
@@ -51,7 +51,7 @@ gamma_shapescale2meansd <- function(shape, scale) {
   list(mean = mean, sd = sd)
 }
 
-#' Converts the mean and standard deviation of the gamma distribution to the 
+#' Converts the mean and standard deviation of the gamma distribution to the
 #' shape and scale parameterisation.
 #'
 #' @param mean The mean of the gamma distribution
@@ -63,10 +63,7 @@ gamma_shapescale2meansd <- function(shape, scale) {
 #' @examples
 #' gamma_meansd2shapescale(mean = 2.2, sd = 0.9)
 gamma_meansd2shapescale <- function(mean, sd) {
-  shape <- mean^2 /sd^2
+  shape <- mean^2 / sd^2
   scale <- sd^2 / mean
   list(shape = shape, scale = scale)
 }
-
-
-

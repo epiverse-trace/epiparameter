@@ -16,7 +16,7 @@ test_that("lnorm conversions go back to original values", {
   params_1 <- lnorm_musigma2meansd(mu = 1, sigma = 0.5)
   params_2 <- lnorm_meansd2musigma(mean = params_1$mean, sd = params_1$sd)
   expect_equal(params_2, list(mu = 1, sigma = 0.5))
-  
+
   params_1 <- lnorm_meansd2musigma(mean = 2, sd = 1)
   params_2 <- lnorm_musigma2meansd(mu = params_1$mu, sigma = params_1$sigma)
   expect_equal(params_2, list(mean = 2, sd = 1))
@@ -40,10 +40,10 @@ test_that("gamma conversions go back to original values", {
   params_1 <- gamma_shapescale2meansd(shape = 3, scale = 1)
   params_2 <- gamma_meansd2shapescale(mean = params_1$mean, sd = params_1$sd)
   expect_equal(params_2, list(shape = 3, scale = 1))
-  
+
   params_1 <- gamma_meansd2shapescale(mean = 2, sd = 0.5)
   params_2 <- gamma_shapescale2meansd(
-    shape = params_1$shape, 
+    shape = params_1$shape,
     scale = params_1$scale
   )
   expect_equal(params_2, list(mean = 2, sd = 0.5))

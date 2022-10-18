@@ -62,9 +62,9 @@ Below is an example of the 75th percentiles reported for a lognormal distributio
 ```{r, extract_param for monkeypox percentiles}
 # Monkeypox lnorm from 75% percentiles in WHO data
 extract_param(
-  type = "percentiles", 
-  values = c(6, 13), 
-  distribution = "lnorm", 
+  type = "percentiles",
+  values = c(6, 13),
+  distribution = "lnorm",
   percentiles = c(0.125, 0.875)
 )
 ```
@@ -74,9 +74,9 @@ If instead of the percentiles, the median and range are provided, as done by @th
 ```{r, extract_param for monkeypox median and range}
 # Monkeypox lnorm from median and range in 2022:
 extract_param(
-  type = "range", 
-  values = c(7, 3, 20), 
-  distribution = "lnorm", 
+  type = "range",
+  values = c(7, 3, 20),
+  distribution = "lnorm",
   samples = 23
 )
 ```
@@ -117,10 +117,18 @@ To be sure we are extracting the correct study it is also possible specify which
 
 ```{r, get delay dist with study}
 # get epidemiological parameters for incubation period specifying study
-epidist(pathogen = "SARS_CoV", delay_dist = "incubation", study = "Lessler_etal")
+epidist(
+  pathogen = "SARS_CoV",
+  delay_dist = "incubation",
+  study = "Lessler_etal"
+)
 
-# specify a different study 
-epidist(pathogen = "SARS_CoV", delay_dist = "incubation", study = "Donnelly_etal")
+# specify a different study
+epidist(
+  pathogen = "SARS_CoV",
+  delay_dist = "incubation",
+  study = "Donnelly_etal"
+)
 ```
 
 Now we have a distribution, in this case the lognormal distribution and its best-fit parameters for the incubation period. The distributions easily be visualised.
@@ -134,8 +142,8 @@ In order to determine the duration of a quarantine period for SARS-CoV we can ca
 ```{r, calc percentiles}
 # 90th, 95th and 99th percentile percentile
 qlnorm(
-  p = c(0.9, 0.95, 0.99), 
-  meanlog = sars_cov_incub$param[["meanlog"]], 
+  p = c(0.9, 0.95, 0.99),
+  meanlog = sars_cov_incub$param[["meanlog"]],
   sdlog = sars_cov_incub$param[["sdlog"]]
 )
 ```
@@ -151,15 +159,15 @@ plot(mers_cov_incub)
 
 # 95th percentile for SARS-CoV-2
 qlnorm(
-  p = 0.95, 
-  meanlog = sars_cov_incub$param[["meanlog"]], 
+  p = 0.95,
+  meanlog = sars_cov_incub$param[["meanlog"]],
   sdlog = sars_cov_incub$param[["sdlog"]]
 )
 
 # 95th percentile for MERS-CoV
 qlnorm(
-  p = 0.95, 
-  meanlog = mers_cov_incub$param[["meanlog"]], 
+  p = 0.95,
+  meanlog = mers_cov_incub$param[["meanlog"]],
   sdlog = mers_cov_incub$param[["sdlog"]]
 )
 ```
@@ -184,13 +192,13 @@ data("covid19_england_nhscalls_2020")
 
 # create incidence data from linelist
 covid_incidence <- incidence(
-  x = covid19_england_nhscalls_2020, 
+  x = covid19_england_nhscalls_2020,
   date_index = "date"
 )
 
 # create tibble with correct column names for `EpiEstim`
 covid_incidence <- tibble(
-  date = covid_incidence$date_index, 
+  date = covid_incidence$date_index,
   I = covid_incidence$count
 )
 
@@ -198,7 +206,7 @@ Rt <- estimate_R(
   incid = covid_incidence,
   method = "parametric_si",
   config = make_config(list(
-    mean_si = 1.8, 
+    mean_si = 1.8,
     std_si = 1.1
   ))
 )
@@ -210,7 +218,7 @@ The mean and standard deviation of the distribution -- for `EpiEstim` this is a 
 list_distributions(delay_dist = "serial_interval")
 
 covid_si <- epidist(
-  pathogen = "SARS_CoV_2_wildtype", 
+  pathogen = "SARS_CoV_2_wildtype",
   delay_dist = "serial_interval"
 )
 
@@ -218,7 +226,7 @@ Rt <- estimate_R(
   incid = covid_incidence,
   method = "parametric_si",
   config = make_config(list(
-    mean_si = covid_si$param[["meanlog"]], 
+    mean_si = covid_si$param[["meanlog"]],
     std_si = covid_si$param[["sdlog"]]
   ))
 )
@@ -234,18 +242,18 @@ The incidence data required for the calculation of $R_t$ is sometimes only avail
 
 ```{r, setup epinow2}
 generation_time <- get_generation_time(
-  disease = "SARS-CoV-2", 
+  disease = "SARS-CoV-2",
   source = "ganyani"
 )
 incubation_period <- get_incubation_period(
-  disease = "SARS-CoV-2", 
+  disease = "SARS-CoV-2",
   source = "lauer"
 )
 reporting_delay <- list(
-  mean = convert_to_logmean(3, 1), 
+  mean = convert_to_logmean(3, 1),
   mean_sd = 0.1,
-  sd = convert_to_logsd(3, 1), 
-  sd_sd = 0.1, 
+  sd = convert_to_logsd(3, 1),
+  sd_sd = 0.1,
   max = 10
 )
 
@@ -254,9 +262,9 @@ reported_cases <- example_confirmed[1:40]
 
 ```{r, load epinow2 data, echo=FALSE}
 load(system.file(
-  "extdata", 
-  "epinow2_data.rda", 
-  package = "epiparameter", 
+  "extdata",
+  "epinow2_data.rda",
+  package = "epiparameter",
   mustWork = TRUE
 ))
 ```
@@ -264,7 +272,7 @@ load(system.file(
 ```{r, run epinow2, eval=FALSE}
 # estimate Rt by date of infection
 out <- epinow(
-  reported_cases = reported_cases, 
+  reported_cases = reported_cases,
   generation_time = generation_time,
   rt = rt_opts(prior = list(mean = 2, sd = 0.1)),
   delays = delay_opts(incubation_period, reporting_delay),
@@ -282,44 +290,44 @@ In the example above the generation time and incubation period used are stored i
 
 ```{r, epinow2 with epiparameter, eval=FALSE}
 incubation_period <- epidist(
-  pathogen = "SARS_CoV_2_wildtype", 
+  pathogen = "SARS_CoV_2_wildtype",
   delay_dist = "incubation"
 )
 serial_interval <- epidist(
-  pathogen = "SARS_CoV_2_wildtype", 
+  pathogen = "SARS_CoV_2_wildtype",
   delay_dist = "serial_interval"
 )
 
 reporting_delay <- list(
-  mean = convert_to_logmean(3, 1), 
+  mean = convert_to_logmean(3, 1),
   mean_sd = 0.1,
-  sd = convert_to_logsd(3, 1), 
-  sd_sd = 0.1, 
+  sd = convert_to_logsd(3, 1),
+  sd_sd = 0.1,
   max = 10
 )
 
-reported_cases <- example_confirmed[1:40] 
+reported_cases <- example_confirmed[1:40]
 
 # use lnorm_logmeansd2meansd() to convert the parameters of the lognormal to the
 # mean (expectation) and standard deviation
 serial_interval_mean_sd <- lnorm_logmeansd2meansd(
-  meanlog = serial_interval$param[["meanlog"]], 
+  meanlog = serial_interval$param[["meanlog"]],
   sdlog = serial_interval$param[["sdlog"]]
 )
 
 incubation_period_mean_sd <- lnorm_logmeansd2meansd(
-  meanlog = incubation_period$param[["meanlog"]], 
+  meanlog = incubation_period$param[["meanlog"]],
   sdlog = incubation_period$param[["sdlog"]]
 )
 
 # for now serial interval is used in place of generation time
 generation_time_list <- list(
-  mean = serial_interval_mean_sd$mean
+  mean = serial_interval_mean_sd$mean,
   mean_sd = 0.1,
   sd = serial_interval_mean_sd$sd,
   sd_sd = 0.1,
   max = 20
-) 
+)
 
 incubation_period_list <- list(
   mean = incubation_period_mean_sd$mean,
@@ -331,7 +339,7 @@ incubation_period_list <- list(
 
 # estimate Rt by date of infection
 out <- epinow(
-  reported_cases = reported_cases, 
+  reported_cases = reported_cases,
   generation_time = generation_time_list,
   rt = rt_opts(prior = list(mean = 2, sd = 0.1)),
   delays = delay_opts(incubation_period_list, reporting_delay),
@@ -349,7 +357,7 @@ The R package `R0` contains a set of functions to estimate the basic reproductio
 data("ebola_sierraleone_2014")
 
 ebola_incidence <- incidence(
-  x = ebola_sierraleone_2014, 
+  x = ebola_sierraleone_2014,
   date_index = "date_of_onset"
 )
 
@@ -360,7 +368,7 @@ names(ebola_incidence_R0) <- ebola_incidence$date_index
 ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
 
 si_mean_sd <- gamma_shapescale2meansd(
-  shape = ebola_si$param[["shape"]], 
+  shape = ebola_si$param[["shape"]],
   scale = ebola_si$param[["scale"]]
 )
 
@@ -371,11 +379,11 @@ The confidence interval for $R_t$ is calculated using simulations and the number
 
 ```{r, estimate Rt with R0 for ebola}
 out <- estimate.R(
-  epid = ebola_incidence_R0, 
-  GT = mGT, 
-  begin = 1, 
-  end = 27, 
-  methods = "TD", 
+  epid = ebola_incidence_R0,
+  GT = mGT,
+  begin = 1,
+  end = 27,
+  methods = "TD",
   nsim = 100
 )
 ```
@@ -426,13 +434,13 @@ Rt <- estimate_R(
   incid = Flu2009$incidence,
   method = "uncertain_si",
   config = make_config(list(
-    mean_si = 2.6, 
+    mean_si = 2.6,
     std_mean_si = 1,
-    min_mean_si = 1, 
+    min_mean_si = 1,
     max_mean_si = 4.2,
-    std_si = 1.5, 
+    std_si = 1.5,
     std_std_si = 0.5,
-    min_std_si = 0.5, 
+    min_std_si = 0.5,
     max_std_si = 2.5
   ))
 )
