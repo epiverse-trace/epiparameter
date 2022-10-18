@@ -413,12 +413,8 @@ out <- estimate.R(
 )
 ```
 
-```{r plot R0 ebola, eval=FALSE}
-plot(out)
-```
-
-```{r plot Rt ebola, echo=FALSE, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="Estimated value of $R_t$ for the incidence data of ebola for Sierra Leone 2014."}
-plot_R0(out)
+```{r plot R0 ebola, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="Estimated value of $R_t$ for the incidence data of ebola for Sierra Leone 2014."}
+plot(out$estimates$TD)
 ```
 
 ## Comparison of different epidemiological parameters
