@@ -6,9 +6,9 @@
 reported values of percentiles, or median and range}
 \usage{
 extract_param(
-  type = "percentiles",
+  type = c("percentiles", "range"),
   values,
-  distribution = "lnorm",
+  distribution = c("lnorm", "gamma", "weibull"),
   percentiles,
   samples
 )

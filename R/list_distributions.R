@@ -1,9 +1,11 @@
 #' List distributions
 #'
 #' List distributions included in package
-#' @param delay_dist A \code{character} defining parameter to be listed:
-#' "incubation", "onset_to_admission" or "onset_to_death"
-#' @param parameters A \code{logical} defining whether to show parameter values
+#' @param delay_dist A character defining parameter to be listed:
+#' `"incubation"`, `"onset_to_admission"`, `"onset_to_death"`, or 
+#' `"serial_interval"`
+#' @param parameters A logical defining whether to show parameter values,
+#' default is `FALSE`
 #' @keywords distributions
 #' @author Adam Kucharski
 #' @export
@@ -24,6 +26,14 @@
 
 list_distributions <- function(delay_dist = "incubation", parameters = FALSE) {
 
+  delay_dist <- match.arg(
+    arg = delay_dist, 
+    choices = c(
+      "incubation", "onset_to_admission", "onset_to_death", "serial_interval"
+    ), 
+    several.ok = FALSE
+  )
+  
   type_id <- NULL # remove global variable note
   pathogen_id <- NULL # remove global variable note
   study_id <- NULL # remove global variable note

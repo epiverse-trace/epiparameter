@@ -7,10 +7,12 @@
 list_distributions(delay_dist = "incubation", parameters = FALSE)
 }
 \arguments{
-\item{delay_dist}{A \code{character} defining parameter to be listed:
-"incubation", "onset_to_admission" or "onset_to_death"}
+\item{delay_dist}{A character defining parameter to be listed:
+\code{"incubation"}, \code{"onset_to_admission"}, \code{"onset_to_death"}, or
+\code{"serial_interval"}}
 
-\item{parameters}{A \code{logical} defining whether to show parameter values}
+\item{parameters}{A logical defining whether to show parameter values,
+default is \code{FALSE}}
 }
 \description{
 List distributions included in package

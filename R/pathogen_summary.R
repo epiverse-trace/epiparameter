@@ -14,6 +14,17 @@
 #' pathogen_summary(pathogen = "SARS_CoV")
 pathogen_summary <- function(pathogen) {
   
+  pathogen <- match.arg(
+    arg = pathogen, 
+    choices = c(
+      "adenovirus", "ebola", "human_CoV", "influenza_A_seasonal", 
+      "influenza_B_seasonal", "influenza_H1N1p", "influenza_H7N9", "marburg", 
+      "measles", "MERS_CoV", "parainfluenza", "rhinovirus", "RSV", "SARS_CoV", 
+      "SARS_CoV_2_wildtype", "monkeypox"
+    ), 
+    several.ok = FALSE
+  )
+  
   pathogen_id <- NULL # remove global variable note
   
   # Extract pathogen and parameter type

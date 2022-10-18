@@ -36,11 +36,15 @@
 #'   distribution = "gamma",
 #'   samples = 20
 #' )
-extract_param <- function(type = "percentiles",
+extract_param <- function(type = c("percentiles", "range"),
                           values,
-                          distribution = "lnorm",
+                          distribution = c("lnorm", "gamma", "weibull"),
                           percentiles,
                           samples) {
+  
+  type <- match.arg(arg = type, several.ok = FALSE)
+  
+  distribution <- match.arg(arg = distribution, several.ok = FALSE)
 
   # Validate inputs
   if (type == "percentiles") {

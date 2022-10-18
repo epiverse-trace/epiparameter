@@ -47,7 +47,26 @@
 #' # example using onset to admission as the metric
 #' epidist(pathogen = "ebola", delay_dist = "onset_to_admission")
 epidist  <- function(pathogen, delay_dist, study = NULL) {
-
+  
+  pathogen <- match.arg(
+    arg = pathogen, 
+    choices = c(
+      "adenovirus", "ebola", "human_CoV", "influenza_A_seasonal", 
+      "influenza_B_seasonal", "influenza_H1N1p", "influenza_H7N9", "marburg", 
+      "measles", "MERS_CoV", "parainfluenza", "rhinovirus", "RSV", "SARS_CoV", 
+      "SARS_CoV_2_wildtype", "monkeypox"
+    ), 
+    several.ok = FALSE
+  )
+  
+  delay_dist <- match.arg(
+    arg = delay_dist, 
+    choices = c(
+      "incubation", "onset_to_admission", "onset_to_death", "serial_interval"
+    ), 
+    several.ok = FALSE
+  )
+  
   pathogen_id <- NULL # remove global variable note # change to snake_case
   type_id <- NULL # remove global variable note
   size <- NULL # remove global variable note
