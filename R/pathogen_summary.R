@@ -25,8 +25,6 @@ pathogen_summary <- function(pathogen) {
     several.ok = FALSE
   )
   
-  pathogen_id <- NULL # remove global variable note
-  
   # Extract pathogen and parameter type
   pathogen_data <- utils::read.csv(file = system.file(
     "extdata",

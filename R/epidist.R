@@ -66,11 +66,6 @@ epidist  <- function(pathogen, delay_dist, study = NULL) {
     ), 
     several.ok = FALSE
   )
-  
-  pathogen_id <- NULL # remove global variable note # change to snake_case
-  type_id <- NULL # remove global variable note
-  size <- NULL # remove global variable note
-  study_id <- NULL # remove global variable note
 
   # Extract pathogen and parameter type
   pick_path <- utils::read.csv(file = system.file(

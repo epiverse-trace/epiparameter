@@ -24,22 +24,14 @@
 #' # distribution) the `parameters` argument can be set to `TRUE`
 #' list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
 
-list_distributions <- function(delay_dist = "incubation", parameters = FALSE) {
-
-  delay_dist <- match.arg(
-    arg = delay_dist, 
-    choices = c(
-      "incubation", "onset_to_admission", "onset_to_death", "serial_interval"
-    ), 
-    several.ok = FALSE
-  )
+list_distributions <- function(
+    delay_dist = c("incubation", 
+                   "onset_to_admission", 
+                   "onset_to_death", 
+                   "serial_interval"), 
+    parameters = FALSE) {
   
-  type_id <- NULL # remove global variable note
-  pathogen_id <- NULL # remove global variable note
-  study_id <- NULL # remove global variable note
-  year <- NULL # remove global variable note
-  size <- NULL # remove global variable note
-  distribution <- NULL # remove global variable note
+  delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
 
   # Extract relevant values
   show_values <- utils::read.csv(system.file(

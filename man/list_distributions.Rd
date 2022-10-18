@@ -4,7 +4,10 @@
 \alias{list_distributions}
 \title{List distributions}
 \usage{
-list_distributions(delay_dist = "incubation", parameters = FALSE)
+list_distributions(
+  delay_dist = c("incubation", "onset_to_admission", "onset_to_death", "serial_interval"),
+  parameters = FALSE
+)
 }
 \arguments{
 \item{delay_dist}{A character defining parameter to be listed:
