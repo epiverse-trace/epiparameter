@@ -24,7 +24,10 @@ available distributions are: lognormal, gamma and weibull."><!-- mathjax --><scr
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item">
+      <ul class="navbar-nav me-auto"><li class="nav-item">
+  <a class="nav-link" href="../articles/epiparameter.html">Get started</a>
+</li>
+<li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -52,9 +55,9 @@ available distributions are: lognormal, gamma and weibull.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extract_param</span><span class="op">(</span></span>
-<span>  type <span class="op">=</span> <span class="st">"percentiles"</span>,</span>
+<span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"percentiles"</span>, <span class="st">"range"</span><span class="op">)</span>,</span>
 <span>  <span class="va">values</span>,</span>
-<span>  distribution <span class="op">=</span> <span class="st">"lnorm"</span>,</span>
+<span>  distribution <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lnorm"</span>, <span class="st">"gamma"</span>, <span class="st">"weibull"</span><span class="op">)</span>,</span>
 <span>  <span class="va">percentiles</span>,</span>
 <span>  <span class="va">samples</span></span>
 <span><span class="op">)</span></span></code></pre></div>

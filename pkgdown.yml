@@ -1,6 +1,7 @@
 pandoc: 2.14.2
 pkgdown: 2.0.6
 pkgdown_sha: ~
-articles: {}
-last_built: 2022-10-06T09:05Z
+articles:
+  epiparameter: epiparameter.html
+last_built: 2022-10-18T16:01Z
 
