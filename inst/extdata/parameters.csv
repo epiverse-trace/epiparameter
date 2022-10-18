@@ -21,7 +21,7 @@ monkeypox,incubation,Nolen,2016,16,lnorm,9.6,NA,9,NA,NA,NA,NA,2.1783545,0.336068
 ebola,onset_to_admission,WHO_team,2014,500,gamma,NA,NA,NA,NA,NA,5.53404,0.921569,NA,NA,yes,NA,NA,NA,25564903,10.1056/NEJMc1413884,Adam Kucharski
 influenza_H1N1p,onset_to_admission,Tuite_etal,2010,316,lnorm,NA,NA,NA,NA,NA,NA,NA,2.17531,0.330773,NA,NA,NA,NA,19959592,10.1503/cmaj.091807,Adam Kucharski
 influenza_H7N9,onset_to_admission,Cowling_etal,2013,32,gamma,NA,NA,NA,NA,NA,9.65,0.45,NA,NA,NA,NA,NA,NA,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
-MERS_CoV,onset_to_admission,Assiri_etal,2013,23,lnorm,NA,NA,NA,NA,NA,7,0.75,NA,NA,NA,NA,NA,NA,23782161,10.1056/NEJMoa1306742,Adam Kucharski
+MERS_CoV,onset_to_admission,Assiri_etal,2013,23,lnorm,NA,NA,NA,NA,NA,NA,NA,7,0.75,NA,NA,NA,NA,23782161,10.1056/NEJMoa1306742,Adam Kucharski
 SARS_CoV,onset_to_admission,Donnelly_etal,2003,57,gamma,NA,NA,NA,NA,NA,1.929655,2.513402,NA,NA,NA,NA,NA,Feb-26 to Mar-25,12781533,10.1016/S0140-6736(03)13410-1,Adam Kucharski
 SARS_CoV_2_wildtype,onset_to_death,Linton_etal,2020,23,lnorm,NA,NA,NA,NA,NA,NA,NA,2.863179,0.5338606,no,NA,NA,NA,32079150,10.3390/jcm9020538,Adam Kucharski
 ebola,serial_interval,WHO_response_team,2014,92,gamma,NA,NA,NA,NA,NA,2.706555671,5.652941176,NA,NA,yes,NA,NA,NA,25564903,10.1056/NEJMc1413884,Adam Kucharski

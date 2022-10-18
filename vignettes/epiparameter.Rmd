@@ -1,0 +1,467 @@
+---
+title: "Introduction to epiparameter"
+output: rmarkdown::html_vignette
+bibliography: references.bib
+csl: evolution.csl
+vignette: >
+  %\VignetteIndexEntry{epiparameter}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette will use a range of R packages for formatting data and performing a range of calculations. These packages can be thought of as either general data science tools, which will come from the [*tidyverse*](https://www.tidyverse.org/), or tools specific to epidemiological tasks.
+
+```{r setup}
+library(tibble)
+library(epiparameter)
+library(EpiEstim)
+library(EpiNow2)
+library(R0)
+library(outbreaks)
+library(incidence2)
+```
+
+`epiparameter` is an R package that contains a range of delay distributions collated from peer-reviewed reports and meta-analyses, as well as functions to extract the parameters of a right-skewed parametric probability distribution from its percentiles or a median and range. If you would like to contribute to the database on delay distributions in this R package see the [contributing section](#contributing) at the end of this document.
+
+Delay distributions included in `epiparameter`:
+
+-   incubation period: The time delay between the time of infection and the onset of symptoms
+-   onset to admission: The time delay between the time of symptom onset to admission to hospital
+-   onset to death: The time delay between the time of illness onset to death
+-   serial interval: The time delay between the onset of symptoms between a primary case and a secondary case
+
+Delay distributions not included in `epiparameter` (for now, but planned for future versions):
+
+-   Generation time: The time delay between the infection in a primary case and the infection in a secondary case
+-   Admission to death: The time delay between being admitted to hospital and time of death
+-   Admission to discharge: The duration of hospitalisation
+-   Infectious period: The duration of which a infected person can infect a second person (viral shedding)
+-   Onset to confirmation: The time delay between the onset of symptoms and the case confirmed, via laboratory assays
+-   Mean period of immunity: Duration of the immunity after having an infection. This can depend on the individual immune response to either vaccination or infection and the rate of immunity decay (which is influenced by individual variation and vaccine type) [@antia_heterogeneity_2018]
+-   Latency period: The time delay between the time of exposure and the onset of becoming infectious
+
+Some of the delay distributions in `epiparameter` have close relationships to others not included in the package. The incubation period and latency period are linked, and in the case when infectiousness and symptoms arise at the same time, are the same. The incubation period is more commonly available, as the detection of symptom onset is easier than the detection of infectiousness. Secondly, the serial interval and generation time are closely related, with the former being the onset of symptoms while the latter is the time of infection. The serial interval is more regularly available, as time of exposure is difficult to pinpoint exactly, and is often censored data. The generation time is sometimes approximated by using the serial interval instead, however, this can introduce biases when used for calculating the reproduction number [@britton_estimation_2019].
+
+Below we explore some of the use-cases of `epiparameter` in various epidemiological analysis pipelines.
+
+## Extract distribution parameters from percentiles or median and range {#extraction}
+
+Studies usually report summary statistics for distributions they fit. If the mean and variance (or equivalently standard deviation or coefficient of variation) are provided these can easily be converted to the parameters of a lognormal, gamma or weibull distribution. `epiparameter` provides functions that calculate this conversion. If percentiles, or the median and range are provided the parameters of a distribution can be estimated. This functionality is useful when new data arises but only the percentiles or median and range are reported. `epiparameter` provides a function that allows the parameters of the gamma, lognormal, and weibull distributions from percentiles or median and ranges reported in the literature.
+
+Below is an example of the 75th percentiles reported for a lognormal distribution from @nolen_extended_2016 for the incubation period for Monkeypox.
+
+```{r, extract_param for monkeypox percentiles}
+# Monkeypox lnorm from 75% percentiles in WHO data
+extract_param(
+  type = "percentiles",
+  values = c(6, 13),
+  distribution = "lnorm",
+  percentiles = c(0.125, 0.875)
+)
+```
+
+If instead of the percentiles, the median and range are provided, as done by @thornhill_monkeypox_2022 for monkeypox, and we want to calculate the parameters of a lognormal distribution, the same function can be applied.
+
+```{r, extract_param for monkeypox median and range}
+# Monkeypox lnorm from median and range in 2022:
+extract_param(
+  type = "range",
+  values = c(7, 3, 20),
+  distribution = "lnorm",
+  samples = 23
+)
+```
+
+## Conversion of distribution parameters from mean and standard deviation
+
+`epiparameter` provides functions to convert between the parameters of a distribution and the mean and standard deviation of the distribution. In the case where the mean and standard deviation for the gamma distribution are provided, but the shape and scale are required the `gamma_meansd2shapescale()` function can be used to convert between the two. @donnelly_epidemiological_2003 provides the mean and variance of the gamma distribution for the incubation period of SARS.
+
+```{r, convert parameters}
+# SARS gamma shape/scale from mean and sd
+gamma_meansd2shapescale(6.37, sqrt(16.7))
+```
+
+The opposite transformation is also available with `gamma_shapescale2meansd()`.
+
+Converting between the parameters of the lognormal distribution and the mean and standard deviation can also be accomplished with `lnorm_musigma2meansd()`, while the reverse transformation uses `lnorm_meansd2musigma()`.
+
+## Delay distributions for informing quarantine period
+
+In epidemics, understanding the delay between becoming exposed to an infectious disease and the onset of symptoms (i.e. incubation period) is informative for defining a possible quarantine period. Quarantine for exposed individuals are one of the most widely used nonpharmaceutical intervetions (NPIs) to suppress the transmission and bring the basic reproduction number ($R_0$) down. As pointed out by @nishiura_determination_2009 using a right-skewed probability distribution there is a non-zero probability of having extremely large quarantine periods (e.g. 100 days).
+
+The `epiparameter` packages contains a range of distributions for a variety of infectious diseases which can be used to determine a quarantine period. This period will be defined by the desired proportion of people that exit quarantine without later going on to develop symptoms and infect others.
+
+Here we will illustrate with an example using the SARS-CoV pathogen. We can check what information we have in the `epiparameter` database on the incubation period of SARS-CoV:
+
+```{r, check database}
+list_distributions(delay_dist = "incubation")
+```
+
+We can see that on rows 16-17 we have two studies reporting the incubation period for SARS-CoV. Here we will use the @lessler_incubation_2009. This will be the default when specifying `SARS_CoV` as our pathogen of interest due to it having the largest sample size.
+
+```{r, get delay dist}
+# get epidemiological parameters for incubation period without specifying study
+sars_cov_incub <- epidist(pathogen = "SARS_CoV", delay_dist = "incubation")
+```
+
+To be sure we are extracting the correct study it is also possible specify which study to use.
+
+```{r, get delay dist with study}
+# get epidemiological parameters for incubation period specifying study
+epidist(
+  pathogen = "SARS_CoV",
+  delay_dist = "incubation",
+  study = "Lessler_etal"
+)
+
+# specify a different study
+epidist(
+  pathogen = "SARS_CoV",
+  delay_dist = "incubation",
+  study = "Donnelly_etal"
+)
+```
+
+Now we have a distribution, in this case the lognormal distribution and its best-fit parameters for the incubation period. The distributions easily be visualised.
+
+```{r, plot epidist, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+plot(sars_cov_incub)
+```
+
+In order to determine the duration of a quarantine period for SARS-CoV we can calculate the percentiles of the distribution. For example, if we calculate the 95th percentile of the lognormal distribution for our SARS-CoV example it is the number of days within which 95% of individuals will have their incubation period elapsed.
+
+```{r, calc percentiles}
+# 90th, 95th and 99th percentile percentile
+qlnorm(
+  p = c(0.9, 0.95, 0.99),
+  meanlog = sars_cov_incub$param[["meanlog"]],
+  sdlog = sars_cov_incub$param[["sdlog"]]
+)
+```
+
+Therefore, eight and half days of quarantine will capture just over 90% of symptom onset events. To increase that to 95% of people would require 10.3 days, and the most extreme scenario in our example of 99% of people would require a 15.3 day quarantine period.
+
+Given the steps outlined above and the database of infectious diseases that are provided in `epiparameter` it is possible to juxtapose the incubation periods of different pathogens. Here we demonstrate this with a comparison of SARS-CoV and MERS-CoV. Both are corona viruses (from the genus *Betacoronavirus*), both are zoonotic pathogens that have produced outbreaks to different effects.
+
+```{r, compare sars and mers, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+mers_cov_incub <- epidist(pathogen = "MERS_CoV", delay_dist = "incubation")
+
+plot(mers_cov_incub)
+
+# 95th percentile for SARS-CoV-2
+qlnorm(
+  p = 0.95,
+  meanlog = sars_cov_incub$param[["meanlog"]],
+  sdlog = sars_cov_incub$param[["sdlog"]]
+)
+
+# 95th percentile for MERS-CoV
+qlnorm(
+  p = 0.95,
+  meanlog = mers_cov_incub$param[["meanlog"]],
+  sdlog = mers_cov_incub$param[["sdlog"]]
+)
+```
+
+The 95th percentile of the SARS-CoV incubation period is slightly longer at 10.3 days compared to MERS-CoV at 10.0. The implication of this being that at a 95% threshold quarantine can be slightly shorter for MERS.
+
+## Delay distributions for estimating $R_0$, $R_t$ and forecasting
+
+In order to calculate the rate of transmission of an infectious disease in the form of either the basic reproduction number ($R_0$) (i.e. the average number of secondary infections from a primary infection given an entirely susceptible population) or the effective reproduction number ($R_t$) (i.e. the average number of secondary infections from a primary infection at a point in time *t* given a partially susceptible population) it requires the knowledge of certain delay distributions. In this demonstration we will use three methods (R packages), [`EpiEstim`](https://cran.r-project.org/web/packages/EpiEstim/index.html), [`EpiNow2`](https://cran.r-project.org/web/packages/EpiNow2/index.html), and [`R0`](https://cran.r-project.org/web/packages/R0/index.html) to explore the utility of delay distributions in the `epiparameter` package for downstream analysis. More information on methods used can be found in their respective documentation as well as the [Epidemic modelling chapter](https://epirhandbook.com/en/epidemic-modeling.html#epidemic-modeling) of the [EpiRHandbook](https://epirhandbook.com/en/index.html).
+
+The data used in these examples will come from either data stored in the `EpiEstim`, `EpiNow2`, or `R0` packages or will be loaded from the [`outbreaks`](https://cran.r-project.org/web/packages/outbreaks/index.html) package. 
+
+### `EpiEstim`: estimating a time-variable $R_t$
+
+`EpiEstim` provides a toolkit to quantify the transmissibility of an infectious disease. The main function used in this example is `estimate_R()`. This uses data on case incidence and serial interval (see @cori_new_2013 for details on methods). The incidence data used here is from a potential SARS-CoV-2 cases from the NHS from the `outbreaks` package (`?covid19_england_nhscalls_2020` for more information). 
+
+The serial interval can be specified by a parametric distribution and its parameters.
+
+```{r, epiestim}
+# load the data
+data("covid19_england_nhscalls_2020")
+
+# create incidence data from linelist
+covid_incidence <- incidence(
+  x = covid19_england_nhscalls_2020,
+  date_index = "date"
+)
+
+# create tibble with correct column names for `EpiEstim`
+covid_incidence <- tibble(
+  date = covid_incidence$date_index,
+  I = covid_incidence$count
+)
+
+Rt <- estimate_R(
+  incid = covid_incidence,
+  method = "parametric_si",
+  config = make_config(list(
+    mean_si = 1.8,
+    std_si = 1.1
+  ))
+)
+```
+
+The mean and standard deviation of the distribution -- for `EpiEstim` this is a discrete gamma distribution -- are arbitrarily chosen. However, `epiparameter` provides a library of serial interval parameters which can be extracted and used for the reproduction number estimation.
+
+```{r, epiestim with epiparameter, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="The epidemic curve for the incidence of H1N1 flu cases, below this is the estimated $R_t$ value and the bottom facet is the serial interval distribution used in the calculation of $R_t$."}
+list_distributions(delay_dist = "serial_interval")
+
+covid_si <- epidist(
+  pathogen = "SARS_CoV_2_wildtype",
+  delay_dist = "serial_interval"
+)
+
+Rt <- estimate_R(
+  incid = covid_incidence,
+  method = "parametric_si",
+  config = make_config(list(
+    mean_si = covid_si$param[["meanlog"]],
+    std_si = covid_si$param[["sdlog"]]
+  ))
+)
+
+plot(Rt)
+```
+
+The incidence data required for the calculation of $R_t$ is sometimes only available in a raw data form, linelist. From this linelist the incidence data can be extracted and used for the reproduction number calculation.
+
+### `EpiNow2`: estimating a real-time $R_t$
+
+`EpiNow2` is the second R package in this demonstration on how data on epidemiological parameters (incubation period, serial interval, etc.) can be used for estimating the effective reproduction number ($R_t$) which is used to determine transmissibility of an epidemic and its real-time growth or decline. `EpiNow2` differs from `EpiEstim` in its incorporation of more delays (e.g. reporting delays) to produced less biased estimates of Rt.
+
+```{r, setup epinow2}
+generation_time <- get_generation_time(
+  disease = "SARS-CoV-2",
+  source = "ganyani"
+)
+incubation_period <- get_incubation_period(
+  disease = "SARS-CoV-2",
+  source = "lauer"
+)
+reporting_delay <- list(
+  mean = convert_to_logmean(3, 1),
+  mean_sd = 0.1,
+  sd = convert_to_logsd(3, 1),
+  sd_sd = 0.1,
+  max = 10
+)
+
+reported_cases <- example_confirmed[1:40]
+```
+
+```{r, load epinow2 data, echo=FALSE}
+load(system.file(
+  "extdata",
+  "epinow2_data.rda",
+  package = "epiparameter",
+  mustWork = TRUE
+))
+```
+
+```{r, run epinow2, eval=FALSE}
+# estimate Rt by date of infection
+out <- epinow(
+  reported_cases = reported_cases,
+  generation_time = generation_time,
+  rt = rt_opts(prior = list(mean = 2, sd = 0.1)),
+  delays = delay_opts(incubation_period, reporting_delay),
+  stan = stan_opts(samples = 750, chains = 4),
+  return_output = TRUE,
+  verbose = FALSE
+)
+```
+
+```{r plot epinow2, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+plot(out)
+```
+
+In the example above the generation time and incubation period used are stored in the `EpiNow2` package. However, data on these distributions is limited and a more comprehensive library of distributions would provide a more robust data source to make calculations of $R_t$. This is where `epiparameter` comes in. In the example below the distributions from `epiparameter` are used and the parameters of the delay distributions need to be extracted and put into list format for `epinow()`. For this example we use 0.1 as a the value of standard deviation for the mean and standard deviation of the distribution parameters as this information is not currently available in `epiparameter`.
+
+```{r, epinow2 with epiparameter setup}
+incubation_period <- epidist(
+  pathogen = "SARS_CoV_2_wildtype",
+  delay_dist = "incubation"
+)
+serial_interval <- epidist(
+  pathogen = "SARS_CoV_2_wildtype",
+  delay_dist = "serial_interval"
+)
+
+reporting_delay <- list(
+  mean = convert_to_logmean(3, 1),
+  mean_sd = 0.1,
+  sd = convert_to_logsd(3, 1),
+  sd_sd = 0.1,
+  max = 10
+)
+
+reported_cases <- example_confirmed[1:40]
+
+# use lnorm_musigma2meansd() to convert the parameters of the lognormal to the
+# mean (expectation) and standard deviation
+serial_interval_mean_sd <- lnorm_musigma2meansd(
+  mu = serial_interval$param[["meanlog"]],
+  sigma = serial_interval$param[["sdlog"]]
+)
+
+incubation_period_mean_sd <- lnorm_musigma2meansd(
+  mu = incubation_period$param[["meanlog"]],
+  sigma = incubation_period$param[["sdlog"]]
+)
+
+# for now serial interval is used in place of generation time
+generation_time_list <- list(
+  mean = serial_interval_mean_sd$mean,
+  mean_sd = 0.1,
+  sd = serial_interval_mean_sd$sd,
+  sd_sd = 0.1,
+  max = 20
+)
+
+incubation_period_list <- list(
+  mean = incubation_period_mean_sd$mean,
+  mean_sd = 0.1,
+  sd = incubation_period_mean_sd$sd,
+  sd_sd = 0.1,
+  max = 20
+)
+```
+
+```{r, epinow2 with epiparameter analysis, eval=FALSE}
+# estimate Rt by date of infection
+out <- epinow(
+  reported_cases = reported_cases,
+  generation_time = generation_time_list,
+  rt = rt_opts(prior = list(mean = 2, sd = 0.1)),
+  delays = delay_opts(incubation_period_list, reporting_delay),
+  stan = stan_opts(samples = 750, chains = 4),
+  return_output = TRUE,
+  verbose = FALSE
+)
+```
+
+### Estimating $R_t$ using `R0`
+
+The R package `R0` contains a set of functions to estimate the basic reproduction number ($R_0$) and the effective reproduction number ($R_t$). Here we demonstrate a calculate of the time-varying $R_t$ using the method of @wallinga_different_2004. This method uses the epidemic curve of incidence data over the course of an epidemic and the generation time. Here we calculate $R_t$ using data on the outbreak of ebola from Sierra Leone from 2014 from `outbreaks`, and using the a serial interval from `epiparameter` as a proxy for the generation time.
+
+```{r R0 with epiparameter}
+data("ebola_sierraleone_2014")
+
+ebola_incidence <- incidence(
+  x = ebola_sierraleone_2014,
+  date_index = "date_of_onset"
+)
+
+# format incidence data for `estimate.R()`
+ebola_incidence_R0 <- ebola_incidence$count
+names(ebola_incidence_R0) <- ebola_incidence$date_index
+
+ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
+
+si_mean_sd <- gamma_shapescale2meansd(
+  shape = ebola_si$param[["shape"]],
+  scale = ebola_si$param[["scale"]]
+)
+
+mGT <- generation.time(type = "gamma", val = c(si_mean_sd$mean, si_mean_sd$sd))
+```
+
+The confidence interval for $R_t$ is calculated using simulations and the number of iterations specified by the argument `nsim`. Here we run a small number of simulations for the purpose of demonstration, however, a larger number of iterations is recommended (e.g. 10,000).
+
+```{r, estimate Rt with R0 for ebola}
+out <- estimate.R(
+  epid = ebola_incidence_R0,
+  GT = mGT,
+  begin = 1,
+  end = 27,
+  methods = "TD",
+  nsim = 100
+)
+```
+
+```{r plot R0 ebola, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="Estimated value of $R_t$ for the incidence data of ebola for Sierra Leone 2014."}
+plot(out$estimates$TD)
+```
+
+## Comparison of different epidemiological parameters
+
+The `epiparameter` database stores information on several delay distributions. Parameters for a single delay distribution can be extracted using `epidist()`, but for comparison of all data on a specific pathogen `pathogen_summary()` can be used.
+
+The incubation period and serial interval can be compared for Monkeypox.
+
+```{r, compare monkeyox}
+epidist(pathogen = "monkeypox", delay_dist = "incubation")
+epidist(pathogen = "monkeypox", delay_dist = "serial_interval")
+```
+
+```{r, compare monkeypox tbl}
+pathogen_summary(pathogen = "monkeypox")
+```
+
+Comparison of incubation period, serial interval and onset to hospital admission for ebola.
+
+```{r, compare ebola}
+pathogen_summary(pathogen = "ebola")
+```
+
+## Plotting
+
+The default plotting range for time since infection is from zero to ten days. This can be altered by specifying the `day_range` argument when plotting an `epidist` object.
+
+```{r plotting range epidist, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+plot(sars_cov_incub, day_range = 1:20)
+```
+
+## Planned development for `epiparameter`
+
+-   Currently there is not a function in `epiparameter` convert between the parameters of the Weibull distribution and the mean and standard deviation. This function will come in a future version of the package.
+
+- There is often uncertainty in the estimates of mean, median and percentiles of a parametric distribution, such as the lognormal (e.g. @lessler_incubation_2009). Currently, `epiparameter` does not handle this uncertainty, but future versions will incorporate this and allow the uncertainty to be propagated to tools that use the delay distributions. For example, `EpiEstim` can also estimate the reproduction number when there is uncertainty in the serial interval (see example below), in a future version of `epiparameter` the uncertainty in delay distributions, including serial interval, will be included in the database and will be available to use in these calculations.
+
+```{r, epiestim uncertain SI}
+data("Flu2009")
+
+Rt <- estimate_R(
+  incid = Flu2009$incidence,
+  method = "uncertain_si",
+  config = make_config(list(
+    mean_si = 2.6,
+    std_mean_si = 1,
+    min_mean_si = 1,
+    max_mean_si = 4.2,
+    std_si = 1.5,
+    std_std_si = 0.5,
+    min_std_si = 0.5,
+    max_std_si = 2.5
+  ))
+)
+```
+
+## Contributing to library of delay distributions {#contributing}
+
+If you would like to contribute to the different delay distributions stored in the `epiparameter` package, you can access the [google sheet](https://docs.google.com/spreadsheets/d/1VzC8NFHSQYPKsiDnxA7gDsm4cVr79outKQZJP8cC7Ro/edit?usp=sharing) and add your data.
+
+Notes on the the spreadsheet:
+
+-   We are only interested in studies that report the distribution fitted to the data. For example, if only the mean and standard deviation are reported from an unknown distribution, the parameters of the distribution cannot be inferred.
+
+-   Shape and scale columns are the parameters of the gamma distribution, while meanlog and sdlog columns are the parameters of the lognormal distribution. In some cases these values will not be reported in the study but can be extracted using the `epiparameter` function `extract_param()` using either reported percentiles or median and range (see [extraction section](#extraction))
+
+-   The extracted column refers to whether the distribution parameters are explicitly stated in the paper, in which case the extracted column should be "no", or are extracted from summary statistics using function in the package, in which case the extracted column is "yes"
+
+-   Discretised is to indicate whether the study fitted a discrete distribution
+
+-   Phase_bias means the study adjusted for a either a rising or falling epidemic, which can bias incubation period estimates. Most studies will not adjust for this bias.
+
+If fields are not known from a study, either put "NA" or "not yet checked". We are also happy to receive papers which report these delay distributions and can add them to the database ourselves.
+
+## References

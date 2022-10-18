@@ -1,9 +1,11 @@
 #' List distributions
 #'
 #' List distributions included in package
-#' @param delay_dist A \code{character} defining parameter to be listed:
-#' "incubation", "onset_to_admission" or "onset_to_death"
-#' @param parameters A \code{logical} defining whether to show parameter values
+#' @param delay_dist A character defining parameter to be listed:
+#' `"incubation"`, `"onset_to_admission"`, `"onset_to_death"`, or
+#' `"serial_interval"`
+#' @param parameters A logical defining whether to show parameter values,
+#' default is `FALSE`
 #' @keywords distributions
 #' @author Adam Kucharski
 #' @export
@@ -22,14 +24,14 @@
 #' # distribution) the `parameters` argument can be set to `TRUE`
 #' list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
 
-list_distributions <- function(delay_dist = "incubation", parameters = FALSE) {
+list_distributions <- function(
+    delay_dist = c("incubation",
+                   "onset_to_admission",
+                   "onset_to_death",
+                   "serial_interval"),
+    parameters = FALSE) {
 
-  type_id <- NULL # remove global variable note
-  pathogen_id <- NULL # remove global variable note
-  study_id <- NULL # remove global variable note
-  year <- NULL # remove global variable note
-  size <- NULL # remove global variable note
-  distribution <- NULL # remove global variable note
+  delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
 
   # Extract relevant values
   show_values <- utils::read.csv(system.file(
@@ -37,14 +39,19 @@ list_distributions <- function(delay_dist = "incubation", parameters = FALSE) {
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
-  )) |> dplyr::filter(type_id == delay_dist)
+  ))
+
+  # filter by delay distribution
+  show_values <- show_values[show_values$type_id == delay_dist, ]
 
   if (parameters == TRUE) {
     output <- show_values
   }
   if (parameters == FALSE) {
-    output <- show_values  |>
-      dplyr::select(pathogen_id, study_id, year, size, distribution)
+    # return only the important columns
+    output <- show_values[, c(
+      "pathogen_id", "study_id", "year", "size", "distribution"
+    )]
   }
   output
 }

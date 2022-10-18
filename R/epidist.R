@@ -48,10 +48,24 @@
 #' epidist(pathogen = "ebola", delay_dist = "onset_to_admission")
 epidist  <- function(pathogen, delay_dist, study = NULL) {
 
-  pathogen_id <- NULL # remove global variable note # change to snake_case
-  type_id <- NULL # remove global variable note
-  size <- NULL # remove global variable note
-  study_id <- NULL # remove global variable note
+  pathogen <- match.arg(
+    arg = pathogen,
+    choices = c(
+      "adenovirus", "ebola", "human_CoV", "influenza_A_seasonal",
+      "influenza_B_seasonal", "influenza_H1N1p", "influenza_H7N9", "marburg",
+      "measles", "MERS_CoV", "parainfluenza", "rhinovirus", "RSV", "SARS_CoV",
+      "SARS_CoV_2_wildtype", "monkeypox"
+    ),
+    several.ok = FALSE
+  )
+
+  delay_dist <- match.arg(
+    arg = delay_dist,
+    choices = c(
+      "incubation", "onset_to_admission", "onset_to_death", "serial_interval"
+    ),
+    several.ok = FALSE
+  )
 
   # Extract pathogen and parameter type
   pick_path <- utils::read.csv(file = system.file(
@@ -59,7 +73,11 @@ epidist  <- function(pathogen, delay_dist, study = NULL) {
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
-    )) |> dplyr::filter(pathogen_id == pathogen & type_id == delay_dist)
+  ))
+
+  # filter based on pathogen and delay distribution
+  pick_path <- pick_path[pick_path$pathogen_id == pathogen, ]
+  pick_path <- pick_path[pick_path$type_id == delay_dist, ]
 
   if (nrow(pick_path) == 0) {
     stop("Need to select pathogen and distribution in the dataset")
@@ -67,10 +85,10 @@ epidist  <- function(pathogen, delay_dist, study = NULL) {
 
   # Extract study or default to largest sample size
   if (is.null(study)) {
-    pick_study <- pick_path |> dplyr::filter(size == max(size))
+    pick_study <- pick_path[pick_path$size == max(pick_path$size), ]
   }
   if (!is.null(study)) {
-    pick_study <- pick_path |> dplyr::filter(study_id == study)
+    pick_study <- pick_path[pick_path$study_id == study, ]
   }
 
   # Define distribution
@@ -136,4 +154,64 @@ print.epidist <- function(x, ...) {
   cat(sprintf("  %s: %s\n", names(p_vals), as.character(p_vals)))
 
   invisible(x)
+}
+
+#' Plots an `epidist` object by displaying the probability mass function (PMF),
+#' probability density function (PDF) and cumulative distribution function (CDF)
+#'
+#' @param x An `epidist` object
+#' @param day_range A vector with the sequence of days to be plotted on the
+#' x-axis of the distribution
+#' @param ... Allow other graphical parameters
+#'
+#' @author Joshua W. Lambert
+#' @export
+#'
+#' @examples
+#' ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
+#' plot(ebola_si)
+plot.epidist <- function(x, day_range = 0:10, ...) {
+
+  oldpar <- graphics::par(no.readonly = TRUE)
+  on.exit(graphics::par(oldpar))
+
+  # set plotting parameters to plot on a 2x2 grid
+  graphics::par(mfrow = c(2, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))
+
+  # plot PMF
+  plot(
+    day_range,
+    x$pmf(day_range),
+    ylab = "",
+    xlab = "time since infection",
+    type = "p",
+    pch = 16,
+    main = "Probability Mass Function"
+  )
+
+  # plot PDF
+  plot(
+    day_range,
+    x$pdf(day_range),
+    ylab = "",
+    xlab = "time since infection",
+    type = "p",
+    pch = 16,
+    main = "Probability Density Function"
+  )
+
+  # plot CDF
+  plot(
+    day_range,
+    x$cdf(day_range),
+    ylab = "",
+    xlab = "time since infection",
+    type = "p",
+    pch = 16,
+    ylim = c(0, 1),
+    main = "Cumulative Distribution Function"
+  )
+
+  # add a plot title
+  graphics::title("Distributions", outer = TRUE, line = -1)
 }
