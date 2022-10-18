@@ -365,35 +365,8 @@ out <- estimate.R(
 )
 ```
 
-```{r plot R0, eval=FALSE}
-plot(out)
-```
-
-```{r plotting function for R0, echo=FALSE, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="Estimated value of $R_t$ for the incidence data of Spanish flu for Germany 1918-1919."}
-
-plot_R0 <- function(out) {
-  plot(
-    as.Date(names(out$estimates$TD$R)), 
-    out$estimates$TD$R, 
-    ylim = c(0, max(out$estimates$TD$conf.int)), 
-    type = "l", 
-    xlab = "Date", 
-    ylab = "Rt"
-  )
-  
-  polygon(
-    x = c(rev(as.Date(rownames(out$estimates$TD$conf.int))), 
-          as.Date(rownames(out$estimates$TD$conf.int))), 
-    y = c(rev(as.vector(out$estimates$TD$conf.int["lower"])$lower),
-          as.vector(out$estimates$TD$conf.int["upper"])$upper), 
-    col = "grey80", 
-    border = NA
-  )
-  
-  lines(as.Date(names(out$estimates$TD$R)), out$estimates$TD$R)
-}
-
-plot_R0(out)
+```{r plot R0, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="Estimated value of $R_t$ for the incidence data of Spanish flu for Germany 1918-1919."}
+plot(out$estimates$TD)
 ```
 
 Using the same method to calculate $R_t$ but this time using the data on the outbreak of ebola from Sierra Leone from 2014 and using the a serial interval from `epiparameter` we can again estimate $R_t$.
