@@ -286,7 +286,7 @@ plot(out)
 
 In the example above the generation time and incubation period used are stored in the `EpiNow2` package. However, data on these distributions is limited and a more comprehensive library of distributions would provide a more robust data source to make calculations of $R_t$. This is where `epiparameter` comes in. In the example below the distributions from `epiparameter` are used and the parameters of the delay distributions need to be extracted and put into list format for `epinow()`. For this example we use 0.1 as a the value of standard deviation for the mean and standard deviation of the distribution parameters as this information is not currently available in `epiparameter`.
 
-```{r, epinow2 with epiparameter, eval=FALSE}
+```{r, epinow2 with epiparameter setup}
 incubation_period <- epidist(
   pathogen = "SARS_CoV_2_wildtype",
   delay_dist = "incubation"
@@ -306,16 +306,16 @@ reporting_delay <- list(
 
 reported_cases <- example_confirmed[1:40]
 
-# use lnorm_logmeansd2meansd() to convert the parameters of the lognormal to the
+# use lnorm_musigma2meansd() to convert the parameters of the lognormal to the
 # mean (expectation) and standard deviation
-serial_interval_mean_sd <- lnorm_logmeansd2meansd(
-  meanlog = serial_interval$param[["meanlog"]],
-  sdlog = serial_interval$param[["sdlog"]]
+serial_interval_mean_sd <- lnorm_musigma2meansd(
+  mu = serial_interval$param[["meanlog"]],
+  sigma = serial_interval$param[["sdlog"]]
 )
 
-incubation_period_mean_sd <- lnorm_logmeansd2meansd(
-  meanlog = incubation_period$param[["meanlog"]],
-  sdlog = incubation_period$param[["sdlog"]]
+incubation_period_mean_sd <- lnorm_musigma2meansd(
+  mu = incubation_period$param[["meanlog"]],
+  sigma = incubation_period$param[["sdlog"]]
 )
 
 # for now serial interval is used in place of generation time
@@ -334,7 +334,9 @@ incubation_period_list <- list(
   sd_sd = 0.1,
   max = 20
 )
+```
 
+```{r, epinow2 with epiparameter analysis, eval=FALSE}
 # estimate Rt by date of infection
 out <- epinow(
   reported_cases = reported_cases,
