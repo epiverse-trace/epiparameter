@@ -214,38 +214,4 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
 
   # add a plot title
   graphics::title("Distributions", outer = TRUE, line = -1)
-
-  # get full name of distribution depending on epidist object
-  if (x$dist == "lnorm") {
-    dist <- "Lognormal"
-  } else if (x$dist == "gamma") {
-    dist <- "Gamma"
-  } else if (x$dist == "weibull") {
-    dist <- "Weibull"
-  }
-
-  # get full name of delay distribution depending on epidist object
-  if (x$delay_dist == "incubation") {
-    delay_dist <- "incubation period"
-  } else if (x$delay_dist == "onset_to_admission") {
-    delay_dist <- "onset to admission"
-  } else if (x$delay_dist == "onset_to_death") {
-    delay_dist <- "onset to death"
-  } else if (x$delay_dist == "serial_interval") {
-    delay_dist <- "serial interval"
-  }
-
-  # add text to plot
-  graphics::mtext(
-    text = paste(
-      "Delay distribution for", x$pathogen, "\n",
-      dist, "distribution for", delay_dist, "\n",
-      "Distribution parameters", x$param[1], x$param[2]
-    ),
-    side = 3,
-    at = length(day_range),
-    adj = 0,
-    line = -2,
-    cex = 0.8
-  )
 }
