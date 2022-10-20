@@ -452,7 +452,7 @@ If you would like to contribute to the different delay distributions stored in t
 
 Notes on the the spreadsheet:
 
--   We are only interested in studies that report the distribution fitted to the data. For example, if only the mean and standard deviation are reported from an unknown distribution, the parameters of the distribution cannot be inferred.
+- Most studies will report the distribution(s) they fitted to the data. In the case that the study did not report the distribution of the reported parameters or summary statistics (mean and standard deviation of the distribution) the distribution can be assumed (e.g. by looking at the shape of the distribution from figures in the paper). When a distribution is being assumed and not explicitly stated please add this assumption to the notes section of the spreadsheet.  We are only interested in studies that report the distribution fitted to the data. This will ensure that if this data is used in another application the user can be alerted that the distribution is assumed and not known with certainty.
 
 -   Shape and scale columns are the parameters of the gamma distribution, while meanlog and sdlog columns are the parameters of the lognormal distribution. In some cases these values will not be reported in the study but can be extracted using the `epiparameter` function `extract_param()` using either reported percentiles or median and range (see [extraction section](#extraction))
 
