@@ -1,29 +1,40 @@
-﻿pathogen_id,type_id,study_id,year,size,distribution,mean,sd,median,quantile_75,quantile_95,shape,scale,meanlog,sdlog,extracted,discretised,phase_bias_adjusted,notes,PMID,DOI,added_by
-adenovirus,incubation,Lessler_etal,2009,14,lnorm,NA,NA,5.6,6.5,NA,NA,NA,1.722764351,0.220967322,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-ebola,incubation,WHO_team,2014,500,gamma,NA,NA,NA,NA,NA,5.53404,0.921569,NA,NA,NA,NA,NA,NA,25564903,10.1056/NEJMc1413884,Adam Kucharski
-human_CoV,incubation,Lessler_etal,2009,13,lnorm,NA,NA,3.2,3.5,NA,NA,NA,1.163146247,0.132870468,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-influenza_A_seasonal,incubation,Lessler_etal,2009,122,lnorm,NA,NA,1.4,1.9,NA,NA,NA,0.336470843,0.452763354,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-influenza_B_seasonal,incubation,Lessler_etal,2009,76,lnorm,NA,NA,0.6,0.7,NA,NA,NA,-0.510828006,0.228551515,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-influenza_H1N1p,incubation,Ghani_etal,2009,16,gamma,NA,NA,NA,NA,NA,8.40278,0.654545,NA,NA,NA,NA,NA,NA,20029668,10.1371/currents.RRN1130,Adam Kucharski
-influenza_H1N1p,incubation,Tuite_etal,2010,316,lnorm,NA,NA,NA,NA,NA,NA,NA,1.42947,0.241453,NA,NA,NA,NA,19959592,10.1503/cmaj.091807,Adam Kucharski
-influenza_H7N9,incubation,Cowling_etal,2013,32,gamma,NA,NA,NA,NA,NA,4.93,0.63,NA,NA,NA,NA,NA,NA,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
-marburg,incubation,Martini_etal,1973,5,gamma,NA,NA,NA,NA,NA,43.2671,0.157163,NA,NA,NA,NA,NA,NA,4207635,10.1136/pgmj.49.574.542,Adam Kucharski
-measles,incubation,Lessler_etal,2009,56,lnorm,NA,NA,12.5,14.4,NA,NA,NA,2.525726032,0.209795153,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-MERS_CoV,incubation,Cauchemez_et_al,2014,7,lnorm,NA,NA,NA,NA,NA,NA,NA,1.70475,1.70475,NA,NA,NA,NA,24239323,10.1016/S1473-3099(13)70304-9,Adam Kucharski
-MERS_CoV,incubation,Assiri_etal,2013,23,lnorm,NA,NA,NA,NA,NA,NA,NA,1.54304,0.459607,NA,NA,NA,NA,23782161,10.1056/NEJMoa1306742,Adam Kucharski
-parainfluenza,incubation,Lessler_etal,2009,11,lnorm,NA,NA,2.6,3.2,NA,NA,NA,0.955512271,0.307852764,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-rhinovirus,incubation,Lessler_etal,2009,28,lnorm,NA,NA,1.9,2.7,NA,NA,NA,0.64185289,0.520987175,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-RSV,incubation,Lessler_etal,2009,24,lnorm,NA,NA,4.4,5.1,NA,NA,NA,1.481602055,0.218892675,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-SARS_CoV,incubation,Donnelly_etal,2003,57,gamma,4.85,3.49,NA,NA,NA,2.43121,2.62009,NA,NA,yes,no,no,NA,12781533,10.1016/S0140-6736(03)13410-1,Adam Kucharski
-SARS_CoV,incubation,Lessler_etal,2009,157,lnorm,NA,NA,4,5.9,NA,NA,NA,1.3862935,0.5762278,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-SARS_CoV_2_wildtype,incubation,McAloon_etal,2020,1269,lnorm,NA,NA,NA,NA,NA,NA,NA,1.63,0.5,no,no,no,NA,32801208,10.1136/bmjopen-2020-039652,Adam Kucharski
-monkeypox,incubation,Nolen,2016,16,lnorm,9.6,NA,9,NA,NA,NA,NA,2.1783545,0.3360684,yes,no,NA,"Extracted taking c(6,13) as central 75% range",27191380,10.3201/eid2206.150579,Seb Funk
-ebola,onset_to_admission,WHO_team,2014,500,gamma,NA,NA,NA,NA,NA,5.53404,0.921569,NA,NA,yes,NA,NA,NA,25564903,10.1056/NEJMc1413884,Adam Kucharski
-influenza_H1N1p,onset_to_admission,Tuite_etal,2010,316,lnorm,NA,NA,NA,NA,NA,NA,NA,2.17531,0.330773,NA,NA,NA,NA,19959592,10.1503/cmaj.091807,Adam Kucharski
-influenza_H7N9,onset_to_admission,Cowling_etal,2013,32,gamma,NA,NA,NA,NA,NA,9.65,0.45,NA,NA,NA,NA,NA,NA,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
-MERS_CoV,onset_to_admission,Assiri_etal,2013,23,lnorm,NA,NA,NA,NA,NA,NA,NA,7,0.75,NA,NA,NA,NA,23782161,10.1056/NEJMoa1306742,Adam Kucharski
-SARS_CoV,onset_to_admission,Donnelly_etal,2003,57,gamma,NA,NA,NA,NA,NA,1.929655,2.513402,NA,NA,NA,NA,NA,Feb-26 to Mar-25,12781533,10.1016/S0140-6736(03)13410-1,Adam Kucharski
-SARS_CoV_2_wildtype,onset_to_death,Linton_etal,2020,23,lnorm,NA,NA,NA,NA,NA,NA,NA,2.863179,0.5338606,no,NA,NA,NA,32079150,10.3390/jcm9020538,Adam Kucharski
-ebola,serial_interval,WHO_response_team,2014,92,gamma,NA,NA,NA,NA,NA,2.706555671,5.652941176,NA,NA,yes,NA,NA,NA,25564903,10.1056/NEJMc1413884,Adam Kucharski
-SARS_CoV_2_wildtype,serial_interval,Ferretti_etal,2020,191,lnorm,NA,NA,NA,NA,NA,NA,NA,1.386294361,0.697059795,no,NA,NA,20/1/2020-21/3/2020,32234805,10.1126/science.abb6936,Rachael Pung
-monkeypox,serial_interval,UKHSA,2022,336,lnorm,NA,NA,NA,NA,NA,NA,NA,2.4191716,0.3286863,yes,no,NA,"Extracted taking c(5.9,21.4) as 95% CI",NA,https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1,Seb Funk
+pathogen_id,type_id,study_id,year,size,distribution,mean,sd,quantile_025,median,quantile_75,quantile_875,quantile_95,quantile_975,lower_range,upper_range,shape,scale,meanlog,sdlog,extracted,discretised,phase_bias_adjusted,notes,PMID,DOI,added_by
+adenovirus,incubation,Lessler_etal,2009,14,lnorm,NA,NA,NA,5.6,6.5,NA,NA,NA,NA,NA,NA,NA,1.72276435,0.22096732,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+ebola,serial_interval,WHO_response_team,2014,92,gamma,15.3,9.3,NA,NA,NA,NA,NA,NA,NA,NA,2.706556,5.652941,NA,NA,yes,NA,NA,NA,25564903,10.1056/nejmoa1411100,Adam Kucharski
+ebola,incubation,WHO_team,2014,500,gamma,9.1,7.3,NA,NA,NA,NA,NA,NA,NA,NA,1.55395,5.856044,NA,NA,yes,NA,NA,Extracted using single exposures,25564903,10.1056/nejmoa1411100,Adam Kucharski
+ebola,onset_to_admission,WHO_team,2014,500,gamma,5,4.7,NA,NA,NA,NA,NA,NA,NA,NA,1.131734,4.418,NA,NA,yes,NA,NA,NA,25564903,10.1056/nejmoa1411100,Adam Kucharski
+ebola,onset_to_death,WHO_team,2014,500,gamma,7.5,6.8,NA,NA,NA,NA,NA,NA,NA,NA,1.216479,6.165333,NA,NA,yes,NA,NA,NA,25564903,10.1056/nejmoa1411100,Adam Kucharski
+human_CoV,incubation,Lessler_etal,2009,13,lnorm,NA,NA,NA,3.2,3.5,NA,NA,NA,NA,NA,NA,NA,1.16314625,0.13287047,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+influenza_A_seasonal,incubation,Lessler_etal,2009,122,lnorm,NA,NA,NA,1.4,1.9,NA,NA,NA,NA,NA,NA,NA,0.33647084,0.45276335,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+influenza_B_seasonal,incubation,Lessler_etal,2009,76,lnorm,NA,NA,NA,0.6,0.7,NA,NA,NA,NA,NA,NA,NA,-0.510828,0.22855152,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+influenza_H1N1p,incubation,Ghani_etal,2009,16,gamma,2.05,0.4898979486,NA,NA,NA,NA,NA,NA,NA,NA,17.50312,0.117122,NA,NA,yes,NA,NA,NA,20029668,10.1371/currents.RRN1130,Adam Kucharski
+influenza_H1N1p,incubation,Tuite_etal,2010,316,lnorm,4.3,NA,NA,4,NA,NA,NA,6.6,NA,NA,NA,NA,1.3862944,0.2554986,yes,NA,NA,NA,19959592,10.1503/cmaj.091807,Adam Kucharski
+influenza_H1N1p,onset_to_admission,Jain_etal,2009,272,lnorm,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,1.098612,2.91158,yes,NA,NA,"Extracted using range 0 to 18, lognormal assumed",19815859,10.1056/NEJMoa0906695,Adam Kucharski
+influenza_H7N9,incubation,Cowling_etal,2013,32,weibull,3.1,1.4,0.6870932,2.8879734,3.8888805,NA,5.4892366,5.9896524,NA,NA,2.309241,3.375941,NA,NA,yes,no,no,extraction used quantile_025 and quantile_75,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
+influenza_H7N9,onset_to_admission,Cowling_etal,2013,123,gamma,NA,NA,0.6172617,4.2,6.1702226,NA,9.6223016,10.8230575,NA,NA,2.138094,2.153314,NA,NA,yes,no,no,extraction used quantile_025 and quantile_75,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
+influenza_H5N1,incubation,Cowling_etal,2013,27,weibull,3.3,1.5,0.6870932,3.0883665,4.2885076,NA,5.9896524,6.5896809,NA,NA,2.185908,3.693267,NA,NA,yes,no,no,extraction used quantile_025 and quantile_75,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
+influenza_H5N1,onset_to_admission,Cowling_etal,2013,43,weibull,NA,NA,1.367829,4.9,6.770349,NA,10.222554,11.423436,NA,NA,2.373396,6.438843,NA,NA,yes,no,no,extraction used quantile_025 and quantile_95,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
+marburg,incubation,Pavlin,2014,18,gamma,NA,NA,NA,7,NA,NA,NA,NA,2,13,1.9461377,0.5324265,,,yes,no,no,"gamma assumed, range 2 to 13",25495697,10.1186/1756-0500-7-906        ,Adam Kucharski
+measles,incubation,Lessler_etal,2009,56,lnorm,NA,NA,NA,12.5,14.4,NA,17.7,NA,NA,NA,NA,NA,2.52572603,0.20979515,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+MERS_CoV,incubation,Assiri_etal,2013,23,lnorm,NA,NA,NA,5.2,NA,NA,12.4,14.7,NA,NA,NA,NA,1.6486586,0.5283368,yes,NA,NA,extracted using quantile_5 and quantile_975,23782161,10.1056/NEJMoa1306742,Adam Kucharski
+MERS_CoV,onset_to_admission,Assiri_etal,2013,23,lnorm,NA,NA,NA,5,NA,NA,NA,NA,1,10,NA,NA,1.6089493,0.6103889,yes,NA,NA,NA,23782161,10.1056/NEJMoa1306742,Adam Kucharski
+MERS_CoV,serial_interval,Assiri_etal,2013,23,lnorm,NA,NA,NA,7.6,NA,NA,19.4,23.1,NA,NA,NA,NA,2.02,0.56,yes,NA,NA,NA,23782161,10.1056/NEJMoa1306742,Adam Kucharski
+MERS_CoV,incubation,Cauchemez_et_al,2014,7,lnorm,5.5,2.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1.6108401,0.4333775,yes,NA,NA,NA,24239323,10.1016/S1473-3099(13)70304-9,Adam Kucharski
+monkeypox,incubation,Nolen,2016,16,lnorm,9.6,NA,NA,9,NA,13,NA,NA,NA,NA,NA,NA,2.1783545,0.3360684,yes,no,NA,"Extracted taking c(6,13) as central 75% range",27191380,10.3201/eid2206.150579,Seb Funk
+monkeypox,incubation,Thornhill_etal,2022,23,lnorm,NA,NA,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,yes,no,no,"Extracted from range 3 to 21, lognormal assumed",35866746,10.1056/NEJMoa2207323,
+monkeypox,serial_interval,UKHSA,2022,17,gamma,9.8,8.3,NA,NA,NA,NA,NA,NA,NA,NA,1.394107,7.029592,NA,NA,yes,no,yes,"Extracted from mean and SD, assuming gamma",NA,https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1,Seb Funk
+parainfluenza,incubation,Lessler_etal,2009,11,lnorm,NA,NA,NA,2.6,3.2,NA,NA,NA,NA,NA,NA,NA,0.95551227,0.30785276,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+rhinovirus,incubation,Lessler_etal,2009,28,lnorm,NA,NA,NA,1.9,2.7,NA,NA,NA,NA,NA,NA,NA,0.64185289,0.52098718,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+RSV,incubation,Lessler_etal,2009,24,lnorm,NA,NA,NA,4.4,5.1,NA,NA,NA,NA,NA,NA,NA,1.48160206,0.21889268,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+SARS_CoV,incubation,Donnelly_etal,2003,57,gamma,6.4,4.08,NA,NA,NA,NA,14.22,NA,NA,NA,2.43121,2.62009,NA,NA,yes,no,no,NA,12781533,10.1016/S0140-6736(03)13410-1,Adam Kucharski
+SARS_CoV,onset_to_admission,Donnelly_etal,2003,57,gamma,4.85,3.49,NA,NA,NA,NA,NA,NA,NA,NA,1.929655,2.513402,NA,NA,yes,NA,NA,Feb-26 to Mar-25,12781533,10.1016/S0140-6736(03)13410-1,Adam Kucharski
+SARS_CoV,incubation,Lessler_etal,2009,157,lnorm,NA,NA,NA,4,5.9,NA,NA,NA,NA,NA,NA,NA,1.3862935,0.5762278,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+SARS_CoV_2_wildtype,generation_time,Ferretti_etal,2020,191,weibull,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2.826,5.665,yes,no,yes,20/1/2020-21/3/2020,32234805,10.1126/science.abb6936,Rachael Pung
+SARS_CoV_2_wildtype,onset_to_admission,Linton_etal,2020,155,lnorm,9.7,35.2,NA,2.6,NA,NA,35.1,NA,NA,NA,NA,NA,0.9466094,1.6281993,yes,no,yes,For living patients,32079150,10.3390/jcm9020538,Adam Kucharski
+SARS_CoV_2_wildtype,onset_to_death,Linton_etal,2020,39,lnorm,20.2,11.6,NA,17.1,NA,NA,39.9,NA,NA,NA,NA,NA,2.863179,0.5338606,yes,no,yes,NA,,,
+SARS_CoV_2_wildtype,incubation,McAloon_etal,2020,1269,lnorm,NA,NA,NA,5.1,NA,NA,11.7,NA,NA,NA,NA,NA,1.63,0.5,no,no,no,NA,32801208,10.1136/bmjopen-2020-039652,Adam Kucharski
+adenovirus,generation_time,Guo_etal,2020,375,weibull,NA,NA,NA,7.3,NA,NA,NA,NA,NA,NA,,,NA,NA,,no,no,Extracted using the parametric distribution,32479490,10.1371/journal.pone.0232948,Carmen Tamayo
+influenza_H1N1p,Serial_interval,Levy_etal,2013,125,lnorm,3.08,1.39,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,1.032242,0.4305527,yes,not yet checked,not yet checked,NA,23629874,10.1093%2Faje%2Fkws402,Carmen Tamayo
+influenza_A_seasonal,Serial_interval,Levy_etal,2013,111,lnorm,3.48,1.88,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,1.118995,0.5060376,yes,not yet checked,not yet checked,Extracted from seasonal A H3N2,23629874,10.1093%2Faje%2Fkws403,Carmen Tamayo
+influenza_B_seasonal,Serial_interval,Levy_etal,2013,44,lnorm,3.72,1.95,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,1.192337,0.4927197,yes,not yet checked,not yet checked,NA,23629874,10.1093%2Faje%2Fkws404,Carmen Tamayo
+RSV,Serial_interval,Vink_etal,2014,59,lnorm,7.5,1.44,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1.996803,0.190265,yes,not yet checked,not yet checked,NA,25294601,10.1093/aje/kwu209,Carmen Tamayo
