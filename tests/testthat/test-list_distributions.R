@@ -20,7 +20,7 @@ test_that("list_distributions works for incubation, params = TRUE", {
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
       "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
   )
   expect_snapshot(
@@ -56,7 +56,7 @@ test_that("list_distributions works for onset_to_admission, params = TRUE", {
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
       "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
   )
   expect_snapshot(
@@ -92,7 +92,7 @@ test_that("list_distributions works for onset_to_death, params = TRUE", {
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
       "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
   )
   expect_snapshot(
@@ -128,7 +128,7 @@ test_that("list_distributions works for serial_interval, params = TRUE", {
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
       "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
   )
   expect_snapshot(
@@ -164,7 +164,7 @@ test_that("list_distributions works for generation_time, params = TRUE", {
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
       "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
   )
   expect_snapshot(

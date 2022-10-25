@@ -21,7 +21,7 @@ pathogen_summary <- function(pathogen) {
     package = "epiparameter",
     mustWork = TRUE
   ))
-  
+
   # match pathogen names against data
   pathogen <- match.arg(
     arg = pathogen,

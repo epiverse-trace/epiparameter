@@ -47,14 +47,14 @@
 #' # example using onset to admission as the metric
 #' epidist(pathogen = "ebola", delay_dist = "onset_to_death")
 epidist  <- function(
-    pathogen, 
-    delay_dist = c("incubation", 
-                   "onset_to_admission", 
-                   "onset_to_death", 
+    pathogen,
+    delay_dist = c("incubation",
+                   "onset_to_admission",
+                   "onset_to_death",
                    "serial_interval",
-                   "generation_time"), 
+                   "generation_time"),
     study = NULL) {
-  
+
   # read the data to get possible pathogen names
   params <- utils::read.csv(system.file(
     "extdata",
@@ -62,7 +62,7 @@ epidist  <- function(
     package = "epiparameter",
     mustWork = TRUE
   ))
-  
+
   # match pathogen names against data
   pathogen <- match.arg(
     arg = pathogen,
