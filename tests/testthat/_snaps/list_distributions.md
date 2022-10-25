@@ -5,24 +5,26 @@
     Output
                   pathogen_id        study_id year size distribution
       1            adenovirus    Lessler_etal 2009   14        lnorm
-      2                 ebola        WHO_team 2014  500        gamma
-      3             human_CoV    Lessler_etal 2009   13        lnorm
-      4  influenza_A_seasonal    Lessler_etal 2009  122        lnorm
-      5  influenza_B_seasonal    Lessler_etal 2009   76        lnorm
-      6       influenza_H1N1p      Ghani_etal 2009   16        gamma
-      7       influenza_H1N1p      Tuite_etal 2010  316        lnorm
-      8        influenza_H7N9    Cowling_etal 2013   32        gamma
-      9               marburg    Martini_etal 1973    5        gamma
-      10              measles    Lessler_etal 2009   56        lnorm
-      11             MERS_CoV Cauchemez_et_al 2014    7        lnorm
-      12             MERS_CoV     Assiri_etal 2013   23        lnorm
-      13        parainfluenza    Lessler_etal 2009   11        lnorm
-      14           rhinovirus    Lessler_etal 2009   28        lnorm
-      15                  RSV    Lessler_etal 2009   24        lnorm
-      16             SARS_CoV   Donnelly_etal 2003   57        gamma
-      17             SARS_CoV    Lessler_etal 2009  157        lnorm
-      18  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm
-      19            monkeypox           Nolen 2016   16        lnorm
+      3                 ebola        WHO_team 2014  500        gamma
+      6             human_CoV    Lessler_etal 2009   13        lnorm
+      7  influenza_A_seasonal    Lessler_etal 2009  122        lnorm
+      8  influenza_B_seasonal    Lessler_etal 2009   76        lnorm
+      9       influenza_H1N1p      Ghani_etal 2009   16        gamma
+      10      influenza_H1N1p      Tuite_etal 2010  316        lnorm
+      12       influenza_H7N9    Cowling_etal 2013   32      weibull
+      14       influenza_H5N1    Cowling_etal 2013   27      weibull
+      16              marburg          Pavlin 2014   18        gamma
+      17              measles    Lessler_etal 2009   56        lnorm
+      18             MERS_CoV     Assiri_etal 2013   23        lnorm
+      21             MERS_CoV Cauchemez_et_al 2014    7        lnorm
+      22            monkeypox           Nolen 2016   16        lnorm
+      23            monkeypox  Thornhill_etal 2022   23        lnorm
+      25        parainfluenza    Lessler_etal 2009   11        lnorm
+      26           rhinovirus    Lessler_etal 2009   28        lnorm
+      27                  RSV    Lessler_etal 2009   24        lnorm
+      28             SARS_CoV   Donnelly_etal 2003   57        gamma
+      30             SARS_CoV    Lessler_etal 2009  157        lnorm
+      34  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm
 
 # list_distributions works for incubation, params = TRUE
 
@@ -31,146 +33,204 @@
     Output
                   pathogen_id    type_id        study_id year size distribution mean
       1            adenovirus incubation    Lessler_etal 2009   14        lnorm   NA
-      2                 ebola incubation        WHO_team 2014  500        gamma   NA
-      3             human_CoV incubation    Lessler_etal 2009   13        lnorm   NA
-      4  influenza_A_seasonal incubation    Lessler_etal 2009  122        lnorm   NA
-      5  influenza_B_seasonal incubation    Lessler_etal 2009   76        lnorm   NA
-      6       influenza_H1N1p incubation      Ghani_etal 2009   16        gamma   NA
-      7       influenza_H1N1p incubation      Tuite_etal 2010  316        lnorm   NA
-      8        influenza_H7N9 incubation    Cowling_etal 2013   32        gamma   NA
-      9               marburg incubation    Martini_etal 1973    5        gamma   NA
-      10              measles incubation    Lessler_etal 2009   56        lnorm   NA
-      11             MERS_CoV incubation Cauchemez_et_al 2014    7        lnorm   NA
-      12             MERS_CoV incubation     Assiri_etal 2013   23        lnorm   NA
-      13        parainfluenza incubation    Lessler_etal 2009   11        lnorm   NA
-      14           rhinovirus incubation    Lessler_etal 2009   28        lnorm   NA
-      15                  RSV incubation    Lessler_etal 2009   24        lnorm   NA
-      16             SARS_CoV incubation   Donnelly_etal 2003   57        gamma 4.85
-      17             SARS_CoV incubation    Lessler_etal 2009  157        lnorm   NA
-      18  SARS_CoV_2_wildtype incubation    McAloon_etal 2020 1269        lnorm   NA
-      19            monkeypox incubation           Nolen 2016   16        lnorm 9.60
-           sd median quantile_75 quantile_95    shape    scale    meanlog     sdlog
-      1    NA    5.6         6.5          NA       NA       NA  1.7227644 0.2209673
-      2    NA     NA          NA          NA  5.53404 0.921569         NA        NA
-      3    NA    3.2         3.5          NA       NA       NA  1.1631462 0.1328705
-      4    NA    1.4         1.9          NA       NA       NA  0.3364708 0.4527634
-      5    NA    0.6         0.7          NA       NA       NA -0.5108280 0.2285515
-      6    NA     NA          NA          NA  8.40278 0.654545         NA        NA
-      7    NA     NA          NA          NA       NA       NA  1.4294700 0.2414530
-      8    NA     NA          NA          NA  4.93000 0.630000         NA        NA
-      9    NA     NA          NA          NA 43.26710 0.157163         NA        NA
-      10   NA   12.5        14.4          NA       NA       NA  2.5257260 0.2097952
-      11   NA     NA          NA          NA       NA       NA  1.7047500 1.7047500
-      12   NA     NA          NA          NA       NA       NA  1.5430400 0.4596070
-      13   NA    2.6         3.2          NA       NA       NA  0.9555123 0.3078528
-      14   NA    1.9         2.7          NA       NA       NA  0.6418529 0.5209872
-      15   NA    4.4         5.1          NA       NA       NA  1.4816021 0.2188927
-      16 3.49     NA          NA          NA  2.43121 2.620090         NA        NA
-      17   NA    4.0         5.9          NA       NA       NA  1.3862935 0.5762278
-      18   NA     NA          NA          NA       NA       NA  1.6300000 0.5000000
-      19   NA    9.0          NA          NA       NA       NA  2.1783545 0.3360684
-         extracted discretised phase_bias_adjusted
-      1        yes          no                  no
-      2       <NA>        <NA>                <NA>
-      3        yes          no                  no
-      4        yes          no                  no
-      5        yes          no                  no
-      6       <NA>        <NA>                <NA>
-      7       <NA>        <NA>                <NA>
-      8       <NA>        <NA>                <NA>
-      9       <NA>        <NA>                <NA>
-      10       yes          no                  no
-      11      <NA>        <NA>                <NA>
-      12      <NA>        <NA>                <NA>
-      13       yes          no                  no
-      14       yes          no                  no
-      15       yes          no                  no
-      16       yes          no                  no
-      17       yes          no                  no
-      18        no          no                  no
-      19       yes          no                <NA>
-                                                 notes     PMID
-      1                                           <NA> 19393959
-      2                                           <NA> 25564903
-      3                                           <NA> 19393959
-      4                                           <NA> 19393959
-      5                                           <NA> 19393959
-      6                                           <NA> 20029668
-      7                                           <NA> 19959592
-      8                                           <NA> 23803488
-      9                                           <NA>  4207635
-      10                                          <NA> 19393959
-      11                                          <NA> 24239323
-      12                                          <NA> 23782161
-      13                                          <NA> 19393959
-      14                                          <NA> 19393959
-      15                                          <NA> 19393959
-      16                                          <NA> 12781533
-      17                                          <NA> 19393959
-      18                                          <NA> 32801208
-      19 Extracted taking c(6,13) as central 75% range 27191380
-                                   DOI       added_by
-      1  10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      2           10.1056/NEJMc1413884 Adam Kucharski
-      3  10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      4  10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      5  10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      6       10.1371/currents.RRN1130 Adam Kucharski
-      7            10.1503/cmaj.091807 Adam Kucharski
-      8  10.1016/S0140-6736(13)61171-X Adam Kucharski
-      9        10.1136/pgmj.49.574.542 Adam Kucharski
-      10 10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      11 10.1016/S1473-3099(13)70304-9 Adam Kucharski
-      12         10.1056/NEJMoa1306742 Adam Kucharski
-      13 10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      14 10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      15 10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      16 10.1016/S0140-6736(03)13410-1 Adam Kucharski
-      17 10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      18   10.1136/bmjopen-2020-039652 Adam Kucharski
-      19        10.3201/eid2206.150579       Seb Funk
+      3                 ebola incubation        WHO_team 2014  500        gamma 9.10
+      6             human_CoV incubation    Lessler_etal 2009   13        lnorm   NA
+      7  influenza_A_seasonal incubation    Lessler_etal 2009  122        lnorm   NA
+      8  influenza_B_seasonal incubation    Lessler_etal 2009   76        lnorm   NA
+      9       influenza_H1N1p incubation      Ghani_etal 2009   16        gamma 2.05
+      10      influenza_H1N1p incubation      Tuite_etal 2010  316        lnorm 4.30
+      12       influenza_H7N9 incubation    Cowling_etal 2013   32      weibull 3.10
+      14       influenza_H5N1 incubation    Cowling_etal 2013   27      weibull 3.30
+      16              marburg incubation          Pavlin 2014   18        gamma   NA
+      17              measles incubation    Lessler_etal 2009   56        lnorm   NA
+      18             MERS_CoV incubation     Assiri_etal 2013   23        lnorm   NA
+      21             MERS_CoV incubation Cauchemez_et_al 2014    7        lnorm 5.50
+      22            monkeypox incubation           Nolen 2016   16        lnorm 9.60
+      23            monkeypox incubation  Thornhill_etal 2022   23        lnorm   NA
+      25        parainfluenza incubation    Lessler_etal 2009   11        lnorm   NA
+      26           rhinovirus incubation    Lessler_etal 2009   28        lnorm   NA
+      27                  RSV incubation    Lessler_etal 2009   24        lnorm   NA
+      28             SARS_CoV incubation   Donnelly_etal 2003   57        gamma 6.40
+      30             SARS_CoV incubation    Lessler_etal 2009  157        lnorm   NA
+      34  SARS_CoV_2_wildtype incubation    McAloon_etal 2020 1269        lnorm   NA
+                sd quantile_025    median quantile_75 quantile_875 quantile_95
+      1         NA           NA  5.600000    6.500000           NA          NA
+      3  7.3000000           NA        NA          NA           NA          NA
+      6         NA           NA  3.200000    3.500000           NA          NA
+      7         NA           NA  1.400000    1.900000           NA          NA
+      8         NA           NA  0.600000    0.700000           NA          NA
+      9  0.4898979           NA        NA          NA           NA          NA
+      10        NA           NA  4.000000          NA           NA          NA
+      12 1.4000000    0.6870932  2.887973    3.888880           NA    5.489237
+      14 1.5000000    0.6870932  3.088366    4.288508           NA    5.989652
+      16        NA           NA  7.000000          NA           NA          NA
+      17        NA           NA 12.500000   14.400000           NA   17.700000
+      18        NA           NA  5.200000          NA           NA   12.400000
+      21 2.5000000           NA        NA          NA           NA          NA
+      22        NA           NA  9.000000          NA           13          NA
+      23        NA           NA  7.000000          NA           NA          NA
+      25        NA           NA  2.600000    3.200000           NA          NA
+      26        NA           NA  1.900000    2.700000           NA          NA
+      27        NA           NA  4.400000    5.100000           NA          NA
+      28 4.0800000           NA        NA          NA           NA   14.220000
+      30        NA           NA  4.000000    5.900000           NA          NA
+      34        NA           NA  5.100000          NA           NA   11.700000
+         quantile_975 lower_range upper_range     shape     scale    meanlog
+      1            NA          NA          NA        NA        NA  1.7227644
+      3            NA          NA          NA  1.553950 5.8560440         NA
+      6            NA          NA          NA        NA        NA  1.1631463
+      7            NA          NA          NA        NA        NA  0.3364708
+      8            NA          NA          NA        NA        NA -0.5108280
+      9            NA          NA          NA 17.503120 0.1171220         NA
+      10     6.600000          NA          NA        NA        NA  1.3862944
+      12     5.989652          NA          NA  2.309241 3.3759410         NA
+      14     6.589681          NA          NA  2.185908 3.6932670         NA
+      16           NA           2          13  1.946138 0.5324265         NA
+      17           NA          NA          NA        NA        NA  2.5257260
+      18    14.700000          NA          NA        NA        NA  1.6486586
+      21           NA          NA          NA        NA        NA  1.6108401
+      22           NA          NA          NA        NA        NA  2.1783545
+      23           NA          NA          NA        NA        NA         NA
+      25           NA          NA          NA        NA        NA  0.9555123
+      26           NA          NA          NA        NA        NA  0.6418529
+      27           NA          NA          NA        NA        NA  1.4816021
+      28           NA          NA          NA  2.431210 2.6200900         NA
+      30           NA          NA          NA        NA        NA  1.3862935
+      34           NA          NA          NA        NA        NA  1.6300000
+             sdlog extracted discretised phase_bias_adjusted
+      1  0.2209673       yes          no                  no
+      3         NA       yes        <NA>                <NA>
+      6  0.1328705       yes          no                  no
+      7  0.4527634       yes          no                  no
+      8  0.2285515       yes          no                  no
+      9         NA       yes        <NA>                <NA>
+      10 0.2554986       yes        <NA>                <NA>
+      12        NA       yes          no                  no
+      14        NA       yes          no                  no
+      16        NA       yes          no                  no
+      17 0.2097952       yes          no                  no
+      18 0.5283368       yes        <NA>                <NA>
+      21 0.4333775       yes        <NA>                <NA>
+      22 0.3360684       yes          no                <NA>
+      23        NA       yes          no                  no
+      25 0.3078528       yes          no                  no
+      26 0.5209872       yes          no                  no
+      27 0.2188927       yes          no                  no
+      28        NA       yes          no                  no
+      30 0.5762278       yes          no                  no
+      34 0.5000000        no          no                  no
+                                                   notes     PMID
+      1                                             <NA> 19393959
+      3                 Extracted using single exposures 25564903
+      6                                             <NA> 19393959
+      7                                             <NA> 19393959
+      8                                             <NA> 19393959
+      9                                             <NA> 20029668
+      10                                            <NA> 19959592
+      12    extraction used quantile_025 and quantile_75 23803488
+      14    extraction used quantile_025 and quantile_75 23803488
+      16                    gamma assumed, range 2 to 13 25495697
+      17                                            <NA> 19393959
+      18     extracted using quantile_5 and quantile_975 23782161
+      21                                            <NA> 24239323
+      22   Extracted taking c(6,13) as central 75% range 27191380
+      23 Extracted from range 3 to 21, lognormal assumed 35866746
+      25                                            <NA> 19393959
+      26                                            <NA> 19393959
+      27                                            <NA> 19393959
+      28                                            <NA> 12781533
+      30                                            <NA> 19393959
+      34                                            <NA> 32801208
+                                     DOI       added_by
+      1    10.1016/S1473-3099(09)70069-6 Adam Kucharski
+      3            10.1056/nejmoa1411100 Adam Kucharski
+      6    10.1016/S1473-3099(09)70069-6 Adam Kucharski
+      7    10.1016/S1473-3099(09)70069-6 Adam Kucharski
+      8    10.1016/S1473-3099(09)70069-6 Adam Kucharski
+      9         10.1371/currents.RRN1130 Adam Kucharski
+      10             10.1503/cmaj.091807 Adam Kucharski
+      12   10.1016/S0140-6736(13)61171-X Adam Kucharski
+      14   10.1016/S0140-6736(13)61171-X Adam Kucharski
+      16 10.1186/1756-0500-7-906         Adam Kucharski
+      17   10.1016/S1473-3099(09)70069-6 Adam Kucharski
+      18           10.1056/NEJMoa1306742 Adam Kucharski
+      21   10.1016/S1473-3099(13)70304-9 Adam Kucharski
+      22          10.3201/eid2206.150579       Seb Funk
+      23           10.1056/NEJMoa2207323               
+      25   10.1016/S1473-3099(09)70069-6 Adam Kucharski
+      26   10.1016/S1473-3099(09)70069-6 Adam Kucharski
+      27   10.1016/S1473-3099(09)70069-6 Adam Kucharski
+      28   10.1016/S0140-6736(03)13410-1 Adam Kucharski
+      30   10.1016/S1473-3099(09)70069-6 Adam Kucharski
+      34     10.1136/bmjopen-2020-039652 Adam Kucharski
 
 # list_distributions works for onset_to_admission, params = FALSE
 
     Code
       list_distributions(delay_dist = "onset_to_admission", parameters = FALSE)
     Output
-             pathogen_id      study_id year size distribution
-      20           ebola      WHO_team 2014  500        gamma
-      21 influenza_H1N1p    Tuite_etal 2010  316        lnorm
-      22  influenza_H7N9  Cowling_etal 2013   32        gamma
-      23        MERS_CoV   Assiri_etal 2013   23        lnorm
-      24        SARS_CoV Donnelly_etal 2003   57        gamma
+                 pathogen_id      study_id year size distribution
+      4                ebola      WHO_team 2014  500        gamma
+      11     influenza_H1N1p     Jain_etal 2009  272        lnorm
+      13      influenza_H7N9  Cowling_etal 2013  123        gamma
+      15      influenza_H5N1  Cowling_etal 2013   43      weibull
+      19            MERS_CoV   Assiri_etal 2013   23        lnorm
+      29            SARS_CoV Donnelly_etal 2003   57        gamma
+      32 SARS_CoV_2_wildtype   Linton_etal 2020  155        lnorm
 
 # list_distributions works for onset_to_admission, params = TRUE
 
     Code
       list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
     Output
-             pathogen_id            type_id      study_id year size distribution mean
-      20           ebola onset_to_admission      WHO_team 2014  500        gamma   NA
-      21 influenza_H1N1p onset_to_admission    Tuite_etal 2010  316        lnorm   NA
-      22  influenza_H7N9 onset_to_admission  Cowling_etal 2013   32        gamma   NA
-      23        MERS_CoV onset_to_admission   Assiri_etal 2013   23        lnorm   NA
-      24        SARS_CoV onset_to_admission Donnelly_etal 2003   57        gamma   NA
-         sd median quantile_75 quantile_95    shape    scale meanlog    sdlog
-      20 NA     NA          NA          NA 5.534040 0.921569      NA       NA
-      21 NA     NA          NA          NA       NA       NA 2.17531 0.330773
-      22 NA     NA          NA          NA 9.650000 0.450000      NA       NA
-      23 NA     NA          NA          NA       NA       NA 7.00000 0.750000
-      24 NA     NA          NA          NA 1.929655 2.513402      NA       NA
-         extracted discretised phase_bias_adjusted            notes     PMID
-      20       yes        <NA>                <NA>             <NA> 25564903
-      21      <NA>        <NA>                <NA>             <NA> 19959592
-      22      <NA>        <NA>                <NA>             <NA> 23803488
-      23      <NA>        <NA>                <NA>             <NA> 23782161
-      24      <NA>        <NA>                <NA> Feb-26 to Mar-25 12781533
+                 pathogen_id            type_id      study_id year size distribution
+      4                ebola onset_to_admission      WHO_team 2014  500        gamma
+      11     influenza_H1N1p onset_to_admission     Jain_etal 2009  272        lnorm
+      13      influenza_H7N9 onset_to_admission  Cowling_etal 2013  123        gamma
+      15      influenza_H5N1 onset_to_admission  Cowling_etal 2013   43      weibull
+      19            MERS_CoV onset_to_admission   Assiri_etal 2013   23        lnorm
+      29            SARS_CoV onset_to_admission Donnelly_etal 2003   57        gamma
+      32 SARS_CoV_2_wildtype onset_to_admission   Linton_etal 2020  155        lnorm
+         mean    sd quantile_025 median quantile_75 quantile_875 quantile_95
+      4  5.00  4.70           NA     NA          NA           NA          NA
+      11   NA    NA           NA    3.0          NA           NA          NA
+      13   NA    NA    0.6172617    4.2    6.170223           NA    9.622302
+      15   NA    NA    1.3678290    4.9    6.770349           NA   10.222554
+      19   NA    NA           NA    5.0          NA           NA          NA
+      29 4.85  3.49           NA     NA          NA           NA          NA
+      32 9.70 35.20           NA    2.6          NA           NA   35.100000
+         quantile_975 lower_range upper_range    shape    scale   meanlog     sdlog
+      4            NA          NA          NA 1.131734 4.418000        NA        NA
+      11           NA          NA          NA       NA       NA 1.0986120 2.9115800
+      13     10.82306          NA          NA 2.138094 2.153314        NA        NA
+      15     11.42344          NA          NA 2.373396 6.438843        NA        NA
+      19           NA           1          10       NA       NA 1.6089493 0.6103889
+      29           NA          NA          NA 1.929655 2.513402        NA        NA
+      32           NA          NA          NA       NA       NA 0.9466094 1.6281993
+         extracted discretised phase_bias_adjusted
+      4        yes        <NA>                <NA>
+      11       yes        <NA>                <NA>
+      13       yes          no                  no
+      15       yes          no                  no
+      19       yes        <NA>                <NA>
+      29       yes        <NA>                <NA>
+      32       yes          no                 yes
+                                                    notes     PMID
+      4                                              <NA> 25564903
+      11 Extracted using range 0 to 18, lognormal assumed 19815859
+      13     extraction used quantile_025 and quantile_75 23803488
+      15     extraction used quantile_025 and quantile_95 23803488
+      19                                             <NA> 23782161
+      29                                 Feb-26 to Mar-25 12781533
+      32                              For living patients 32079150
                                    DOI       added_by
-      20          10.1056/NEJMc1413884 Adam Kucharski
-      21           10.1503/cmaj.091807 Adam Kucharski
-      22 10.1016/S0140-6736(13)61171-X Adam Kucharski
-      23         10.1056/NEJMoa1306742 Adam Kucharski
-      24 10.1016/S0140-6736(03)13410-1 Adam Kucharski
+      4          10.1056/nejmoa1411100 Adam Kucharski
+      11         10.1056/NEJMoa0906695 Adam Kucharski
+      13 10.1016/S0140-6736(13)61171-X Adam Kucharski
+      15 10.1016/S0140-6736(13)61171-X Adam Kucharski
+      19         10.1056/NEJMoa1306742 Adam Kucharski
+      29 10.1016/S0140-6736(03)13410-1 Adam Kucharski
+      32            10.3390/jcm9020538 Adam Kucharski
 
 # list_distributions works for onset_to_death, params = FALSE
 
@@ -178,7 +238,8 @@
       list_distributions(delay_dist = "onset_to_death", parameters = FALSE)
     Output
                  pathogen_id    study_id year size distribution
-      25 SARS_CoV_2_wildtype Linton_etal 2020   23        lnorm
+      5                ebola    WHO_team 2014  500        gamma
+      33 SARS_CoV_2_wildtype Linton_etal 2020   39        lnorm
 
 # list_distributions works for onset_to_death, params = TRUE
 
@@ -186,51 +247,62 @@
       list_distributions(delay_dist = "onset_to_death", parameters = TRUE)
     Output
                  pathogen_id        type_id    study_id year size distribution mean
-      25 SARS_CoV_2_wildtype onset_to_death Linton_etal 2020   23        lnorm   NA
-         sd median quantile_75 quantile_95 shape scale  meanlog     sdlog extracted
-      25 NA     NA          NA          NA    NA    NA 2.863179 0.5338606        no
-         discretised phase_bias_adjusted notes     PMID                DOI
-      25        <NA>                <NA>  <NA> 32079150 10.3390/jcm9020538
+      5                ebola onset_to_death    WHO_team 2014  500        gamma  7.5
+      33 SARS_CoV_2_wildtype onset_to_death Linton_etal 2020   39        lnorm 20.2
+           sd quantile_025 median quantile_75 quantile_875 quantile_95 quantile_975
+      5   6.8           NA     NA          NA           NA          NA           NA
+      33 11.6           NA   17.1          NA           NA        39.9           NA
+         lower_range upper_range    shape    scale  meanlog     sdlog extracted
+      5           NA          NA 1.216479 6.165333       NA        NA       yes
+      33          NA          NA       NA       NA 2.863179 0.5338606       yes
+         discretised phase_bias_adjusted notes     PMID                   DOI
+      5         <NA>                <NA>  <NA> 25564903 10.1056/nejmoa1411100
+      33          no                 yes  <NA>       NA                      
                added_by
-      25 Adam Kucharski
+      5  Adam Kucharski
+      33               
 
 # list_distributions works for serial_interval, params = FALSE
 
     Code
       list_distributions(delay_dist = "serial_interval", parameters = FALSE)
     Output
-                 pathogen_id          study_id year size distribution
-      26               ebola WHO_response_team 2014   92        gamma
-      27 SARS_CoV_2_wildtype     Ferretti_etal 2020  191        lnorm
-      28           monkeypox             UKHSA 2022  336        lnorm
+         pathogen_id          study_id year size distribution
+      2        ebola WHO_response_team 2014   92        gamma
+      20    MERS_CoV       Assiri_etal 2013   23        lnorm
+      24   monkeypox             UKHSA 2022   17        gamma
 
 # list_distributions works for serial_interval, params = TRUE
 
     Code
       list_distributions(delay_dist = "serial_interval", parameters = TRUE)
     Output
-                 pathogen_id         type_id          study_id year size distribution
-      26               ebola serial_interval WHO_response_team 2014   92        gamma
-      27 SARS_CoV_2_wildtype serial_interval     Ferretti_etal 2020  191        lnorm
-      28           monkeypox serial_interval             UKHSA 2022  336        lnorm
-         mean sd median quantile_75 quantile_95    shape    scale  meanlog     sdlog
-      26   NA NA     NA          NA          NA 2.706556 5.652941       NA        NA
-      27   NA NA     NA          NA          NA       NA       NA 1.386294 0.6970598
-      28   NA NA     NA          NA          NA       NA       NA 2.419172 0.3286863
-         extracted discretised phase_bias_adjusted
-      26       yes        <NA>                <NA>
-      27        no        <NA>                <NA>
-      28       yes          no                <NA>
-                                          notes     PMID
-      26                                   <NA> 25564903
-      27                    20/1/2020-21/3/2020 32234805
-      28 Extracted taking c(5.9,21.4) as 95% CI       NA
+         pathogen_id         type_id          study_id year size distribution mean
+      2        ebola serial_interval WHO_response_team 2014   92        gamma 15.3
+      20    MERS_CoV serial_interval       Assiri_etal 2013   23        lnorm   NA
+      24   monkeypox serial_interval             UKHSA 2022   17        gamma  9.8
+          sd quantile_025 median quantile_75 quantile_875 quantile_95 quantile_975
+      2  9.3           NA     NA          NA           NA          NA           NA
+      20  NA           NA    7.6          NA           NA        19.4         23.1
+      24 8.3           NA     NA          NA           NA          NA           NA
+         lower_range upper_range    shape    scale meanlog sdlog extracted
+      2           NA          NA 2.706556 5.652941      NA    NA       yes
+      20          NA          NA       NA       NA    2.02  0.56       yes
+      24          NA          NA 1.394107 7.029592      NA    NA       yes
+         discretised phase_bias_adjusted                                      notes
+      2         <NA>                <NA>                                       <NA>
+      20        <NA>                <NA>                                       <NA>
+      24          no                 yes Extracted from mean and SD, assuming gamma
+             PMID
+      2  25564903
+      20 23782161
+      24       NA
                                                                                                                                                              DOI
-      26                                                                                                                                    10.1056/NEJMc1413884
-      27                                                                                                                                 10.1126/science.abb6936
-      28 https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1
+      2                                                                                                                                    10.1056/nejmoa1411100
+      20                                                                                                                                   10.1056/NEJMoa1306742
+      24 https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1
                added_by
-      26 Adam Kucharski
-      27   Rachael Pung
-      28       Seb Funk
+      2  Adam Kucharski
+      20 Adam Kucharski
+      24       Seb Funk
 

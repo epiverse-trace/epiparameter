@@ -1,7 +1,7 @@
 test_that("list_distributions works for incubation, params = FALSE", {
   incub_tbl <- list_distributions(delay_dist = "incubation", parameters = FALSE)
   expect_true(is.data.frame(incub_tbl))
-  expect_equal(dim(incub_tbl), c(19, 5))
+  expect_equal(dim(incub_tbl), c(21, 5))
   expect_equal(
     colnames(incub_tbl),
     c("pathogen_id", "study_id", "year", "size", "distribution")
@@ -14,13 +14,14 @@ test_that("list_distributions works for incubation, params = FALSE", {
 test_that("list_distributions works for incubation, params = TRUE", {
   incub_tbl <- list_distributions(delay_dist = "incubation", parameters = TRUE)
   expect_true(is.data.frame(incub_tbl))
-  expect_equal(dim(incub_tbl), c(19, 22))
+  expect_equal(dim(incub_tbl), c(21, 27))
   expect_equal(
     colnames(incub_tbl),
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "median", "quantile_75", "quantile_95", "shape", "scale",
-      "meanlog", "sdlog", "extracted", "discretised", "phase_bias_adjusted",
-      "notes", "PMID", "DOI", "added_by")
+      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
+      "quantile_95", "quantile_975", "lower_range", "upper_range",
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
   )
   expect_snapshot(
     list_distributions(delay_dist = "incubation", parameters = TRUE)
@@ -33,7 +34,7 @@ test_that("list_distributions works for onset_to_admission, params = FALSE", {
     parameters = FALSE
   )
   expect_true(is.data.frame(on_to_ad_tbl))
-  expect_equal(dim(on_to_ad_tbl), c(5, 5))
+  expect_equal(dim(on_to_ad_tbl), c(7, 5))
   expect_equal(
     colnames(on_to_ad_tbl),
     c("pathogen_id", "study_id", "year", "size", "distribution")
@@ -49,13 +50,14 @@ test_that("list_distributions works for onset_to_admission, params = TRUE", {
     parameters = TRUE
   )
   expect_true(is.data.frame(on_to_ad_tbl))
-  expect_equal(dim(on_to_ad_tbl), c(5, 22))
+  expect_equal(dim(on_to_ad_tbl), c(7, 27))
   expect_equal(
     colnames(on_to_ad_tbl),
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "median", "quantile_75", "quantile_95", "shape", "scale",
-      "meanlog", "sdlog", "extracted", "discretised", "phase_bias_adjusted",
-      "notes", "PMID", "DOI", "added_by")
+      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
+      "quantile_95", "quantile_975", "lower_range", "upper_range",
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
   )
   expect_snapshot(
     list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
@@ -68,7 +70,7 @@ test_that("list_distributions works for onset_to_death, params = FALSE", {
     parameters = FALSE
   )
   expect_true(is.data.frame(on_to_death_tbl))
-  expect_equal(dim(on_to_death_tbl), c(1, 5))
+  expect_equal(dim(on_to_death_tbl), c(2, 5))
   expect_equal(
     colnames(on_to_death_tbl),
     c("pathogen_id", "study_id", "year", "size", "distribution")
@@ -84,13 +86,14 @@ test_that("list_distributions works for onset_to_death, params = TRUE", {
     parameters = TRUE
   )
   expect_true(is.data.frame(on_to_death_tbl))
-  expect_equal(dim(on_to_death_tbl), c(1, 22))
+  expect_equal(dim(on_to_death_tbl), c(2, 27))
   expect_equal(
     colnames(on_to_death_tbl),
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "median", "quantile_75", "quantile_95", "shape", "scale",
-      "meanlog", "sdlog", "extracted", "discretised", "phase_bias_adjusted",
-      "notes", "PMID", "DOI", "added_by")
+      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
+      "quantile_95", "quantile_975", "lower_range", "upper_range",
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
   )
   expect_snapshot(
     list_distributions(delay_dist = "onset_to_death", parameters = TRUE)
@@ -119,13 +122,14 @@ test_that("list_distributions works for serial_interval, params = TRUE", {
     parameters = TRUE
   )
   expect_true(is.data.frame(serial_inter_tbl))
-  expect_equal(dim(serial_inter_tbl), c(3, 22))
+  expect_equal(dim(serial_inter_tbl), c(3, 27))
   expect_equal(
     colnames(serial_inter_tbl),
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "median", "quantile_75", "quantile_95", "shape", "scale",
-      "meanlog", "sdlog", "extracted", "discretised", "phase_bias_adjusted",
-      "notes", "PMID", "DOI", "added_by")
+      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
+      "quantile_95", "quantile_975", "lower_range", "upper_range",
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
   )
   expect_snapshot(
     list_distributions(delay_dist = "serial_interval", parameters = TRUE)
