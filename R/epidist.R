@@ -55,14 +55,18 @@ epidist  <- function(
                    "generation_time"), 
     study = NULL) {
   
+  # read the data to get possible pathogen names
+  params <- utils::read.csv(system.file(
+    "extdata",
+    "parameters.csv",
+    package = "epiparameter",
+    mustWork = TRUE
+  ))
+  
+  # match pathogen names against data
   pathogen <- match.arg(
     arg = pathogen,
-    choices = c(
-      "adenovirus", "ebola", "human_CoV", "influenza_A_seasonal",
-      "influenza_B_seasonal", "influenza_H1N1p", "influenza_H7N9", "marburg",
-      "measles", "MERS_CoV", "parainfluenza", "rhinovirus", "RSV", "SARS_CoV",
-      "SARS_CoV_2_wildtype", "monkeypox"
-    ),
+    choices = unique(params$pathogen_id),
     several.ok = FALSE
   )
 
