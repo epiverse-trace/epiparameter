@@ -40,24 +40,26 @@ incubation period of influenza H7N9:
 epiparameter::list_distributions(delay_dist = "incubation")
 #>             pathogen_id        study_id year size distribution
 #> 1            adenovirus    Lessler_etal 2009   14        lnorm
-#> 2                 ebola        WHO_team 2014  500        gamma
-#> 3             human_CoV    Lessler_etal 2009   13        lnorm
-#> 4  influenza_A_seasonal    Lessler_etal 2009  122        lnorm
-#> 5  influenza_B_seasonal    Lessler_etal 2009   76        lnorm
-#> 6       influenza_H1N1p      Ghani_etal 2009   16        gamma
-#> 7       influenza_H1N1p      Tuite_etal 2010  316        lnorm
-#> 8        influenza_H7N9    Cowling_etal 2013   32        gamma
-#> 9               marburg    Martini_etal 1973    5        gamma
-#> 10              measles    Lessler_etal 2009   56        lnorm
-#> 11             MERS_CoV Cauchemez_et_al 2014    7        lnorm
-#> 12             MERS_CoV     Assiri_etal 2013   23        lnorm
-#> 13        parainfluenza    Lessler_etal 2009   11        lnorm
-#> 14           rhinovirus    Lessler_etal 2009   28        lnorm
-#> 15                  RSV    Lessler_etal 2009   24        lnorm
-#> 16             SARS_CoV   Donnelly_etal 2003   57        gamma
-#> 17             SARS_CoV    Lessler_etal 2009  157        lnorm
-#> 18  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm
-#> 19            monkeypox           Nolen 2016   16        lnorm
+#> 3                 ebola        WHO_team 2014  500        gamma
+#> 5             human_CoV    Lessler_etal 2009   13        lnorm
+#> 6  influenza_A_seasonal    Lessler_etal 2009  122        lnorm
+#> 7  influenza_B_seasonal    Lessler_etal 2009   76        lnorm
+#> 8       influenza_H1N1p      Ghani_etal 2009   16        gamma
+#> 9       influenza_H1N1p      Tuite_etal 2010  316        lnorm
+#> 11       influenza_H7N9    Cowling_etal 2013   32      weibull
+#> 13       influenza_H5N1    Cowling_etal 2013   27      weibull
+#> 15              marburg          Pavlin 2014   18        gamma
+#> 16              measles    Lessler_etal 2009   56        lnorm
+#> 17             MERS_CoV     Assiri_etal 2013   23        lnorm
+#> 20             MERS_CoV Cauchemez_et_al 2014    7        lnorm
+#> 21            monkeypox           Nolen 2016   16        lnorm
+#> 22            monkeypox  Thornhill_etal 2022   23        lnorm
+#> 24        parainfluenza    Lessler_etal 2009   11        lnorm
+#> 25           rhinovirus    Lessler_etal 2009   28        lnorm
+#> 26                  RSV    Lessler_etal 2009   24        lnorm
+#> 27             SARS_CoV   Donnelly_etal 2003   57        gamma
+#> 29             SARS_CoV    Lessler_etal 2009  157        lnorm
+#> 33  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm
 
 # Extract incubation period distribution
 incubation_H7N9 <- epiparameter::epidist(
@@ -136,7 +138,7 @@ guide](https://github.com/epiverse-trace/epiparameter/blob/main/.github/CONTRIBU
 
 ## Code of Conduct
 
-Please note that the DAISIEprep project is released with a [Contributor
-Code of
+Please note that the `epiparameter` project is released with a
+[Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
