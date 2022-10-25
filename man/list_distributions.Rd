@@ -5,7 +5,8 @@
 \title{List distributions}
 \usage{
 list_distributions(
-  delay_dist = c("incubation", "onset_to_admission", "onset_to_death", "serial_interval"),
+  delay_dist = c("incubation", "onset_to_admission", "onset_to_death", "serial_interval",
+    "generation_time"),
   parameters = FALSE
 )
 }

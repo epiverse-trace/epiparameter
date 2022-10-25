@@ -34,7 +34,7 @@ test_that("list_distributions works for onset_to_admission, params = FALSE", {
     parameters = FALSE
   )
   expect_true(is.data.frame(on_to_ad_tbl))
-  expect_equal(dim(on_to_ad_tbl), c(7, 5))
+  expect_equal(dim(on_to_ad_tbl), c(6, 5))
   expect_equal(
     colnames(on_to_ad_tbl),
     c("pathogen_id", "study_id", "year", "size", "distribution")
@@ -50,7 +50,7 @@ test_that("list_distributions works for onset_to_admission, params = TRUE", {
     parameters = TRUE
   )
   expect_true(is.data.frame(on_to_ad_tbl))
-  expect_equal(dim(on_to_ad_tbl), c(7, 27))
+  expect_equal(dim(on_to_ad_tbl), c(6, 27))
   expect_equal(
     colnames(on_to_ad_tbl),
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
@@ -106,7 +106,7 @@ test_that("list_distributions works for serial_interval, params = FALSE", {
     parameters = FALSE
   )
   expect_true(is.data.frame(serial_inter_tbl))
-  expect_equal(dim(serial_inter_tbl), c(3, 5))
+  expect_equal(dim(serial_inter_tbl), c(5, 5))
   expect_equal(
     colnames(serial_inter_tbl),
     c("pathogen_id", "study_id", "year", "size", "distribution")
@@ -122,7 +122,7 @@ test_that("list_distributions works for serial_interval, params = TRUE", {
     parameters = TRUE
   )
   expect_true(is.data.frame(serial_inter_tbl))
-  expect_equal(dim(serial_inter_tbl), c(3, 27))
+  expect_equal(dim(serial_inter_tbl), c(5, 27))
   expect_equal(
     colnames(serial_inter_tbl),
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
@@ -133,6 +133,42 @@ test_that("list_distributions works for serial_interval, params = TRUE", {
   )
   expect_snapshot(
     list_distributions(delay_dist = "serial_interval", parameters = TRUE)
+  )
+})
+
+test_that("list_distributions works for generation_time, params = FALSE", {
+  gen_time_tbl <- list_distributions(
+    delay_dist = "generation_time",
+    parameters = FALSE
+  )
+  expect_true(is.data.frame(gen_time_tbl))
+  expect_equal(dim(gen_time_tbl), c(2, 5))
+  expect_equal(
+    colnames(gen_time_tbl),
+    c("pathogen_id", "study_id", "year", "size", "distribution")
+  )
+  expect_snapshot(
+    list_distributions(delay_dist = "generation_time", parameters = FALSE)
+  )
+})
+
+test_that("list_distributions works for generation_time, params = TRUE", {
+  gen_time_tbl <- list_distributions(
+    delay_dist = "generation_time",
+    parameters = TRUE
+  )
+  expect_true(is.data.frame(gen_time_tbl))
+  expect_equal(dim(gen_time_tbl), c(2, 27))
+  expect_equal(
+    colnames(gen_time_tbl),
+    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
+      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
+      "quantile_95", "quantile_975", "lower_range", "upper_range",
+      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised", 
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
+  )
+  expect_snapshot(
+    list_distributions(delay_dist = "generation_time", parameters = TRUE)
   )
 })
 

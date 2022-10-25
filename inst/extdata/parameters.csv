@@ -2,8 +2,7 @@ pathogen_id,type_id,study_id,year,size,distribution,mean,sd,quantile_025,median,
 adenovirus,incubation,Lessler_etal,2009,14,lnorm,NA,NA,NA,5.6,6.5,NA,NA,NA,NA,NA,NA,NA,1.72276435,0.22096732,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
 ebola,serial_interval,WHO_response_team,2014,92,gamma,15.3,9.3,NA,NA,NA,NA,NA,NA,NA,NA,2.706556,5.652941,NA,NA,yes,NA,NA,NA,25564903,10.1056/nejmoa1411100,Adam Kucharski
 ebola,incubation,WHO_team,2014,500,gamma,9.1,7.3,NA,NA,NA,NA,NA,NA,NA,NA,1.55395,5.856044,NA,NA,yes,NA,NA,Extracted using single exposures,25564903,10.1056/nejmoa1411100,Adam Kucharski
-ebola,onset_to_admission,WHO_team,2014,500,gamma,5,4.7,NA,NA,NA,NA,NA,NA,NA,NA,1.131734,4.418,NA,NA,yes,NA,NA,NA,25564903,10.1056/nejmoa1411100,Adam Kucharski
-ebola,onset_to_death,WHO_team,2014,500,gamma,7.5,6.8,NA,NA,NA,NA,NA,NA,NA,NA,1.216479,6.165333,NA,NA,yes,NA,NA,NA,25564903,10.1056/nejmoa1411100,Adam Kucharski
+ebola,onset_to_death,Ebola_outbreak_team,2018,14,gamma,9.3,6,NA,NA,NA,NA,NA,NA,2,27,2.4,3.333,NA,NA,no,no,no,"the mean, sd, shape and scale are taken from the paper, the conversion between the two does not match exactly",30047375,10.1016/S0140-6736(18)31387-4,Joshua Lambert
 human_CoV,incubation,Lessler_etal,2009,13,lnorm,NA,NA,NA,3.2,3.5,NA,NA,NA,NA,NA,NA,NA,1.16314625,0.13287047,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
 influenza_A_seasonal,incubation,Lessler_etal,2009,122,lnorm,NA,NA,NA,1.4,1.9,NA,NA,NA,NA,NA,NA,NA,0.33647084,0.45276335,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
 influenza_B_seasonal,incubation,Lessler_etal,2009,76,lnorm,NA,NA,NA,0.6,0.7,NA,NA,NA,NA,NA,NA,NA,-0.510828,0.22855152,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
@@ -29,11 +28,13 @@ RSV,incubation,Lessler_etal,2009,24,lnorm,NA,NA,NA,4.4,5.1,NA,NA,NA,NA,NA,NA,NA,
 SARS_CoV,incubation,Donnelly_etal,2003,57,gamma,6.4,4.08,NA,NA,NA,NA,14.22,NA,NA,NA,2.43121,2.62009,NA,NA,yes,no,no,NA,12781533,10.1016/S0140-6736(03)13410-1,Adam Kucharski
 SARS_CoV,onset_to_admission,Donnelly_etal,2003,57,gamma,4.85,3.49,NA,NA,NA,NA,NA,NA,NA,NA,1.929655,2.513402,NA,NA,yes,NA,NA,Feb-26 to Mar-25,12781533,10.1016/S0140-6736(03)13410-1,Adam Kucharski
 SARS_CoV,incubation,Lessler_etal,2009,157,lnorm,NA,NA,NA,4,5.9,NA,NA,NA,NA,NA,NA,NA,1.3862935,0.5762278,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
-SARS_CoV_2_wildtype,generation_time,Ferretti_etal,2020,191,weibull,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2.826,5.665,yes,no,yes,20/1/2020-21/3/2020,32234805,10.1126/science.abb6936,Rachael Pung
+SARS_CoV_2_wildtype,generation_time,Ferretti_etal,2020,191,weibull,5,1.9,NA,5,NA,NA,NA,NA,NA,NA,2.826,5.665,NA,NA,yes,no,yes,20/1/2020-21/3/2020,32234805,10.1126/science.abb6936,Rachael Pung
 SARS_CoV_2_wildtype,onset_to_admission,Linton_etal,2020,155,lnorm,9.7,35.2,NA,2.6,NA,NA,35.1,NA,NA,NA,NA,NA,0.9466094,1.6281993,yes,no,yes,For living patients,32079150,10.3390/jcm9020538,Adam Kucharski
 SARS_CoV_2_wildtype,onset_to_death,Linton_etal,2020,39,lnorm,20.2,11.6,NA,17.1,NA,NA,39.9,NA,NA,NA,NA,NA,2.863179,0.5338606,yes,no,yes,NA,,,
 SARS_CoV_2_wildtype,incubation,McAloon_etal,2020,1269,lnorm,NA,NA,NA,5.1,NA,NA,11.7,NA,NA,NA,NA,NA,1.63,0.5,no,no,no,NA,32801208,10.1136/bmjopen-2020-039652,Adam Kucharski
-adenovirus,generation_time,Guo_etal,2020,375,weibull,NA,NA,NA,7.3,NA,NA,NA,NA,NA,NA,,,NA,NA,,no,no,Extracted using the parametric distribution,32479490,10.1371/journal.pone.0232948,Carmen Tamayo
+SARS_CoV_2_wildtype,serial_interval,Nishiura_etal,2020,28,lnorm,4.7,2.9,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,1.386262,0.5679803,yes,no,yes,Extracted using reported mean and sd,32145466,10.1016/j.ijid.2020.02.060,Joshua Lambert
+SARS_CoV_2_wildtype,serial_interval,Nishiura_etal,2020,18,weibull,4.8,2.3,NA,4.6,NA,NA,NA,NA,NA,NA,2.203394,5.419875,NA,NA,yes,no,yes,Extracted using mean and sd reported from a subset of the data for certain infector-infectee pairs,32145466,10.1016/j.ijid.2020.02.060,Joshua Lambert
+adenovirus,generation_time,Guo_etal,2020,375,weibull,NA,NA,NA,7.3,NA,NA,NA,NA,NA,NA,3.48,8.19,NA,NA,,no,no,Extracted using the parametric distribution,32479490,10.1371/journal.pone.0232948,Carmen Tamayo
 influenza_H1N1p,Serial_interval,Levy_etal,2013,125,lnorm,3.08,1.39,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,1.032242,0.4305527,yes,not yet checked,not yet checked,NA,23629874,10.1093%2Faje%2Fkws402,Carmen Tamayo
 influenza_A_seasonal,Serial_interval,Levy_etal,2013,111,lnorm,3.48,1.88,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,1.118995,0.5060376,yes,not yet checked,not yet checked,Extracted from seasonal A H3N2,23629874,10.1093%2Faje%2Fkws403,Carmen Tamayo
 influenza_B_seasonal,Serial_interval,Levy_etal,2013,44,lnorm,3.72,1.95,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,1.192337,0.4927197,yes,not yet checked,not yet checked,NA,23629874,10.1093%2Faje%2Fkws404,Carmen Tamayo

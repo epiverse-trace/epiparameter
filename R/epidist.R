@@ -45,9 +45,16 @@
 #' )
 #'
 #' # example using onset to admission as the metric
-#' epidist(pathogen = "ebola", delay_dist = "onset_to_admission")
-epidist  <- function(pathogen, delay_dist, study = NULL) {
-
+#' epidist(pathogen = "ebola", delay_dist = "onset_to_death")
+epidist  <- function(
+    pathogen, 
+    delay_dist = c("incubation", 
+                   "onset_to_admission", 
+                   "onset_to_death", 
+                   "serial_interval",
+                   "generation_time"), 
+    study = NULL) {
+  
   pathogen <- match.arg(
     arg = pathogen,
     choices = c(
@@ -59,13 +66,7 @@ epidist  <- function(pathogen, delay_dist, study = NULL) {
     several.ok = FALSE
   )
 
-  delay_dist <- match.arg(
-    arg = delay_dist,
-    choices = c(
-      "incubation", "onset_to_admission", "onset_to_death", "serial_interval"
-    ),
-    several.ok = FALSE
-  )
+  delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
 
   # Extract pathogen and parameter type
   pick_path <- utils::read.csv(file = system.file(

@@ -3,16 +3,14 @@
     Code
       pathogen_summary(pathogen = "ebola")
     Output
-        pathogen         delay_dist distribution      mean       sd             study
-      1    ebola    serial_interval        gamma 15.300001 9.300000 WHO_response_team
-      2    ebola         incubation        gamma  9.100000 7.300000          WHO_team
-      3    ebola onset_to_admission        gamma  5.000001 4.700000          WHO_team
-      4    ebola     onset_to_death        gamma  7.499998 6.799999          WHO_team
-                          DOI
-      1 10.1056/nejmoa1411100
-      2 10.1056/nejmoa1411100
-      3 10.1056/nejmoa1411100
-      4 10.1056/nejmoa1411100
+        pathogen      delay_dist distribution    mean       sd               study
+      1    ebola serial_interval        gamma 15.3000 9.300000   WHO_response_team
+      2    ebola      incubation        gamma  9.1000 7.300000            WHO_team
+      3    ebola  onset_to_death        gamma  7.9992 5.163461 Ebola_outbreak_team
+                                  DOI
+      1         10.1056/nejmoa1411100
+      2         10.1056/nejmoa1411100
+      3 10.1016/S0140-6736(18)31387-4
 
 # pathogen_summary works with pathogen with gamma and lnorm
 

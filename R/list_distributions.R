@@ -28,7 +28,8 @@ list_distributions <- function(
     delay_dist = c("incubation",
                    "onset_to_admission",
                    "onset_to_death",
-                   "serial_interval"),
+                   "serial_interval",
+                   "generation_time"),
     parameters = FALSE) {
 
   delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)

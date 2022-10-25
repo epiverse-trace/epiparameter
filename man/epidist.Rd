@@ -5,7 +5,12 @@
 \title{Distribution (PDF, CDF, PMF) and its parameters for epidemiological
 characteristics of a pathogen}
 \usage{
-epidist(pathogen, delay_dist, study = NULL)
+epidist(
+  pathogen,
+  delay_dist = c("incubation", "onset_to_admission", "onset_to_death", "serial_interval",
+    "generation_time"),
+  study = NULL
+)
 }
 \arguments{
 \item{pathogen}{A \code{character} specifying pathogen of interest}
@@ -56,7 +61,7 @@ epidist(
 )
 
 # example using onset to admission as the metric
-epidist(pathogen = "ebola", delay_dist = "onset_to_admission")
+epidist(pathogen = "ebola", delay_dist = "onset_to_death")
 }
 \author{
 Adam Kucharski
