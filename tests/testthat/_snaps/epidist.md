@@ -7,6 +7,6 @@
       Delay Distribution: incubation
       Distribution: lnorm
       Parameters:
-        meanlog: 1.481602055
-         sdlog: 0.218892675
+        meanlog: 1.48160206
+         sdlog: 0.21889268
 

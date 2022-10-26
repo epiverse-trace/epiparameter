@@ -40,24 +40,26 @@ incubation period of influenza H7N9:
 epiparameter::list_distributions(delay_dist = "incubation")
 #>             pathogen_id        study_id year size distribution
 #> 1            adenovirus    Lessler_etal 2009   14        lnorm
-#> 2                 ebola        WHO_team 2014  500        gamma
-#> 3             human_CoV    Lessler_etal 2009   13        lnorm
-#> 4  influenza_A_seasonal    Lessler_etal 2009  122        lnorm
-#> 5  influenza_B_seasonal    Lessler_etal 2009   76        lnorm
-#> 6       influenza_H1N1p      Ghani_etal 2009   16        gamma
-#> 7       influenza_H1N1p      Tuite_etal 2010  316        lnorm
-#> 8        influenza_H7N9    Cowling_etal 2013   32        gamma
-#> 9               marburg    Martini_etal 1973    5        gamma
-#> 10              measles    Lessler_etal 2009   56        lnorm
-#> 11             MERS_CoV Cauchemez_et_al 2014    7        lnorm
-#> 12             MERS_CoV     Assiri_etal 2013   23        lnorm
-#> 13        parainfluenza    Lessler_etal 2009   11        lnorm
-#> 14           rhinovirus    Lessler_etal 2009   28        lnorm
-#> 15                  RSV    Lessler_etal 2009   24        lnorm
-#> 16             SARS_CoV   Donnelly_etal 2003   57        gamma
-#> 17             SARS_CoV    Lessler_etal 2009  157        lnorm
-#> 18  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm
-#> 19            monkeypox           Nolen 2016   16        lnorm
+#> 3                 ebola        WHO_team 2014  500        gamma
+#> 5             human_CoV    Lessler_etal 2009   13        lnorm
+#> 6  influenza_A_seasonal    Lessler_etal 2009  122        lnorm
+#> 7  influenza_B_seasonal    Lessler_etal 2009   76        lnorm
+#> 8       influenza_H1N1p      Ghani_etal 2009   16        gamma
+#> 9       influenza_H1N1p      Tuite_etal 2010  316        lnorm
+#> 11       influenza_H7N9    Cowling_etal 2013   32      weibull
+#> 13       influenza_H5N1    Cowling_etal 2013   27      weibull
+#> 15              marburg          Pavlin 2014   18        gamma
+#> 16              measles    Lessler_etal 2009   56        lnorm
+#> 17             MERS_CoV     Assiri_etal 2013   23        lnorm
+#> 20             MERS_CoV Cauchemez_et_al 2014    7        lnorm
+#> 21            monkeypox           Nolen 2016   16        lnorm
+#> 22            monkeypox  Thornhill_etal 2022   23        lnorm
+#> 24        parainfluenza    Lessler_etal 2009   11        lnorm
+#> 25           rhinovirus    Lessler_etal 2009   28        lnorm
+#> 26                  RSV    Lessler_etal 2009   24        lnorm
+#> 27             SARS_CoV   Donnelly_etal 2003   57        gamma
+#> 29             SARS_CoV    Lessler_etal 2009  157        lnorm
+#> 33  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm
 
 # Extract incubation period distribution
 incubation_H7N9 <- epiparameter::epidist(
@@ -87,37 +89,36 @@ and add your data.
 
 Notes on the the spreadsheet:
 
--   Most studies will report the distribution(s) they fitted to the
-    data. In the case that the study did not report the distribution of
-    the reported parameters or summary statistics (mean and standard
-    deviation of the distribution) the distribution can be assumed
-    (e.g. by looking at the shape of the distribution from figures in
-    the paper). When a distribution is being assumed and not explicitly
-    stated please add this assumption to the notes section of the
-    spreadsheet. We are only interested in studies that report the
-    distribution fitted to the data. This will ensure that if this data
-    is used in another application the user can be alerted that the
-    distribution is assumed and not known with certainty.
+- Most studies will report the distribution(s) they fitted to the data.
+  In the case that the study did not report the distribution of the
+  reported parameters or summary statistics (mean and standard deviation
+  of the distribution) the distribution can be assumed (e.g. by looking
+  at the shape of the distribution from figures in the paper). When a
+  distribution is being assumed and not explicitly stated please add
+  this assumption to the notes section of the spreadsheet. We are only
+  interested in studies that report the distribution fitted to the data.
+  This will ensure that if this data is used in another application the
+  user can be alerted that the distribution is assumed and not known
+  with certainty.
 
--   Shape and scale columns are the parameters of the gamma
-    distribution, while meanlog and sdlog columns are the parameters of
-    the lognormal distribution. In some cases these values will not be
-    reported in the study but can be extracted using the `epiparameter`
-    function `extract_param()` using either reported percentiles or
-    median and range (see [extraction section](#extraction))
+- Shape and scale columns are the parameters of the gamma distribution,
+  while meanlog and sdlog columns are the parameters of the lognormal
+  distribution. In some cases these values will not be reported in the
+  study but can be extracted using the `epiparameter` function
+  `extract_param()` using either reported percentiles or median and
+  range (see [extraction section](#extraction))
 
--   The extracted column refers to whether the distribution parameters
-    are explicitly stated in the paper, in which case the extracted
-    column should be “no”, or are extracted from summary statistics
-    using function in the package, in which case the extracted column is
-    “yes”
+- The extracted column refers to whether the distribution parameters are
+  explicitly stated in the paper, in which case the extracted column
+  should be “no”, or are extracted from summary statistics using
+  function in the package, in which case the extracted column is “yes”
 
--   Discretised is to indicate whether the study fitted a discrete
-    distribution
+- Discretised is to indicate whether the study fitted a discrete
+  distribution
 
--   Phase_bias means the study adjusted for a either a rising or falling
-    epidemic, which can bias incubation period estimates. Most studies
-    will not adjust for this bias.
+- Phase_bias means the study adjusted for a either a rising or falling
+  epidemic, which can bias incubation period estimates. Most studies
+  will not adjust for this bias.
 
 If fields are not known from a study, either put “NA” or “not yet
 checked”. We are also happy to receive papers which report these delay
@@ -136,7 +137,7 @@ guide](https://github.com/epiverse-trace/epiparameter/blob/main/.github/CONTRIBU
 
 ## Code of Conduct
 
-Please note that the DAISIEprep project is released with a [Contributor
-Code of
-Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+Please note that the `epiparameter` project is released with a
+[Contributor Code of
+Conduct](https://github.com/epiverse-trace/.github/blob/main/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

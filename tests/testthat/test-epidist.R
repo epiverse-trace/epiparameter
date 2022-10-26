@@ -17,9 +17,9 @@ test_that("epidist works with valid input", {
 
 test_that("epidist prob functions work", {
   marburg_dist <- epidist(pathogen = "marburg", delay_dist = "incubation")
-  expect_equal(marburg_dist$pmf(5), 0.19445393887)
-  expect_equal(marburg_dist$pdf(5), 0.0822904644827)
-  expect_equal(marburg_dist$cdf(5), 0.0305977451594)
+  expect_equal(marburg_dist$pmf(5), 0.000641548322219965)
+  expect_equal(marburg_dist$pdf(5), 0.00133380313883437)
+  expect_equal(marburg_dist$cdf(5), 0.999218672257759)
 })
 
 test_that("epidist works with specific study", {

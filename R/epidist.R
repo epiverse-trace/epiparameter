@@ -45,50 +45,55 @@
 #' )
 #'
 #' # example using onset to admission as the metric
-#' epidist(pathogen = "ebola", delay_dist = "onset_to_admission")
-epidist  <- function(pathogen, delay_dist, study = NULL) {
+#' epidist(pathogen = "ebola", delay_dist = "onset_to_death")
+epidist  <- function(
+    pathogen,
+    delay_dist = c("incubation",
+                   "onset_to_admission",
+                   "onset_to_death",
+                   "serial_interval",
+                   "generation_time"),
+    study = NULL) {
 
-  pathogen <- match.arg(
-    arg = pathogen,
-    choices = c(
-      "adenovirus", "ebola", "human_CoV", "influenza_A_seasonal",
-      "influenza_B_seasonal", "influenza_H1N1p", "influenza_H7N9", "marburg",
-      "measles", "MERS_CoV", "parainfluenza", "rhinovirus", "RSV", "SARS_CoV",
-      "SARS_CoV_2_wildtype", "monkeypox"
-    ),
-    several.ok = FALSE
-  )
-
-  delay_dist <- match.arg(
-    arg = delay_dist,
-    choices = c(
-      "incubation", "onset_to_admission", "onset_to_death", "serial_interval"
-    ),
-    several.ok = FALSE
-  )
-
-  # Extract pathogen and parameter type
-  pick_path <- utils::read.csv(file = system.file(
+  # read the data to get possible pathogen names
+  params <- utils::read.csv(system.file(
     "extdata",
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
   ))
+  
+  # order params by pathogen, delay dist and study
+  params <- params[order(
+    tolower(params$pathogen_id), 
+    tolower(params$type_id), 
+    tolower(params$study_id), 
+    method = "radix"
+  ), ]
+
+  # match pathogen names against data
+  pathogen <- match.arg(
+    arg = pathogen,
+    choices = unique(params$pathogen_id),
+    several.ok = FALSE
+  )
+
+  delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
 
   # filter based on pathogen and delay distribution
-  pick_path <- pick_path[pick_path$pathogen_id == pathogen, ]
-  pick_path <- pick_path[pick_path$type_id == delay_dist, ]
+  params <- params[params$pathogen_id == pathogen, ]
+  params <- params[params$type_id == delay_dist, ]
 
-  if (nrow(pick_path) == 0) {
+  if (nrow(params) == 0) {
     stop("Need to select pathogen and distribution in the dataset")
   }
 
   # Extract study or default to largest sample size
   if (is.null(study)) {
-    pick_study <- pick_path[pick_path$size == max(pick_path$size), ]
+    pick_study <- params[params$size == max(params$size), ]
   }
   if (!is.null(study)) {
-    pick_study <- pick_path[pick_path$study_id == study, ]
+    pick_study <- params[params$study_id == study, ]
   }
 
   # Define distribution
