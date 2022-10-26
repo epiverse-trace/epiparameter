@@ -29,18 +29,10 @@ pathogen_summary <- function(pathogen) {
     several.ok = FALSE
   )
 
-  # Extract pathogen and parameter type
-  pathogen_data <- utils::read.csv(file = system.file(
-    "extdata",
-    "parameters.csv",
-    package = "epiparameter",
-    mustWork = TRUE
-  ))
-
   # filter based on pathogen
-  pathogen_data <- pathogen_data[pathogen_data$pathogen_id == pathogen, ]
+  params <- params[params$pathogen_id == pathogen, ]
 
-  mean_sd <- apply(pathogen_data, 1, FUN = function(x) {
+  mean_sd <- apply(params, 1, FUN = function(x) {
     if (x[["distribution"]] == "gamma") {
       parameters <- gamma_shapescale2meansd(
         shape = as.numeric(x[["shape"]]),
@@ -66,12 +58,12 @@ pathogen_summary <- function(pathogen) {
   )
 
   pathogen_tbl <- data.frame(
-    pathogen_data$pathogen_id,
-    pathogen_data$type_id,
-    pathogen_data$distribution,
+    params$pathogen_id,
+    params$type_id,
+    params$distribution,
     mean_sd_df,
-    pathogen_data$study_id,
-    pathogen_data$DOI
+    params$study_id,
+    params$DOI
   )
   colnames(pathogen_tbl) <- c(
     "pathogen", "delay_dist", "distribution", "mean", "sd", "study", "DOI"

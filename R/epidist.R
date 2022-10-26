@@ -72,28 +72,20 @@ epidist  <- function(
 
   delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
 
-  # Extract pathogen and parameter type
-  pick_path <- utils::read.csv(file = system.file(
-    "extdata",
-    "parameters.csv",
-    package = "epiparameter",
-    mustWork = TRUE
-  ))
-
   # filter based on pathogen and delay distribution
-  pick_path <- pick_path[pick_path$pathogen_id == pathogen, ]
-  pick_path <- pick_path[pick_path$type_id == delay_dist, ]
+  params <- params[params$pathogen_id == pathogen, ]
+  params <- params[params$type_id == delay_dist, ]
 
-  if (nrow(pick_path) == 0) {
+  if (nrow(params) == 0) {
     stop("Need to select pathogen and distribution in the dataset")
   }
 
   # Extract study or default to largest sample size
   if (is.null(study)) {
-    pick_study <- pick_path[pick_path$size == max(pick_path$size), ]
+    pick_study <- params[params$size == max(params$size), ]
   }
   if (!is.null(study)) {
-    pick_study <- pick_path[pick_path$study_id == study, ]
+    pick_study <- params[params$study_id == study, ]
   }
 
   # Define distribution
