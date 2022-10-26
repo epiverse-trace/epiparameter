@@ -71,14 +71,14 @@ stored in the <code>epiparameter</code> library.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># summary of delay distributions available for ebola</span></span></span>
 <span class="r-in"><span><span class="fu">pathogen_summary</span><span class="op">(</span>pathogen <span class="op">=</span> <span class="st">"ebola"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   pathogen         delay_dist distribution mean       sd             study</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1    ebola         incubation        gamma  5.1 2.167949          WHO_team</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    ebola onset_to_admission        gamma  5.1 2.167949          WHO_team</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    ebola    serial_interval        gamma 15.3 9.300000 WHO_response_team</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    DOI</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 10.1056/NEJMc1413884</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 10.1056/NEJMc1413884</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 10.1056/NEJMc1413884</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   pathogen      delay_dist distribution    mean       sd               study</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    ebola      incubation        gamma  9.1000 7.300000            WHO_team</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    ebola  onset_to_death        gamma  7.9992 5.163461 Ebola_outbreak_team</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    ebola serial_interval        gamma 15.3000 9.300000   WHO_response_team</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                             DOI</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         10.1056/nejmoa1411100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 10.1016/S0140-6736(18)31387-4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         10.1056/nejmoa1411100</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># summary of delay distributions available for SARS CoV</span></span></span>
 <span class="r-in"><span><span class="fu">pathogen_summary</span><span class="op">(</span>pathogen <span class="op">=</span> <span class="st">"SARS_CoV"</span><span class="op">)</span></span></span>

@@ -57,7 +57,8 @@
 <div class="page-header"><h1 id="epiparameter">epiparameter<a class="anchor" aria-label="anchor" href="#epiparameter"></a>
 </h1></div>
 <!-- badges: start -->
-<p><code>R</code> package with epidemiological parameter distributions for infectious diseases. Eventually it will include a range of pathogens and natural history processes, as well as functions to extract parameters from reported statistics.</p>
+
+<p><code>R</code> package with epidemiological parameter distributions for infectious diseases. It includes functions that load delay distributions for a range of pathogens and functions to extract parameters from reported statistics.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -77,24 +78,26 @@
 <span><span class="fu">epiparameter</span><span class="fu">::</span><span class="fu"><a href="reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>delay_dist <span class="op">=</span> <span class="st">"incubation"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             pathogen_id        study_id year size distribution</span></span>
 <span><span class="co">#&gt; 1            adenovirus    Lessler_etal 2009   14        lnorm</span></span>
-<span><span class="co">#&gt; 2                 ebola        WHO_team 2014  500        gamma</span></span>
-<span><span class="co">#&gt; 3             human_CoV    Lessler_etal 2009   13        lnorm</span></span>
-<span><span class="co">#&gt; 4  influenza_A_seasonal    Lessler_etal 2009  122        lnorm</span></span>
-<span><span class="co">#&gt; 5  influenza_B_seasonal    Lessler_etal 2009   76        lnorm</span></span>
-<span><span class="co">#&gt; 6       influenza_H1N1p      Ghani_etal 2009   16        gamma</span></span>
-<span><span class="co">#&gt; 7       influenza_H1N1p      Tuite_etal 2010  316        lnorm</span></span>
-<span><span class="co">#&gt; 8        influenza_H7N9    Cowling_etal 2013   32        gamma</span></span>
-<span><span class="co">#&gt; 9               marburg    Martini_etal 1973    5        gamma</span></span>
-<span><span class="co">#&gt; 10              measles    Lessler_etal 2009   56        lnorm</span></span>
-<span><span class="co">#&gt; 11             MERS_CoV Cauchemez_et_al 2014    7        lnorm</span></span>
-<span><span class="co">#&gt; 12             MERS_CoV     Assiri_etal 2013   23        lnorm</span></span>
-<span><span class="co">#&gt; 13        parainfluenza    Lessler_etal 2009   11        lnorm</span></span>
-<span><span class="co">#&gt; 14           rhinovirus    Lessler_etal 2009   28        lnorm</span></span>
-<span><span class="co">#&gt; 15                  RSV    Lessler_etal 2009   24        lnorm</span></span>
-<span><span class="co">#&gt; 16             SARS_CoV   Donnelly_etal 2003   57        gamma</span></span>
-<span><span class="co">#&gt; 17             SARS_CoV    Lessler_etal 2009  157        lnorm</span></span>
-<span><span class="co">#&gt; 18  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm</span></span>
-<span><span class="co">#&gt; 19            monkeypox           Nolen 2016   16        lnorm</span></span>
+<span><span class="co">#&gt; 3                 ebola        WHO_team 2014  500        gamma</span></span>
+<span><span class="co">#&gt; 5             human_CoV    Lessler_etal 2009   13        lnorm</span></span>
+<span><span class="co">#&gt; 6  influenza_A_seasonal    Lessler_etal 2009  122        lnorm</span></span>
+<span><span class="co">#&gt; 7  influenza_B_seasonal    Lessler_etal 2009   76        lnorm</span></span>
+<span><span class="co">#&gt; 8       influenza_H1N1p      Ghani_etal 2009   16        gamma</span></span>
+<span><span class="co">#&gt; 9       influenza_H1N1p      Tuite_etal 2010  316        lnorm</span></span>
+<span><span class="co">#&gt; 11       influenza_H7N9    Cowling_etal 2013   32      weibull</span></span>
+<span><span class="co">#&gt; 13       influenza_H5N1    Cowling_etal 2013   27      weibull</span></span>
+<span><span class="co">#&gt; 15              marburg          Pavlin 2014   18        gamma</span></span>
+<span><span class="co">#&gt; 16              measles    Lessler_etal 2009   56        lnorm</span></span>
+<span><span class="co">#&gt; 17             MERS_CoV     Assiri_etal 2013   23        lnorm</span></span>
+<span><span class="co">#&gt; 20             MERS_CoV Cauchemez_et_al 2014    7        lnorm</span></span>
+<span><span class="co">#&gt; 21            monkeypox           Nolen 2016   16        lnorm</span></span>
+<span><span class="co">#&gt; 22            monkeypox  Thornhill_etal 2022   23        lnorm</span></span>
+<span><span class="co">#&gt; 24        parainfluenza    Lessler_etal 2009   11        lnorm</span></span>
+<span><span class="co">#&gt; 25           rhinovirus    Lessler_etal 2009   28        lnorm</span></span>
+<span><span class="co">#&gt; 26                  RSV    Lessler_etal 2009   24        lnorm</span></span>
+<span><span class="co">#&gt; 27             SARS_CoV   Donnelly_etal 2003   57        gamma</span></span>
+<span><span class="co">#&gt; 29             SARS_CoV    Lessler_etal 2009  157        lnorm</span></span>
+<span><span class="co">#&gt; 33  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm</span></span>
 <span></span>
 <span><span class="co"># Extract incubation period distribution</span></span>
 <span><span class="va">incubation_H7N9</span> <span class="op">&lt;-</span> <span class="fu">epiparameter</span><span class="fu">::</span><span class="fu"><a href="reference/epidist.html">epidist</a></span><span class="op">(</span></span>
@@ -102,9 +105,44 @@
 <span>  delay_dist <span class="op">=</span> <span class="st">"incubation"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Plot probability mass function</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">10</span>,<span class="va">incubation_H7N9</span><span class="op">$</span><span class="fu">pmf</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>,xlab<span class="op">=</span><span class="st">"time since infection"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># Plot probability distributions</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">incubation_H7N9</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
+</div>
+<div class="section level2">
+<h2 id="epiparameter-tutorial-with-applications">
+<code>epiparameter</code> tutorial with applications<a class="anchor" aria-label="anchor" href="#epiparameter-tutorial-with-applications"></a>
+</h2>
+<p>For a full explanation of the functions and data stored in the <code>epiparameter</code> package and a few possible applications of the delay distribution data please see the <a href="https://epiverse-trace.github.io/epiparameter/articles/epiparameter.html" class="external-link">introduction to <code>epiparameter</code></a>.</p>
+</div>
+<div class="section level2">
+<h2 id="contributing-to-library-of-delay-distributions">Contributing to library of delay distributions<a class="anchor" aria-label="anchor" href="#contributing-to-library-of-delay-distributions"></a>
+</h2>
+<p>If you would like to contribute to the different delay distributions stored in the <code>epiparameter</code> package, you can access the <a href="https://docs.google.com/spreadsheets/d/1VzC8NFHSQYPKsiDnxA7gDsm4cVr79outKQZJP8cC7Ro/edit?usp=sharing" class="external-link">google sheet</a> and add your data.</p>
+<p>Notes on the the spreadsheet:</p>
+<ul>
+<li><p>Most studies will report the distribution(s) they fitted to the data. In the case that the study did not report the distribution of the reported parameters or summary statistics (mean and standard deviation of the distribution) the distribution can be assumed (e.g. by looking at the shape of the distribution from figures in the paper). When a distribution is being assumed and not explicitly stated please add this assumption to the notes section of the spreadsheet. We are only interested in studies that report the distribution fitted to the data. This will ensure that if this data is used in another application the user can be alerted that the distribution is assumed and not known with certainty.</p></li>
+<li><p>Shape and scale columns are the parameters of the gamma distribution, while meanlog and sdlog columns are the parameters of the lognormal distribution. In some cases these values will not be reported in the study but can be extracted using the <code>epiparameter</code> function <code><a href="reference/extract_param.html">extract_param()</a></code> using either reported percentiles or median and range (see <a href="#extraction">extraction section</a>)</p></li>
+<li><p>The extracted column refers to whether the distribution parameters are explicitly stated in the paper, in which case the extracted column should be “no”, or are extracted from summary statistics using function in the package, in which case the extracted column is “yes”</p></li>
+<li><p>Discretised is to indicate whether the study fitted a discrete distribution</p></li>
+<li><p>Phase_bias means the study adjusted for a either a rising or falling epidemic, which can bias incubation period estimates. Most studies will not adjust for this bias.</p></li>
+</ul>
+<p>If fields are not known from a study, either put “NA” or “not yet checked”. We are also happy to receive papers which report these delay distributions and can add them to the database ourselves.</p>
+</div>
+<div class="section level2">
+<h2 id="help">Help<a class="anchor" aria-label="anchor" href="#help"></a>
+</h2>
+<p>To report a bug please open an <a href="https://github.com/epiverse-trace/epiparameter/issues/new/choose" class="external-link">issue</a></p>
+</div>
+<div class="section level2">
+<h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
+</h2>
+<p>Contributions to <code>epiparameter</code> are welcomed. Please follow the <a href="https://github.com/epiverse-trace/epiparameter/blob/main/.github/CONTRIBUTING.md" class="external-link">package contributing guide</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
+<p>Please note that the <code>epiparameter</code> project is released with a <a href="https://github.com/epiverse-trace/.github/blob/main/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
