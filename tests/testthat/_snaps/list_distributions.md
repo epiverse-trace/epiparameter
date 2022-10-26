@@ -11,8 +11,8 @@
       7  influenza_B_seasonal    Lessler_etal 2009   76        lnorm
       8       influenza_H1N1p      Ghani_etal 2009   16        gamma
       9       influenza_H1N1p      Tuite_etal 2010  316        lnorm
-      11       influenza_H7N9    Cowling_etal 2013   32      weibull
       13       influenza_H5N1    Cowling_etal 2013   27      weibull
+      11       influenza_H7N9    Cowling_etal 2013   32      weibull
       15              marburg          Pavlin 2014   18        gamma
       16              measles    Lessler_etal 2009   56        lnorm
       17             MERS_CoV     Assiri_etal 2013   23        lnorm
@@ -39,8 +39,8 @@
       7  influenza_B_seasonal incubation    Lessler_etal 2009   76        lnorm   NA
       8       influenza_H1N1p incubation      Ghani_etal 2009   16        gamma 2.05
       9       influenza_H1N1p incubation      Tuite_etal 2010  316        lnorm 4.30
-      11       influenza_H7N9 incubation    Cowling_etal 2013   32      weibull 3.10
       13       influenza_H5N1 incubation    Cowling_etal 2013   27      weibull 3.30
+      11       influenza_H7N9 incubation    Cowling_etal 2013   32      weibull 3.10
       15              marburg incubation          Pavlin 2014   18        gamma   NA
       16              measles incubation    Lessler_etal 2009   56        lnorm   NA
       17             MERS_CoV incubation     Assiri_etal 2013   23        lnorm   NA
@@ -61,8 +61,8 @@
       7         NA           NA  0.600000    0.700000           NA          NA
       8  0.4898979           NA        NA          NA           NA          NA
       9         NA           NA  4.000000          NA           NA          NA
-      11 1.4000000    0.6870932  2.887973    3.888880           NA    5.489237
       13 1.5000000    0.6870932  3.088366    4.288508           NA    5.989652
+      11 1.4000000    0.6870932  2.887973    3.888880           NA    5.489237
       15        NA           NA  7.000000          NA           NA          NA
       16        NA           NA 12.500000   14.400000           NA   17.700000
       17        NA           NA  5.200000          NA           NA   12.400000
@@ -83,8 +83,8 @@
       7            NA          NA          NA        NA        NA -0.5108280
       8            NA          NA          NA 17.503120 0.1171220         NA
       9      6.600000          NA          NA        NA        NA  1.3862944
-      11     5.989652          NA          NA  2.309241 3.3759410         NA
       13     6.589681          NA          NA  2.185908 3.6932670         NA
+      11     5.989652          NA          NA  2.309241 3.3759410         NA
       15           NA           2          13  1.946138 0.5324265         NA
       16           NA          NA          NA        NA        NA  2.5257260
       17    14.700000          NA          NA        NA        NA  1.6486586
@@ -105,8 +105,8 @@
       7  0.2285515       yes          no                  no
       8         NA       yes        <NA>                <NA>
       9  0.2554986       yes        <NA>                <NA>
-      11        NA       yes          no                  no
       13        NA       yes          no                  no
+      11        NA       yes          no                  no
       15        NA       yes          no                  no
       16 0.2097952       yes          no                  no
       17 0.5283368       yes        <NA>                <NA>
@@ -127,8 +127,8 @@
       7                                             <NA> 19393959
       8                                             <NA> 20029668
       9                                             <NA> 19959592
-      11    extraction used quantile_025 and quantile_75 23803488
       13    extraction used quantile_025 and quantile_75 23803488
+      11    extraction used quantile_025 and quantile_75 23803488
       15                    gamma assumed, range 2 to 13 25495697
       16                                            <NA> 19393959
       17     extracted using quantile_5 and quantile_975 23782161
@@ -149,8 +149,8 @@
       7    10.1016/S1473-3099(09)70069-6 Adam Kucharski
       8         10.1371/currents.RRN1130 Adam Kucharski
       9              10.1503/cmaj.091807 Adam Kucharski
-      11   10.1016/S0140-6736(13)61171-X Adam Kucharski
       13   10.1016/S0140-6736(13)61171-X Adam Kucharski
+      11   10.1016/S0140-6736(13)61171-X Adam Kucharski
       15 10.1186/1756-0500-7-906         Adam Kucharski
       16   10.1016/S1473-3099(09)70069-6 Adam Kucharski
       17           10.1056/NEJMoa1306742 Adam Kucharski
@@ -171,8 +171,8 @@
     Output
                  pathogen_id      study_id year size distribution
       10     influenza_H1N1p     Jain_etal 2009  272        lnorm
-      12      influenza_H7N9  Cowling_etal 2013  123        gamma
       14      influenza_H5N1  Cowling_etal 2013   43      weibull
+      12      influenza_H7N9  Cowling_etal 2013  123        gamma
       18            MERS_CoV   Assiri_etal 2013   23        lnorm
       28            SARS_CoV Donnelly_etal 2003   57        gamma
       31 SARS_CoV_2_wildtype   Linton_etal 2020  155        lnorm
@@ -184,43 +184,43 @@
     Output
                  pathogen_id            type_id      study_id year size distribution
       10     influenza_H1N1p onset_to_admission     Jain_etal 2009  272        lnorm
-      12      influenza_H7N9 onset_to_admission  Cowling_etal 2013  123        gamma
       14      influenza_H5N1 onset_to_admission  Cowling_etal 2013   43      weibull
+      12      influenza_H7N9 onset_to_admission  Cowling_etal 2013  123        gamma
       18            MERS_CoV onset_to_admission   Assiri_etal 2013   23        lnorm
       28            SARS_CoV onset_to_admission Donnelly_etal 2003   57        gamma
       31 SARS_CoV_2_wildtype onset_to_admission   Linton_etal 2020  155        lnorm
          mean    sd quantile_025 median quantile_75 quantile_875 quantile_95
       10   NA    NA           NA    3.0          NA           NA          NA
-      12   NA    NA    0.6172617    4.2    6.170223           NA    9.622302
       14   NA    NA    1.3678290    4.9    6.770349           NA   10.222554
+      12   NA    NA    0.6172617    4.2    6.170223           NA    9.622302
       18   NA    NA           NA    5.0          NA           NA          NA
       28 4.85  3.49           NA     NA          NA           NA          NA
       31 9.70 35.20           NA    2.6          NA           NA   35.100000
          quantile_975 lower_range upper_range    shape    scale   meanlog     sdlog
       10           NA          NA          NA       NA       NA 1.0986120 2.9115800
-      12     10.82306          NA          NA 2.138094 2.153314        NA        NA
       14     11.42344          NA          NA 2.373396 6.438843        NA        NA
+      12     10.82306          NA          NA 2.138094 2.153314        NA        NA
       18           NA           1          10       NA       NA 1.6089493 0.6103889
       28           NA          NA          NA 1.929655 2.513402        NA        NA
       31           NA          NA          NA       NA       NA 0.9466094 1.6281993
          extracted discretised phase_bias_adjusted
       10       yes        <NA>                <NA>
-      12       yes          no                  no
       14       yes          no                  no
+      12       yes          no                  no
       18       yes        <NA>                <NA>
       28       yes        <NA>                <NA>
       31       yes          no                 yes
                                                     notes     PMID
       10 Extracted using range 0 to 18, lognormal assumed 19815859
-      12     extraction used quantile_025 and quantile_75 23803488
       14     extraction used quantile_025 and quantile_95 23803488
+      12     extraction used quantile_025 and quantile_75 23803488
       18                                             <NA> 23782161
       28                                 Feb-26 to Mar-25 12781533
       31                              For living patients 32079150
                                    DOI       added_by
       10         10.1056/NEJMoa0906695 Adam Kucharski
-      12 10.1016/S0140-6736(13)61171-X Adam Kucharski
       14 10.1016/S0140-6736(13)61171-X Adam Kucharski
+      12 10.1016/S0140-6736(13)61171-X Adam Kucharski
       18         10.1056/NEJMoa1306742 Adam Kucharski
       28 10.1016/S0140-6736(03)13410-1 Adam Kucharski
       31            10.3390/jcm9020538 Adam Kucharski
@@ -330,8 +330,8 @@
       list_distributions(delay_dist = "generation_time", parameters = FALSE)
     Output
                  pathogen_id      study_id year size distribution
-      30 SARS_CoV_2_wildtype Ferretti_etal 2020  191      weibull
       36          adenovirus      Guo_etal 2020  375      weibull
+      30 SARS_CoV_2_wildtype Ferretti_etal 2020  191      weibull
 
 # list_distributions works for generation_time, params = TRUE
 
@@ -339,18 +339,18 @@
       list_distributions(delay_dist = "generation_time", parameters = TRUE)
     Output
                  pathogen_id         type_id      study_id year size distribution
-      30 SARS_CoV_2_wildtype generation_time Ferretti_etal 2020  191      weibull
       36          adenovirus generation_time      Guo_etal 2020  375      weibull
+      30 SARS_CoV_2_wildtype generation_time Ferretti_etal 2020  191      weibull
          mean  sd quantile_025 median quantile_75 quantile_875 quantile_95
-      30    5 1.9           NA    5.0          NA           NA          NA
       36   NA  NA           NA    7.3          NA           NA          NA
+      30    5 1.9           NA    5.0          NA           NA          NA
          quantile_975 lower_range upper_range shape scale meanlog sdlog extracted
-      30           NA          NA          NA 2.826 5.665      NA    NA       yes
       36           NA          NA          NA 3.480 8.190      NA    NA          
+      30           NA          NA          NA 2.826 5.665      NA    NA       yes
          discretised phase_bias_adjusted                                       notes
-      30          no                 yes                         20/1/2020-21/3/2020
       36          no                  no Extracted using the parametric distribution
+      30          no                 yes                         20/1/2020-21/3/2020
              PMID                          DOI      added_by
-      30 32234805      10.1126/science.abb6936  Rachael Pung
       36 32479490 10.1371/journal.pone.0232948 Carmen Tamayo
+      30 32234805      10.1126/science.abb6936  Rachael Pung
 

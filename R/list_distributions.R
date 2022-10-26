@@ -35,22 +35,30 @@ list_distributions <- function(
   delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
 
   # Extract relevant values
-  show_values <- utils::read.csv(system.file(
+  params <- utils::read.csv(system.file(
     "extdata",
     "parameters.csv",
     package = "epiparameter",
     mustWork = TRUE
   ))
-
+  
+  # order params by pathogen, delay dist and study
+  params <- params[order(
+    tolower(params$pathogen_id), 
+    tolower(params$type_id), 
+    tolower(params$study_id), 
+    method = "radix"
+  ), ]
+  
   # filter by delay distribution
-  show_values <- show_values[show_values$type_id == delay_dist, ]
+  params <- params[params$type_id == delay_dist, ]
 
   if (parameters == TRUE) {
-    output <- show_values
+    output <- params
   }
   if (parameters == FALSE) {
     # return only the important columns
-    output <- show_values[, c(
+    output <- params[, c(
       "pathogen_id", "study_id", "year", "size", "distribution"
     )]
   }
