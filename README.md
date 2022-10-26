@@ -89,37 +89,36 @@ and add your data.
 
 Notes on the the spreadsheet:
 
--   Most studies will report the distribution(s) they fitted to the
-    data. In the case that the study did not report the distribution of
-    the reported parameters or summary statistics (mean and standard
-    deviation of the distribution) the distribution can be assumed
-    (e.g. by looking at the shape of the distribution from figures in
-    the paper). When a distribution is being assumed and not explicitly
-    stated please add this assumption to the notes section of the
-    spreadsheet. We are only interested in studies that report the
-    distribution fitted to the data. This will ensure that if this data
-    is used in another application the user can be alerted that the
-    distribution is assumed and not known with certainty.
+- Most studies will report the distribution(s) they fitted to the data.
+  In the case that the study did not report the distribution of the
+  reported parameters or summary statistics (mean and standard deviation
+  of the distribution) the distribution can be assumed (e.g. by looking
+  at the shape of the distribution from figures in the paper). When a
+  distribution is being assumed and not explicitly stated please add
+  this assumption to the notes section of the spreadsheet. We are only
+  interested in studies that report the distribution fitted to the data.
+  This will ensure that if this data is used in another application the
+  user can be alerted that the distribution is assumed and not known
+  with certainty.
 
--   Shape and scale columns are the parameters of the gamma
-    distribution, while meanlog and sdlog columns are the parameters of
-    the lognormal distribution. In some cases these values will not be
-    reported in the study but can be extracted using the `epiparameter`
-    function `extract_param()` using either reported percentiles or
-    median and range (see [extraction section](#extraction))
+- Shape and scale columns are the parameters of the gamma distribution,
+  while meanlog and sdlog columns are the parameters of the lognormal
+  distribution. In some cases these values will not be reported in the
+  study but can be extracted using the `epiparameter` function
+  `extract_param()` using either reported percentiles or median and
+  range (see [extraction section](#extraction))
 
--   The extracted column refers to whether the distribution parameters
-    are explicitly stated in the paper, in which case the extracted
-    column should be “no”, or are extracted from summary statistics
-    using function in the package, in which case the extracted column is
-    “yes”
+- The extracted column refers to whether the distribution parameters are
+  explicitly stated in the paper, in which case the extracted column
+  should be “no”, or are extracted from summary statistics using
+  function in the package, in which case the extracted column is “yes”
 
--   Discretised is to indicate whether the study fitted a discrete
-    distribution
+- Discretised is to indicate whether the study fitted a discrete
+  distribution
 
--   Phase_bias means the study adjusted for a either a rising or falling
-    epidemic, which can bias incubation period estimates. Most studies
-    will not adjust for this bias.
+- Phase_bias means the study adjusted for a either a rising or falling
+  epidemic, which can bias incubation period estimates. Most studies
+  will not adjust for this bias.
 
 If fields are not known from a study, either put “NA” or “not yet
 checked”. We are also happy to receive papers which report these delay
@@ -140,5 +139,5 @@ guide](https://github.com/epiverse-trace/epiparameter/blob/main/.github/CONTRIBU
 
 Please note that the `epiparameter` project is released with a
 [Contributor Code of
-Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+Conduct](https://github.com/epiverse-trace/.github/blob/main/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
