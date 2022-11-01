@@ -51,6 +51,11 @@ pathogen_summary <- function(pathogen) {
         mu = as.numeric(x[["meanlog"]]),
         sigma = as.numeric(x[["sdlog"]])
       )
+    } else if (x[["distribution"]] == "weibull") {
+      parameters <- weibull_shapescale2meansd(
+        shape = as.numeric(x[["shape"]]), 
+        scale = as.numeric(x[["scale"]])
+      )
     }
     parameters
   })
