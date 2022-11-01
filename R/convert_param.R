@@ -68,7 +68,7 @@ gamma_meansd2shapescale <- function(mean, sd) {
   list(shape = shape, scale = scale)
 }
 
-#' Converts the mean and standard deviation of the weibull distribution to the 
+#' Converts the mean and standard deviation of the weibull distribution to the
 #' shape and scale parameterisation.
 #'
 #' @param mean The mean of the weibull distribution
@@ -80,18 +80,22 @@ gamma_meansd2shapescale <- function(mean, sd) {
 #' @examples
 #' weibull_meansd2shapescale(mean = 1.5, sd = 0.5)
 weibull_meansd2shapescale <- function(mean, sd) {
+
+  # give warning message about numerial inaccuracies
+  message("Numerical approximation used, results may be unreliable.")
+
   var <- sd^2
   f <- function(k, mean, var) {
     (var / mean^2) - ((gamma(1 + 2 / k)) / (gamma(1 + 1 / k))^2) + 1
   }
-  
+
   root <- stats::uniroot(f = f, interval = c(0.1, 1000), mean = mean, var = var)
   shape <- root$root
   scale <- mean / gamma(1 + 1 / shape)
   list(shape = shape, scale = scale)
 }
 
-#' Converts the shape and scale parameters of the weibull distribution to the 
+#' Converts the shape and scale parameters of the weibull distribution to the
 #' mean and standard deviation
 #'
 #' @param shape The shape parameter of the weibull distribution
@@ -107,6 +111,3 @@ weibull_shapescale2meansd <- function(shape, scale) {
   sd <- sqrt(scale^2 * (gamma(1 + 2 / shape) - gamma(1 + 1 / shape))^2)
   list(mean = mean, sd = sd)
 }
-
-
-
