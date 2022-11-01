@@ -210,10 +210,38 @@ test_that("list_distributions works for generation_time, params = TRUE", {
 
 test_that("list_distributions fails correctly", {
   # check for incorrect input
-  expect_error(list_distributions(delay_dist = "random", parameters = FALSE))
-  expect_error(list_distributions(delay_dist = "random", parameters = TRUE))
-
+  expect_error(
+    list_distributions(delay_dist = "random", parameters = FALSE), 
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("all"), ", ", dQuote("incubation"), 
+      ", ", dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ", 
+      dQuote("serial_interval"), ", ", dQuote("generation_time") 
+    )
+  )
+  expect_error(
+    list_distributions(delay_dist = "random", parameters = TRUE), 
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("all"), ", ", dQuote("incubation"), 
+      ", ", dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ", 
+      dQuote("serial_interval"), ", ", dQuote("generation_time") 
+    )
+  )
+  
   # check for multiple match input
-  expect_error(list_distributions(delay_dist = "onset", parameters = FALSE))
-  expect_error(list_distributions(delay_dist = "onset", parameters = TRUE))
+  expect_error(
+    list_distributions(delay_dist = "onset", parameters = FALSE), 
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("all"), ", ", dQuote("incubation"), 
+      ", ", dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ", 
+      dQuote("serial_interval"), ", ", dQuote("generation_time") 
+    )
+  )
+  expect_error(
+    list_distributions(delay_dist = "onset", parameters = TRUE), 
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("all"), ", ", dQuote("incubation"), 
+      ", ", dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ", 
+      dQuote("serial_interval"), ", ", dQuote("generation_time") 
+    )
+  )
 })
