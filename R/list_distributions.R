@@ -41,15 +41,15 @@ list_distributions <- function(
     package = "epiparameter",
     mustWork = TRUE
   ))
-  
+
   # order params by pathogen, delay dist and study
   params <- params[order(
-    tolower(params$pathogen_id), 
-    tolower(params$type_id), 
-    tolower(params$study_id), 
+    tolower(params$pathogen_id),
+    tolower(params$type_id),
+    tolower(params$study_id),
     method = "radix"
   ), ]
-  
+
   # filter by delay distribution
   params <- params[params$type_id == delay_dist, ]
 

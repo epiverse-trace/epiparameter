@@ -57,10 +57,9 @@ test_that("weibull_shapescale2meansd works as expected", {
 })
 
 test_that("weibull_meansd2shapescale works as expected", {
-  # suppress message in testing 
+  # suppress message in testing
   params <- suppressMessages(weibull_meansd2shapescale(mean = 1, sd = 0.5))
   expect_true(is.list(params))
   expect_named(params, c("shape", "scale"))
   expect_equal(params, list(shape = 2.10134909110144, scale = 1.12906338952704))
 })
-
