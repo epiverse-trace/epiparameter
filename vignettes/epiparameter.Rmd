@@ -229,14 +229,14 @@ rt <- estimate_R(
   ))
 )
 
-plot(Rt)
+plot(rt)
 ```
 
 The incidence data required for the calculation of $R_t$ is sometimes only available in a raw data form, linelist. From this linelist the incidence data can be extracted and used for the reproduction number calculation.
 
 ### `EpiNow2`: estimating a real-time $R_t$
 
-`EpiNow2` is the second R package in this demonstration on how data on epidemiological parameters (incubation period, serial interval, etc.) can be used for estimating the effective reproduction number ($R_t$) which is used to determine transmissibility of an epidemic and its real-time growth or decline. `EpiNow2` differs from `EpiEstim` in its incorporation of more delays (e.g. reporting delays) to produced less biased estimates of Rt.
+`EpiNow2` is the second R package in this demonstration on how data on epidemiological parameters (incubation period, serial interval, etc.) can be used for estimating the effective reproduction number ($R_t$) which is used to determine transmissibility of an epidemic and its real-time growth or decline. `EpiNow2` differs from `EpiEstim` in its incorporation of more delays (e.g. reporting delays) to produced less biased estimates of $R_t$.
 
 ```{r, setup epinow2}
 generation_time <- get_generation_time(
@@ -379,7 +379,7 @@ The confidence interval for $R_t$ is calculated using simulations and the number
 
 ```{r, estimate Rt with R0 for ebola}
 out <- estimate.R(
-  epid = ebola_incidence_R0,
+  epid = ebola_incidence_r0,
   GT = mgt,
   begin = 1,
   end = 27,
