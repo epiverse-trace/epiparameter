@@ -35,3 +35,22 @@ test_that("pathogen_summary works with pathogen with gamma and lnorm", {
   expect_true(is.character(sars_summary$DOI))
   expect_snapshot(pathogen_summary(pathogen = "SARS_CoV"))
 })
+
+test_that("pathogen_summary works with pathogen with weibull", {
+  h5n1_summary <- pathogen_summary(pathogen = "influenza_H5N1")
+  expect_s3_class(h5n1_summary, "data.frame")
+  expect_equal(nrow(h5n1_summary), 2)
+  expect_equal(ncol(h5n1_summary), 7)
+  expect_named(
+    h5n1_summary,
+    c("pathogen", "delay_dist", "distribution", "mean", "sd", "study", "DOI")
+  )
+  expect_type(h5n1_summary$pathogen, "character")
+  expect_true(is.character(h5n1_summary$delay_dist))
+  expect_true(is.character(h5n1_summary$distribution))
+  expect_true(is.numeric(h5n1_summary$mean))
+  expect_true(is.numeric(h5n1_summary$sd))
+  expect_true(is.character(h5n1_summary$study))
+  expect_true(is.character(h5n1_summary$DOI))
+  expect_snapshot(pathogen_summary(pathogen = "influenza_H5N1"))
+})

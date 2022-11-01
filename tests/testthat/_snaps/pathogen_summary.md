@@ -26,3 +26,15 @@
       2 10.1016/S1473-3099(09)70069-6
       3 10.1016/S0140-6736(03)13410-1
 
+# pathogen_summary works with pathogen with weibull
+
+    Code
+      pathogen_summary(pathogen = "influenza_H5N1")
+    Output
+              pathogen         delay_dist distribution     mean        sd
+      1 influenza_H5N1         incubation      weibull 3.270796 0.3005023
+      2 influenza_H5N1 onset_to_admission      weibull 5.706797 0.3676510
+               study                           DOI
+      1 Cowling_etal 10.1016/S0140-6736(13)61171-X
+      2 Cowling_etal 10.1016/S0140-6736(13)61171-X
+
