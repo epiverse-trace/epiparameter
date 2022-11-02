@@ -226,28 +226,28 @@ We can check what information we have in the <code>epiparameter</code>
 database on the incubation period of SARS-CoV:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>delay_dist <span class="op">=</span> <span class="st">"incubation"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             pathogen_id        study_id year size distribution</span></span>
-<span><span class="co">#&gt; 1            adenovirus    Lessler_etal 2009   14        lnorm</span></span>
-<span><span class="co">#&gt; 3                 ebola        WHO_team 2014  500        gamma</span></span>
-<span><span class="co">#&gt; 5             human_CoV    Lessler_etal 2009   13        lnorm</span></span>
-<span><span class="co">#&gt; 6  influenza_A_seasonal    Lessler_etal 2009  122        lnorm</span></span>
-<span><span class="co">#&gt; 7  influenza_B_seasonal    Lessler_etal 2009   76        lnorm</span></span>
-<span><span class="co">#&gt; 8       influenza_H1N1p      Ghani_etal 2009   16        gamma</span></span>
-<span><span class="co">#&gt; 9       influenza_H1N1p      Tuite_etal 2010  316        lnorm</span></span>
-<span><span class="co">#&gt; 13       influenza_H5N1    Cowling_etal 2013   27      weibull</span></span>
-<span><span class="co">#&gt; 11       influenza_H7N9    Cowling_etal 2013   32      weibull</span></span>
-<span><span class="co">#&gt; 15              marburg          Pavlin 2014   18        gamma</span></span>
-<span><span class="co">#&gt; 16              measles    Lessler_etal 2009   56        lnorm</span></span>
-<span><span class="co">#&gt; 17             MERS_CoV     Assiri_etal 2013   23        lnorm</span></span>
-<span><span class="co">#&gt; 20             MERS_CoV Cauchemez_et_al 2014    7        lnorm</span></span>
-<span><span class="co">#&gt; 21            monkeypox           Nolen 2016   16        lnorm</span></span>
-<span><span class="co">#&gt; 22            monkeypox  Thornhill_etal 2022   23        lnorm</span></span>
-<span><span class="co">#&gt; 24        parainfluenza    Lessler_etal 2009   11        lnorm</span></span>
-<span><span class="co">#&gt; 25           rhinovirus    Lessler_etal 2009   28        lnorm</span></span>
-<span><span class="co">#&gt; 26                  RSV    Lessler_etal 2009   24        lnorm</span></span>
-<span><span class="co">#&gt; 27             SARS_CoV   Donnelly_etal 2003   57        gamma</span></span>
-<span><span class="co">#&gt; 29             SARS_CoV    Lessler_etal 2009  157        lnorm</span></span>
-<span><span class="co">#&gt; 33  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm</span></span></code></pre></div>
+<span><span class="co">#&gt;             pathogen_id    type_id        study_id year size distribution</span></span>
+<span><span class="co">#&gt; 1            adenovirus incubation    Lessler_etal 2009   14        lnorm</span></span>
+<span><span class="co">#&gt; 2                 ebola incubation        WHO_team 2014  500        gamma</span></span>
+<span><span class="co">#&gt; 3             human_CoV incubation    Lessler_etal 2009   13        lnorm</span></span>
+<span><span class="co">#&gt; 4  influenza_A_seasonal incubation    Lessler_etal 2009  122        lnorm</span></span>
+<span><span class="co">#&gt; 5  influenza_B_seasonal incubation    Lessler_etal 2009   76        lnorm</span></span>
+<span><span class="co">#&gt; 6       influenza_H1N1p incubation      Ghani_etal 2009   16        gamma</span></span>
+<span><span class="co">#&gt; 7       influenza_H1N1p incubation      Tuite_etal 2010  316        lnorm</span></span>
+<span><span class="co">#&gt; 8        influenza_H5N1 incubation    Cowling_etal 2013   27      weibull</span></span>
+<span><span class="co">#&gt; 9        influenza_H7N9 incubation    Cowling_etal 2013   32      weibull</span></span>
+<span><span class="co">#&gt; 10              marburg incubation          Pavlin 2014   18        gamma</span></span>
+<span><span class="co">#&gt; 11              measles incubation    Lessler_etal 2009   56        lnorm</span></span>
+<span><span class="co">#&gt; 12             MERS_CoV incubation     Assiri_etal 2013   23        lnorm</span></span>
+<span><span class="co">#&gt; 13             MERS_CoV incubation Cauchemez_et_al 2014    7        lnorm</span></span>
+<span><span class="co">#&gt; 14            monkeypox incubation           Nolen 2016   16        lnorm</span></span>
+<span><span class="co">#&gt; 15            monkeypox incubation  Thornhill_etal 2022   23        lnorm</span></span>
+<span><span class="co">#&gt; 16        parainfluenza incubation    Lessler_etal 2009   11        lnorm</span></span>
+<span><span class="co">#&gt; 17           rhinovirus incubation    Lessler_etal 2009   28        lnorm</span></span>
+<span><span class="co">#&gt; 18                  RSV incubation    Lessler_etal 2009   24        lnorm</span></span>
+<span><span class="co">#&gt; 19             SARS_CoV incubation   Donnelly_etal 2003   57        gamma</span></span>
+<span><span class="co">#&gt; 20             SARS_CoV incubation    Lessler_etal 2009  157        lnorm</span></span>
+<span><span class="co">#&gt; 21  SARS_CoV_2_wildtype incubation    McAloon_etal 2020 1269        lnorm</span></span></code></pre></div>
 <p>We can see that on rows 16-17 we have two studies reporting the
 incubation period for SARS-CoV. Here we will use the <span class="citation">Lessler et al. (2009)</span>. This will be the default
 when specifying <code>SARS_CoV</code> as our pathogen of interest due to
@@ -392,7 +392,7 @@ its parameters.</p>
 <span>  I <span class="op">=</span> <span class="va">covid_incidence</span><span class="op">$</span><span class="va">count</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">Rt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/EpiEstim/man/estimate_R.html" class="external-link">estimate_R</a></span><span class="op">(</span></span>
+<span><span class="va">rt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/EpiEstim/man/estimate_R.html" class="external-link">estimate_R</a></span><span class="op">(</span></span>
 <span>  incid <span class="op">=</span> <span class="va">covid_incidence</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"parametric_si"</span>,</span>
 <span>  config <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/EpiEstim/man/make_config.html" class="external-link">make_config</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -410,19 +410,19 @@ library of serial interval parameters which can be extracted and used
 for the reproduction number estimation.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>delay_dist <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;            pathogen_id          study_id year size distribution</span></span>
-<span><span class="co">#&gt; 2                ebola WHO_response_team 2014   92        gamma</span></span>
-<span><span class="co">#&gt; 19            MERS_CoV       Assiri_etal 2013   23        lnorm</span></span>
-<span><span class="co">#&gt; 23           monkeypox             UKHSA 2022   17        gamma</span></span>
-<span><span class="co">#&gt; 34 SARS_CoV_2_wildtype     Nishiura_etal 2020   28        lnorm</span></span>
-<span><span class="co">#&gt; 35 SARS_CoV_2_wildtype     Nishiura_etal 2020   18      weibull</span></span>
+<span><span class="co">#&gt;           pathogen_id         type_id          study_id year size distribution</span></span>
+<span><span class="co">#&gt; 1               ebola serial_interval WHO_response_team 2014   92        gamma</span></span>
+<span><span class="co">#&gt; 2            MERS_CoV serial_interval       Assiri_etal 2013   23        lnorm</span></span>
+<span><span class="co">#&gt; 3           monkeypox serial_interval             UKHSA 2022   17        gamma</span></span>
+<span><span class="co">#&gt; 4 SARS_CoV_2_wildtype serial_interval     Nishiura_etal 2020   28        lnorm</span></span>
+<span><span class="co">#&gt; 5 SARS_CoV_2_wildtype serial_interval     Nishiura_etal 2020   18      weibull</span></span>
 <span></span>
 <span><span class="va">covid_si</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span></span>
 <span>  pathogen <span class="op">=</span> <span class="st">"SARS_CoV_2_wildtype"</span>,</span>
 <span>  delay_dist <span class="op">=</span> <span class="st">"serial_interval"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">Rt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/EpiEstim/man/estimate_R.html" class="external-link">estimate_R</a></span><span class="op">(</span></span>
+<span><span class="va">rt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/EpiEstim/man/estimate_R.html" class="external-link">estimate_R</a></span><span class="op">(</span></span>
 <span>  incid <span class="op">=</span> <span class="va">covid_incidence</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"parametric_si"</span>,</span>
 <span>  config <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/EpiEstim/man/make_config.html" class="external-link">make_config</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
@@ -434,7 +434,7 @@ for the reproduction number estimation.</p>
 <span><span class="co">#&gt;     To change this change the t_start and t_end arguments.</span></span>
 <span><span class="co">#&gt; Warning: Unknown or uninitialised column: `dates`.</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Rt</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please</span></span>
 <span><span class="co">#&gt; use `guide = "none"` instead.</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -460,7 +460,7 @@ number (<span class="math inline">\(R_t\)</span>) which is used to
 determine transmissibility of an epidemic and its real-time growth or
 decline. <code>EpiNow2</code> differs from <code>EpiEstim</code> in its
 incorporation of more delays (e.g. reporting delays) to produced less
-biased estimates of Rt.</p>
+biased estimates of <span class="math inline">\(R_t\)</span>.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">generation_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="epiforecasts.io/EpiNow2/reference/get_generation_time.html">get_generation_time</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"SARS-CoV-2"</span>,</span>
@@ -588,8 +588,8 @@ generation time.</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># format incidence data for `estimate.R()`</span></span>
-<span><span class="va">ebola_incidence_R0</span> <span class="op">&lt;-</span> <span class="va">ebola_incidence</span><span class="op">$</span><span class="va">count</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">ebola_incidence_R0</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ebola_incidence</span><span class="op">$</span><span class="va">date_index</span></span>
+<span><span class="va">ebola_incidence_r0</span> <span class="op">&lt;-</span> <span class="va">ebola_incidence</span><span class="op">$</span><span class="va">count</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">ebola_incidence_r0</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ebola_incidence</span><span class="op">$</span><span class="va">date_index</span></span>
 <span></span>
 <span><span class="va">ebola_si</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span>pathogen <span class="op">=</span> <span class="st">"ebola"</span>, delay_dist <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span>
 <span></span>
@@ -598,7 +598,7 @@ generation time.</p>
 <span>  scale <span class="op">=</span> <span class="va">ebola_si</span><span class="op">$</span><span class="va">param</span><span class="op">[[</span><span class="st">"scale"</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">mGT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/R0/man/generation.time.html" class="external-link">generation.time</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"gamma"</span>, val <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">si_mean_sd</span><span class="op">$</span><span class="va">mean</span>, <span class="va">si_mean_sd</span><span class="op">$</span><span class="va">sd</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">mgt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/R0/man/generation.time.html" class="external-link">generation.time</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"gamma"</span>, val <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">si_mean_sd</span><span class="op">$</span><span class="va">mean</span>, <span class="va">si_mean_sd</span><span class="op">$</span><span class="va">sd</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The confidence interval for <span class="math inline">\(R_t\)</span>
 is calculated using simulations and the number of iterations specified
 by the argument <code>nsim</code>. Here we run a small number of
@@ -606,8 +606,8 @@ simulations for the purpose of demonstration, however, a larger number
 of iterations is recommended (e.g. 10,000).</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/R0/man/estimate.R.html" class="external-link">estimate.R</a></span><span class="op">(</span></span>
-<span>  epid <span class="op">=</span> <span class="va">ebola_incidence_R0</span>,</span>
-<span>  GT <span class="op">=</span> <span class="va">mGT</span>,</span>
+<span>  epid <span class="op">=</span> <span class="va">ebola_incidence_r0</span>,</span>
+<span>  GT <span class="op">=</span> <span class="va">mgt</span>,</span>
 <span>  begin <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  end <span class="op">=</span> <span class="fl">27</span>,</span>
 <span>  methods <span class="op">=</span> <span class="st">"TD"</span>,</span>
@@ -708,7 +708,7 @@ database and will be available to use in these calculations.</p></li>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Flu2009"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">Rt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/EpiEstim/man/estimate_R.html" class="external-link">estimate_R</a></span><span class="op">(</span></span>
+<span><span class="va">rt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/EpiEstim/man/estimate_R.html" class="external-link">estimate_R</a></span><span class="op">(</span></span>
 <span>  incid <span class="op">=</span> <span class="va">Flu2009</span><span class="op">$</span><span class="va">incidence</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"uncertain_si"</span>,</span>
 <span>  config <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/EpiEstim/man/make_config.html" class="external-link">make_config</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>

@@ -60,4 +60,10 @@
   <url>
     <loc>/reference/plot.epidist.html</loc>
   </url>
+  <url>
+    <loc>/reference/weibull_meansd2shapescale.html</loc>
+  </url>
+  <url>
+    <loc>/reference/weibull_shapescale2meansd.html</loc>
+  </url>
 </urlset>

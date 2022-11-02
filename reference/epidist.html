@@ -112,28 +112,28 @@ probability density function (<code>pdf</code>) and cumulative distribution func
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># list_distributions() will show which pathogens are available for each</span></span></span>
 <span class="r-in"><span><span class="co"># metric here we search for which incubation periods are available</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="list_distributions.html">list_distributions</a></span><span class="op">(</span>delay_dist <span class="op">=</span> <span class="st">"incubation"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             pathogen_id        study_id year size distribution</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            adenovirus    Lessler_etal 2009   14        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 ebola        WHO_team 2014  500        gamma</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5             human_CoV    Lessler_etal 2009   13        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  influenza_A_seasonal    Lessler_etal 2009  122        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  influenza_B_seasonal    Lessler_etal 2009   76        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8       influenza_H1N1p      Ghani_etal 2009   16        gamma</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9       influenza_H1N1p      Tuite_etal 2010  316        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13       influenza_H5N1    Cowling_etal 2013   27      weibull</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11       influenza_H7N9    Cowling_etal 2013   32      weibull</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15              marburg          Pavlin 2014   18        gamma</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16              measles    Lessler_etal 2009   56        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17             MERS_CoV     Assiri_etal 2013   23        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20             MERS_CoV Cauchemez_et_al 2014    7        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21            monkeypox           Nolen 2016   16        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22            monkeypox  Thornhill_etal 2022   23        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24        parainfluenza    Lessler_etal 2009   11        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25           rhinovirus    Lessler_etal 2009   28        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26                  RSV    Lessler_etal 2009   24        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27             SARS_CoV   Donnelly_etal 2003   57        gamma</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29             SARS_CoV    Lessler_etal 2009  157        lnorm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             pathogen_id    type_id        study_id year size distribution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            adenovirus incubation    Lessler_etal 2009   14        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                 ebola incubation        WHO_team 2014  500        gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3             human_CoV incubation    Lessler_etal 2009   13        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  influenza_A_seasonal incubation    Lessler_etal 2009  122        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  influenza_B_seasonal incubation    Lessler_etal 2009   76        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6       influenza_H1N1p incubation      Ghani_etal 2009   16        gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7       influenza_H1N1p incubation      Tuite_etal 2010  316        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8        influenza_H5N1 incubation    Cowling_etal 2013   27      weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9        influenza_H7N9 incubation    Cowling_etal 2013   32      weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10              marburg incubation          Pavlin 2014   18        gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11              measles incubation    Lessler_etal 2009   56        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12             MERS_CoV incubation     Assiri_etal 2013   23        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13             MERS_CoV incubation Cauchemez_et_al 2014    7        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14            monkeypox incubation           Nolen 2016   16        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15            monkeypox incubation  Thornhill_etal 2022   23        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16        parainfluenza incubation    Lessler_etal 2009   11        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17           rhinovirus incubation    Lessler_etal 2009   28        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                  RSV incubation    Lessler_etal 2009   24        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19             SARS_CoV incubation   Donnelly_etal 2003   57        gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20             SARS_CoV incubation    Lessler_etal 2009  157        lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21  SARS_CoV_2_wildtype incubation    McAloon_etal 2020 1269        lnorm</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># example of epidist() using incubation period for ebola</span></span></span>
 <span class="r-in"><span><span class="fu">epidist</span><span class="op">(</span>pathogen <span class="op">=</span> <span class="st">"ebola"</span>, delay_dist <span class="op">=</span> <span class="st">"incubation"</span><span class="op">)</span></span></span>
