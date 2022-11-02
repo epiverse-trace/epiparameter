@@ -200,7 +200,7 @@ covid_incidence <- tibble(
   I = covid_incidence$count
 )
 
-Rt <- estimate_R(
+rt <- estimate_R(
   incid = covid_incidence,
   method = "parametric_si",
   config = make_config(list(
@@ -220,7 +220,7 @@ covid_si <- epidist(
   delay_dist = "serial_interval"
 )
 
-Rt <- estimate_R(
+rt <- estimate_R(
   incid = covid_incidence,
   method = "parametric_si",
   config = make_config(list(
@@ -229,14 +229,14 @@ Rt <- estimate_R(
   ))
 )
 
-plot(Rt)
+plot(rt)
 ```
 
 The incidence data required for the calculation of $R_t$ is sometimes only available in a raw data form, linelist. From this linelist the incidence data can be extracted and used for the reproduction number calculation.
 
 ### `EpiNow2`: estimating a real-time $R_t$
 
-`EpiNow2` is the second R package in this demonstration on how data on epidemiological parameters (incubation period, serial interval, etc.) can be used for estimating the effective reproduction number ($R_t$) which is used to determine transmissibility of an epidemic and its real-time growth or decline. `EpiNow2` differs from `EpiEstim` in its incorporation of more delays (e.g. reporting delays) to produced less biased estimates of Rt.
+`EpiNow2` is the second R package in this demonstration on how data on epidemiological parameters (incubation period, serial interval, etc.) can be used for estimating the effective reproduction number ($R_t$) which is used to determine transmissibility of an epidemic and its real-time growth or decline. `EpiNow2` differs from `EpiEstim` in its incorporation of more delays (e.g. reporting delays) to produced less biased estimates of $R_t$.
 
 ```{r, setup epinow2}
 generation_time <- get_generation_time(
@@ -362,8 +362,8 @@ ebola_incidence <- incidence(
 )
 
 # format incidence data for `estimate.R()`
-ebola_incidence_R0 <- ebola_incidence$count
-names(ebola_incidence_R0) <- ebola_incidence$date_index
+ebola_incidence_r0 <- ebola_incidence$count
+names(ebola_incidence_r0) <- ebola_incidence$date_index
 
 ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
 
@@ -372,15 +372,15 @@ si_mean_sd <- gamma_shapescale2meansd(
   scale = ebola_si$param[["scale"]]
 )
 
-mGT <- generation.time(type = "gamma", val = c(si_mean_sd$mean, si_mean_sd$sd))
+mgt <- generation.time(type = "gamma", val = c(si_mean_sd$mean, si_mean_sd$sd))
 ```
 
 The confidence interval for $R_t$ is calculated using simulations and the number of iterations specified by the argument `nsim`. Here we run a small number of simulations for the purpose of demonstration, however, a larger number of iterations is recommended (e.g. 10,000).
 
 ```{r, estimate Rt with R0 for ebola}
 out <- estimate.R(
-  epid = ebola_incidence_R0,
-  GT = mGT,
+  epid = ebola_incidence_r0,
+  GT = mgt,
   begin = 1,
   end = 27,
   methods = "TD",
@@ -430,7 +430,7 @@ plot(sars_cov_incub, day_range = 1:20)
 ```{r, epiestim uncertain SI}
 data("Flu2009")
 
-Rt <- estimate_R(
+rt <- estimate_R(
   incid = Flu2009$incidence,
   method = "uncertain_si",
   config = make_config(list(

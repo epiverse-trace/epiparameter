@@ -5,15 +5,16 @@
 \title{List distributions}
 \usage{
 list_distributions(
-  delay_dist = c("incubation", "onset_to_admission", "onset_to_death", "serial_interval",
-    "generation_time"),
+  delay_dist = c("all", "incubation", "onset_to_admission", "onset_to_death",
+    "serial_interval", "generation_time"),
   parameters = FALSE
 )
 }
 \arguments{
-\item{delay_dist}{A character defining parameter to be listed:
+\item{delay_dist}{A character defining parameter to be listed: \code{"all"}
 \code{"incubation"}, \code{"onset_to_admission"}, \code{"onset_to_death"}, or
-\code{"serial_interval"}}
+\code{"serial_interval"}. \code{"all"} will not filter by a certain delay distribution
+and return all records. \code{"all"} is the default.}
 
 \item{parameters}{A logical defining whether to show parameter values,
 default is \code{FALSE}}

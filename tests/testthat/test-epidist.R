@@ -6,13 +6,13 @@ test_that("epidist works with valid input", {
     names(ebola_dist),
     c("pathogen", "dist", "delay_dist", "param", "pmf", "pdf", "cdf")
   )
-  expect_true(is.character(ebola_dist$pathogen))
-  expect_true(is.character(ebola_dist$dist))
-  expect_true(is.character(ebola_dist$delay_dist))
-  expect_true(is.vector(ebola_dist$param))
-  expect_true(is.function(ebola_dist$pmf))
-  expect_true(is.function(ebola_dist$pdf))
-  expect_true(is.function(ebola_dist$cdf))
+  expect_type(ebola_dist$pathogen, "character")
+  expect_type(ebola_dist$dist, "character")
+  expect_type(ebola_dist$delay_dist, "character")
+  expect_vector(ebola_dist$param, ptype = numeric(), size = 2)
+  expect_type(ebola_dist$pmf, "closure")
+  expect_type(ebola_dist$pdf, "closure")
+  expect_type(ebola_dist$cdf, "closure")
 })
 
 test_that("epidist prob functions work", {

@@ -21,12 +21,12 @@ pathogen_summary <- function(pathogen) {
     package = "epiparameter",
     mustWork = TRUE
   ))
-  
+
   # order params by pathogen, delay dist and study
   params <- params[order(
-    tolower(params$pathogen_id), 
-    tolower(params$type_id), 
-    tolower(params$study_id), 
+    tolower(params$pathogen_id),
+    tolower(params$type_id),
+    tolower(params$study_id),
     method = "radix"
   ), ]
 
@@ -50,6 +50,11 @@ pathogen_summary <- function(pathogen) {
       parameters <- lnorm_musigma2meansd(
         mu = as.numeric(x[["meanlog"]]),
         sigma = as.numeric(x[["sdlog"]])
+      )
+    } else if (x[["distribution"]] == "weibull") {
+      parameters <- weibull_shapescale2meansd(
+        shape = as.numeric(x[["shape"]]),
+        scale = as.numeric(x[["scale"]])
       )
     }
     parameters
