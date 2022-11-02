@@ -38,28 +38,28 @@ incubation period of influenza H7N9:
 ``` r
 # View available distributions
 epiparameter::list_distributions(delay_dist = "incubation")
-#>             pathogen_id        study_id year size distribution
-#> 1            adenovirus    Lessler_etal 2009   14        lnorm
-#> 3                 ebola        WHO_team 2014  500        gamma
-#> 5             human_CoV    Lessler_etal 2009   13        lnorm
-#> 6  influenza_A_seasonal    Lessler_etal 2009  122        lnorm
-#> 7  influenza_B_seasonal    Lessler_etal 2009   76        lnorm
-#> 8       influenza_H1N1p      Ghani_etal 2009   16        gamma
-#> 9       influenza_H1N1p      Tuite_etal 2010  316        lnorm
-#> 11       influenza_H7N9    Cowling_etal 2013   32      weibull
-#> 13       influenza_H5N1    Cowling_etal 2013   27      weibull
-#> 15              marburg          Pavlin 2014   18        gamma
-#> 16              measles    Lessler_etal 2009   56        lnorm
-#> 17             MERS_CoV     Assiri_etal 2013   23        lnorm
-#> 20             MERS_CoV Cauchemez_et_al 2014    7        lnorm
-#> 21            monkeypox           Nolen 2016   16        lnorm
-#> 22            monkeypox  Thornhill_etal 2022   23        lnorm
-#> 24        parainfluenza    Lessler_etal 2009   11        lnorm
-#> 25           rhinovirus    Lessler_etal 2009   28        lnorm
-#> 26                  RSV    Lessler_etal 2009   24        lnorm
-#> 27             SARS_CoV   Donnelly_etal 2003   57        gamma
-#> 29             SARS_CoV    Lessler_etal 2009  157        lnorm
-#> 33  SARS_CoV_2_wildtype    McAloon_etal 2020 1269        lnorm
+#>             pathogen_id    type_id        study_id year size distribution
+#> 1            adenovirus incubation    Lessler_etal 2009   14        lnorm
+#> 2                 ebola incubation        WHO_team 2014  500        gamma
+#> 3             human_CoV incubation    Lessler_etal 2009   13        lnorm
+#> 4  influenza_A_seasonal incubation    Lessler_etal 2009  122        lnorm
+#> 5  influenza_B_seasonal incubation    Lessler_etal 2009   76        lnorm
+#> 6       influenza_H1N1p incubation      Ghani_etal 2009   16        gamma
+#> 7       influenza_H1N1p incubation      Tuite_etal 2010  316        lnorm
+#> 8        influenza_H5N1 incubation    Cowling_etal 2013   27      weibull
+#> 9        influenza_H7N9 incubation    Cowling_etal 2013   32      weibull
+#> 10              marburg incubation          Pavlin 2014   18        gamma
+#> 11              measles incubation    Lessler_etal 2009   56        lnorm
+#> 12             MERS_CoV incubation     Assiri_etal 2013   23        lnorm
+#> 13             MERS_CoV incubation Cauchemez_et_al 2014    7        lnorm
+#> 14            monkeypox incubation           Nolen 2016   16        lnorm
+#> 15            monkeypox incubation  Thornhill_etal 2022   23        lnorm
+#> 16        parainfluenza incubation    Lessler_etal 2009   11        lnorm
+#> 17           rhinovirus incubation    Lessler_etal 2009   28        lnorm
+#> 18                  RSV incubation    Lessler_etal 2009   24        lnorm
+#> 19             SARS_CoV incubation   Donnelly_etal 2003   57        gamma
+#> 20             SARS_CoV incubation    Lessler_etal 2009  157        lnorm
+#> 21  SARS_CoV_2_wildtype incubation    McAloon_etal 2020 1269        lnorm
 
 # Extract incubation period distribution
 incubation_H7N9 <- epiparameter::epidist(
