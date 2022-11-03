@@ -48,30 +48,30 @@ test_that("epidist works with lognorm dist", {
 
 test_that("epidist fails as expected", {
   expect_error(
-    epidist(pathogen = "pathogen", delay_dist = "incubation"), 
+    epidist(pathogen = "pathogen", delay_dist = "incubation"),
     regexp = paste0(
-      "'arg' should be one of ", dQuote("adenovirus"), ", ", dQuote("ebola"), 
+      "'arg' should be one of ", dQuote("adenovirus"), ", ", dQuote("ebola"),
       ", ", dQuote("human_CoV"), ", ", dQuote("influenza_A_seasonal"), ", ",
       dQuote("influenza_B_seasonal"), ", ", dQuote("influenza_H1N1p"), ", ",
-      dQuote("influenza_H5N1"), ", ", dQuote("influenza_H7N9"), ", ", 
-      dQuote("marburg"), ", ", dQuote("measles"), ", ", dQuote("MERS_CoV"),", ",
-      dQuote("monkeypox"), ", ", dQuote("parainfluenza"), ", ", 
-      dQuote("rhinovirus"), ", ", dQuote("RSV"), ", ", dQuote("SARS_CoV"),", ",
+      dQuote("influenza_H5N1"), ", ", dQuote("influenza_H7N9"), ", ",
+      dQuote("marburg"), ", ", dQuote("measles"), ", ", dQuote("MERS_CoV"),
+      ", ", dQuote("monkeypox"), ", ", dQuote("parainfluenza"), ", ",
+      dQuote("rhinovirus"), ", ", dQuote("RSV"), ", ", dQuote("SARS_CoV"), ", ",
       dQuote("SARS_CoV_2_wildtype")
     )
   )
-  
+
   expect_error(
-    epidist(pathogen = "ebola", delay_dist = "distribution"), 
+    epidist(pathogen = "ebola", delay_dist = "distribution"),
     regexp = paste0(
-      "'arg' should be one of ", dQuote("incubation"), ", ", 
+      "'arg' should be one of ", dQuote("incubation"), ", ",
       dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ",
       dQuote("serial_interval"), ", ", dQuote("generation_time")
     )
   )
-  
+
   expect_error(
-    epidist(pathogen = "ebola", delay_dist = "incubation", study = "study"), 
+    epidist(pathogen = "ebola", delay_dist = "incubation", study = "study"),
     regexp = paste0("'arg' should be ", dQuote("WHO_team"))
   )
 })

@@ -65,43 +65,44 @@ test_that("extract_param fails as expected", {
       values = c(6, 13),
       distribution = "lnorm",
       percentiles = c(0.125, 0.875)
-    ), 
-    regexp = paste0("'arg' should be one of ", dQuote("percentiles"), ", ", dQuote("range"))
+    ),
+    regexp = paste0("'arg' should be one of ", dQuote("percentiles"), ", ",
+                    dQuote("range"))
   )
-  
+
   expect_error(
     extract_param(
       type = "percentiles",
       values = "values",
       distribution = "lnorm",
       percentiles = c(0.125, 0.875)
-    ), 
+    ),
     regexp = paste0("Assertion on 'values' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
     extract_param(
       type = "percentiles",
       values = c(6, 13),
       distribution = "distribution",
       percentiles = c(0.125, 0.875)
-    ), 
-    regexp = paste0("'arg' should be one of ", dQuote("lnorm"), ", ", 
+    ),
+    regexp = paste0("'arg' should be one of ", dQuote("lnorm"), ", ",
                     dQuote("gamma"), ", ", dQuote("weibull"))
   )
-  
+
   expect_error(
     extract_param(
       type = "percentiles",
       values = c(6, 13),
       distribution = "lnorm",
       percentiles = c("0.125", 0.875)
-    ), 
+    ),
     regexp = paste0("Assertion on 'percentiles' failed: Must be of type",
                     " 'numeric', not 'character'.")
   )
-  
+
   expect_error(
     extract_param(
       type = "range",

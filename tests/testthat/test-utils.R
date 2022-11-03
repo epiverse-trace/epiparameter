@@ -3,13 +3,17 @@ test_that("calc_disc_dist_quantile works as expected", {
   days <- seq(0, 10, 0.5)
   quantiles <- c(0.025, 0.975)
   quants <- calc_disc_dist_quantile(
-    prob = prob, 
-    days = days, 
+    prob = prob,
+    days = days,
     quantile = quantiles
   )
   expect_vector(quants)
   expect_named(quants, expected = as.character(quantiles))
-  expect_equal(quants, c("0.025" = 0, "0.975" = 9))
+  expect_equal(
+    quants,
+    c("0.025" = 0, "0.975" = 9),
+    tolerance = testthat_tolerance()
+  )
 })
 
 test_that("calc_disc_dist_quantile fails as expected", {
@@ -18,34 +22,33 @@ test_that("calc_disc_dist_quantile fails as expected", {
   quantiles <- c(0.025, 0.975)
   expect_error(
     calc_disc_dist_quantile(
-      prob = "prob", 
-      days = days, 
+      prob = "prob",
+      days = days,
       quantile = quantiles
-    ), 
-    regexp = 
-      "Assertion on 'prob' failed: Must be of type 'numeric', not 'character'."
+    ),
+    regexp = paste0("Assertion on 'prob' failed: Must be of type 'numeric',",
+                    " not 'character'.")
   )
-  
+
   expect_error(
     calc_disc_dist_quantile(
-      prob = prob, 
-      days = "days", 
+      prob = prob,
+      days = "days",
       quantile = quantiles
-    ), 
-    regexp = 
-      "Assertion on 'days' failed: Must be of type 'numeric', not 'character'."
+    ),
+    regexp = paste0("Assertion on 'days' failed: Must be of type 'numeric',",
+                    " not 'character'.")
   )
-  
+
   expect_error(
     calc_disc_dist_quantile(
-      prob = prob, 
-      days = days, 
+      prob = prob,
+      days = days,
       quantile = "quantiles"
-    ), 
+    ),
     regexp = paste0(
       "Assertion on 'quantile' failed: Must be of type 'numeric',",
       " not 'character'."
     )
   )
 })
-

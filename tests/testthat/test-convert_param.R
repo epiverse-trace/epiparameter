@@ -11,19 +11,19 @@ test_that("lnorm_musigma2meansd works as expected", {
 
 test_that("lnorm_musigma2meansd fails as expected", {
   expect_error(
-    lnorm_musigma2meansd(mu = "1", sigma = 0.5), 
+    lnorm_musigma2meansd(mu = "1", sigma = 0.5),
     regexp = paste0("Assertion on 'mu' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    lnorm_musigma2meansd(mu = 1, sigma = "0.5"), 
+    lnorm_musigma2meansd(mu = 1, sigma = "0.5"),
     regexp = paste0("Assertion on 'sigma' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    lnorm_musigma2meansd(mu = 1, sigma = -0.5), 
+    lnorm_musigma2meansd(mu = 1, sigma = -0.5),
     regexp = "Assertion on 'sigma' failed: Element 1 is not >= 0."
   )
 
@@ -42,24 +42,24 @@ test_that("lnorm_meansd2musigma works as expected", {
 
 test_that("lnorm_meansd2musigma fails as expected", {
   expect_error(
-    lnorm_meansd2musigma(mean = "1", sd = 0.5), 
+    lnorm_meansd2musigma(mean = "1", sd = 0.5),
     regexp = paste0("Assertion on 'mean' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    lnorm_meansd2musigma(mean = 1, sd = "0.5"), 
+    lnorm_meansd2musigma(mean = 1, sd = "0.5"),
     regexp = paste0("Assertion on 'sd' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    lnorm_meansd2musigma(mean = -1, sd = 0.5), 
+    lnorm_meansd2musigma(mean = -1, sd = 0.5),
     regexp = "Assertion on 'mean' failed: Element 1 is not >= 0."
   )
-  
+
   expect_error(
-    lnorm_meansd2musigma(mean = 1, sd = -0.5), 
+    lnorm_meansd2musigma(mean = 1, sd = -0.5),
     regexp = "Assertion on 'sd' failed: Element 1 is not >= 0."
   )
 })
@@ -95,24 +95,24 @@ test_that("gamma_shapescale2meansd works as expected", {
 
 test_that("gamma_shapescale2meansd fails as expected", {
   expect_error(
-    gamma_shapescale2meansd(shape = "1", scale = 0.5), 
+    gamma_shapescale2meansd(shape = "1", scale = 0.5),
     regexp = paste0("Assertion on 'shape' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    gamma_shapescale2meansd(shape = 1, scale = "0.5"), 
+    gamma_shapescale2meansd(shape = 1, scale = "0.5"),
     regexp = paste0("Assertion on 'scale' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    gamma_shapescale2meansd(shape = -1, scale = 0.5), 
+    gamma_shapescale2meansd(shape = -1, scale = 0.5),
     regexp = "Assertion on 'shape' failed: Element 1 is not >= 0."
   )
-  
+
   expect_error(
-    gamma_shapescale2meansd(shape = 1, scale = -0.5), 
+    gamma_shapescale2meansd(shape = 1, scale = -0.5),
     regexp = "Assertion on 'scale' failed: Element 1 is not >= 0."
   )
 })
@@ -130,24 +130,24 @@ test_that("gamma_meansd2shapescale works as expected", {
 
 test_that("gamma_meansd2shapescale fails as expected", {
   expect_error(
-    gamma_meansd2shapescale(mean = "1", sd = 0.5), 
+    gamma_meansd2shapescale(mean = "1", sd = 0.5),
     regexp = paste0("Assertion on 'mean' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    gamma_meansd2shapescale(mean = 1, sd = "0.5"), 
+    gamma_meansd2shapescale(mean = 1, sd = "0.5"),
     regexp = paste0("Assertion on 'sd' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    gamma_meansd2shapescale(mean = -1, sd = 0.5), 
+    gamma_meansd2shapescale(mean = -1, sd = 0.5),
     regexp = "Assertion on 'mean' failed: Element 1 is not >= 0."
   )
-  
+
   expect_error(
-    gamma_meansd2shapescale(mean = 1, sd = -0.5), 
+    gamma_meansd2shapescale(mean = 1, sd = -0.5),
     regexp = "Assertion on 'sd' failed: Element 1 is not >= 0."
   )
 })
@@ -186,24 +186,24 @@ test_that("weibull_shapescale2meansd works as expected", {
 
 test_that("weibull_shapescale2meansd fails as expected", {
   expect_error(
-    weibull_shapescale2meansd(shape = "1.5", scale = 1), 
+    weibull_shapescale2meansd(shape = "1.5", scale = 1),
     regexp = paste0("Assertion on 'shape' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    weibull_shapescale2meansd(shape = 1.5, scale = "1"), 
+    weibull_shapescale2meansd(shape = 1.5, scale = "1"),
     regexp = paste0("Assertion on 'scale' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    weibull_shapescale2meansd(shape = -1.5, scale = 1), 
+    weibull_shapescale2meansd(shape = -1.5, scale = 1),
     regexp = "Assertion on 'shape' failed: Element 1 is not >= 0."
   )
-  
+
   expect_error(
-    weibull_shapescale2meansd(shape = 1.5, scale = -1), 
+    weibull_shapescale2meansd(shape = 1.5, scale = -1),
     regexp = "Assertion on 'scale' failed: Element 1 is not >= 0."
   )
 })
@@ -222,24 +222,24 @@ test_that("weibull_meansd2shapescale works as expected", {
 
 test_that("weibull_meansd2shapescale fails as expected", {
   expect_error(
-    weibull_meansd2shapescale(mean = "1", sd = 0.5), 
+    weibull_meansd2shapescale(mean = "1", sd = 0.5),
     regexp = paste0("Assertion on 'mean' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    weibull_meansd2shapescale(mean = 1, sd = "0.5"), 
+    weibull_meansd2shapescale(mean = 1, sd = "0.5"),
     regexp = paste0("Assertion on 'sd' failed: Must be of type 'numeric',",
                     " not 'character'.")
   )
-  
+
   expect_error(
-    weibull_meansd2shapescale(mean = -1, sd = 0.5), 
+    weibull_meansd2shapescale(mean = -1, sd = 0.5),
     regexp = "Assertion on 'mean' failed: Element 1 is not >= 0."
   )
-  
+
   expect_error(
-    weibull_meansd2shapescale(mean = 1, sd = -0.5), 
+    weibull_meansd2shapescale(mean = 1, sd = -0.5),
     regexp = "Assertion on 'sd' failed: Element 1 is not >= 0."
   )
 })

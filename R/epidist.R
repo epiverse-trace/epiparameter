@@ -93,8 +93,8 @@ epidist  <- function(
     pick_study <- params[params$size == max(params$size), ]
   } else {
     study <- match.arg(
-      arg = study, 
-      choices = unique(params$study_id), 
+      arg = study,
+      choices = unique(params$study_id),
       several.ok = FALSE
     )
     pick_study <- params[params$study_id == study, ]
@@ -180,11 +180,11 @@ print.epidist <- function(x, ...) {
 #' ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
 #' plot(ebola_si)
 plot.epidist <- function(x, day_range = 0:10, ...) {
-  
+
   if (!inherits(x, "epidist")) {
     stop("x must be an epidist object")
   }
-  
+
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(graphics::par(oldpar))
 
