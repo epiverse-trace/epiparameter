@@ -35,6 +35,7 @@ list_distributions <- function(
     parameters = FALSE) {
 
   delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
+  checkmate::assert_logical(parameter)
 
   # Extract relevant values
   params <- utils::read.csv(system.file(

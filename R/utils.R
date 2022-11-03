@@ -20,6 +20,12 @@
 #' quantiles <- c(0.025, 0.975)
 #' calc_disc_dist_quantile(prob = prob, days = days, quantile = quantiles)
 calc_disc_dist_quantile <- function(prob, days, quantile) {
+
+  # check inputs
+  checkmate::assert_numeric(prob)
+  checkmate::assert_numeric(days)
+  checkmate::assert_numeric(quantile, lower = 0, upper = 1)
+  
   csum_prob <- cumsum(prob)
   sum_prob <- sum(prob)
   q_value <- quantile * sum_prob

@@ -42,9 +42,18 @@ extract_param <- function(type = c("percentiles", "range"),
                           percentiles,
                           samples) {
 
+  # check string arguments
   type <- match.arg(arg = type, several.ok = FALSE)
-
   distribution <- match.arg(arg = distribution, several.ok = FALSE)
+
+  # check numeric arguments
+  checkmate::assert_numeric(values)
+  if (!missing(percentiles)) {
+    checkmate::assert_numeric(percentiles)
+  } 
+  if (!missing(samples)) {
+    checkmate::assert_numeric(samples, lower = 1)
+  }
 
   # Validate inputs
   if (type == "percentiles") {

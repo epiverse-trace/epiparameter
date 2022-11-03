@@ -115,6 +115,9 @@ gamma_meansd2shapescale <- function(mean, sd) {
 #' # 0.9995295
 weibull_meansd2shapescale <- function(mean, sd) {
 
+  checkmate::assert_numeric(mean, lower = 0)
+  checkmate::assert_numeric(sd, lower = 0)
+  
   # give warning message about numerial inaccuracies
   message("Numerical approximation used, results may be unreliable.")
 
@@ -141,6 +144,8 @@ weibull_meansd2shapescale <- function(mean, sd) {
 #' @examples
 #' weibull_shapescale2meansd(shape = 2, scale = 1)
 weibull_shapescale2meansd <- function(shape, scale) {
+  checkmate::assert_numeric(shape, lower = 0)
+  checkmate::assert_numeric(scale, lower = 0)
   mean <- scale * gamma(1 + 1 / shape)
   sd <- sqrt(scale^2 * (gamma(1 + 2 / shape) - gamma(1 + 1 / shape))^2)
   list(mean = mean, sd = sd)
