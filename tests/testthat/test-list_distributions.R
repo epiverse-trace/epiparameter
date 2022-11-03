@@ -1,9 +1,9 @@
 test_that("list_distributions works for all, params = FALSE", {
   dist_tbl <- list_distributions(delay_dist = "all", parameters = FALSE)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_equal(dim(dist_tbl), c(40, 6))
-  expect_equal(
-    colnames(dist_tbl),
+  expect_identical(dim(dist_tbl), c(40L, 6L))
+  expect_named(
+    dist_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
   )
   expect_snapshot(
@@ -17,9 +17,9 @@ test_that("list_distributions works for all, params = FALSE", {
 test_that("list_distributions works for all, params = TRUE", {
   dist_tbl <- list_distributions(delay_dist = "all", parameters = TRUE)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_equal(dim(dist_tbl), c(40, 27))
-  expect_equal(
-    colnames(dist_tbl),
+  expect_identical(dim(dist_tbl), c(40L, 27L))
+  expect_named(
+    dist_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
@@ -37,9 +37,9 @@ test_that("list_distributions works for all, params = TRUE", {
 test_that("list_distributions works for incubation, params = FALSE", {
   incub_tbl <- list_distributions(delay_dist = "incubation", parameters = FALSE)
   expect_s3_class(incub_tbl, "data.frame")
-  expect_equal(dim(incub_tbl), c(21, 6))
-  expect_equal(
-    colnames(incub_tbl),
+  expect_identical(dim(incub_tbl), c(21L, 6L))
+  expect_named(
+    incub_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
   )
   expect_snapshot(
@@ -50,9 +50,9 @@ test_that("list_distributions works for incubation, params = FALSE", {
 test_that("list_distributions works for incubation, params = TRUE", {
   incub_tbl <- list_distributions(delay_dist = "incubation", parameters = TRUE)
   expect_s3_class(incub_tbl, "data.frame")
-  expect_equal(dim(incub_tbl), c(21, 27))
-  expect_equal(
-    colnames(incub_tbl),
+  expect_identical(dim(incub_tbl), c(21L, 27L))
+  expect_named(
+    incub_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
@@ -70,9 +70,9 @@ test_that("list_distributions works for onset_to_admission, params = FALSE", {
     parameters = FALSE
   )
   expect_s3_class(on_to_ad_tbl, "data.frame")
-  expect_equal(dim(on_to_ad_tbl), c(6, 6))
-  expect_equal(
-    colnames(on_to_ad_tbl),
+  expect_identical(dim(on_to_ad_tbl), c(6L, 6L))
+  expect_named(
+    on_to_ad_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
   )
   expect_snapshot(
@@ -86,9 +86,9 @@ test_that("list_distributions works for onset_to_admission, params = TRUE", {
     parameters = TRUE
   )
   expect_s3_class(on_to_ad_tbl, "data.frame")
-  expect_equal(dim(on_to_ad_tbl), c(6, 27))
-  expect_equal(
-    colnames(on_to_ad_tbl),
+  expect_identical(dim(on_to_ad_tbl), c(6L, 27L))
+  expect_named(
+    on_to_ad_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
@@ -106,9 +106,9 @@ test_that("list_distributions works for onset_to_death, params = FALSE", {
     parameters = FALSE
   )
   expect_s3_class(on_to_death_tbl, "data.frame")
-  expect_equal(dim(on_to_death_tbl), c(2, 6))
-  expect_equal(
-    colnames(on_to_death_tbl),
+  expect_identical(dim(on_to_death_tbl), c(2L, 6L))
+  expect_named(
+    on_to_death_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
   )
   expect_snapshot(
@@ -122,9 +122,9 @@ test_that("list_distributions works for onset_to_death, params = TRUE", {
     parameters = TRUE
   )
   expect_s3_class(on_to_death_tbl, "data.frame")
-  expect_equal(dim(on_to_death_tbl), c(2, 27))
-  expect_equal(
-    colnames(on_to_death_tbl),
+  expect_identical(dim(on_to_death_tbl), c(2L, 27L))
+  expect_named(
+    on_to_death_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
@@ -142,9 +142,9 @@ test_that("list_distributions works for serial_interval, params = FALSE", {
     parameters = FALSE
   )
   expect_s3_class(serial_inter_tbl, "data.frame")
-  expect_equal(dim(serial_inter_tbl), c(5, 6))
-  expect_equal(
-    colnames(serial_inter_tbl),
+  expect_identical(dim(serial_inter_tbl), c(5L, 6L))
+  expect_named(
+    serial_inter_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
   )
   expect_snapshot(
@@ -158,9 +158,9 @@ test_that("list_distributions works for serial_interval, params = TRUE", {
     parameters = TRUE
   )
   expect_s3_class(serial_inter_tbl, "data.frame")
-  expect_equal(dim(serial_inter_tbl), c(5, 27))
-  expect_equal(
-    colnames(serial_inter_tbl),
+  expect_identical(dim(serial_inter_tbl), c(5L, 27L))
+  expect_named(
+    serial_inter_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
@@ -178,9 +178,9 @@ test_that("list_distributions works for generation_time, params = FALSE", {
     parameters = FALSE
   )
   expect_s3_class(gen_time_tbl, "data.frame")
-  expect_equal(dim(gen_time_tbl), c(2, 6))
-  expect_equal(
-    colnames(gen_time_tbl),
+  expect_identical(dim(gen_time_tbl), c(2L, 6L))
+  expect_named(
+    gen_time_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
   )
   expect_snapshot(
@@ -194,9 +194,9 @@ test_that("list_distributions works for generation_time, params = TRUE", {
     parameters = TRUE
   )
   expect_s3_class(gen_time_tbl, "data.frame")
-  expect_equal(dim(gen_time_tbl), c(2, 27))
-  expect_equal(
-    colnames(gen_time_tbl),
+  expect_identical(dim(gen_time_tbl), c(2L, 27L))
+  expect_named(
+    gen_time_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",

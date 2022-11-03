@@ -2,8 +2,8 @@ test_that("epidist works with valid input", {
   ebola_dist <- epidist(pathogen = "ebola", delay_dist = "incubation")
   expect_s3_class(ebola_dist, class = "epidist")
   expect_length(ebola_dist, 7)
-  expect_equal(
-    names(ebola_dist),
+  expect_named(
+    ebola_dist,
     c("pathogen", "dist", "delay_dist", "param", "pmf", "pdf", "cdf")
   )
   expect_type(ebola_dist$pathogen, "character")
@@ -32,8 +32,8 @@ test_that("epidist works with specific study", {
   expect_false(identical(mers_dist1, mers_dist2))
   expect_s3_class(mers_dist2, class = "epidist")
   expect_length(mers_dist2, 7)
-  expect_equal(
-    names(mers_dist2),
+  expect_named(
+    mers_dist2,
     c("pathogen", "dist", "delay_dist", "param", "pmf", "pdf", "cdf")
   )
 })

@@ -24,7 +24,7 @@ library(epiparameter)
 library(EpiEstim)
 library(EpiNow2)
 library(R0)
-library(outbreaks)
+library(outbreaks) # nolint
 library(incidence2)
 ```
 
