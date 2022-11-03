@@ -51,3 +51,35 @@ test_that("pathogen_summary works with pathogen with weibull", {
   expect_type(h5n1_summary$DOI, "character")
   expect_snapshot(pathogen_summary(pathogen = "influenza_H5N1"))
 })
+
+test_that("pathogen_summary fails correctly", {
+  # check for incorrect input
+  expect_error(
+    pathogen_summary(pathogen = "pathogen"),
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("adenovirus"), ", ", dQuote("ebola"), 
+      ", ", dQuote("human_CoV"), ", ", dQuote("influenza_A_seasonal"), ", ",
+      dQuote("influenza_B_seasonal"), ", ", dQuote("influenza_H1N1p"), ", ",
+      dQuote("influenza_H5N1"), ", ", dQuote("influenza_H7N9"), ", ", 
+      dQuote("marburg"), ", ", dQuote("measles"), ", ", dQuote("MERS_CoV"),", ",
+      dQuote("monkeypox"), ", ", dQuote("parainfluenza"), ", ", 
+      dQuote("rhinovirus"), ", ", dQuote("RSV"), ", ", dQuote("SARS_CoV"),", ",
+      dQuote("SARS_CoV_2_wildtype")
+    )
+  )
+  
+  # check for multiple match input
+  expect_error(
+    pathogen_summary(pathogen = "SARS"),
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("adenovirus"), ", ", dQuote("ebola"), 
+      ", ", dQuote("human_CoV"), ", ", dQuote("influenza_A_seasonal"), ", ",
+      dQuote("influenza_B_seasonal"), ", ", dQuote("influenza_H1N1p"), ", ",
+      dQuote("influenza_H5N1"), ", ", dQuote("influenza_H7N9"), ", ", 
+      dQuote("marburg"), ", ", dQuote("measles"), ", ", dQuote("MERS_CoV"),", ",
+      dQuote("monkeypox"), ", ", dQuote("parainfluenza"), ", ", 
+      dQuote("rhinovirus"), ", ", dQuote("RSV"), ", ", dQuote("SARS_CoV"),", ",
+      dQuote("SARS_CoV_2_wildtype")
+    )
+  )
+})

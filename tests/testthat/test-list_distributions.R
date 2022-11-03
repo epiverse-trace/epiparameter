@@ -244,4 +244,10 @@ test_that("list_distributions fails correctly", {
       dQuote("serial_interval"), ", ", dQuote("generation_time")
     )
   )
+  expect_error(
+    list_distributions(delay_dist = "serial_interval", parameters = "TRUE"),
+    regexp = paste0("Assertion on 'parameters' failed: Must be of type",
+                    " 'logical', not 'character'."
+    )
+  )
 })

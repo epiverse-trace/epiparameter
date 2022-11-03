@@ -58,6 +58,61 @@ test_that("extract_param works for weibull from median and range", {
   expect_equal(weibull_params, c(a = 2.0, b = 0.5))
 })
 
+test_that("extract_param fails as expected", {
+  expect_error(
+    extract_param(
+      type = "type",
+      values = c(6, 13),
+      distribution = "lnorm",
+      percentiles = c(0.125, 0.875)
+    ), 
+    regexp = paste0("'arg' should be one of ", dQuote("percentiles"), ", ", dQuote("range"))
+  )
+  
+  expect_error(
+    extract_param(
+      type = "percentiles",
+      values = "values",
+      distribution = "lnorm",
+      percentiles = c(0.125, 0.875)
+    ), 
+    regexp = paste0("Assertion on 'values' failed: Must be of type 'numeric',",
+                    " not 'character'.")
+  )
+  
+  expect_error(
+    extract_param(
+      type = "percentiles",
+      values = c(6, 13),
+      distribution = "distribution",
+      percentiles = c(0.125, 0.875)
+    ), 
+    regexp = paste0("'arg' should be one of ", dQuote("lnorm"), ", ", 
+                    dQuote("gamma"), ", ", dQuote("weibull"))
+  )
+  
+  expect_error(
+    extract_param(
+      type = "percentiles",
+      values = c(6, 13),
+      distribution = "lnorm",
+      percentiles = c("0.125", 0.875)
+    ), 
+    regexp = paste0("Assertion on 'percentiles' failed: Must be of type",
+                    " 'numeric', not 'character'.")
+  )
+  
+  expect_error(
+    extract_param(
+      type = "range",
+      values = c(8, 4, 13),
+      distribution = "lnorm",
+      samples = "20"
+    ), regexp = paste0("Assertion on 'samples' failed: Must be of type ",
+                       "'numeric', not 'character'.")
+  )
+})
+
 test_that("fit_function_lnorm_range works for valid input", {
   lnorm_range <- fit_function_lnorm_range(
     param = c(a = 2.0, b = 0.5),
