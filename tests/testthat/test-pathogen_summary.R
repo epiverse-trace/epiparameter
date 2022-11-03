@@ -1,8 +1,7 @@
 test_that("pathogen_summary works with valid input", {
   ebola_summary <- pathogen_summary(pathogen = "ebola")
   expect_s3_class(ebola_summary, "data.frame")
-  expect_equal(nrow(ebola_summary), 3)
-  expect_equal(ncol(ebola_summary), 7)
+  expect_identical(dim(ebola_summary), c(3L, 7L))
   expect_named(
     ebola_summary,
     c("pathogen", "delay_dist", "distribution", "mean", "sd", "study", "DOI")
@@ -20,10 +19,9 @@ test_that("pathogen_summary works with valid input", {
 test_that("pathogen_summary works with pathogen with gamma and lnorm", {
   sars_summary <- pathogen_summary(pathogen = "SARS_CoV")
   expect_s3_class(sars_summary, "data.frame")
-  expect_equal(nrow(sars_summary), 3)
-  expect_equal(ncol(sars_summary), 7)
-  expect_equal(
-    colnames(sars_summary),
+  expect_identical(dim(sars_summary), c(3L, 7L))
+  expect_named(
+    sars_summary,
     c("pathogen", "delay_dist", "distribution", "mean", "sd", "study", "DOI")
   )
   expect_type(sars_summary$pathogen, "character")
@@ -39,8 +37,7 @@ test_that("pathogen_summary works with pathogen with gamma and lnorm", {
 test_that("pathogen_summary works with pathogen with weibull", {
   h5n1_summary <- pathogen_summary(pathogen = "influenza_H5N1")
   expect_s3_class(h5n1_summary, "data.frame")
-  expect_equal(nrow(h5n1_summary), 2)
-  expect_equal(ncol(h5n1_summary), 7)
+  expect_identical(dim(h5n1_summary), c(2L, 7L))
   expect_named(
     h5n1_summary,
     c("pathogen", "delay_dist", "distribution", "mean", "sd", "study", "DOI")

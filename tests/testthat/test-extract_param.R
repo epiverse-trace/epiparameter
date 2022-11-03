@@ -65,7 +65,7 @@ test_that("fit_function_lnorm_range works for valid input", {
   )
   reference <- 0.00396181460097
   names(reference) <- ""
-  expect_equal(lnorm_range, reference)
+  expect_equal(lnorm_range, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_gamma_range works for valid input", {
@@ -75,7 +75,7 @@ test_that("fit_function_gamma_range works for valid input", {
   )
   reference <- 0.249998086906
   names(reference) <- ""
-  expect_equal(gamma_range, reference)
+  expect_equal(gamma_range, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_weibull_range works for valid input", {
@@ -85,7 +85,7 @@ test_that("fit_function_weibull_range works for valid input", {
   )
   reference <- 0.25
   names(reference) <- ""
-  expect_equal(weibull_range, reference)
+  expect_equal(weibull_range, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_lnorm works for valud input", {
@@ -95,7 +95,7 @@ test_that("fit_function_lnorm works for valud input", {
   )
   reference <- 0.0456127816304
   names(reference) <- ""
-  expect_equal(lnorm, reference)
+  expect_equal(lnorm, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_gamma works for valid input", {
@@ -105,7 +105,7 @@ test_that("fit_function_gamma works for valid input", {
   )
   reference <- 0.781110225514
   names(reference) <- ""
-  expect_equal(gamma, reference)
+  expect_equal(gamma, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_weibull works for valid input", {
@@ -115,5 +115,5 @@ test_that("fit_function_weibull works for valid input", {
   )
   reference <- 0.78125
   names(reference) <- ""
-  expect_equal(weibull, reference)
+  expect_equal(weibull, reference, tolerance = testthat_tolerance())
 })
