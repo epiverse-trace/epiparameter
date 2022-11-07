@@ -143,6 +143,7 @@ extract_param_percentile <- function(values,
 
   # Set initial values for optimisation
   param <- stats::runif(n = 2, min = 0, max = 5)
+  names(values) <- c("lower", "upper")
   values_in <- c(values, q1 = percentiles[1], q2 = percentiles[2])
 
   if (distribution == "lnorm") {
@@ -208,6 +209,7 @@ extract_param_range <- function(values,
 
   # Set initial values for optimisation
   param <- stats::runif(n = 2, min = 0, max = 5)
+  names(values) <- c("median", "lower", "upper")
   values_in <- c(values, n = samples)
 
   if (distribution == "lnorm") {
@@ -284,8 +286,6 @@ check_optim_conv <- function(optim_params_list,
   optim_conv
 }
 
-
-
 #' Set of functions that can be used to estimate the parameters of a
 #' distribution (lognormal, gamma, weibull) via optimisation from either the
 #' percentiles or the median and ranges.
@@ -302,27 +302,27 @@ fit_function_lnorm_range <- function(param, val) {
 
   # Median square residual
   median_sr <- (stats::plnorm(
-    val[1],
+    val[["median"]],
     meanlog = param[["meanlog"]],
     sdlog = param[["sdlog"]]) - 0.5)^2
 
   # Probability of obtaining min, max and range:
   min_p <- stats::dlnorm(
-    val[2], 
+    val[["lower"]], 
     meanlog = param[["meanlog"]], 
     sdlog = param[["sdlog"]]
   )
   max_p <- stats::dlnorm(
-    val[3], 
+    val[["upper"]], 
     meanlog = param[["meanlog"]], 
     sdlog = param[["sdlog"]]
   )
   range_p <- (stats::plnorm(
-    val[3],
+    val[["upper"]],
     meanlog = param[["meanlog"]],
     sdlog = param[["sdlog"]]) -
       stats::plnorm(
-        val[2],
+        val[["lower"]],
         meanlog = param[["meanlog"]],
         sdlog = param[["sdlog"]]))^(val[["n"]] - 2)
 
@@ -338,27 +338,27 @@ fit_function_gamma_range <- function(param, val) {
 
   # Median square residual
   median_sr <- (stats::pgamma(
-    val[1],
+    val[["median"]],
     shape = param[["shape"]],
     scale = param[["scale"]]) - 0.5)^2
 
   # Probability of obtaining min, max and range:
   min_p <- stats::dgamma(
-    val[2], 
+    val[["lower"]], 
     shape = param[["shape"]], 
     scale = param[["scale"]]
   )
   max_p <- stats::dgamma(
-    val[3], 
+    val[["upper"]], 
     shape = param[["shape"]], 
     scale = param[["scale"]]
   )
   range_p <- (stats::pgamma(
-    val[3],
+    val[["upper"]],
     shape = param[["shape"]],
     scale = param[["scale"]]) -
       stats::pgamma(
-        val[2],
+        val[["lower"]],
         shape = param[["shape"]],
         scale = param[["scale"]]))^(val[["n"]] - 2)
 
@@ -374,28 +374,28 @@ fit_function_weibull_range <- function(param, val) {
 
   # Median square residual
   median_sr <- (stats::pweibull(
-    val[1],
+    val[["median"]],
     shape = param[["shape"]],
     scale = param[["scale"]]
   ) - 0.5)^2
 
   # Probability of obtaining min, max and range:
   min_p <- stats::dweibull(
-    val[2], 
+    val[["lower"]], 
     shape = param[["shape"]], 
     scale = param[["scale"]]
   )
   max_p <- stats::dweibull(
-    val[3], 
+    val[["upper"]], 
     shape = param[["shape"]], 
     scale = param[["scale"]]
   )
   range_p <- (stats::pweibull(
-    val[3],
+    val[["upper"]],
     shape = param[["shape"]],
     scale = param[["scale"]]) -
       stats::pweibull(
-        val[2],
+        val[["lower"]],
         shape = param[["shape"]],
         scale = param[["scale"]]))^(val[["n"]] - 2)
 
@@ -403,44 +403,56 @@ fit_function_weibull_range <- function(param, val) {
   range_sr <- -(min_p * max_p * range_p)
 
   # Total value to be minimised
-  range_sr + median_sr
+  out <- range_sr + median_sr
+  
+  # return unnamed result
+  unname(out)
 }
 
 #' @rdname fit_function_lnorm_range
 fit_function_lnorm <- function(param, val) {
 
-  (stats::plnorm(
-    val[1],
+  out <- (stats::plnorm(
+    val[["lower"]],
     meanlog = param[["meanlog"]],
     sdlog = param[["sdlog"]]) - val[["q1"]])^2 +
     (stats::plnorm(
-      val[2],
+      val[["upper"]],
       meanlog = param[["meanlog"]],
       sdlog = param[["sdlog"]]) - val[["q2"]])^2
+  
+  # return unnamed result
+  unname(out)
 }
 
 #' @rdname fit_function_lnorm_range
 fit_function_gamma <- function(param, val) {
 
-  (stats::pgamma(
-    val[1],
+  out <- (stats::pgamma(
+    val[["lower"]],
     shape = param[["shape"]],
     scale = param[["scale"]]) - val[["q1"]])^2 +
     (stats::pgamma(
-      val[2],
+      val[["upper"]],
       shape = param[["shape"]],
       scale = param[["scale"]]) - val[["q2"]])^2
+  
+  # return unnamed result
+  unname(out)
 }
 
 #' @rdname fit_function_lnorm_range
 fit_function_weibull <- function(param, val) {
 
-  (stats::pweibull(
-    val[1],
+  out <- (stats::pweibull(
+    val[["lower"]],
     shape = param[["shape"]],
     scale = param[["scale"]]) - val[["q1"]])^2 +
     (stats::pweibull(
-      val[2],
+      val[["upper"]],
       shape = param[["shape"]],
       scale = param[["scale"]]) - val[["q2"]])^2
+  
+  # return unnamed result
+  unname(out)
 }

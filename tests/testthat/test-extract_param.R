@@ -351,59 +351,53 @@ test_that("extract_param_range fails as expected", {
 test_that("fit_function_lnorm_range works for valid input", {
   lnorm_range <- fit_function_lnorm_range(
     param = c(meanlog = 2.0, sdlog = 0.5),
-    val = c(8, 4, 13, n = 20)
+    val = c(median = 8, lower = 4, upper = 13, n = 20)
   )
   reference <- 0.00396181460097
-  names(reference) <- ""
   expect_equal(lnorm_range, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_gamma_range works for valid input", {
   gamma_range <- fit_function_gamma_range(
     param = c(shape = 2.0, scale = 0.5),
-    val = c(8, 4, 13, n = 20)
+    val = c(median = 8, lower = 4, upper = 13, n = 20)
   )
   reference <- 0.249998086906
-  names(reference) <- ""
   expect_equal(gamma_range, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_weibull_range works for valid input", {
   weibull_range <- fit_function_weibull_range(
     param = c(shape = 2.0, scale = 0.5),
-    val = c(8, 4, 13, n = 20)
+    val = c(median = 8, lower = 4, upper = 13, n = 20)
   )
   reference <- 0.25
-  names(reference) <- ""
   expect_equal(weibull_range, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_lnorm works for valud input", {
   lnorm <- fit_function_lnorm(
     param = c(meanlog = 2.0, sdlog = 0.5),
-    val = c(6.0, 13.0, q1 = 0.125, q2 = 0.875)
+    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875)
   )
   reference <- 0.0456127816304
-  names(reference) <- ""
   expect_equal(lnorm, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_gamma works for valid input", {
   gamma <- fit_function_gamma(
     param = c(shape = 2.0, scale = 0.5),
-    val = c(6.0, 13.0, q1 = 0.125, q2 = 0.875)
+    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875)
   )
   reference <- 0.781110225514
-  names(reference) <- ""
   expect_equal(gamma, reference, tolerance = testthat_tolerance())
 })
 
 test_that("fit_function_weibull works for valid input", {
   weibull <- fit_function_weibull(
     param = c(shape = 2.0, scale = 0.5),
-    val = c(6.0, 13.0, q1 = 0.125, q2 = 0.875)
+    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875)
   )
   reference <- 0.78125
-  names(reference) <- ""
   expect_equal(weibull, reference, tolerance = testthat_tolerance())
 })
