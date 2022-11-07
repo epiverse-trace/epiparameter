@@ -10,3 +10,4 @@
 ^CODE_OF_CONDUCT\.md$
 ^doc$
 ^Meta$
+^.lintr$
