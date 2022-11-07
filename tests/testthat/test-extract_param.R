@@ -10,7 +10,7 @@ test_that("extract_param works for lnorm from percentiles", {
   ))
   expect_equal(
     lnorm_params,
-    c(a = 2.178355650131613, b = 0.336068813742589),
+    c(meanlog = 2.178355650131613, sdlog = 0.336068813742589),
     tolerance = testthat_tolerance()
   )
 })
@@ -27,7 +27,7 @@ test_that("extract_param works for lnorm from median and range", {
   ))
   expect_equal(
     lnorm_params,
-    c(a = 2.07944157390479, b = 4.25373938812171),
+    c(meanlog = 2.07944157390479, sdlog = 4.25373938812171),
     tolerance = testthat_tolerance()
   )
 })
@@ -44,7 +44,7 @@ test_that("extract_param works for gamma from percentiles", {
   ))
   expect_equal(
     gamma_params,
-    c(a = 9.20039196528191, b = 1.02058982449651),
+    c(shape = 9.20039196528191, scale = 1.02058982449651),
     tolerance = testthat_tolerance()
   )
 })
@@ -61,7 +61,7 @@ test_that("extract_param works for gamma from median and range", {
   ))
   expect_equal(
     gamma_params,
-    c(a = 10.818161002571626, b = 0.762652109735326),
+    c(shape = 10.818161002571626, scale = 0.762652109735326),
     tolerance = testthat_tolerance()
   )
 })
@@ -78,7 +78,7 @@ test_that("extract_param works for weibull from percentiles", {
   ))
   expect_equal(
     weibull_params,
-    c(a = 3.55090029647809, b = 10.57799242826989),
+    c(shape = 3.55090029647809, scale = 10.57799242826989),
     tolerance = testthat_tolerance()
   )
 })
@@ -95,7 +95,7 @@ test_that("extract_param works for weibull from median and range", {
   ))
   expect_equal(
     weibull_params,
-    c(a = 3.55994647578890, b = 8.87141329172117),
+    c(shape = 3.55994647578890, scale = 8.87141329172117),
     tolerance = testthat_tolerance()
   )
 })
@@ -167,7 +167,7 @@ test_that("extract_param_percentile works for lnorm", {
   expect_equal(
     lnorm_params,
     list(
-      par = c(a = 2.13097474713655e+00, b = 1.00000008274037e-10),
+      par = c(meanlog = 2.13097474713655e+00, sdlog = 1.00000008274037e-10),
       value = 0.03125,
       counts = c("function" = 7, "gradient" = 7),
       convergence = 0,
@@ -188,7 +188,7 @@ test_that("extract_param_percentile works for gamma", {
   expect_equal(
     gamma_params,
     list(
-      par = c(a = 9.20038735184127, b = 1.02058983834422),
+      par = c(shape = 9.20038735184127, scale = 1.02058983834422),
       value = 2.45662828557338e-14,
       counts = c("function" = 30, "gradient" = 30),
       convergence = 0,
@@ -209,7 +209,7 @@ test_that("extract_param_percentile works for weibull", {
   expect_equal(
     weibull_params,
     list(
-      par = c(a = 0.0000000001000, b = 2.6184985826797),
+      par = c(shape = 0.0000000001000, scale = 2.6184985826797),
       value = 0.316161684132644,
       counts = c("function" = 6, "gradient" = 6),
       convergence = 0,
@@ -263,7 +263,7 @@ test_that("extract_param_range works for lnorm", {
   expect_equal(
     lnorm_params,
     list(
-      par = c(a = 2.07944153869882, b = 1.95820599716772),
+      par = c(meanlog = 2.07944153869882, sdlog = 1.95820599716772),
       value = -3.81451307459282e-15,
       counts = c("function" = 6, "gradient" = 6),
       convergence = 0,
@@ -284,7 +284,7 @@ test_that("extract_param_range works for gamma", {
   expect_equal(
     gamma_params,
     list(
-      par = c(a = 2.72933343452509, b = 3.32748567278955),
+      par = c(shape = 2.72933343452509, scale = 3.32748567278955),
       value = -8.1823252560062e-07,
       counts = c("function" = 10, "gradient" = 10),
       convergence = 0,
@@ -305,7 +305,7 @@ test_that("extract_param_range works for weibull", {
   expect_equal(
     weibull_params,
     list(
-      par = c(a = 0.0000000001000, b = 2.5047337931743),
+      par = c(shape = 0.0000000001000, scale = 2.5047337931743),
       value = 0.0174558420764588,
       counts = c("function" = 8, "gradient" = 8),
       convergence = 0,
@@ -350,7 +350,7 @@ test_that("extract_param_range fails as expected", {
 
 test_that("fit_function_lnorm_range works for valid input", {
   lnorm_range <- fit_function_lnorm_range(
-    param = c(a = 2.0, b = 0.5),
+    param = c(meanlog = 2.0, sdlog = 0.5),
     val = c(8, 4, 13, n = 20)
   )
   reference <- 0.00396181460097
@@ -360,7 +360,7 @@ test_that("fit_function_lnorm_range works for valid input", {
 
 test_that("fit_function_gamma_range works for valid input", {
   gamma_range <- fit_function_gamma_range(
-    param = c(a = 2.0, b = 0.5),
+    param = c(shape = 2.0, scale = 0.5),
     val = c(8, 4, 13, n = 20)
   )
   reference <- 0.249998086906
@@ -370,7 +370,7 @@ test_that("fit_function_gamma_range works for valid input", {
 
 test_that("fit_function_weibull_range works for valid input", {
   weibull_range <- fit_function_weibull_range(
-    param = c(a = 2.0, b = 0.5),
+    param = c(shape = 2.0, scale = 0.5),
     val = c(8, 4, 13, n = 20)
   )
   reference <- 0.25
@@ -380,7 +380,7 @@ test_that("fit_function_weibull_range works for valid input", {
 
 test_that("fit_function_lnorm works for valud input", {
   lnorm <- fit_function_lnorm(
-    param = c(a = 2.0, b = 0.5),
+    param = c(meanlog = 2.0, sdlog = 0.5),
     val = c(6.0, 13.0, q1 = 0.125, q2 = 0.875)
   )
   reference <- 0.0456127816304
@@ -390,7 +390,7 @@ test_that("fit_function_lnorm works for valud input", {
 
 test_that("fit_function_gamma works for valid input", {
   gamma <- fit_function_gamma(
-    param = c(a = 2.0, b = 0.5),
+    param = c(shape = 2.0, scale = 0.5),
     val = c(6.0, 13.0, q1 = 0.125, q2 = 0.875)
   )
   reference <- 0.781110225514
@@ -400,7 +400,7 @@ test_that("fit_function_gamma works for valid input", {
 
 test_that("fit_function_weibull works for valid input", {
   weibull <- fit_function_weibull(
-    param = c(a = 2.0, b = 0.5),
+    param = c(shape = 2.0, scale = 0.5),
     val = c(6.0, 13.0, q1 = 0.125, q2 = 0.875)
   )
   reference <- 0.78125
