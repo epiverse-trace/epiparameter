@@ -68,83 +68,219 @@ extract_param <- function(type = c("percentiles", "range"),
     )
   )
 
-  # Percentile extraction
-  # Extract distribution parameters using optimisation for specific distribution
-  if (type == "percentiles") {
+  # intialise the for the loop
+  optim_conv <- FALSE
+  optim_params_list <- list()
 
-    # Set initial values for optimisation
-    param <- c(a = 2, b = 0.5) # CHECK: numerical stability
-    values_in <- c(values, q1 = percentiles[1], q2 = percentiles[2])
+  # check numerical stability of results with different starting parameters
+  while (isFALSE(optim_conv)) {
+    # Percentile extraction
+    # Extract distribution parameters by optimising for specific distribution
+    if (type == "percentiles") {
+      optim_params <- extract_param_percentile(
+        values = values,
+        distribution = distribution,
+        percentiles = percentiles
+      )
+    }
 
-    if (distribution == "lnorm") {
-      result2 <- stats::optim(
-        param,
-        fit_function_lnorm,
-        method = "L-BFGS-B",
-        val = values_in,
-        lower = c(-1, 0)
+    # Range extraction
+    if (type == "range") {
+      optim_params <- extract_param_range(
+        values = values,
+        distribution = distribution,
+        samples = samples
       )
     }
-    if (distribution == "gamma") {
-      result2 <- stats::optim(
-        param,
-        fit_function_gamma,
-        method = "L-BFGS-B",
-        val = values_in,
-        lower = c(-1, 0)
-      )
-    }
-    if (distribution == "weibull") {
-      result2 <- stats::optim(
-        param,
-        fit_function_weibull,
-        method = "L-BFGS-B",
-        val = values_in,
-        lower = c(-1, 0)
-      )
-    }
+
+    # add last optimisation to list
+    optim_params_list[[length(optim_params_list) + 1]] <- optim_params
+
+    optim_conv <- check_optim_conv(
+      optim_params_list = optim_params_list,
+      optim_params = optim_params,
+      optim_conv = optim_conv
+    )
   }
 
-  # Range extraction
+  # warn about local optima
+  message(
+    "Stochastic numerical optimisation used. \n",
+    "Rerun function multiple times to check global optimum is found"
+  )
 
-  if (type == "range") {
-
-    # Set initial values for optimisation
-    param <- c(a = 2, b = 0.5) # CHECK: numerical stability
-    values_in <- c(values, n = samples)
-
-    if (distribution == "lnorm") {
-      result2 <- stats::optim(
-        param,
-        fit_function_lnorm_range,
-        method = "L-BFGS-B",
-        val = values_in,
-        lower = c(-1, 0)
-      )
-    }
-    if (distribution == "gamma") {
-      result2 <- stats::optim(
-        param,
-        fit_function_gamma_range,
-        method = "L-BFGS-B",
-        val = values_in,
-        lower = c(-1, 0)
-      )
-    }
-    if (distribution == "weibull") {
-      result2 <- stats::optim(
-        param,
-        fit_function_weibull_range,
-        method = "L-BFGS-B",
-        val = values_in,
-        lower = c(-1, 0)
-      )
-    }
-  }
-
-  # Output parameters
-  result2$par
+  # return parameters that repeatedly converge
+  optim_params_list[[length(optim_params_list)]]$par
 }
+
+#' Optimises the parameters for a specified probability distribution given the
+#' percentiles of a distribution and the values at those percentiles
+#'
+#' @inheritParams extract_param
+#'
+#' @return A list with output from stats::optim. See ?optim for more details
+#' @export
+#'
+#' @examples
+#' # extract parameters of a lognormal distribution from the 75 percentiles
+#' extract_param_percentile(
+#'   values = c(6, 13),
+#'   distribution = "lnorm",
+#'   percentiles = c(0.125, 0.875)
+#' )
+extract_param_percentile <- function(values,
+                                     distribution,
+                                     percentiles) {
+
+  # check input
+  distribution <- match.arg(
+    arg = distribution,
+    choices = c("lnorm", "gamma", "weibull"),
+    several.ok = FALSE
+  )
+  checkmate::assert_numeric(values)
+  checkmate::assert_numeric(percentiles)
+
+  # Set initial values for optimisation
+  param <- stats::runif(n = 2, min = 0, max = 5)
+  names(param) <- c("a", "b")
+  values_in <- c(values, q1 = percentiles[1], q2 = percentiles[2])
+
+  if (distribution == "lnorm") {
+    optim_params <- stats::optim(
+      param,
+      fit_function_lnorm,
+      method = "L-BFGS-B",
+      val = values_in,
+      lower = c(-1e5, 1e-10)
+    )
+  }
+  if (distribution == "gamma") {
+    optim_params <- stats::optim(
+      param,
+      fit_function_gamma,
+      method = "L-BFGS-B",
+      val = values_in,
+      lower = c(1e-10, 1e-10)
+    )
+  }
+  if (distribution == "weibull") {
+    optim_params <- stats::optim(
+      param,
+      fit_function_weibull,
+      method = "L-BFGS-B",
+      val = values_in,
+      lower = c(1e-10, 1e-10)
+    )
+  }
+  optim_params
+}
+
+#' Optimises the parameters for a specified probability distribution given the
+#' median and range of a sample and the number of samples
+#'
+#' @inheritParams extract_param
+#'
+#' @return A list with output from stats::optim. See ?optim for more details
+#' @export
+#'
+#' @examples
+#' # extract parameters of a gamma distribution from median and range
+#' extract_param_range(
+#'   values = c(8, 6, 13),
+#'   distribution = "gamma",
+#'   samples = 20
+#' )
+extract_param_range <- function(values,
+                                distribution,
+                                samples) {
+
+  # check input
+  distribution <- match.arg(
+    arg = distribution,
+    choices = c("lnorm", "gamma", "weibull"),
+    several.ok = FALSE
+  )
+  checkmate::assert_numeric(values)
+  checkmate::assert_numeric(samples, lower = 1)
+
+  # Set initial values for optimisation
+  param <- stats::runif(n = 2, min = 0, max = 5)
+  names(param) <- c("a", "b")
+  values_in <- c(values, n = samples)
+
+  if (distribution == "lnorm") {
+    optim_params <- stats::optim(
+      param,
+      fit_function_lnorm_range,
+      method = "L-BFGS-B",
+      val = values_in,
+      lower = c(-1e5, 1e-10)
+    )
+  }
+  if (distribution == "gamma") {
+    optim_params <- stats::optim(
+      param,
+      fit_function_gamma_range,
+      method = "L-BFGS-B",
+      val = values_in,
+      lower = c(1e-10, 1e-10)
+    )
+  }
+  if (distribution == "weibull") {
+    optim_params <- stats::optim(
+      param,
+      fit_function_weibull_range,
+      method = "L-BFGS-B",
+      val = values_in,
+      lower = c(1e-10, 1e-10)
+    )
+  }
+  optim_params
+}
+
+#' Checks whether the optimisation of distribution parameters has converged to
+#' stable value for the parameters and function output for multiple iterations
+#'
+#' @description This function is a try and prevent optimisation to a local
+#' optim and thus checks whether multiple optimisation routines are consistently
+#' finding parameter values to within a set tolerance of 1e-5.
+#'
+#' @param optim_params_list A list, where each element is the output of
+#' stats::optim. See ?optim for more details
+#' @param optim_params A list given by the output of stats::optim
+#' @param optim_conv A boolean value indicating whether the optimisation has
+#' converged over multiple iterations
+#'
+#' @return Boolean
+check_optim_conv <- function(optim_params_list,
+                             optim_params,
+                             optim_conv) {
+
+  # no pairwise comparison on first iterations
+  if (length(optim_params_list) > 1) {
+
+    # extract parameters from list
+    params <- lapply(optim_params_list, "[[", 1)
+
+    # calculate pairwise comparison across all iterations
+    param_a_dist <- stats::dist(unlist(lapply(params, "[[", 1)))
+    param_b_dist <- stats::dist(unlist(lapply(params, "[[", 2)))
+
+    # any convergence within tolerance for parameters
+    res_diff <- length(which(param_a_dist < 1e-5)) &&
+      length(which(param_b_dist < 1e-5))
+
+    # any convergence within tolerance for function value
+    res_diff <- res_diff &&
+      (abs(optim_params_list[[length(optim_params_list)]]$value -
+             min(unlist(lapply(optim_params_list, "[[", "value")))) < 1e-5)
+    optim_conv <- res_diff && optim_params$convergence == 0
+  }
+  optim_conv
+}
+
+
 
 #' Set of functions that can be used to estimate the parameters of a
 #' distribution (lognormal, gamma, weibull) via optimisation from either the

@@ -3,7 +3,7 @@
 \name{calc_disc_dist_quantile}
 \alias{calc_disc_dist_quantile}
 \title{Calculate the quantiles of a probability distribution based on the vector
-of probabilities and time date (e.g. time since infection)}
+of probabilities and time data (e.g. time since infection)}
 \usage{
 calc_disc_dist_quantile(prob, days, quantile)
 }
