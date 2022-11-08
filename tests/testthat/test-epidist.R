@@ -73,7 +73,8 @@ test_that("epidist fails as expected", {
   # regexp is removed due to oldrel R version
   # regexp = paste0("'arg' should be ", dQuote("WHO_team")
   expect_error(
-    epidist(pathogen = "ebola", delay_dist = "incubation", study = "study")
+    epidist(pathogen = "ebola", delay_dist = "incubation", study = "study"),
+    regexp = "(\\'arg\\')*(should be)*(WHO_team)"
   )
 })
 
