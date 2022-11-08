@@ -308,13 +308,13 @@ fit_function_lnorm_range <- function(param, val) {
 
   # Probability of obtaining min, max and range:
   min_p <- stats::dlnorm(
-    val[["lower"]], 
-    meanlog = param[["meanlog"]], 
+    val[["lower"]],
+    meanlog = param[["meanlog"]],
     sdlog = param[["sdlog"]]
   )
   max_p <- stats::dlnorm(
-    val[["upper"]], 
-    meanlog = param[["meanlog"]], 
+    val[["upper"]],
+    meanlog = param[["meanlog"]],
     sdlog = param[["sdlog"]]
   )
   range_p <- (stats::plnorm(
@@ -344,13 +344,13 @@ fit_function_gamma_range <- function(param, val) {
 
   # Probability of obtaining min, max and range:
   min_p <- stats::dgamma(
-    val[["lower"]], 
-    shape = param[["shape"]], 
+    val[["lower"]],
+    shape = param[["shape"]],
     scale = param[["scale"]]
   )
   max_p <- stats::dgamma(
-    val[["upper"]], 
-    shape = param[["shape"]], 
+    val[["upper"]],
+    shape = param[["shape"]],
     scale = param[["scale"]]
   )
   range_p <- (stats::pgamma(
@@ -381,13 +381,13 @@ fit_function_weibull_range <- function(param, val) {
 
   # Probability of obtaining min, max and range:
   min_p <- stats::dweibull(
-    val[["lower"]], 
-    shape = param[["shape"]], 
+    val[["lower"]],
+    shape = param[["shape"]],
     scale = param[["scale"]]
   )
   max_p <- stats::dweibull(
-    val[["upper"]], 
-    shape = param[["shape"]], 
+    val[["upper"]],
+    shape = param[["shape"]],
     scale = param[["scale"]]
   )
   range_p <- (stats::pweibull(
@@ -404,7 +404,7 @@ fit_function_weibull_range <- function(param, val) {
 
   # Total value to be minimised
   out <- range_sr + median_sr
-  
+
   # return unnamed result
   unname(out)
 }
@@ -420,7 +420,7 @@ fit_function_lnorm <- function(param, val) {
       val[["upper"]],
       meanlog = param[["meanlog"]],
       sdlog = param[["sdlog"]]) - val[["q2"]])^2
-  
+
   # return unnamed result
   unname(out)
 }
@@ -436,7 +436,7 @@ fit_function_gamma <- function(param, val) {
       val[["upper"]],
       shape = param[["shape"]],
       scale = param[["scale"]]) - val[["q2"]])^2
-  
+
   # return unnamed result
   unname(out)
 }
@@ -452,7 +452,7 @@ fit_function_weibull <- function(param, val) {
       val[["upper"]],
       shape = param[["shape"]],
       scale = param[["scale"]]) - val[["q2"]])^2
-  
+
   # return unnamed result
   unname(out)
 }

@@ -59,10 +59,11 @@ test_that("extract_param works for gamma from median and range", {
     distribution = "gamma",
     samples = 20
   ))
+  # tolerance on this test is smaller because of differences across OS
   expect_equal(
     gamma_params,
     c(shape = 10.818161002571626, scale = 0.762652109735326),
-    tolerance = testthat_tolerance()
+    tolerance = 1e-3
   )
 })
 
