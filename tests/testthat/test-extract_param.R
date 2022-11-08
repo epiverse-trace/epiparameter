@@ -33,6 +33,8 @@ test_that("extract_param works for lnorm from median and range", {
 })
 
 test_that("extract_param works for gamma from percentiles", {
+
+  options(digits = 15)
   # set seed for stochastic optimisation
   set.seed(1)
   # suppress messages for testing
