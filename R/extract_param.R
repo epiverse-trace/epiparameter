@@ -3,7 +3,9 @@
 #'
 #' Summary data of distributions, as provided by reports and meta-analyses, can
 #' be used to extract the parameters of a chosen distribution. Currently
-#' available distributions are: lognormal, gamma and weibull.
+#' available distributions are: lognormal, gamma and weibull. The extracting
+#' from a lognormal return the meanlog and sdlog parameters, and extracting from
+#' the gamma and weibull return the shape and scale parameters.
 #'
 #' @param type A `character` defining whether summary statistics based
 #' around `percentiles` (default) or `range`
@@ -16,7 +18,10 @@
 #' @param samples A `numeric` specifying the sample size if using
 #' `type = "range"`.
 #'
-#' @return A `numeric` vector with the parameter values of the distribution
+#' @return A named `numeric` vector with the parameter values of the
+#' distribution. If the `distribution = lnorm` then the parameters returned are
+#' the meanlog and sdlog; if the `distribution = gamma` or `distribution =
+#' weibull` then the parameters returned are the shape and scale.
 #' @keywords extract
 #' @author Adam Kucharski
 #' @export
