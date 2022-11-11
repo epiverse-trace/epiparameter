@@ -289,11 +289,11 @@ check_optim_conv <- function(optim_params_list,
   if (length(optim_params_list) > 1) {
 
     # extract parameters from list
-    params <- lapply(optim_params_list, "[[", 1)
+    params <- lapply(optim_params_list, "[[", "par")
 
     # calculate pairwise comparison across all iterations
-    param_a_dist <- stats::dist(unlist(lapply(params, "[[", 1)))
-    param_b_dist <- stats::dist(unlist(lapply(params, "[[", 2)))
+    param_a_dist <- stats::dist(sapply(params, "[[", 1))
+    param_b_dist <- stats::dist(sapply(params, "[[", 2))
 
     # any convergence within tolerance for parameters
     res_diff <- length(which(param_a_dist < 1e-5)) &&
@@ -302,7 +302,7 @@ check_optim_conv <- function(optim_params_list,
     # any convergence within tolerance for function value
     res_diff <- res_diff &&
       (abs(optim_params_list[[length(optim_params_list)]]$value -
-             min(unlist(lapply(optim_params_list, "[[", "value")))) < 1e-5)
+        min(sapply(optim_params_list, "[[", "value"))) < 1e-5)
     optim_conv <- res_diff && optim_params$convergence == 0
   }
   optim_conv
