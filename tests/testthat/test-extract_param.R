@@ -153,7 +153,7 @@ test_that("extract_param fails as expected", {
       distribution = "lnorm",
       samples = "20"
     ), regexp = paste0("Assertion on 'samples' failed: Must be of type ",
-                       "'numeric', not 'character'.")
+                       "'number', not 'character'.")
   )
 })
 
@@ -345,7 +345,7 @@ test_that("extract_param_range fails as expected", {
       samples = "20"
     ),
     regexp = paste0("Assertion on 'samples' failed: Must be of type",
-                    " 'numeric', not 'character'.")
+                    " 'number', not 'character'.")
   )
 })
 

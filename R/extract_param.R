@@ -54,10 +54,10 @@ extract_param <- function(type = c("percentiles", "range"),
   # check numeric arguments
   checkmate::assert_numeric(values)
   if (!missing(percentiles)) {
-    checkmate::assert_numeric(percentiles)
+    checkmate::assert_numeric(percentiles, len = 2)
   }
   if (!missing(samples)) {
-    checkmate::assert_numeric(samples, lower = 1)
+    checkmate::assert_number(samples, lower = 1)
   }
 
   # Validate inputs
@@ -143,8 +143,8 @@ extract_param_percentile <- function(values,
     choices = c("lnorm", "gamma", "weibull"),
     several.ok = FALSE
   )
-  checkmate::assert_numeric(values)
-  checkmate::assert_numeric(percentiles)
+  checkmate::assert_numeric(values, len = 2)
+  checkmate::assert_numeric(percentiles, len = 2)
 
   # Set initial values for optimisation
   param <- stats::runif(n = 2, min = 0, max = 5)
@@ -209,8 +209,8 @@ extract_param_range <- function(values,
     choices = c("lnorm", "gamma", "weibull"),
     several.ok = FALSE
   )
-  checkmate::assert_numeric(values)
-  checkmate::assert_numeric(samples, lower = 1)
+  checkmate::assert_numeric(values, len = 3)
+  checkmate::assert_number(samples, lower = 1)
 
   # Set initial values for optimisation
   param <- stats::runif(n = 2, min = 0, max = 5)
