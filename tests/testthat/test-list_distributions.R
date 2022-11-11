@@ -1,7 +1,7 @@
 test_that("list_distributions works for all, params = FALSE", {
   dist_tbl <- list_distributions(delay_dist = "all", parameters = FALSE)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(40L, 6L))
+  expect_identical(dim(dist_tbl), c(41L, 6L))
   expect_named(
     dist_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
@@ -17,7 +17,7 @@ test_that("list_distributions works for all, params = FALSE", {
 test_that("list_distributions works for all, params = TRUE", {
   dist_tbl <- list_distributions(delay_dist = "all", parameters = TRUE)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(40L, 27L))
+  expect_identical(dim(dist_tbl), c(41L, 27L))
   expect_named(
     dist_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
@@ -37,7 +37,7 @@ test_that("list_distributions works for all, params = TRUE", {
 test_that("list_distributions works for incubation, params = FALSE", {
   incub_tbl <- list_distributions(delay_dist = "incubation", parameters = FALSE)
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(21L, 6L))
+  expect_identical(dim(incub_tbl), c(22L, 6L))
   expect_named(
     incub_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
@@ -50,7 +50,7 @@ test_that("list_distributions works for incubation, params = FALSE", {
 test_that("list_distributions works for incubation, params = TRUE", {
   incub_tbl <- list_distributions(delay_dist = "incubation", parameters = TRUE)
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(21L, 27L))
+  expect_identical(dim(incub_tbl), c(22L, 27L))
   expect_named(
     incub_tbl,
     c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
