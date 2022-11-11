@@ -46,30 +46,25 @@
 #'
 #' # example using onset to admission as the metric
 #' epidist(pathogen = "ebola", delay_dist = "onset_to_death")
-epidist  <- function(
-    pathogen,
-    delay_dist = c("incubation",
-                   "onset_to_admission",
-                   "onset_to_death",
-                   "serial_interval",
-                   "generation_time"),
-    study = NULL) {
+epidist <- function(pathogen,
+                    delay_dist = c(
+                      "incubation",
+                      "onset_to_admission",
+                      "onset_to_death",
+                      "serial_interval",
+                      "generation_time"
+                    ),
+                    study = NULL) {
 
   # read the data to get possible pathogen names
-  params <- utils::read.csv(system.file(
-    "extdata",
-    "parameters.csv",
-    package = "epiparameter",
-    mustWork = TRUE
-  ))
-
-  # order params by pathogen, delay dist and study
-  params <- params[order(
-    tolower(params$pathogen_id),
-    tolower(params$type_id),
-    tolower(params$study_id),
-    method = "radix"
-  ), ]
+  params <- utils::read.csv(
+    system.file(
+      "extdata",
+      "parameters.csv",
+      package = "epiparameter",
+      mustWork = TRUE
+    )
+  )
 
   # match pathogen names against data
   pathogen <- match.arg(
@@ -90,63 +85,71 @@ epidist  <- function(
 
   # Extract study or default to largest sample size
   if (is.null(study)) {
-    pick_study <- params[params$size == max(params$size), ]
+    params <- params[params$size == max(params$size), ]
   } else {
     study <- match.arg(
       arg = study,
       choices = unique(params$study_id),
       several.ok = FALSE
     )
-    pick_study <- params[params$study_id == study, ]
+    params <- params[params$study_id == study, ]
+  }
+
+  # Throw warning if more than one row found and select first
+  if (nrow(params) > 1) {
+    warning("More than one study found! Selecting first one.\
+    Please report an issue with duplicated studies.")
+    params <- params[1, ]
   }
 
   # Define distribution
-  if (pick_study$distribution == "lnorm") {
-    param_vector <- c(meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
+  if (params$distribution == "lnorm") {
+    param_vector <- c(meanlog = params$meanlog, sdlog = params$sdlog)
     cdf_function <- function(x) {
-      stats::plnorm(x, meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
+      stats::plnorm(x, meanlog = params$meanlog, sdlog = params$sdlog)
     }
     pmf_function <- function(x) {
       cdf_function(x + 1) - cdf_function(x)
     }
     pdf_function <- function(x) {
-      stats::dlnorm(x, meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
+      stats::dlnorm(x, meanlog = params$meanlog, sdlog = params$sdlog)
     }
   }
 
-  if (pick_study$distribution == "gamma") {
-    param_vector <- c(shape = pick_study$shape, scale = pick_study$scale)
+  if (params$distribution == "gamma") {
+    param_vector <- c(shape = params$shape, scale = params$scale)
     cdf_function <- function(x) {
-      stats::pgamma(x, shape = pick_study$shape, scale = pick_study$scale)
+      stats::pgamma(x, shape = params$shape, scale = params$scale)
     }
     pmf_function <- function(x) {
       cdf_function(x + 1) - cdf_function(x)
     }
     pdf_function <- function(x) {
-      stats::dgamma(x, shape = pick_study$shape, scale = pick_study$scale)
+      stats::dgamma(x, shape = params$shape, scale = params$scale)
     }
   }
 
-  if (pick_study$distribution == "weibull") {
-    param_vector <- c(shape = pick_study$shape, scale = pick_study$scale)
+  if (params$distribution == "weibull") {
+    param_vector <- c(shape = params$shape, scale = params$scale)
     cdf_function <- function(x) {
-      stats::pweibull(x, shape = pick_study$shape, scale = pick_study$scale)
+      stats::pweibull(x, shape = params$shape, scale = params$scale)
     }
     pmf_function <- function(x) {
       cdf_function(x + 1) - cdf_function(x)
     }
     pdf_function <- function(x) {
-      stats::dweibull(x, shape = pick_study$shape, scale = pick_study$scale)
+      stats::dweibull(x, shape = params$shape, scale = params$scale)
     }
   }
 
   out <- list(pathogen = pathogen,
-              dist = pick_study$distribution,
+              dist = params$distribution,
               delay_dist = delay_dist,
               param = param_vector,
               pmf = pmf_function,
               pdf = pdf_function,
-              cdf = cdf_function)
+              cdf = cdf_function
+              )
 
   class(out) <- "epidist"
   out
