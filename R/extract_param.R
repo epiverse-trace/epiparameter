@@ -46,7 +46,6 @@ extract_param <- function(type = c("percentiles", "range"),
                           distribution = c("lnorm", "gamma", "weibull"),
                           percentiles,
                           samples) {
-
   # check string arguments
   type <- match.arg(arg = type, several.ok = FALSE)
   distribution <- match.arg(arg = distribution, several.ok = FALSE)
@@ -61,9 +60,8 @@ extract_param <- function(type = c("percentiles", "range"),
   }
 
   # Validate inputs
-  switch(
-    type,
-    "percentiles" = stopifnot( #nolint
+  switch(type,
+    "percentiles" = stopifnot( # nolint
       "'values' and 'percentiles' need to be a vector of length 2" =
         type == "percentiles" && length(values) == 2 || length(percentiles) == 2
     ),
@@ -79,22 +77,19 @@ extract_param <- function(type = c("percentiles", "range"),
   i <- 0
 
   # Switch for which extract_param_* to use
-  fun_extract_param <- switch(
-    type,
+  fun_extract_param <- switch(type,
     percentiles = extract_param_percentile,
     range = extract_param_range
   )
 
   # Switch for whether percentiles or samples are passed
-  dist_info <- switch(
-    type,
+  dist_info <- switch(type,
     percentiles = percentiles,
     range = samples
   )
 
   # check numerical stability of results with different starting parameters
   while (isFALSE(optim_conv)) {
-
     # Extract distribution parameters by optimising for specific distribution
     optim_params <- do.call(
       fun_extract_param,
@@ -144,7 +139,6 @@ extract_param <- function(type = c("percentiles", "range"),
 extract_param_percentile <- function(values,
                                      distribution,
                                      percentiles) {
-
   # check input
   distribution <- match.arg(
     arg = distribution,
@@ -210,7 +204,6 @@ extract_param_percentile <- function(values,
 extract_param_range <- function(values,
                                 distribution,
                                 samples) {
-
   # check input
   distribution <- match.arg(
     arg = distribution,
@@ -275,10 +268,8 @@ extract_param_range <- function(values,
 check_optim_conv <- function(optim_params_list,
                              optim_params,
                              optim_conv) {
-
   # no pairwise comparison on first iterations
   if (length(optim_params_list) > 1) {
-
     # extract parameters from list
     params <- lapply(optim_params_list, "[[", "par")
 
@@ -293,7 +284,7 @@ check_optim_conv <- function(optim_params_list,
     # any convergence within tolerance for function value
     res_diff <- res_diff &&
       (abs(optim_params_list[[length(optim_params_list)]]$value -
-             min(unlist(lapply(optim_params_list, "[[", "value")))) < 1e-5)
+        min(unlist(lapply(optim_params_list, "[[", "value")))) < 1e-5)
     optim_conv <- res_diff && optim_params$convergence == 0
   }
   optim_conv
@@ -312,12 +303,12 @@ check_optim_conv <- function(optim_params_list,
 #' @keywords internal
 #' @author Adam Kucharski
 fit_function_lnorm_range <- function(param, val) {
-
   # Median square residual
   median_sr <- (stats::plnorm(
     val[["median"]],
     meanlog = param[["meanlog"]],
-    sdlog = param[["sdlog"]]) - 0.5)^2
+    sdlog = param[["sdlog"]]
+  ) - 0.5)^2
 
   # Probability of obtaining min, max and range:
   min_p <- stats::dlnorm(
@@ -333,11 +324,13 @@ fit_function_lnorm_range <- function(param, val) {
   range_p <- (stats::plnorm(
     val[["upper"]],
     meanlog = param[["meanlog"]],
-    sdlog = param[["sdlog"]]) -
-      stats::plnorm(
-        val[["lower"]],
-        meanlog = param[["meanlog"]],
-        sdlog = param[["sdlog"]]))^(val[["n"]] - 2)
+    sdlog = param[["sdlog"]]
+  ) -
+    stats::plnorm(
+      val[["lower"]],
+      meanlog = param[["meanlog"]],
+      sdlog = param[["sdlog"]]
+    ))^(val[["n"]] - 2)
 
   # Range likelihood
   range_sr <- -(min_p * max_p * range_p)
@@ -348,12 +341,12 @@ fit_function_lnorm_range <- function(param, val) {
 
 #' @rdname fit_function_lnorm_range
 fit_function_gamma_range <- function(param, val) {
-
   # Median square residual
   median_sr <- (stats::pgamma(
     val[["median"]],
     shape = param[["shape"]],
-    scale = param[["scale"]]) - 0.5)^2
+    scale = param[["scale"]]
+  ) - 0.5)^2
 
   # Probability of obtaining min, max and range:
   min_p <- stats::dgamma(
@@ -369,11 +362,13 @@ fit_function_gamma_range <- function(param, val) {
   range_p <- (stats::pgamma(
     val[["upper"]],
     shape = param[["shape"]],
-    scale = param[["scale"]]) -
-      stats::pgamma(
-        val[["lower"]],
-        shape = param[["shape"]],
-        scale = param[["scale"]]))^(val[["n"]] - 2)
+    scale = param[["scale"]]
+  ) -
+    stats::pgamma(
+      val[["lower"]],
+      shape = param[["shape"]],
+      scale = param[["scale"]]
+    ))^(val[["n"]] - 2)
 
   # Range likelihood
   range_sr <- -(min_p * max_p * range_p)
@@ -384,7 +379,6 @@ fit_function_gamma_range <- function(param, val) {
 
 #' @rdname fit_function_lnorm_range
 fit_function_weibull_range <- function(param, val) {
-
   # Median square residual
   median_sr <- (stats::pweibull(
     val[["median"]],
@@ -406,11 +400,13 @@ fit_function_weibull_range <- function(param, val) {
   range_p <- (stats::pweibull(
     val[["upper"]],
     shape = param[["shape"]],
-    scale = param[["scale"]]) -
-      stats::pweibull(
-        val[["lower"]],
-        shape = param[["shape"]],
-        scale = param[["scale"]]))^(val[["n"]] - 2)
+    scale = param[["scale"]]
+  ) -
+    stats::pweibull(
+      val[["lower"]],
+      shape = param[["shape"]],
+      scale = param[["scale"]]
+    ))^(val[["n"]] - 2)
 
   # Range likelihood
   range_sr <- -(min_p * max_p * range_p)
@@ -424,15 +420,16 @@ fit_function_weibull_range <- function(param, val) {
 
 #' @rdname fit_function_lnorm_range
 fit_function_lnorm <- function(param, val) {
-
   out <- (stats::plnorm(
     val[["lower"]],
     meanlog = param[["meanlog"]],
-    sdlog = param[["sdlog"]]) - val[["q1"]])^2 +
+    sdlog = param[["sdlog"]]
+  ) - val[["q1"]])^2 +
     (stats::plnorm(
       val[["upper"]],
       meanlog = param[["meanlog"]],
-      sdlog = param[["sdlog"]]) - val[["q2"]])^2
+      sdlog = param[["sdlog"]]
+    ) - val[["q2"]])^2
 
   # return unnamed result
   unname(out)
@@ -440,15 +437,16 @@ fit_function_lnorm <- function(param, val) {
 
 #' @rdname fit_function_lnorm_range
 fit_function_gamma <- function(param, val) {
-
   out <- (stats::pgamma(
     val[["lower"]],
     shape = param[["shape"]],
-    scale = param[["scale"]]) - val[["q1"]])^2 +
+    scale = param[["scale"]]
+  ) - val[["q1"]])^2 +
     (stats::pgamma(
       val[["upper"]],
       shape = param[["shape"]],
-      scale = param[["scale"]]) - val[["q2"]])^2
+      scale = param[["scale"]]
+    ) - val[["q2"]])^2
 
   # return unnamed result
   unname(out)
@@ -456,15 +454,16 @@ fit_function_gamma <- function(param, val) {
 
 #' @rdname fit_function_lnorm_range
 fit_function_weibull <- function(param, val) {
-
   out <- (stats::pweibull(
     val[["lower"]],
     shape = param[["shape"]],
-    scale = param[["scale"]]) - val[["q1"]])^2 +
+    scale = param[["scale"]]
+  ) - val[["q1"]])^2 +
     (stats::pweibull(
       val[["upper"]],
       shape = param[["shape"]],
-      scale = param[["scale"]]) - val[["q2"]])^2
+      scale = param[["scale"]]
+    ) - val[["q2"]])^2
 
   # return unnamed result
   unname(out)

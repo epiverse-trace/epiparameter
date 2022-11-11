@@ -20,11 +20,13 @@ test_that("list_distributions works for all, params = TRUE", {
   expect_identical(dim(dist_tbl), c(41L, 27L))
   expect_named(
     dist_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
+    c(
+      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
       "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+    )
   )
   expect_snapshot(
     list_distributions(delay_dist = "all", parameters = TRUE)
@@ -53,11 +55,13 @@ test_that("list_distributions works for incubation, params = TRUE", {
   expect_identical(dim(incub_tbl), c(22L, 27L))
   expect_named(
     incub_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
+    c(
+      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
       "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+    )
   )
   expect_snapshot(
     list_distributions(delay_dist = "incubation", parameters = TRUE)
@@ -89,11 +93,13 @@ test_that("list_distributions works for onset_to_admission, params = TRUE", {
   expect_identical(dim(on_to_ad_tbl), c(6L, 27L))
   expect_named(
     on_to_ad_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
+    c(
+      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
       "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+    )
   )
   expect_snapshot(
     list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
@@ -125,11 +131,13 @@ test_that("list_distributions works for onset_to_death, params = TRUE", {
   expect_identical(dim(on_to_death_tbl), c(2L, 27L))
   expect_named(
     on_to_death_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
+    c(
+      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
       "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+    )
   )
   expect_snapshot(
     list_distributions(delay_dist = "onset_to_death", parameters = TRUE)
@@ -161,11 +169,13 @@ test_that("list_distributions works for serial_interval, params = TRUE", {
   expect_identical(dim(serial_inter_tbl), c(5L, 27L))
   expect_named(
     serial_inter_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
+    c(
+      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
       "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+    )
   )
   expect_snapshot(
     list_distributions(delay_dist = "serial_interval", parameters = TRUE)
@@ -197,11 +207,13 @@ test_that("list_distributions works for generation_time, params = TRUE", {
   expect_identical(dim(gen_time_tbl), c(2L, 27L))
   expect_named(
     gen_time_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution",
+    c(
+      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
       "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
       "quantile_95", "quantile_975", "lower_range", "upper_range",
       "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by")
+      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+    )
   )
   expect_snapshot(
     list_distributions(delay_dist = "generation_time", parameters = TRUE)
@@ -246,8 +258,9 @@ test_that("list_distributions fails correctly", {
   )
   expect_error(
     list_distributions(delay_dist = "serial_interval", parameters = "TRUE"),
-    regexp = paste0("Assertion on 'parameters' failed: Must be of type",
-                    " 'logical', not 'character'."
+    regexp = paste0(
+      "Assertion on 'parameters' failed: Must be of type",
+      " 'logical', not 'character'."
     )
   )
 })

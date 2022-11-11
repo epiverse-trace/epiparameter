@@ -114,7 +114,6 @@ gamma_meansd2shapescale <- function(mean, sd) {
 #' var(r)
 #' # 0.9995295
 weibull_meansd2shapescale <- function(mean, sd) {
-
   checkmate::assert_number(mean, lower = 0)
   checkmate::assert_number(sd, lower = 0)
 

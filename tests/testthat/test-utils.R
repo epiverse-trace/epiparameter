@@ -26,8 +26,10 @@ test_that("calc_disc_dist_quantile fails as expected", {
       days = days,
       quantile = quantiles
     ),
-    regexp = paste0("Assertion on 'prob' failed: Must be of type 'numeric',",
-                    " not 'character'.")
+    regexp = paste0(
+      "Assertion on 'prob' failed: Must be of type 'numeric',",
+      " not 'character'."
+    )
   )
 
   expect_error(
@@ -36,8 +38,10 @@ test_that("calc_disc_dist_quantile fails as expected", {
       days = "days",
       quantile = quantiles
     ),
-    regexp = paste0("Assertion on 'days' failed: Must be of type 'numeric',",
-                    " not 'character'.")
+    regexp = paste0(
+      "Assertion on 'days' failed: Must be of type 'numeric',",
+      " not 'character'."
+    )
   )
 
   expect_error(

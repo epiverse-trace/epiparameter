@@ -109,8 +109,10 @@ test_that("extract_param fails as expected", {
       distribution = "lnorm",
       percentiles = c(0.125, 0.875)
     ),
-    regexp = paste0("'arg' should be one of ", dQuote("percentiles"), ", ",
-                    dQuote("range"))
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("percentiles"), ", ",
+      dQuote("range")
+    )
   )
 
   expect_error(
@@ -120,8 +122,10 @@ test_that("extract_param fails as expected", {
       distribution = "lnorm",
       percentiles = c(0.125, 0.875)
     ),
-    regexp = paste0("Assertion on 'values' failed: Must be of type 'numeric',",
-                    " not 'character'.")
+    regexp = paste0(
+      "Assertion on 'values' failed: Must be of type 'numeric',",
+      " not 'character'."
+    )
   )
 
   expect_error(
@@ -131,8 +135,10 @@ test_that("extract_param fails as expected", {
       distribution = "distribution",
       percentiles = c(0.125, 0.875)
     ),
-    regexp = paste0("'arg' should be one of ", dQuote("lnorm"), ", ",
-                    dQuote("gamma"), ", ", dQuote("weibull"))
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("lnorm"), ", ",
+      dQuote("gamma"), ", ", dQuote("weibull")
+    )
   )
 
   expect_error(
@@ -142,8 +148,10 @@ test_that("extract_param fails as expected", {
       distribution = "lnorm",
       percentiles = c("0.125", 0.875)
     ),
-    regexp = paste0("Assertion on 'percentiles' failed: Must be of type",
-                    " 'numeric', not 'character'.")
+    regexp = paste0(
+      "Assertion on 'percentiles' failed: Must be of type",
+      " 'numeric', not 'character'."
+    )
   )
 
   expect_error(
@@ -152,8 +160,11 @@ test_that("extract_param fails as expected", {
       values = c(8, 4, 13),
       distribution = "lnorm",
       samples = "20"
-    ), regexp = paste0("Assertion on 'samples' failed: Must be of type ",
-                       "'number', not 'character'.")
+    ),
+    regexp = paste0(
+      "Assertion on 'samples' failed: Must be of type ",
+      "'number', not 'character'."
+    )
   )
 })
 
@@ -221,15 +232,16 @@ test_that("extract_param_percentile works for weibull", {
 })
 
 test_that("extract_param_percentile fails as expected", {
-
   expect_error(
     extract_param_percentile(
       values = c("6", 13),
       distribution = "weibull",
       percentiles = c(0.125, 0.875)
     ),
-    regexp = paste0("Assertion on 'values' failed: Must be of type 'numeric',",
-                    " not 'character'.")
+    regexp = paste0(
+      "Assertion on 'values' failed: Must be of type 'numeric',",
+      " not 'character'."
+    )
   )
 
   expect_error(
@@ -238,8 +250,10 @@ test_that("extract_param_percentile fails as expected", {
       distribution = "distribution",
       percentiles = c(0.125, 0.875)
     ),
-    regexp = paste0("'arg' should be one of ", dQuote("lnorm"), ", ",
-                    dQuote("gamma"), ", ", dQuote("weibull"))
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("lnorm"), ", ",
+      dQuote("gamma"), ", ", dQuote("weibull")
+    )
   )
 
   expect_error(
@@ -248,8 +262,10 @@ test_that("extract_param_percentile fails as expected", {
       distribution = "weibull",
       percentiles = c("0.125", 0.875)
     ),
-    regexp = paste0("Assertion on 'percentiles' failed: Must be of type",
-                    " 'numeric', not 'character'.")
+    regexp = paste0(
+      "Assertion on 'percentiles' failed: Must be of type",
+      " 'numeric', not 'character'."
+    )
   )
 })
 
@@ -317,15 +333,16 @@ test_that("extract_param_range works for weibull", {
 })
 
 test_that("extract_param_range fails as expected", {
-
   expect_error(
     extract_param_range(
       values = c("8", 4, 13),
       distribution = "lnorm",
       samples = 20
     ),
-    regexp = paste0("Assertion on 'values' failed: Must be of type 'numeric',",
-                    " not 'character'.")
+    regexp = paste0(
+      "Assertion on 'values' failed: Must be of type 'numeric',",
+      " not 'character'."
+    )
   )
 
   expect_error(
@@ -334,8 +351,10 @@ test_that("extract_param_range fails as expected", {
       distribution = "distribution",
       samples = 20
     ),
-    regexp = paste0("'arg' should be one of ", dQuote("lnorm"), ", ",
-                    dQuote("gamma"), ", ", dQuote("weibull"))
+    regexp = paste0(
+      "'arg' should be one of ", dQuote("lnorm"), ", ",
+      dQuote("gamma"), ", ", dQuote("weibull")
+    )
   )
 
   expect_error(
@@ -344,8 +363,10 @@ test_that("extract_param_range fails as expected", {
       distribution = "lnorm",
       samples = "20"
     ),
-    regexp = paste0("Assertion on 'samples' failed: Must be of type",
-                    " 'number', not 'character'.")
+    regexp = paste0(
+      "Assertion on 'samples' failed: Must be of type",
+      " 'number', not 'character'."
+    )
   )
 })
 

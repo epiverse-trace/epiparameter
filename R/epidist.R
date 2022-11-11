@@ -46,15 +46,15 @@
 #'
 #' # example using onset to admission as the metric
 #' epidist(pathogen = "ebola", delay_dist = "onset_to_death")
-epidist  <- function(pathogen,
-                     delay_dist = c(
-                       "incubation",
-                       "onset_to_admission",
-                       "onset_to_death",
-                       "serial_interval",
-                       "generation_time"),
-                     study = NULL) {
-
+epidist <- function(pathogen,
+                    delay_dist = c(
+                      "incubation",
+                      "onset_to_admission",
+                      "onset_to_death",
+                      "serial_interval",
+                      "generation_time"
+                    ),
+                    study = NULL) {
   # read the data to get possible pathogen names
   params <- utils::read.csv(
     system.file(
@@ -149,13 +149,15 @@ epidist  <- function(pathogen,
     }
   }
 
-  out <- list(pathogen = pathogen,
-              dist = params$distribution,
-              delay_dist = delay_dist,
-              param = param_vector,
-              pmf = pmf_function,
-              pdf = pdf_function,
-              cdf = cdf_function)
+  out <- list(
+    pathogen = pathogen,
+    dist = params$distribution,
+    delay_dist = delay_dist,
+    param = param_vector,
+    pmf = pmf_function,
+    pdf = pdf_function,
+    cdf = cdf_function
+  )
 
   class(out) <- "epidist"
   out
@@ -163,7 +165,6 @@ epidist  <- function(pathogen,
 
 ##' @export
 print.epidist <- function(x, ...) {
-
   writeLines(
     c(
       sprintf("Pathogen: %s", x$pathogen),
@@ -192,7 +193,6 @@ print.epidist <- function(x, ...) {
 #' ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
 #' plot(ebola_si)
 plot.epidist <- function(x, day_range = 0:10, ...) {
-
   if (!inherits(x, "epidist")) {
     stop("x must be an epidist object")
   }

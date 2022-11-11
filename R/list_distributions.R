@@ -24,16 +24,16 @@
 #' # full table including extra information (e.g. parameters of the
 #' # distribution) the `parameters` argument can be set to `TRUE`
 #' list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
-
-list_distributions <- function(
-    delay_dist = c("all",
-                   "incubation",
-                   "onset_to_admission",
-                   "onset_to_death",
-                   "serial_interval",
-                   "generation_time"),
-    parameters = FALSE) {
-
+#'
+list_distributions <- function(delay_dist = c(
+                                 "all",
+                                 "incubation",
+                                 "onset_to_admission",
+                                 "onset_to_death",
+                                 "serial_interval",
+                                 "generation_time"
+                               ),
+                               parameters = FALSE) {
   delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
   checkmate::assert_logical(parameters)
 

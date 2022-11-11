@@ -44,7 +44,7 @@ epiparameter::list_distributions(delay_dist = "incubation")
 
 # Extract incubation period distribution
 incubation_H7N9 <- epiparameter::epidist(
-  pathogen = "influenza_H7N9", 
+  pathogen = "influenza_H7N9",
   delay_dist = "incubation"
 )
 
