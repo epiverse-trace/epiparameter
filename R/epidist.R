@@ -157,15 +157,15 @@ epidist <- function(pathogen,
 
 ##' @export
 print.epidist <- function(x, ...) {
-
-  cat(sprintf("Pathogen: %s\n", x$pathogen))
-  cat(sprintf("Delay Distribution: %s\n", x$delay_dist))
-  cat(sprintf("Distribution: %s\n", x$dist))
-  p_vals <- x$param
-  cat(sprintf("Parameters:\n"))
-  cat(sprintf("  %s: %s\n", names(p_vals), as.character(p_vals)))
-
-  invisible(x)
+  writeLines(
+    c(
+      sprintf("Pathogen: %s", x$pathogen),
+      sprintf("Delay Distribution: %s", x$delay_dist),
+      sprintf("Distribution: %s", x$dist),
+      sprintf("Parameters:"),
+      sprintf(" %s: %s", names(x$param), x$param)
+    )
+  )
 }
 
 #' Plots an `epidist` object by displaying the probability mass function (PMF),
