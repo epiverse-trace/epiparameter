@@ -156,36 +156,42 @@ extract_param_percentile <- function(values,
   names(values) <- c("lower", "upper")
   values_in <- c(values, q1 = percentiles[1], q2 = percentiles[2])
 
-  if (distribution == "lnorm") {
-    names(param) <- c("meanlog", "sdlog")
-    optim_params <- stats::optim(
-      param,
-      fit_function_lnorm,
-      method = "L-BFGS-B",
-      val = values_in,
+  # Switch parameter names based on distribution
+  param_names <- switch(distribution,
+    lnorm = c("meanlog", "sdlog"),
+    gamma = c("shape", "scale"),
+    weibull = c("shape", "scale")
+  )
+  names(param) <- param_names
+
+  # Switch function and lower bounds based on distribution
+  optim_args <- switch(distribution,
+    lnorm = list(
+      fn = fit_function_lnorm,
       lower = c(-1e5, 1e-10)
-    )
-  }
-  if (distribution == "gamma") {
-    names(param) <- c("shape", "scale")
-    optim_params <- stats::optim(
-      param,
-      fit_function_gamma,
-      method = "L-BFGS-B",
-      val = values_in,
+    ),
+    gamma = list(
+      fn = fit_function_gamma,
+      lower = c(1e-10, 1e-10)
+    ),
+    weibull = list(
+      fn = fit_function_weibull,
       lower = c(1e-10, 1e-10)
     )
-  }
-  if (distribution == "weibull") {
-    names(param) <- c("shape", "scale")
-    optim_params <- stats::optim(
-      param,
-      fit_function_weibull,
-      method = "L-BFGS-B",
-      val = values_in,
-      lower = c(1e-10, 1e-10)
+  )
+
+  # Run optim
+  optim_params <- do.call(
+    stats::optim,
+    c(
+      list(
+        par = param,
+        method = "L-BFGS-B",
+        val = values_in
+      ),
+      optim_args
     )
-  }
+  )
   optim_params
 }
 
