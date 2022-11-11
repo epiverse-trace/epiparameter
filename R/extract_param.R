@@ -3,9 +3,9 @@
 #'
 #' Summary data of distributions, as provided by reports and meta-analyses, can
 #' be used to extract the parameters of a chosen distribution. Currently
-#' available distributions are: lognormal, gamma and weibull. The extracting
-#' from a lognormal return the meanlog and sdlog parameters, and extracting from
-#' the gamma and weibull return the shape and scale parameters.
+#' available distributions are: lognormal, gamma and weibull. Extracting
+#' from a lognormal returns the meanlog and sdlog parameters, and extracting
+#' from the gamma and weibull returns the shape and scale parameters.
 #'
 #' @param type A `character` defining whether summary statistics based
 #' around `percentiles` (default) or `range`
@@ -76,30 +76,38 @@ extract_param <- function(type = c("percentiles", "range"),
   # intialise the for the loop
   optim_conv <- FALSE
   optim_params_list <- list()
+  i <- 0
+
+  # Switch for which extract_param_* to use
+  fun_extract_param <- switch(
+    type,
+    percentiles = extract_param_percentile,
+    range = extract_param_range
+  )
+
+  # Switch for whether percentiles or samples are passed
+  dist_info <- switch(
+    type,
+    percentiles = percentiles,
+    range = samples
+  )
 
   # check numerical stability of results with different starting parameters
   while (isFALSE(optim_conv)) {
-    # Percentile extraction
-    # Extract distribution parameters by optimising for specific distribution
-    if (type == "percentiles") {
-      optim_params <- extract_param_percentile(
-        values = values,
-        distribution = distribution,
-        percentiles = percentiles
-      )
-    }
 
-    # Range extraction
-    if (type == "range") {
-      optim_params <- extract_param_range(
-        values = values,
-        distribution = distribution,
-        samples = samples
+    # Extract distribution parameters by optimising for specific distribution
+    optim_params <- do.call(
+      fun_extract_param,
+      list(
+        values,
+        distribution,
+        dist_info
       )
-    }
+    )
 
     # add last optimisation to list
-    optim_params_list[[length(optim_params_list) + 1]] <- optim_params
+    optim_params_list[[i + 1]] <- optim_params
+    i <- i + 1
 
     optim_conv <- check_optim_conv(
       optim_params_list = optim_params_list,
@@ -272,7 +280,7 @@ check_optim_conv <- function(optim_params_list,
   if (length(optim_params_list) > 1) {
 
     # extract parameters from list
-    params <- lapply(optim_params_list, "[[", 1)
+    params <- lapply(optim_params_list, "[[", "par")
 
     # calculate pairwise comparison across all iterations
     param_a_dist <- stats::dist(unlist(lapply(params, "[[", 1)))
