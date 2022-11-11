@@ -183,7 +183,6 @@ print.epidist <- function(x, ...) {
 #' ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
 #' plot(ebola_si)
 plot.epidist <- function(x, day_range = 0:10, ...) {
-
   if (!inherits(x, "epidist")) {
     stop("x must be an epidist object")
   }
@@ -199,7 +198,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     day_range,
     x$pmf(day_range),
     ylab = "",
-    xlab = "time since infection",
+    xlab = "Time since infection",
     type = "p",
     pch = 16,
     main = "Probability Mass Function"
@@ -210,7 +209,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     day_range,
     x$pdf(day_range),
     ylab = "",
-    xlab = "time since infection",
+    xlab = "Time since infection",
     type = "p",
     pch = 16,
     main = "Probability Density Function"
@@ -221,7 +220,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     day_range,
     x$cdf(day_range),
     ylab = "",
-    xlab = "time since infection",
+    xlab = "Time since infection",
     type = "p",
     pch = 16,
     ylim = c(0, 1),
