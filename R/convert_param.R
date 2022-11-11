@@ -12,6 +12,8 @@
 #' @examples
 #' lnorm_musigma2meansd(1.5, 0.9)
 lnorm_musigma2meansd <- function(mu, sigma) {
+  checkmate::assert_number(mu)
+  checkmate::assert_number(sigma, lower = 0)
   mean <- exp(mu + 0.5 * sigma^2)
   sd <- exp(mu + 0.5 * sigma^2) * sqrt(exp(sigma^2) - 1)
   list(mean = mean, sd = sd)
@@ -29,6 +31,8 @@ lnorm_musigma2meansd <- function(mu, sigma) {
 #' @examples
 #' lnorm_meansd2musigma(1.0, 0.4)
 lnorm_meansd2musigma <- function(mean, sd) {
+  checkmate::assert_number(mean, lower = 0)
+  checkmate::assert_number(sd, lower = 0)
   sigma <- sqrt(log(sd^2 / mean^2 + 1))
   mu <- log(mean^2 / sqrt(sd^2 + mean^2))
   list(mu = mu, sigma = sigma)
@@ -46,6 +50,8 @@ lnorm_meansd2musigma <- function(mean, sd) {
 #' @examples
 #' gamma_shapescale2meansd(shape = 0.5, scale = 0.2)
 gamma_shapescale2meansd <- function(shape, scale) {
+  checkmate::assert_number(shape, lower = 0)
+  checkmate::assert_number(scale, lower = 0)
   mean <- shape * scale
   sd <- sqrt(shape) * scale
   list(mean = mean, sd = sd)
@@ -63,6 +69,8 @@ gamma_shapescale2meansd <- function(shape, scale) {
 #' @examples
 #' gamma_meansd2shapescale(mean = 2.2, sd = 0.9)
 gamma_meansd2shapescale <- function(mean, sd) {
+  checkmate::assert_number(mean, lower = 0)
+  checkmate::assert_number(sd, lower = 0)
   shape <- mean^2 / sd^2
   scale <- sd^2 / mean
   list(shape = shape, scale = scale)
@@ -106,6 +114,8 @@ gamma_meansd2shapescale <- function(mean, sd) {
 #' var(r)
 #' # 0.9995295
 weibull_meansd2shapescale <- function(mean, sd) {
+  checkmate::assert_number(mean, lower = 0)
+  checkmate::assert_number(sd, lower = 0)
 
   # give warning message about numerial inaccuracies
   message("Numerical approximation used, results may be unreliable.")
@@ -133,6 +143,8 @@ weibull_meansd2shapescale <- function(mean, sd) {
 #' @examples
 #' weibull_shapescale2meansd(shape = 2, scale = 1)
 weibull_shapescale2meansd <- function(shape, scale) {
+  checkmate::assert_number(shape, lower = 0)
+  checkmate::assert_number(scale, lower = 0)
   mean <- scale * gamma(1 + 1 / shape)
   sd <- sqrt(scale^2 * (gamma(1 + 2 / shape) - gamma(1 + 1 / shape))^2)
   list(mean = mean, sd = sd)

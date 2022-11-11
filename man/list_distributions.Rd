@@ -36,6 +36,7 @@ list_distributions(delay_dist = "onset_to_death")
 # full table including extra information (e.g. parameters of the
 # distribution) the `parameters` argument can be set to `TRUE`
 list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
+
 }
 \author{
 Adam Kucharski

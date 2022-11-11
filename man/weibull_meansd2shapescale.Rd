@@ -22,7 +22,7 @@ shape and scale parameterisation.
 \examples{
 weibull_meansd2shapescale(mean = 1.5, sd = 0.5)
 
-# numerical approximations are used to estimate the shape and scale 
+# numerical approximations are used to estimate the shape and scale
 # parameters
 
 # converting between the mean and standard deviation and shape and scale does
@@ -34,7 +34,7 @@ weibull_shapescale2meansd(wss[["shape"]], wss[["scale"]])
 # $sd
 # [1] 0.4514356
 
-# the mean and standard deviation (sqrt(var)) are more accurately recovered 
+# the mean and standard deviation (sqrt(var)) are more accurately recovered
 # from a larger sample size of weibull random variables
 set.seed(1)
 r <- rweibull(n = 1000, shape = wss[["shape"]], scale = wss[["scale"]])

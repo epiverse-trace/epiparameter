@@ -85,7 +85,7 @@
 </defs>
 <g clip-path='url(#cpMC4wMHwzNjAuMDB8MC4wMHwyODguMDA=)'>
 <text x='191.95' y='22.04' text-anchor='middle' style='font-size: 11.95px; font-weight: bold; font-family: sans;' textLength='136.86px' lengthAdjust='spacingAndGlyphs'>Probability Mass Function</text>
-<text x='191.95' y='285.61' text-anchor='middle' style='font-size: 9.96px; font-family: sans;' textLength='84.71px' lengthAdjust='spacingAndGlyphs'>time since infection</text>
+<text x='191.95' y='285.61' text-anchor='middle' style='font-size: 9.96px; font-family: sans;' textLength='88.03px' lengthAdjust='spacingAndGlyphs'>Time since infection</text>
 </g>
 <defs>
   <clipPath id='cpMzk1Ljg2fDcwOC4wNXwzNS44NnwyNDAuMTk='>
@@ -147,7 +147,7 @@
 </defs>
 <g clip-path='url(#cpMzYwLjAwfDcyMC4wMHwwLjAwfDI4OC4wMA==)'>
 <text x='551.95' y='22.04' text-anchor='middle' style='font-size: 11.95px; font-weight: bold; font-family: sans;' textLength='148.16px' lengthAdjust='spacingAndGlyphs'>Probability Density Function</text>
-<text x='551.95' y='285.61' text-anchor='middle' style='font-size: 9.96px; font-family: sans;' textLength='84.71px' lengthAdjust='spacingAndGlyphs'>time since infection</text>
+<text x='551.95' y='285.61' text-anchor='middle' style='font-size: 9.96px; font-family: sans;' textLength='88.03px' lengthAdjust='spacingAndGlyphs'>Time since infection</text>
 </g>
 <defs>
   <clipPath id='cpMzUuODZ8MzQ4LjA1fDMyMy44Nnw1MjguMTk='>
@@ -211,7 +211,7 @@
 </defs>
 <g clip-path='url(#cpMC4wMHwzNjAuMDB8Mjg4LjAwfDU3Ni4wMA==)'>
 <text x='191.95' y='310.04' text-anchor='middle' style='font-size: 11.95px; font-weight: bold; font-family: sans;' textLength='172.07px' lengthAdjust='spacingAndGlyphs'>Cumulative Distribution Function</text>
-<text x='191.95' y='573.61' text-anchor='middle' style='font-size: 9.96px; font-family: sans;' textLength='84.71px' lengthAdjust='spacingAndGlyphs'>time since infection</text>
+<text x='191.95' y='573.61' text-anchor='middle' style='font-size: 9.96px; font-family: sans;' textLength='88.03px' lengthAdjust='spacingAndGlyphs'>Time since infection</text>
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 <text x='360.00' y='11.95' text-anchor='middle' style='font-size: 11.95px; font-weight: bold; font-family: sans;' textLength='65.77px' lengthAdjust='spacingAndGlyphs'>Distributions</text>

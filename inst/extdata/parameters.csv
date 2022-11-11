@@ -15,12 +15,13 @@ influenza_H5N1,incubation,Cowling_etal,2013,27,weibull,3.3,1.5,0.6870932,3.08836
 influenza_H5N1,onset_to_admission,Cowling_etal,2013,43,weibull,NA,NA,1.367829,4.9,6.770349,NA,10.222554,11.423436,NA,NA,2.373396,6.438843,NA,NA,yes,no,no,extraction used quantile_025 and quantile_95,23803488,10.1016/S0140-6736(13)61171-X,Adam Kucharski
 marburg,incubation,Pavlin,2014,18,gamma,NA,NA,NA,7,NA,NA,NA,NA,2,13,1.9461377,0.5324265,,,yes,no,no,"gamma assumed, range 2 to 13",25495697,10.1186/1756-0500-7-906        ,Adam Kucharski
 measles,incubation,Lessler_etal,2009,56,lnorm,NA,NA,NA,12.5,14.4,NA,17.7,NA,NA,NA,NA,NA,2.52572603,0.20979515,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
+measles,incubation,Klinkenberg and Nishiura,2011,116,lnorm,12.3,3.48,NA,12,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,,,NA,"estimates from data reported by Goodwall 1931 ""Incubation period of measles""",21704640,10.1016/j.jtbi.2011.06.015,Alexis Robert
 MERS_CoV,incubation,Assiri_etal,2013,23,lnorm,NA,NA,NA,5.2,NA,NA,12.4,14.7,NA,NA,NA,NA,1.6486586,0.5283368,yes,NA,NA,extracted using quantile_5 and quantile_975,23782161,10.1056/NEJMoa1306742,Adam Kucharski
 MERS_CoV,onset_to_admission,Assiri_etal,2013,23,lnorm,NA,NA,NA,5,NA,NA,NA,NA,1,10,NA,NA,1.6089493,0.6103889,yes,NA,NA,NA,23782161,10.1056/NEJMoa1306742,Adam Kucharski
 MERS_CoV,serial_interval,Assiri_etal,2013,23,lnorm,NA,NA,NA,7.6,NA,NA,19.4,23.1,NA,NA,NA,NA,2.02,0.56,yes,NA,NA,NA,23782161,10.1056/NEJMoa1306742,Adam Kucharski
 MERS_CoV,incubation,Cauchemez_et_al,2014,7,lnorm,5.5,2.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1.6108401,0.4333775,yes,NA,NA,NA,24239323,10.1016/S1473-3099(13)70304-9,Adam Kucharski
 monkeypox,incubation,Nolen,2016,16,lnorm,9.6,NA,NA,9,NA,13,NA,NA,NA,NA,NA,NA,2.1783545,0.3360684,yes,no,NA,"Extracted taking c(6,13) as central 75% range",27191380,10.3201/eid2206.150579,Seb Funk
-monkeypox,incubation,Thornhill_etal,2022,23,lnorm,NA,NA,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,yes,no,no,"Extracted from range 3 to 21, lognormal assumed",35866746,10.1056/NEJMoa2207323,
+monkeypox,incubation,Thornhill_etal,2022,23,lnorm,NA,NA,NA,7,NA,NA,NA,NA,3,20,NA,NA,1.9460783,0.4934628,yes,no,no,"Extracted from range 3 to 21, lognormal assumed",35866746,10.1056/NEJMoa2207323,Adam Kucharski
 monkeypox,serial_interval,UKHSA,2022,17,gamma,9.8,8.3,NA,NA,NA,NA,NA,NA,NA,NA,1.394107,7.029592,NA,NA,yes,no,yes,"Extracted from mean and SD, assuming gamma",NA,https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1,Seb Funk
 parainfluenza,incubation,Lessler_etal,2009,11,lnorm,NA,NA,NA,2.6,3.2,NA,NA,NA,NA,NA,NA,NA,0.95551227,0.30785276,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
 rhinovirus,incubation,Lessler_etal,2009,28,lnorm,NA,NA,NA,1.9,2.7,NA,NA,NA,NA,NA,NA,NA,0.64185289,0.52098718,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
@@ -30,7 +31,7 @@ SARS_CoV,onset_to_admission,Donnelly_etal,2003,57,gamma,4.85,3.49,NA,NA,NA,NA,NA
 SARS_CoV,incubation,Lessler_etal,2009,157,lnorm,NA,NA,NA,4,5.9,NA,NA,NA,NA,NA,NA,NA,1.3862935,0.5762278,yes,no,no,NA,19393959,10.1016/S1473-3099(09)70069-6,Adam Kucharski
 SARS_CoV_2_wildtype,generation_time,Ferretti_etal,2020,191,weibull,5,1.9,NA,5,NA,NA,NA,NA,NA,NA,2.826,5.665,NA,NA,yes,no,yes,20/1/2020-21/3/2020,32234805,10.1126/science.abb6936,Rachael Pung
 SARS_CoV_2_wildtype,onset_to_admission,Linton_etal,2020,155,lnorm,9.7,35.2,NA,2.6,NA,NA,35.1,NA,NA,NA,NA,NA,0.9466094,1.6281993,yes,no,yes,For living patients,32079150,10.3390/jcm9020538,Adam Kucharski
-SARS_CoV_2_wildtype,onset_to_death,Linton_etal,2020,39,lnorm,20.2,11.6,NA,17.1,NA,NA,39.9,NA,NA,NA,NA,NA,2.863179,0.5338606,yes,no,yes,NA,,,
+SARS_CoV_2_wildtype,onset_to_death,Linton_etal,2020,39,lnorm,20.2,11.6,NA,17.1,NA,NA,39.9,NA,NA,NA,NA,NA,2.863179,0.5338606,yes,no,yes,NA,32079150,10.3390/jcm9020538,Adam Kucharski
 SARS_CoV_2_wildtype,incubation,McAloon_etal,2020,1269,lnorm,NA,NA,NA,5.1,NA,NA,11.7,NA,NA,NA,NA,NA,1.63,0.5,no,no,no,NA,32801208,10.1136/bmjopen-2020-039652,Adam Kucharski
 SARS_CoV_2_wildtype,serial_interval,Nishiura_etal,2020,28,lnorm,4.7,2.9,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,1.386262,0.5679803,yes,no,yes,Extracted using reported mean and sd,32145466,10.1016/j.ijid.2020.02.060,Joshua Lambert
 SARS_CoV_2_wildtype,serial_interval,Nishiura_etal,2020,18,weibull,4.8,2.3,NA,4.6,NA,NA,NA,NA,NA,NA,2.203394,5.419875,NA,NA,yes,no,yes,Extracted using mean and sd reported from a subset of the data for certain infector-infectee pairs,32145466,10.1016/j.ijid.2020.02.060,Joshua Lambert

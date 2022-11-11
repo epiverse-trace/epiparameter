@@ -423,8 +423,6 @@ plot(sars_cov_incub, day_range = 1:20)
 
 ## Planned development for `epiparameter`
 
--   Currently there is not a function in `epiparameter` convert between the parameters of the Weibull distribution and the mean and standard deviation. This function will come in a future version of the package.
-
 - There is often uncertainty in the estimates of mean, median and percentiles of a parametric distribution, such as the lognormal (e.g. @lessler_incubation_2009). Currently, `epiparameter` does not handle this uncertainty, but future versions will incorporate this and allow the uncertainty to be propagated to tools that use the delay distributions. For example, `EpiEstim` can also estimate the reproduction number when there is uncertainty in the serial interval (see example below), in a future version of `epiparameter` the uncertainty in delay distributions, including serial interval, will be included in the database and will be available to use in these calculations.
 
 ```{r, epiestim uncertain SI}

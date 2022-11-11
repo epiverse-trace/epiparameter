@@ -46,22 +46,24 @@
 #'
 #' # example using onset to admission as the metric
 #' epidist(pathogen = "ebola", delay_dist = "onset_to_death")
-epidist  <- function(
-    pathogen,
-    delay_dist = c("incubation",
-                   "onset_to_admission",
-                   "onset_to_death",
-                   "serial_interval",
-                   "generation_time"),
-    study = NULL) {
-
+epidist <- function(pathogen,
+                    delay_dist = c(
+                      "incubation",
+                      "onset_to_admission",
+                      "onset_to_death",
+                      "serial_interval",
+                      "generation_time"
+                    ),
+                    study = NULL) {
   # read the data to get possible pathogen names
-  params <- utils::read.csv(system.file(
-    "extdata",
-    "parameters.csv",
-    package = "epiparameter",
-    mustWork = TRUE
-  ))
+  params <- utils::read.csv(
+    system.file(
+      "extdata",
+      "parameters.csv",
+      package = "epiparameter",
+      mustWork = TRUE
+    )
+  )
 
   # order params by pathogen, delay dist and study
   params <- params[order(
@@ -90,59 +92,72 @@ epidist  <- function(
 
   # Extract study or default to largest sample size
   if (is.null(study)) {
-    pick_study <- params[params$size == max(params$size), ]
+    params <- params[params$size == max(params$size), ]
+  } else {
+    study <- match.arg(
+      arg = study,
+      choices = unique(params$study_id),
+      several.ok = FALSE
+    )
+    params <- params[params$study_id == study, ]
   }
-  if (!is.null(study)) {
-    pick_study <- params[params$study_id == study, ]
+
+  # Throw warning if more than one row found and select first
+  if (nrow(params) > 1) {
+    warning("More than one study found. Selecting first one.
+    Please report an issue with duplicated studies.")
+    params <- params[1, ]
   }
 
   # Define distribution
-  if (pick_study$distribution == "lnorm") {
-    param_vector <- c(meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
+  if (params$distribution == "lnorm") {
+    param_vector <- c(meanlog = params$meanlog, sdlog = params$sdlog)
     cdf_function <- function(x) {
-      stats::plnorm(x, meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
+      stats::plnorm(x, meanlog = params$meanlog, sdlog = params$sdlog)
     }
     pmf_function <- function(x) {
       cdf_function(x + 1) - cdf_function(x)
     }
     pdf_function <- function(x) {
-      stats::dlnorm(x, meanlog = pick_study$meanlog, sdlog = pick_study$sdlog)
+      stats::dlnorm(x, meanlog = params$meanlog, sdlog = params$sdlog)
     }
   }
 
-  if (pick_study$distribution == "gamma") {
-    param_vector <- c(shape = pick_study$shape, scale = pick_study$scale)
+  if (params$distribution == "gamma") {
+    param_vector <- c(shape = params$shape, scale = params$scale)
     cdf_function <- function(x) {
-      stats::pgamma(x, shape = pick_study$shape, scale = pick_study$scale)
+      stats::pgamma(x, shape = params$shape, scale = params$scale)
     }
     pmf_function <- function(x) {
       cdf_function(x + 1) - cdf_function(x)
     }
     pdf_function <- function(x) {
-      stats::dgamma(x, shape = pick_study$shape, scale = pick_study$scale)
+      stats::dgamma(x, shape = params$shape, scale = params$scale)
     }
   }
 
-  if (pick_study$distribution == "weibull") {
-    param_vector <- c(shape = pick_study$shape, scale = pick_study$scale)
+  if (params$distribution == "weibull") {
+    param_vector <- c(shape = params$shape, scale = params$scale)
     cdf_function <- function(x) {
-      stats::pweibull(x, shape = pick_study$shape, scale = pick_study$scale)
+      stats::pweibull(x, shape = params$shape, scale = params$scale)
     }
     pmf_function <- function(x) {
       cdf_function(x + 1) - cdf_function(x)
     }
     pdf_function <- function(x) {
-      stats::dweibull(x, shape = pick_study$shape, scale = pick_study$scale)
+      stats::dweibull(x, shape = params$shape, scale = params$scale)
     }
   }
 
-  out <- list(pathogen = pathogen,
-              dist = pick_study$distribution,
-              delay_dist = delay_dist,
-              param = param_vector,
-              pmf = pmf_function,
-              pdf = pdf_function,
-              cdf = cdf_function)
+  out <- list(
+    pathogen = pathogen,
+    dist = params$distribution,
+    delay_dist = delay_dist,
+    param = param_vector,
+    pmf = pmf_function,
+    pdf = pdf_function,
+    cdf = cdf_function
+  )
 
   class(out) <- "epidist"
   out
@@ -150,13 +165,15 @@ epidist  <- function(
 
 ##' @export
 print.epidist <- function(x, ...) {
-
-  cat(sprintf("Pathogen: %s\n", x$pathogen))
-  cat(sprintf("Delay Distribution: %s\n", x$delay_dist))
-  cat(sprintf("Distribution: %s\n", x$dist))
-  p_vals <- x$param
-  cat(sprintf("Parameters:\n"))
-  cat(sprintf("  %s: %s\n", names(p_vals), as.character(p_vals)))
+  writeLines(
+    c(
+      sprintf("Pathogen: %s", x$pathogen),
+      sprintf("Delay Distribution: %s", x$delay_dist),
+      sprintf("Distribution: %s", x$dist),
+      sprintf("Parameters:"),
+      sprintf("  %s: %s", names(x$param), as.character(x$param))
+    )
+  )
 
   invisible(x)
 }
@@ -176,6 +193,9 @@ print.epidist <- function(x, ...) {
 #' ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
 #' plot(ebola_si)
 plot.epidist <- function(x, day_range = 0:10, ...) {
+  if (!inherits(x, "epidist")) {
+    stop("x must be an epidist object")
+  }
 
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(graphics::par(oldpar))
@@ -188,7 +208,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     day_range,
     x$pmf(day_range),
     ylab = "",
-    xlab = "time since infection",
+    xlab = "Time since infection",
     type = "p",
     pch = 16,
     main = "Probability Mass Function"
@@ -199,7 +219,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     day_range,
     x$pdf(day_range),
     ylab = "",
-    xlab = "time since infection",
+    xlab = "Time since infection",
     type = "p",
     pch = 16,
     main = "Probability Density Function"
@@ -210,7 +230,7 @@ plot.epidist <- function(x, day_range = 0:10, ...) {
     day_range,
     x$cdf(day_range),
     ylab = "",
-    xlab = "time since infection",
+    xlab = "Time since infection",
     type = "p",
     pch = 16,
     ylim = c(0, 1),

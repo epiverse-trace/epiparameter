@@ -29,12 +29,16 @@ percentiles defined in \code{values} if using \code{type = "percentiles"}.}
 \code{type = "range"}.}
 }
 \value{
-A \code{numeric} vector with the parameter values of the distribution
+A named \code{numeric} vector with the parameter values of the
+distribution. If the \code{distribution = lnorm} then the parameters returned are
+the meanlog and sdlog; if the \code{distribution = gamma} or \code{distribution = weibull} then the parameters returned are the shape and scale.
 }
 \description{
 Summary data of distributions, as provided by reports and meta-analyses, can
 be used to extract the parameters of a chosen distribution. Currently
-available distributions are: lognormal, gamma and weibull.
+available distributions are: lognormal, gamma and weibull. Extracting
+from a lognormal returns the meanlog and sdlog parameters, and extracting
+from the gamma and weibull returns the shape and scale parameters.
 }
 \examples{
 # extract parameters of a lognormal distribution from the 75 percentiles
