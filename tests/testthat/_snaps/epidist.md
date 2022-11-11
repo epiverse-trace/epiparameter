@@ -8,5 +8,5 @@
       Distribution: lnorm
       Parameters:
         meanlog: 1.48160206
-         sdlog: 0.21889268
+        sdlog: 0.21889268
 
