@@ -76,36 +76,41 @@ extract_param <- function(type = c("percentiles", "range"),
   # intialise the for the loop
   optim_conv <- FALSE
   optim_params_list <- list()
+  i <- 0
+
+  # Switch for which extract_param_* to use
+  fn_extract_param <- switch(type,
+    percentiles = extract_param_percentile,
+    range = extract_param_range
+  )
+
+  # Switch for whether percentiles or samples are passed
+  data_ <- switch(type,
+    percentiles = percentiles,
+    range = samples
+  )
 
   # check numerical stability of results with different starting parameters
-  while (isFALSE(optim_conv)) {
-    # Percentile extraction
-    # Extract distribution parameters by optimising for specific distribution
-    if (type == "percentiles") {
-      optim_params <- extract_param_percentile(
-        values = values,
-        distribution = distribution,
-        percentiles = percentiles
+  while (!optim_conv) {
+    # Extract the value requested
+    optim_params <- do.call(
+      fn_extract_param,
+      list(
+        values,
+        distribution,
+        data_
       )
-    }
-
-    # Range extraction
-    if (type == "range") {
-      optim_params <- extract_param_range(
-        values = values,
-        distribution = distribution,
-        samples = samples
-      )
-    }
+    )
 
     # add last optimisation to list
-    optim_params_list[[length(optim_params_list) + 1]] <- optim_params
+    optim_params_list[[i + 1]] <- optim_params
 
     optim_conv <- check_optim_conv(
       optim_params_list = optim_params_list,
       optim_params = optim_params,
       optim_conv = optim_conv
     )
+    i <- i + 1
   }
 
   # warn about local optima
