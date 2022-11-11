@@ -160,8 +160,10 @@ the incubation period for Monkeypox.</p>
 <span>  distribution <span class="op">=</span> <span class="st">"lnorm"</span>,</span>
 <span>  percentiles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.125</span>, <span class="fl">0.875</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt;         a         b </span></span>
-<span><span class="co">#&gt; 2.1783545 0.3360684</span></span></code></pre></div>
+<span><span class="co">#&gt; Stochastic numerical optimisation used. </span></span>
+<span><span class="co">#&gt; Rerun function multiple times to check global optimum is found</span></span>
+<span><span class="co">#&gt;   meanlog     sdlog </span></span>
+<span><span class="co">#&gt; 2.1783555 0.3360678</span></span></code></pre></div>
 <p>If instead of the percentiles, the median and range are provided, as
 done by <span class="citation">Thornhill et al. (2022)</span> for
 monkeypox, and we want to calculate the parameters of a lognormal
@@ -174,8 +176,10 @@ distribution, the same function can be applied.</p>
 <span>  distribution <span class="op">=</span> <span class="st">"lnorm"</span>,</span>
 <span>  samples <span class="op">=</span> <span class="fl">23</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt;         a         b </span></span>
-<span><span class="co">#&gt; 1.9460783 0.4934628</span></span></code></pre></div>
+<span><span class="co">#&gt; Stochastic numerical optimisation used. </span></span>
+<span><span class="co">#&gt; Rerun function multiple times to check global optimum is found</span></span>
+<span><span class="co">#&gt;   meanlog     sdlog </span></span>
+<span><span class="co">#&gt; 1.9460783 0.4934665</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="conversion-of-distribution-parameters-from-mean-and-standard-deviation">Conversion of distribution parameters from mean and standard
@@ -226,28 +230,52 @@ We can check what information we have in the <code>epiparameter</code>
 database on the incubation period of SARS-CoV:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>delay_dist <span class="op">=</span> <span class="st">"incubation"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             pathogen_id    type_id        study_id year size distribution</span></span>
-<span><span class="co">#&gt; 1            adenovirus incubation    Lessler_etal 2009   14        lnorm</span></span>
-<span><span class="co">#&gt; 2                 ebola incubation        WHO_team 2014  500        gamma</span></span>
-<span><span class="co">#&gt; 3             human_CoV incubation    Lessler_etal 2009   13        lnorm</span></span>
-<span><span class="co">#&gt; 4  influenza_A_seasonal incubation    Lessler_etal 2009  122        lnorm</span></span>
-<span><span class="co">#&gt; 5  influenza_B_seasonal incubation    Lessler_etal 2009   76        lnorm</span></span>
-<span><span class="co">#&gt; 6       influenza_H1N1p incubation      Ghani_etal 2009   16        gamma</span></span>
-<span><span class="co">#&gt; 7       influenza_H1N1p incubation      Tuite_etal 2010  316        lnorm</span></span>
-<span><span class="co">#&gt; 8        influenza_H5N1 incubation    Cowling_etal 2013   27      weibull</span></span>
-<span><span class="co">#&gt; 9        influenza_H7N9 incubation    Cowling_etal 2013   32      weibull</span></span>
-<span><span class="co">#&gt; 10              marburg incubation          Pavlin 2014   18        gamma</span></span>
-<span><span class="co">#&gt; 11              measles incubation    Lessler_etal 2009   56        lnorm</span></span>
-<span><span class="co">#&gt; 12             MERS_CoV incubation     Assiri_etal 2013   23        lnorm</span></span>
-<span><span class="co">#&gt; 13             MERS_CoV incubation Cauchemez_et_al 2014    7        lnorm</span></span>
-<span><span class="co">#&gt; 14            monkeypox incubation           Nolen 2016   16        lnorm</span></span>
-<span><span class="co">#&gt; 15            monkeypox incubation  Thornhill_etal 2022   23        lnorm</span></span>
-<span><span class="co">#&gt; 16        parainfluenza incubation    Lessler_etal 2009   11        lnorm</span></span>
-<span><span class="co">#&gt; 17           rhinovirus incubation    Lessler_etal 2009   28        lnorm</span></span>
-<span><span class="co">#&gt; 18                  RSV incubation    Lessler_etal 2009   24        lnorm</span></span>
-<span><span class="co">#&gt; 19             SARS_CoV incubation   Donnelly_etal 2003   57        gamma</span></span>
-<span><span class="co">#&gt; 20             SARS_CoV incubation    Lessler_etal 2009  157        lnorm</span></span>
-<span><span class="co">#&gt; 21  SARS_CoV_2_wildtype incubation    McAloon_etal 2020 1269        lnorm</span></span></code></pre></div>
+<span><span class="co">#&gt;             pathogen_id    type_id                 study_id year size</span></span>
+<span><span class="co">#&gt; 1            adenovirus incubation             Lessler_etal 2009   14</span></span>
+<span><span class="co">#&gt; 2                 ebola incubation                 WHO_team 2014  500</span></span>
+<span><span class="co">#&gt; 3             human_CoV incubation             Lessler_etal 2009   13</span></span>
+<span><span class="co">#&gt; 4  influenza_A_seasonal incubation             Lessler_etal 2009  122</span></span>
+<span><span class="co">#&gt; 5  influenza_B_seasonal incubation             Lessler_etal 2009   76</span></span>
+<span><span class="co">#&gt; 6       influenza_H1N1p incubation               Ghani_etal 2009   16</span></span>
+<span><span class="co">#&gt; 7       influenza_H1N1p incubation               Tuite_etal 2010  316</span></span>
+<span><span class="co">#&gt; 8        influenza_H5N1 incubation             Cowling_etal 2013   27</span></span>
+<span><span class="co">#&gt; 9        influenza_H7N9 incubation             Cowling_etal 2013   32</span></span>
+<span><span class="co">#&gt; 10              marburg incubation                   Pavlin 2014   18</span></span>
+<span><span class="co">#&gt; 11              measles incubation Klinkenberg and Nishiura 2011  116</span></span>
+<span><span class="co">#&gt; 12              measles incubation             Lessler_etal 2009   56</span></span>
+<span><span class="co">#&gt; 13             MERS_CoV incubation              Assiri_etal 2013   23</span></span>
+<span><span class="co">#&gt; 14             MERS_CoV incubation          Cauchemez_et_al 2014    7</span></span>
+<span><span class="co">#&gt; 15            monkeypox incubation                    Nolen 2016   16</span></span>
+<span><span class="co">#&gt; 16            monkeypox incubation           Thornhill_etal 2022   23</span></span>
+<span><span class="co">#&gt; 17        parainfluenza incubation             Lessler_etal 2009   11</span></span>
+<span><span class="co">#&gt; 18           rhinovirus incubation             Lessler_etal 2009   28</span></span>
+<span><span class="co">#&gt; 19                  RSV incubation             Lessler_etal 2009   24</span></span>
+<span><span class="co">#&gt; 20             SARS_CoV incubation            Donnelly_etal 2003   57</span></span>
+<span><span class="co">#&gt; 21             SARS_CoV incubation             Lessler_etal 2009  157</span></span>
+<span><span class="co">#&gt; 22  SARS_CoV_2_wildtype incubation             McAloon_etal 2020 1269</span></span>
+<span><span class="co">#&gt;    distribution</span></span>
+<span><span class="co">#&gt; 1         lnorm</span></span>
+<span><span class="co">#&gt; 2         gamma</span></span>
+<span><span class="co">#&gt; 3         lnorm</span></span>
+<span><span class="co">#&gt; 4         lnorm</span></span>
+<span><span class="co">#&gt; 5         lnorm</span></span>
+<span><span class="co">#&gt; 6         gamma</span></span>
+<span><span class="co">#&gt; 7         lnorm</span></span>
+<span><span class="co">#&gt; 8       weibull</span></span>
+<span><span class="co">#&gt; 9       weibull</span></span>
+<span><span class="co">#&gt; 10        gamma</span></span>
+<span><span class="co">#&gt; 11        lnorm</span></span>
+<span><span class="co">#&gt; 12        lnorm</span></span>
+<span><span class="co">#&gt; 13        lnorm</span></span>
+<span><span class="co">#&gt; 14        lnorm</span></span>
+<span><span class="co">#&gt; 15        lnorm</span></span>
+<span><span class="co">#&gt; 16        lnorm</span></span>
+<span><span class="co">#&gt; 17        lnorm</span></span>
+<span><span class="co">#&gt; 18        lnorm</span></span>
+<span><span class="co">#&gt; 19        lnorm</span></span>
+<span><span class="co">#&gt; 20        gamma</span></span>
+<span><span class="co">#&gt; 21        lnorm</span></span>
+<span><span class="co">#&gt; 22        lnorm</span></span></code></pre></div>
 <p>We can see that on rows 16-17 we have two studies reporting the
 incubation period for SARS-CoV. Here we will use the <span class="citation">Lessler et al. (2009)</span>. This will be the default
 when specifying <code>SARS_CoV</code> as our pathogen of interest due to
@@ -269,7 +297,7 @@ specify which study to use.</p>
 <span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   meanlog: 1.3862935</span></span>
-<span><span class="co">#&gt;    sdlog: 0.5762278</span></span>
+<span><span class="co">#&gt;   sdlog: 0.5762278</span></span>
 <span></span>
 <span><span class="co"># specify a different study</span></span>
 <span><span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span></span>
@@ -282,7 +310,7 @@ specify which study to use.</p>
 <span><span class="co">#&gt; Distribution: gamma</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   shape: 2.43121</span></span>
-<span><span class="co">#&gt;    scale: 2.62009</span></span></code></pre></div>
+<span><span class="co">#&gt;   scale: 2.62009</span></span></code></pre></div>
 <p>Now we have a distribution, in this case the lognormal distribution
 and its best-fit parameters for the incubation period. The distributions
 easily be visualised.</p>
@@ -435,8 +463,11 @@ for the reproduction number estimation.</p>
 <span><span class="co">#&gt; Warning: Unknown or uninitialised column: `dates`.</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">rt</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please</span></span>
-<span><span class="co">#&gt; use `guide = "none"` instead.</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: The `guide` argument in `scale_*()` cannot be `FALSE`. This was deprecated in</span></span>
+<span><span class="co">#&gt; ggplot2 3.3.4.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use "none" instead.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">incidence</span> package.</span></span>
+<span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/reconhub/incidence/issues&gt;</span>.</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="epiparameter_files/figure-html/epiestim%20with%20epiparameter-1.png" alt="The epidemic curve for the incidence of H1N1 flu cases, below this is the estimated $R_t$ value and the bottom facet is the serial interval distribution used in the calculation of $R_t$." width="500px"><p class="caption">
 The epidemic curve for the incidence of H1N1 flu cases, below this is
@@ -643,20 +674,20 @@ Monkeypox.</p>
 <span><span class="co">#&gt; Delay Distribution: incubation</span></span>
 <span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   meanlog: NA</span></span>
-<span><span class="co">#&gt;    sdlog: NA</span></span>
+<span><span class="co">#&gt;   meanlog: 1.9460783</span></span>
+<span><span class="co">#&gt;   sdlog: 0.4934628</span></span>
 <span><span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span>pathogen <span class="op">=</span> <span class="st">"monkeypox"</span>, delay_dist <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Pathogen: monkeypox</span></span>
 <span><span class="co">#&gt; Delay Distribution: serial_interval</span></span>
 <span><span class="co">#&gt; Distribution: gamma</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   shape: 1.394107</span></span>
-<span><span class="co">#&gt;    scale: 7.029592</span></span></code></pre></div>
+<span><span class="co">#&gt;   scale: 7.029592</span></span></code></pre></div>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pathogen_summary.html">pathogen_summary</a></span><span class="op">(</span>pathogen <span class="op">=</span> <span class="st">"monkeypox"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    pathogen      delay_dist distribution     mean       sd          study</span></span>
 <span><span class="co">#&gt; 1 monkeypox      incubation        lnorm 9.344856 3.231307          Nolen</span></span>
-<span><span class="co">#&gt; 2 monkeypox      incubation        lnorm       NA       NA Thornhill_etal</span></span>
+<span><span class="co">#&gt; 2 monkeypox      incubation        lnorm 7.907651 4.152182 Thornhill_etal</span></span>
 <span><span class="co">#&gt; 3 monkeypox serial_interval        gamma 9.800003 8.300002          UKHSA</span></span>
 <span><span class="co">#&gt;                                                                                                                                                       DOI</span></span>
 <span><span class="co">#&gt; 1                                                                                                                                  10.3201/eid2206.150579</span></span>
@@ -689,11 +720,7 @@ argument when plotting an <code>epidist</code> object.</p>
 <h2 id="planned-development-for-epiparameter">Planned development for <code>epiparameter</code><a class="anchor" aria-label="anchor" href="#planned-development-for-epiparameter"></a>
 </h2>
 <ul>
-<li><p>Currently there is not a function in <code>epiparameter</code>
-convert between the parameters of the Weibull distribution and the mean
-and standard deviation. This function will come in a future version of
-the package.</p></li>
-<li><p>There is often uncertainty in the estimates of mean, median and
+<li>There is often uncertainty in the estimates of mean, median and
 percentiles of a parametric distribution, such as the lognormal (e.g.
 <span class="citation">Lessler et al. (2009)</span>). Currently,
 <code>epiparameter</code> does not handle this uncertainty, but future
@@ -703,7 +730,7 @@ propagated to tools that use the delay distributions. For example,
 there is uncertainty in the serial interval (see example below), in a
 future version of <code>epiparameter</code> the uncertainty in delay
 distributions, including serial interval, will be included in the
-database and will be available to use in these calculations.</p></li>
+database and will be available to use in these calculations.</li>
 </ul>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Flu2009"</span><span class="op">)</span></span>

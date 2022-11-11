@@ -25,10 +25,22 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/calc_disc_dist_quantile.html</loc>
+  </url>
+  <url>
+    <loc>/reference/check_optim_conv.html</loc>
+  </url>
+  <url>
     <loc>/reference/epidist.html</loc>
   </url>
   <url>
     <loc>/reference/extract_param.html</loc>
+  </url>
+  <url>
+    <loc>/reference/extract_param_percentile.html</loc>
+  </url>
+  <url>
+    <loc>/reference/extract_param_range.html</loc>
   </url>
   <url>
     <loc>/reference/fit_function_lnorm_range.html</loc>
