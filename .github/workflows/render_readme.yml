@@ -2,7 +2,7 @@
 name: render-readme
 
 # Controls when the action will run. Triggers include:
-# 
+#
 # - button trigger from github action page
 # - on changes to readme.Rmd
 
@@ -27,21 +27,21 @@ jobs:
 
       - name: Setup pandoc
         uses: r-lib/actions/setup-pandoc@v2
-    
+
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rmarkdown, local::.
- 
+
       - name: Compile the readme
         run: |
           rmarkdown::render("README.Rmd")
         shell: Rscript {0}
-        
+
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add README.md
+          git add README.md man/figures/
           git diff-index --quiet HEAD || git commit -m "Automatic readme update"
           git push origin || echo "No changes to push"
