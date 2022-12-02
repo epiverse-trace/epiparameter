@@ -22,6 +22,8 @@ Depends: R (>= 3.5.0)
 Imports:
     checkmate
 Suggests: 
+    yaml,
+    jsonlite,
     EpiEstim,
     EpiNow2,
     R0,
