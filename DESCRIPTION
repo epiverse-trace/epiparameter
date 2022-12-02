@@ -13,7 +13,7 @@ Authors@R: c(
            role = c("ctb"),
            comment = c(ORCID = "0000-0001-5218-3046"))
            )
-Description: Library of epidemiological paramters for infectious diseases.
+Description: Library of epidemiological parameters for infectious diseases.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
