@@ -5,7 +5,7 @@
 \title{Creates a data schema in JSON format from a yaml file}
 \usage{
 make_json_schema(
-  read_path = "extdata/schema.yaml",
+  read_path = "extdata/data_dictionary.yaml",
   write_path = "inst/extdata/schema.json"
 )
 }
@@ -20,9 +20,9 @@ write the JSON schema to}
 Invisibly returns the JSON schema
 }
 \description{
-This converts the yaml data schema stored in the package into
-a JSON schema and saves it. This functions allows the yaml to be the file
-which can be read and edited and then this file updates to the JSON schema
-to match the yaml schema.
+This converts the yaml data schema (data dictionary) stored in
+the package into a JSON schema and saves it. This functions allows the yaml
+to be the file which can be read and edited and then this file updates to
+the JSON schema to match the yaml schema.
 }
 \keyword{internal}

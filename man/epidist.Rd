@@ -45,6 +45,7 @@ estimation of other epidemiological metrics (e.g. reproduction number) and
 public health decisions (e.g. quarantine period).
 }
 \examples{
+\dontrun{
 # list_distributions() will show which pathogens are available for each
 # metric here we search for which incubation periods are available
 list_distributions(delay_dist = "incubation")
@@ -62,6 +63,7 @@ epidist(
 
 # example using onset to admission as the metric
 epidist(pathogen = "ebola", delay_dist = "onset_to_death")
+}
 }
 \author{
 Adam Kucharski

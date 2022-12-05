@@ -1,4 +1,5 @@
 test_that("list_distributions works for all, params = FALSE", {
+  skip("Temp skipped before refactor")
   dist_tbl <- list_distributions(delay_dist = "all", parameters = FALSE)
   expect_s3_class(dist_tbl, "data.frame")
   expect_identical(dim(dist_tbl), c(41L, 6L))
@@ -15,6 +16,7 @@ test_that("list_distributions works for all, params = FALSE", {
 })
 
 test_that("list_distributions works for all, params = TRUE", {
+  skip("Temp skipped before refactor")
   dist_tbl <- list_distributions(delay_dist = "all", parameters = TRUE)
   expect_s3_class(dist_tbl, "data.frame")
   expect_identical(dim(dist_tbl), c(41L, 27L))
@@ -37,6 +39,7 @@ test_that("list_distributions works for all, params = TRUE", {
 })
 
 test_that("list_distributions works for incubation, params = FALSE", {
+  skip("Temp skipped before refactor")
   incub_tbl <- list_distributions(delay_dist = "incubation", parameters = FALSE)
   expect_s3_class(incub_tbl, "data.frame")
   expect_identical(dim(incub_tbl), c(22L, 6L))
@@ -50,6 +53,7 @@ test_that("list_distributions works for incubation, params = FALSE", {
 })
 
 test_that("list_distributions works for incubation, params = TRUE", {
+  skip("Temp skipped before refactor")
   incub_tbl <- list_distributions(delay_dist = "incubation", parameters = TRUE)
   expect_s3_class(incub_tbl, "data.frame")
   expect_identical(dim(incub_tbl), c(22L, 27L))
@@ -69,6 +73,7 @@ test_that("list_distributions works for incubation, params = TRUE", {
 })
 
 test_that("list_distributions works for onset_to_admission, params = FALSE", {
+  skip("Temp skipped before refactor")
   on_to_ad_tbl <- list_distributions(
     delay_dist = "onset_to_admission",
     parameters = FALSE
@@ -85,6 +90,7 @@ test_that("list_distributions works for onset_to_admission, params = FALSE", {
 })
 
 test_that("list_distributions works for onset_to_admission, params = TRUE", {
+  skip("Temp skipped before refactor")
   on_to_ad_tbl <- list_distributions(
     delay_dist = "onset_to_admission",
     parameters = TRUE
@@ -107,6 +113,7 @@ test_that("list_distributions works for onset_to_admission, params = TRUE", {
 })
 
 test_that("list_distributions works for onset_to_death, params = FALSE", {
+  skip("Temp skipped before refactor")
   on_to_death_tbl <- list_distributions(
     delay_dist = "onset_to_death",
     parameters = FALSE
@@ -123,6 +130,7 @@ test_that("list_distributions works for onset_to_death, params = FALSE", {
 })
 
 test_that("list_distributions works for onset_to_death, params = TRUE", {
+  skip("Temp skipped before refactor")
   on_to_death_tbl <- list_distributions(
     delay_dist = "onset_to_death",
     parameters = TRUE
@@ -145,6 +153,7 @@ test_that("list_distributions works for onset_to_death, params = TRUE", {
 })
 
 test_that("list_distributions works for serial_interval, params = FALSE", {
+  skip("Temp skipped before refactor")
   serial_inter_tbl <- list_distributions(
     delay_dist = "serial_interval",
     parameters = FALSE
@@ -161,6 +170,7 @@ test_that("list_distributions works for serial_interval, params = FALSE", {
 })
 
 test_that("list_distributions works for serial_interval, params = TRUE", {
+  skip("Temp skipped before refactor")
   serial_inter_tbl <- list_distributions(
     delay_dist = "serial_interval",
     parameters = TRUE
@@ -183,6 +193,7 @@ test_that("list_distributions works for serial_interval, params = TRUE", {
 })
 
 test_that("list_distributions works for generation_time, params = FALSE", {
+  skip("Temp skipped before refactor")
   gen_time_tbl <- list_distributions(
     delay_dist = "generation_time",
     parameters = FALSE
@@ -199,6 +210,7 @@ test_that("list_distributions works for generation_time, params = FALSE", {
 })
 
 test_that("list_distributions works for generation_time, params = TRUE", {
+  skip("Temp skipped before refactor")
   gen_time_tbl <- list_distributions(
     delay_dist = "generation_time",
     parameters = TRUE
@@ -221,6 +233,7 @@ test_that("list_distributions works for generation_time, params = TRUE", {
 })
 
 test_that("list_distributions fails correctly", {
+  skip("Temp skipped before refactor")
   # check for incorrect input
   expect_error(
     list_distributions(delay_dist = "random", parameters = FALSE),
