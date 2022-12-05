@@ -20,8 +20,10 @@ Plots an \code{epidist} object by displaying the probability mass function (PMF)
 probability density function (PDF) and cumulative distribution function (CDF)
 }
 \examples{
+\dontrun{
 ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
 plot(ebola_si)
+}
 }
 \author{
 Joshua W. Lambert

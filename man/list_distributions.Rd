@@ -23,6 +23,7 @@ default is \code{FALSE}}
 List distributions included in package
 }
 \examples{
+\dontrun{
 # the default for list_distributions() without any arguments is to return the
 # incubation period
 list_distributions()
@@ -36,7 +37,7 @@ list_distributions(delay_dist = "onset_to_death")
 # full table including extra information (e.g. parameters of the
 # distribution) the `parameters` argument can be set to `TRUE`
 list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
-
+}
 }
 \author{
 Adam Kucharski

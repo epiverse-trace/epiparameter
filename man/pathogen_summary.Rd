@@ -18,9 +18,11 @@ Provides information on the delay distributions for a specific pathogen
 stored in the \code{epiparameter} library.
 }
 \examples{
+\dontrun{
 # summary of delay distributions available for ebola
 pathogen_summary(pathogen = "ebola")
 
 # summary of delay distributions available for SARS CoV
 pathogen_summary(pathogen = "SARS_CoV")
+}
 }
