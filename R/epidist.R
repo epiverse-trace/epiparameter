@@ -29,6 +29,7 @@
 #' @author Adam Kucharski
 #' @export
 #' @examples
+#' \dontrun{
 #' # list_distributions() will show which pathogens are available for each
 #' # metric here we search for which incubation periods are available
 #' list_distributions(delay_dist = "incubation")
@@ -46,6 +47,7 @@
 #'
 #' # example using onset to admission as the metric
 #' epidist(pathogen = "ebola", delay_dist = "onset_to_death")
+#' }
 epidist <- function(pathogen,
                     delay_dist = c(
                       "incubation",
@@ -190,8 +192,10 @@ print.epidist <- function(x, ...) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
 #' plot(ebola_si)
+#' }
 plot.epidist <- function(x, day_range = 0:10, ...) {
   if (!inherits(x, "epidist")) {
     stop("x must be an epidist object")

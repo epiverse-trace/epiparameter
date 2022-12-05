@@ -100,20 +100,20 @@ The `epiparameter` packages contains a range of distributions for a variety of i
 
 Here we will illustrate with an example using the SARS-CoV pathogen. We can check what information we have in the `epiparameter` database on the incubation period of SARS-CoV:
 
-```{r, check database}
+```{r, check database, eval = FALSE}
 list_distributions(delay_dist = "incubation")
 ```
 
 We can see that on rows 16-17 we have two studies reporting the incubation period for SARS-CoV. Here we will use the @lessler_incubation_2009. This will be the default when specifying `SARS_CoV` as our pathogen of interest due to it having the largest sample size.
 
-```{r, get delay dist}
+```{r, get delay dist, eval = FALSE}
 # get epidemiological parameters for incubation period without specifying study
 sars_cov_incub <- epidist(pathogen = "SARS_CoV", delay_dist = "incubation")
 ```
 
 To be sure we are extracting the correct study it is also possible specify which study to use.
 
-```{r, get delay dist with study}
+```{r, get delay dist with study, eval = FALSE}
 # get epidemiological parameters for incubation period specifying study
 epidist(
   pathogen = "SARS_CoV",
@@ -131,13 +131,13 @@ epidist(
 
 Now we have a distribution, in this case the lognormal distribution and its best-fit parameters for the incubation period. The distributions easily be visualised.
 
-```{r, plot epidist, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+```{r, plot epidist, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", eval = FALSE}
 plot(sars_cov_incub)
 ```
 
 In order to determine the duration of a quarantine period for SARS-CoV we can calculate the percentiles of the distribution. For example, if we calculate the 95th percentile of the lognormal distribution for our SARS-CoV example it is the number of days within which 95% of individuals will have their incubation period elapsed.
 
-```{r, calc percentiles}
+```{r, calc percentiles, eval=FALSE}
 # 90th, 95th and 99th percentile percentile
 qlnorm(
   p = c(0.9, 0.95, 0.99),
@@ -150,7 +150,7 @@ Therefore, eight and half days of quarantine will capture just over 90% of sympt
 
 Given the steps outlined above and the database of infectious diseases that are provided in `epiparameter` it is possible to juxtapose the incubation periods of different pathogens. Here we demonstrate this with a comparison of SARS-CoV and MERS-CoV. Both are corona viruses (from the genus *Betacoronavirus*), both are zoonotic pathogens that have produced outbreaks to different effects.
 
-```{r, compare sars and mers, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+```{r, compare sars and mers, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", eval = FALSE}
 mers_cov_incub <- epidist(pathogen = "MERS_CoV", delay_dist = "incubation")
 
 plot(mers_cov_incub)
@@ -212,7 +212,7 @@ rt <- estimate_R(
 
 The mean and standard deviation of the distribution -- for `EpiEstim` this is a discrete gamma distribution -- are arbitrarily chosen. However, `epiparameter` provides a library of serial interval parameters which can be extracted and used for the reproduction number estimation.
 
-```{r, epiestim with epiparameter, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="The epidemic curve for the incidence of H1N1 flu cases, below this is the estimated $R_t$ value and the bottom facet is the serial interval distribution used in the calculation of $R_t$."}
+```{r, epiestim with epiparameter, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="The epidemic curve for the incidence of H1N1 flu cases, below this is the estimated $R_t$ value and the bottom facet is the serial interval distribution used in the calculation of $R_t$.", eval = FALSE}
 list_distributions(delay_dist = "serial_interval")
 
 covid_si <- epidist(
@@ -286,7 +286,7 @@ plot(out)
 
 In the example above the generation time and incubation period used are stored in the `EpiNow2` package. However, data on these distributions is limited and a more comprehensive library of distributions would provide a more robust data source to make calculations of $R_t$. This is where `epiparameter` comes in. In the example below the distributions from `epiparameter` are used and the parameters of the delay distributions need to be extracted and put into list format for `epinow()`. For this example we use 0.1 as a the value of standard deviation for the mean and standard deviation of the distribution parameters as this information is not currently available in `epiparameter`.
 
-```{r, epinow2 with epiparameter setup}
+```{r, epinow2 with epiparameter setup, eval=FALSE}
 incubation_period <- epidist(
   pathogen = "SARS_CoV_2_wildtype",
   delay_dist = "incubation"
@@ -353,7 +353,7 @@ out <- epinow(
 
 The R package `R0` contains a set of functions to estimate the basic reproduction number ($R_0$) and the effective reproduction number ($R_t$). Here we demonstrate a calculate of the time-varying $R_t$ using the method of @wallinga_different_2004. This method uses the epidemic curve of incidence data over the course of an epidemic and the generation time. Here we calculate $R_t$ using data on the outbreak of ebola from Sierra Leone from 2014 from `outbreaks`, and using the a serial interval from `epiparameter` as a proxy for the generation time.
 
-```{r R0 with epiparameter}
+```{r R0 with epiparameter, eval = FALSE}
 data("ebola_sierraleone_2014")
 
 ebola_incidence <- incidence(
@@ -377,7 +377,7 @@ mgt <- generation.time(type = "gamma", val = c(si_mean_sd$mean, si_mean_sd$sd))
 
 The confidence interval for $R_t$ is calculated using simulations and the number of iterations specified by the argument `nsim`. Here we run a small number of simulations for the purpose of demonstration, however, a larger number of iterations is recommended (e.g. 10,000).
 
-```{r, estimate Rt with R0 for ebola}
+```{r, estimate Rt with R0 for ebola, eval = FALSE}
 out <- estimate.R(
   epid = ebola_incidence_r0,
   GT = mgt,
@@ -388,7 +388,7 @@ out <- estimate.R(
 )
 ```
 
-```{r plot R0 ebola, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="Estimated value of $R_t$ for the incidence data of ebola for Sierra Leone 2014."}
+```{r plot R0 ebola, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", fig.cap="Estimated value of $R_t$ for the incidence data of ebola for Sierra Leone 2014.", eval=FALSE}
 plot(out$estimates$TD)
 ```
 
@@ -398,18 +398,18 @@ The `epiparameter` database stores information on several delay distributions. P
 
 The incubation period and serial interval can be compared for Monkeypox.
 
-```{r, compare monkeyox}
+```{r, compare monkeyox, eval=FALSE}
 epidist(pathogen = "monkeypox", delay_dist = "incubation")
 epidist(pathogen = "monkeypox", delay_dist = "serial_interval")
 ```
 
-```{r, compare monkeypox tbl}
+```{r, compare monkeypox tbl, eval=FALSE}
 pathogen_summary(pathogen = "monkeypox")
 ```
 
 Comparison of incubation period, serial interval and onset to hospital admission for ebola.
 
-```{r, compare ebola}
+```{r, compare ebola, eval=FALSE}
 pathogen_summary(pathogen = "ebola")
 ```
 
@@ -417,7 +417,7 @@ pathogen_summary(pathogen = "ebola")
 
 The default plotting range for time since infection is from zero to ten days. This can be altered by specifying the `day_range` argument when plotting an `epidist` object.
 
-```{r plotting range epidist, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px"}
+```{r plotting range epidist, fig.align = "center", fig.height = 8, fig.width = 8, out.width = "500px", eval=FALSE}
 plot(sars_cov_incub, day_range = 1:20)
 ```
 

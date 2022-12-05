@@ -7,11 +7,13 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' # summary of delay distributions available for ebola
 #' pathogen_summary(pathogen = "ebola")
 #'
 #' # summary of delay distributions available for SARS CoV
 #' pathogen_summary(pathogen = "SARS_CoV")
+#' }
 pathogen_summary <- function(pathogen) {
   # read the data to get possible pathogen names
   params <- utils::read.csv(system.file(

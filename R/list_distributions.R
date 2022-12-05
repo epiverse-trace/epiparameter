@@ -11,6 +11,7 @@
 #' @author Adam Kucharski
 #' @export
 #' @examples
+#' \dontrun{
 #' # the default for list_distributions() without any arguments is to return the
 #' # incubation period
 #' list_distributions()
@@ -24,7 +25,7 @@
 #' # full table including extra information (e.g. parameters of the
 #' # distribution) the `parameters` argument can be set to `TRUE`
 #' list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
-#'
+#' }
 list_distributions <- function(delay_dist = c(
                                  "all",
                                  "incubation",
