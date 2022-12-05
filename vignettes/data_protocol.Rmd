@@ -2,7 +2,7 @@
 title: "Data Collation and Synthesis Protocol"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{data_protocol}
+  %\VignetteIndexEntry{Data Collation and Synthesis Protocol}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
