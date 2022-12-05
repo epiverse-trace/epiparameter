@@ -53,7 +53,7 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
 make_json_data <- function(read_path = "extdata/parameters.csv",
                            write_path = "inst/extdata/data.json") {
   # read in epiparameter database
-  data <- read.csv(
+  data <- utils::read.csv(
     file = system.file(
       read_path,
       package = "epiparameter",
