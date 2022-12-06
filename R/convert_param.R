@@ -149,3 +149,52 @@ weibull_shapescale2meansd <- function(shape, scale) {
   sd <- sqrt(scale^2 * (gamma(1 + 2 / shape) - gamma(1 + 1 / shape))^2)
   list(mean = mean, sd = sd)
 }
+
+#' Convert the probability and dispersion (k) parameters of the negative
+#' binomial distribution to the mean (expectation) and dispersion
+#' parameterisation
+#'
+#' @description The negative binomial distribution can have several
+#' formulations, the one used here assumes the random variable (X) is the number
+#' of failures before a specified number of successes. This is the same form as
+#' used by `distributional::dist_negative_binomial()`.
+#'
+#' @param prob The probability parameter (p) of the negative binomial
+#' @param dispersion The dispersion parameter (k) of the negative binomial. This
+#' parameter is also commonly represented as *r*.
+#'
+#' @return A named list with mean and dispersion
+#' @export
+#'
+#' @examples
+#' negative_binomial_probdispersion2meandispersion(prob = 0.3, dispersion = 0.9)
+negative_binomial_probdispersion2meandispersion <- function(prob, dispersion) {
+  checkmate::assert_number(prob)
+  checkmate::assert_number(dispersion)
+  mean <- dispersion * (1 - prob) / prob
+  list(mean = mean, dispersion = dispersion)
+}
+
+#' Convert the mean and dispersion (k) parameter of the negative binomial
+#' distribution to the probability (p) and dispersion parameters.
+#'
+#' @description The negative binomial distribution can have several
+#' formulations, the one used here assumes the random variable (X) is the number
+#' of failures before a specified number of successes. This is the same form as
+#' used by `distributional::dist_negative_binomial()`.
+#'
+#' @param mean The mean (expectation) of the negative binomial distribution
+#' @param dispersion The dispersion parameter (k) of the negative binomial. This
+#' parameter is also commonly represented as *r*.
+#'
+#' @return A named list with prob and dispersion
+#' @export
+#'
+#' @examples
+#' negative_binomial_meandispersion2probdispersion(mean = 3, dispersion = 0.7)
+negative_binomial_meandispersion2probdispersion <- function(mean, dispersion) {
+  checkmate::assert_number(mean)
+  checkmate::assert_number(dispersion)
+  prob <- 1 / (1 + mean / dispersion)
+  list(prob = prob, dispersion = dispersion)
+}
