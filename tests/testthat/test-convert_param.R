@@ -266,3 +266,79 @@ test_that("weibull_meansd2shapescale fails as expected", {
     regexp = "Assertion on 'sd' failed: Element 1 is not >= 0."
   )
 })
+
+test_that("negative_binomial_meandispersion2probdispersion works as expected", {
+  params <- negative_binomial_meandispersion2probdispersion(
+    mean = 1,
+    dispersion = 0.5
+  )
+  expect_type(params, "list")
+  expect_named(params, c("prob", "dispersion"))
+  expect_equal(
+    params,
+    list(prob = 0.333333333333333, dispersion = 0.5),
+    tolerance = testthat_tolerance()
+  )
+})
+
+test_that("negative_binomial_meandispersion2probdispersion fails as expected", {
+  expect_error(
+    negative_binomial_meandispersion2probdispersion(
+      mean = "1",
+      dispersion = 0.5
+    ),
+    regexp = paste0(
+      "Assertion on 'mean' failed: Must be of type 'number',",
+      " not 'character'."
+    )
+  )
+
+  expect_error(
+    negative_binomial_meandispersion2probdispersion(
+      mean = 1,
+      dispersion = "0.5"
+    ),
+    regexp = paste0(
+      "Assertion on 'dispersion' failed: Must be of type 'number',",
+      " not 'character'."
+    )
+  )
+})
+
+test_that("negative_binomial_probdispersion2meandispersion works as expected", {
+  params <- negative_binomial_probdispersion2meandispersion(
+    prob = 0.25,
+    dispersion = 0.5
+  )
+  expect_type(params, "list")
+  expect_named(params, c("mean", "dispersion"))
+  expect_equal(
+    params,
+    list(mean = 1.5, dispersion = 0.5),
+    tolerance = testthat_tolerance()
+  )
+})
+
+test_that("negative_binomial_probdispersion2meandispersion fails as expected", {
+  expect_error(
+    negative_binomial_probdispersion2meandispersion(
+      prob = "1",
+      dispersion = 0.5
+    ),
+    regexp = paste0(
+      "Assertion on 'prob' failed: Must be of type 'number',",
+      " not 'character'."
+    )
+  )
+
+  expect_error(
+    negative_binomial_probdispersion2meandispersion(
+      prob = 1,
+      dispersion = "0.5"
+    ),
+    regexp = paste0(
+      "Assertion on 'dispersion' failed: Must be of type 'number',",
+      " not 'character'."
+    )
+  )
+})
