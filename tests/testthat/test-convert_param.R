@@ -342,3 +342,73 @@ test_that("negative_binomial_probdispersion2meandispersion fails as expected", {
     )
   )
 })
+
+test_that("geometric_mean2prob works as expected", {
+  params <- geometric_mean2prob(mean = 3)
+  expect_type(params, "list")
+  expect_named(params, "prob")
+  expect_equal(
+    params,
+    list(prob = 0.25),
+    tolerance = testthat_tolerance()
+  )
+})
+
+test_that("geometric_mean2prob fails as expected", {
+  expect_error(
+    geometric_mean2prob(mean = "1"),
+    regexp = paste0(
+      "Assertion on 'mean' failed: Must be of type 'number',",
+      " not 'character'."
+    )
+  )
+
+  expect_error(
+    geometric_mean2prob(mean = -1),
+    regexp = paste0(
+      "Assertion on 'mean' failed: Element 1 is not >= 0."
+    )
+  )
+
+  expect_error(
+    geometric_mean2prob(mean = Inf),
+    regexp = paste0(
+      "Assertion on 'mean' failed: Must be finite."
+    )
+  )
+})
+
+test_that("geometric_prob2mean works as expected", {
+  params <- geometric_prob2mean(prob = 0.3)
+  expect_type(params, "list")
+  expect_named(params, "mean")
+  expect_equal(
+    params,
+    list(mean = 2.33333333333333),
+    tolerance = testthat_tolerance()
+  )
+})
+
+test_that("geometric_prob2mean fails as expected", {
+  expect_error(
+    geometric_prob2mean(prob = "1"),
+    regexp = paste0(
+      "Assertion on 'prob' failed: Must be of type 'number',",
+      " not 'character'."
+    )
+  )
+
+  expect_error(
+    geometric_prob2mean(prob = -1),
+    regexp = paste0(
+      "Assertion on 'prob' failed: Element 1 is not >= 0."
+    )
+  )
+
+  expect_error(
+    geometric_prob2mean(prob = 1.1),
+    regexp = paste0(
+      "Assertion on 'prob' failed: Element 1 is not <= 1."
+    )
+  )
+})
