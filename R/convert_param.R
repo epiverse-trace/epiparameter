@@ -198,3 +198,44 @@ negative_binomial_meandispersion2probdispersion <- function(mean, dispersion) {
   prob <- 1 / (1 + mean / dispersion)
   list(prob = prob, dispersion = dispersion)
 }
+
+#' Converts the mean of the geometric distribution to the probability parameter
+#'
+#' @description The geometric distribution has two forms. This conversion
+#' function assumes that distribution represents the number of failures before
+#' the first success (supported for zero). This is the same form as used by
+#' `distributional::dist_geometric()`.
+#'
+#' @param mean The mean (expectation) of the geometric distribution
+#'
+#' @return A named list with the probability parameter
+#' @export
+#'
+#' @examples
+#' geometric_mean2prob(mean = 2)
+geometric_mean2prob <- function(mean) {
+  checkmate::assert_number(mean, lower = 0, finite = TRUE)
+  prob <- 1 / (1 + mean)
+  list(prob = prob)
+}
+
+#' Converts the probability parameter of the geometric distribution to the mean
+#' (expectation) of the distribution
+#'
+#' @description The geometric distribution has two forms. This conversion
+#' function assumes that distribution represents the number of failures before
+#' the first success (supported for zero). This is the same form as used by
+#' `distributional::dist_geometric()`.
+#'
+#' @param prob The probability parameter of the geometric distribution
+#'
+#' @return A named list with the mean
+#' @export
+#'
+#' @examples
+#' geometric_prob2mean(prob = 0.2)
+geometric_prob2mean <- function(prob) {
+  checkmate::assert_number(prob, lower = 0, upper = 1)
+  mean <- (1 - prob) / prob
+  list(mean = mean)
+}
