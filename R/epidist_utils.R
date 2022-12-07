@@ -1,0 +1,325 @@
+#' A helper function when creating an epidist object to create a metadata list
+#' with sensible defaults, type checking and arguments to help remember metadata
+#' list structure (element names)
+#'
+#' @param sample_size stub
+#' @param region stub
+#' @param vector_borne stub
+#' @param vector stub
+#' @param inference_method stub
+#'
+#' @return named list
+#' @export
+#'
+#' @examples
+#' a = 1
+create_epidist_metadata <- function(sample_size = NULL,
+                                    region = NULL,
+                                    vector_borne = FALSE,
+                                    vector = NULL,
+                                    inference_method = NULL) {
+
+  # check input
+  checkmate::assert_number(sample_size, na.ok = TRUE, lower = 0, finite = TRUE, null.ok = TRUE)
+  checkmate::assert_character(region, null.ok = TRUE)
+  checkmate::assert_logical(vector_borne, len = 1)
+  checkmate::assert_character(vector, null.ok = TRUE)
+  checkmate::assert_character(inference_method, null.ok = TRUE)
+
+  if (isFALSE(vector_borne) && !is.null(vector)) {
+    stop("A vector is given for a non-vector-borne disease please check input")
+  }
+
+  # return list of metadata
+  list(
+    sample_size = sample_size,
+    region = region,
+    vector_borne = vector_borne,
+    vector = vector,
+    inference_method = inference_method
+  )
+}
+
+#' A helper function when creating an epidist object to create a summary
+#' statistics list with sensible defaults, type checking and arguments to help
+#' remember which summary statistics can be accepted in the list
+#'
+#' @param mean A numeric of the mean (expectation) of the probability
+#' distribution
+#' @param mean_ci A numeric vector of length two of the confidence interval
+#' around the mean
+#' @param mean_ci_interval A numeric specifying the confidence interval width,
+#' e.g. 95 would be the 95% CI
+#' @param sd A numeric of the standard deviation of the probability distribution
+#' @param sd_ci A numeric vector of length 2 of the confidence interval around
+#' the standard deviation
+#' @param sd_ci_interval A numeric specifying the confidence interval width,
+#' e.g. 95 would be 95% confidence interval
+#' @param median A numeric of the median of the probability distribution
+#' @param median_ci A numeric vector of length two of the confidence interval
+#' around the median
+#' @param median_ci_interval A numeric specifying the confidence interval width
+#' of the median
+#' @param dispersion A numeric of the dispersion parameter of a distribution
+#' @param dispersion_ci A numeric vector of length two of the confidence
+#' interval around the dispersion
+#' @param dispersion_ci_interval A numeric specifying the confidence interval
+#' width of the dispersion parameter
+#' @param lower_range The lower range of the data, used to infer the parameters
+#' of the distribution when not provided
+#' @param upper_range The upper range of the data, used to infer the parameters
+#' of the distribution when not provided
+#' @param q_025 The 2.5th quantile of the probability distribution
+#' @param q_05 The 5th quantile of the probability distribution
+#' @param q_25 The 25th quantile of the probability distribution
+#' @param q_75 The 75th quantile of the probability distribution
+#' @param q_875 The 87.5th quantile of the probability distribution
+#' @param q_95 The 95th quantile of the probability distribution
+#' @param q_975 The 97.5th quantile of the probability distribution
+#'
+#' @return A nested list of summary statistics. The highest level are
+#' - `$central_tendency_spread`
+#' - `$quantiles`
+#' - `$range`
+#' - `$dispersion`
+#' @export
+#'
+#' @examples
+#' create_epidist_summary_stats(mean = 5, sd = 2)
+create_epidist_summary_stats <- function(mean = NULL,
+                                         mean_ci = NULL,
+                                         mean_ci_interval = NULL,
+                                         sd = NULL,
+                                         sd_ci = NULL,
+                                         sd_ci_interval = NULL,
+                                         median = NULL,
+                                         median_ci = NULL,
+                                         median_ci_interval = NULL,
+                                         dispersion = NULL,
+                                         dispersion_ci = NULL,
+                                         dispersion_ci_interval = NULL,
+                                         lower_range = NULL,
+                                         upper_range = NULL,
+                                         q_025 = NULL,
+                                         q_05 = NULL,
+                                         q_25 = NULL,
+                                         q_75 = NULL,
+                                         q_875 = NULL,
+                                         q_95 = NULL,
+                                         q_975 = NULL) {
+  # check input
+  checkmate::assert_number(mean, null.ok = TRUE)
+  checkmate::assert_numeric(mean_ci, len = 2, null.ok = TRUE)
+  checkmate::assert_number(mean_ci_interval, null.ok = TRUE)
+  checkmate::assert_number(sd, null.ok = TRUE)
+  checkmate::assert_numeric(sd_ci, len = 2, null.ok = TRUE)
+  checkmate::assert_number(sd_ci_interval, null.ok = TRUE)
+  checkmate::assert_number(median, null.ok = TRUE)
+  checkmate::assert_numeric(median_ci, len = 2, null.ok = TRUE)
+  checkmate::assert_number(median_ci_interval, null.ok = TRUE)
+  checkmate::assert_number(dispersion, null.ok = TRUE)
+  checkmate::assert_numeric(dispersion_ci, len = 2, null.ok = TRUE)
+  checkmate::assert_number(dispersion_ci_interval, null.ok = TRUE)
+  checkmate::assert_number(lower_range, null.ok = TRUE)
+  checkmate::assert_number(upper_range, null.ok = TRUE)
+  checkmate::assert_number(q_025, null.ok = TRUE)
+  checkmate::assert_number(q_05, null.ok = TRUE)
+  checkmate::assert_number(q_25, null.ok = TRUE)
+  checkmate::assert_number(q_75, null.ok = TRUE)
+  checkmate::assert_number(q_95, null.ok = TRUE)
+  checkmate::assert_number(q_975, null.ok = TRUE)
+
+  # return list of summary stats
+  list(
+    central_tendency_spread = list(
+      mean = mean,
+      mean_ci = mean_ci,
+      mean_ci_interval = mean_ci_interval,
+      sd = sd,
+      sd_ci = sd_ci,
+      sd_ci_interval = sd_ci_interval,
+      median = median,
+      median_ci = median_ci,
+      median_ci_interval = median_ci_interval
+    ),
+    quantiles = list(
+      q_025 = q_025,
+      q_05 = q_05,
+      q_25 = q_25,
+      q_50 = median,
+      q_75 = q_75,
+      q_875 = q_875,
+      q_95 = q_95,
+      q_975 = q_975
+    ),
+    range = list(lower_range = lower_range, upper_range = upper_range),
+    dispersion = list(
+      dispersion = dispersion,
+      dispersion_ci = dispersion_ci,
+      dispersion_ci_interval = dispersion_ci_interval
+    )
+  )
+}
+
+#' A helper function when creating an epidist object to create a summary
+#' statistics list with sensible defaults, type checking and arguments to help
+#' remember which summary statistics can be accepted in the list
+
+#' A helper function when creating an epidist object to create a citation list
+#' with sensible defaults, type checking and arguments to help remember which
+#' citation information is accepted in the list.
+#'
+#' @param author A character string of the surname of the first author. This
+#' can be underscore separated from a second author, or underscore separated
+#' from "etal" if there are more than two authors.
+#' @param year A numeric of the year of publication
+#' @param PMID A character string with the PubMed unique identifier number
+#' assigned to papers to give them a unique identifier within PubMed.
+#' @param DOI A character string of the Digital Object Identifier (DOI)
+#' assigned to papers which are unique to each paper.
+#' @param use_PMID A boolean logical determining whether the PMID is used in
+#' the citation
+#'
+#' @return A character string of the formatted short citation
+#' @export
+#'
+#' @examples
+#' create_epidist_citation(
+#'   author = "Smith_etal",
+#'   year = 2002,
+#'   DOI = "10.19832/j.1366-9516.2012.09147.x"
+#' )
+create_epidist_citation <- function(author = NULL,
+                                    year = NULL,
+                                    PMID = NULL,
+                                    DOI = NULL,
+                                    use_PMID = FALSE) {
+  # check input
+  checkmate::assert_character(author, null.ok = TRUE)
+  checkmate::assert_number(year, null.ok = TRUE)
+  checkmate::assert_number(PMID, null.ok = TRUE)
+  checkmate::assert_character(DOI, null.ok = TRUE)
+  checkmate::assert_logical(use_PMID, len = 1)
+
+  if (is.null(author) || is.null(year) || is.null (DOI)) {
+    message(
+      "Citation cannot be created as either author, year or DOI is missing"
+    )
+    return("No citation available")
+  }
+
+  if (isTRUE(use_PMID) && is.null(PMID)) {
+    stop("use_PMID set to TRUE but PMID not provided")
+  }
+
+  # change author formatting if multiple authors or et al
+  author <- gsub(pattern = "_", replacement = " ", x = author)
+  author <- gsub(pattern = "etal", replacement = "et al.", x = author)
+
+  citation <- paste0(author, " (", year, ") ", "<", DOI, ">")
+
+  if (use_PMID) {
+    citation <- paste(citation, "PMID:", PMID)
+  }
+
+  citation
+}
+
+#' A helper function when creating an epidist object to create a method
+#' assessment list with sensible defaults, type checking and arguments to help
+#' remember which method assessments can be accepted in the list
+#'
+#' @param censorred A boolean logical whether the study used single or double
+#' interval censorring in the methods to infer the delay distribution
+#' @param right_truncated A boolean logical whether the study used right-
+#' truncation in the methods to infer the delay distribution
+#' @param phase_bias_adjusted A boolean logical whether the study adjusted for
+#' phase bias in the methods to infer the delay distribution
+#'
+#' @return A list of three elements
+#' @export
+#'
+#' @examples
+#' create_epidist_method_assessment(
+#'   censorred = FALSE,
+#'   right_truncated = FALSE,
+#'   phase_bias_adjusted = FALSE
+#' )
+create_epidist_method_assessment <- function(censorred = NULL,
+                                             right_truncated = NULL,
+                                             phase_bias_adjusted = NULL) {
+  # check input
+  checkmate::assert_logical(censorred, len = 1, null.ok = TRUE)
+  checkmate::assert_logical(right_truncated, len = 1, null.ok = TRUE)
+  checkmate::assert_logical(phase_bias_adjusted, len = 1, null.ok = TRUE)
+
+  # return method assessment list
+  list(
+    censorred = censorred,
+    right_truncated = right_truncated,
+    phase_bias_adjusted = phase_bias_adjusted
+  )
+}
+
+#' A helper function to check whether the vector of parameters for the
+#' probability distribution are in the set of possible parameters used in
+#' the `epiparameter` package
+#'
+#' @inheritParams epidist
+#'
+#' @return A logical boolean
+#' @export
+#'
+#' @examples
+#' is_epidist_params(prob_dist_params = c(shape = 2, scale = 1))
+is_epidist_params <- function(prob_dist_params) {
+  # check input
+  checkmate::assert_numeric(
+    prob_dist_params,
+    any.missing = FALSE,
+    min.len = 1,
+    max.len = 2,
+    names = "unique"
+  )
+
+  # create dictionary of valid parameter combinations
+  possible_params <- list(
+    c("shape", "scale"),
+    c("shape", "rate"),
+    c("meanlog", "sdlog"),
+    c("mean"),
+    c("prob"),
+    c("mean", "dispersion"),
+    c("mean", "k")
+  )
+
+  # check whether any combinations are valid
+  matches <- lapply(
+    possible_params,
+    function(x,y) x == y,
+    y = names(prob_dist_params)
+  )
+  is_valid_params <- any(unlist(lapply(matches, all)))
+
+  # return check result
+  is_valid_params
+}
+
+#' Helper function that prints the distribution parameters accepted by
+#' `epiparameter`
+#'
+#' @return Nothing, prints to console
+#' @export
+#'
+#' @examples
+#' possible_epidist_params()
+possible_epidist_params <- function() {
+  cat(
+    "Gamma or Weibull must be either 'shape' and 'scale' or 'shape' and 'rate'",
+    "Lognormal must be 'mealog' and 'sdlog'",
+    "Negative Binomial must be 'mean' and 'dispersion'",
+    "Poisson must be 'mean'",
+    "Geometric must be 'prob'",
+    sep = "\n"
+  )
+}
