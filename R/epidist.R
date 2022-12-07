@@ -293,67 +293,38 @@ epidist <- function(disease,
 
 }
 
-#' Plots an `epidist` object by displaying the probability mass function (PMF),
-#' probability density function (PDF) and cumulative distribution function (CDF)
+#' `epidist` class validator
 #'
-#' @param x An `epidist` object
-#' @param day_range A vector with the sequence of days to be plotted on the
-#' x-axis of the distribution
-#' @param ... Allow other graphical parameters
+#' @param epidist An `epidist` object
 #'
-#' @author Joshua W. Lambert
+#' @return Nothing, errors when invalid `epidist` object is provided
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' ebola_si <- epidist(pathogen = "ebola", delay_dist = "serial_interval")
-#' plot(ebola_si)
-#' }
-plot.epidist <- function(x, day_range = 0:10, ...) {
-  if (!inherits(x, "epidist")) {
-    stop("x must be an epidist object")
+validate_epidist <- function(epidist) {
+
+  if (!inherits(epidist, "epidist")) {
+    stop("Object should be of class epidist")
   }
 
-  oldpar <- graphics::par(no.readonly = TRUE)
-  on.exit(graphics::par(oldpar))
-
-  # set plotting parameters to plot on a 2x2 grid
-  graphics::par(mfrow = c(2, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))
-
-  # plot PMF
-  plot(
-    day_range,
-    x$pmf(day_range),
-    ylab = "",
-    xlab = "Time since infection",
-    type = "p",
-    pch = 16,
-    main = "Probability Mass Function"
+  # check for class invariants
+  stopifnot(
+    "epidist object does not contain the correct attributes" =
+      c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+        "citation", "metadata", "method_assessment", "notes") %in%
+      attributes(epidist)$names
   )
 
-  # plot PDF
-  plot(
-    day_range,
-    x$pdf(day_range),
-    ylab = "",
-    xlab = "Time since infection",
-    type = "p",
-    pch = 16,
-    main = "Probability Density Function"
+  stopifnot(
+    "Epidist must contains a disease (single character string)" =
+      is.character(epidist$disease$disease) && length(epidist$disease$disease) == 1
   )
 
-  # plot CDF
-  plot(
-    day_range,
-    x$cdf(day_range),
-    ylab = "",
-    xlab = "Time since infection",
-    type = "p",
-    pch = 16,
-    ylim = c(0, 1),
-    main = "Cumulative Distribution Function"
+  stopifnot(
+    "Epidist must contain an epidemiological distribution" =
+      is.character(epidist$epi_dist) && length(epidist$epi_dist) == 1
   )
 
-  # add a plot title
-  graphics::title("Distributions", outer = TRUE, line = -1)
+  invisible(epidist)
+
+}
+
 }
