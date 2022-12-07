@@ -1,129 +1,168 @@
-#' Distribution (PDF, CDF, PMF) and its parameters for epidemiological
-#' characteristics of a pathogen
+#' Constructor for epidist class
 #'
-#' Parametric probability distribution (lognormal, gamma, or weibull) for the
-#' epidemiological characteristics (incubation period, onset to admission,
-#' onset to death, and serial interval) of various pathogens. The distributions
-#' and associated best-fit parameters can be used to inform modelling and
-#' estimation of other epidemiological metrics (e.g. reproduction number) and
-#' public health decisions (e.g. quarantine period).
+#' @description Create an epidist object and provides input checking. The
+#' constructor will search whether parameters of the probability distribution
+#' are supplied and if not look to see whether they can be inferred/extracted/
+#' converted from summary statistics provided.
 #'
-#' @param pathogen A `character` specifying pathogen of interest
-#' @param delay_dist A `character` specifying type of parameter: `"incubation"`,
-#' `"onset_to_admission"`, `"onset_to_death"`
-#' @param study A `character` specifying dataset to use. Defaults to study
-#' with largest sample size.
+#' @param disease A list contains the `$disease` a character string of the
+#' infectious disease specified in the study, and the `4pathogen` a character
+#' string or NULL of the causative agent of disease specified in study.
+#' @param epi_dist A character string with the name of the epidemiological
+#' distribution type
+#' @param prob_dist A character string specifying the probability distribution
+#' @param prob_dist_params A named vector of probability distribution parameters
+#' @param uncertainty Either a list of named vectors with the uncertainty around
+#' the probability distribution parameters or NULL when uncertainty around the
+#' parameter estimates is unknown
+#' @param summary_stats A list of summary statistics
+#' @param citation A character string with the short form citation
+#' @param metadata A list of metadata
+#' @param method_assessment A list of methodological aspects assessed
+#' @param notes A character string with additional notes
 #'
-#' @return Produces an object of class `epidist` which is composed of:
-#' - `pathogen`: The pathogen of interest
-#' - `dist`: The best-fit distribution from the literature, either from the
-#' study with the largest sample size (default) or a specific study (using the
-#' `study` argument)
-#' - `delay_dist`: The metric of interest, could be either "incubation",
-#' "onset_to_admission", or "onset_to_death"
-#' - `param`: The parameters of the distribution
-#' - `pmf`, `pdf`, `cdf`: The distributions: probability mass function (`pmf`),
-#' probability density function (`pdf`) and cumulative distribution function
-#' (`cdf`)
-#' @keywords incubation
-#' @author Adam Kucharski
-#' @export
+#' @return epidist object
+#' @keywords internal
+#'
 #' @examples
-#' \dontrun{
-#' # list_distributions() will show which pathogens are available for each
-#' # metric here we search for which incubation periods are available
-#' list_distributions(delay_dist = "incubation")
-#'
-#' # example of epidist() using incubation period for ebola
-#' epidist(pathogen = "ebola", delay_dist = "incubation")
-#'
-#' # when more than one study is available in the database a study can be
-#' # specified
-#' epidist(
-#'   pathogen = "MERS_CoV",
-#'   delay_dist = "incubation",
-#'   study = "Cauchemez_et_al"
+#' new_epidist(
+#'   disease = list(
+#'     disease = "ebola",
+#'     pathogen = "ebola_virus"
+#'   ),
+#'   epi_dist = "incubation_period",
+#'   prob_dist = "gamma",
+#'   prob_dist_params = c(shape = 1.4, scale = 0.5),
+#'   uncertainty = NULL,
+#'   summary_stats = create_epidist_summary_stats(),
+#'   metadata = create_epidist_metadata(
+#'     sample_size = 83
+#'   ),
+#'   method_assessment = create_epidist_method_assessment(),
+#'   citation = "Smith et al (2010) <10.19832/j.1366-9516.2012.09147.x>",
+#'   notes = "No additional notes"
 #' )
-#'
-#' # example using onset to admission as the metric
-#' epidist(pathogen = "ebola", delay_dist = "onset_to_death")
-#' }
-epidist <- function(pathogen,
-                    delay_dist = c(
-                      "incubation",
-                      "onset_to_admission",
-                      "onset_to_death",
-                      "serial_interval",
-                      "generation_time"
-                    ),
-                    study = NULL) {
-  # read the data to get possible pathogen names
-  params <- utils::read.csv(
-    system.file(
-      "extdata",
-      "parameters.csv",
-      package = "epiparameter",
-      mustWork = TRUE
+new_epidist <- function(disease = list(),
+                        epi_dist = character(),
+                        prob_dist = character(),
+                        prob_dist_params = numeric(),
+                        uncertainty = list(),
+                        summary_stats = list(),
+                        citation = character(),
+                        metadata = list(),
+                        method_assessment = list(),
+                        notes = character()) {
+  # check input
+  stopifnot(
+    "A disease is required for the epidist class" =
+      !is.null(disease$disease)
+  )
+  checkmate::assert_list(disease, types = c("character", "null"), len = 2)
+  checkmate::assert_character(epi_dist, min.chars = 1)
+  checkmate::assert_character(prob_dist, min.chars = 1)
+  checkmate::assert_numeric(
+    prob_dist_params,
+    min.len = 1,
+    max.len = 2,
+    names = "unique",
+    null.ok = TRUE
+  )
+  checkmate::assert_list(
+    summary_stats,
+    types = c("list", "double", "null"),
+    names = "unique"
+  )
+  checkmate::assert_character(citation, min.len = 1)
+  checkmate::assert_list(metadata)
+  checkmate::assert_list(method_assessment)
+  checkmate::assert_character(notes, null.ok = TRUE)
+
+  # calculate parameters if not provided
+  if (length(prob_dist_params) == 0) {
+
+    # calculate parameters if not provided
+    prob_dist_params <- calc_dist_params(
+      prob_dist = prob_dist,
+      summary_stats = summary_stats,
+      sample_size = metadata$sample_size
     )
+  }
+
+  # check parameters if provided
+  checkmate::assert_numeric(prob_dist_params, names = "unique")
+  stopifnot(
+    "distribution parameters must have valid names,
+       use possible_epidist_params() to see valid names" =
+      is_epidist_params(prob_dist_params)
   )
 
-  # order params by pathogen, delay dist and study
-  params <- params[order(
-    tolower(params$pathogen_id),
-    tolower(params$type_id),
-    tolower(params$study_id),
-    method = "radix"
-  ), ]
-
-  # match pathogen names against data
-  pathogen <- match.arg(
-    arg = pathogen,
-    choices = unique(params$pathogen_id),
-    several.ok = FALSE
+  # make the probability distribution object
+  prob_dist <- switch(prob_dist,
+                      gamma = distributional::dist_gamma(
+                        shape = prob_dist_params[["shape"]],
+                        rate = 1/prob_dist_params[["scale"]]
+                      ),
+                      lognormal = distributional::dist_lognormal(
+                        mu = prob_dist_params[["mu"]],
+                        sigma = prob_dist_params[["sigma"]]
+                      ),
+                      weibull = distributional::dist_weibull(
+                        shape = prob_dist_params[["shape"]],
+                        scale = prob_dist_params[["scale"]]
+                      ),
+                      negative_binomial = distributional::dist_negative_binomial(
+                        size = prob_dist_params[["dispersion"]],
+                        prob = negative_binomial_meandispersion2probdispersion(
+                          mean = prob_dist_params[["mean"]],
+                          dispersion = prob_dist_params[["dispersion"]]
+                        )$prob
+                      ),
+                      geometric = distributional::dist_geometric(
+                        prob = unname(prob_dist_params)
+                      )
   )
 
-  delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
+  # TODO: calculate standard deviation from confidence interval
 
-  # filter based on pathogen and delay distribution
-  params <- params[params$pathogen_id == pathogen, ]
-  params <- params[params$type_id == delay_dist, ]
+  # TODO: handle parameter uncertainty
 
-  if (nrow(params) == 0) {
-    stop("Need to select pathogen and distribution in the dataset")
-  }
+  quantiles <- quantile(
+    prob_dist,
+    c(0.025, 0.05, 0.25, 0.5, 0.75, 0.875, 0.95, 0.975)
+  )[[1]]
+  names(quantiles) <- c(
+    "q_025",	"q_05",	"q_25",	"q_50", "q_75", "q_875", "q_95", "q_975"
+  )
+  summary_stats$quantiles <- quantiles
 
-  # Extract study or default to largest sample size
-  if (is.null(study)) {
-    params <- params[params$size == max(params$size), ]
-  } else {
-    study <- match.arg(
-      arg = study,
-      choices = unique(params$study_id),
-      several.ok = FALSE
+  if (epi_dist == "offspring_distribution") {
+    method_assessment <- paste(
+      "There is currently no method assessment for offspring distributions",
+      "stored in epiparameter"
     )
-    params <- params[params$study_id == study, ]
   }
 
-  # Throw warning if more than one row found and select first
-  if (nrow(params) > 1) {
-    warning("More than one study found. Selecting first one.
-    Please report an issue with duplicated studies.")
-    params <- params[1, ]
+  if (is.null(notes)) {
+    notes <- "No additional notes"
   }
 
-  # Define distribution
-  if (params$distribution == "lnorm") {
-    param_vector <- c(meanlog = params$meanlog, sdlog = params$sdlog)
-    cdf_function <- function(x) {
-      stats::plnorm(x, meanlog = params$meanlog, sdlog = params$sdlog)
-    }
-    pmf_function <- function(x) {
-      cdf_function(x + 1) - cdf_function(x)
-    }
-    pdf_function <- function(x) {
-      stats::dlnorm(x, meanlog = params$meanlog, sdlog = params$sdlog)
-    }
-  }
+  # create and return epidist class
+  structure(
+    list(
+      disease = disease,
+      epi_dist = epi_dist,
+      prob_dist = prob_dist,
+      uncertainty = uncertainty,
+      summary_stats = summary_stats,
+      citation = citation,
+      metadata = metadata,
+      method_assessment = method_assessment,
+      notes = notes
+    ),
+    class = "epidist"
+  )
+}
+
 
   if (params$distribution == "gamma") {
     param_vector <- c(shape = params$shape, scale = params$scale)
