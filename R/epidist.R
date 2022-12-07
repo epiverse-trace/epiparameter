@@ -25,7 +25,7 @@
 #' @keywords internal
 #'
 #' @examples
-#' new_epidist(
+#' epiparameter:::new_epidist(
 #'   disease = list(
 #'     disease = "ebola",
 #'     pathogen = "ebola_virus"
@@ -163,60 +163,134 @@ new_epidist <- function(disease = list(),
   )
 }
 
+#' Create an `epidist` object
+#'
+#' @description The `epidist` class is used to store epidemiological parameters
+#' for a single disease. These epidemiological parameters cover a variety of
+#' aspects including delay distributions (e.g. incubation periods and serial
+#' intervals, among others) and offspring distributions.
+#'
+#' @param disease A character string with name of the infectious disease
+#' @param pathogen A character string with the name of the causative agent of
+#' disease, or NULL if not known
+#' @param epi_distribution A character string with the name of the
+#' epidemiological distribution type
+#' @param prob_distribution A character string specifying the probability
+#' distribution
+#' @param prob_distribution_params A named vector of probability distribution
+#' parameters
+#' @param uncertainty Either a list of named vectors with the uncertainty around
+#' the probability distribution parameters or NULL when uncertainty around the
+#' parameter estimates is unknown
+#' @param summary_stats A list of summary statistics
+#' @param citation A character string with the citation of the source of the
+#' data or the paper that inferred the distribution parameters
+#' @param metadata A list of metadata, this can include: sample size, whether
+#' the disease is vector-borne, etc. It is assumed that the disease is not
+#' vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
+#' delay distribution such as extrinsic incubation period) unless
+#' `vector_borne = TRUE` is contained in the metadata
+#' @param method_assessment A list of methodological aspects assessed
+#' @param discretised A boolean logical whether the distribution is discretised.
+#' Default is FALSE which assumes a continuous probability distribution
+#' @param truncation A numeric specifying the truncation point if the inferred
+#' distribution was truncated, NULL if not or unknown.
+#' @param notes A character string with any additional information about the
+#' data, inference method or disease.
+#'
+#' @return An `epidist` object
+#' @export
+#'
+#' @examples
+#' ebola_incubation <- epidist(
+#'   disease = "ebola",
+#'   pathogen = "ebola_virus",
+#'   epi_distribution = "incubation",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1),
+#'   uncertainty = NULL,
+#'   summary_stats = create_epidist_summary_stats(
+#'     mean = 2,
+#'     sd = 1
+#'   ),
+#'   citation = create_epidist_citation(
+#'     author = "Smith_etal",
+#'     year = 2010,
+#'     DOI = "10.19832/j.1366-9516.2012.09147.x"
+#'   ),
+#'   metadata = create_epidist_metadata(
+#'     sample_size = 10,
+#'     region = "UK",
+#'     vector_borne = FALSE,
+#'     inference_method = "MLE"
+#'   ),
+#'   method_assessment = create_epidist_method_assessment(
+#'     censorred = TRUE
+#'   ),
+#'   discretised = FALSE,
+#'   truncation = NULL,
+#'   notes = "No notes"
+#' )
+epidist <- function(disease,
+                    pathogen = NULL,
+                    epi_distribution,
+                    prob_distribution,
+                    prob_distribution_params = NULL,
+                    uncertainty = NULL,
+                    summary_stats = create_epidist_summary_stats(),
+                    citation = create_epidist_citation(),
+                    metadata = create_epidist_metadata(),
+                    method_assessment = create_epidist_method_assessment(),
+                    discretised = FALSE,
+                    truncation = TRUE,
+                    notes = NULL) {
+  # check input
+  checkmate::assert_character(disease, min.len = 1)
+  checkmate::assert_character(pathogen, null.ok = TRUE)
+  checkmate::assert_character(epi_distribution, len = 1)
+  checkmate::assert_character(prob_distribution, null.ok = TRUE)
+  checkmate::assert_numeric(
+    prob_distribution_params,
+    min.len = 1,
+    max.len = 2,
+    names = "unique",
+    null.ok = TRUE
+  )
+  checkmate::assert_list(
+    summary_stats,
+    types = c("list", "double", "null"),
+    names = "unique"
+  )
+  checkmate::assert_character(citation, len = 1)
+  checkmate::assert_list(metadata)
+  checkmate::assert_list(method_assessment)
+  checkmate::assert_number(truncation, null.ok = TRUE)
+  checkmate::assert_logical(discretised)
+  checkmate::assert_character(notes, null.ok = TRUE)
 
-  if (params$distribution == "gamma") {
-    param_vector <- c(shape = params$shape, scale = params$scale)
-    cdf_function <- function(x) {
-      stats::pgamma(x, shape = params$shape, scale = params$scale)
-    }
-    pmf_function <- function(x) {
-      cdf_function(x + 1) - cdf_function(x)
-    }
-    pdf_function <- function(x) {
-      stats::dgamma(x, shape = params$shape, scale = params$scale)
-    }
-  }
-
-  if (params$distribution == "weibull") {
-    param_vector <- c(shape = params$shape, scale = params$scale)
-    cdf_function <- function(x) {
-      stats::pweibull(x, shape = params$shape, scale = params$scale)
-    }
-    pmf_function <- function(x) {
-      cdf_function(x + 1) - cdf_function(x)
-    }
-    pdf_function <- function(x) {
-      stats::dweibull(x, shape = params$shape, scale = params$scale)
-    }
-  }
-
-  out <- list(
-    pathogen = pathogen,
-    dist = params$distribution,
-    delay_dist = delay_dist,
-    param = param_vector,
-    pmf = pmf_function,
-    pdf = pdf_function,
-    cdf = cdf_function
+  # call epidist constructor
+  epidist <- new_epidist(
+    disease = list(
+      disease = disease,
+      pathogen = pathogen
+    ),
+    epi_dist = epi_distribution,
+    prob_dist = prob_distribution,
+    prob_dist_params = prob_distribution_params,
+    uncertainty = uncertainty,
+    summary_stats = summary_stats,
+    citation = citation,
+    metadata = metadata,
+    method_assessment = method_assessment,
+    notes = notes
   )
 
-  class(out) <- "epidist"
-  out
-}
+  # call epidist validator
+  validate_epidist(epidist = epidist)
 
-##' @export
-print.epidist <- function(x, ...) {
-  writeLines(
-    c(
-      sprintf("Pathogen: %s", x$pathogen),
-      sprintf("Delay Distribution: %s", x$delay_dist),
-      sprintf("Distribution: %s", x$dist),
-      sprintf("Parameters:"),
-      sprintf("  %s: %s", names(x$param), as.character(x$param))
-    )
-  )
+  # return epidist object
+  epidist
 
-  invisible(x)
 }
 
 #' Plots an `epidist` object by displaying the probability mass function (PMF),
