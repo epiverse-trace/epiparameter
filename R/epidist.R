@@ -327,4 +327,15 @@ validate_epidist <- function(epidist) {
 
 }
 
+#' @export
+print.epidist <- function(x, ...) {
+  writeLines(
+    c(
+      sprintf("Epidist object \n"),
+      sprintf("Disease: %s", x$disease$disease),
+      sprintf("Epi Distribution: %s", x$epi_dist),
+      sprintf("Distribution: %s", x$prob_dist)
+    )
+  )
+  invisible(x)
 }
