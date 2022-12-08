@@ -287,6 +287,7 @@ is_epidist_params <- function(prob_dist_params) {
     c("shape", "scale"),
     c("shape", "rate"),
     c("meanlog", "sdlog"),
+    c("mu", "sigma"),
     c("mean"),
     c("prob"),
     c("mean", "dispersion"),
@@ -316,10 +317,43 @@ is_epidist_params <- function(prob_dist_params) {
 possible_epidist_params <- function() {
   cat(
     "Gamma or Weibull must be either 'shape' and 'scale' or 'shape' and 'rate'",
-    "Lognormal must be 'mealog' and 'sdlog'",
+    "Lognormal must be 'mealog' and 'sdlog' or 'mu' and 'sigma'",
     "Negative Binomial must be 'mean' and 'dispersion'",
     "Poisson must be 'mean'",
     "Geometric must be 'prob'",
     sep = "\n"
   )
+}
+
+clean_epidist_params <- function(prob_dist_params, ...) {
+  UseMethod("clean_epidist_params")
+}
+
+clean_epidist_params.gamma <- function(prob_dist_params) {
+  # if shape and rate are provided convert to shape and scale
+  if (all(c("shape", "rate") %in% names(prob_dist_params))) {
+    prob_dist_params[["rate"]] <- 1 / prob_dist_params[["rate"]]
+    names(prob_dist_params["rate"]) <- "scale"
+  }
+
+  # remove class attribute from prob_dist_params
+  prob_dist_params <- unclass(prob_dist_params)
+
+  # return prob_dist_params
+  prob_dist_params
+}
+
+clean_epidist_params.lognormal <- function(prob_dist_params) {
+
+  # if meanlog and sdlog are provided convert to mu and sigma
+  if (all(c("meanlog", "sdlog") %in% names(prob_dist_params))) {
+
+    # find index so parameters can be in any order
+    meanlog_index <- which(names(prob_dist_params) == "meanlog")
+    sdlog_index <- which(names(prob_dist_params) == "sdlog")
+    names(prob_dist_params)[c(meanlog_index, sdlog_index)] <- c("mu", "sigma")
+  }
+
+  # return prob_dist_params
+  prob_dist_params
 }

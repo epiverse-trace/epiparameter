@@ -86,6 +86,12 @@ new_epidist <- function(disease = list(),
       summary_stats = summary_stats,
       sample_size = metadata$sample_size
     )
+  } else {
+    # standardise distribution parameter names
+    class(prob_dist_params) <- prob_dist
+    prob_dist_params <- clean_epidist_params(
+      prob_dist_params = prob_dist_params
+    )
   }
 
   # check parameters if provided
@@ -290,7 +296,6 @@ epidist <- function(disease,
 
   # return epidist object
   epidist
-
 }
 
 #' `epidist` class validator
