@@ -1,90 +1,203 @@
-test_that("epidist works with valid input", {
-  skip("Temp skipped before refactor")
-  ebola_dist <- epidist(pathogen = "ebola", delay_dist = "incubation")
+test_that("epidist works with minimal viable input", {
+
+  # message about missing citation suppressed
+  ebola_dist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_distribution = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+
   expect_s3_class(ebola_dist, class = "epidist")
-  expect_length(ebola_dist, 7)
+  expect_length(ebola_dist, 9)
   expect_named(
     ebola_dist,
-    c("pathogen", "dist", "delay_dist", "param", "pmf", "pdf", "cdf")
+    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assessment", "notes")
   )
-  expect_type(ebola_dist$pathogen, "character")
-  expect_type(ebola_dist$dist, "character")
-  expect_type(ebola_dist$delay_dist, "character")
-  expect_vector(ebola_dist$param, ptype = numeric(), size = 2)
-  expect_type(ebola_dist$pmf, "closure")
-  expect_type(ebola_dist$pdf, "closure")
-  expect_type(ebola_dist$cdf, "closure")
+  expect_type(ebola_dist$disease, "list")
+  expect_type(ebola_dist$epi_dist, "character")
+  expect_type(ebola_dist$prob_dist, "list")
+  expect_s3_class(ebola_dist$prob_dist, "distribution")
+  expect_type(ebola_dist$uncertainty, "NULL")
+  expect_type(ebola_dist$summary_stats, "list")
+  expect_type(ebola_dist$citation, "character")
+  expect_type(ebola_dist$metadata, "list")
+  expect_type(ebola_dist$method_assessment, "list")
+  expect_type(ebola_dist$notes, "character")
 })
 
-test_that("epidist prob functions work", {
-  skip("Temp skipped before refactor")
-  marburg_dist <- epidist(pathogen = "marburg", delay_dist = "incubation")
-  expect_equal(marburg_dist$pmf(5), 0.000641548322219965)
-  expect_equal(marburg_dist$pdf(5), 0.00133380313883437)
-  expect_equal(marburg_dist$cdf(5), 0.999218672257759)
-})
+test_that("epidist works with all arguments set", {
 
-test_that("epidist works with specific study", {
-  skip("Temp skipped before refactor")
-  mers_dist1 <- epidist(pathogen = "MERS_CoV", delay_dist = "incubation")
-  mers_dist2 <- epidist(
+  mers_dist <- epidist(
+    disease = "MERS",
     pathogen = "MERS_CoV",
-    delay_dist = "incubation",
-    study = "Cauchemez_et_al"
+    epi_distribution = "serial_interval",
+    prob_distribution = "lognormal",
+    prob_distribution_params = c(meanlog = 2, sdlog = 1),
+    uncertainty = NULL,
+    summary_stats = create_epidist_summary_stats(
+      mean = 1,
+      mean_ci = c(0.8, 1.2),
+      mean_ci_interval = 95,
+      sd = 0.5,
+      sd_ci = c(0.4, 0.6),
+      sd_ci_interval = 95,
+      median = 1,
+      median_ci = c(0.9, 1.1),
+      median_ci_interval = 95,
+      dispersion = 1,
+      dispersion_ci = c(0.9, 1.1),
+      dispersion_ci_interval = 90,
+      lower_range = 0.1,
+      upper_range = 1.9,
+      q_025 = 0.2,
+      q_05 = 0.3,
+      q_25 = 0.5,
+      q_75 = 0.7,
+      q_875 = 1.1,
+      q_95 = 1.2,
+      q_975 = 1.5
+    ), citation = create_epidist_citation(
+      author = "Smith",
+      year = 2002,
+      PMID = 28372882,
+      DOI = "10.23271/176237.x",
+      use_PMID = FALSE
+    ),
+    metadata = create_epidist_metadata(
+      sample_size = 100,
+      region = "UK",
+      vector_borne = FALSE,
+      vector = NULL
+    ),
+    method_assessment = create_epidist_method_assessment(
+      censorred = TRUE,
+      right_truncated = FALSE,
+      phase_bias_adjusted = FALSE
+    ),
+    discretised = FALSE,
+    truncation = NULL,
+    notes = "No notes"
   )
-  expect_false(identical(mers_dist1, mers_dist2))
-  expect_s3_class(mers_dist2, class = "epidist")
-  expect_length(mers_dist2, 7)
+
+  expect_s3_class(mers_dist, class = "epidist")
+  expect_length(mers_dist, 9)
   expect_named(
-    mers_dist2,
-    c("pathogen", "dist", "delay_dist", "param", "pmf", "pdf", "cdf")
+    mers_dist,
+    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assessment", "notes")
   )
+  expect_type(mers_dist$disease, "list")
+  expect_type(mers_dist$epi_dist, "character")
+  expect_type(mers_dist$prob_dist, "list")
+  expect_s3_class(mers_dist$prob_dist, "distribution")
+  expect_type(mers_dist$uncertainty, "NULL")
+  expect_type(mers_dist$summary_stats, "list")
+  expect_type(mers_dist$citation, "character")
+  expect_type(mers_dist$metadata, "list")
+  expect_type(mers_dist$method_assessment, "list")
+  expect_type(mers_dist$notes, "character")
 })
 
-test_that("epidist works with lognorm dist", {
-  skip("Temp skipped before refactor")
-  adenovirus_dist <- epidist(pathogen = "adenovirus", delay_dist = "incubation")
-  expect_s3_class(adenovirus_dist, "epidist")
-  expect_equal(adenovirus_dist$pmf(5), 0.318548590046)
-  expect_equal(adenovirus_dist$pdf(5), 0.316588858382)
-  expect_equal(adenovirus_dist$cdf(5), 0.304022826688)
+test_that("epidist works with default helper functions", {
+  # message about missing citation suppressed
+  sars_dist <- suppressMessages(epidist(
+    disease = "SARS",
+    pathogen = "SARS_CoV",
+    epi_distribution = "onset_to_death",
+    prob_distribution = "lognormal",
+    prob_distribution_params = c(meanlog = 2, sdlog = 1),
+    uncertainty = NULL,
+    summary_stats = create_epidist_summary_stats(),
+    citation = create_epidist_citation(),
+    metadata = create_epidist_metadata(),
+    method_assessment = create_epidist_method_assessment(),
+    discretised = FALSE,
+    truncation = NULL,
+    notes = "No notes"
+  ))
+
+  expect_s3_class(sars_dist, class = "epidist")
+  expect_length(sars_dist, 9)
+  expect_named(
+    sars_dist,
+    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assessment", "notes")
+  )
+  expect_type(sars_dist$disease, "list")
+  expect_type(sars_dist$epi_dist, "character")
+  expect_type(sars_dist$prob_dist, "list")
+  expect_s3_class(sars_dist$prob_dist, "distribution")
+  expect_type(sars_dist$uncertainty, "NULL")
+  expect_type(sars_dist$summary_stats, "list")
+  expect_type(sars_dist$citation, "character")
+  expect_type(sars_dist$metadata, "list")
+  expect_type(sars_dist$method_assessment, "list")
+  expect_type(sars_dist$notes, "character")
 })
 
 test_that("epidist fails as expected", {
-  skip("Temp skipped before refactor")
+
   expect_error(
-    epidist(pathogen = "pathogen", delay_dist = "incubation"),
-    regexp = paste0(
-      "'arg' should be one of ", dQuote("adenovirus"), ", ", dQuote("ebola"),
-      ", ", dQuote("human_CoV"), ", ", dQuote("influenza_A_seasonal"), ", ",
-      dQuote("influenza_B_seasonal"), ", ", dQuote("influenza_H1N1p"), ", ",
-      dQuote("influenza_H5N1"), ", ", dQuote("influenza_H7N9"), ", ",
-      dQuote("marburg"), ", ", dQuote("measles"), ", ", dQuote("MERS_CoV"),
-      ", ", dQuote("monkeypox"), ", ", dQuote("parainfluenza"), ", ",
-      dQuote("rhinovirus"), ", ", dQuote("RSV"), ", ", dQuote("SARS_CoV"), ", ",
-      dQuote("SARS_CoV_2_wildtype")
+    epidist(
+      disease = 1,
+      epi_distribution = "incubation",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    ),
+    regexp = paste0("Assertion on 'disease' failed: Must be of type ",
+                   "'character', not 'double'."
     )
   )
 
   expect_error(
-    epidist(pathogen = "ebola", delay_dist = "distribution"),
-    regexp = paste0(
-      "'arg' should be one of ", dQuote("incubation"), ", ",
-      dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ",
-      dQuote("serial_interval"), ", ", dQuote("generation_time")
+    epidist(
+      disease = "ebola",
+      epi_distribution = 1,
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    ),
+    regexp = paste0("Assertion on 'epi_distribution' failed: Must be of type ",
+                   "'character', not 'double'."
     )
   )
 
-  # regexp is removed due to oldrel R version
-  # regexp = paste0("'arg' should be ", dQuote("WHO_team")
   expect_error(
-    epidist(pathogen = "ebola", delay_dist = "incubation", study = "study")
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation",
+      prob_distribution = 1,
+      prob_distribution_params = c(shape = 1, scale = 1)
+    ),
+    regexp = paste0(
+      "(Assertion on 'prob_distribution' failed)*(Must be of type)*",
+      "(character)*(NULL)*(double)"
+    )
+  )
+
+  expect_error(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = "NA", scale = 1)
+    ),
+    regexp = paste0(
+      "(Assertion on 'prob_distribution_params' failed)*(Must be of type)*",
+      "(numeric)*(NULL)*(character)."
+    )
   )
 })
 
+
 test_that("epidist.print works as expected", {
-  skip("Temp skipped before refactor")
-  expect_snapshot(epidist(pathogen = "RSV", delay_dist = "incubation"))
+  expect_snapshot(epidist(
+    disease = "ebola",
+    epi_distribution = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
 })
 
 test_that("epidist.plot does not produce an error", {
