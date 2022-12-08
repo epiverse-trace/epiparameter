@@ -350,3 +350,74 @@ test_that("new_epidist fails as expected", {
   )
 })
 
+test_that("validate_epidist passes when expected", {
+  epidist_obj <- new_epidist(
+    disease = list(
+      disease = "ebola",
+      pathogen = "ebola_virus"
+    ),
+    epi_dist = "incubation",
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    citation = "Smith (2002) <10.128372837>"
+  )
+
+  expect_silent(validate_epidist(epidist = epidist_obj))
+})
+
+test_that("validate_epidist catches class faults when expected", {
+  epidist_obj <- new_epidist(
+    disease = list(
+      disease = "ebola",
+      pathogen = "ebola_virus"
+    ),
+    epi_dist = "incubation",
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    citation = "Smith (2002) <10.128372837>"
+  )
+
+  epidist_obj$disease <- NULL
+
+  expect_error(
+    validate_epidist(epidist = epidist_obj),
+    regexp = "epidist object does not contain the correct attributes"
+  )
+
+  epidist_obj <- new_epidist(
+    disease = list(
+      disease = "ebola",
+      pathogen = "ebola_virus"
+    ),
+    epi_dist = "incubation",
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    citation = "Smith (2002) <10.128372837>"
+  )
+
+  epidist_obj$disease$disease <- NULL
+
+  expect_error(
+    validate_epidist(epidist = epidist_obj),
+    regexp = "(Epidist must contains a disease)"
+  )
+
+  epidist_obj <- new_epidist(
+    disease = list(
+      disease = "ebola",
+      pathogen = "ebola_virus"
+    ),
+    epi_dist = "incubation",
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    citation = "Smith (2002) <10.128372837>"
+  )
+
+  epidist_obj$epi_dist <- c("incubation", "period")
+
+  expect_error(
+    validate_epidist(epidist = epidist_obj),
+    regexp = "Epidist must contain an epidemiological distribution"
+  )
+})
+
