@@ -242,7 +242,7 @@ epidist <- function(disease,
                     metadata = create_epidist_metadata(),
                     method_assessment = create_epidist_method_assessment(),
                     discretised = FALSE,
-                    truncation = TRUE,
+                    truncation = NULL,
                     notes = NULL) {
   # check input
   checkmate::assert_character(disease, min.len = 1)
