@@ -1,12 +1,14 @@
 # epidist.print works as expected
 
     Code
-      epidist(pathogen = "RSV", delay_dist = "incubation")
+      epidist(disease = "ebola", epi_distribution = "incubation", prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1))
+    Message <simpleMessage>
+      Citation cannot be created as either author, year or DOI is missing
     Output
-      Pathogen: RSV
-      Delay Distribution: incubation
-      Distribution: lnorm
-      Parameters:
-        meanlog: 1.48160206
-        sdlog: 0.21889268
+      Epidist object 
+      
+      Disease: ebola
+      Epi Distribution: incubation
+      Distribution: Gamma(1, 1)
 
