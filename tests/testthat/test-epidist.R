@@ -234,3 +234,119 @@ test_that("epidist.plot works with non-default day_range", {
     fig = f
   )
 })
+
+test_that("new_epidist works with minimal viable input", {
+
+  epidist_obj <- new_epidist(
+    disease = list(
+      disease = "ebola",
+      pathogen = "ebola_virus"
+    ),
+    epi_dist = "incubation",
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    citation = "Smith (2002) <10.128372837>"
+  )
+
+  expect_s3_class(epidist_obj, class = "epidist")
+  expect_length(epidist_obj, 9)
+  expect_named(
+    epidist_obj,
+    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assessment", "notes")
+  )
+  expect_type(epidist_obj$disease, "list")
+  expect_type(epidist_obj$epi_dist, "character")
+  expect_type(epidist_obj$prob_dist, "list")
+  expect_s3_class(epidist_obj$prob_dist, "distribution")
+  expect_type(epidist_obj$uncertainty, "list")
+  expect_type(epidist_obj$summary_stats, "list")
+  expect_type(epidist_obj$citation, "character")
+  expect_type(epidist_obj$metadata, "list")
+  expect_type(epidist_obj$method_assessment, "list")
+  expect_type(epidist_obj$notes, "character")
+})
+
+test_that("new_epidist fails as expected", {
+
+  expect_error(
+    new_epidist(
+      disease = list(
+        disease = 1,
+        pathogen = "ebola_virus"
+      ),
+      epi_dist = "incubation",
+      prob_dist = "gamma",
+      prob_dist_params = c(shape = 1, scale = 1),
+      citation = "Smith (2002) <10.128372837>"
+    ),
+    regexp = paste0("(Assertion on 'disease' failed)*(May only contain)*",
+                    "(character,null)*(numeric)."
+    )
+  )
+
+  expect_error(
+    new_epidist(
+      disease = list(
+        disease = "ebola",
+        pathogen = "ebola_virus"
+      ),
+      epi_dist = 1,
+      prob_dist = "gamma",
+      prob_dist_params = c(shape = 1, scale = 1),
+      citation = "Smith (2002) <10.128372837>"
+    ),
+    regexp = paste0("(Assertion on 'epi_dist' failed)*(Must be of type)*",
+                    "(character)*(double)."
+    )
+  )
+
+  expect_error(
+    new_epidist(
+      disease = list(
+        disease = "ebola",
+        pathogen = "ebola_virus"
+      ),
+      epi_dist = "incubation",
+      prob_dist = 1,
+      prob_dist_params = c(shape = 1, scale = 1),
+      citation = "Smith (2002) <10.128372837>"
+    ),
+    regexp = paste0(
+      "(Assertion on 'prob_distribution' failed)*(Must be of type)*",
+      "(character)*(NULL)*(double)"
+    )
+  )
+
+  expect_error(
+    new_epidist(
+      disease = list(
+        disease = "ebola",
+        pathogen = "ebola_virus"
+      ),
+      epi_dist = "incubation",
+      prob_dist = "gamma",
+      prob_dist_params = c(shape = "1", scale = 1),
+      citation = "Smith (2002) <10.128372837>"
+    ),
+    regexp = paste0(
+      "(Assertion on 'prob_distribution_params' failed)*(Must be of type)*",
+      "(numeric)*(NULL)*(character)."
+    )
+  )
+
+  expect_error(
+    new_epidist(
+      disease = list(
+        disease = "ebola",
+        pathogen = "ebola_virus"
+      ),
+      epi_dist = "incubation",
+      prob_dist = "gamma",
+      prob_dist_params = c(shape = 1, scale = 1),
+      citation = character()
+    ),
+    regexp = "(Assertion on 'citation' failed)*(Must have length)"
+  )
+})
+
