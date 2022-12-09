@@ -52,7 +52,6 @@ new_epidist <- function(disease = list(),
                         metadata = list(),
                         method_assessment = list(),
                         notes = character()) {
-
   # check input
   stopifnot(
     "A disease is required for the epidist class" =
@@ -297,7 +296,7 @@ new_epidist <- function(disease = list(),
 epidist <- function(disease,
                     pathogen = NULL,
                     epi_distribution,
-                    prob_distribution,
+                    prob_distribution = NULL,
                     prob_distribution_params = NULL,
                     uncertainty = NULL,
                     summary_stats = create_epidist_summary_stats(),
@@ -307,13 +306,32 @@ epidist <- function(disease,
                     discretised = FALSE,
                     truncation = NULL,
                     notes = NULL) {
+
+  # put prob_distribution and prob_distribution in list if not already
+  if (!is.list(prob_distribution)) {
+    prob_distribution <- as.list(prob_distribution)
+  }
+
+  if (!is.list(prob_distribution_params)) {
+    prob_distribution_params <- list(prob_distribution_params)
+  }
+
   # check input
   checkmate::assert_character(disease, min.len = 1)
   checkmate::assert_character(pathogen, null.ok = TRUE)
   checkmate::assert_character(epi_distribution, len = 1)
-  checkmate::assert_character(prob_distribution, null.ok = TRUE)
-  checkmate::assert_numeric(
+  checkmate::assert_list(prob_distribution, null.ok = TRUE)
+  lapply(
+    prob_distribution,
+    checkmate::assert_character,
+    min.chars = 1,
+    min.len = 1,
+    max.len = 2
+  )
+  checkmate::assert_list(prob_distribution_params, null.ok = TRUE)
+  lapply(
     prob_distribution_params,
+    checkmate::assert_numeric,
     min.len = 1,
     max.len = 2,
     names = "unique",
