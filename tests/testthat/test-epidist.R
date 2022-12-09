@@ -134,6 +134,161 @@ test_that("epidist works with default helper functions", {
   expect_type(sars_dist$notes, "character")
 })
 
+test_that("epidist works for vector-borne disease with all arguements set", {
+  dengue_dist <- epidist(
+    disease = "ebola",
+    pathogen = "ebola_virus",
+    epi_distribution = "incubation_period",
+    prob_distribution = list("gamma", "gamma"),
+    prob_distribution_params = list(c(shape = 1, scale = 1), c(shape = 2, scale = 2)),
+    uncertainty = NULL,
+    summary_stats = list(
+      intrinsic = create_epidist_summary_stats(),
+      extrinsic = create_epidist_summary_stats()
+    ),
+    citation = create_epidist_citation(author = "Smith", year = 2002, DOI = "jsahsa"),
+    metadata = create_epidist_metadata(vector_borne = TRUE),
+    method_assessment = create_epidist_method_assessment(),
+    discretised = FALSE,
+    truncation = NULL,
+    notes = "No notes"
+  )
+
+  expect_s3_class(dengue_dist, class = "epidist")
+  expect_length(dengue_dist, 9)
+  expect_named(
+    dengue_dist,
+    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assessment", "notes")
+  )
+  expect_type(dengue_dist$disease, "list")
+  expect_type(dengue_dist$epi_dist, "character")
+  expect_type(dengue_dist$prob_dist, "list")
+  expect_length(dengue_dist$prob_dist, 2)
+  expect_named(dengue_dist$prob_dist, c("intrinsic", "extrinsic"))
+  expect_type(dengue_dist$uncertainty, "NULL")
+  expect_type(dengue_dist$summary_stats, "list")
+  expect_length(dengue_dist$summary_stats, 2)
+  expect_named(dengue_dist$summary_stats, c("intrinsic", "extrinsic"))
+  expect_type(dengue_dist$citation, "character")
+  expect_type(dengue_dist$metadata, "list")
+  expect_type(dengue_dist$method_assessment, "list")
+  expect_type(dengue_dist$notes, "character")
+})
+
+test_that("epidist returns single distribution for incomplete vector-borne", {
+  expect_message(dengue_dist <- epidist(
+    disease = "ebola",
+    pathogen = "ebola_virus",
+    epi_distribution = "incubation_period",
+    prob_distribution = "gamma",
+    prob_distribution_params = list(c(shape = 1, scale = 1), c(shape = 2, scale = 2)),
+    uncertainty = NULL,
+    summary_stats = list(
+      intrinsic = create_epidist_summary_stats(),
+      extrinsic = create_epidist_summary_stats()
+    ),
+    citation = create_epidist_citation(author = "Smith", year = 2002, DOI = "jsahsa"),
+    metadata = create_epidist_metadata(vector_borne = TRUE),
+    method_assessment = create_epidist_method_assessment(),
+    discretised = FALSE,
+    truncation = NULL,
+    notes = "No notes"
+  ), regexp = "(Vector-borne disease specified but data entered not suitabl)")
+
+  expect_s3_class(dengue_dist, class = "epidist")
+  expect_length(dengue_dist, 9)
+  expect_named(
+    dengue_dist,
+    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assessment", "notes")
+  )
+  expect_type(dengue_dist$disease, "list")
+  expect_type(dengue_dist$epi_dist, "character")
+  expect_type(dengue_dist$prob_dist, "list")
+  expect_length(dengue_dist$prob_dist, 1)
+  expect_type(dengue_dist$uncertainty, "NULL")
+  expect_type(dengue_dist$summary_stats, "list")
+  expect_length(dengue_dist$summary_stats, 4)
+  expect_type(dengue_dist$citation, "character")
+  expect_type(dengue_dist$metadata, "list")
+  expect_type(dengue_dist$method_assessment, "list")
+  expect_type(dengue_dist$notes, "character")
+
+  expect_message(dengue_dist <- epidist(
+    disease = "ebola",
+    pathogen = "ebola_virus",
+    epi_distribution = "incubation_period",
+    prob_distribution = list("gamma", "gamma"),
+    prob_distribution_params = c(shape = 1, scale = 1),
+    uncertainty = NULL,
+    summary_stats = list(
+      intrinsic = create_epidist_summary_stats(),
+      extrinsic = create_epidist_summary_stats()
+    ),
+    citation = create_epidist_citation(author = "Smith", year = 2002, DOI = "jsahsa"),
+    metadata = create_epidist_metadata(vector_borne = TRUE),
+    method_assessment = create_epidist_method_assessment(),
+    discretised = FALSE,
+    truncation = NULL,
+    notes = "No notes"
+  ), regexp = "(Vector-borne disease specified but data entered not suitabl)")
+
+  expect_s3_class(dengue_dist, class = "epidist")
+  expect_length(dengue_dist, 9)
+  expect_named(
+    dengue_dist,
+    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assessment", "notes")
+  )
+  expect_type(dengue_dist$disease, "list")
+  expect_type(dengue_dist$epi_dist, "character")
+  expect_type(dengue_dist$prob_dist, "list")
+  expect_length(dengue_dist$prob_dist, 1)
+  expect_type(dengue_dist$uncertainty, "NULL")
+  expect_type(dengue_dist$summary_stats, "list")
+  expect_length(dengue_dist$summary_stats, 4)
+  expect_type(dengue_dist$citation, "character")
+  expect_type(dengue_dist$metadata, "list")
+  expect_type(dengue_dist$method_assessment, "list")
+  expect_type(dengue_dist$notes, "character")
+
+  expect_message(dengue_dist <- epidist(
+    disease = "ebola",
+    pathogen = "ebola_virus",
+    epi_distribution = "incubation_period",
+    prob_distribution = list("gamma", "gamma"),
+    prob_distribution_params = list(c(shape = 1, scale = 1), c(shape = 2, scale = 2)),
+    uncertainty = NULL,
+    summary_stats = create_epidist_summary_stats(),
+    citation = create_epidist_citation(author = "Smith", year = 2002, DOI = "jsahsa"),
+    metadata = create_epidist_metadata(vector_borne = TRUE),
+    method_assessment = create_epidist_method_assessment(),
+    discretised = FALSE,
+    truncation = NULL,
+    notes = "No notes"
+  ), regexp = "(Vector-borne disease specified but data entered not suitabl)")
+
+  expect_s3_class(dengue_dist, class = "epidist")
+  expect_length(dengue_dist, 9)
+  expect_named(
+    dengue_dist,
+    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assessment", "notes")
+  )
+  expect_type(dengue_dist$disease, "list")
+  expect_type(dengue_dist$epi_dist, "character")
+  expect_type(dengue_dist$prob_dist, "list")
+  expect_length(dengue_dist$prob_dist, 1)
+  expect_type(dengue_dist$uncertainty, "NULL")
+  expect_type(dengue_dist$summary_stats, "list")
+  expect_length(dengue_dist$summary_stats, 4)
+  expect_type(dengue_dist$citation, "character")
+  expect_type(dengue_dist$metadata, "list")
+  expect_type(dengue_dist$method_assessment, "list")
+  expect_type(dengue_dist$notes, "character")
+})
+
 test_that("epidist fails as expected", {
 
   expect_error(
