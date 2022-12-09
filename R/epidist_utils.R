@@ -357,3 +357,85 @@ clean_epidist_params.lognormal <- function(prob_dist_params) {
   # return prob_dist_params
   prob_dist_params
 }
+
+#' Checks whether the data input into making an `epidist` class object is valid
+#' for a vector-borne disease with two delay distributions (instrinsic and
+#' extrinsic)
+#'
+#' @inheritParams epidist
+#'
+#' @return Boolean logical
+#' @export
+#'
+#' @examples
+#' # example where input is valid
+#' is_valid_vector_borne(
+#'   prob_dist = list("gamma", "gamma"),
+#'   prob_dist_params = list(
+#'     c(shape = 1, scale = 1),
+#'     c(shape = 2, scale = 2)
+#'   ),
+#'   summary_stats = list(
+#'     intrinsic = create_epidist_summary_stats(),
+#'     extrinsic = create_epidist_summary_stats()
+#'   ),
+#'   metadata = create_epidist_metadata(vector_borne = TRUE)
+#' )
+#'
+#' # example where input is invalid
+#' is_valid_vector_borne(
+#'   prob_dist = list("gamma"),
+#'   prob_dist_params = list(
+#'     c(shape = 1, scale = 1),
+#'     c(shape = 2, scale = 2)
+#'   ),
+#'   summary_stats = list(
+#'     intrinsic = create_epidist_summary_stats(),
+#'     extrinsic = create_epidist_summary_stats()
+#'   ),
+#'   metadata = create_epidist_metadata(vector_borne = TRUE)
+#' )
+#'
+#' is_valid_vector_borne(
+#'   prob_dist = list("gamma", "gamma"),
+#'   prob_dist_params = list(
+#'     c(shape = 1, scale = 1)
+#'   ),
+#'   summary_stats = list(
+#'     intrinsic = create_epidist_summary_stats(),
+#'     extrinsic = create_epidist_summary_stats()
+#'   ),
+#'   metadata = create_epidist_metadata(vector_borne = TRUE)
+#' )
+#'
+#' is_valid_vector_borne(
+#'   prob_dist = list("gamma", "gamma"),
+#'   prob_dist_params = list(
+#'     c(shape = 1, scale = 1),
+#'     c(shape = 2, scale = 2)
+#'   ),
+#'   summary_stats = list(
+#'     intrinsic = create_epidist_summary_stats(),
+#'     extrinsic = create_epidist_summary_stats()
+#'   ),
+#'   metadata = create_epidist_metadata(vector_borne = FALSE)
+#' )
+is_valid_vector_borne <- function(prob_dist,
+                                  prob_dist_params,
+                                  summary_stats,
+                                  metadata) {
+  # test if each aspect contains valid data on vector-borne
+  valid_prob_dists <- length(prob_dist) == 2
+  valid_prob_dist_params <- length(prob_dist_params) == 2
+  valid_summary_stats <- length(summary_stats) == 2 &&
+    identical(names(summary_stats), c("intrinsic", "extrinsic"))
+  valid_metadata <- isTRUE(metadata$vector_borne)
+
+  # check if all parts are valid
+  is_valid_vector_borne <- valid_prob_dists && valid_prob_dist_params &&
+    valid_summary_stats && valid_metadata
+
+  # return output
+  is_valid_vector_borne
+
+}
