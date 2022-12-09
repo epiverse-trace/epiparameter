@@ -44,7 +44,7 @@
 #' )
 new_epidist <- function(disease = list(),
                         epi_dist = character(),
-                        prob_dist = character(),
+                        prob_dist = list(),
                         prob_dist_params = numeric(),
                         uncertainty = list(),
                         summary_stats = list(),
@@ -52,6 +52,7 @@ new_epidist <- function(disease = list(),
                         metadata = list(),
                         method_assessment = list(),
                         notes = character()) {
+
   # check input
   stopifnot(
     "A disease is required for the epidist class" =
@@ -59,9 +60,18 @@ new_epidist <- function(disease = list(),
   )
   checkmate::assert_list(disease, types = c("character", "null"), len = 2)
   checkmate::assert_character(epi_dist, min.chars = 1)
-  checkmate::assert_character(prob_dist, min.chars = 1)
-  checkmate::assert_numeric(
+  checkmate::assert_list(prob_dist)
+  lapply(
+    prob_dist,
+    checkmate::assert_character,
+    min.chars = 1,
+    min.len = 1,
+    max.len = 2
+  )
+  checkmate::assert_list(prob_dist_params)
+  lapply(
     prob_dist_params,
+    checkmate::assert_numeric,
     min.len = 1,
     max.len = 2,
     names = "unique",
@@ -77,69 +87,111 @@ new_epidist <- function(disease = list(),
   checkmate::assert_list(method_assessment)
   checkmate::assert_character(notes, null.ok = TRUE)
 
-  # calculate parameters if not provided
-  if (length(prob_dist_params) == 0) {
+  is_vector_borne <- is_valid_vector_borne(
+    prob_dist = prob_dist,
+    prob_dist_params = prob_dist_params,
+    summary_stats = summary_stats,
+    metadata = metadata
+  )
 
-    # calculate parameters if not provided
-    prob_dist_params <- calc_dist_params(
-      prob_dist = prob_dist,
-      summary_stats = summary_stats,
-      sample_size = metadata$sample_size
-    )
-  } else {
-    # standardise distribution parameter names
-    class(prob_dist_params) <- prob_dist
-    prob_dist_params <- clean_epidist_params(
-      prob_dist_params = prob_dist_params
+  # case when data is specified for vector-borne but not specified in metadata
+  if (!isTRUE(metadata$vector_borne) && (length(prob_dist) == 2 ||
+      length(prob_dist_params) == 2 || length(summary_stats) == 2)) {
+    stop(
+      paste("Two distributions or parameter sets specified but",
+            "metadata$vector_borne is not set to TRUE"),
+      call. = FALSE
     )
   }
 
-  # check parameters if provided
-  checkmate::assert_numeric(prob_dist_params, names = "unique")
-  stopifnot(
-    "distribution parameters must have valid names,
+  # if is not valid vector borne entry strip data to single distribution
+  if (isFALSE(is_vector_borne)) {
+    # if vector-borne is true tell user only first distribution is used
+    if (isTRUE(metadata$vector_borne)) {
+      message(strwrap(
+        "Vector-borne disease specified but data entered not suitable for both
+        intrinsic and extrinsic distribution. Only first distribution will be
+        returned",
+        prefix = "\n"
+      ))
+    }
+    prob_dist <- prob_dist[1]
+    prob_dist_params <- prob_dist_params[1]
+    if (length(summary_stats) == 2) {
+      summary_stats <- summary_stats[[1]]
+    }
+  }
+
+  # calculate parameters if not provided
+  for (i in seq_along(prob_dist_params)) {
+    if (length(prob_dist_params[[i]]) == 0) {
+
+      # calculate parameters if not provided
+      prob_dist_params[[i]] <- calc_dist_params(
+        prob_dist = prob_dist[[i]],
+        summary_stats = summary_stats[[i]],
+        sample_size = metadata$sample_size[i]
+      )
+    } else {
+      # standardise distribution parameter names
+      subset_prob_dist_params <- prob_dist_params[[i]]
+      class(subset_prob_dist_params) <- prob_dist[[i]]
+      prob_dist_params[[i]] <- clean_epidist_params(
+        prob_dist_params = subset_prob_dist_params
+      )
+    }
+
+    # check parameters if provided
+    checkmate::assert_numeric(prob_dist_params[[i]], names = "unique")
+    stopifnot(
+      "distribution parameters must have valid names,
        use possible_epidist_params() to see valid names" =
-      is_epidist_params(prob_dist_params)
-  )
+        is_epidist_params(prob_dist_params[[i]])
+    )
 
-  # make the probability distribution object
-  prob_dist <- switch(prob_dist,
-                      gamma = distributional::dist_gamma(
-                        shape = prob_dist_params[["shape"]],
-                        rate = 1/prob_dist_params[["scale"]]
-                      ),
-                      lognormal = distributional::dist_lognormal(
-                        mu = prob_dist_params[["mu"]],
-                        sigma = prob_dist_params[["sigma"]]
-                      ),
-                      weibull = distributional::dist_weibull(
-                        shape = prob_dist_params[["shape"]],
-                        scale = prob_dist_params[["scale"]]
-                      ),
-                      negative_binomial = distributional::dist_negative_binomial(
-                        size = prob_dist_params[["dispersion"]],
-                        prob = negative_binomial_meandispersion2probdispersion(
-                          mean = prob_dist_params[["mean"]],
-                          dispersion = prob_dist_params[["dispersion"]]
-                        )$prob
-                      ),
-                      geometric = distributional::dist_geometric(
-                        prob = unname(prob_dist_params)
-                      )
-  )
+    # make the probability distribution object
+    prob_dist[[i]] <- switch(prob_dist[[i]],
+                        gamma = distributional::dist_gamma(
+                          shape = prob_dist_params[[i]][["shape"]],
+                          rate = 1/prob_dist_params[[i]][["scale"]]
+                        ),
+                        lognormal = distributional::dist_lognormal(
+                          mu = prob_dist_params[[i]][["mu"]],
+                          sigma = prob_dist_params[[i]][["sigma"]]
+                        ),
+                        weibull = distributional::dist_weibull(
+                          shape = prob_dist_params[[i]][["shape"]],
+                          scale = prob_dist_params[[i]][["scale"]]
+                        ),
+                        negative_binomial = distributional::dist_negative_binomial(
+                          size = prob_dist_params[[i]][["dispersion"]],
+                          prob = negative_binomial_meandispersion2probdispersion(
+                            mean = prob_dist_params[[i]][["mean"]],
+                            dispersion = prob_dist_params[[i]][["dispersion"]]
+                          )$prob
+                        ),
+                        geometric = distributional::dist_geometric(
+                          prob = unname(prob_dist_params[[i]])
+                        )
+    )
 
-  # TODO: calculate standard deviation from confidence interval
+    # TODO: calculate standard deviation from confidence interval
 
-  # TODO: handle parameter uncertainty
+    # TODO: handle parameter uncertainty
 
-  quantiles <- quantile(
-    prob_dist,
-    c(0.025, 0.05, 0.25, 0.5, 0.75, 0.875, 0.95, 0.975)
-  )[[1]]
-  names(quantiles) <- c(
-    "q_025",	"q_05",	"q_25",	"q_50", "q_75", "q_875", "q_95", "q_975"
-  )
-  summary_stats$quantiles <- quantiles
+    quantiles <- quantile(
+      prob_dist[[i]],
+      c(0.025, 0.05, 0.25, 0.5, 0.75, 0.875, 0.95, 0.975)
+    )[[1]]
+    names(quantiles) <- c(
+      "q_025",	"q_05",	"q_25",	"q_50", "q_75", "q_875", "q_95", "q_975"
+    )
+    summary_stats[[i]]$quantiles <- quantiles
+  }
+
+  if (is_vector_borne) {
+    names(prob_dist) <- names(summary_stats)
+  }
 
   if (epi_dist == "offspring_distribution") {
     method_assessment <- paste(
@@ -334,13 +386,26 @@ validate_epidist <- function(epidist) {
 
 #' @export
 print.epidist <- function(x, ...) {
-  writeLines(
-    c(
-      sprintf("Epidist object \n"),
-      sprintf("Disease: %s", x$disease$disease),
-      sprintf("Epi Distribution: %s", x$epi_dist),
-      sprintf("Distribution: %s", x$prob_dist)
+  if (length(x$prob_dist) == 2) {
+    writeLines(
+      c(
+        sprintf("Epidist object \n"),
+        sprintf("Disease: %s", x$disease$disease),
+        sprintf("Epi Distribution: %s", x$epi_dist),
+        sprintf("Instrinsic Distribution: %s", x$prob_dist[[1]]),
+        sprintf("Extrinsic Distribution: %s", x$prob_dist[[2]])
+      )
     )
-  )
+  } else {
+    writeLines(
+      c(
+        sprintf("Epidist object \n"),
+        sprintf("Disease: %s", x$disease$disease),
+        sprintf("Epi Distribution: %s", x$epi_dist),
+        sprintf("Distribution: %s", x$prob_dist[[1]])
+      )
+    )
+  }
+
   invisible(x)
 }
