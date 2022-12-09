@@ -31,8 +31,8 @@
 #'     pathogen = "ebola_virus"
 #'   ),
 #'   epi_dist = "incubation_period",
-#'   prob_dist = "gamma",
-#'   prob_dist_params = c(shape = 1.4, scale = 0.5),
+#'   prob_dist = list("gamma"),
+#'   prob_dist_params = list(c(shape = 1.4, scale = 0.5)),
 #'   uncertainty = NULL,
 #'   summary_stats = create_epidist_summary_stats(),
 #'   metadata = create_epidist_metadata(
@@ -186,7 +186,12 @@ new_epidist <- function(disease = list(),
     names(quantiles) <- c(
       "q_025",	"q_05",	"q_25",	"q_50", "q_75", "q_875", "q_95", "q_975"
     )
-    summary_stats[[i]]$quantiles <- quantiles
+    if (length(summary_stats) == 0) {
+      summary_stats$quantiles <- quantiles
+    } else {
+      summary_stats[[i]]$quantiles <- quantiles
+    }
+
   }
 
   if (is_vector_borne) {
