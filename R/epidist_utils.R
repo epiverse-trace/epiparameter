@@ -265,7 +265,7 @@ create_epidist_method_assessment <- function(censorred = NULL,
 #' probability distribution are in the set of possible parameters used in
 #' the `epiparameter` package
 #'
-#' @inheritParams epidist
+#' @inheritParams new_epidist
 #'
 #' @return A logical boolean
 #' @export
@@ -362,7 +362,7 @@ clean_epidist_params.lognormal <- function(prob_dist_params) {
 #' for a vector-borne disease with two delay distributions (instrinsic and
 #' extrinsic)
 #'
-#' @inheritParams epidist
+#' @inheritParams new_epidist
 #'
 #' @return Boolean logical
 #' @export
