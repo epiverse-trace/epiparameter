@@ -205,6 +205,20 @@ new_epidist <- function(disease = list(),
       )
     }
 
+    # apply truncation to distribution if specified
+    if (is.numeric(truncation)) {
+      if (discretise) {
+        warning(
+          "Truncation is not yet implemented for discrete distributions",
+          call. = FALSE
+        )
+      } else {
+        prob_dist[[i]] <- distributional::dist_truncated(
+          prob_dist[[i]],
+          upper = truncation
+        )
+      }
+    }
 
 
     # TODO: calculate standard deviation from confidence interval
