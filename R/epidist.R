@@ -447,25 +447,63 @@ validate_epidist <- function(epidist) {
 
 #' @export
 print.epidist <- function(x, ...) {
-  if (length(x$prob_dist) == 2) {
+  writeLines(
+    c(
+      sprintf("Epidist object \n"),
+      sprintf("Disease: %s", x$disease$disease),
+      sprintf("Epi Distribution: %s", x$epi_dist)
+    )
+  )
+  if (inherits(x$prob_dist[[1]], "distcrete")) {
     writeLines(
       c(
-        sprintf("Epidist object \n"),
-        sprintf("Disease: %s", x$disease$disease),
-        sprintf("Epi Distribution: %s", x$epi_dist),
-        sprintf("Instrinsic Distribution: %s", x$prob_dist[[1]]),
-        sprintf("Extrinsic Distribution: %s", x$prob_dist[[2]])
+        sprintf("Distribution: discrete %s", x$prob_dist[[1]]$name),
+        sprintf("Parameters:"),
+        sprintf(
+          "  %s: %s",
+          names(x$prob_dist[[1]]$parameters),
+          as.character(x$prob_dist[[1]]$parameters)
+        )
       )
     )
   } else {
     writeLines(
       c(
-        sprintf("Epidist object \n"),
-        sprintf("Disease: %s", x$disease$disease),
-        sprintf("Epi Distribution: %s", x$epi_dist),
-        sprintf("Distribution: %s", x$prob_dist[[1]])
+        sprintf("Distribution: %s", x$prob_dist[[1]]),
+        sprintf("Parameters:"),
+        sprintf(
+          "  %s: %s",
+          names(unlist(distributional::parameters(x$prob_dist[[1]]))),
+          as.character(unlist(distributional::parameters(x$prob_dist[[1]])))
+        )
       )
     )
+  }
+  if (length(x$prob_dist) == 2) {
+    if (inherits(x$prob_dist[[2]], "distcrete")) {
+      writeLines(
+        c(
+          sprintf("Distribution: discrete %s", x$prob_dist[[2]]$name),
+          sprintf(
+            "  %s: %s",
+            names(x$prob_dist[[2]]$parameters),
+            as.character(x$prob_dist[[2]]$parameters)
+          )
+        )
+      )
+    } else {
+      writeLines(
+        c(
+          sprintf("Extrinsic Distribution: %s", x$prob_dist[[2]]),
+          sprintf("Parameters:"),
+          sprintf(
+            "  %s: %s",
+            names(unlist(distributional::parameters(x$prob_dist[[2]]))),
+            as.character(unlist(distributional::parameters(x$prob_dist[[2]])))
+          )
+        )
+      )
+    }
   }
 
   invisible(x)
