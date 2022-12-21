@@ -1,4 +1,4 @@
-url: ~
+url: https://epiverse-trace.github.io/epiparameter
 template:
   bootstrap: 5
   includes:
