@@ -8,7 +8,8 @@ stored in the \code{epiparameter} library.}
 pathogen_summary(pathogen)
 }
 \arguments{
-\item{pathogen}{A \code{character} specifying pathogen of interest}
+\item{pathogen}{A character string with the name of the causative agent of
+disease, or NULL if not known}
 }
 \value{
 An instance of a \code{epidist_tbl} class
