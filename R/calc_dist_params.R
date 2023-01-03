@@ -65,7 +65,7 @@ calc_dist_params <- function(prob_dist,
     )
   } else {
     message("No adequate summary statistics available to calculate the
-    parameters of the gamma distribution")
+              parameters of the gamma distribution")
     params <- NULL
   }
 

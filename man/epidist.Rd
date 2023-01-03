@@ -2,70 +2,102 @@
 % Please edit documentation in R/epidist.R
 \name{epidist}
 \alias{epidist}
-\title{Distribution (PDF, CDF, PMF) and its parameters for epidemiological
-characteristics of a pathogen}
+\title{Create an \code{epidist} object}
 \usage{
 epidist(
-  pathogen,
-  delay_dist = c("incubation", "onset_to_admission", "onset_to_death", "serial_interval",
-    "generation_time"),
-  study = NULL
+  disease,
+  pathogen = NULL,
+  epi_distribution,
+  prob_distribution = NULL,
+  prob_distribution_params = NULL,
+  uncertainty = NULL,
+  summary_stats = create_epidist_summary_stats(),
+  citation = create_epidist_citation(),
+  metadata = create_epidist_metadata(),
+  method_assessment = create_epidist_method_assessment(),
+  discretise = FALSE,
+  truncation = NULL,
+  notes = NULL
 )
 }
 \arguments{
-\item{pathogen}{A \code{character} specifying pathogen of interest}
+\item{disease}{A character string with name of the infectious disease}
 
-\item{delay_dist}{A \code{character} specifying type of parameter: \code{"incubation"},
-\code{"onset_to_admission"}, \code{"onset_to_death"}}
+\item{pathogen}{A character string with the name of the causative agent of
+disease, or NULL if not known}
 
-\item{study}{A \code{character} specifying dataset to use. Defaults to study
-with largest sample size.}
+\item{epi_distribution}{A character string with the name of the
+epidemiological distribution type}
+
+\item{prob_distribution}{A character string specifying the probability
+distribution}
+
+\item{prob_distribution_params}{A named vector of probability distribution
+parameters}
+
+\item{uncertainty}{Either a list of named vectors with the uncertainty around
+the probability distribution parameters or NULL when uncertainty around the
+parameter estimates is unknown}
+
+\item{summary_stats}{A list of summary statistics}
+
+\item{citation}{A character string with the citation of the source of the
+data or the paper that inferred the distribution parameters}
+
+\item{metadata}{A list of metadata, this can include: sample size, whether
+the disease is vector-borne, etc. It is assumed that the disease is not
+vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
+delay distribution such as extrinsic incubation period) unless
+\code{vector_borne = TRUE} is contained in the metadata}
+
+\item{method_assessment}{A list of methodological aspects assessed}
+
+\item{discretise}{A boolean logical whether the distribution is discretised.
+Default is FALSE which assumes a continuous probability distribution}
+
+\item{truncation}{A numeric specifying the truncation point if the inferred
+distribution was truncated, NULL if not or unknown.}
+
+\item{notes}{A character string with any additional information about the
+data, inference method or disease.}
 }
 \value{
-Produces an object of class \code{epidist} which is composed of:
-\itemize{
-\item \code{pathogen}: The pathogen of interest
-\item \code{dist}: The best-fit distribution from the literature, either from the
-study with the largest sample size (default) or a specific study (using the
-\code{study} argument)
-\item \code{delay_dist}: The metric of interest, could be either "incubation",
-"onset_to_admission", or "onset_to_death"
-\item \code{param}: The parameters of the distribution
-\item \code{pmf}, \code{pdf}, \code{cdf}: The distributions: probability mass function (\code{pmf}),
-probability density function (\code{pdf}) and cumulative distribution function
-(\code{cdf})
-}
+An \code{epidist} object
 }
 \description{
-Parametric probability distribution (lognormal, gamma, or weibull) for the
-epidemiological characteristics (incubation period, onset to admission,
-onset to death, and serial interval) of various pathogens. The distributions
-and associated best-fit parameters can be used to inform modelling and
-estimation of other epidemiological metrics (e.g. reproduction number) and
-public health decisions (e.g. quarantine period).
+The \code{epidist} class is used to store epidemiological parameters
+for a single disease. These epidemiological parameters cover a variety of
+aspects including delay distributions (e.g. incubation periods and serial
+intervals, among others) and offspring distributions.
 }
 \examples{
-\dontrun{
-# list_distributions() will show which pathogens are available for each
-# metric here we search for which incubation periods are available
-list_distributions(delay_dist = "incubation")
-
-# example of epidist() using incubation period for ebola
-epidist(pathogen = "ebola", delay_dist = "incubation")
-
-# when more than one study is available in the database a study can be
-# specified
-epidist(
-  pathogen = "MERS_CoV",
-  delay_dist = "incubation",
-  study = "Cauchemez_et_al"
+ebola_incubation <- epidist(
+  disease = "ebola",
+  pathogen = "ebola_virus",
+  epi_distribution = "incubation",
+  prob_distribution = "gamma",
+  prob_distribution_params = c(shape = 1, scale = 1),
+  uncertainty = NULL,
+  summary_stats = create_epidist_summary_stats(
+    mean = 2,
+    sd = 1
+  ),
+  citation = create_epidist_citation(
+    author = "Smith_etal",
+    year = 2010,
+    DOI = "10.19832/j.1366-9516.2012.09147.x"
+  ),
+  metadata = create_epidist_metadata(
+    sample_size = 10,
+    region = "UK",
+    vector_borne = FALSE,
+    inference_method = "MLE"
+  ),
+  method_assessment = create_epidist_method_assessment(
+    censorred = TRUE
+  ),
+  discretise = FALSE,
+  truncation = NULL,
+  notes = "No notes"
 )
-
-# example using onset to admission as the metric
-epidist(pathogen = "ebola", delay_dist = "onset_to_death")
 }
-}
-\author{
-Adam Kucharski
-}
-\keyword{incubation}

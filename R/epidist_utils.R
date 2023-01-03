@@ -20,7 +20,13 @@ create_epidist_metadata <- function(sample_size = NULL,
                                     inference_method = NULL) {
 
   # check input
-  checkmate::assert_number(sample_size, na.ok = TRUE, lower = 0, finite = TRUE, null.ok = TRUE)
+  checkmate::assert_number(
+    sample_size,
+    na.ok = TRUE,
+    lower = 0,
+    finite = TRUE,
+    null.ok = TRUE
+  )
   checkmate::assert_character(region, null.ok = TRUE)
   checkmate::assert_logical(vector_borne, len = 1)
   checkmate::assert_character(vector, null.ok = TRUE)
