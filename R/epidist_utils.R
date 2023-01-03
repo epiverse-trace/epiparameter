@@ -1,3 +1,57 @@
+#' A helper function when creating uncertainty for the parameters of the
+#' distribution for the epidist object
+#'
+#' @param ci A numeric vector of length two with the lower and upper bound of
+#' the confidence interval or credible interval
+#' @param ci_interval A numeric specifying the interval for the ci, e.g. 95 is
+#' 95% ci
+#' @param ci_type A character string, either "confidence interval" or "credible
+#' interval"
+#'
+#' @return Numeric vector with an attribute
+#' @export
+#'
+#' @examples
+#' a = 1
+create_epidist_uncertainty <- function(ci = NULL, ci_interval, ci_type) {
+  # when no uncertainty is given
+  if (is.null(ci)) return(NULL)
+
+  if (!is.list(ci)) {
+    ci <- list(ci)
+  }
+
+  if (!is.list(ci_interval)) {
+    ci_interval <- as.list(ci_interval)
+  }
+
+  if (!is.list(ci_type)) {
+    ci_type <- as.list(ci_type)
+  }
+
+  # check input
+  checkmate::assert_list(ci)
+  checkmate::assert_list(ci_interval)
+  checkmate::assert_list(ci_type)
+  lapply(ci, checkmate::assert_numeric, len = 2)
+  lapply(ci_interval, checkmate::assert_number)
+  lapply(ci_type, checkmate::assert_character)
+  stopifnot(
+    "ci_type must be either 'confidence interval or credible interval" =
+      all(ci_type %in% c("confidence interval", "credible interval"))
+  )
+
+  # add ci info as attribute to ci vector
+  names(ci_interval) <- ci_type
+  for (i in seq_along(ci)) {
+    attributes(ci[[i]]) <- ci_interval[i]
+  }
+
+  # return ci
+  ci
+}
+
+
 #' A helper function when creating an epidist object to create a metadata list
 #' with sensible defaults, type checking and arguments to help remember metadata
 #' list structure (element names)
