@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/404.html</loc>
   </url>
   <url>
-    <loc>/CONTRIBUTING.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/articles/epiparameter.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/articles/epiparameter.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/articles/index.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/index.html</loc>
   </url>
   <url>
-    <loc>/reference/calc_disc_dist_quantile.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/calc_disc_dist_quantile.html</loc>
   </url>
   <url>
-    <loc>/reference/check_optim_conv.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/check_optim_conv.html</loc>
   </url>
   <url>
-    <loc>/reference/epidist.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/epidist.html</loc>
   </url>
   <url>
-    <loc>/reference/extract_param.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param.html</loc>
   </url>
   <url>
-    <loc>/reference/extract_param_percentile.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param_percentile.html</loc>
   </url>
   <url>
-    <loc>/reference/extract_param_range.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param_range.html</loc>
   </url>
   <url>
-    <loc>/reference/fit_function_lnorm_range.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/fit_function_lnorm_range.html</loc>
   </url>
   <url>
-    <loc>/reference/gamma_meansd2shapescale.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/gamma_meansd2shapescale.html</loc>
   </url>
   <url>
-    <loc>/reference/gamma_shapescale2meansd.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/gamma_shapescale2meansd.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/list_distributions.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/list_distributions.html</loc>
   </url>
   <url>
-    <loc>/reference/lnorm_meansd2musigma.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/lnorm_meansd2musigma.html</loc>
   </url>
   <url>
-    <loc>/reference/lnorm_musigma2meansd.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/lnorm_musigma2meansd.html</loc>
   </url>
   <url>
-    <loc>/reference/pathogen_summary.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/pathogen_summary.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.epidist.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/plot.epidist.html</loc>
   </url>
   <url>
-    <loc>/reference/weibull_meansd2shapescale.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/weibull_meansd2shapescale.html</loc>
   </url>
   <url>
-    <loc>/reference/weibull_shapescale2meansd.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/weibull_shapescale2meansd.html</loc>
   </url>
 </urlset>
