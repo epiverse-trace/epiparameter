@@ -220,11 +220,8 @@ new_epidist <- function(disease = list(),
       }
     }
 
-
-    # TODO: calculate standard deviation from confidence interval
-
-    # TODO: handle parameter uncertainty
-
+    # name parameter uncertainty
+    names(uncertainty) <- unlist(lapply(prob_dist_params, names))
 
     quants <- c(0.025, 0.05, 0.25, 0.5, 0.75, 0.875, 0.95, 0.975)
     if (isTRUE(discretise)) {
@@ -349,7 +346,7 @@ epidist <- function(disease,
                     epi_distribution,
                     prob_distribution = NULL,
                     prob_distribution_params = NULL,
-                    uncertainty = NULL,
+                    uncertainty = create_epidist_uncertainty(),
                     summary_stats = create_epidist_summary_stats(),
                     citation = create_epidist_citation(),
                     metadata = create_epidist_metadata(),
@@ -357,10 +354,18 @@ epidist <- function(disease,
                     discretise = FALSE,
                     truncation = NULL,
                     notes = NULL) {
+
   # put prob_distribution and prob_distribution in list if not already
   if (!is.list(prob_distribution)) {
     prob_distribution <- as.list(prob_distribution)
   }
+
+  # check whether ci has been provided for each parameter
+  stopifnot(
+    "uncertainty must be provided for each parameter" =
+      is.null(uncertainty) ||
+      length(prob_distribution_params) == length(uncertainty)
+  )
 
   if (!is.list(prob_distribution_params)) {
     prob_distribution_params <- list(prob_distribution_params)
