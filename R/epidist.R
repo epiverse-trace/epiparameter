@@ -230,7 +230,7 @@ new_epidist <- function(disease = list(),
     if (isTRUE(discretise)) {
       quantiles <- prob_dist[[i]]$q(quants)
     } else {
-      quantiles <- quantile(prob_dist[[i]], quants)[[1]]
+      quantiles <- stats::quantile(prob_dist[[i]], quants)[[1]]
     }
 
     names(quantiles) <- c(
@@ -521,4 +521,78 @@ print.epidist <- function(x, ...) {
   }
 
   invisible(x)
+}
+
+#' @export
+density <- function(x, ...) UseMethod("density")
+
+#' PDF, CDF, PMF, quantiles and random number generation for epidist objects
+#'
+#' @description The epidist object holds a probability distribution which can
+#' either be a continuous or discrete distribution. These are the density,
+#' cumulative distribution, quantile and random number generation functions.
+#' These operate on any distribution that can be included in an epidist object.
+#'
+#' @param x An epidist object
+#' @param at The quantiles to evaluate at
+#'
+#' @rdname epidist_distribution_functions
+#'
+#' @return Numeric vector
+#' @export
+density.epidist <- function(x, at, ...) {
+  if (inherits(x$prob_dist[[1]], "distcrete")) {
+    out <- x$prob_dist[[1]]$d(at, ...)
+  } else {
+    out <- stats::density(x$prob_dist[[1]], at, ...)
+  }
+  out
+}
+
+#' @export
+cdf <- function(x, ...) UseMethod("cdf")
+
+#' @param x An epidist object
+#' @param q The quantiles to evaluate at
+#' @rdname epidist_distribution_functions
+#' @export
+cdf.epidist <- function(x, q, ...) {
+  if (inherits(x$prob_dist[[1]], "distcrete")) {
+    out <- x$prob_dist[[1]]$p(q, ...)
+  } else {
+    out <- distributional::cdf(x$prob_dist[[1]], q, ...)
+  }
+  out
+}
+
+#' @export
+quantile <- function(x, ...) UseMethod("quantile")
+
+#' @param x An epidist object
+#' @param p The probabilities to evaluate at
+#' @rdname epidist_distribution_functions
+#' @export
+quantile.epidist <- function(x, p, ...) {
+  if (inherits(x$prob_dist[[1]], "distcrete")) {
+    out <- x$prob_dist[[1]]$q(p, ...)
+  } else {
+    out <- stats::quantile(x$prob_dist[[1]], p, ...)
+  }
+  out
+}
+
+#' @export
+generate <- function(x, ...) UseMethod("generate")
+
+#' @param x An epidist object
+#' @param time The number of random samples
+#' @rdname epidist_distribution_functions
+#' @export
+generate.epidist <- function(x, times, ...) {
+  if (inherits(x$prob_dist[[1]], "distcrete")) {
+    out <- x$prob_dist[[1]]$r(times)
+  } else {
+    out <- distributional::generate(x$prob_dist[[1]], times)[[1]]
+  }
+  out
 }
