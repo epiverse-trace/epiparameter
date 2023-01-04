@@ -499,3 +499,18 @@ is_valid_vector_borne <- function(prob_dist,
   is_valid_vector_borne
 
 }
+
+#' Standardises the names of epidemiological distributions
+#'
+#' @param epi_dist A character string with the name of the distribution
+#'
+#' @return Character string
+#' @export
+#'
+#' @examples
+#' clean_epidist_name("Incubation_period")
+clean_epidist_name <- function(epi_dist) {
+  out <- gsub(pattern = "_", replacement = " ", x = epi_dist)
+  out <- tolower(out)
+  out
+}
