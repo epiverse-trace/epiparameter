@@ -566,11 +566,13 @@ cdf <- function(x, ...) UseMethod("cdf")
 #' @rdname epidist_distribution_functions
 #' @export
 cdf.epidist <- function(x, q, ...) {
+  unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
   if (inherits(x$prob_dist[[1]], "distcrete")) {
-    out <- x$prob_dist[[1]]$p(q, ...)
+    out <- lapply(x$prob_dist, function(y, q) { y$p(q)}, q = q)
   } else {
-    out <- distributional::cdf(x$prob_dist[[1]], q, ...)
+    out <- lapply(x$prob_dist, distributional::cdf, q)
   }
+  out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
 }
 
