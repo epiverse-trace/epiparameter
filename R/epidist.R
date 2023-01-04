@@ -468,11 +468,13 @@ validate_epidist <- function(epidist) {
 
 #' @export
 print.epidist <- function(x, ...) {
+
+  epi_dist <- clean_epidist_name(x$epi_dist)
   writeLines(
     c(
       sprintf("Epidist object \n"),
       sprintf("Disease: %s", x$disease$disease),
-      sprintf("Epi Distribution: %s", x$epi_dist)
+      sprintf("Epi Distribution: %s", epi_dist)
     )
   )
   if (inherits(x$prob_dist[[1]], "distcrete")) {
