@@ -221,7 +221,9 @@ new_epidist <- function(disease = list(),
     }
 
     # name parameter uncertainty
-    names(uncertainty) <- unlist(lapply(prob_dist_params, names))
+    if (!is.null(uncertainty)) {
+      names(uncertainty) <- unlist(lapply(prob_dist_params, names))
+    }
 
     quants <- c(0.025, 0.05, 0.25, 0.5, 0.75, 0.875, 0.95, 0.975)
     if (isTRUE(discretise)) {
