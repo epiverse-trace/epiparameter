@@ -599,9 +599,17 @@ generate <- function(x, ...) UseMethod("generate")
 #' @export
 generate.epidist <- function(x, times, ...) {
   if (inherits(x$prob_dist[[1]], "distcrete")) {
-    out <- x$prob_dist[[1]]$r(times)
+    unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
+    out <- lapply(
+      x$prob_dist, function(y, times) { y$r(n = times) }, times = times
+    )
+    out <- if (unlist) unlist(out, recursive = FALSE) else out
   } else {
-    out <- distributional::generate(x$prob_dist[[1]], times)[[1]]
+    recursive <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
+    out <- unlist(
+      lapply(x$prob_dist, distributional::generate, times),
+      recursive = recursive
+    )
   }
   out
 }
