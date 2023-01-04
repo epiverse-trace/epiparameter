@@ -550,11 +550,13 @@ density <- function(x, ...) UseMethod("density")
 #' @return Numeric vector
 #' @export
 density.epidist <- function(x, at, ...) {
+  unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
   if (inherits(x$prob_dist[[1]], "distcrete")) {
-    out <- x$prob_dist[[1]]$d(at, ...)
+    out <- lapply(x$prob_dist, function(y, at) { y$d(at) }, at = at)
   } else {
-    out <- stats::density(x$prob_dist[[1]], at, ...)
+    out <- lapply(x$prob_dist, stats::density, at = at)
   }
+  out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
 }
 
