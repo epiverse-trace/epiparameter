@@ -556,7 +556,7 @@ density.epidist <- function(x, at, ...) {
   } else {
     out <- lapply(x$prob_dist, stats::density, at = at)
   }
-  out <- if (unlist) unlist(out, recursive = FALSE) else out
+  out <- if (unlist) unlist(out, recursive = FALSE)
   out
 }
 
@@ -574,7 +574,7 @@ cdf.epidist <- function(x, q, ...) {
   } else {
     out <- lapply(x$prob_dist, distributional::cdf, q)
   }
-  out <- if (unlist) unlist(out, recursive = FALSE) else out
+  out <- if (unlist) unlist(out, recursive = FALSE)
   out
 }
 
@@ -592,7 +592,7 @@ quantile.epidist <- function(x, p, ...) {
   } else {
     out <- lapply(x$prob_dist, stats::quantile, p)
   }
-  out <- if (unlist) unlist(out, recursive = FALSE) else out
+  out <- if (unlist) unlist(out, recursive = FALSE)
   out
 }
 
@@ -609,7 +609,7 @@ generate.epidist <- function(x, times, ...) {
     out <- lapply(
       x$prob_dist, function(y, times) { y$r(n = times) }, times = times
     )
-    out <- if (unlist) unlist(out, recursive = FALSE) else out
+    out <- if (unlist) unlist(out, recursive = FALSE)
   } else {
     recursive <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
     out <- unlist(
