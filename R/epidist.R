@@ -582,11 +582,13 @@ quantile <- function(x, ...) UseMethod("quantile")
 #' @rdname epidist_distribution_functions
 #' @export
 quantile.epidist <- function(x, p, ...) {
+  unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
   if (inherits(x$prob_dist[[1]], "distcrete")) {
-    out <- x$prob_dist[[1]]$q(p, ...)
+    out <- lapply(x$prob_dist, function(y, p) { y$q(p) }, p = p)
   } else {
-    out <- stats::quantile(x$prob_dist[[1]], p, ...)
+    out <- lapply(x$prob_dist, stats::quantile, p)
   }
+  out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
 }
 
