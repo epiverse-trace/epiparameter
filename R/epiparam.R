@@ -73,11 +73,50 @@ epiparam <- function(epi_dist = c("all",
   epiparam
 }
 
-validate_epiparam <- function(x) {
-  if (!inherits(x, "epiparam")) {
+#' `epiparam` class validator
+#'
+#' @param epiparam An `epiparam` object
+#'
+#' @return Nothing, errors when invalid `epiparam` object is provided
+validate_epiparam <- function(epiparam) {
+  if (!inherits(epiparam, "epiparam")) {
     stop("Object should be of class epiparam")
   }
-  invisible(x)
+
+  # check for class invariants
+  stopifnot(
+    "epiparam object does not contain the correct columns" =
+      c("disease", "epi_distribution", "author", "year", "vector_borne",
+        "extrinsic", "prob_distribution", "discretised", "censorred",
+        "right_truncated", "phase_bias_adjusted", "DOI") %in%
+      colnames(epiparam),
+    "disease needs to be a character" =
+      is.character(epiparam$disease),
+    "epi_distribution needs to be a character" =
+      is.character(epiparam$epi_distribution),
+    "author must be a string" =
+      is.character(epiparam$author),
+    "year must be a numeric" =
+      is.numeric(epiparam$year),
+    "vector_borne must be a logical" =
+      is.logical(epiparam$vector_borne),
+    "extrinsic must be a logical" =
+      is.logical(epiparam$extrinsic),
+    "prob_distribution needs to be a character" =
+      is.character(epiparam$prob_distribution),
+    "discretised needs to be a logical" =
+      is.logical(epiparam$discretised),
+    "censorred needs to be a logical" =
+      is.logical(epiparam$censorred),
+    "right_truncated needs to be a logical" =
+      is.logical(epiparam$right_truncated),
+    "phase_biase_adjusted needs to be a logical" =
+      is.logical(epiparam$phase_bias_adjusted),
+    "DOI needs to be a character" =
+      is.character(epiparam$DOI)
+  )
+
+  invisible(epiparam)
 }
 
 #' Print method for epiparam class
