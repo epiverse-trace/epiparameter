@@ -129,3 +129,38 @@ format.epiparam <- function(x) {
   )
   invisible(x)
 }
+
+#' Summary method for epiparam class
+#'
+#' @param x epiparam object
+#'
+#' @return data frame of information
+#' @export
+#'
+#' @examples
+#' x <- epiparam()
+#' summary(x)
+summary.epiparam <- function(x) {
+  num_entries <- nrow(x)
+  num_diseases <- length(unique(x$disease))
+  num_delay_dist <- sum(
+    x$epi_distribution %in% c(
+      "incubation_period", "generation_time",
+      "serial_interval", "onset_to_death")
+  )
+  num_offspring_dist <- sum(x$epi_distribution %in% "offspring_distribution")
+  num_studies <- length(unique(x$DOI))
+  num_cont_dist <- nrow(x) - sum(x$discretised)
+  num_disc_dist <- sum(x$discetised)
+  num_vector_borne <- sum(x$extrinsic)
+  # return epiparam summary
+  list(num_entries = num_entries,
+       num_diseases = num_diseases,
+       num_delay_dist = num_delay_dist,
+       num_offspring_dist = num_offspring_dist,
+       num_studies = num_studies,
+       num_continuous_distributions = num_cont_dist,
+       num_discrete_distributions = num_disc_dist,
+       num_vector_borne_diseases = num_vector_borne
+  )
+}
