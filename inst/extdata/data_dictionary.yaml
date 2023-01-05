@@ -108,14 +108,22 @@ properties:
     description: >
       The probability distribution fit to the data and
       reported in the paper. Abbreviations of distributions
-      can used as long as they are non-ambiguous (see
-      examples). A probability distribution can be null in
-      cases when there are no available distributions
+      cannot be used, multiple words should be separated by
+      an underscore (see examples). A probability distribution
+      can be null in cases when there are no available distributions
       for a certain disease.
-    examples: ["gamma", "lnorm", "lognormal"]
+    examples: ["gamma", "lognormal", "negative_binomial"]
     type: array
     items:
       type: ["string", "null"]
+      enum:
+        - null
+        - gamma
+        - lognormal
+        - weibull
+        - poisson
+        - geometric
+        - negative_binomial
   inference_method:
     description: >
       The type of inference used to fit the delay
