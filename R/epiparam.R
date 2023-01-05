@@ -79,3 +79,53 @@ validate_epiparam <- function(x) {
   }
   invisible(x)
 }
+
+#' Print method for epiparam class
+#'
+#' @param x epiparam object
+#'
+#' @return Nothing (prints output)
+#' @export
+#'
+#' @examples
+#' epiparam <- epiparam(1)
+#' epiparam
+print.epiparam <- function(x) {
+  format(x)
+}
+
+#' Format method for epiparam class
+#'
+#' @param x epiparam object
+#'
+#' @return Nothing (prints output)
+#' @export
+#'
+#' @examples
+#' x <- epiparam()
+#' format(x)
+format.epiparam <- function(x) {
+  summ <- summary(x)
+  writeLines(
+    c(
+      sprintf("Epiparam object"),
+      sprintf("Number of distributions in library: %s", summ$num_entries),
+      sprintf("Number of diseases: %s", summ$num_diseases),
+      sprintf("Number of delay distributions: %s", summ$num_delay_dist),
+      sprintf("Number of offspring distributions: %s", summ$num_offspring_dist),
+      sprintf("Number of studies in library: %s", summ$num_studies),
+      sprintf("<Head of library>")
+    )
+  )
+  print(head(x)[c("disease", "epi_distribution", "prob_distribution")])
+  remaining_rows <- nrow(x) - 6
+  remaining_cols <- ncol(x) - 3
+  writeLines(
+    sprintf(
+      "<%s more rows & %s more cols not shown>",
+      remaining_rows,
+      remaining_cols
+    )
+  )
+  invisible(x)
+}
