@@ -5,7 +5,7 @@
 \title{A helper function when creating uncertainty for the parameters of the
 distribution for the epidist object}
 \usage{
-create_epidist_uncertainty(ci, ci_interval, ci_type)
+create_epidist_uncertainty(ci = NULL, ci_interval, ci_type)
 }
 \arguments{
 \item{ci}{A numeric vector of length two with the lower and upper bound of

@@ -10,7 +10,7 @@ epidist(
   epi_distribution,
   prob_distribution = NULL,
   prob_distribution_params = NULL,
-  uncertainty = NULL,
+  uncertainty = create_epidist_uncertainty(),
   summary_stats = create_epidist_summary_stats(),
   citation = create_epidist_citation(),
   metadata = create_epidist_metadata(),
