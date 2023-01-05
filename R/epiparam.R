@@ -157,8 +157,8 @@ format.epiparam <- function(x) {
     )
   )
   print(head(x)[c("disease", "epi_distribution", "prob_distribution")])
-  remaining_rows <- nrow(x) - 6
-  remaining_cols <- ncol(x) - 3
+  remaining_rows <- max(0, nrow(x) - 6)
+  remaining_cols <- max(0, ncol(x) - 3)
   writeLines(
     sprintf(
       "<%s more rows & %s more cols not shown>",
