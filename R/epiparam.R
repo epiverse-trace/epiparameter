@@ -164,3 +164,29 @@ summary.epiparam <- function(x) {
        num_vector_borne_diseases = num_vector_borne
   )
 }
+
+#' head method for epiparam class
+#'
+#' @param x epiparam object
+#'
+#' @return Data frame
+#' @export
+#'
+#' @examples
+#' head(epiparam())
+head.epiparam <- function(x) {
+  head(as.data.frame(x))
+}
+
+#' tail method for epiparam class
+#'
+#' @param x epiparam object
+#'
+#' @return Data frame
+#' @export
+#'
+#' @examples
+#' tail(epiparam())
+tail.epiparam <- function(x) {
+  tail(as.data.frame(x))
+}
