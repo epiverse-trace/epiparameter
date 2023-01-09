@@ -345,17 +345,17 @@ new_epidist <- function(disease = list(),
 #'   notes = "No notes"
 #' )
 epidist <- function(disease,
-                    pathogen = NULL,
+                    pathogen = NA_character_,
                     epi_distribution,
-                    prob_distribution = NULL,
-                    prob_distribution_params = NULL,
+                    prob_distribution = NA_character_,
+                    prob_distribution_params = NA_real_,
                     uncertainty = create_epidist_uncertainty(),
                     summary_stats = create_epidist_summary_stats(),
                     citation = create_epidist_citation(),
                     metadata = create_epidist_metadata(),
                     method_assessment = create_epidist_method_assessment(),
                     discretise = FALSE,
-                    truncation = NULL,
+                    truncation = NA_real_,
                     notes = NULL) {
 
   # put prob_distribution and prob_distribution in list if not already
@@ -376,9 +376,9 @@ epidist <- function(disease,
 
   # check input
   checkmate::assert_character(disease, min.len = 1)
-  checkmate::assert_character(pathogen, null.ok = TRUE)
+  checkmate::assert_character(pathogen)
   checkmate::assert_character(epi_distribution, len = 1)
-  checkmate::assert_list(prob_distribution, null.ok = TRUE)
+  checkmate::assert_list(prob_distribution)
   lapply(
     prob_distribution,
     checkmate::assert_character,
@@ -403,7 +403,7 @@ epidist <- function(disease,
   checkmate::assert_character(citation, len = 1)
   checkmate::assert_list(metadata)
   checkmate::assert_list(method_assessment)
-  checkmate::assert_number(truncation, null.ok = TRUE)
+  checkmate::assert_number(truncation, na.ok = TRUE)
   checkmate::assert_logical(discretise)
   checkmate::assert_character(notes, null.ok = TRUE)
 
