@@ -24,6 +24,14 @@ new_epiparam <- function(epi_dist = character(),
     mustWork = TRUE
   ))
 
+  # convert intervals from strings to numeric vectors
+  ci_cols_index <- grep(pattern = "_ci$", colnames(params))
+  for (i in ci_cols_index) {
+    split_ci <- strsplit(as.character(params[, i]), split = ",")
+    split_ci <- lapply(split_ci, as.numeric)
+    params[[i]] <- split_ci
+  }
+
   # order params by pathogen, delay dist and study
   params <- params[order(
     tolower(params$disease),
