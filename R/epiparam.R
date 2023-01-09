@@ -28,7 +28,9 @@ new_epiparam <- function(epi_dist = character(),
   ci_cols_index <- grep(pattern = "_ci$", colnames(params))
   for (i in ci_cols_index) {
     split_ci <- strsplit(as.character(params[, i]), split = ",")
-    split_ci <- lapply(split_ci, as.numeric)
+    split_ci <- lapply(split_ci, function(x) {
+      if (all(is.na(x))) c(NA_real_, NA_real_) else as.numeric(x)
+    })
     params[[i]] <- split_ci
   }
 
