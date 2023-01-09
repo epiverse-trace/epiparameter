@@ -13,9 +13,9 @@
 #'
 #' @examples
 #' a = 1
-create_epidist_uncertainty <- function(ci = NULL, ci_interval, ci_type) {
+create_epidist_uncertainty <- function(ci = NA_real_, ci_interval, ci_type) {
   # when no uncertainty is given
-  if (is.null(ci)) return(NULL)
+  if (is.na(ci)) return(NA_real_)
 
   if (!is.list(ci)) {
     ci <- list(ci)
@@ -34,7 +34,7 @@ create_epidist_uncertainty <- function(ci = NULL, ci_interval, ci_type) {
   checkmate::assert_list(ci_interval)
   checkmate::assert_list(ci_type)
   lapply(ci, checkmate::assert_numeric, len = 2)
-  lapply(ci_interval, checkmate::assert_number)
+  lapply(ci_interval, checkmate::assert_number, na.ok = TRUE)
   lapply(ci_type, checkmate::assert_character)
   stopifnot(
     "ci_type must be either 'confidence interval or credible interval" =
@@ -67,11 +67,11 @@ create_epidist_uncertainty <- function(ci = NULL, ci_interval, ci_type) {
 #'
 #' @examples
 #' a = 1
-create_epidist_metadata <- function(sample_size = NULL,
-                                    region = NULL,
+create_epidist_metadata <- function(sample_size = NA_integer_,
+                                    region = NA_character_,
                                     vector_borne = FALSE,
-                                    vector = NULL,
-                                    inference_method = NULL) {
+                                    vector = NA_character_,
+                                    inference_method = NA_character_) {
 
   # check input
   checkmate::assert_number(
@@ -86,7 +86,7 @@ create_epidist_metadata <- function(sample_size = NULL,
   checkmate::assert_character(vector, null.ok = TRUE)
   checkmate::assert_character(inference_method, null.ok = TRUE)
 
-  if (isFALSE(vector_borne) && !is.null(vector)) {
+  if (isFALSE(vector_borne) && !is.na(vector)) {
     stop("A vector is given for a non-vector-borne disease please check input")
   }
 
@@ -146,48 +146,49 @@ create_epidist_metadata <- function(sample_size = NULL,
 #'
 #' @examples
 #' create_epidist_summary_stats(mean = 5, sd = 2)
-create_epidist_summary_stats <- function(mean = NULL,
-                                         mean_ci = NULL,
-                                         mean_ci_interval = NULL,
-                                         sd = NULL,
-                                         sd_ci = NULL,
-                                         sd_ci_interval = NULL,
-                                         median = NULL,
-                                         median_ci = NULL,
-                                         median_ci_interval = NULL,
-                                         dispersion = NULL,
-                                         dispersion_ci = NULL,
-                                         dispersion_ci_interval = NULL,
-                                         lower_range = NULL,
-                                         upper_range = NULL,
-                                         q_025 = NULL,
-                                         q_05 = NULL,
-                                         q_25 = NULL,
-                                         q_75 = NULL,
-                                         q_875 = NULL,
-                                         q_95 = NULL,
-                                         q_975 = NULL) {
+create_epidist_summary_stats <- function(mean = NA_real_,
+                                         mean_ci = c(NA_real_, NA_real_),
+                                         mean_ci_interval = NA_real_,
+                                         sd = NA_real_,
+                                         sd_ci = c(NA_real_, NA_real_),
+                                         sd_ci_interval = NA_real_,
+                                         median = NA_real_,
+                                         median_ci = c(NA_real_, NA_real_),
+                                         median_ci_interval = NA_real_,
+                                         dispersion = NA_real_,
+                                         dispersion_ci = c(NA_real_, NA_real_),
+                                         dispersion_ci_interval = NA_real_,
+                                         lower_range = NA_real_,
+                                         upper_range = NA_real_,
+                                         q_025 = NA_real_,
+                                         q_05 = NA_real_,
+                                         q_25 = NA_real_,
+                                         q_75 = NA_real_,
+                                         q_875 = NA_real_,
+                                         q_95 = NA_real_,
+                                         q_975 = NA_real_) {
+
   # check input
-  checkmate::assert_number(mean, null.ok = TRUE)
-  checkmate::assert_numeric(mean_ci, len = 2, null.ok = TRUE)
-  checkmate::assert_number(mean_ci_interval, null.ok = TRUE)
-  checkmate::assert_number(sd, null.ok = TRUE)
-  checkmate::assert_numeric(sd_ci, len = 2, null.ok = TRUE)
-  checkmate::assert_number(sd_ci_interval, null.ok = TRUE)
-  checkmate::assert_number(median, null.ok = TRUE)
-  checkmate::assert_numeric(median_ci, len = 2, null.ok = TRUE)
-  checkmate::assert_number(median_ci_interval, null.ok = TRUE)
-  checkmate::assert_number(dispersion, null.ok = TRUE)
-  checkmate::assert_numeric(dispersion_ci, len = 2, null.ok = TRUE)
-  checkmate::assert_number(dispersion_ci_interval, null.ok = TRUE)
-  checkmate::assert_number(lower_range, null.ok = TRUE)
-  checkmate::assert_number(upper_range, null.ok = TRUE)
-  checkmate::assert_number(q_025, null.ok = TRUE)
-  checkmate::assert_number(q_05, null.ok = TRUE)
-  checkmate::assert_number(q_25, null.ok = TRUE)
-  checkmate::assert_number(q_75, null.ok = TRUE)
-  checkmate::assert_number(q_95, null.ok = TRUE)
-  checkmate::assert_number(q_975, null.ok = TRUE)
+  checkmate::assert_number(mean, na.ok = TRUE)
+  checkmate::assert_numeric(mean_ci, len = 2, any.missing = TRUE)
+  checkmate::assert_number(mean_ci_interval, na.ok = TRUE)
+  checkmate::assert_number(sd, na.ok = TRUE)
+  checkmate::assert_numeric(sd_ci, len = 2, any.missing = TRUE)
+  checkmate::assert_number(sd_ci_interval, na.ok = TRUE)
+  checkmate::assert_number(median, na.ok = TRUE)
+  checkmate::assert_numeric(median_ci, len = 2, any.missing = TRUE)
+  checkmate::assert_number(median_ci_interval, na.ok = TRUE)
+  checkmate::assert_number(dispersion, na.ok = TRUE)
+  checkmate::assert_numeric(dispersion_ci, len = 2, any.missing = TRUE)
+  checkmate::assert_number(dispersion_ci_interval, na.ok = TRUE)
+  checkmate::assert_number(lower_range, na.ok = TRUE)
+  checkmate::assert_number(upper_range, na.ok = TRUE)
+  checkmate::assert_number(q_025, na.ok = TRUE)
+  checkmate::assert_number(q_05, na.ok = TRUE)
+  checkmate::assert_number(q_25, na.ok = TRUE)
+  checkmate::assert_number(q_75, na.ok = TRUE)
+  checkmate::assert_number(q_95, na.ok = TRUE)
+  checkmate::assert_number(q_975, na.ok = TRUE)
 
   # return list of summary stats
   list(
@@ -249,26 +250,26 @@ create_epidist_summary_stats <- function(mean = NULL,
 #'   year = 2002,
 #'   DOI = "10.19832/j.1366-9516.2012.09147.x"
 #' )
-create_epidist_citation <- function(author = NULL,
-                                    year = NULL,
-                                    PMID = NULL,
-                                    DOI = NULL,
+create_epidist_citation <- function(author = NA_character_,
+                                    year = NA_integer_,
+                                    PMID = NA_character_,
+                                    DOI = NA_character_,
                                     use_PMID = FALSE) {
   # check input
-  checkmate::assert_character(author, null.ok = TRUE)
-  checkmate::assert_number(year, null.ok = TRUE)
-  checkmate::assert_number(PMID, null.ok = TRUE)
-  checkmate::assert_character(DOI, null.ok = TRUE)
+  checkmate::assert_character(author)
+  checkmate::assert_number(year, na.ok = TRUE)
+  checkmate::assert_number(PMID, na.ok = TRUE)
+  checkmate::assert_character(DOI)
   checkmate::assert_logical(use_PMID, len = 1)
 
-  if (is.null(author) || is.null(year) || is.null (DOI)) {
+  if (is.na(author) || is.na(year) || is.na(DOI)) {
     message(
       "Citation cannot be created as either author, year or DOI is missing"
     )
     return("No citation available")
   }
 
-  if (isTRUE(use_PMID) && is.null(PMID)) {
+  if (isTRUE(use_PMID) && is.na(PMID)) {
     stop("use_PMID set to TRUE but PMID not provided")
   }
 
@@ -305,13 +306,13 @@ create_epidist_citation <- function(author = NULL,
 #'   right_truncated = FALSE,
 #'   phase_bias_adjusted = FALSE
 #' )
-create_epidist_method_assessment <- function(censorred = NULL,
-                                             right_truncated = NULL,
-                                             phase_bias_adjusted = NULL) {
+create_epidist_method_assessment <- function(censorred = NA,
+                                             right_truncated = NA,
+                                             phase_bias_adjusted = NA) {
   # check input
-  checkmate::assert_logical(censorred, len = 1, null.ok = TRUE)
-  checkmate::assert_logical(right_truncated, len = 1, null.ok = TRUE)
-  checkmate::assert_logical(phase_bias_adjusted, len = 1, null.ok = TRUE)
+  checkmate::assert_logical(censorred, len = 1)
+  checkmate::assert_logical(right_truncated, len = 1)
+  checkmate::assert_logical(phase_bias_adjusted, len = 1)
 
   # return method assessment list
   list(
