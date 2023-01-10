@@ -207,7 +207,7 @@ new_epidist <- function(disease = list(),
     }
 
     # apply truncation to distribution if specified
-    if (is.numeric(truncation)) {
+    if (!is.na(truncation)) {
       if (discretise) {
         warning(
           "Truncation is not yet implemented for discrete distributions",
@@ -222,7 +222,7 @@ new_epidist <- function(disease = list(),
     }
 
     # name parameter uncertainty
-    if (!is.null(uncertainty)) {
+    if (!is.na(uncertainty)) {
       names(uncertainty) <- unlist(lapply(prob_dist_params, names))
     }
 
