@@ -366,7 +366,7 @@ epidist <- function(disease,
   # check whether ci has been provided for each parameter
   stopifnot(
     "uncertainty must be provided for each parameter" =
-      is.null(uncertainty) ||
+      is.na(uncertainty) ||
       length(prob_distribution_params) == length(uncertainty)
   )
 
