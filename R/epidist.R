@@ -410,14 +410,15 @@ format.epidist <- function(x, header = TRUE, vb = NULL) {
 #' @export
 density <- function(x, ...) UseMethod("density")
 
-#' PDF, CDF, PMF, quantiles and random number generation for epidist objects
+#' PDF, CDF, PMF, quantiles and random number generation for `epidist` and
+#' `vb_epidist` objects
 #'
 #' @description The epidist object holds a probability distribution which can
 #' either be a continuous or discrete distribution. These are the density,
 #' cumulative distribution, quantile and random number generation functions.
 #' These operate on any distribution that can be included in an epidist object.
 #'
-#' @param x An epidist object
+#' @param x An epidist or vb_epidist object
 #' @param at The quantiles to evaluate at
 #'
 #' @rdname epidist_distribution_functions
@@ -426,10 +427,10 @@ density <- function(x, ...) UseMethod("density")
 #' @export
 density.epidist <- function(x, at, ...) {
   unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
-  if (inherits(x$prob_dist[[1]], "distcrete")) {
-    out <- lapply(x$prob_dist, function(y, at) { y$d(at) }, at = at)
+  if (inherits(x$prob_dist, "distcrete")) {
+    out <- x$prob_dist$d(at)
   } else {
-    out <- lapply(x$prob_dist, stats::density, at = at)
+    out <- stats::density(x$prob_dist, at = at)
   }
   out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
@@ -438,16 +439,16 @@ density.epidist <- function(x, at, ...) {
 #' @export
 cdf <- function(x, ...) UseMethod("cdf")
 
-#' @param x An epidist object
+#' @inheritParams density.epidist
 #' @param q The quantiles to evaluate at
 #' @rdname epidist_distribution_functions
 #' @export
 cdf.epidist <- function(x, q, ...) {
   unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
-  if (inherits(x$prob_dist[[1]], "distcrete")) {
-    out <- lapply(x$prob_dist, function(y, q) { y$p(q)}, q = q)
+  if (inherits(x$prob_dist, "distcrete")) {
+    out <- x$prob_dist$p(q)
   } else {
-    out <- lapply(x$prob_dist, distributional::cdf, q)
+    out <- distributional::cdf(x$prob_dist, q = q)
   }
   out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
@@ -456,16 +457,16 @@ cdf.epidist <- function(x, q, ...) {
 #' @export
 quantile <- function(x, ...) UseMethod("quantile")
 
-#' @param x An epidist object
+#' @inheritParams density.epidist
 #' @param p The probabilities to evaluate at
 #' @rdname epidist_distribution_functions
 #' @export
 quantile.epidist <- function(x, p, ...) {
   unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
-  if (inherits(x$prob_dist[[1]], "distcrete")) {
-    out <- lapply(x$prob_dist, function(y, p) { y$q(p) }, p = p)
+  if (inherits(x$prob_dist, "distcrete")) {
+    out <- x$prob_dist$q(p)
   } else {
-    out <- lapply(x$prob_dist, stats::quantile, p)
+    out <- stats::quantile(x$prob_dist, p = p)
   }
   out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
@@ -474,23 +475,22 @@ quantile.epidist <- function(x, p, ...) {
 #' @export
 generate <- function(x, ...) UseMethod("generate")
 
-#' @param x An epidist object
+#' @inheritParams density.epidist
 #' @param time The number of random samples
 #' @rdname epidist_distribution_functions
 #' @export
 generate.epidist <- function(x, times, ...) {
-  if (inherits(x$prob_dist[[1]], "distcrete")) {
+
+  # check times is a single number for consistent behaviour
+  checkmate::assert_number(times)
+  if (inherits(x$prob_dist, "distcrete")) {
     unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
-    out <- lapply(
-      x$prob_dist, function(y, times) { y$r(n = times) }, times = times
-    )
+    out <- x$prob_dist$r(n = times)
     out <- if (unlist) unlist(out, recursive = FALSE) else out
   } else {
     recursive <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
-    out <- unlist(
-      lapply(x$prob_dist, distributional::generate, times),
-      recursive = recursive
-    )
+    out <- distributional::generate(x$prob_dist, times = times)
+    out <- unlist(out, recursive = recursive)
   }
   out
 }
