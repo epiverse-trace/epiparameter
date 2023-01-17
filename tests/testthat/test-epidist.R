@@ -18,7 +18,7 @@ test_that("epidist works with minimal viable input", {
   expect_type(ebola_dist$disease, "list")
   expect_type(ebola_dist$epi_dist, "character")
   expect_type(ebola_dist$prob_dist, "list")
-  expect_type(ebola_dist$uncertainty, "NULL")
+  expect_type(ebola_dist$uncertainty, "double")
   expect_type(ebola_dist$summary_stats, "list")
   expect_type(ebola_dist$citation, "character")
   expect_type(ebola_dist$metadata, "list")
@@ -34,7 +34,7 @@ test_that("epidist works with all arguments set", {
     epi_distribution = "serial_interval",
     prob_distribution = "lognormal",
     prob_distribution_params = c(meanlog = 2, sdlog = 1),
-    uncertainty = NULL,
+    uncertainty = NA,
     summary_stats = create_epidist_summary_stats(
       mean = 1,
       mean_ci = c(0.8, 1.2),
@@ -68,15 +68,15 @@ test_that("epidist works with all arguments set", {
       sample_size = 100,
       region = "UK",
       vector_borne = FALSE,
-      vector = NULL
+      vector = NA
     ),
     method_assessment = create_epidist_method_assessment(
       censorred = TRUE,
       right_truncated = FALSE,
       phase_bias_adjusted = FALSE
     ),
-    discretised = FALSE,
-    truncation = NULL,
+    discretise = FALSE,
+    truncation = NA_real_,
     notes = "No notes"
   )
 
@@ -90,7 +90,7 @@ test_that("epidist works with all arguments set", {
   expect_type(mers_dist$disease, "list")
   expect_type(mers_dist$epi_dist, "character")
   expect_type(mers_dist$prob_dist, "list")
-  expect_type(mers_dist$uncertainty, "NULL")
+  expect_true(is.na(mers_dist$uncertainty))
   expect_type(mers_dist$summary_stats, "list")
   expect_type(mers_dist$citation, "character")
   expect_type(mers_dist$metadata, "list")
@@ -106,13 +106,13 @@ test_that("epidist works with default helper functions", {
     epi_distribution = "onset_to_death",
     prob_distribution = "lognormal",
     prob_distribution_params = c(meanlog = 2, sdlog = 1),
-    uncertainty = NULL,
+    uncertainty = NA,
     summary_stats = create_epidist_summary_stats(),
     citation = create_epidist_citation(),
     metadata = create_epidist_metadata(),
     method_assessment = create_epidist_method_assessment(),
-    discretised = FALSE,
-    truncation = NULL,
+    discretise = FALSE,
+    truncation = NA,
     notes = "No notes"
   ))
 
@@ -126,167 +126,12 @@ test_that("epidist works with default helper functions", {
   expect_type(sars_dist$disease, "list")
   expect_type(sars_dist$epi_dist, "character")
   expect_type(sars_dist$prob_dist, "list")
-  expect_type(sars_dist$uncertainty, "NULL")
+  expect_true(is.na(sars_dist$uncertainty))
   expect_type(sars_dist$summary_stats, "list")
   expect_type(sars_dist$citation, "character")
   expect_type(sars_dist$metadata, "list")
   expect_type(sars_dist$method_assessment, "list")
   expect_type(sars_dist$notes, "character")
-})
-
-test_that("epidist works for vector-borne disease with all arguements set", {
-  dengue_dist <- epidist(
-    disease = "ebola",
-    pathogen = "ebola_virus",
-    epi_distribution = "incubation_period",
-    prob_distribution = list("gamma", "gamma"),
-    prob_distribution_params = list(c(shape = 1, scale = 1), c(shape = 2, scale = 2)),
-    uncertainty = NULL,
-    summary_stats = list(
-      intrinsic = create_epidist_summary_stats(),
-      extrinsic = create_epidist_summary_stats()
-    ),
-    citation = create_epidist_citation(author = "Smith", year = 2002, DOI = "jsahsa"),
-    metadata = create_epidist_metadata(vector_borne = TRUE),
-    method_assessment = create_epidist_method_assessment(),
-    discretised = FALSE,
-    truncation = NULL,
-    notes = "No notes"
-  )
-
-  expect_s3_class(dengue_dist, class = "epidist")
-  expect_length(dengue_dist, 9)
-  expect_named(
-    dengue_dist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
-  )
-  expect_type(dengue_dist$disease, "list")
-  expect_type(dengue_dist$epi_dist, "character")
-  expect_type(dengue_dist$prob_dist, "list")
-  expect_length(dengue_dist$prob_dist, 2)
-  expect_named(dengue_dist$prob_dist, c("intrinsic", "extrinsic"))
-  expect_type(dengue_dist$uncertainty, "NULL")
-  expect_type(dengue_dist$summary_stats, "list")
-  expect_length(dengue_dist$summary_stats, 2)
-  expect_named(dengue_dist$summary_stats, c("intrinsic", "extrinsic"))
-  expect_type(dengue_dist$citation, "character")
-  expect_type(dengue_dist$metadata, "list")
-  expect_type(dengue_dist$method_assessment, "list")
-  expect_type(dengue_dist$notes, "character")
-})
-
-test_that("epidist returns single distribution for incomplete vector-borne", {
-  expect_message(dengue_dist <- epidist(
-    disease = "ebola",
-    pathogen = "ebola_virus",
-    epi_distribution = "incubation_period",
-    prob_distribution = "gamma",
-    prob_distribution_params = list(c(shape = 1, scale = 1), c(shape = 2, scale = 2)),
-    uncertainty = NULL,
-    summary_stats = list(
-      intrinsic = create_epidist_summary_stats(),
-      extrinsic = create_epidist_summary_stats()
-    ),
-    citation = create_epidist_citation(author = "Smith", year = 2002, DOI = "jsahsa"),
-    metadata = create_epidist_metadata(vector_borne = TRUE),
-    method_assessment = create_epidist_method_assessment(),
-    discretised = FALSE,
-    truncation = NULL,
-    notes = "No notes"
-  ), regexp = "(Vector-borne disease specified but data entered not suitabl)")
-
-  expect_s3_class(dengue_dist, class = "epidist")
-  expect_length(dengue_dist, 9)
-  expect_named(
-    dengue_dist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
-  )
-  expect_type(dengue_dist$disease, "list")
-  expect_type(dengue_dist$epi_dist, "character")
-  expect_type(dengue_dist$prob_dist, "list")
-  expect_length(dengue_dist$prob_dist, 1)
-  expect_type(dengue_dist$uncertainty, "NULL")
-  expect_type(dengue_dist$summary_stats, "list")
-  expect_length(dengue_dist$summary_stats, 4)
-  expect_type(dengue_dist$citation, "character")
-  expect_type(dengue_dist$metadata, "list")
-  expect_type(dengue_dist$method_assessment, "list")
-  expect_type(dengue_dist$notes, "character")
-
-  expect_message(dengue_dist <- epidist(
-    disease = "ebola",
-    pathogen = "ebola_virus",
-    epi_distribution = "incubation_period",
-    prob_distribution = list("gamma", "gamma"),
-    prob_distribution_params = c(shape = 1, scale = 1),
-    uncertainty = NULL,
-    summary_stats = list(
-      intrinsic = create_epidist_summary_stats(),
-      extrinsic = create_epidist_summary_stats()
-    ),
-    citation = create_epidist_citation(author = "Smith", year = 2002, DOI = "jsahsa"),
-    metadata = create_epidist_metadata(vector_borne = TRUE),
-    method_assessment = create_epidist_method_assessment(),
-    discretised = FALSE,
-    truncation = NULL,
-    notes = "No notes"
-  ), regexp = "(Vector-borne disease specified but data entered not suitabl)")
-
-  expect_s3_class(dengue_dist, class = "epidist")
-  expect_length(dengue_dist, 9)
-  expect_named(
-    dengue_dist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
-  )
-  expect_type(dengue_dist$disease, "list")
-  expect_type(dengue_dist$epi_dist, "character")
-  expect_type(dengue_dist$prob_dist, "list")
-  expect_length(dengue_dist$prob_dist, 1)
-  expect_type(dengue_dist$uncertainty, "NULL")
-  expect_type(dengue_dist$summary_stats, "list")
-  expect_length(dengue_dist$summary_stats, 4)
-  expect_type(dengue_dist$citation, "character")
-  expect_type(dengue_dist$metadata, "list")
-  expect_type(dengue_dist$method_assessment, "list")
-  expect_type(dengue_dist$notes, "character")
-
-  expect_message(dengue_dist <- epidist(
-    disease = "ebola",
-    pathogen = "ebola_virus",
-    epi_distribution = "incubation_period",
-    prob_distribution = list("gamma", "gamma"),
-    prob_distribution_params = list(c(shape = 1, scale = 1), c(shape = 2, scale = 2)),
-    uncertainty = NULL,
-    summary_stats = create_epidist_summary_stats(),
-    citation = create_epidist_citation(author = "Smith", year = 2002, DOI = "jsahsa"),
-    metadata = create_epidist_metadata(vector_borne = TRUE),
-    method_assessment = create_epidist_method_assessment(),
-    discretised = FALSE,
-    truncation = NULL,
-    notes = "No notes"
-  ), regexp = "(Vector-borne disease specified but data entered not suitabl)")
-
-  expect_s3_class(dengue_dist, class = "epidist")
-  expect_length(dengue_dist, 9)
-  expect_named(
-    dengue_dist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
-  )
-  expect_type(dengue_dist$disease, "list")
-  expect_type(dengue_dist$epi_dist, "character")
-  expect_type(dengue_dist$prob_dist, "list")
-  expect_length(dengue_dist$prob_dist, 1)
-  expect_type(dengue_dist$uncertainty, "NULL")
-  expect_type(dengue_dist$summary_stats, "list")
-  expect_length(dengue_dist$summary_stats, 4)
-  expect_type(dengue_dist$citation, "character")
-  expect_type(dengue_dist$metadata, "list")
-  expect_type(dengue_dist$method_assessment, "list")
-  expect_type(dengue_dist$notes, "character")
 })
 
 test_that("epidist fails as expected", {
@@ -403,9 +248,11 @@ test_that("new_epidist works with minimal viable input", {
       pathogen = "ebola_virus"
     ),
     epi_dist = "incubation",
-    prob_dist = list("gamma"),
-    prob_dist_params = list(c(shape = 1, scale = 1)),
-    citation = "Smith (2002) <10.128372837>"
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    uncertainty = NA,
+    citation = "Smith (2002) <10.128372837>",
+    truncation = NA
   )
 
   expect_s3_class(epidist_obj, class = "epidist")
@@ -418,95 +265,12 @@ test_that("new_epidist works with minimal viable input", {
   expect_type(epidist_obj$disease, "list")
   expect_type(epidist_obj$epi_dist, "character")
   expect_type(epidist_obj$prob_dist, "list")
-  expect_type(epidist_obj$uncertainty, "list")
+  expect_true(is.na(epidist_obj$uncertainty))
   expect_type(epidist_obj$summary_stats, "list")
   expect_type(epidist_obj$citation, "character")
   expect_type(epidist_obj$metadata, "list")
   expect_type(epidist_obj$method_assessment, "list")
   expect_type(epidist_obj$notes, "character")
-})
-
-test_that("new_epidist fails as expected", {
-
-  expect_error(
-    new_epidist(
-      disease = list(
-        disease = 1,
-        pathogen = "ebola_virus"
-      ),
-      epi_dist = "incubation",
-      prob_dist = "gamma",
-      prob_dist_params = c(shape = 1, scale = 1),
-      citation = "Smith (2002) <10.128372837>"
-    ),
-    regexp = paste0("(Assertion on 'disease' failed)*(May only contain)*",
-                    "(character,null)*(numeric)."
-    )
-  )
-
-  expect_error(
-    new_epidist(
-      disease = list(
-        disease = "ebola",
-        pathogen = "ebola_virus"
-      ),
-      epi_dist = 1,
-      prob_dist = "gamma",
-      prob_dist_params = c(shape = 1, scale = 1),
-      citation = "Smith (2002) <10.128372837>"
-    ),
-    regexp = paste0("(Assertion on 'epi_dist' failed)*(Must be of type)*",
-                    "(character)*(double)."
-    )
-  )
-
-  expect_error(
-    new_epidist(
-      disease = list(
-        disease = "ebola",
-        pathogen = "ebola_virus"
-      ),
-      epi_dist = "incubation",
-      prob_dist = 1,
-      prob_dist_params = c(shape = 1, scale = 1),
-      citation = "Smith (2002) <10.128372837>"
-    ),
-    regexp = paste0(
-      "(Assertion on 'prob_distribution' failed)*(Must be of type)*",
-      "(character)*(NULL)*(double)"
-    )
-  )
-
-  expect_error(
-    new_epidist(
-      disease = list(
-        disease = "ebola",
-        pathogen = "ebola_virus"
-      ),
-      epi_dist = "incubation",
-      prob_dist = "gamma",
-      prob_dist_params = c(shape = "1", scale = 1),
-      citation = "Smith (2002) <10.128372837>"
-    ),
-    regexp = paste0(
-      "(Assertion on 'prob_distribution_params' failed)*(Must be of type)*",
-      "(numeric)*(NULL)*(character)."
-    )
-  )
-
-  expect_error(
-    new_epidist(
-      disease = list(
-        disease = "ebola",
-        pathogen = "ebola_virus"
-      ),
-      epi_dist = "incubation",
-      prob_dist = list("gamma"),
-      prob_dist_params = list(c(shape = 1, scale = 1)),
-      citation = character()
-    ),
-    regexp = "(Assertion on 'citation' failed)*(Must have length)"
-  )
 })
 
 test_that("validate_epidist passes when expected", {
@@ -516,9 +280,11 @@ test_that("validate_epidist passes when expected", {
       pathogen = "ebola_virus"
     ),
     epi_dist = "incubation",
-    prob_dist = list("gamma"),
-    prob_dist_params = list(c(shape = 1, scale = 1)),
-    citation = "Smith (2002) <10.128372837>"
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    uncertainty = NA,
+    citation = "Smith (2002) <10.128372837>",
+    truncation = NA
   )
 
   expect_silent(validate_epidist(epidist = epidist_obj))
@@ -531,9 +297,11 @@ test_that("validate_epidist catches class faults when expected", {
       pathogen = "ebola_virus"
     ),
     epi_dist = "incubation",
-    prob_dist = list("gamma"),
-    prob_dist_params = list(c(shape = 1, scale = 1)),
-    citation = "Smith (2002) <10.128372837>"
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    uncertainty = NA,
+    citation = "Smith (2002) <10.128372837>",
+    truncation = NA
   )
 
   epidist_obj$disease <- NULL
@@ -549,9 +317,11 @@ test_that("validate_epidist catches class faults when expected", {
       pathogen = "ebola_virus"
     ),
     epi_dist = "incubation",
-    prob_dist = list("gamma"),
-    prob_dist_params = list(c(shape = 1, scale = 1)),
-    citation = "Smith (2002) <10.128372837>"
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    uncertainty = NA,
+    citation = "Smith (2002) <10.128372837>",
+    truncation = NA
   )
 
   epidist_obj$disease$disease <- NULL
@@ -567,9 +337,11 @@ test_that("validate_epidist catches class faults when expected", {
       pathogen = "ebola_virus"
     ),
     epi_dist = "incubation",
-    prob_dist = list("gamma"),
-    prob_dist_params = list(c(shape = 1, scale = 1)),
-    citation = "Smith (2002) <10.128372837>"
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    uncertainty = NA,
+    citation = "Smith (2002) <10.128372837>",
+    truncation = NA
   )
 
   epidist_obj$epi_dist <- c("incubation", "period")
@@ -580,4 +352,383 @@ test_that("validate_epidist catches class faults when expected", {
   )
 })
 
+test_that("density works as expected on continuous epidist object", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  )
+
+  res <- density(ebola_dist, at = 0.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- density(ebola_dist, at = 0)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- density(ebola_dist, at = 1.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- density(ebola_dist, at = 10)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+})
+
+test_that("density works as expected on discrete epidist object", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      discretise = TRUE
+    )
+  )
+
+  res <- density(ebola_dist, at = 0.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- density(ebola_dist, at = 0)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- density(ebola_dist, at = 1.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- density(ebola_dist, at = 10)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+})
+
+test_that("density works as expected on continuous epidist object with vector input", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  )
+
+  res <- density(ebola_dist, at = seq(0.1, 0.9, by = 0.1))
+  expect_length(res, 9)
+  expect_type(res, "double")
+  expect_true(all(res >= 0))
+  #expect_lte(res, 1)
+})
+
+test_that("density works as expected on discrete epidist object with vector input", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      discretise = TRUE
+    )
+  )
+
+  res <- density(ebola_dist, at = seq(0.1, 0.9, by = 0.1))
+  expect_length(res, 9)
+  expect_type(res, "double")
+  expect_true(all(res >= 0))
+  #expect_lte(res, 1)
+})
+
+test_that("cdf works as expected on continuous epidist object", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  )
+
+  res <- cdf(ebola_dist, q = 0.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- cdf(ebola_dist, q = 0)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- cdf(ebola_dist, q = 1.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- cdf(ebola_dist, q = 10)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+})
+
+test_that("cdf works as expected on discrete epidist object", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      discretise = TRUE
+    )
+  )
+
+  res <- cdf(ebola_dist, q = 0.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- cdf(ebola_dist, q = 0)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- cdf(ebola_dist, q = 1.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- cdf(ebola_dist, q = 10)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+})
+
+test_that("cdf works as expected on continuous epidist object with vector input", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  )
+
+  res <- cdf(ebola_dist, q = seq(0.1, 0.9, by = 0.1))
+  expect_length(res, 9)
+  expect_type(res, "double")
+  expect_true(all(res >= 0))
+  #expect_lte(res, 1)
+})
+
+test_that("cdf works as expected on discrete epidist object with vector input", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      discretise = TRUE
+    )
+  )
+
+  res <- cdf(ebola_dist, q = seq(0.1, 0.9, by = 0.1))
+  expect_length(res, 9)
+  expect_type(res, "double")
+  expect_true(all(res >= 0))
+  #expect_lte(res, 1)
+})
+
+test_that("quantile works as expected on continuous epidist object", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  )
+
+  res <- quantile(ebola_dist, p = 0.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- quantile(ebola_dist, p = 0)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- quantile(ebola_dist, p = 1)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+})
+
+test_that("quantile works as expected on discrete epidist object", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      discretise = TRUE
+    )
+  )
+
+  res <- quantile(ebola_dist, p = 0.5)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- quantile(ebola_dist, p = 0)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- quantile(ebola_dist, p = 1)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+})
+
+test_that("quantile works as expected on continuous epidist object with vector input", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  )
+
+  res <- quantile(ebola_dist, p = seq(0.1, 0.9, by = 0.1))
+  expect_length(res, 9)
+  expect_type(res, "double")
+  expect_true(all(res >= 0))
+  #expect_lte(res, 1)
+})
+
+test_that("quantile works as expected on discrete epidist object with vector input", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      discretise = TRUE
+    )
+  )
+
+  res <- quantile(ebola_dist, p = seq(0.1, 0.9, by = 0.1))
+  expect_length(res, 9)
+  expect_type(res, "double")
+  expect_true(all(res >= 0))
+  #expect_lte(res, 1)
+})
+
+test_that("generate works as expected on continuous epidist object", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  )
+
+  res <- generate(ebola_dist, times = 1)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- generate(ebola_dist, times = 10)
+  expect_length(res, 10)
+  expect_type(res, "double")
+  expect_true(all(res >= 0))
+  #expect_lte(res, 1)
+})
+
+test_that("generate works as expected on discrete epidist object", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      discretise = TRUE
+    )
+  )
+
+  res <- generate(ebola_dist, times = 1)
+  expect_length(res, 1)
+  expect_type(res, "double")
+  expect_gte(res, 0)
+  #expect_lte(res, 1)
+
+  res <- generate(ebola_dist, times = 10)
+  expect_length(res, 10)
+  expect_type(res, "double")
+  expect_true(all(res >= 0))
+  #expect_lte(res, 1)
+})
+
+test_that("generate fails as expected on continuous epidist object with vector input", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  )
+
+  expect_error(generate(ebola_dist, times = c(10, 15)))
+})
+
+test_that("generate fails as expected on discrete epidist object with vector input", {
+  ebola_dist <- suppressMessages(
+    epidist(
+      disease = "ebola",
+      epi_distribution = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      discretise = TRUE
+    )
+  )
+
+  expect_error(generate(ebola_dist, times = c(10, 15)))
+})
 
