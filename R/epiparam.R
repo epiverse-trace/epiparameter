@@ -1,20 +1,17 @@
 #' epiparam constructor
 #'
 #' @description The constructor reads the data stored internally in the package
-#' and subsets by epidemiological distribution (epi_dist) or specifies what are
-#' considered important information (subset_params)
+#' and subsets by epidemiological distribution (epi_dist)
 #'
 #' @return epiparam object
 #' @keywords internal
 #'
 #' @examples
 #' obj <- new_epiparam()
-new_epiparam <- function(epi_dist = character(),
-                         subset_params = logical()) {
+new_epiparam <- function(epi_dist = character()) {
 
   # check input
   checkmate::assert_character(epi_dist, len = 1)
-  checkmate::assert_logical(subset_params)
 
   # Extract relevant values
   params <- utils::read.csv(system.file(
@@ -34,6 +31,12 @@ new_epiparam <- function(epi_dist = character(),
     params[[i]] <- split_ci
   }
 
+  # convert NAs to correct type
+  na_col_index <- which(
+    vapply(params, function(x) all(is.na(x)), FUN.VALUE = logical(1))
+  )
+  params[, na_col_index] <- NA_real_
+
   # order params by pathogen, delay dist and study
   params <- params[order(
     tolower(params$disease),
@@ -44,14 +47,7 @@ new_epiparam <- function(epi_dist = character(),
 
   if (epi_dist != "all") {
     # filter by delay distribution
-    params <- params[params$type_id == epi_dist, ]
-  }
-
-  if (subset_params) {
-    # return only the important columns
-    params <- params[, c(
-      "disease", "epi_distribution", "author", "year", "sample_size", "prob_distribution"
-    )]
+    params <- params[params$epi_distribution == epi_dist, ]
   }
 
   # reset indexing of rows
@@ -61,20 +57,32 @@ new_epiparam <- function(epi_dist = character(),
 
 }
 
+#' Create an `epiparam` object
+#'
+#' @param epi_dist A character string of which epidemiological distributions
+#' to select
+#'
+#' @return `epiparam` object
+#' @export
+#'
+#' @examples
+#' # the object can be made without arguments
+#' eparam <- epiparam()
+#'
+#' # specifying incubation periods
+#' incub_eparam <- epiparam("incubation")
 epiparam <- function(epi_dist = c("all",
-                                  "incubation",
+                                  "incubation_period",
                                   "onset_to_admission",
                                   "onset_to_death",
                                   "serial_interval",
-                                  "generation_time"),
-                     subset_params = FALSE) {
+                                  "generation_time")) {
 
   # check input
   epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)
-  checkmate::assert_logical(subset_params)
 
   # create epiparam object
-  epiparam <- new_epiparam(epi_dist = epi_dist, subset_params = subset_params)
+  epiparam <- new_epiparam(epi_dist = epi_dist)
 
   # validate epiparam object
   validate_epiparam(epiparam)
