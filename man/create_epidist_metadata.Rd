@@ -7,23 +7,50 @@ with sensible defaults, type checking and arguments to help remember metadata
 list structure (element names)}
 \usage{
 create_epidist_metadata(
-  sample_size = NULL,
-  region = NULL,
+  sample_size = NA_integer_,
+  region = NA_character_,
   vector_borne = FALSE,
-  vector = NULL,
-  inference_method = NULL
+  vector = NA_character_,
+  extrinsic = FALSE,
+  inference_method = NA_character_
 )
 }
 \arguments{
-\item{sample_size}{stub}
+\item{sample_size}{The sample of the data used to fit the delay distribution.
+This is usually the number of people with data on a primary and possibly
+secondary event of interest. In cases where the sample size is not stated
+NA can be used.}
 
-\item{region}{stub}
+\item{region}{The geographical location the data was collected. This can
+either be given at sub-national, national, continental. Multiple nested
+regions can be given and are comma separated. When the region is not
+specified NA can be given.}
 
-\item{vector_borne}{stub}
+\item{vector_borne}{A boolean value as to whether a pathogen is
+vector-borne (i.e. is transmitted between humans through an intermediate
+vector).}
 
-\item{vector}{stub}
+\item{vector}{The name of the vector transmitting the vector-borne disease.
+This can be a common name, or a latin binomial name of a specific vector
+species. Both the common name and taxonomic name can be given with one given
+in parentheses. When a disease is not vector-borne NA should be given.}
 
-\item{inference_method}{stub}
+\item{extrinsic}{A boolean value defining whether the data entry is an
+extrinsic delay distribution, such as the extrinsic incubation period.
+This field is required because intrinsic and extrinsic delay distributions
+are stored as separate entries in the database and can be linked.
+When the disease is not vector-borne FALSE should be given.}
+
+\item{inference_method}{The type of inference used to fit the delay
+distribution to the data. Abbreviations of model fitting techniques can be
+specified as long as they are non-ambiguous. This field is only used to
+determine whether the uncertainty intervals possibly specified in the other
+fields are: confidence intervals (in the case of maximum likelihood), or
+credible intervals (in the case of bayesian inference). Uncertainty bounds
+for another types of inference methods, or if the inference method is
+unstated are assumed to be confidence intervals. When the inference method
+is unknown or a disease does not have a probability distribution NA can be
+given.}
 }
 \value{
 named list
@@ -34,5 +61,16 @@ with sensible defaults, type checking and arguments to help remember metadata
 list structure (element names)
 }
 \examples{
-a = 1
+# it will automatically populate the fields with defaults if left empty
+create_epidist_metadata()
+
+# supplying each field
+create_epidist_metadata(
+sample_size = 10,
+region = "UK",
+vector_borne = TRUE,
+vector = "mosquito",
+extrinsic = FALSE,
+inference_method = "MLE"
+)
 }

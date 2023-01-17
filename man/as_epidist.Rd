@@ -20,6 +20,8 @@ generation and other methods of the epidist class
 (see \code{?epidist_distribution_functions}).
 }
 \examples{
-eparam <- epiparam()
-as_epidist(eparam[1, ])
+\dontrun{
+  eparam <- epiparam()
+  as_epidist(eparam[1, ])
+}
 }
