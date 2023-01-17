@@ -19,7 +19,12 @@
 #' @param citation A character string with the short form citation
 #' @param metadata A list of metadata
 #' @param method_assessment A list of methodological aspects assessed
+#' @param discretise A boolean logical whether the distribution is discretised.
+#' Default is FALSE which assumes a continuous probability distribution
+#' @param truncation A numeric specifying the truncation point if the inferred
+#' distribution was truncated, NULL if not or unknown.
 #' @param notes A character string with additional notes
+#' @param auto_calc_params
 #'
 #' @return epidist object
 #' @keywords internal
@@ -33,7 +38,7 @@
 #'   epi_dist = "incubation_period",
 #'   prob_dist = list("gamma"),
 #'   prob_dist_params = list(c(shape = 1.4, scale = 0.5)),
-#'   uncertainty = NULL,
+#'   uncertainty = NA,
 #'   summary_stats = create_epidist_summary_stats(),
 #'   metadata = create_epidist_metadata(
 #'     sample_size = 83
@@ -53,200 +58,54 @@ new_epidist <- function(disease = list(),
                         method_assessment = list(),
                         discretise = logical(),
                         truncation = numeric(),
-                        notes = character()) {
+                        notes = character(),
+                        auto_calc_params = TRUE) {
 
-  # check input
-  stopifnot(
-    "A disease is required for the epidist class" =
-      !is.null(disease$disease)
-  )
-  checkmate::assert_list(disease, types = c("character", "null"), len = 2)
-  checkmate::assert_character(epi_dist, min.chars = 1)
-  checkmate::assert_list(prob_dist)
-  lapply(
-    prob_dist,
-    checkmate::assert_character,
-    min.chars = 1,
-    min.len = 1,
-    max.len = 2
-  )
-  checkmate::assert_list(prob_dist_params)
-  lapply(
-    prob_dist_params,
-    checkmate::assert_numeric,
-    min.len = 1,
-    max.len = 2,
-    names = "unique",
-    null.ok = TRUE
-  )
-  checkmate::assert_list(
-    summary_stats,
-    types = c("list", "double", "null"),
-    names = "unique"
-  )
-  checkmate::assert_character(citation, min.len = 1)
-  checkmate::assert_list(metadata)
-  checkmate::assert_list(method_assessment)
-  checkmate::assert_character(notes, null.ok = TRUE)
-
-  is_vector_borne <- is_valid_vector_borne(
-    prob_dist = prob_dist,
+  check_epidist_uncertainty(
     prob_dist_params = prob_dist_params,
-    summary_stats = summary_stats,
-    metadata = metadata
+    uncertainty = uncertainty
   )
-
-  # case when data is specified for vector-borne but not specified in metadata
-  if (!isTRUE(metadata$vector_borne) && (length(prob_dist) == 2 ||
-      length(prob_dist_params) == 2 || length(summary_stats) == 2)) {
-    stop(
-      paste("Two distributions or parameter sets specified but",
-            "metadata$vector_borne is not set to TRUE"),
-      call. = FALSE
-    )
-  }
-
-  # if is not valid vector borne entry strip data to single distribution
-  if (isFALSE(is_vector_borne)) {
-    # if vector-borne is true tell user only first distribution is used
-    if (isTRUE(metadata$vector_borne)) {
-      message(strwrap(
-        "Vector-borne disease specified but data entered not suitable for both
-        intrinsic and extrinsic distribution. Only first distribution will be
-        returned",
-        prefix = "\n"
-      ))
-    }
-    prob_dist <- prob_dist[1]
-    prob_dist_params <- prob_dist_params[1]
-    if (length(summary_stats) == 2) {
-      summary_stats <- summary_stats[[1]]
-    }
-  }
 
   # calculate parameters if not provided
-  for (i in seq_along(prob_dist_params)) {
-    if (length(prob_dist_params[[i]]) == 0) {
-
-      # calculate parameters if not provided
-      prob_dist_params[[i]] <- calc_dist_params(
-        prob_dist = prob_dist[[i]],
-        summary_stats = summary_stats[[i]],
-        sample_size = metadata$sample_size[i]
+  if (all(is.na(prob_dist_params)) && auto_calc_params) {
+    # calculate parameters if not provided
+    prob_dist_params <- calc_dist_params(
+        prob_dist = prob_dist,
+        summary_stats = summary_stats,
+        sample_size = metadata$sample_size
       )
-    } else {
-      # standardise distribution parameter names
-      subset_prob_dist_params <- prob_dist_params[[i]]
-      class(subset_prob_dist_params) <- prob_dist[[i]]
-      prob_dist_params[[i]] <- clean_epidist_params(
-        prob_dist_params = subset_prob_dist_params
-      )
-    }
-
-    # check parameters if provided
-    checkmate::assert_numeric(prob_dist_params[[i]], names = "unique")
-    stopifnot(
-      "distribution parameters must have valid names,
-       use possible_epidist_params() to see valid names" =
-        is_epidist_params(prob_dist_params[[i]])
-    )
-
-    if (isTRUE(discretise)) {
-      prob_dist[[i]] <- switch(
-        prob_dist[[i]],
-        gamma = distcrete::distcrete(
-          name = "gamma",
-          interval = 1,
-          shape = prob_dist_params[[i]][["shape"]],
-          scale = prob_dist_params[[i]][["scale"]],
-          w = 1
-        ),
-        lognormal = distcrete::distcrete(
-          name = "lnorm",
-          interval = 1,
-          meanlog = prob_dist_params[[i]][["mu"]],
-          sdlog = prob_dist_params[[i]][["sigma"]],
-          w = 1
-        ),
-        weibull = distcrete::distcrete(
-          name = "weibull",
-          interval = 1,
-          shape = prob_dist_params[[i]][["shape"]],
-          scale = prob_dist_params[[i]][["scale"]],
-          w = 1
-        )
-      )
-
-    } else {
-      # make the probability distribution object
-      prob_dist[[i]] <- switch(
-        prob_dist[[i]],
-        gamma = distributional::dist_gamma(
-          shape = prob_dist_params[[i]][["shape"]],
-          rate = 1/prob_dist_params[[i]][["scale"]]
-        ),
-        lognormal = distributional::dist_lognormal(
-          mu = prob_dist_params[[i]][["mu"]],
-          sigma = prob_dist_params[[i]][["sigma"]]
-        ),
-        weibull = distributional::dist_weibull(
-          shape = prob_dist_params[[i]][["shape"]],
-          scale = prob_dist_params[[i]][["scale"]]
-        ),
-        negative_binomial = distributional::dist_negative_binomial(
-          size = prob_dist_params[[i]][["dispersion"]],
-          prob = negative_binomial_meandispersion2probdispersion(
-            mean = prob_dist_params[[i]][["mean"]],
-            dispersion = prob_dist_params[[i]][["dispersion"]]
-          )$prob
-        ),
-        geometric = distributional::dist_geometric(
-          prob = unname(prob_dist_params[[i]])
-        )
-      )
-    }
-
-    # apply truncation to distribution if specified
-    if (!is.na(truncation)) {
-      if (discretise) {
-        warning(
-          "Truncation is not yet implemented for discrete distributions",
-          call. = FALSE
-        )
-      } else {
-        prob_dist[[i]] <- distributional::dist_truncated(
-          prob_dist[[i]],
-          upper = truncation
-        )
-      }
-    }
-
-    # name parameter uncertainty
-    if (!is.na(uncertainty)) {
-      names(uncertainty) <- unlist(lapply(prob_dist_params, names))
-    }
-
-    quants <- c(0.025, 0.05, 0.25, 0.5, 0.75, 0.875, 0.95, 0.975)
-    if (isTRUE(discretise)) {
-      quantiles <- prob_dist[[i]]$q(quants)
-    } else {
-      quantiles <- stats::quantile(prob_dist[[i]], quants)[[1]]
-    }
-
-    names(quantiles) <- c(
-      "q_025",	"q_05",	"q_25",	"q_50", "q_75", "q_875", "q_95", "q_975"
-    )
-    if (length(summary_stats) == 0) {
-      summary_stats$quantiles <- quantiles
-    } else {
-      summary_stats[[i]]$quantiles <- quantiles
-    }
-
   }
 
-  if (is_vector_borne) {
-    names(prob_dist) <- names(summary_stats)
+  # standardise distribution parameter names
+  class(prob_dist_params) <- prob_dist
+  prob_dist_params <- clean_epidist_params(
+    prob_dist_params = prob_dist_params
+  )
+
+  check_epidist_params(
+    prob_dist = prob_dist,
+    prob_dist_params = prob_dist_params
+  )
+
+  # create a S3 object holding the probability distribution
+  prob_dist <- create_prob_dist(
+    prob_dist = prob_dist,
+    prob_dist_params = prob_dist_params,
+    discretise = discretise,
+    truncation = truncation
+  )
+
+  # calculate distribution quantiles and add to epidist
+  quants <- c(0.025, 0.05, 0.25, 0.5, 0.75, 0.875, 0.95, 0.975)
+  if (isTRUE(discretise)) {
+    quantiles <- prob_dist$q(quants)
+  } else {
+    quantiles <- stats::quantile(prob_dist, quants)[[1]]
   }
+  names(quantiles) <- c(
+    "q_025",	"q_05",	"q_25",	"q_50", "q_75", "q_875", "q_95", "q_975"
+  )
+  summary_stats$quantiles <- quantiles
 
   if (epi_dist == "offspring_distribution") {
     method_assessment <- paste(
@@ -321,7 +180,7 @@ new_epidist <- function(disease = list(),
 #'   epi_distribution = "incubation",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1),
-#'   uncertainty = NULL,
+#'   uncertainty = NA,
 #'   summary_stats = create_epidist_summary_stats(
 #'     mean = 2,
 #'     sd = 1
@@ -341,7 +200,7 @@ new_epidist <- function(disease = list(),
 #'     censorred = TRUE
 #'   ),
 #'   discretise = FALSE,
-#'   truncation = NULL,
+#'   truncation = NA,
 #'   notes = "No notes"
 #' )
 epidist <- function(disease,
@@ -358,38 +217,23 @@ epidist <- function(disease,
                     truncation = NA_real_,
                     notes = NULL) {
 
-  # put prob_distribution and prob_distribution in list if not already
-  if (!is.list(prob_distribution)) {
-    prob_distribution <- as.list(prob_distribution)
-  }
-
-  # check whether ci has been provided for each parameter
-  stopifnot(
-    "uncertainty must be provided for each parameter" =
-      is.na(uncertainty) ||
-      length(prob_distribution_params) == length(uncertainty)
-  )
-
-  if (!is.list(prob_distribution_params)) {
-    prob_distribution_params <- list(prob_distribution_params)
-  }
-
   # check input
-  checkmate::assert_character(disease, min.len = 1)
+  checkmate::assert_character(
+    disease,
+    min.len = 1,
+    any.missing = FALSE,
+    null.ok = FALSE
+  )
   checkmate::assert_character(pathogen)
   checkmate::assert_character(epi_distribution, len = 1)
-  checkmate::assert_list(prob_distribution)
-  lapply(
+  checkmate::assert_character(
     prob_distribution,
-    checkmate::assert_character,
     min.chars = 1,
     min.len = 1,
     max.len = 2
   )
-  checkmate::assert_list(prob_distribution_params, null.ok = TRUE)
-  lapply(
+  checkmate::assert_numeric(
     prob_distribution_params,
-    checkmate::assert_numeric,
     min.len = 1,
     max.len = 2,
     names = "unique",
@@ -406,6 +250,13 @@ epidist <- function(disease,
   checkmate::assert_number(truncation, na.ok = TRUE)
   checkmate::assert_logical(discretise)
   checkmate::assert_character(notes, null.ok = TRUE)
+
+  # check whether ci has been provided for each parameter
+  stopifnot(
+    "uncertainty must be provided for each parameter" =
+      any(is.na(uncertainty)) ||
+      length(prob_distribution_params) == length(uncertainty)
+  )
 
   # call epidist constructor
   epidist <- new_epidist(
@@ -455,7 +306,8 @@ validate_epidist <- function(epidist) {
 
   stopifnot(
     "Epidist must contains a disease (single character string)" =
-      is.character(epidist$disease$disease) && length(epidist$disease$disease) == 1
+      is.character(epidist$disease$disease) &&
+      length(epidist$disease$disease) == 1
   )
 
   stopifnot(
@@ -464,6 +316,7 @@ validate_epidist <- function(epidist) {
   )
 
   invisible(epidist)
+}
 
 }
 
