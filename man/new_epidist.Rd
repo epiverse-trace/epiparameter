@@ -16,7 +16,8 @@ new_epidist(
   method_assessment = list(),
   discretise = logical(),
   truncation = numeric(),
-  notes = character()
+  notes = character(),
+  auto_calc_params = TRUE
 )
 }
 \arguments{
@@ -43,7 +44,15 @@ parameter estimates is unknown}
 
 \item{method_assessment}{A list of methodological aspects assessed}
 
+\item{discretise}{A boolean logical whether the distribution is discretised.
+Default is FALSE which assumes a continuous probability distribution}
+
+\item{truncation}{A numeric specifying the truncation point if the inferred
+distribution was truncated, NULL if not or unknown.}
+
 \item{notes}{A character string with additional notes}
+
+\item{auto_calc_params}{}
 }
 \value{
 epidist object
@@ -63,7 +72,7 @@ epiparameter:::new_epidist(
   epi_dist = "incubation_period",
   prob_dist = list("gamma"),
   prob_dist_params = list(c(shape = 1.4, scale = 0.5)),
-  uncertainty = NULL,
+  uncertainty = NA,
   summary_stats = create_epidist_summary_stats(),
   metadata = create_epidist_metadata(
     sample_size = 83

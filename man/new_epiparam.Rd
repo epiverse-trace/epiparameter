@@ -4,15 +4,14 @@
 \alias{new_epiparam}
 \title{epiparam constructor}
 \usage{
-new_epiparam(epi_dist = character(), subset_params = logical())
+new_epiparam(epi_dist = character())
 }
 \value{
 epiparam object
 }
 \description{
 The constructor reads the data stored internally in the package
-and subsets by epidemiological distribution (epi_dist) or specifies what are
-considered important information (subset_params)
+and subsets by epidemiological distribution (epi_dist)
 }
 \examples{
 obj <- new_epiparam()

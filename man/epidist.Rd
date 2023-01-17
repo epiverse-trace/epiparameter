@@ -6,17 +6,17 @@
 \usage{
 epidist(
   disease,
-  pathogen = NULL,
+  pathogen = NA_character_,
   epi_distribution,
-  prob_distribution = NULL,
-  prob_distribution_params = NULL,
+  prob_distribution = NA_character_,
+  prob_distribution_params = NA_real_,
   uncertainty = create_epidist_uncertainty(),
   summary_stats = create_epidist_summary_stats(),
   citation = create_epidist_citation(),
   metadata = create_epidist_metadata(),
   method_assessment = create_epidist_method_assessment(),
   discretise = FALSE,
-  truncation = NULL,
+  truncation = NA_real_,
   notes = NULL
 )
 }
@@ -77,7 +77,7 @@ ebola_incubation <- epidist(
   epi_distribution = "incubation",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1),
-  uncertainty = NULL,
+  uncertainty = NA,
   summary_stats = create_epidist_summary_stats(
     mean = 2,
     sd = 1
@@ -97,7 +97,7 @@ ebola_incubation <- epidist(
     censorred = TRUE
   ),
   discretise = FALSE,
-  truncation = NULL,
+  truncation = NA,
   notes = "No notes"
 )
 }

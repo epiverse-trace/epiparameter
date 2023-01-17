@@ -10,10 +10,10 @@ with sensible defaults, type checking and arguments to help remember which
 citation information is accepted in the list.}
 \usage{
 create_epidist_citation(
-  author = NULL,
-  year = NULL,
-  PMID = NULL,
-  DOI = NULL,
+  author = NA_character_,
+  year = NA_integer_,
+  PMID = NA_character_,
+  DOI = NA_character_,
   use_PMID = FALSE
 )
 }

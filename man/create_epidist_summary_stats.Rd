@@ -7,27 +7,27 @@ statistics list with sensible defaults, type checking and arguments to help
 remember which summary statistics can be accepted in the list}
 \usage{
 create_epidist_summary_stats(
-  mean = NULL,
-  mean_ci = NULL,
-  mean_ci_interval = NULL,
-  sd = NULL,
-  sd_ci = NULL,
-  sd_ci_interval = NULL,
-  median = NULL,
-  median_ci = NULL,
-  median_ci_interval = NULL,
-  dispersion = NULL,
-  dispersion_ci = NULL,
-  dispersion_ci_interval = NULL,
-  lower_range = NULL,
-  upper_range = NULL,
-  q_025 = NULL,
-  q_05 = NULL,
-  q_25 = NULL,
-  q_75 = NULL,
-  q_875 = NULL,
-  q_95 = NULL,
-  q_975 = NULL
+  mean = NA_real_,
+  mean_ci = c(NA_real_, NA_real_),
+  mean_ci_interval = NA_real_,
+  sd = NA_real_,
+  sd_ci = c(NA_real_, NA_real_),
+  sd_ci_interval = NA_real_,
+  median = NA_real_,
+  median_ci = c(NA_real_, NA_real_),
+  median_ci_interval = NA_real_,
+  dispersion = NA_real_,
+  dispersion_ci = c(NA_real_, NA_real_),
+  dispersion_ci_interval = NA_real_,
+  lower_range = NA_real_,
+  upper_range = NA_real_,
+  q_025 = NA_real_,
+  q_05 = NA_real_,
+  q_25 = NA_real_,
+  q_75 = NA_real_,
+  q_875 = NA_real_,
+  q_95 = NA_real_,
+  q_975 = NA_real_
 )
 }
 \arguments{

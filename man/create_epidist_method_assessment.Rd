@@ -7,9 +7,9 @@ assessment list with sensible defaults, type checking and arguments to help
 remember which method assessments can be accepted in the list}
 \usage{
 create_epidist_method_assessment(
-  censorred = NULL,
-  right_truncated = NULL,
-  phase_bias_adjusted = NULL
+  censorred = NA,
+  right_truncated = NA,
+  phase_bias_adjusted = NA
 )
 }
 \arguments{
