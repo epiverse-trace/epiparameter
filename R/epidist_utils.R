@@ -14,41 +14,25 @@
 #' @examples
 #' a = 1
 create_epidist_uncertainty <- function(ci = NA_real_, ci_interval, ci_type) {
+
   # when no uncertainty is given
-  if (is.na(ci)) return(NA_real_)
-
-  if (!is.list(ci)) {
-    ci <- list(ci)
-  }
-
-  if (!is.list(ci_interval)) {
-    ci_interval <- as.list(ci_interval)
-  }
-
-  if (!is.list(ci_type)) {
-    ci_type <- as.list(ci_type)
-  }
+  if (any(is.na(ci))) return(NA_real_)
 
   # check input
-  checkmate::assert_list(ci)
-  checkmate::assert_list(ci_interval)
-  checkmate::assert_list(ci_type)
-  lapply(ci, checkmate::assert_numeric, len = 2)
-  lapply(ci_interval, checkmate::assert_number, na.ok = TRUE)
-  lapply(ci_type, checkmate::assert_character)
+  checkmate::assert_numeric(ci, any.missing = FALSE, len = 2)
+  checkmate::assert_number(ci_interval, lower = 0, upper = 100)
+  checkmate::assert_character(ci_type)
   stopifnot(
     "ci_type must be either 'confidence interval or credible interval" =
       all(ci_type %in% c("confidence interval", "credible interval"))
   )
 
-  # add ci info as attribute to ci vector
-  names(ci_interval) <- ci_type
-  for (i in seq_along(ci)) {
-    attributes(ci[[i]]) <- ci_interval[i]
-  }
-
-  # return ci
-  ci
+  # return list of parameter uncertainty
+  list(
+    ci = ci,
+    ci_interval = ci_interval,
+    ci_type = ci_type
+  )
 }
 
 
@@ -56,21 +40,58 @@ create_epidist_uncertainty <- function(ci = NA_real_, ci_interval, ci_type) {
 #' with sensible defaults, type checking and arguments to help remember metadata
 #' list structure (element names)
 #'
-#' @param sample_size stub
-#' @param region stub
-#' @param vector_borne stub
-#' @param vector stub
-#' @param inference_method stub
+#' @param sample_size The sample of the data used to fit the delay distribution.
+#' This is usually the number of people with data on a primary and possibly
+#' secondary event of interest. In cases where the sample size is not stated
+#' NA can be used.
+#' @param region The geographical location the data was collected. This can
+#' either be given at sub-national, national, continental. Multiple nested
+#' regions can be given and are comma separated. When the region is not
+#' specified NA can be given.
+#' @param vector_borne  A boolean value as to whether a pathogen is
+#' vector-borne (i.e. is transmitted between humans through an intermediate
+#' vector).
+#' @param vector The name of the vector transmitting the vector-borne disease.
+#' This can be a common name, or a latin binomial name of a specific vector
+#' species. Both the common name and taxonomic name can be given with one given
+#' in parentheses. When a disease is not vector-borne NA should be given.
+#' @param extrinsic A boolean value defining whether the data entry is an
+#' extrinsic delay distribution, such as the extrinsic incubation period.
+#' This field is required because intrinsic and extrinsic delay distributions
+#' are stored as separate entries in the database and can be linked.
+#' When the disease is not vector-borne FALSE should be given.
+#' @param inference_method The type of inference used to fit the delay
+#' distribution to the data. Abbreviations of model fitting techniques can be
+#' specified as long as they are non-ambiguous. This field is only used to
+#' determine whether the uncertainty intervals possibly specified in the other
+#' fields are: confidence intervals (in the case of maximum likelihood), or
+#' credible intervals (in the case of bayesian inference). Uncertainty bounds
+#' for another types of inference methods, or if the inference method is
+#' unstated are assumed to be confidence intervals. When the inference method
+#' is unknown or a disease does not have a probability distribution NA can be
+#' given.
 #'
 #' @return named list
 #' @export
 #'
 #' @examples
-#' a = 1
+#' # it will automatically populate the fields with defaults if left empty
+#' create_epidist_metadata()
+#'
+#' # supplying each field
+#' create_epidist_metadata(
+#' sample_size = 10,
+#' region = "UK",
+#' vector_borne = TRUE,
+#' vector = "mosquito",
+#' extrinsic = FALSE,
+#' inference_method = "MLE"
+#' )
 create_epidist_metadata <- function(sample_size = NA_integer_,
                                     region = NA_character_,
                                     vector_borne = FALSE,
                                     vector = NA_character_,
+                                    extrinsic = FALSE,
                                     inference_method = NA_character_) {
 
   # check input
@@ -81,10 +102,11 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
     finite = TRUE,
     null.ok = TRUE
   )
-  checkmate::assert_character(region, null.ok = TRUE)
+  checkmate::assert_character(region)
   checkmate::assert_logical(vector_borne, len = 1)
-  checkmate::assert_character(vector, null.ok = TRUE)
-  checkmate::assert_character(inference_method, null.ok = TRUE)
+  checkmate::assert_character(vector)
+  checkmate::assert_logical(extrinsic, len = 1)
+  checkmate::assert_character(inference_method)
 
   if (isFALSE(vector_borne) && !is.na(vector)) {
     stop("A vector is given for a non-vector-borne disease please check input")
@@ -96,6 +118,7 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
     region = region,
     vector_borne = vector_borne,
     vector = vector,
+    extrinsic = extrinsic,
     inference_method = inference_method
   )
 }
@@ -337,7 +360,6 @@ is_epidist_params <- function(prob_dist_params) {
   # check input
   checkmate::assert_numeric(
     prob_dist_params,
-    any.missing = FALSE,
     min.len = 1,
     max.len = 2,
     names = "unique"
@@ -391,10 +413,18 @@ clean_epidist_params <- function(prob_dist_params, ...) {
 }
 
 clean_epidist_params.gamma <- function(prob_dist_params) {
+
   # if shape and rate are provided convert to shape and scale
   if (all(c("shape", "rate") %in% names(prob_dist_params))) {
     prob_dist_params[["rate"]] <- 1 / prob_dist_params[["rate"]]
-    names(prob_dist_params["rate"]) <- "scale"
+    names(prob_dist_params) <- gsub(
+      pattern = "rate", replacement = "scale", x = names(prob_dist_params)
+    )
+  } else if (all(c("shape", "scale") %in% names(prob_dist_params))) {
+    # no cleaning needed
+    return(prob_dist_params)
+  } else {
+    stop("Parameters of gamma distribution are inconherent")
   }
 
   # remove class attribute from prob_dist_params
@@ -413,92 +443,17 @@ clean_epidist_params.lognormal <- function(prob_dist_params) {
     meanlog_index <- which(names(prob_dist_params) == "meanlog")
     sdlog_index <- which(names(prob_dist_params) == "sdlog")
     names(prob_dist_params)[c(meanlog_index, sdlog_index)] <- c("mu", "sigma")
+  } else if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
+    return(prob_dist_params)
+  } else {
+    stop("Parameters of lognormal distribution are inconherent")
   }
+
+  # remove class attribute from prob_dist_params
+  prob_dist_params <- unclass(prob_dist_params)
 
   # return prob_dist_params
   prob_dist_params
-}
-
-#' Checks whether the data input into making an `epidist` class object is valid
-#' for a vector-borne disease with two delay distributions (instrinsic and
-#' extrinsic)
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Boolean logical
-#' @export
-#'
-#' @examples
-#' # example where input is valid
-#' is_valid_vector_borne(
-#'   prob_dist = list("gamma", "gamma"),
-#'   prob_dist_params = list(
-#'     c(shape = 1, scale = 1),
-#'     c(shape = 2, scale = 2)
-#'   ),
-#'   summary_stats = list(
-#'     intrinsic = create_epidist_summary_stats(),
-#'     extrinsic = create_epidist_summary_stats()
-#'   ),
-#'   metadata = create_epidist_metadata(vector_borne = TRUE)
-#' )
-#'
-#' # example where input is invalid
-#' is_valid_vector_borne(
-#'   prob_dist = list("gamma"),
-#'   prob_dist_params = list(
-#'     c(shape = 1, scale = 1),
-#'     c(shape = 2, scale = 2)
-#'   ),
-#'   summary_stats = list(
-#'     intrinsic = create_epidist_summary_stats(),
-#'     extrinsic = create_epidist_summary_stats()
-#'   ),
-#'   metadata = create_epidist_metadata(vector_borne = TRUE)
-#' )
-#'
-#' is_valid_vector_borne(
-#'   prob_dist = list("gamma", "gamma"),
-#'   prob_dist_params = list(
-#'     c(shape = 1, scale = 1)
-#'   ),
-#'   summary_stats = list(
-#'     intrinsic = create_epidist_summary_stats(),
-#'     extrinsic = create_epidist_summary_stats()
-#'   ),
-#'   metadata = create_epidist_metadata(vector_borne = TRUE)
-#' )
-#'
-#' is_valid_vector_borne(
-#'   prob_dist = list("gamma", "gamma"),
-#'   prob_dist_params = list(
-#'     c(shape = 1, scale = 1),
-#'     c(shape = 2, scale = 2)
-#'   ),
-#'   summary_stats = list(
-#'     intrinsic = create_epidist_summary_stats(),
-#'     extrinsic = create_epidist_summary_stats()
-#'   ),
-#'   metadata = create_epidist_metadata(vector_borne = FALSE)
-#' )
-is_valid_vector_borne <- function(prob_dist,
-                                  prob_dist_params,
-                                  summary_stats,
-                                  metadata) {
-  # test if each aspect contains valid data on vector-borne
-  valid_prob_dists <- length(prob_dist) == 2
-  valid_prob_dist_params <- length(prob_dist_params) == 2
-  valid_summary_stats <- length(summary_stats) == 2 &&
-    identical(names(summary_stats), c("intrinsic", "extrinsic"))
-  valid_metadata <- isTRUE(metadata$vector_borne)
-
-  # check if all parts are valid
-  is_valid_vector_borne <- valid_prob_dists && valid_prob_dist_params &&
-    valid_summary_stats && valid_metadata
-
-  # return output
-  is_valid_vector_borne
-
 }
 
 #' Standardises the names of epidemiological distributions
