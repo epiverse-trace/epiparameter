@@ -318,71 +318,92 @@ validate_epidist <- function(epidist) {
   invisible(epidist)
 }
 
+#' Print method for epidist class
+#'
+#' @param x epidist object
+#' @param header Boolean logical determining whether the header (first part) of
+#' the print method is printed. This is used internally for plotting the
+#' vb_epidist class
+#' @param vb A character string containing whether it is the intrinsic
+#' (`"Intrinsic"`) or extrinsic (`"extrinsic"`) distribution for vector-borne
+#' diseases
+#'
+#' @return Nothing (prints output)
+#' @export
+#'
+#' @examples
+#' epidist <- epidist(
+#'   disease = "ebola",
+#'   epi_distribution = "incubation_period",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1)
+#' )
+#' epidist
+print.epidist <- function(x, header = TRUE, vb = NULL) {
+  format(x, header = header, vb = vb)
 }
 
+#' Format method for epidist class
+#'
+#' @param x epidist object
+#' @param header Boolean logical determining whether the header (first part) of
+#' the print method is printed. This is used internally for plotting the
+#' vb_epidist class
+#' @param vb Either NULL (default) or a character string of either "Intrinsic"
+#' or "Extrinsic" which is used internally for plotting the vb_epidist class
+#'
+#' @return Nothing (prints output)
 #' @export
-print.epidist <- function(x, ...) {
+#'
+#' @examples
+#' epidist <- epidist(
+#'   disease = "ebola",
+#'   epi_distribution = "incubation_period",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1)
+#' )
+#' format(epidist)
+format.epidist <- function(x, header = TRUE, vb = NULL) {
 
   epi_dist <- clean_epidist_name(x$epi_dist)
-  writeLines(
-    c(
-      sprintf("Epidist object \n"),
-      sprintf("Disease: %s", x$disease$disease),
-      sprintf("Epi Distribution: %s", epi_dist)
-    )
-  )
-  if (inherits(x$prob_dist[[1]], "distcrete")) {
+  if (header) {
     writeLines(
       c(
-        sprintf("Distribution: discrete %s", x$prob_dist[[1]]$name),
+        sprintf("Disease: %s", x$disease$disease),
+        sprintf("Epi Distribution: %s", epi_dist)
+      )
+    )
+  }
+
+  if (!is.null(vb)) {
+    writeLines(sprintf(vb))
+  }
+
+  if (inherits(x$prob_dist, "distcrete")) {
+    writeLines(
+      c(
+        sprintf("Distribution: discrete %s", x$prob_dist$name),
         sprintf("Parameters:"),
         sprintf(
           "  %s: %s",
-          names(x$prob_dist[[1]]$parameters),
-          as.character(x$prob_dist[[1]]$parameters)
+          names(x$prob_dist$parameters),
+          as.character(x$prob_dist$parameters)
         )
       )
     )
   } else {
     writeLines(
       c(
-        sprintf("Distribution: %s", x$prob_dist[[1]]),
+        sprintf("Distribution: %s", x$prob_dist),
         sprintf("Parameters:"),
         sprintf(
           "  %s: %s",
-          names(unlist(distributional::parameters(x$prob_dist[[1]]))),
-          as.character(unlist(distributional::parameters(x$prob_dist[[1]])))
+          names(unlist(distributional::parameters(x$prob_dist))),
+          as.character(unlist(distributional::parameters(x$prob_dist)))
         )
       )
     )
   }
-  if (length(x$prob_dist) == 2) {
-    if (inherits(x$prob_dist[[2]], "distcrete")) {
-      writeLines(
-        c(
-          sprintf("Distribution: discrete %s", x$prob_dist[[2]]$name),
-          sprintf(
-            "  %s: %s",
-            names(x$prob_dist[[2]]$parameters),
-            as.character(x$prob_dist[[2]]$parameters)
-          )
-        )
-      )
-    } else {
-      writeLines(
-        c(
-          sprintf("Extrinsic Distribution: %s", x$prob_dist[[2]]),
-          sprintf("Parameters:"),
-          sprintf(
-            "  %s: %s",
-            names(unlist(distributional::parameters(x$prob_dist[[2]]))),
-            as.character(unlist(distributional::parameters(x$prob_dist[[2]])))
-          )
-        )
-      )
-    }
-  }
-
   invisible(x)
 }
 
