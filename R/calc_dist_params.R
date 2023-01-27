@@ -108,63 +108,38 @@ calc_dist_params <- function(prob_dist,
   prob_dist_params
 }
 
-#' @export
-convert_params <- function(summary_stats, ...) UseMethod("convert_params")
-
 #' Converts summary statistics to parameters of a probability distribution
 #'
 #' @description The summary_stats object needs to have a class attribute with
 #' the name of the probability distribution in order for the correct conversion
 #' function to be dispatched.
 #'
-#' @param mean mean
-#' @param sd standard deviation
-#'
-#' @rdname convert_params
+#' @inheritParams new_epidist
+#' @inheritParams epidist
 #'
 #' @return Named vector
 #' @keywords internal
-convert_params.gamma <- function(summary_stats) {
-  # convert mean and sd to shape and scale
-  gamma_params <- unlist(
-    gamma_meansd2shapescale(
-      mean = summary_stats$central_tendency_spread$mean,
-      sd = summary_stats$central_tendency_spread$sd
-    )
+convert_params <- function(summary_stats,
+                           prob_dist) {
+  params <- switch(prob_dist,
+    "gamma" = unlist(
+      gamma_meansd2shapescale(
+        mean = summary_stats$central_tendency_spread$mean,
+        sd = summary_stats$central_tendency_spread$sd
+      )
+    ),
+    "lognormal" =  unlist(
+      lnorm_meansd2musigma(
+        mean = summary_stats$central_tendency_spread$mean,
+        sd = summary_stats$central_tendency_spread$sd
+      )
+    ),
+    "weibull" = unlist(
+      weibull_meansd2shapescale(
+        mean = summary_stats$central_tendency_spread$mean,
+        sd = summary_stats$central_tendency_spread$sd
+      )
+    ),
+    stop(paste0("No conversion functions for ", prob_dist))
   )
-
-  # return gamma params
-  gamma_params
-}
-
-#' @rdname convert_params
-convert_params.lognormal <- function(summary_stats) {
-  # convert mean and sd to meanlog (mu) and sdlog (sigma)
-  lognormal_params <- unlist(
-    lnorm_meansd2musigma(
-      mean = summary_stats$central_tendency_spread$mean,
-      sd = summary_stats$central_tendency_spread$sd
-    )
-  )
-
-  # return lognormal params
-  lognormal_params
-}
-
-#' @rdname convert_params
-convert_params.weibull <- function(summary_stats) {
-  # convert mean and sd to meanlog (mu) and sdlog (sigma)
-  weibull_params <- unlist(
-    weibull_meansd2shapescale(
-      mean = summary_stats$central_tendency_spread$mean,
-      sd = summary_stats$central_tendency_spread$sd
-    )
-  )
-
-  # return weibull params
-  weibull_params
-}
-
-convert_params.default <- function(summary_stats, ...) {
-  stop(sprintf("No conversion functions for class %s"), class(summary_stats))
 }
