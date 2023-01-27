@@ -7,7 +7,7 @@
 epidist(
   disease,
   pathogen = NA_character_,
-  epi_distribution,
+  epi_dist,
   prob_distribution = NA_character_,
   prob_distribution_params = NA_real_,
   uncertainty = create_epidist_uncertainty(),
@@ -17,7 +17,8 @@ epidist(
   method_assessment = create_epidist_method_assessment(),
   discretise = FALSE,
   truncation = NA_real_,
-  notes = NULL
+  notes = NULL,
+  auto_calc_params = TRUE
 )
 }
 \arguments{
@@ -26,7 +27,7 @@ epidist(
 \item{pathogen}{A character string with the name of the causative agent of
 disease, or NULL if not known}
 
-\item{epi_distribution}{A character string with the name of the
+\item{epi_dist}{A character string with the name of the
 epidemiological distribution type}
 
 \item{prob_distribution}{A character string specifying the probability
@@ -35,31 +36,42 @@ distribution}
 \item{prob_distribution_params}{A named vector of probability distribution
 parameters}
 
-\item{uncertainty}{Either a list of named vectors with the uncertainty around
-the probability distribution parameters or NULL when uncertainty around the
-parameter estimates is unknown}
+\item{uncertainty}{A list of named vectors with the uncertainty around
+the probability distribution parameters. If uncertainty around the parameter
+estimates is unknown use \code{create_epidist_uncertainty()} (which is the
+argument default) to create a list wiht the correct names with missing
+values.}
 
-\item{summary_stats}{A list of summary statistics}
+\item{summary_stats}{A list of summary statistics, use
+\code{create_epidist_summary_stats()} to create list.}
 
 \item{citation}{A character string with the citation of the source of the
-data or the paper that inferred the distribution parameters}
+data or the paper that inferred the distribution parameters, use
+\code{create_epidist_citation()} to create citation.}
 
 \item{metadata}{A list of metadata, this can include: sample size, whether
 the disease is vector-borne, etc. It is assumed that the disease is not
 vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 delay distribution such as extrinsic incubation period) unless
-\code{vector_borne = TRUE} is contained in the metadata}
+\code{vector_borne = TRUE} is contained in the metadata. Use
+\code{create_epidist_metadata()} to create metadata.}
 
-\item{method_assessment}{A list of methodological aspects assessed}
+\item{method_assessment}{A list of methodological aspects used when fitting
+the distribution, use \code{create_epidist_method_assessment()} to create method
+assessment.}
 
 \item{discretise}{A boolean logical whether the distribution is discretised.
 Default is FALSE which assumes a continuous probability distribution}
 
 \item{truncation}{A numeric specifying the truncation point if the inferred
-distribution was truncated, NULL if not or unknown.}
+distribution was truncated, NA if not or unknown.}
 
 \item{notes}{A character string with any additional information about the
 data, inference method or disease.}
+
+\item{auto_calc_params}{A boolean logical determining whether to try and
+calculate the probability distribution parameters from summary statistics if
+distribution parameters are not provided. Default is \code{TRUE}.}
 }
 \value{
 An \code{epidist} object
@@ -71,13 +83,31 @@ aspects including delay distributions (e.g. incubation periods and serial
 intervals, among others) and offspring distributions.
 }
 \examples{
+# minimal input required for `epidist`
+ebola_incubation <- epidist(
+  disease = "ebola",
+  epi_dist = "incubation_period",
+  prob_distribution = "gamma",
+  prob_distribution_params = c(shape = 1, scale = 1)
+)
+
+# minimal input required for discrete `epidist`
+ebola_incubation <- epidist(
+  disease = "ebola",
+  epi_dist = "incubation_period",
+  prob_distribution = "gamma",
+  prob_distribution_params = c(shape = 1, scale = 1),
+  discretise = TRUE
+)
+
+# example with more fields filled in
 ebola_incubation <- epidist(
   disease = "ebola",
   pathogen = "ebola_virus",
-  epi_distribution = "incubation",
+  epi_dist = "incubation",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1),
-  uncertainty = NA,
+  uncertainty = create_epidist_uncertainty(),
   summary_stats = create_epidist_summary_stats(
     mean = 2,
     sd = 1

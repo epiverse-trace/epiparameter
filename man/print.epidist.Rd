@@ -4,7 +4,7 @@
 \alias{print.epidist}
 \title{Print method for epidist class}
 \usage{
-\method{print}{epidist}(x, header = TRUE, vb = NULL)
+\method{print}{epidist}(x, header = TRUE, vb = NULL, ...)
 }
 \arguments{
 \item{x}{epidist object}
@@ -16,6 +16,8 @@ vb_epidist class}
 \item{vb}{A character string containing whether it is the intrinsic
 (\code{"Intrinsic"}) or extrinsic (\code{"extrinsic"}) distribution for vector-borne
 diseases}
+
+\item{...}{further arguments passed to or from other methods}
 }
 \value{
 Nothing (prints output)
@@ -26,7 +28,7 @@ Print method for epidist class
 \examples{
 epidist <- epidist(
   disease = "ebola",
-  epi_distribution = "incubation_period",
+  epi_dist = "incubation_period",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1)
 )
