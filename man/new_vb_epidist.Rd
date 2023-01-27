@@ -2,10 +2,8 @@
 % Please edit documentation in R/vb_epidist.R
 \name{new_vb_epidist}
 \alias{new_vb_epidist}
-\title{Constructor for vb_epidist class}
+\title{Constructor for \code{vb_epidist} class}
 \usage{
-new_vb_epidist(intrinsic_epidist, extrinsic_epidist)
-
 new_vb_epidist(intrinsic_epidist, extrinsic_epidist)
 }
 \arguments{
@@ -15,15 +13,9 @@ new_vb_epidist(intrinsic_epidist, extrinsic_epidist)
 }
 \value{
 \code{vb_epidist} object
-
-\code{vb_epidist} object
 }
 \description{
-Create an vb_epidist object by binding two \code{epidist} objects
-and assigning the \code{vb_epidist} class. Not extra checks are made as these
-take place in the \code{epidist} helper function.
-
-Create an vb_epidist object by binding two \code{epidist} objects
+Create an \code{vb_epidist} object by binding two \code{epidist} objects
 and assigning the \code{vb_epidist} class. Not extra checks are made as these
 take place in the \code{epidist} helper function.
 }

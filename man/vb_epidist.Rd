@@ -5,8 +5,6 @@
 \title{Create an \code{vb_epidist} object}
 \usage{
 vb_epidist(intrinsic_epidist, extrinsic_epidist)
-
-vb_epidist(intrinsic_epidist, extrinsic_epidist)
 }
 \arguments{
 \item{intrinsic_epidist}{An \code{epidist} object}
@@ -15,32 +13,16 @@ vb_epidist(intrinsic_epidist, extrinsic_epidist)
 }
 \value{
 \code{vb_epidist} object
-
-\code{vb_epidist} object
 }
 \description{
 The \code{vb_epidist} class is an extension of the \code{epidist} class
 (although not a subclass of \code{epidist}). It is is used to store
-epidemiological parameters for vector-borne diseasese. It has the same
-methods (\code{print()}, \code{format()}, \code{plot()}, \code{generate()}, \code{cdf()}, \code{density()},
-\code{quantile()}) as the \code{epidist} class and therefore there are used
-identically.
-
-The \code{vb_epidist} class is an extension of the \code{epidist} class
-(although not a subclass of \code{epidist}). It is is used to store
-epidemiological parameters for vector-borne diseasese. It has the same
+epidemiological parameters for vector-borne diseases. It has the same
 methods (\code{print()}, \code{format()}, \code{plot()}, \code{generate()}, \code{cdf()}, \code{density()},
 \code{quantile()}) as the \code{epidist} class and therefore there are used
 identically.
 }
 \details{
-The \code{epidist} objects should contain metadata (\code{epidist$metadata})
-indicating it is a vector-borne disease
-(\code{epidist$metadata$vector_borne} is TRUE) and the extrinsic distribution
-should indicate in the metadata that it is the extrinsic distribution
-(\code{epidist$metadata$extrinsic} is TRUE). If these two aspects are not given
-the construction of the class will throw a warning.
-
 The \code{epidist} objects should contain metadata (\code{epidist$metadata})
 indicating it is a vector-borne disease
 (\code{epidist$metadata$vector_borne} is TRUE) and the extrinsic distribution
@@ -53,7 +35,7 @@ vb <- vb_epidist(
   intrinsic_epidist = epidist(
     disease = "dengue",
     pathogen = "dengue_virus",
-    epi_distribution = "incubation_period",
+    epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     metadata = create_epidist_metadata(
@@ -64,31 +46,7 @@ vb <- vb_epidist(
   extrinsic_epidist =  epidist(
     disease = "dengue",
     pathogen = "dengue_virus",
-    epi_distribution = "incubation_period",
-    prob_distribution = "gamma",
-    prob_distribution_params = c(shape = 2, scale = 2),
-    metadata = create_epidist_metadata(
-      vector_borne = TRUE,
-      extrinsic = TRUE
-    )
-  )
-)
-vb <- vb_epidist(
-  intrinsic_epidist = epidist(
-    disease = "dengue",
-    pathogen = "dengue_virus",
-    epi_distribution = "incubation_period",
-    prob_distribution = "gamma",
-    prob_distribution_params = c(shape = 1, scale = 1),
-    metadata = create_epidist_metadata(
-      vector_borne = TRUE,
-      extrinsic = FALSE
-    )
-  ),
-  extrinsic_epidist =  epidist(
-    disease = "dengue",
-    pathogen = "dengue_virus",
-    epi_distribution = "incubation_period",
+    epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 2, scale = 2),
     metadata = create_epidist_metadata(
@@ -99,7 +57,5 @@ vb <- vb_epidist(
 )
 }
 \seealso{
-\code{\link[=epidist]{epidist()}}
-
 \code{\link[=epidist]{epidist()}}
 }
