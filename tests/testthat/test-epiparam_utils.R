@@ -1,0 +1,254 @@
+test_that("as_epidist works as expected", {
+  eparam <- epiparam()
+  edist <- as_epidist(x = eparam[12, ])
+
+  expect_s3_class(edist, "epidist")
+})
+
+test_that("as_epidist fails as expected", {
+  eparam <- epiparam()
+  eparam$disease <- NULL
+  expect_error(
+    as_epidist(x = eparam[12, ]),
+    regexp = "epiparam object does not contain the correct columns"
+  )
+})
+
+test_that("make_epidist works as expected for gamma", {
+
+  edist <- make_epidist(x = list(
+    disease = "influenza",
+    pathogen = "influenza-A-H1N1pdm",
+    epi_distribution = "incubation_period",
+    author = "Ghani_etal",
+    year = 2009,
+    sample_size = 16,
+    region = "UK",
+    vector_borne = FALSE,
+    vector = NA,
+    extrinsic = FALSE,
+    prob_distribution = "gamma",
+    inference_method = "mle",
+    mean = 2.05,
+    mean_ci = c(NA, NA),
+    mean_ci_interval = NA,
+    sd = 0.49,
+    sd_ci = c(NA, NA),
+    sd_ci_interval = NA,
+    quantile_025 = NA,
+    quantile_05 = NA,
+    quantile_25 = NA,
+    median = NA,
+    median_ci = c(NA, NA),
+    median_ci_interval = NA,
+    quantile_75 = NA,
+    quantile_875 = NA,
+    quantile_95 = NA,
+    quantile_975 = NA,
+    lower_range = NA,
+    upper_range = NA,
+    shape = NA,
+    shape_ci = c(NA, NA),
+    shape_ci_interval = NA,
+    scale = NA,
+    scale_ci = c(NA, NA),
+    scale_ci_interval = NA,
+    meanlog = NA,
+    meanlog_ci = c(NA, NA),
+    meanlog_ci_interval = NA,
+    sdlog = NA,
+    sdlog_ci = c(NA, NA),
+    sdlog_ci_interval = NA,
+    dispersion = NA,
+    dispersion_ci = c(NA, NA),
+    dispersion_ci_interval = NA,
+    precision = NA,
+    precision_ci = c(NA, NA),
+    precision_ci_interval = NA,
+    truncation = NA,
+    discretised = FALSE,
+    censorred = NA,
+    right_truncated = NA,
+    phase_bias_adjusted = NA,
+    notes = "",
+    PMID = 20029668,
+    DOI = "10.1371/currents.RRN1130"
+  ))
+
+  expect_s3_class(edist, "epidist")
+  expect_identical(stats::family(edist$prob_dist), "gamma")
+})
+
+test_that("make_epidist works as expected for weibull", {
+  # suppress message about numerical approximation
+  edist <- suppressMessages(make_epidist(x = list(
+    disease = "influenza",
+    pathogen = "influenza-A-H1N1pdm",
+    epi_distribution = "incubation_period",
+    author = "Ghani_etal",
+    year = 2009,
+    sample_size = 16,
+    region = "UK",
+    vector_borne = FALSE,
+    vector = NA,
+    extrinsic = FALSE,
+    prob_distribution = "weibull",
+    inference_method = "mle",
+    mean = 2.05,
+    mean_ci = c(NA, NA),
+    mean_ci_interval = NA,
+    sd = 0.49,
+    sd_ci = c(NA, NA),
+    sd_ci_interval = NA,
+    quantile_025 = NA,
+    quantile_05 = NA,
+    quantile_25 = NA,
+    median = NA,
+    median_ci = c(NA, NA),
+    median_ci_interval = NA,
+    quantile_75 = NA,
+    quantile_875 = NA,
+    quantile_95 = NA,
+    quantile_975 = NA,
+    lower_range = NA,
+    upper_range = NA,
+    shape = NA,
+    shape_ci = c(NA, NA),
+    shape_ci_interval = NA,
+    scale = NA,
+    scale_ci = c(NA, NA),
+    scale_ci_interval = NA,
+    meanlog = NA,
+    meanlog_ci = c(NA, NA),
+    meanlog_ci_interval = NA,
+    sdlog = NA,
+    sdlog_ci = c(NA, NA),
+    sdlog_ci_interval = NA,
+    dispersion = NA,
+    dispersion_ci = c(NA, NA),
+    dispersion_ci_interval = NA,
+    precision = NA,
+    precision_ci = c(NA, NA),
+    precision_ci_interval = NA,
+    truncation = NA,
+    discretised = FALSE,
+    censorred = NA,
+    right_truncated = NA,
+    phase_bias_adjusted = NA,
+    notes = "",
+    PMID = 20029668,
+    DOI = "10.1371/currents.RRN1130"
+  )))
+
+  expect_s3_class(edist, "epidist")
+  expect_identical(stats::family(edist$prob_dist), "weibull")
+})
+
+test_that("make_epidist works as expected for lognormal", {
+  edist <- suppressMessages(make_epidist(x = list(
+    disease = "influenza",
+    pathogen = "influenza-A-H1N1pdm",
+    epi_distribution = "incubation_period",
+    author = "Ghani_etal",
+    year = 2009,
+    sample_size = 16,
+    region = "UK",
+    vector_borne = FALSE,
+    vector = NA,
+    extrinsic = FALSE,
+    prob_distribution = "lognormal",
+    inference_method = "mle",
+    mean = 2.05,
+    mean_ci = c(NA, NA),
+    mean_ci_interval = NA,
+    sd = 0.49,
+    sd_ci = c(NA, NA),
+    sd_ci_interval = NA,
+    quantile_025 = NA,
+    quantile_05 = NA,
+    quantile_25 = NA,
+    median = NA,
+    median_ci = c(NA, NA),
+    median_ci_interval = NA,
+    quantile_75 = NA,
+    quantile_875 = NA,
+    quantile_95 = NA,
+    quantile_975 = NA,
+    lower_range = NA,
+    upper_range = NA,
+    shape = NA,
+    shape_ci = c(NA, NA),
+    shape_ci_interval = NA,
+    scale = NA,
+    scale_ci = c(NA, NA),
+    scale_ci_interval = NA,
+    meanlog = NA,
+    meanlog_ci = c(NA, NA),
+    meanlog_ci_interval = NA,
+    sdlog = NA,
+    sdlog_ci = c(NA, NA),
+    sdlog_ci_interval = NA,
+    dispersion = NA,
+    dispersion_ci = c(NA, NA),
+    dispersion_ci_interval = NA,
+    precision = NA,
+    precision_ci = c(NA, NA),
+    precision_ci_interval = NA,
+    truncation = NA,
+    discretised = FALSE,
+    censorred = NA,
+    right_truncated = NA,
+    phase_bias_adjusted = NA,
+    notes = "",
+    PMID = 20029668,
+    DOI = "10.1371/currents.RRN1130"
+  )))
+
+  expect_s3_class(edist, "epidist")
+  expect_identical(stats::family(edist$prob_dist), "lognormal")
+})
+
+test_that("as_epiparam works as expected", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  eparam <- as_epiparam(x = edist)
+
+  expect_s3_class(eparam, "epiparam")
+  expect_identical(nrow(eparam), 1L)
+})
+
+test_that("as_epiparam fails as expected", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  edist$disease <- NULL
+  expect_error(
+    as_epiparam(x = edist),
+    regexp = "epidist object does not contain the correct attributes"
+  )
+})
+
+test_that("epiparam subsetting works as expected", {
+  eparam <- epiparam()
+  eparam <- eparam[, -2]
+
+  expect_s3_class(eparam, "epiparam")
+  expect_identical(ncol(eparam), 55L)
+})
+
+test_that("epiparam subsetting fails as expected", {
+  eparam <- epiparam()
+  expect_error(
+    eparam[, -1],
+    regexp = "epiparam object does not contain the correct columns"
+  )
+})
