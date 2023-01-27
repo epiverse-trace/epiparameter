@@ -152,163 +152,246 @@ make_epidist <- function(x) {
   )
 }
 
+#' Converts an `epidist` object to an `epiparam` object
+#'
+#' @param x An `epidist` object
+#'
+#' @return An `epiparam` object
+#' @export
+#'
+#' @examples
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "lognormal",
+#'   prob_distribution_params = c(meanlog = 1, sdlog = 1)
+#' )
+#' as_epiparam(edist)
 as_epiparam <- function(x) {
 
-  if (inherits(edist, "epidist")) {
-    n <- 1
-  } else {
-    n <- length(x)
+  # for vb_epidist or list of epidists call as_epiparam recursively
+  if (!inherits(x, "epidist")) {
+    eparam <- data.frame()
+    for (i in seq_along(x)) {
+      eparam_row <- as_epiparam(x[[i]])
+      eparam <- rbind(eparam, eparam_row)
+    }
+    return(eparam)
   }
 
   # set default citation
   author <- NA_character_
   year <- NA_integer_
-  DOI <- NA_character_
-  PMID <- NA_character_
+  doi <- NA_character_
+  pmid <- NA_character_
 
   # if citation is available extract info
   if (x$citation != "No citation available") {
     # extract author from citation
     author <- sub(" \\(.*", "", x$citation)
     # extract year from citation
-    year <- sub("\\).*", "", sub(".*\\(", "", x$citation))
+    year <- gsub(pattern = "<(.*)", replacement = "", x = x$citation)
+    year <- sub("\\).*", "", sub(".*\\(", "", year))
     # extract DOI from citation
     doi <- sub(">.*", "",  sub(".*<", "", x$citation))
     # extract PMID if available
     if (grepl(pattern = "PMID", x = x$citation)) {
       pmid <- sub(".*PMID: ", "", x$citation)
+    } else {
+      pmid <- NA
     }
   }
 
-  if (inherits(x$prob_dist[[1]], "distcrete")) {
-    parameters <- x$prob_dist[[1]]$parameters
+  if (inherits(x$prob_dist, "distcrete")) {
+    parameters <- unlist(x$prob_dist$parameters)
+    discretised <- TRUE
+    prob_dist <- x$prob_dist$name
+    # TODO: make use of lognormal or lnorm consistent
+    if (prob_dist == "lnorm") prob_dist <- "lognormal"
+    truncation <- NA
   } else {
-    parameters <- unlist(distributional::parameters(x$prob_dist[[1]]))
+    parameters <- unlist(distributional::parameters(x$prob_dist))
+    discretised <- FALSE
+    prob_dist <- stats::family(x$prob_dist)
+    if (is.null(distributional::parameters(x$prob_dist)$upper)) {
+      truncation <- NA
+    } else {
+      truncation <- distributional::parameters(x$prob_dist)$upper
+    }
   }
 
   # standardise distribution parameterisation
-  class(parameters) <- stats::family(x$prob_dist[[1]])
+  class(parameters) <- prob_dist
   parameters <- clean_epidist_params(prob_dist_params = parameters)
 
-  ## TODO: sort out extrinsic
-
-  ## TODO: work out how to sort out ci fields
-
   if (any(is.na(x$uncertainty))) {
-    uncertainty <- list(ci = NA_real_, ci_interval = NA_real_, ci_type = NA_character_)
-  } else {
-    uncertainty <- list(ci = x$uncertainty)
+    x$uncertainty <- lapply(
+      x$uncertainty,
+      function(x) {
+        list(ci = NA_real_, ci_interval = NA_real_, ci_type = NA_character_)
+      })
   }
 
   ## TODO: look into redudancy of median and quantile 50 in epidist and epiparam class
 
   eparam <- data.frame(
-    disease = x$disease$disease, pathogen = x$disease$pathogen,
-    epi_distribution = x$epi_dist, author = author,
-    year = year, sample_size = x$metadata$sample_size,
-    region = x$metadata$region, vector_borne = x$metadata$vector_borne,
-    vector = x$metadata$vector, extrinsic = FALSE,
-    prob_distribution = x$prob_dist,
+    disease = x$disease$disease,
+    pathogen = x$disease$pathogen,
+    epi_distribution = x$epi_dist,
+    author = author,
+    year = as.numeric(year),
+    sample_size = x$metadata$sample_size,
+    region = x$metadata$region,
+    vector_borne = x$metadata$vector_borne,
+    vector = x$metadata$vector,
+    extrinsic = x$metadata$extrinsic,
+    prob_distribution = prob_dist,
     inference_method = x$metadata$inference_method,
     mean = x$summary_stats$central_tendency_spread$mean,
-    mean_ci = x$summary_stats$central_tendency_spread$mean_ci,
+    mean_ci = I(list(x$summary_stats$central_tendency_spread$mean_ci)),
     mean_ci_interval = x$summary_stats$central_tendency_spread$mean_ci_interval,
     sd = x$summary_stats$central_tendency_spread$sd,
-    sd_ci = x$summary_stats$central_tendency_spread$sd_ci,
+    sd_ci = I(list(x$summary_stats$central_tendency_spread$sd_ci)),
     sd_ci_interval = x$summary_stats$central_tendency_spread$sd_ci_interval,
-    quantile_025 = x$summary_stats$quantiles$q_025,
-    quantile_05 = x$summary_stats$quantiles$q_05,
-    quantile_25 = x$summary_stats$quantiles$q_25,
+    quantile_025 = unname(x$summary_stats$quantiles["q_025"]),
+    quantile_05 = unname(x$summary_stats$quantiles["q_05"]),
+    quantile_25 = unname(x$summary_stats$quantiles["q_25"]),
     median = x$summary_stats$central_tendency_spread$median,
-    median_ci = x$summary_stats$central_tendency_spread$median_ci,
+    median_ci = I(list(x$summary_stats$central_tendency_spread$median_ci)),
     median_ci_interval = x$summary_stats$central_tendency_spread$median_ci_interval,
-    quantile_75 = x$summary_stats$quantiles$q_75,
-    quantile_875 = x$summary_stats$quantiles$q_875,
-    quantile_95 = x$summary_stats$quantiles$q_95,
-    quantile_975 = x$summary_stats$quantiles$q_975,
+    quantile_75 = unname(x$summary_stats$quantiles["q_75"]),
+    quantile_875 = unname(x$summary_stats$quantiles["q_875"]),
+    quantile_95 = unname(x$summary_stats$quantiles["q_95"]),
+    quantile_975 = unname(x$summary_stats$quantiles["q_975"]),
     lower_range = x$summary_stats$range$lower_range,
     upper_range = x$summary_stats$range$upper_range,
-    shape = parameters["shape"],
-    shape_ci = x$uncertainty["shape"],
-    shape_ci_interval = , scale = numeric(),
-    scale_ci = numeric(),
-    scale_ci_interval = numeric(), meanlog = numeric(),
-    meanlog_ci = numeric(),
-    meanlog_ci_interval = numeric(), sdlog = numeric(),
-    sdlog_ci= numeric(),
-    sdlog_ci_interval = numeric(), dispersion = numeric(),
-    dispersion_ci = numeric(),
-    dispersion_ci_interval = numeric(), precision = numeric(),
-    precision_ci = numeric(),
-    precision_ci_interval = numeric(), truncation = numeric(),
-    discretised = logical(), censorred = logical(),
-    right_truncated = logical(), phase_bias_adjusted = logical(),
-    notes = character(), PMID = character(),
-    DOI = character()
+    shape = ifelse(
+      test = is.na(unname(parameters["shape"])),
+      yes = NA_real_,
+      no = parameters["shape"]
+    ),
+    shape_ci = NA,
+    shape_ci_interval = ifelse(
+      test = is.null(x$uncertainty[["shape"]]),
+      yes = NA_real_,
+      no = x$uncertainty$shape$ci_interval
+    ),
+    scale = ifelse(
+      test = is.na(unname(parameters["scale"])),
+      yes = NA_real_,
+      no = parameters["scale"]
+    ),
+    scale_ci = NA,
+    scale_ci_interval = ifelse(
+      test = is.null(x$uncertainty[["scale"]]),
+      yes = NA_real_,
+      no = x$uncertainty$scale$ci_interval
+    ),
+    meanlog = ifelse(
+      test = is.na(unname(parameters["mu"])),
+      yes = NA_real_,
+      no = parameters["mu"]
+    ),
+    meanlog_ci = NA,
+    meanlog_ci_interval = ifelse(
+      test = is.null(x$uncertainty[["meanlog"]]),
+      yes = NA_real_,
+      no = x$uncertainty$meanlog$ci_interval
+    ),
+    sdlog = ifelse(
+      test = is.na(unname(parameters["sigma"])),
+      yes = NA_real_,
+      no = parameters["sigma"]
+    ),
+    sdlog_ci = NA,
+    sdlog_ci_interval = ifelse(
+      test = is.null(x$uncertainty[["sdlog"]]),
+      yes = NA_real_,
+      no = x$uncertainty$sdlog$ci_interval
+    ),
+    dispersion = ifelse(
+      test = is.na(unname(parameters["dispersion"])),
+      yes = NA_real_,
+      no = parameters["dispersion"]
+    ),
+    dispersion_ci = NA,
+    dispersion_ci_interval = ifelse(
+      test = is.null(x$uncertainty[["dispersion"]]),
+      yes = NA_real_,
+      no = x$uncertainty$dispersion$ci_interval
+    ),
+    precision = ifelse(
+      test = is.na(unname(parameters["precision"])),
+      yes = NA_real_,
+      no = parameters["precision"]
+    ),
+    precision_ci = NA,
+    precision_ci_interval = ifelse(
+      test = is.null(x$uncertainty[["precision"]]),
+      yes = NA_real_,
+      no = x$uncertainty$precision$ci_interval
+    ),
+    truncation = truncation,
+    discretised = discretised,
+    censorred = x$method_assessment$censorred,
+    right_truncated = x$method_assessment$right_truncated,
+    phase_bias_adjusted = x$method_assessment$phase_bias_adjusted,
+    notes = x$notes,
+    PMID = pmid,
+    DOI = doi
   )
 
-
-  unlist(edist)
-}
-
-
-.get_epidist_params <- function(x) {
-  # determine parameters
-  if (x$prob_dist %in% c("gamma", "weibull")) {
-    parameters <- c(shape = x$shape, scale = x$scale)
-    uncertainty <- list(
-      shape = create_epidist_uncertaintx(
-        ci = x$shape_ci,
-        ci_interval = x$shape_ci_interval,
-        ci_type =  ifelse(
-          test = x$inference_method == "mle",
-          yes = "confidence interval",
-          no = "credible interval"
-        )
-      ),
-      scale = create_epidist_uncertainty(
-        ci = x$scale_ci,
-        ci_interval = x$scale_ci_interval,
-        ci_type = ifelse(
-          test = x$inference_method == "mle",
-          yes = "confidence interval",
-          no = "credible interval"
-        )
-      )
-    )
-  } else if (x$prob_distribution %in% c("lognormal")) {
-    parameters <- c(meanlog = x$meanlog, sdlog = x$sdlog)
-    uncertainty <- list(
-      meanlog = create_epidist_uncertainty(
-        ci = x$meanlog_ci,
-        ci_interval = x$meanlog_ci_interval,
-        ci_type =  ifelse(
-          test = x$inference_method == "mle",
-          yes = "confidence interval",
-          no = "credible interval"
-        )
-      ),
-      sdlog = create_epidist_uncertainty(
-        ci = x$sdlog_ci,
-        ci_interval = x$sdlog_ci_interval,
-        ci_type = ifelse(
-          test = x$inference_method == "mle",
-          yes = "confidence interval",
-          no = "credible interval"
-        )
-      )
-    )
-  } else if (x$prob_distribution == "negative_binomial") {
-    parameters <- c(mean = x$mean, dispersion = x$dispersion)
-  } else if (x$prob_distribution %in% c("poisson", "geometric")) {
-    parameters <- x$mean
-  } else {
-    stop("Distribution in epiparam object not recognised")
-  }
-
-  # return list of parameters and uncertainty
-  list(
-    parameters = parameters,
-    uncertainty = uncertainty
+  # create lists for epiparam vector columns
+  shape_ci <- ifelse(
+    test = is.null(x$uncertainty[["shape"]]),
+    yes = I(list(c(NA_real_, NA_real_))),
+    no = x$uncertainty$shape$ci
   )
+
+  scale_ci <- ifelse(
+    test = is.null(x$uncertainty[["scale"]]),
+    yes = I(list(c(NA_real_, NA_real_))),
+    no = x$uncertainty$scale$ci
+  )
+
+  meanlog_ci <- ifelse(
+    test = is.null(x$uncertainty[["meanlog"]]),
+    yes = I(list(c(NA_real_, NA_real_))),
+    no = x$uncertainty$meanlog$ci
+  )
+
+  sdlog_ci <- ifelse(
+    test = is.null(x$uncertainty[["sdlog"]]),
+    yes = I(list(c(NA_real_, NA_real_))),
+    no = x$uncertainty$sdlog$ci
+  )
+
+  dispersion_ci <- ifelse(
+    test = is.null(x$uncertainty[["dispersion"]]),
+    yes = I(list(c(NA_real_, NA_real_))),
+    no = x$uncertainty$dispersion$ci
+  )
+
+  precision_ci <- ifelse(
+    test = is.null(x$uncertainty[["precision"]]),
+    yes = I(list(c(NA_real_, NA_real_))),
+    no = x$uncertainty$precision$ci
+  )
+
+  # insert vector columns into data frame
+  eparam$shape_ci <- shape_ci
+  eparam$scale_ci <- scale_ci
+  eparam$meanlog_ci <- meanlog_ci
+  eparam$sdlog_ci <- sdlog_ci
+  eparam$dispersion_ci <- dispersion_ci
+  eparam$precision_ci <- precision_ci
+
+  # make data an epiparam object
+  class(eparam) <- c("epiparam", "data.frame")
+
+  # validate new epiparam object
+  validate_epiparam(eparam)
+
+  # return epiparam object
+  eparam
 }
