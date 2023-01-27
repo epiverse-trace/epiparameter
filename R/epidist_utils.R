@@ -8,15 +8,26 @@
 #' @param ci_type A character string, either "confidence interval" or "credible
 #' interval"
 #'
-#' @return Numeric vector with an attribute
+#' @return List of three elements
 #' @export
 #'
 #' @examples
-#' a = 1
+#' # example with uncertainty
+#' create_epidist_uncertainty(
+#'   ci = c(1, 3),
+#'   ci_interval = 95,
+#'   ci_type = "confidence interval"
+#' )
+#' # example with unknown uncertainty
+#' create_epidist_uncertainty(NA)
 create_epidist_uncertainty <- function(ci = NA_real_, ci_interval, ci_type) {
 
   # when no uncertainty is given
-  if (any(is.na(ci))) return(NA_real_)
+  if (any(is.na(ci))) return(list(
+    ci = NA_real_,
+    ci_interval = c(NA_real_, NA_real_),
+    ci_type = NA_character_
+  ))
 
   # check input
   checkmate::assert_numeric(ci, any.missing = FALSE, len = 2)
