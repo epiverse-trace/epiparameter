@@ -4,10 +4,12 @@
 \alias{format.epiparam}
 \title{Format method for epiparam class}
 \usage{
-\method{format}{epiparam}(x)
+\method{format}{epiparam}(x, ...)
 }
 \arguments{
 \item{x}{epiparam object}
+
+\item{...}{further arguments passed to or from other methods}
 }
 \value{
 Nothing (prints output)

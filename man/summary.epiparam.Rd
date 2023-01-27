@@ -4,10 +4,12 @@
 \alias{summary.epiparam}
 \title{Summary method for epiparam class}
 \usage{
-\method{summary}{epiparam}(x)
+\method{summary}{epiparam}(object, ...)
 }
 \arguments{
-\item{x}{epiparam object}
+\item{object}{epiparam object}
+
+\item{...}{further arguments passed to or from other methods}
 }
 \value{
 data frame of information

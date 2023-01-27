@@ -7,7 +7,7 @@
 #' @keywords internal
 #'
 #' @examples
-#' obj <- new_epiparam()
+#' eparam <- epiparameter:::new_epiparam("all")
 new_epiparam <- function(epi_dist = character()) {
 
   # check input
@@ -97,6 +97,7 @@ epiparam <- function(epi_dist = c("all",
 #'
 #' @return Nothing, errors when invalid `epiparam` object is provided
 validate_epiparam <- function(epiparam) {
+
   if (!inherits(epiparam, "epiparam")) {
     stop("Object should be of class epiparam")
   }
@@ -140,20 +141,22 @@ validate_epiparam <- function(epiparam) {
 #' Print method for epiparam class
 #'
 #' @param x epiparam object
+#' @param ... further arguments passed to or from other methods
 #'
 #' @return Nothing (prints output)
 #' @export
 #'
 #' @examples
-#' epiparam <- epiparam(1)
+#' epiparam <- epiparam()
 #' epiparam
-print.epiparam <- function(x) {
-  format(x)
+print.epiparam <- function(x, ...) {
+  format(x, ...)
 }
 
 #' Format method for epiparam class
 #'
 #' @param x epiparam object
+#' @param ... further arguments passed to or from other methods
 #'
 #' @return Nothing (prints output)
 #' @export
@@ -161,7 +164,8 @@ print.epiparam <- function(x) {
 #' @examples
 #' x <- epiparam()
 #' format(x)
-format.epiparam <- function(x) {
+format.epiparam <- function(x, ...) {
+  validate_epiparam(x)
   summ <- summary(x)
   writeLines(
     c(
@@ -189,7 +193,8 @@ format.epiparam <- function(x) {
 
 #' Summary method for epiparam class
 #'
-#' @param x epiparam object
+#' @param object epiparam object
+#' @param ... further arguments passed to or from other methods
 #'
 #' @return data frame of information
 #' @export
@@ -197,19 +202,21 @@ format.epiparam <- function(x) {
 #' @examples
 #' x <- epiparam()
 #' summary(x)
-summary.epiparam <- function(x) {
-  num_entries <- nrow(x)
-  num_diseases <- length(unique(x$disease))
+summary.epiparam <- function(object, ...) {
+  num_entries <- nrow(object)
+  num_diseases <- length(unique(object$disease))
   num_delay_dist <- sum(
-    x$epi_distribution %in% c(
+    object$epi_distribution %in% c(
       "incubation_period", "generation_time",
       "serial_interval", "onset_to_death")
   )
-  num_offspring_dist <- sum(x$epi_distribution %in% "offspring_distribution")
-  num_studies <- length(unique(x$DOI))
-  num_cont_dist <- nrow(x) - sum(x$discretised)
-  num_disc_dist <- sum(x$discetised)
-  num_vector_borne <- sum(x$extrinsic)
+  num_offspring_dist <- sum(
+    object$epi_distribution %in% "offspring_distribution"
+  )
+  num_studies <- length(unique(object$DOI))
+  num_cont_dist <- nrow(object) - sum(object$discretised)
+  num_disc_dist <- sum(object$discetised)
+  num_vector_borne <- sum(object$extrinsic)
   # return epiparam summary
   list(num_entries = num_entries,
        num_diseases = num_diseases,
@@ -231,8 +238,11 @@ summary.epiparam <- function(x) {
 #'
 #' @examples
 #' head(epiparam())
+head <- function(x) UseMethod("head")
+
+#' @export
 head.epiparam <- function(x) {
-  head(as.data.frame(x))
+ utils::head(as.data.frame(x))
 }
 
 #' tail method for epiparam class
@@ -244,6 +254,9 @@ head.epiparam <- function(x) {
 #'
 #' @examples
 #' tail(epiparam())
+tail <- function(x) UseMethod("tail")
+
+#' @export
 tail.epiparam <- function(x) {
-  tail(as.data.frame(x))
+  utils::tail(as.data.frame(x))
 }
