@@ -395,3 +395,16 @@ as_epiparam <- function(x) {
   # return epiparam object
   eparam
 }
+
+#' Subsetting method for `epiparam` class that fails when epiparam object is
+#' invalidated
+#'
+#' @param epiparam An `epiparam` object
+#' @inheritParams base::subset
+#'
+#' @return An `epiparam` object
+#' @export
+`[.epiparam` <- function(epiparam, ...) {
+  validate_epiparam(NextMethod())
+}
+
