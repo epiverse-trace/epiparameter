@@ -1,51 +1,41 @@
 #' Constructor for epidist class
 #'
-#' @description Create an epidist object and provides input checking. The
+#' @description Creates an epidist object. The
 #' constructor will search whether parameters of the probability distribution
 #' are supplied and if not look to see whether they can be inferred/extracted/
-#' converted from summary statistics provided.
+#' converted from summary statistics provided. It will also convert the
+#' probability distribution (`prob_dist`) and its parameters
+#' (`prob_dist_params`) into an S3 class, either a `distribution` object from
+#' `{distributional}` when `discretise = FALSE`, or a `distcrete` object from
+#' `{distcrete}` when `discretise = TRUE`.
 #'
 #' @param disease A list contains the `$disease` a character string of the
-#' infectious disease specified in the study, and the `4pathogen` a character
-#' string or NULL of the causative agent of disease specified in study.
-#' @param epi_dist A character string with the name of the epidemiological
-#' distribution type
-#' @param prob_dist A character string specifying the probability distribution
-#' @param prob_dist_params A named vector of probability distribution parameters
-#' @param uncertainty Either a list of named vectors with the uncertainty around
-#' the probability distribution parameters or NULL when uncertainty around the
-#' parameter estimates is unknown
-#' @param summary_stats A list of summary statistics
-#' @param citation A character string with the short form citation
-#' @param metadata A list of metadata
-#' @param method_assessment A list of methodological aspects assessed
-#' @param discretise A boolean logical whether the distribution is discretised.
-#' Default is FALSE which assumes a continuous probability distribution
-#' @param truncation A numeric specifying the truncation point if the inferred
-#' distribution was truncated, NULL if not or unknown.
-#' @param notes A character string with additional notes
-#' @param auto_calc_params
+#' infectious disease specified in the study, and the `$pathogen` a character
+#' string. If the pathogen is unknown it can be given as `NULL`.
+#' @param prob_dist A character string specifying the probability
+#' distribution
+#' @param prob_dist_params A named vector of probability distribution
+#' parameters
+#' @inheritParams epidist
 #'
 #' @return epidist object
 #' @keywords internal
 #'
 #' @examples
 #' epiparameter:::new_epidist(
-#'   disease = list(
-#'     disease = "ebola",
-#'     pathogen = "ebola_virus"
-#'   ),
+#'   disease = list(disease = "ebola", pathogen = "ebola_virus"),
 #'   epi_dist = "incubation_period",
-#'   prob_dist = list("gamma"),
-#'   prob_dist_params = list(c(shape = 1.4, scale = 0.5)),
-#'   uncertainty = NA,
+#'   prob_dist = "gamma",
+#'   prob_dist_params = c(shape = 1, scale = 1),
+#'   uncertainty = create_epidist_uncertainty(),
 #'   summary_stats = create_epidist_summary_stats(),
-#'   metadata = create_epidist_metadata(
-#'     sample_size = 83
-#'   ),
+#'   citation = create_epidist_citation(),
+#'   metadata = create_epidist_metadata(),
 #'   method_assessment = create_epidist_method_assessment(),
-#'   citation = "Smith et al (2010) <10.19832/j.1366-9516.2012.09147.x>",
-#'   notes = "No additional notes"
+#'   discretise = FALSE,
+#'   truncation = NA,
+#'   notes = "No notes",
+#'   auto_calc_params = TRUE
 #' )
 new_epidist <- function(disease = list(),
                         epi_dist = character(),
@@ -71,6 +61,7 @@ new_epidist <- function(disease = list(),
     # calculate parameters if not provided
     prob_dist_params <- calc_dist_params(
         prob_dist = prob_dist,
+        prob_dist_params = prob_dist_params,
         summary_stats = summary_stats,
         sample_size = metadata$sample_size
       )
@@ -145,42 +136,70 @@ new_epidist <- function(disease = list(),
 #' @param disease A character string with name of the infectious disease
 #' @param pathogen A character string with the name of the causative agent of
 #' disease, or NULL if not known
-#' @param epi_distribution A character string with the name of the
+#' @param epi_dist A character string with the name of the
 #' epidemiological distribution type
 #' @param prob_distribution A character string specifying the probability
 #' distribution
 #' @param prob_distribution_params A named vector of probability distribution
 #' parameters
-#' @param uncertainty Either a list of named vectors with the uncertainty around
-#' the probability distribution parameters or NULL when uncertainty around the
-#' parameter estimates is unknown
-#' @param summary_stats A list of summary statistics
+#' @param uncertainty A list of named vectors with the uncertainty around
+#' the probability distribution parameters. If uncertainty around the parameter
+#' estimates is unknown use `create_epidist_uncertainty()` (which is the
+#' argument default) to create a list wiht the correct names with missing
+#' values.
+#' @param summary_stats A list of summary statistics, use
+#' `create_epidist_summary_stats()` to create list.
 #' @param citation A character string with the citation of the source of the
-#' data or the paper that inferred the distribution parameters
+#' data or the paper that inferred the distribution parameters, use
+#' `create_epidist_citation()` to create citation.
 #' @param metadata A list of metadata, this can include: sample size, whether
 #' the disease is vector-borne, etc. It is assumed that the disease is not
 #' vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 #' delay distribution such as extrinsic incubation period) unless
-#' `vector_borne = TRUE` is contained in the metadata
-#' @param method_assessment A list of methodological aspects assessed
+#' `vector_borne = TRUE` is contained in the metadata. Use
+#' `create_epidist_metadata()` to create metadata.
+#' @param method_assessment A list of methodological aspects used when fitting
+#' the distribution, use `create_epidist_method_assessment()` to create method
+#' assessment.
 #' @param discretise A boolean logical whether the distribution is discretised.
 #' Default is FALSE which assumes a continuous probability distribution
 #' @param truncation A numeric specifying the truncation point if the inferred
-#' distribution was truncated, NULL if not or unknown.
+#' distribution was truncated, NA if not or unknown.
 #' @param notes A character string with any additional information about the
 #' data, inference method or disease.
+#' @param auto_calc_params A boolean logical determining whether to try and
+#' calculate the probability distribution parameters from summary statistics if
+#' distribution parameters are not provided. Default is `TRUE`.
 #'
 #' @return An `epidist` object
 #' @export
 #'
 #' @examples
+#' # minimal input required for `epidist`
+#' ebola_incubation <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1)
+#' )
+#'
+#' # minimal input required for discrete `epidist`
+#' ebola_incubation <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1),
+#'   discretise = TRUE
+#' )
+#'
+#' # example with more fields filled in
 #' ebola_incubation <- epidist(
 #'   disease = "ebola",
 #'   pathogen = "ebola_virus",
-#'   epi_distribution = "incubation",
+#'   epi_dist = "incubation",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1),
-#'   uncertainty = NA,
+#'   uncertainty = create_epidist_uncertainty(),
 #'   summary_stats = create_epidist_summary_stats(
 #'     mean = 2,
 #'     sd = 1
@@ -205,7 +224,7 @@ new_epidist <- function(disease = list(),
 #' )
 epidist <- function(disease,
                     pathogen = NA_character_,
-                    epi_distribution,
+                    epi_dist,
                     prob_distribution = NA_character_,
                     prob_distribution_params = NA_real_,
                     uncertainty = create_epidist_uncertainty(),
@@ -215,7 +234,8 @@ epidist <- function(disease,
                     method_assessment = create_epidist_method_assessment(),
                     discretise = FALSE,
                     truncation = NA_real_,
-                    notes = NULL) {
+                    notes = NULL,
+                    auto_calc_params = TRUE) {
 
   # check input
   checkmate::assert_character(
@@ -225,20 +245,14 @@ epidist <- function(disease,
     null.ok = FALSE
   )
   checkmate::assert_character(pathogen)
-  checkmate::assert_character(epi_distribution, len = 1)
+  checkmate::assert_character(epi_dist, len = 1)
   checkmate::assert_character(
     prob_distribution,
     min.chars = 1,
     min.len = 1,
     max.len = 2
   )
-  checkmate::assert_numeric(
-    prob_distribution_params,
-    min.len = 1,
-    max.len = 2,
-    names = "unique",
-    null.ok = TRUE
-  )
+  checkmate::assert_list(uncertainty, names = "unique")
   checkmate::assert_list(
     summary_stats,
     types = c("list", "double", "null"),
@@ -258,13 +272,20 @@ epidist <- function(disease,
       length(prob_distribution_params) == length(uncertainty)
   )
 
+  # check whether probability params are named or na
+  stopifnot(
+    "probability distribution params must be a named vector or NA" =
+      any(is.na(prob_distribution_params)) ||
+      !is.null(names(prob_distribution_params))
+  )
+
   # call epidist constructor
   epidist <- new_epidist(
     disease = list(
       disease = disease,
       pathogen = pathogen
     ),
-    epi_dist = epi_distribution,
+    epi_dist = epi_dist,
     prob_dist = prob_distribution,
     prob_dist_params = prob_distribution_params,
     uncertainty = uncertainty,
@@ -301,16 +322,10 @@ validate_epidist <- function(epidist) {
     "epidist object does not contain the correct attributes" =
       c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
         "citation", "metadata", "method_assessment", "notes") %in%
-      attributes(epidist)$names
-  )
-
-  stopifnot(
+      attributes(epidist)$names,
     "Epidist must contains a disease (single character string)" =
       is.character(epidist$disease$disease) &&
-      length(epidist$disease$disease) == 1
-  )
-
-  stopifnot(
+      length(epidist$disease$disease) == 1,
     "Epidist must contain an epidemiological distribution" =
       is.character(epidist$epi_dist) && length(epidist$epi_dist) == 1
   )
@@ -327,6 +342,7 @@ validate_epidist <- function(epidist) {
 #' @param vb A character string containing whether it is the intrinsic
 #' (`"Intrinsic"`) or extrinsic (`"extrinsic"`) distribution for vector-borne
 #' diseases
+#' @param ... further arguments passed to or from other methods
 #'
 #' @return Nothing (prints output)
 #' @export
@@ -334,13 +350,13 @@ validate_epidist <- function(epidist) {
 #' @examples
 #' epidist <- epidist(
 #'   disease = "ebola",
-#'   epi_distribution = "incubation_period",
+#'   epi_dist = "incubation_period",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1)
 #' )
 #' epidist
-print.epidist <- function(x, header = TRUE, vb = NULL) {
-  format(x, header = header, vb = vb)
+print.epidist <- function(x, header = TRUE, vb = NULL, ...) {
+  format(x, header = header, vb = vb, ...)
 }
 
 #' Format method for epidist class
@@ -351,6 +367,7 @@ print.epidist <- function(x, header = TRUE, vb = NULL) {
 #' vb_epidist class
 #' @param vb Either NULL (default) or a character string of either "Intrinsic"
 #' or "Extrinsic" which is used internally for plotting the vb_epidist class
+#' @param ... further arguments passed to or from other methods
 #'
 #' @return Nothing (prints output)
 #' @export
@@ -358,12 +375,12 @@ print.epidist <- function(x, header = TRUE, vb = NULL) {
 #' @examples
 #' epidist <- epidist(
 #'   disease = "ebola",
-#'   epi_distribution = "incubation_period",
+#'   epi_dist = "incubation_period",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1)
 #' )
 #' format(epidist)
-format.epidist <- function(x, header = TRUE, vb = NULL) {
+format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 
   epi_dist <- clean_epidist_name(x$epi_dist)
   if (header) {
@@ -407,9 +424,6 @@ format.epidist <- function(x, header = TRUE, vb = NULL) {
   invisible(x)
 }
 
-#' @export
-density <- function(x, ...) UseMethod("density")
-
 #' PDF, CDF, PMF, quantiles and random number generation for `epidist` and
 #' `vb_epidist` objects
 #'
@@ -418,14 +432,26 @@ density <- function(x, ...) UseMethod("density")
 #' cumulative distribution, quantile and random number generation functions.
 #' These operate on any distribution that can be included in an epidist object.
 #'
-#' @param x An epidist or vb_epidist object
+#' @param x An `epidist` or `vb_epidist` object
 #' @param at The quantiles to evaluate at
+#' @param q The quantiles to evaluate at
+#' @param p The probabilities to evaluate at
+#' @param times The number of random samples
+#' @param ... further arguments passed to or from other methods
 #'
+#' @return If an `epidist` object is given a numeric vector is returned, if an
+#' `vb_epidist` object is given a list of two elements each with a numeric
+#' vector is returned
+#'
+#' @name epidist_distribution_functions
+NULL
+
 #' @rdname epidist_distribution_functions
-#'
-#' @return Numeric vector
 #' @export
-density.epidist <- function(x, at, ...) {
+density <- function(x, at) UseMethod("density")
+
+#' @export
+density.epidist <- function(x, at) {
   unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$d(at)
@@ -436,14 +462,12 @@ density.epidist <- function(x, at, ...) {
   out
 }
 
-#' @export
-cdf <- function(x, ...) UseMethod("cdf")
-
-#' @inheritParams density.epidist
-#' @param q The quantiles to evaluate at
 #' @rdname epidist_distribution_functions
 #' @export
-cdf.epidist <- function(x, q, ...) {
+cdf <- function(x, q) UseMethod("cdf")
+
+#' @export
+cdf.epidist <- function(x, q) {
   unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$p(q)
@@ -454,14 +478,12 @@ cdf.epidist <- function(x, q, ...) {
   out
 }
 
-#' @export
-quantile <- function(x, ...) UseMethod("quantile")
-
-#' @inheritParams density.epidist
-#' @param p The probabilities to evaluate at
 #' @rdname epidist_distribution_functions
 #' @export
-quantile.epidist <- function(x, p, ...) {
+quantile <- function(x, p) UseMethod("quantile")
+
+#' @export
+quantile.epidist <- function(x, p) {
   unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$q(p)
@@ -472,14 +494,12 @@ quantile.epidist <- function(x, p, ...) {
   out
 }
 
-#' @export
-generate <- function(x, ...) UseMethod("generate")
-
-#' @inheritParams density.epidist
-#' @param time The number of random samples
 #' @rdname epidist_distribution_functions
 #' @export
-generate.epidist <- function(x, times, ...) {
+generate <- function(x, times) UseMethod("generate")
+
+#' @export
+generate.epidist <- function(x, times) {
 
   # check times is a single number for consistent behaviour
   checkmate::assert_number(times)

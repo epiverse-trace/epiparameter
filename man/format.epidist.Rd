@@ -4,7 +4,7 @@
 \alias{format.epidist}
 \title{Format method for epidist class}
 \usage{
-\method{format}{epidist}(x, header = TRUE, vb = NULL)
+\method{format}{epidist}(x, header = TRUE, vb = NULL, ...)
 }
 \arguments{
 \item{x}{epidist object}
@@ -15,6 +15,8 @@ vb_epidist class}
 
 \item{vb}{Either NULL (default) or a character string of either "Intrinsic"
 or "Extrinsic" which is used internally for plotting the vb_epidist class}
+
+\item{...}{further arguments passed to or from other methods}
 }
 \value{
 Nothing (prints output)
@@ -25,7 +27,7 @@ Format method for epidist class
 \examples{
 epidist <- epidist(
   disease = "ebola",
-  epi_distribution = "incubation_period",
+  epi_dist = "incubation_period",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1)
 )
