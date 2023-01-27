@@ -382,8 +382,8 @@ is_epidist_params <- function(prob_dist_params) {
     c("shape", "rate"),
     c("meanlog", "sdlog"),
     c("mu", "sigma"),
-    c("mean"),
-    c("prob"),
+    "mean",
+    "prob",
     c("mean", "dispersion"),
     c("mean", "k")
   )
@@ -391,7 +391,7 @@ is_epidist_params <- function(prob_dist_params) {
   # check whether any combinations are valid
   matches <- lapply(
     possible_params,
-    function(x,y) x == y,
+    function(x, y) x == y,
     y = names(prob_dist_params)
   )
   is_valid_params <- any(unlist(lapply(matches, all)))
@@ -423,6 +423,12 @@ clean_epidist_params <- function(prob_dist_params, ...) {
   UseMethod("clean_epidist_params")
 }
 
+#' Standardises parameters for a gamma distribution
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Named vector of parameters
+#' @keywords internal
 clean_epidist_params.gamma <- function(prob_dist_params) {
 
   # if shape and rate are provided convert to shape and scale
@@ -431,20 +437,29 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
     names(prob_dist_params) <- gsub(
       pattern = "rate", replacement = "scale", x = names(prob_dist_params)
     )
+
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # return prob_dist_params
+    return(prob_dist_params)
   } else if (all(c("shape", "scale") %in% names(prob_dist_params))) {
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
     # no cleaning needed
     return(prob_dist_params)
   } else {
     stop("Parameters of gamma distribution are inconherent")
   }
-
-  # remove class attribute from prob_dist_params
-  prob_dist_params <- unclass(prob_dist_params)
-
-  # return prob_dist_params
-  prob_dist_params
 }
 
+#' Standardises parameters for a lognormal distribution
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Named vector of parameters
+#' @keywords internal
 clean_epidist_params.lognormal <- function(prob_dist_params) {
 
   # if meanlog and sdlog are provided convert to mu and sigma
@@ -454,11 +469,52 @@ clean_epidist_params.lognormal <- function(prob_dist_params) {
     meanlog_index <- which(names(prob_dist_params) == "meanlog")
     sdlog_index <- which(names(prob_dist_params) == "sdlog")
     names(prob_dist_params)[c(meanlog_index, sdlog_index)] <- c("mu", "sigma")
+
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+
+    # return prob_dist_params
+    return(prob_dist_params)
   } else if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # no cleaning needed
     return(prob_dist_params)
   } else {
     stop("Parameters of lognormal distribution are inconherent")
   }
+}
+
+#' Standardises parameters for a weibull distribution
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Named vector of parameters
+#' @keywords internal
+clean_epidist_params.weibull <- function(prob_dist_params) {
+
+  if (all(c("shape", "scale") %in% names(prob_dist_params))) {
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # no cleaning needed
+    return(prob_dist_params)
+  } else {
+    stop("Parameters of weibull distribution are inconherent")
+  }
+}
+
+#' Default method if class of parameters is not recognised
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Named vector of parameters
+#' @keywords internal
+clean_epidist_params.default <- function(prob_dist_params) {
+  # print message that cleaning function not dispatched
+  message("parameters class not recognised")
 
   # remove class attribute from prob_dist_params
   prob_dist_params <- unclass(prob_dist_params)
