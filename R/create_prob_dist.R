@@ -78,7 +78,7 @@ create_prob_dist <- function(prob_dist,
       prob_dist,
       gamma = distributional::dist_gamma(
         shape = prob_dist_params[["shape"]],
-        rate = 1/prob_dist_params[["scale"]]
+        rate = 1 / prob_dist_params[["scale"]]
       ),
       lognormal = distributional::dist_lognormal(
         mu = prob_dist_params[["mu"]],
