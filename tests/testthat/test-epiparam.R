@@ -134,6 +134,38 @@ test_that("epiparam fails when expected", {
   )
 })
 
+test_that("epiparam print & format method works as expected", {
+  expect_snapshot(epiparam())
+
+  expect_output(print(epiparam()))
+  expect_snapshot(print(epiparam()))
+
+  expect_output(format(epiparam()))
+  expect_snapshot(format(epiparam()))
+})
+
+test_that("epiparam summary method works as expected", {
+  epiparam_summary <- summary(epiparam())
+
+  expect_type(epiparam_summary, "list")
+  expect_length(epiparam_summary, 8)
+  expect_true(all(vapply(epiparam_summary, is.numeric, FUN.VALUE = logical(1))))
+  expect_named(
+    epiparam_summary,
+    c(
+      "num_entries", "num_diseases", "num_delay_dist", "num_offspring_dist",
+      "num_studies", "num_continuous_distributions",
+      "num_discrete_distributions", "num_vector_borne_diseases"
+      )
+  )
+})
+
+test_that("epiparam head & tails methods works as expected", {
+  expect_snapshot(head(epiparam()))
+
+  expect_snapshot(tail(epiparam()))
+})
+
 test_that("new_epiparam works as expected", {
   eparam <- new_epiparam(epi_dist = "all")
   expect_s3_class(eparam, "epiparam")
