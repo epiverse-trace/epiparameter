@@ -211,7 +211,7 @@ test_that("epidist.print works as expected", {
 })
 
 test_that("epidist.plot does not produce an error", {
-skip("WIP")
+
   ebola_dist <- suppressMessages(epidist(
     disease = "ebola",
     epi_dist = "incubation",
@@ -230,20 +230,24 @@ skip("WIP")
 })
 
 test_that("epidist.plot works with non-default day_range", {
-  skip("Temp skipped before refactor")
+
+  ebola_dist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+
   expect_silent(
     plot(
-      epidist(
-        pathogen = "ebola",
-        delay_dist = "incubation"
-      ),
+      ebola_dist,
       day_range = 0:20
     )
   )
 
   f <- function() {
     plot(
-      epidist(pathogen = "ebola", delay_dist = "incubation"),
+      ebola_dist,
       day_range = 0:20
     )
   }
