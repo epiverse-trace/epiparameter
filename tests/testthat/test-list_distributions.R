@@ -1,279 +1,208 @@
-test_that("list_distributions works for all, params = FALSE", {
-  skip("Temp skipped before refactor")
-  dist_tbl <- list_distributions(delay_dist = "all", parameters = FALSE)
-  expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(41L, 6L))
-  expect_named(
-    dist_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
-  )
-  expect_snapshot(
-    list_distributions(delay_dist = "all", parameters = FALSE)
-  )
+test_that("list_distributions works as expected with defaults", {
 
-  # check default behaviour is delay_dist = "all"
-  expect_identical(dist_tbl, list_distributions())
-})
-
-test_that("list_distributions works for all, params = TRUE", {
-  skip("Temp skipped before refactor")
-  dist_tbl <- list_distributions(delay_dist = "all", parameters = TRUE)
+  eparam <- epiparam()
+  dist_tbl <- list_distributions(epiparam = eparam)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(41L, 27L))
+  expect_identical(dim(dist_tbl), c(40L, 6L))
   expect_named(
     dist_tbl,
     c(
-      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
-      "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+      "disease", "epi_distribution", "prob_distribution", "author", "year",
+      "sample_size"
     )
   )
   expect_snapshot(
-    list_distributions(delay_dist = "all", parameters = TRUE)
+    list_distributions(epiparam = eparam)
   )
-
-  # check default behaviour is delay_dist = "all"
-  expect_identical(dist_tbl, list_distributions(parameters = TRUE))
 })
 
-test_that("list_distributions works for incubation, params = FALSE", {
-  skip("Temp skipped before refactor")
-  incub_tbl <- list_distributions(delay_dist = "incubation", parameters = FALSE)
+test_that("list_distributions works as expected with subset_db = FALSE", {
+  eparam <- epiparam()
+  dist_tbl <- list_distributions(epiparam = eparam, subset_db = FALSE)
+  expect_s3_class(dist_tbl, "data.frame")
+  expect_identical(dim(dist_tbl), c(40L, 56L))
+  expect_named(
+    dist_tbl,
+    c(
+      "disease", "pathogen", "epi_distribution", "author", "year",
+      "sample_size", "region", "vector_borne", "vector", "extrinsic",
+      "prob_distribution", "inference_method", "mean", "mean_ci",
+      "mean_ci_interval", "sd", "sd_ci", "sd_ci_interval", "quantile_025",
+      "quantile_05", "quantile_25", "median", "median_ci", "median_ci_interval",
+      "quantile_75", "quantile_875", "quantile_95", "quantile_975",
+      "lower_range", "upper_range", "shape", "shape_ci", "shape_ci_interval",
+      "scale", "scale_ci", "scale_ci_interval", "meanlog", "meanlog_ci",
+      "meanlog_ci_interval", "sdlog", "sdlog_ci", "sdlog_ci_interval",
+      "dispersion", "dispersion_ci", "dispersion_ci_interval", "precision",
+      "precision_ci", "precision_ci_interval", "truncation", "discretised",
+      "censorred", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
+      "DOI"
+    )
+  )
+  expect_snapshot(
+    list_distributions(epiparam = eparam, subset_db = FALSE)
+  )
+})
+
+test_that("list_distributions works for incubation period", {
+  eparam <- epiparam()
+  incub_tbl <- list_distributions(
+    epiparam = eparam,
+    epi_dist = "incubation_period"
+  )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(22L, 6L))
+  expect_identical(dim(incub_tbl), c(40L, 6L))
   expect_named(
     incub_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
+    c(
+      "disease", "epi_distribution", "prob_distribution", "author", "year",
+      "sample_size"
+    )
   )
   expect_snapshot(
-    list_distributions(delay_dist = "incubation", parameters = FALSE)
+    list_distributions(
+      epiparam = eparam,
+      epi_dist = "incubation_period"
+    )
   )
 })
 
-test_that("list_distributions works for incubation, params = TRUE", {
-  skip("Temp skipped before refactor")
-  incub_tbl <- list_distributions(delay_dist = "incubation", parameters = TRUE)
+test_that("list_distributions works for incubation, subset_db = FALSE", {
+  eparam <- epiparam()
+  incub_tbl <- list_distributions(
+    epiparam = eparam,
+    epi_dist = "incubation",
+    subset_db = FALSE
+  )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(22L, 27L))
+  expect_identical(dim(incub_tbl), c(40L, 56L))
   expect_named(
     incub_tbl,
     c(
-      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
-      "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+      "disease", "pathogen", "epi_distribution", "author", "year",
+      "sample_size", "region", "vector_borne", "vector", "extrinsic",
+      "prob_distribution", "inference_method", "mean", "mean_ci",
+      "mean_ci_interval", "sd", "sd_ci", "sd_ci_interval", "quantile_025",
+      "quantile_05", "quantile_25", "median", "median_ci", "median_ci_interval",
+      "quantile_75", "quantile_875", "quantile_95", "quantile_975",
+      "lower_range", "upper_range", "shape", "shape_ci", "shape_ci_interval",
+      "scale", "scale_ci", "scale_ci_interval", "meanlog", "meanlog_ci",
+      "meanlog_ci_interval", "sdlog", "sdlog_ci", "sdlog_ci_interval",
+      "dispersion", "dispersion_ci", "dispersion_ci_interval", "precision",
+      "precision_ci", "precision_ci_interval", "truncation", "discretised",
+      "censorred", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
+      "DOI"
     )
   )
   expect_snapshot(
-    list_distributions(delay_dist = "incubation", parameters = TRUE)
+    list_distributions(
+      epiparam = eparam,
+      epi_dist = "incubation",
+      subset_db = FALSE
+    )
   )
 })
 
-test_that("list_distributions works for onset_to_admission, params = FALSE", {
-  skip("Temp skipped before refactor")
-  on_to_ad_tbl <- list_distributions(
-    delay_dist = "onset_to_admission",
-    parameters = FALSE
+test_that("list_distributions works for different distribution", {
+  eparam <- epiparam()
+  serial_tbl <- list_distributions(
+    epiparam = eparam,
+    epi_dist = "serial_interval"
   )
-  expect_s3_class(on_to_ad_tbl, "data.frame")
-  expect_identical(dim(on_to_ad_tbl), c(6L, 6L))
+  expect_s3_class(serial_tbl, "data.frame")
+  expect_identical(dim(serial_tbl), c(3L, 6L))
   expect_named(
-    on_to_ad_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
-  )
-  expect_snapshot(
-    list_distributions(delay_dist = "onset_to_admission", parameters = FALSE)
-  )
-})
-
-test_that("list_distributions works for onset_to_admission, params = TRUE", {
-  skip("Temp skipped before refactor")
-  on_to_ad_tbl <- list_distributions(
-    delay_dist = "onset_to_admission",
-    parameters = TRUE
-  )
-  expect_s3_class(on_to_ad_tbl, "data.frame")
-  expect_identical(dim(on_to_ad_tbl), c(6L, 27L))
-  expect_named(
-    on_to_ad_tbl,
+    serial_tbl,
     c(
-      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
-      "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+      "disease", "epi_distribution", "prob_distribution", "author", "year",
+      "sample_size"
     )
   )
   expect_snapshot(
-    list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
+    list_distributions(
+      epiparam = eparam,
+      epi_dist = "serial_interval"
+    )
   )
 })
 
-test_that("list_distributions works for onset_to_death, params = FALSE", {
-  skip("Temp skipped before refactor")
-  on_to_death_tbl <- list_distributions(
-    delay_dist = "onset_to_death",
-    parameters = FALSE
+test_that("list_distributions works for different dist, subset_db = FALSE", {
+  eparam <- epiparam()
+  serial_tbl <- list_distributions(
+    epiparam = eparam,
+    epi_dist = "serial_interval",
+    subset_db = FALSE
   )
-  expect_s3_class(on_to_death_tbl, "data.frame")
-  expect_identical(dim(on_to_death_tbl), c(2L, 6L))
+  expect_s3_class(serial_tbl, "data.frame")
+  expect_identical(dim(serial_tbl), c(3L, 56L))
   expect_named(
-    on_to_death_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
-  )
-  expect_snapshot(
-    list_distributions(delay_dist = "onset_to_death", parameters = FALSE)
-  )
-})
-
-test_that("list_distributions works for onset_to_death, params = TRUE", {
-  skip("Temp skipped before refactor")
-  on_to_death_tbl <- list_distributions(
-    delay_dist = "onset_to_death",
-    parameters = TRUE
-  )
-  expect_s3_class(on_to_death_tbl, "data.frame")
-  expect_identical(dim(on_to_death_tbl), c(2L, 27L))
-  expect_named(
-    on_to_death_tbl,
+    serial_tbl,
     c(
-      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
-      "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+      "disease", "pathogen", "epi_distribution", "author", "year",
+      "sample_size", "region", "vector_borne", "vector", "extrinsic",
+      "prob_distribution", "inference_method", "mean", "mean_ci",
+      "mean_ci_interval", "sd", "sd_ci", "sd_ci_interval", "quantile_025",
+      "quantile_05", "quantile_25", "median", "median_ci", "median_ci_interval",
+      "quantile_75", "quantile_875", "quantile_95", "quantile_975",
+      "lower_range", "upper_range", "shape", "shape_ci", "shape_ci_interval",
+      "scale", "scale_ci", "scale_ci_interval", "meanlog", "meanlog_ci",
+      "meanlog_ci_interval", "sdlog", "sdlog_ci", "sdlog_ci_interval",
+      "dispersion", "dispersion_ci", "dispersion_ci_interval", "precision",
+      "precision_ci", "precision_ci_interval", "truncation", "discretised",
+      "censorred", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
+      "DOI"
     )
   )
   expect_snapshot(
-    list_distributions(delay_dist = "onset_to_death", parameters = TRUE)
-  )
-})
-
-test_that("list_distributions works for serial_interval, params = FALSE", {
-  skip("Temp skipped before refactor")
-  serial_inter_tbl <- list_distributions(
-    delay_dist = "serial_interval",
-    parameters = FALSE
-  )
-  expect_s3_class(serial_inter_tbl, "data.frame")
-  expect_identical(dim(serial_inter_tbl), c(5L, 6L))
-  expect_named(
-    serial_inter_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
-  )
-  expect_snapshot(
-    list_distributions(delay_dist = "serial_interval", parameters = FALSE)
-  )
-})
-
-test_that("list_distributions works for serial_interval, params = TRUE", {
-  skip("Temp skipped before refactor")
-  serial_inter_tbl <- list_distributions(
-    delay_dist = "serial_interval",
-    parameters = TRUE
-  )
-  expect_s3_class(serial_inter_tbl, "data.frame")
-  expect_identical(dim(serial_inter_tbl), c(5L, 27L))
-  expect_named(
-    serial_inter_tbl,
-    c(
-      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
-      "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
+    list_distributions(
+      epiparam = eparam,
+      epi_dist = "serial_interval",
+      subset_db = FALSE
     )
-  )
-  expect_snapshot(
-    list_distributions(delay_dist = "serial_interval", parameters = TRUE)
-  )
-})
-
-test_that("list_distributions works for generation_time, params = FALSE", {
-  skip("Temp skipped before refactor")
-  gen_time_tbl <- list_distributions(
-    delay_dist = "generation_time",
-    parameters = FALSE
-  )
-  expect_s3_class(gen_time_tbl, "data.frame")
-  expect_identical(dim(gen_time_tbl), c(2L, 6L))
-  expect_named(
-    gen_time_tbl,
-    c("pathogen_id", "type_id", "study_id", "year", "size", "distribution")
-  )
-  expect_snapshot(
-    list_distributions(delay_dist = "generation_time", parameters = FALSE)
-  )
-})
-
-test_that("list_distributions works for generation_time, params = TRUE", {
-  skip("Temp skipped before refactor")
-  gen_time_tbl <- list_distributions(
-    delay_dist = "generation_time",
-    parameters = TRUE
-  )
-  expect_s3_class(gen_time_tbl, "data.frame")
-  expect_identical(dim(gen_time_tbl), c(2L, 27L))
-  expect_named(
-    gen_time_tbl,
-    c(
-      "pathogen_id", "type_id", "study_id", "year", "size", "distribution",
-      "mean", "sd", "quantile_025", "median", "quantile_75", "quantile_875",
-      "quantile_95", "quantile_975", "lower_range", "upper_range",
-      "shape", "scale", "meanlog", "sdlog", "extracted", "discretised",
-      "phase_bias_adjusted", "notes", "PMID", "DOI", "added_by"
-    )
-  )
-  expect_snapshot(
-    list_distributions(delay_dist = "generation_time", parameters = TRUE)
   )
 })
 
 test_that("list_distributions fails correctly", {
-  skip("Temp skipped before refactor")
   # check for incorrect input
   expect_error(
-    list_distributions(delay_dist = "random", parameters = FALSE),
+    list_distributions(
+      epiparam = data.frame(),
+      epi_dist = "incubation_period",
+      subset_db = TRUE
+    ),
+    regexp = "Object should be of class epiparam"
+  )
+
+  expect_error(
+    list_distributions(
+      epiparam = epiparam(),
+      epi_dist = "random",
+      subset_db = TRUE
+    ),
     regexp = paste0(
-      "'arg' should be one of ", dQuote("all"), ", ", dQuote("incubation"),
-      ", ", dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ",
-      dQuote("serial_interval"), ", ", dQuote("generation_time")
+      "('arg' should be one of)*(incubation_period)*(onset_to_admission)*",
+      "(onset_to_death)*(serial_interval)*(generation_time)"
     )
   )
+
   expect_error(
-    list_distributions(delay_dist = "random", parameters = TRUE),
+    list_distributions(
+      epiparam = epiparam(),
+      epi_dist = "incubation_period",
+      subset_db = "true"
+    ),
     regexp = paste0(
-      "'arg' should be one of ", dQuote("all"), ", ", dQuote("incubation"),
-      ", ", dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ",
-      dQuote("serial_interval"), ", ", dQuote("generation_time")
+      "Assertion on 'subset_db' failed: Must be of type 'logical', ",
+      "not 'character'."
     )
   )
 
   # check for multiple match input
   expect_error(
-    list_distributions(delay_dist = "onset", parameters = FALSE),
+    list_distributions(epiparam = epiparam(), epi_dist = "onset"),
     regexp = paste0(
-      "'arg' should be one of ", dQuote("all"), ", ", dQuote("incubation"),
-      ", ", dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ",
-      dQuote("serial_interval"), ", ", dQuote("generation_time")
-    )
-  )
-  expect_error(
-    list_distributions(delay_dist = "onset", parameters = TRUE),
-    regexp = paste0(
-      "'arg' should be one of ", dQuote("all"), ", ", dQuote("incubation"),
-      ", ", dQuote("onset_to_admission"), ", ", dQuote("onset_to_death"), ", ",
-      dQuote("serial_interval"), ", ", dQuote("generation_time")
-    )
-  )
-  expect_error(
-    list_distributions(delay_dist = "serial_interval", parameters = "TRUE"),
-    regexp = paste0(
-      "Assertion on 'parameters' failed: Must be of type",
-      " 'logical', not 'character'."
+      "('arg' should be one of)*(incubation_period)*(onset_to_admission)*",
+      "(onset_to_death)*(serial_interval)*(generation_time)"
     )
   )
 })

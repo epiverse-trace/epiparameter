@@ -2,44 +2,49 @@
 % Please edit documentation in R/list_distributions.R
 \name{list_distributions}
 \alias{list_distributions}
-\title{List distributions}
+\title{List epidemiological distributions stored in an \code{epiparam} object}
 \usage{
 list_distributions(
-  delay_dist = c("all", "incubation", "onset_to_admission", "onset_to_death",
+  epiparam,
+  epi_dist = c("incubation_period", "onset_to_admission", "onset_to_death",
     "serial_interval", "generation_time"),
-  parameters = FALSE
+  subset_db = TRUE
 )
 }
 \arguments{
-\item{delay_dist}{A character defining parameter to be listed: \code{"all"}
-\code{"incubation"}, \code{"onset_to_admission"}, \code{"onset_to_death"}, or
-\code{"serial_interval"}. \code{"all"} will not filter by a certain delay distribution
-and return all records. \code{"all"} is the default.}
+\item{epiparam}{An \code{epiparam} object}
 
-\item{parameters}{A logical defining whether to show parameter values,
-default is \code{FALSE}}
+\item{epi_dist}{A character defining parameter to be listed:
+\code{"incubation"}, \code{"onset_to_admission"}, \code{"onset_to_death"}, or
+\code{"serial_interval"}. \code{"incubation_period"} is the default \code{epi_dist} so if no
+\code{epi_dist} is specified the incubation periods will be returned.}
+
+\item{subset_db}{A boolean logical that determines whether a subset, defaults
+is TRUE.}
 }
 \description{
-List distributions included in package
+This function subsets an \code{epiparam} object to return only the
+chosen epidemiological distribution. The results are returned as a data
+frame to better see all of the returned distributions.
+
+By default the resulting data frame is subset to only return the disease,
+epidemiological distribution, probability distribution, author of the study
+and the year of publication as well as the sample size of the study. If the
+all columns of the database are required set \code{subset_db = FALSE}.
 }
 \examples{
-\dontrun{
+eparam <- epiparam()
+list_distributions(epiparam = eparam, epi_dist = "incubation_period")
 # the default for list_distributions() without any arguments is to return the
 # incubation period
-list_distributions()
+list_distributions(epiparam = eparam)
+# this same process can be achieved when loading the library
+eparam <- epiparam(epi_dist = "incubation_period")
 
-# metrics can be chosen using the `delay_dist` argument, for example
-# incubation period or onset to death
-list_distributions(delay_dist = "incubation")
-list_distributions(delay_dist = "onset_to_death")
-
-# by default list_distributions() will return a filtered table, but if the
-# full table including extra information (e.g. parameters of the
-# distribution) the `parameters` argument can be set to `TRUE`
-list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
-}
+# filtering for onset to death
+list_distributions(epiparam = eparam, epi_dist = "onset_to_death")
 }
 \author{
-Adam Kucharski
+Adam Kucharski, Joshua W. Lambert
 }
 \keyword{distributions}

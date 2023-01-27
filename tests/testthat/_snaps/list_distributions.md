@@ -1,818 +1,1322 @@
-# list_distributions works for all, params = FALSE
+# list_distributions works as expected with defaults
 
     Code
-      list_distributions(delay_dist = "all", parameters = FALSE)
+      list_distributions(epiparam = eparam)
     Output
-                  pathogen_id            type_id                 study_id year size
-      1            adenovirus    generation_time                 Guo_etal 2020  375
-      2            adenovirus         incubation             Lessler_etal 2009   14
-      3                 ebola         incubation                 WHO_team 2014  500
-      4                 ebola     onset_to_death      Ebola_outbreak_team 2018   14
-      5                 ebola    serial_interval        WHO_response_team 2014   92
-      6             human_CoV         incubation             Lessler_etal 2009   13
-      7  influenza_A_seasonal         incubation             Lessler_etal 2009  122
-      8  influenza_A_seasonal    Serial_interval                Levy_etal 2013  111
-      9  influenza_B_seasonal         incubation             Lessler_etal 2009   76
-      10 influenza_B_seasonal    Serial_interval                Levy_etal 2013   44
-      11      influenza_H1N1p         incubation               Ghani_etal 2009   16
-      12      influenza_H1N1p         incubation               Tuite_etal 2010  316
-      13      influenza_H1N1p onset_to_admission                Jain_etal 2009  272
-      14      influenza_H1N1p    Serial_interval                Levy_etal 2013  125
-      15       influenza_H5N1         incubation             Cowling_etal 2013   27
-      16       influenza_H5N1 onset_to_admission             Cowling_etal 2013   43
-      17       influenza_H7N9         incubation             Cowling_etal 2013   32
-      18       influenza_H7N9 onset_to_admission             Cowling_etal 2013  123
-      19              marburg         incubation                   Pavlin 2014   18
-      20              measles         incubation Klinkenberg and Nishiura 2011  116
-      21              measles         incubation             Lessler_etal 2009   56
-      22             MERS_CoV         incubation              Assiri_etal 2013   23
-      23             MERS_CoV         incubation          Cauchemez_et_al 2014    7
-      24             MERS_CoV onset_to_admission              Assiri_etal 2013   23
-      25             MERS_CoV    serial_interval              Assiri_etal 2013   23
-      26            monkeypox         incubation                    Nolen 2016   16
-      27            monkeypox         incubation           Thornhill_etal 2022   23
-      28            monkeypox    serial_interval                    UKHSA 2022   17
-      29        parainfluenza         incubation             Lessler_etal 2009   11
-      30           rhinovirus         incubation             Lessler_etal 2009   28
-      31                  RSV         incubation             Lessler_etal 2009   24
-      32                  RSV    Serial_interval                Vink_etal 2014   59
-      33             SARS_CoV         incubation            Donnelly_etal 2003   57
-      34             SARS_CoV         incubation             Lessler_etal 2009  157
-      35             SARS_CoV onset_to_admission            Donnelly_etal 2003   57
-      36  SARS_CoV_2_wildtype    generation_time            Ferretti_etal 2020  191
-      37  SARS_CoV_2_wildtype         incubation             McAloon_etal 2020 1269
-      38  SARS_CoV_2_wildtype onset_to_admission              Linton_etal 2020  155
-      39  SARS_CoV_2_wildtype     onset_to_death              Linton_etal 2020   39
-      40  SARS_CoV_2_wildtype    serial_interval            Nishiura_etal 2020   28
-      41  SARS_CoV_2_wildtype    serial_interval            Nishiura_etal 2020   18
-         distribution
-      1       weibull
-      2         lnorm
-      3         gamma
-      4         gamma
-      5         gamma
-      6         lnorm
-      7         lnorm
-      8         lnorm
-      9         lnorm
-      10        lnorm
-      11        gamma
-      12        lnorm
-      13        lnorm
-      14        lnorm
-      15      weibull
-      16      weibull
-      17      weibull
-      18        gamma
-      19        gamma
-      20        lnorm
-      21        lnorm
-      22        lnorm
-      23        lnorm
-      24        lnorm
-      25        lnorm
-      26        lnorm
-      27        lnorm
-      28        gamma
-      29        lnorm
-      30        lnorm
-      31        lnorm
-      32        lnorm
-      33        gamma
-      34        lnorm
-      35        gamma
-      36      weibull
-      37        lnorm
-      38        lnorm
-      39        lnorm
-      40        lnorm
-      41      weibull
+                       disease  epi_distribution prob_distribution         author
+      1             adenovirus incubation_period         lognormal   Lessler_etal
+      2            chikungunya incubation_period         lognormal   Rudolph_etal
+      3                 dengue incubation_period         lognormal Chan_Johansson
+      4                 dengue incubation_period         lognormal Chan_Johansson
+      5                 dengue incubation_period         lognormal Chan_Johansson
+      6                 dengue incubation_period         lognormal   Rudolph_etal
+      7                 dengue incubation_period         lognormal   Rudolph_etal
+      8      human coronavirus incubation_period         lognormal   Lessler_etal
+      9              influenza incubation_period             gamma     Ghani_etal
+      10             influenza incubation_period         lognormal   Lessler_etal
+      11             influenza incubation_period         lognormal   Lessler_etal
+      12             influenza incubation_period         lognormal   Lessler_etal
+      13             influenza incubation_period         lognormal   Lessler_etal
+      14             influenza incubation_period             gamma Nishiura_Inaba
+      15             influenza incubation_period           weibull Nishiura_Inaba
+      16             influenza incubation_period         lognormal     Reich_etal
+      17             influenza incubation_period         lognormal     Reich_etal
+      18             influenza incubation_period         lognormal     Tuite_etal
+      19             influenza incubation_period           weibull Virlogeux_etal
+      20             influenza incubation_period             gamma Virlogeux_etal
+      21             influenza incubation_period           weibull Virlogeux_etal
+      22             influenza incubation_period           weibull Virlogeux_etal
+      23             influenza incubation_period           weibull Virlogeux_etal
+      24 Japanese encephalitis incubation_period         lognormal   Rudolph_etal
+      25 marburg virus disease incubation_period              <NA>         Pavlin
+      26 marburg virus disease incubation_period              <NA>         Pavlin
+      27               measles incubation_period         lognormal   Lessler_etal
+      28         parainfluenza incubation_period         lognormal   Lessler_etal
+      29            rhinovirus incubation_period         lognormal   Lessler_etal
+      30     Rift Valley fever incubation_period         lognormal   Rudolph_etal
+      31                   RSV incubation_period         lognormal   Lessler_etal
+      32                   RSV incubation_period         lognormal     Reich_etal
+      33                   RSV incubation_period         lognormal     Reich_etal
+      34                  SARS incubation_period         lognormal   Lessler_etal
+      35       west nile fever incubation_period         lognormal   Rudolph_etal
+      36       west nile fever incubation_period         lognormal   Rudolph_etal
+      37       west nile fever incubation_period         lognormal   Rudolph_etal
+      38          yellow fever incubation_period         lognormal   Rudolph_etal
+      39          yellow fever incubation_period         lognormal   Rudolph_etal
+      40    zika virus disease incubation_period         lognormal   Lessler_etal
+         year sample_size
+      1  2009          14
+      2  2014          21
+      3  2012         146
+      4  2012         146
+      5  2012         153
+      6  2014         169
+      7  2014         124
+      8  2009          13
+      9  2009          16
+      10 2009         151
+      11 2009          90
+      12 2009          78
+      13 2009         134
+      14 2010          72
+      15 2010          72
+      16 2009         151
+      17 2009         151
+      18 2010         316
+      19 2015         229
+      20 2015         229
+      21 2016         395
+      22 2016         173
+      23 2016         222
+      24 2014           6
+      25 2014          76
+      26 2014          18
+      27 2009          55
+      28 2009          11
+      29 2009          28
+      30 2014          23
+      31 2009          24
+      32 2009          24
+      33 2009          24
+      34 2009         157
+      35 2014          18
+      36 2014           8
+      37 2014           6
+      38 2014          91
+      39 2014          80
+      40 2016          25
 
-# list_distributions works for all, params = TRUE
+# list_distributions works as expected with subset_db = FALSE
 
     Code
-      list_distributions(delay_dist = "all", parameters = TRUE)
+      list_distributions(epiparam = eparam, subset_db = FALSE)
     Output
-                  pathogen_id            type_id                 study_id year size
-      1            adenovirus    generation_time                 Guo_etal 2020  375
-      2            adenovirus         incubation             Lessler_etal 2009   14
-      3                 ebola         incubation                 WHO_team 2014  500
-      4                 ebola     onset_to_death      Ebola_outbreak_team 2018   14
-      5                 ebola    serial_interval        WHO_response_team 2014   92
-      6             human_CoV         incubation             Lessler_etal 2009   13
-      7  influenza_A_seasonal         incubation             Lessler_etal 2009  122
-      8  influenza_A_seasonal    Serial_interval                Levy_etal 2013  111
-      9  influenza_B_seasonal         incubation             Lessler_etal 2009   76
-      10 influenza_B_seasonal    Serial_interval                Levy_etal 2013   44
-      11      influenza_H1N1p         incubation               Ghani_etal 2009   16
-      12      influenza_H1N1p         incubation               Tuite_etal 2010  316
-      13      influenza_H1N1p onset_to_admission                Jain_etal 2009  272
-      14      influenza_H1N1p    Serial_interval                Levy_etal 2013  125
-      15       influenza_H5N1         incubation             Cowling_etal 2013   27
-      16       influenza_H5N1 onset_to_admission             Cowling_etal 2013   43
-      17       influenza_H7N9         incubation             Cowling_etal 2013   32
-      18       influenza_H7N9 onset_to_admission             Cowling_etal 2013  123
-      19              marburg         incubation                   Pavlin 2014   18
-      20              measles         incubation Klinkenberg and Nishiura 2011  116
-      21              measles         incubation             Lessler_etal 2009   56
-      22             MERS_CoV         incubation              Assiri_etal 2013   23
-      23             MERS_CoV         incubation          Cauchemez_et_al 2014    7
-      24             MERS_CoV onset_to_admission              Assiri_etal 2013   23
-      25             MERS_CoV    serial_interval              Assiri_etal 2013   23
-      26            monkeypox         incubation                    Nolen 2016   16
-      27            monkeypox         incubation           Thornhill_etal 2022   23
-      28            monkeypox    serial_interval                    UKHSA 2022   17
-      29        parainfluenza         incubation             Lessler_etal 2009   11
-      30           rhinovirus         incubation             Lessler_etal 2009   28
-      31                  RSV         incubation             Lessler_etal 2009   24
-      32                  RSV    Serial_interval                Vink_etal 2014   59
-      33             SARS_CoV         incubation            Donnelly_etal 2003   57
-      34             SARS_CoV         incubation             Lessler_etal 2009  157
-      35             SARS_CoV onset_to_admission            Donnelly_etal 2003   57
-      36  SARS_CoV_2_wildtype    generation_time            Ferretti_etal 2020  191
-      37  SARS_CoV_2_wildtype         incubation             McAloon_etal 2020 1269
-      38  SARS_CoV_2_wildtype onset_to_admission              Linton_etal 2020  155
-      39  SARS_CoV_2_wildtype     onset_to_death              Linton_etal 2020   39
-      40  SARS_CoV_2_wildtype    serial_interval            Nishiura_etal 2020   28
-      41  SARS_CoV_2_wildtype    serial_interval            Nishiura_etal 2020   18
-         distribution  mean         sd quantile_025    median quantile_75
-      1       weibull    NA         NA           NA  7.300000          NA
-      2         lnorm    NA         NA           NA  5.600000    6.500000
-      3         gamma  9.10  7.3000000           NA        NA          NA
-      4         gamma  9.30  6.0000000           NA        NA          NA
-      5         gamma 15.30  9.3000000           NA        NA          NA
-      6         lnorm    NA         NA           NA  3.200000    3.500000
-      7         lnorm    NA         NA           NA  1.400000    1.900000
-      8         lnorm  3.48  1.8800000           NA  3.000000          NA
-      9         lnorm    NA         NA           NA  0.600000    0.700000
-      10        lnorm  3.72  1.9500000           NA  3.000000          NA
-      11        gamma  2.05  0.4898979           NA        NA          NA
-      12        lnorm  4.30         NA           NA  4.000000          NA
-      13        lnorm    NA         NA           NA  3.000000          NA
-      14        lnorm  3.08  1.3900000           NA  3.000000          NA
-      15      weibull  3.30  1.5000000    0.6870932  3.088366    4.288508
-      16      weibull    NA         NA    1.3678290  4.900000    6.770349
-      17      weibull  3.10  1.4000000    0.6870932  2.887973    3.888880
-      18        gamma    NA         NA    0.6172617  4.200000    6.170223
-      19        gamma    NA         NA           NA  7.000000          NA
-      20        lnorm 12.30  3.4800000           NA 12.000000          NA
-      21        lnorm    NA         NA           NA 12.500000   14.400000
-      22        lnorm    NA         NA           NA  5.200000          NA
-      23        lnorm  5.50  2.5000000           NA        NA          NA
-      24        lnorm    NA         NA           NA  5.000000          NA
-      25        lnorm    NA         NA           NA  7.600000          NA
-      26        lnorm  9.60         NA           NA  9.000000          NA
-      27        lnorm    NA         NA           NA  7.000000          NA
-      28        gamma  9.80  8.3000000           NA        NA          NA
-      29        lnorm    NA         NA           NA  2.600000    3.200000
-      30        lnorm    NA         NA           NA  1.900000    2.700000
-      31        lnorm    NA         NA           NA  4.400000    5.100000
-      32        lnorm  7.50  1.4400000           NA        NA          NA
-      33        gamma  6.40  4.0800000           NA        NA          NA
-      34        lnorm    NA         NA           NA  4.000000    5.900000
-      35        gamma  4.85  3.4900000           NA        NA          NA
-      36      weibull  5.00  1.9000000           NA  5.000000          NA
-      37        lnorm    NA         NA           NA  5.100000          NA
-      38        lnorm  9.70 35.2000000           NA  2.600000          NA
-      39        lnorm 20.20 11.6000000           NA 17.100000          NA
-      40        lnorm  4.70  2.9000000           NA  4.000000          NA
-      41      weibull  4.80  2.3000000           NA  4.600000          NA
-         quantile_875 quantile_95 quantile_975 lower_range upper_range     shape
-      1            NA          NA           NA          NA          NA  3.480000
-      2            NA          NA           NA          NA          NA        NA
-      3            NA          NA           NA          NA          NA  1.553950
-      4            NA          NA           NA           2          27  2.400000
-      5            NA          NA           NA          NA          NA  2.706556
-      6            NA          NA           NA          NA          NA        NA
-      7            NA          NA           NA          NA          NA        NA
-      8            NA          NA           NA          NA          NA        NA
-      9            NA          NA           NA          NA          NA        NA
-      10           NA          NA           NA          NA          NA        NA
-      11           NA          NA           NA          NA          NA 17.503120
-      12           NA          NA     6.600000          NA          NA        NA
-      13           NA          NA           NA          NA          NA        NA
-      14           NA          NA           NA          NA          NA        NA
-      15           NA    5.989652     6.589681          NA          NA  2.185908
-      16           NA   10.222554    11.423436          NA          NA  2.373396
-      17           NA    5.489237     5.989652          NA          NA  2.309241
-      18           NA    9.622302    10.823058          NA          NA  2.138094
-      19           NA          NA           NA           2          13  1.946138
-      20           NA          NA           NA          NA          NA        NA
-      21           NA   17.700000           NA          NA          NA        NA
-      22           NA   12.400000    14.700000          NA          NA        NA
-      23           NA          NA           NA          NA          NA        NA
-      24           NA          NA           NA           1          10        NA
-      25           NA   19.400000    23.100000          NA          NA        NA
-      26           13          NA           NA          NA          NA        NA
-      27           NA          NA           NA           3          20        NA
-      28           NA          NA           NA          NA          NA  1.394107
-      29           NA          NA           NA          NA          NA        NA
-      30           NA          NA           NA          NA          NA        NA
-      31           NA          NA           NA          NA          NA        NA
-      32           NA          NA           NA          NA          NA        NA
-      33           NA   14.220000           NA          NA          NA  2.431210
-      34           NA          NA           NA          NA          NA        NA
-      35           NA          NA           NA          NA          NA  1.929655
-      36           NA          NA           NA          NA          NA  2.826000
-      37           NA   11.700000           NA          NA          NA        NA
-      38           NA   35.100000           NA          NA          NA        NA
-      39           NA   39.900000           NA          NA          NA        NA
-      40           NA          NA           NA          NA          NA        NA
-      41           NA          NA           NA          NA          NA  2.203394
-             scale    meanlog     sdlog extracted     discretised phase_bias_adjusted
-      1  8.1900000         NA        NA                        no                  no
-      2         NA  1.7227644 0.2209673       yes              no                  no
-      3  5.8560440         NA        NA       yes            <NA>                <NA>
-      4  3.3330000         NA        NA        no              no                  no
-      5  5.6529410         NA        NA       yes            <NA>                <NA>
-      6         NA  1.1631463 0.1328705       yes              no                  no
-      7         NA  0.3364708 0.4527634       yes              no                  no
-      8         NA  1.1189950 0.5060376       yes not yet checked     not yet checked
-      9         NA -0.5108280 0.2285515       yes              no                  no
-      10        NA  1.1923370 0.4927197       yes not yet checked     not yet checked
-      11 0.1171220         NA        NA       yes            <NA>                <NA>
-      12        NA  1.3862944 0.2554986       yes            <NA>                <NA>
-      13        NA  1.0986120 2.9115800       yes            <NA>                <NA>
-      14        NA  1.0322420 0.4305527       yes not yet checked     not yet checked
-      15 3.6932670         NA        NA       yes              no                  no
-      16 6.4388430         NA        NA       yes              no                  no
-      17 3.3759410         NA        NA       yes              no                  no
-      18 2.1533140         NA        NA       yes              no                  no
-      19 0.5324265         NA        NA       yes              no                  no
-      20        NA         NA        NA                                          <NA>
-      21        NA  2.5257260 0.2097952       yes              no                  no
-      22        NA  1.6486586 0.5283368       yes            <NA>                <NA>
-      23        NA  1.6108401 0.4333775       yes            <NA>                <NA>
-      24        NA  1.6089493 0.6103889       yes            <NA>                <NA>
-      25        NA  2.0200000 0.5600000       yes            <NA>                <NA>
-      26        NA  2.1783545 0.3360684       yes              no                <NA>
-      27        NA  1.9460783 0.4934628       yes              no                  no
-      28 7.0295920         NA        NA       yes              no                 yes
-      29        NA  0.9555123 0.3078528       yes              no                  no
-      30        NA  0.6418529 0.5209872       yes              no                  no
-      31        NA  1.4816021 0.2188927       yes              no                  no
-      32        NA  1.9968030 0.1902650       yes not yet checked     not yet checked
-      33 2.6200900         NA        NA       yes              no                  no
-      34        NA  1.3862935 0.5762278       yes              no                  no
-      35 2.5134020         NA        NA       yes            <NA>                <NA>
-      36 5.6650000         NA        NA       yes              no                 yes
-      37        NA  1.6300000 0.5000000        no              no                  no
-      38        NA  0.9466094 1.6281993       yes              no                 yes
-      39        NA  2.8631790 0.5338606       yes              no                 yes
-      40        NA  1.3862620 0.5679803       yes              no                 yes
-      41 5.4198750         NA        NA       yes              no                 yes
-                                                                                                                 notes
-      1                                                                    Extracted using the parametric distribution
-      2                                                                                                           <NA>
-      3                                                                               Extracted using single exposures
-      4  the mean, sd, shape and scale are taken from the paper, the conversion between the two does not match exactly
-      5                                                                                                           <NA>
-      6                                                                                                           <NA>
-      7                                                                                                           <NA>
-      8                                                                                 Extracted from seasonal A H3N2
-      9                                                                                                           <NA>
-      10                                                                                                          <NA>
-      11                                                                                                          <NA>
-      12                                                                                                          <NA>
-      13                                                              Extracted using range 0 to 18, lognormal assumed
-      14                                                                                                          <NA>
-      15                                                                  extraction used quantile_025 and quantile_75
-      16                                                                  extraction used quantile_025 and quantile_95
-      17                                                                  extraction used quantile_025 and quantile_75
-      18                                                                  extraction used quantile_025 and quantile_75
-      19                                                                                  gamma assumed, range 2 to 13
-      20                                  estimates from data reported by Goodwall 1931 "Incubation period of measles"
-      21                                                                                                          <NA>
-      22                                                                   extracted using quantile_5 and quantile_975
-      23                                                                                                          <NA>
-      24                                                                                                          <NA>
-      25                                                                                                          <NA>
-      26                                                                 Extracted taking c(6,13) as central 75% range
-      27                                                               Extracted from range 3 to 21, lognormal assumed
-      28                                                                    Extracted from mean and SD, assuming gamma
-      29                                                                                                          <NA>
-      30                                                                                                          <NA>
-      31                                                                                                          <NA>
-      32                                                                                                          <NA>
-      33                                                                                                          <NA>
-      34                                                                                                          <NA>
-      35                                                                                              Feb-26 to Mar-25
-      36                                                                                           20/1/2020-21/3/2020
-      37                                                                                                          <NA>
-      38                                                                                           For living patients
-      39                                                                                                          <NA>
-      40                                                                          Extracted using reported mean and sd
-      41            Extracted using mean and sd reported from a subset of the data for certain infector-infectee pairs
-             PMID
-      1  32479490
-      2  19393959
-      3  25564903
-      4  30047375
-      5  25564903
-      6  19393959
-      7  19393959
-      8  23629874
-      9  19393959
-      10 23629874
-      11 20029668
-      12 19959592
-      13 19815859
-      14 23629874
-      15 23803488
-      16 23803488
-      17 23803488
-      18 23803488
-      19 25495697
-      20 21704640
-      21 19393959
-      22 23782161
-      23 24239323
-      24 23782161
-      25 23782161
-      26 27191380
-      27 35866746
-      28       NA
-      29 19393959
-      30 19393959
-      31 19393959
-      32 25294601
-      33 12781533
-      34 19393959
-      35 12781533
-      36 32234805
-      37 32801208
-      38 32079150
-      39 32079150
-      40 32145466
-      41 32145466
-                                                                                                                                                             DOI
-      1                                                                                                                             10.1371/journal.pone.0232948
-      2                                                                                                                            10.1016/S1473-3099(09)70069-6
-      3                                                                                                                                    10.1056/nejmoa1411100
-      4                                                                                                                            10.1016/S0140-6736(18)31387-4
-      5                                                                                                                                    10.1056/nejmoa1411100
-      6                                                                                                                            10.1016/S1473-3099(09)70069-6
-      7                                                                                                                            10.1016/S1473-3099(09)70069-6
-      8                                                                                                                                   10.1093%2Faje%2Fkws403
-      9                                                                                                                            10.1016/S1473-3099(09)70069-6
-      10                                                                                                                                  10.1093%2Faje%2Fkws404
-      11                                                                                                                                10.1371/currents.RRN1130
-      12                                                                                                                                     10.1503/cmaj.091807
-      13                                                                                                                                   10.1056/NEJMoa0906695
-      14                                                                                                                                  10.1093%2Faje%2Fkws402
-      15                                                                                                                           10.1016/S0140-6736(13)61171-X
-      16                                                                                                                           10.1016/S0140-6736(13)61171-X
-      17                                                                                                                           10.1016/S0140-6736(13)61171-X
-      18                                                                                                                           10.1016/S0140-6736(13)61171-X
-      19                                                                                                                         10.1186/1756-0500-7-906        
-      20                                                                                                                              10.1016/j.jtbi.2011.06.015
-      21                                                                                                                           10.1016/S1473-3099(09)70069-6
-      22                                                                                                                                   10.1056/NEJMoa1306742
-      23                                                                                                                           10.1016/S1473-3099(13)70304-9
-      24                                                                                                                                   10.1056/NEJMoa1306742
-      25                                                                                                                                   10.1056/NEJMoa1306742
-      26                                                                                                                                  10.3201/eid2206.150579
-      27                                                                                                                                   10.1056/NEJMoa2207323
-      28 https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1
-      29                                                                                                                           10.1016/S1473-3099(09)70069-6
-      30                                                                                                                           10.1016/S1473-3099(09)70069-6
-      31                                                                                                                           10.1016/S1473-3099(09)70069-6
-      32                                                                                                                                      10.1093/aje/kwu209
-      33                                                                                                                           10.1016/S0140-6736(03)13410-1
-      34                                                                                                                           10.1016/S1473-3099(09)70069-6
-      35                                                                                                                           10.1016/S0140-6736(03)13410-1
-      36                                                                                                                                 10.1126/science.abb6936
-      37                                                                                                                             10.1136/bmjopen-2020-039652
-      38                                                                                                                                      10.3390/jcm9020538
-      39                                                                                                                                      10.3390/jcm9020538
-      40                                                                                                                              10.1016/j.ijid.2020.02.060
-      41                                                                                                                              10.1016/j.ijid.2020.02.060
-               added_by
-      1   Carmen Tamayo
-      2  Adam Kucharski
-      3  Adam Kucharski
-      4  Joshua Lambert
-      5  Adam Kucharski
-      6  Adam Kucharski
-      7  Adam Kucharski
-      8   Carmen Tamayo
-      9  Adam Kucharski
-      10  Carmen Tamayo
-      11 Adam Kucharski
-      12 Adam Kucharski
-      13 Adam Kucharski
-      14  Carmen Tamayo
-      15 Adam Kucharski
-      16 Adam Kucharski
-      17 Adam Kucharski
-      18 Adam Kucharski
-      19 Adam Kucharski
-      20  Alexis Robert
-      21 Adam Kucharski
-      22 Adam Kucharski
-      23 Adam Kucharski
-      24 Adam Kucharski
-      25 Adam Kucharski
-      26       Seb Funk
-      27 Adam Kucharski
-      28       Seb Funk
-      29 Adam Kucharski
-      30 Adam Kucharski
-      31 Adam Kucharski
-      32  Carmen Tamayo
-      33 Adam Kucharski
-      34 Adam Kucharski
-      35 Adam Kucharski
-      36   Rachael Pung
-      37 Adam Kucharski
-      38 Adam Kucharski
-      39 Adam Kucharski
-      40 Joshua Lambert
-      41 Joshua Lambert
+                       disease                    pathogen  epi_distribution
+      1             adenovirus                  adenovirus incubation_period
+      2            chikungunya           chikungunya virus incubation_period
+      3                 dengue                dengue virus incubation_period
+      4                 dengue                dengue virus incubation_period
+      5                 dengue                dengue virus incubation_period
+      6                 dengue                dengue virus incubation_period
+      7                 dengue                dengue virus incubation_period
+      8      human coronavirus                   human_CoV incubation_period
+      9              influenza         influenza-A-H1N1pdm incubation_period
+      10             influenza                 influenza-A incubation_period
+      11             influenza                 influenza-A incubation_period
+      12             influenza                 influenza-B incubation_period
+      13             influenza            influenza-A-H1N1 incubation_period
+      14             influenza            influenza-A-H1N1 incubation_period
+      15             influenza            influenza-A-H1N1 incubation_period
+      16             influenza                 influenza-A incubation_period
+      17             influenza                 influenza-A incubation_period
+      18             influenza            influenza-A-H1N1 incubation_period
+      19             influenza            influenza-A-H7N9 incubation_period
+      20             influenza            influenza-A-H7N9 incubation_period
+      21             influenza            influenza-A-H7N9 incubation_period
+      22             influenza            influenza-A-H7N9 incubation_period
+      23             influenza            influenza-A-H7N9 incubation_period
+      24 Japanese encephalitis Japanese encephalitis virus incubation_period
+      25 marburg virus disease               marburg virus incubation_period
+      26 marburg virus disease               marburg virus incubation_period
+      27               measles               measles virus incubation_period
+      28         parainfluenza         parainfluenza virus incubation_period
+      29            rhinovirus                  rhinovirus incubation_period
+      30     Rift Valley fever     Rift Valley fever virus incubation_period
+      31                   RSV                         RSV incubation_period
+      32                   RSV                         RSV incubation_period
+      33                   RSV                         RSV incubation_period
+      34                  SARS                  SARS-CoV-1 incubation_period
+      35       west nile fever                   West Nile incubation_period
+      36       west nile fever                   West Nile incubation_period
+      37       west nile fever                   West Nile incubation_period
+      38          yellow fever        yellow fever viruses incubation_period
+      39          yellow fever        yellow fever viruses incubation_period
+      40    zika virus disease                        zika incubation_period
+                 author year sample_size        region vector_borne
+      1    Lessler_etal 2009          14           USA        FALSE
+      2    Rudolph_etal 2014          21         Mixed         TRUE
+      3  Chan_Johansson 2012         146         Mixed         TRUE
+      4  Chan_Johansson 2012         146         Mixed         TRUE
+      5  Chan_Johansson 2012         153         Mixed         TRUE
+      6    Rudolph_etal 2014         169         Mixed         TRUE
+      7    Rudolph_etal 2014         124         Mixed         TRUE
+      8    Lessler_etal 2009          13            UK        FALSE
+      9      Ghani_etal 2009          16            UK        FALSE
+      10   Lessler_etal 2009         151         Mixed        FALSE
+      11   Lessler_etal 2009          90         Mixed        FALSE
+      12   Lessler_etal 2009          78           USA        FALSE
+      13   Lessler_etal 2009         134 New York, USA        FALSE
+      14 Nishiura_Inaba 2010          72         Japan        FALSE
+      15 Nishiura_Inaba 2010          72         Japan        FALSE
+      16     Reich_etal 2009         151         Mixed        FALSE
+      17     Reich_etal 2009         151         Mixed        FALSE
+      18     Tuite_etal 2010         316        Canada        FALSE
+      19 Virlogeux_etal 2015         229         China        FALSE
+      20 Virlogeux_etal 2015         229         China        FALSE
+      21 Virlogeux_etal 2016         395         China        FALSE
+      22 Virlogeux_etal 2016         173         China        FALSE
+      23 Virlogeux_etal 2016         222         China        FALSE
+      24   Rudolph_etal 2014           6         Mixed         TRUE
+      25         Pavlin 2014          76         Mixed        FALSE
+      26         Pavlin 2014          18         Mixed        FALSE
+      27   Lessler_etal 2009          55         Mixed        FALSE
+      28   Lessler_etal 2009          11         Mixed        FALSE
+      29   Lessler_etal 2009          28           USA        FALSE
+      30   Rudolph_etal 2014          23         Mixed         TRUE
+      31   Lessler_etal 2009          24         Mixed        FALSE
+      32     Reich_etal 2009          24         Mixed        FALSE
+      33     Reich_etal 2009          24         Mixed        FALSE
+      34   Lessler_etal 2009         157         Mixed        FALSE
+      35   Rudolph_etal 2014          18         Mixed         TRUE
+      36   Rudolph_etal 2014           8         Mixed         TRUE
+      37   Rudolph_etal 2014           6         Mixed         TRUE
+      38   Rudolph_etal 2014          91         Mixed         TRUE
+      39   Rudolph_etal 2014          80         Mixed         TRUE
+      40   Lessler_etal 2016          25         Mixed         TRUE
+                                     vector extrinsic prob_distribution
+      1                                <NA>     FALSE         lognormal
+      2                    Aedes albopictus     FALSE         lognormal
+      3  Aedes aegypti and Aedes albopictus      TRUE         lognormal
+      4  Aedes aegypti and Aedes albopictus      TRUE         lognormal
+      5  Aedes aegypti and Aedes albopictus     FALSE         lognormal
+      6  Aedes aegypti and Aedes albopictus     FALSE         lognormal
+      7  Aedes aegypti and Aedes albopictus     FALSE         lognormal
+      8                                <NA>     FALSE         lognormal
+      9                                <NA>     FALSE             gamma
+      10                               <NA>     FALSE         lognormal
+      11                               <NA>     FALSE         lognormal
+      12                               <NA>     FALSE         lognormal
+      13                               <NA>     FALSE         lognormal
+      14                               <NA>     FALSE             gamma
+      15                               <NA>     FALSE           weibull
+      16                               <NA>     FALSE         lognormal
+      17                               <NA>     FALSE         lognormal
+      18                               <NA>     FALSE         lognormal
+      19                               <NA>     FALSE           weibull
+      20                               <NA>     FALSE             gamma
+      21                               <NA>     FALSE           weibull
+      22                               <NA>     FALSE           weibull
+      23                               <NA>     FALSE           weibull
+      24                           mosquito     FALSE         lognormal
+      25                               <NA>     FALSE              <NA>
+      26                               <NA>     FALSE              <NA>
+      27                               <NA>     FALSE         lognormal
+      28                               <NA>     FALSE         lognormal
+      29                               <NA>     FALSE         lognormal
+      30                           mosquito     FALSE         lognormal
+      31                               <NA>     FALSE         lognormal
+      32                               <NA>     FALSE         lognormal
+      33                               <NA>     FALSE         lognormal
+      34                               <NA>     FALSE         lognormal
+      35                           mosquito     FALSE         lognormal
+      36                           mosquito     FALSE         lognormal
+      37                           mosquito     FALSE         lognormal
+      38                           mosquito     FALSE         lognormal
+      39                           mosquito     FALSE         lognormal
+      40 Aedes aegypti and Aedes albopictus     FALSE         lognormal
+         inference_method  mean   mean_ci mean_ci_interval   sd  sd_ci sd_ci_interval
+      1               mle    NA    NA, NA               NA   NA NA, NA             NA
+      2               mle    NA    NA, NA               NA   NA NA, NA             NA
+      3          bayesian 15.00    10, 20               95   NA NA, NA             NA
+      4          bayesian  6.50  4.8, 8.8               95   NA NA, NA             NA
+      5          bayesian  5.97  5.5, 6.4               95 1.64 NA, NA             NA
+      6               mle    NA    NA, NA               NA   NA NA, NA             NA
+      7               mle    NA    NA, NA               NA   NA NA, NA             NA
+      8          bayesian    NA    NA, NA               NA   NA NA, NA             NA
+      9               mle  2.05    NA, NA               NA 0.49 NA, NA             NA
+      10              mle    NA    NA, NA               NA   NA NA, NA             NA
+      11              mle    NA    NA, NA               NA   NA NA, NA             NA
+      12              mle    NA    NA, NA               NA   NA NA, NA             NA
+      13              mle    NA    NA, NA               NA   NA NA, NA             NA
+      14              mle    NA    NA, NA               NA   NA NA, NA             NA
+      15              mle    NA    NA, NA               NA   NA NA, NA             NA
+      16              mle    NA    NA, NA               NA   NA NA, NA             NA
+      17              mle    NA    NA, NA               NA   NA NA, NA             NA
+      18          unknown  4.30  2.6, 6.6               95   NA NA, NA             NA
+      19              mle  3.40  3.0, 3.7               95 1.70 NA, NA             NA
+      20              mle  4.50 2.8, 16.2               95 3.30 NA, NA             NA
+      21         bayesian  3.50  3.2, 3.8               95   NA NA, NA             NA
+      22         bayesian  3.70  3.4, 4.1               95   NA NA, NA             NA
+      23         bayesian  3.30  2.9, 3.6               95   NA NA, NA             NA
+      24              mle    NA    NA, NA               NA   NA NA, NA             NA
+      25             <NA>    NA    NA, NA               NA   NA NA, NA             NA
+      26             <NA>    NA    NA, NA               NA   NA NA, NA             NA
+      27              mle    NA    NA, NA               NA   NA NA, NA             NA
+      28              mle    NA    NA, NA               NA   NA NA, NA             NA
+      29              mle    NA    NA, NA               NA   NA NA, NA             NA
+      30              mle    NA    NA, NA               NA   NA NA, NA             NA
+      31              mle    NA    NA, NA               NA   NA NA, NA             NA
+      32              mle    NA    NA, NA               NA   NA NA, NA             NA
+      33              mle    NA    NA, NA               NA   NA NA, NA             NA
+      34              mle    NA    NA, NA               NA   NA NA, NA             NA
+      35              mle    NA    NA, NA               NA   NA NA, NA             NA
+      36              mle    NA    NA, NA               NA   NA NA, NA             NA
+      37              mle    NA    NA, NA               NA   NA NA, NA             NA
+      38              mle    NA    NA, NA               NA   NA NA, NA             NA
+      39              mle    NA    NA, NA               NA   NA NA, NA             NA
+      40         bayesian    NA    NA, NA               NA   NA NA, NA             NA
+         quantile_025 quantile_05 quantile_25 median  median_ci median_ci_interval
+      1            NA          NA         4.8   5.60   4.8, 6.3                 95
+      2            NA          NA         2.9   3.00   0.5, 3.1                 95
+      3           5.0          NA          NA     NA     NA, NA                 NA
+      4           2.4          NA          NA     NA     NA, NA                 NA
+      5           3.4          NA          NA     NA     NA, NA                 NA
+      6            NA          NA         4.5   5.60   5.3, 6.0                 95
+      7            NA          NA         4.3   5.30   5.0, 5.7                 95
+      8            NA          NA         2.9   3.20   2.8, 3.7                 95
+      9            NA          NA          NA     NA     NA, NA                 NA
+      10           NA        0.70         1.1   1.40   1.3, 1.5                 95
+      11           NA        1.40         1.7   1.90   1.8, 2.0                 95
+      12           NA        0.30         0.4   0.60   0.5, 0.6                 95
+      13           NA        0.90          NA   1.40   1.0, 1.8                 95
+      14           NA          NA          NA   1.51 1.47, 1.55                 95
+      15           NA          NA          NA   1.43 1.21, 1.65                 95
+      16           NA        0.73          NA   1.46 1.35, 1.57                 95
+      17           NA        0.73          NA   1.43 1.33, 1.54                 95
+      18           NA          NA          NA   4.00     NA, NA                 NA
+      19           NA          NA          NA     NA     NA, NA                 NA
+      20           NA          NA          NA     NA     NA, NA                 NA
+      21           NA          NA          NA     NA     NA, NA                 NA
+      22           NA          NA          NA     NA     NA, NA                 NA
+      23           NA          NA          NA     NA     NA, NA                 NA
+      24           NA          NA         8.1   8.40   5.1, 9.4                 95
+      25           NA          NA          NA     NA     NA, NA                 NA
+      26           NA          NA          NA   7.00     NA, NA                 NA
+      27           NA        8.90        10.9  12.50 11.8, 13.3                 95
+      28           NA          NA         2.1   2.60   2.1, 3.1                 95
+      29           NA        0.80         1.3   1.90   1.4, 2.4                 95
+      30           NA          NA         3.1   4.00   3.4, 4.9                 95
+      31           NA        3.10         3.8   4.40   3.9, 4.9                 95
+      32           NA        3.05          NA   4.41 3.90, 4.92                 95
+      33           NA        3.11          NA   4.41 3.89, 4.94                 95
+      34           NA        1.50         2.7   4.00   3.6, 4.4                 95
+      35           NA        1.00         1.7   2.60   1.6, 3.5                 95
+      36           NA          NA         2.8   2.90   0.5, 3.1                 95
+      37           NA          NA         8.7  10.80  8.4, 14.2                 95
+      38           NA        1.90         3.2   4.40       4, 5                 95
+      39           NA        1.90         3.1   4.40   3.9, 5.0                 95
+      40           NA        3.20         4.6   5.90   4.4, 7.6                 95
+         quantile_75 quantile_875 quantile_95 quantile_975 lower_range upper_range
+      1          6.5           NA          NA           NA          NA          NA
+      2          3.0           NA          NA           NA          NA          NA
+      3           NA           NA          NA           33          NA          NA
+      4           NA           NA          NA           15          NA          NA
+      5           NA           NA          NA           10          NA          NA
+      6          7.1           NA          NA           NA          NA          NA
+      7          6.6           NA          NA           NA          NA          NA
+      8          3.5           NA          NA           NA          NA          NA
+      9           NA           NA          NA           NA          NA          NA
+      10         1.9           NA        2.80           NA          NA          NA
+      11         2.2           NA        2.70           NA          NA          NA
+      12         0.7           NA        1.10           NA          NA          NA
+      13          NA           NA        2.20           NA          NA          NA
+      14          NA           NA        3.43           NA          NA          NA
+      15          NA           NA        3.18           NA          NA          NA
+      16          NA           NA        2.94           NA          NA          NA
+      17          NA           NA        2.83           NA          NA          NA
+      18          NA           NA          NA           NA          NA          NA
+      19          NA           NA        6.50           NA          NA          NA
+      20          NA           NA       11.00           NA          NA          NA
+      21          NA           NA          NA           NA          NA          NA
+      22          NA           NA          NA           NA          NA          NA
+      23          NA           NA          NA           NA          NA          NA
+      24         8.6           NA          NA           NA          NA          NA
+      25          NA           NA          NA           NA           2          26
+      26          NA           NA          NA           NA           2          13
+      27        14.4           NA       17.70           NA          NA          NA
+      28         3.2           NA          NA           NA          NA          NA
+      29         2.7           NA        4.50           NA          NA          NA
+      30         5.3           NA          NA           NA          NA          NA
+      31          NA           NA        6.30           NA          NA          NA
+      32          NA           NA        6.39           NA          NA          NA
+      33          NA           NA        6.29           NA          NA          NA
+      34         5.9           NA       10.60           NA          NA          NA
+      35         3.8           NA        7.00           NA          NA          NA
+      36         3.0           NA          NA           NA          NA          NA
+      37        13.3           NA          NA           NA          NA          NA
+      38         6.3           NA       10.30           NA          NA          NA
+      39         6.2           NA       10.30           NA          NA          NA
+      40         7.6           NA       11.20           NA          NA          NA
+         shape   shape_ci shape_ci_interval scale   scale_ci scale_ci_interval
+      1     NA     NA, NA                NA    NA     NA, NA                NA
+      2     NA     NA, NA                NA    NA     NA, NA                NA
+      3     NA     NA, NA                NA    NA     NA, NA                NA
+      4     NA     NA, NA                NA    NA     NA, NA                NA
+      5     NA     NA, NA                NA    NA     NA, NA                NA
+      6     NA     NA, NA                NA    NA     NA, NA                NA
+      7     NA     NA, NA                NA    NA     NA, NA                NA
+      8     NA     NA, NA                NA    NA     NA, NA                NA
+      9     NA     NA, NA                NA    NA     NA, NA                NA
+      10    NA     NA, NA                NA    NA     NA, NA                NA
+      11    NA     NA, NA                NA    NA     NA, NA                NA
+      12    NA     NA, NA                NA    NA     NA, NA                NA
+      13    NA     NA, NA                NA    NA     NA, NA                NA
+      14  3.27     NA, NA                NA  0.51     NA, NA                NA
+      15  1.74     NA, NA                NA  1.83     NA, NA                NA
+      16    NA     NA, NA                NA    NA     NA, NA                NA
+      17    NA     NA, NA                NA    NA     NA, NA                NA
+      18    NA     NA, NA                NA    NA     NA, NA                NA
+      19    NA     NA, NA                NA    NA     NA, NA                NA
+      20    NA     NA, NA                NA    NA     NA, NA                NA
+      21    NA     NA, NA                NA    NA     NA, NA                NA
+      22  2.30 1.80, 2.89                95  4.21 3.62, 4.85                95
+      23  2.03 1.62, 2.52                95  3.74 3.20, 4.36                95
+      24    NA     NA, NA                NA    NA     NA, NA                NA
+      25    NA     NA, NA                NA    NA     NA, NA                NA
+      26    NA     NA, NA                NA    NA     NA, NA                NA
+      27    NA     NA, NA                NA    NA     NA, NA                NA
+      28    NA     NA, NA                NA    NA     NA, NA                NA
+      29    NA     NA, NA                NA    NA     NA, NA                NA
+      30    NA     NA, NA                NA    NA     NA, NA                NA
+      31    NA     NA, NA                NA    NA     NA, NA                NA
+      32    NA     NA, NA                NA    NA     NA, NA                NA
+      33    NA     NA, NA                NA    NA     NA, NA                NA
+      34    NA     NA, NA                NA    NA     NA, NA                NA
+      35    NA     NA, NA                NA    NA     NA, NA                NA
+      36    NA     NA, NA                NA    NA     NA, NA                NA
+      37    NA     NA, NA                NA    NA     NA, NA                NA
+      38    NA     NA, NA                NA    NA     NA, NA                NA
+      39    NA     NA, NA                NA    NA     NA, NA                NA
+      40    NA     NA, NA                NA    NA     NA, NA                NA
+         meanlog meanlog_ci meanlog_ci_interval sdlog sdlog_ci sdlog_ci_interval
+      1       NA     NA, NA                  NA    NA   NA, NA                NA
+      2       NA     NA, NA                  NA    NA   NA, NA                NA
+      3       NA     NA, NA                  NA    NA   NA, NA                NA
+      4       NA     NA, NA                  NA    NA   NA, NA                NA
+      5     1.75     NA, NA                  NA  0.27   NA, NA                NA
+      6       NA     NA, NA                  NA    NA   NA, NA                NA
+      7       NA     NA, NA                  NA    NA   NA, NA                NA
+      8       NA     NA, NA                  NA    NA   NA, NA                NA
+      9       NA     NA, NA                  NA    NA   NA, NA                NA
+      10      NA     NA, NA                  NA    NA   NA, NA                NA
+      11      NA     NA, NA                  NA    NA   NA, NA                NA
+      12      NA     NA, NA                  NA    NA   NA, NA                NA
+      13      NA     NA, NA                  NA    NA   NA, NA                NA
+      14      NA     NA, NA                  NA    NA   NA, NA                NA
+      15      NA     NA, NA                  NA    NA   NA, NA                NA
+      16      NA     NA, NA                  NA    NA   NA, NA                NA
+      17      NA     NA, NA                  NA    NA   NA, NA                NA
+      18      NA     NA, NA                  NA    NA   NA, NA                NA
+      19      NA     NA, NA                  NA    NA   NA, NA                NA
+      20      NA     NA, NA                  NA    NA   NA, NA                NA
+      21      NA     NA, NA                  NA    NA   NA, NA                NA
+      22      NA     NA, NA                  NA    NA   NA, NA                NA
+      23      NA     NA, NA                  NA    NA   NA, NA                NA
+      24      NA     NA, NA                  NA    NA   NA, NA                NA
+      25      NA     NA, NA                  NA    NA   NA, NA                NA
+      26      NA     NA, NA                  NA    NA   NA, NA                NA
+      27      NA     NA, NA                  NA    NA   NA, NA                NA
+      28      NA     NA, NA                  NA    NA   NA, NA                NA
+      29      NA     NA, NA                  NA    NA   NA, NA                NA
+      30      NA     NA, NA                  NA    NA   NA, NA                NA
+      31      NA     NA, NA                  NA    NA   NA, NA                NA
+      32      NA     NA, NA                  NA    NA   NA, NA                NA
+      33      NA     NA, NA                  NA    NA   NA, NA                NA
+      34      NA     NA, NA                  NA    NA   NA, NA                NA
+      35      NA     NA, NA                  NA    NA   NA, NA                NA
+      36      NA     NA, NA                  NA    NA   NA, NA                NA
+      37      NA     NA, NA                  NA    NA   NA, NA                NA
+      38      NA     NA, NA                  NA    NA   NA, NA                NA
+      39      NA     NA, NA                  NA    NA   NA, NA                NA
+      40      NA     NA, NA                  NA    NA   NA, NA                NA
+         dispersion dispersion_ci dispersion_ci_interval precision precision_ci
+      1        1.26    1.13, 1.38                     95        NA       NA, NA
+      2        1.04    1.04, 1.08                     95        NA       NA, NA
+      3          NA        NA, NA                     NA        NA       NA, NA
+      4          NA        NA, NA                     NA       4.9     2.8, 7.5
+      5          NA        NA, NA                     NA      13.7   10.9, 16.9
+      6        1.41    1.34, 1.50                     95        NA       NA, NA
+      7        1.37    1.27, 1.52                     95        NA       NA, NA
+      8        1.15    1.07, 1.34                     95        NA       NA, NA
+      9          NA        NA, NA                     NA        NA       NA, NA
+      10       1.51    1.43, 1.60                     95        NA       NA, NA
+      11       1.23    1.17, 1.29                     95        NA       NA, NA
+      12       1.51    1.37, 1.64                     95        NA       NA, NA
+      13         NA        NA, NA                     NA        NA       NA, NA
+      14         NA        NA, NA                     NA        NA       NA, NA
+      15         NA        NA, NA                     NA        NA       NA, NA
+      16       1.53    1.44, 1.61                     95        NA       NA, NA
+      17       1.51    1.43, 1.60                     95        NA       NA, NA
+      18         NA        NA, NA                     NA        NA       NA, NA
+      19         NA        NA, NA                     NA        NA       NA, NA
+      20         NA        NA, NA                     NA        NA       NA, NA
+      21         NA        NA, NA                     NA        NA       NA, NA
+      22         NA        NA, NA                     NA        NA       NA, NA
+      23         NA        NA, NA                     NA        NA       NA, NA
+      24       1.04    1.04, 1.05                     95        NA       NA, NA
+      25         NA        NA, NA                     NA        NA       NA, NA
+      26         NA        NA, NA                     NA        NA       NA, NA
+      27       1.23    1.18, 1.28                     95        NA       NA, NA
+      28       1.35    1.16, 1.55                     95        NA       NA, NA
+      29       1.68    1.36, 2.01                     95        NA       NA, NA
+      30       1.50    1.22, 1.82                     95        NA       NA, NA
+      31       1.24    1.13, 1.35                     95        NA       NA, NA
+      32       1.25    1.14, 1.36                     95        NA       NA, NA
+      33       1.24    1.12, 1.35                     95        NA       NA, NA
+      34       1.81    1.67, 1.95                     95        NA       NA, NA
+      35       1.82    1.27, 2.67                     95        NA       NA, NA
+      36       1.04    1.04, 1.29                     95        NA       NA, NA
+      37       1.35    1.12, 1.47                     95        NA       NA, NA
+      38       1.66    1.48, 1.82                     95        NA       NA, NA
+      39       1.67    1.47, 1.84                     95        NA       NA, NA
+      40       1.50      1.2, 1.9                     95        NA       NA, NA
+         precision_ci_interval truncation discretised censorred right_truncated
+      1                     NA         NA       FALSE      TRUE           FALSE
+      2                     NA         NA       FALSE      TRUE           FALSE
+      3                     NA         NA       FALSE      TRUE           FALSE
+      4                     95         NA       FALSE      TRUE           FALSE
+      5                     95         NA       FALSE      TRUE           FALSE
+      6                     NA         NA       FALSE      TRUE           FALSE
+      7                     NA         NA       FALSE      TRUE           FALSE
+      8                     NA         NA       FALSE      TRUE           FALSE
+      9                     NA         NA       FALSE        NA              NA
+      10                    NA         NA       FALSE      TRUE           FALSE
+      11                    NA         NA       FALSE      TRUE           FALSE
+      12                    NA         NA       FALSE      TRUE           FALSE
+      13                    NA         NA       FALSE      TRUE           FALSE
+      14                    NA         NA       FALSE      TRUE           FALSE
+      15                    NA         NA       FALSE      TRUE           FALSE
+      16                    NA         NA       FALSE      TRUE           FALSE
+      17                    NA         NA       FALSE      TRUE           FALSE
+      18                    NA         NA       FALSE     FALSE           FALSE
+      19                    NA         NA       FALSE      TRUE           FALSE
+      20                    NA         NA       FALSE      TRUE           FALSE
+      21                    NA         NA       FALSE      TRUE           FALSE
+      22                    NA         NA       FALSE      TRUE           FALSE
+      23                    NA         NA       FALSE      TRUE           FALSE
+      24                    NA         NA       FALSE      TRUE           FALSE
+      25                    NA         NA       FALSE     FALSE           FALSE
+      26                    NA         NA       FALSE     FALSE           FALSE
+      27                    NA         NA       FALSE      TRUE           FALSE
+      28                    NA         NA       FALSE      TRUE           FALSE
+      29                    NA         NA       FALSE      TRUE           FALSE
+      30                    NA         NA       FALSE      TRUE           FALSE
+      31                    NA         NA       FALSE      TRUE           FALSE
+      32                    NA         NA       FALSE      TRUE           FALSE
+      33                    NA         NA       FALSE      TRUE           FALSE
+      34                    NA         NA       FALSE      TRUE           FALSE
+      35                    NA         NA       FALSE      TRUE           FALSE
+      36                    NA         NA       FALSE      TRUE           FALSE
+      37                    NA         NA       FALSE      TRUE           FALSE
+      38                    NA         NA       FALSE      TRUE           FALSE
+      39                    NA         NA       FALSE      TRUE           FALSE
+      40                    NA         NA       FALSE      TRUE           FALSE
+         phase_bias_adjusted
+      1                FALSE
+      2                FALSE
+      3                FALSE
+      4                FALSE
+      5                FALSE
+      6                FALSE
+      7                FALSE
+      8                FALSE
+      9                   NA
+      10               FALSE
+      11               FALSE
+      12               FALSE
+      13               FALSE
+      14                TRUE
+      15                TRUE
+      16               FALSE
+      17               FALSE
+      18               FALSE
+      19               FALSE
+      20               FALSE
+      21               FALSE
+      22               FALSE
+      23               FALSE
+      24               FALSE
+      25               FALSE
+      26               FALSE
+      27               FALSE
+      28               FALSE
+      29               FALSE
+      30               FALSE
+      31               FALSE
+      32               FALSE
+      33               FALSE
+      34               FALSE
+      35               FALSE
+      36               FALSE
+      37               FALSE
+      38               FALSE
+      39               FALSE
+      40               FALSE
+                                                                                                                                                                                                                                                                                                                                                                                                                                           notes
+      1                                                                                                        Analysis on data from Commission on Acute Respiratory Disease. Experimental transmission of minor respiratory illness to human volunteers by filter-passing agents. I. Demonstration of two types of illness characterized by long and short incubation periods and diff erent clinical features. J Clin Invest 1947; 26: 957–82.
+      2                                                                                                                                                                                                                                                                                                                                                  Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      3                                                                                                                                                                                                                                                                                                                                                                               Extrinsic incubation period for data at 25 degrees celcius
+      4                                                                                                                                                                                                                                                                                                                                                                               Extrinsic incubation period for data at 30 degrees celcius
+      5                                                                                                                                                                                                                                                                                                                                     Standard deviation, meanlog and sdlog is taken from Siraj et al. 2017 <10.1371/journal.pntd.0005797>
+      6                                                                                                                                                                                                                                                                                                                                                  Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      7                                                                                                                                                                                                                                                                        Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
+      8                                                                                                                                                                                                                                                                                          Analysis on data from  Bradburne AF, Bynoe ML, Tyrrell DA. Eff ects of a “new” human respiratory virus in volunteers. Br Med J 1967; 3: 767–69.
+      9                                                                                                                                                                                                                                                                                                                                                                                                                                         
+      10                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      11                                                                                                                                                                   These estimates for the incubation period of influenza A from Lessler et al. 2009 are different from the estimates from the complete data, as they remove Henle et al. 1945 J Immunol, as it is an outlier in the dataset (n=61). Values found at the bottom Table 3.
+      12                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      13                                                                                                                                                                                                                                                                                                                                                                                                                    No additional notes.
+      14                                                                                                                                                                                                                                                                                                                                                                       Gamma and weibull distributions had equally good fit to the data.
+      15                                                                                                                                                                                                                                                                                                                                                                       Gamma and weibull distributions had equally good fit to the data.
+      16                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using double interval-censored analysis
+      17                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using single interval-censored analysis
+      18                                                                                                            The mid-point of the exposure time was used to approximate an exact exposure time instead of interval-censoring. This can lead to a possible bias (overestimation) in incubation times. It was ambiguously reported whether the mean is the mean of the distribution or the meanlog parameter of the lognormal distribution.
+      19                                                                                                                                                                                                                                                                      This study used an original data set and a modified data set. This weibull distribution was fitted to the modified data set and it is recommended to use this one.
+      20                                                                                                                                                                                                               This study used an original data set and a modified data set. This gamma distribution was fitted to the original data set and it is recommended to use the weibull distribution that was fitted to the modified data set.
+      21                                                                                                                                                                                                        This study fit the weibull distribution to estimate the parameters for the complete data set, those who had a fatal outcome and those with a non-fatal outcome. This is the distribution fit to the complete unpartitioned data.
+      22                                                                                                                                                                                                                 This study fit the weibull distribution to estimate the parameters for the complete data set, those who had a fatal outcome and those with a non-fatal outcome. This is the distribution fit to the fatal outcome data.
+      23                                                                                                                                                                                                             This study fit the weibull distribution to estimate the parameters for the complete data set, those who had a fatal outcome and those with a non-fatal outcome. This is the distribution fit to the non-fatal outcome data.
+      24                                                                                                                                                                                                                                                                                                                                                 Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      25 This paper did not fit a distribution to the incubation period data and only reported a lower and upper range of the data. This is present in the database as there are no other studies that report the incubation period for Marburg virus. There is another incubation period reported from the same paper for a subset of the data which report the median and interquartile range but again do not fit a distribution to the data.
+      26                                                                                                        This paper did not fit a distribution to the incubation period data and only reported a median and range for a subset of the data. This is present in the database as there are no other studies that report the incubation period for Marburg virus. This paper also reports the maximum and minimum for the complete data set.
+      27                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      28                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      29                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      30                                                                                                                                                                                                                                                                         Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. Of the 18 samples at least 17 of them are not trasmitted by mosquitoes
+      31                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      32                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using double interval-censored analysis
+      33                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using single interval-censored analysis
+      34                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      35                                                                                                                                                                                                                                                                                                                                                 Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      36                                                                                                                                                                                                                                                                       Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
+      37                                                                                                                                                                                                                                                              Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only tramsission by transplant or transfusion
+      38                                                                                                                                                                                                                                                                                                                                                 Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      39                                                                                                                                                                                                                                                                       Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
+      40                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2016 for references of datasets
+             PMID                            DOI
+      1  19393959  10.1016/S1473-3099(09)70069-6
+      2  24639305          10.4269/ajtmh.13-0403
+      3  23226436   10.1371/journal.pone.0050972
+      4  23226436   10.1371/journal.pone.0050972
+      5  23226436   10.1371/journal.pone.0050972
+      6  24639305          10.4269/ajtmh.13-0403
+      7  24639305          10.4269/ajtmh.13-0403
+      8  19393959  10.1016/S1473-3099(09)70069-7
+      9  20029668       10.1371/currents.RRN1130
+      10 19393959  10.1016/S1473-3099(09)70069-9
+      11 19393959 10.1016/S1473-3099(09)70069-10
+      12 19393959 10.1016/S1473-3099(09)70069-11
+      13 20042754          10.1056/NEJMoa0906089
+      14 21168422     10.1016/j.jtbi.2010.12.017
+      15 21168422     10.1016/j.jtbi.2010.12.017
+      16 19598148               10.1002/sim.3659
+      17 19598148               10.1002/sim.3659
+      18 19959592            10.1503/cmaj.091807
+      19 26409239             10.1093/aje/kwv115
+      20 26409239             10.1093/aje/kwv115
+      21 26885816   10.1371/journal.pone.0148506
+      22 26885816   10.1371/journal.pone.0148506
+      23 26885816   10.1371/journal.pone.0148506
+      24 24639305          10.4269/ajtmh.13-0403
+      25 25495697        10.1186/1756-0500-7-906
+      26 25495697        10.1186/1756-0500-7-906
+      27 19393959 10.1016/S1473-3099(09)70069-12
+      28 19393959 10.1016/S1473-3099(09)70069-13
+      29 19393959 10.1016/S1473-3099(09)70069-15
+      30 24639305          10.4269/ajtmh.13-0403
+      31 19393959 10.1016/S1473-3099(09)70069-14
+      32 19598148               10.1002/sim.3659
+      33 19598148               10.1002/sim.3659
+      34 19393959  10.1016/S1473-3099(09)70069-8
+      35 24639305          10.4269/ajtmh.13-0403
+      36 24639305          10.4269/ajtmh.13-0403
+      37 24639305          10.4269/ajtmh.13-0403
+      38 24639305          10.4269/ajtmh.13-0403
+      39 24639305          10.4269/ajtmh.13-0403
+      40 27821887          10.2471/BLT.16.174540
 
-# list_distributions works for incubation, params = FALSE
+# list_distributions works for incubation period
 
     Code
-      list_distributions(delay_dist = "incubation", parameters = FALSE)
+      list_distributions(epiparam = eparam, epi_dist = "incubation_period")
     Output
-                  pathogen_id    type_id                 study_id year size
-      1            adenovirus incubation             Lessler_etal 2009   14
-      2                 ebola incubation                 WHO_team 2014  500
-      3             human_CoV incubation             Lessler_etal 2009   13
-      4  influenza_A_seasonal incubation             Lessler_etal 2009  122
-      5  influenza_B_seasonal incubation             Lessler_etal 2009   76
-      6       influenza_H1N1p incubation               Ghani_etal 2009   16
-      7       influenza_H1N1p incubation               Tuite_etal 2010  316
-      8        influenza_H5N1 incubation             Cowling_etal 2013   27
-      9        influenza_H7N9 incubation             Cowling_etal 2013   32
-      10              marburg incubation                   Pavlin 2014   18
-      11              measles incubation Klinkenberg and Nishiura 2011  116
-      12              measles incubation             Lessler_etal 2009   56
-      13             MERS_CoV incubation              Assiri_etal 2013   23
-      14             MERS_CoV incubation          Cauchemez_et_al 2014    7
-      15            monkeypox incubation                    Nolen 2016   16
-      16            monkeypox incubation           Thornhill_etal 2022   23
-      17        parainfluenza incubation             Lessler_etal 2009   11
-      18           rhinovirus incubation             Lessler_etal 2009   28
-      19                  RSV incubation             Lessler_etal 2009   24
-      20             SARS_CoV incubation            Donnelly_etal 2003   57
-      21             SARS_CoV incubation             Lessler_etal 2009  157
-      22  SARS_CoV_2_wildtype incubation             McAloon_etal 2020 1269
-         distribution
-      1         lnorm
-      2         gamma
-      3         lnorm
-      4         lnorm
-      5         lnorm
-      6         gamma
-      7         lnorm
-      8       weibull
-      9       weibull
-      10        gamma
-      11        lnorm
-      12        lnorm
-      13        lnorm
-      14        lnorm
-      15        lnorm
-      16        lnorm
-      17        lnorm
-      18        lnorm
-      19        lnorm
-      20        gamma
-      21        lnorm
-      22        lnorm
+                       disease  epi_distribution prob_distribution         author
+      1             adenovirus incubation_period         lognormal   Lessler_etal
+      2            chikungunya incubation_period         lognormal   Rudolph_etal
+      3                 dengue incubation_period         lognormal Chan_Johansson
+      4                 dengue incubation_period         lognormal Chan_Johansson
+      5                 dengue incubation_period         lognormal Chan_Johansson
+      6                 dengue incubation_period         lognormal   Rudolph_etal
+      7                 dengue incubation_period         lognormal   Rudolph_etal
+      8      human coronavirus incubation_period         lognormal   Lessler_etal
+      9              influenza incubation_period             gamma     Ghani_etal
+      10             influenza incubation_period         lognormal   Lessler_etal
+      11             influenza incubation_period         lognormal   Lessler_etal
+      12             influenza incubation_period         lognormal   Lessler_etal
+      13             influenza incubation_period         lognormal   Lessler_etal
+      14             influenza incubation_period             gamma Nishiura_Inaba
+      15             influenza incubation_period           weibull Nishiura_Inaba
+      16             influenza incubation_period         lognormal     Reich_etal
+      17             influenza incubation_period         lognormal     Reich_etal
+      18             influenza incubation_period         lognormal     Tuite_etal
+      19             influenza incubation_period           weibull Virlogeux_etal
+      20             influenza incubation_period             gamma Virlogeux_etal
+      21             influenza incubation_period           weibull Virlogeux_etal
+      22             influenza incubation_period           weibull Virlogeux_etal
+      23             influenza incubation_period           weibull Virlogeux_etal
+      24 Japanese encephalitis incubation_period         lognormal   Rudolph_etal
+      25 marburg virus disease incubation_period              <NA>         Pavlin
+      26 marburg virus disease incubation_period              <NA>         Pavlin
+      27               measles incubation_period         lognormal   Lessler_etal
+      28         parainfluenza incubation_period         lognormal   Lessler_etal
+      29            rhinovirus incubation_period         lognormal   Lessler_etal
+      30     Rift Valley fever incubation_period         lognormal   Rudolph_etal
+      31                   RSV incubation_period         lognormal   Lessler_etal
+      32                   RSV incubation_period         lognormal     Reich_etal
+      33                   RSV incubation_period         lognormal     Reich_etal
+      34                  SARS incubation_period         lognormal   Lessler_etal
+      35       west nile fever incubation_period         lognormal   Rudolph_etal
+      36       west nile fever incubation_period         lognormal   Rudolph_etal
+      37       west nile fever incubation_period         lognormal   Rudolph_etal
+      38          yellow fever incubation_period         lognormal   Rudolph_etal
+      39          yellow fever incubation_period         lognormal   Rudolph_etal
+      40    zika virus disease incubation_period         lognormal   Lessler_etal
+         year sample_size
+      1  2009          14
+      2  2014          21
+      3  2012         146
+      4  2012         146
+      5  2012         153
+      6  2014         169
+      7  2014         124
+      8  2009          13
+      9  2009          16
+      10 2009         151
+      11 2009          90
+      12 2009          78
+      13 2009         134
+      14 2010          72
+      15 2010          72
+      16 2009         151
+      17 2009         151
+      18 2010         316
+      19 2015         229
+      20 2015         229
+      21 2016         395
+      22 2016         173
+      23 2016         222
+      24 2014           6
+      25 2014          76
+      26 2014          18
+      27 2009          55
+      28 2009          11
+      29 2009          28
+      30 2014          23
+      31 2009          24
+      32 2009          24
+      33 2009          24
+      34 2009         157
+      35 2014          18
+      36 2014           8
+      37 2014           6
+      38 2014          91
+      39 2014          80
+      40 2016          25
 
-# list_distributions works for incubation, params = TRUE
+# list_distributions works for incubation, subset_db = FALSE
 
     Code
-      list_distributions(delay_dist = "incubation", parameters = TRUE)
+      list_distributions(epiparam = eparam, epi_dist = "incubation", subset_db = FALSE)
     Output
-                  pathogen_id    type_id                 study_id year size
-      1            adenovirus incubation             Lessler_etal 2009   14
-      2                 ebola incubation                 WHO_team 2014  500
-      3             human_CoV incubation             Lessler_etal 2009   13
-      4  influenza_A_seasonal incubation             Lessler_etal 2009  122
-      5  influenza_B_seasonal incubation             Lessler_etal 2009   76
-      6       influenza_H1N1p incubation               Ghani_etal 2009   16
-      7       influenza_H1N1p incubation               Tuite_etal 2010  316
-      8        influenza_H5N1 incubation             Cowling_etal 2013   27
-      9        influenza_H7N9 incubation             Cowling_etal 2013   32
-      10              marburg incubation                   Pavlin 2014   18
-      11              measles incubation Klinkenberg and Nishiura 2011  116
-      12              measles incubation             Lessler_etal 2009   56
-      13             MERS_CoV incubation              Assiri_etal 2013   23
-      14             MERS_CoV incubation          Cauchemez_et_al 2014    7
-      15            monkeypox incubation                    Nolen 2016   16
-      16            monkeypox incubation           Thornhill_etal 2022   23
-      17        parainfluenza incubation             Lessler_etal 2009   11
-      18           rhinovirus incubation             Lessler_etal 2009   28
-      19                  RSV incubation             Lessler_etal 2009   24
-      20             SARS_CoV incubation            Donnelly_etal 2003   57
-      21             SARS_CoV incubation             Lessler_etal 2009  157
-      22  SARS_CoV_2_wildtype incubation             McAloon_etal 2020 1269
-         distribution  mean        sd quantile_025    median quantile_75 quantile_875
-      1         lnorm    NA        NA           NA  5.600000    6.500000           NA
-      2         gamma  9.10 7.3000000           NA        NA          NA           NA
-      3         lnorm    NA        NA           NA  3.200000    3.500000           NA
-      4         lnorm    NA        NA           NA  1.400000    1.900000           NA
-      5         lnorm    NA        NA           NA  0.600000    0.700000           NA
-      6         gamma  2.05 0.4898979           NA        NA          NA           NA
-      7         lnorm  4.30        NA           NA  4.000000          NA           NA
-      8       weibull  3.30 1.5000000    0.6870932  3.088366    4.288508           NA
-      9       weibull  3.10 1.4000000    0.6870932  2.887973    3.888880           NA
-      10        gamma    NA        NA           NA  7.000000          NA           NA
-      11        lnorm 12.30 3.4800000           NA 12.000000          NA           NA
-      12        lnorm    NA        NA           NA 12.500000   14.400000           NA
-      13        lnorm    NA        NA           NA  5.200000          NA           NA
-      14        lnorm  5.50 2.5000000           NA        NA          NA           NA
-      15        lnorm  9.60        NA           NA  9.000000          NA           13
-      16        lnorm    NA        NA           NA  7.000000          NA           NA
-      17        lnorm    NA        NA           NA  2.600000    3.200000           NA
-      18        lnorm    NA        NA           NA  1.900000    2.700000           NA
-      19        lnorm    NA        NA           NA  4.400000    5.100000           NA
-      20        gamma  6.40 4.0800000           NA        NA          NA           NA
-      21        lnorm    NA        NA           NA  4.000000    5.900000           NA
-      22        lnorm    NA        NA           NA  5.100000          NA           NA
-         quantile_95 quantile_975 lower_range upper_range     shape     scale
-      1           NA           NA          NA          NA        NA        NA
-      2           NA           NA          NA          NA  1.553950 5.8560440
-      3           NA           NA          NA          NA        NA        NA
-      4           NA           NA          NA          NA        NA        NA
-      5           NA           NA          NA          NA        NA        NA
-      6           NA           NA          NA          NA 17.503120 0.1171220
-      7           NA     6.600000          NA          NA        NA        NA
-      8     5.989652     6.589681          NA          NA  2.185908 3.6932670
-      9     5.489237     5.989652          NA          NA  2.309241 3.3759410
-      10          NA           NA           2          13  1.946138 0.5324265
-      11          NA           NA          NA          NA        NA        NA
-      12   17.700000           NA          NA          NA        NA        NA
-      13   12.400000    14.700000          NA          NA        NA        NA
-      14          NA           NA          NA          NA        NA        NA
-      15          NA           NA          NA          NA        NA        NA
-      16          NA           NA           3          20        NA        NA
-      17          NA           NA          NA          NA        NA        NA
-      18          NA           NA          NA          NA        NA        NA
-      19          NA           NA          NA          NA        NA        NA
-      20   14.220000           NA          NA          NA  2.431210 2.6200900
-      21          NA           NA          NA          NA        NA        NA
-      22   11.700000           NA          NA          NA        NA        NA
-            meanlog     sdlog extracted discretised phase_bias_adjusted
-      1   1.7227644 0.2209673       yes          no                  no
-      2          NA        NA       yes        <NA>                <NA>
-      3   1.1631463 0.1328705       yes          no                  no
-      4   0.3364708 0.4527634       yes          no                  no
-      5  -0.5108280 0.2285515       yes          no                  no
-      6          NA        NA       yes        <NA>                <NA>
-      7   1.3862944 0.2554986       yes        <NA>                <NA>
-      8          NA        NA       yes          no                  no
-      9          NA        NA       yes          no                  no
-      10         NA        NA       yes          no                  no
-      11         NA        NA                                      <NA>
-      12  2.5257260 0.2097952       yes          no                  no
-      13  1.6486586 0.5283368       yes        <NA>                <NA>
-      14  1.6108401 0.4333775       yes        <NA>                <NA>
-      15  2.1783545 0.3360684       yes          no                <NA>
-      16  1.9460783 0.4934628       yes          no                  no
-      17  0.9555123 0.3078528       yes          no                  no
-      18  0.6418529 0.5209872       yes          no                  no
-      19  1.4816021 0.2188927       yes          no                  no
-      20         NA        NA       yes          no                  no
-      21  1.3862935 0.5762278       yes          no                  no
-      22  1.6300000 0.5000000        no          no                  no
-                                                                                notes
-      1                                                                          <NA>
-      2                                              Extracted using single exposures
-      3                                                                          <NA>
-      4                                                                          <NA>
-      5                                                                          <NA>
-      6                                                                          <NA>
-      7                                                                          <NA>
-      8                                  extraction used quantile_025 and quantile_75
-      9                                  extraction used quantile_025 and quantile_75
-      10                                                 gamma assumed, range 2 to 13
-      11 estimates from data reported by Goodwall 1931 "Incubation period of measles"
-      12                                                                         <NA>
-      13                                  extracted using quantile_5 and quantile_975
-      14                                                                         <NA>
-      15                                Extracted taking c(6,13) as central 75% range
-      16                              Extracted from range 3 to 21, lognormal assumed
-      17                                                                         <NA>
-      18                                                                         <NA>
-      19                                                                         <NA>
-      20                                                                         <NA>
-      21                                                                         <NA>
-      22                                                                         <NA>
-             PMID                             DOI       added_by
-      1  19393959   10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      2  25564903           10.1056/nejmoa1411100 Adam Kucharski
-      3  19393959   10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      4  19393959   10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      5  19393959   10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      6  20029668        10.1371/currents.RRN1130 Adam Kucharski
-      7  19959592             10.1503/cmaj.091807 Adam Kucharski
-      8  23803488   10.1016/S0140-6736(13)61171-X Adam Kucharski
-      9  23803488   10.1016/S0140-6736(13)61171-X Adam Kucharski
-      10 25495697 10.1186/1756-0500-7-906         Adam Kucharski
-      11 21704640      10.1016/j.jtbi.2011.06.015  Alexis Robert
-      12 19393959   10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      13 23782161           10.1056/NEJMoa1306742 Adam Kucharski
-      14 24239323   10.1016/S1473-3099(13)70304-9 Adam Kucharski
-      15 27191380          10.3201/eid2206.150579       Seb Funk
-      16 35866746           10.1056/NEJMoa2207323 Adam Kucharski
-      17 19393959   10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      18 19393959   10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      19 19393959   10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      20 12781533   10.1016/S0140-6736(03)13410-1 Adam Kucharski
-      21 19393959   10.1016/S1473-3099(09)70069-6 Adam Kucharski
-      22 32801208     10.1136/bmjopen-2020-039652 Adam Kucharski
+                       disease                    pathogen  epi_distribution
+      1             adenovirus                  adenovirus incubation_period
+      2            chikungunya           chikungunya virus incubation_period
+      3                 dengue                dengue virus incubation_period
+      4                 dengue                dengue virus incubation_period
+      5                 dengue                dengue virus incubation_period
+      6                 dengue                dengue virus incubation_period
+      7                 dengue                dengue virus incubation_period
+      8      human coronavirus                   human_CoV incubation_period
+      9              influenza         influenza-A-H1N1pdm incubation_period
+      10             influenza                 influenza-A incubation_period
+      11             influenza                 influenza-A incubation_period
+      12             influenza                 influenza-B incubation_period
+      13             influenza            influenza-A-H1N1 incubation_period
+      14             influenza            influenza-A-H1N1 incubation_period
+      15             influenza            influenza-A-H1N1 incubation_period
+      16             influenza                 influenza-A incubation_period
+      17             influenza                 influenza-A incubation_period
+      18             influenza            influenza-A-H1N1 incubation_period
+      19             influenza            influenza-A-H7N9 incubation_period
+      20             influenza            influenza-A-H7N9 incubation_period
+      21             influenza            influenza-A-H7N9 incubation_period
+      22             influenza            influenza-A-H7N9 incubation_period
+      23             influenza            influenza-A-H7N9 incubation_period
+      24 Japanese encephalitis Japanese encephalitis virus incubation_period
+      25 marburg virus disease               marburg virus incubation_period
+      26 marburg virus disease               marburg virus incubation_period
+      27               measles               measles virus incubation_period
+      28         parainfluenza         parainfluenza virus incubation_period
+      29            rhinovirus                  rhinovirus incubation_period
+      30     Rift Valley fever     Rift Valley fever virus incubation_period
+      31                   RSV                         RSV incubation_period
+      32                   RSV                         RSV incubation_period
+      33                   RSV                         RSV incubation_period
+      34                  SARS                  SARS-CoV-1 incubation_period
+      35       west nile fever                   West Nile incubation_period
+      36       west nile fever                   West Nile incubation_period
+      37       west nile fever                   West Nile incubation_period
+      38          yellow fever        yellow fever viruses incubation_period
+      39          yellow fever        yellow fever viruses incubation_period
+      40    zika virus disease                        zika incubation_period
+                 author year sample_size        region vector_borne
+      1    Lessler_etal 2009          14           USA        FALSE
+      2    Rudolph_etal 2014          21         Mixed         TRUE
+      3  Chan_Johansson 2012         146         Mixed         TRUE
+      4  Chan_Johansson 2012         146         Mixed         TRUE
+      5  Chan_Johansson 2012         153         Mixed         TRUE
+      6    Rudolph_etal 2014         169         Mixed         TRUE
+      7    Rudolph_etal 2014         124         Mixed         TRUE
+      8    Lessler_etal 2009          13            UK        FALSE
+      9      Ghani_etal 2009          16            UK        FALSE
+      10   Lessler_etal 2009         151         Mixed        FALSE
+      11   Lessler_etal 2009          90         Mixed        FALSE
+      12   Lessler_etal 2009          78           USA        FALSE
+      13   Lessler_etal 2009         134 New York, USA        FALSE
+      14 Nishiura_Inaba 2010          72         Japan        FALSE
+      15 Nishiura_Inaba 2010          72         Japan        FALSE
+      16     Reich_etal 2009         151         Mixed        FALSE
+      17     Reich_etal 2009         151         Mixed        FALSE
+      18     Tuite_etal 2010         316        Canada        FALSE
+      19 Virlogeux_etal 2015         229         China        FALSE
+      20 Virlogeux_etal 2015         229         China        FALSE
+      21 Virlogeux_etal 2016         395         China        FALSE
+      22 Virlogeux_etal 2016         173         China        FALSE
+      23 Virlogeux_etal 2016         222         China        FALSE
+      24   Rudolph_etal 2014           6         Mixed         TRUE
+      25         Pavlin 2014          76         Mixed        FALSE
+      26         Pavlin 2014          18         Mixed        FALSE
+      27   Lessler_etal 2009          55         Mixed        FALSE
+      28   Lessler_etal 2009          11         Mixed        FALSE
+      29   Lessler_etal 2009          28           USA        FALSE
+      30   Rudolph_etal 2014          23         Mixed         TRUE
+      31   Lessler_etal 2009          24         Mixed        FALSE
+      32     Reich_etal 2009          24         Mixed        FALSE
+      33     Reich_etal 2009          24         Mixed        FALSE
+      34   Lessler_etal 2009         157         Mixed        FALSE
+      35   Rudolph_etal 2014          18         Mixed         TRUE
+      36   Rudolph_etal 2014           8         Mixed         TRUE
+      37   Rudolph_etal 2014           6         Mixed         TRUE
+      38   Rudolph_etal 2014          91         Mixed         TRUE
+      39   Rudolph_etal 2014          80         Mixed         TRUE
+      40   Lessler_etal 2016          25         Mixed         TRUE
+                                     vector extrinsic prob_distribution
+      1                                <NA>     FALSE         lognormal
+      2                    Aedes albopictus     FALSE         lognormal
+      3  Aedes aegypti and Aedes albopictus      TRUE         lognormal
+      4  Aedes aegypti and Aedes albopictus      TRUE         lognormal
+      5  Aedes aegypti and Aedes albopictus     FALSE         lognormal
+      6  Aedes aegypti and Aedes albopictus     FALSE         lognormal
+      7  Aedes aegypti and Aedes albopictus     FALSE         lognormal
+      8                                <NA>     FALSE         lognormal
+      9                                <NA>     FALSE             gamma
+      10                               <NA>     FALSE         lognormal
+      11                               <NA>     FALSE         lognormal
+      12                               <NA>     FALSE         lognormal
+      13                               <NA>     FALSE         lognormal
+      14                               <NA>     FALSE             gamma
+      15                               <NA>     FALSE           weibull
+      16                               <NA>     FALSE         lognormal
+      17                               <NA>     FALSE         lognormal
+      18                               <NA>     FALSE         lognormal
+      19                               <NA>     FALSE           weibull
+      20                               <NA>     FALSE             gamma
+      21                               <NA>     FALSE           weibull
+      22                               <NA>     FALSE           weibull
+      23                               <NA>     FALSE           weibull
+      24                           mosquito     FALSE         lognormal
+      25                               <NA>     FALSE              <NA>
+      26                               <NA>     FALSE              <NA>
+      27                               <NA>     FALSE         lognormal
+      28                               <NA>     FALSE         lognormal
+      29                               <NA>     FALSE         lognormal
+      30                           mosquito     FALSE         lognormal
+      31                               <NA>     FALSE         lognormal
+      32                               <NA>     FALSE         lognormal
+      33                               <NA>     FALSE         lognormal
+      34                               <NA>     FALSE         lognormal
+      35                           mosquito     FALSE         lognormal
+      36                           mosquito     FALSE         lognormal
+      37                           mosquito     FALSE         lognormal
+      38                           mosquito     FALSE         lognormal
+      39                           mosquito     FALSE         lognormal
+      40 Aedes aegypti and Aedes albopictus     FALSE         lognormal
+         inference_method  mean   mean_ci mean_ci_interval   sd  sd_ci sd_ci_interval
+      1               mle    NA    NA, NA               NA   NA NA, NA             NA
+      2               mle    NA    NA, NA               NA   NA NA, NA             NA
+      3          bayesian 15.00    10, 20               95   NA NA, NA             NA
+      4          bayesian  6.50  4.8, 8.8               95   NA NA, NA             NA
+      5          bayesian  5.97  5.5, 6.4               95 1.64 NA, NA             NA
+      6               mle    NA    NA, NA               NA   NA NA, NA             NA
+      7               mle    NA    NA, NA               NA   NA NA, NA             NA
+      8          bayesian    NA    NA, NA               NA   NA NA, NA             NA
+      9               mle  2.05    NA, NA               NA 0.49 NA, NA             NA
+      10              mle    NA    NA, NA               NA   NA NA, NA             NA
+      11              mle    NA    NA, NA               NA   NA NA, NA             NA
+      12              mle    NA    NA, NA               NA   NA NA, NA             NA
+      13              mle    NA    NA, NA               NA   NA NA, NA             NA
+      14              mle    NA    NA, NA               NA   NA NA, NA             NA
+      15              mle    NA    NA, NA               NA   NA NA, NA             NA
+      16              mle    NA    NA, NA               NA   NA NA, NA             NA
+      17              mle    NA    NA, NA               NA   NA NA, NA             NA
+      18          unknown  4.30  2.6, 6.6               95   NA NA, NA             NA
+      19              mle  3.40  3.0, 3.7               95 1.70 NA, NA             NA
+      20              mle  4.50 2.8, 16.2               95 3.30 NA, NA             NA
+      21         bayesian  3.50  3.2, 3.8               95   NA NA, NA             NA
+      22         bayesian  3.70  3.4, 4.1               95   NA NA, NA             NA
+      23         bayesian  3.30  2.9, 3.6               95   NA NA, NA             NA
+      24              mle    NA    NA, NA               NA   NA NA, NA             NA
+      25             <NA>    NA    NA, NA               NA   NA NA, NA             NA
+      26             <NA>    NA    NA, NA               NA   NA NA, NA             NA
+      27              mle    NA    NA, NA               NA   NA NA, NA             NA
+      28              mle    NA    NA, NA               NA   NA NA, NA             NA
+      29              mle    NA    NA, NA               NA   NA NA, NA             NA
+      30              mle    NA    NA, NA               NA   NA NA, NA             NA
+      31              mle    NA    NA, NA               NA   NA NA, NA             NA
+      32              mle    NA    NA, NA               NA   NA NA, NA             NA
+      33              mle    NA    NA, NA               NA   NA NA, NA             NA
+      34              mle    NA    NA, NA               NA   NA NA, NA             NA
+      35              mle    NA    NA, NA               NA   NA NA, NA             NA
+      36              mle    NA    NA, NA               NA   NA NA, NA             NA
+      37              mle    NA    NA, NA               NA   NA NA, NA             NA
+      38              mle    NA    NA, NA               NA   NA NA, NA             NA
+      39              mle    NA    NA, NA               NA   NA NA, NA             NA
+      40         bayesian    NA    NA, NA               NA   NA NA, NA             NA
+         quantile_025 quantile_05 quantile_25 median  median_ci median_ci_interval
+      1            NA          NA         4.8   5.60   4.8, 6.3                 95
+      2            NA          NA         2.9   3.00   0.5, 3.1                 95
+      3           5.0          NA          NA     NA     NA, NA                 NA
+      4           2.4          NA          NA     NA     NA, NA                 NA
+      5           3.4          NA          NA     NA     NA, NA                 NA
+      6            NA          NA         4.5   5.60   5.3, 6.0                 95
+      7            NA          NA         4.3   5.30   5.0, 5.7                 95
+      8            NA          NA         2.9   3.20   2.8, 3.7                 95
+      9            NA          NA          NA     NA     NA, NA                 NA
+      10           NA        0.70         1.1   1.40   1.3, 1.5                 95
+      11           NA        1.40         1.7   1.90   1.8, 2.0                 95
+      12           NA        0.30         0.4   0.60   0.5, 0.6                 95
+      13           NA        0.90          NA   1.40   1.0, 1.8                 95
+      14           NA          NA          NA   1.51 1.47, 1.55                 95
+      15           NA          NA          NA   1.43 1.21, 1.65                 95
+      16           NA        0.73          NA   1.46 1.35, 1.57                 95
+      17           NA        0.73          NA   1.43 1.33, 1.54                 95
+      18           NA          NA          NA   4.00     NA, NA                 NA
+      19           NA          NA          NA     NA     NA, NA                 NA
+      20           NA          NA          NA     NA     NA, NA                 NA
+      21           NA          NA          NA     NA     NA, NA                 NA
+      22           NA          NA          NA     NA     NA, NA                 NA
+      23           NA          NA          NA     NA     NA, NA                 NA
+      24           NA          NA         8.1   8.40   5.1, 9.4                 95
+      25           NA          NA          NA     NA     NA, NA                 NA
+      26           NA          NA          NA   7.00     NA, NA                 NA
+      27           NA        8.90        10.9  12.50 11.8, 13.3                 95
+      28           NA          NA         2.1   2.60   2.1, 3.1                 95
+      29           NA        0.80         1.3   1.90   1.4, 2.4                 95
+      30           NA          NA         3.1   4.00   3.4, 4.9                 95
+      31           NA        3.10         3.8   4.40   3.9, 4.9                 95
+      32           NA        3.05          NA   4.41 3.90, 4.92                 95
+      33           NA        3.11          NA   4.41 3.89, 4.94                 95
+      34           NA        1.50         2.7   4.00   3.6, 4.4                 95
+      35           NA        1.00         1.7   2.60   1.6, 3.5                 95
+      36           NA          NA         2.8   2.90   0.5, 3.1                 95
+      37           NA          NA         8.7  10.80  8.4, 14.2                 95
+      38           NA        1.90         3.2   4.40       4, 5                 95
+      39           NA        1.90         3.1   4.40   3.9, 5.0                 95
+      40           NA        3.20         4.6   5.90   4.4, 7.6                 95
+         quantile_75 quantile_875 quantile_95 quantile_975 lower_range upper_range
+      1          6.5           NA          NA           NA          NA          NA
+      2          3.0           NA          NA           NA          NA          NA
+      3           NA           NA          NA           33          NA          NA
+      4           NA           NA          NA           15          NA          NA
+      5           NA           NA          NA           10          NA          NA
+      6          7.1           NA          NA           NA          NA          NA
+      7          6.6           NA          NA           NA          NA          NA
+      8          3.5           NA          NA           NA          NA          NA
+      9           NA           NA          NA           NA          NA          NA
+      10         1.9           NA        2.80           NA          NA          NA
+      11         2.2           NA        2.70           NA          NA          NA
+      12         0.7           NA        1.10           NA          NA          NA
+      13          NA           NA        2.20           NA          NA          NA
+      14          NA           NA        3.43           NA          NA          NA
+      15          NA           NA        3.18           NA          NA          NA
+      16          NA           NA        2.94           NA          NA          NA
+      17          NA           NA        2.83           NA          NA          NA
+      18          NA           NA          NA           NA          NA          NA
+      19          NA           NA        6.50           NA          NA          NA
+      20          NA           NA       11.00           NA          NA          NA
+      21          NA           NA          NA           NA          NA          NA
+      22          NA           NA          NA           NA          NA          NA
+      23          NA           NA          NA           NA          NA          NA
+      24         8.6           NA          NA           NA          NA          NA
+      25          NA           NA          NA           NA           2          26
+      26          NA           NA          NA           NA           2          13
+      27        14.4           NA       17.70           NA          NA          NA
+      28         3.2           NA          NA           NA          NA          NA
+      29         2.7           NA        4.50           NA          NA          NA
+      30         5.3           NA          NA           NA          NA          NA
+      31          NA           NA        6.30           NA          NA          NA
+      32          NA           NA        6.39           NA          NA          NA
+      33          NA           NA        6.29           NA          NA          NA
+      34         5.9           NA       10.60           NA          NA          NA
+      35         3.8           NA        7.00           NA          NA          NA
+      36         3.0           NA          NA           NA          NA          NA
+      37        13.3           NA          NA           NA          NA          NA
+      38         6.3           NA       10.30           NA          NA          NA
+      39         6.2           NA       10.30           NA          NA          NA
+      40         7.6           NA       11.20           NA          NA          NA
+         shape   shape_ci shape_ci_interval scale   scale_ci scale_ci_interval
+      1     NA     NA, NA                NA    NA     NA, NA                NA
+      2     NA     NA, NA                NA    NA     NA, NA                NA
+      3     NA     NA, NA                NA    NA     NA, NA                NA
+      4     NA     NA, NA                NA    NA     NA, NA                NA
+      5     NA     NA, NA                NA    NA     NA, NA                NA
+      6     NA     NA, NA                NA    NA     NA, NA                NA
+      7     NA     NA, NA                NA    NA     NA, NA                NA
+      8     NA     NA, NA                NA    NA     NA, NA                NA
+      9     NA     NA, NA                NA    NA     NA, NA                NA
+      10    NA     NA, NA                NA    NA     NA, NA                NA
+      11    NA     NA, NA                NA    NA     NA, NA                NA
+      12    NA     NA, NA                NA    NA     NA, NA                NA
+      13    NA     NA, NA                NA    NA     NA, NA                NA
+      14  3.27     NA, NA                NA  0.51     NA, NA                NA
+      15  1.74     NA, NA                NA  1.83     NA, NA                NA
+      16    NA     NA, NA                NA    NA     NA, NA                NA
+      17    NA     NA, NA                NA    NA     NA, NA                NA
+      18    NA     NA, NA                NA    NA     NA, NA                NA
+      19    NA     NA, NA                NA    NA     NA, NA                NA
+      20    NA     NA, NA                NA    NA     NA, NA                NA
+      21    NA     NA, NA                NA    NA     NA, NA                NA
+      22  2.30 1.80, 2.89                95  4.21 3.62, 4.85                95
+      23  2.03 1.62, 2.52                95  3.74 3.20, 4.36                95
+      24    NA     NA, NA                NA    NA     NA, NA                NA
+      25    NA     NA, NA                NA    NA     NA, NA                NA
+      26    NA     NA, NA                NA    NA     NA, NA                NA
+      27    NA     NA, NA                NA    NA     NA, NA                NA
+      28    NA     NA, NA                NA    NA     NA, NA                NA
+      29    NA     NA, NA                NA    NA     NA, NA                NA
+      30    NA     NA, NA                NA    NA     NA, NA                NA
+      31    NA     NA, NA                NA    NA     NA, NA                NA
+      32    NA     NA, NA                NA    NA     NA, NA                NA
+      33    NA     NA, NA                NA    NA     NA, NA                NA
+      34    NA     NA, NA                NA    NA     NA, NA                NA
+      35    NA     NA, NA                NA    NA     NA, NA                NA
+      36    NA     NA, NA                NA    NA     NA, NA                NA
+      37    NA     NA, NA                NA    NA     NA, NA                NA
+      38    NA     NA, NA                NA    NA     NA, NA                NA
+      39    NA     NA, NA                NA    NA     NA, NA                NA
+      40    NA     NA, NA                NA    NA     NA, NA                NA
+         meanlog meanlog_ci meanlog_ci_interval sdlog sdlog_ci sdlog_ci_interval
+      1       NA     NA, NA                  NA    NA   NA, NA                NA
+      2       NA     NA, NA                  NA    NA   NA, NA                NA
+      3       NA     NA, NA                  NA    NA   NA, NA                NA
+      4       NA     NA, NA                  NA    NA   NA, NA                NA
+      5     1.75     NA, NA                  NA  0.27   NA, NA                NA
+      6       NA     NA, NA                  NA    NA   NA, NA                NA
+      7       NA     NA, NA                  NA    NA   NA, NA                NA
+      8       NA     NA, NA                  NA    NA   NA, NA                NA
+      9       NA     NA, NA                  NA    NA   NA, NA                NA
+      10      NA     NA, NA                  NA    NA   NA, NA                NA
+      11      NA     NA, NA                  NA    NA   NA, NA                NA
+      12      NA     NA, NA                  NA    NA   NA, NA                NA
+      13      NA     NA, NA                  NA    NA   NA, NA                NA
+      14      NA     NA, NA                  NA    NA   NA, NA                NA
+      15      NA     NA, NA                  NA    NA   NA, NA                NA
+      16      NA     NA, NA                  NA    NA   NA, NA                NA
+      17      NA     NA, NA                  NA    NA   NA, NA                NA
+      18      NA     NA, NA                  NA    NA   NA, NA                NA
+      19      NA     NA, NA                  NA    NA   NA, NA                NA
+      20      NA     NA, NA                  NA    NA   NA, NA                NA
+      21      NA     NA, NA                  NA    NA   NA, NA                NA
+      22      NA     NA, NA                  NA    NA   NA, NA                NA
+      23      NA     NA, NA                  NA    NA   NA, NA                NA
+      24      NA     NA, NA                  NA    NA   NA, NA                NA
+      25      NA     NA, NA                  NA    NA   NA, NA                NA
+      26      NA     NA, NA                  NA    NA   NA, NA                NA
+      27      NA     NA, NA                  NA    NA   NA, NA                NA
+      28      NA     NA, NA                  NA    NA   NA, NA                NA
+      29      NA     NA, NA                  NA    NA   NA, NA                NA
+      30      NA     NA, NA                  NA    NA   NA, NA                NA
+      31      NA     NA, NA                  NA    NA   NA, NA                NA
+      32      NA     NA, NA                  NA    NA   NA, NA                NA
+      33      NA     NA, NA                  NA    NA   NA, NA                NA
+      34      NA     NA, NA                  NA    NA   NA, NA                NA
+      35      NA     NA, NA                  NA    NA   NA, NA                NA
+      36      NA     NA, NA                  NA    NA   NA, NA                NA
+      37      NA     NA, NA                  NA    NA   NA, NA                NA
+      38      NA     NA, NA                  NA    NA   NA, NA                NA
+      39      NA     NA, NA                  NA    NA   NA, NA                NA
+      40      NA     NA, NA                  NA    NA   NA, NA                NA
+         dispersion dispersion_ci dispersion_ci_interval precision precision_ci
+      1        1.26    1.13, 1.38                     95        NA       NA, NA
+      2        1.04    1.04, 1.08                     95        NA       NA, NA
+      3          NA        NA, NA                     NA        NA       NA, NA
+      4          NA        NA, NA                     NA       4.9     2.8, 7.5
+      5          NA        NA, NA                     NA      13.7   10.9, 16.9
+      6        1.41    1.34, 1.50                     95        NA       NA, NA
+      7        1.37    1.27, 1.52                     95        NA       NA, NA
+      8        1.15    1.07, 1.34                     95        NA       NA, NA
+      9          NA        NA, NA                     NA        NA       NA, NA
+      10       1.51    1.43, 1.60                     95        NA       NA, NA
+      11       1.23    1.17, 1.29                     95        NA       NA, NA
+      12       1.51    1.37, 1.64                     95        NA       NA, NA
+      13         NA        NA, NA                     NA        NA       NA, NA
+      14         NA        NA, NA                     NA        NA       NA, NA
+      15         NA        NA, NA                     NA        NA       NA, NA
+      16       1.53    1.44, 1.61                     95        NA       NA, NA
+      17       1.51    1.43, 1.60                     95        NA       NA, NA
+      18         NA        NA, NA                     NA        NA       NA, NA
+      19         NA        NA, NA                     NA        NA       NA, NA
+      20         NA        NA, NA                     NA        NA       NA, NA
+      21         NA        NA, NA                     NA        NA       NA, NA
+      22         NA        NA, NA                     NA        NA       NA, NA
+      23         NA        NA, NA                     NA        NA       NA, NA
+      24       1.04    1.04, 1.05                     95        NA       NA, NA
+      25         NA        NA, NA                     NA        NA       NA, NA
+      26         NA        NA, NA                     NA        NA       NA, NA
+      27       1.23    1.18, 1.28                     95        NA       NA, NA
+      28       1.35    1.16, 1.55                     95        NA       NA, NA
+      29       1.68    1.36, 2.01                     95        NA       NA, NA
+      30       1.50    1.22, 1.82                     95        NA       NA, NA
+      31       1.24    1.13, 1.35                     95        NA       NA, NA
+      32       1.25    1.14, 1.36                     95        NA       NA, NA
+      33       1.24    1.12, 1.35                     95        NA       NA, NA
+      34       1.81    1.67, 1.95                     95        NA       NA, NA
+      35       1.82    1.27, 2.67                     95        NA       NA, NA
+      36       1.04    1.04, 1.29                     95        NA       NA, NA
+      37       1.35    1.12, 1.47                     95        NA       NA, NA
+      38       1.66    1.48, 1.82                     95        NA       NA, NA
+      39       1.67    1.47, 1.84                     95        NA       NA, NA
+      40       1.50      1.2, 1.9                     95        NA       NA, NA
+         precision_ci_interval truncation discretised censorred right_truncated
+      1                     NA         NA       FALSE      TRUE           FALSE
+      2                     NA         NA       FALSE      TRUE           FALSE
+      3                     NA         NA       FALSE      TRUE           FALSE
+      4                     95         NA       FALSE      TRUE           FALSE
+      5                     95         NA       FALSE      TRUE           FALSE
+      6                     NA         NA       FALSE      TRUE           FALSE
+      7                     NA         NA       FALSE      TRUE           FALSE
+      8                     NA         NA       FALSE      TRUE           FALSE
+      9                     NA         NA       FALSE        NA              NA
+      10                    NA         NA       FALSE      TRUE           FALSE
+      11                    NA         NA       FALSE      TRUE           FALSE
+      12                    NA         NA       FALSE      TRUE           FALSE
+      13                    NA         NA       FALSE      TRUE           FALSE
+      14                    NA         NA       FALSE      TRUE           FALSE
+      15                    NA         NA       FALSE      TRUE           FALSE
+      16                    NA         NA       FALSE      TRUE           FALSE
+      17                    NA         NA       FALSE      TRUE           FALSE
+      18                    NA         NA       FALSE     FALSE           FALSE
+      19                    NA         NA       FALSE      TRUE           FALSE
+      20                    NA         NA       FALSE      TRUE           FALSE
+      21                    NA         NA       FALSE      TRUE           FALSE
+      22                    NA         NA       FALSE      TRUE           FALSE
+      23                    NA         NA       FALSE      TRUE           FALSE
+      24                    NA         NA       FALSE      TRUE           FALSE
+      25                    NA         NA       FALSE     FALSE           FALSE
+      26                    NA         NA       FALSE     FALSE           FALSE
+      27                    NA         NA       FALSE      TRUE           FALSE
+      28                    NA         NA       FALSE      TRUE           FALSE
+      29                    NA         NA       FALSE      TRUE           FALSE
+      30                    NA         NA       FALSE      TRUE           FALSE
+      31                    NA         NA       FALSE      TRUE           FALSE
+      32                    NA         NA       FALSE      TRUE           FALSE
+      33                    NA         NA       FALSE      TRUE           FALSE
+      34                    NA         NA       FALSE      TRUE           FALSE
+      35                    NA         NA       FALSE      TRUE           FALSE
+      36                    NA         NA       FALSE      TRUE           FALSE
+      37                    NA         NA       FALSE      TRUE           FALSE
+      38                    NA         NA       FALSE      TRUE           FALSE
+      39                    NA         NA       FALSE      TRUE           FALSE
+      40                    NA         NA       FALSE      TRUE           FALSE
+         phase_bias_adjusted
+      1                FALSE
+      2                FALSE
+      3                FALSE
+      4                FALSE
+      5                FALSE
+      6                FALSE
+      7                FALSE
+      8                FALSE
+      9                   NA
+      10               FALSE
+      11               FALSE
+      12               FALSE
+      13               FALSE
+      14                TRUE
+      15                TRUE
+      16               FALSE
+      17               FALSE
+      18               FALSE
+      19               FALSE
+      20               FALSE
+      21               FALSE
+      22               FALSE
+      23               FALSE
+      24               FALSE
+      25               FALSE
+      26               FALSE
+      27               FALSE
+      28               FALSE
+      29               FALSE
+      30               FALSE
+      31               FALSE
+      32               FALSE
+      33               FALSE
+      34               FALSE
+      35               FALSE
+      36               FALSE
+      37               FALSE
+      38               FALSE
+      39               FALSE
+      40               FALSE
+                                                                                                                                                                                                                                                                                                                                                                                                                                           notes
+      1                                                                                                        Analysis on data from Commission on Acute Respiratory Disease. Experimental transmission of minor respiratory illness to human volunteers by filter-passing agents. I. Demonstration of two types of illness characterized by long and short incubation periods and diff erent clinical features. J Clin Invest 1947; 26: 957–82.
+      2                                                                                                                                                                                                                                                                                                                                                  Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      3                                                                                                                                                                                                                                                                                                                                                                               Extrinsic incubation period for data at 25 degrees celcius
+      4                                                                                                                                                                                                                                                                                                                                                                               Extrinsic incubation period for data at 30 degrees celcius
+      5                                                                                                                                                                                                                                                                                                                                     Standard deviation, meanlog and sdlog is taken from Siraj et al. 2017 <10.1371/journal.pntd.0005797>
+      6                                                                                                                                                                                                                                                                                                                                                  Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      7                                                                                                                                                                                                                                                                        Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
+      8                                                                                                                                                                                                                                                                                          Analysis on data from  Bradburne AF, Bynoe ML, Tyrrell DA. Eff ects of a “new” human respiratory virus in volunteers. Br Med J 1967; 3: 767–69.
+      9                                                                                                                                                                                                                                                                                                                                                                                                                                         
+      10                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      11                                                                                                                                                                   These estimates for the incubation period of influenza A from Lessler et al. 2009 are different from the estimates from the complete data, as they remove Henle et al. 1945 J Immunol, as it is an outlier in the dataset (n=61). Values found at the bottom Table 3.
+      12                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      13                                                                                                                                                                                                                                                                                                                                                                                                                    No additional notes.
+      14                                                                                                                                                                                                                                                                                                                                                                       Gamma and weibull distributions had equally good fit to the data.
+      15                                                                                                                                                                                                                                                                                                                                                                       Gamma and weibull distributions had equally good fit to the data.
+      16                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using double interval-censored analysis
+      17                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using single interval-censored analysis
+      18                                                                                                            The mid-point of the exposure time was used to approximate an exact exposure time instead of interval-censoring. This can lead to a possible bias (overestimation) in incubation times. It was ambiguously reported whether the mean is the mean of the distribution or the meanlog parameter of the lognormal distribution.
+      19                                                                                                                                                                                                                                                                      This study used an original data set and a modified data set. This weibull distribution was fitted to the modified data set and it is recommended to use this one.
+      20                                                                                                                                                                                                               This study used an original data set and a modified data set. This gamma distribution was fitted to the original data set and it is recommended to use the weibull distribution that was fitted to the modified data set.
+      21                                                                                                                                                                                                        This study fit the weibull distribution to estimate the parameters for the complete data set, those who had a fatal outcome and those with a non-fatal outcome. This is the distribution fit to the complete unpartitioned data.
+      22                                                                                                                                                                                                                 This study fit the weibull distribution to estimate the parameters for the complete data set, those who had a fatal outcome and those with a non-fatal outcome. This is the distribution fit to the fatal outcome data.
+      23                                                                                                                                                                                                             This study fit the weibull distribution to estimate the parameters for the complete data set, those who had a fatal outcome and those with a non-fatal outcome. This is the distribution fit to the non-fatal outcome data.
+      24                                                                                                                                                                                                                                                                                                                                                 Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      25 This paper did not fit a distribution to the incubation period data and only reported a lower and upper range of the data. This is present in the database as there are no other studies that report the incubation period for Marburg virus. There is another incubation period reported from the same paper for a subset of the data which report the median and interquartile range but again do not fit a distribution to the data.
+      26                                                                                                        This paper did not fit a distribution to the incubation period data and only reported a median and range for a subset of the data. This is present in the database as there are no other studies that report the incubation period for Marburg virus. This paper also reports the maximum and minimum for the complete data set.
+      27                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      28                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      29                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      30                                                                                                                                                                                                                                                                         Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. Of the 18 samples at least 17 of them are not trasmitted by mosquitoes
+      31                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      32                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using double interval-censored analysis
+      33                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using single interval-censored analysis
+      34                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
+      35                                                                                                                                                                                                                                                                                                                                                 Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      36                                                                                                                                                                                                                                                                       Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
+      37                                                                                                                                                                                                                                                              Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only tramsission by transplant or transfusion
+      38                                                                                                                                                                                                                                                                                                                                                 Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      39                                                                                                                                                                                                                                                                       Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
+      40                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2016 for references of datasets
+             PMID                            DOI
+      1  19393959  10.1016/S1473-3099(09)70069-6
+      2  24639305          10.4269/ajtmh.13-0403
+      3  23226436   10.1371/journal.pone.0050972
+      4  23226436   10.1371/journal.pone.0050972
+      5  23226436   10.1371/journal.pone.0050972
+      6  24639305          10.4269/ajtmh.13-0403
+      7  24639305          10.4269/ajtmh.13-0403
+      8  19393959  10.1016/S1473-3099(09)70069-7
+      9  20029668       10.1371/currents.RRN1130
+      10 19393959  10.1016/S1473-3099(09)70069-9
+      11 19393959 10.1016/S1473-3099(09)70069-10
+      12 19393959 10.1016/S1473-3099(09)70069-11
+      13 20042754          10.1056/NEJMoa0906089
+      14 21168422     10.1016/j.jtbi.2010.12.017
+      15 21168422     10.1016/j.jtbi.2010.12.017
+      16 19598148               10.1002/sim.3659
+      17 19598148               10.1002/sim.3659
+      18 19959592            10.1503/cmaj.091807
+      19 26409239             10.1093/aje/kwv115
+      20 26409239             10.1093/aje/kwv115
+      21 26885816   10.1371/journal.pone.0148506
+      22 26885816   10.1371/journal.pone.0148506
+      23 26885816   10.1371/journal.pone.0148506
+      24 24639305          10.4269/ajtmh.13-0403
+      25 25495697        10.1186/1756-0500-7-906
+      26 25495697        10.1186/1756-0500-7-906
+      27 19393959 10.1016/S1473-3099(09)70069-12
+      28 19393959 10.1016/S1473-3099(09)70069-13
+      29 19393959 10.1016/S1473-3099(09)70069-15
+      30 24639305          10.4269/ajtmh.13-0403
+      31 19393959 10.1016/S1473-3099(09)70069-14
+      32 19598148               10.1002/sim.3659
+      33 19598148               10.1002/sim.3659
+      34 19393959  10.1016/S1473-3099(09)70069-8
+      35 24639305          10.4269/ajtmh.13-0403
+      36 24639305          10.4269/ajtmh.13-0403
+      37 24639305          10.4269/ajtmh.13-0403
+      38 24639305          10.4269/ajtmh.13-0403
+      39 24639305          10.4269/ajtmh.13-0403
+      40 27821887          10.2471/BLT.16.174540
 
-# list_distributions works for onset_to_admission, params = FALSE
+# list_distributions works for different distribution
 
     Code
-      list_distributions(delay_dist = "onset_to_admission", parameters = FALSE)
+      list_distributions(epiparam = eparam, epi_dist = "serial_interval")
     Output
-                pathogen_id            type_id      study_id year size distribution
-      1     influenza_H1N1p onset_to_admission     Jain_etal 2009  272        lnorm
-      2      influenza_H5N1 onset_to_admission  Cowling_etal 2013   43      weibull
-      3      influenza_H7N9 onset_to_admission  Cowling_etal 2013  123        gamma
-      4            MERS_CoV onset_to_admission   Assiri_etal 2013   23        lnorm
-      5            SARS_CoV onset_to_admission Donnelly_etal 2003   57        gamma
-      6 SARS_CoV_2_wildtype onset_to_admission   Linton_etal 2020  155        lnorm
+                      disease epi_distribution prob_distribution        author year
+      1             influenza  serial_interval             gamma    Ghani_etal 2009
+      2 marburg virus disease  serial_interval             gamma Ajelli_Merler 2012
+      3 marburg virus disease  serial_interval              <NA>        Pavlin 2014
+        sample_size
+      1          58
+      2         374
+      3          38
 
-# list_distributions works for onset_to_admission, params = TRUE
+# list_distributions works for different dist, subset_db = FALSE
 
     Code
-      list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
+      list_distributions(epiparam = eparam, epi_dist = "serial_interval", subset_db = FALSE)
     Output
-                pathogen_id            type_id      study_id year size distribution
-      1     influenza_H1N1p onset_to_admission     Jain_etal 2009  272        lnorm
-      2      influenza_H5N1 onset_to_admission  Cowling_etal 2013   43      weibull
-      3      influenza_H7N9 onset_to_admission  Cowling_etal 2013  123        gamma
-      4            MERS_CoV onset_to_admission   Assiri_etal 2013   23        lnorm
-      5            SARS_CoV onset_to_admission Donnelly_etal 2003   57        gamma
-      6 SARS_CoV_2_wildtype onset_to_admission   Linton_etal 2020  155        lnorm
-        mean    sd quantile_025 median quantile_75 quantile_875 quantile_95
-      1   NA    NA           NA    3.0          NA           NA          NA
-      2   NA    NA    1.3678290    4.9    6.770349           NA   10.222554
-      3   NA    NA    0.6172617    4.2    6.170223           NA    9.622302
-      4   NA    NA           NA    5.0          NA           NA          NA
-      5 4.85  3.49           NA     NA          NA           NA          NA
-      6 9.70 35.20           NA    2.6          NA           NA   35.100000
-        quantile_975 lower_range upper_range    shape    scale   meanlog     sdlog
-      1           NA          NA          NA       NA       NA 1.0986120 2.9115800
-      2     11.42344          NA          NA 2.373396 6.438843        NA        NA
-      3     10.82306          NA          NA 2.138094 2.153314        NA        NA
-      4           NA           1          10       NA       NA 1.6089493 0.6103889
-      5           NA          NA          NA 1.929655 2.513402        NA        NA
-      6           NA          NA          NA       NA       NA 0.9466094 1.6281993
-        extracted discretised phase_bias_adjusted
-      1       yes        <NA>                <NA>
-      2       yes          no                  no
-      3       yes          no                  no
-      4       yes        <NA>                <NA>
-      5       yes        <NA>                <NA>
-      6       yes          no                 yes
-                                                   notes     PMID
-      1 Extracted using range 0 to 18, lognormal assumed 19815859
-      2     extraction used quantile_025 and quantile_95 23803488
-      3     extraction used quantile_025 and quantile_75 23803488
-      4                                             <NA> 23782161
-      5                                 Feb-26 to Mar-25 12781533
-      6                              For living patients 32079150
-                                  DOI       added_by
-      1         10.1056/NEJMoa0906695 Adam Kucharski
-      2 10.1016/S0140-6736(13)61171-X Adam Kucharski
-      3 10.1016/S0140-6736(13)61171-X Adam Kucharski
-      4         10.1056/NEJMoa1306742 Adam Kucharski
-      5 10.1016/S0140-6736(03)13410-1 Adam Kucharski
-      6            10.3390/jcm9020538 Adam Kucharski
-
-# list_distributions works for onset_to_death, params = FALSE
-
-    Code
-      list_distributions(delay_dist = "onset_to_death", parameters = FALSE)
-    Output
-                pathogen_id        type_id            study_id year size distribution
-      1               ebola onset_to_death Ebola_outbreak_team 2018   14        gamma
-      2 SARS_CoV_2_wildtype onset_to_death         Linton_etal 2020   39        lnorm
-
-# list_distributions works for onset_to_death, params = TRUE
-
-    Code
-      list_distributions(delay_dist = "onset_to_death", parameters = TRUE)
-    Output
-                pathogen_id        type_id            study_id year size distribution
-      1               ebola onset_to_death Ebola_outbreak_team 2018   14        gamma
-      2 SARS_CoV_2_wildtype onset_to_death         Linton_etal 2020   39        lnorm
-        mean   sd quantile_025 median quantile_75 quantile_875 quantile_95
-      1  9.3  6.0           NA     NA          NA           NA          NA
-      2 20.2 11.6           NA   17.1          NA           NA        39.9
-        quantile_975 lower_range upper_range shape scale  meanlog     sdlog extracted
-      1           NA           2          27   2.4 3.333       NA        NA        no
-      2           NA          NA          NA    NA    NA 2.863179 0.5338606       yes
-        discretised phase_bias_adjusted
-      1          no                  no
-      2          no                 yes
-                                                                                                                notes
-      1 the mean, sd, shape and scale are taken from the paper, the conversion between the two does not match exactly
-      2                                                                                                          <NA>
-            PMID                           DOI       added_by
-      1 30047375 10.1016/S0140-6736(18)31387-4 Joshua Lambert
-      2 32079150            10.3390/jcm9020538 Adam Kucharski
-
-# list_distributions works for serial_interval, params = FALSE
-
-    Code
-      list_distributions(delay_dist = "serial_interval", parameters = FALSE)
-    Output
-                pathogen_id         type_id          study_id year size distribution
-      1               ebola serial_interval WHO_response_team 2014   92        gamma
-      2            MERS_CoV serial_interval       Assiri_etal 2013   23        lnorm
-      3           monkeypox serial_interval             UKHSA 2022   17        gamma
-      4 SARS_CoV_2_wildtype serial_interval     Nishiura_etal 2020   28        lnorm
-      5 SARS_CoV_2_wildtype serial_interval     Nishiura_etal 2020   18      weibull
-
-# list_distributions works for serial_interval, params = TRUE
-
-    Code
-      list_distributions(delay_dist = "serial_interval", parameters = TRUE)
-    Output
-                pathogen_id         type_id          study_id year size distribution
-      1               ebola serial_interval WHO_response_team 2014   92        gamma
-      2            MERS_CoV serial_interval       Assiri_etal 2013   23        lnorm
-      3           monkeypox serial_interval             UKHSA 2022   17        gamma
-      4 SARS_CoV_2_wildtype serial_interval     Nishiura_etal 2020   28        lnorm
-      5 SARS_CoV_2_wildtype serial_interval     Nishiura_etal 2020   18      weibull
-        mean  sd quantile_025 median quantile_75 quantile_875 quantile_95
-      1 15.3 9.3           NA     NA          NA           NA          NA
-      2   NA  NA           NA    7.6          NA           NA        19.4
-      3  9.8 8.3           NA     NA          NA           NA          NA
-      4  4.7 2.9           NA    4.0          NA           NA          NA
-      5  4.8 2.3           NA    4.6          NA           NA          NA
-        quantile_975 lower_range upper_range    shape    scale  meanlog     sdlog
-      1           NA          NA          NA 2.706556 5.652941       NA        NA
-      2         23.1          NA          NA       NA       NA 2.020000 0.5600000
-      3           NA          NA          NA 1.394107 7.029592       NA        NA
-      4           NA          NA          NA       NA       NA 1.386262 0.5679803
-      5           NA          NA          NA 2.203394 5.419875       NA        NA
-        extracted discretised phase_bias_adjusted
-      1       yes        <NA>                <NA>
-      2       yes        <NA>                <NA>
-      3       yes          no                 yes
-      4       yes          no                 yes
-      5       yes          no                 yes
-                                                                                                     notes
-      1                                                                                               <NA>
-      2                                                                                               <NA>
-      3                                                         Extracted from mean and SD, assuming gamma
-      4                                                               Extracted using reported mean and sd
-      5 Extracted using mean and sd reported from a subset of the data for certain infector-infectee pairs
-            PMID
-      1 25564903
-      2 23782161
-      3       NA
-      4 32145466
-      5 32145466
-                                                                                                                                                            DOI
-      1                                                                                                                                   10.1056/nejmoa1411100
-      2                                                                                                                                   10.1056/NEJMoa1306742
-      3 https://www.gov.uk/government/publications/monkeypox-outbreak-technical-briefings/investigation-into-monkeypox-outbreak-in-england-technical-briefing-1
-      4                                                                                                                              10.1016/j.ijid.2020.02.060
-      5                                                                                                                              10.1016/j.ijid.2020.02.060
-              added_by
-      1 Adam Kucharski
-      2 Adam Kucharski
-      3       Seb Funk
-      4 Joshua Lambert
-      5 Joshua Lambert
-
-# list_distributions works for generation_time, params = FALSE
-
-    Code
-      list_distributions(delay_dist = "generation_time", parameters = FALSE)
-    Output
-                pathogen_id         type_id      study_id year size distribution
-      1          adenovirus generation_time      Guo_etal 2020  375      weibull
-      2 SARS_CoV_2_wildtype generation_time Ferretti_etal 2020  191      weibull
-
-# list_distributions works for generation_time, params = TRUE
-
-    Code
-      list_distributions(delay_dist = "generation_time", parameters = TRUE)
-    Output
-                pathogen_id         type_id      study_id year size distribution mean
-      1          adenovirus generation_time      Guo_etal 2020  375      weibull   NA
-      2 SARS_CoV_2_wildtype generation_time Ferretti_etal 2020  191      weibull    5
-         sd quantile_025 median quantile_75 quantile_875 quantile_95 quantile_975
-      1  NA           NA    7.3          NA           NA          NA           NA
-      2 1.9           NA    5.0          NA           NA          NA           NA
-        lower_range upper_range shape scale meanlog sdlog extracted discretised
-      1          NA          NA 3.480 8.190      NA    NA                    no
-      2          NA          NA 2.826 5.665      NA    NA       yes          no
-        phase_bias_adjusted                                       notes     PMID
-      1                  no Extracted using the parametric distribution 32479490
-      2                 yes                         20/1/2020-21/3/2020 32234805
-                                 DOI      added_by
-      1 10.1371/journal.pone.0232948 Carmen Tamayo
-      2      10.1126/science.abb6936  Rachael Pung
+                      disease            pathogen epi_distribution        author year
+      1             influenza influenza-A-H1N1pdm  serial_interval    Ghani_etal 2009
+      2 marburg virus disease       marburg virus  serial_interval Ajelli_Merler 2012
+      3 marburg virus disease       marburg virus  serial_interval        Pavlin 2014
+        sample_size region vector_borne vector extrinsic prob_distribution
+      1          58     UK        FALSE   <NA>     FALSE             gamma
+      2         374   <NA>        FALSE   <NA>     FALSE             gamma
+      3          38  Mixed        FALSE   <NA>     FALSE              <NA>
+        inference_method mean   mean_ci mean_ci_interval   sd    sd_ci sd_ci_interval
+      1              mle 2.51    NA, NA               NA 1.55   NA, NA             NA
+      2          unknown 9.00 8.2, 10.0               95 5.40 3.9, 8.6             95
+      3             <NA>   NA    NA, NA               NA   NA   NA, NA             NA
+        quantile_025 quantile_05 quantile_25 median median_ci median_ci_interval
+      1           NA          NA          NA     NA    NA, NA                 NA
+      2           NA          NA          NA     NA    NA, NA                 NA
+      3           NA          NA           8     11    NA, NA                 NA
+        quantile_75 quantile_875 quantile_95 quantile_975 lower_range upper_range
+      1          NA           NA          NA           NA          NA          NA
+      2          NA           NA          NA           NA          NA          NA
+      3          15           NA          NA           NA          NA          NA
+        shape shape_ci shape_ci_interval scale scale_ci scale_ci_interval meanlog
+      1    NA   NA, NA                NA    NA   NA, NA                NA      NA
+      2    NA   NA, NA                NA    NA   NA, NA                NA      NA
+      3    NA   NA, NA                NA    NA   NA, NA                NA      NA
+        meanlog_ci meanlog_ci_interval sdlog sdlog_ci sdlog_ci_interval dispersion
+      1     NA, NA                  NA    NA   NA, NA                NA         NA
+      2     NA, NA                  NA    NA   NA, NA                NA         NA
+      3     NA, NA                  NA    NA   NA, NA                NA         NA
+        dispersion_ci dispersion_ci_interval precision precision_ci
+      1        NA, NA                     NA        NA       NA, NA
+      2        NA, NA                     NA        NA       NA, NA
+      3        NA, NA                     NA        NA       NA, NA
+        precision_ci_interval truncation discretised censorred right_truncated
+      1                    NA         NA       FALSE        NA              NA
+      2                    NA         NA       FALSE     FALSE           FALSE
+      3                    NA         NA       FALSE     FALSE           FALSE
+        phase_bias_adjusted
+      1                  NA
+      2               FALSE
+      3               FALSE
+                                                                                                                                                                                                                                                                                                                                    notes
+      1                                                                                                                                                                                                                                                                                                                                  
+      2 The generation time is estimated from non-human viral load data. This paper reports the generation time but assumes the generation time and serial interval are the same it is classified as serial interval here based on Van Kerkove et al. 2015 <10.1038/sdata.2015.19>. The sample size is take from Van Kerkove et al. 2015.
+      3                                                                                            This paper did not fit a distribution to the serial interval data and only reported a median and interquartile range. This is present in the database as there are no other studies that report the serial interval for Marburg virus.
+            PMID                          DOI
+      1 20029668     10.1371/currents.RRN1130
+      2 23251407 10.1371/journal.pone.0050948
+      3 25495697      10.1186/1756-0500-7-906
 

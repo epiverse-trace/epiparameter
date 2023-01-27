@@ -1,74 +1,66 @@
-#' List distributions
+#' List epidemiological distributions stored in an `epiparam` object
 #'
-#' List distributions included in package
-#' @param delay_dist A character defining parameter to be listed: `"all"`
+#' @description This function subsets an `epiparam` object to return only the
+#' chosen epidemiological distribution. The results are returned as a data
+#' frame to better see all of the returned distributions.
+#'
+#' By default the resulting data frame is subset to only return the disease,
+#' epidemiological distribution, probability distribution, author of the study
+#' and the year of publication as well as the sample size of the study. If the
+#' all columns of the database are required set `subset_db = FALSE`.
+#'
+#' @param epiparam An `epiparam` object
+#' @param epi_dist A character defining parameter to be listed:
 #' `"incubation"`, `"onset_to_admission"`, `"onset_to_death"`, or
-#' `"serial_interval"`. `"all"` will not filter by a certain delay distribution
-#' and return all records. `"all"` is the default.
-#' @param parameters A logical defining whether to show parameter values,
-#' default is `FALSE`
+#' `"serial_interval"`. `"incubation_period"` is the default `epi_dist` so if no
+#' `epi_dist` is specified the incubation periods will be returned.
+#' @param subset_db A boolean logical that determines whether a subset, defaults
+#' is TRUE.
+#'
 #' @keywords distributions
-#' @author Adam Kucharski
+#' @author Adam Kucharski, Joshua W. Lambert
 #' @export
 #' @examples
-#' \dontrun{
+#' eparam <- epiparam()
+#' list_distributions(epiparam = eparam, epi_dist = "incubation_period")
 #' # the default for list_distributions() without any arguments is to return the
 #' # incubation period
-#' list_distributions()
+#' list_distributions(epiparam = eparam)
+#' # this same process can be achieved when loading the library
+#' eparam <- epiparam(epi_dist = "incubation_period")
 #'
-#' # metrics can be chosen using the `delay_dist` argument, for example
-#' # incubation period or onset to death
-#' list_distributions(delay_dist = "incubation")
-#' list_distributions(delay_dist = "onset_to_death")
-#'
-#' # by default list_distributions() will return a filtered table, but if the
-#' # full table including extra information (e.g. parameters of the
-#' # distribution) the `parameters` argument can be set to `TRUE`
-#' list_distributions(delay_dist = "onset_to_admission", parameters = TRUE)
-#' }
-list_distributions <- function(delay_dist = c(
-                                 "all",
-                                 "incubation",
+#' # filtering for onset to death
+#' list_distributions(epiparam = eparam, epi_dist = "onset_to_death")
+list_distributions <- function(epiparam,
+                               epi_dist = c(
+                                 "incubation_period",
                                  "onset_to_admission",
                                  "onset_to_death",
                                  "serial_interval",
                                  "generation_time"
                                ),
-                               parameters = FALSE) {
-  delay_dist <- match.arg(arg = delay_dist, several.ok = FALSE)
-  checkmate::assert_logical(parameters)
+                               subset_db = TRUE) {
+  # check input
+  validate_epiparam(epiparam)
+  epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)
+  checkmate::assert_logical(subset_db)
 
-  # Extract relevant values
-  params <- utils::read.csv(system.file(
-    "extdata",
-    "parameters.csv",
-    package = "epiparameter",
-    mustWork = TRUE
-  ))
+  # subset to chosen distribution
+  epiparam <- epiparam[epiparam$epi_distribution == epi_dist, ]
 
-  # order params by pathogen, delay dist and study
-  params <- params[order(
-    tolower(params$pathogen_id),
-    tolower(params$type_id),
-    tolower(params$study_id),
-    method = "radix"
-  ), ]
+  # strip epiparam class to return data frame
+  class(epiparam) <- "data.frame"
 
-  if (delay_dist != "all") {
-    # filter by delay distribution
-    params <- params[params$type_id == delay_dist, ]
-  }
-
-  if (isFALSE(parameters)) {
-    # return only the important columns
-    params <- params[, c(
-      "pathogen_id", "type_id", "study_id", "year", "size", "distribution"
+  if (isTRUE(subset_db)) {
+    epiparam <- epiparam[, c(
+      "disease", "epi_distribution", "prob_distribution", "author", "year",
+      "sample_size"
     )]
   }
 
   # reset indexing of rows
-  rownames(params) <- NULL
+  rownames(epiparam) <- NULL
 
-  # return params data frame
-  params
+  # return epiparam data frame
+  epiparam
 }
