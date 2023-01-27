@@ -18,6 +18,9 @@
 #' }
 as_epidist <- function(x) {
 
+  # check input
+  validate_epiparam(x)
+
   # convert each epiparam row into an epidist object
   out <- apply(x, 1, function(y) {
     make_epidist(x = y)
@@ -34,7 +37,7 @@ as_epidist <- function(x) {
 }
 
 #' Creates an `epidist` object from a list of input from an `epiparam` object
-
+#'
 #' @description Unpacks list of inputs from an epiparam object into the epidist
 #' helper, including the parameters and uncertainty from the correct type of
 #' probability distribution
@@ -178,6 +181,9 @@ as_epiparam <- function(x) {
     }
     return(eparam)
   }
+
+  # check input
+  validate_epidist(x)
 
   # set default citation
   author <- NA_character_
