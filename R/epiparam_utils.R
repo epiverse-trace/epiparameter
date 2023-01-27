@@ -20,8 +20,7 @@ as_epidist <- function(x) {
 
   # convert each epiparam row into an epidist object
   out <- apply(x, 1, function(y) {
-    params <- get_params(y)
-    make_epidist(x = y, params)
+    make_epidist(x = y)
   })
 
   # remove names of list
@@ -34,89 +33,23 @@ as_epidist <- function(x) {
   out
 }
 
-#' Unpacks a list of inputs from an epiparam object into the epidist helper
-#' function
-#'
-#' @param x List of data to be used to construct an epidist object
-#' @param params A list containing two elements, the first is the probability
-#' distribution parameters and the second is the uncertainty around those
-#' parameters
-#'
-#' @return epidist object
-#' @keywords internal
-#' @noRd
-make_epidist <- function(x, params) {
+#' Creates an `epidist` object from a list of input from an `epiparam` object
 
-  epidist(
-    disease = x$disease,
-    pathogen = x$pathogen,
-    epi_distribution = x$epi_distribution,
-    prob_distribution = x$prob_distribution,
-    prob_distribution_params = params$parameters,
-    uncertainty = params$uncertainty,
-    summary_stats = create_epidist_summary_stats(
-      mean = x$mean,
-      mean_ci = x$mean_ci,
-      mean_ci_interval = x$mean_ci_interval,
-      sd = x$sd,
-      sd_ci = x$sd_ci,
-      sd_ci_interval = x$sd_ci_interval,
-      median = x$median,
-      median_ci = x$median_ci,
-      median_ci_interval = x$median_ci_interval,
-      dispersion = x$dispersion,
-      dispersion_ci = x$dispersion_ci,
-      dispersion_ci_interval = x$dispersion_ci_interval,
-      lower_range = x$lower_range,
-      upper_range = x$upper_range,
-      q_025 = x$quantile_025,
-      q_05 = x$quantile_05,
-      q_25 = x$quantile_25,
-      q_75 = x$quantile_75,
-      q_875 = x$quantile_875,
-      q_95 = x$quantile_95,
-      q_975 = x$quantile_975
-    ),
-    citation = create_epidist_citation(
-      author = x$author,
-      year = x$year,
-      PMID = x$PMID,
-      DOI = x$DOI,
-      use_PMID = FALSE
-    ),
-    metadata = create_epidist_metadata(
-      sample_size = x$sample_size,
-      region = x$region,
-      vector_borne = x$vector_borne,
-      vector = x$vector
-    ),
-    method_assessment = create_epidist_method_assessment(
-      censorred = x$censorred,
-      right_truncated = x$right_truncated,
-      phase_bias_adjusted = x$phase_bias_adjusted
-    ),
-    discretise = x$discretised,
-    truncation = x$truncation,
-    notes = x$notes
-  )
-
-}
-
-#' Extracts the parameters and uncertainty from a list dependending on the type
-#' of probability distribution
+#' @description Unpacks list of inputs from an epiparam object into the epidist
+#' helper, including the parameters and uncertainty from the correct type of
+#' probability distribution
 #'
 #' @param x List of data to be used to construct an epidist object
 #'
-#' @return List of two elements, the parameters and their uncertainty
+#' @return An `epidist` object
 #' @keywords internal
-#' @noRd
-get_params <- function(x) {
+make_epidist <- function(x) {
 
   # determine parameters
   if (x$prob_distribution %in% c("gamma", "weibull")) {
     parameters <- c(shape = x$shape, scale = x$scale)
     uncertainty <- list(
-      shape = create_epidist_uncertaintx(
+      shape = create_epidist_uncertainty(
         ci = x$shape_ci,
         ci_interval = x$shape_ci_interval,
         ci_type =  ifelse(
@@ -165,10 +98,57 @@ get_params <- function(x) {
     stop("Distribution in epiparam object not recognised")
   }
 
-  # return list of parameters and uncertainty
-  list(
-    parameters = parameters,
-    uncertainty = uncertainty
+  epidist(
+    disease = x$disease,
+    pathogen = x$pathogen,
+    epi_dist = x$epi_distribution,
+    prob_distribution = x$prob_distribution,
+    prob_distribution_params = parameters,
+    uncertainty = uncertainty,
+    summary_stats = create_epidist_summary_stats(
+      mean = x$mean,
+      mean_ci = x$mean_ci,
+      mean_ci_interval = x$mean_ci_interval,
+      sd = x$sd,
+      sd_ci = x$sd_ci,
+      sd_ci_interval = x$sd_ci_interval,
+      median = x$median,
+      median_ci = x$median_ci,
+      median_ci_interval = x$median_ci_interval,
+      dispersion = x$dispersion,
+      dispersion_ci = x$dispersion_ci,
+      dispersion_ci_interval = x$dispersion_ci_interval,
+      lower_range = x$lower_range,
+      upper_range = x$upper_range,
+      q_025 = x$quantile_025,
+      q_05 = x$quantile_05,
+      q_25 = x$quantile_25,
+      q_75 = x$quantile_75,
+      q_875 = x$quantile_875,
+      q_95 = x$quantile_95,
+      q_975 = x$quantile_975
+    ),
+    citation = create_epidist_citation(
+      author = x$author,
+      year = x$year,
+      PMID = x$PMID,
+      DOI = x$DOI,
+      use_PMID = FALSE
+    ),
+    metadata = create_epidist_metadata(
+      sample_size = x$sample_size,
+      region = x$region,
+      vector_borne = x$vector_borne,
+      vector = x$vector
+    ),
+    method_assessment = create_epidist_method_assessment(
+      censorred = x$censorred,
+      right_truncated = x$right_truncated,
+      phase_bias_adjusted = x$phase_bias_adjusted
+    ),
+    discretise = x$discretised,
+    truncation = x$truncation,
+    notes = x$notes
   )
 }
 
