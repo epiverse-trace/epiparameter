@@ -3,16 +3,19 @@
 \name{calc_dist_params}
 \alias{calc_dist_params}
 \title{Calculates the parameters of a probability distribution from a list of
-available summary statistics.}
+available summary statistics}
 \usage{
-calc_dist_params(prob_dist, summary_stats, sample_size = NULL)
+calc_dist_params(prob_dist, prob_dist_params, summary_stats, sample_size = NA)
 }
 \arguments{
-\item{prob_dist}{A character string with the name of the probability
+\item{prob_dist}{A character string specifying the probability
 distribution}
 
-\item{summary_stats}{A list of summary statistics. The structure of the list
-can be easily made with the helper function \code{create_epidist_summary_stats()}.}
+\item{prob_dist_params}{A named vector of probability distribution
+parameters}
+
+\item{summary_stats}{A list of summary statistics, use
+\code{create_epidist_summary_stats()} to create list.}
 
 \item{sample_size}{The sample size of the data. Only needed when falling back
 on using the median-range extraction calculation.}
@@ -21,6 +24,23 @@ on using the median-range extraction calculation.}
 A named vector with parameters
 }
 \description{
-Calculates the parameters of a probability distribution from a list of
-available summary statistics.
+When the parameters of a probability distribution are not
+provided (e.g. when describing the distribution in the literature) and instead
+summary statistics of a distribution are provided, the parameters can usually
+be calculated from the summary statistics. The \code{calc_dist_params()} function
+computes the parameters for the gamma, lognormal and weibull distributions.
+
+This function can provide a convinient wrapper around the conversion and
+extraction functions it is not known which summary statistics can be used to
+calculate the parameters of a distribution.
+}
+\details{
+The hierarchy of methods are: conversion is prioritised if the mean
+and standard deviation are available as these are mostly analytical
+conversions (except for one of the weibull conversions), next method if
+possible is extraction from percentiles. This method requires a lower
+percentile (between(0-50]) and an upper percentile(between (50-100)). If
+multiple percentiles in each of these ranges is provided the lowest value is
+used for the calculation. The last method is the extraction using a median
+and range of the data.
 }
