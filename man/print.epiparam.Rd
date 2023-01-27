@@ -4,10 +4,12 @@
 \alias{print.epiparam}
 \title{Print method for epiparam class}
 \usage{
-\method{print}{epiparam}(x)
+\method{print}{epiparam}(x, ...)
 }
 \arguments{
 \item{x}{epiparam object}
+
+\item{...}{further arguments passed to or from other methods}
 }
 \value{
 Nothing (prints output)
@@ -16,6 +18,6 @@ Nothing (prints output)
 Print method for epiparam class
 }
 \examples{
-epiparam <- epiparam(1)
+epiparam <- epiparam()
 epiparam
 }
