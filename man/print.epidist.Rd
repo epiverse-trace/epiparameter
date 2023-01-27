@@ -14,7 +14,7 @@ the print method is printed. This is used internally for plotting the
 vb_epidist class}
 
 \item{vb}{A character string containing whether it is the intrinsic
-(\code{"Intrinsic"}) or extrinsic (\code{"extrinsic"}) distribution for vector-borne
+(\code{"Intrinsic"}) or extrinsic (\code{"Extrinsic"}) distribution for vector-borne
 diseases}
 
 \item{...}{further arguments passed to or from other methods}
