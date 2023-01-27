@@ -26,6 +26,9 @@
 #' @author Adam Kucharski
 #' @export
 #' @examples
+#' # set seed to control for stochasticity
+#' set.seed(1)
+#'
 #' # extract parameters of a lognormal distribution from the 75 percentiles
 #' extract_param(
 #'   type = "percentiles",
