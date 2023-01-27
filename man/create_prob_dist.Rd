@@ -8,15 +8,17 @@ settings}
 create_prob_dist(prob_dist, prob_dist_params, discretise, truncation)
 }
 \arguments{
-\item{prob_dist}{A character string specifying the probability distribution}
+\item{prob_dist}{A character string specifying the probability
+distribution}
 
-\item{prob_dist_params}{A named vector of probability distribution parameters}
+\item{prob_dist_params}{A named vector of probability distribution
+parameters}
 
 \item{discretise}{A boolean logical whether the distribution is discretised.
 Default is FALSE which assumes a continuous probability distribution}
 
 \item{truncation}{A numeric specifying the truncation point if the inferred
-distribution was truncated, NULL if not or unknown.}
+distribution was truncated, NA if not or unknown.}
 }
 \value{
 An S3 class containing the probability distribution

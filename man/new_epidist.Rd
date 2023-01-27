@@ -22,64 +22,83 @@ new_epidist(
 }
 \arguments{
 \item{disease}{A list contains the \verb{$disease} a character string of the
-infectious disease specified in the study, and the \verb{4pathogen} a character
-string or NULL of the causative agent of disease specified in study.}
+infectious disease specified in the study, and the \verb{$pathogen} a character
+string. If the pathogen is unknown it can be given as \code{NULL}.}
 
-\item{epi_dist}{A character string with the name of the epidemiological
-distribution type}
+\item{epi_dist}{A character string with the name of the
+epidemiological distribution type}
 
-\item{prob_dist}{A character string specifying the probability distribution}
+\item{prob_dist}{A character string specifying the probability
+distribution}
 
-\item{prob_dist_params}{A named vector of probability distribution parameters}
+\item{prob_dist_params}{A named vector of probability distribution
+parameters}
 
-\item{uncertainty}{Either a list of named vectors with the uncertainty around
-the probability distribution parameters or NULL when uncertainty around the
-parameter estimates is unknown}
+\item{uncertainty}{A list of named vectors with the uncertainty around
+the probability distribution parameters. If uncertainty around the parameter
+estimates is unknown use \code{create_epidist_uncertainty()} (which is the
+argument default) to create a list wiht the correct names with missing
+values.}
 
-\item{summary_stats}{A list of summary statistics}
+\item{summary_stats}{A list of summary statistics, use
+\code{create_epidist_summary_stats()} to create list.}
 
-\item{citation}{A character string with the short form citation}
+\item{citation}{A character string with the citation of the source of the
+data or the paper that inferred the distribution parameters, use
+\code{create_epidist_citation()} to create citation.}
 
-\item{metadata}{A list of metadata}
+\item{metadata}{A list of metadata, this can include: sample size, whether
+the disease is vector-borne, etc. It is assumed that the disease is not
+vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
+delay distribution such as extrinsic incubation period) unless
+\code{vector_borne = TRUE} is contained in the metadata. Use
+\code{create_epidist_metadata()} to create metadata.}
 
-\item{method_assessment}{A list of methodological aspects assessed}
+\item{method_assessment}{A list of methodological aspects used when fitting
+the distribution, use \code{create_epidist_method_assessment()} to create method
+assessment.}
 
 \item{discretise}{A boolean logical whether the distribution is discretised.
 Default is FALSE which assumes a continuous probability distribution}
 
 \item{truncation}{A numeric specifying the truncation point if the inferred
-distribution was truncated, NULL if not or unknown.}
+distribution was truncated, NA if not or unknown.}
 
-\item{notes}{A character string with additional notes}
+\item{notes}{A character string with any additional information about the
+data, inference method or disease.}
 
-\item{auto_calc_params}{}
+\item{auto_calc_params}{A boolean logical determining whether to try and
+calculate the probability distribution parameters from summary statistics if
+distribution parameters are not provided. Default is \code{TRUE}.}
 }
 \value{
 epidist object
 }
 \description{
-Create an epidist object and provides input checking. The
+Creates an epidist object. The
 constructor will search whether parameters of the probability distribution
 are supplied and if not look to see whether they can be inferred/extracted/
-converted from summary statistics provided.
+converted from summary statistics provided. It will also convert the
+probability distribution (\code{prob_dist}) and its parameters
+(\code{prob_dist_params}) into an S3 class, either a \code{distribution} object from
+\code{{distributional}} when \code{discretise = FALSE}, or a \code{distcrete} object from
+\code{{distcrete}} when \code{discretise = TRUE}.
 }
 \examples{
 epiparameter:::new_epidist(
-  disease = list(
-    disease = "ebola",
-    pathogen = "ebola_virus"
-  ),
+  disease = list(disease = "ebola", pathogen = "ebola_virus"),
   epi_dist = "incubation_period",
-  prob_dist = list("gamma"),
-  prob_dist_params = list(c(shape = 1.4, scale = 0.5)),
-  uncertainty = NA,
+  prob_dist = "gamma",
+  prob_dist_params = c(shape = 1, scale = 1),
+  uncertainty = create_epidist_uncertainty(),
   summary_stats = create_epidist_summary_stats(),
-  metadata = create_epidist_metadata(
-    sample_size = 83
-  ),
+  citation = create_epidist_citation(),
+  metadata = create_epidist_metadata(),
   method_assessment = create_epidist_method_assessment(),
-  citation = "Smith et al (2010) <10.19832/j.1366-9516.2012.09147.x>",
-  notes = "No additional notes"
+  discretise = FALSE,
+  truncation = NA,
+  notes = "No notes",
+  auto_calc_params = TRUE
 )
 }
 \keyword{internal}

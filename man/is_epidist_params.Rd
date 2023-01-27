@@ -9,7 +9,8 @@ the \code{epiparameter} package}
 is_epidist_params(prob_dist_params)
 }
 \arguments{
-\item{prob_dist_params}{A named vector of probability distribution parameters}
+\item{prob_dist_params}{A named vector of probability distribution
+parameters}
 }
 \value{
 A logical boolean
