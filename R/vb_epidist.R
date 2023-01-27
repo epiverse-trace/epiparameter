@@ -198,6 +198,76 @@ format.vb_epidist <- function(x, ...) {
   invisible(x)
 }
 
+#' Plots an `vb_epidist` object,
+#'
+#' @description Plots a `vb_epidist` object by displaying the either the
+#' probability mass function (PMF), (in the case of discrete distributions)
+#' or probability density function (PDF) (in the case of continuous
+#' distributions) and the cumulative distribution function (CDF), for both the
+#' intrinsic and extrinsic distributions. This resulting in a 2x2 grid plot.
+#'
+#' @param x An `epidist` object
+#' @param day_range A vector with the sequence of days to be plotted on the
+#' x-axis of the distribution
+#' @param ... Allow other graphical parameters
+#'
+#' @author Joshua W. Lambert
+#' @export
+#'
+#' @examples
+#' # plot vb_epidist
+#' dengue_dist <- vb_epidist(
+#'   intrinsic_epidist = epidist(
+#'     disease = "dengue",
+#'     epi_dist = "incubation",
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1),
+#'     metadata = create_epidist_metadata(
+#'       vector_borne = TRUE,
+#'       extrinsic = FALSE
+#'     )
+#'   ),
+#'   extrinsic_epidist = epidist(
+#'     disease = "dengue",
+#'     epi_dist = "incubation",
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1),
+#'     metadata = create_epidist_metadata(
+#'       vector_borne = TRUE,
+#'       extrinsic = TRUE
+#'     )
+#'   )
+#' )
+#'
+#' plot(dengue_dist, day_range = 0:10)
+plot.vb_epidist <- function(x, day_range = 0:10, ...) {
+
+  # check input
+  validate_vb_epidist(x)
+  checkmate::assert_numeric(day_range, min.len = 2)
+
+  oldpar <- graphics::par(no.readonly = TRUE)
+  on.exit(graphics::par(oldpar))
+
+  # set plotting parameters to plot on a 2x2 grid
+  graphics::par(mfrow = c(2, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))
+
+  plot(
+    x$intrinsic,
+    day_range = day_range,
+    ...,
+    vb = TRUE,
+    title = "Intrinsic Distribution"
+  )
+  plot(
+    x$extrinsic,
+    day_range = day_range,
+    ...,
+    vb = TRUE,
+    title = "Extrinsic Distribution"
+  )
+}
+
 #' @rdname epidist_distribution_functions
 #' @export
 density.vb_epidist <- function(x, at, ...) {
