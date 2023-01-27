@@ -41,6 +41,9 @@ from a lognormal returns the meanlog and sdlog parameters, and extracting
 from the gamma and weibull returns the shape and scale parameters.
 }
 \examples{
+# set seed to control for stochasticity
+set.seed(1)
+
 # extract parameters of a lognormal distribution from the 75 percentiles
 extract_param(
   type = "percentiles",
