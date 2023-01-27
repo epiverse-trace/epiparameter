@@ -14,6 +14,6 @@ The constructor reads the data stored internally in the package
 and subsets by epidemiological distribution (epi_dist)
 }
 \examples{
-obj <- new_epiparam()
+eparam <- epiparameter:::new_epiparam("all")
 }
 \keyword{internal}

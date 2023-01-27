@@ -18,12 +18,19 @@ the confidence interval or credible interval}
 interval"}
 }
 \value{
-Numeric vector with an attribute
+List of three elements
 }
 \description{
 A helper function when creating uncertainty for the parameters of the
 distribution for the epidist object
 }
 \examples{
-a = 1
+# example with uncertainty
+create_epidist_uncertainty(
+  ci = c(1, 3),
+  ci_interval = 95,
+  ci_type = "confidence interval"
+)
+# example with unknown uncertainty
+create_epidist_uncertainty(NA)
 }
