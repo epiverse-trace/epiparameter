@@ -5,19 +5,13 @@
 \title{\code{vb_epidist} class validator}
 \usage{
 validate_vb_epidist(vb_epidist)
-
-validate_vb_epidist(vb_epidist)
 }
 \arguments{
-\item{vb_epdist}{A \code{vb_epidist} object}
+\item{vb_epidist}{A \code{vb_epidist} object}
 }
 \value{
 Nothing, errors when invalid \code{epidist} object is provided
-
-Nothing, errors when invalid \code{epidist} object is provided
 }
 \description{
-\code{vb_epidist} class validator
-
 \code{vb_epidist} class validator
 }

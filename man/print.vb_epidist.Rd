@@ -4,49 +4,30 @@
 \alias{print.vb_epidist}
 \title{Print method for vb_epidist class}
 \usage{
-\method{print}{vb_epidist}(x)
-
-\method{print}{vb_epidist}(x)
+\method{print}{vb_epidist}(x, ...)
 }
 \arguments{
 \item{x}{vb_epidist object}
+
+\item{...}{further arguments passed to or from other methods}
 }
 \value{
 Nothing (prints output)
-
-Nothing (prints output)
 }
 \description{
-Print method for vb_epidist class
-
 Print method for vb_epidist class
 }
 \examples{
 vb_epidist <- vb_epidist(
   intrinsic = epidist(
     disease = "ebola",
-    epi_distribution = "incubation_period",
+    epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ),
   extrinsic = epidist(
     disease = "ebola",
-    epi_distribution = "incubation_period",
-    prob_distribution = "gamma",
-    prob_distribution_params = c(shape = 1, scale = 1)
-  )
-)
-vb_epidist
-vb_epidist <- vb_epidist(
-  intrinsic = epidist(
-    disease = "ebola",
-    epi_distribution = "incubation_period",
-    prob_distribution = "gamma",
-    prob_distribution_params = c(shape = 1, scale = 1)
-  ),
-  extrinsic = epidist(
-    disease = "ebola",
-    epi_distribution = "incubation_period",
+    epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   )
