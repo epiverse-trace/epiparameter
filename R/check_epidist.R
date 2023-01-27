@@ -1,3 +1,16 @@
+#' Checks the probability distribution name and parameters to be used in an
+#' `epidist` object
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Nothing, errors if checks fail
+#' @keywords internal
+#'
+#' @examples
+#' epiparameter:::check_epidist_params(
+#'   prob_dist = "gamma",
+#'   prob_dist_params = c(shape = 1, scale = 1)
+#' )
 check_epidist_params <- function(prob_dist, prob_dist_params) {
 
   # check parameters if provided
@@ -13,6 +26,30 @@ check_epidist_params <- function(prob_dist, prob_dist_params) {
   invisible(prob_dist_params)
 }
 
+#' Checks the parameter uncertainty list in an `epidist` object
+#'
+#' @inheritParams new_epidist
+#' @inheritParams epidist
+#'
+#' @return Nothing, errors if checks fail
+#' @keywords internal
+#'
+#' @examples
+#' epiparameter:::check_epidist_uncertainty(
+#'   prob_dist_params = c(shape = 1, scale = 1),
+#'   uncertainty = list(
+#'     shape = create_epidist_uncertainty(
+#'       ci = c(0.5, 1),
+#'       ci_interval = 95,
+#'       ci_type = "confidence interval"
+#'     ),
+#'     scale = create_epidist_uncertainty(
+#'       ci = c(0.5, 1),
+#'       ci_interval = 95,
+#'       ci_type = "confidence interval"
+#'     )
+#'   )
+#' )
 check_epidist_uncertainty <- function(prob_dist_params, uncertainty) {
 
   # check whether ci has been provided for each parameter
