@@ -95,8 +95,39 @@ make_epidist <- function(x) {
     )
   } else if (x$prob_distribution == "negative_binomial") {
     parameters <- c(mean = x$mean, dispersion = x$dispersion)
+    uncertainty <- list(
+      mean = create_epidist_uncertainty(
+        ci = x$mean_ci,
+        ci_interval = x$mean_ci_interval,
+        ci_type =  ifelse(
+          test = x$inference_method == "mle",
+          yes = "confidence interval",
+          no = "credible interval"
+        )
+      ),
+      dispersion = create_epidist_uncertainty(
+        ci = x$dispersion_ci,
+        ci_interval = x$dispersion_ci_interval,
+        ci_type = ifelse(
+          test = x$inference_method == "mle",
+          yes = "confidence interval",
+          no = "credible interval"
+        )
+      )
+    )
   } else if (x$prob_distribution %in% c("poisson", "geometric")) {
-    parameters <- x$mean
+    parameters <- c(mean = x$mean)
+    uncertainty <- list(
+      mean = create_epidist_uncertainty(
+        ci = x$mean_ci,
+        ci_interval = x$mean_ci_interval,
+        ci_type =  ifelse(
+          test = x$inference_method == "mle",
+          yes = "confidence interval",
+          no = "credible interval"
+        )
+      )
+    )
   } else {
     stop("Distribution in epiparam object not recognised")
   }
