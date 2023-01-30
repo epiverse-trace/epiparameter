@@ -269,10 +269,10 @@ epidist <- function(disease,
   # check whether probability params are named or na
   stopifnot(
     "uncertainty must be provided for each parameter" =
-      anyNA(uncertainty) ||
+      anyNA(uncertainty, recursive = TRUE) ||
       length(prob_distribution_params) == length(uncertainty),
     "probability distribution params must be a named vector or NA" =
-      anyNA(prob_distribution_params) ||
+      anyNA(prob_distribution_params, recursive = TRUE) ||
       !is.null(names(prob_distribution_params))
   )
 
