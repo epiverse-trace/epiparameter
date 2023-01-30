@@ -7,7 +7,7 @@
 list_distributions(
   epiparam,
   epi_dist = c("incubation_period", "onset_to_admission", "onset_to_death",
-    "serial_interval", "generation_time"),
+    "serial_interval", "generation_time", "offspring_distribution"),
   subset_db = TRUE
 )
 }

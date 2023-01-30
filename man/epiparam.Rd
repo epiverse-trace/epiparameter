@@ -6,7 +6,7 @@
 \usage{
 epiparam(
   epi_dist = c("all", "incubation_period", "onset_to_admission", "onset_to_death",
-    "serial_interval", "generation_time")
+    "serial_interval", "generation_time", "offspring_distribution")
 )
 }
 \arguments{

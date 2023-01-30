@@ -76,7 +76,8 @@ epiparam <- function(epi_dist = c("all",
                                   "onset_to_admission",
                                   "onset_to_death",
                                   "serial_interval",
-                                  "generation_time")) {
+                                  "generation_time",
+                                  "offspring_distribution")) {
 
   # check input
   epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)
