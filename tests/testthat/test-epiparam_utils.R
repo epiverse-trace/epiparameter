@@ -208,6 +208,136 @@ test_that("make_epidist works as expected for lognormal", {
   expect_identical(stats::family(edist$prob_dist), "lognormal")
 })
 
+test_that("make_epidist works as expected for negative binomial", {
+
+  edist <- make_epidist(x = list(
+    disease = "influenza",
+    pathogen = NA,
+    epi_distribution = "offspring_distribution",
+    author = "Smith_etal",
+    year = 2002,
+    sample_size = 45,
+    region = "UK",
+    vector_borne = FALSE,
+    vector = NA,
+    extrinsic = FALSE,
+    prob_distribution = "negative_binomial",
+    inference_method = "mle",
+    mean = 2.05,
+    mean_ci = c(NA, NA),
+    mean_ci_interval = NA,
+    sd = NA,
+    sd_ci = c(NA, NA),
+    sd_ci_interval = NA,
+    quantile_025 = NA,
+    quantile_05 = NA,
+    quantile_25 = NA,
+    median = NA,
+    median_ci = c(NA, NA),
+    median_ci_interval = NA,
+    quantile_75 = NA,
+    quantile_875 = NA,
+    quantile_95 = NA,
+    quantile_975 = NA,
+    lower_range = NA,
+    upper_range = NA,
+    shape = NA,
+    shape_ci = c(NA, NA),
+    shape_ci_interval = NA,
+    scale = NA,
+    scale_ci = c(NA, NA),
+    scale_ci_interval = NA,
+    meanlog = NA,
+    meanlog_ci = c(NA, NA),
+    meanlog_ci_interval = NA,
+    sdlog = NA,
+    sdlog_ci = c(NA, NA),
+    sdlog_ci_interval = NA,
+    dispersion = 0.6,
+    dispersion_ci = c(NA, NA),
+    dispersion_ci_interval = NA,
+    precision = NA,
+    precision_ci = c(NA, NA),
+    precision_ci_interval = NA,
+    truncation = NA,
+    discretised = FALSE,
+    censorred = NA,
+    right_truncated = NA,
+    phase_bias_adjusted = NA,
+    notes = "",
+    PMID = NA,
+    DOI = "10.4824/216536228" # nolint
+  ))
+
+  expect_s3_class(edist, "epidist")
+  expect_identical(stats::family(edist$prob_dist), "negbin")
+})
+
+test_that("make_epidist works as expected for geometric", {
+
+  edist <- make_epidist(x = list(
+    disease = "influenza",
+    pathogen = NA,
+    epi_distribution = "offspring_distribution",
+    author = "Smith_etal",
+    year = 2002,
+    sample_size = 45,
+    region = "UK",
+    vector_borne = FALSE,
+    vector = NA,
+    extrinsic = FALSE,
+    prob_distribution = "geometric",
+    inference_method = "mle",
+    mean = 2.05,
+    mean_ci = c(NA, NA),
+    mean_ci_interval = NA,
+    sd = NA,
+    sd_ci = c(NA, NA),
+    sd_ci_interval = NA,
+    quantile_025 = NA,
+    quantile_05 = NA,
+    quantile_25 = NA,
+    median = NA,
+    median_ci = c(NA, NA),
+    median_ci_interval = NA,
+    quantile_75 = NA,
+    quantile_875 = NA,
+    quantile_95 = NA,
+    quantile_975 = NA,
+    lower_range = NA,
+    upper_range = NA,
+    shape = NA,
+    shape_ci = c(NA, NA),
+    shape_ci_interval = NA,
+    scale = NA,
+    scale_ci = c(NA, NA),
+    scale_ci_interval = NA,
+    meanlog = NA,
+    meanlog_ci = c(NA, NA),
+    meanlog_ci_interval = NA,
+    sdlog = NA,
+    sdlog_ci = c(NA, NA),
+    sdlog_ci_interval = NA,
+    dispersion = NA,
+    dispersion_ci = c(NA, NA),
+    dispersion_ci_interval = NA,
+    precision = NA,
+    precision_ci = c(NA, NA),
+    precision_ci_interval = NA,
+    truncation = NA,
+    discretised = FALSE,
+    censorred = NA,
+    right_truncated = NA,
+    phase_bias_adjusted = NA,
+    notes = "",
+    PMID = NA,
+    DOI = "10.4824/216536228" # nolint
+  ))
+
+  expect_s3_class(edist, "epidist")
+  expect_identical(stats::family(edist$prob_dist), "geometric")
+})
+
 test_that("as_epiparam works as expected", {
   # suppress message about citation
   edist <- suppressMessages(epidist(
