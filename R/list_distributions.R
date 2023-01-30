@@ -37,7 +37,8 @@ list_distributions <- function(epiparam,
                                  "onset_to_admission",
                                  "onset_to_death",
                                  "serial_interval",
-                                 "generation_time"
+                                 "generation_time",
+                                 "offspring_distribution"
                                ),
                                subset_db = TRUE) {
   # check input
