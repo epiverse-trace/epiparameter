@@ -165,4 +165,3 @@ test_that("create_prob_dist throughs warning for discrete truncation", {
     regexp = "Truncation is not yet implemented for discrete distributions"
   )
 })
-

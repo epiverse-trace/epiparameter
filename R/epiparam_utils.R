@@ -71,7 +71,7 @@ make_epidist <- function(x) {
         )
       )
     )
-  } else if (x$prob_distribution %in% c("lognormal")) {
+  } else if (x$prob_distribution %in% "lognormal") {
     parameters <- c(meanlog = x$meanlog, sdlog = x$sdlog)
     uncertainty <- list(
       meanlog = create_epidist_uncertainty(
@@ -201,7 +201,7 @@ as_epiparam <- function(x) {
     # extract DOI from citation
     doi <- sub(">.*", "",  sub(".*<", "", x$citation))
     # extract PMID if available
-    if (grepl(pattern = "PMID", x = x$citation)) {
+    if (grepl(pattern = "PMID", x = x$citation, fixed = TRUE)) {
       pmid <- sub(".*PMID: ", "", x$citation)
     } else {
       pmid <- NA
@@ -230,7 +230,7 @@ as_epiparam <- function(x) {
   class(parameters) <- prob_dist
   parameters <- clean_epidist_params(prob_dist_params = parameters)
 
-  if (any(is.na(x$uncertainty))) {
+  if (anyNA(x$uncertainty)) {
     x$uncertainty <- lapply(
       x$uncertainty,
       function(x) {
@@ -238,7 +238,8 @@ as_epiparam <- function(x) {
       })
   }
 
-  ## TODO: look into redudancy of median and quantile 50 in epidist and epiparam class
+  ## TODO: look into redudancy of median and quantile 50 in epidist and
+  ## epiparam class
 
   eparam <- data.frame(
     disease = x$disease$disease,
@@ -413,4 +414,3 @@ as_epiparam <- function(x) {
 `[.epiparam` <- function(epiparam, ...) {
   validate_epiparam(NextMethod())
 }
-

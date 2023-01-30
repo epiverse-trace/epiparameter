@@ -24,7 +24,7 @@ new_epiparam <- function(epi_dist = character()) {
   # convert intervals from strings to numeric vectors
   ci_cols_index <- grep(pattern = "_ci$", colnames(params))
   for (i in ci_cols_index) {
-    split_ci <- strsplit(as.character(params[, i]), split = ",")
+    split_ci <- strsplit(as.character(params[, i]), split = ",", fixed = TRUE)
     split_ci <- lapply(split_ci, function(x) {
       if (all(is.na(x))) c(NA_real_, NA_real_) else as.numeric(x)
     })

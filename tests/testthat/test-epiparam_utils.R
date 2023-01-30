@@ -72,7 +72,7 @@ test_that("make_epidist works as expected for gamma", {
     phase_bias_adjusted = NA,
     notes = "",
     PMID = 20029668,
-    DOI = "10.1371/currents.RRN1130"
+    DOI = "10.1371/currents.RRN1130" # nolint
   ))
 
   expect_s3_class(edist, "epidist")
@@ -137,7 +137,7 @@ test_that("make_epidist works as expected for weibull", {
     phase_bias_adjusted = NA,
     notes = "",
     PMID = 20029668,
-    DOI = "10.1371/currents.RRN1130"
+    DOI = "10.1371/currents.RRN1130" # nolint
   )))
 
   expect_s3_class(edist, "epidist")
@@ -201,7 +201,7 @@ test_that("make_epidist works as expected for lognormal", {
     phase_bias_adjusted = NA,
     notes = "",
     PMID = 20029668,
-    DOI = "10.1371/currents.RRN1130"
+    DOI = "10.1371/currents.RRN1130" # nolint
   )))
 
   expect_s3_class(edist, "epidist")

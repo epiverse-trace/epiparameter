@@ -5,8 +5,8 @@
 \title{Creates a JSON version of the epiparameter database}
 \usage{
 make_json_data(
-  read_path = "extdata/parameters.csv",
-  write_path = "inst/extdata/data.json"
+  read_path = file.path("extdata", "parameters.csv"),
+  write_path = file.path("inst", "extdata", "data.json")
 )
 }
 \arguments{

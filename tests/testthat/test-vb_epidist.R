@@ -509,7 +509,8 @@ test_that("density works as expected on discrete vb_epidist object", {
   #expect_lte(res$extrinsic, 1)
 })
 
-test_that("density works as expected on continuous vb_epidist object with vector input", {
+test_that("density works as expected on continuous vb_epidist object with
+          vector input", {
   # suppress messages about citation
   dengue_dist <- suppressMessages(vb_epidist(
     intrinsic_epidist = epidist(
@@ -527,7 +528,7 @@ test_that("density works as expected on continuous vb_epidist object with vector
       metadata = create_epidist_metadata(
         vector_borne = TRUE,
         extrinsic = TRUE
-      ),
+      )
     )
   ))
   res <- density(dengue_dist, at = seq(0.1, 0.9, by = 0.1))
@@ -543,7 +544,8 @@ test_that("density works as expected on continuous vb_epidist object with vector
   #expect_lte(res$extrinsic, 1)
 })
 
-test_that("density works as expected on discrete vb_epidist object with vector input", {
+test_that("density works as expected on discrete vb_epidist object with
+          vector input", {
   # suppress messages about citation
   dengue_dist <- suppressMessages(vb_epidist(
     intrinsic_epidist = epidist(
@@ -708,7 +710,8 @@ test_that("cdf works as expected on discrete vb_epidist object", {
   #expect_lte(res$extrinsic, 1)
 })
 
-test_that("cdf works as expected on continuous vb_epidist object with vector input", {
+test_that("cdf works as expected on continuous vb_epidist object with
+          vector input", {
   # suppress messages about citation
   dengue_dist <- suppressMessages(vb_epidist(
     intrinsic_epidist = epidist(
@@ -743,7 +746,8 @@ test_that("cdf works as expected on continuous vb_epidist object with vector inp
   #expect_lte(res$extrinsic, 1)
 })
 
-test_that("cdf works as expected on discrete vb_epidist object with vector input", {
+test_that("cdf works as expected on discrete vb_epidist object with
+          vector input", {
   # suppress messages about citation
   dengue_dist <- suppressMessages(vb_epidist(
     intrinsic_epidist = epidist(
@@ -888,7 +892,8 @@ test_that("quantile works as expected on discrete epidist object", {
   #expect_lte(res$extrinsic, 1)
 })
 
-test_that("quantile works as expected on continuous vb_epidist object with vector input", {
+test_that("quantile works as expected on continuous vb_epidist object with
+          vector input", {
   # suppress messages about citation
   dengue_dist <- suppressMessages(vb_epidist(
     intrinsic_epidist = epidist(
@@ -921,7 +926,8 @@ test_that("quantile works as expected on continuous vb_epidist object with vecto
   #expect_lte(res$extrinsic, 1)
 })
 
-test_that("quantile works as expected on discrete vb_epidist object with vector input", {
+test_that("quantile works as expected on discrete vb_epidist object with
+          vector input", {
   # suppress messages about citation
   dengue_dist <- suppressMessages(vb_epidist(
     intrinsic_epidist = epidist(
@@ -1048,7 +1054,8 @@ test_that("generate works as expected on discrete vb_epidist object", {
   #expect_lte(res$extrinsic, 1)
 })
 
-test_that("generate fails as expected on continuous vb_epidist object with vector input", {
+test_that("generate fails as expected on continuous vb_epidist object with
+          vector input", {
   # suppress messages about citation
   dengue_dist <- suppressMessages(vb_epidist(
     intrinsic_epidist = epidist(
@@ -1073,7 +1080,8 @@ test_that("generate fails as expected on continuous vb_epidist object with vecto
   expect_error(generate(dengue_dist, times = c(10, 15)))
 })
 
-test_that("generate fails as expected on discrete vb_epidist object with vector input", {
+test_that("generate fails as expected on discrete vb_epidist object with
+          vector input", {
   # suppress messages about citation
   dengue_dist <- suppressMessages(vb_epidist(
     intrinsic_epidist = epidist(

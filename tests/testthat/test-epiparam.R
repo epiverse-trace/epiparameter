@@ -214,4 +214,3 @@ test_that("validate_epidist catches class faults when expected", {
     regexp = "disease needs to be a character"
   )
 })
-

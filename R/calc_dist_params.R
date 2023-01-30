@@ -2,10 +2,11 @@
 #' available summary statistics
 #'
 #' @description When the parameters of a probability distribution are not
-#' provided (e.g. when describing the distribution in the literature) and instead
-#' summary statistics of a distribution are provided, the parameters can usually
-#' be calculated from the summary statistics. The `calc_dist_params()` function
-#' computes the parameters for the gamma, lognormal and weibull distributions.
+#' provided (e.g. when describing the distribution in the literature) and
+#' instead summary statistics of a distribution are provided, the parameters
+#' can usually be calculated from the summary statistics. The
+#' `calc_dist_params()` function computes the parameters for the gamma,
+#' lognormal and weibull distributions.
 #'
 #' This function can provide a convinient wrapper around the conversion and
 #' extraction functions it is not known which summary statistics can be used to
@@ -63,7 +64,7 @@ calc_dist_params <- function(prob_dist,
     unlist(summary_stats$range)
   )
 
-  if (!any(is.na(mean_sd))) {
+  if (!anyNA(mean_sd)) {
     # make mean_sd a class with the name of the prob dist for multiple dispatch
     prob_dist_params <- convert_params(
       summary_stats = summary_stats,
@@ -76,8 +77,18 @@ calc_dist_params <- function(prob_dist,
 
     # extract the numeric quantiles from the vector names
     percentiles <- as.numeric(c(
-        gsub(pattern = "q_", replacement = "", x = names(lower_percentile)),
-        gsub(pattern = "q_", replacement = "", x = names(upper_percentile))
+        gsub(
+          pattern = "q_",
+          replacement = "",
+          x = names(lower_percentile),
+          fixed = TRUE
+        ),
+        gsub(
+          pattern = "q_",
+          replacement = "",
+          x = names(upper_percentile),
+          fixed = TRUE
+        )
     ))
 
     # TODO: make use of lognormal or lnorm consistent
@@ -90,7 +101,7 @@ calc_dist_params <- function(prob_dist,
       distribution = prob_dist,
       percentiles = percentiles
     )
-  } else if (!any(is.na(median_range)) && !is.na(sample_size)) {
+  } else if (!anyNA(median_range) && !is.na(sample_size)) {
     prob_dist_params <- extract_param(
       type = "range",
       values = median_range,
@@ -98,10 +109,10 @@ calc_dist_params <- function(prob_dist,
       samples = sample_size
     )
   } else {
-    message(paste0(
+    message(
       "No adequate summary statistics available to calculate the parameters ",
       "of the ", prob_dist, " distribution"
-    ))
+    )
   }
 
   # return params
@@ -140,6 +151,9 @@ convert_params <- function(summary_stats,
         sd = summary_stats$central_tendency_spread$sd
       )
     ),
-    stop(paste0("No conversion functions for ", prob_dist))
+    stop("No conversion functions for ", prob_dist)
   )
+
+  # return params
+  params
 }
