@@ -25,10 +25,11 @@ A named vector with parameters
 }
 \description{
 When the parameters of a probability distribution are not
-provided (e.g. when describing the distribution in the literature) and instead
-summary statistics of a distribution are provided, the parameters can usually
-be calculated from the summary statistics. The \code{calc_dist_params()} function
-computes the parameters for the gamma, lognormal and weibull distributions.
+provided (e.g. when describing the distribution in the literature) and
+instead summary statistics of a distribution are provided, the parameters
+can usually be calculated from the summary statistics. The
+\code{calc_dist_params()} function computes the parameters for the gamma,
+lognormal and weibull distributions.
 
 This function can provide a convinient wrapper around the conversion and
 extraction functions it is not known which summary statistics can be used to

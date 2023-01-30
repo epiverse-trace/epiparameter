@@ -72,15 +72,16 @@ test_that("epidist works with all arguments set", {
       author = "Smith",
       year = 2002,
       PMID = 28372882,
-      DOI = "10.23271/176237.x",
+      DOI = "10.23271/176237.x", # nolint
       use_PMID = FALSE
     ),
     metadata = create_epidist_metadata(
       sample_size = 100,
       region = "UK",
       vector_borne = FALSE,
-      vector = NA, ,
-      extrinsic = FALSE
+      vector = NA,
+      extrinsic = FALSE,
+      inference_method = "MLE"
     ),
     method_assessment = create_epidist_method_assessment(
       censorred = TRUE,
@@ -495,7 +496,8 @@ test_that("density works as expected on discrete epidist object", {
   #expect_lte(res, 1)
 })
 
-test_that("density works as expected on continuous epidist object with vector input", {
+test_that("density works as expected on continuous epidist object with vector
+          input", {
   ebola_dist <- suppressMessages(
     epidist(
       disease = "ebola",
@@ -512,7 +514,8 @@ test_that("density works as expected on continuous epidist object with vector in
   #expect_lte(res, 1)
 })
 
-test_that("density works as expected on discrete epidist object with vector input", {
+test_that("density works as expected on discrete epidist object with vector
+          input", {
   ebola_dist <- suppressMessages(
     epidist(
       disease = "ebola",
@@ -601,7 +604,8 @@ test_that("cdf works as expected on discrete epidist object", {
   #expect_lte(res, 1)
 })
 
-test_that("cdf works as expected on continuous epidist object with vector input", {
+test_that("cdf works as expected on continuous epidist object with vector
+          input", {
   ebola_dist <- suppressMessages(
     epidist(
       disease = "ebola",
@@ -618,7 +622,8 @@ test_that("cdf works as expected on continuous epidist object with vector input"
   #expect_lte(res, 1)
 })
 
-test_that("cdf works as expected on discrete epidist object with vector input", {
+test_that("cdf works as expected on discrete epidist object with vector
+          input", {
   ebola_dist <- suppressMessages(
     epidist(
       disease = "ebola",
@@ -695,7 +700,8 @@ test_that("quantile works as expected on discrete epidist object", {
   #expect_lte(res, 1)
 })
 
-test_that("quantile works as expected on continuous epidist object with vector input", {
+test_that("quantile works as expected on continuous epidist object with vector
+          input", {
   ebola_dist <- suppressMessages(
     epidist(
       disease = "ebola",
@@ -712,7 +718,8 @@ test_that("quantile works as expected on continuous epidist object with vector i
   #expect_lte(res, 1)
 })
 
-test_that("quantile works as expected on discrete epidist object with vector input", {
+test_that("quantile works as expected on discrete epidist object with vector
+          input", {
   ebola_dist <- suppressMessages(
     epidist(
       disease = "ebola",
@@ -777,7 +784,8 @@ test_that("generate works as expected on discrete epidist object", {
   #expect_lte(res, 1)
 })
 
-test_that("generate fails as expected on continuous epidist object with vector input", {
+test_that("generate fails as expected on continuous epidist object with vector
+          input", {
   ebola_dist <- suppressMessages(
     epidist(
       disease = "ebola",
@@ -790,7 +798,8 @@ test_that("generate fails as expected on continuous epidist object with vector i
   expect_error(generate(ebola_dist, times = c(10, 15)))
 })
 
-test_that("generate fails as expected on discrete epidist object with vector input", {
+test_that("generate fails as expected on discrete epidist object with vector
+          input", {
   ebola_dist <- suppressMessages(
     epidist(
       disease = "ebola",
@@ -803,4 +812,3 @@ test_that("generate fails as expected on discrete epidist object with vector inp
 
   expect_error(generate(ebola_dist, times = c(10, 15)))
 })
-

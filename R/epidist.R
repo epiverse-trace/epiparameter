@@ -266,16 +266,13 @@ epidist <- function(disease,
   checkmate::assert_character(notes, null.ok = TRUE)
 
   # check whether ci has been provided for each parameter
-  stopifnot(
-    "uncertainty must be provided for each parameter" =
-      any(is.na(uncertainty)) ||
-      length(prob_distribution_params) == length(uncertainty)
-  )
-
   # check whether probability params are named or na
   stopifnot(
+    "uncertainty must be provided for each parameter" =
+      anyNA(uncertainty) ||
+      length(prob_distribution_params) == length(uncertainty),
     "probability distribution params must be a named vector or NA" =
-      any(is.na(prob_distribution_params)) ||
+      anyNA(prob_distribution_params) ||
       !is.null(names(prob_distribution_params))
   )
 
@@ -513,7 +510,7 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
     if (grepl(pattern = "intrinsic", x = title, ignore.case = TRUE)) {
       line <- -1
     } else {
-      line = -15
+      line <- -15
     }
     # add a plot title
     graphics::title(title, outer = TRUE, line = line)
@@ -548,7 +545,7 @@ density <- function(x, at) UseMethod("density")
 
 #' @export
 density.epidist <- function(x, at) {
-  unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
+  unlist <- length(x$prob_dist) == 1
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$d(at)
   } else {
@@ -564,7 +561,7 @@ cdf <- function(x, q) UseMethod("cdf")
 
 #' @export
 cdf.epidist <- function(x, q) {
-  unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
+  unlist <- length(x$prob_dist) == 1
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$p(q)
   } else {
@@ -580,7 +577,7 @@ quantile <- function(x, p) UseMethod("quantile")
 
 #' @export
 quantile.epidist <- function(x, p) {
-  unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
+  unlist <- length(x$prob_dist) == 1
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$q(p)
   } else {
@@ -600,11 +597,11 @@ generate.epidist <- function(x, times) {
   # check times is a single number for consistent behaviour
   checkmate::assert_number(times)
   if (inherits(x$prob_dist, "distcrete")) {
-    unlist <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
+    unlist <- length(x$prob_dist) == 1
     out <- x$prob_dist$r(n = times)
     out <- if (unlist) unlist(out, recursive = FALSE) else out
   } else {
-    recursive <- ifelse(test = length(x$prob_dist) == 1, yes = TRUE, no = FALSE)
+    recursive <- length(x$prob_dist) == 1
     out <- distributional::generate(x$prob_dist, times = times)
     out <- unlist(out, recursive = recursive)
   }

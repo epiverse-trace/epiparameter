@@ -5,8 +5,8 @@
 \title{Creates a data schema in JSON format from a yaml file}
 \usage{
 make_json_schema(
-  read_path = "extdata/data_dictionary.yaml",
-  write_path = "inst/extdata/schema.json"
+  read_path = file.path("extdata", "data_dictionary.yaml"),
+  write_path = file.path("inst", "extdata", "schema.json")
 )
 }
 \arguments{

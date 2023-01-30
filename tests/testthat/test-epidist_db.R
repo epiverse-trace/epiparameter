@@ -39,7 +39,7 @@ test_that("epidist_db works as expected with author specified", {
   expect_type(edist$uncertainty, "list")
   expect_type(edist$summary_stats, "list")
   expect_type(edist$citation, "character")
-  expect_true(grepl(pattern = "Ghani", x = edist$citation))
+  expect_true(grepl(pattern = "Ghani", x = edist$citation, fixed = TRUE))
   expect_type(edist$metadata, "list")
   expect_type(edist$method_assessment, "list")
   expect_type(edist$notes, "character")

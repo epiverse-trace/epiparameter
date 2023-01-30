@@ -23,7 +23,7 @@
 create_epidist_uncertainty <- function(ci = NA_real_, ci_interval, ci_type) {
 
   # when no uncertainty is given
-  if (any(is.na(ci))) return(list(
+  if (anyNA(ci)) return(list(
     ci = NA_real_,
     ci_interval = c(NA_real_, NA_real_),
     ci_type = NA_character_
@@ -308,8 +308,18 @@ create_epidist_citation <- function(author = NA_character_,
   }
 
   # change author formatting if multiple authors or et al
-  author <- gsub(pattern = "_", replacement = " ", x = author)
-  author <- gsub(pattern = "etal", replacement = "et al.", x = author)
+  author <- gsub(
+    pattern = "_",
+    replacement = " ",
+    x = author,
+    fixed = TRUE
+  )
+  author <- gsub(
+    pattern = "etal",
+    replacement = "et al.",
+    x = author,
+    fixed = TRUE
+  )
 
   citation <- paste0(author, " (", year, ") ", "<", DOI, ">")
 
@@ -435,7 +445,10 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
   if (all(c("shape", "rate") %in% names(prob_dist_params))) {
     prob_dist_params[["rate"]] <- 1 / prob_dist_params[["rate"]]
     names(prob_dist_params) <- gsub(
-      pattern = "rate", replacement = "scale", x = names(prob_dist_params)
+      pattern = "rate",
+      replacement = "scale",
+      x = names(prob_dist_params),
+      fixed = TRUE
     )
 
     # remove class attribute from prob_dist_params
@@ -533,7 +546,7 @@ clean_epidist_params.default <- function(prob_dist_params) {
 #' @examples
 #' clean_epidist_name("Incubation_period")
 clean_epidist_name <- function(epi_dist) {
-  out <- gsub(pattern = "_", replacement = " ", x = epi_dist)
+  out <- gsub(pattern = "_", replacement = " ", x = epi_dist, fixed = TRUE)
   out <- tolower(out)
   out
 }
