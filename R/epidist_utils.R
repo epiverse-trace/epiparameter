@@ -463,7 +463,7 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
     # no cleaning needed
     return(prob_dist_params)
   } else {
-    stop("Parameters of gamma distribution are inconherent")
+    stop("Names of gamma distribution parameters are incorrect")
   }
 }
 
@@ -496,7 +496,7 @@ clean_epidist_params.lognormal <- function(prob_dist_params) {
     # no cleaning needed
     return(prob_dist_params)
   } else {
-    stop("Parameters of lognormal distribution are inconherent")
+    stop("Names of lognormal distribution parameters are incorrect")
   }
 }
 
@@ -515,7 +515,60 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
     # no cleaning needed
     return(prob_dist_params)
   } else {
-    stop("Parameters of weibull distribution are inconherent")
+    stop("Names of weibull distribution parameters are incorrect")
+  }
+}
+
+#' Standardises parameters for a negative binomial distribution
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Named vector of parameters
+#' @keywords internal
+clean_epidist_params.negative_binomial <- function(prob_dist_params) {
+
+  if (all(c("mean", "dispersion") %in% names(prob_dist_params))) {
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # no cleaning needed
+    return(prob_dist_params)
+  } else {
+    stop("Names of negative binomial distribution parameters are incorrect")
+  }
+}
+
+#' Standardises parameters for a geometric distribution
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Named vector of parameters
+#' @keywords internal
+clean_epidist_params.geometric <- function(prob_dist_params) {
+
+  # if mean is provided convert to prob
+  if ("mean" %in% names(prob_dist_params)) {
+    prob_dist_params[["mean"]] <- 1 / prob_dist_params[["mean"]]
+    names(prob_dist_params) <- gsub(
+      pattern = "mean",
+      replacement = "prob",
+      x = names(prob_dist_params),
+      fixed = TRUE
+    )
+
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # return prob_dist_params
+    return(prob_dist_params)
+  } else if ("prob" %in% names(prob_dist_params)) {
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # no cleaning needed
+    return(prob_dist_params)
+  } else {
+    stop("Names of geometric distribution parameters are incorrect")
   }
 }
 
