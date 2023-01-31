@@ -40,7 +40,7 @@
 #' # extract parameters of a gamma distribution from median and range
 #' extract_param(
 #'   type = "range",
-#'   values = c(8, 6, 13),
+#'   values = c(10, 3, 18),
 #'   distribution = "gamma",
 #'   samples = 20
 #' )
