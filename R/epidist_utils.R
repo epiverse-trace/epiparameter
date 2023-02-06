@@ -1,9 +1,11 @@
-#' A helper function when creating uncertainty for the parameters of the
-#' distribution for the epidist object
+#' Specify distribution parameter uncertainty
 #'
-#' @param ci A numeric vector of length two with the lower and upper bound of
+#' @description A helper function when creating uncertainty for the parameters
+#' of the distribution for the `epidist` object
+#'
+#' @param ci_limits A numeric vector of length two with the lower and upper bound of
 #' the confidence interval or credible interval
-#' @param ci_interval A numeric specifying the interval for the ci, e.g. 95 is
+#' @param ci A numeric specifying the interval for the ci, e.g. 95 is
 #' 95% ci
 #' @param ci_type A character string, either "confidence interval" or "credible
 #' interval"
@@ -12,26 +14,45 @@
 #' @export
 #'
 #' @examples
-#' # example with uncertainty
+#' # example with uncertainty for a single parameter
 #' create_epidist_uncertainty(
-#'   ci = c(1, 3),
-#'   ci_interval = 95,
+#'   ci_limits = c(1, 3),
+#'   ci = 95,
 #'   ci_type = "confidence interval"
 #' )
+#'
+#' # example for multiple parameters
+#' # lengh of list should match number of parameters
+#' list(
+#'   shape = create_epidist_uncertainty(
+#'     ci_limits = c(1,3),
+#'     ci = 95,
+#'     ci_type = "confidence interval"
+#'   ),
+#'   scale = create_epidist_uncertainty(
+#'     ci_limits = c(2, 4),
+#'     ci = 95,
+#'     ci_type = "confidence interval"
+#'   )
+#' )
+#'
 #' # example with unknown uncertainty
+#' # the function can be called without arguments
+#' create_epidist_uncertainty()
+#' # or give NA as the first argument
 #' create_epidist_uncertainty(NA)
-create_epidist_uncertainty <- function(ci = NA_real_, ci_interval, ci_type) {
+create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 
   # when no uncertainty is given
-  if (anyNA(ci)) return(list(
-    ci = NA_real_,
-    ci_interval = c(NA_real_, NA_real_),
+  if (anyNA(ci_limits)) return(list(
+    ci_limits = NA_real_,
+    ci = c(NA_real_, NA_real_),
     ci_type = NA_character_
   ))
 
   # check input
-  checkmate::assert_numeric(ci, any.missing = FALSE, len = 2)
-  checkmate::assert_number(ci_interval, lower = 0, upper = 100)
+  checkmate::assert_numeric(ci_limits, any.missing = FALSE, len = 2)
+  checkmate::assert_number(ci, lower = 0, upper = 100)
   checkmate::assert_character(ci_type)
   stopifnot(
     "ci_type must be either 'confidence interval or credible interval" =
@@ -40,8 +61,8 @@ create_epidist_uncertainty <- function(ci = NA_real_, ci_interval, ci_type) {
 
   # return list of parameter uncertainty
   list(
+    ci_limits = ci_limits,
     ci = ci,
-    ci_interval = ci_interval,
     ci_type = ci_type
   )
 }
@@ -140,24 +161,24 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
 #'
 #' @param mean A numeric of the mean (expectation) of the probability
 #' distribution
-#' @param mean_ci A numeric vector of length two of the confidence interval
+#' @param mean_ci_limits A numeric vector of length two of the confidence interval
 #' around the mean
-#' @param mean_ci_interval A numeric specifying the confidence interval width,
+#' @param mean_ci A numeric specifying the confidence interval width,
 #' e.g. 95 would be the 95% CI
 #' @param sd A numeric of the standard deviation of the probability distribution
-#' @param sd_ci A numeric vector of length 2 of the confidence interval around
+#' @param sd_ci_limits A numeric vector of length 2 of the confidence interval around
 #' the standard deviation
-#' @param sd_ci_interval A numeric specifying the confidence interval width,
+#' @param sd_ci A numeric specifying the confidence interval width,
 #' e.g. 95 would be 95% confidence interval
 #' @param median A numeric of the median of the probability distribution
-#' @param median_ci A numeric vector of length two of the confidence interval
+#' @param median_ci_limits A numeric vector of length two of the confidence interval
 #' around the median
-#' @param median_ci_interval A numeric specifying the confidence interval width
+#' @param median_ci A numeric specifying the confidence interval width
 #' of the median
 #' @param dispersion A numeric of the dispersion parameter of a distribution
-#' @param dispersion_ci A numeric vector of length two of the confidence
+#' @param dispersion_ci_limits A numeric vector of length two of the confidence
 #' interval around the dispersion
-#' @param dispersion_ci_interval A numeric specifying the confidence interval
+#' @param dispersion_ci A numeric specifying the confidence interval
 #' width of the dispersion parameter
 #' @param lower_range The lower range of the data, used to infer the parameters
 #' of the distribution when not provided
@@ -181,17 +202,17 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
 #' @examples
 #' create_epidist_summary_stats(mean = 5, sd = 2)
 create_epidist_summary_stats <- function(mean = NA_real_,
-                                         mean_ci = c(NA_real_, NA_real_),
-                                         mean_ci_interval = NA_real_,
+                                         mean_ci_limits = c(NA_real_, NA_real_),
+                                         mean_ci = NA_real_,
                                          sd = NA_real_,
-                                         sd_ci = c(NA_real_, NA_real_),
-                                         sd_ci_interval = NA_real_,
+                                         sd_ci_limits = c(NA_real_, NA_real_),
+                                         sd_ci = NA_real_,
                                          median = NA_real_,
-                                         median_ci = c(NA_real_, NA_real_),
-                                         median_ci_interval = NA_real_,
+                                         median_ci_limits = c(NA_real_, NA_real_),
+                                         median_ci = NA_real_,
                                          dispersion = NA_real_,
-                                         dispersion_ci = c(NA_real_, NA_real_),
-                                         dispersion_ci_interval = NA_real_,
+                                         dispersion_ci_limits = c(NA_real_, NA_real_),
+                                         dispersion_ci = NA_real_,
                                          lower_range = NA_real_,
                                          upper_range = NA_real_,
                                          q_025 = NA_real_,
@@ -204,17 +225,17 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 
   # check input
   checkmate::assert_number(mean, na.ok = TRUE)
-  checkmate::assert_numeric(mean_ci, len = 2, any.missing = TRUE)
-  checkmate::assert_number(mean_ci_interval, na.ok = TRUE)
+  checkmate::assert_numeric(mean_ci_limits, len = 2, any.missing = TRUE)
+  checkmate::assert_number(mean_ci, na.ok = TRUE)
   checkmate::assert_number(sd, na.ok = TRUE)
-  checkmate::assert_numeric(sd_ci, len = 2, any.missing = TRUE)
-  checkmate::assert_number(sd_ci_interval, na.ok = TRUE)
+  checkmate::assert_numeric(sd_ci_limits, len = 2, any.missing = TRUE)
+  checkmate::assert_number(sd_ci, na.ok = TRUE)
   checkmate::assert_number(median, na.ok = TRUE)
-  checkmate::assert_numeric(median_ci, len = 2, any.missing = TRUE)
-  checkmate::assert_number(median_ci_interval, na.ok = TRUE)
+  checkmate::assert_numeric(median_ci_limits, len = 2, any.missing = TRUE)
+  checkmate::assert_number(median_ci, na.ok = TRUE)
   checkmate::assert_number(dispersion, na.ok = TRUE)
-  checkmate::assert_numeric(dispersion_ci, len = 2, any.missing = TRUE)
-  checkmate::assert_number(dispersion_ci_interval, na.ok = TRUE)
+  checkmate::assert_numeric(dispersion_ci_limits, len = 2, any.missing = TRUE)
+  checkmate::assert_number(dispersion_ci, na.ok = TRUE)
   checkmate::assert_number(lower_range, na.ok = TRUE)
   checkmate::assert_number(upper_range, na.ok = TRUE)
   checkmate::assert_number(q_025, na.ok = TRUE)
@@ -228,14 +249,14 @@ create_epidist_summary_stats <- function(mean = NA_real_,
   list(
     central_tendency_spread = list(
       mean = mean,
+      mean_ci_limits = mean_ci_limits,
       mean_ci = mean_ci,
-      mean_ci_interval = mean_ci_interval,
       sd = sd,
+      sd_ci_limits = sd_ci_limits,
       sd_ci = sd_ci,
-      sd_ci_interval = sd_ci_interval,
       median = median,
-      median_ci = median_ci,
-      median_ci_interval = median_ci_interval
+      median_ci_limits = median_ci_limits,
+      median_ci = median_ci
     ),
     quantiles = list(
       q_025 = q_025,
@@ -250,8 +271,8 @@ create_epidist_summary_stats <- function(mean = NA_real_,
     range = list(lower_range = lower_range, upper_range = upper_range),
     dispersion = list(
       dispersion = dispersion,
-      dispersion_ci = dispersion_ci,
-      dispersion_ci_interval = dispersion_ci_interval
+      dispersion_ci_limits = dispersion_ci_limits,
+      dispersion_ci = dispersion_ci
     )
   )
 }

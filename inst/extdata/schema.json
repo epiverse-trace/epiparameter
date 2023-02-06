@@ -112,7 +112,7 @@
         "type": ["number", "null"]
       }
     },
-    "mean_ci": {
+    "mean_ci_limits": {
       "description": "The confidence interval of the distribution mean specified by two numbers in an array.\n",
       "examples": [
         [3.1, 5.5],
@@ -126,7 +126,7 @@
         }
       }
     },
-    "mean_ci_interval": {
+    "mean_ci": {
       "description": "The interval of the uncertainty around the mean of the distribution, for example 95% confidence interval would be 95.\n",
       "examples": [95, 90, 80],
       "type": "array",
@@ -142,7 +142,7 @@
         "type": ["number", "null"]
       }
     },
-    "sd_ci": {
+    "sd_ci_limits": {
       "description": "The confidence interval of the distribution standard deviation specified by two numbers in an array.\n",
       "examples": [
         [0.2, 0.9],
@@ -156,7 +156,7 @@
         }
       }
     },
-    "sd_ci_interval": {
+    "sd_ci": {
       "description": "The interval of the uncertainty around the standard deviation of the distribution, for example 95% confidence interval would be 95.\n",
       "examples": [95, 90, 80],
       "type": "array",
@@ -196,7 +196,7 @@
         "type": ["number", "null"]
       }
     },
-    "median_ci": {
+    "median_ci_limits": {
       "description": "The confidence interval of the distribution median specified by two numbers in an array.\n",
       "examples": [
         [2.1, 2.2],
@@ -210,7 +210,7 @@
         }
       }
     },
-    "median_ci_interval": {
+    "median_ci": {
       "description": "The interval of the uncertainty around the median of the distribution, for example 95% confidence interval would be 95.\n",
       "examples": [95, 90, 80],
       "type": "array",
@@ -274,7 +274,7 @@
         "type": ["number", "null"]
       }
     },
-    "shape_ci": {
+    "shape_ci_limits": {
       "description": "The confidence interval of the distribution's shape parameter, specified by two numbers in an array.\n",
       "examples": [
         [0.3, 3.2],
@@ -288,7 +288,7 @@
         }
       }
     },
-    "shape_ci_interval": {
+    "shape_ci": {
       "description": "The interval of the uncertainty around the shape parameter of the distribution, for example 95% confidence interval would be 95.\n",
       "examples": [95, 90, 80],
       "type": "array",
@@ -304,7 +304,7 @@
         "type": ["number", "null"]
       }
     },
-    "scale_ci": {
+    "scale_ci_limits": {
       "description": "The confidence interval of the distribution's scale parameter, specified by two numbers in an array.\n",
       "examples": [
         [0.2, 0.5],
@@ -318,7 +318,7 @@
         }
       }
     },
-    "scale_ci_interval": {
+    "scale_ci": {
       "description": "The interval of the uncertainty around the scale parameter of the distribution, for example 95% confidence interval would be 95.\n",
       "examples": [95, 90, 80],
       "type": "array",
@@ -334,7 +334,7 @@
         "type": ["number", "null"]
       }
     },
-    "meanlog_ci": {
+    "meanlog_ci_limits": {
       "description": "The confidence interval of the distribution's meanlog parameter, specified by two numbers in an array.\n",
       "examples": [
         [0.4, 0.9],
@@ -348,7 +348,7 @@
         }
       }
     },
-    "meanlog_ci_interval": {
+    "meanlog_ci": {
       "description": "The interval of the uncertainty around the meanlog parameter of the distribution, for example 95% confidence interval would be 95.\n",
       "examples": [95, 90, 80],
       "type": "array",
@@ -364,7 +364,7 @@
         "type": ["number", "null"]
       }
     },
-    "sdlog_ci": {
+    "sdlog_ci_limits": {
       "description": "The confidence interval of the distribution's sdlog parameter, specified by two numbers in an array.\n",
       "examples": [
         [0.3, 0.8],
@@ -378,7 +378,7 @@
         }
       }
     },
-    "sdlog_ci_interval": {
+    "sdlog_ci": {
       "description": "The interval of the uncertainty around the sdlog parameter of the distribution, for example 95% confidence interval would be 95.\n",
       "examples": [95, 90, 80],
       "type": "array",
@@ -394,7 +394,7 @@
         "type": ["number", "null"]
       }
     },
-    "dispersion_ci": {
+    "dispersion_ci_limits": {
       "description": "The confidence interval of the distribution's dispersion, specified by two numbers in an array.\n",
       "examples": [
         [0.3, 0.8],
@@ -408,7 +408,7 @@
         }
       }
     },
-    "dispersion_ci_interval": {
+    "dispersion_ci": {
       "description": "The interval of the uncertainty around the dispersion of the distribution, for example 95% confidence interval would be 95.\n",
       "examples": [95, 90, 80],
       "type": "array",
@@ -424,7 +424,7 @@
         "type": ["number", "null"]
       }
     },
-    "precision_ci": {
+    "precision_ci_limits": {
       "description": "The confidence interval of the distribution's precision parameter, specified by two numbers in an array.\n",
       "examples": [
         [0.3, 0.8],
@@ -438,7 +438,7 @@
         }
       }
     },
-    "precision_ci_interval": {
+    "precision_ci": {
       "description": "The interval of the uncertainty around the precision parameter, for example 95% confidence interval would be 95.\n",
       "examples": [95, 90, 80],
       "type": "array",

@@ -8,17 +8,17 @@ remember which summary statistics can be accepted in the list}
 \usage{
 create_epidist_summary_stats(
   mean = NA_real_,
-  mean_ci = c(NA_real_, NA_real_),
-  mean_ci_interval = NA_real_,
+  mean_ci_limits = c(NA_real_, NA_real_),
+  mean_ci = NA_real_,
   sd = NA_real_,
-  sd_ci = c(NA_real_, NA_real_),
-  sd_ci_interval = NA_real_,
+  sd_ci_limits = c(NA_real_, NA_real_),
+  sd_ci = NA_real_,
   median = NA_real_,
-  median_ci = c(NA_real_, NA_real_),
-  median_ci_interval = NA_real_,
+  median_ci_limits = c(NA_real_, NA_real_),
+  median_ci = NA_real_,
   dispersion = NA_real_,
-  dispersion_ci = c(NA_real_, NA_real_),
-  dispersion_ci_interval = NA_real_,
+  dispersion_ci_limits = c(NA_real_, NA_real_),
+  dispersion_ci = NA_real_,
   lower_range = NA_real_,
   upper_range = NA_real_,
   q_025 = NA_real_,
@@ -34,34 +34,34 @@ create_epidist_summary_stats(
 \item{mean}{A numeric of the mean (expectation) of the probability
 distribution}
 
-\item{mean_ci}{A numeric vector of length two of the confidence interval
+\item{mean_ci_limits}{A numeric vector of length two of the confidence interval
 around the mean}
 
-\item{mean_ci_interval}{A numeric specifying the confidence interval width,
+\item{mean_ci}{A numeric specifying the confidence interval width,
 e.g. 95 would be the 95\% CI}
 
 \item{sd}{A numeric of the standard deviation of the probability distribution}
 
-\item{sd_ci}{A numeric vector of length 2 of the confidence interval around
+\item{sd_ci_limits}{A numeric vector of length 2 of the confidence interval around
 the standard deviation}
 
-\item{sd_ci_interval}{A numeric specifying the confidence interval width,
+\item{sd_ci}{A numeric specifying the confidence interval width,
 e.g. 95 would be 95\% confidence interval}
 
 \item{median}{A numeric of the median of the probability distribution}
 
-\item{median_ci}{A numeric vector of length two of the confidence interval
+\item{median_ci_limits}{A numeric vector of length two of the confidence interval
 around the median}
 
-\item{median_ci_interval}{A numeric specifying the confidence interval width
+\item{median_ci}{A numeric specifying the confidence interval width
 of the median}
 
 \item{dispersion}{A numeric of the dispersion parameter of a distribution}
 
-\item{dispersion_ci}{A numeric vector of length two of the confidence
+\item{dispersion_ci_limits}{A numeric vector of length two of the confidence
 interval around the dispersion}
 
-\item{dispersion_ci_interval}{A numeric specifying the confidence interval
+\item{dispersion_ci}{A numeric specifying the confidence interval
 width of the dispersion parameter}
 
 \item{lower_range}{The lower range of the data, used to infer the parameters

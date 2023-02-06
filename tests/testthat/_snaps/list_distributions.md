@@ -58,8 +58,8 @@
       11 2009          90
       12 2009          78
       13 2009         134
-      14 2010          72
-      15 2010          72
+      14 2011          72
+      15 2011          72
       16 2009         151
       17 2009         151
       18 2010         316
@@ -146,8 +146,8 @@
       11   Lessler_etal 2009          90         Mixed        FALSE
       12   Lessler_etal 2009          78           USA        FALSE
       13   Lessler_etal 2009         134 New York, USA        FALSE
-      14 Nishiura_Inaba 2010          72         Japan        FALSE
-      15 Nishiura_Inaba 2010          72         Japan        FALSE
+      14 Nishiura_Inaba 2011          72         Japan        FALSE
+      15 Nishiura_Inaba 2011          72         Japan        FALSE
       16     Reich_etal 2009         151         Mixed        FALSE
       17     Reich_etal 2009         151         Mixed        FALSE
       18     Tuite_etal 2010         316        Canada        FALSE
@@ -214,88 +214,88 @@
       38                           mosquito     FALSE         lognormal
       39                           mosquito     FALSE         lognormal
       40 Aedes aegypti and Aedes albopictus     FALSE         lognormal
-         inference_method  mean   mean_ci mean_ci_interval   sd  sd_ci sd_ci_interval
-      1               mle    NA    NA, NA               NA   NA NA, NA             NA
-      2               mle    NA    NA, NA               NA   NA NA, NA             NA
-      3          bayesian 15.00    10, 20               95   NA NA, NA             NA
-      4          bayesian  6.50  4.8, 8.8               95   NA NA, NA             NA
-      5          bayesian  5.97  5.5, 6.4               95 1.64 NA, NA             NA
-      6               mle    NA    NA, NA               NA   NA NA, NA             NA
-      7               mle    NA    NA, NA               NA   NA NA, NA             NA
-      8          bayesian    NA    NA, NA               NA   NA NA, NA             NA
-      9               mle  2.05    NA, NA               NA 0.49 NA, NA             NA
-      10              mle    NA    NA, NA               NA   NA NA, NA             NA
-      11              mle    NA    NA, NA               NA   NA NA, NA             NA
-      12              mle    NA    NA, NA               NA   NA NA, NA             NA
-      13              mle    NA    NA, NA               NA   NA NA, NA             NA
-      14              mle    NA    NA, NA               NA   NA NA, NA             NA
-      15              mle    NA    NA, NA               NA   NA NA, NA             NA
-      16              mle    NA    NA, NA               NA   NA NA, NA             NA
-      17              mle    NA    NA, NA               NA   NA NA, NA             NA
-      18          unknown  4.30  2.6, 6.6               95   NA NA, NA             NA
-      19              mle  3.40  3.0, 3.7               95 1.70 NA, NA             NA
-      20              mle  4.50 2.8, 16.2               95 3.30 NA, NA             NA
-      21         bayesian  3.50  3.2, 3.8               95   NA NA, NA             NA
-      22         bayesian  3.70  3.4, 4.1               95   NA NA, NA             NA
-      23         bayesian  3.30  2.9, 3.6               95   NA NA, NA             NA
-      24              mle    NA    NA, NA               NA   NA NA, NA             NA
-      25             <NA>    NA    NA, NA               NA   NA NA, NA             NA
-      26             <NA>    NA    NA, NA               NA   NA NA, NA             NA
-      27              mle    NA    NA, NA               NA   NA NA, NA             NA
-      28              mle    NA    NA, NA               NA   NA NA, NA             NA
-      29              mle    NA    NA, NA               NA   NA NA, NA             NA
-      30              mle    NA    NA, NA               NA   NA NA, NA             NA
-      31              mle    NA    NA, NA               NA   NA NA, NA             NA
-      32              mle    NA    NA, NA               NA   NA NA, NA             NA
-      33              mle    NA    NA, NA               NA   NA NA, NA             NA
-      34              mle    NA    NA, NA               NA   NA NA, NA             NA
-      35              mle    NA    NA, NA               NA   NA NA, NA             NA
-      36              mle    NA    NA, NA               NA   NA NA, NA             NA
-      37              mle    NA    NA, NA               NA   NA NA, NA             NA
-      38              mle    NA    NA, NA               NA   NA NA, NA             NA
-      39              mle    NA    NA, NA               NA   NA NA, NA             NA
-      40         bayesian    NA    NA, NA               NA   NA NA, NA             NA
-         quantile_025 quantile_05 quantile_25 median  median_ci median_ci_interval
-      1            NA          NA         4.8   5.60   4.8, 6.3                 95
-      2            NA          NA         2.9   3.00   0.5, 3.1                 95
-      3           5.0          NA          NA     NA     NA, NA                 NA
-      4           2.4          NA          NA     NA     NA, NA                 NA
-      5           3.4          NA          NA     NA     NA, NA                 NA
-      6            NA          NA         4.5   5.60   5.3, 6.0                 95
-      7            NA          NA         4.3   5.30   5.0, 5.7                 95
-      8            NA          NA         2.9   3.20   2.8, 3.7                 95
-      9            NA          NA          NA     NA     NA, NA                 NA
-      10           NA        0.70         1.1   1.40   1.3, 1.5                 95
-      11           NA        1.40         1.7   1.90   1.8, 2.0                 95
-      12           NA        0.30         0.4   0.60   0.5, 0.6                 95
-      13           NA        0.90          NA   1.40   1.0, 1.8                 95
-      14           NA          NA          NA   1.51 1.47, 1.55                 95
-      15           NA          NA          NA   1.43 1.21, 1.65                 95
-      16           NA        0.73          NA   1.46 1.35, 1.57                 95
-      17           NA        0.73          NA   1.43 1.33, 1.54                 95
-      18           NA          NA          NA   4.00     NA, NA                 NA
-      19           NA          NA          NA     NA     NA, NA                 NA
-      20           NA          NA          NA     NA     NA, NA                 NA
-      21           NA          NA          NA     NA     NA, NA                 NA
-      22           NA          NA          NA     NA     NA, NA                 NA
-      23           NA          NA          NA     NA     NA, NA                 NA
-      24           NA          NA         8.1   8.40   5.1, 9.4                 95
-      25           NA          NA          NA     NA     NA, NA                 NA
-      26           NA          NA          NA   7.00     NA, NA                 NA
-      27           NA        8.90        10.9  12.50 11.8, 13.3                 95
-      28           NA          NA         2.1   2.60   2.1, 3.1                 95
-      29           NA        0.80         1.3   1.90   1.4, 2.4                 95
-      30           NA          NA         3.1   4.00   3.4, 4.9                 95
-      31           NA        3.10         3.8   4.40   3.9, 4.9                 95
-      32           NA        3.05          NA   4.41 3.90, 4.92                 95
-      33           NA        3.11          NA   4.41 3.89, 4.94                 95
-      34           NA        1.50         2.7   4.00   3.6, 4.4                 95
-      35           NA        1.00         1.7   2.60   1.6, 3.5                 95
-      36           NA          NA         2.8   2.90   0.5, 3.1                 95
-      37           NA          NA         8.7  10.80  8.4, 14.2                 95
-      38           NA        1.90         3.2   4.40       4, 5                 95
-      39           NA        1.90         3.1   4.40   3.9, 5.0                 95
-      40           NA        3.20         4.6   5.90   4.4, 7.6                 95
+         inference_method  mean mean_ci_limits mean_ci   sd sd_ci_limits sd_ci
+      1               mle    NA         NA, NA      NA   NA       NA, NA    NA
+      2               mle    NA         NA, NA      NA   NA       NA, NA    NA
+      3          bayesian 15.00         10, 20      95   NA       NA, NA    NA
+      4          bayesian  6.50       4.8, 8.8      95   NA       NA, NA    NA
+      5          bayesian  5.97       5.5, 6.4      95 1.64       NA, NA    NA
+      6               mle    NA         NA, NA      NA   NA       NA, NA    NA
+      7               mle    NA         NA, NA      NA   NA       NA, NA    NA
+      8          bayesian    NA         NA, NA      NA   NA       NA, NA    NA
+      9               mle  2.05         NA, NA      NA 0.49       NA, NA    NA
+      10              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      11              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      12              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      13              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      14              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      15              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      16              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      17              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      18             <NA>  4.30       2.6, 6.6      95   NA       NA, NA    NA
+      19              mle  3.40       3.0, 3.7      95 1.70       NA, NA    NA
+      20              mle  4.50      2.8, 16.2      95 3.30       NA, NA    NA
+      21         bayesian  3.50       3.2, 3.8      95   NA       NA, NA    NA
+      22         bayesian  3.70       3.4, 4.1      95   NA       NA, NA    NA
+      23         bayesian  3.30       2.9, 3.6      95   NA       NA, NA    NA
+      24              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      25             <NA>    NA         NA, NA      NA   NA       NA, NA    NA
+      26             <NA>    NA         NA, NA      NA   NA       NA, NA    NA
+      27              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      28              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      29              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      30              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      31              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      32              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      33              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      34              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      35              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      36              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      37              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      38              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      39              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      40         bayesian    NA         NA, NA      NA   NA       NA, NA    NA
+         quantile_025 quantile_05 quantile_25 median median_ci_limits median_ci
+      1            NA          NA         4.8   5.60         4.8, 6.3        95
+      2            NA          NA         2.9   3.00         0.5, 3.1        95
+      3           5.0          NA          NA     NA           NA, NA        NA
+      4           2.4          NA          NA     NA           NA, NA        NA
+      5           3.4          NA          NA     NA           NA, NA        NA
+      6            NA          NA         4.5   5.60         5.3, 6.0        95
+      7            NA          NA         4.3   5.30         5.0, 5.7        95
+      8            NA          NA         2.9   3.20         2.8, 3.7        95
+      9            NA          NA          NA     NA           NA, NA        NA
+      10           NA        0.70         1.1   1.40         1.3, 1.5        95
+      11           NA        1.40         1.7   1.90         1.8, 2.0        95
+      12           NA        0.30         0.4   0.60         0.5, 0.6        95
+      13           NA        0.90          NA   1.40         1.0, 1.8        95
+      14           NA          NA          NA   1.51       1.47, 1.55        95
+      15           NA          NA          NA   1.43       1.21, 1.65        95
+      16           NA        0.73          NA   1.46       1.35, 1.57        95
+      17           NA        0.73          NA   1.43       1.33, 1.54        95
+      18           NA          NA          NA   4.00           NA, NA        NA
+      19           NA          NA          NA     NA           NA, NA        NA
+      20           NA          NA          NA     NA           NA, NA        NA
+      21           NA          NA          NA     NA           NA, NA        NA
+      22           NA          NA          NA     NA           NA, NA        NA
+      23           NA          NA          NA     NA           NA, NA        NA
+      24           NA          NA         8.1   8.40         5.1, 9.4        95
+      25           NA          NA          NA     NA           NA, NA        NA
+      26           NA          NA          NA   7.00           NA, NA        NA
+      27           NA        8.90        10.9  12.50       11.8, 13.3        95
+      28           NA          NA         2.1   2.60         2.1, 3.1        95
+      29           NA        0.80         1.3   1.90         1.4, 2.4        95
+      30           NA          NA         3.1   4.00         3.4, 4.9        95
+      31           NA        3.10         3.8   4.40         3.9, 4.9        95
+      32           NA        3.05          NA   4.41       3.90, 4.92        95
+      33           NA        3.11          NA   4.41       3.89, 4.94        95
+      34           NA        1.50         2.7   4.00         3.6, 4.4        95
+      35           NA        1.00         1.7   2.60         1.6, 3.5        95
+      36           NA          NA         2.8   2.90         0.5, 3.1        95
+      37           NA          NA         8.7  10.80        8.4, 14.2        95
+      38           NA        1.90         3.2   4.40             4, 5        95
+      39           NA        1.90         3.1   4.40         3.9, 5.0        95
+      40           NA        3.20         4.6   5.90         4.4, 7.6        95
          quantile_75 quantile_875 quantile_95 quantile_975 lower_range upper_range
       1          6.5           NA          NA           NA          NA          NA
       2          3.0           NA          NA           NA          NA          NA
@@ -329,7 +329,7 @@
       30         5.3           NA          NA           NA          NA          NA
       31          NA           NA        6.30           NA          NA          NA
       32          NA           NA        6.39           NA          NA          NA
-      33          NA           NA        6.29           NA          NA          NA
+      33          NA           NA        6.26           NA          NA          NA
       34         5.9           NA       10.60           NA          NA          NA
       35         3.8           NA        7.00           NA          NA          NA
       36         3.0           NA          NA           NA          NA          NA
@@ -337,170 +337,170 @@
       38         6.3           NA       10.30           NA          NA          NA
       39         6.2           NA       10.30           NA          NA          NA
       40         7.6           NA       11.20           NA          NA          NA
-         shape   shape_ci shape_ci_interval scale   scale_ci scale_ci_interval
-      1     NA     NA, NA                NA    NA     NA, NA                NA
-      2     NA     NA, NA                NA    NA     NA, NA                NA
-      3     NA     NA, NA                NA    NA     NA, NA                NA
-      4     NA     NA, NA                NA    NA     NA, NA                NA
-      5     NA     NA, NA                NA    NA     NA, NA                NA
-      6     NA     NA, NA                NA    NA     NA, NA                NA
-      7     NA     NA, NA                NA    NA     NA, NA                NA
-      8     NA     NA, NA                NA    NA     NA, NA                NA
-      9     NA     NA, NA                NA    NA     NA, NA                NA
-      10    NA     NA, NA                NA    NA     NA, NA                NA
-      11    NA     NA, NA                NA    NA     NA, NA                NA
-      12    NA     NA, NA                NA    NA     NA, NA                NA
-      13    NA     NA, NA                NA    NA     NA, NA                NA
-      14  3.27     NA, NA                NA  0.51     NA, NA                NA
-      15  1.74     NA, NA                NA  1.83     NA, NA                NA
-      16    NA     NA, NA                NA    NA     NA, NA                NA
-      17    NA     NA, NA                NA    NA     NA, NA                NA
-      18    NA     NA, NA                NA    NA     NA, NA                NA
-      19    NA     NA, NA                NA    NA     NA, NA                NA
-      20    NA     NA, NA                NA    NA     NA, NA                NA
-      21    NA     NA, NA                NA    NA     NA, NA                NA
-      22  2.30 1.80, 2.89                95  4.21 3.62, 4.85                95
-      23  2.03 1.62, 2.52                95  3.74 3.20, 4.36                95
-      24    NA     NA, NA                NA    NA     NA, NA                NA
-      25    NA     NA, NA                NA    NA     NA, NA                NA
-      26    NA     NA, NA                NA    NA     NA, NA                NA
-      27    NA     NA, NA                NA    NA     NA, NA                NA
-      28    NA     NA, NA                NA    NA     NA, NA                NA
-      29    NA     NA, NA                NA    NA     NA, NA                NA
-      30    NA     NA, NA                NA    NA     NA, NA                NA
-      31    NA     NA, NA                NA    NA     NA, NA                NA
-      32    NA     NA, NA                NA    NA     NA, NA                NA
-      33    NA     NA, NA                NA    NA     NA, NA                NA
-      34    NA     NA, NA                NA    NA     NA, NA                NA
-      35    NA     NA, NA                NA    NA     NA, NA                NA
-      36    NA     NA, NA                NA    NA     NA, NA                NA
-      37    NA     NA, NA                NA    NA     NA, NA                NA
-      38    NA     NA, NA                NA    NA     NA, NA                NA
-      39    NA     NA, NA                NA    NA     NA, NA                NA
-      40    NA     NA, NA                NA    NA     NA, NA                NA
-         meanlog meanlog_ci meanlog_ci_interval sdlog sdlog_ci sdlog_ci_interval
-      1       NA     NA, NA                  NA    NA   NA, NA                NA
-      2       NA     NA, NA                  NA    NA   NA, NA                NA
-      3       NA     NA, NA                  NA    NA   NA, NA                NA
-      4       NA     NA, NA                  NA    NA   NA, NA                NA
-      5     1.75     NA, NA                  NA  0.27   NA, NA                NA
-      6       NA     NA, NA                  NA    NA   NA, NA                NA
-      7       NA     NA, NA                  NA    NA   NA, NA                NA
-      8       NA     NA, NA                  NA    NA   NA, NA                NA
-      9       NA     NA, NA                  NA    NA   NA, NA                NA
-      10      NA     NA, NA                  NA    NA   NA, NA                NA
-      11      NA     NA, NA                  NA    NA   NA, NA                NA
-      12      NA     NA, NA                  NA    NA   NA, NA                NA
-      13      NA     NA, NA                  NA    NA   NA, NA                NA
-      14      NA     NA, NA                  NA    NA   NA, NA                NA
-      15      NA     NA, NA                  NA    NA   NA, NA                NA
-      16      NA     NA, NA                  NA    NA   NA, NA                NA
-      17      NA     NA, NA                  NA    NA   NA, NA                NA
-      18      NA     NA, NA                  NA    NA   NA, NA                NA
-      19      NA     NA, NA                  NA    NA   NA, NA                NA
-      20      NA     NA, NA                  NA    NA   NA, NA                NA
-      21      NA     NA, NA                  NA    NA   NA, NA                NA
-      22      NA     NA, NA                  NA    NA   NA, NA                NA
-      23      NA     NA, NA                  NA    NA   NA, NA                NA
-      24      NA     NA, NA                  NA    NA   NA, NA                NA
-      25      NA     NA, NA                  NA    NA   NA, NA                NA
-      26      NA     NA, NA                  NA    NA   NA, NA                NA
-      27      NA     NA, NA                  NA    NA   NA, NA                NA
-      28      NA     NA, NA                  NA    NA   NA, NA                NA
-      29      NA     NA, NA                  NA    NA   NA, NA                NA
-      30      NA     NA, NA                  NA    NA   NA, NA                NA
-      31      NA     NA, NA                  NA    NA   NA, NA                NA
-      32      NA     NA, NA                  NA    NA   NA, NA                NA
-      33      NA     NA, NA                  NA    NA   NA, NA                NA
-      34      NA     NA, NA                  NA    NA   NA, NA                NA
-      35      NA     NA, NA                  NA    NA   NA, NA                NA
-      36      NA     NA, NA                  NA    NA   NA, NA                NA
-      37      NA     NA, NA                  NA    NA   NA, NA                NA
-      38      NA     NA, NA                  NA    NA   NA, NA                NA
-      39      NA     NA, NA                  NA    NA   NA, NA                NA
-      40      NA     NA, NA                  NA    NA   NA, NA                NA
-         dispersion dispersion_ci dispersion_ci_interval precision precision_ci
-      1        1.26    1.13, 1.38                     95        NA       NA, NA
-      2        1.04    1.04, 1.08                     95        NA       NA, NA
-      3          NA        NA, NA                     NA        NA       NA, NA
-      4          NA        NA, NA                     NA       4.9     2.8, 7.5
-      5          NA        NA, NA                     NA      13.7   10.9, 16.9
-      6        1.41    1.34, 1.50                     95        NA       NA, NA
-      7        1.37    1.27, 1.52                     95        NA       NA, NA
-      8        1.15    1.07, 1.34                     95        NA       NA, NA
-      9          NA        NA, NA                     NA        NA       NA, NA
-      10       1.51    1.43, 1.60                     95        NA       NA, NA
-      11       1.23    1.17, 1.29                     95        NA       NA, NA
-      12       1.51    1.37, 1.64                     95        NA       NA, NA
-      13         NA        NA, NA                     NA        NA       NA, NA
-      14         NA        NA, NA                     NA        NA       NA, NA
-      15         NA        NA, NA                     NA        NA       NA, NA
-      16       1.53    1.44, 1.61                     95        NA       NA, NA
-      17       1.51    1.43, 1.60                     95        NA       NA, NA
-      18         NA        NA, NA                     NA        NA       NA, NA
-      19         NA        NA, NA                     NA        NA       NA, NA
-      20         NA        NA, NA                     NA        NA       NA, NA
-      21         NA        NA, NA                     NA        NA       NA, NA
-      22         NA        NA, NA                     NA        NA       NA, NA
-      23         NA        NA, NA                     NA        NA       NA, NA
-      24       1.04    1.04, 1.05                     95        NA       NA, NA
-      25         NA        NA, NA                     NA        NA       NA, NA
-      26         NA        NA, NA                     NA        NA       NA, NA
-      27       1.23    1.18, 1.28                     95        NA       NA, NA
-      28       1.35    1.16, 1.55                     95        NA       NA, NA
-      29       1.68    1.36, 2.01                     95        NA       NA, NA
-      30       1.50    1.22, 1.82                     95        NA       NA, NA
-      31       1.24    1.13, 1.35                     95        NA       NA, NA
-      32       1.25    1.14, 1.36                     95        NA       NA, NA
-      33       1.24    1.12, 1.35                     95        NA       NA, NA
-      34       1.81    1.67, 1.95                     95        NA       NA, NA
-      35       1.82    1.27, 2.67                     95        NA       NA, NA
-      36       1.04    1.04, 1.29                     95        NA       NA, NA
-      37       1.35    1.12, 1.47                     95        NA       NA, NA
-      38       1.66    1.48, 1.82                     95        NA       NA, NA
-      39       1.67    1.47, 1.84                     95        NA       NA, NA
-      40       1.50      1.2, 1.9                     95        NA       NA, NA
-         precision_ci_interval truncation discretised censorred right_truncated
-      1                     NA         NA       FALSE      TRUE           FALSE
-      2                     NA         NA       FALSE      TRUE           FALSE
-      3                     NA         NA       FALSE      TRUE           FALSE
-      4                     95         NA       FALSE      TRUE           FALSE
-      5                     95         NA       FALSE      TRUE           FALSE
-      6                     NA         NA       FALSE      TRUE           FALSE
-      7                     NA         NA       FALSE      TRUE           FALSE
-      8                     NA         NA       FALSE      TRUE           FALSE
-      9                     NA         NA       FALSE        NA              NA
-      10                    NA         NA       FALSE      TRUE           FALSE
-      11                    NA         NA       FALSE      TRUE           FALSE
-      12                    NA         NA       FALSE      TRUE           FALSE
-      13                    NA         NA       FALSE      TRUE           FALSE
-      14                    NA         NA       FALSE      TRUE           FALSE
-      15                    NA         NA       FALSE      TRUE           FALSE
-      16                    NA         NA       FALSE      TRUE           FALSE
-      17                    NA         NA       FALSE      TRUE           FALSE
-      18                    NA         NA       FALSE     FALSE           FALSE
-      19                    NA         NA       FALSE      TRUE           FALSE
-      20                    NA         NA       FALSE      TRUE           FALSE
-      21                    NA         NA       FALSE      TRUE           FALSE
-      22                    NA         NA       FALSE      TRUE           FALSE
-      23                    NA         NA       FALSE      TRUE           FALSE
-      24                    NA         NA       FALSE      TRUE           FALSE
-      25                    NA         NA       FALSE     FALSE           FALSE
-      26                    NA         NA       FALSE     FALSE           FALSE
-      27                    NA         NA       FALSE      TRUE           FALSE
-      28                    NA         NA       FALSE      TRUE           FALSE
-      29                    NA         NA       FALSE      TRUE           FALSE
-      30                    NA         NA       FALSE      TRUE           FALSE
-      31                    NA         NA       FALSE      TRUE           FALSE
-      32                    NA         NA       FALSE      TRUE           FALSE
-      33                    NA         NA       FALSE      TRUE           FALSE
-      34                    NA         NA       FALSE      TRUE           FALSE
-      35                    NA         NA       FALSE      TRUE           FALSE
-      36                    NA         NA       FALSE      TRUE           FALSE
-      37                    NA         NA       FALSE      TRUE           FALSE
-      38                    NA         NA       FALSE      TRUE           FALSE
-      39                    NA         NA       FALSE      TRUE           FALSE
-      40                    NA         NA       FALSE      TRUE           FALSE
+         shape shape_ci_limits shape_ci scale scale_ci_limits scale_ci meanlog
+      1     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      2     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      3     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      4     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      5     NA          NA, NA       NA    NA          NA, NA       NA    1.75
+      6     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      7     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      8     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      9     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      10    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      11    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      12    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      13    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      14  3.27          NA, NA       NA  0.51          NA, NA       NA      NA
+      15  1.74          NA, NA       NA  1.83          NA, NA       NA      NA
+      16    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      17    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      18    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      19    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      20    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      21    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      22  2.30      1.80, 2.89       95  4.21      3.62, 4.85       95      NA
+      23  2.03      1.62, 2.52       95  3.74      3.20, 4.36       95      NA
+      24    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      25    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      26    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      27    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      28    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      29    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      30    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      31    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      32    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      33    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      34    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      35    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      36    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      37    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      38    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      39    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      40    NA          NA, NA       NA    NA          NA, NA       NA      NA
+         meanlog_ci_limits meanlog_ci sdlog sdlog_ci_limits sdlog_ci dispersion
+      1             NA, NA         NA    NA          NA, NA       NA       1.26
+      2             NA, NA         NA    NA          NA, NA       NA       1.04
+      3             NA, NA         NA    NA          NA, NA       NA         NA
+      4             NA, NA         NA    NA          NA, NA       NA         NA
+      5             NA, NA         NA  0.27          NA, NA       NA         NA
+      6             NA, NA         NA    NA          NA, NA       NA       1.41
+      7             NA, NA         NA    NA          NA, NA       NA       1.37
+      8             NA, NA         NA    NA          NA, NA       NA       1.15
+      9             NA, NA         NA    NA          NA, NA       NA         NA
+      10            NA, NA         NA    NA          NA, NA       NA       1.51
+      11            NA, NA         NA    NA          NA, NA       NA       1.23
+      12            NA, NA         NA    NA          NA, NA       NA       1.51
+      13            NA, NA         NA    NA          NA, NA       NA         NA
+      14            NA, NA         NA    NA          NA, NA       NA         NA
+      15            NA, NA         NA    NA          NA, NA       NA         NA
+      16            NA, NA         NA    NA          NA, NA       NA       1.53
+      17            NA, NA         NA    NA          NA, NA       NA       1.51
+      18            NA, NA         NA    NA          NA, NA       NA         NA
+      19            NA, NA         NA    NA          NA, NA       NA         NA
+      20            NA, NA         NA    NA          NA, NA       NA         NA
+      21            NA, NA         NA    NA          NA, NA       NA         NA
+      22            NA, NA         NA    NA          NA, NA       NA         NA
+      23            NA, NA         NA    NA          NA, NA       NA         NA
+      24            NA, NA         NA    NA          NA, NA       NA       1.04
+      25            NA, NA         NA    NA          NA, NA       NA         NA
+      26            NA, NA         NA    NA          NA, NA       NA         NA
+      27            NA, NA         NA    NA          NA, NA       NA       1.23
+      28            NA, NA         NA    NA          NA, NA       NA       1.35
+      29            NA, NA         NA    NA          NA, NA       NA       1.68
+      30            NA, NA         NA    NA          NA, NA       NA       1.50
+      31            NA, NA         NA    NA          NA, NA       NA       1.24
+      32            NA, NA         NA    NA          NA, NA       NA       1.25
+      33            NA, NA         NA    NA          NA, NA       NA       1.24
+      34            NA, NA         NA    NA          NA, NA       NA       1.81
+      35            NA, NA         NA    NA          NA, NA       NA       1.82
+      36            NA, NA         NA    NA          NA, NA       NA       1.04
+      37            NA, NA         NA    NA          NA, NA       NA       1.35
+      38            NA, NA         NA    NA          NA, NA       NA       1.66
+      39            NA, NA         NA    NA          NA, NA       NA       1.67
+      40            NA, NA         NA    NA          NA, NA       NA       1.50
+         dispersion_ci_limits dispersion_ci precision precision_ci_limits
+      1            1.13, 1.38            95        NA              NA, NA
+      2            1.04, 1.08            95        NA              NA, NA
+      3                NA, NA            NA        NA              NA, NA
+      4                NA, NA            NA       4.9            2.8, 7.5
+      5                NA, NA            NA      13.7          10.9, 16.9
+      6            1.34, 1.50            95        NA              NA, NA
+      7            1.27, 1.52            95        NA              NA, NA
+      8            1.07, 1.34            95        NA              NA, NA
+      9                NA, NA            NA        NA              NA, NA
+      10           1.43, 1.60            95        NA              NA, NA
+      11           1.17, 1.29            95        NA              NA, NA
+      12           1.37, 1.64            95        NA              NA, NA
+      13               NA, NA            NA        NA              NA, NA
+      14               NA, NA            NA        NA              NA, NA
+      15               NA, NA            NA        NA              NA, NA
+      16           1.44, 1.61            95        NA              NA, NA
+      17           1.43, 1.60            95        NA              NA, NA
+      18               NA, NA            NA        NA              NA, NA
+      19               NA, NA            NA        NA              NA, NA
+      20               NA, NA            NA        NA              NA, NA
+      21               NA, NA            NA        NA              NA, NA
+      22               NA, NA            NA        NA              NA, NA
+      23               NA, NA            NA        NA              NA, NA
+      24           1.04, 1.05            95        NA              NA, NA
+      25               NA, NA            NA        NA              NA, NA
+      26               NA, NA            NA        NA              NA, NA
+      27           1.18, 1.28            95        NA              NA, NA
+      28           1.16, 1.55            95        NA              NA, NA
+      29           1.36, 2.01            95        NA              NA, NA
+      30           1.22, 1.82            95        NA              NA, NA
+      31           1.13, 1.35            95        NA              NA, NA
+      32           1.14, 1.36            95        NA              NA, NA
+      33           1.12, 1.35            95        NA              NA, NA
+      34           1.67, 1.95            95        NA              NA, NA
+      35           1.27, 2.67            95        NA              NA, NA
+      36           1.04, 1.29            95        NA              NA, NA
+      37           1.12, 1.47            95        NA              NA, NA
+      38           1.48, 1.82            95        NA              NA, NA
+      39           1.47, 1.84            95        NA              NA, NA
+      40             1.2, 1.9            95        NA              NA, NA
+         precision_ci truncation discretised censorred right_truncated
+      1            NA         NA       FALSE      TRUE           FALSE
+      2            NA         NA       FALSE      TRUE           FALSE
+      3            NA         NA       FALSE      TRUE           FALSE
+      4            95         NA       FALSE      TRUE           FALSE
+      5            95         NA       FALSE      TRUE           FALSE
+      6            NA         NA       FALSE      TRUE           FALSE
+      7            NA         NA       FALSE      TRUE           FALSE
+      8            NA         NA       FALSE      TRUE           FALSE
+      9            NA         NA       FALSE      TRUE           FALSE
+      10           NA         NA       FALSE      TRUE           FALSE
+      11           NA         NA       FALSE      TRUE           FALSE
+      12           NA         NA       FALSE      TRUE           FALSE
+      13           NA         NA       FALSE      TRUE           FALSE
+      14           NA         NA       FALSE      TRUE           FALSE
+      15           NA         NA       FALSE      TRUE           FALSE
+      16           NA         NA       FALSE      TRUE           FALSE
+      17           NA         NA       FALSE      TRUE           FALSE
+      18           NA         NA       FALSE     FALSE           FALSE
+      19           NA         NA       FALSE      TRUE           FALSE
+      20           NA         NA       FALSE      TRUE           FALSE
+      21           NA         NA       FALSE      TRUE           FALSE
+      22           NA         NA       FALSE      TRUE           FALSE
+      23           NA         NA       FALSE      TRUE           FALSE
+      24           NA         NA       FALSE      TRUE           FALSE
+      25           NA         NA       FALSE     FALSE           FALSE
+      26           NA         NA       FALSE     FALSE           FALSE
+      27           NA         NA       FALSE      TRUE           FALSE
+      28           NA         NA       FALSE      TRUE           FALSE
+      29           NA         NA       FALSE      TRUE           FALSE
+      30           NA         NA       FALSE      TRUE           FALSE
+      31           NA         NA       FALSE      TRUE           FALSE
+      32           NA         NA       FALSE      TRUE           FALSE
+      33           NA         NA       FALSE      TRUE           FALSE
+      34           NA         NA       FALSE      TRUE           FALSE
+      35           NA         NA       FALSE      TRUE           FALSE
+      36           NA         NA       FALSE      TRUE           FALSE
+      37           NA         NA       FALSE      TRUE           FALSE
+      38           NA         NA       FALSE      TRUE           FALSE
+      39           NA         NA       FALSE      TRUE           FALSE
+      40           NA         NA       FALSE      TRUE           FALSE
          phase_bias_adjusted
       1                FALSE
       2                FALSE
@@ -510,7 +510,7 @@
       6                FALSE
       7                FALSE
       8                FALSE
-      9                   NA
+      9                FALSE
       10               FALSE
       11               FALSE
       12               FALSE
@@ -551,13 +551,13 @@
       6                                                                                                                                                                                                                                                                                                                                                  Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
       7                                                                                                                                                                                                                                                                        Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
       8                                                                                                                                                                                                                                                                                          Analysis on data from  Bradburne AF, Bynoe ML, Tyrrell DA. Eff ects of a “new” human respiratory virus in volunteers. Br Med J 1967; 3: 767–69.
-      9                                                                                                                                                                                                                                                                                                                                                                                                                                         
+      9                                                                                                                                                                                                                                                                                                                                                                                                                     No additional notes.
       10                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
       11                                                                                                                                                                   These estimates for the incubation period of influenza A from Lessler et al. 2009 are different from the estimates from the complete data, as they remove Henle et al. 1945 J Immunol, as it is an outlier in the dataset (n=61). Values found at the bottom Table 3.
       12                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
       13                                                                                                                                                                                                                                                                                                                                                                                                                    No additional notes.
-      14                                                                                                                                                                                                                                                                                                                                                                       Gamma and weibull distributions had equally good fit to the data.
-      15                                                                                                                                                                                                                                                                                                                                                                       Gamma and weibull distributions had equally good fit to the data.
+      14                                                                                                                                                                                                                                                                                                                                                    Gamma and weibull distributions had equally good fit to the data. Gamma, exponential
+      15                                                                                                                                                                                                                                                                                                                                                  Gamma and weibull distributions had equally good fit to the data. Weibull, exponential
       16                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using double interval-censored analysis
       17                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using single interval-censored analysis
       18                                                                                                            The mid-point of the exposure time was used to approximate an exact exposure time instead of interval-censoring. This can lead to a possible bias (overestimation) in incubation times. It was ambiguously reported whether the mean is the mean of the distribution or the meanlog parameter of the lognormal distribution.
@@ -685,8 +685,8 @@
       11 2009          90
       12 2009          78
       13 2009         134
-      14 2010          72
-      15 2010          72
+      14 2011          72
+      15 2011          72
       16 2009         151
       17 2009         151
       18 2010         316
@@ -773,8 +773,8 @@
       11   Lessler_etal 2009          90         Mixed        FALSE
       12   Lessler_etal 2009          78           USA        FALSE
       13   Lessler_etal 2009         134 New York, USA        FALSE
-      14 Nishiura_Inaba 2010          72         Japan        FALSE
-      15 Nishiura_Inaba 2010          72         Japan        FALSE
+      14 Nishiura_Inaba 2011          72         Japan        FALSE
+      15 Nishiura_Inaba 2011          72         Japan        FALSE
       16     Reich_etal 2009         151         Mixed        FALSE
       17     Reich_etal 2009         151         Mixed        FALSE
       18     Tuite_etal 2010         316        Canada        FALSE
@@ -841,88 +841,88 @@
       38                           mosquito     FALSE         lognormal
       39                           mosquito     FALSE         lognormal
       40 Aedes aegypti and Aedes albopictus     FALSE         lognormal
-         inference_method  mean   mean_ci mean_ci_interval   sd  sd_ci sd_ci_interval
-      1               mle    NA    NA, NA               NA   NA NA, NA             NA
-      2               mle    NA    NA, NA               NA   NA NA, NA             NA
-      3          bayesian 15.00    10, 20               95   NA NA, NA             NA
-      4          bayesian  6.50  4.8, 8.8               95   NA NA, NA             NA
-      5          bayesian  5.97  5.5, 6.4               95 1.64 NA, NA             NA
-      6               mle    NA    NA, NA               NA   NA NA, NA             NA
-      7               mle    NA    NA, NA               NA   NA NA, NA             NA
-      8          bayesian    NA    NA, NA               NA   NA NA, NA             NA
-      9               mle  2.05    NA, NA               NA 0.49 NA, NA             NA
-      10              mle    NA    NA, NA               NA   NA NA, NA             NA
-      11              mle    NA    NA, NA               NA   NA NA, NA             NA
-      12              mle    NA    NA, NA               NA   NA NA, NA             NA
-      13              mle    NA    NA, NA               NA   NA NA, NA             NA
-      14              mle    NA    NA, NA               NA   NA NA, NA             NA
-      15              mle    NA    NA, NA               NA   NA NA, NA             NA
-      16              mle    NA    NA, NA               NA   NA NA, NA             NA
-      17              mle    NA    NA, NA               NA   NA NA, NA             NA
-      18          unknown  4.30  2.6, 6.6               95   NA NA, NA             NA
-      19              mle  3.40  3.0, 3.7               95 1.70 NA, NA             NA
-      20              mle  4.50 2.8, 16.2               95 3.30 NA, NA             NA
-      21         bayesian  3.50  3.2, 3.8               95   NA NA, NA             NA
-      22         bayesian  3.70  3.4, 4.1               95   NA NA, NA             NA
-      23         bayesian  3.30  2.9, 3.6               95   NA NA, NA             NA
-      24              mle    NA    NA, NA               NA   NA NA, NA             NA
-      25             <NA>    NA    NA, NA               NA   NA NA, NA             NA
-      26             <NA>    NA    NA, NA               NA   NA NA, NA             NA
-      27              mle    NA    NA, NA               NA   NA NA, NA             NA
-      28              mle    NA    NA, NA               NA   NA NA, NA             NA
-      29              mle    NA    NA, NA               NA   NA NA, NA             NA
-      30              mle    NA    NA, NA               NA   NA NA, NA             NA
-      31              mle    NA    NA, NA               NA   NA NA, NA             NA
-      32              mle    NA    NA, NA               NA   NA NA, NA             NA
-      33              mle    NA    NA, NA               NA   NA NA, NA             NA
-      34              mle    NA    NA, NA               NA   NA NA, NA             NA
-      35              mle    NA    NA, NA               NA   NA NA, NA             NA
-      36              mle    NA    NA, NA               NA   NA NA, NA             NA
-      37              mle    NA    NA, NA               NA   NA NA, NA             NA
-      38              mle    NA    NA, NA               NA   NA NA, NA             NA
-      39              mle    NA    NA, NA               NA   NA NA, NA             NA
-      40         bayesian    NA    NA, NA               NA   NA NA, NA             NA
-         quantile_025 quantile_05 quantile_25 median  median_ci median_ci_interval
-      1            NA          NA         4.8   5.60   4.8, 6.3                 95
-      2            NA          NA         2.9   3.00   0.5, 3.1                 95
-      3           5.0          NA          NA     NA     NA, NA                 NA
-      4           2.4          NA          NA     NA     NA, NA                 NA
-      5           3.4          NA          NA     NA     NA, NA                 NA
-      6            NA          NA         4.5   5.60   5.3, 6.0                 95
-      7            NA          NA         4.3   5.30   5.0, 5.7                 95
-      8            NA          NA         2.9   3.20   2.8, 3.7                 95
-      9            NA          NA          NA     NA     NA, NA                 NA
-      10           NA        0.70         1.1   1.40   1.3, 1.5                 95
-      11           NA        1.40         1.7   1.90   1.8, 2.0                 95
-      12           NA        0.30         0.4   0.60   0.5, 0.6                 95
-      13           NA        0.90          NA   1.40   1.0, 1.8                 95
-      14           NA          NA          NA   1.51 1.47, 1.55                 95
-      15           NA          NA          NA   1.43 1.21, 1.65                 95
-      16           NA        0.73          NA   1.46 1.35, 1.57                 95
-      17           NA        0.73          NA   1.43 1.33, 1.54                 95
-      18           NA          NA          NA   4.00     NA, NA                 NA
-      19           NA          NA          NA     NA     NA, NA                 NA
-      20           NA          NA          NA     NA     NA, NA                 NA
-      21           NA          NA          NA     NA     NA, NA                 NA
-      22           NA          NA          NA     NA     NA, NA                 NA
-      23           NA          NA          NA     NA     NA, NA                 NA
-      24           NA          NA         8.1   8.40   5.1, 9.4                 95
-      25           NA          NA          NA     NA     NA, NA                 NA
-      26           NA          NA          NA   7.00     NA, NA                 NA
-      27           NA        8.90        10.9  12.50 11.8, 13.3                 95
-      28           NA          NA         2.1   2.60   2.1, 3.1                 95
-      29           NA        0.80         1.3   1.90   1.4, 2.4                 95
-      30           NA          NA         3.1   4.00   3.4, 4.9                 95
-      31           NA        3.10         3.8   4.40   3.9, 4.9                 95
-      32           NA        3.05          NA   4.41 3.90, 4.92                 95
-      33           NA        3.11          NA   4.41 3.89, 4.94                 95
-      34           NA        1.50         2.7   4.00   3.6, 4.4                 95
-      35           NA        1.00         1.7   2.60   1.6, 3.5                 95
-      36           NA          NA         2.8   2.90   0.5, 3.1                 95
-      37           NA          NA         8.7  10.80  8.4, 14.2                 95
-      38           NA        1.90         3.2   4.40       4, 5                 95
-      39           NA        1.90         3.1   4.40   3.9, 5.0                 95
-      40           NA        3.20         4.6   5.90   4.4, 7.6                 95
+         inference_method  mean mean_ci_limits mean_ci   sd sd_ci_limits sd_ci
+      1               mle    NA         NA, NA      NA   NA       NA, NA    NA
+      2               mle    NA         NA, NA      NA   NA       NA, NA    NA
+      3          bayesian 15.00         10, 20      95   NA       NA, NA    NA
+      4          bayesian  6.50       4.8, 8.8      95   NA       NA, NA    NA
+      5          bayesian  5.97       5.5, 6.4      95 1.64       NA, NA    NA
+      6               mle    NA         NA, NA      NA   NA       NA, NA    NA
+      7               mle    NA         NA, NA      NA   NA       NA, NA    NA
+      8          bayesian    NA         NA, NA      NA   NA       NA, NA    NA
+      9               mle  2.05         NA, NA      NA 0.49       NA, NA    NA
+      10              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      11              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      12              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      13              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      14              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      15              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      16              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      17              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      18             <NA>  4.30       2.6, 6.6      95   NA       NA, NA    NA
+      19              mle  3.40       3.0, 3.7      95 1.70       NA, NA    NA
+      20              mle  4.50      2.8, 16.2      95 3.30       NA, NA    NA
+      21         bayesian  3.50       3.2, 3.8      95   NA       NA, NA    NA
+      22         bayesian  3.70       3.4, 4.1      95   NA       NA, NA    NA
+      23         bayesian  3.30       2.9, 3.6      95   NA       NA, NA    NA
+      24              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      25             <NA>    NA         NA, NA      NA   NA       NA, NA    NA
+      26             <NA>    NA         NA, NA      NA   NA       NA, NA    NA
+      27              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      28              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      29              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      30              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      31              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      32              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      33              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      34              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      35              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      36              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      37              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      38              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      39              mle    NA         NA, NA      NA   NA       NA, NA    NA
+      40         bayesian    NA         NA, NA      NA   NA       NA, NA    NA
+         quantile_025 quantile_05 quantile_25 median median_ci_limits median_ci
+      1            NA          NA         4.8   5.60         4.8, 6.3        95
+      2            NA          NA         2.9   3.00         0.5, 3.1        95
+      3           5.0          NA          NA     NA           NA, NA        NA
+      4           2.4          NA          NA     NA           NA, NA        NA
+      5           3.4          NA          NA     NA           NA, NA        NA
+      6            NA          NA         4.5   5.60         5.3, 6.0        95
+      7            NA          NA         4.3   5.30         5.0, 5.7        95
+      8            NA          NA         2.9   3.20         2.8, 3.7        95
+      9            NA          NA          NA     NA           NA, NA        NA
+      10           NA        0.70         1.1   1.40         1.3, 1.5        95
+      11           NA        1.40         1.7   1.90         1.8, 2.0        95
+      12           NA        0.30         0.4   0.60         0.5, 0.6        95
+      13           NA        0.90          NA   1.40         1.0, 1.8        95
+      14           NA          NA          NA   1.51       1.47, 1.55        95
+      15           NA          NA          NA   1.43       1.21, 1.65        95
+      16           NA        0.73          NA   1.46       1.35, 1.57        95
+      17           NA        0.73          NA   1.43       1.33, 1.54        95
+      18           NA          NA          NA   4.00           NA, NA        NA
+      19           NA          NA          NA     NA           NA, NA        NA
+      20           NA          NA          NA     NA           NA, NA        NA
+      21           NA          NA          NA     NA           NA, NA        NA
+      22           NA          NA          NA     NA           NA, NA        NA
+      23           NA          NA          NA     NA           NA, NA        NA
+      24           NA          NA         8.1   8.40         5.1, 9.4        95
+      25           NA          NA          NA     NA           NA, NA        NA
+      26           NA          NA          NA   7.00           NA, NA        NA
+      27           NA        8.90        10.9  12.50       11.8, 13.3        95
+      28           NA          NA         2.1   2.60         2.1, 3.1        95
+      29           NA        0.80         1.3   1.90         1.4, 2.4        95
+      30           NA          NA         3.1   4.00         3.4, 4.9        95
+      31           NA        3.10         3.8   4.40         3.9, 4.9        95
+      32           NA        3.05          NA   4.41       3.90, 4.92        95
+      33           NA        3.11          NA   4.41       3.89, 4.94        95
+      34           NA        1.50         2.7   4.00         3.6, 4.4        95
+      35           NA        1.00         1.7   2.60         1.6, 3.5        95
+      36           NA          NA         2.8   2.90         0.5, 3.1        95
+      37           NA          NA         8.7  10.80        8.4, 14.2        95
+      38           NA        1.90         3.2   4.40             4, 5        95
+      39           NA        1.90         3.1   4.40         3.9, 5.0        95
+      40           NA        3.20         4.6   5.90         4.4, 7.6        95
          quantile_75 quantile_875 quantile_95 quantile_975 lower_range upper_range
       1          6.5           NA          NA           NA          NA          NA
       2          3.0           NA          NA           NA          NA          NA
@@ -956,7 +956,7 @@
       30         5.3           NA          NA           NA          NA          NA
       31          NA           NA        6.30           NA          NA          NA
       32          NA           NA        6.39           NA          NA          NA
-      33          NA           NA        6.29           NA          NA          NA
+      33          NA           NA        6.26           NA          NA          NA
       34         5.9           NA       10.60           NA          NA          NA
       35         3.8           NA        7.00           NA          NA          NA
       36         3.0           NA          NA           NA          NA          NA
@@ -964,170 +964,170 @@
       38         6.3           NA       10.30           NA          NA          NA
       39         6.2           NA       10.30           NA          NA          NA
       40         7.6           NA       11.20           NA          NA          NA
-         shape   shape_ci shape_ci_interval scale   scale_ci scale_ci_interval
-      1     NA     NA, NA                NA    NA     NA, NA                NA
-      2     NA     NA, NA                NA    NA     NA, NA                NA
-      3     NA     NA, NA                NA    NA     NA, NA                NA
-      4     NA     NA, NA                NA    NA     NA, NA                NA
-      5     NA     NA, NA                NA    NA     NA, NA                NA
-      6     NA     NA, NA                NA    NA     NA, NA                NA
-      7     NA     NA, NA                NA    NA     NA, NA                NA
-      8     NA     NA, NA                NA    NA     NA, NA                NA
-      9     NA     NA, NA                NA    NA     NA, NA                NA
-      10    NA     NA, NA                NA    NA     NA, NA                NA
-      11    NA     NA, NA                NA    NA     NA, NA                NA
-      12    NA     NA, NA                NA    NA     NA, NA                NA
-      13    NA     NA, NA                NA    NA     NA, NA                NA
-      14  3.27     NA, NA                NA  0.51     NA, NA                NA
-      15  1.74     NA, NA                NA  1.83     NA, NA                NA
-      16    NA     NA, NA                NA    NA     NA, NA                NA
-      17    NA     NA, NA                NA    NA     NA, NA                NA
-      18    NA     NA, NA                NA    NA     NA, NA                NA
-      19    NA     NA, NA                NA    NA     NA, NA                NA
-      20    NA     NA, NA                NA    NA     NA, NA                NA
-      21    NA     NA, NA                NA    NA     NA, NA                NA
-      22  2.30 1.80, 2.89                95  4.21 3.62, 4.85                95
-      23  2.03 1.62, 2.52                95  3.74 3.20, 4.36                95
-      24    NA     NA, NA                NA    NA     NA, NA                NA
-      25    NA     NA, NA                NA    NA     NA, NA                NA
-      26    NA     NA, NA                NA    NA     NA, NA                NA
-      27    NA     NA, NA                NA    NA     NA, NA                NA
-      28    NA     NA, NA                NA    NA     NA, NA                NA
-      29    NA     NA, NA                NA    NA     NA, NA                NA
-      30    NA     NA, NA                NA    NA     NA, NA                NA
-      31    NA     NA, NA                NA    NA     NA, NA                NA
-      32    NA     NA, NA                NA    NA     NA, NA                NA
-      33    NA     NA, NA                NA    NA     NA, NA                NA
-      34    NA     NA, NA                NA    NA     NA, NA                NA
-      35    NA     NA, NA                NA    NA     NA, NA                NA
-      36    NA     NA, NA                NA    NA     NA, NA                NA
-      37    NA     NA, NA                NA    NA     NA, NA                NA
-      38    NA     NA, NA                NA    NA     NA, NA                NA
-      39    NA     NA, NA                NA    NA     NA, NA                NA
-      40    NA     NA, NA                NA    NA     NA, NA                NA
-         meanlog meanlog_ci meanlog_ci_interval sdlog sdlog_ci sdlog_ci_interval
-      1       NA     NA, NA                  NA    NA   NA, NA                NA
-      2       NA     NA, NA                  NA    NA   NA, NA                NA
-      3       NA     NA, NA                  NA    NA   NA, NA                NA
-      4       NA     NA, NA                  NA    NA   NA, NA                NA
-      5     1.75     NA, NA                  NA  0.27   NA, NA                NA
-      6       NA     NA, NA                  NA    NA   NA, NA                NA
-      7       NA     NA, NA                  NA    NA   NA, NA                NA
-      8       NA     NA, NA                  NA    NA   NA, NA                NA
-      9       NA     NA, NA                  NA    NA   NA, NA                NA
-      10      NA     NA, NA                  NA    NA   NA, NA                NA
-      11      NA     NA, NA                  NA    NA   NA, NA                NA
-      12      NA     NA, NA                  NA    NA   NA, NA                NA
-      13      NA     NA, NA                  NA    NA   NA, NA                NA
-      14      NA     NA, NA                  NA    NA   NA, NA                NA
-      15      NA     NA, NA                  NA    NA   NA, NA                NA
-      16      NA     NA, NA                  NA    NA   NA, NA                NA
-      17      NA     NA, NA                  NA    NA   NA, NA                NA
-      18      NA     NA, NA                  NA    NA   NA, NA                NA
-      19      NA     NA, NA                  NA    NA   NA, NA                NA
-      20      NA     NA, NA                  NA    NA   NA, NA                NA
-      21      NA     NA, NA                  NA    NA   NA, NA                NA
-      22      NA     NA, NA                  NA    NA   NA, NA                NA
-      23      NA     NA, NA                  NA    NA   NA, NA                NA
-      24      NA     NA, NA                  NA    NA   NA, NA                NA
-      25      NA     NA, NA                  NA    NA   NA, NA                NA
-      26      NA     NA, NA                  NA    NA   NA, NA                NA
-      27      NA     NA, NA                  NA    NA   NA, NA                NA
-      28      NA     NA, NA                  NA    NA   NA, NA                NA
-      29      NA     NA, NA                  NA    NA   NA, NA                NA
-      30      NA     NA, NA                  NA    NA   NA, NA                NA
-      31      NA     NA, NA                  NA    NA   NA, NA                NA
-      32      NA     NA, NA                  NA    NA   NA, NA                NA
-      33      NA     NA, NA                  NA    NA   NA, NA                NA
-      34      NA     NA, NA                  NA    NA   NA, NA                NA
-      35      NA     NA, NA                  NA    NA   NA, NA                NA
-      36      NA     NA, NA                  NA    NA   NA, NA                NA
-      37      NA     NA, NA                  NA    NA   NA, NA                NA
-      38      NA     NA, NA                  NA    NA   NA, NA                NA
-      39      NA     NA, NA                  NA    NA   NA, NA                NA
-      40      NA     NA, NA                  NA    NA   NA, NA                NA
-         dispersion dispersion_ci dispersion_ci_interval precision precision_ci
-      1        1.26    1.13, 1.38                     95        NA       NA, NA
-      2        1.04    1.04, 1.08                     95        NA       NA, NA
-      3          NA        NA, NA                     NA        NA       NA, NA
-      4          NA        NA, NA                     NA       4.9     2.8, 7.5
-      5          NA        NA, NA                     NA      13.7   10.9, 16.9
-      6        1.41    1.34, 1.50                     95        NA       NA, NA
-      7        1.37    1.27, 1.52                     95        NA       NA, NA
-      8        1.15    1.07, 1.34                     95        NA       NA, NA
-      9          NA        NA, NA                     NA        NA       NA, NA
-      10       1.51    1.43, 1.60                     95        NA       NA, NA
-      11       1.23    1.17, 1.29                     95        NA       NA, NA
-      12       1.51    1.37, 1.64                     95        NA       NA, NA
-      13         NA        NA, NA                     NA        NA       NA, NA
-      14         NA        NA, NA                     NA        NA       NA, NA
-      15         NA        NA, NA                     NA        NA       NA, NA
-      16       1.53    1.44, 1.61                     95        NA       NA, NA
-      17       1.51    1.43, 1.60                     95        NA       NA, NA
-      18         NA        NA, NA                     NA        NA       NA, NA
-      19         NA        NA, NA                     NA        NA       NA, NA
-      20         NA        NA, NA                     NA        NA       NA, NA
-      21         NA        NA, NA                     NA        NA       NA, NA
-      22         NA        NA, NA                     NA        NA       NA, NA
-      23         NA        NA, NA                     NA        NA       NA, NA
-      24       1.04    1.04, 1.05                     95        NA       NA, NA
-      25         NA        NA, NA                     NA        NA       NA, NA
-      26         NA        NA, NA                     NA        NA       NA, NA
-      27       1.23    1.18, 1.28                     95        NA       NA, NA
-      28       1.35    1.16, 1.55                     95        NA       NA, NA
-      29       1.68    1.36, 2.01                     95        NA       NA, NA
-      30       1.50    1.22, 1.82                     95        NA       NA, NA
-      31       1.24    1.13, 1.35                     95        NA       NA, NA
-      32       1.25    1.14, 1.36                     95        NA       NA, NA
-      33       1.24    1.12, 1.35                     95        NA       NA, NA
-      34       1.81    1.67, 1.95                     95        NA       NA, NA
-      35       1.82    1.27, 2.67                     95        NA       NA, NA
-      36       1.04    1.04, 1.29                     95        NA       NA, NA
-      37       1.35    1.12, 1.47                     95        NA       NA, NA
-      38       1.66    1.48, 1.82                     95        NA       NA, NA
-      39       1.67    1.47, 1.84                     95        NA       NA, NA
-      40       1.50      1.2, 1.9                     95        NA       NA, NA
-         precision_ci_interval truncation discretised censorred right_truncated
-      1                     NA         NA       FALSE      TRUE           FALSE
-      2                     NA         NA       FALSE      TRUE           FALSE
-      3                     NA         NA       FALSE      TRUE           FALSE
-      4                     95         NA       FALSE      TRUE           FALSE
-      5                     95         NA       FALSE      TRUE           FALSE
-      6                     NA         NA       FALSE      TRUE           FALSE
-      7                     NA         NA       FALSE      TRUE           FALSE
-      8                     NA         NA       FALSE      TRUE           FALSE
-      9                     NA         NA       FALSE        NA              NA
-      10                    NA         NA       FALSE      TRUE           FALSE
-      11                    NA         NA       FALSE      TRUE           FALSE
-      12                    NA         NA       FALSE      TRUE           FALSE
-      13                    NA         NA       FALSE      TRUE           FALSE
-      14                    NA         NA       FALSE      TRUE           FALSE
-      15                    NA         NA       FALSE      TRUE           FALSE
-      16                    NA         NA       FALSE      TRUE           FALSE
-      17                    NA         NA       FALSE      TRUE           FALSE
-      18                    NA         NA       FALSE     FALSE           FALSE
-      19                    NA         NA       FALSE      TRUE           FALSE
-      20                    NA         NA       FALSE      TRUE           FALSE
-      21                    NA         NA       FALSE      TRUE           FALSE
-      22                    NA         NA       FALSE      TRUE           FALSE
-      23                    NA         NA       FALSE      TRUE           FALSE
-      24                    NA         NA       FALSE      TRUE           FALSE
-      25                    NA         NA       FALSE     FALSE           FALSE
-      26                    NA         NA       FALSE     FALSE           FALSE
-      27                    NA         NA       FALSE      TRUE           FALSE
-      28                    NA         NA       FALSE      TRUE           FALSE
-      29                    NA         NA       FALSE      TRUE           FALSE
-      30                    NA         NA       FALSE      TRUE           FALSE
-      31                    NA         NA       FALSE      TRUE           FALSE
-      32                    NA         NA       FALSE      TRUE           FALSE
-      33                    NA         NA       FALSE      TRUE           FALSE
-      34                    NA         NA       FALSE      TRUE           FALSE
-      35                    NA         NA       FALSE      TRUE           FALSE
-      36                    NA         NA       FALSE      TRUE           FALSE
-      37                    NA         NA       FALSE      TRUE           FALSE
-      38                    NA         NA       FALSE      TRUE           FALSE
-      39                    NA         NA       FALSE      TRUE           FALSE
-      40                    NA         NA       FALSE      TRUE           FALSE
+         shape shape_ci_limits shape_ci scale scale_ci_limits scale_ci meanlog
+      1     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      2     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      3     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      4     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      5     NA          NA, NA       NA    NA          NA, NA       NA    1.75
+      6     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      7     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      8     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      9     NA          NA, NA       NA    NA          NA, NA       NA      NA
+      10    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      11    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      12    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      13    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      14  3.27          NA, NA       NA  0.51          NA, NA       NA      NA
+      15  1.74          NA, NA       NA  1.83          NA, NA       NA      NA
+      16    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      17    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      18    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      19    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      20    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      21    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      22  2.30      1.80, 2.89       95  4.21      3.62, 4.85       95      NA
+      23  2.03      1.62, 2.52       95  3.74      3.20, 4.36       95      NA
+      24    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      25    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      26    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      27    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      28    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      29    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      30    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      31    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      32    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      33    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      34    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      35    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      36    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      37    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      38    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      39    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      40    NA          NA, NA       NA    NA          NA, NA       NA      NA
+         meanlog_ci_limits meanlog_ci sdlog sdlog_ci_limits sdlog_ci dispersion
+      1             NA, NA         NA    NA          NA, NA       NA       1.26
+      2             NA, NA         NA    NA          NA, NA       NA       1.04
+      3             NA, NA         NA    NA          NA, NA       NA         NA
+      4             NA, NA         NA    NA          NA, NA       NA         NA
+      5             NA, NA         NA  0.27          NA, NA       NA         NA
+      6             NA, NA         NA    NA          NA, NA       NA       1.41
+      7             NA, NA         NA    NA          NA, NA       NA       1.37
+      8             NA, NA         NA    NA          NA, NA       NA       1.15
+      9             NA, NA         NA    NA          NA, NA       NA         NA
+      10            NA, NA         NA    NA          NA, NA       NA       1.51
+      11            NA, NA         NA    NA          NA, NA       NA       1.23
+      12            NA, NA         NA    NA          NA, NA       NA       1.51
+      13            NA, NA         NA    NA          NA, NA       NA         NA
+      14            NA, NA         NA    NA          NA, NA       NA         NA
+      15            NA, NA         NA    NA          NA, NA       NA         NA
+      16            NA, NA         NA    NA          NA, NA       NA       1.53
+      17            NA, NA         NA    NA          NA, NA       NA       1.51
+      18            NA, NA         NA    NA          NA, NA       NA         NA
+      19            NA, NA         NA    NA          NA, NA       NA         NA
+      20            NA, NA         NA    NA          NA, NA       NA         NA
+      21            NA, NA         NA    NA          NA, NA       NA         NA
+      22            NA, NA         NA    NA          NA, NA       NA         NA
+      23            NA, NA         NA    NA          NA, NA       NA         NA
+      24            NA, NA         NA    NA          NA, NA       NA       1.04
+      25            NA, NA         NA    NA          NA, NA       NA         NA
+      26            NA, NA         NA    NA          NA, NA       NA         NA
+      27            NA, NA         NA    NA          NA, NA       NA       1.23
+      28            NA, NA         NA    NA          NA, NA       NA       1.35
+      29            NA, NA         NA    NA          NA, NA       NA       1.68
+      30            NA, NA         NA    NA          NA, NA       NA       1.50
+      31            NA, NA         NA    NA          NA, NA       NA       1.24
+      32            NA, NA         NA    NA          NA, NA       NA       1.25
+      33            NA, NA         NA    NA          NA, NA       NA       1.24
+      34            NA, NA         NA    NA          NA, NA       NA       1.81
+      35            NA, NA         NA    NA          NA, NA       NA       1.82
+      36            NA, NA         NA    NA          NA, NA       NA       1.04
+      37            NA, NA         NA    NA          NA, NA       NA       1.35
+      38            NA, NA         NA    NA          NA, NA       NA       1.66
+      39            NA, NA         NA    NA          NA, NA       NA       1.67
+      40            NA, NA         NA    NA          NA, NA       NA       1.50
+         dispersion_ci_limits dispersion_ci precision precision_ci_limits
+      1            1.13, 1.38            95        NA              NA, NA
+      2            1.04, 1.08            95        NA              NA, NA
+      3                NA, NA            NA        NA              NA, NA
+      4                NA, NA            NA       4.9            2.8, 7.5
+      5                NA, NA            NA      13.7          10.9, 16.9
+      6            1.34, 1.50            95        NA              NA, NA
+      7            1.27, 1.52            95        NA              NA, NA
+      8            1.07, 1.34            95        NA              NA, NA
+      9                NA, NA            NA        NA              NA, NA
+      10           1.43, 1.60            95        NA              NA, NA
+      11           1.17, 1.29            95        NA              NA, NA
+      12           1.37, 1.64            95        NA              NA, NA
+      13               NA, NA            NA        NA              NA, NA
+      14               NA, NA            NA        NA              NA, NA
+      15               NA, NA            NA        NA              NA, NA
+      16           1.44, 1.61            95        NA              NA, NA
+      17           1.43, 1.60            95        NA              NA, NA
+      18               NA, NA            NA        NA              NA, NA
+      19               NA, NA            NA        NA              NA, NA
+      20               NA, NA            NA        NA              NA, NA
+      21               NA, NA            NA        NA              NA, NA
+      22               NA, NA            NA        NA              NA, NA
+      23               NA, NA            NA        NA              NA, NA
+      24           1.04, 1.05            95        NA              NA, NA
+      25               NA, NA            NA        NA              NA, NA
+      26               NA, NA            NA        NA              NA, NA
+      27           1.18, 1.28            95        NA              NA, NA
+      28           1.16, 1.55            95        NA              NA, NA
+      29           1.36, 2.01            95        NA              NA, NA
+      30           1.22, 1.82            95        NA              NA, NA
+      31           1.13, 1.35            95        NA              NA, NA
+      32           1.14, 1.36            95        NA              NA, NA
+      33           1.12, 1.35            95        NA              NA, NA
+      34           1.67, 1.95            95        NA              NA, NA
+      35           1.27, 2.67            95        NA              NA, NA
+      36           1.04, 1.29            95        NA              NA, NA
+      37           1.12, 1.47            95        NA              NA, NA
+      38           1.48, 1.82            95        NA              NA, NA
+      39           1.47, 1.84            95        NA              NA, NA
+      40             1.2, 1.9            95        NA              NA, NA
+         precision_ci truncation discretised censorred right_truncated
+      1            NA         NA       FALSE      TRUE           FALSE
+      2            NA         NA       FALSE      TRUE           FALSE
+      3            NA         NA       FALSE      TRUE           FALSE
+      4            95         NA       FALSE      TRUE           FALSE
+      5            95         NA       FALSE      TRUE           FALSE
+      6            NA         NA       FALSE      TRUE           FALSE
+      7            NA         NA       FALSE      TRUE           FALSE
+      8            NA         NA       FALSE      TRUE           FALSE
+      9            NA         NA       FALSE      TRUE           FALSE
+      10           NA         NA       FALSE      TRUE           FALSE
+      11           NA         NA       FALSE      TRUE           FALSE
+      12           NA         NA       FALSE      TRUE           FALSE
+      13           NA         NA       FALSE      TRUE           FALSE
+      14           NA         NA       FALSE      TRUE           FALSE
+      15           NA         NA       FALSE      TRUE           FALSE
+      16           NA         NA       FALSE      TRUE           FALSE
+      17           NA         NA       FALSE      TRUE           FALSE
+      18           NA         NA       FALSE     FALSE           FALSE
+      19           NA         NA       FALSE      TRUE           FALSE
+      20           NA         NA       FALSE      TRUE           FALSE
+      21           NA         NA       FALSE      TRUE           FALSE
+      22           NA         NA       FALSE      TRUE           FALSE
+      23           NA         NA       FALSE      TRUE           FALSE
+      24           NA         NA       FALSE      TRUE           FALSE
+      25           NA         NA       FALSE     FALSE           FALSE
+      26           NA         NA       FALSE     FALSE           FALSE
+      27           NA         NA       FALSE      TRUE           FALSE
+      28           NA         NA       FALSE      TRUE           FALSE
+      29           NA         NA       FALSE      TRUE           FALSE
+      30           NA         NA       FALSE      TRUE           FALSE
+      31           NA         NA       FALSE      TRUE           FALSE
+      32           NA         NA       FALSE      TRUE           FALSE
+      33           NA         NA       FALSE      TRUE           FALSE
+      34           NA         NA       FALSE      TRUE           FALSE
+      35           NA         NA       FALSE      TRUE           FALSE
+      36           NA         NA       FALSE      TRUE           FALSE
+      37           NA         NA       FALSE      TRUE           FALSE
+      38           NA         NA       FALSE      TRUE           FALSE
+      39           NA         NA       FALSE      TRUE           FALSE
+      40           NA         NA       FALSE      TRUE           FALSE
          phase_bias_adjusted
       1                FALSE
       2                FALSE
@@ -1137,7 +1137,7 @@
       6                FALSE
       7                FALSE
       8                FALSE
-      9                   NA
+      9                FALSE
       10               FALSE
       11               FALSE
       12               FALSE
@@ -1178,13 +1178,13 @@
       6                                                                                                                                                                                                                                                                                                                                                  Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
       7                                                                                                                                                                                                                                                                        Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
       8                                                                                                                                                                                                                                                                                          Analysis on data from  Bradburne AF, Bynoe ML, Tyrrell DA. Eff ects of a “new” human respiratory virus in volunteers. Br Med J 1967; 3: 767–69.
-      9                                                                                                                                                                                                                                                                                                                                                                                                                                         
+      9                                                                                                                                                                                                                                                                                                                                                                                                                     No additional notes.
       10                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
       11                                                                                                                                                                   These estimates for the incubation period of influenza A from Lessler et al. 2009 are different from the estimates from the complete data, as they remove Henle et al. 1945 J Immunol, as it is an outlier in the dataset (n=61). Values found at the bottom Table 3.
       12                                                                                                                                                                                                                                                                                                                                                Pooled analysis on several data sets, see Lessler et al. 2009 for references of datasets
       13                                                                                                                                                                                                                                                                                                                                                                                                                    No additional notes.
-      14                                                                                                                                                                                                                                                                                                                                                                       Gamma and weibull distributions had equally good fit to the data.
-      15                                                                                                                                                                                                                                                                                                                                                                       Gamma and weibull distributions had equally good fit to the data.
+      14                                                                                                                                                                                                                                                                                                                                                    Gamma and weibull distributions had equally good fit to the data. Gamma, exponential
+      15                                                                                                                                                                                                                                                                                                                                                  Gamma and weibull distributions had equally good fit to the data. Weibull, exponential
       16                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using double interval-censored analysis
       17                                                                                                                                                                                                                                                                                                                                                                    Data from Lessler et al 2009 using single interval-censored analysis
       18                                                                                                            The mid-point of the exposure time was used to approximate an exact exposure time instead of interval-censoring. This can lead to a possible bias (overestimation) in incubation times. It was ambiguously reported whether the mean is the mean of the distribution or the meanlog parameter of the lognormal distribution.
@@ -1277,42 +1277,38 @@
       3 marburg virus disease       marburg virus  serial_interval        Pavlin 2014
         sample_size region vector_borne vector extrinsic prob_distribution
       1          58     UK        FALSE   <NA>     FALSE             gamma
-      2         374   <NA>        FALSE   <NA>     FALSE             gamma
+      2         374 Angola        FALSE   <NA>     FALSE             gamma
       3          38  Mixed        FALSE   <NA>     FALSE              <NA>
-        inference_method mean   mean_ci mean_ci_interval   sd    sd_ci sd_ci_interval
-      1              mle 2.51    NA, NA               NA 1.55   NA, NA             NA
-      2          unknown 9.00 8.2, 10.0               95 5.40 3.9, 8.6             95
-      3             <NA>   NA    NA, NA               NA   NA   NA, NA             NA
-        quantile_025 quantile_05 quantile_25 median median_ci median_ci_interval
-      1           NA          NA          NA     NA    NA, NA                 NA
-      2           NA          NA          NA     NA    NA, NA                 NA
-      3           NA          NA           8     11    NA, NA                 NA
+        inference_method mean mean_ci_limits mean_ci   sd sd_ci_limits sd_ci
+      1              mle 2.51         NA, NA      NA 1.55       NA, NA    NA
+      2             <NA> 9.00      8.2, 10.0      95 5.40     3.9, 8.6    95
+      3             <NA>   NA         NA, NA      NA   NA       NA, NA    NA
+        quantile_025 quantile_05 quantile_25 median median_ci_limits median_ci
+      1           NA          NA          NA     NA           NA, NA        NA
+      2           NA          NA          NA     NA           NA, NA        NA
+      3           NA          NA           8     11           NA, NA        NA
         quantile_75 quantile_875 quantile_95 quantile_975 lower_range upper_range
       1          NA           NA          NA           NA          NA          NA
       2          NA           NA          NA           NA          NA          NA
       3          15           NA          NA           NA          NA          NA
-        shape shape_ci shape_ci_interval scale scale_ci scale_ci_interval meanlog
-      1    NA   NA, NA                NA    NA   NA, NA                NA      NA
-      2    NA   NA, NA                NA    NA   NA, NA                NA      NA
-      3    NA   NA, NA                NA    NA   NA, NA                NA      NA
-        meanlog_ci meanlog_ci_interval sdlog sdlog_ci sdlog_ci_interval dispersion
-      1     NA, NA                  NA    NA   NA, NA                NA         NA
-      2     NA, NA                  NA    NA   NA, NA                NA         NA
-      3     NA, NA                  NA    NA   NA, NA                NA         NA
-        dispersion_ci dispersion_ci_interval precision precision_ci
-      1        NA, NA                     NA        NA       NA, NA
-      2        NA, NA                     NA        NA       NA, NA
-      3        NA, NA                     NA        NA       NA, NA
-        precision_ci_interval truncation discretised censorred right_truncated
-      1                    NA         NA       FALSE        NA              NA
-      2                    NA         NA       FALSE     FALSE           FALSE
-      3                    NA         NA       FALSE     FALSE           FALSE
-        phase_bias_adjusted
-      1                  NA
-      2               FALSE
-      3               FALSE
+        shape shape_ci_limits shape_ci scale scale_ci_limits scale_ci meanlog
+      1    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      2    NA          NA, NA       NA    NA          NA, NA       NA      NA
+      3    NA          NA, NA       NA    NA          NA, NA       NA      NA
+        meanlog_ci_limits meanlog_ci sdlog sdlog_ci_limits sdlog_ci dispersion
+      1            NA, NA         NA    NA          NA, NA       NA         NA
+      2            NA, NA         NA    NA          NA, NA       NA         NA
+      3            NA, NA         NA    NA          NA, NA       NA         NA
+        dispersion_ci_limits dispersion_ci precision precision_ci_limits precision_ci
+      1               NA, NA            NA        NA              NA, NA           NA
+      2               NA, NA            NA        NA              NA, NA           NA
+      3               NA, NA            NA        NA              NA, NA           NA
+        truncation discretised censorred right_truncated phase_bias_adjusted
+      1         NA       FALSE      TRUE           FALSE               FALSE
+      2         NA       FALSE     FALSE           FALSE               FALSE
+      3         NA       FALSE     FALSE           FALSE               FALSE
                                                                                                                                                                                                                                                                                                                                     notes
-      1                                                                                                                                                                                                                                                                                                                                  
+      1                                                                                                                                                                                                                                                                                                              No additional notes.
       2 The generation time is estimated from non-human viral load data. This paper reports the generation time but assumes the generation time and serial interval are the same it is classified as serial interval here based on Van Kerkove et al. 2015 <10.1038/sdata.2015.19>. The sample size is take from Van Kerkove et al. 2015.
       3                                                                                            This paper did not fit a distribution to the serial interval data and only reported a median and interquartile range. This is present in the database as there are no other studies that report the serial interval for Marburg virus.
             PMID                          DOI

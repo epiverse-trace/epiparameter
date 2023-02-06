@@ -36,29 +36,29 @@ test_that("epidist works with all arguments set", {
     prob_distribution_params = c(meanlog = 2, sdlog = 1),
     uncertainty = list(
       meanlog = create_epidist_uncertainty(
-        ci = c(1, 3),
-        ci_interval = 95,
+        ci_limits = c(1, 3),
+        ci = 95,
         ci_type = "confidence interval"
       ),
       sdlog = create_epidist_uncertainty(
-        ci = c(0.1, 1.9),
-        ci_interval = 95,
+        ci_limits = c(0.1, 1.9),
+        ci = 95,
         ci_type = "confidence interval"
       )
     ),
     summary_stats = create_epidist_summary_stats(
       mean = 1,
-      mean_ci = c(0.8, 1.2),
-      mean_ci_interval = 95,
+      mean_ci_limits = c(0.8, 1.2),
+      mean_ci = 95,
       sd = 0.5,
-      sd_ci = c(0.4, 0.6),
-      sd_ci_interval = 95,
+      sd_ci_limits = c(0.4, 0.6),
+      sd_ci = 95,
       median = 1,
-      median_ci = c(0.9, 1.1),
-      median_ci_interval = 95,
+      median_ci_limits = c(0.9, 1.1),
+      median_ci = 95,
       dispersion = 1,
-      dispersion_ci = c(0.9, 1.1),
-      dispersion_ci_interval = 90,
+      dispersion_ci_limits = c(0.9, 1.1),
+      dispersion_ci = 90,
       lower_range = 0.1,
       upper_range = 1.9,
       q_025 = 0.2,
@@ -270,13 +270,13 @@ test_that("new_epidist works with minimal viable input", {
     prob_dist_params = c(shape = 1, scale = 1),
     uncertainty = list(
       shape = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       ),
       scale = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       )
     ),
@@ -313,13 +313,13 @@ test_that("validate_epidist passes when expected", {
     prob_dist_params = c(shape = 1, scale = 1),
     uncertainty = list(
       shape = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       ),
       scale = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       )
     ),
@@ -341,13 +341,13 @@ test_that("validate_epidist catches class faults when expected", {
     prob_dist_params = c(shape = 1, scale = 1),
     uncertainty = list(
       shape = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       ),
       scale = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       )
     ),
@@ -372,13 +372,13 @@ test_that("validate_epidist catches class faults when expected", {
     prob_dist_params = c(shape = 1, scale = 1),
     uncertainty = list(
       shape = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       ),
       scale = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       )
     ),
@@ -403,13 +403,13 @@ test_that("validate_epidist catches class faults when expected", {
     prob_dist_params = c(shape = 1, scale = 1),
     uncertainty = list(
       shape = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       ),
       scale = create_epidist_uncertainty(
-        ci = c(0, 2),
-        ci_interval = 95,
+        ci_limits = c(0, 2),
+        ci = 95,
         ci_type = "confidence interval"
       )
     ),

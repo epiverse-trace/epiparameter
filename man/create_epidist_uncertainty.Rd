@@ -2,16 +2,15 @@
 % Please edit documentation in R/epidist_utils.R
 \name{create_epidist_uncertainty}
 \alias{create_epidist_uncertainty}
-\title{A helper function when creating uncertainty for the parameters of the
-distribution for the epidist object}
+\title{Specify distribution parameter uncertainty}
 \usage{
-create_epidist_uncertainty(ci = NA_real_, ci_interval, ci_type)
+create_epidist_uncertainty(ci_limits = NA_real_, ci, ci_type)
 }
 \arguments{
-\item{ci}{A numeric vector of length two with the lower and upper bound of
+\item{ci_limits}{A numeric vector of length two with the lower and upper bound of
 the confidence interval or credible interval}
 
-\item{ci_interval}{A numeric specifying the interval for the ci, e.g. 95 is
+\item{ci}{A numeric specifying the interval for the ci, e.g. 95 is
 95\% ci}
 
 \item{ci_type}{A character string, either "confidence interval" or "credible
@@ -21,16 +20,35 @@ interval"}
 List of three elements
 }
 \description{
-A helper function when creating uncertainty for the parameters of the
-distribution for the epidist object
+A helper function when creating uncertainty for the parameters
+of the distribution for the \code{epidist} object
 }
 \examples{
-# example with uncertainty
+# example with uncertainty for a single parameter
 create_epidist_uncertainty(
-  ci = c(1, 3),
-  ci_interval = 95,
+  ci_limits = c(1, 3),
+  ci = 95,
   ci_type = "confidence interval"
 )
+
+# example for multiple parameters
+# lengh of list should match number of parameters
+list(
+  shape = create_epidist_uncertainty(
+    ci_limits = c(1,3),
+    ci = 95,
+    ci_type = "confidence interval"
+  ),
+  scale = create_epidist_uncertainty(
+    ci_limits = c(2, 4),
+    ci = 95,
+    ci_type = "confidence interval"
+  )
+)
+
 # example with unknown uncertainty
+# the function can be called without arguments
+create_epidist_uncertainty()
+# or give NA as the first argument
 create_epidist_uncertainty(NA)
 }

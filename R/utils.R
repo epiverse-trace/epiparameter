@@ -62,7 +62,7 @@ make_json_data <- function(read_path = file.path("extdata", "parameters.csv"),
   )
 
   # convert cells with arrays to numeric
-  for (i in grep(pattern = "_ci$", x = colnames(data))) {
+  for (i in grep(pattern = "_ci_limits$", x = colnames(data))) {
     if (!all(is.na(data[[i]]))) {
       data[[i]] <- lapply(
         strsplit(x = data[[i]], split = ",", fixed = TRUE),
