@@ -2,9 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{create_epidist_metadata}
 \alias{create_epidist_metadata}
-\title{A helper function when creating an epidist object to create a metadata list
-with sensible defaults, type checking and arguments to help remember metadata
-list structure (element names)}
+\title{Specify metadata associated with data set}
 \usage{
 create_epidist_metadata(
   sample_size = NA_integer_,
@@ -39,7 +37,8 @@ in parentheses. When a disease is not vector-borne NA should be given.}
 extrinsic delay distribution, such as the extrinsic incubation period.
 This field is required because intrinsic and extrinsic delay distributions
 are stored as separate entries in the database and can be linked.
-When the disease is not vector-borne FALSE should be given.}
+When the disease is not vector-borne FALSE should be given. See Details for
+explanation of extrinsic distribution.}
 
 \item{inference_method}{The type of inference used to fit the delay
 distribution to the data. Abbreviations of model fitting techniques can be
@@ -53,12 +52,22 @@ is unknown or a disease does not have a probability distribution NA can be
 given.}
 }
 \value{
-named list
+A named list containing information on the sample size of the study,
+geography, whether the disease is vector-borne and if so whether it is the
+intrinsic or extrinsic distribution as well as method of distribution
+parameter estimation.
 }
 \description{
-A helper function when creating an epidist object to create a metadata list
-with sensible defaults, type checking and arguments to help remember metadata
-list structure (element names)
+A helper function when creating an epidist object to create a
+metadata list with sensible defaults, type checking and arguments to help
+remember metadata list structure (element names)
+}
+\details{
+In vector-borne diseases the transmissibility of a disease is
+dependent on both the time taken for a host (i.e. human) to become
+infectious, but also on the time it takes the vector to become infectious.
+Therefore, the extrinsic delay, in which the vector has been infected by is
+not yet infectious can have a role in the spread of a disease.
 }
 \examples{
 # it will automatically populate the fields with defaults if left empty
@@ -66,11 +75,11 @@ create_epidist_metadata()
 
 # supplying each field
 create_epidist_metadata(
-sample_size = 10,
-region = "UK",
-vector_borne = TRUE,
-vector = "mosquito",
-extrinsic = FALSE,
-inference_method = "MLE"
+  sample_size = 10,
+  region = "UK",
+  vector_borne = TRUE,
+  vector = "mosquito",
+  extrinsic = FALSE,
+  inference_method = "MLE"
 )
 }
