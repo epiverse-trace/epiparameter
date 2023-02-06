@@ -11,7 +11,7 @@
 new_epiparam <- function(epi_dist = character()) {
 
   # check input
-  checkmate::assert_character(epi_dist, len = 1)
+  checkmate::assert_string(epi_dist)
 
   # Extract relevant values
   params <- utils::read.csv(system.file(

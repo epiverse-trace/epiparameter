@@ -157,7 +157,7 @@ test_that("epidist fails as expected", {
       prob_distribution_params = c(shape = 1, scale = 1)
     ),
     regexp = paste0("Assertion on 'disease' failed: Must be of type ",
-                   "'character', not 'double'."
+                   "'string', not 'double'."
     )
   )
 
@@ -169,7 +169,7 @@ test_that("epidist fails as expected", {
       prob_distribution_params = c(shape = 1, scale = 1)
     ),
     regexp = paste0("Assertion on 'epi_dist' failed: Must be of type ",
-                   "'character', not 'double'."
+                   "'string', not 'double'."
     )
   )
 

@@ -238,14 +238,9 @@ epidist <- function(disease,
                     auto_calc_params = TRUE) {
 
   # check input
-  checkmate::assert_character(
-    disease,
-    min.len = 1,
-    any.missing = FALSE,
-    null.ok = FALSE
-  )
+  checkmate::assert_string(disease, na.ok = FALSE, null.ok = FALSE)
   checkmate::assert_character(pathogen)
-  checkmate::assert_character(epi_dist, len = 1)
+  checkmate::assert_string(epi_dist)
   checkmate::assert_character(
     prob_distribution,
     min.chars = 1,
@@ -258,7 +253,7 @@ epidist <- function(disease,
     types = c("list", "double", "null"),
     names = "unique"
   )
-  checkmate::assert_character(citation, len = 1)
+  checkmate::assert_string(citation)
   checkmate::assert_list(metadata)
   checkmate::assert_list(method_assessment)
   checkmate::assert_number(truncation, na.ok = TRUE)
