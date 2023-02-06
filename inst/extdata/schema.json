@@ -465,8 +465,8 @@
         "type": "boolean"
       }
     },
-    "censorred": {
-      "description": "A boolean indicating whether the distribution fit to the data correctly handled censorred data. This is where the timing of events is either not known with precision or is known by recorded to a coarse level.\n",
+    "censored": {
+      "description": "A boolean indicating whether the distribution fit to the data correctly handled censored data. This is where the timing of events is either not known with precision or is known by recorded to a coarse level.\n",
       "examples": [true, false],
       "type": "array",
       "items": {
@@ -514,6 +514,6 @@
       }
     }
   },
-  "required": ["disease", "epi_distribution", "author", "year", "vector_borne", "extrinsic", "prob_distribution", "discretised", "censorred", "right_truncated", "phase_bias_adjusted", "DOI"],
+  "required": ["disease", "epi_distribution", "author", "year", "vector_borne", "extrinsic", "prob_distribution", "discretised", "censored", "right_truncated", "phase_bias_adjusted", "DOI"],
   "additionalProperties": false
 }

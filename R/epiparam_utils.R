@@ -176,7 +176,7 @@ make_epidist <- function(x) {
       vector = x$vector
     ),
     method_assessment = create_epidist_method_assessment(
-      censorred = x$censorred,
+      censored = x$censored,
       right_truncated = x$right_truncated,
       phase_bias_adjusted = x$phase_bias_adjusted
     ),
@@ -371,7 +371,7 @@ as_epiparam <- function(x) {
     ),
     truncation = truncation,
     discretised = discretised,
-    censorred = x$method_assessment$censorred,
+    censored = x$method_assessment$censored,
     right_truncated = x$method_assessment$right_truncated,
     phase_bias_adjusted = x$method_assessment$phase_bias_adjusted,
     notes = x$notes,

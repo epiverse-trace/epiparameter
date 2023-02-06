@@ -41,7 +41,7 @@ test_that("list_distributions works as expected with subset_db = FALSE", {
       "precision",
       "precision_ci_limits", "precision_ci", "truncation",
       "discretised",
-      "censorred", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
+      "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
       "DOI"
     )
   )
@@ -96,7 +96,7 @@ test_that("list_distributions works for incubation, subset_db = FALSE", {
       "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci",
       "dispersion", "dispersion_ci_limits", "dispersion_ci", "precision",
       "precision_ci_limits", "precision_ci", "truncation", "discretised",
-      "censorred", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
+      "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
       "DOI"
     )
   )
@@ -155,7 +155,7 @@ test_that("list_distributions works for different dist, subset_db = FALSE", {
       "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci",
       "dispersion", "dispersion_ci_limits", "dispersion_ci", "precision",
       "precision_ci_limits", "precision_ci", "truncation", "discretised",
-      "censorred", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
+      "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
       "DOI"
     )
   )

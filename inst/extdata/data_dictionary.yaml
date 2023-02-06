@@ -471,10 +471,10 @@ properties:
     type: array
     items:
       type: boolean
-  censorred:
+  censored:
     description: >
       A boolean indicating whether the distribution fit to
-      the data correctly handled censorred data. This is
+      the data correctly handled censored data. This is
       where the timing of events is either not known with
       precision or is known by recorded to a coarse level.
     examples: [true, false]
@@ -536,7 +536,7 @@ required:
   - extrinsic
   - prob_distribution
   - discretised
-  - censorred
+  - censored
   - right_truncated
   - phase_bias_adjusted
   - DOI

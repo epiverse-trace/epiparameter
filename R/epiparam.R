@@ -107,7 +107,7 @@ validate_epiparam <- function(epiparam) {
   stopifnot(
     "epiparam object does not contain the correct columns" =
       c("disease", "epi_distribution", "author", "year", "vector_borne",
-        "extrinsic", "prob_distribution", "discretised", "censorred",
+        "extrinsic", "prob_distribution", "discretised", "censored",
         "right_truncated", "phase_bias_adjusted", "DOI") %in%
       colnames(epiparam),
     "disease needs to be a character" =
@@ -126,8 +126,8 @@ validate_epiparam <- function(epiparam) {
       is.character(epiparam$prob_distribution),
     "discretised needs to be a logical" =
       is.logical(epiparam$discretised),
-    "censorred needs to be a logical" =
-      is.logical(epiparam$censorred),
+    "censored needs to be a logical" =
+      is.logical(epiparam$censored),
     "right_truncated needs to be a logical" =
       is.logical(epiparam$right_truncated),
     "phase_biase_adjusted needs to be a logical" =

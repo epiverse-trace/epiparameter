@@ -84,7 +84,7 @@ test_that("epidist works with all arguments set", {
       inference_method = "MLE"
     ),
     method_assessment = create_epidist_method_assessment(
-      censorred = TRUE,
+      censored = TRUE,
       right_truncated = FALSE,
       phase_bias_adjusted = FALSE
     ),
