@@ -1107,3 +1107,47 @@ test_that("generate fails as expected on discrete vb_epidist object with
 
   expect_error(generate(dengue_dist, times = c(10, 15)))
 })
+
+test_that("is_vb_epidist returns TRUE when expected", {
+  # suppress message about citation
+  vb_edist <- suppressMessages(vb_epidist(
+    intrinsic_epidist = epidist(
+      disease = "dengue",
+      epi_dist = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      metadata = create_epidist_metadata(vector_borne = TRUE)
+    ),
+    extrinsic_epidist = epidist(
+      disease = "dengue",
+      epi_dist = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+    )
+  ))
+
+  expect_true(is_vb_epidist(vb_edist))
+})
+
+test_that("is_vb_epidist returns FALSE when expected", {
+  # suppress message about citation
+  vb_edist <- suppressMessages(list(
+    intrinsic_epidist = epidist(
+      disease = "dengue",
+      epi_dist = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      metadata = create_epidist_metadata(vector_borne = TRUE)
+    ),
+    extrinsic_epidist = epidist(
+      disease = "dengue",
+      epi_dist = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+    )
+  ))
+
+  expect_false(is_vb_epidist(vb_edist))
+})

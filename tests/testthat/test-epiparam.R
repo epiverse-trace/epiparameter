@@ -214,3 +214,16 @@ test_that("validate_epidist catches class faults when expected", {
     regexp = "disease needs to be a character"
   )
 })
+
+test_that("is_epiparam returns TRUE when expected", {
+  eparam <- epiparam()
+
+  expect_true(is_epiparam(eparam))
+})
+
+test_that("is_epiparam returns FALSE when expected", {
+  eparam <- epiparam()
+  eparam <- unclass(eparam)
+
+  expect_false(is_epiparam(eparam))
+})

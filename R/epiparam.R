@@ -99,7 +99,7 @@ epiparam <- function(epi_dist = c("all",
 #' @return Nothing, errors when invalid `epiparam` object is provided
 validate_epiparam <- function(epiparam) {
 
-  if (!inherits(epiparam, "epiparam")) {
+  if (!is_epiparam(epiparam)) {
     stop("Object should be of class epiparam")
   }
 
@@ -190,6 +190,22 @@ format.epiparam <- function(x, ...) {
     )
   )
   invisible(x)
+}
+
+#' Checks whether the object is an `epiparam`
+#'
+#' @param x An R object
+#'
+#' @return A boolean logical, `TRUE` if the object is an `epiparam` and `FALSE`
+#' if not
+#' @export
+#'
+#' @examples
+#' eparam <- epiparam()
+#'
+#' is_epiparam(eparam)
+is_epiparam <- function(x) {
+  inherits(x, "epiparam")
 }
 
 #' Summary method for epiparam class
