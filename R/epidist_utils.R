@@ -68,9 +68,17 @@ create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 }
 
 
-#' A helper function when creating an epidist object to create a metadata list
-#' with sensible defaults, type checking and arguments to help remember metadata
-#' list structure (element names)
+#' Specify metadata associated with data set
+#'
+#' @description A helper function when creating an epidist object to create a
+#' metadata list with sensible defaults, type checking and arguments to help
+#' remember metadata list structure (element names)
+#'
+#' @details In vector-borne diseases the transmissibility of a disease is
+#' dependent on both the time taken for a host (i.e. human) to become
+#' infectious, but also on the time it takes the vector to become infectious.
+#' Therefore, the extrinsic delay, in which the vector has been infected by is
+#' not yet infectious can have a role in the spread of a disease.
 #'
 #' @param sample_size The sample of the data used to fit the delay distribution.
 #' This is usually the number of people with data on a primary and possibly
@@ -91,7 +99,8 @@ create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #' extrinsic delay distribution, such as the extrinsic incubation period.
 #' This field is required because intrinsic and extrinsic delay distributions
 #' are stored as separate entries in the database and can be linked.
-#' When the disease is not vector-borne FALSE should be given.
+#' When the disease is not vector-borne FALSE should be given. See Details for
+#' explanation of extrinsic distribution.
 #' @param inference_method The type of inference used to fit the delay
 #' distribution to the data. Abbreviations of model fitting techniques can be
 #' specified as long as they are non-ambiguous. This field is only used to
@@ -103,7 +112,10 @@ create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #' is unknown or a disease does not have a probability distribution NA can be
 #' given.
 #'
-#' @return named list
+#' @return A named list containing information on the sample size of the study,
+#' geography, whether the disease is vector-borne and if so whether it is the
+#' intrinsic or extrinsic distribution as well as method of distribution
+#' parameter estimation.
 #' @export
 #'
 #' @examples
@@ -112,12 +124,12 @@ create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #'
 #' # supplying each field
 #' create_epidist_metadata(
-#' sample_size = 10,
-#' region = "UK",
-#' vector_borne = TRUE,
-#' vector = "mosquito",
-#' extrinsic = FALSE,
-#' inference_method = "MLE"
+#'   sample_size = 10,
+#'   region = "UK",
+#'   vector_borne = TRUE,
+#'   vector = "mosquito",
+#'   extrinsic = FALSE,
+#'   inference_method = "MLE"
 #' )
 create_epidist_metadata <- function(sample_size = NA_integer_,
                                     region = NA_character_,
@@ -155,7 +167,42 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
   )
 }
 
-#' A helper function when creating an epidist object to create a summary
+#' Specify the geography of the data entry
+#'
+#' @description The geography of the data set can be a single geographical
+#' region at either continent, country, region or city level. By specifying
+#' the level of the geography the other fields may be deduced.
+#'
+#' @param continent A character string specifying the continent
+#' @param country A character string specifying the country
+#' @param region A character string specifying the region
+#' @param city A character string specifying the city
+#'
+#' @return A named list
+#' @export
+#'
+#' @examples
+#' create_epidist_region(country = "UK")
+create_epidist_region <- function(continent = NA_character_,
+                                  country = NA_character_,
+                                  region = NA_character_,
+                                  city = NA_character_) {
+
+  checkmate::assert_string(continent, na.ok = TRUE)
+  checkmate::assert_string(country, na.ok = TRUE)
+  checkmate::assert_string(region, na.ok = TRUE)
+  checkmate::assert_string(city, na.ok = TRUE)
+
+  # return list of regions
+  list(
+    continent = continent,
+    country = country,
+    region = region,
+    city = city
+  )
+
+}
+
 #' statistics list with sensible defaults, type checking and arguments to help
 #' remember which summary statistics can be accepted in the list
 #'
