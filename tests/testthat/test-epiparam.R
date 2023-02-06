@@ -19,7 +19,7 @@ test_that("epiparam works as expected", {
       "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci",
       "dispersion", "dispersion_ci_limits", "dispersion_ci", "precision",
       "precision_ci_limits", "precision_ci", "truncation", "discretised",
-      "censorred", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
+      "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
       "DOI")
   )
   expect_type(eparam$disease, "character")
@@ -80,7 +80,7 @@ test_that("epiparam works as expected", {
   expect_type(eparam$precision_ci, "integer")
   expect_type(eparam$truncation, "double")
   expect_type(eparam$discretised, "logical")
-  expect_type(eparam$censorred, "logical")
+  expect_type(eparam$censored, "logical")
   expect_type(eparam$right_truncated, "logical")
   expect_type(eparam$phase_bias_adjusted, "logical")
   expect_type(eparam$notes, "character")

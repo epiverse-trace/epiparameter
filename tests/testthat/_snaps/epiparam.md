@@ -122,13 +122,13 @@
       4         NA               NA, NA            NA       4.9            2.8, 7.5
       5         NA               NA, NA            NA      13.7          10.9, 16.9
       6       1.41           1.34, 1.50            95        NA              NA, NA
-        precision_ci truncation discretised censorred right_truncated
-      1           NA         NA       FALSE      TRUE           FALSE
-      2           NA         NA       FALSE      TRUE           FALSE
-      3           NA         NA       FALSE      TRUE           FALSE
-      4           95         NA       FALSE      TRUE           FALSE
-      5           95         NA       FALSE      TRUE           FALSE
-      6           NA         NA       FALSE      TRUE           FALSE
+        precision_ci truncation discretised censored right_truncated
+      1           NA         NA       FALSE     TRUE           FALSE
+      2           NA         NA       FALSE     TRUE           FALSE
+      3           NA         NA       FALSE     TRUE           FALSE
+      4           95         NA       FALSE     TRUE           FALSE
+      5           95         NA       FALSE     TRUE           FALSE
+      6           NA         NA       FALSE     TRUE           FALSE
         phase_bias_adjusted
       1               FALSE
       2               FALSE
@@ -212,13 +212,13 @@
       52       1.66           1.48, 1.82            95        NA              NA, NA
       53       1.67           1.47, 1.84            95        NA              NA, NA
       54       1.50             1.2, 1.9            95        NA              NA, NA
-         precision_ci truncation discretised censorred right_truncated
-      49           NA         NA       FALSE      TRUE           FALSE
-      50           NA         NA       FALSE      TRUE           FALSE
-      51           NA         NA       FALSE      TRUE           FALSE
-      52           NA         NA       FALSE      TRUE           FALSE
-      53           NA         NA       FALSE      TRUE           FALSE
-      54           NA         NA       FALSE      TRUE           FALSE
+         precision_ci truncation discretised censored right_truncated
+      49           NA         NA       FALSE     TRUE           FALSE
+      50           NA         NA       FALSE     TRUE           FALSE
+      51           NA         NA       FALSE     TRUE           FALSE
+      52           NA         NA       FALSE     TRUE           FALSE
+      53           NA         NA       FALSE     TRUE           FALSE
+      54           NA         NA       FALSE     TRUE           FALSE
          phase_bias_adjusted
       49               FALSE
       50               FALSE

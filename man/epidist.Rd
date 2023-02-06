@@ -124,7 +124,7 @@ ebola_incubation <- epidist(
     inference_method = "MLE"
   ),
   method_assessment = create_epidist_method_assessment(
-    censorred = TRUE
+    censored = TRUE
   ),
   discretise = FALSE,
   truncation = NA,

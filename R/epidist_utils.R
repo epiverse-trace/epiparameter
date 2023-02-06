@@ -419,37 +419,46 @@ create_epidist_citation <- function(author = NA_character_,
   citation
 }
 
-#' A helper function when creating an epidist object to create a method
+#' Specify whether certain methodological aspects have been used when fitting
+#' the distribution
+#'
+#' @description A helper function when creating an epidist object to create a method
 #' assessment list with sensible defaults, type checking and arguments to help
 #' remember which method assessments can be accepted in the list
 #'
-#' @param censorred A boolean logical whether the study used single or double
-#' interval censorring in the methods to infer the delay distribution
+#' @details Currently, the method assessment focuses on common methodological
+#' aspects of delay distributions (e.g. incubation period, serial interval,
+#' etc.), and does not currently take into account methodological aspects which
+#' may be important when fitting offspring distributions to data on disease
+#' (super)spreading.
+#'
+#' @param censored A boolean logical whether the study used single or double
+#' interval censoring in the methods to infer the delay distribution
 #' @param right_truncated A boolean logical whether the study used right-
 #' truncation in the methods to infer the delay distribution
 #' @param phase_bias_adjusted A boolean logical whether the study adjusted for
 #' phase bias in the methods to infer the delay distribution
 #'
-#' @return A list of three elements
+#' @return A named list with three elements
 #' @export
 #'
 #' @examples
 #' create_epidist_method_assessment(
-#'   censorred = FALSE,
+#'   censored = FALSE,
 #'   right_truncated = FALSE,
 #'   phase_bias_adjusted = FALSE
 #' )
-create_epidist_method_assessment <- function(censorred = NA,
+create_epidist_method_assessment <- function(censored = NA,
                                              right_truncated = NA,
                                              phase_bias_adjusted = NA) {
   # check input
-  checkmate::assert_logical(censorred, len = 1)
+  checkmate::assert_logical(censored, len = 1)
   checkmate::assert_logical(right_truncated, len = 1)
   checkmate::assert_logical(phase_bias_adjusted, len = 1)
 
   # return method assessment list
   list(
-    censorred = censorred,
+    censored = censored,
     right_truncated = right_truncated,
     phase_bias_adjusted = phase_bias_adjusted
   )

@@ -2,19 +2,18 @@
 % Please edit documentation in R/epidist_utils.R
 \name{create_epidist_method_assessment}
 \alias{create_epidist_method_assessment}
-\title{A helper function when creating an epidist object to create a method
-assessment list with sensible defaults, type checking and arguments to help
-remember which method assessments can be accepted in the list}
+\title{Specify whether certain methodological aspects have been used when fitting
+the distribution}
 \usage{
 create_epidist_method_assessment(
-  censorred = NA,
+  censored = NA,
   right_truncated = NA,
   phase_bias_adjusted = NA
 )
 }
 \arguments{
-\item{censorred}{A boolean logical whether the study used single or double
-interval censorring in the methods to infer the delay distribution}
+\item{censored}{A boolean logical whether the study used single or double
+interval censoring in the methods to infer the delay distribution}
 
 \item{right_truncated}{A boolean logical whether the study used right-
 truncation in the methods to infer the delay distribution}
@@ -23,16 +22,23 @@ truncation in the methods to infer the delay distribution}
 phase bias in the methods to infer the delay distribution}
 }
 \value{
-A list of three elements
+A named list with three elements
 }
 \description{
 A helper function when creating an epidist object to create a method
 assessment list with sensible defaults, type checking and arguments to help
 remember which method assessments can be accepted in the list
 }
+\details{
+Currently, the method assessment focuses on common methodological
+aspects of delay distributions (e.g. incubation period, serial interval,
+etc.), and does not currently take into account methodological aspects which
+may be important when fitting offspring distributions to data on disease
+(super)spreading.
+}
 \examples{
 create_epidist_method_assessment(
-  censorred = FALSE,
+  censored = FALSE,
   right_truncated = FALSE,
   phase_bias_adjusted = FALSE
 )

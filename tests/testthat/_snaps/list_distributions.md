@@ -460,47 +460,47 @@
       38           1.48, 1.82            95        NA              NA, NA
       39           1.47, 1.84            95        NA              NA, NA
       40             1.2, 1.9            95        NA              NA, NA
-         precision_ci truncation discretised censorred right_truncated
-      1            NA         NA       FALSE      TRUE           FALSE
-      2            NA         NA       FALSE      TRUE           FALSE
-      3            NA         NA       FALSE      TRUE           FALSE
-      4            95         NA       FALSE      TRUE           FALSE
-      5            95         NA       FALSE      TRUE           FALSE
-      6            NA         NA       FALSE      TRUE           FALSE
-      7            NA         NA       FALSE      TRUE           FALSE
-      8            NA         NA       FALSE      TRUE           FALSE
-      9            NA         NA       FALSE      TRUE           FALSE
-      10           NA         NA       FALSE      TRUE           FALSE
-      11           NA         NA       FALSE      TRUE           FALSE
-      12           NA         NA       FALSE      TRUE           FALSE
-      13           NA         NA       FALSE      TRUE           FALSE
-      14           NA         NA       FALSE      TRUE           FALSE
-      15           NA         NA       FALSE      TRUE           FALSE
-      16           NA         NA       FALSE      TRUE           FALSE
-      17           NA         NA       FALSE      TRUE           FALSE
-      18           NA         NA       FALSE     FALSE           FALSE
-      19           NA         NA       FALSE      TRUE           FALSE
-      20           NA         NA       FALSE      TRUE           FALSE
-      21           NA         NA       FALSE      TRUE           FALSE
-      22           NA         NA       FALSE      TRUE           FALSE
-      23           NA         NA       FALSE      TRUE           FALSE
-      24           NA         NA       FALSE      TRUE           FALSE
-      25           NA         NA       FALSE     FALSE           FALSE
-      26           NA         NA       FALSE     FALSE           FALSE
-      27           NA         NA       FALSE      TRUE           FALSE
-      28           NA         NA       FALSE      TRUE           FALSE
-      29           NA         NA       FALSE      TRUE           FALSE
-      30           NA         NA       FALSE      TRUE           FALSE
-      31           NA         NA       FALSE      TRUE           FALSE
-      32           NA         NA       FALSE      TRUE           FALSE
-      33           NA         NA       FALSE      TRUE           FALSE
-      34           NA         NA       FALSE      TRUE           FALSE
-      35           NA         NA       FALSE      TRUE           FALSE
-      36           NA         NA       FALSE      TRUE           FALSE
-      37           NA         NA       FALSE      TRUE           FALSE
-      38           NA         NA       FALSE      TRUE           FALSE
-      39           NA         NA       FALSE      TRUE           FALSE
-      40           NA         NA       FALSE      TRUE           FALSE
+         precision_ci truncation discretised censored right_truncated
+      1            NA         NA       FALSE     TRUE           FALSE
+      2            NA         NA       FALSE     TRUE           FALSE
+      3            NA         NA       FALSE     TRUE           FALSE
+      4            95         NA       FALSE     TRUE           FALSE
+      5            95         NA       FALSE     TRUE           FALSE
+      6            NA         NA       FALSE     TRUE           FALSE
+      7            NA         NA       FALSE     TRUE           FALSE
+      8            NA         NA       FALSE     TRUE           FALSE
+      9            NA         NA       FALSE     TRUE           FALSE
+      10           NA         NA       FALSE     TRUE           FALSE
+      11           NA         NA       FALSE     TRUE           FALSE
+      12           NA         NA       FALSE     TRUE           FALSE
+      13           NA         NA       FALSE     TRUE           FALSE
+      14           NA         NA       FALSE     TRUE           FALSE
+      15           NA         NA       FALSE     TRUE           FALSE
+      16           NA         NA       FALSE     TRUE           FALSE
+      17           NA         NA       FALSE     TRUE           FALSE
+      18           NA         NA       FALSE    FALSE           FALSE
+      19           NA         NA       FALSE     TRUE           FALSE
+      20           NA         NA       FALSE     TRUE           FALSE
+      21           NA         NA       FALSE     TRUE           FALSE
+      22           NA         NA       FALSE     TRUE           FALSE
+      23           NA         NA       FALSE     TRUE           FALSE
+      24           NA         NA       FALSE     TRUE           FALSE
+      25           NA         NA       FALSE    FALSE           FALSE
+      26           NA         NA       FALSE    FALSE           FALSE
+      27           NA         NA       FALSE     TRUE           FALSE
+      28           NA         NA       FALSE     TRUE           FALSE
+      29           NA         NA       FALSE     TRUE           FALSE
+      30           NA         NA       FALSE     TRUE           FALSE
+      31           NA         NA       FALSE     TRUE           FALSE
+      32           NA         NA       FALSE     TRUE           FALSE
+      33           NA         NA       FALSE     TRUE           FALSE
+      34           NA         NA       FALSE     TRUE           FALSE
+      35           NA         NA       FALSE     TRUE           FALSE
+      36           NA         NA       FALSE     TRUE           FALSE
+      37           NA         NA       FALSE     TRUE           FALSE
+      38           NA         NA       FALSE     TRUE           FALSE
+      39           NA         NA       FALSE     TRUE           FALSE
+      40           NA         NA       FALSE     TRUE           FALSE
          phase_bias_adjusted
       1                FALSE
       2                FALSE
@@ -1087,47 +1087,47 @@
       38           1.48, 1.82            95        NA              NA, NA
       39           1.47, 1.84            95        NA              NA, NA
       40             1.2, 1.9            95        NA              NA, NA
-         precision_ci truncation discretised censorred right_truncated
-      1            NA         NA       FALSE      TRUE           FALSE
-      2            NA         NA       FALSE      TRUE           FALSE
-      3            NA         NA       FALSE      TRUE           FALSE
-      4            95         NA       FALSE      TRUE           FALSE
-      5            95         NA       FALSE      TRUE           FALSE
-      6            NA         NA       FALSE      TRUE           FALSE
-      7            NA         NA       FALSE      TRUE           FALSE
-      8            NA         NA       FALSE      TRUE           FALSE
-      9            NA         NA       FALSE      TRUE           FALSE
-      10           NA         NA       FALSE      TRUE           FALSE
-      11           NA         NA       FALSE      TRUE           FALSE
-      12           NA         NA       FALSE      TRUE           FALSE
-      13           NA         NA       FALSE      TRUE           FALSE
-      14           NA         NA       FALSE      TRUE           FALSE
-      15           NA         NA       FALSE      TRUE           FALSE
-      16           NA         NA       FALSE      TRUE           FALSE
-      17           NA         NA       FALSE      TRUE           FALSE
-      18           NA         NA       FALSE     FALSE           FALSE
-      19           NA         NA       FALSE      TRUE           FALSE
-      20           NA         NA       FALSE      TRUE           FALSE
-      21           NA         NA       FALSE      TRUE           FALSE
-      22           NA         NA       FALSE      TRUE           FALSE
-      23           NA         NA       FALSE      TRUE           FALSE
-      24           NA         NA       FALSE      TRUE           FALSE
-      25           NA         NA       FALSE     FALSE           FALSE
-      26           NA         NA       FALSE     FALSE           FALSE
-      27           NA         NA       FALSE      TRUE           FALSE
-      28           NA         NA       FALSE      TRUE           FALSE
-      29           NA         NA       FALSE      TRUE           FALSE
-      30           NA         NA       FALSE      TRUE           FALSE
-      31           NA         NA       FALSE      TRUE           FALSE
-      32           NA         NA       FALSE      TRUE           FALSE
-      33           NA         NA       FALSE      TRUE           FALSE
-      34           NA         NA       FALSE      TRUE           FALSE
-      35           NA         NA       FALSE      TRUE           FALSE
-      36           NA         NA       FALSE      TRUE           FALSE
-      37           NA         NA       FALSE      TRUE           FALSE
-      38           NA         NA       FALSE      TRUE           FALSE
-      39           NA         NA       FALSE      TRUE           FALSE
-      40           NA         NA       FALSE      TRUE           FALSE
+         precision_ci truncation discretised censored right_truncated
+      1            NA         NA       FALSE     TRUE           FALSE
+      2            NA         NA       FALSE     TRUE           FALSE
+      3            NA         NA       FALSE     TRUE           FALSE
+      4            95         NA       FALSE     TRUE           FALSE
+      5            95         NA       FALSE     TRUE           FALSE
+      6            NA         NA       FALSE     TRUE           FALSE
+      7            NA         NA       FALSE     TRUE           FALSE
+      8            NA         NA       FALSE     TRUE           FALSE
+      9            NA         NA       FALSE     TRUE           FALSE
+      10           NA         NA       FALSE     TRUE           FALSE
+      11           NA         NA       FALSE     TRUE           FALSE
+      12           NA         NA       FALSE     TRUE           FALSE
+      13           NA         NA       FALSE     TRUE           FALSE
+      14           NA         NA       FALSE     TRUE           FALSE
+      15           NA         NA       FALSE     TRUE           FALSE
+      16           NA         NA       FALSE     TRUE           FALSE
+      17           NA         NA       FALSE     TRUE           FALSE
+      18           NA         NA       FALSE    FALSE           FALSE
+      19           NA         NA       FALSE     TRUE           FALSE
+      20           NA         NA       FALSE     TRUE           FALSE
+      21           NA         NA       FALSE     TRUE           FALSE
+      22           NA         NA       FALSE     TRUE           FALSE
+      23           NA         NA       FALSE     TRUE           FALSE
+      24           NA         NA       FALSE     TRUE           FALSE
+      25           NA         NA       FALSE    FALSE           FALSE
+      26           NA         NA       FALSE    FALSE           FALSE
+      27           NA         NA       FALSE     TRUE           FALSE
+      28           NA         NA       FALSE     TRUE           FALSE
+      29           NA         NA       FALSE     TRUE           FALSE
+      30           NA         NA       FALSE     TRUE           FALSE
+      31           NA         NA       FALSE     TRUE           FALSE
+      32           NA         NA       FALSE     TRUE           FALSE
+      33           NA         NA       FALSE     TRUE           FALSE
+      34           NA         NA       FALSE     TRUE           FALSE
+      35           NA         NA       FALSE     TRUE           FALSE
+      36           NA         NA       FALSE     TRUE           FALSE
+      37           NA         NA       FALSE     TRUE           FALSE
+      38           NA         NA       FALSE     TRUE           FALSE
+      39           NA         NA       FALSE     TRUE           FALSE
+      40           NA         NA       FALSE     TRUE           FALSE
          phase_bias_adjusted
       1                FALSE
       2                FALSE
@@ -1303,10 +1303,10 @@
       1               NA, NA            NA        NA              NA, NA           NA
       2               NA, NA            NA        NA              NA, NA           NA
       3               NA, NA            NA        NA              NA, NA           NA
-        truncation discretised censorred right_truncated phase_bias_adjusted
-      1         NA       FALSE      TRUE           FALSE               FALSE
-      2         NA       FALSE     FALSE           FALSE               FALSE
-      3         NA       FALSE     FALSE           FALSE               FALSE
+        truncation discretised censored right_truncated phase_bias_adjusted
+      1         NA       FALSE     TRUE           FALSE               FALSE
+      2         NA       FALSE    FALSE           FALSE               FALSE
+      3         NA       FALSE    FALSE           FALSE               FALSE
                                                                                                                                                                                                                                                                                                                                     notes
       1                                                                                                                                                                                                                                                                                                              No additional notes.
       2 The generation time is estimated from non-human viral load data. This paper reports the generation time but assumes the generation time and serial interval are the same it is classified as serial interval here based on Van Kerkove et al. 2015 <10.1038/sdata.2015.19>. The sample size is take from Van Kerkove et al. 2015.
