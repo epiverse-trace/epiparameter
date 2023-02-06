@@ -2,9 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{create_epidist_summary_stats}
 \alias{create_epidist_summary_stats}
-\title{A helper function when creating an epidist object to create a summary
-statistics list with sensible defaults, type checking and arguments to help
-remember which summary statistics can be accepted in the list}
+\title{Specify any reported summary statistics for \code{epidist}}
 \usage{
 create_epidist_summary_stats(
   mean = NA_real_,
@@ -99,5 +97,23 @@ statistics list with sensible defaults, type checking and arguments to help
 remember which summary statistics can be accepted in the list
 }
 \examples{
+# mean and standard deviation
 create_epidist_summary_stats(mean = 5, sd = 2)
+
+# mean and standard deviation with uncertainty
+create_epidist_summary_stats(
+  mean = 4,
+  mean_ci_limits = c(2.1, 5.7),
+  mean_ci = 95,
+  sd = 0.7,
+  sd_ci_limits = c(0.3, 1.1),
+  sd_ci = 95
+)
+
+# median and range
+create_epidist_summary_stats(
+  median = 5,
+  lower_range = 1,
+  upper_range = 13
+)
 }
