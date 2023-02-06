@@ -7,15 +7,18 @@ test_that("epiparam works as expected", {
     colnames(eparam),
     c("disease", "pathogen", "epi_distribution", "author", "year",
       "sample_size", "region", "vector_borne", "vector", "extrinsic",
-      "prob_distribution", "inference_method", "mean", "mean_ci",
-      "mean_ci_interval", "sd", "sd_ci", "sd_ci_interval", "quantile_025",
-      "quantile_05", "quantile_25", "median", "median_ci", "median_ci_interval",
+      "prob_distribution", "inference_method", "mean", "mean_ci_limits",
+      "mean_ci", "sd", "sd_ci_limits", "sd_ci",
+      "quantile_025",
+      "quantile_05", "quantile_25", "median", "median_ci_limits", "median_ci",
       "quantile_75", "quantile_875", "quantile_95", "quantile_975",
-      "lower_range", "upper_range", "shape", "shape_ci", "shape_ci_interval",
-      "scale", "scale_ci", "scale_ci_interval", "meanlog", "meanlog_ci",
-      "meanlog_ci_interval", "sdlog", "sdlog_ci", "sdlog_ci_interval",
-      "dispersion", "dispersion_ci", "dispersion_ci_interval", "precision",
-      "precision_ci", "precision_ci_interval", "truncation", "discretised",
+      "lower_range", "upper_range", "shape", "shape_ci_limits",
+      "shape_ci",
+      "scale", "scale_ci_limits", "scale_ci", "meanlog",
+      "meanlog_ci_limits",
+      "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci",
+      "dispersion", "dispersion_ci_limits", "dispersion_ci", "precision",
+      "precision_ci_limits", "precision_ci", "truncation", "discretised",
       "censorred", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
       "DOI")
   )
@@ -32,19 +35,19 @@ test_that("epiparam works as expected", {
   expect_type(eparam$prob_distribution, "character")
   expect_type(eparam$inference_method, "character")
   expect_type(eparam$mean, "double")
-  expect_type(eparam$mean_ci, "list")
-  lapply(eparam$mean_ci, expect_type, "double")
-  expect_type(eparam$mean_ci_interval, "integer")
+  expect_type(eparam$mean_ci_limits, "list")
+  lapply(eparam$mean_ci_limits, expect_type, "double")
+  expect_type(eparam$mean_ci, "integer")
   expect_type(eparam$sd, "double")
-  expect_type(eparam$sd_ci, "list")
-  lapply(eparam$sd_ci, expect_type, "double")
-  expect_type(eparam$sd_ci_interval, "integer")
+  expect_type(eparam$sd_ci_limits, "list")
+  lapply(eparam$sd_ci_limits, expect_type, "double")
+  expect_type(eparam$sd_ci, "integer")
   expect_type(eparam$quantile_025, "double")
   expect_type(eparam$quantile_05, "double")
   expect_type(eparam$quantile_25, "double")
   expect_type(eparam$median, "double")
-  expect_type(eparam$median_ci, "list")
-  lapply(eparam$median_ci, expect_type, "double")
+  expect_type(eparam$median_ci_limits, "list")
+  lapply(eparam$median_ci_limits, expect_type, "double")
   expect_type(eparam$quantile_75, "double")
   expect_type(eparam$quantile_875, "double")
   expect_type(eparam$quantile_95, "double")
@@ -52,29 +55,29 @@ test_that("epiparam works as expected", {
   expect_type(eparam$lower_range, "integer")
   expect_type(eparam$upper_range, "integer")
   expect_type(eparam$shape, "double")
-  expect_type(eparam$shape_ci, "list")
-  lapply(eparam$shape_ci, expect_type, "double")
-  expect_type(eparam$shape_ci_interval, "integer")
+  expect_type(eparam$shape_ci_limits, "list")
+  lapply(eparam$shape_ci_limits, expect_type, "double")
+  expect_type(eparam$shape_ci, "integer")
   expect_type(eparam$scale, "double")
-  expect_type(eparam$scale_ci, "list")
-  lapply(eparam$scale_ci, expect_type, "double")
-  expect_type(eparam$scale_ci_interval, "integer")
+  expect_type(eparam$scale_ci_limits, "list")
+  lapply(eparam$scale_ci_limits, expect_type, "double")
+  expect_type(eparam$scale_ci, "integer")
   expect_type(eparam$meanlog, "double")
-  expect_type(eparam$meanlog_ci, "list")
-  lapply(eparam$meanlog_ci, expect_type, "double")
-  expect_type(eparam$meanlog_ci_interval, "double")
+  expect_type(eparam$meanlog_ci_limits, "list")
+  lapply(eparam$meanlog_ci_limits, expect_type, "double")
+  expect_type(eparam$meanlog_ci, "double")
   expect_type(eparam$sdlog, "double")
-  expect_type(eparam$sdlog_ci, "list")
-  lapply(eparam$sdlog_ci, expect_type, "double")
-  expect_type(eparam$sdlog_ci_interval, "double")
+  expect_type(eparam$sdlog_ci_limits, "list")
+  lapply(eparam$sdlog_ci_limits, expect_type, "double")
+  expect_type(eparam$sdlog_ci, "double")
   expect_type(eparam$dispersion, "double")
-  expect_type(eparam$dispersion_ci, "list")
-  lapply(eparam$dispersion_ci, expect_type, "double")
-  expect_type(eparam$dispersion_ci_interval, "integer")
+  expect_type(eparam$dispersion_ci_limits, "list")
+  lapply(eparam$dispersion_ci_limits, expect_type, "double")
+  expect_type(eparam$dispersion_ci, "integer")
   expect_type(eparam$precision, "double")
-  expect_type(eparam$precision_ci, "list")
-  lapply(eparam$precision_ci, expect_type, "double")
-  expect_type(eparam$precision_ci_interval, "integer")
+  expect_type(eparam$precision_ci_limits, "list")
+  lapply(eparam$precision_ci_limits, expect_type, "double")
+  expect_type(eparam$precision_ci, "integer")
   expect_type(eparam$truncation, "double")
   expect_type(eparam$discretised, "logical")
   expect_type(eparam$censorred, "logical")

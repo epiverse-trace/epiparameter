@@ -143,7 +143,7 @@ properties:
     type: array
     items:
       type: ["number", "null"]
-  mean_ci:
+  mean_ci_limits:
     description: >
       The confidence interval of the distribution mean
       specified by two numbers in an array.
@@ -153,7 +153,7 @@ properties:
       type: ["array", "null"]
       items:
         type: ["number", "null"]
-  mean_ci_interval:
+  mean_ci:
     description: >
       The interval of the uncertainty around the mean
       of the distribution, for example 95% confidence
@@ -169,7 +169,7 @@ properties:
     type: array
     items:
       type: ["number", "null"]
-  sd_ci:
+  sd_ci_limits:
     description: >
       The confidence interval of the distribution standard
       deviation specified by two numbers in an array.
@@ -179,7 +179,7 @@ properties:
       type: ["array", "null"]
       items:
         type: ["number", "null"]
-  sd_ci_interval:
+  sd_ci:
     description: >
       The interval of the uncertainty around the standard
       deviation of the distribution, for example 95%
@@ -216,7 +216,7 @@ properties:
     type: array
     items:
       type: ["number", "null"]
-  median_ci:
+  median_ci_limits:
     description: >
       The confidence interval of the distribution median
       specified by two numbers in an array.
@@ -226,7 +226,7 @@ properties:
       type: ["array", "null"]
       items:
         type: ["number", "null"]
-  median_ci_interval:
+  median_ci:
     description: >
       The interval of the uncertainty around the median
       of the distribution, for example 95% confidence
@@ -291,7 +291,7 @@ properties:
     type: array
     items:
       type: ["number", "null"]
-  shape_ci:
+  shape_ci_limits:
     description: >
       The confidence interval of the distribution's
       shape parameter, specified by two numbers in an array.
@@ -301,7 +301,7 @@ properties:
       type: ["array", "null"]
       items:
         type: ["number", "null"]
-  shape_ci_interval:
+  shape_ci:
     description: >
       The interval of the uncertainty around the shape
       parameter of the distribution, for example 95%
@@ -320,7 +320,7 @@ properties:
     type: array
     items:
       type: ["number", "null"]
-  scale_ci:
+  scale_ci_limits:
     description: >
       The confidence interval of the distribution's
       scale parameter, specified by two numbers in an array.
@@ -330,7 +330,7 @@ properties:
       type: ["array", "null"]
       items:
         type: ["number", "null"]
-  scale_ci_interval:
+  scale_ci:
     description: >
       The interval of the uncertainty around the scale
       parameter of the distribution, for example 95%
@@ -346,7 +346,7 @@ properties:
     type: array
     items:
       type: ["number", "null"]
-  meanlog_ci:
+  meanlog_ci_limits:
     description: >
       The confidence interval of the distribution's
       meanlog parameter, specified by two numbers in an
@@ -357,7 +357,7 @@ properties:
       type: ["array", "null"]
       items:
         type: number
-  meanlog_ci_interval:
+  meanlog_ci:
     description: >
       The interval of the uncertainty around the meanlog
       parameter of the distribution, for example 95%
@@ -373,7 +373,7 @@ properties:
     type: array
     items:
       type: ["number", "null"]
-  sdlog_ci:
+  sdlog_ci_limits:
     description: >
       The confidence interval of the distribution's
       sdlog parameter, specified by two numbers in an
@@ -384,7 +384,7 @@ properties:
       type: ["array", "null"]
       items:
         type: number
-  sdlog_ci_interval:
+  sdlog_ci:
     description: >
       The interval of the uncertainty around the sdlog
       parameter of the distribution, for example 95%
@@ -403,7 +403,7 @@ properties:
     type: array
     items:
       type: ["number", "null"]
-  dispersion_ci:
+  dispersion_ci_limits:
     description: >
       The confidence interval of the distribution's
       dispersion, specified by two numbers in an
@@ -414,7 +414,7 @@ properties:
       type: ["array", "null"]
       items:
         type: ["number", "null"]
-  dispersion_ci_interval:
+  dispersion_ci:
     description: >
       The interval of the uncertainty around the
       dispersion of the distribution, for example 95%
@@ -432,7 +432,7 @@ properties:
     type: array
     items:
       type: ["number", "null"]
-  precision_ci:
+  precision_ci_limits:
     description: >
       The confidence interval of the distribution's
       precision parameter, specified by two numbers in an
@@ -443,7 +443,7 @@ properties:
       type: ["array", "null"]
       items:
         type: ["number", "null"]
-  precision_ci_interval:
+  precision_ci:
     description: >
       The interval of the uncertainty around the
       precision parameter, for example 95%

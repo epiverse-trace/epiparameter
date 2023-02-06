@@ -39,13 +39,13 @@ check_epidist_params <- function(prob_dist, prob_dist_params) {
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   uncertainty = list(
 #'     shape = create_epidist_uncertainty(
-#'       ci = c(0.5, 1),
-#'       ci_interval = 95,
+#'       ci_limits = c(0.5, 1),
+#'       ci = 95,
 #'       ci_type = "confidence interval"
 #'     ),
 #'     scale = create_epidist_uncertainty(
-#'       ci = c(0.5, 1),
-#'       ci_interval = 95,
+#'       ci_limits = c(0.5, 1),
+#'       ci = 95,
 #'       ci_type = "confidence interval"
 #'     )
 #'   )

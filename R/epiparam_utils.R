@@ -53,8 +53,8 @@ make_epidist <- function(x) {
     parameters <- c(shape = x$shape, scale = x$scale)
     uncertainty <- list(
       shape = create_epidist_uncertainty(
+        ci_limits = x$shape_ci_limits,
         ci = x$shape_ci,
-        ci_interval = x$shape_ci_interval,
         ci_type =  ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
@@ -62,8 +62,8 @@ make_epidist <- function(x) {
         )
       ),
       scale = create_epidist_uncertainty(
+        ci_limits = x$scale_ci_limits,
         ci = x$scale_ci,
-        ci_interval = x$scale_ci_interval,
         ci_type = ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
@@ -75,8 +75,8 @@ make_epidist <- function(x) {
     parameters <- c(meanlog = x$meanlog, sdlog = x$sdlog)
     uncertainty <- list(
       meanlog = create_epidist_uncertainty(
+        ci_limits = x$meanlog_ci_limits,
         ci = x$meanlog_ci,
-        ci_interval = x$meanlog_ci_interval,
         ci_type =  ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
@@ -84,8 +84,8 @@ make_epidist <- function(x) {
         )
       ),
       sdlog = create_epidist_uncertainty(
+        ci_limits = x$sdlog_ci_limits,
         ci = x$sdlog_ci,
-        ci_interval = x$sdlog_ci_interval,
         ci_type = ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
@@ -97,8 +97,8 @@ make_epidist <- function(x) {
     parameters <- c(mean = x$mean, dispersion = x$dispersion)
     uncertainty <- list(
       mean = create_epidist_uncertainty(
+        ci_limits = x$mean_ci_limits,
         ci = x$mean_ci,
-        ci_interval = x$mean_ci_interval,
         ci_type =  ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
@@ -106,8 +106,8 @@ make_epidist <- function(x) {
         )
       ),
       dispersion = create_epidist_uncertainty(
+        ci_limits = x$dispersion_ci_limits,
         ci = x$dispersion_ci,
-        ci_interval = x$dispersion_ci_interval,
         ci_type = ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
@@ -119,8 +119,8 @@ make_epidist <- function(x) {
     parameters <- c(mean = x$mean)
     uncertainty <- list(
       mean = create_epidist_uncertainty(
+        ci_limits = x$mean_ci_limits,
         ci = x$mean_ci,
-        ci_interval = x$mean_ci_interval,
         ci_type =  ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
@@ -141,17 +141,17 @@ make_epidist <- function(x) {
     uncertainty = uncertainty,
     summary_stats = create_epidist_summary_stats(
       mean = x$mean,
+      mean_ci_limits = x$mean_ci_limits,
       mean_ci = x$mean_ci,
-      mean_ci_interval = x$mean_ci_interval,
       sd = x$sd,
+      sd_ci_limits = x$sd_ci_limits,
       sd_ci = x$sd_ci,
-      sd_ci_interval = x$sd_ci_interval,
       median = x$median,
+      median_ci_limits = x$median_ci_limits,
       median_ci = x$median_ci,
-      median_ci_interval = x$median_ci_interval,
       dispersion = x$dispersion,
+      dispersion_ci_limits = x$dispersion_ci_limits,
       dispersion_ci = x$dispersion_ci,
-      dispersion_ci_interval = x$dispersion_ci_interval,
       lower_range = x$lower_range,
       upper_range = x$upper_range,
       q_025 = x$quantile_025,
@@ -265,7 +265,7 @@ as_epiparam <- function(x) {
     x$uncertainty <- lapply(
       x$uncertainty,
       function(x) {
-        list(ci = NA_real_, ci_interval = NA_real_, ci_type = NA_character_)
+        list(ci_limits = NA_real_, ci = NA_real_, ci_type = NA_character_)
       })
   }
 
@@ -286,17 +286,17 @@ as_epiparam <- function(x) {
     prob_distribution = prob_dist,
     inference_method = x$metadata$inference_method,
     mean = x$summary_stats$central_tendency_spread$mean,
-    mean_ci = I(list(x$summary_stats$central_tendency_spread$mean_ci)),
-    mean_ci_interval = x$summary_stats$central_tendency_spread$mean_ci_interval,
+    mean_ci_limits = I(list(x$summary_stats$central_tendency_spread$mean_ci_limits)),
+    mean_ci = x$summary_stats$central_tendency_spread$mean_ci,
     sd = x$summary_stats$central_tendency_spread$sd,
-    sd_ci = I(list(x$summary_stats$central_tendency_spread$sd_ci)),
-    sd_ci_interval = x$summary_stats$central_tendency_spread$sd_ci_interval,
+    sd_ci_limits = I(list(x$summary_stats$central_tendency_spread$sd_ci_limits)),
+    sd_ci = x$summary_stats$central_tendency_spread$sd_ci,
     quantile_025 = unname(x$summary_stats$quantiles["q_025"]),
     quantile_05 = unname(x$summary_stats$quantiles["q_05"]),
     quantile_25 = unname(x$summary_stats$quantiles["q_25"]),
     median = x$summary_stats$central_tendency_spread$median,
-    median_ci = I(list(x$summary_stats$central_tendency_spread$median_ci)),
-    median_ci_interval = x$summary_stats$central_tendency_spread$median_ci_interval,
+    median_ci_limits = I(list(x$summary_stats$central_tendency_spread$median_ci_limits)),
+    median_ci = x$summary_stats$central_tendency_spread$median_ci,
     quantile_75 = unname(x$summary_stats$quantiles["q_75"]),
     quantile_875 = unname(x$summary_stats$quantiles["q_875"]),
     quantile_95 = unname(x$summary_stats$quantiles["q_95"]),
@@ -308,66 +308,66 @@ as_epiparam <- function(x) {
       yes = NA_real_,
       no = parameters["shape"]
     ),
-    shape_ci = NA,
-    shape_ci_interval = ifelse(
+    shape_ci_limits = NA,
+    shape_ci = ifelse(
       test = is.null(x$uncertainty[["shape"]]),
       yes = NA_real_,
-      no = x$uncertainty$shape$ci_interval
+      no = x$uncertainty$shape$ci
     ),
     scale = ifelse(
       test = is.na(unname(parameters["scale"])),
       yes = NA_real_,
       no = parameters["scale"]
     ),
-    scale_ci = NA,
-    scale_ci_interval = ifelse(
+    scale_ci_limits = NA,
+    scale_ci = ifelse(
       test = is.null(x$uncertainty[["scale"]]),
       yes = NA_real_,
-      no = x$uncertainty$scale$ci_interval
+      no = x$uncertainty$scale$ci
     ),
     meanlog = ifelse(
       test = is.na(unname(parameters["mu"])),
       yes = NA_real_,
       no = parameters["mu"]
     ),
-    meanlog_ci = NA,
-    meanlog_ci_interval = ifelse(
+    meanlog_ci_limits = NA,
+    meanlog_ci = ifelse(
       test = is.null(x$uncertainty[["meanlog"]]),
       yes = NA_real_,
-      no = x$uncertainty$meanlog$ci_interval
+      no = x$uncertainty$meanlog$ci
     ),
     sdlog = ifelse(
       test = is.na(unname(parameters["sigma"])),
       yes = NA_real_,
       no = parameters["sigma"]
     ),
-    sdlog_ci = NA,
-    sdlog_ci_interval = ifelse(
+    sdlog_ci_limits = NA,
+    sdlog_ci = ifelse(
       test = is.null(x$uncertainty[["sdlog"]]),
       yes = NA_real_,
-      no = x$uncertainty$sdlog$ci_interval
+      no = x$uncertainty$sdlog$ci
     ),
     dispersion = ifelse(
       test = is.na(unname(parameters["dispersion"])),
       yes = NA_real_,
       no = parameters["dispersion"]
     ),
-    dispersion_ci = NA,
-    dispersion_ci_interval = ifelse(
+    dispersion_ci_limits = NA,
+    dispersion_ci = ifelse(
       test = is.null(x$uncertainty[["dispersion"]]),
       yes = NA_real_,
-      no = x$uncertainty$dispersion$ci_interval
+      no = x$uncertainty$dispersion$ci
     ),
     precision = ifelse(
       test = is.na(unname(parameters["precision"])),
       yes = NA_real_,
       no = parameters["precision"]
     ),
-    precision_ci = NA,
-    precision_ci_interval = ifelse(
+    precision_ci_limits = NA,
+    precision_ci = ifelse(
       test = is.null(x$uncertainty[["precision"]]),
       yes = NA_real_,
-      no = x$uncertainty$precision$ci_interval
+      no = x$uncertainty$precision$ci
     ),
     truncation = truncation,
     discretised = discretised,
@@ -380,49 +380,49 @@ as_epiparam <- function(x) {
   )
 
   # create lists for epiparam vector columns
-  shape_ci <- ifelse(
+  shape_ci_limits <- ifelse(
     test = is.null(x$uncertainty[["shape"]]),
     yes = I(list(c(NA_real_, NA_real_))),
     no = x$uncertainty$shape$ci
   )
 
-  scale_ci <- ifelse(
+  scale_ci_limits <- ifelse(
     test = is.null(x$uncertainty[["scale"]]),
     yes = I(list(c(NA_real_, NA_real_))),
     no = x$uncertainty$scale$ci
   )
 
-  meanlog_ci <- ifelse(
+  meanlog_ci_limits <- ifelse(
     test = is.null(x$uncertainty[["meanlog"]]),
     yes = I(list(c(NA_real_, NA_real_))),
     no = x$uncertainty$meanlog$ci
   )
 
-  sdlog_ci <- ifelse(
+  sdlog_ci_limits <- ifelse(
     test = is.null(x$uncertainty[["sdlog"]]),
     yes = I(list(c(NA_real_, NA_real_))),
     no = x$uncertainty$sdlog$ci
   )
 
-  dispersion_ci <- ifelse(
+  dispersion_ci_limits <- ifelse(
     test = is.null(x$uncertainty[["dispersion"]]),
     yes = I(list(c(NA_real_, NA_real_))),
     no = x$uncertainty$dispersion$ci
   )
 
-  precision_ci <- ifelse(
+  precision_ci_limits <- ifelse(
     test = is.null(x$uncertainty[["precision"]]),
     yes = I(list(c(NA_real_, NA_real_))),
     no = x$uncertainty$precision$ci
   )
 
   # insert vector columns into data frame
-  eparam$shape_ci <- shape_ci
-  eparam$scale_ci <- scale_ci
-  eparam$meanlog_ci <- meanlog_ci
-  eparam$sdlog_ci <- sdlog_ci
-  eparam$dispersion_ci <- dispersion_ci
-  eparam$precision_ci <- precision_ci
+  eparam$shape_ci_limits <- shape_ci_limits
+  eparam$scale_ci_limits <- scale_ci_limits
+  eparam$meanlog_ci_limits <- meanlog_ci_limits
+  eparam$sdlog_ci_limits <- sdlog_ci_limits
+  eparam$dispersion_ci_limits <- dispersion_ci_limits
+  eparam$precision_ci_limits <- precision_ci_limits
 
   # make data an epiparam object
   class(eparam) <- c("epiparam", "data.frame")
