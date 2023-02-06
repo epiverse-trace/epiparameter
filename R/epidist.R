@@ -305,7 +305,7 @@ epidist <- function(disease,
 #' @export
 validate_epidist <- function(epidist) {
 
-  if (!inherits(epidist, "epidist")) {
+  if (!is_epidist(epidist)) {
     stop("Object should be of class epidist")
   }
 
@@ -510,6 +510,36 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
     # add a plot title
     graphics::title(title, outer = TRUE, line = line)
   }
+}
+
+#' Checks whether the object is an `epidist`
+#'
+#' @param x An R object
+#'
+#' @return A boolean logical, `TRUE` if the object is an `epidist` and `FALSE`
+#' if not
+#' @export
+#'
+#' @examples
+#' edist <- epidist(
+#' disease = "ebola",
+#'   epi_dist = "serial_interval",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1)
+#' )
+#'
+#' is_epidist(edist)
+#'
+#' false_edist <- list(
+#'   disease = "ebola",
+#'   epi_dist = "serial_interval",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1)
+#' )
+#'
+#' is_epidist(false_edist)
+is_epidist <- function(x) {
+  inherits(x, "epidist")
 }
 
 #' PDF, CDF, PMF, quantiles and random number generation for `epidist` and

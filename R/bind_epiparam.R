@@ -27,20 +27,20 @@ bind_epiparam <- function(epiparam, epi_obj) {
 
   # check input
   validate_epiparam(epiparam)
-  if (inherits(epi_obj, "epidist")) {
+  if (is_epidist(epi_obj)) {
     validate_epidist(epi_obj)
   } else if (inherits(epi_obj, "list")) {
     lapply(epi_obj, validate_epidist)
-  } else if (inherits(epi_obj, "vb_epidist")) {
+  } else if (is_vb_epidist(epi_obj)) {
     validate_vb_epidist(epi_obj)
-  } else if (inherits(epi_obj, "epiparam")) {
+  } else if (is_epiparam(epi_obj)) {
     validate_epiparam(epi_obj)
     # epiparam objects can be directly binded
     out <- rbind(epiparam, epi_obj)
     # validate new epiparam object
     validate_epiparam(out)
     return(out)
-  } else if (inherits(epi_obj, "data.frame")) {
+  } else if (is.data.frame(epi_obj)) {
     stopifnot(
       "data frame provided must have the same column names as epiparam" =
       identical(colnames(epi_obj), colnames(epiparam))

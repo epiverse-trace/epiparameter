@@ -812,3 +812,26 @@ test_that("generate fails as expected on discrete epidist object with vector
 
   expect_error(generate(ebola_dist, times = c(10, 15)))
 })
+
+test_that("is_epidist returns TRUE when expected", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+  disease = "ebola",
+    epi_dist = "serial_interval",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+
+  expect_true(is_epidist(edist))
+})
+
+test_that("is_epidist returns FALSE when expected", {
+  false_edist <- list(
+    disease = "ebola",
+    epi_dist = "serial_interval",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  )
+
+  expect_false(is_epidist(false_edist))
+})

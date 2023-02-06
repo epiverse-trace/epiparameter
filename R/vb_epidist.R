@@ -97,6 +97,10 @@ vb_epidist <- function(intrinsic_epidist,
 #' @export
 validate_vb_epidist <- function(vb_epidist) {
 
+  if (!is_vb_epidist(vb_epidist)) {
+    stop("Object should be of class vb_epidist")
+  }
+
   stopifnot(
     "diseases in intrinsic and extrinsic distribution are different" =
       identical(
@@ -196,6 +200,37 @@ format.vb_epidist <- function(x, ...) {
   print(x$extrinsic, header = FALSE, vb = "\n <Extrinsic Distribution> \n", ...)
 
   invisible(x)
+}
+
+#' Checks whether the object is a `vb_epidist`
+#'
+#' @param x An R object
+#'
+#' @return A boolean logical, `TRUE` if the object is an `vb_epidist` and
+#' `FALSE` if not
+#' @export
+#'
+#' @examples
+#' vb_edist <- vb_epidist(
+#'   intrinsic_epidist = epidist(
+#'     disease = "dengue",
+#'     epi_dist = "incubation_period",
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1),
+#'     metadata = create_epidist_metadata(vector_borne = TRUE)
+#'   ),
+#'   extrinsic_epidist = epidist(
+#'     disease = "dengue",
+#'     epi_dist = "incubation_period",
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1),
+#'     metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+#'   )
+#' )
+#'
+#' is_vb_epidist(vb_edist)
+is_vb_epidist <- function(x) {
+  inherits(x, "vb_epidist")
 }
 
 #' Plots an `vb_epidist` object,

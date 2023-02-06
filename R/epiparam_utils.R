@@ -204,7 +204,7 @@ make_epidist <- function(x) {
 as_epiparam <- function(x) {
 
   # for vb_epidist or list of epidists call as_epiparam recursively
-  if (!inherits(x, "epidist")) {
+  if (!is_epidist(x)) {
     eparam <- data.frame()
     for (i in seq_along(x)) {
       eparam_row <- as_epiparam(x[[i]])
