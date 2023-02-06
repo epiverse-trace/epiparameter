@@ -28,8 +28,8 @@ jobs:
       - name: Validate packages.json
         run: |
           jsonvalidate::json_validate(
-            json = jsonlite::read_json(path = "inst/extdata/data.json")[[1]],
-            schema = jsonlite::read_json(path = "inst/extdata/schema.json")[[1]],
+            json = file.path("inst", "extdata", "data.json"),
+            schema = file.path("inst", "extdata", "schema.json"),
             engine = "ajv",
             verbose = TRUE,
             greedy = TRUE,

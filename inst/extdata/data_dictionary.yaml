@@ -116,14 +116,6 @@ properties:
     type: array
     items:
       type: ["string", "null"]
-      enum:
-        - null
-        - gamma
-        - lognormal
-        - weibull
-        - poisson
-        - geometric
-        - negative_binomial
   inference_method:
     description: >
       The type of inference used to fit the delay

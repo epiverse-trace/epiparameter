@@ -72,15 +72,17 @@ make_json_data <- function(read_path = file.path("extdata", "parameters.csv"),
 
   }
 
-  # convert data to json
-  data_json <- jsonlite::toJSON(data, dataframe = "columns", na = "null")
-  jsonlite::validate(data_json)
-
   # save json data
-  jsonlite::write_json(data_json, path = write_path)
+  jsonlite::write_json(
+    data,
+    path = write_path,
+    dataframe = "columns",
+    na = "null",
+    pretty = TRUE
+  )
 
   # invisibly return json data
-  invisible(data_json)
+  invisible(data)
 }
 
 #' Creates a data schema in JSON format from a yaml file
@@ -108,13 +110,14 @@ make_json_schema <- function(read_path = file.path("extdata", "data_dictionary.y
     )
   )
 
-  # convert schema to json
-  schema_json <- jsonlite::toJSON(schema, auto_unbox = TRUE)
-  jsonlite::validate(schema_json)
-
   # save json schema
-  jsonlite::write_json(schema_json, path = write_path)
+  jsonlite::write_json(
+    schema,
+    path = write_path,
+    auto_unbox = TRUE,
+    pretty = TRUE
+  )
 
   # invisibly return json schema
-  invisible(schema_json)
+  invisible(schema)
 }
