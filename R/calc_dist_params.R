@@ -34,7 +34,7 @@ calc_dist_params <- function(prob_dist,
                              sample_size = NA) {
 
   # check input
-  checkmate::assert_character(prob_dist, len = 1)
+  checkmate::assert_string(prob_dist)
   checkmate::assert_list(
     summary_stats,
     types = c("list", "double", "null"),
