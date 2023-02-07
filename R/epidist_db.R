@@ -1,4 +1,4 @@
-#' Creates an `epidist` object directly from the epiparameter library (database)
+#' Create an `epidist` object directly from the epiparameter library (database)
 #'
 #' @description This function can extract an `epidist` object directly from the
 #' library of epidemiological parameters without having to read in an `epiparam`
@@ -21,6 +21,21 @@
 #'
 #' @examples
 #' epidist_db(disease = "influenza", epi_dist = "serial_interval")
+#'
+#' # comparison between using `epidist_db()` and `epiparam()` with
+#' # `as_epidist()`
+#'
+#' # load influenza serial interval from database
+#' edist <- epidist_db(disease = "influenza", epi_dist = "serial_interval")
+#'
+#' # load database of serial intervals
+#' eparam <- epiparam(epi_dist = "serial_interval")
+#' # subset database to only influenza entries
+#' eparam <- eparam[eparam$disease == "influenza", ]
+#' # convert to `epidist`
+#' edist2 <- as_epidist(eparam)
+#' # check the two methods produce the same `epidist` object
+#' identical(edist, edist2)
 epidist_db <- function(disease,
                        epi_dist = c("incubation_period",
                                     "onset_to_admission",
@@ -30,10 +45,16 @@ epidist_db <- function(disease,
                                     "offspring_distribution"),
                        author = NULL) {
 
+  # check input
+  checkmate::assert_string(disease)
   epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)
 
   # read in database
   eparam <- epiparam(epi_dist = epi_dist)
+
+  if (is.na(pmatch(disease, eparam$disease))) {
+    stop(epi_dist, " distribution not available for ", disease, call. = FALSE)
+  }
 
   # match disease names against data
   disease <- match.arg(

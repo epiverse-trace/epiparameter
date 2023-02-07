@@ -72,7 +72,7 @@ test_that("epidist_db fails as expected with no entry in the database", {
       disease = "RSV",
       epi_dist = "serial_interval"
     ),
-    regexp = "('arg' should be one of)"
+    regexp = "(serial_interval distribution not available for RSV)"
   )
 })
 

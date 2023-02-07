@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist_db.R
 \name{epidist_db}
 \alias{epidist_db}
-\title{Creates an \code{epidist} object directly from the epiparameter library (database)}
+\title{Create an \code{epidist} object directly from the epiparameter library (database)}
 \usage{
 epidist_db(
   disease,
@@ -37,4 +37,19 @@ distribution is to return the entry with the largest sample size.
 }
 \examples{
 epidist_db(disease = "influenza", epi_dist = "serial_interval")
+
+# comparison between using `epidist_db()` and `epiparam()` with
+# `as_epidist()`
+
+# load influenza serial interval from database
+edist <- epidist_db(disease = "influenza", epi_dist = "serial_interval")
+
+# load database of serial intervals
+eparam <- epiparam(epi_dist = "serial_interval")
+# subset database to only influenza entries
+eparam <- eparam[eparam$disease == "influenza", ]
+# convert to `epidist`
+edist2 <- as_epidist(eparam)
+# check the two methods produce the same `epidist` object
+identical(edist, edist2)
 }
