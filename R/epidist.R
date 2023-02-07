@@ -569,7 +569,8 @@ is_epidist <- function(x) {
 #' @description The epidist object holds a probability distribution which can
 #' either be a continuous or discrete distribution. These are the density,
 #' cumulative distribution, quantile and random number generation functions.
-#' These operate on any distribution that can be included in an epidist object.
+#' These operate on any distribution that can be included in an `epidist`
+#' object.
 #'
 #' @param x An `epidist` or `vb_epidist` object
 #' @param at The quantiles to evaluate at
@@ -583,6 +584,43 @@ is_epidist <- function(x) {
 #' vector is returned
 #'
 #' @name epidist_distribution_functions
+#'
+#' @examples
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1)
+#' )
+#'
+#' # example of each distribution method for an `epidist` object
+#' density(edist, at = 1)
+#' cdf(edist, q = 1)
+#' quantile(edist, p = 0.2)
+#' generate(edist, times = 10)
+#'
+#' vb_edist <- vb_epidist(
+#'   intrinsic_epidist = epidist(
+#'     disease = "dengue",
+#'     epi_dist = "incubation_period",
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1),
+#'     metadata = create_epidist_metadata(vector_borne = TRUE)
+#'   ),
+#'   extrinsic_epidist = epidist(
+#'     disease = "dengue",
+#'     epi_dist = "incubation_period",
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1),
+#'     metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+#'   )
+#' )
+#'
+#' # example of each distribution method for an `vb_epidist` object
+#' density(vb_edist, at = 1)
+#' cdf(vb_edist, q = 1)
+#' quantile(vb_edist, p = 0.2)
+#' generate(vb_edist, times = 10)
 NULL
 
 #' @rdname epidist_distribution_functions
