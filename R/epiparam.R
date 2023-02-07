@@ -59,6 +59,28 @@ new_epiparam <- function(epi_dist = character()) {
 
 #' Create an `epiparam` object
 #'
+#' @description The `epiparam` class holds information on epidemiological
+#' distribution and their estimated parameters as well as other information and
+#' metadata. This library of epidemiological parameters is compiled from
+#' primary literature sources. An `epiparam` object can be used to compare the
+#' availability of distribution for a certain disease or pathogen, or refine
+#' by, for example, region or sample size. Additionally, the `epiparam` class
+#' can be subset and converted into `epidist` or `vb_epidist` objects to the be
+#' used in epidemiological analysis in which a delay distribution or offspring
+#' distribution is required.
+#'
+#' The `epiparam()` function reads the library of epidemiological parameters
+#' from `{epiparameter}` into memory and stores it as an `epiparam` object.
+#'
+#' @details The `epiparam` object has certain protected fields, and thus if
+#' one of these protected fields is removed when subsetting columns an error
+#' will be returned. The subsetting checks are carried out by
+#' [`validate_epiparam()`].
+#'
+#' `epiparam` objects can be added to by using [`bind_epiparam()`] to add either
+#' `epidist`s, `vb_epdist`s, `epiparam`s, lists of `epdist` objects, or data
+#' frames with the correct columns to an existing `epiparam` object.
+#'
 #' @param epi_dist A character string of which epidemiological distributions
 #' to select
 #'
@@ -71,6 +93,9 @@ new_epiparam <- function(epi_dist = character()) {
 #'
 #' # specifying incubation periods
 #' incub_eparam <- epiparam("incubation")
+#'
+#' # subset by disease
+#' influenza_dists <- eparam[eparam$disease == "influenza", ]
 epiparam <- function(epi_dist = c("all",
                                   "incubation_period",
                                   "onset_to_admission",
