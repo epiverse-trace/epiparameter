@@ -11,13 +11,13 @@ new_epidist(
   prob_dist_params = numeric(),
   uncertainty = list(),
   summary_stats = list(),
+  auto_calc_params = logical(),
   citation = character(),
   metadata = list(),
   method_assessment = list(),
   discretise = logical(),
   truncation = numeric(),
-  notes = character(),
-  auto_calc_params = TRUE
+  notes = character()
 )
 }
 \arguments{
@@ -41,7 +41,19 @@ argument default) to create a list wiht the correct names with missing
 values.}
 
 \item{summary_stats}{A list of summary statistics, use
-\code{create_epidist_summary_stats()} to create list.}
+\code{\link[=create_epidist_summary_stats]{create_epidist_summary_stats()}} to create list. This list can include
+summary statistics about the inferred distribution such as it's mean and
+standard deviation, quantiles of the distribution, or information about the
+data used to fit the distribution such as lower and upper range. The summary
+statistics can also include uncertainty around metrics such as confidence
+interval around mean and standard deviation.}
+
+\item{auto_calc_params}{A boolean logical determining whether to try and
+calculate the probability distribution parameters from summary statistics if
+distribution parameters are not provided. Default is \code{TRUE}. In the case when
+sufficient summary statistics are provided and the parameter(s) of the
+distribution are not, the \code{\link[=calc_dist_params]{calc_dist_params()}} function is called to
+calculate the parameters and add them to the \code{epidist} object created.}
 
 \item{citation}{A character string with the citation of the source of the
 data or the paper that inferred the distribution parameters, use
@@ -66,10 +78,6 @@ distribution was truncated, NA if not or unknown.}
 
 \item{notes}{A character string with any additional information about the
 data, inference method or disease.}
-
-\item{auto_calc_params}{A boolean logical determining whether to try and
-calculate the probability distribution parameters from summary statistics if
-distribution parameters are not provided. Default is \code{TRUE}.}
 }
 \value{
 epidist object
@@ -92,13 +100,13 @@ epiparameter:::new_epidist(
   prob_dist_params = c(shape = 1, scale = 1),
   uncertainty = create_epidist_uncertainty(),
   summary_stats = create_epidist_summary_stats(),
+  auto_calc_params = TRUE,
   citation = create_epidist_citation(),
   metadata = create_epidist_metadata(),
   method_assessment = create_epidist_method_assessment(),
   discretise = FALSE,
   truncation = NA,
-  notes = "No notes",
-  auto_calc_params = TRUE
+  notes = "No notes"
 )
 }
 \keyword{internal}

@@ -12,13 +12,13 @@ epidist(
   prob_distribution_params = NA_real_,
   uncertainty = create_epidist_uncertainty(),
   summary_stats = create_epidist_summary_stats(),
+  auto_calc_params = TRUE,
   citation = create_epidist_citation(),
   metadata = create_epidist_metadata(),
   method_assessment = create_epidist_method_assessment(),
   discretise = FALSE,
   truncation = NA_real_,
-  notes = NULL,
-  auto_calc_params = TRUE
+  notes = NULL
 )
 }
 \arguments{
@@ -43,7 +43,19 @@ argument default) to create a list wiht the correct names with missing
 values.}
 
 \item{summary_stats}{A list of summary statistics, use
-\code{create_epidist_summary_stats()} to create list.}
+\code{\link[=create_epidist_summary_stats]{create_epidist_summary_stats()}} to create list. This list can include
+summary statistics about the inferred distribution such as it's mean and
+standard deviation, quantiles of the distribution, or information about the
+data used to fit the distribution such as lower and upper range. The summary
+statistics can also include uncertainty around metrics such as confidence
+interval around mean and standard deviation.}
+
+\item{auto_calc_params}{A boolean logical determining whether to try and
+calculate the probability distribution parameters from summary statistics if
+distribution parameters are not provided. Default is \code{TRUE}. In the case when
+sufficient summary statistics are provided and the parameter(s) of the
+distribution are not, the \code{\link[=calc_dist_params]{calc_dist_params()}} function is called to
+calculate the parameters and add them to the \code{epidist} object created.}
 
 \item{citation}{A character string with the citation of the source of the
 data or the paper that inferred the distribution parameters, use
@@ -68,10 +80,6 @@ distribution was truncated, NA if not or unknown.}
 
 \item{notes}{A character string with any additional information about the
 data, inference method or disease.}
-
-\item{auto_calc_params}{A boolean logical determining whether to try and
-calculate the probability distribution parameters from summary statistics if
-distribution parameters are not provided. Default is \code{TRUE}.}
 }
 \value{
 An \code{epidist} object
@@ -81,6 +89,16 @@ The \code{epidist} class is used to store epidemiological parameters
 for a single disease. These epidemiological parameters cover a variety of
 aspects including delay distributions (e.g. incubation periods and serial
 intervals, among others) and offspring distributions.
+
+The \code{epidist} object is the functional unit provided by \code{{epiparameter}} to
+plug into epidemiological pipelines. Obtaining an \code{epidist} object can be
+achieved in two main ways. 1) The epidemiological distribution is stored in
+the \code{{epiparameter}} library and can be accessed by \code{\link[=epiparam]{epiparam()}} and
+\code{\link[=as_epidist]{as_epidist()}}. 2) the alternative method is when you have information
+(e.g. disease and distribution parameter estimates) and would like to input
+this into an \code{epidist} object in order to work in existing analysis
+pipelines. This is where the \code{epidist()} function can be used to fill out
+each field for which information is known.
 }
 \examples{
 # minimal input required for `epidist`

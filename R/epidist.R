@@ -29,13 +29,13 @@
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   uncertainty = create_epidist_uncertainty(),
 #'   summary_stats = create_epidist_summary_stats(),
+#'   auto_calc_params = TRUE,
 #'   citation = create_epidist_citation(),
 #'   metadata = create_epidist_metadata(),
 #'   method_assessment = create_epidist_method_assessment(),
 #'   discretise = FALSE,
 #'   truncation = NA,
-#'   notes = "No notes",
-#'   auto_calc_params = TRUE
+#'   notes = "No notes"
 #' )
 new_epidist <- function(disease = list(),
                         epi_dist = character(),
@@ -43,13 +43,13 @@ new_epidist <- function(disease = list(),
                         prob_dist_params = numeric(),
                         uncertainty = list(),
                         summary_stats = list(),
+                        auto_calc_params = logical(),
                         citation = character(),
                         metadata = list(),
                         method_assessment = list(),
                         discretise = logical(),
                         truncation = numeric(),
-                        notes = character(),
-                        auto_calc_params = TRUE) {
+                        notes = character()) {
 
   check_epidist_uncertainty(
     prob_dist_params = prob_dist_params,
@@ -133,6 +133,16 @@ new_epidist <- function(disease = list(),
 #' aspects including delay distributions (e.g. incubation periods and serial
 #' intervals, among others) and offspring distributions.
 #'
+#' The `epidist` object is the functional unit provided by `{epiparameter}` to
+#' plug into epidemiological pipelines. Obtaining an `epidist` object can be
+#' achieved in two main ways. 1) The epidemiological distribution is stored in
+#' the `{epiparameter}` library and can be accessed by [`epiparam()`] and
+#' [`as_epidist()`]. 2) the alternative method is when you have information
+#' (e.g. disease and distribution parameter estimates) and would like to input
+#' this into an `epidist` object in order to work in existing analysis
+#' pipelines. This is where the `epidist()` function can be used to fill out
+#' each field for which information is known.
+#'
 #' @param disease A character string with name of the infectious disease
 #' @param pathogen A character string with the name of the causative agent of
 #' disease, or NULL if not known
@@ -148,7 +158,18 @@ new_epidist <- function(disease = list(),
 #' argument default) to create a list wiht the correct names with missing
 #' values.
 #' @param summary_stats A list of summary statistics, use
-#' `create_epidist_summary_stats()` to create list.
+#' [`create_epidist_summary_stats()`] to create list. This list can include
+#' summary statistics about the inferred distribution such as it's mean and
+#' standard deviation, quantiles of the distribution, or information about the
+#' data used to fit the distribution such as lower and upper range. The summary
+#' statistics can also include uncertainty around metrics such as confidence
+#' interval around mean and standard deviation.
+#' @param auto_calc_params A boolean logical determining whether to try and
+#' calculate the probability distribution parameters from summary statistics if
+#' distribution parameters are not provided. Default is `TRUE`. In the case when
+#' sufficient summary statistics are provided and the parameter(s) of the
+#' distribution are not, the [`calc_dist_params()`] function is called to
+#' calculate the parameters and add them to the `epidist` object created.
 #' @param citation A character string with the citation of the source of the
 #' data or the paper that inferred the distribution parameters, use
 #' `create_epidist_citation()` to create citation.
@@ -167,9 +188,6 @@ new_epidist <- function(disease = list(),
 #' distribution was truncated, NA if not or unknown.
 #' @param notes A character string with any additional information about the
 #' data, inference method or disease.
-#' @param auto_calc_params A boolean logical determining whether to try and
-#' calculate the probability distribution parameters from summary statistics if
-#' distribution parameters are not provided. Default is `TRUE`.
 #'
 #' @return An `epidist` object
 #' @export
@@ -229,13 +247,13 @@ epidist <- function(disease,
                     prob_distribution_params = NA_real_,
                     uncertainty = create_epidist_uncertainty(),
                     summary_stats = create_epidist_summary_stats(),
+                    auto_calc_params = TRUE,
                     citation = create_epidist_citation(),
                     metadata = create_epidist_metadata(),
                     method_assessment = create_epidist_method_assessment(),
                     discretise = FALSE,
                     truncation = NA_real_,
-                    notes = NULL,
-                    auto_calc_params = TRUE) {
+                    notes = NULL) {
 
   # check input
   checkmate::assert_string(disease, na.ok = FALSE, null.ok = FALSE)
@@ -282,6 +300,7 @@ epidist <- function(disease,
     prob_dist_params = prob_distribution_params,
     uncertainty = uncertainty,
     summary_stats = summary_stats,
+    auto_calc_params = auto_calc_params,
     citation = citation,
     metadata = metadata,
     method_assessment = method_assessment,
@@ -379,7 +398,9 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
     writeLines(
       c(
         sprintf("Disease: %s", x$disease$disease),
-        sprintf("Epi Distribution: %s", epi_dist)
+        sprintf("Pathogen: %s", x$disease$pathogen),
+        sprintf("Epi Distribution: %s", epi_dist),
+        sprintf("Study: %s", x$citation)
       )
     )
   }
@@ -403,7 +424,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
   } else {
     writeLines(
       c(
-        sprintf("Distribution: %s", x$prob_dist),
+        sprintf("Distribution: %s", stats::family(x$prob_dist)),
         sprintf("Parameters:"),
         sprintf(
           "  %s: %s",
@@ -482,7 +503,7 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
     density(x, at = day_range),
     ylab = "",
     xlab = "Time since infection",
-    type = "p",
+    type = "b",
     pch = 16,
     main = main,
     ...
@@ -494,7 +515,7 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
     cdf(x, q = day_range),
     ylab = "",
     xlab = "Time since infection",
-    type = "p",
+    type = "b",
     pch = 16,
     ylim = c(0, 1),
     main = "Cumulative Distribution Function",
