@@ -93,7 +93,7 @@ make_epidist <- function(x) {
         )
       )
     )
-  } else if (x$prob_distribution == "negative_binomial") {
+  } else if (x$prob_distribution %in% "negative_binomial") {
     parameters <- c(mean = x$mean, dispersion = x$dispersion)
     uncertainty <- list(
       mean = create_epidist_uncertainty(
