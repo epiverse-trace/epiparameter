@@ -2,7 +2,7 @@
 % Please edit documentation in R/vb_epidist.R
 \name{vb_epidist}
 \alias{vb_epidist}
-\title{Create an \code{vb_epidist} object}
+\title{Create a \code{vb_epidist} object}
 \usage{
 vb_epidist(intrinsic_epidist, extrinsic_epidist)
 }
