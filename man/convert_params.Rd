@@ -8,7 +8,12 @@ convert_params(summary_stats, prob_dist)
 }
 \arguments{
 \item{summary_stats}{A list of summary statistics, use
-\code{create_epidist_summary_stats()} to create list.}
+\code{\link[=create_epidist_summary_stats]{create_epidist_summary_stats()}} to create list. This list can include
+summary statistics about the inferred distribution such as it's mean and
+standard deviation, quantiles of the distribution, or information about the
+data used to fit the distribution such as lower and upper range. The summary
+statistics can also include uncertainty around metrics such as confidence
+interval around mean and standard deviation.}
 
 \item{prob_dist}{A character string specifying the probability
 distribution}

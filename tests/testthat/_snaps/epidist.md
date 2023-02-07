@@ -7,8 +7,10 @@
       Citation cannot be created as either author, year or DOI is missing
     Output
       Disease: ebola
+      Pathogen: NA
       Epi Distribution: incubation
-      Distribution: Gamma(1, 1)
+      Study: No citation available
+      Distribution: gamma
       Parameters:
         shape: 1
         rate: 1

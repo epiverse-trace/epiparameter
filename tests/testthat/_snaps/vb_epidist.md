@@ -15,18 +15,20 @@
       print(dengue_dist)
     Output
       Disease: dengue
+      Pathogen: NA
       Epi Distribution: incubation
+      Study: No citation available
       
        <Intrinsic Distribution> 
       
-      Distribution: Gamma(1, 1)
+      Distribution: gamma
       Parameters:
         shape: 1
         rate: 1
       
        <Extrinsic Distribution> 
       
-      Distribution: Gamma(2, 0.5)
+      Distribution: gamma
       Parameters:
         shape: 2
         rate: 0.5
@@ -37,18 +39,20 @@
       format(dengue_dist)
     Output
       Disease: dengue
+      Pathogen: NA
       Epi Distribution: incubation
+      Study: No citation available
       
        <Intrinsic Distribution> 
       
-      Distribution: Gamma(1, 1)
+      Distribution: gamma
       Parameters:
         shape: 1
         rate: 1
       
        <Extrinsic Distribution> 
       
-      Distribution: Gamma(2, 0.5)
+      Distribution: gamma
       Parameters:
         shape: 2
         rate: 0.5
