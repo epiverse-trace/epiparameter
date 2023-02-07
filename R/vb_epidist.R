@@ -20,7 +20,7 @@ new_vb_epidist <- function(intrinsic_epidist,
   )
 }
 
-#' Create an `vb_epidist` object
+#' Create a `vb_epidist` object
 #'
 #' @param intrinsic_epidist An `epidist` object
 #' @param extrinsic_epidist An `epidist` object
