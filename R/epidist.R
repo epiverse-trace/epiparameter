@@ -659,7 +659,7 @@ cdf.epidist <- function(x, q) {
 #' @export
 
 #' @export
-quantile.epidist <- function(x, p) {
+quantile.epidist <- function(x, p, ...) {
   unlist <- length(x$prob_dist) == 1
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$q(p)
