@@ -15,7 +15,7 @@ epidist(
   auto_calc_params = TRUE,
   citation = create_epidist_citation(),
   metadata = create_epidist_metadata(),
-  method_assessment = create_epidist_method_assessment(),
+  method_assess = create_epidist_method_assess(),
   discretise = FALSE,
   truncation = NA_real_,
   notes = NULL
@@ -68,8 +68,8 @@ delay distribution such as extrinsic incubation period) unless
 \code{vector_borne = TRUE} is contained in the metadata. Use
 \code{create_epidist_metadata()} to create metadata.}
 
-\item{method_assessment}{A list of methodological aspects used when fitting
-the distribution, use \code{create_epidist_method_assessment()} to create method
+\item{method_assess}{A list of methodological aspects used when fitting
+the distribution, use \code{create_epidist_method_assess()} to create method
 assessment.}
 
 \item{discretise}{A boolean logical whether the distribution is discretised.
@@ -141,7 +141,7 @@ ebola_incubation <- epidist(
     vector_borne = FALSE,
     inference_method = "MLE"
   ),
-  method_assessment = create_epidist_method_assessment(
+  method_assess = create_epidist_method_assess(
     censored = TRUE
   ),
   discretise = FALSE,

@@ -41,7 +41,8 @@ test_that("clean_epidist_params fails when gamma parameters are incorrect", {
   )
 })
 
-test_that("clean_epidist_params fails when lognormal parameters are incorrect", {
+test_that("clean_epidist_params fails when lognormal parameters are
+          incorrect", {
   lognormal_params <- c(shape = 1, scale = 1)
   class(lognormal_params) <- "lognormal"
   expect_error(
@@ -67,5 +68,3 @@ test_that("clean_epidist_params works for default method", {
     regexp = "parameters class not recognised"
   )
 })
-
-

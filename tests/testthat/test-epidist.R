@@ -13,7 +13,7 @@ test_that("epidist works with minimal viable input", {
   expect_named(
     ebola_dist,
     c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
+      "citation", "metadata", "method_assess", "notes")
   )
   expect_type(ebola_dist$disease, "list")
   expect_type(ebola_dist$epi_dist, "character")
@@ -22,7 +22,7 @@ test_that("epidist works with minimal viable input", {
   expect_type(ebola_dist$summary_stats, "list")
   expect_type(ebola_dist$citation, "character")
   expect_type(ebola_dist$metadata, "list")
-  expect_type(ebola_dist$method_assessment, "list")
+  expect_type(ebola_dist$method_assess, "list")
   expect_type(ebola_dist$notes, "character")
 })
 
@@ -83,7 +83,7 @@ test_that("epidist works with all arguments set", {
       extrinsic = FALSE,
       inference_method = "MLE"
     ),
-    method_assessment = create_epidist_method_assessment(
+    method_assess = create_epidist_method_assess(
       censored = TRUE,
       right_truncated = FALSE,
       phase_bias_adjusted = FALSE
@@ -98,7 +98,7 @@ test_that("epidist works with all arguments set", {
   expect_named(
     mers_dist,
     c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
+      "citation", "metadata", "method_assess", "notes")
   )
   expect_type(mers_dist$disease, "list")
   expect_type(mers_dist$epi_dist, "character")
@@ -107,7 +107,7 @@ test_that("epidist works with all arguments set", {
   expect_type(mers_dist$summary_stats, "list")
   expect_type(mers_dist$citation, "character")
   expect_type(mers_dist$metadata, "list")
-  expect_type(mers_dist$method_assessment, "list")
+  expect_type(mers_dist$method_assess, "list")
   expect_type(mers_dist$notes, "character")
 })
 
@@ -123,7 +123,7 @@ test_that("epidist works with default helper functions", {
     summary_stats = create_epidist_summary_stats(),
     citation = create_epidist_citation(),
     metadata = create_epidist_metadata(),
-    method_assessment = create_epidist_method_assessment(),
+    method_assess = create_epidist_method_assess(),
     discretise = FALSE,
     truncation = NA,
     notes = "No notes"
@@ -134,7 +134,7 @@ test_that("epidist works with default helper functions", {
   expect_named(
     sars_dist,
     c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
+      "citation", "metadata", "method_assess", "notes")
   )
   expect_type(sars_dist$disease, "list")
   expect_type(sars_dist$epi_dist, "character")
@@ -143,7 +143,7 @@ test_that("epidist works with default helper functions", {
   expect_type(sars_dist$summary_stats, "list")
   expect_type(sars_dist$citation, "character")
   expect_type(sars_dist$metadata, "list")
-  expect_type(sars_dist$method_assessment, "list")
+  expect_type(sars_dist$method_assess, "list")
   expect_type(sars_dist$notes, "character")
 })
 
@@ -289,7 +289,7 @@ test_that("new_epidist works with minimal viable input", {
   expect_named(
     epidist_obj,
     c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
+      "citation", "metadata", "method_assess", "notes")
   )
   expect_type(epidist_obj$disease, "list")
   expect_type(epidist_obj$epi_dist, "character")
@@ -298,7 +298,7 @@ test_that("new_epidist works with minimal viable input", {
   expect_type(epidist_obj$summary_stats, "list")
   expect_type(epidist_obj$citation, "character")
   expect_type(epidist_obj$metadata, "list")
-  expect_type(epidist_obj$method_assessment, "list")
+  expect_type(epidist_obj$method_assess, "list")
   expect_type(epidist_obj$notes, "character")
 })
 
@@ -439,25 +439,21 @@ test_that("density works as expected on continuous epidist object", {
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- density(ebola_dist, at = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- density(ebola_dist, at = 1.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- density(ebola_dist, at = 10)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 })
 
 test_that("density works as expected on discrete epidist object", {
@@ -475,25 +471,21 @@ test_that("density works as expected on discrete epidist object", {
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- density(ebola_dist, at = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- density(ebola_dist, at = 1.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- density(ebola_dist, at = 10)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 })
 
 test_that("density works as expected on continuous epidist object with vector
@@ -511,7 +503,6 @@ test_that("density works as expected on continuous epidist object with vector
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
-  #expect_lte(res, 1)
 })
 
 test_that("density works as expected on discrete epidist object with vector
@@ -530,7 +521,6 @@ test_that("density works as expected on discrete epidist object with vector
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
-  #expect_lte(res, 1)
 })
 
 test_that("cdf works as expected on continuous epidist object", {
@@ -547,25 +537,25 @@ test_that("cdf works as expected on continuous epidist object", {
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
+  expect_lte(res, 1)
 
   res <- cdf(ebola_dist, q = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
+  expect_lte(res, 1)
 
   res <- cdf(ebola_dist, q = 1.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
+  expect_lte(res, 1)
 
   res <- cdf(ebola_dist, q = 10)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
+  expect_lte(res, 1)
 })
 
 test_that("cdf works as expected on discrete epidist object", {
@@ -583,25 +573,25 @@ test_that("cdf works as expected on discrete epidist object", {
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
+  expect_lte(res, 1)
 
   res <- cdf(ebola_dist, q = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
+  expect_lte(res, 1)
 
   res <- cdf(ebola_dist, q = 1.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
+  expect_lte(res, 1)
 
   res <- cdf(ebola_dist, q = 10)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
+  expect_lte(res, 1)
 })
 
 test_that("cdf works as expected on continuous epidist object with vector
@@ -619,7 +609,7 @@ test_that("cdf works as expected on continuous epidist object with vector
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
-  #expect_lte(res, 1)
+  expect_true(all(res <= 1))
 })
 
 test_that("cdf works as expected on discrete epidist object with vector
@@ -638,7 +628,7 @@ test_that("cdf works as expected on discrete epidist object with vector
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
-  #expect_lte(res, 1)
+  expect_true(all(res <= 1))
 })
 
 test_that("quantile works as expected on continuous epidist object", {
@@ -655,19 +645,16 @@ test_that("quantile works as expected on continuous epidist object", {
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- quantile(ebola_dist, p = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- quantile(ebola_dist, p = 1)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 })
 
 test_that("quantile works as expected on discrete epidist object", {
@@ -685,19 +672,16 @@ test_that("quantile works as expected on discrete epidist object", {
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- quantile(ebola_dist, p = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- quantile(ebola_dist, p = 1)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 })
 
 test_that("quantile works as expected on continuous epidist object with vector
@@ -715,7 +699,6 @@ test_that("quantile works as expected on continuous epidist object with vector
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
-  #expect_lte(res, 1)
 })
 
 test_that("quantile works as expected on discrete epidist object with vector
@@ -734,7 +717,6 @@ test_that("quantile works as expected on discrete epidist object with vector
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
-  #expect_lte(res, 1)
 })
 
 test_that("generate works as expected on continuous epidist object", {
@@ -751,13 +733,11 @@ test_that("generate works as expected on continuous epidist object", {
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- generate(ebola_dist, times = 10)
   expect_length(res, 10)
   expect_type(res, "double")
   expect_true(all(res >= 0))
-  #expect_lte(res, 1)
 })
 
 test_that("generate works as expected on discrete epidist object", {
@@ -775,13 +755,11 @@ test_that("generate works as expected on discrete epidist object", {
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
-  #expect_lte(res, 1)
 
   res <- generate(ebola_dist, times = 10)
   expect_length(res, 10)
   expect_type(res, "double")
   expect_true(all(res >= 0))
-  #expect_lte(res, 1)
 })
 
 test_that("generate fails as expected on continuous epidist object with vector

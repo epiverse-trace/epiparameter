@@ -50,7 +50,7 @@ test_that("vb_epidist works with all arguements set", {
           vector_borne = TRUE,
           extrinsic = FALSE
         ),
-        method_assessment = create_epidist_method_assessment(),
+        method_assess = create_epidist_method_assess(),
         discretise = FALSE,
         truncation = NA,
         notes = "No notes"
@@ -68,7 +68,7 @@ test_that("vb_epidist works with all arguements set", {
           vector_borne = TRUE,
           extrinsic = TRUE
         ),
-        method_assessment = create_epidist_method_assessment(),
+        method_assess = create_epidist_method_assess(),
         discretise = FALSE,
         truncation = NA,
         notes = "No notes"
@@ -409,9 +409,7 @@ test_that("density works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- density(dengue_dist, at = 0)
   expect_length(res, 2)
@@ -419,9 +417,7 @@ test_that("density works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- density(dengue_dist, at = 1.5)
   expect_length(res, 2)
@@ -429,9 +425,7 @@ test_that("density works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- density(dengue_dist, at = 10)
   expect_length(res, 2)
@@ -439,9 +433,7 @@ test_that("density works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("density works as expected on discrete vb_epidist object", {
@@ -474,9 +466,7 @@ test_that("density works as expected on discrete vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- density(dengue_dist, at = 0)
   expect_length(res, 2)
@@ -484,9 +474,7 @@ test_that("density works as expected on discrete vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- density(dengue_dist, at = 1.5)
   expect_length(res, 2)
@@ -494,9 +482,7 @@ test_that("density works as expected on discrete vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- density(dengue_dist, at = 10)
   expect_length(res, 2)
@@ -504,9 +490,7 @@ test_that("density works as expected on discrete vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("density works as expected on continuous vb_epidist object with
@@ -539,9 +523,7 @@ test_that("density works as expected on continuous vb_epidist object with
   expect_length(res$intrinsic, 9)
   expect_length(res$extrinsic, 9)
   expect_true(all(res$intrinsic >= 0))
-  #expect_lte(res$intrinsic, 1)
   expect_true(all(res$extrinsic >= 0))
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("density works as expected on discrete vb_epidist object with
@@ -577,9 +559,7 @@ test_that("density works as expected on discrete vb_epidist object with
   expect_length(res$intrinsic, 9)
   expect_length(res$extrinsic, 9)
   expect_true(all(res$intrinsic >= 0))
-  #expect_lte(res$intrinsic, 1)
   expect_true(all(res$extrinsic >= 0))
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("cdf works as expected on continuous vb_epidist object", {
@@ -610,9 +590,9 @@ test_that("cdf works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
+  expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
+  expect_lte(res$extrinsic, 1)
 
   res <- cdf(dengue_dist, q = 0)
   expect_length(res, 2)
@@ -620,9 +600,9 @@ test_that("cdf works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
+  expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
+  expect_lte(res$extrinsic, 1)
 
   res <- cdf(dengue_dist, q = 1.5)
   expect_length(res, 2)
@@ -630,9 +610,9 @@ test_that("cdf works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
+  expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
+  expect_lte(res$extrinsic, 1)
 
   res <- cdf(dengue_dist, q = 10)
   expect_length(res, 2)
@@ -640,9 +620,9 @@ test_that("cdf works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
+  expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
+  expect_lte(res$extrinsic, 1)
 })
 
 test_that("cdf works as expected on discrete vb_epidist object", {
@@ -675,9 +655,9 @@ test_that("cdf works as expected on discrete vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
+  expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
+  expect_lte(res$extrinsic, 1)
 
   res <- cdf(dengue_dist, q = 0)
   expect_length(res, 2)
@@ -685,9 +665,9 @@ test_that("cdf works as expected on discrete vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
+  expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
+  expect_lte(res$extrinsic, 1)
 
   res <- cdf(dengue_dist, q = 1.5)
   expect_length(res, 2)
@@ -695,9 +675,9 @@ test_that("cdf works as expected on discrete vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
+  expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
+  expect_lte(res$extrinsic, 1)
 
   res <- cdf(dengue_dist, q = 10)
   expect_length(res, 2)
@@ -705,9 +685,9 @@ test_that("cdf works as expected on discrete vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
+  expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
+  expect_lte(res$extrinsic, 1)
 })
 
 test_that("cdf works as expected on continuous vb_epidist object with
@@ -741,9 +721,9 @@ test_that("cdf works as expected on continuous vb_epidist object with
   expect_length(res$intrinsic, 9)
   expect_length(res$extrinsic, 9)
   expect_true(all(res$intrinsic >= 0))
-  #expect_lte(res$intrinsic, 1)
+  expect_true(all(res$intrinsic <= 1))
   expect_true(all(res$extrinsic >= 0))
-  #expect_lte(res$extrinsic, 1)
+  expect_true(all(res$extrinsic <= 1))
 })
 
 test_that("cdf works as expected on discrete vb_epidist object with
@@ -779,9 +759,9 @@ test_that("cdf works as expected on discrete vb_epidist object with
   expect_length(res$intrinsic, 9)
   expect_length(res$extrinsic, 9)
   expect_true(all(res$intrinsic >= 0))
-  #expect_lte(res$intrinsic, 1)
+  expect_true(all(res$intrinsic <= 1))
   expect_true(all(res$extrinsic >= 0))
-  #expect_lte(res$extrinsic, 1)
+  expect_true(all(res$extrinsic <= 1))
 })
 
 test_that("quantile works as expected on continuous vb_epidist object", {
@@ -812,9 +792,7 @@ test_that("quantile works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- quantile(dengue_dist, p = 0)
   expect_length(res, 2)
@@ -822,9 +800,7 @@ test_that("quantile works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- quantile(dengue_dist, p = 1)
   expect_length(res, 2)
@@ -832,9 +808,7 @@ test_that("quantile works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("quantile works as expected on discrete epidist object", {
@@ -867,9 +841,7 @@ test_that("quantile works as expected on discrete epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- quantile(dengue_dist, p = 0)
   expect_length(res, 2)
@@ -877,9 +849,7 @@ test_that("quantile works as expected on discrete epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- quantile(dengue_dist, p = 1)
   expect_length(res, 2)
@@ -887,9 +857,7 @@ test_that("quantile works as expected on discrete epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("quantile works as expected on continuous vb_epidist object with
@@ -921,9 +889,7 @@ test_that("quantile works as expected on continuous vb_epidist object with
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_true(all(res$intrinsic >= 0))
-  #expect_lte(res$intrinsic, 1)
   expect_true(all(res$extrinsic >= 0))
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("quantile works as expected on discrete vb_epidist object with
@@ -957,9 +923,7 @@ test_that("quantile works as expected on discrete vb_epidist object with
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_true(all(res$intrinsic >= 0))
-  #expect_lte(res$intrinsic, 1)
   expect_true(all(res$extrinsic >= 0))
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("generate works as expected on continuous vb_epidist object", {
@@ -990,9 +954,7 @@ test_that("generate works as expected on continuous vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- generate(dengue_dist, times = 10)
   expect_length(res, 2)
@@ -1002,9 +964,7 @@ test_that("generate works as expected on continuous vb_epidist object", {
   expect_length(res$intrinsic, 10)
   expect_length(res$extrinsic, 10)
   expect_true(all(res$intrinsic >= 0))
-  #expect_lte(res$intrinsic, 1)
   expect_true(all(res$extrinsic >= 0))
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("generate works as expected on discrete vb_epidist object", {
@@ -1037,9 +997,7 @@ test_that("generate works as expected on discrete vb_epidist object", {
   expect_type(res$intrinsic, "double")
   expect_type(res$extrinsic, "double")
   expect_gte(res$intrinsic, 0)
-  #expect_lte(res$intrinsic, 1)
   expect_gte(res$extrinsic, 0)
-  #expect_lte(res$extrinsic, 1)
 
   res <- generate(dengue_dist, times = 10)
   expect_length(res, 2)
@@ -1049,9 +1007,7 @@ test_that("generate works as expected on discrete vb_epidist object", {
   expect_length(res$intrinsic, 10)
   expect_length(res$extrinsic, 10)
   expect_true(all(res$intrinsic >= 0))
-  #expect_lte(res$intrinsic, 1)
   expect_true(all(res$extrinsic >= 0))
-  #expect_lte(res$extrinsic, 1)
 })
 
 test_that("generate fails as expected on continuous vb_epidist object with
