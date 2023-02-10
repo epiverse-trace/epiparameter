@@ -2,10 +2,10 @@
 % Please edit documentation in R/epidist.R, R/vb_epidist.R
 \name{epidist_distribution_functions}
 \alias{epidist_distribution_functions}
-\alias{density}
-\alias{cdf}
-\alias{quantile}
-\alias{generate}
+\alias{density.epidist}
+\alias{cdf.epidist}
+\alias{quantile.epidist}
+\alias{generate.epidist}
 \alias{density.vb_epidist}
 \alias{cdf.vb_epidist}
 \alias{quantile.vb_epidist}
@@ -13,13 +13,13 @@
 \title{PDF, CDF, PMF, quantiles and random number generation for \code{epidist} and
 \code{vb_epidist} objects}
 \usage{
-density(x, at)
+\method{density}{epidist}(x, at, ...)
 
-cdf(x, q)
+\method{cdf}{epidist}(x, q, ...)
 
-quantile(x, p)
+\method{quantile}{epidist}(x, p, ...)
 
-generate(x, times)
+\method{generate}{epidist}(x, times, ...)
 
 \method{density}{vb_epidist}(x, at, ...)
 
@@ -34,13 +34,13 @@ generate(x, times)
 
 \item{at}{The quantiles to evaluate at}
 
+\item{...}{further arguments passed to or from other methods}
+
 \item{q}{The quantiles to evaluate at}
 
 \item{p}{The probabilities to evaluate at}
 
 \item{times}{The number of random samples}
-
-\item{...}{further arguments passed to or from other methods}
 }
 \value{
 If an \code{epidist} object is given a numeric vector is returned, if an
@@ -63,10 +63,10 @@ edist <- epidist(
 )
 
 # example of each distribution method for an `epidist` object
-density(edist, at = 1)
-cdf(edist, q = 1)
-quantile(edist, p = 0.2)
-generate(edist, times = 10)
+stats::density(edist, at = 1)
+distributional::cdf(edist, q = 1)
+stats::quantile(edist, p = 0.2)
+distributional::generate(edist, times = 10)
 
 vb_edist <- vb_epidist(
   intrinsic_epidist = epidist(
@@ -86,8 +86,8 @@ vb_edist <- vb_epidist(
 )
 
 # example of each distribution method for an `vb_epidist` object
-density(vb_edist, at = 1)
-cdf(vb_edist, q = 1)
-quantile(vb_edist, p = 0.2)
-generate(vb_edist, times = 10)
+stats::density(vb_edist, at = 1)
+distributional::cdf(vb_edist, q = 1)
+stats::quantile(vb_edist, p = 0.2)
+distributional::generate(vb_edist, times = 10)
 }

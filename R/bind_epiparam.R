@@ -1,10 +1,11 @@
 #' Binds any epi data class in \pkg{epiparameter} ([`epidist`], [`vb_epidist`],
 #' [`epiparam`]) or data frame to an [`epiparam`] object.
 #'
-#' @details The [`epiparam`] class holds the library of epidemiological parameters
-#' that is stored in the \pkg{epiparameter} R package and can be manipulated. The
-#' [bind_epiparam()] function allows users to add entries to the library by
-#' binding them to the bottom of an existing [`epiparam`] object loaded in R.
+#' @details The [`epiparam`] class holds the library of epidemiological
+#' parameters that is stored in the \pkg{epiparameter} R package and can be
+#' manipulated. The [bind_epiparam()] function allows users to add entries to
+#' the library by binding them to the bottom of an existing [`epiparam`] object
+#' loaded in R.
 #'
 #' @param epiparam An `epiparam` object
 #' @param epi_obj Either an `epidist`, `vb_epidist`, `epiparam` or list of

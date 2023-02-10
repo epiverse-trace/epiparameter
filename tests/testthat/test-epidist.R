@@ -435,22 +435,22 @@ test_that("density works as expected on continuous epidist object", {
     )
   )
 
-  res <- density(ebola_dist, at = 0.5)
+  res <- stats::density(ebola_dist, at = 0.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
 
-  res <- density(ebola_dist, at = 0)
+  res <- stats::density(ebola_dist, at = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
 
-  res <- density(ebola_dist, at = 1.5)
+  res <- stats::density(ebola_dist, at = 1.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
 
-  res <- density(ebola_dist, at = 10)
+  res <- stats::density(ebola_dist, at = 10)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
@@ -467,22 +467,22 @@ test_that("density works as expected on discrete epidist object", {
     )
   )
 
-  res <- density(ebola_dist, at = 0.5)
+  res <- stats::density(ebola_dist, at = 0.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
 
-  res <- density(ebola_dist, at = 0)
+  res <- stats::density(ebola_dist, at = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
 
-  res <- density(ebola_dist, at = 1.5)
+  res <- stats::density(ebola_dist, at = 1.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
 
-  res <- density(ebola_dist, at = 10)
+  res <- stats::density(ebola_dist, at = 10)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
@@ -499,7 +499,7 @@ test_that("density works as expected on continuous epidist object with vector
     )
   )
 
-  res <- density(ebola_dist, at = seq(0.1, 0.9, by = 0.1))
+  res <- stats::density(ebola_dist, at = seq(0.1, 0.9, by = 0.1))
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
@@ -517,7 +517,7 @@ test_that("density works as expected on discrete epidist object with vector
     )
   )
 
-  res <- density(ebola_dist, at = seq(0.1, 0.9, by = 0.1))
+  res <- stats::density(ebola_dist, at = seq(0.1, 0.9, by = 0.1))
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
@@ -533,25 +533,25 @@ test_that("cdf works as expected on continuous epidist object", {
     )
   )
 
-  res <- cdf(ebola_dist, q = 0.5)
+  res <- distributional::cdf(ebola_dist, q = 0.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
   expect_lte(res, 1)
 
-  res <- cdf(ebola_dist, q = 0)
+  res <- distributional::cdf(ebola_dist, q = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
   expect_lte(res, 1)
 
-  res <- cdf(ebola_dist, q = 1.5)
+  res <- distributional::cdf(ebola_dist, q = 1.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
   expect_lte(res, 1)
 
-  res <- cdf(ebola_dist, q = 10)
+  res <- distributional::cdf(ebola_dist, q = 10)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
@@ -569,25 +569,25 @@ test_that("cdf works as expected on discrete epidist object", {
     )
   )
 
-  res <- cdf(ebola_dist, q = 0.5)
+  res <- distributional::cdf(ebola_dist, q = 0.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
   expect_lte(res, 1)
 
-  res <- cdf(ebola_dist, q = 0)
+  res <- distributional::cdf(ebola_dist, q = 0)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
   expect_lte(res, 1)
 
-  res <- cdf(ebola_dist, q = 1.5)
+  res <- distributional::cdf(ebola_dist, q = 1.5)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
   expect_lte(res, 1)
 
-  res <- cdf(ebola_dist, q = 10)
+  res <- distributional::cdf(ebola_dist, q = 10)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
@@ -605,7 +605,7 @@ test_that("cdf works as expected on continuous epidist object with vector
     )
   )
 
-  res <- cdf(ebola_dist, q = seq(0.1, 0.9, by = 0.1))
+  res <- distributional::cdf(ebola_dist, q = seq(0.1, 0.9, by = 0.1))
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
@@ -624,7 +624,7 @@ test_that("cdf works as expected on discrete epidist object with vector
     )
   )
 
-  res <- cdf(ebola_dist, q = seq(0.1, 0.9, by = 0.1))
+  res <- distributional::cdf(ebola_dist, q = seq(0.1, 0.9, by = 0.1))
   expect_length(res, 9)
   expect_type(res, "double")
   expect_true(all(res >= 0))
@@ -729,12 +729,12 @@ test_that("generate works as expected on continuous epidist object", {
     )
   )
 
-  res <- generate(ebola_dist, times = 1)
+  res <- distributional::generate(ebola_dist, times = 1)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
 
-  res <- generate(ebola_dist, times = 10)
+  res <- distributional::generate(ebola_dist, times = 10)
   expect_length(res, 10)
   expect_type(res, "double")
   expect_true(all(res >= 0))
@@ -751,12 +751,12 @@ test_that("generate works as expected on discrete epidist object", {
     )
   )
 
-  res <- generate(ebola_dist, times = 1)
+  res <- distributional::generate(ebola_dist, times = 1)
   expect_length(res, 1)
   expect_type(res, "double")
   expect_gte(res, 0)
 
-  res <- generate(ebola_dist, times = 10)
+  res <- distributional::generate(ebola_dist, times = 10)
   expect_length(res, 10)
   expect_type(res, "double")
   expect_true(all(res >= 0))
@@ -773,7 +773,7 @@ test_that("generate fails as expected on continuous epidist object with vector
     )
   )
 
-  expect_error(generate(ebola_dist, times = c(10, 15)))
+  expect_error(distributional::generate(ebola_dist, times = c(10, 15)))
 })
 
 test_that("generate fails as expected on discrete epidist object with vector
@@ -788,7 +788,7 @@ test_that("generate fails as expected on discrete epidist object with vector
     )
   )
 
-  expect_error(generate(ebola_dist, times = c(10, 15)))
+  expect_error(distributional::generate(ebola_dist, times = c(10, 15)))
 })
 
 test_that("is_epidist returns TRUE when expected", {

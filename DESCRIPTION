@@ -24,7 +24,9 @@ Depends: R (>= 3.5.0)
 Imports:
     checkmate,
     distributional,
-    distcrete
+    distcrete,
+    stats,
+    utils
 Suggests: 
     yaml,
     jsonlite,

@@ -271,32 +271,26 @@ summary.epiparam <- function(object, ...) {
   )
 }
 
-#' head method for epiparam class
+#' `head` and `tail` methods for [`epiparam`] class
 #'
-#' @param x epiparam object
+#' @param x An [`epiparam`] object
+#' @param ... further arguments passed to or from other methods
 #'
 #' @return Data frame
 #' @export
+#'
+#' @importFrom utils head
+#' @importFrom utils tail
 #'
 #' @examples
 #' head(epiparam())
-
-#' @export
-head.epiparam <- function(x) {
- utils::head(as.data.frame(x))
+#' tail(epiparam())
+head.epiparam <- function(x, ...) {
+ utils::head(as.data.frame(x), ...)
 }
 
-#' tail method for epiparam class
-#'
-#' @param x epiparam object
-#'
-#' @return Data frame
+#' @rdname head.epiparam
 #' @export
-#'
-#' @examples
-#' tail(epiparam())
-
-#' @export
-tail.epiparam <- function(x) {
-  utils::tail(as.data.frame(x))
+tail.epiparam <- function(x, ...) {
+  utils::tail(as.data.frame(x), ...)
 }

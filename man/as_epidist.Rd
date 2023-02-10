@@ -20,7 +20,7 @@ generation and other methods of the epidist class
 (see \code{?epidist_distribution_functions}).
 }
 \examples{
-\dontrun{
+\donttest{
   eparam <- epiparam()
   as_epidist(eparam[1, ])
 }
