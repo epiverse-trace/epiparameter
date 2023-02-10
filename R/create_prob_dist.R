@@ -90,7 +90,7 @@ create_prob_dist <- function(prob_dist,
       ),
       negative_binomial = distributional::dist_negative_binomial(
         size = prob_dist_params[["dispersion"]],
-        prob = negative_binomial_meandispersion2probdispersion(
+        prob = nbinom_meandisp2probdisp(
           mean = prob_dist_params[["mean"]],
           dispersion = prob_dist_params[["dispersion"]]
         )$prob

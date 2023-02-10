@@ -167,8 +167,8 @@ weibull_shapescale2meansd <- function(shape, scale) {
 #' @export
 #'
 #' @examples
-#' negative_binomial_probdispersion2meandispersion(prob = 0.3, dispersion = 0.9)
-negative_binomial_probdispersion2meandispersion <- function(prob, dispersion) {
+#' nbinom_probdisp2meandisp(prob = 0.3, dispersion = 0.9)
+nbinom_probdisp2meandisp <- function(prob, dispersion) {
   checkmate::assert_number(prob)
   checkmate::assert_number(dispersion)
   mean <- dispersion * (1 - prob) / prob
@@ -191,8 +191,8 @@ negative_binomial_probdispersion2meandispersion <- function(prob, dispersion) {
 #' @export
 #'
 #' @examples
-#' negative_binomial_meandispersion2probdispersion(mean = 3, dispersion = 0.7)
-negative_binomial_meandispersion2probdispersion <- function(mean, dispersion) {
+#' nbinom_meandisp2probdisp(mean = 3, dispersion = 0.7)
+nbinom_meandisp2probdisp <- function(mean, dispersion) {
   checkmate::assert_number(mean)
   checkmate::assert_number(dispersion)
   prob <- 1 / (1 + mean / dispersion)
