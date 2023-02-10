@@ -625,7 +625,6 @@ NULL
 
 #' @rdname epidist_distribution_functions
 #' @export
-density <- function(x, at) UseMethod("density")
 
 #' @export
 density.epidist <- function(x, at) {
