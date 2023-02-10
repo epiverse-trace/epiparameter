@@ -71,7 +71,7 @@ extract_param <- function(type = c("percentiles", "range"),
     )
   )
 
-  # intialise the for the loop
+  # initialise for the loop
   optim_conv <- FALSE
   optim_params_list <- list()
   i <- 0
