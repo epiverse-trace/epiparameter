@@ -68,7 +68,7 @@ epidist_db <- function(disease,
 
   # extract study or default to largest sample size
   if (is.null(author)) {
-    eparam <- eparam[eparam$sample_size == max(eparam$sample_size), ]
+    eparam <- eparam[which.max(eparam$sample_size), ]
   } else {
     study <- match.arg(
       arg = author,
