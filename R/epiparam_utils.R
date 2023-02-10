@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   eparam <- epiparam()
 #'   as_epidist(eparam[1, ])
 #' }
