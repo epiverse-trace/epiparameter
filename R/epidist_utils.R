@@ -3,8 +3,8 @@
 #' @description A helper function when creating uncertainty for the parameters
 #' of the distribution for the `epidist` object
 #'
-#' @param ci_limits A numeric vector of length two with the lower and upper bound of
-#' the confidence interval or credible interval
+#' @param ci_limits A numeric vector of length two with the lower and upper
+#' bound of the confidence interval or credible interval
 #' @param ci A numeric specifying the interval for the ci, e.g. 95 is
 #' 95% ci
 #' @param ci_type A character string, either "confidence interval" or "credible
@@ -205,24 +205,24 @@ create_epidist_region <- function(continent = NA_character_,
 
 #' Specify any reported summary statistics for `epidist`
 #'
-#' @description A helper function when creating an epidist object to create a summary
-#' statistics list with sensible defaults, type checking and arguments to help
-#' remember which summary statistics can be accepted in the list
+#' @description A helper function when creating an epidist object to create a
+#' summary statistics list with sensible defaults, type checking and arguments
+#' to help remember which summary statistics can be accepted in the list.
 #'
 #' @param mean A numeric of the mean (expectation) of the probability
 #' distribution
-#' @param mean_ci_limits A numeric vector of length two of the confidence interval
-#' around the mean
+#' @param mean_ci_limits A numeric vector of length two of the confidence
+#' interval around the mean
 #' @param mean_ci A numeric specifying the confidence interval width,
 #' e.g. 95 would be the 95% CI
 #' @param sd A numeric of the standard deviation of the probability distribution
-#' @param sd_ci_limits A numeric vector of length 2 of the confidence interval around
-#' the standard deviation
+#' @param sd_ci_limits A numeric vector of length 2 of the confidence interval
+#' around the standard deviation
 #' @param sd_ci A numeric specifying the confidence interval width,
 #' e.g. 95 would be 95% confidence interval
 #' @param median A numeric of the median of the probability distribution
-#' @param median_ci_limits A numeric vector of length two of the confidence interval
-#' around the median
+#' @param median_ci_limits A numeric vector of length two of the confidence
+#' interval around the median
 #' @param median_ci A numeric specifying the confidence interval width
 #' of the median
 #' @param dispersion A numeric of the dispersion parameter of a distribution
@@ -243,7 +243,7 @@ create_epidist_region <- function(continent = NA_character_,
 #' @param q_975 The 97.5th quantile of the probability distribution
 #'
 #' @return A nested list of summary statistics. The highest level are
-#' - `$central_tendency_spread`
+#' - `$centre_spread`
 #' - `$quantiles`
 #' - `$range`
 #' - `$dispersion`
@@ -276,10 +276,12 @@ create_epidist_summary_stats <- function(mean = NA_real_,
                                          sd_ci_limits = c(NA_real_, NA_real_),
                                          sd_ci = NA_real_,
                                          median = NA_real_,
-                                         median_ci_limits = c(NA_real_, NA_real_),
+                                         median_ci_limits = c(NA_real_,
+                                                              NA_real_),
                                          median_ci = NA_real_,
                                          dispersion = NA_real_,
-                                         dispersion_ci_limits = c(NA_real_, NA_real_),
+                                         dispersion_ci_limits = c(NA_real_,
+                                                                  NA_real_),
                                          dispersion_ci = NA_real_,
                                          lower_range = NA_real_,
                                          upper_range = NA_real_,
@@ -315,7 +317,7 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 
   # return list of summary stats
   list(
-    central_tendency_spread = list(
+    centre_spread = list(
       mean = mean,
       mean_ci_limits = mean_ci_limits,
       mean_ci = mean_ci,
@@ -422,9 +424,9 @@ create_epidist_citation <- function(author = NA_character_,
 #' Specify whether certain methodological aspects have been used when fitting
 #' the distribution
 #'
-#' @description A helper function when creating an epidist object to create a method
-#' assessment list with sensible defaults, type checking and arguments to help
-#' remember which method assessments can be accepted in the list
+#' @description A helper function when creating an epidist object to create a
+#' method assessment list with sensible defaults, type checking and arguments
+#' to help remember which method assessments can be accepted in the list
 #'
 #' @details Currently, the method assessment focuses on common methodological
 #' aspects of delay distributions (e.g. incubation period, serial interval,

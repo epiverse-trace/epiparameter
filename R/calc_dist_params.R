@@ -49,8 +49,8 @@ calc_dist_params <- function(prob_dist,
 
   # extract mean and sd to see if conversion is possible
   mean_sd <- c(
-    mean = summary_stats$central_tendency_spread$mean,
-    sd = summary_stats$central_tendency_spread$sd
+    mean = summary_stats$centre_spread$mean,
+    sd = summary_stats$centre_spread$sd
   )
 
   # extract quantiles of distribution to calculate parameters as second choice
@@ -60,7 +60,7 @@ calc_dist_params <- function(prob_dist,
 
   # extract median and range to calculate parameters as third choice
   median_range <- c(
-    median = summary_stats$central_tendency_spread$median,
+    median = summary_stats$centre_spread$median,
     unlist(summary_stats$range)
   )
 
@@ -135,20 +135,20 @@ convert_params <- function(summary_stats,
   params <- switch(prob_dist,
     "gamma" = unlist(
       gamma_meansd2shapescale(
-        mean = summary_stats$central_tendency_spread$mean,
-        sd = summary_stats$central_tendency_spread$sd
+        mean = summary_stats$centre_spread$mean,
+        sd = summary_stats$centre_spread$sd
       )
     ),
     "lognormal" =  unlist(
       lnorm_meansd2musigma(
-        mean = summary_stats$central_tendency_spread$mean,
-        sd = summary_stats$central_tendency_spread$sd
+        mean = summary_stats$centre_spread$mean,
+        sd = summary_stats$centre_spread$sd
       )
     ),
     "weibull" = unlist(
       weibull_meansd2shapescale(
-        mean = summary_stats$central_tendency_spread$mean,
-        sd = summary_stats$central_tendency_spread$sd
+        mean = summary_stats$centre_spread$mean,
+        sd = summary_stats$centre_spread$sd
       )
     ),
     stop("No conversion functions for ", prob_dist)
