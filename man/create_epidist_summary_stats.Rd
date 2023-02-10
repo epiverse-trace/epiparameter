@@ -32,24 +32,24 @@ create_epidist_summary_stats(
 \item{mean}{A numeric of the mean (expectation) of the probability
 distribution}
 
-\item{mean_ci_limits}{A numeric vector of length two of the confidence interval
-around the mean}
+\item{mean_ci_limits}{A numeric vector of length two of the confidence
+interval around the mean}
 
 \item{mean_ci}{A numeric specifying the confidence interval width,
 e.g. 95 would be the 95\% CI}
 
 \item{sd}{A numeric of the standard deviation of the probability distribution}
 
-\item{sd_ci_limits}{A numeric vector of length 2 of the confidence interval around
-the standard deviation}
+\item{sd_ci_limits}{A numeric vector of length 2 of the confidence interval
+around the standard deviation}
 
 \item{sd_ci}{A numeric specifying the confidence interval width,
 e.g. 95 would be 95\% confidence interval}
 
 \item{median}{A numeric of the median of the probability distribution}
 
-\item{median_ci_limits}{A numeric vector of length two of the confidence interval
-around the median}
+\item{median_ci_limits}{A numeric vector of length two of the confidence
+interval around the median}
 
 \item{median_ci}{A numeric specifying the confidence interval width
 of the median}
@@ -85,16 +85,16 @@ of the distribution when not provided}
 \value{
 A nested list of summary statistics. The highest level are
 \itemize{
-\item \verb{$central_tendency_spread}
+\item \verb{$centre_spread}
 \item \verb{$quantiles}
 \item \verb{$range}
 \item \verb{$dispersion}
 }
 }
 \description{
-A helper function when creating an epidist object to create a summary
-statistics list with sensible defaults, type checking and arguments to help
-remember which summary statistics can be accepted in the list
+A helper function when creating an epidist object to create a
+summary statistics list with sensible defaults, type checking and arguments
+to help remember which summary statistics can be accepted in the list.
 }
 \examples{
 # mean and standard deviation

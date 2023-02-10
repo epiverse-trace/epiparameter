@@ -7,8 +7,8 @@
 create_epidist_uncertainty(ci_limits = NA_real_, ci, ci_type)
 }
 \arguments{
-\item{ci_limits}{A numeric vector of length two with the lower and upper bound of
-the confidence interval or credible interval}
+\item{ci_limits}{A numeric vector of length two with the lower and upper
+bound of the confidence interval or credible interval}
 
 \item{ci}{A numeric specifying the interval for the ci, e.g. 95 is
 95\% ci}
