@@ -33,6 +33,7 @@ check_epidist_params <- function(prob_dist, prob_dist_params) {
 #'
 #' @return Nothing, errors if checks fail
 #' @keywords internal
+#' @noRd
 #'
 #' @examples
 #' epiparameter:::check_epidist_uncertainty(
