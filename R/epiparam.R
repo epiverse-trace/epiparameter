@@ -295,7 +295,6 @@ head.epiparam <- function(x) {
 #'
 #' @examples
 #' tail(epiparam())
-tail <- function(x) UseMethod("tail")
 
 #' @export
 tail.epiparam <- function(x) {
