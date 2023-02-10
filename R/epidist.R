@@ -640,7 +640,6 @@ density.epidist <- function(x, at, ...) {
 
 #' @rdname epidist_distribution_functions
 #' @export
-cdf <- function(x, q) UseMethod("cdf")
 
 #' @export
 cdf.epidist <- function(x, q) {
