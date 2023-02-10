@@ -5,6 +5,7 @@
 #'
 #' @return Nothing, errors if checks fail
 #' @keywords internal
+#' @noRd
 #'
 #' @examples
 #' epiparameter:::check_epidist_params(
