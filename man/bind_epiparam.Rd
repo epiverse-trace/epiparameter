@@ -2,8 +2,8 @@
 % Please edit documentation in R/bind_epiparam.R
 \name{bind_epiparam}
 \alias{bind_epiparam}
-\title{Binds any epi data class in \code{{epiparameter}} (\code{epidist}, \code{vb_epidist},
-\code{epiparam}) or data frame to an \code{epiparam} object.}
+\title{Binds any epi data class in \pkg{epiparameter} (\code{\link{epidist}}, \code{\link{vb_epidist}},
+\code{\link{epiparam}}) or data frame to an \code{\link{epiparam}} object.}
 \usage{
 bind_epiparam(epiparam, epi_obj)
 }
@@ -18,14 +18,15 @@ to the columsn of an \code{epiparam} object.}
 An \code{epiparam} object
 }
 \description{
-Binds any epi data class in \code{{epiparameter}} (\code{epidist}, \code{vb_epidist},
-\code{epiparam}) or data frame to an \code{epiparam} object.
+Binds any epi data class in \pkg{epiparameter} (\code{\link{epidist}}, \code{\link{vb_epidist}},
+\code{\link{epiparam}}) or data frame to an \code{\link{epiparam}} object.
 }
 \details{
-The \code{epiparam} class holds the library of epidemiological parameters
-that is stored in the \code{{epiparameter}} R package and can be manipulated. The
-\code{bind_epiparam()} function allows users to add entries to the library by
-binding them to the bottom of an existing \code{epiparam} object loaded in R.
+The \code{\link{epiparam}} class holds the library of epidemiological
+parameters that is stored in the \pkg{epiparameter} R package and can be
+manipulated. The \code{\link[=bind_epiparam]{bind_epiparam()}} function allows users to add entries to
+the library by binding them to the bottom of an existing \code{\link{epiparam}} object
+loaded in R.
 }
 \examples{
 eparam <- epiparam()

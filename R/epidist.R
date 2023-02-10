@@ -500,7 +500,7 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
   # plot either PDF or PMF
   plot(
     day_range,
-    density(x, at = day_range),
+    stats::density(x, at = day_range),
     ylab = "",
     xlab = "Time since infection",
     type = "b",
@@ -512,7 +512,7 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
   # plot CDF
   plot(
     day_range,
-    cdf(x, q = day_range),
+    distributional::cdf(x, q = day_range),
     ylab = "",
     xlab = "Time since infection",
     type = "b",
@@ -594,10 +594,10 @@ is_epidist <- function(x) {
 #' )
 #'
 #' # example of each distribution method for an `epidist` object
-#' density(edist, at = 1)
-#' cdf(edist, q = 1)
-#' quantile(edist, p = 0.2)
-#' generate(edist, times = 10)
+#' stats::density(edist, at = 1)
+#' distributional::cdf(edist, q = 1)
+#' stats::quantile(edist, p = 0.2)
+#' distributional::generate(edist, times = 10)
 #'
 #' vb_edist <- vb_epidist(
 #'   intrinsic_epidist = epidist(
@@ -617,15 +617,14 @@ is_epidist <- function(x) {
 #' )
 #'
 #' # example of each distribution method for an `vb_epidist` object
-#' density(vb_edist, at = 1)
-#' cdf(vb_edist, q = 1)
-#' quantile(vb_edist, p = 0.2)
-#' generate(vb_edist, times = 10)
+#' stats::density(vb_edist, at = 1)
+#' distributional::cdf(vb_edist, q = 1)
+#' stats::quantile(vb_edist, p = 0.2)
+#' distributional::generate(vb_edist, times = 10)
 NULL
 
 #' @rdname epidist_distribution_functions
-#' @export
-
+#' @importFrom stats density
 #' @export
 density.epidist <- function(x, at, ...) {
   unlist <- length(x$prob_dist) == 1
@@ -639,10 +638,9 @@ density.epidist <- function(x, at, ...) {
 }
 
 #' @rdname epidist_distribution_functions
+#' @importFrom distributional cdf
 #' @export
-
-#' @export
-cdf.epidist <- function(x, q) {
+cdf.epidist <- function(x, q, ...) {
   unlist <- length(x$prob_dist) == 1
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$p(q)
@@ -654,8 +652,7 @@ cdf.epidist <- function(x, q) {
 }
 
 #' @rdname epidist_distribution_functions
-#' @export
-
+#' @importFrom stats quantile
 #' @export
 quantile.epidist <- function(x, p, ...) {
   unlist <- length(x$prob_dist) == 1
@@ -669,10 +666,9 @@ quantile.epidist <- function(x, p, ...) {
 }
 
 #' @rdname epidist_distribution_functions
+#' @importFrom distributional generate
 #' @export
-
-#' @export
-generate.epidist <- function(x, times) {
+generate.epidist <- function(x, times, ...) {
 
   # check times is a single number for consistent behaviour
   checkmate::assert_number(times)

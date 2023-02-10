@@ -403,7 +403,7 @@ test_that("density works as expected on continuous vb_epidist object", {
     )
   ))
 
-  res <- density(dengue_dist, at = 0.5)
+  res <- stats::density(dengue_dist, at = 0.5)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -411,7 +411,7 @@ test_that("density works as expected on continuous vb_epidist object", {
   expect_gte(res$intrinsic, 0)
   expect_gte(res$extrinsic, 0)
 
-  res <- density(dengue_dist, at = 0)
+  res <- stats::density(dengue_dist, at = 0)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -419,7 +419,7 @@ test_that("density works as expected on continuous vb_epidist object", {
   expect_gte(res$intrinsic, 0)
   expect_gte(res$extrinsic, 0)
 
-  res <- density(dengue_dist, at = 1.5)
+  res <- stats::density(dengue_dist, at = 1.5)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -427,7 +427,7 @@ test_that("density works as expected on continuous vb_epidist object", {
   expect_gte(res$intrinsic, 0)
   expect_gte(res$extrinsic, 0)
 
-  res <- density(dengue_dist, at = 10)
+  res <- stats::density(dengue_dist, at = 10)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -460,7 +460,7 @@ test_that("density works as expected on discrete vb_epidist object", {
     )
   ))
 
-  res <- density(dengue_dist, at = 0.5)
+  res <- stats::density(dengue_dist, at = 0.5)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -468,7 +468,7 @@ test_that("density works as expected on discrete vb_epidist object", {
   expect_gte(res$intrinsic, 0)
   expect_gte(res$extrinsic, 0)
 
-  res <- density(dengue_dist, at = 0)
+  res <- stats::density(dengue_dist, at = 0)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -476,7 +476,7 @@ test_that("density works as expected on discrete vb_epidist object", {
   expect_gte(res$intrinsic, 0)
   expect_gte(res$extrinsic, 0)
 
-  res <- density(dengue_dist, at = 1.5)
+  res <- stats::density(dengue_dist, at = 1.5)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -484,7 +484,7 @@ test_that("density works as expected on discrete vb_epidist object", {
   expect_gte(res$intrinsic, 0)
   expect_gte(res$extrinsic, 0)
 
-  res <- density(dengue_dist, at = 10)
+  res <- stats::density(dengue_dist, at = 10)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -515,7 +515,7 @@ test_that("density works as expected on continuous vb_epidist object with
       )
     )
   ))
-  res <- density(dengue_dist, at = seq(0.1, 0.9, by = 0.1))
+  res <- stats::density(dengue_dist, at = seq(0.1, 0.9, by = 0.1))
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -551,7 +551,7 @@ test_that("density works as expected on discrete vb_epidist object with
     )
   ))
 
-  res <- density(dengue_dist, at = seq(0.1, 0.9, by = 0.1))
+  res <- stats::density(dengue_dist, at = seq(0.1, 0.9, by = 0.1))
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -584,7 +584,7 @@ test_that("cdf works as expected on continuous vb_epidist object", {
     )
   ))
 
-  res <- cdf(dengue_dist, q = 0.5)
+  res <- distributional::cdf(dengue_dist, q = 0.5)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -594,7 +594,7 @@ test_that("cdf works as expected on continuous vb_epidist object", {
   expect_gte(res$extrinsic, 0)
   expect_lte(res$extrinsic, 1)
 
-  res <- cdf(dengue_dist, q = 0)
+  res <- distributional::cdf(dengue_dist, q = 0)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -604,7 +604,7 @@ test_that("cdf works as expected on continuous vb_epidist object", {
   expect_gte(res$extrinsic, 0)
   expect_lte(res$extrinsic, 1)
 
-  res <- cdf(dengue_dist, q = 1.5)
+  res <- distributional::cdf(dengue_dist, q = 1.5)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -614,7 +614,7 @@ test_that("cdf works as expected on continuous vb_epidist object", {
   expect_gte(res$extrinsic, 0)
   expect_lte(res$extrinsic, 1)
 
-  res <- cdf(dengue_dist, q = 10)
+  res <- distributional::cdf(dengue_dist, q = 10)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -649,7 +649,7 @@ test_that("cdf works as expected on discrete vb_epidist object", {
     )
   ))
 
-  res <- cdf(dengue_dist, q = 0.5)
+  res <- distributional::cdf(dengue_dist, q = 0.5)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -659,7 +659,7 @@ test_that("cdf works as expected on discrete vb_epidist object", {
   expect_gte(res$extrinsic, 0)
   expect_lte(res$extrinsic, 1)
 
-  res <- cdf(dengue_dist, q = 0)
+  res <- distributional::cdf(dengue_dist, q = 0)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -669,7 +669,7 @@ test_that("cdf works as expected on discrete vb_epidist object", {
   expect_gte(res$extrinsic, 0)
   expect_lte(res$extrinsic, 1)
 
-  res <- cdf(dengue_dist, q = 1.5)
+  res <- distributional::cdf(dengue_dist, q = 1.5)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -679,7 +679,7 @@ test_that("cdf works as expected on discrete vb_epidist object", {
   expect_gte(res$extrinsic, 0)
   expect_lte(res$extrinsic, 1)
 
-  res <- cdf(dengue_dist, q = 10)
+  res <- distributional::cdf(dengue_dist, q = 10)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -713,7 +713,7 @@ test_that("cdf works as expected on continuous vb_epidist object with
     )
   ))
 
-  res <- cdf(dengue_dist, q = seq(0.1, 0.9, by = 0.1))
+  res <- distributional::cdf(dengue_dist, q = seq(0.1, 0.9, by = 0.1))
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -751,7 +751,7 @@ test_that("cdf works as expected on discrete vb_epidist object with
     )
   ))
 
-  res <- cdf(dengue_dist, q = seq(0.1, 0.9, by = 0.1))
+  res <- distributional::cdf(dengue_dist, q = seq(0.1, 0.9, by = 0.1))
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -948,7 +948,7 @@ test_that("generate works as expected on continuous vb_epidist object", {
     )
   ))
 
-  res <- generate(dengue_dist, times = 1)
+  res <- distributional::generate(dengue_dist, times = 1)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -956,7 +956,7 @@ test_that("generate works as expected on continuous vb_epidist object", {
   expect_gte(res$intrinsic, 0)
   expect_gte(res$extrinsic, 0)
 
-  res <- generate(dengue_dist, times = 10)
+  res <- distributional::generate(dengue_dist, times = 10)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -991,7 +991,7 @@ test_that("generate works as expected on discrete vb_epidist object", {
     )
   ))
 
-  res <- generate(dengue_dist, times = 1)
+  res <- distributional::generate(dengue_dist, times = 1)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -999,7 +999,7 @@ test_that("generate works as expected on discrete vb_epidist object", {
   expect_gte(res$intrinsic, 0)
   expect_gte(res$extrinsic, 0)
 
-  res <- generate(dengue_dist, times = 10)
+  res <- distributional::generate(dengue_dist, times = 10)
   expect_length(res, 2)
   expect_type(res, "list")
   expect_type(res$intrinsic, "double")
@@ -1033,7 +1033,7 @@ test_that("generate fails as expected on continuous vb_epidist object with
     )
   ))
 
-  expect_error(generate(dengue_dist, times = c(10, 15)))
+  expect_error(distributional::generate(dengue_dist, times = c(10, 15)))
 })
 
 test_that("generate fails as expected on discrete vb_epidist object with
@@ -1061,7 +1061,7 @@ test_that("generate fails as expected on discrete vb_epidist object with
     )
   ))
 
-  expect_error(generate(dengue_dist, times = c(10, 15)))
+  expect_error(distributional::generate(dengue_dist, times = c(10, 15)))
 })
 
 test_that("is_vb_epidist returns TRUE when expected", {

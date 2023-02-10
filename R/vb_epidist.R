@@ -308,8 +308,8 @@ plot.vb_epidist <- function(x, day_range = 0:10, ...) {
 density.vb_epidist <- function(x, at, ...) {
   # call epidist density method
   list(
-    intrinsic = density(x$intrinsic, at = at, ...),
-    extrinsic = density(x$extrinsic, at = at, ...)
+    intrinsic = stats::density(x$intrinsic, at = at, ...),
+    extrinsic = stats::density(x$extrinsic, at = at, ...)
   )
 }
 
@@ -318,8 +318,8 @@ density.vb_epidist <- function(x, at, ...) {
 cdf.vb_epidist <- function(x, q, ...) {
   # call epidist density method
   list(
-    intrinsic = cdf(x$intrinsic, q = q, ...),
-    extrinsic = cdf(x$extrinsic, q = q, ...)
+    intrinsic = distributional::cdf(x$intrinsic, q = q, ...),
+    extrinsic = distributional::cdf(x$extrinsic, q = q, ...)
   )
 }
 
@@ -338,7 +338,7 @@ quantile.vb_epidist <- function(x, p, ...) {
 generate.vb_epidist <- function(x, times, ...) {
   # call epidist generate method
   list(
-    intrinsic = generate(x$intrinsic, times = times, ...),
-    extrinsic = generate(x$extrinsic, times = times, ...)
+    intrinsic = distributional::generate(x$intrinsic, times = times, ...),
+    extrinsic = distributional::generate(x$extrinsic, times = times, ...)
   )
 }
