@@ -657,7 +657,6 @@ cdf.epidist <- function(x, q) {
 
 #' @rdname epidist_distribution_functions
 #' @export
-quantile <- function(x, p) UseMethod("quantile")
 
 #' @export
 quantile.epidist <- function(x, p) {
