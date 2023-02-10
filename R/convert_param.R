@@ -117,7 +117,7 @@ weibull_meansd2shapescale <- function(mean, sd) {
   checkmate::assert_number(mean, lower = 0)
   checkmate::assert_number(sd, lower = 0)
 
-  # give warning message about numerial inaccuracies
+  # give warning message about numerical inaccuracies
   message("Numerical approximation used, results may be unreliable.")
 
   var <- sd^2

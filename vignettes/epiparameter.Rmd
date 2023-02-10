@@ -94,7 +94,7 @@ Converting between the parameters of the lognormal distribution and the mean and
 
 ## Delay distributions for informing quarantine period
 
-In epidemics, understanding the delay between becoming exposed to an infectious disease and the onset of symptoms (i.e. incubation period) is informative for defining a possible quarantine period. Quarantine for exposed individuals are one of the most widely used nonpharmaceutical intervetions (NPIs) to suppress the transmission and bring the basic reproduction number ($R_0$) down. As pointed out by @nishiura_determination_2009 using a right-skewed probability distribution there is a non-zero probability of having extremely large quarantine periods (e.g. 100 days).
+In epidemics, understanding the delay between becoming exposed to an infectious disease and the onset of symptoms (i.e. incubation period) is informative for defining a possible quarantine period. Quarantine for exposed individuals are one of the most widely used nonpharmaceutical interventions (NPIs) to suppress the transmission and bring the basic reproduction number ($R_0$) down. As pointed out by @nishiura_determination_2009 using a right-skewed probability distribution there is a non-zero probability of having extremely large quarantine periods (e.g. 100 days).
 
 The `epiparameter` packages contains a range of distributions for a variety of infectious diseases which can be used to determine a quarantine period. This period will be defined by the desired proportion of people that exit quarantine without later going on to develop symptoms and infect others.
 
