@@ -6,7 +6,7 @@ test_that("epidist_db works as expected", {
   expect_named(
     edist,
     c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
+      "citation", "metadata", "method_assess", "notes")
   )
   expect_type(edist$disease, "list")
   expect_type(edist$epi_dist, "character")
@@ -15,7 +15,7 @@ test_that("epidist_db works as expected", {
   expect_type(edist$summary_stats, "list")
   expect_type(edist$citation, "character")
   expect_type(edist$metadata, "list")
-  expect_type(edist$method_assessment, "list")
+  expect_type(edist$method_assess, "list")
   expect_type(edist$notes, "character")
 })
 
@@ -31,7 +31,7 @@ test_that("epidist_db works as expected with author specified", {
   expect_named(
     edist,
     c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assessment", "notes")
+      "citation", "metadata", "method_assess", "notes")
   )
   expect_type(edist$disease, "list")
   expect_type(edist$epi_dist, "character")
@@ -41,7 +41,7 @@ test_that("epidist_db works as expected with author specified", {
   expect_type(edist$citation, "character")
   expect_true(grepl(pattern = "Ghani", x = edist$citation, fixed = TRUE))
   expect_type(edist$metadata, "list")
-  expect_type(edist$method_assessment, "list")
+  expect_type(edist$method_assess, "list")
   expect_type(edist$notes, "character")
 })
 

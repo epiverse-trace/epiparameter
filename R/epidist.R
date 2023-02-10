@@ -32,7 +32,7 @@
 #'   auto_calc_params = TRUE,
 #'   citation = create_epidist_citation(),
 #'   metadata = create_epidist_metadata(),
-#'   method_assessment = create_epidist_method_assessment(),
+#'   method_assess = create_epidist_method_assess(),
 #'   discretise = FALSE,
 #'   truncation = NA,
 #'   notes = "No notes"
@@ -46,7 +46,7 @@ new_epidist <- function(disease = list(),
                         auto_calc_params = logical(),
                         citation = character(),
                         metadata = list(),
-                        method_assessment = list(),
+                        method_assess = list(),
                         discretise = logical(),
                         truncation = numeric(),
                         notes = character()) {
@@ -99,7 +99,7 @@ new_epidist <- function(disease = list(),
   summary_stats$quantiles <- quantiles
 
   if (epi_dist == "offspring_distribution") {
-    method_assessment <- paste(
+    method_assess <- paste(
       "There is currently no method assessment for offspring distributions",
       "stored in epiparameter"
     )
@@ -119,7 +119,7 @@ new_epidist <- function(disease = list(),
       summary_stats = summary_stats,
       citation = citation,
       metadata = metadata,
-      method_assessment = method_assessment,
+      method_assess = method_assess,
       notes = notes
     ),
     class = "epidist"
@@ -179,8 +179,8 @@ new_epidist <- function(disease = list(),
 #' delay distribution such as extrinsic incubation period) unless
 #' `vector_borne = TRUE` is contained in the metadata. Use
 #' `create_epidist_metadata()` to create metadata.
-#' @param method_assessment A list of methodological aspects used when fitting
-#' the distribution, use `create_epidist_method_assessment()` to create method
+#' @param method_assess A list of methodological aspects used when fitting
+#' the distribution, use `create_epidist_method_assess()` to create method
 #' assessment.
 #' @param discretise A boolean logical whether the distribution is discretised.
 #' Default is FALSE which assumes a continuous probability distribution
@@ -233,7 +233,7 @@ new_epidist <- function(disease = list(),
 #'     vector_borne = FALSE,
 #'     inference_method = "MLE"
 #'   ),
-#'   method_assessment = create_epidist_method_assessment(
+#'   method_assess = create_epidist_method_assess(
 #'     censored = TRUE
 #'   ),
 #'   discretise = FALSE,
@@ -250,7 +250,7 @@ epidist <- function(disease,
                     auto_calc_params = TRUE,
                     citation = create_epidist_citation(),
                     metadata = create_epidist_metadata(),
-                    method_assessment = create_epidist_method_assessment(),
+                    method_assess = create_epidist_method_assess(),
                     discretise = FALSE,
                     truncation = NA_real_,
                     notes = NULL) {
@@ -273,7 +273,7 @@ epidist <- function(disease,
   )
   checkmate::assert_string(citation)
   checkmate::assert_list(metadata)
-  checkmate::assert_list(method_assessment)
+  checkmate::assert_list(method_assess)
   checkmate::assert_number(truncation, na.ok = TRUE)
   checkmate::assert_logical(discretise)
   checkmate::assert_character(notes, null.ok = TRUE)
@@ -303,7 +303,7 @@ epidist <- function(disease,
     auto_calc_params = auto_calc_params,
     citation = citation,
     metadata = metadata,
-    method_assessment = method_assessment,
+    method_assess = method_assess,
     discretise = discretise,
     truncation = truncation,
     notes = notes
@@ -332,7 +332,7 @@ validate_epidist <- function(epidist) {
   stopifnot(
     "epidist object does not contain the correct attributes" =
       c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-        "citation", "metadata", "method_assessment", "notes") %in%
+        "citation", "metadata", "method_assess", "notes") %in%
       attributes(epidist)$names,
     "Epidist must contains a disease (single character string)" =
       is.character(epidist$disease$disease) &&

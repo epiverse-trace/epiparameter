@@ -445,14 +445,14 @@ create_epidist_citation <- function(author = NA_character_,
 #' @export
 #'
 #' @examples
-#' create_epidist_method_assessment(
+#' create_epidist_method_assess(
 #'   censored = FALSE,
 #'   right_truncated = FALSE,
 #'   phase_bias_adjusted = FALSE
 #' )
-create_epidist_method_assessment <- function(censored = NA,
-                                             right_truncated = NA,
-                                             phase_bias_adjusted = NA) {
+create_epidist_method_assess <- function(censored = NA,
+                                         right_truncated = NA,
+                                         phase_bias_adjusted = NA) {
   # check input
   checkmate::assert_logical(censored, len = 1)
   checkmate::assert_logical(right_truncated, len = 1)

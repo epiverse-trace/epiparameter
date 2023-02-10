@@ -50,8 +50,11 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
 #'
 #' @return Invisibly returns the JSON data
 #' @keywords internal
-make_json_data <- function(read_path = file.path("extdata", "parameters.csv"),
-                           write_path = file.path("inst", "extdata", "data.json")) {
+make_json_data <- function(read_path = file.path("extdata",
+                                                 "parameters.csv"),
+                           write_path = file.path("inst",
+                                                  "extdata",
+                                                  "data.json")) {
   # read in epiparameter database
   data <- utils::read.csv(
     file = system.file(
@@ -99,8 +102,11 @@ make_json_data <- function(read_path = file.path("extdata", "parameters.csv"),
 #'
 #' @return Invisibly returns the JSON schema
 #' @keywords internal
-make_json_schema <- function(read_path = file.path("extdata", "data_dictionary.yaml"),
-                             write_path = file.path("inst", "extdata", "schema.json")) {
+make_json_schema <- function(read_path = file.path("extdata",
+                                                   "data_dictionary.yaml"),
+                             write_path = file.path("inst",
+                                                    "extdata",
+                                                    "schema.json")) {
   # read schema
   schema <- yaml::read_yaml(
     system.file(
