@@ -670,7 +670,6 @@ quantile.epidist <- function(x, p, ...) {
 
 #' @rdname epidist_distribution_functions
 #' @export
-generate <- function(x, times) UseMethod("generate")
 
 #' @export
 generate.epidist <- function(x, times) {
