@@ -267,8 +267,8 @@ test_that("weibull_meansd2shapescale fails as expected", {
   )
 })
 
-test_that("negative_binomial_meandispersion2probdispersion works as expected", {
-  params <- negative_binomial_meandispersion2probdispersion(
+test_that("nbinom_meandisp2probdisp works as expected", {
+  params <- nbinom_meandisp2probdisp(
     mean = 1,
     dispersion = 0.5
   )
@@ -281,9 +281,9 @@ test_that("negative_binomial_meandispersion2probdispersion works as expected", {
   )
 })
 
-test_that("negative_binomial_meandispersion2probdispersion fails as expected", {
+test_that("nbinom_meandisp2probdisp fails as expected", {
   expect_error(
-    negative_binomial_meandispersion2probdispersion(
+    nbinom_meandisp2probdisp(
       mean = "1",
       dispersion = 0.5
     ),
@@ -294,7 +294,7 @@ test_that("negative_binomial_meandispersion2probdispersion fails as expected", {
   )
 
   expect_error(
-    negative_binomial_meandispersion2probdispersion(
+    nbinom_meandisp2probdisp(
       mean = 1,
       dispersion = "0.5"
     ),
@@ -305,8 +305,8 @@ test_that("negative_binomial_meandispersion2probdispersion fails as expected", {
   )
 })
 
-test_that("negative_binomial_probdispersion2meandispersion works as expected", {
-  params <- negative_binomial_probdispersion2meandispersion(
+test_that("nbinom_probdisp2meandisp works as expected", {
+  params <- nbinom_probdisp2meandisp(
     prob = 0.25,
     dispersion = 0.5
   )
@@ -319,9 +319,9 @@ test_that("negative_binomial_probdispersion2meandispersion works as expected", {
   )
 })
 
-test_that("negative_binomial_probdispersion2meandispersion fails as expected", {
+test_that("nbinom_probdisp2meandisp fails as expected", {
   expect_error(
-    negative_binomial_probdispersion2meandispersion(
+    nbinom_probdisp2meandisp(
       prob = "1",
       dispersion = 0.5
     ),
@@ -332,7 +332,7 @@ test_that("negative_binomial_probdispersion2meandispersion fails as expected", {
   )
 
   expect_error(
-    negative_binomial_probdispersion2meandispersion(
+    nbinom_probdisp2meandisp(
       prob = 1,
       dispersion = "0.5"
     ),
