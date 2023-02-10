@@ -280,7 +280,6 @@ summary.epiparam <- function(object, ...) {
 #'
 #' @examples
 #' head(epiparam())
-head <- function(x) UseMethod("head")
 
 #' @export
 head.epiparam <- function(x) {
