@@ -154,8 +154,8 @@ test_that("create_prob_dist works as expected for truncated continuous", {
   expect_identical(family(res), "truncated")
 })
 
-test_that("create_prob_dist throughs warning for discrete truncation", {
-  expect_warning(
+test_that("create_prob_dist errors for discrete truncation", {
+  expect_error(
     create_prob_dist(
       prob_dist = "gamma",
       prob_dist_params = c(shape = 1, scale = 1),

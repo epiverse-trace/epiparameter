@@ -107,8 +107,8 @@ create_prob_dist <- function(prob_dist,
   # apply truncation to distribution if specified
   if (!is.na(truncation)) {
     if (discretise) {
-      warning(
-        "Truncation is not yet implemented for discrete distributions",
+      stop(
+        "Truncation is not yet implemented for discrete distributions.",
         call. = FALSE
       )
     } else {
