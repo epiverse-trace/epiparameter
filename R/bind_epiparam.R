@@ -44,7 +44,7 @@ bind_epiparam <- function(epiparam, epi_obj) {
   } else if (is.data.frame(epi_obj)) {
     stopifnot(
       "data frame provided must have the same column names as epiparam" =
-      identical(colnames(epi_obj), colnames(epiparam))
+      setequal(colnames(epi_obj), colnames(epiparam))
     )
     # data frames can be directly binded
     out <- rbind(epiparam, epi_obj)
