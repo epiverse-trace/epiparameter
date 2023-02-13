@@ -17,7 +17,16 @@ bound of the confidence interval or credible interval}
 interval"}
 }
 \value{
-List of three elements
+List of three elements:
+\enumerate{
+\item \verb{$ci_limits} is the upper and lower bounds
+of the CI (either confidence interval or credible interval) (i.e. a two
+element numeric vector)
+\item \verb{$ci} the interval (e.g. 95 is 95\% CI) given by a
+single numeric
+\item \verb{$ci_type} a character string specifying the type of
+uncertainty (can be either \code{"confidence interval"} or \code{"credible interval"}).
+}
 }
 \description{
 A helper function when creating uncertainty for the parameters
