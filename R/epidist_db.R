@@ -88,6 +88,6 @@ epidist_db <- function(disease,
   # convert epiparam to epidist
   edist <- as_epidist(x = eparam)
 
-  # return epidist (or list of epidist)
+  # return epidist
   edist
 }
