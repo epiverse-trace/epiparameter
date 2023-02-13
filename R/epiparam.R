@@ -121,7 +121,8 @@ epiparam <- function(epi_dist = c("all",
 #'
 #' @param epiparam An `epiparam` object
 #'
-#' @return Nothing, errors when invalid `epiparam` object is provided
+#' @return Invisibly returns an [`epiparam`]. Called for side-effects
+#' (errors when invalid `epiparam` object is provided).
 validate_epiparam <- function(epiparam) {
 
   if (!is_epiparam(epiparam)) {
@@ -184,7 +185,7 @@ print.epiparam <- function(x, ...) {
 #' @param x epiparam object
 #' @param ... further arguments passed to or from other methods
 #'
-#' @return Nothing (prints output)
+#' @return Invisibly returns an [`epiparam`]. Called for printing side-effects.
 #' @export
 #'
 #' @examples

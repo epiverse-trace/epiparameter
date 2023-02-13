@@ -10,7 +10,8 @@ validate_epiparam(epiparam)
 \item{epiparam}{An \code{epiparam} object}
 }
 \value{
-Nothing, errors when invalid \code{epiparam} object is provided
+Invisibly returns an \code{\link{epiparam}}. Called for side-effects
+(errors when invalid \code{epiparam} object is provided).
 }
 \description{
 \code{epiparam} class validator

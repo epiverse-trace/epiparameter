@@ -3,7 +3,8 @@
 #'
 #' @inheritParams new_epidist
 #'
-#' @return Nothing, errors if checks fail
+#' @return Invisibly returns a named vector of probability distribution
+#' parameters. Usually called for side-effects.
 #' @keywords internal
 #' @noRd
 #'
@@ -32,7 +33,9 @@ check_epidist_params <- function(prob_dist, prob_dist_params) {
 #' @inheritParams new_epidist
 #' @inheritParams epidist
 #'
-#' @return Nothing, errors if checks fail
+#' @return Invisibly returns a named list of probability distribution
+#' parameters uncertainty (either confidence interval or credible interval).
+#' Usually called for side-effects.
 #' @keywords internal
 #' @noRd
 #'

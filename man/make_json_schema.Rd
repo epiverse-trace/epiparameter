@@ -17,7 +17,7 @@ the yaml schema from}
 write the JSON schema to}
 }
 \value{
-Invisibly returns the JSON schema
+Invisibly returns the JSON schema.
 }
 \description{
 This converts the yaml data schema (data dictionary) stored in

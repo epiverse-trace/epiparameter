@@ -17,7 +17,7 @@ the parameters database from}
 write the JSON data file to}
 }
 \value{
-Invisibly returns the JSON data
+Invisibly returns the JSON data.
 }
 \description{
 This converts the database from a data frame (read from the csv
