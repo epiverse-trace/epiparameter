@@ -19,7 +19,7 @@ or "Extrinsic" which is used internally for plotting the vb_epidist class}
 \item{...}{further arguments passed to or from other methods}
 }
 \value{
-Nothing (prints output)
+Invisibly returns an \code{\link{epidist}}. Called for printing side-effects.
 }
 \description{
 Format method for epidist class

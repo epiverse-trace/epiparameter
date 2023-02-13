@@ -20,7 +20,7 @@ diseases}
 \item{...}{further arguments passed to or from other methods}
 }
 \value{
-Nothing (prints output)
+Invisibly returns an \code{\link{epidist}}. Called for side-effects.
 }
 \description{
 Print method for epidist class

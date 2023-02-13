@@ -93,7 +93,8 @@ vb_epidist <- function(intrinsic_epidist,
 #'
 #' @param vb_epidist A `vb_epidist` object
 #'
-#' @return Nothing, errors when invalid `epidist` object is provided
+#' @return Invisibly returns a [`vb_epidist`]. Called for side-effects (errors
+#' when invalid `vb_epidist` object is provided).
 #' @export
 validate_vb_epidist <- function(vb_epidist) {
 
@@ -146,7 +147,8 @@ validate_vb_epidist <- function(vb_epidist) {
 #' @param x vb_epidist object
 #' @param ... further arguments passed to or from other methods
 #'
-#' @return Nothing (prints output)
+#' @return Invisibly returns a [`vb_epidist`]. Called for printing
+#' side-effects.
 #' @export
 #'
 #' @examples
@@ -174,7 +176,8 @@ print.vb_epidist <- function(x, ...) {
 #' @param x vb_epidist object
 #' @param ... further arguments passed to or from other methods
 #'
-#' @return Nothing (prints output)
+#' @return Invisibly returns a [`vb_epidist`] object. Usually called for
+#' printing side-effects.
 #' @export
 #'
 #' @examples

@@ -320,7 +320,10 @@ epidist <- function(disease,
 #'
 #' @param epidist An `epidist` object
 #'
-#' @return Nothing, errors when invalid `epidist` object is provided
+#' @return Invisibly returns an [`epidist`]. Called for side-effects (errors
+#' when invalid `epidist` object is provided).
+#'
+#' Nothing, errors when invalid `epidist` object is provided
 #' @export
 validate_epidist <- function(epidist) {
 
@@ -355,7 +358,7 @@ validate_epidist <- function(epidist) {
 #' diseases
 #' @param ... further arguments passed to or from other methods
 #'
-#' @return Nothing (prints output)
+#' @return Invisibly returns an [`epidist`]. Called for side-effects.
 #' @export
 #'
 #' @examples
@@ -380,7 +383,7 @@ print.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 #' or "Extrinsic" which is used internally for plotting the vb_epidist class
 #' @param ... further arguments passed to or from other methods
 #'
-#' @return Nothing (prints output)
+#' @return Invisibly returns an [`epidist`]. Called for printing side-effects.
 #' @export
 #'
 #' @examples

@@ -12,7 +12,7 @@
 \item{...}{further arguments passed to or from other methods}
 }
 \value{
-Nothing (prints output)
+Invisibly returns an \code{\link{epiparam}}. Called for printing side-effects.
 }
 \description{
 Format method for epiparam class

@@ -10,7 +10,8 @@ validate_vb_epidist(vb_epidist)
 \item{vb_epidist}{A \code{vb_epidist} object}
 }
 \value{
-Nothing, errors when invalid \code{epidist} object is provided
+Invisibly returns a \code{\link{vb_epidist}}. Called for side-effects (errors
+when invalid \code{vb_epidist} object is provided).
 }
 \description{
 \code{vb_epidist} class validator

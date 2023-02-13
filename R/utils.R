@@ -48,7 +48,7 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
 #' @param write_path A relative file path from the package root directory to
 #' write the JSON data file to
 #'
-#' @return Invisibly returns the JSON data
+#' @return Invisibly returns the JSON data.
 #' @keywords internal
 make_json_data <- function(read_path = file.path("extdata",
                                                  "parameters.csv"),
@@ -100,7 +100,7 @@ make_json_data <- function(read_path = file.path("extdata",
 #' @param write_path A relative file path from the package root directory to
 #' write the JSON schema to
 #'
-#' @return Invisibly returns the JSON schema
+#' @return Invisibly returns the JSON schema.
 #' @keywords internal
 make_json_schema <- function(read_path = file.path("extdata",
                                                    "data_dictionary.yaml"),

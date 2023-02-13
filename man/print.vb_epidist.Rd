@@ -12,7 +12,8 @@
 \item{...}{further arguments passed to or from other methods}
 }
 \value{
-Nothing (prints output)
+Invisibly returns a \code{\link{vb_epidist}}. Called for printing
+side-effects.
 }
 \description{
 Print method for vb_epidist class
