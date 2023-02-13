@@ -10,7 +10,15 @@
 #' @param ci_type A character string, either "confidence interval" or "credible
 #' interval"
 #'
-#' @return List of three elements
+#' @return List of three elements:
+#'
+#' 1. `$ci_limits` is the upper and lower bounds
+#' of the CI (either confidence interval or credible interval) (i.e. a two
+#' element numeric vector)
+#' 2. `$ci` the interval (e.g. 95 is 95% CI) given by a
+#' single numeric
+#' 3. `$ci_type` a character string specifying the type of
+#' uncertainty (can be either `"confidence interval"` or `"credible interval"`).
 #' @export
 #'
 #' @examples
