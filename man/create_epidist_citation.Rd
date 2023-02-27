@@ -13,8 +13,7 @@ create_epidist_citation(
   author = NA_character_,
   year = NA_integer_,
   PMID = NA_character_,
-  DOI = NA_character_,
-  use_PMID = FALSE
+  DOI = NA_character_
 )
 }
 \arguments{
@@ -29,9 +28,6 @@ assigned to papers to give them a unique identifier within PubMed.}
 
 \item{DOI}{A character string of the Digital Object Identifier (DOI)
 assigned to papers which are unique to each paper.}
-
-\item{use_PMID}{A boolean logical determining whether the PMID is used in
-the citation}
 }
 \value{
 A character string of the formatted short citation
