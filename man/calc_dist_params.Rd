@@ -50,3 +50,22 @@ multiple percentiles in each of these ranges is provided the lowest value is
 used for the calculation. The last method is the extraction using a median
 and range of the data.
 }
+\examples{
+calc_dist_params(
+  prob_dist = "gamma",
+  prob_dist_params = NA,
+  summary_stats = create_epidist_summary_stats(
+    q_025 = 0.2, q_975 = 9.2
+  ),
+  sample_size = NA
+)
+
+calc_dist_params(
+  prob_dist = "gamma",
+  prob_dist_params = NA,
+  summary_stats = create_epidist_summary_stats(
+    median = 5, lower_range = 3, upper_range = 12
+  ),
+  sample_size = 25
+)
+}

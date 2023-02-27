@@ -28,6 +28,24 @@
 #'
 #' @return A named vector with parameters
 #' @export
+#' @examples
+#' calc_dist_params(
+#'   prob_dist = "gamma",
+#'   prob_dist_params = NA,
+#'   summary_stats = create_epidist_summary_stats(
+#'     q_025 = 0.2, q_975 = 9.2
+#'   ),
+#'   sample_size = NA
+#' )
+#'
+#' calc_dist_params(
+#'   prob_dist = "gamma",
+#'   prob_dist_params = NA,
+#'   summary_stats = create_epidist_summary_stats(
+#'     median = 5, lower_range = 3, upper_range = 12
+#'   ),
+#'   sample_size = 25
+#' )
 calc_dist_params <- function(prob_dist,
                              prob_dist_params,
                              summary_stats,
@@ -75,20 +93,51 @@ calc_dist_params <- function(prob_dist,
     lower_percentile <- lower_quantiles[!is.na(lower_quantiles)][1]
     upper_percentile <- upper_quantiles[!is.na(upper_quantiles)][1]
 
+    # change percentile names to give correct numbers
+    names(lower_percentile) <- ifelse(
+      test = grepl(pattern = "_0", x = names(lower_percentile)),
+      yes = gsub(
+        pattern = "(.*)_0",
+        replacement = "0.",
+        x = names(lower_percentile)
+      ),
+      no = gsub(
+        pattern = "q_",
+        replacement = "",
+        x = names(lower_percentile)
+      )
+    )
+
+    names(upper_percentile) <- ifelse(
+      test = grepl(pattern = "_0", x = names(upper_percentile)),
+      yes = gsub(
+        pattern = "(.*)_0",
+        replacement = "0.",
+        x = names(upper_percentile)
+      ),
+      no = gsub(
+        pattern = "q_",
+        replacement = "",
+        x = names(upper_percentile)
+      )
+    )
+
+    percentiles <- c(names(lower_percentile), names(upper_percentile))
+
     # extract the numeric quantiles from the vector names
-    percentiles <- as.numeric(c(
-        gsub(
-          pattern = "q_",
-          replacement = "",
-          x = names(lower_percentile),
-          fixed = TRUE
-        ),
-        gsub(
-          pattern = "q_",
-          replacement = "",
-          x = names(upper_percentile),
-          fixed = TRUE
-        )
+    percentiles <- unname(vapply(
+      percentiles, function(x) {
+        as.numeric(ifelse(
+          test = x >= 100,
+          yes = gsub(
+            pattern = "^(.{2})(.*)$",
+            replacement = "\\1.\\2",
+            x = x
+          ),
+          no = x
+        ))
+      },
+      FUN.VALUE = numeric(1)
     ))
 
     # TODO: make use of lognormal or lnorm consistent
