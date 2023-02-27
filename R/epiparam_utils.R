@@ -204,11 +204,12 @@ as_epiparam <- function(x) {
 
   # for vb_epidist or list of epidists call as_epiparam recursively
   if (!is_epidist(x)) {
-    eparam <- data.frame()
+    eparam <- as.data.frame(matrix(nrow = length(x), ncol = 56))
     for (i in seq_along(x)) {
-      eparam_row <- as_epiparam(x[[i]])
-      eparam <- rbind(eparam, eparam_row)
+      if (i == 1) colnames(eparam) <- colnames(as_epiparam(x[[i]]))
+      eparam[i, ] <- as_epiparam(x[[i]])
     }
+    class(eparam) <- c("epiparam", "data.frame")
     return(eparam)
   }
 
