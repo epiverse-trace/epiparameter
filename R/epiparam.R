@@ -31,12 +31,6 @@ new_epiparam <- function(epi_dist = character()) {
     params[[i]] <- split_ci
   }
 
-  # convert NAs to correct type
-  na_col_index <- which(
-    vapply(params, function(x) all(is.na(x)), FUN.VALUE = logical(1))
-  )
-  params[, na_col_index] <- NA_real_
-
   # order params by pathogen, delay dist and study
   params <- params[order(
     tolower(params$disease),
