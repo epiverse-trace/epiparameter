@@ -10,22 +10,12 @@ test_that("create_epidist_citation works with PMID", {
       author = "Smith_etal",
       year = 2002,
       DOI = "10.1282718",
-      PMID = 84772544,
-      use_PMID = TRUE
+      PMID = 84772544
     )
     expect_identical(
       citation,
       "Smith et al. (2002) <10.1282718> PMID: 84772544"
     )
-})
-
-test_that("create_epidist_citation fails when PMID is used but not given", {
-  expect_error(
-    create_epidist_citation(
-      author = "Smith_etal", year = 2002, DOI = "10.1282718", use_PMID = TRUE
-    ),
-    regexp = "use_PMID set to TRUE but PMID not provided"
-  )
 })
 
 test_that("possible_epidist_params works as expected", {

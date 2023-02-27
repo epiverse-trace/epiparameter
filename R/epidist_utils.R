@@ -371,8 +371,6 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #' assigned to papers to give them a unique identifier within PubMed.
 #' @param DOI A character string of the Digital Object Identifier (DOI)
 #' assigned to papers which are unique to each paper.
-#' @param use_PMID A boolean logical determining whether the PMID is used in
-#' the citation
 #'
 #' @return A character string of the formatted short citation
 #' @export
@@ -386,24 +384,18 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 create_epidist_citation <- function(author = NA_character_,
                                     year = NA_integer_,
                                     PMID = NA_character_,
-                                    DOI = NA_character_,
-                                    use_PMID = FALSE) {
+                                    DOI = NA_character_) {
   # check input
   checkmate::assert_character(author)
   checkmate::assert_number(year, na.ok = TRUE)
   checkmate::assert_number(PMID, na.ok = TRUE)
   checkmate::assert_character(DOI)
-  checkmate::assert_logical(use_PMID, len = 1)
 
   if (is.na(author) || is.na(year) || is.na(DOI)) {
     message(
       "Citation cannot be created as either author, year or DOI is missing"
     )
     return("No citation available")
-  }
-
-  if (isTRUE(use_PMID) && is.na(PMID)) {
-    stop("use_PMID set to TRUE but PMID not provided")
   }
 
   # change author formatting if multiple authors or et al
@@ -422,8 +414,8 @@ create_epidist_citation <- function(author = NA_character_,
 
   citation <- paste0(author, " (", year, ") ", "<", DOI, ">")
 
-  if (use_PMID) {
-    citation <- paste(citation, "PMID:", PMID)
+  if (!is.na(PMID)) {
+    citation <- paste0(citation, " PMID: ", PMID)
   }
 
   citation

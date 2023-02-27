@@ -166,8 +166,7 @@ make_epidist <- function(x) {
       author = x$author,
       year = x$year,
       PMID = x$PMID,
-      DOI = x$DOI,
-      use_PMID = FALSE
+      DOI = x$DOI
     ),
     metadata = create_epidist_metadata(
       sample_size = x$sample_size,

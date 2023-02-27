@@ -72,8 +72,7 @@ test_that("epidist works with all arguments set", {
       author = "Smith",
       year = 2002,
       PMID = 28372882,
-      DOI = "10.23271/176237.x", # nolint
-      use_PMID = FALSE
+      DOI = "10.23271/176237.x" # nolint
     ),
     metadata = create_epidist_metadata(
       sample_size = 100,
