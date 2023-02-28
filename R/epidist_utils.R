@@ -242,13 +242,9 @@ create_epidist_region <- function(continent = NA_character_,
 #' of the distribution when not provided
 #' @param upper_range The upper range of the data, used to infer the parameters
 #' of the distribution when not provided
-#' @param q_025 The 2.5th quantile of the probability distribution
-#' @param q_05 The 5th quantile of the probability distribution
-#' @param q_25 The 25th quantile of the probability distribution
-#' @param q_75 The 75th quantile of the probability distribution
-#' @param q_875 The 87.5th quantile of the probability distribution
-#' @param q_95 The 95th quantile of the probability distribution
-#' @param q_975 The 97.5th quantile of the probability distribution
+#' @param quantiles A numeric vector of the quantiles for the distribution.
+#' If quantiles are not provided a default empty vector with the 2.5th, 5th,
+#' 25th, 75th, 95th, 97.5th quantiles are supplied.
 #'
 #' @return A nested list of summary statistics. The highest level are
 #' - `$centre_spread`
@@ -293,13 +289,14 @@ create_epidist_summary_stats <- function(mean = NA_real_,
                                          dispersion_ci = NA_real_,
                                          lower_range = NA_real_,
                                          upper_range = NA_real_,
-                                         q_025 = NA_real_,
-                                         q_05 = NA_real_,
-                                         q_25 = NA_real_,
-                                         q_75 = NA_real_,
-                                         q_875 = NA_real_,
-                                         q_95 = NA_real_,
-                                         q_975 = NA_real_) {
+                                         quantiles = c(
+                                           "q_025" = NA_real_,
+                                           "q_05" = NA_real_,
+                                           "q_25" = NA_real_,
+                                           "q_50" = NA_real_,
+                                           "q_75" = NA_real_,
+                                           "q_95" = NA_real_,
+                                           "q_975" = NA_real_)) {
 
   # check input
   checkmate::assert_number(mean, na.ok = TRUE)
@@ -316,12 +313,13 @@ create_epidist_summary_stats <- function(mean = NA_real_,
   checkmate::assert_number(dispersion_ci, na.ok = TRUE)
   checkmate::assert_number(lower_range, na.ok = TRUE)
   checkmate::assert_number(upper_range, na.ok = TRUE)
-  checkmate::assert_number(q_025, na.ok = TRUE)
-  checkmate::assert_number(q_05, na.ok = TRUE)
-  checkmate::assert_number(q_25, na.ok = TRUE)
-  checkmate::assert_number(q_75, na.ok = TRUE)
-  checkmate::assert_number(q_95, na.ok = TRUE)
-  checkmate::assert_number(q_975, na.ok = TRUE)
+  checkmate::assert_numeric(quantiles)
+
+  stopifnot(
+    "quantiles vector should have names with 'q_' prefix" =
+     !is.null(names(quantiles)) &&
+      all(grepl(pattern = "^q_", x = names(quantiles)))
+  )
 
   # return list of summary stats
   list(
@@ -336,16 +334,7 @@ create_epidist_summary_stats <- function(mean = NA_real_,
       median_ci_limits = median_ci_limits,
       median_ci = median_ci
     ),
-    quantiles = list(
-      q_025 = q_025,
-      q_05 = q_05,
-      q_25 = q_25,
-      q_50 = median,
-      q_75 = q_75,
-      q_875 = q_875,
-      q_95 = q_95,
-      q_975 = q_975
-    ),
+    quantiles = quantiles,
     range = list(lower_range = lower_range, upper_range = upper_range),
     dispersion = list(
       dispersion = dispersion,

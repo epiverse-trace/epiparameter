@@ -19,13 +19,8 @@ create_epidist_summary_stats(
   dispersion_ci = NA_real_,
   lower_range = NA_real_,
   upper_range = NA_real_,
-  q_025 = NA_real_,
-  q_05 = NA_real_,
-  q_25 = NA_real_,
-  q_75 = NA_real_,
-  q_875 = NA_real_,
-  q_95 = NA_real_,
-  q_975 = NA_real_
+  quantiles = c(q_025 = NA_real_, q_05 = NA_real_, q_25 = NA_real_, q_50 = NA_real_, q_75
+    = NA_real_, q_95 = NA_real_, q_975 = NA_real_)
 )
 }
 \arguments{
@@ -68,19 +63,9 @@ of the distribution when not provided}
 \item{upper_range}{The upper range of the data, used to infer the parameters
 of the distribution when not provided}
 
-\item{q_025}{The 2.5th quantile of the probability distribution}
-
-\item{q_05}{The 5th quantile of the probability distribution}
-
-\item{q_25}{The 25th quantile of the probability distribution}
-
-\item{q_75}{The 75th quantile of the probability distribution}
-
-\item{q_875}{The 87.5th quantile of the probability distribution}
-
-\item{q_95}{The 95th quantile of the probability distribution}
-
-\item{q_975}{The 97.5th quantile of the probability distribution}
+\item{quantiles}{A numeric vector of the quantiles for the distribution.
+If quantiles are not provided a default empty vector with the 2.5th, 5th,
+25th, 75th, 95th, 97.5th quantiles are supplied.}
 }
 \value{
 A nested list of summary statistics. The highest level are

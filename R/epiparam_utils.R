@@ -154,13 +154,15 @@ make_epidist <- function(x) {
       dispersion_ci = x$dispersion_ci,
       lower_range = x$lower_range,
       upper_range = x$upper_range,
-      q_025 = x$quantile_025,
-      q_05 = x$quantile_05,
-      q_25 = x$quantile_25,
-      q_75 = x$quantile_75,
-      q_875 = x$quantile_875,
-      q_95 = x$quantile_95,
-      q_975 = x$quantile_975
+      quantiles = c(
+        q_025 = x$quantile_025,
+        q_05 = x$quantile_05,
+        q_25 = x$quantile_25,
+        q_75 = x$quantile_75,
+        q_875 = x$quantile_875,
+        q_95 = x$quantile_95,
+        q_975 = x$quantile_975
+      )
     ),
     citation = create_epidist_citation(
       author = x$author,

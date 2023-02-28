@@ -256,7 +256,7 @@ epidist <- function(disease,
   checkmate::assert_list(uncertainty, names = "unique")
   checkmate::assert_list(
     summary_stats,
-    types = c("list", "double", "null"),
+    types = c("list", "double", "logical", "null"),
     names = "unique"
   )
   checkmate::assert_string(citation)
