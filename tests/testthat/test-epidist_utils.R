@@ -58,3 +58,37 @@ test_that("clean_epidist_params works for default method", {
     regexp = "parameters class not recognised"
   )
 })
+
+test_that("create_epidist_region works as expected", {
+  region <- create_epidist_region(
+    continent = "Europe",
+    country = "UK",
+    region = "Cambridgeshire",
+    city = "Cambridge"
+  )
+  expect_identical(
+    region,
+    list(
+      continent = "Europe",
+      country = "UK",
+      region = "Cambridgeshire",
+      city = "Cambridge"
+    )
+  )
+
+  region <- create_epidist_region(
+    continent = NA,
+    country = "UK",
+    region = NA,
+    city = "Cambridge"
+  )
+  expect_identical(
+    region,
+    list(
+      continent = NA,
+      country = "UK",
+      region = NA,
+      city = "Cambridge"
+    )
+  )
+})

@@ -294,6 +294,37 @@ test_that("vb_epidist print & format method works as expected", {
 
   expect_output(format(dengue_dist))
   expect_snapshot(format(dengue_dist))
+
+  expect_snapshot(
+    # suppress messages about citation
+    dengue_dist <- suppressMessages(vb_epidist(
+      intrinsic_epidist = epidist(
+        disease = "dengue",
+        epi_dist = "incubation",
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1),
+        metadata = create_epidist_metadata(vector_borne = TRUE),
+        discretise = TRUE
+      ),
+      extrinsic_epidist = epidist(
+        disease = "dengue",
+        epi_dist = "incubation",
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 2, scale = 2),
+        metadata = create_epidist_metadata(
+          vector_borne = TRUE,
+          extrinsic = TRUE
+        ),
+        discretise = TRUE
+      )
+    ))
+  )
+
+  expect_output(print(dengue_dist))
+  expect_snapshot(print(dengue_dist))
+
+  expect_output(format(dengue_dist))
+  expect_snapshot(format(dengue_dist))
 })
 
 test_that("vb_epidist.plot does not produce an error", {

@@ -32,6 +32,18 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
 
   expect_vector(params, ptype = numeric(), size = 2)
   expect_named(params, expected = c("shape", "scale"))
+
+  # messages for numerical optimisation suppressed
+  params <- suppressMessages(calc_dist_params(
+    prob_dist = "lognormal",
+    prob_dist_params = NA,
+    summary_stats = create_epidist_summary_stats(
+      quantiles = c(q_25 = 10, q_75 = 20)
+    )
+  ))
+
+  expect_vector(params, ptype = numeric(), size = 2)
+  expect_named(params, expected = c("meanlog", "sdlog"))
 })
 
 test_that("calc_dist_params works as expected extracting from median & range", {
