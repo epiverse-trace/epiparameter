@@ -33,7 +33,7 @@
 #'   prob_dist = "gamma",
 #'   prob_dist_params = NA,
 #'   summary_stats = create_epidist_summary_stats(
-#'     q_025 = 0.2, q_975 = 9.2
+#'    quantiles = c(q_025 = 0.2, q_975 = 9.2)
 #'   ),
 #'   sample_size = NA
 #' )
@@ -55,7 +55,7 @@ calc_dist_params <- function(prob_dist,
   checkmate::assert_string(prob_dist)
   checkmate::assert_list(
     summary_stats,
-    types = c("list", "double", "null"),
+    types = c("list", "double", "logical", "null"),
     names = "unique"
   )
   checkmate::assert_number(sample_size, na.ok = TRUE)
@@ -71,10 +71,8 @@ calc_dist_params <- function(prob_dist,
     sd = summary_stats$centre_spread$sd
   )
 
-  # extract quantiles of distribution to calculate parameters as second choice
-  quantiles <- unlist(summary_stats$quantiles)
-  lower_quantiles <- quantiles[c("q_025", "q_05", "q_25", "q_50")]
-  upper_quantiles <- quantiles[c("q_75", "q_875", "q_95", "q_975")]
+  # convert percentile names to numbers
+  percentiles <- get_percentiles(summary_stats$quantiles)
 
   # extract median and range to calculate parameters as third choice
   median_range <- c(
@@ -88,57 +86,7 @@ calc_dist_params <- function(prob_dist,
       summary_stats = summary_stats,
       prob_dist = prob_dist
     )
-  } else if (!all(is.na(lower_quantiles)) && !all(is.na(upper_quantiles))) {
-    # use the first numeric quantile in the set to calculate the parameters
-    lower_percentile <- lower_quantiles[!is.na(lower_quantiles)][1]
-    upper_percentile <- upper_quantiles[!is.na(upper_quantiles)][1]
-
-    # change percentile names to give correct numbers
-    names(lower_percentile) <- ifelse(
-      test = grepl(pattern = "_0", x = names(lower_percentile)),
-      yes = gsub(
-        pattern = "(.*)_0",
-        replacement = "0.",
-        x = names(lower_percentile)
-      ),
-      no = gsub(
-        pattern = "q_",
-        replacement = "",
-        x = names(lower_percentile)
-      )
-    )
-
-    names(upper_percentile) <- ifelse(
-      test = grepl(pattern = "_0", x = names(upper_percentile)),
-      yes = gsub(
-        pattern = "(.*)_0",
-        replacement = "0.",
-        x = names(upper_percentile)
-      ),
-      no = gsub(
-        pattern = "q_",
-        replacement = "",
-        x = names(upper_percentile)
-      )
-    )
-
-    percentiles <- c(names(lower_percentile), names(upper_percentile))
-
-    # extract the numeric quantiles from the vector names
-    percentiles <- unname(vapply(
-      percentiles, function(x) {
-        as.numeric(ifelse(
-          test = x >= 100,
-          yes = gsub(
-            pattern = "^(.{2})(.*)$",
-            replacement = "\\1.\\2",
-            x = x
-          ),
-          no = x
-        ))
-      },
-      FUN.VALUE = numeric(1)
-    ))
+  } else if (!anyNA(percentiles)) {
 
     # TODO: make use of lognormal or lnorm consistent
     if (prob_dist == "lognormal") prob_dist <- "lnorm"
@@ -146,9 +94,9 @@ calc_dist_params <- function(prob_dist,
     # calculate the parameters from the percentiles
     prob_dist_params <- extract_param(
       type = "percentile",
-      values = c(lower_percentile, upper_percentile),
+      values = percentiles,
       distribution = prob_dist,
-      percentiles = percentiles
+      percentiles = as.numeric(names(percentiles))
     )
   } else if (!anyNA(median_range) && !is.na(sample_size)) {
     prob_dist_params <- extract_param(
