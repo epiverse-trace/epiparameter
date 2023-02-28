@@ -202,13 +202,22 @@ test_that("epidist fails as expected", {
   ))
 })
 
-
 test_that("epidist.print works as expected", {
   expect_snapshot(epidist(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+})
+
+test_that("epidist.print works as expected", {
+  expect_snapshot(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    discretise = TRUE
   ))
 })
 
