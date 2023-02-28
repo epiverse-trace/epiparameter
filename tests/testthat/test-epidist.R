@@ -61,13 +61,15 @@ test_that("epidist works with all arguments set", {
       dispersion_ci = 90,
       lower_range = 0.1,
       upper_range = 1.9,
-      q_025 = 0.2,
-      q_05 = 0.3,
-      q_25 = 0.5,
-      q_75 = 0.7,
-      q_875 = 1.1,
-      q_95 = 1.2,
-      q_975 = 1.5
+      quantiles = c(
+        q_025 = 0.2,
+        q_05 = 0.3,
+        q_25 = 0.5,
+        q_75 = 0.7,
+        q_875 = 1.1,
+        q_95 = 1.2,
+        q_975 = 1.5
+      )
     ), citation = create_epidist_citation(
       author = "Smith",
       year = 2002,
