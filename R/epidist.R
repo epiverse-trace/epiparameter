@@ -86,18 +86,6 @@ new_epidist <- function(disease = list(),
     truncation = truncation
   )
 
-  # calculate distribution quantiles and add to epidist
-  quants <- c(0.025, 0.05, 0.25, 0.5, 0.75, 0.875, 0.95, 0.975)
-  if (isTRUE(discretise)) {
-    quantiles <- prob_dist$q(quants)
-  } else {
-    quantiles <- stats::quantile(prob_dist, quants)[[1]]
-  }
-  names(quantiles) <- c(
-    "q_025",	"q_05",	"q_25",	"q_50", "q_75", "q_875", "q_95", "q_975"
-  )
-  summary_stats$quantiles <- quantiles
-
   if (epi_dist == "offspring_distribution") {
     method_assess <- paste(
       "There is currently no method assessment for offspring distributions",
