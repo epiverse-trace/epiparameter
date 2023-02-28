@@ -318,7 +318,7 @@ create_epidist_summary_stats <- function(mean = NA_real_,
   stopifnot(
     "quantiles vector should have names with 'q_' prefix" =
      !is.null(names(quantiles)) &&
-      all(grepl(pattern = "^q_", x = names(quantiles)))
+      all(startsWith(x = names(quantiles), prefix = "q_"))
   )
 
   # return list of summary stats

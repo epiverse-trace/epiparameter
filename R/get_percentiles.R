@@ -37,7 +37,7 @@ get_percentiles <- function(percentiles) {
   names(percentiles) <- unname(vapply(
     names(percentiles), function(x) {
       ifelse(
-        test = grepl(pattern = "_0", x = x),
+        test = grepl(pattern = "_0", x = x, fixed = TRUE),
         yes = gsub(
           pattern = "(.*)_0",
           replacement = "0.",
@@ -46,7 +46,8 @@ get_percentiles <- function(percentiles) {
         no = gsub(
           pattern = "q_",
           replacement = "",
-          x = x
+          x = x,
+          fixed = TRUE
         )
       )
     },
