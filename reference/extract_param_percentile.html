@@ -33,10 +33,22 @@ percentiles of a distribution and the values at those percentiles"><!-- mathjax 
 <li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+  </div>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/epiverse-trace/epiparameter/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -45,7 +57,7 @@ percentiles of a distribution and the values at those percentiles"><!-- mathjax 
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Optimises the parameters for a specified probability distribution given the
 percentiles of a distribution and the values at those percentiles</h1>
-      
+      <small class="dont-index">Source: <a href="https://github.com/epiverse-trace/epiparameter/blob/HEAD/R/extract_param.R" class="external-link"><code>R/extract_param.R</code></a></small>
       <div class="d-none name"><code>extract_param_percentile.Rd</code></div>
     </div>
 
@@ -91,15 +103,15 @@ percentiles defined in <code>values</code> if using <code>type = "percentiles"</
 <span class="r-in"><span>  percentiles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.125</span>, <span class="fl">0.875</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $par</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      meanlog        sdlog </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.5099322513 0.0000000001 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    meanlog      sdlog </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.74105780 0.06538788 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.03125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.78125</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $counts</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> function gradient </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        7        7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1        1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $convergence</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>

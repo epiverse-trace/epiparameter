@@ -46,12 +46,25 @@
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+  </div>
+</li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/epiverse-trace/epiparameter/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -59,104 +72,91 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="epiparameter">epiparameter<a class="anchor" aria-label="anchor" href="#epiparameter"></a>
+<div class="page-header"><h1 id="epiparameter-">epiparameter <img src="reference/figures/epiparameter_logo.png" align="right" height="200"><a class="anchor" aria-label="anchor" href="#epiparameter-"></a>
 </h1></div>
 <!-- badges: start -->
 
-<p><code>R</code> package with epidemiological parameter distributions for infectious diseases. It includes functions that load delay distributions for a range of pathogens and functions to extract parameters from reported statistics.</p>
+<p><a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> is an <code>R</code> package that contains a library of epidemiological parameters for infectious diseases and a set classes and helper functions to be able to work with the data. It also includes functions to extract and convert parameters from reported summary statistics.</p>
+<p><a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> is developed at the <a href="https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases" class="external-link">Centre for the Mathematical Modelling of Infectious Diseases</a> at the London School of Hygiene and Tropical Medicine as part of the <a href="https://data.org/initiatives/epiverse/" class="external-link">Epiverse Initiative</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>The easiest way to install the development version of <code>epiparameter</code> is to use the <code>devtools</code> package:</p>
+<p>The easiest way to install the development version of <a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> is to use the <a href="https://remotes.r-lib.org" class="external-link">remotes</a> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
-<span><span class="fu">install_github</span><span class="op">(</span><span class="st">"epiverse-trace/epiparameter"</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">epiparameter</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># check whether {remotes} is installed</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"epiverse-trace/epiparameter"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
-<p>To view the available distributions, then define the desired function, e.g. to extract and plot the daily probability mass function for the incubation period of influenza H7N9:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># View available distributions</span></span>
-<span><span class="fu">epiparameter</span><span class="fu">::</span><span class="fu"><a href="reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>delay_dist <span class="op">=</span> <span class="st">"incubation"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             pathogen_id    type_id                 study_id year size</span></span>
-<span><span class="co">#&gt; 1            adenovirus incubation             Lessler_etal 2009   14</span></span>
-<span><span class="co">#&gt; 2                 ebola incubation                 WHO_team 2014  500</span></span>
-<span><span class="co">#&gt; 3             human_CoV incubation             Lessler_etal 2009   13</span></span>
-<span><span class="co">#&gt; 4  influenza_A_seasonal incubation             Lessler_etal 2009  122</span></span>
-<span><span class="co">#&gt; 5  influenza_B_seasonal incubation             Lessler_etal 2009   76</span></span>
-<span><span class="co">#&gt; 6       influenza_H1N1p incubation               Ghani_etal 2009   16</span></span>
-<span><span class="co">#&gt; 7       influenza_H1N1p incubation               Tuite_etal 2010  316</span></span>
-<span><span class="co">#&gt; 8        influenza_H5N1 incubation             Cowling_etal 2013   27</span></span>
-<span><span class="co">#&gt; 9        influenza_H7N9 incubation             Cowling_etal 2013   32</span></span>
-<span><span class="co">#&gt; 10              marburg incubation                   Pavlin 2014   18</span></span>
-<span><span class="co">#&gt; 11              measles incubation Klinkenberg and Nishiura 2011  116</span></span>
-<span><span class="co">#&gt; 12              measles incubation             Lessler_etal 2009   56</span></span>
-<span><span class="co">#&gt; 13             MERS_CoV incubation              Assiri_etal 2013   23</span></span>
-<span><span class="co">#&gt; 14             MERS_CoV incubation          Cauchemez_et_al 2014    7</span></span>
-<span><span class="co">#&gt; 15            monkeypox incubation                    Nolen 2016   16</span></span>
-<span><span class="co">#&gt; 16            monkeypox incubation           Thornhill_etal 2022   23</span></span>
-<span><span class="co">#&gt; 17        parainfluenza incubation             Lessler_etal 2009   11</span></span>
-<span><span class="co">#&gt; 18           rhinovirus incubation             Lessler_etal 2009   28</span></span>
-<span><span class="co">#&gt; 19                  RSV incubation             Lessler_etal 2009   24</span></span>
-<span><span class="co">#&gt; 20             SARS_CoV incubation            Donnelly_etal 2003   57</span></span>
-<span><span class="co">#&gt; 21             SARS_CoV incubation             Lessler_etal 2009  157</span></span>
-<span><span class="co">#&gt; 22  SARS_CoV_2_wildtype incubation             McAloon_etal 2020 1269</span></span>
-<span><span class="co">#&gt;    distribution</span></span>
-<span><span class="co">#&gt; 1         lnorm</span></span>
-<span><span class="co">#&gt; 2         gamma</span></span>
-<span><span class="co">#&gt; 3         lnorm</span></span>
-<span><span class="co">#&gt; 4         lnorm</span></span>
-<span><span class="co">#&gt; 5         lnorm</span></span>
-<span><span class="co">#&gt; 6         gamma</span></span>
-<span><span class="co">#&gt; 7         lnorm</span></span>
-<span><span class="co">#&gt; 8       weibull</span></span>
-<span><span class="co">#&gt; 9       weibull</span></span>
-<span><span class="co">#&gt; 10        gamma</span></span>
-<span><span class="co">#&gt; 11        lnorm</span></span>
-<span><span class="co">#&gt; 12        lnorm</span></span>
-<span><span class="co">#&gt; 13        lnorm</span></span>
-<span><span class="co">#&gt; 14        lnorm</span></span>
-<span><span class="co">#&gt; 15        lnorm</span></span>
-<span><span class="co">#&gt; 16        lnorm</span></span>
-<span><span class="co">#&gt; 17        lnorm</span></span>
-<span><span class="co">#&gt; 18        lnorm</span></span>
-<span><span class="co">#&gt; 19        lnorm</span></span>
-<span><span class="co">#&gt; 20        gamma</span></span>
-<span><span class="co">#&gt; 21        lnorm</span></span>
-<span><span class="co">#&gt; 22        lnorm</span></span>
-<span></span>
-<span><span class="co"># Extract incubation period distribution</span></span>
-<span><span class="va">incubation_H7N9</span> <span class="op">&lt;-</span> <span class="fu">epiparameter</span><span class="fu">::</span><span class="fu"><a href="reference/epidist.html">epidist</a></span><span class="op">(</span></span>
-<span>  pathogen <span class="op">=</span> <span class="st">"influenza_H7N9"</span>,</span>
-<span>  delay_dist <span class="op">=</span> <span class="st">"incubation"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Plot probability distributions</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">incubation_H7N9</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-example-1.png" width="100%"></p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a></span><span class="op">)</span></span></code></pre></div>
+<p>To load the library of epidemiological parameters into <code>R</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">eparams</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/epiparam.html">epiparam</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">eparams</span></span>
+<span><span class="co">#&gt; Epiparam object</span></span>
+<span><span class="co">#&gt; Number of distributions in library: 54</span></span>
+<span><span class="co">#&gt; Number of diseases: 21</span></span>
+<span><span class="co">#&gt; Number of delay distributions: 45</span></span>
+<span><span class="co">#&gt; Number of offspring distributions: 9</span></span>
+<span><span class="co">#&gt; Number of studies in library: 24</span></span>
+<span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
+<span><span class="co">#&gt;       disease  epi_distribution prob_distribution</span></span>
+<span><span class="co">#&gt; 1  adenovirus incubation_period         lognormal</span></span>
+<span><span class="co">#&gt; 2 chikungunya incubation_period         lognormal</span></span>
+<span><span class="co">#&gt; 3      dengue incubation_period         lognormal</span></span>
+<span><span class="co">#&gt; 4      dengue incubation_period         lognormal</span></span>
+<span><span class="co">#&gt; 5      dengue incubation_period         lognormal</span></span>
+<span><span class="co">#&gt; 6      dengue incubation_period         lognormal</span></span>
+<span><span class="co">#&gt; &lt;48 more rows &amp; 53 more cols not shown&gt;</span></span></code></pre></div>
+<p>The library is an <code>&lt;epiparam&gt;</code> class, which underneath is a data frame.</p>
+<p>Each entry of the library can be converted into an <code>&lt;epidist&gt;</code> object to be used.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">influenza_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">eparams</span><span class="op">[</span><span class="fl">12</span>, <span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">influenza_incubation</span></span>
+<span><span class="co">#&gt; Disease: influenza</span></span>
+<span><span class="co">#&gt; Pathogen: influenza-A-H1N1pdm</span></span>
+<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
+<span><span class="co">#&gt; Study: Ghani et al. (2009) &lt;10.1371/currents.RRN1130&gt; PMID: 20029668</span></span>
+<span><span class="co">#&gt; Distribution: gamma</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   shape: 17.503123698459</span></span>
+<span><span class="co">#&gt;   rate: 8.5381091211995</span></span></code></pre></div>
+<p>The <code>&lt;epidist&gt;</code> object can be plotted.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">influenza_incubation</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-plot-epidist-1.png" width="75%" style="display: block; margin: auto;"></p>
+<div class="section level3">
+<h3 id="parameter-conversion-and-extraction">Parameter conversion and extraction<a class="anchor" aria-label="anchor" href="#parameter-conversion-and-extraction"></a>
+</h3>
+<p>The parameters of a distribution can be converted to and from mean and standard deviation. In <a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> we implement this for a variety of distributions:</p>
+<ul>
+<li>gamma</li>
+<li>lognormal</li>
+<li>weibull</li>
+<li>negative binomial</li>
+<li>geometric</li>
+</ul>
+<p>The parameters of a probability distribution can also be extracted from other summary statistics, for example, percentiles of the distribution, or the median and range of the data. This can be done for:</p>
+<ul>
+<li>gamma</li>
+<li>lognormal</li>
+<li>weibull</li>
+</ul>
+</div>
 </div>
 <div class="section level2">
 <h2 id="epiparameter-tutorial-with-applications">
-<code>epiparameter</code> tutorial with applications<a class="anchor" aria-label="anchor" href="#epiparameter-tutorial-with-applications"></a>
+<code>{epiparameter}</code> tutorial with applications<a class="anchor" aria-label="anchor" href="#epiparameter-tutorial-with-applications"></a>
 </h2>
 <p>For a full explanation of the functions and data stored in the <code>epiparameter</code> package and a few possible applications of the delay distribution data please see the <a href="https://epiverse-trace.github.io/epiparameter/articles/epiparameter.html">introduction to <code>epiparameter</code></a>.</p>
 </div>
 <div class="section level2">
-<h2 id="contributing-to-library-of-delay-distributions">Contributing to library of delay distributions<a class="anchor" aria-label="anchor" href="#contributing-to-library-of-delay-distributions"></a>
+<h2 id="contributing-to-library-of-epidemiological-parameters">Contributing to library of epidemiological parameters<a class="anchor" aria-label="anchor" href="#contributing-to-library-of-epidemiological-parameters"></a>
 </h2>
-<p>If you would like to contribute to the different delay distributions stored in the <code>epiparameter</code> package, you can access the <a href="https://docs.google.com/spreadsheets/d/1VzC8NFHSQYPKsiDnxA7gDsm4cVr79outKQZJP8cC7Ro/edit?usp=sharing" class="external-link">google sheet</a> and add your data.</p>
-<p>Notes on the the spreadsheet:</p>
-<ul>
-<li><p>Most studies will report the distribution(s) they fitted to the data. In the case that the study did not report the distribution of the reported parameters or summary statistics (mean and standard deviation of the distribution) the distribution can be assumed (e.g. by looking at the shape of the distribution from figures in the paper). When a distribution is being assumed and not explicitly stated please add this assumption to the notes section of the spreadsheet. We are only interested in studies that report the distribution fitted to the data. This will ensure that if this data is used in another application the user can be alerted that the distribution is assumed and not known with certainty.</p></li>
-<li><p>Shape and scale columns are the parameters of the gamma distribution, while meanlog and sdlog columns are the parameters of the lognormal distribution. In some cases these values will not be reported in the study but can be extracted using the <code>epiparameter</code> function <code><a href="reference/extract_param.html">extract_param()</a></code> using either reported percentiles or median and range (see <a href="#extraction">extraction section</a>)</p></li>
-<li><p>The extracted column refers to whether the distribution parameters are explicitly stated in the paper, in which case the extracted column should be “no”, or are extracted from summary statistics using function in the package, in which case the extracted column is “yes”</p></li>
-<li><p>Discretised is to indicate whether the study fitted a discrete distribution</p></li>
-<li><p>Phase_bias means the study adjusted for a either a rising or falling epidemic, which can bias incubation period estimates. Most studies will not adjust for this bias.</p></li>
-</ul>
-<p>If fields are not known from a study, either put “NA” or “not yet checked”. We are also happy to receive papers which report these delay distributions and can add them to the database ourselves.</p>
+<p>If you would like to contribute to the different epidemiological parameters stored in the <a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> package, you can access the <a href="https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing" class="external-link">google sheet</a> and add your data. This spreadsheet contains two example entries as a guide to what fields can accept. See also the data dictionary (either yaml or JSON files) in the<a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> package (in inst/extdata) for explanation of accepted entries for each column.</p>
 </div>
 <div class="section level2">
 <h2 id="help">Help<a class="anchor" aria-label="anchor" href="#help"></a>
@@ -166,15 +166,45 @@
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
 </h2>
-<p>Contributions to <code>epiparameter</code> are welcomed. Please follow the <a href="https://github.com/epiverse-trace/epiparameter/blob/main/.github/CONTRIBUTING.md" class="external-link">package contributing guide</a>.</p>
+<p>Contributions to <a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> are welcomed. Please follow the <a href="https://github.com/epiverse-trace/epiparameter/blob/main/.github/CONTRIBUTING.md" class="external-link">package contributing guide</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
-<p>Please note that the <code>epiparameter</code> project is released with a <a href="https://github.com/epiverse-trace/.github/blob/main/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the <a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> project is released with a <a href="https://github.com/epiverse-trace/.github/blob/main/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
+<div class="section level2">
+<h2 id="citing-this-package">Citing this package<a class="anchor" aria-label="anchor" href="#citing-this-package"></a>
+</h2>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"epiparameter"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; To cite package 'epiparameter' in publications use:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Kucharski A (2023). _epiparameter: Library of epidemiological</span></span>
+<span><span class="co">#&gt;   parameters_. https://github.com/epiverse-trace/epiparameter,</span></span>
+<span><span class="co">#&gt;   https://epiverse-trace.github.io/epiparameter/.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Manual{,</span></span>
+<span><span class="co">#&gt;     title = {epiparameter: Library of epidemiological parameters},</span></span>
+<span><span class="co">#&gt;     author = {Adam Kucharski},</span></span>
+<span><span class="co">#&gt;     year = {2023},</span></span>
+<span><span class="co">#&gt;     note = {https://github.com/epiverse-trace/epiparameter,</span></span>
+<span><span class="co">#&gt; https://epiverse-trace.github.io/epiparameter/},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/epiverse-trace/epiparameter/issues" class="external-link">Report a bug</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
