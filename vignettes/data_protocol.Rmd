@@ -67,6 +67,18 @@ knitr::kable(
 - "ebola serial interval"
 - "influenza H7N9 onset to admission"
 
+However, these simple search phrases can return a large number of irrelevant papers. We recommend using more specific search schema depending on the search engine used. For example, if using Google Scholar a schema like:
+
+- ("Middle East Respiratory Syndrome" OR MERS) AND "onset to death" AND (estimate OR inference)
+- (ebola OR EVD) AND "onset to death" AND (estimate OR inference)
+
+Or if Web of Science is being used:
+
+- ("COVID-19" OR "SARS-CoV-2") AND "onset to death" AND estimat*
+
+This should refine the results to a more suitable set of literature.
+
+
 1. **Literature search engines**: we recommend using a selection of search engines to prevent one source potentially omitting papers. Recommended search sites are: Google Scholar, Web of Science, PubMed, and Scopus. Across each site we performed the same search.  
 
 1. **Adding papers**: the papers collected in the literature search can be supplemented by papers known to be relevant or through being cited by a paper in the literature search. Papers may be recommended by experts in research or public health communities. We plan to use two methods of community engagement. Firstly a open-access Google sheet allows people to add their distribution data which will then be reviewed by one of the `epiparameter` maintainers and incorporated if it meets quality checks. The second method - not yet implemented - involves community members uploading their data to [zenodo](https://zenodo.org/), which can then be read and loaded into R using `epiparameter` once checked. 
