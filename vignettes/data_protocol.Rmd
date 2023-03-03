@@ -36,38 +36,29 @@ As defined by the PRISMA guidelines, having a clearly stated objective helps to 
 
 The `epiparameter` package spans a range of infectious diseases, including several distributions for each disease when available. The pathogens/diseases that are currently systematically searched for and included in the package library are:
 
-- adenovirus
-- human CoV
-- SARS-CoV-1
-- SARS-CoV-2
-- MERS CoV
-- influenza (including seasonal A and B including subtypes when available, and influenza-like illness (ILI))
-- parainfluenza
-- rhinovirus
-- respiratory syncytial virus (RSV)
-- ebola
-- marburg
-- measles
-- monkeypox
-- smallpox
-- Pneumonic plague
-- Hantavirus pulmonary syndrome
-- dengue
-- zika
-- chikungunya
-- Japanese encephalitis
-- Rift Valley fever
-- west nile fever
-- yellow fever
+```{r show-diseases, echo=FALSE}
+db <- epiparameter::epiparam()
+dupl_rows <- duplicated(db$disease) & duplicated(db$pathogen)
+knitr::kable(
+  data.frame(
+    Disease = db$disease[!dupl_rows], 
+    Pathogen = db$pathogen[!dupl_rows]
+  ), 
+  align = "cc"
+)
+```
 
 The distributions currently included in the literature search for each pathogen/disease, and thus the package are:
 
-- incubation period
-- serial interval
-- generation time
-- onset to hospital admission 
-- onset to death
-- offspring transmission
+```{r, show-epidists, echo=FALSE}
+db <- epiparameter::epiparam()
+dupl_rows <- duplicated(db$epi_distribution)
+epidist <- epiparameter::clean_epidist_name(db$epi_distribution[!dupl_rows])
+knitr::kable(
+  data.frame("Epidemiological_Distribution" = epidist), 
+  align = "cc"
+)
+```
 
 ## Guide to identifying distributions in the literature
 
