@@ -1,26 +1,40 @@
 Package: epiparameter
-Title: Library of epidemiological parameters
+Title: Library of Epidemiological Parameters
 Version: 0.0.0.9000
-Authors@R: c(
-    person(given = "Adam", 
-           family = "Kucharski",
-           email = "adam.kucharski@lshtm.ac.uk", 
-           role = c("aut", "cre"), 
-           comment = c(ORCID = "0000-0001-8814-9421")),
-    person(given = "Joshua",
-           family = "Lambert",
-           email = "joshua.lambert@lshtm.ac.uk",
-           role = c("ctb"),
-           comment = c(ORCID = "0000-0001-5218-3046"))
-           )
-Description: Library of epidemiological parameters for infectious diseases.
+Authors@R: 
+    c(
+        person(
+            given = "Joshua W.",
+            family = "Lambert",
+            role = c("aut", "cre", "cph"),
+            email = "joshua.lambert@lshtm.ac.uk",
+            comment = c(ORCID = "https://orcid.org/0000-0001-5218-3046")
+        ),
+        person(
+            given = "Adam", 
+            family = "Kucharski",
+            role = c("aut", "cph"),
+            email = "adam.kucharski@lshtm.ac.uk", 
+            comment = c(ORCID = "https://orcid.org/0000-0001-8814-9421")
+        ),
+        person(
+            given = "Hugo",
+            family = "Gruson",
+            role = c("ctb"),
+            email = "hugo.gruson@lshtm.ac.uk",
+            comment = c(ORCID = "https://orcid.org/0000-0002-4094-1476")
+        )
+      )
+Description: Library of epidemiological parameters for infectious diseases and a
+    set of classes and helper functions. 
 License: MIT + file LICENSE
 URL: https://github.com/epiverse-trace/epiparameter, https://epiverse-trace.github.io/epiparameter/
 BugReports: https://github.com/epiverse-trace/epiparameter/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Depends: R (>= 3.5.0)
+Depends: 
+    R (>= 3.5.0)
 Imports:
     checkmate,
     distributional,
