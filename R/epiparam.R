@@ -126,7 +126,7 @@ validate_epiparam <- function(epiparam) {
   # check for class invariants
   stopifnot(
     "epiparam object does not contain the correct columns" =
-      c("disease", "epi_distribution", "author", "year", "vector_borne",
+      c("disease", "epi_distribution", "author", "year", "transmission_mode",
         "extrinsic", "prob_distribution", "discretised", "censored",
         "right_truncated", "phase_bias_adjusted", "DOI") %in%
       colnames(epiparam),
@@ -138,8 +138,8 @@ validate_epiparam <- function(epiparam) {
       is.character(epiparam$author),
     "year must be a numeric" =
       is.numeric(epiparam$year),
-    "vector_borne must be a logical" =
-      is.logical(epiparam$vector_borne),
+    "transmission_mode must be a character" =
+      is.character(epiparam$transmission_mode),
     "extrinsic must be a logical" =
       is.logical(epiparam$extrinsic),
     "prob_distribution needs to be a character" =
