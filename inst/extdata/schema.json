@@ -61,12 +61,12 @@
         "type": ["string", "null"]
       }
     },
-    "vector_borne": {
-      "description": "A boolean value as to whether a pathogen is vector-borne (i.e. is transmitted between humans through a intermediate vector).\n",
-      "examples": [true, false],
+    "tranmission_mode": {
+      "description": "A character string defining the mode of transmission of the infectious agent, specific to the data used in the study. The defines whether a pathogen is vector-borne (i.e. is transmitted between humans through a intermediate vector), is transmitted from human-to-human ( natural_human_to_human) or other. If multiple modes of tranmission are recorded then mixed can be given. In cases where no mode of tranmission if known or given in the study unknown can be stated.\n",
+      "examples": ["vector_borne", "natural_human_to_human", "unknown"],
       "type": "array",
       "items": {
-        "type": "boolean"
+        "type": "string"
       }
     },
     "vector": {
@@ -514,6 +514,6 @@
       }
     }
   },
-  "required": ["disease", "epi_distribution", "author", "year", "vector_borne", "extrinsic", "prob_distribution", "discretised", "censored", "right_truncated", "phase_bias_adjusted", "DOI"],
+  "required": ["disease", "epi_distribution", "author", "year", "transmission_mode", "extrinsic", "prob_distribution", "discretised", "censored", "right_truncated", "phase_bias_adjusted", "DOI"],
   "additionalProperties": false
 }
