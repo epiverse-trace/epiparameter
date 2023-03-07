@@ -69,15 +69,19 @@ properties:
     type: array
     items:
       type: ["string", "null"]
-  vector_borne:
+  tranmission_mode:
     description: >
-      A boolean value as to whether a pathogen is
+      A character string defining the mode of transmission of the infectious
+      agent, specific to the data used in the study. The defines whether a pathogen is
       vector-borne (i.e. is transmitted between humans
-      through a intermediate vector).
-    examples: [true, false]
+      through a intermediate vector), is transmitted from human-to-human (
+      natural_human_to_human) or other. If multiple modes of tranmission are
+      recorded then mixed can be given. In cases where no mode of tranmission
+      if known or given in the study unknown can be stated.
+    examples: ["vector_borne", "natural_human_to_human", "unknown"]
     type: array
     items:
-      type: boolean
+      type: string
   vector:
     description: >
       The name of the vector transmitting the vector-borne
@@ -532,7 +536,7 @@ required:
   - epi_distribution
   - author
   - year
-  - vector_borne
+  - transmission_mode
   - extrinsic
   - prob_distribution
   - discretised
