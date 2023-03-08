@@ -7,7 +7,7 @@
 create_epidist_metadata(
   sample_size = NA_integer_,
   region = NA_character_,
-  vector_borne = FALSE,
+  transmission_mode = FALSE,
   vector = NA_character_,
   extrinsic = FALSE,
   inference_method = NA_character_
@@ -24,9 +24,11 @@ either be given at sub-national, national, continental. Multiple nested
 regions can be given and are comma separated. When the region is not
 specified NA can be given.}
 
-\item{vector_borne}{A boolean value as to whether a pathogen is
-vector-borne (i.e. is transmitted between humans through an intermediate
-vector).}
+\item{transmission_mode}{A character string specifying how the pathogen is
+transmitted. This information is used to determine whether the
+epidemiological parameters are from a vector-borne disease (i.e. is
+transmitted between humans through an intermediate vector), this is specified
+by \code{tranmission_mode = "vector_borne"}.}
 
 \item{vector}{The name of the vector transmitting the vector-borne disease.
 This can be a common name, or a latin binomial name of a specific vector
@@ -77,7 +79,7 @@ create_epidist_metadata()
 create_epidist_metadata(
   sample_size = 10,
   region = "UK",
-  vector_borne = TRUE,
+  transmission_mode = "vector_borne",
   vector = "mosquito",
   extrinsic = FALSE,
   inference_method = "MLE"

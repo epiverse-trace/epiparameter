@@ -74,14 +74,17 @@ vb_edist <- vb_epidist(
     epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
-    metadata = create_epidist_metadata(vector_borne = TRUE)
+    metadata = create_epidist_metadata(tranmission_mode = "vector_borne")
   ),
   extrinsic_epidist = epidist(
     disease = "dengue",
     epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
-    metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+    metadata = create_epidist_metadata(
+      transmission_mode = "vector_borne",
+      extrinsic = TRUE
+    )
   )
 )
 

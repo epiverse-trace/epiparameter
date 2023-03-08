@@ -25,10 +25,10 @@ identically.
 \details{
 The \code{epidist} objects should contain metadata (\code{epidist$metadata})
 indicating it is a vector-borne disease
-(\code{epidist$metadata$vector_borne} is TRUE) and the extrinsic distribution
-should indicate in the metadata that it is the extrinsic distribution
-(\code{epidist$metadata$extrinsic} is TRUE). If these two aspects are not given
-the construction of the class will throw a warning.
+(\code{epidist$metadata$transmission_mode == "vector_borne"}) and the extrinsic
+distribution should indicate in the metadata that it is the extrinsic
+distribution (\code{epidist$metadata$extrinsic} is TRUE). If these two aspects
+are not given the construction of the class will throw a warning.
 }
 \examples{
 vb <- vb_epidist(
@@ -39,7 +39,7 @@ vb <- vb_epidist(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     metadata = create_epidist_metadata(
-      vector_borne = TRUE,
+      transmission_mode = "vector_borne",
       extrinsic = FALSE
     )
   ),
@@ -50,7 +50,7 @@ vb <- vb_epidist(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 2, scale = 2),
     metadata = create_epidist_metadata(
-      vector_borne = TRUE,
+      transmission_mode = "vector_borne",
       extrinsic = TRUE
     )
   )
