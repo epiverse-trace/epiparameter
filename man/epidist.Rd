@@ -66,7 +66,7 @@ transmission mode of the disease (e.g. is it vector-borne or directly
 transmitted), etc. It is assumed that the disease is not
 vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 delay distribution such as extrinsic incubation period) unless
-\code{tranmission_mode = "vector_borne"} is contained in the metadata. Use
+\code{transmission_mode = "vector_borne"} is contained in the metadata. Use
 \code{create_epidist_metadata()} to create metadata.}
 
 \item{method_assess}{A list of methodological aspects used when fitting

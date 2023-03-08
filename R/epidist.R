@@ -166,7 +166,7 @@ new_epidist <- function(disease = list(),
 #' transmitted), etc. It is assumed that the disease is not
 #' vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 #' delay distribution such as extrinsic incubation period) unless
-#' `tranmission_mode = "vector_borne"` is contained in the metadata. Use
+#' `transmission_mode = "vector_borne"` is contained in the metadata. Use
 #' `create_epidist_metadata()` to create metadata.
 #' @param method_assess A list of methodological aspects used when fitting
 #' the distribution, use `create_epidist_method_assess()` to create method
@@ -597,7 +597,7 @@ is_epidist <- function(x) {
 #'     epi_dist = "incubation_period",
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
-#'     metadata = create_epidist_metadata(tranmission_mode = "vector_borne")
+#'     metadata = create_epidist_metadata(transmission_mode = "vector_borne")
 #'   ),
 #'   extrinsic_epidist = epidist(
 #'     disease = "dengue",
