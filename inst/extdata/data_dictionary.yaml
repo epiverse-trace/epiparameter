@@ -69,14 +69,14 @@ properties:
     type: array
     items:
       type: ["string", "null"]
-  tranmission_mode:
+  transmission_mode:
     description: >
       A character string defining the mode of transmission of the infectious
       agent, specific to the data used in the study. The defines whether a pathogen is
       vector-borne (i.e. is transmitted between humans
       through a intermediate vector), is transmitted from human-to-human (
-      natural_human_to_human) or other. If multiple modes of tranmission are
-      recorded then mixed can be given. In cases where no mode of tranmission
+      natural_human_to_human) or other. If multiple modes of transmission are
+      recorded then mixed can be given. In cases where no mode of transmission
       if known or given in the study unknown can be stated.
     examples: ["vector_borne", "natural_human_to_human", "unknown"]
     type: array
