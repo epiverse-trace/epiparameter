@@ -6,7 +6,7 @@
 \usage{
 list_distributions(
   epiparam,
-  epi_dist = c("incubation_period", "onset_to_admission", "onset_to_death",
+  epi_dist = c("incubation_period", "onset_to_hospitalisation", "onset_to_death",
     "serial_interval", "generation_time", "offspring_distribution"),
   subset_db = TRUE
 )
@@ -15,7 +15,7 @@ list_distributions(
 \item{epiparam}{An \code{epiparam} object}
 
 \item{epi_dist}{A character defining parameter to be listed:
-\code{"incubation"}, \code{"onset_to_admission"}, \code{"onset_to_death"}, or
+\code{"incubation"}, \code{"onset_to_hospitalisation"}, \code{"onset_to_death"}, or
 \code{"serial_interval"}. \code{"incubation_period"} is the default \code{epi_dist} so if no
 \code{epi_dist} is specified the incubation periods will be returned.}
 

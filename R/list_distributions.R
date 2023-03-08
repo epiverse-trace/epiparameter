@@ -11,7 +11,7 @@
 #'
 #' @param epiparam An `epiparam` object
 #' @param epi_dist A character defining parameter to be listed:
-#' `"incubation"`, `"onset_to_admission"`, `"onset_to_death"`, or
+#' `"incubation"`, `"onset_to_hospitalisation"`, `"onset_to_death"`, or
 #' `"serial_interval"`. `"incubation_period"` is the default `epi_dist` so if no
 #' `epi_dist` is specified the incubation periods will be returned.
 #' @param subset_db A boolean logical that determines whether a subset, defaults
@@ -34,7 +34,7 @@
 list_distributions <- function(epiparam,
                                epi_dist = c(
                                  "incubation_period",
-                                 "onset_to_admission",
+                                 "onset_to_hospitalisation",
                                  "onset_to_death",
                                  "serial_interval",
                                  "generation_time",
