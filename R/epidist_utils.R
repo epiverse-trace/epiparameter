@@ -96,9 +96,11 @@ create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #' either be given at sub-national, national, continental. Multiple nested
 #' regions can be given and are comma separated. When the region is not
 #' specified NA can be given.
-#' @param vector_borne  A boolean value as to whether a pathogen is
-#' vector-borne (i.e. is transmitted between humans through an intermediate
-#' vector).
+#' @param transmission_mode A character string specifying how the pathogen is
+#' transmitted. This information is used to determine whether the
+#' epidemiological parameters are from a vector-borne disease (i.e. is
+#' transmitted between humans through an intermediate vector), this is specified
+#' by `tranmission_mode = "vector_borne"`.
 #' @param vector The name of the vector transmitting the vector-borne disease.
 #' This can be a common name, or a latin binomial name of a specific vector
 #' species. Both the common name and taxonomic name can be given with one given
@@ -134,14 +136,14 @@ create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #' create_epidist_metadata(
 #'   sample_size = 10,
 #'   region = "UK",
-#'   vector_borne = TRUE,
+#'   transmission_mode = "vector_borne",
 #'   vector = "mosquito",
 #'   extrinsic = FALSE,
 #'   inference_method = "MLE"
 #' )
 create_epidist_metadata <- function(sample_size = NA_integer_,
                                     region = NA_character_,
-                                    vector_borne = FALSE,
+                                    transmission_mode = FALSE,
                                     vector = NA_character_,
                                     extrinsic = FALSE,
                                     inference_method = NA_character_) {
@@ -155,12 +157,12 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
     null.ok = TRUE
   )
   checkmate::assert_character(region)
-  checkmate::assert_logical(vector_borne, len = 1)
+  checkmate::assert_character(transmission_mode, len = 1)
   checkmate::assert_character(vector)
   checkmate::assert_logical(extrinsic, len = 1)
   checkmate::assert_character(inference_method)
 
-  if (isFALSE(vector_borne) && !is.na(vector)) {
+  if (transmission_mode != "vector_borne" && !is.na(vector)) {
     stop("A vector is given for a non-vector-borne disease please check input")
   }
 
@@ -168,7 +170,7 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
   list(
     sample_size = sample_size,
     region = region,
-    vector_borne = vector_borne,
+    tranmission_mode = transmission_mode,
     vector = vector,
     extrinsic = extrinsic,
     inference_method = inference_method

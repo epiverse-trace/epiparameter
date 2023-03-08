@@ -34,10 +34,10 @@ new_vb_epidist <- function(intrinsic_epidist,
 #'
 #' @details The `epidist` objects should contain metadata (`epidist$metadata`)
 #' indicating it is a vector-borne disease
-#' (`epidist$metadata$vector_borne` is TRUE) and the extrinsic distribution
-#' should indicate in the metadata that it is the extrinsic distribution
-#' (`epidist$metadata$extrinsic` is TRUE). If these two aspects are not given
-#' the construction of the class will throw a warning.
+#' (`epidist$metadata$transmission_mode == "vector_borne"`) and the extrinsic
+#' distribution should indicate in the metadata that it is the extrinsic
+#' distribution (`epidist$metadata$extrinsic` is TRUE). If these two aspects
+#' are not given the construction of the class will throw a warning.
 #'
 #' @seealso [`epidist()`]
 #'
@@ -53,7 +53,7 @@ new_vb_epidist <- function(intrinsic_epidist,
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
 #'     metadata = create_epidist_metadata(
-#'       vector_borne = TRUE,
+#'       transmission_mode = "vector_borne",
 #'       extrinsic = FALSE
 #'     )
 #'   ),
@@ -64,7 +64,7 @@ new_vb_epidist <- function(intrinsic_epidist,
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 2, scale = 2),
 #'     metadata = create_epidist_metadata(
-#'       vector_borne = TRUE,
+#'       transmission_mode = "vector_borne",
 #'       extrinsic = TRUE
 #'     )
 #'   )
@@ -115,8 +115,8 @@ validate_vb_epidist <- function(vb_epidist) {
       )
   )
 
-  if (!isTRUE(vb_epidist$intrinsic$metadata$vector_borne) ||
-      !isTRUE(vb_epidist$extrinsic$metadata$vector_borne)) {
+  if (!(vb_epidist$intrinsic$metadata$transmission_mode == "vector_borne") ||
+      !(vb_epidist$extrinsic$metadata$transmission_mode == "vector_borne")) {
     warning(
       "Distributions in vb_epidist class are not vector-borne. Check metadata",
       call. = FALSE
@@ -220,14 +220,17 @@ format.vb_epidist <- function(x, ...) {
 #'     epi_dist = "incubation_period",
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
-#'     metadata = create_epidist_metadata(vector_borne = TRUE)
+#'     metadata = create_epidist_metadata(transmission_mode = "vector_borne")
 #'   ),
 #'   extrinsic_epidist = epidist(
 #'     disease = "dengue",
 #'     epi_dist = "incubation_period",
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
-#'     metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+#'     metadata = create_epidist_metadata(
+#'       transmission_mode = "vector_borne",
+#'       extrinsic = TRUE
+#'     )
 #'   )
 #' )
 #'
@@ -261,7 +264,7 @@ is_vb_epidist <- function(x) {
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
 #'     metadata = create_epidist_metadata(
-#'       vector_borne = TRUE,
+#'       transmission_mode = "vector_borne",
 #'       extrinsic = FALSE
 #'     )
 #'   ),
@@ -271,7 +274,7 @@ is_vb_epidist <- function(x) {
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
 #'     metadata = create_epidist_metadata(
-#'       vector_borne = TRUE,
+#'       transmission_mode = "vector_borne",
 #'       extrinsic = TRUE
 #'     )
 #'   )

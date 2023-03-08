@@ -173,7 +173,7 @@ make_epidist <- function(x) {
     metadata = create_epidist_metadata(
       sample_size = x$sample_size,
       region = x$region,
-      vector_borne = x$vector_borne,
+      transmission_mode = x$transmission_mode,
       vector = x$vector
     ),
     method_assess = create_epidist_method_assess(
@@ -282,7 +282,7 @@ as_epiparam <- function(x) {
     year = as.numeric(year),
     sample_size = x$metadata$sample_size,
     region = x$metadata$region,
-    vector_borne = x$metadata$vector_borne,
+    transmission_mode = x$metadata$transmission_mode,
     vector = x$metadata$vector,
     extrinsic = x$metadata$extrinsic,
     prob_distribution = prob_dist,

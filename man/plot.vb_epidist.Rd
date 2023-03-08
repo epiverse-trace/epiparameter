@@ -30,7 +30,7 @@ dengue_dist <- vb_epidist(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     metadata = create_epidist_metadata(
-      vector_borne = TRUE,
+      transmission_mode = "vector_borne",
       extrinsic = FALSE
     )
   ),
@@ -40,7 +40,7 @@ dengue_dist <- vb_epidist(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     metadata = create_epidist_metadata(
-      vector_borne = TRUE,
+      transmission_mode = "vector_borne",
       extrinsic = TRUE
     )
   )

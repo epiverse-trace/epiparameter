@@ -161,11 +161,12 @@ new_epidist <- function(disease = list(),
 #' @param citation A character string with the citation of the source of the
 #' data or the paper that inferred the distribution parameters, use
 #' `create_epidist_citation()` to create citation.
-#' @param metadata A list of metadata, this can include: sample size, whether
-#' the disease is vector-borne, etc. It is assumed that the disease is not
+#' @param metadata A list of metadata, this can include: sample size, the
+#' transmission mode of the disease (e.g. is it vector-borne or directly
+#' transmitted), etc. It is assumed that the disease is not
 #' vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 #' delay distribution such as extrinsic incubation period) unless
-#' `vector_borne = TRUE` is contained in the metadata. Use
+#' `tranmission_mode = "vector_borne"` is contained in the metadata. Use
 #' `create_epidist_metadata()` to create metadata.
 #' @param method_assess A list of methodological aspects used when fitting
 #' the distribution, use `create_epidist_method_assess()` to create method
@@ -218,7 +219,7 @@ new_epidist <- function(disease = list(),
 #'   metadata = create_epidist_metadata(
 #'     sample_size = 10,
 #'     region = "UK",
-#'     vector_borne = FALSE,
+#'     transmission_mode = "natural_human_to_human",
 #'     inference_method = "MLE"
 #'   ),
 #'   method_assess = create_epidist_method_assess(
@@ -596,14 +597,17 @@ is_epidist <- function(x) {
 #'     epi_dist = "incubation_period",
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
-#'     metadata = create_epidist_metadata(vector_borne = TRUE)
+#'     metadata = create_epidist_metadata(tranmission_mode = "vector_borne")
 #'   ),
 #'   extrinsic_epidist = epidist(
 #'     disease = "dengue",
 #'     epi_dist = "incubation_period",
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
-#'     metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+#'     metadata = create_epidist_metadata(
+#'       transmission_mode = "vector_borne",
+#'       extrinsic = TRUE
+#'     )
 #'   )
 #' )
 #'

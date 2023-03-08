@@ -59,11 +59,12 @@ calculate the parameters and add them to the \code{epidist} object created.}
 data or the paper that inferred the distribution parameters, use
 \code{create_epidist_citation()} to create citation.}
 
-\item{metadata}{A list of metadata, this can include: sample size, whether
-the disease is vector-borne, etc. It is assumed that the disease is not
+\item{metadata}{A list of metadata, this can include: sample size, the
+transmission mode of the disease (e.g. is it vector-borne or directly
+transmitted), etc. It is assumed that the disease is not
 vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 delay distribution such as extrinsic incubation period) unless
-\code{vector_borne = TRUE} is contained in the metadata. Use
+\code{tranmission_mode = "vector_borne"} is contained in the metadata. Use
 \code{create_epidist_metadata()} to create metadata.}
 
 \item{method_assess}{A list of methodological aspects used when fitting
