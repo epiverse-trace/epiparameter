@@ -100,7 +100,7 @@ create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #' transmitted. This information is used to determine whether the
 #' epidemiological parameters are from a vector-borne disease (i.e. is
 #' transmitted between humans through an intermediate vector), this is specified
-#' by `tranmission_mode = "vector_borne"`.
+#' by `transmission_mode = "vector_borne"`.
 #' @param vector The name of the vector transmitting the vector-borne disease.
 #' This can be a common name, or a latin binomial name of a specific vector
 #' species. Both the common name and taxonomic name can be given with one given
@@ -143,7 +143,7 @@ create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #' )
 create_epidist_metadata <- function(sample_size = NA_integer_,
                                     region = NA_character_,
-                                    transmission_mode = FALSE,
+                                    transmission_mode = NA_character_,
                                     vector = NA_character_,
                                     extrinsic = FALSE,
                                     inference_method = NA_character_) {
@@ -170,7 +170,7 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
   list(
     sample_size = sample_size,
     region = region,
-    tranmission_mode = transmission_mode,
+    transmission_mode = transmission_mode,
     vector = vector,
     extrinsic = extrinsic,
     inference_method = inference_method

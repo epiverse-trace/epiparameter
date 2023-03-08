@@ -7,7 +7,7 @@
 create_epidist_metadata(
   sample_size = NA_integer_,
   region = NA_character_,
-  transmission_mode = FALSE,
+  transmission_mode = NA_character_,
   vector = NA_character_,
   extrinsic = FALSE,
   inference_method = NA_character_
@@ -28,7 +28,7 @@ specified NA can be given.}
 transmitted. This information is used to determine whether the
 epidemiological parameters are from a vector-borne disease (i.e. is
 transmitted between humans through an intermediate vector), this is specified
-by \code{tranmission_mode = "vector_borne"}.}
+by \code{transmission_mode = "vector_borne"}.}
 
 \item{vector}{The name of the vector transmitting the vector-borne disease.
 This can be a common name, or a latin binomial name of a specific vector
