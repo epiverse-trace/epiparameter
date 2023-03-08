@@ -38,7 +38,7 @@
 #' identical(edist, edist2)
 epidist_db <- function(disease,
                        epi_dist = c("incubation_period",
-                                    "onset_to_admission",
+                                    "onset_to_hospitalisation",
                                     "onset_to_death",
                                     "serial_interval",
                                     "generation_time",

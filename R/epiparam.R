@@ -92,7 +92,7 @@ new_epiparam <- function(epi_dist = character()) {
 #' influenza_dists <- eparam[eparam$disease == "influenza", ]
 epiparam <- function(epi_dist = c("all",
                                   "incubation_period",
-                                  "onset_to_admission",
+                                  "onset_to_hospitalisation",
                                   "onset_to_death",
                                   "serial_interval",
                                   "generation_time",

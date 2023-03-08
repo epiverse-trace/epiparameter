@@ -6,7 +6,7 @@
 \usage{
 epidist_db(
   disease,
-  epi_dist = c("incubation_period", "onset_to_admission", "onset_to_death",
+  epi_dist = c("incubation_period", "onset_to_hospitalisation", "onset_to_death",
     "serial_interval", "generation_time", "offspring_distribution"),
   author = NULL
 )
