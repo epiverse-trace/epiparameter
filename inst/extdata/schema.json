@@ -344,7 +344,7 @@
       "items": {
         "type": ["array", "null"],
         "items": {
-          "type": "number"
+          "type": ["number", "null"]
         }
       }
     },
@@ -374,7 +374,7 @@
       "items": {
         "type": ["array", "null"],
         "items": {
-          "type": "number"
+          "type": ["number", "null"]
         }
       }
     },
