@@ -92,3 +92,14 @@ test_that("create_epidist_region works as expected", {
     )
   )
 })
+
+test_that("clean_disease works as expected", {
+  disease <- clean_disease("COVID-19")
+  expect_identical(disease, "covid_19")
+})
+
+test_that("clean_disease fails as expected", {
+  expect_error(
+    clean_disease(5),
+    regexp = "(Assertion on 'x' failed)*(Must be of type)"
+  )

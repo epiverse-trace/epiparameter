@@ -694,3 +694,15 @@ clean_epidist_name <- function(epi_dist) {
   out <- tolower(out)
   out
 }
+
+#' Standardises the names of diseases
+#'
+#' @param x A character string specifying a disease.
+#'
+#' @return A character string of equal length to the input
+#' @export
+clean_disease <- function(x) {
+  checkmate::assert_character(x)
+  x <- tolower(x)
+  x <- gsub(pattern = "-| ", replacement = "_", x = x)
+  x
