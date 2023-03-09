@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 
 ## About the package
 
-The [`epiparameter` R package](https://github.com/epiverse-trace/epiparameter) contains a library of epidemiological distribution data and functions that read and handle this data. The delay distributions describe the time between two events in epidemiology, for example incubation periods, serial interval and onset-to-death; while the offspring distributions describe the number of secondary infections from a primary infection in disease transmission. The library is compiled by a process of collecting, reviewing and extracting data from peer-reviewed literature[^1], including research articles, systematic reviews and meta-analyses. 
+The [`{epiparameter}` R package](https://github.com/epiverse-trace/epiparameter) contains a library of epidemiological distribution data and functions that read and handle this data. The delay distributions describe the time between two events in epidemiology, for example incubation period, serial interval and onset-to-death; while the offspring distributions describe the number of secondary infections from a primary infection in disease transmission. The library is compiled by a process of collecting, reviewing and extracting data from peer-reviewed literature[^1], including research articles, systematic reviews and meta-analyses. 
 
-To prevent bias in the collection or assessment of the data, a well-defined methodology of searching and refining, just as with other systematic reviews and meta-analyses, is required. This document aims to provide transparency on the methodology used by the `epiparameter` maintainers by outlining the steps taken at each stage of the data handling. This document should also facilitate reproducibility in the searches, results and appraisal steps.
+To prevent bias in the collection or assessment of the data, a well-defined methodology of searching and refining, just as with other systematic reviews and meta-analyses, is required. This document aims to provide transparency on the methodology used by the `{epiparameter}` maintainers by outlining the steps taken at each stage of the data handling. It can also serve as a guide to contributors wanting to search and provide epidemiological parameters currently missing from the library. This document should also facilitate reproducibility in the searches, results and appraisal steps.
 
 There is a large body of work on the methods to best conduct literature searches and data collection as part of systematic reviews and meta-analyses[^2], which we use as the basis for our protocol. These sources are: 
 
@@ -26,15 +26,15 @@ There is a large body of work on the methods to best conduct literature searches
 - [PRISMA](https://www.prisma-statement.org/)
 - [Stroup et al. (2000) Meta-analysis of observational studies in epidemiology](https://jamanetwork.com/journals/jama/fullarticle/192614)
 
-The `epiparameter` package will act as a 'living systematic review' (*sensu* [Elliot et al. 2014](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001603)) which will be actively updated and maintained to provide the most comprehensive and reliable source of data on epidemiological distributions.
+The `{epiparameter}` package will act as a 'living systematic review' (*sensu* [Elliot et al. 2014](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001603)) which will be actively updated and maintained to provide the most comprehensive and reliable source of data on epidemiological distributions.
 
-## Objective of `epiparameter`
+## Objective of `{epiparameter}`
 
-As defined by the PRISMA guidelines, having a clearly stated objective helps to refine the goal of the project. `epiparameter`'s objective is to provide a collection of distributions for a range of infectious diseases that is as accurate, unbiased and as comprehensive  as possible. Such distributions will enable outbreak analysts to easily access these distributions for routine analysis. For example, delay distributions are necessary for: calculating case fatality rates adjusting for delay to outcome, quantifying implications of different screening measures and quarantine periods, estimating reproduction numbers, and scenario modelling using transmission dynamic models.
+As defined by the PRISMA guidelines, having a clearly stated objective helps to refine the goal of the project. `{epiparameter}`'s objective is to provide a collection of distributions for a range of infectious diseases that is as accurate, unbiased and as comprehensive  as possible. Such distributions will enable outbreak analysts to easily access these distributions for routine analysis. For example, delay distributions are necessary for: calculating case fatality rates adjusting for delay to outcome, quantifying implications of different screening measures and quarantine periods, estimating reproduction numbers, and scenario modelling using transmission dynamic models.
 
 ## Scope of package
 
-The `epiparameter` package spans a range of infectious diseases, including several distributions for each disease when available. The pathogens/diseases that are currently systematically searched for and included in the package library are:
+The `{epiparameter}` package spans a range of infectious diseases, including several distributions for each disease when available. The pathogens/diseases that are currently systematically searched for and included in the package library are:
 
 ```{r show-diseases, echo=FALSE}
 db <- epiparameter::epiparam()
@@ -69,8 +69,8 @@ knitr::kable(
 
 However, these simple search phrases can return a large number of irrelevant papers. We recommend using more specific search schema depending on the search engine used. For example, if using Google Scholar a schema like:
 
-- ("Middle East Respiratory Syndrome" OR MERS) AND "onset to death" AND (estimate OR inference)
-- (ebola OR EVD) AND "onset to death" AND (estimate OR inference)
+- ("Middle East Respiratory Syndrome" OR MERS) AND "onset to death" AND (estimation OR inference OR calculation)
+- (ebola OR EVD) AND "onset to death" AND (estimation OR inference OR calculation)
 
 Or if Web of Science is being used:
 
@@ -81,13 +81,13 @@ This should refine the results to a more suitable set of literature.
 
 1. **Literature search engines**: we recommend using a selection of search engines to prevent one source potentially omitting papers. Recommended search sites are: Google Scholar, Web of Science, PubMed, and Scopus. Across each site we performed the same search.  
 
-1. **Adding papers**: the papers collected in the literature search can be supplemented by papers known to be relevant or through being cited by a paper in the literature search. Papers may be recommended by experts in research or public health communities. We plan to use two methods of community engagement. Firstly a open-access Google sheet allows people to add their distribution data which will then be reviewed by one of the `epiparameter` maintainers and incorporated if it meets quality checks. The second method - not yet implemented - involves community members uploading their data to [zenodo](https://zenodo.org/), which can then be read and loaded into R using `epiparameter` once checked. 
+1. **Adding papers**: the papers collected in the literature search can be supplemented by papers known to be relevant or through being cited by a paper in the literature search. Papers may be recommended by experts in research or public health communities. We plan to use two methods of community engagement. Firstly a open-access Google sheet allows people to add their distribution data which will then be reviewed by one of the `{epiparameter}` maintainers and incorporated if it meets quality checks. The second method - not yet implemented - involves community members uploading their data to [zenodo](https://zenodo.org/), which can then be read and loaded into R using `{epiparameter}` once checked. 
 
-1. **Language restrictions**: papers in English or Spanish are currently supported in `epiparameter`. Papers written in another language but verified by an expert can also be included in the database. However, these are not evaluated with the review process described below and as a result are flagged to the user when loaded in `epiparameter`.
+1. **Language restrictions**: papers in English or Spanish are currently supported in `{epiparameter}`. Papers written in another language but verified by an expert can also be included in the database. However, these are not evaluated with the review process described below and as a result are flagged to the user when loaded in `{epiparameter}`.
 
 ## Guide to data refinement once sources identified
 
-1. **Removing duplicates**: studies that use multiple data sources should be screened against other papers included to ensure the the same data sets are not being included multiple times in `epiparameter`. This is done by checking whether papers are the primary source of data or are retrieving and citing from another primary source.
+1. **Removing duplicates**: studies that use multiple data sources should be screened against other papers included to ensure the the same data sets are not being included multiple times in `{epiparameter}`. This is done by checking whether papers are the primary source of data or are retrieving and citing from another primary source.
 
 1. **Abstract and methods screening**: once a number of unique sources have been identified, each should be reviewed for its suitability by reviewing the abstract and searching for words or phrases in the paper that indicate it estimated the parameters of a distribution, this can include searching the methods section for words on types of distributions (e.g. lognormal), fitting procedures (e.g. maximum likelihood or bayesian), or searching the results for parameter estimates. If no distribution is described, the paper can be considered unsuitable at this stage.
 
@@ -99,15 +99,15 @@ This should refine the results to a more suitable set of literature.
 
     Again, any papers excluded at this stage should be recorded in the database of unsuitable sources with reasoning to prevent having to reassess when updating the database.
 
-1. **Post hoc removal**: if any `epiparameter` parameters are later identified as being inappropriate then they can be removed from the database. In most cases this is unlikely as limitations can be appended onto data entries to make users aware of limitations (e.g. around assumptions used to infer the distirbution), only in the most extreme cases will data be completely removed from the database.
+1. **Post hoc removal**: if any `{epiparameter}` parameters are later identified as being inappropriate then they can be removed from the database. In most cases this is unlikely as limitations can be appended onto data entries to make users aware of limitations (e.g. around assumptions used to infer the distirbution), only in the most extreme cases will data be completely removed from the database.
 
 Note: systematic reviews focusing on effect sizes can be subject to publication bias (e.g. more positive or significant results in the literature). However, distribution inference does not focus on significance testing or effect sizes, so this bias is not considered in the collection process.
 
 ## Guide to extracting parameters
 
-**Extracting parameters**: for any underlying distributions (e.g. gamma, lognormal), parameters (e.g. shape/scale, meanlog/sdlog), and summary statistics (e.g. mean, standard deviation, median, range or quantiles) given in the paper, values should be recorded verbatim from the paper into the database. When these are read into R using the `epiparameter` package, other aspects of the distribution are automatically calculated and available. For example if the mean and standard deviation of a gamma distribution is reported for a serial interval these values will be stored in the database. But once in R, the shape and scale parameters of the gamma distribution, as well as the confidence intervals, will be automatically reconstructed and the resulting distribution available for use.
+**Extracting parameters**: for any underlying distributions (e.g. gamma, lognormal), parameters (e.g. shape/scale, meanlog/sdlog), and summary statistics (e.g. mean, standard deviation, median, range or quantiles) given in the paper, values should be recorded verbatim from the paper into the database. When these are read into R using the `{epiparameter}` package, other aspects of the distribution are automatically calculated and available. For example if the mean and standard deviation of a gamma distribution is reported for a serial interval these values will be stored in the database. But once in R, the shape and scale parameters of the gamma distribution, as well as the confidence intervals, will be automatically reconstructed and the resulting distribution available for use.
 
-The minimal dataset that is required to be included in the `epiparameter` library is:
+The minimal dataset that is required to be included in the `{epiparameter}` library is:
 
 - Name of disease
 - Type of distribution
@@ -137,15 +137,15 @@ Data that are recommended but not essential:
 - Whether the distribution was right-truncated and the truncation point
 - 'Notes': this can include general statements about the distribution or methodology used in the paper. These notes can be accessed when using the package to make users aware of possible limitations in the distribution parameters that may not fit in other categories
 
-See the data dictionary included in `epiparameter` for all database fields with a description of each and the range of possible values each field can take.
+See the data dictionary included in `{epiparameter}` for all database fields with a description of each and the range of possible values each field can take.
 
-## Data quality assessment in `epiparameter`
+## Data quality assessment in `{epiparameter}`
 
-The inference of parameters for a delay distribution often requires methological adjustments to correct for factors that would otherwise bias the estimates. These includes accounting for interval-censoring of the data when the timing of an event (e.g. exposure to a pathogen) is not know with certainty, but rather within a time window. Or adjusting for phase bias when the distribution is estimated during a growing or skrinking stage of an epidemic. The aim of `epiparameter` is not to make a judgement on which parameters are 'better' than others, but to notify and warn the user of the potential limitations of the data. The aspects assessed are: 1) whether the method includes single or double interval-censoring when the exposure or onset times are not known with certainty (i.e. on a single day); 2) does the method adjust for phase bias when the outbreak is in an ascending or descending phase. These are indicated by boolean values to indicate whether they are reported in the paper and users are recommended to refer back to the paper to determine whether estimates are biased.
+The inference of parameters for a delay distribution often requires methological adjustments to correct for factors that would otherwise bias the estimates. These includes accounting for interval-censoring of the data when the timing of an event (e.g. exposure to a pathogen) is not know with certainty, but rather within a time window. Or adjusting for phase bias when the distribution is estimated during a growing or skrinking stage of an epidemic. The aim of `{epiparameter}` is not to make a judgement on which parameters are 'better' than others, but to notify and warn the user of the potential limitations of the data. The aspects assessed are: 1) whether the method includes single or double interval-censoring when the exposure or onset times are not known with certainty (i.e. on a single day); 2) does the method adjust for phase bias when the outbreak is in an ascending or descending phase. These are indicated by boolean values to indicate whether they are reported in the paper and users are recommended to refer back to the paper to determine whether estimates are biased.
 
-## Guide to the `epiparameter` review process
+## Guide to the `{epiparameter}` review process
 
-For a set of parameters to be included in the database it must pass the abstract and methods screening and full screening and subsequently a review by one of the `epiparameter` maintainers. This process involves running diagnostic checks and cross-referencing the reported parameters with those in the paper to ensure they match exactly and that the results plot of the PDF/CDF/PMF matches anything plotted in the paper, if available. This prevents a possible misinterpretation (e.g. serial interval for incubation period). This check also includes making sure the unique identifiers for the paper match the author's name, publication year and other data recorded in the database.
+For a set of parameters to be included in the database it must pass the abstract and methods screening and full screening and subsequently a review by one of the `{epiparameter}` maintainers. This process involves running diagnostic checks and cross-referencing the reported parameters with those in the paper to ensure they match exactly and that the results plot of the PDF/CDF/PMF matches anything plotted in the paper, if available. This prevents a possible misinterpretation (e.g. serial interval for incubation period). This check also includes making sure the unique identifiers for the paper match the author's name, publication year and other data recorded in the database.
 
 ## Updating parameters in the database
 
@@ -165,5 +165,5 @@ All papers that are returned in the search results but are not suitable, either 
 
 [^1]: We also include distribution parameters that are published on pre-print servers such as arxiv, bioRxiv and medRxiv. But will update the citation reference once the paper is accepted and published by a journal. 
 
-[^2]: `epiparameter` is itself not a meta-analytic tool, but the references stored within may be useful as part of a meta-analysis.
+[^2]: `{epiparameter}` is itself not a meta-analytic tool, but the references stored within may be useful as part of a meta-analysis.
 
