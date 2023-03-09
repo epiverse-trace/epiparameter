@@ -155,8 +155,8 @@ vector is returned</p>
 <span class="r-in"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">edist</span>, p <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2231436</span>
 <span class="r-in"><span><span class="fu">distributional</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">edist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.5312732 0.3485095 1.2167651 0.4001731 0.4556313 0.4518710 1.3425384</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 1.8295202 1.7935970 0.1287328</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.9796824 2.8311555 0.7368552 0.6774784 1.6360541 2.2794666 0.2289081</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.8117584 2.3957319 0.8507207</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">vb_edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="vb_epidist.html">vb_epidist</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  intrinsic_epidist <span class="op">=</span> <span class="fu"><a href="epidist.html">epidist</a></span><span class="op">(</span></span></span>
@@ -164,14 +164,17 @@ vector is returned</p>
 <span class="r-in"><span>    epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span>,</span></span>
 <span class="r-in"><span>    prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
 <span class="r-in"><span>    prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>    metadata <span class="op">=</span> <span class="fu"><a href="create_epidist_metadata.html">create_epidist_metadata</a></span><span class="op">(</span>vector_borne <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    metadata <span class="op">=</span> <span class="fu"><a href="create_epidist_metadata.html">create_epidist_metadata</a></span><span class="op">(</span>transmission_mode <span class="op">=</span> <span class="st">"vector_borne"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  extrinsic_epidist <span class="op">=</span> <span class="fu"><a href="epidist.html">epidist</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    disease <span class="op">=</span> <span class="st">"dengue"</span>,</span></span>
 <span class="r-in"><span>    epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span>,</span></span>
 <span class="r-in"><span>    prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
 <span class="r-in"><span>    prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>    metadata <span class="op">=</span> <span class="fu"><a href="create_epidist_metadata.html">create_epidist_metadata</a></span><span class="op">(</span>vector_borne <span class="op">=</span> <span class="cn">TRUE</span>, extrinsic <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    metadata <span class="op">=</span> <span class="fu"><a href="create_epidist_metadata.html">create_epidist_metadata</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      transmission_mode <span class="op">=</span> <span class="st">"vector_borne"</span>,</span></span>
+<span class="r-in"><span>      extrinsic <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as either author, year or DOI is missing</span>
@@ -201,12 +204,12 @@ vector is returned</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">distributional</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">vb_edist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $intrinsic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.7313942 0.7930789 1.7350398 0.4034307 1.0786732 2.6169104 0.1664419</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.5633470 3.0430943 1.0046123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.556449815 0.019054050 0.001044523 0.768052782 0.766483624 0.561476051</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 1.752187904 1.691908883 1.237617815 0.410407439</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $extrinsic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.22541068 1.45657670 0.67680168 1.70720733 1.26036345 0.16907328</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.26490758 0.05905327 0.44588291 0.13118513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.34918944 0.37355873 0.29556621 1.61986966 1.27242259 0.07407012</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 2.42345913 0.57644213 0.67472751 0.25852830</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

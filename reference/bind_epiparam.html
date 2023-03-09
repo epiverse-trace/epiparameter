@@ -104,26 +104,26 @@ loaded in R.</p>
 <span class="r-in"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist.html">epidist</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  disease <span class="op">=</span> <span class="st">"ebola"</span>,</span></span>
 <span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span>,</span></span>
-<span class="r-in"><span>  prob_distribution <span class="op">=</span> <span class="st">"lognormal"</span>,</span></span>
+<span class="r-in"><span>  prob_distribution <span class="op">=</span> <span class="st">"lnorm"</span>,</span></span>
 <span class="r-in"><span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>meanlog <span class="op">=</span> <span class="fl">1</span>, sdlog <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as either author, year or DOI is missing</span>
 <span class="r-in"><span><span class="fu">bind_epiparam</span><span class="op">(</span><span class="va">eparam</span>, <span class="va">edist</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epiparam object</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of distributions in library: 55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of diseases: 22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of delay distributions: 46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of offspring distributions: 9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of studies in library: 25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of distributions in library: 107</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of diseases: 25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of delay distributions: 84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of offspring distributions: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of studies in library: 43</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Head of library&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       disease  epi_distribution prob_distribution</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  adenovirus incubation_period         lognormal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 chikungunya incubation_period         lognormal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      dengue incubation_period         lognormal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      dengue incubation_period         lognormal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5      dengue incubation_period         lognormal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      dengue incubation_period         lognormal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;49 more rows &amp; 53 more cols not shown&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       disease         epi_distribution prob_distribution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Adenovirus        incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Chikungunya        incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    COVID-19 hospitalisation_to_death           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    COVID-19 hospitalisation_to_death             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    COVID-19        incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6    COVID-19        incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;101 more rows &amp; 53 more cols not shown&gt;</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

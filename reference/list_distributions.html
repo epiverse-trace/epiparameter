@@ -82,7 +82,7 @@ all columns of the database are required set <code>subset_db = FALSE</code>.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">list_distributions</span><span class="op">(</span></span>
 <span>  <span class="va">epiparam</span>,</span>
-<span>  epi_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"incubation_period"</span>, <span class="st">"onset_to_admission"</span>, <span class="st">"onset_to_death"</span>,</span>
+<span>  epi_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"incubation_period"</span>, <span class="st">"onset_to_hospitalisation"</span>, <span class="st">"onset_to_death"</span>,</span>
 <span>    <span class="st">"serial_interval"</span>, <span class="st">"generation_time"</span>, <span class="st">"offspring_distribution"</span><span class="op">)</span>,</span>
 <span>  subset_db <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -96,7 +96,7 @@ all columns of the database are required set <code>subset_db = FALSE</code>.</p>
 
 <dt>epi_dist</dt>
 <dd><p>A character defining parameter to be listed:
-<code>"incubation"</code>, <code>"onset_to_admission"</code>, <code>"onset_to_death"</code>, or
+<code>"incubation"</code>, <code>"onset_to_hospitalisation"</code>, <code>"onset_to_death"</code>, or
 <code>"serial_interval"</code>. <code>"incubation_period"</code> is the default <code>epi_dist</code> so if no
 <code>epi_dist</code> is specified the incubation periods will be returned.</p></dd>
 
@@ -115,173 +115,273 @@ is TRUE.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">eparam</span> <span class="op">&lt;-</span> <span class="fu"><a href="epiparam.html">epiparam</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">list_distributions</span><span class="op">(</span>epiparam <span class="op">=</span> <span class="va">eparam</span>, epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  disease  epi_distribution prob_distribution         author</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1             adenovirus incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            chikungunya incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 dengue incubation_period         lognormal Chan_Johansson</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 dengue incubation_period         lognormal Chan_Johansson</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                 dengue incubation_period         lognormal Chan_Johansson</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                 dengue incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7                 dengue incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8      human coronavirus incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9              influenza incubation_period             gamma     Ghani_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10             influenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11             influenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12             influenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13             influenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14             influenza incubation_period             gamma Nishiura_Inaba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15             influenza incubation_period           weibull Nishiura_Inaba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16             influenza incubation_period         lognormal     Reich_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17             influenza incubation_period         lognormal     Reich_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18             influenza incubation_period         lognormal     Tuite_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19             influenza incubation_period           weibull Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20             influenza incubation_period             gamma Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21             influenza incubation_period           weibull Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22             influenza incubation_period           weibull Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23             influenza incubation_period           weibull Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 Japanese encephalitis incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 marburg virus disease incubation_period              &lt;NA&gt;         Pavlin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 marburg virus disease incubation_period              &lt;NA&gt;         Pavlin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27               measles incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28         parainfluenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29            rhinovirus incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30     Rift Valley fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31                   RSV incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32                   RSV incubation_period         lognormal     Reich_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33                   RSV incubation_period         lognormal     Reich_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34                  SARS incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35       west nile fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36       west nile fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37       west nile fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38          yellow fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39          yellow fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40    zika virus disease incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    year sample_size</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  2009          14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  2014          21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  2012         146</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  2012         146</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  2012         153</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  2014         169</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  2014         124</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  2009          13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  2009          16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 2009         151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 2009          90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 2009          78</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 2009         134</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 2011          72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 2011          72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 2009         151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 2009         151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 2010         316</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 2015         229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 2015         229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 2016         395</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 2016         173</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 2016         222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 2014           6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 2014          76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 2014          18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 2009          55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 2009          11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 2009          28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 2014          23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 2009          24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 2009          24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 2009          24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 2009         157</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 2014          18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 2014           8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 2014           6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 2014          91</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 2014          80</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 2016          25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  disease  epi_distribution prob_distribution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1             Adenovirus incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            Chikungunya incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3               COVID-19 incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4               COVID-19 incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5               COVID-19 incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6               COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7               COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8               COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9               COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15              COVID-19 incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16              COVID-19 incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22   Ebola Virus Disease incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   Ebola Virus Disease incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24   Ebola Virus Disease incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25   Ebola Virus Disease incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26   Ebola Virus Disease incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27     Human Coronavirus incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28             Influenza incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33             Influenza incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39             Influenza incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 Japanese Encephalitis incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 Marburg Virus Disease incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 Marburg Virus Disease incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46               Measles incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47                  MERS incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48                  MERS incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49                  Mpox incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50                  Mpox incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51                  Mpox incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52                  Mpox incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53         Parainfluenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54            Rhinovirus incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55     Rift Valley Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56                   RSV incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57                   RSV incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58                   RSV incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59                  SARS incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60       West Nile Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61       West Nile Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62       West Nile Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63          Yellow Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64          Yellow Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65    Zika Virus Disease incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     author year sample_size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1             Lessler_etal 2009          14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2             Rudolph_etal 2014          21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3               Alene_etal 2021        1453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 Bui_etal 2020          19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5               Elias_etal 2021       28675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6               Lauer_etal 2020         181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7               Lauer_etal 2020          99</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8               Lauer_etal 2020         108</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9               Lauer_etal 2020          73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10             Linton_etal 2020          52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11             Linton_etal 2020         158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12             Linton_etal 2020          52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13            McAloon_etal 2020        1357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14            McAloon_etal 2020        1269</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                Men_etal 2020          59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                Rai_etal 2022        6241</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17          Chan_Johansson 2012         146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18          Chan_Johansson 2012         146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19          Chan_Johansson 2012         153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20            Rudolph_etal 2014         169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21            Rudolph_etal 2014         124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22            Eichner_etal 2011         315</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 WHO_Ebola_Response_Team 2015          49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 WHO_Ebola_Response_Team 2015         957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 WHO_Ebola_Response_Team 2015         792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  WHO_Ebola_ResponseTeam 2015        1798</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27            Lessler_etal 2009          13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28              Ghani_etal 2009          16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29            Lessler_etal 2009         151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30            Lessler_etal 2009          90</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31            Lessler_etal 2009          78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32            Lessler_etal 2009         124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33          Nishiura_Inaba 2011          72</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34          Nishiura_Inaba 2011          72</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35              Reich_etal 2009         151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36              Reich_etal 2009         151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37              Tuite_etal 2010         316</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38          Virlogeux_etal 2015         229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39          Virlogeux_etal 2015         229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40          Virlogeux_etal 2016         395</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41          Virlogeux_etal 2016         173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42          Virlogeux_etal 2016         222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43            Rudolph_etal 2014           6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44                  Pavlin 2014          76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45                  Pavlin 2014          18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46            Lessler_etal 2009          55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47             Assiri_etal 2013          23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48            Cowling_etal 2015         166</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49           Charniga_etal 2022          22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50            Guzetta_etal 2022         255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51           Madewell_etal 2022          35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52              Miura_etal 2022          18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53            Lessler_etal 2009          11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54            Lessler_etal 2009          28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55            Rudolph_etal 2014          23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56            Lessler_etal 2009          24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57              Reich_etal 2009          24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58              Reich_etal 2009          24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59            Lessler_etal 2009         157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60            Rudolph_etal 2014          18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61            Rudolph_etal 2014           8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62            Rudolph_etal 2014           6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63            Rudolph_etal 2014          91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64            Rudolph_etal 2014          80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65            Lessler_etal 2016          25</span>
 <span class="r-in"><span><span class="co"># the default for list_distributions() without any arguments is to return the</span></span></span>
 <span class="r-in"><span><span class="co"># incubation period</span></span></span>
 <span class="r-in"><span><span class="fu">list_distributions</span><span class="op">(</span>epiparam <span class="op">=</span> <span class="va">eparam</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  disease  epi_distribution prob_distribution         author</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1             adenovirus incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            chikungunya incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 dengue incubation_period         lognormal Chan_Johansson</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 dengue incubation_period         lognormal Chan_Johansson</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                 dengue incubation_period         lognormal Chan_Johansson</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                 dengue incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7                 dengue incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8      human coronavirus incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9              influenza incubation_period             gamma     Ghani_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10             influenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11             influenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12             influenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13             influenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14             influenza incubation_period             gamma Nishiura_Inaba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15             influenza incubation_period           weibull Nishiura_Inaba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16             influenza incubation_period         lognormal     Reich_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17             influenza incubation_period         lognormal     Reich_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18             influenza incubation_period         lognormal     Tuite_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19             influenza incubation_period           weibull Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20             influenza incubation_period             gamma Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21             influenza incubation_period           weibull Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22             influenza incubation_period           weibull Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23             influenza incubation_period           weibull Virlogeux_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 Japanese encephalitis incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 marburg virus disease incubation_period              &lt;NA&gt;         Pavlin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 marburg virus disease incubation_period              &lt;NA&gt;         Pavlin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27               measles incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28         parainfluenza incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29            rhinovirus incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30     Rift Valley fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31                   RSV incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32                   RSV incubation_period         lognormal     Reich_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33                   RSV incubation_period         lognormal     Reich_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34                  SARS incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35       west nile fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36       west nile fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37       west nile fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38          yellow fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39          yellow fever incubation_period         lognormal   Rudolph_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40    zika virus disease incubation_period         lognormal   Lessler_etal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    year sample_size</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  2009          14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  2014          21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  2012         146</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  2012         146</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  2012         153</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  2014         169</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  2014         124</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  2009          13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  2009          16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 2009         151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 2009          90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 2009          78</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 2009         134</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 2011          72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 2011          72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 2009         151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 2009         151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 2010         316</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 2015         229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 2015         229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 2016         395</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 2016         173</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 2016         222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 2014           6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 2014          76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 2014          18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 2009          55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 2009          11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 2009          28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 2014          23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 2009          24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 2009          24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 2009          24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 2009         157</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 2014          18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 2014           8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 2014           6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 2014          91</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 2014          80</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 2016          25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  disease  epi_distribution prob_distribution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1             Adenovirus incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            Chikungunya incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3               COVID-19 incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4               COVID-19 incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5               COVID-19 incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6               COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7               COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8               COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9               COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14              COVID-19 incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15              COVID-19 incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16              COVID-19 incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21                Dengue incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22   Ebola Virus Disease incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   Ebola Virus Disease incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24   Ebola Virus Disease incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25   Ebola Virus Disease incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26   Ebola Virus Disease incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27     Human Coronavirus incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28             Influenza incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33             Influenza incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37             Influenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39             Influenza incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42             Influenza incubation_period           weibull</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 Japanese Encephalitis incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 Marburg Virus Disease incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 Marburg Virus Disease incubation_period              &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46               Measles incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47                  MERS incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48                  MERS incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49                  Mpox incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50                  Mpox incubation_period             gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51                  Mpox incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52                  Mpox incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53         Parainfluenza incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54            Rhinovirus incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55     Rift Valley Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56                   RSV incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57                   RSV incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58                   RSV incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59                  SARS incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60       West Nile Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61       West Nile Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62       West Nile Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63          Yellow Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64          Yellow Fever incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65    Zika Virus Disease incubation_period             lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     author year sample_size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1             Lessler_etal 2009          14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2             Rudolph_etal 2014          21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3               Alene_etal 2021        1453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 Bui_etal 2020          19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5               Elias_etal 2021       28675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6               Lauer_etal 2020         181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7               Lauer_etal 2020          99</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8               Lauer_etal 2020         108</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9               Lauer_etal 2020          73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10             Linton_etal 2020          52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11             Linton_etal 2020         158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12             Linton_etal 2020          52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13            McAloon_etal 2020        1357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14            McAloon_etal 2020        1269</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                Men_etal 2020          59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                Rai_etal 2022        6241</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17          Chan_Johansson 2012         146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18          Chan_Johansson 2012         146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19          Chan_Johansson 2012         153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20            Rudolph_etal 2014         169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21            Rudolph_etal 2014         124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22            Eichner_etal 2011         315</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 WHO_Ebola_Response_Team 2015          49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 WHO_Ebola_Response_Team 2015         957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 WHO_Ebola_Response_Team 2015         792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  WHO_Ebola_ResponseTeam 2015        1798</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27            Lessler_etal 2009          13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28              Ghani_etal 2009          16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29            Lessler_etal 2009         151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30            Lessler_etal 2009          90</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31            Lessler_etal 2009          78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32            Lessler_etal 2009         124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33          Nishiura_Inaba 2011          72</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34          Nishiura_Inaba 2011          72</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35              Reich_etal 2009         151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36              Reich_etal 2009         151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37              Tuite_etal 2010         316</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38          Virlogeux_etal 2015         229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39          Virlogeux_etal 2015         229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40          Virlogeux_etal 2016         395</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41          Virlogeux_etal 2016         173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42          Virlogeux_etal 2016         222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43            Rudolph_etal 2014           6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44                  Pavlin 2014          76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45                  Pavlin 2014          18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46            Lessler_etal 2009          55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47             Assiri_etal 2013          23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48            Cowling_etal 2015         166</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49           Charniga_etal 2022          22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50            Guzetta_etal 2022         255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51           Madewell_etal 2022          35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52              Miura_etal 2022          18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53            Lessler_etal 2009          11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54            Lessler_etal 2009          28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55            Rudolph_etal 2014          23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56            Lessler_etal 2009          24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57              Reich_etal 2009          24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58              Reich_etal 2009          24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59            Lessler_etal 2009         157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60            Rudolph_etal 2014          18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61            Rudolph_etal 2014           8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62            Rudolph_etal 2014           6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63            Rudolph_etal 2014          91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64            Rudolph_etal 2014          80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65            Lessler_etal 2016          25</span>
 <span class="r-in"><span><span class="co"># this same process can be achieved when loading the library</span></span></span>
 <span class="r-in"><span><span class="va">eparam</span> <span class="op">&lt;-</span> <span class="fu"><a href="epiparam.html">epiparam</a></span><span class="op">(</span>epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>

@@ -46,6 +46,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/check_optim_conv.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_disease.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_name.html</loc>
   </url>
   <url>
@@ -55,13 +58,13 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.gamma.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.geometric.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.geom.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.lognormal.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.lnorm.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.negative_binomial.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.nbinom.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.weibull.html</loc>

@@ -100,10 +100,10 @@ identically.</p>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The <code>epidist</code> objects should contain metadata (<code>epidist$metadata</code>)
 indicating it is a vector-borne disease
-(<code>epidist$metadata$vector_borne</code> is TRUE) and the extrinsic distribution
-should indicate in the metadata that it is the extrinsic distribution
-(<code>epidist$metadata$extrinsic</code> is TRUE). If these two aspects are not given
-the construction of the class will throw a warning.</p>
+(<code>epidist$metadata$transmission_mode == "vector_borne"</code>) and the extrinsic
+distribution should indicate in the metadata that it is the extrinsic
+distribution (<code>epidist$metadata$extrinsic</code> is TRUE). If these two aspects
+are not given the construction of the class will throw a warning.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -120,7 +120,7 @@ the construction of the class will throw a warning.</p>
 <span class="r-in"><span>    prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
 <span class="r-in"><span>    prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    metadata <span class="op">=</span> <span class="fu"><a href="create_epidist_metadata.html">create_epidist_metadata</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>      vector_borne <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>      transmission_mode <span class="op">=</span> <span class="st">"vector_borne"</span>,</span></span>
 <span class="r-in"><span>      extrinsic <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
@@ -131,7 +131,7 @@ the construction of the class will throw a warning.</p>
 <span class="r-in"><span>    prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
 <span class="r-in"><span>    prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">2</span>, scale <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    metadata <span class="op">=</span> <span class="fu"><a href="create_epidist_metadata.html">create_epidist_metadata</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>      vector_borne <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>      transmission_mode <span class="op">=</span> <span class="st">"vector_borne"</span>,</span></span>
 <span class="r-in"><span>      extrinsic <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
