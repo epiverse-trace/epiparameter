@@ -20,7 +20,7 @@
 #' edist <- epidist(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "lognormal",
+#'   prob_distribution = "lnorm",
 #'   prob_distribution_params = c(meanlog = 1, sdlog = 1)
 #' )
 #' bind_epiparam(eparam, edist)

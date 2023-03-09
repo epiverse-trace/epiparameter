@@ -29,7 +29,9 @@ string. If the pathogen is unknown it can be given as \code{NULL}.}
 epidemiological distribution type}
 
 \item{prob_dist}{A character string specifying the probability
-distribution}
+distribution. This should match the R naming convention of probability
+distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
+geometric is geom)}
 
 \item{prob_dist_params}{A named vector of probability distribution
 parameters}

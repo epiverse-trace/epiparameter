@@ -71,7 +71,7 @@ make_epidist <- function(x) {
         )
       )
     )
-  } else if (x$prob_distribution %in% "lognormal") {
+  } else if (x$prob_distribution %in% "lnorm") {
     parameters <- c(meanlog = x$meanlog, sdlog = x$sdlog)
     uncertainty <- list(
       meanlog = create_epidist_uncertainty(
@@ -93,7 +93,7 @@ make_epidist <- function(x) {
         )
       )
     )
-  } else if (x$prob_distribution %in% "negative_binomial") {
+  } else if (x$prob_distribution %in% "nbinom") {
     parameters <- c(mean = x$mean, dispersion = x$dispersion)
     uncertainty <- list(
       mean = create_epidist_uncertainty(
@@ -115,7 +115,7 @@ make_epidist <- function(x) {
         )
       )
     )
-  } else if (x$prob_distribution %in% c("poisson", "geometric")) {
+  } else if (x$prob_distribution %in% c("pois", "geom")) {
     parameters <- c(mean = x$mean)
     uncertainty <- list(
       mean = create_epidist_uncertainty(
@@ -198,7 +198,7 @@ make_epidist <- function(x) {
 #' edist <- epidist(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "lognormal",
+#'   prob_distribution = "lnorm",
 #'   prob_distribution_params = c(meanlog = 1, sdlog = 1)
 #' )
 #' as_epiparam(edist)
@@ -245,8 +245,6 @@ as_epiparam <- function(x) {
     parameters <- unlist(x$prob_dist$parameters)
     discretised <- TRUE
     prob_dist <- x$prob_dist$name
-    # TODO: make use of lognormal or lnorm consistent
-    if (prob_dist == "lnorm") prob_dist <- "lognormal"
     truncation <- NA
   } else {
     parameters <- unlist(distributional::parameters(x$prob_dist))
@@ -260,7 +258,11 @@ as_epiparam <- function(x) {
   }
 
   # standardise distribution parameterisation
-  class(parameters) <- prob_dist
+  class(parameters) <- ifelse(
+    test = prob_dist == "lognormal",
+    yes = "lnorm",
+    no = prob_dist
+  )
   parameters <- clean_epidist_params(prob_dist_params = parameters)
 
   if (anyNA(x$uncertainty)) {

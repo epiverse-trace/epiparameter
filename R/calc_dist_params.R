@@ -136,7 +136,7 @@ convert_params <- function(summary_stats,
         sd = summary_stats$centre_spread$sd
       )
     ),
-    "lognormal" =  unlist(
+    "lnorm" =  unlist(
       lnorm_meansd2musigma(
         mean = summary_stats$centre_spread$mean,
         sd = summary_stats$centre_spread$sd
