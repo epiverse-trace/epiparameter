@@ -16,7 +16,9 @@ statistics can also include uncertainty around metrics such as confidence
 interval around mean and standard deviation.}
 
 \item{prob_dist}{A character string specifying the probability
-distribution}
+distribution. This should match the R naming convention of probability
+distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
+geometric is geom)}
 }
 \value{
 Named vector

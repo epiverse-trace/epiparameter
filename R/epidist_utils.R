@@ -564,7 +564,7 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
 #'
 #' @return Named vector of parameters
 #' @keywords internal
-clean_epidist_params.lognormal <- function(prob_dist_params) {
+clean_epidist_params.lnorm <- function(prob_dist_params) {
 
   # if meanlog and sdlog are provided convert to mu and sigma
   if (all(c("meanlog", "sdlog") %in% names(prob_dist_params))) {
@@ -616,7 +616,7 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
 #'
 #' @return Named vector of parameters
 #' @keywords internal
-clean_epidist_params.negative_binomial <- function(prob_dist_params) {
+clean_epidist_params.nbinom <- function(prob_dist_params) {
 
   if (all(c("mean", "dispersion") %in% names(prob_dist_params))) {
     # remove class attribute from prob_dist_params
@@ -635,7 +635,7 @@ clean_epidist_params.negative_binomial <- function(prob_dist_params) {
 #'
 #' @return Named vector of parameters
 #' @keywords internal
-clean_epidist_params.geometric <- function(prob_dist_params) {
+clean_epidist_params.geom <- function(prob_dist_params) {
 
   # if mean is provided convert to prob
   if ("mean" %in% names(prob_dist_params)) {
@@ -706,3 +706,4 @@ clean_disease <- function(x) {
   x <- tolower(x)
   x <- gsub(pattern = "-| ", replacement = "_", x = x)
   x
+}

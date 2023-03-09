@@ -31,7 +31,7 @@
 #' # load database of serial intervals
 #' eparam <- epiparam(epi_dist = "serial_interval")
 #' # subset database to only influenza entries
-#' eparam <- eparam[eparam$disease == "influenza", ]
+#' eparam <- eparam[clean_disease(eparam$disease) == "influenza", ]
 #' # convert to `epidist`
 #' edist2 <- as_epidist(eparam)
 #' # check the two methods produce the same `epidist` object

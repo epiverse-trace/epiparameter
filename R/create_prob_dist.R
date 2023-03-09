@@ -57,7 +57,7 @@ create_prob_dist <- function(prob_dist,
         scale = prob_dist_params[["scale"]],
         w = 1
       ),
-      lognormal = distcrete::distcrete(
+      lnorm = distcrete::distcrete(
         name = "lnorm",
         interval = 1,
         meanlog = prob_dist_params[["mu"]],
@@ -70,7 +70,8 @@ create_prob_dist <- function(prob_dist,
         shape = prob_dist_params[["shape"]],
         scale = prob_dist_params[["scale"]],
         w = 1
-      )
+      ),
+      stop("Did not recognise distribution name")
     )
   } else {
     # create discrete probability distribution object
@@ -80,7 +81,7 @@ create_prob_dist <- function(prob_dist,
         shape = prob_dist_params[["shape"]],
         rate = 1 / prob_dist_params[["scale"]]
       ),
-      lognormal = distributional::dist_lognormal(
+      lnorm = distributional::dist_lognormal(
         mu = prob_dist_params[["mu"]],
         sigma = prob_dist_params[["sigma"]]
       ),
@@ -88,19 +89,20 @@ create_prob_dist <- function(prob_dist,
         shape = prob_dist_params[["shape"]],
         scale = prob_dist_params[["scale"]]
       ),
-      negative_binomial = distributional::dist_negative_binomial(
+      nbinom = distributional::dist_negative_binomial(
         size = prob_dist_params[["dispersion"]],
         prob = nbinom_meandisp2probdisp(
           mean = prob_dist_params[["mean"]],
           dispersion = prob_dist_params[["dispersion"]]
         )$prob
       ),
-      geometric = distributional::dist_geometric(
+      geom = distributional::dist_geometric(
         prob = unname(prob_dist_params)
       ),
-      poisson = distributional::dist_poisson(
+      pois = distributional::dist_poisson(
         lambda = unname(prob_dist_params)
-      )
+      ),
+      stop("Did not recognise distribution name")
     )
   }
 
