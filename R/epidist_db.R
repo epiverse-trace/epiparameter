@@ -52,19 +52,19 @@ epidist_db <- function(disease,
   # read in database
   eparam <- epiparam(epi_dist = epi_dist)
 
-  if (is.na(pmatch(disease, eparam$disease))) {
+  if (!any(grepl(pattern = disease, x = eparam$disease, ignore.case = TRUE))) {
     stop(epi_dist, " distribution not available for ", disease, call. = FALSE)
   }
 
   # match disease names against data
   disease <- match.arg(
-    arg = disease,
-    choices = unique(eparam$disease),
+    arg = clean_disease(disease),
+    choices = clean_disease(unique(eparam$disease)),
     several.ok = FALSE
   )
 
   # filter based on pathogen and delay distribution
-  eparam <- eparam[eparam$disease == disease, ]
+  eparam <- eparam[clean_disease(eparam$disease) == disease, ]
 
   # extract study or default to largest sample size
   if (is.null(author)) {
