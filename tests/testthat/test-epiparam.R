@@ -2,11 +2,11 @@ test_that("epiparam works as expected", {
   eparam <- epiparam()
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(54L, 56L))
+  expect_identical(dim(eparam), c(106L, 56L))
   expect_identical(
     colnames(eparam),
     c("disease", "pathogen", "epi_distribution", "author", "year",
-      "sample_size", "region", "vector_borne", "vector", "extrinsic",
+      "sample_size", "region", "transmission_mode", "vector", "extrinsic",
       "prob_distribution", "inference_method", "mean", "mean_ci_limits",
       "mean_ci", "sd", "sd_ci_limits", "sd_ci",
       "quantile_025",
@@ -29,7 +29,7 @@ test_that("epiparam works as expected", {
   expect_type(eparam$year, "integer")
   expect_type(eparam$sample_size, "integer")
   expect_type(eparam$region, "character")
-  expect_type(eparam$vector_borne, "logical")
+  expect_type(eparam$transmission_mode, "character")
   expect_type(eparam$vector, "character")
   expect_type(eparam$extrinsic, "logical")
   expect_type(eparam$prob_distribution, "character")
@@ -51,7 +51,7 @@ test_that("epiparam works as expected", {
   expect_type(eparam$quantile_75, "double")
   expect_type(eparam$quantile_875, "logical")
   expect_type(eparam$quantile_95, "double")
-  expect_type(eparam$quantile_975, "integer")
+  expect_type(eparam$quantile_975, "double")
   expect_type(eparam$lower_range, "integer")
   expect_type(eparam$upper_range, "integer")
   expect_type(eparam$shape, "double")
@@ -65,11 +65,11 @@ test_that("epiparam works as expected", {
   expect_type(eparam$meanlog, "double")
   expect_type(eparam$meanlog_ci_limits, "list")
   lapply(eparam$meanlog_ci_limits, expect_type, "double")
-  expect_type(eparam$meanlog_ci, "logical")
+  expect_type(eparam$meanlog_ci, "integer")
   expect_type(eparam$sdlog, "double")
   expect_type(eparam$sdlog_ci_limits, "list")
   lapply(eparam$sdlog_ci_limits, expect_type, "double")
-  expect_type(eparam$sdlog_ci, "logical")
+  expect_type(eparam$sdlog_ci, "integer")
   expect_type(eparam$dispersion, "double")
   expect_type(eparam$dispersion_ci_limits, "list")
   lapply(eparam$dispersion_ci_limits, expect_type, "double")
@@ -92,35 +92,35 @@ test_that("epiparam works with all epi distributions", {
   eparam <- epiparam(epi_dist = "all")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(54L, 56L))
+  expect_identical(dim(eparam), c(106L, 56L))
 })
 
 test_that("epiparam works with incubation period", {
   eparam <- epiparam(epi_dist = "incubation_period")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(40L, 56L))
+  expect_identical(dim(eparam), c(65L, 56L))
 })
 
-test_that("epiparam works with onset-to-admission", {
-  eparam <- epiparam(epi_dist = "onset_to_admission")
+test_that("epiparam works with onset-to-hospitalisation", {
+  eparam <- epiparam(epi_dist = "onset_to_hospitalisation")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(0L, 56L))
+  expect_identical(dim(eparam), c(5L, 56L))
 })
 
 test_that("epiparam works with onset-to-death", {
   eparam <- epiparam(epi_dist = "onset_to_death")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(1L, 56L))
+  expect_identical(dim(eparam), c(7L, 56L))
 })
 
 test_that("epiparam works with serial interval", {
   eparam <- epiparam(epi_dist = "serial_interval")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(3L, 56L))
+  expect_identical(dim(eparam), c(10L, 56L))
 })
 
 test_that("epiparam works with generation time", {
@@ -172,14 +172,14 @@ test_that("epiparam head & tails methods works as expected", {
 test_that("new_epiparam works as expected", {
   eparam <- new_epiparam(epi_dist = "all")
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(54L, 56L))
+  expect_identical(dim(eparam), c(106L, 56L))
 })
 
 test_that("new_epiparam works with filtering by epi dist", {
   eparam <- new_epiparam(epi_dist = "incubation_period")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(40L, 56L))
+  expect_identical(dim(eparam), c(65L, 56L))
 })
 
 test_that("new_epiparam fails when expected", {

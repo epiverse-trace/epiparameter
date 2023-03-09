@@ -11,7 +11,7 @@ test_that("calc_dist_params works as expected converting from mean and sd", {
 
 test_that("calc_dist_params works as expected converting for different dist", {
   params <- calc_dist_params(
-    prob_dist = "lognormal",
+    prob_dist = "lnorm",
     prob_dist_params = NA,
     summary_stats = create_epidist_summary_stats(mean = 5, sd = 2)
   )
@@ -114,7 +114,7 @@ test_that("convert_params works as expected for lognormal", {
 
   params <- convert_params(
     summary_stats = create_epidist_summary_stats(mean = 5, sd = 2),
-    prob_dist = "lognormal"
+    prob_dist = "lnorm"
   )
 
   expect_vector(params, ptype = numeric(), size = 2)

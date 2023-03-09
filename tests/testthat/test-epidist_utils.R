@@ -1,6 +1,9 @@
 test_that("create_epidist_metadata fails when vector is given for non-vb", {
   expect_error(
-    create_epidist_metadata(vector_borne = FALSE, vector = "mosquito"),
+    create_epidist_metadata(
+      transmission_mode = "natural_human_to_human",
+      vector = "mosquito"
+    ),
     regexp = "(A vector is given for a non-vector-borne disease)"
   )
 })
@@ -34,7 +37,7 @@ test_that("clean_epidist_params fails when gamma parameters are incorrect", {
 test_that("clean_epidist_params fails when lognormal parameters are
           incorrect", {
   lognormal_params <- c(shape = 1, scale = 1)
-  class(lognormal_params) <- "lognormal"
+  class(lognormal_params) <- "lnorm"
   expect_error(
     clean_epidist_params(prob_dist_params = lognormal_params),
     regexp = "Names of lognormal distribution parameters are incorrect"
@@ -103,3 +106,4 @@ test_that("clean_disease fails as expected", {
     clean_disease(5),
     regexp = "(Assertion on 'x' failed)*(Must be of type)"
   )
+})

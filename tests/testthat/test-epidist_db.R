@@ -60,7 +60,7 @@ test_that("epidist_db fails as expected when epi_dist not recognised", {
   expect_error(
     epidist_db(
       disease = "influenza",
-      epi_dist = "onset_to_hospitalisation"
+      epi_dist = "delay_dist"
     ),
     regexp = "('arg' should be one of)"
   )

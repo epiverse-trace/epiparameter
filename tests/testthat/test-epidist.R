@@ -32,7 +32,7 @@ test_that("epidist works with all arguments set", {
     disease = "MERS",
     pathogen = "MERS_CoV",
     epi_dist = "serial_interval",
-    prob_distribution = "lognormal",
+    prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 2, sdlog = 1),
     uncertainty = list(
       meanlog = create_epidist_uncertainty(
@@ -79,7 +79,7 @@ test_that("epidist works with all arguments set", {
     metadata = create_epidist_metadata(
       sample_size = 100,
       region = "UK",
-      vector_borne = FALSE,
+      transmission_mode = "vector_borne",
       vector = NA,
       extrinsic = FALSE,
       inference_method = "MLE"
@@ -118,7 +118,7 @@ test_that("epidist works with default helper functions", {
     disease = "SARS",
     pathogen = "SARS_CoV",
     epi_dist = "onset_to_death",
-    prob_distribution = "lognormal",
+    prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 2, sdlog = 1),
     uncertainty = create_epidist_uncertainty(),
     summary_stats = create_epidist_summary_stats(),
