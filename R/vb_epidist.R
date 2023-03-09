@@ -115,8 +115,17 @@ validate_vb_epidist <- function(vb_epidist) {
       )
   )
 
-  if (!(vb_epidist$intrinsic$metadata$transmission_mode == "vector_borne") ||
-      !(vb_epidist$extrinsic$metadata$transmission_mode == "vector_borne")) {
+  intrinsic_vb <- grepl(
+    pattern = "vector_borne",
+    x = vb_epidist$intrinsic$metadata$transmission_mode,
+    ignore.case = TRUE
+  )
+  extrinsic_vb <- grepl(
+    pattern = "vector_borne",
+    x = vb_epidist$extrinsic$metadata$transmission_mode,
+    ignore.case = TRUE
+  )
+  if (isFALSE(intrinsic_vb) || isFALSE(extrinsic_vb)) {
     warning(
       "Distributions in vb_epidist class are not vector-borne. Check metadata",
       call. = FALSE
