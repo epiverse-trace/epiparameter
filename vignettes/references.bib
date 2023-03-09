@@ -134,38 +134,38 @@
 	doi = {10.1371/journal.pcbi.1008409},
 	abstract = {Estimation of the effective reproductive number
               R
-              
+
                 t
-              
+
               is important for detecting changes in disease transmission over time. During the Coronavirus Disease 2019 (COVID-19) pandemic, policy makers and public health officials are using
               R
-              
+
                 t
-              
+
               to assess the effectiveness of interventions and to inform policy. However, estimation of
               R
-              
+
                 t
-              
+
               from available data presents several challenges, with critical implications for the interpretation of the course of the pandemic. The purpose of this document is to summarize these challenges, illustrate them with examples from synthetic data, and, where possible, make recommendations. For near real-time estimation of
               R
-              
+
                 t
-              
+
               , we recommend the approach of Cori and colleagues, which uses data from before time
               t
               and empirical estimates of the distribution of time between infections. Methods that require data from after time
               t
               , such as Wallinga and Teunis, are conceptually and methodologically less suited for near real-time estimation, but may be appropriate for retrospective analyses of how individuals infected at different time points contributed to the spread. We advise caution when using methods derived from the approach of Bettencourt and Ribeiro, as the resulting
               R
-              
+
                 t
-              
+
               estimates may be biased if the underlying structural assumptions are not met. Two key challenges common to all approaches are accurate specification of the generation interval and reconstruction of the time series of new infections from observations occurring long after the moment of transmission. Naive approaches for dealing with observation delays, such as subtracting delays sampled from a distribution, can introduce bias. We provide suggestions for how to mitigate this and other technical challenges and highlight open problems in
               R
-              
+
                 t
-              
+
               estimation.},
 	language = {en},
 	number = {12},
@@ -369,28 +369,28 @@
 	doi = {10.1136/bmjopen-2020-039652},
 	abstract = {Objectives
               The aim of this study was to conduct a rapid systematic review and meta-analysis of estimates of the incubation period of COVID-19.
-            
-            
+
+
               Design
               Rapid systematic review and meta-analysis of observational research.
-            
-            
+
+
               Setting
               International studies on incubation period of COVID-19.
-            
-            
+
+
               Participants
               Searches were carried out in PubMed, Google Scholar, Embase, Cochrane Library as well as the preprint servers MedRxiv and BioRxiv. Studies were selected for meta-analysis if they reported either the parameters and CIs of the distributions fit to the data, or sufficient information to facilitate calculation of those values. After initial eligibility screening, 24 studies were selected for initial review, nine of these were shortlisted for meta-analysis. Final estimates are from meta-analysis of eight studies.
-            
-            
+
+
               Primary outcome measures
               Parameters of a lognormal distribution of incubation periods.
-            
-            
+
+
               Results
               The incubation period distribution may be modelled with a lognormal distribution with pooled mu and sigma parameters (95\% CIs) of 1.63 (95\% CI 1.51 to 1.75) and 0.50 (95\% CI 0.46 to 0.55), respectively. The corresponding mean (95\% CIs) was 5.8 (95\% CI 5.0 to 6.7) days. It should be noted that uncertainty increases towards the tail of the distribution: the pooled parameter estimates (95\% CIs) resulted in a median incubation period of 5.1 (95\% CI 4.5 to 5.8) days, whereas the 95th percentile was 11.7 (95\% CI 9.7 to 14.2) days.
-            
-            
+
+
               Conclusions
               The choice of which parameter values are adopted will depend on how the information is used, the associated risks and the perceived consequences of decisions to be taken. These recommendations will need to be revisited once further relevant information becomes available. Accordingly, we present an R Shiny app that facilitates updating these estimates as new data become available.},
 	language = {en},
@@ -512,3 +512,55 @@
 	pages = {509--516},
 	file = {Full Text:/Users/lshjl15/Zotero/storage/333ZG7RS/Wallinga - 2004 - Different Epidemic Curves for Severe Acute Respira.pdf:application/pdf},
 }
+
+
+@book{higgins_cochrane_2022,
+	address = {Chichester, England ; Hoboken, NJ},
+	edition = {6.3},
+	series = {Cochrane book series},
+	title = {Cochrane {Handbook} for {Systematic} {Reviews} of {Interventions}},
+	isbn = {978-0-470-69951-5 978-0-470-05796-4},
+	url = {www.training.cochrane.org/handbook},
+	publisher = {Wiley-Blackwell},
+	editor = {Higgins, Julian P. T. and {Thomas, J} and {Chandler, J} and {Cumpston, M} and {Li, T} and {Page, MJ} and {Welch, VA}},
+	year = {2022},
+	note = {OCLC: ocn154798512},
+	keywords = {Evidence-based medicine, Evidence-Based Medicine, Medicine, Meta-analysis, Meta-Analysis as Topic, Methodology, methods, Outcome and Process Assessment (Health Care), Outcome assessment (Medical care), Research Evaluation, Review Literature as Topic},
+	annote = {Preparing a Cochrane review / edited by Sally Green and Julian P.T. Higgins -- Maintaining reviews : updates, amendments and feedback / Julian P.T. Higgins, Sally Green, and Rob J.P.M. Scholten -- Guide to the contents of a Cochrane protocol and review / edited by Julian P.T. Higgins and Sally Green -- Defining the review question and developing criteria for including studies / edited by Denise O'Connor, Sally Green, and Julian P.T. Higgins -- Searching for studies / Carol Lefebvre, Eric Manheimer, and Julie Glanville -- Selecting studies and collecting data / edited by Julian P.T. Higgins and Jonathan J. Deeks -- Assessing risk of bias in included studies / edited by Julian P.T. Higgins and Douglas G. Altman -- Analysing data and undertaking meta-analyses / edited by Jonathan J. Deeks, Julian P.T. Higgins, and Douglas G. Altman -- Addressing reporting biases / edied by Jonathan A.C. Sterne, Matthias Egger, and David Moher -- Presenting results and 'summary of findings' tables / Holger J. Schünemann ... [et al.] -- Interpreting results and drawing conclusions / Holger J. Schünemann ... [et al.] -- Including non-randomized studies / Barnaby C. Reeves ... [et al.] -- Adverse effects / Yoon K. Loke, Deirdre Price, and Andrew Herxheimer -- Incorporating economics evidence / Ian Shemilt ... [et al.] -- Special topics in statistics / edited by Julian P.T. Higgins, Jonathan J. Deeks, and Douglas G. Altman -- Patient-reported outcomes / Donald L. Patrick, Gordon H. Guyatt, and Catherine Acquadro -- Reviews of individual patient data / Lesley A. Stewart, Jayne F. Tierney, Mike Clarke -- Prospective meta-analysis / Davina Ghersi, Jesse Berlin, and Lisa Askie -- Qualitative research and Cochrane reviews / Jane Noyes ... [et al.] -- Reviews in health promotion and public health / edited by Rebecca Armstrong, Elizabeth Waters, and Jodie Doyle -- Overviews of reviews / Lorne A. Becker and Andrew D. Oxman},
+	annote = {"This work is a co-publication between The Cochrane Collaboration and John Wiley \& Sons Ltd"--T.p. verso},
+}
+
+@article{page_prisma_2021,
+	title = {The {PRISMA} 2020 statement: an updated guideline for reporting systematic reviews},
+	issn = {1756-1833},
+	shorttitle = {The {PRISMA} 2020 statement},
+	url = {https://www.bmj.com/lookup/doi/10.1136/bmj.n71},
+	doi = {10.1136/bmj.n71},
+	language = {en},
+	urldate = {2023-03-09},
+	journal = {BMJ},
+	author = {Page, Matthew J and McKenzie, Joanne E and Bossuyt, Patrick M and Boutron, Isabelle and Hoffmann, Tammy C and Mulrow, Cynthia D and Shamseer, Larissa and Tetzlaff, Jennifer M and Akl, Elie A and Brennan, Sue E and Chou, Roger and Glanville, Julie and Grimshaw, Jeremy M and Hróbjartsson, Asbjørn and Lalu, Manoj M and Li, Tianjing and Loder, Elizabeth W and Mayo-Wilson, Evan and McDonald, Steve and McGuinness, Luke A and Stewart, Lesley A and Thomas, James and Tricco, Andrea C and Welch, Vivian A and Whiting, Penny and Moher, David},
+	month = mar,
+	year = {2021},
+	pages = {n71},
+	file = {Full Text:/Users/lshjl15/Zotero/storage/64VUPTIN/Page et al. - 2021 - The PRISMA 2020 statement an updated guideline fo.pdf:application/pdf},
+}
+
+@article{elliott_living_2014,
+	title = {Living {Systematic} {Reviews}: {An} {Emerging} {Opportunity} to {Narrow} the {Evidence}-{Practice} {Gap}},
+	volume = {11},
+	issn = {1549-1676},
+	shorttitle = {Living {Systematic} {Reviews}},
+	url = {https://dx.plos.org/10.1371/journal.pmed.1001603},
+	doi = {10.1371/journal.pmed.1001603},
+	language = {en},
+	number = {2},
+	urldate = {2023-03-09},
+	journal = {PLoS Medicine},
+	author = {Elliott, Julian H. and Turner, Tari and Clavisi, Ornella and Thomas, James and Higgins, Julian P. T. and Mavergames, Chris and Gruen, Russell L.},
+	month = feb,
+	year = {2014},
+	pages = {e1001603},
+	file = {Full Text:/Users/lshjl15/Zotero/storage/AEDUVXM8/Elliott et al. - 2014 - Living Systematic Reviews An Emerging Opportunity.pdf:application/pdf},
+}
+

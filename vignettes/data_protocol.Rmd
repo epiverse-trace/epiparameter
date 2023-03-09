@@ -1,6 +1,8 @@
 ---
 title: "Data Collation and Synthesis Protocol"
 output: rmarkdown::html_vignette
+bibliography: references.bib
+link-citations: true
 vignette: >
   %\VignetteIndexEntry{Data Collation and Synthesis Protocol}
   %\VignetteEngine{knitr::rmarkdown}
@@ -22,11 +24,10 @@ To prevent bias in the collection or assessment of the data, a well-defined meth
 
 There is a large body of work on the methods to best conduct literature searches and data collection as part of systematic reviews and meta-analyses[^2], which we use as the basis for our protocol. These sources are: 
 
-- [Cochrane Handbook](https://training.cochrane.org/handbook/current) 
-- [PRISMA](https://www.prisma-statement.org/)
-- [Stroup et al. (2000) Meta-analysis of observational studies in epidemiology](https://jamanetwork.com/journals/jama/fullarticle/192614)
+- [Cochrane Handbook](https://training.cochrane.org/handbook/current) [@higgins_cochrane_2022]
+- [PRISMA](https://www.prisma-statement.org/) [@page_prisma_2021]
 
-The `{epiparameter}` package will act as a 'living systematic review' (*sensu* [Elliot et al. 2014](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001603)) which will be actively updated and maintained to provide the most comprehensive and reliable source of data on epidemiological distributions.
+The `{epiparameter}` package will act as a 'living systematic review' (*sensu* @elliott_living_2014) which will be actively updated and maintained to provide the most comprehensive and reliable source of data on epidemiological distributions.
 
 ## Objective of `{epiparameter}`
 
@@ -34,7 +35,7 @@ As defined by the PRISMA guidelines, having a clearly stated objective helps to 
 
 ## Scope of package
 
-The `{epiparameter}` package spans a range of infectious diseases, including several distributions for each disease when available. The pathogens/diseases that are currently systematically searched for and included in the package library are:
+The `{epiparameter}` package spans a range of infectious diseases, including several distributions for each disease when available. The pathogens and diseases that are currently systematically searched for and included in the package library are:
 
 ```{r show-diseases, echo=FALSE}
 db <- epiparameter::epiparam()
@@ -48,15 +49,16 @@ knitr::kable(
 )
 ```
 
-The distributions currently included in the literature search for each pathogen/disease, and thus the package are:
+The distributions currently included in the literature search for each pathogen/disease are:
 
 ```{r, show-epidists, echo=FALSE}
 db <- epiparameter::epiparam()
 dupl_rows <- duplicated(db$epi_distribution)
 epidist <- epiparameter::clean_epidist_name(db$epi_distribution[!dupl_rows])
 knitr::kable(
-  data.frame("Epidemiological_Distribution" = epidist), 
-  align = "cc"
+  data.frame(epidist), 
+  align = "cc", 
+  col.names = "Epidemiological Distribution"
 )
 ```
 
@@ -113,7 +115,7 @@ The minimal dataset that is required to be included in the `{epiparameter}` libr
 - Type of distribution
 - Author(s) of the paper 
 - The year of publication
-- Whether the disease is vector-borne
+- The transmission mode of the pathogen (i.e. directly transmitted or vector-borne)
 - Whether the distribution is extrinsic (e.g. extrinsic incubation period). If the disease is not vector-borne this should be NA.
 - The type of distribution fitted, either the only distribution fit or the best-fit from a set of candidate distributions
 - Parameters or summary statistics for the distribution, these must be one of:
@@ -121,7 +123,7 @@ The minimal dataset that is required to be included in the `{epiparameter}` libr
     - Mean and standard deviation (or equivalently variance or coefficient of variation)
     - Median and range
     - Any two quantiles. Ideally there would be a lower quantile (q < 0.5) and an upper quantile (q > 0.5) to ensure reliable estimation of parameters
-- Whether the distribution fitted was discrete, this is a boolean (true or false).
+- Whether the distribution fitted was discretised, this is a boolean (true or false).
 - The Digital Object Identifier (DOI) of the paper
 
 Data that are recommended but not essential:
@@ -149,7 +151,7 @@ For a set of parameters to be included in the database it must pass the abstract
 
 ## Updating parameters in the database
 
-Because search and review stages are time consuming and cannot be continuously carried out, we aim to keep the `epiparamter` library up-to-date as a living data library by conducting regular searches (i.e. every 3-4 months) to fill in any missing papers or new publication since the last search. The epidemiological literature can expand rapidly, especially during a new outbreak. Therefore we can optionally include new studies that are of use to the epidemiological community in between regular updates. These small additions will still be subject to the data quality assessment and diagnostics to ensure accuracy, and will likely be picked up in the subsquent literature searches. It is likely that for existing pathogens that have not had a major increase in incidence since the last update few new papers will be reporting delay distributions. In these cases papers that were not previously reviewed due to limited reviewing time for each round of updates are now checked.
+Because search and review stages are time consuming and cannot be continuously carried out, we aim to keep the `{epiparameter}` library up-to-date as a living data library by conducting regular searches (i.e. every 3-4 months) to fill in any missing papers or new publication since the last search. The epidemiological literature can expand rapidly, especially during a new outbreak. Therefore we can optionally include new studies that are of use to the epidemiological community in between regular updates. These small additions will still be subject to the data quality assessment and diagnostics to ensure accuracy, and will likely be picked up in the subsquent literature searches. It is likely that for existing pathogens that have not had a major increase in incidence since the last update few new papers will be reporting delay distributions. In these cases papers that were not previously reviewed due to limited reviewing time for each round of updates are now checked.
 
 We particularly value community contributions to the database, so everyone can benefit from analysis that has already been conducted, and duplicated of effort is reduced.
 
@@ -162,6 +164,8 @@ All papers that are returned in the search results but are not suitable, either 
 - Journal, pre-print server, or host website
 - One or several reasons for why it was deemed unsuitable
 - Date of recording
+
+## References
 
 [^1]: We also include distribution parameters that are published on pre-print servers such as arxiv, bioRxiv and medRxiv. But will update the citation reference once the paper is accepted and published by a journal. 
 
