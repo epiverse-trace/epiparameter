@@ -4,10 +4,10 @@
       dengue_dist <- suppressMessages(vb_epidist(intrinsic_epidist = epidist(disease = "dengue",
         epi_dist = "incubation", prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1), metadata = create_epidist_metadata(
-          vector_borne = TRUE)), extrinsic_epidist = epidist(disease = "dengue",
+          transmission_mode = "vector_borne")), extrinsic_epidist = epidist(disease = "dengue",
         epi_dist = "incubation", prob_distribution = "gamma",
         prob_distribution_params = c(shape = 2, scale = 2), metadata = create_epidist_metadata(
-          vector_borne = TRUE, extrinsic = TRUE))))
+          transmission_mode = "vector_borne", extrinsic = TRUE))))
 
 ---
 
@@ -63,10 +63,10 @@
       dengue_dist <- suppressMessages(vb_epidist(intrinsic_epidist = epidist(disease = "dengue",
         epi_dist = "incubation", prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1), metadata = create_epidist_metadata(
-          vector_borne = TRUE), discretise = TRUE), extrinsic_epidist = epidist(
+          transmission_mode = "vector_borne"), discretise = TRUE), extrinsic_epidist = epidist(
         disease = "dengue", epi_dist = "incubation", prob_distribution = "gamma",
         prob_distribution_params = c(shape = 2, scale = 2), metadata = create_epidist_metadata(
-          vector_borne = TRUE, extrinsic = TRUE), discretise = TRUE)))
+          transmission_mode = "vector_borne", extrinsic = TRUE), discretise = TRUE)))
 
 ---
 

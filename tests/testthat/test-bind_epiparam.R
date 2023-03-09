@@ -73,7 +73,7 @@ test_that("bind_epiparam works as expected for binding list of epidist", {
       epidist(
         disease = "ebola",
         epi_dist = "incubation_period",
-        prob_distribution = "lognormal",
+        prob_distribution = "lnorm",
         prob_distribution_params = c(meanlog = 2, sdlog = 2)
       ),
       epidist(
@@ -142,16 +142,19 @@ test_that("bind_epiparam works as expected for binding vb_epidist", {
     intrinsic_epidist = epidist(
       disease = "dengue",
       epi_dist = "incubation_period",
-      prob_distribution = "lognormal",
+      prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 1, sdlog = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
       epi_dist = "incubation_period",
-      prob_distribution = "lognormal",
+      prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 2, sdlog = 2),
-      metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+      metadata = create_epidist_metadata(
+        transmission_mode = "vector_borne",
+        extrinsic = TRUE
+      )
     )
   ))
 
@@ -171,7 +174,10 @@ test_that("bind_epiparam works as expected for binding vb_epidist", {
   )
   expect_identical(new_eparam[nrow(new_eparam) - 1, ]$meanlog, 1)
   expect_identical(new_eparam[nrow(new_eparam) - 1, ]$sdlog, 1)
-  expect_true(new_eparam[nrow(new_eparam) - 1, ]$vector_borne)
+  expect_identical(
+    new_eparam[nrow(new_eparam) - 1, ]$transmission_mode,
+    "vector_borne"
+  )
   expect_false(new_eparam[nrow(new_eparam) - 1, ]$extrinsic)
   # check some defaults missing from intrinsic epidist
   expect_true(is.na(new_eparam[nrow(new_eparam) - 1, ]$author))
@@ -190,7 +196,10 @@ test_that("bind_epiparam works as expected for binding vb_epidist", {
   )
   expect_identical(new_eparam[nrow(new_eparam), ]$meanlog, 2)
   expect_identical(new_eparam[nrow(new_eparam), ]$sdlog, 2)
-  expect_true(new_eparam[nrow(new_eparam), ]$vector_borne)
+  expect_identical(
+    new_eparam[nrow(new_eparam), ]$transmission_mode,
+    "vector_borne"
+  )
   expect_true(new_eparam[nrow(new_eparam), ]$extrinsic)
   # check some defaults missing from intrinsic epidist
   expect_true(is.na(new_eparam[nrow(new_eparam), ]$author))
@@ -325,7 +334,7 @@ test_that("bind_epiparam fails as expected for binding corrupt epidist list", {
       epidist(
         disease = "ebola",
         epi_dist = "incubation_period",
-        prob_distribution = "lognormal",
+        prob_distribution = "lnorm",
         prob_distribution_params = c(meanlog = 2, sdlog = 2)
       ),
       epidist(
@@ -358,7 +367,7 @@ test_that("bind_epiparam fails as expected for binding list without epidist", {
       epidist(
         disease = "ebola",
         epi_dist = "incubation_period",
-        prob_distribution = "lognormal",
+        prob_distribution = "lnorm",
         prob_distribution_params = c(meanlog = 2, sdlog = 2)
       ),
       c(1, 2)
@@ -378,16 +387,19 @@ test_that("bind_epiparam fails as expected for binding corrupt vb_epidist", {
     intrinsic_epidist = epidist(
       disease = "dengue",
       epi_dist = "incubation_period",
-      prob_distribution = "lognormal",
+      prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 1, sdlog = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
       epi_dist = "incubation_period",
-      prob_distribution = "lognormal",
+      prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 2, sdlog = 2),
-      metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+      metadata = create_epidist_metadata(
+        transmission_mode = "vector_borne",
+        extrinsic = TRUE
+      )
     )
   ))
 

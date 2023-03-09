@@ -8,7 +8,7 @@ test_that("vb_epidist works with minimal viable input", {
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = FALSE
         )
       ),
@@ -18,7 +18,7 @@ test_that("vb_epidist works with minimal viable input", {
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = TRUE
         )
       )
@@ -47,7 +47,7 @@ test_that("vb_epidist works with all arguements set", {
         summary_stats = create_epidist_summary_stats(),
         citation = create_epidist_citation(),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = FALSE
         ),
         method_assess = create_epidist_method_assess(),
@@ -65,7 +65,7 @@ test_that("vb_epidist works with all arguements set", {
         summary_stats = create_epidist_summary_stats(),
         citation = create_epidist_citation(),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = TRUE
         ),
         method_assess = create_epidist_method_assess(),
@@ -94,7 +94,7 @@ test_that("vb_epidist throws warning when expected", {
             prob_distribution = "gamma",
             prob_distribution_params = c(shape = 1, scale = 1),
             metadata = create_epidist_metadata(
-              vector_borne = FALSE,
+              transmission_mode = "natural_human_to_human",
               extrinsic = FALSE
             )
           ),
@@ -104,7 +104,7 @@ test_that("vb_epidist throws warning when expected", {
             prob_distribution = "gamma",
             prob_distribution_params = c(shape = 1, scale = 1),
             metadata = create_epidist_metadata(
-              vector_borne = TRUE,
+              transmission_mode = "vector_borne",
               extrinsic = TRUE
             )
           )
@@ -124,7 +124,7 @@ test_that("vb_epidist throws warning when expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = TRUE,
+            transmission_mode = "vector_borne",
             extrinsic = FALSE
           )
         ),
@@ -134,7 +134,7 @@ test_that("vb_epidist throws warning when expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = FALSE,
+            transmission_mode = "natural_human_to_human",
             extrinsic = TRUE
           )
         )
@@ -154,7 +154,7 @@ test_that("vb_epidist throws warning when expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = TRUE,
+            transmission_mode = "vector_borne",
             extrinsic = FALSE
           )
         ),
@@ -164,7 +164,7 @@ test_that("vb_epidist throws warning when expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = TRUE,
+            transmission_mode = "vector_borne",
             extrinsic = FALSE
           )
         )
@@ -184,7 +184,7 @@ test_that("vb_epidist throws warning when expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = TRUE,
+            transmission_mode = "vector_borne",
             extrinsic = TRUE
           )
         ),
@@ -194,7 +194,7 @@ test_that("vb_epidist throws warning when expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = TRUE,
+            transmission_mode = "vector_borne",
             extrinsic = TRUE
           )
         )
@@ -217,7 +217,7 @@ test_that("vb_epidist fails as expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = TRUE,
+            transmission_mode = "vector_borne",
             extrinsic = FALSE
           )
         ),
@@ -227,7 +227,7 @@ test_that("vb_epidist fails as expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = TRUE,
+            transmission_mode = "vector_borne",
             extrinsic = TRUE
           )
         )
@@ -245,7 +245,7 @@ test_that("vb_epidist fails as expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = TRUE,
+            transmission_mode = "vector_borne",
             extrinsic = FALSE
           )
         ),
@@ -255,7 +255,7 @@ test_that("vb_epidist fails as expected", {
           prob_distribution = "gamma",
           prob_distribution_params = c(shape = 1, scale = 1),
           metadata = create_epidist_metadata(
-            vector_borne = TRUE,
+            transmission_mode = "vector_borne",
             extrinsic = TRUE
           )
         )
@@ -274,7 +274,7 @@ test_that("vb_epidist print & format method works as expected", {
         epi_dist = "incubation",
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
-        metadata = create_epidist_metadata(vector_borne = TRUE)
+        metadata = create_epidist_metadata(transmission_mode = "vector_borne")
       ),
       extrinsic_epidist = epidist(
         disease = "dengue",
@@ -282,7 +282,7 @@ test_that("vb_epidist print & format method works as expected", {
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 2, scale = 2),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = TRUE
         )
       )
@@ -303,7 +303,7 @@ test_that("vb_epidist print & format method works as expected", {
         epi_dist = "incubation",
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
-        metadata = create_epidist_metadata(vector_borne = TRUE),
+        metadata = create_epidist_metadata(transmission_mode = "vector_borne"),
         discretise = TRUE
       ),
       extrinsic_epidist = epidist(
@@ -312,7 +312,7 @@ test_that("vb_epidist print & format method works as expected", {
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 2, scale = 2),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = TRUE
         ),
         discretise = TRUE
@@ -338,7 +338,7 @@ test_that("vb_epidist.plot does not produce an error", {
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = FALSE
         )
       ),
@@ -348,7 +348,7 @@ test_that("vb_epidist.plot does not produce an error", {
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = TRUE
         )
       )
@@ -376,7 +376,7 @@ test_that("vb_epidist.plot works with non-default day_range", {
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = FALSE
         )
       ),
@@ -386,7 +386,7 @@ test_that("vb_epidist.plot works with non-default day_range", {
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
         metadata = create_epidist_metadata(
-          vector_borne = TRUE,
+          transmission_mode = "vector_borne",
           extrinsic = TRUE
         )
       )
@@ -420,7 +420,7 @@ test_that("density works as expected on continuous vb_epidist object", {
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
@@ -428,7 +428,7 @@ test_that("density works as expected on continuous vb_epidist object", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       )
     )
@@ -475,7 +475,7 @@ test_that("density works as expected on discrete vb_epidist object", {
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE),
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne"),
       discretise = TRUE
     ),
     extrinsic_epidist = epidist(
@@ -484,7 +484,7 @@ test_that("density works as expected on discrete vb_epidist object", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       ),
       discretise = TRUE
@@ -533,7 +533,7 @@ test_that("density works as expected on continuous vb_epidist object with
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
@@ -541,7 +541,7 @@ test_that("density works as expected on continuous vb_epidist object with
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       )
     )
@@ -566,7 +566,7 @@ test_that("density works as expected on discrete vb_epidist object with
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE),
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne"),
       discretise = TRUE
     ),
     extrinsic_epidist = epidist(
@@ -575,7 +575,7 @@ test_that("density works as expected on discrete vb_epidist object with
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       ),
       discretise = TRUE
@@ -601,7 +601,7 @@ test_that("cdf works as expected on continuous vb_epidist object", {
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
@@ -609,7 +609,7 @@ test_that("cdf works as expected on continuous vb_epidist object", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       )
     )
@@ -664,7 +664,7 @@ test_that("cdf works as expected on discrete vb_epidist object", {
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE),
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne"),
       discretise = TRUE
     ),
     extrinsic_epidist = epidist(
@@ -673,7 +673,7 @@ test_that("cdf works as expected on discrete vb_epidist object", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       ),
       discretise = TRUE
@@ -730,7 +730,7 @@ test_that("cdf works as expected on continuous vb_epidist object with
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
@@ -738,7 +738,7 @@ test_that("cdf works as expected on continuous vb_epidist object with
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       )
     )
@@ -766,7 +766,7 @@ test_that("cdf works as expected on discrete vb_epidist object with
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE),
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne"),
       discretise = TRUE
     ),
     extrinsic_epidist = epidist(
@@ -775,7 +775,7 @@ test_that("cdf works as expected on discrete vb_epidist object with
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       ),
       discretise = TRUE
@@ -803,7 +803,7 @@ test_that("quantile works as expected on continuous vb_epidist object", {
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
@@ -811,7 +811,7 @@ test_that("quantile works as expected on continuous vb_epidist object", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       )
     )
@@ -850,7 +850,7 @@ test_that("quantile works as expected on discrete epidist object", {
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE),
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne"),
       discretise = TRUE
     ),
     extrinsic_epidist = epidist(
@@ -859,7 +859,7 @@ test_that("quantile works as expected on discrete epidist object", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       ),
       discretise = TRUE
@@ -900,7 +900,7 @@ test_that("quantile works as expected on continuous vb_epidist object with
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
@@ -908,7 +908,7 @@ test_that("quantile works as expected on continuous vb_epidist object with
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       )
     )
@@ -932,7 +932,7 @@ test_that("quantile works as expected on discrete vb_epidist object with
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE),
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne"),
       discretise = TRUE
     ),
     extrinsic_epidist = epidist(
@@ -941,7 +941,7 @@ test_that("quantile works as expected on discrete vb_epidist object with
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       ),
       discretise = TRUE
@@ -965,7 +965,7 @@ test_that("generate works as expected on continuous vb_epidist object", {
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
@@ -973,7 +973,7 @@ test_that("generate works as expected on continuous vb_epidist object", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       )
     )
@@ -1006,7 +1006,7 @@ test_that("generate works as expected on discrete vb_epidist object", {
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE),
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne"),
       discretise = TRUE
     ),
     extrinsic_epidist = epidist(
@@ -1015,7 +1015,7 @@ test_that("generate works as expected on discrete vb_epidist object", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       ),
       discretise = TRUE
@@ -1050,7 +1050,7 @@ test_that("generate fails as expected on continuous vb_epidist object with
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
@@ -1058,7 +1058,7 @@ test_that("generate fails as expected on continuous vb_epidist object with
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       )
     )
@@ -1076,7 +1076,7 @@ test_that("generate fails as expected on discrete vb_epidist object with
       epi_dist = "incubation",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE),
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne"),
       discretise = TRUE
     ),
     extrinsic_epidist = epidist(
@@ -1085,7 +1085,7 @@ test_that("generate fails as expected on discrete vb_epidist object with
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 2, scale = 2),
       metadata = create_epidist_metadata(
-        vector_borne = TRUE,
+        transmission_mode = "vector_borne",
         extrinsic = TRUE
       ),
       discretise = TRUE
@@ -1103,14 +1103,17 @@ test_that("is_vb_epidist returns TRUE when expected", {
       epi_dist = "incubation_period",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
       epi_dist = "incubation_period",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+      metadata = create_epidist_metadata(
+        transmission_mode = "vector_borne",
+        extrinsic = TRUE
+      )
     )
   ))
 
@@ -1125,14 +1128,17 @@ test_that("is_vb_epidist returns FALSE when expected", {
       epi_dist = "incubation_period",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE)
+      metadata = create_epidist_metadata(transmission_mode = "vector_borne")
     ),
     extrinsic_epidist = epidist(
       disease = "dengue",
       epi_dist = "incubation_period",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      metadata = create_epidist_metadata(vector_borne = TRUE, extrinsic = TRUE)
+      metadata = create_epidist_metadata(
+        transmission_mode = "vector_borne",
+        extrinsic = TRUE
+      )
     )
   ))
 

@@ -16,7 +16,7 @@ test_that("create_prob_dist works as expected for continuous gamma", {
 
 test_that("create_prob_dist works as expected for continuous lognormal", {
   res <- create_prob_dist(
-    prob_dist = "lognormal",
+    prob_dist = "lnorm",
     prob_dist_params = c(mu = 1, sigma = 1),
     discretise = FALSE,
     truncation = NA
@@ -48,7 +48,7 @@ test_that("create_prob_dist works as expected for continuous weibull", {
 
 test_that("create_prob_dist works as expected for negative binomial", {
   res <- create_prob_dist(
-    prob_dist = "negative_binomial",
+    prob_dist = "nbinom",
     prob_dist_params = c(mean = 1, dispersion = 1),
     discretise = FALSE,
     truncation = NA
@@ -64,7 +64,7 @@ test_that("create_prob_dist works as expected for negative binomial", {
 
 test_that("create_prob_dist works as expected for geometric", {
   res <- create_prob_dist(
-    prob_dist = "geometric",
+    prob_dist = "geom",
     prob_dist_params = c(mean = 1),
     discretise = FALSE,
     truncation = NA
@@ -80,7 +80,7 @@ test_that("create_prob_dist works as expected for geometric", {
 
 test_that("create_prob_dist works as expected for poisson", {
   res <- create_prob_dist(
-    prob_dist = "poisson",
+    prob_dist = "pois",
     prob_dist_params = c(mean = 1),
     discretise = FALSE,
     truncation = NA
@@ -112,7 +112,7 @@ test_that("create_prob_dist works as expected for discrete gamma", {
 
 test_that("create_prob_dist works as expected for discrete lognormal", {
   res <- create_prob_dist(
-    prob_dist = "lognormal",
+    prob_dist = "lnorm",
     prob_dist_params = c(mu = 1, sigma = 1),
     discretise = TRUE,
     truncation = NA
