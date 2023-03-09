@@ -360,7 +360,7 @@ properties:
     items:
       type: ["array", "null"]
       items:
-        type: number
+        type: ["number", "null"]
   meanlog_ci:
     description: >
       The interval of the uncertainty around the meanlog
@@ -387,7 +387,7 @@ properties:
     items:
       type: ["array", "null"]
       items:
-        type: number
+        type: ["number", "null"]
   sdlog_ci:
     description: >
       The interval of the uncertainty around the sdlog
