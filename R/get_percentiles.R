@@ -71,24 +71,67 @@ get_percentiles <- function(percentiles) {
   ))
 
   # extract a lower and an upper percentile
-  # TODO: write function that searches for symmetrical percentiles
-  lower_percentile <-
-    percentiles[which(as.numeric(names(percentiles)) <= 50)][1]
-  upper_percentile <- percentiles[which(as.numeric(names(percentiles)) > 50)][1]
+  percentiles <- get_sym_percentiles(percentiles)
 
-  # use the first numeric quantile in the set to calculate the parameters
-  percentiles <- vapply(c(lower_percentile, upper_percentile), function(x) {
-    if (length(x) == 0) {
-      NA_real_
-    } else {
-      x
-    }
-  }, FUN.VALUE = numeric(1))
-
+  # if any percentiles are NA return NA
   if (anyNA(percentiles)) {
     percentiles <- NA
   }
 
   # return percentiles
   percentiles
+}
+
+#' Get the lower and upper percentiles with a preference for symmetrical
+#' percentiles
+#'
+#' @param percentiles A named vector of percentiles. The names are in the
+#' correct format to be converted to their numeric value using `as.numeric()`.
+#'
+#' @return A named numeric vector of two elements with the lower (first element)
+#' and upper (second element) percentiles
+#' @keywords internal
+get_sym_percentiles <- function(percentiles) {
+
+  # check input
+  stopifnot("all percentiles are missing" = !all(is.na(percentiles)))
+
+  # make a copy of percentiles
+  percentiles_ <- percentiles
+
+  # remove NA values
+  percentiles <- percentiles[!is.na(percentiles)]
+
+  # get percentiles names for percentiles with and without NAs
+  intervals <- as.numeric(names(percentiles))
+
+  # split lower and upper percentiles
+  lower_intervals <- intervals[intervals <= 50]
+  upper_intervals <- intervals[intervals > 50]
+
+  if (identical(length(lower_intervals), 0L) ||
+      identical(length(upper_intervals), 0L)) {
+    return(NA)
+  }
+
+  # calc differences of lower and upper percentiles from bounds
+  lw_interval_diff <- abs(0 - lower_intervals)
+  up_interval_diff <- abs(100 - upper_intervals)
+
+  # calc distance between lower and upper percentiles
+  outer_diff <- abs(outer(lw_interval_diff, up_interval_diff, FUN = "-"))
+
+  # get indices of symmetrical or most symmetrical lower and upper percentiles
+  idx <- as.vector(arrayInd(which.min(outer_diff), .dim = dim(outer_diff)))
+
+  # extract lower and upper percentiles from non-NA percentiles
+  lower_percentile <- lower_intervals[idx[1]]
+  upper_percentile <- upper_intervals[idx[2]]
+
+  # extract lower and upper percentiles from all percentiles
+  lower_percentile_idx = which(names(percentiles_) %in% lower_percentile)
+  upper_percentile_idx = which(names(percentiles_) %in% upper_percentile)
+
+  # return vector of percentiles
+  percentiles_[c(lower_percentile_idx, upper_percentile_idx)]
 }
