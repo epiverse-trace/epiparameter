@@ -129,7 +129,7 @@ make_epidist <- function(x) {
       )
     )
   } else {
-    stop("Distribution in epiparam object not recognised")
+    stop("Distribution in epiparam object not recognised", call. = FALSE)
   }
 
   epidist(

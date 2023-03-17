@@ -80,8 +80,11 @@ epidist_db <- function(disease,
 
   # Throw warning if more than one row found and select first
   if (nrow(eparam) > 1) {
-    warning("More than one study found. Selecting first one.
-    Please report an issue with duplicated studies.")
+    warning(
+      paste("More than one study found. Selecting first one.",
+            "Please report an issue with duplicated studies."),
+      call. = FALSE
+    )
     eparam <- eparam[1, ]
   }
 

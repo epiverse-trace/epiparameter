@@ -148,7 +148,7 @@ convert_params <- function(summary_stats,
         sd = summary_stats$centre_spread$sd
       )
     ),
-    stop("No conversion functions for ", prob_dist)
+    stop("No conversion functions for ", prob_dist, call. = FALSE)
   )
 
   # return params

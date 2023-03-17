@@ -120,7 +120,7 @@ epiparam <- function(epi_dist = c("all",
 validate_epiparam <- function(epiparam) {
 
   if (!is_epiparam(epiparam)) {
-    stop("Object should be of class epiparam")
+    stop("Object should be of class epiparam", call. = FALSE)
   }
 
   # check for class invariants
