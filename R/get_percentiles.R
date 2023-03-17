@@ -99,8 +99,8 @@ get_sym_percentiles <- function(percentiles) {
   upper_percentile <- upper_intervals[idx[2]]
 
   # extract lower and upper percentiles from all percentiles
-  lower_percentile_idx = which(names(percentiles_) %in% lower_percentile)
-  upper_percentile_idx = which(names(percentiles_) %in% upper_percentile)
+  lower_percentile_idx <- which(names(percentiles_) %in% lower_percentile)
+  upper_percentile_idx <- which(names(percentiles_) %in% upper_percentile)
 
   # return vector of percentiles
   percentiles_[c(lower_percentile_idx, upper_percentile_idx)]
