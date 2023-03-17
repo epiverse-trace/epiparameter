@@ -435,6 +435,13 @@ test_that("validate_epidist catches class faults when expected", {
   )
 })
 
+test_that("validate_epidist fails as expected with input class", {
+    expect_error(
+      validate_epidist(epidist = 1),
+      regexp = "Object should be of class epidist"
+    )
+})
+
 test_that("density works as expected on continuous epidist object", {
   ebola_dist <- suppressMessages(
     epidist(

@@ -147,7 +147,7 @@ test_that("convert_params works as expected for unrecognised class", {
   expect_error(
     convert_params(
       summary_stats = create_epidist_summary_stats(mean = 5, sd = 2),
-      prob_dist = "distribution"
+      prob_dist = "random distribution"
     ),
     regexp = "(No conversion functions for)"
   )

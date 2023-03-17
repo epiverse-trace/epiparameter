@@ -53,6 +53,24 @@ test_that("clean_epidist_params fails when weibull parameters are incorrect", {
   )
 })
 
+test_that("clean_epidist_params fails when nbinom parameters are incorrect", {
+  nbinom_params <- c(meanlog = 1, sdlog = 1)
+  class(nbinom_params) <- "nbinom"
+  expect_error(
+    clean_epidist_params(prob_dist_params = nbinom_params),
+    regexp = "Names of negative binomial distribution parameters are incorrect"
+  )
+})
+
+test_that("clean_epidist_params fails when geom parameters are incorrect", {
+  geom_params <- c(meanlog = 1, sdlog = 1)
+  class(geom_params) <- "geom"
+  expect_error(
+    clean_epidist_params(prob_dist_params = geom_params),
+    regexp = "Names of geometric distribution parameters are incorrect"
+  )
+})
+
 test_that("clean_epidist_params works for default method", {
   weibull_params <- c(meanlog = 1, sdlog = 1)
   class(weibull_params) <- "distribution"
