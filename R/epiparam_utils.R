@@ -155,13 +155,13 @@ make_epidist <- function(x) {
       lower_range = x$lower_range,
       upper_range = x$upper_range,
       quantiles = c(
-        q_025 = x$quantile_025,
-        q_05 = x$quantile_05,
+        q_2.5 = x$quantile_2.5,
+        q_5 = x$quantile_5,
         q_25 = x$quantile_25,
         q_75 = x$quantile_75,
-        q_875 = x$quantile_875,
+        q_87.5 = x$quantile_87.5,
         q_95 = x$quantile_95,
-        q_975 = x$quantile_975
+        q_97.5 = x$quantile_97.5
       )
     ),
     citation = create_epidist_citation(
@@ -295,16 +295,16 @@ as_epiparam <- function(x) {
     sd = x$summary_stats$centre_spread$sd,
     sd_ci_limits = I(list(x$summary_stats$centre_spread$sd_ci_limits)),
     sd_ci = x$summary_stats$centre_spread$sd_ci,
-    quantile_025 = unname(x$summary_stats$quantiles["q_025"]),
-    quantile_05 = unname(x$summary_stats$quantiles["q_05"]),
+    quantile_2.5 = unname(x$summary_stats$quantiles["q_2.5"]),
+    quantile_5 = unname(x$summary_stats$quantiles["q_5"]),
     quantile_25 = unname(x$summary_stats$quantiles["q_25"]),
     median = x$summary_stats$centre_spread$median,
     median_ci_limits = I(list(x$summary_stats$centre_spread$median_ci_limits)),
     median_ci = x$summary_stats$centre_spread$median_ci,
     quantile_75 = unname(x$summary_stats$quantiles["q_75"]),
-    quantile_875 = unname(x$summary_stats$quantiles["q_875"]),
+    quantile_87.5 = unname(x$summary_stats$quantiles["q_87.5"]),
     quantile_95 = unname(x$summary_stats$quantiles["q_95"]),
-    quantile_975 = unname(x$summary_stats$quantiles["q_975"]),
+    quantile_97.5 = unname(x$summary_stats$quantiles["q_97.5"]),
     lower_range = x$summary_stats$range$lower_range,
     upper_range = x$summary_stats$range$upper_range,
     shape = ifelse(

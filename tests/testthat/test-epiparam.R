@@ -8,10 +8,9 @@ test_that("epiparam works as expected", {
     c("disease", "pathogen", "epi_distribution", "author", "year",
       "sample_size", "region", "transmission_mode", "vector", "extrinsic",
       "prob_distribution", "inference_method", "mean", "mean_ci_limits",
-      "mean_ci", "sd", "sd_ci_limits", "sd_ci",
-      "quantile_025",
-      "quantile_05", "quantile_25", "median", "median_ci_limits", "median_ci",
-      "quantile_75", "quantile_875", "quantile_95", "quantile_975",
+      "mean_ci", "sd", "sd_ci_limits", "sd_ci", "quantile_2.5",
+      "quantile_5", "quantile_25", "median", "median_ci_limits", "median_ci",
+      "quantile_75", "quantile_87.5", "quantile_95", "quantile_97.5",
       "lower_range", "upper_range", "shape", "shape_ci_limits",
       "shape_ci",
       "scale", "scale_ci_limits", "scale_ci", "meanlog",
@@ -42,16 +41,16 @@ test_that("epiparam works as expected", {
   expect_type(eparam$sd_ci_limits, "list")
   lapply(eparam$sd_ci_limits, expect_type, "double")
   expect_type(eparam$sd_ci, "integer")
-  expect_type(eparam$quantile_025, "double")
-  expect_type(eparam$quantile_05, "double")
+  expect_type(eparam$quantile_2.5, "double")
+  expect_type(eparam$quantile_5, "double")
   expect_type(eparam$quantile_25, "double")
   expect_type(eparam$median, "double")
   expect_type(eparam$median_ci_limits, "list")
   lapply(eparam$median_ci_limits, expect_type, "double")
   expect_type(eparam$quantile_75, "double")
-  expect_type(eparam$quantile_875, "logical")
+  expect_type(eparam$quantile_87.5, "logical")
   expect_type(eparam$quantile_95, "double")
-  expect_type(eparam$quantile_975, "double")
+  expect_type(eparam$quantile_97.5, "double")
   expect_type(eparam$lower_range, "integer")
   expect_type(eparam$upper_range, "integer")
   expect_type(eparam$shape, "double")
