@@ -164,7 +164,7 @@
         "type": ["number", "null"]
       }
     },
-    "quantile_025": {
+    "quantile_2.5": {
       "description": "The 2.5th quantile of the distribution.\n",
       "examples": [0.3, 0.45],
       "type": "array",
@@ -172,7 +172,7 @@
         "type": ["number", "null"]
       }
     },
-    "quantile_05": {
+    "quantile_5": {
       "description": "The 5th quantile of the distribution.\n",
       "examples": [0.3, 0.45],
       "type": "array",
@@ -226,7 +226,7 @@
         "type": ["number", "null"]
       }
     },
-    "quantile_875": {
+    "quantile_87.5": {
       "description": "The 87.5th quantile of the distribution.\n",
       "examples": [0.9, 1.1],
       "type": "array",
@@ -242,7 +242,7 @@
         "type": ["number", "null"]
       }
     },
-    "quantile_975": {
+    "quantile_97.5": {
       "description": "The 97.5th quantile of the distribution.\n",
       "examples": [1.5, 1.8],
       "type": "array",
