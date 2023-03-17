@@ -29,12 +29,12 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-The easiest way to install the development version of `{epiparameter}` is to use the `{remotes}` package:
+The easiest way to install the development version of `{epiparameter}` is to use the `{pak}` package:
 
 ``` r
-# check whether {remotes} is installed
-if(!require("remotes")) install.packages("remotes")
-remotes::install_github("epiverse-trace/epiparameter")
+# check whether {pak} is installed
+if(!require("pak")) install.packages("pak")
+pak::pak("epiverse-trace/epiparameter")
 ```
 
 ## Quick start
