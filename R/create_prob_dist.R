@@ -48,7 +48,7 @@ create_prob_dist <- function(prob_dist,
                              truncation) {
 
   if (isTRUE(discretise)) {
-    # create discrete probability distribution object
+    # create discretised probability distribution object
     prob_dist <- switch(prob_dist,
       gamma = distcrete::distcrete(
         name = "gamma",
@@ -71,10 +71,10 @@ create_prob_dist <- function(prob_dist,
         scale = prob_dist_params[["scale"]],
         w = 1
       ),
-      stop("Did not recognise distribution name")
+      stop("Did not recognise distribution name", call. = FALSE)
     )
   } else {
-    # create discrete probability distribution object
+    # create non-discretised probability distribution object
     prob_dist <- switch(
       prob_dist,
       gamma = distributional::dist_gamma(
@@ -102,7 +102,7 @@ create_prob_dist <- function(prob_dist,
       pois = distributional::dist_poisson(
         lambda = unname(prob_dist_params)
       ),
-      stop("Did not recognise distribution name")
+      stop("Did not recognise distribution name", call. = FALSE)
     )
   }
 

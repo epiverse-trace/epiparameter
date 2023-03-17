@@ -99,7 +99,7 @@ vb_epidist <- function(intrinsic_epidist,
 validate_vb_epidist <- function(vb_epidist) {
 
   if (!is_vb_epidist(vb_epidist)) {
-    stop("Object should be of class vb_epidist")
+    stop("Object should be of class vb_epidist", call. = FALSE)
   }
 
   stopifnot(

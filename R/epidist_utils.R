@@ -163,7 +163,10 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
   checkmate::assert_character(inference_method)
 
   if (transmission_mode != "vector_borne" && !is.na(vector)) {
-    stop("A vector is given for a non-vector-borne disease please check input")
+    stop(
+      "A vector is given for a non-vector-borne disease please check input",
+      call. = FALSE
+    )
   }
 
   # return list of metadata
@@ -554,7 +557,7 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
     # no cleaning needed
     return(prob_dist_params)
   } else {
-    stop("Names of gamma distribution parameters are incorrect")
+    stop("Names of gamma distribution parameters are incorrect", call. = FALSE)
   }
 }
 
@@ -587,7 +590,10 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
     # no cleaning needed
     return(prob_dist_params)
   } else {
-    stop("Names of lognormal distribution parameters are incorrect")
+    stop(
+      "Names of lognormal distribution parameters are incorrect",
+      call. = FALSE
+    )
   }
 }
 
@@ -606,7 +612,10 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
     # no cleaning needed
     return(prob_dist_params)
   } else {
-    stop("Names of weibull distribution parameters are incorrect")
+    stop(
+      "Names of weibull distribution parameters are incorrect",
+      call. = FALSE
+    )
   }
 }
 
@@ -625,7 +634,10 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
     # no cleaning needed
     return(prob_dist_params)
   } else {
-    stop("Names of negative binomial distribution parameters are incorrect")
+    stop(
+      "Names of negative binomial distribution parameters are incorrect",
+      call. = FALSE
+    )
   }
 }
 
@@ -659,7 +671,10 @@ clean_epidist_params.geom <- function(prob_dist_params) {
     # no cleaning needed
     return(prob_dist_params)
   } else {
-    stop("Names of geometric distribution parameters are incorrect")
+    stop(
+      "Names of geometric distribution parameters are incorrect",
+      call. = FALSE
+    )
   }
 }
 

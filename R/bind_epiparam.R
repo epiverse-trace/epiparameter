@@ -52,7 +52,10 @@ bind_epiparam <- function(epiparam, epi_obj) {
     validate_epiparam(out)
     return(out)
   } else {
-    stop("Only epidist, vb_epidist or epiparam can bind to epiparam")
+    stop(
+      "Only epidist, vb_epidist or epiparam can bind to epiparam",
+      call. = FALSE
+    )
   }
 
   # convert epidist to epiparam object

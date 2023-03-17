@@ -321,7 +321,7 @@ epidist <- function(disease,
 validate_epidist <- function(epidist) {
 
   if (!is_epidist(epidist)) {
-    stop("Object should be of class epidist")
+    stop("Object should be of class epidist", call. = FALSE)
   }
 
   # check for class invariants
