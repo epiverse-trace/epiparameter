@@ -27,12 +27,12 @@ at the London School of Hygiene and Tropical Medicine as part of the
 ## Installation
 
 The easiest way to install the development version of `{epiparameter}`
-is to use the `{remotes}` package:
+is to use the `{pak}` package:
 
 ``` r
-# check whether {remotes} is installed
-if(!require("remotes")) install.packages("remotes")
-remotes::install_github("epiverse-trace/epiparameter")
+# check whether {pak} is installed
+if(!require("pak")) install.packages("pak")
+pak::pak("epiverse-trace/epiparameter")
 ```
 
 ## Quick start
@@ -47,20 +47,20 @@ To load the library of epidemiological parameters into `R`:
 eparams <- epiparam()
 eparams
 #> Epiparam object
-#> Number of distributions in library: 54
-#> Number of diseases: 21
-#> Number of delay distributions: 45
-#> Number of offspring distributions: 9
-#> Number of studies in library: 24
+#> Number of distributions in library: 106
+#> Number of diseases: 24
+#> Number of delay distributions: 83
+#> Number of offspring distributions: 10
+#> Number of studies in library: 42
 #> <Head of library>
-#>       disease  epi_distribution prob_distribution
-#> 1  adenovirus incubation_period         lognormal
-#> 2 chikungunya incubation_period         lognormal
-#> 3      dengue incubation_period         lognormal
-#> 4      dengue incubation_period         lognormal
-#> 5      dengue incubation_period         lognormal
-#> 6      dengue incubation_period         lognormal
-#> <48 more rows & 53 more cols not shown>
+#>       disease         epi_distribution prob_distribution
+#> 1  Adenovirus        incubation_period             lnorm
+#> 2 Chikungunya        incubation_period             lnorm
+#> 3    COVID-19 hospitalisation_to_death           weibull
+#> 4    COVID-19 hospitalisation_to_death             lnorm
+#> 5    COVID-19        incubation_period              <NA>
+#> 6    COVID-19        incubation_period           weibull
+#> <100 more rows & 53 more cols not shown>
 ```
 
 The library is an `<epiparam>` class, which underneath is a data frame.
@@ -71,14 +71,14 @@ be used.
 ``` r
 influenza_incubation <- as_epidist(eparams[12, ])
 influenza_incubation
-#> Disease: influenza
-#> Pathogen: influenza-A-H1N1pdm
+#> Disease: COVID-19
+#> Pathogen: SARS-CoV-2
 #> Epi Distribution: incubation period
-#> Study: Ghani et al. (2009) <10.1371/currents.RRN1130> PMID: 20029668
-#> Distribution: gamma
+#> Study: Linton et al. (2020) <10.3390/jcm9020538> PMID: 32079150
+#> Distribution: lognormal
 #> Parameters:
-#>   shape: 17.503123698459
-#>   rate: 8.5381091211995
+#>   mu: 1.45569556256012
+#>   sigma: 0.554513029376191
 ```
 
 The `<epidist>` object can be plotted.
@@ -152,15 +152,16 @@ citation("epiparameter")
 #> 
 #> To cite package 'epiparameter' in publications use:
 #> 
-#>   Kucharski A (2023). _epiparameter: Library of epidemiological
-#>   parameters_. https://github.com/epiverse-trace/epiparameter,
+#>   Lambert J, Kucharski A (2023). _epiparameter: Library of
+#>   Epidemiological Parameters_.
+#>   https://github.com/epiverse-trace/epiparameter,
 #>   https://epiverse-trace.github.io/epiparameter/.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {epiparameter: Library of epidemiological parameters},
-#>     author = {Adam Kucharski},
+#>     title = {epiparameter: Library of Epidemiological Parameters},
+#>     author = {Joshua W. Lambert and Adam Kucharski},
 #>     year = {2023},
 #>     note = {https://github.com/epiverse-trace/epiparameter,
 #> https://epiverse-trace.github.io/epiparameter/},
