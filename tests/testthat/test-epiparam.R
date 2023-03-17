@@ -217,6 +217,13 @@ test_that("validate_epidist catches class faults when expected", {
   )
 })
 
+test_that("validate_epiparam fails as expected with input class", {
+  expect_error(
+    validate_epiparam(epiparam = 1),
+    regexp = "Object should be of class epiparam"
+  )
+})
+
 test_that("is_epiparam returns TRUE when expected", {
   eparam <- epiparam()
 

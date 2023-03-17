@@ -154,6 +154,30 @@ test_that("create_prob_dist works as expected for truncated continuous", {
   expect_identical(family(res), "truncated")
 })
 
+test_that("create_prob_dist fails for unrecognised discretised dist", {
+  expect_error(
+    create_prob_dist(
+      prob_dist = "distribution",
+      prob_dist_params = c(shape = 1, scale = 1),
+      discretise = TRUE,
+      truncation = NA
+    ),
+    regexp = "Did not recognise distribution name"
+  )
+})
+
+test_that("create_prob_dist fails for unrecognised non-discretised dist", {
+  expect_error(
+    create_prob_dist(
+      prob_dist = "distribution",
+      prob_dist_params = c(shape = 1, scale = 1),
+      discretise = FALSE,
+      truncation = NA
+    ),
+    regexp = "Did not recognise distribution name"
+  )
+})
+
 test_that("create_prob_dist errors for discrete truncation", {
   expect_error(
     create_prob_dist(

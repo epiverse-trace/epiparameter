@@ -264,6 +264,13 @@ test_that("vb_epidist fails as expected", {
   )
 })
 
+test_that("validate_vb_epidist fails as expected with input class", {
+  expect_error(
+    validate_vb_epidist(vb_epidist = 1),
+    regexp = "Object should be of class vb_epidist"
+  )
+})
+
 test_that("vb_epidist print & format method works as expected", {
 
   expect_snapshot(
