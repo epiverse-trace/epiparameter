@@ -471,138 +471,138 @@
       63              mle    NA         NA, NA      NA    NA       NA, NA    NA
       64              mle    NA         NA, NA      NA    NA       NA, NA    NA
       65         bayesian    NA         NA, NA      NA    NA       NA, NA    NA
-         quantile_025 quantile_05 quantile_25 median median_ci_limits median_ci
-      1            NA          NA         4.8   5.60         4.8, 6.3        95
-      2            NA          NA         2.9   3.00         0.5, 3.1        95
-      3            NA          NA          NA     NA           NA, NA        NA
-      4          1.35        1.90          NA   6.10           NA, NA        NA
-      5            NA          NA          NA     NA           NA, NA        NA
-      6          2.20          NA          NA   5.10         4.5, 5.8        95
-      7          2.60          NA          NA   5.70         4.9, 6.8        95
-      8          2.10          NA          NA   5.50         4.4, 7.0        95
-      9          2.50          NA          NA   4.80         4.2, 5.6        95
-      10           NA        1.70          NA   4.30         3.5, 5.1        95
-      11           NA        2.30          NA   5.00         4.4, 5.6        95
-      12           NA        1.70          NA   4.60         3.7, 5.7        95
-      13           NA          NA          NA     NA           NA, NA        NA
-      14           NA          NA          NA   5.10         4.5, 5.8        95
-      15         2.69          NA          NA   5.01             4, 6        95
-      16           NA          NA          NA     NA           NA, NA        NA
-      17         5.00          NA          NA     NA           NA, NA        NA
-      18         2.40          NA          NA     NA           NA, NA        NA
-      19         3.40          NA          NA     NA           NA, NA        NA
-      20           NA          NA         4.5   5.60         5.3, 6.0        95
-      21           NA          NA         4.3   5.30         5.0, 5.7        95
-      22           NA          NA          NA     NA           NA, NA        NA
-      23           NA          NA          NA     NA           NA, NA        NA
-      24           NA          NA          NA     NA           NA, NA        NA
-      25           NA          NA          NA     NA           NA, NA        NA
-      26           NA          NA          NA     NA           NA, NA        NA
-      27           NA          NA         2.9   3.20         2.8, 3.7        95
-      28           NA          NA          NA     NA           NA, NA        NA
-      29           NA        0.70         1.1   1.40         1.3, 1.5        95
-      30           NA        1.40         1.7   1.90         1.8, 2.0        95
-      31           NA        0.30         0.4   0.60         0.5, 0.6        95
-      32           NA        0.90          NA   1.40         1.0, 1.8        95
-      33           NA          NA          NA   1.51       1.47, 1.55        95
-      34           NA          NA          NA   1.43       1.21, 1.65        95
-      35           NA        0.73          NA   1.46       1.35, 1.57        95
-      36           NA        0.73          NA   1.43       1.33, 1.54        95
-      37           NA          NA          NA   4.00           NA, NA        NA
-      38           NA          NA          NA     NA           NA, NA        NA
-      39           NA          NA          NA     NA           NA, NA        NA
-      40           NA          NA          NA     NA           NA, NA        NA
-      41           NA          NA          NA     NA           NA, NA        NA
-      42           NA          NA          NA     NA           NA, NA        NA
-      43           NA          NA         8.1   8.40         5.1, 9.4        95
-      44           NA          NA          NA     NA           NA, NA        NA
-      45           NA          NA          NA   7.00           NA, NA        NA
-      46           NA        8.90        10.9  12.50       11.8, 13.3        95
-      47           NA        2.20          NA   5.20        1.9, 14.7        NA
-      48           NA          NA          NA   6.30         5.7, 6.8        95
-      49           NA          NA          NA   6.40         5.1, 7.9        95
-      50           NA        1.00          NA     NA           NA, NA        NA
-      51           NA          NA          NA     NA           NA, NA        NA
-      52         3.60        4.20          NA   8.50        6.6, 10.9        95
-      53           NA          NA         2.1   2.60         2.1, 3.1        95
-      54           NA        0.80         1.3   1.90         1.4, 2.4        95
-      55           NA          NA         3.1   4.00         3.4, 4.9        95
-      56           NA        3.10         3.8   4.40         3.9, 4.9        95
-      57           NA        3.05          NA   4.41       3.90, 4.92        95
-      58           NA        3.11          NA   4.41       3.89, 4.94        95
-      59           NA        1.50         2.7   4.00         3.6, 4.4        95
-      60           NA        1.00         1.7   2.60         1.6, 3.5        95
-      61           NA          NA         2.8   2.90         0.5, 3.1        95
-      62           NA          NA         8.7  10.80        8.4, 14.2        95
-      63           NA        1.90         3.2   4.40             4, 5        95
-      64           NA        1.90         3.1   4.40         3.9, 5.0        95
-      65           NA        3.20         4.6   5.90         4.4, 7.6        95
-         quantile_75 quantile_875 quantile_95 quantile_975 lower_range upper_range
-      1          6.5           NA          NA           NA          NA          NA
-      2          3.0           NA          NA           NA          NA          NA
-      3           NA           NA          NA           NA          NA          NA
-      4           NA           NA       11.90        13.04          NA          NA
-      5           NA           NA          NA           NA          NA          NA
-      6           NA           NA          NA        11.50          NA          NA
-      7           NA           NA          NA        12.50          NA          NA
-      8           NA           NA          NA        14.70          NA          NA
-      9           NA           NA          NA         9.20          NA          NA
-      10          NA           NA       10.60           NA          NA          NA
-      11          NA           NA       10.80           NA          NA          NA
-      12          NA           NA       12.30           NA          NA          NA
-      13          NA           NA          NA           NA          NA          NA
-      14          NA           NA       11.70           NA          NA          NA
-      15          NA           NA          NA        12.89          NA          NA
-      16          NA           NA          NA           NA          NA          NA
-      17          NA           NA          NA        33.00          NA          NA
-      18          NA           NA          NA        15.00          NA          NA
-      19          NA           NA          NA        10.00          NA          NA
-      20         7.1           NA          NA           NA          NA          NA
-      21         6.6           NA          NA           NA          NA          NA
-      22          NA           NA          NA           NA          NA          NA
-      23          NA           NA          NA           NA          NA          NA
-      24          NA           NA          NA           NA          NA          NA
-      25          NA           NA          NA           NA          NA          NA
-      26          NA           NA          NA           NA          NA          NA
-      27         3.5           NA          NA           NA          NA          NA
-      28          NA           NA          NA           NA          NA          NA
-      29         1.9           NA        2.80           NA          NA          NA
-      30         2.2           NA        2.70           NA          NA          NA
-      31         0.7           NA        1.10           NA          NA          NA
-      32          NA           NA        2.20           NA          NA          NA
-      33          NA           NA        3.43           NA          NA          NA
-      34          NA           NA        3.18           NA          NA          NA
-      35          NA           NA        2.94           NA          NA          NA
-      36          NA           NA        2.83           NA          NA          NA
-      37          NA           NA          NA           NA          NA          NA
-      38          NA           NA        6.50           NA          NA          NA
-      39          NA           NA       11.00           NA          NA          NA
-      40          NA           NA          NA           NA          NA          NA
-      41          NA           NA          NA           NA          NA          NA
-      42          NA           NA          NA           NA          NA          NA
-      43         8.6           NA          NA           NA          NA          NA
-      44          NA           NA          NA           NA           2          26
-      45          NA           NA          NA           NA           2          13
-      46        14.4           NA       17.70           NA          NA          NA
-      47          NA           NA       12.40           NA          NA          NA
-      48          NA           NA       12.10           NA          NA          NA
-      49          NA           NA       17.10           NA          NA          NA
-      50          NA           NA       24.00           NA          NA          NA
-      51          NA           NA          NA           NA          NA          NA
-      52          NA           NA       17.30        19.90          NA          NA
-      53         3.2           NA          NA           NA          NA          NA
-      54         2.7           NA        4.50           NA          NA          NA
-      55         5.3           NA          NA           NA          NA          NA
-      56         5.1           NA        6.30           NA          NA          NA
-      57          NA           NA        6.39           NA          NA          NA
-      58          NA           NA        6.26           NA          NA          NA
-      59         5.9           NA       10.60           NA          NA          NA
-      60         3.8           NA        7.00           NA          NA          NA
-      61         3.0           NA          NA           NA          NA          NA
-      62        13.3           NA          NA           NA          NA          NA
-      63         6.3           NA       10.30           NA          NA          NA
-      64         6.2           NA       10.30           NA          NA          NA
-      65         7.6           NA       11.20           NA          NA          NA
+         quantile_2.5 quantile_5 quantile_25 median median_ci_limits median_ci
+      1            NA         NA         4.8   5.60         4.8, 6.3        95
+      2            NA         NA         2.9   3.00         0.5, 3.1        95
+      3            NA         NA          NA     NA           NA, NA        NA
+      4          1.35       1.90          NA   6.10           NA, NA        NA
+      5            NA         NA          NA     NA           NA, NA        NA
+      6          2.20         NA          NA   5.10         4.5, 5.8        95
+      7          2.60         NA          NA   5.70         4.9, 6.8        95
+      8          2.10         NA          NA   5.50         4.4, 7.0        95
+      9          2.50         NA          NA   4.80         4.2, 5.6        95
+      10           NA       1.70          NA   4.30         3.5, 5.1        95
+      11           NA       2.30          NA   5.00         4.4, 5.6        95
+      12           NA       1.70          NA   4.60         3.7, 5.7        95
+      13           NA         NA          NA     NA           NA, NA        NA
+      14           NA         NA          NA   5.10         4.5, 5.8        95
+      15         2.69         NA          NA   5.01             4, 6        95
+      16           NA         NA          NA     NA           NA, NA        NA
+      17         5.00         NA          NA     NA           NA, NA        NA
+      18         2.40         NA          NA     NA           NA, NA        NA
+      19         3.40         NA          NA     NA           NA, NA        NA
+      20           NA         NA         4.5   5.60         5.3, 6.0        95
+      21           NA         NA         4.3   5.30         5.0, 5.7        95
+      22           NA         NA          NA     NA           NA, NA        NA
+      23           NA         NA          NA     NA           NA, NA        NA
+      24           NA         NA          NA     NA           NA, NA        NA
+      25           NA         NA          NA     NA           NA, NA        NA
+      26           NA         NA          NA     NA           NA, NA        NA
+      27           NA         NA         2.9   3.20         2.8, 3.7        95
+      28           NA         NA          NA     NA           NA, NA        NA
+      29           NA       0.70         1.1   1.40         1.3, 1.5        95
+      30           NA       1.40         1.7   1.90         1.8, 2.0        95
+      31           NA       0.30         0.4   0.60         0.5, 0.6        95
+      32           NA       0.90          NA   1.40         1.0, 1.8        95
+      33           NA         NA          NA   1.51       1.47, 1.55        95
+      34           NA         NA          NA   1.43       1.21, 1.65        95
+      35           NA       0.73          NA   1.46       1.35, 1.57        95
+      36           NA       0.73          NA   1.43       1.33, 1.54        95
+      37           NA         NA          NA   4.00           NA, NA        NA
+      38           NA         NA          NA     NA           NA, NA        NA
+      39           NA         NA          NA     NA           NA, NA        NA
+      40           NA         NA          NA     NA           NA, NA        NA
+      41           NA         NA          NA     NA           NA, NA        NA
+      42           NA         NA          NA     NA           NA, NA        NA
+      43           NA         NA         8.1   8.40         5.1, 9.4        95
+      44           NA         NA          NA     NA           NA, NA        NA
+      45           NA         NA          NA   7.00           NA, NA        NA
+      46           NA       8.90        10.9  12.50       11.8, 13.3        95
+      47           NA       2.20          NA   5.20        1.9, 14.7        NA
+      48           NA         NA          NA   6.30         5.7, 6.8        95
+      49           NA         NA          NA   6.40         5.1, 7.9        95
+      50           NA       1.00          NA     NA           NA, NA        NA
+      51           NA         NA          NA     NA           NA, NA        NA
+      52         3.60       4.20          NA   8.50        6.6, 10.9        95
+      53           NA         NA         2.1   2.60         2.1, 3.1        95
+      54           NA       0.80         1.3   1.90         1.4, 2.4        95
+      55           NA         NA         3.1   4.00         3.4, 4.9        95
+      56           NA       3.10         3.8   4.40         3.9, 4.9        95
+      57           NA       3.05          NA   4.41       3.90, 4.92        95
+      58           NA       3.11          NA   4.41       3.89, 4.94        95
+      59           NA       1.50         2.7   4.00         3.6, 4.4        95
+      60           NA       1.00         1.7   2.60         1.6, 3.5        95
+      61           NA         NA         2.8   2.90         0.5, 3.1        95
+      62           NA         NA         8.7  10.80        8.4, 14.2        95
+      63           NA       1.90         3.2   4.40             4, 5        95
+      64           NA       1.90         3.1   4.40         3.9, 5.0        95
+      65           NA       3.20         4.6   5.90         4.4, 7.6        95
+         quantile_75 quantile_87.5 quantile_95 quantile_97.5 lower_range upper_range
+      1          6.5            NA          NA            NA          NA          NA
+      2          3.0            NA          NA            NA          NA          NA
+      3           NA            NA          NA            NA          NA          NA
+      4           NA            NA       11.90         13.04          NA          NA
+      5           NA            NA          NA            NA          NA          NA
+      6           NA            NA          NA         11.50          NA          NA
+      7           NA            NA          NA         12.50          NA          NA
+      8           NA            NA          NA         14.70          NA          NA
+      9           NA            NA          NA          9.20          NA          NA
+      10          NA            NA       10.60            NA          NA          NA
+      11          NA            NA       10.80            NA          NA          NA
+      12          NA            NA       12.30            NA          NA          NA
+      13          NA            NA          NA            NA          NA          NA
+      14          NA            NA       11.70            NA          NA          NA
+      15          NA            NA          NA         12.89          NA          NA
+      16          NA            NA          NA            NA          NA          NA
+      17          NA            NA          NA         33.00          NA          NA
+      18          NA            NA          NA         15.00          NA          NA
+      19          NA            NA          NA         10.00          NA          NA
+      20         7.1            NA          NA            NA          NA          NA
+      21         6.6            NA          NA            NA          NA          NA
+      22          NA            NA          NA            NA          NA          NA
+      23          NA            NA          NA            NA          NA          NA
+      24          NA            NA          NA            NA          NA          NA
+      25          NA            NA          NA            NA          NA          NA
+      26          NA            NA          NA            NA          NA          NA
+      27         3.5            NA          NA            NA          NA          NA
+      28          NA            NA          NA            NA          NA          NA
+      29         1.9            NA        2.80            NA          NA          NA
+      30         2.2            NA        2.70            NA          NA          NA
+      31         0.7            NA        1.10            NA          NA          NA
+      32          NA            NA        2.20            NA          NA          NA
+      33          NA            NA        3.43            NA          NA          NA
+      34          NA            NA        3.18            NA          NA          NA
+      35          NA            NA        2.94            NA          NA          NA
+      36          NA            NA        2.83            NA          NA          NA
+      37          NA            NA          NA            NA          NA          NA
+      38          NA            NA        6.50            NA          NA          NA
+      39          NA            NA       11.00            NA          NA          NA
+      40          NA            NA          NA            NA          NA          NA
+      41          NA            NA          NA            NA          NA          NA
+      42          NA            NA          NA            NA          NA          NA
+      43         8.6            NA          NA            NA          NA          NA
+      44          NA            NA          NA            NA           2          26
+      45          NA            NA          NA            NA           2          13
+      46        14.4            NA       17.70            NA          NA          NA
+      47          NA            NA       12.40            NA          NA          NA
+      48          NA            NA       12.10            NA          NA          NA
+      49          NA            NA       17.10            NA          NA          NA
+      50          NA            NA       24.00            NA          NA          NA
+      51          NA            NA          NA            NA          NA          NA
+      52          NA            NA       17.30         19.90          NA          NA
+      53         3.2            NA          NA            NA          NA          NA
+      54         2.7            NA        4.50            NA          NA          NA
+      55         5.3            NA          NA            NA          NA          NA
+      56         5.1            NA        6.30            NA          NA          NA
+      57          NA            NA        6.39            NA          NA          NA
+      58          NA            NA        6.26            NA          NA          NA
+      59         5.9            NA       10.60            NA          NA          NA
+      60         3.8            NA        7.00            NA          NA          NA
+      61         3.0            NA          NA            NA          NA          NA
+      62        13.3            NA          NA            NA          NA          NA
+      63         6.3            NA       10.30            NA          NA          NA
+      64         6.2            NA       10.30            NA          NA          NA
+      65         7.6            NA       11.20            NA          NA          NA
          shape shape_ci_limits shape_ci scale scale_ci_limits scale_ci meanlog
       1     NA          NA, NA       NA    NA          NA, NA       NA      NA
       2     NA          NA, NA       NA    NA          NA, NA       NA      NA
@@ -1539,138 +1539,138 @@
       63              mle    NA         NA, NA      NA    NA       NA, NA    NA
       64              mle    NA         NA, NA      NA    NA       NA, NA    NA
       65         bayesian    NA         NA, NA      NA    NA       NA, NA    NA
-         quantile_025 quantile_05 quantile_25 median median_ci_limits median_ci
-      1            NA          NA         4.8   5.60         4.8, 6.3        95
-      2            NA          NA         2.9   3.00         0.5, 3.1        95
-      3            NA          NA          NA     NA           NA, NA        NA
-      4          1.35        1.90          NA   6.10           NA, NA        NA
-      5            NA          NA          NA     NA           NA, NA        NA
-      6          2.20          NA          NA   5.10         4.5, 5.8        95
-      7          2.60          NA          NA   5.70         4.9, 6.8        95
-      8          2.10          NA          NA   5.50         4.4, 7.0        95
-      9          2.50          NA          NA   4.80         4.2, 5.6        95
-      10           NA        1.70          NA   4.30         3.5, 5.1        95
-      11           NA        2.30          NA   5.00         4.4, 5.6        95
-      12           NA        1.70          NA   4.60         3.7, 5.7        95
-      13           NA          NA          NA     NA           NA, NA        NA
-      14           NA          NA          NA   5.10         4.5, 5.8        95
-      15         2.69          NA          NA   5.01             4, 6        95
-      16           NA          NA          NA     NA           NA, NA        NA
-      17         5.00          NA          NA     NA           NA, NA        NA
-      18         2.40          NA          NA     NA           NA, NA        NA
-      19         3.40          NA          NA     NA           NA, NA        NA
-      20           NA          NA         4.5   5.60         5.3, 6.0        95
-      21           NA          NA         4.3   5.30         5.0, 5.7        95
-      22           NA          NA          NA     NA           NA, NA        NA
-      23           NA          NA          NA     NA           NA, NA        NA
-      24           NA          NA          NA     NA           NA, NA        NA
-      25           NA          NA          NA     NA           NA, NA        NA
-      26           NA          NA          NA     NA           NA, NA        NA
-      27           NA          NA         2.9   3.20         2.8, 3.7        95
-      28           NA          NA          NA     NA           NA, NA        NA
-      29           NA        0.70         1.1   1.40         1.3, 1.5        95
-      30           NA        1.40         1.7   1.90         1.8, 2.0        95
-      31           NA        0.30         0.4   0.60         0.5, 0.6        95
-      32           NA        0.90          NA   1.40         1.0, 1.8        95
-      33           NA          NA          NA   1.51       1.47, 1.55        95
-      34           NA          NA          NA   1.43       1.21, 1.65        95
-      35           NA        0.73          NA   1.46       1.35, 1.57        95
-      36           NA        0.73          NA   1.43       1.33, 1.54        95
-      37           NA          NA          NA   4.00           NA, NA        NA
-      38           NA          NA          NA     NA           NA, NA        NA
-      39           NA          NA          NA     NA           NA, NA        NA
-      40           NA          NA          NA     NA           NA, NA        NA
-      41           NA          NA          NA     NA           NA, NA        NA
-      42           NA          NA          NA     NA           NA, NA        NA
-      43           NA          NA         8.1   8.40         5.1, 9.4        95
-      44           NA          NA          NA     NA           NA, NA        NA
-      45           NA          NA          NA   7.00           NA, NA        NA
-      46           NA        8.90        10.9  12.50       11.8, 13.3        95
-      47           NA        2.20          NA   5.20        1.9, 14.7        NA
-      48           NA          NA          NA   6.30         5.7, 6.8        95
-      49           NA          NA          NA   6.40         5.1, 7.9        95
-      50           NA        1.00          NA     NA           NA, NA        NA
-      51           NA          NA          NA     NA           NA, NA        NA
-      52         3.60        4.20          NA   8.50        6.6, 10.9        95
-      53           NA          NA         2.1   2.60         2.1, 3.1        95
-      54           NA        0.80         1.3   1.90         1.4, 2.4        95
-      55           NA          NA         3.1   4.00         3.4, 4.9        95
-      56           NA        3.10         3.8   4.40         3.9, 4.9        95
-      57           NA        3.05          NA   4.41       3.90, 4.92        95
-      58           NA        3.11          NA   4.41       3.89, 4.94        95
-      59           NA        1.50         2.7   4.00         3.6, 4.4        95
-      60           NA        1.00         1.7   2.60         1.6, 3.5        95
-      61           NA          NA         2.8   2.90         0.5, 3.1        95
-      62           NA          NA         8.7  10.80        8.4, 14.2        95
-      63           NA        1.90         3.2   4.40             4, 5        95
-      64           NA        1.90         3.1   4.40         3.9, 5.0        95
-      65           NA        3.20         4.6   5.90         4.4, 7.6        95
-         quantile_75 quantile_875 quantile_95 quantile_975 lower_range upper_range
-      1          6.5           NA          NA           NA          NA          NA
-      2          3.0           NA          NA           NA          NA          NA
-      3           NA           NA          NA           NA          NA          NA
-      4           NA           NA       11.90        13.04          NA          NA
-      5           NA           NA          NA           NA          NA          NA
-      6           NA           NA          NA        11.50          NA          NA
-      7           NA           NA          NA        12.50          NA          NA
-      8           NA           NA          NA        14.70          NA          NA
-      9           NA           NA          NA         9.20          NA          NA
-      10          NA           NA       10.60           NA          NA          NA
-      11          NA           NA       10.80           NA          NA          NA
-      12          NA           NA       12.30           NA          NA          NA
-      13          NA           NA          NA           NA          NA          NA
-      14          NA           NA       11.70           NA          NA          NA
-      15          NA           NA          NA        12.89          NA          NA
-      16          NA           NA          NA           NA          NA          NA
-      17          NA           NA          NA        33.00          NA          NA
-      18          NA           NA          NA        15.00          NA          NA
-      19          NA           NA          NA        10.00          NA          NA
-      20         7.1           NA          NA           NA          NA          NA
-      21         6.6           NA          NA           NA          NA          NA
-      22          NA           NA          NA           NA          NA          NA
-      23          NA           NA          NA           NA          NA          NA
-      24          NA           NA          NA           NA          NA          NA
-      25          NA           NA          NA           NA          NA          NA
-      26          NA           NA          NA           NA          NA          NA
-      27         3.5           NA          NA           NA          NA          NA
-      28          NA           NA          NA           NA          NA          NA
-      29         1.9           NA        2.80           NA          NA          NA
-      30         2.2           NA        2.70           NA          NA          NA
-      31         0.7           NA        1.10           NA          NA          NA
-      32          NA           NA        2.20           NA          NA          NA
-      33          NA           NA        3.43           NA          NA          NA
-      34          NA           NA        3.18           NA          NA          NA
-      35          NA           NA        2.94           NA          NA          NA
-      36          NA           NA        2.83           NA          NA          NA
-      37          NA           NA          NA           NA          NA          NA
-      38          NA           NA        6.50           NA          NA          NA
-      39          NA           NA       11.00           NA          NA          NA
-      40          NA           NA          NA           NA          NA          NA
-      41          NA           NA          NA           NA          NA          NA
-      42          NA           NA          NA           NA          NA          NA
-      43         8.6           NA          NA           NA          NA          NA
-      44          NA           NA          NA           NA           2          26
-      45          NA           NA          NA           NA           2          13
-      46        14.4           NA       17.70           NA          NA          NA
-      47          NA           NA       12.40           NA          NA          NA
-      48          NA           NA       12.10           NA          NA          NA
-      49          NA           NA       17.10           NA          NA          NA
-      50          NA           NA       24.00           NA          NA          NA
-      51          NA           NA          NA           NA          NA          NA
-      52          NA           NA       17.30        19.90          NA          NA
-      53         3.2           NA          NA           NA          NA          NA
-      54         2.7           NA        4.50           NA          NA          NA
-      55         5.3           NA          NA           NA          NA          NA
-      56         5.1           NA        6.30           NA          NA          NA
-      57          NA           NA        6.39           NA          NA          NA
-      58          NA           NA        6.26           NA          NA          NA
-      59         5.9           NA       10.60           NA          NA          NA
-      60         3.8           NA        7.00           NA          NA          NA
-      61         3.0           NA          NA           NA          NA          NA
-      62        13.3           NA          NA           NA          NA          NA
-      63         6.3           NA       10.30           NA          NA          NA
-      64         6.2           NA       10.30           NA          NA          NA
-      65         7.6           NA       11.20           NA          NA          NA
+         quantile_2.5 quantile_5 quantile_25 median median_ci_limits median_ci
+      1            NA         NA         4.8   5.60         4.8, 6.3        95
+      2            NA         NA         2.9   3.00         0.5, 3.1        95
+      3            NA         NA          NA     NA           NA, NA        NA
+      4          1.35       1.90          NA   6.10           NA, NA        NA
+      5            NA         NA          NA     NA           NA, NA        NA
+      6          2.20         NA          NA   5.10         4.5, 5.8        95
+      7          2.60         NA          NA   5.70         4.9, 6.8        95
+      8          2.10         NA          NA   5.50         4.4, 7.0        95
+      9          2.50         NA          NA   4.80         4.2, 5.6        95
+      10           NA       1.70          NA   4.30         3.5, 5.1        95
+      11           NA       2.30          NA   5.00         4.4, 5.6        95
+      12           NA       1.70          NA   4.60         3.7, 5.7        95
+      13           NA         NA          NA     NA           NA, NA        NA
+      14           NA         NA          NA   5.10         4.5, 5.8        95
+      15         2.69         NA          NA   5.01             4, 6        95
+      16           NA         NA          NA     NA           NA, NA        NA
+      17         5.00         NA          NA     NA           NA, NA        NA
+      18         2.40         NA          NA     NA           NA, NA        NA
+      19         3.40         NA          NA     NA           NA, NA        NA
+      20           NA         NA         4.5   5.60         5.3, 6.0        95
+      21           NA         NA         4.3   5.30         5.0, 5.7        95
+      22           NA         NA          NA     NA           NA, NA        NA
+      23           NA         NA          NA     NA           NA, NA        NA
+      24           NA         NA          NA     NA           NA, NA        NA
+      25           NA         NA          NA     NA           NA, NA        NA
+      26           NA         NA          NA     NA           NA, NA        NA
+      27           NA         NA         2.9   3.20         2.8, 3.7        95
+      28           NA         NA          NA     NA           NA, NA        NA
+      29           NA       0.70         1.1   1.40         1.3, 1.5        95
+      30           NA       1.40         1.7   1.90         1.8, 2.0        95
+      31           NA       0.30         0.4   0.60         0.5, 0.6        95
+      32           NA       0.90          NA   1.40         1.0, 1.8        95
+      33           NA         NA          NA   1.51       1.47, 1.55        95
+      34           NA         NA          NA   1.43       1.21, 1.65        95
+      35           NA       0.73          NA   1.46       1.35, 1.57        95
+      36           NA       0.73          NA   1.43       1.33, 1.54        95
+      37           NA         NA          NA   4.00           NA, NA        NA
+      38           NA         NA          NA     NA           NA, NA        NA
+      39           NA         NA          NA     NA           NA, NA        NA
+      40           NA         NA          NA     NA           NA, NA        NA
+      41           NA         NA          NA     NA           NA, NA        NA
+      42           NA         NA          NA     NA           NA, NA        NA
+      43           NA         NA         8.1   8.40         5.1, 9.4        95
+      44           NA         NA          NA     NA           NA, NA        NA
+      45           NA         NA          NA   7.00           NA, NA        NA
+      46           NA       8.90        10.9  12.50       11.8, 13.3        95
+      47           NA       2.20          NA   5.20        1.9, 14.7        NA
+      48           NA         NA          NA   6.30         5.7, 6.8        95
+      49           NA         NA          NA   6.40         5.1, 7.9        95
+      50           NA       1.00          NA     NA           NA, NA        NA
+      51           NA         NA          NA     NA           NA, NA        NA
+      52         3.60       4.20          NA   8.50        6.6, 10.9        95
+      53           NA         NA         2.1   2.60         2.1, 3.1        95
+      54           NA       0.80         1.3   1.90         1.4, 2.4        95
+      55           NA         NA         3.1   4.00         3.4, 4.9        95
+      56           NA       3.10         3.8   4.40         3.9, 4.9        95
+      57           NA       3.05          NA   4.41       3.90, 4.92        95
+      58           NA       3.11          NA   4.41       3.89, 4.94        95
+      59           NA       1.50         2.7   4.00         3.6, 4.4        95
+      60           NA       1.00         1.7   2.60         1.6, 3.5        95
+      61           NA         NA         2.8   2.90         0.5, 3.1        95
+      62           NA         NA         8.7  10.80        8.4, 14.2        95
+      63           NA       1.90         3.2   4.40             4, 5        95
+      64           NA       1.90         3.1   4.40         3.9, 5.0        95
+      65           NA       3.20         4.6   5.90         4.4, 7.6        95
+         quantile_75 quantile_87.5 quantile_95 quantile_97.5 lower_range upper_range
+      1          6.5            NA          NA            NA          NA          NA
+      2          3.0            NA          NA            NA          NA          NA
+      3           NA            NA          NA            NA          NA          NA
+      4           NA            NA       11.90         13.04          NA          NA
+      5           NA            NA          NA            NA          NA          NA
+      6           NA            NA          NA         11.50          NA          NA
+      7           NA            NA          NA         12.50          NA          NA
+      8           NA            NA          NA         14.70          NA          NA
+      9           NA            NA          NA          9.20          NA          NA
+      10          NA            NA       10.60            NA          NA          NA
+      11          NA            NA       10.80            NA          NA          NA
+      12          NA            NA       12.30            NA          NA          NA
+      13          NA            NA          NA            NA          NA          NA
+      14          NA            NA       11.70            NA          NA          NA
+      15          NA            NA          NA         12.89          NA          NA
+      16          NA            NA          NA            NA          NA          NA
+      17          NA            NA          NA         33.00          NA          NA
+      18          NA            NA          NA         15.00          NA          NA
+      19          NA            NA          NA         10.00          NA          NA
+      20         7.1            NA          NA            NA          NA          NA
+      21         6.6            NA          NA            NA          NA          NA
+      22          NA            NA          NA            NA          NA          NA
+      23          NA            NA          NA            NA          NA          NA
+      24          NA            NA          NA            NA          NA          NA
+      25          NA            NA          NA            NA          NA          NA
+      26          NA            NA          NA            NA          NA          NA
+      27         3.5            NA          NA            NA          NA          NA
+      28          NA            NA          NA            NA          NA          NA
+      29         1.9            NA        2.80            NA          NA          NA
+      30         2.2            NA        2.70            NA          NA          NA
+      31         0.7            NA        1.10            NA          NA          NA
+      32          NA            NA        2.20            NA          NA          NA
+      33          NA            NA        3.43            NA          NA          NA
+      34          NA            NA        3.18            NA          NA          NA
+      35          NA            NA        2.94            NA          NA          NA
+      36          NA            NA        2.83            NA          NA          NA
+      37          NA            NA          NA            NA          NA          NA
+      38          NA            NA        6.50            NA          NA          NA
+      39          NA            NA       11.00            NA          NA          NA
+      40          NA            NA          NA            NA          NA          NA
+      41          NA            NA          NA            NA          NA          NA
+      42          NA            NA          NA            NA          NA          NA
+      43         8.6            NA          NA            NA          NA          NA
+      44          NA            NA          NA            NA           2          26
+      45          NA            NA          NA            NA           2          13
+      46        14.4            NA       17.70            NA          NA          NA
+      47          NA            NA       12.40            NA          NA          NA
+      48          NA            NA       12.10            NA          NA          NA
+      49          NA            NA       17.10            NA          NA          NA
+      50          NA            NA       24.00            NA          NA          NA
+      51          NA            NA          NA            NA          NA          NA
+      52          NA            NA       17.30         19.90          NA          NA
+      53         3.2            NA          NA            NA          NA          NA
+      54         2.7            NA        4.50            NA          NA          NA
+      55         5.3            NA          NA            NA          NA          NA
+      56         5.1            NA        6.30            NA          NA          NA
+      57          NA            NA        6.39            NA          NA          NA
+      58          NA            NA        6.26            NA          NA          NA
+      59         5.9            NA       10.60            NA          NA          NA
+      60         3.8            NA        7.00            NA          NA          NA
+      61         3.0            NA          NA            NA          NA          NA
+      62        13.3            NA          NA            NA          NA          NA
+      63         6.3            NA       10.30            NA          NA          NA
+      64         6.2            NA       10.30            NA          NA          NA
+      65         7.6            NA       11.20            NA          NA          NA
          shape shape_ci_limits shape_ci scale scale_ci_limits scale_ci meanlog
       1     NA          NA, NA       NA    NA          NA, NA       NA      NA
       2     NA          NA, NA       NA    NA          NA, NA       NA      NA
@@ -2211,28 +2211,28 @@
       8              <NA>    NA         NA, NA      NA    NA       NA, NA    NA
       9               mle    NA         NA, NA      NA    NA       NA, NA    NA
       10         bayesian 12.60     12.1, 13.1      95  2.80     2.4, 3.1    95
-         quantile_025 quantile_05 quantile_25 median median_ci_limits median_ci
-      1            NA          NA          NA     NA           NA, NA        NA
-      2            NA          NA          NA     NA           NA, NA        NA
-      3            NA          NA          NA     NA           NA, NA        NA
-      4            NA          NA          NA     NA           NA, NA        NA
-      5            NA          NA          NA     NA           NA, NA        NA
-      6            NA          NA          NA     NA           NA, NA        NA
-      7            NA          NA          NA     NA           NA, NA        NA
-      8            NA          NA           8   11.0           NA, NA        NA
-      9            NA           3          NA    7.6        2.5, 23.1        NA
-      10           NA          NA          NA     NA           NA, NA        NA
-         quantile_75 quantile_875 quantile_95 quantile_975 lower_range upper_range
-      1           NA           NA          NA           NA          NA          NA
-      2           NA           NA          NA           NA          NA          NA
-      3           NA           NA          NA           NA          NA          NA
-      4           NA           NA          NA           NA          NA          NA
-      5           NA           NA          NA           NA          NA          NA
-      6           NA           NA          NA           NA          NA          NA
-      7           NA           NA          NA           NA          NA          NA
-      8           15           NA          NA           NA          NA          NA
-      9           NA           NA        19.4           NA          NA          NA
-      10          NA           NA          NA           NA          NA          NA
+         quantile_2.5 quantile_5 quantile_25 median median_ci_limits median_ci
+      1            NA         NA          NA     NA           NA, NA        NA
+      2            NA         NA          NA     NA           NA, NA        NA
+      3            NA         NA          NA     NA           NA, NA        NA
+      4            NA         NA          NA     NA           NA, NA        NA
+      5            NA         NA          NA     NA           NA, NA        NA
+      6            NA         NA          NA     NA           NA, NA        NA
+      7            NA         NA          NA     NA           NA, NA        NA
+      8            NA         NA           8   11.0           NA, NA        NA
+      9            NA          3          NA    7.6        2.5, 23.1        NA
+      10           NA         NA          NA     NA           NA, NA        NA
+         quantile_75 quantile_87.5 quantile_95 quantile_97.5 lower_range upper_range
+      1           NA            NA          NA            NA          NA          NA
+      2           NA            NA          NA            NA          NA          NA
+      3           NA            NA          NA            NA          NA          NA
+      4           NA            NA          NA            NA          NA          NA
+      5           NA            NA          NA            NA          NA          NA
+      6           NA            NA          NA            NA          NA          NA
+      7           NA            NA          NA            NA          NA          NA
+      8           15            NA          NA            NA          NA          NA
+      9           NA            NA        19.4            NA          NA          NA
+      10          NA            NA          NA            NA          NA          NA
          shape shape_ci_limits shape_ci scale scale_ci_limits scale_ci meanlog
       1     NA          NA, NA       NA    NA          NA, NA       NA      NA
       2     NA          NA, NA       NA    NA          NA, NA       NA      NA

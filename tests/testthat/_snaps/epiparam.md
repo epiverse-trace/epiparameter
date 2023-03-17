@@ -87,55 +87,55 @@
       4             lnorm         bayesian 13.0      8.7, 20.9      95 12.70
       5              <NA>             <NA>  6.5       5.9, 7.1      95    NA
       6           weibull         bayesian  6.4     4.89, 8.50      95  3.05
-        sd_ci_limits sd_ci quantile_025 quantile_05 quantile_25 median
-      1       NA, NA    NA           NA          NA         4.8    5.6
-      2       NA, NA    NA           NA          NA         2.9    3.0
-      3     4.2, 7.3    95           NA         1.7          NA    8.0
-      4    6.4, 26.0    95           NA         2.5          NA    9.1
-      5       NA, NA    NA           NA          NA          NA     NA
-      6   3.05, 5.30    95         1.35         1.9          NA    6.1
-        median_ci_limits median_ci quantile_75 quantile_875 quantile_95 quantile_975
-      1         4.8, 6.3        95         6.5           NA          NA           NA
-      2         0.5, 3.1        95         3.0           NA          NA           NA
-      3         6.2, 9.8        95          NA           NA        18.8           NA
-      4        6.7, 13.7        95          NA           NA        33.1           NA
-      5           NA, NA        NA          NA           NA          NA           NA
-      6           NA, NA        NA          NA           NA        11.9        13.04
-        lower_range upper_range shape shape_ci_limits shape_ci scale scale_ci_limits
-      1          NA          NA    NA          NA, NA       NA    NA          NA, NA
-      2          NA          NA    NA          NA, NA       NA    NA          NA, NA
-      3          NA          NA    NA          NA, NA       NA    NA          NA, NA
-      4          NA          NA    NA          NA, NA       NA    NA          NA, NA
-      5          NA          NA    NA          NA, NA       NA    NA          NA, NA
-      6          NA          NA    NA          NA, NA       NA    NA          NA, NA
-        scale_ci meanlog meanlog_ci_limits meanlog_ci sdlog sdlog_ci_limits sdlog_ci
-      1       NA      NA            NA, NA         NA    NA          NA, NA       NA
-      2       NA      NA            NA, NA         NA    NA          NA, NA       NA
-      3       NA      NA            NA, NA         NA    NA          NA, NA       NA
-      4       NA      NA            NA, NA         NA    NA          NA, NA       NA
-      5       NA      NA            NA, NA         NA    NA          NA, NA       NA
-      6       NA      NA            NA, NA         NA    NA          NA, NA       NA
-        dispersion dispersion_ci_limits dispersion_ci precision precision_ci_limits
-      1       1.26           1.13, 1.38            95        NA              NA, NA
-      2       1.04           1.04, 1.08            95        NA              NA, NA
-      3         NA               NA, NA            NA        NA              NA, NA
-      4         NA               NA, NA            NA        NA              NA, NA
-      5         NA               NA, NA            NA        NA              NA, NA
-      6         NA               NA, NA            NA        NA              NA, NA
-        precision_ci truncation discretised censored right_truncated
-      1           NA         NA       FALSE     TRUE           FALSE
-      2           NA         NA       FALSE     TRUE           FALSE
-      3           NA         NA       FALSE     TRUE           FALSE
-      4           NA         NA       FALSE     TRUE            TRUE
-      5           NA         NA       FALSE    FALSE           FALSE
-      6           NA         NA       FALSE     TRUE           FALSE
-        phase_bias_adjusted
-      1               FALSE
-      2               FALSE
-      3               FALSE
-      4                TRUE
-      5               FALSE
-      6               FALSE
+        sd_ci_limits sd_ci quantile_2.5 quantile_5 quantile_25 median
+      1       NA, NA    NA           NA         NA         4.8    5.6
+      2       NA, NA    NA           NA         NA         2.9    3.0
+      3     4.2, 7.3    95           NA        1.7          NA    8.0
+      4    6.4, 26.0    95           NA        2.5          NA    9.1
+      5       NA, NA    NA           NA         NA          NA     NA
+      6   3.05, 5.30    95         1.35        1.9          NA    6.1
+        median_ci_limits median_ci quantile_75 quantile_87.5 quantile_95
+      1         4.8, 6.3        95         6.5            NA          NA
+      2         0.5, 3.1        95         3.0            NA          NA
+      3         6.2, 9.8        95          NA            NA        18.8
+      4        6.7, 13.7        95          NA            NA        33.1
+      5           NA, NA        NA          NA            NA          NA
+      6           NA, NA        NA          NA            NA        11.9
+        quantile_97.5 lower_range upper_range shape shape_ci_limits shape_ci scale
+      1            NA          NA          NA    NA          NA, NA       NA    NA
+      2            NA          NA          NA    NA          NA, NA       NA    NA
+      3            NA          NA          NA    NA          NA, NA       NA    NA
+      4            NA          NA          NA    NA          NA, NA       NA    NA
+      5            NA          NA          NA    NA          NA, NA       NA    NA
+      6         13.04          NA          NA    NA          NA, NA       NA    NA
+        scale_ci_limits scale_ci meanlog meanlog_ci_limits meanlog_ci sdlog
+      1          NA, NA       NA      NA            NA, NA         NA    NA
+      2          NA, NA       NA      NA            NA, NA         NA    NA
+      3          NA, NA       NA      NA            NA, NA         NA    NA
+      4          NA, NA       NA      NA            NA, NA         NA    NA
+      5          NA, NA       NA      NA            NA, NA         NA    NA
+      6          NA, NA       NA      NA            NA, NA         NA    NA
+        sdlog_ci_limits sdlog_ci dispersion dispersion_ci_limits dispersion_ci
+      1          NA, NA       NA       1.26           1.13, 1.38            95
+      2          NA, NA       NA       1.04           1.04, 1.08            95
+      3          NA, NA       NA         NA               NA, NA            NA
+      4          NA, NA       NA         NA               NA, NA            NA
+      5          NA, NA       NA         NA               NA, NA            NA
+      6          NA, NA       NA         NA               NA, NA            NA
+        precision precision_ci_limits precision_ci truncation discretised censored
+      1        NA              NA, NA           NA         NA       FALSE     TRUE
+      2        NA              NA, NA           NA         NA       FALSE     TRUE
+      3        NA              NA, NA           NA         NA       FALSE     TRUE
+      4        NA              NA, NA           NA         NA       FALSE     TRUE
+      5        NA              NA, NA           NA         NA       FALSE    FALSE
+      6        NA              NA, NA           NA         NA       FALSE     TRUE
+        right_truncated phase_bias_adjusted
+      1           FALSE               FALSE
+      2           FALSE               FALSE
+      3           FALSE               FALSE
+      4            TRUE                TRUE
+      5           FALSE               FALSE
+      6           FALSE               FALSE
                                                                                                                                                                                                                                                                                                                                     notes
       1 Analysis on data from Commission on Acute Respiratory Disease. Experimental transmission of minor respiratory illness to human volunteers by filter-passing agents. I. Demonstration of two types of illness characterized by long and short incubation periods and diff erent clinical features. J Clin Invest 1947; 26: 957–82.
       2                                                                                                                                                                                                                                           Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
@@ -177,27 +177,27 @@
       104     FALSE             lnorm              mle   NA         NA, NA      NA NA
       105     FALSE             lnorm              mle   NA         NA, NA      NA NA
       106     FALSE             lnorm         bayesian   NA         NA, NA      NA NA
-          sd_ci_limits sd_ci quantile_025 quantile_05 quantile_25 median
-      101       NA, NA    NA           NA         1.0         1.7    2.6
-      102       NA, NA    NA           NA          NA         2.8    2.9
-      103       NA, NA    NA           NA          NA         8.7   10.8
-      104       NA, NA    NA           NA         1.9         3.2    4.4
-      105       NA, NA    NA           NA         1.9         3.1    4.4
-      106       NA, NA    NA           NA         3.2         4.6    5.9
-          median_ci_limits median_ci quantile_75 quantile_875 quantile_95
-      101         1.6, 3.5        95         3.8           NA         7.0
-      102         0.5, 3.1        95         3.0           NA          NA
-      103        8.4, 14.2        95        13.3           NA          NA
-      104             4, 5        95         6.3           NA        10.3
-      105         3.9, 5.0        95         6.2           NA        10.3
-      106         4.4, 7.6        95         7.6           NA        11.2
-          quantile_975 lower_range upper_range shape shape_ci_limits shape_ci scale
-      101           NA          NA          NA    NA          NA, NA       NA    NA
-      102           NA          NA          NA    NA          NA, NA       NA    NA
-      103           NA          NA          NA    NA          NA, NA       NA    NA
-      104           NA          NA          NA    NA          NA, NA       NA    NA
-      105           NA          NA          NA    NA          NA, NA       NA    NA
-      106           NA          NA          NA    NA          NA, NA       NA    NA
+          sd_ci_limits sd_ci quantile_2.5 quantile_5 quantile_25 median
+      101       NA, NA    NA           NA        1.0         1.7    2.6
+      102       NA, NA    NA           NA         NA         2.8    2.9
+      103       NA, NA    NA           NA         NA         8.7   10.8
+      104       NA, NA    NA           NA        1.9         3.2    4.4
+      105       NA, NA    NA           NA        1.9         3.1    4.4
+      106       NA, NA    NA           NA        3.2         4.6    5.9
+          median_ci_limits median_ci quantile_75 quantile_87.5 quantile_95
+      101         1.6, 3.5        95         3.8            NA         7.0
+      102         0.5, 3.1        95         3.0            NA          NA
+      103        8.4, 14.2        95        13.3            NA          NA
+      104             4, 5        95         6.3            NA        10.3
+      105         3.9, 5.0        95         6.2            NA        10.3
+      106         4.4, 7.6        95         7.6            NA        11.2
+          quantile_97.5 lower_range upper_range shape shape_ci_limits shape_ci scale
+      101            NA          NA          NA    NA          NA, NA       NA    NA
+      102            NA          NA          NA    NA          NA, NA       NA    NA
+      103            NA          NA          NA    NA          NA, NA       NA    NA
+      104            NA          NA          NA    NA          NA, NA       NA    NA
+      105            NA          NA          NA    NA          NA, NA       NA    NA
+      106            NA          NA          NA    NA          NA, NA       NA    NA
           scale_ci_limits scale_ci meanlog meanlog_ci_limits meanlog_ci sdlog
       101          NA, NA       NA      NA            NA, NA         NA    NA
       102          NA, NA       NA      NA            NA, NA         NA    NA

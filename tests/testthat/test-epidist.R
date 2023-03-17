@@ -62,13 +62,13 @@ test_that("epidist works with all arguments set", {
       lower_range = 0.1,
       upper_range = 1.9,
       quantiles = c(
-        q_025 = 0.2,
-        q_05 = 0.3,
+        q_2.5 = 0.2,
+        q_5 = 0.3,
         q_25 = 0.5,
         q_75 = 0.7,
-        q_875 = 1.1,
+        q_87.5 = 1.1,
         q_95 = 1.2,
-        q_975 = 1.5
+        q_97.5 = 1.5
       )
     ), citation = create_epidist_citation(
       author = "Smith",

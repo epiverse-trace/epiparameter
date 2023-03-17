@@ -33,7 +33,7 @@
 #'   prob_dist = "gamma",
 #'   prob_dist_params = NA,
 #'   summary_stats = create_epidist_summary_stats(
-#'    quantiles = c(q_025 = 0.2, q_975 = 9.2)
+#'    quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
 #'   ),
 #'   sample_size = NA
 #' )

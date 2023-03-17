@@ -1,11 +1,11 @@
 test_that("get_percentiles works as expected", {
-  res <- get_percentiles(c(q_05 = 1, q_95 = 10))
-  expect_identical(res, c("0.5" = 1, "95" = 10))
+  res <- get_percentiles(c(q_5 = 1, q_95 = 10))
+  expect_identical(res, c("5" = 1, "95" = 10))
 
-  res <- get_percentiles(c(q_025 = 1, q_975 = 10))
-  expect_identical(res, c("0.25" = 1, "97.5" = 10))
+  res <- get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
+  expect_identical(res, c("2.5" = 1, "97.5" = 10))
 
-  res <- get_percentiles(c(q_05 = 1, q_45 = 10))
+  res <- get_percentiles(c(q_5 = 1, q_45 = 10))
   expect_identical(res, NA)
 
   res <- get_percentiles(c(q_55 = 1, q_90 = 10))
@@ -33,21 +33,21 @@ test_that("get_sym_percentiles works as expected for symmetrical", {
 
   # case without NAs
   percentiles <- c(
-    "0.25" = 1, "5" = 5, "95" = 15, "99" = 25
+    "2.5" = 1, "5" = 5, "95" = 15, "99" = 25
   )
   sym_percentiles <- get_sym_percentiles(percentiles = percentiles)
   expect_identical(sym_percentiles, c("5" = 5, "95" = 15))
 
   # case with NAs
   percentiles <- c(
-    "0.25" = 1, "5" = 5, "25" = NA, "75" = NA, "95" = 15, "99" = 25
+    "2.5" = 1, "5" = 5, "25" = NA, "75" = NA, "95" = 15, "99" = 25
   )
   sym_percentiles <- get_sym_percentiles(percentiles = percentiles)
   expect_identical(sym_percentiles, c("5" = 5, "95" = 15))
 
   # case with multiple symmetrical percentiles
   percentiles <- c(
-    "0.25" = 1, "5" = 5, "25" = 7, "75" = 10, "95" = 15, "99" = 25
+    "2.5" = 1, "5" = 5, "25" = 7, "75" = 10, "95" = 15, "99" = 25
   )
   sym_percentiles <- get_sym_percentiles(percentiles = percentiles)
   expect_identical(sym_percentiles, c("25" = 7, "75" = 10))
@@ -62,10 +62,10 @@ test_that("get_sym_percentiles works as expected for asymmetrical", {
 
   # case without NAs
   percentiles <- c(
-    "0.25" = 1, "25" = 5, "95" = 15, "99" = 25
+    "2.5" = 1, "25" = 5, "95" = 15, "99" = 25
   )
   sym_percentiles <- get_sym_percentiles(percentiles = percentiles)
-  expect_identical(sym_percentiles, c("0.25" = 1, "99" = 25))
+  expect_identical(sym_percentiles, c("2.5" = 1, "99" = 25))
 
   # case with NAs
   percentiles <- c(
@@ -85,8 +85,5 @@ test_that("get_sym_percentiles works as expected for asymmetrical", {
 test_that("get_sym_percentiles works as expected for all NAs", {
 
   percentiles <- c("2.5" = NA,  "95" = NA)
-  expect_error(
-    get_sym_percentiles(percentiles = percentiles),
-    regexp = "all percentiles are missing"
-  )
+  expect_true(is.na(get_sym_percentiles(percentiles = percentiles)))
 })
