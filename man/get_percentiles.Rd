@@ -19,23 +19,23 @@ Parameters of a probability distribution can be extracted using
 the values given at percentiles of the distribution and the percentiles using
 \code{\link[=extract_param]{extract_param()}}. \code{get_percentiles()} takes a named vector of percentiles
 (names) and values at those percentiles (elements in the vector) and selects
-two values as lower and upper percentiles to be used in extraction.
+two values as lower and upper percentiles to be used in extraction. If a
+lower and upper percentile are not available \code{NA} is returned.
 
 It also formats the vector names so that they can be correctly converted to
 numeric using \code{as.numeric()}.
 }
 \details{
-The name format is "q_" followed by the value. Decimal points
-are not used an should have a zero infront of the number to represent
-decimal places, e.g. q_05 is 0.5. Numbers with decimal places after non-zero
-values are given as q_975 which is 97.5.
+The name format is "q_" followed by the value. Numbers with
+decimal places should have the decimal point in the name (e.g.
+\verb{c(2.5 = 1, 97.5 = 10)}).
 }
 \examples{
 \dontrun{
   # 90th interval
-  get_percentiles(c(q_05 = 1, q_95 = 10))
+  get_percentiles(c(q_5 = 1, q_95 = 10))
   # 95th interval
-  get_percentiles(c(q_025 = 1, q_975 = 10))
+  get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
 }
 }
 \keyword{internal}

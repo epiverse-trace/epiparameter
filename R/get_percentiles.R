@@ -5,15 +5,15 @@
 #' the values given at percentiles of the distribution and the percentiles using
 #' [`extract_param()`]. `get_percentiles()` takes a named vector of percentiles
 #' (names) and values at those percentiles (elements in the vector) and selects
-#' two values as lower and upper percentiles to be used in extraction.
+#' two values as lower and upper percentiles to be used in extraction. If a
+#' lower and upper percentile are not available `NA` is returned.
 #'
 #' It also formats the vector names so that they can be correctly converted to
 #' numeric using `as.numeric()`.
 #'
-#' @details  The name format is "q_" followed by the value. Decimal points
-#' are not used an should have a zero infront of the number to represent
-#' decimal places, e.g. q_05 is 0.5. Numbers with decimal places after non-zero
-#' values are given as q_975 which is 97.5.
+#' @details  The name format is "q_" followed by the value. Numbers with
+#' decimal places should have the decimal point in the name (e.g.
+#' `c(2.5 = 1, 97.5 = 10)`).
 #'
 #' @param percentiles A named vector of values at percentiles with the names the
 #' percentiles. See Details for the accepted vector name format.
@@ -24,9 +24,9 @@
 #' @examples
 #' \dontrun{
 #'   # 90th interval
-#'   get_percentiles(c(q_05 = 1, q_95 = 10))
+#'   get_percentiles(c(q_5 = 1, q_95 = 10))
 #'   # 95th interval
-#'   get_percentiles(c(q_025 = 1, q_975 = 10))
+#'   get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
 #' }
 get_percentiles <- function(percentiles) {
 
@@ -34,49 +34,21 @@ get_percentiles <- function(percentiles) {
   checkmate::assert_numeric(percentiles, names = "unique")
 
   # change percentile names to give correct numbers
-  names(percentiles) <- unname(vapply(
-    names(percentiles), function(x) {
-      ifelse(
-        test = grepl(pattern = "_0", x = x, fixed = TRUE),
-        yes = gsub(
-          pattern = "(.*)_0",
-          replacement = "0.",
-          x = x
-        ),
-        no = gsub(
-          pattern = "q_",
-          replacement = "",
-          x = x,
-          fixed = TRUE
-        )
-      )
-    },
-    FUN.VALUE = character(1)
-  ))
+  names(percentiles) <- gsub(
+    pattern = "q_",
+    replacement = "",
+    x = names(percentiles),
+    fixed = TRUE
+  )
 
-  # insert decimal point when necessary
-  names(percentiles) <- unname(vapply(
-    names(percentiles), function(x) {
-      ifelse(
-        test = as.numeric(x) >= 100,
-        yes = gsub(
-          pattern = "^(.{2})(.*)$",
-          replacement = "\\1.\\2",
-          x = x
-        ),
-        no = x
-      )
-    },
-    FUN.VALUE = character(1)
-  ))
+  checkmate::assert_numeric(
+    as.numeric(names(percentiles)),
+    lower = 0,
+    upper = 100
+  )
 
   # extract a lower and an upper percentile
   percentiles <- get_sym_percentiles(percentiles)
-
-  # if any percentiles are NA return NA
-  if (anyNA(percentiles)) {
-    percentiles <- NA
-  }
 
   # return percentiles
   percentiles
@@ -93,9 +65,6 @@ get_percentiles <- function(percentiles) {
 #' @keywords internal
 get_sym_percentiles <- function(percentiles) {
 
-  # check input
-  stopifnot("all percentiles are missing" = !all(is.na(percentiles)))
-
   # make a copy of percentiles
   percentiles_ <- percentiles
 
@@ -109,6 +78,7 @@ get_sym_percentiles <- function(percentiles) {
   lower_intervals <- intervals[intervals <= 50]
   upper_intervals <- intervals[intervals > 50]
 
+  # if upper or lower percentiles are not available return percentiles
   if (identical(length(lower_intervals), 0L) ||
       identical(length(upper_intervals), 0L)) {
     return(NA)
