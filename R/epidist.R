@@ -406,6 +406,15 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
   }
 
   if (inherits(x$prob_dist, "distcrete")) {
+
+    # decide on parameter format from magnitude of number
+    params <- unlist(x$prob_dist$parameters)
+    format_params <- ifelse(
+      test = any(params > 9.999e-3 & params < 1e4),
+      yes = "f",
+      no = "g"
+    )
+
     writeLines(
       c(
         sprintf("Distribution: discrete %s", x$prob_dist$name),
@@ -413,11 +422,20 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
         sprintf(
           "  %s: %s",
           names(x$prob_dist$parameters),
-          as.character(x$prob_dist$parameters)
+          formatC(params, digits = 3, format = format_params)
         )
       )
     )
   } else {
+
+    # decide on parameter format from magnitude of number
+    params <- unlist(distributional::parameters(x$prob_dist))
+    format_params <- ifelse(
+      test = any(params > 9.999e-3 & params < 1e4),
+      yes = "f",
+      no = "g"
+    )
+
     writeLines(
       c(
         sprintf("Distribution: %s", stats::family(x$prob_dist)),
@@ -425,7 +443,11 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
         sprintf(
           "  %s: %s",
           names(unlist(distributional::parameters(x$prob_dist))),
-          as.character(unlist(distributional::parameters(x$prob_dist)))
+          formatC(
+            params,
+            digits = 3,
+            format = format_params
+          )
         )
       )
     )
