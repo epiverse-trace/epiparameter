@@ -101,6 +101,38 @@ test_that("extract_param works for weibull from median and range", {
   )
 })
 
+test_that("extract_param warns when max_iter exceeded", {
+  # set seed for stochastic optimisation
+  set.seed(1)
+  # suppress messages for testing
+  expect_warning(
+    suppressMessages(extract_param(
+      type = "percentiles",
+      values = c(2, 10),
+      distribution = "lnorm",
+      percentiles = c(0.05, 0.95),
+      control = list(max_iter = 5)
+    )), regexp = paste0(
+      "(Maximum optimisation iterations reached)*(returning result early)*",
+      "(Result may not be reliable)"
+    )
+  )
+
+  # suppress messages for testing
+  expect_warning(
+    suppressMessages(extract_param(
+      type = "range",
+      values = c(5, 2, 10),
+      distribution = "lnorm",
+      samples = 10,
+      control = list(max_iter = 5)
+    )), regexp = paste0(
+      "(Maximum optimisation iterations reached)*(returning result early)*",
+      "(Result may not be reliable)"
+    )
+  )
+})
+
 test_that("extract_param fails as expected", {
   expect_error(
     extract_param(
@@ -165,6 +197,17 @@ test_that("extract_param fails as expected", {
       "Assertion on 'samples' failed: Must be of type ",
       "'number', not 'character'."
     )
+  )
+
+  expect_error(
+    extract_param(
+      type = "percentiles",
+      values = c(6, 13),
+      distribution = "lnorm",
+      percentiles = c(0.125, 0.875),
+      control = list(extra = 1)
+    ),
+    regexp = "control list requires max_iter and tolerance elements"
   )
 })
 
