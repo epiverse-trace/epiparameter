@@ -5,7 +5,7 @@
 \title{Checks whether the optimisation of distribution parameters has converged to
 stable value for the parameters and function output for multiple iterations}
 \usage{
-check_optim_conv(optim_params_list, optim_params, optim_conv)
+check_optim_conv(optim_params_list, optim_params, optim_conv, tolerance)
 }
 \arguments{
 \item{optim_params_list}{A list, where each element is the output of
@@ -15,12 +15,15 @@ stats::optim. See ?optim for more details}
 
 \item{optim_conv}{A boolean value indicating whether the optimisation has
 converged over multiple iterations}
+
+\item{tolerance}{A \code{numeric} specifying within which disparity convergence
+of parameter estimates and function minimisation is accepted.}
 }
 \value{
 Boolean
 }
 \description{
-This function is a try and prevent optimisation to a local
-optim and thus checks whether multiple optimisation routines are consistently
-finding parameter values to within a set tolerance of 1e-5.
+This function is to try and prevent optimisation to a local
+optimum and thus checks whether multiple optimisation routines are
+consistently finding parameter values to within a set tolerance.
 }
