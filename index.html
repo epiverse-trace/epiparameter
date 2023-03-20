@@ -83,11 +83,11 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>The easiest way to install the development version of <a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> is to use the <a href="https://remotes.r-lib.org" class="external-link">remotes</a> package:</p>
+<p>The easiest way to install the development version of <a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a> is to use the <a href="https://pak.r-lib.org/" class="external-link">pak</a> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># check whether {remotes} is installed</span></span>
-<span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"epiverse-trace/epiparameter"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># check whether {pak} is installed</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://pak.r-lib.org/" class="external-link">"pak"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"epiverse-trace/epiparameter"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
@@ -99,33 +99,33 @@
 <code class="sourceCode R"><span><span class="va">eparams</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/epiparam.html">epiparam</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">eparams</span></span>
 <span><span class="co">#&gt; Epiparam object</span></span>
-<span><span class="co">#&gt; Number of distributions in library: 54</span></span>
-<span><span class="co">#&gt; Number of diseases: 21</span></span>
-<span><span class="co">#&gt; Number of delay distributions: 45</span></span>
-<span><span class="co">#&gt; Number of offspring distributions: 9</span></span>
-<span><span class="co">#&gt; Number of studies in library: 24</span></span>
+<span><span class="co">#&gt; Number of distributions in library: 106</span></span>
+<span><span class="co">#&gt; Number of diseases: 24</span></span>
+<span><span class="co">#&gt; Number of delay distributions: 83</span></span>
+<span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
+<span><span class="co">#&gt; Number of studies in library: 42</span></span>
 <span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
-<span><span class="co">#&gt;       disease  epi_distribution prob_distribution</span></span>
-<span><span class="co">#&gt; 1  adenovirus incubation_period         lognormal</span></span>
-<span><span class="co">#&gt; 2 chikungunya incubation_period         lognormal</span></span>
-<span><span class="co">#&gt; 3      dengue incubation_period         lognormal</span></span>
-<span><span class="co">#&gt; 4      dengue incubation_period         lognormal</span></span>
-<span><span class="co">#&gt; 5      dengue incubation_period         lognormal</span></span>
-<span><span class="co">#&gt; 6      dengue incubation_period         lognormal</span></span>
-<span><span class="co">#&gt; &lt;48 more rows &amp; 53 more cols not shown&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
+<span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
+<span><span class="co">#&gt; 2 Chikungunya        incubation_period             lnorm</span></span>
+<span><span class="co">#&gt; 3    COVID-19 hospitalisation_to_death           weibull</span></span>
+<span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
+<span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6    COVID-19        incubation_period           weibull</span></span>
+<span><span class="co">#&gt; &lt;100 more rows &amp; 53 more cols not shown&gt;</span></span></code></pre></div>
 <p>The library is an <code>&lt;epiparam&gt;</code> class, which underneath is a data frame.</p>
 <p>Each entry of the library can be converted into an <code>&lt;epidist&gt;</code> object to be used.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">influenza_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">eparams</span><span class="op">[</span><span class="fl">12</span>, <span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">influenza_incubation</span></span>
-<span><span class="co">#&gt; Disease: influenza</span></span>
-<span><span class="co">#&gt; Pathogen: influenza-A-H1N1pdm</span></span>
+<span><span class="co">#&gt; Disease: COVID-19</span></span>
+<span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
 <span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
-<span><span class="co">#&gt; Study: Ghani et al. (2009) &lt;10.1371/currents.RRN1130&gt; PMID: 20029668</span></span>
-<span><span class="co">#&gt; Distribution: gamma</span></span>
+<span><span class="co">#&gt; Study: Linton et al. (2020) &lt;10.3390/jcm9020538&gt; PMID: 32079150</span></span>
+<span><span class="co">#&gt; Distribution: lognormal</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   shape: 17.503123698459</span></span>
-<span><span class="co">#&gt;   rate: 8.5381091211995</span></span></code></pre></div>
+<span><span class="co">#&gt;   mu: 1.45569556256012</span></span>
+<span><span class="co">#&gt;   sigma: 0.554513029376191</span></span></code></pre></div>
 <p>The <code>&lt;epidist&gt;</code> object can be plotted.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">influenza_incubation</span><span class="op">)</span></span></code></pre></div>
@@ -183,15 +183,16 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; To cite package 'epiparameter' in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Kucharski A (2023). _epiparameter: Library of epidemiological</span></span>
-<span><span class="co">#&gt;   parameters_. https://github.com/epiverse-trace/epiparameter,</span></span>
+<span><span class="co">#&gt;   Lambert J, Kucharski A (2023). _epiparameter: Library of</span></span>
+<span><span class="co">#&gt;   Epidemiological Parameters_.</span></span>
+<span><span class="co">#&gt;   https://github.com/epiverse-trace/epiparameter,</span></span>
 <span><span class="co">#&gt;   https://epiverse-trace.github.io/epiparameter/.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   @Manual{,</span></span>
-<span><span class="co">#&gt;     title = {epiparameter: Library of epidemiological parameters},</span></span>
-<span><span class="co">#&gt;     author = {Adam Kucharski},</span></span>
+<span><span class="co">#&gt;     title = {epiparameter: Library of Epidemiological Parameters},</span></span>
+<span><span class="co">#&gt;     author = {Joshua W. Lambert and Adam Kucharski},</span></span>
 <span><span class="co">#&gt;     year = {2023},</span></span>
 <span><span class="co">#&gt;     note = {https://github.com/epiverse-trace/epiparameter,</span></span>
 <span><span class="co">#&gt; https://epiverse-trace.github.io/epiparameter/},</span></span>
