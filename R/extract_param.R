@@ -17,13 +17,21 @@
 #' percentiles defined in `values` if using `type = "percentiles"`.
 #' @param samples A `numeric` specifying the sample size if using
 #' `type = "range"`.
+#' @param control A named list containing options for the optimisation. List
+#' element `$max_iter` is a `numeric` specifying the maximum number of times
+#' the parameter extraction will run optimisation before returning result early.
+#' This prevents overly long optimisation loops if optimisation is unstable and
+#' does not converge over multiple iterations. Default is 1000 iterations. List
+#' element `$tolerance` is passed to [`check_optim_conv()`] for tolerance on
+#' parameter convergence over iterations of optimisation. Elements of in the
+#' control list are not passed to [`optim()`].
 #'
 #' @return A named `numeric` vector with the parameter values of the
 #' distribution. If the `distribution = lnorm` then the parameters returned are
 #' the meanlog and sdlog; if the `distribution = gamma` or `distribution =
 #' weibull` then the parameters returned are the shape and scale.
 #' @keywords extract
-#' @author Adam Kucharski
+#' @author Adam Kucharski, Joshua W. Lambert
 #' @export
 #' @examples
 #' # set seed to control for stochasticity
@@ -48,7 +56,10 @@ extract_param <- function(type = c("percentiles", "range"),
                           values,
                           distribution = c("lnorm", "gamma", "weibull"),
                           percentiles,
-                          samples) {
+                          samples,
+                          control = list(max_iter = 1000,
+                                         tolerance = 1e-5)) {
+
   # check string arguments
   type <- match.arg(arg = type, several.ok = FALSE)
   distribution <- match.arg(arg = distribution, several.ok = FALSE)
@@ -61,6 +72,19 @@ extract_param <- function(type = c("percentiles", "range"),
   if (!missing(samples)) {
     checkmate::assert_number(samples, lower = 1)
   }
+
+  # prepare default control list
+  ctrl <- list(
+    max_iter = 1000,
+    tolerance = 1e-5
+  )
+  # pass user solver options to default control list
+  ctrl[names(control)] <- control
+
+  stopifnot(
+    "control list requires max_iter and tolerance elements" =
+      identical(names(ctrl), c("max_iter", "tolerance"))
+  )
 
   # Validate inputs
   switch(type,
@@ -92,7 +116,7 @@ extract_param <- function(type = c("percentiles", "range"),
   )
 
   # check numerical stability of results with different starting parameters
-  while (isFALSE(optim_conv)) {
+  while (isFALSE(optim_conv) && i < ctrl$max_iter) {
     # Extract distribution parameters by optimising for specific distribution
     optim_params <- do.call(
       fun_extract_param,
@@ -110,8 +134,24 @@ extract_param <- function(type = c("percentiles", "range"),
     optim_conv <- check_optim_conv(
       optim_params_list = optim_params_list,
       optim_params = optim_params,
-      optim_conv = optim_conv
+      optim_conv = optim_conv,
+      tolerance = ctrl$tolerance
     )
+  }
+
+  # if convergence after maximum iterations is not reached
+  if (i >= ctrl$max_iter) {
+    warning(
+      "Maximum optimisation iterations reached, returning result early. \n",
+      "Result may not be reliable.",
+      call. = FALSE
+    )
+
+    # choose best parameter estimates from lowest optimisation value
+    best_iter <- which.min(unlist(lapply(optim_params_list, "[[", "value")))
+  } else {
+    # if optimsation converged use last iteration
+    best_iter <- length(optim_params_list)
   }
 
   # warn about local optima
@@ -121,7 +161,7 @@ extract_param <- function(type = c("percentiles", "range"),
   )
 
   # return parameters that repeatedly converge
-  optim_params_list[[length(optim_params_list)]]$par
+  optim_params_list[[best_iter]]$par
 }
 
 #' Optimises the parameters for a specified probability distribution given the
@@ -257,20 +297,23 @@ extract_param_range <- function(values,
 #' Checks whether the optimisation of distribution parameters has converged to
 #' stable value for the parameters and function output for multiple iterations
 #'
-#' @description This function is a try and prevent optimisation to a local
-#' optim and thus checks whether multiple optimisation routines are consistently
-#' finding parameter values to within a set tolerance of 1e-5.
+#' @description This function is to try and prevent optimisation to a local
+#' optimum and thus checks whether multiple optimisation routines are
+#' consistently finding parameter values to within a set tolerance.
 #'
 #' @param optim_params_list A list, where each element is the output of
 #' stats::optim. See ?optim for more details
 #' @param optim_params A list given by the output of stats::optim
 #' @param optim_conv A boolean value indicating whether the optimisation has
 #' converged over multiple iterations
+#' @param tolerance A `numeric` specifying within which disparity convergence
+#' of parameter estimates and function minimisation is accepted.
 #'
 #' @return Boolean
 check_optim_conv <- function(optim_params_list,
                              optim_params,
-                             optim_conv) {
+                             optim_conv,
+                             tolerance) {
   # no pairwise comparison on first iterations
   if (length(optim_params_list) > 1) {
     # extract parameters from list
@@ -281,13 +324,13 @@ check_optim_conv <- function(optim_params_list,
     param_b_dist <- stats::dist(unlist(lapply(params, "[[", 2)))
 
     # any convergence within tolerance for parameters
-    res_diff <- length(which(param_a_dist < 1e-5)) &&
-      length(which(param_b_dist < 1e-5))
+    res_diff <- length(which(param_a_dist < tolerance)) &&
+      length(which(param_b_dist < tolerance))
 
     # any convergence within tolerance for function value
     res_diff <- res_diff &&
       (abs(optim_params_list[[length(optim_params_list)]]$value -
-        min(unlist(lapply(optim_params_list, "[[", "value")))) < 1e-5)
+        min(unlist(lapply(optim_params_list, "[[", "value")))) < tolerance)
     optim_conv <- res_diff && optim_params$convergence == 0
   }
   optim_conv

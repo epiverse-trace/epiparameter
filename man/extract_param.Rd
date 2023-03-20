@@ -10,7 +10,8 @@ extract_param(
   values,
   distribution = c("lnorm", "gamma", "weibull"),
   percentiles,
-  samples
+  samples,
+  control = list(max_iter = 1000, tolerance = 1e-05)
 )
 }
 \arguments{
@@ -27,6 +28,15 @@ percentiles defined in \code{values} if using \code{type = "percentiles"}.}
 
 \item{samples}{A \code{numeric} specifying the sample size if using
 \code{type = "range"}.}
+
+\item{control}{A named list containing options for the optimisation. List
+element \verb{$max_iter} is a \code{numeric} specifying the maximum number of times
+the parameter extraction will run optimisation before returning result early.
+This prevents overly long optimisation loops if optimisation is unstable and
+does not converge over multiple iterations. Default is 1000 iterations. List
+element \verb{$tolerance} is passed to \code{\link[=check_optim_conv]{check_optim_conv()}} for tolerance on
+parameter convergence over iterations of optimisation. Elements of in the
+control list are not passed to \code{\link[=optim]{optim()}}.}
 }
 \value{
 A named \code{numeric} vector with the parameter values of the
@@ -61,6 +71,6 @@ extract_param(
 )
 }
 \author{
-Adam Kucharski
+Adam Kucharski, Joshua W. Lambert
 }
 \keyword{extract}
