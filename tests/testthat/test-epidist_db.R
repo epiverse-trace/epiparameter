@@ -77,6 +77,9 @@ test_that("epidist_db fails as expected with no entry in the database", {
 })
 
 test_that("epidist_db throws warning as expected with multiple entries", {
+  # set seed for stochastic optimisation
+  set.seed(123)
+
   expect_warning(
     # message about stochastic optimisation suppressed
     suppressMessages(epidist_db(
