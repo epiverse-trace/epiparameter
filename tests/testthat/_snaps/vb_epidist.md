@@ -23,15 +23,15 @@
       
       Distribution: gamma
       Parameters:
-        shape: 1
-        rate: 1
+        shape: 1.000
+        rate: 1.000
       
        <Extrinsic Distribution> 
       
       Distribution: gamma
       Parameters:
-        shape: 2
-        rate: 0.5
+        shape: 2.000
+        rate: 0.500
 
 ---
 
@@ -47,15 +47,15 @@
       
       Distribution: gamma
       Parameters:
-        shape: 1
-        rate: 1
+        shape: 1.000
+        rate: 1.000
       
        <Extrinsic Distribution> 
       
       Distribution: gamma
       Parameters:
-        shape: 2
-        rate: 0.5
+        shape: 2.000
+        rate: 0.500
 
 ---
 
@@ -82,15 +82,15 @@
       
       Distribution: discrete gamma
       Parameters:
-        shape: 1
-        scale: 1
+        shape: 1.000
+        scale: 1.000
       
        <Extrinsic Distribution> 
       
       Distribution: discrete gamma
       Parameters:
-        shape: 2
-        scale: 2
+        shape: 2.000
+        scale: 2.000
 
 ---
 
@@ -106,13 +106,13 @@
       
       Distribution: discrete gamma
       Parameters:
-        shape: 1
-        scale: 1
+        shape: 1.000
+        scale: 1.000
       
        <Extrinsic Distribution> 
       
       Distribution: discrete gamma
       Parameters:
-        shape: 2
-        scale: 2
+        shape: 2.000
+        scale: 2.000
 
