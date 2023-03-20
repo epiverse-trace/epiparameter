@@ -406,6 +406,12 @@ create_epidist_citation <- function(author = NA_character_,
     fixed = TRUE
   )
 
+  # check if study has two authors and if so insert ampersand
+  num_authors <- length(unlist(strsplit(x = author, split = " ", fixed = TRUE)))
+  if (identical(num_authors, 2L)) {
+    author <- gsub(pattern = " ", replacement = " & ", x = author, fixed = TRUE)
+  }
+
   citation <- paste0(author, " (", year, ") ", "<", DOI, ">")
 
   if (!is.na(PMID)) {
