@@ -12,8 +12,8 @@
       Study: No citation available
       Distribution: gamma
       Parameters:
-        shape: 1
-        rate: 1
+        shape: 1.000
+        rate: 1.000
 
 ---
 
@@ -29,6 +29,6 @@
       Study: No citation available
       Distribution: discrete gamma
       Parameters:
-        shape: 1
-        scale: 1
+        shape: 1.000
+        scale: 1.000
 
