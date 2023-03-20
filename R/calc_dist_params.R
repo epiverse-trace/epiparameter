@@ -29,6 +29,9 @@
 #' @return A named vector with parameters
 #' @export
 #' @examples
+#' # set seed for stochastic optimisation
+#' set.seed(1)
+#'
 #' calc_dist_params(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = NA,

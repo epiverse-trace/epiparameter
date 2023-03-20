@@ -21,6 +21,9 @@ test_that("calc_dist_params works as expected converting for different dist", {
 })
 
 test_that("calc_dist_params works as expected extracting from percentiles", {
+  # set seed for stochastic optimisation
+  set.seed(1)
+
   # messages for numerical optimisation suppressed
   params <- suppressMessages(calc_dist_params(
     prob_dist = "gamma",
@@ -32,6 +35,9 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
 
   expect_vector(params, ptype = numeric(), size = 2)
   expect_named(params, expected = c("shape", "scale"))
+
+  # set seed for stochastic optimisation
+  set.seed(1)
 
   # messages for numerical optimisation suppressed
   params <- suppressMessages(calc_dist_params(
@@ -47,6 +53,9 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
 })
 
 test_that("calc_dist_params works as expected extracting from median & range", {
+  # set seed for stochastic optimisation
+  set.seed(1)
+
   # messages for numerical optimisation suppressed
   params <- suppressMessages(calc_dist_params(
     prob_dist = "gamma",
