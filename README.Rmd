@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# epiparameter <img src="man/figures/epiparameter_logo.png" align="right" height="200" />
+# epiparameter <img src="man/figures/epiparameter_logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
