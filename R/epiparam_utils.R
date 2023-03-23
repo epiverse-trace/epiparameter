@@ -448,4 +448,66 @@ as_epiparam <- function(x) {
 #' @export
 `[.epiparam` <- function(epiparam, ...) {
   validate_epiparam(NextMethod())
+#' Decides whether `epiparam` object can be reconstructed from input
+#'
+#' @description Uses [`epiparam_can_reconstruct()`] to determine whether the
+#' data input can be reconstructed in a valid `epiparam` object. If it can not,
+#' it is returned as a `data.frame`.
+#'
+#' @param x A `data.frame` or subclass of `data.frame` (e.g. `tibble` or
+#' `epiparam`)
+#' @param to The reference object, in this case an `epiparam` object
+#'
+#' @return An `epiparam` object (if the input is valid) or a `data.frame`
+#' @keywords internal
+epiparam_reconstruct <- function(x, to) {
+  if (epiparam_can_reconstruct(x)) {
+    df_reconstruct(x, to)
+  } else {
+    class(x) <- "data.frame"
+    message("Removing crucial column in `<epiparam>` returning `<data.frame>`")
+    x
+  }
+}
+
+#' Checks whether the `epiparam` object is valid
+#'
+#' @description This is a wrapper for [`validate_epiparam`] in a [`tryCatch()`]
+#' in order to not error if the input object is invalid and returns `TRUE` or
+#' `FALSE` on if the object is valid. If the object is valid it can be
+#' "reconstructed" and not downgraded to a `data.frame`.
+#'
+#' @inheritParams epiparam_reconstruct
+#'
+#' @return A boolean logical (`TRUE` or `FALSE`)
+#' @keywords internal
+epiparam_can_reconstruct <- function(x) {
+
+  # check whether input is valid, ignoring its class
+  out <- tryCatch(
+    { validate_epiparam(x, reconstruct = TRUE) },
+    error = function(cnd) FALSE
+  )
+
+  # return boolean
+  !isFALSE(out)
+}
+
+#' Transplants the attributes of one input (`to`) to the other input (`x`)
+#'
+#' @inheritParams epiparam_reconstruct
+#'
+#' @return An `epiparam` object
+#' @keywords internal
+df_reconstruct <- function(x, to) {
+  attrs <- attributes(to)
+  attrs$names <- names(x)
+  attrs$row.names <- .row_names_info(x, type = 0L)
+  attributes(x) <- attrs
+  x
+}
+
+# Registered in `.onLoad()` in zzz.R
+dplyr_reconstruct.epiparam <- function(data, template) {
+  epiparam_reconstruct(data, template)
 }
