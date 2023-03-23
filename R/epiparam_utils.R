@@ -438,16 +438,23 @@ as_epiparam <- function(x) {
   eparam
 }
 
-#' Subsetting method for `epiparam` class that fails when epiparam object is
-#' invalidated
+#' Subsetting method for `epiparam`
+#'
+#' @description If the subsetting invalidates the `epiparam` object (defined by
+#' its invariants, and encoded in [`validate_epiparam()`]) the subsetting will
+#' return a data frame with a message to console stating the class of the object
+#' has been converted to `data.frame` with the other attributes of the class
+#' preserved.
 #'
 #' @param epiparam An `epiparam` object
 #' @inheritParams base::subset
 #'
-#' @return An `epiparam` object
+#' @return An `epiparam` object or a `data.frame`
 #' @export
 `[.epiparam` <- function(epiparam, ...) {
-  validate_epiparam(NextMethod())
+  out <- NextMethod()
+  epiparam_reconstruct(out, epiparam)
+}
 #' Decides whether `epiparam` object can be reconstructed from input
 #'
 #' @description Uses [`epiparam_can_reconstruct()`] to determine whether the
