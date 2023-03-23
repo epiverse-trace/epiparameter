@@ -4,10 +4,16 @@
 \alias{validate_epiparam}
 \title{\code{epiparam} class validator}
 \usage{
-validate_epiparam(epiparam)
+validate_epiparam(epiparam, reconstruct = FALSE)
 }
 \arguments{
 \item{epiparam}{An \code{epiparam} object}
+
+\item{reconstruct}{A boolean logical determining whether the validation
+should be class specific. When \code{TRUE} the input object must be of type
+\code{epiparam} (default), when \code{FALSE} the input object can be of another class,
+e.g. \code{data.frame}. This argument is used in reconstruction operations see
+\code{\link[=epiparam_reconstruct]{epiparam_reconstruct()}}.}
 }
 \value{
 Invisibly returns an \code{\link{epiparam}}. Called for side-effects
