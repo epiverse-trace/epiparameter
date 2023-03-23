@@ -474,6 +474,18 @@ as_epiparam <- function(x) {
   epiparam_reconstruct(out, epiparam)
 }
 
+#' Set accessor for `epiparam` class
+#'
+#' @param epiparam An `epiparam` object
+#' @inheritParams base::Extract
+#'
+#' @return An `epiparam` object or a `data.frame`
+#' @export
+`$<-.epiparam` <- function(epiparam, ...) {
+  out <- NextMethod()
+  epiparam_reconstruct(out, epiparam)
+}
+
 #' Decides whether `epiparam` object can be reconstructed from input
 #'
 #' @description Uses [`epiparam_can_reconstruct()`] to determine whether the
