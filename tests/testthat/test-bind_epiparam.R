@@ -414,8 +414,10 @@ test_that("bind_epiparam fails as expected for binding corrupt vb_epidist", {
 test_that("bind_epiparam fails as expected for binding corrupt epiparam", {
   eparam <- epiparam()
   eparam2 <- epiparam()
-
-  eparam2$disease <- NULL
+  # suppress message about converting to data.frame
+  suppressMessages(eparam2$disease <- NULL)
+  # convert back to epiparam for testing bind_epiparam
+  class(eparam2) <- c("epiparam", "data.frame")
   expect_error(
     bind_epiparam(epiparam = eparam, epi_obj = eparam2),
     regexp = "epiparam object does not contain the correct columns"
