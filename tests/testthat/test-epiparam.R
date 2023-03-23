@@ -196,24 +196,41 @@ test_that("validate_epiparam passes when expected", {
 
 test_that("validate_epidist catches class faults when expected", {
   eparam <- new_epiparam(epi_dist = "all")
-  eparam$disease <- NULL
+  # suppress message about converting to data.frame
+  suppressMessages(eparam <- eparam[, -1])
+  expect_error(
+    validate_epiparam(epiparam = eparam),
+    regexp = "Object should be of class epiparam"
+  )
+
+  eparam <- new_epiparam(epi_dist = "all")
+  # suppress message about converting to data.frame
+  suppressMessages(eparam$extrinsic <- NULL)
+  # convert back to `epiparam` to check validation
+  class(eparam) <- c("epiparam", "data.frame")
   expect_error(
     validate_epiparam(epiparam = eparam),
     regexp = "epiparam object does not contain the correct columns"
   )
 
   eparam <- new_epiparam(epi_dist = "all")
-  eparam$extrinsic <- NULL
-  expect_error(
-    validate_epiparam(epiparam = eparam),
-    regexp = "epiparam object does not contain the correct columns"
-  )
-
-  eparam <- new_epiparam(epi_dist = "all")
-  eparam$disease <- 1
+  # suppress message about converting to data.frame
+  suppressMessages(eparam$disease <- 1)
+  # convert back to `epiparam` to check validation
+  class(eparam) <- c("epiparam", "data.frame")
   expect_error(
     validate_epiparam(epiparam = eparam),
     regexp = "disease needs to be a character"
+  )
+})
+
+test_that("validate_epidist fails when expected for reconstructed = TRUE", {
+  eparam <- new_epiparam(epi_dist = "all")
+  # suppress message about converting to data.frame
+  suppressMessages(eparam <- eparam[, -1])
+  expect_error(
+    validate_epiparam(epiparam = eparam, reconstruct = TRUE),
+    regexp = "epiparam object does not contain the correct columns"
   )
 })
 
