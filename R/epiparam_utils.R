@@ -464,26 +464,25 @@ as_epiparam <- function(x) {
 #' class of the object has been converted to `data.frame` with the other
 #' attributes of the class preserved.
 #'
-#' @param epiparam An `epiparam` object
 #' @inheritParams base::names
 #'
 #' @return An `epiparam` object or a `data.frame`
 #' @export
-`names<-.epiparam` <- function(epiparam, value) {
+`names<-.epiparam` <- function(x, value) {
   out <- NextMethod()
-  epiparam_reconstruct(out, epiparam)
+  epiparam_reconstruct(out, x)
 }
 
 #' Set accessor for `epiparam` class
 #'
-#' @param epiparam An `epiparam` object
+#' @param x An `epiparam` object
 #' @inheritParams base::Extract
 #'
 #' @return An `epiparam` object or a `data.frame`
 #' @export
-`$<-.epiparam` <- function(epiparam, ...) {
+`$<-.epiparam` <- function(x, name, value) {
   out <- NextMethod()
-  epiparam_reconstruct(out, epiparam)
+  epiparam_reconstruct(out, x)
 }
 
 #' Decides whether `epiparam` object can be reconstructed from input
