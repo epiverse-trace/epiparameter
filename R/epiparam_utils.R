@@ -455,6 +455,25 @@ as_epiparam <- function(x) {
   out <- NextMethod()
   epiparam_reconstruct(out, epiparam)
 }
+
+#' Set names on `epiparam` class
+#'
+#' @description If the modifying the names invalidates the `epiparam` object
+#' (defined by its invariants, and encoded in [`validate_epiparam()`]) the
+#' subsetting will return a data frame with a message to console stating the
+#' class of the object has been converted to `data.frame` with the other
+#' attributes of the class preserved.
+#'
+#' @param epiparam An `epiparam` object
+#' @inheritParams base::names
+#'
+#' @return An `epiparam` object or a `data.frame`
+#' @export
+`names<-.epiparam` <- function(epiparam, value) {
+  out <- NextMethod()
+  epiparam_reconstruct(out, epiparam)
+}
+
 #' Decides whether `epiparam` object can be reconstructed from input
 #'
 #' @description Uses [`epiparam_can_reconstruct()`] to determine whether the
