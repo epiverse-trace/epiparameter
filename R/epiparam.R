@@ -114,6 +114,11 @@ epiparam <- function(epi_dist = c("all",
 #' `epiparam` class validator
 #'
 #' @param epiparam An `epiparam` object
+#' @param reconstruct A boolean logical determining whether the validation
+#' should be class specific. When `TRUE` the input object must be of type
+#' `epiparam` (default), when `FALSE` the input object can be of another class,
+#' e.g. `data.frame`. This argument is used in reconstruction operations see
+#' [`epiparam_reconstruct()`].
 #'
 #' @return Invisibly returns an [`epiparam`]. Called for side-effects
 #' (errors when invalid `epiparam` object is provided).
