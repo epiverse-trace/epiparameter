@@ -1,5 +1,5 @@
 # nocov start
-.onLoad <- function(...) {
+.onLoad <- function(libname, pkgname) {
   s3_register("dplyr::dplyr_reconstruct", "epiparam")
   invisible()
 }
