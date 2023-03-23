@@ -1,8 +1,9 @@
-# This source code file is licensed under the unlicense license
-# https://unlicense.org
+# nocov start
+# nolint start
+
 #' Register a method for a suggested dependency
 #'
-#' Generally, the recommend way to register an S3 method is to use the
+#' Generally, the recommended way to register an S3 method is to use the
 #' `S3Method()` namespace directive (often generated automatically by the
 #' `@export` roxygen2 tag). However, this technique requires that the generic
 #' be in an imported package, and sometimes you want to suggest a package,
@@ -24,25 +25,17 @@
 #'
 #' @section Usage in other packages:
 #' To avoid taking a dependency on vctrs, you copy the source of
-#' [`s3_register()`](https://github.com/r-lib/vctrs/blob/main/R/register-s3.R)
+#' [`s3_register()`](https://github.com/r-lib/rlang/blob/main/R/standalone-s3-register.R)
 #' into your own package. It is licensed under the permissive
 #' [unlicense](https://choosealicense.com/licenses/unlicense/) to make it
 #' crystal clear that we're happy for you to do this. There's no need to include
 #' the license or even credit us when using this function.
 #'
-#' @usage NULL
-#' @param generic Name of the generic in the form `pkg::generic`.
+#' @param generic Name of the generic in the form `"pkg::generic"`.
 #' @param class Name of the class
 #' @param method Optionally, the implementation of the method. By default,
 #'   this will be found by looking for a function called `generic.class`
 #'   in the package environment.
-#'
-#'   Note that providing `method` can be dangerous if you use
-#'   devtools. When the namespace of the method is reloaded by
-#'   `devtools::load_all()`, the function will keep inheriting from
-#'   the old namespace. This might cause crashes because of dangling
-#'   `.Call()` pointers.
-#' @export
 #' @examples
 #' # A typical use case is to dynamically register tibble/pillar methods
 #' # for your class. That way you avoid creating a hard dependency on packages
@@ -54,7 +47,7 @@
 #'   s3_register("tibble::type_sum", "vctrs_vctr")
 #' }
 #' @keywords internal
-# nocov start
+#' @noRd
 s3_register <- function(generic, class, method = NULL) {
   stopifnot(is.character(generic), length(generic) == 1)
   stopifnot(is.character(class), length(class) == 1)
@@ -114,7 +107,7 @@ s3_register <- function(generic, class, method = NULL) {
     register()
   })
 
-  # For compatibility with R < 4.0 where base isn't locked
+  # For compatibility with R < 4.1.0 where base isn't locked
   is_sealed <- function(pkg) {
     identical(pkg, "base") || environmentIsLocked(asNamespace(pkg))
   }
@@ -181,40 +174,5 @@ s3_register <- function(generic, class, method = NULL) {
   stop(sprintf("Internal error in rlang shims: Unknown function `%s()`.", fn))
 }
 
-on_load({
-  s3_register <- replace_from("s3_register", "rlang")
-})
-
-knitr_defer <- function(expr, env = caller_env()) {
-  roxy_caller <- detect(sys.frames(), env_inherits, ns_env("knitr"))
-  if (is_null(roxy_caller)) {
-    abort("Internal error: can't find knitr on the stack.")
-  }
-
-  blast(
-    withr::defer(!!substitute(expr), !!roxy_caller),
-    env
-  )
-}
-blast <- function(expr, env = caller_env()) {
-  eval_bare(enexpr(expr), env)
-}
-
-knitr_local_registration <- function(generic, class, env = caller_env()) {
-  stopifnot(is.character(generic), length(generic) == 1)
-  stopifnot(is.character(class), length(class) == 1)
-
-  pieces <- strsplit(generic, "::")[[1]]
-  stopifnot(length(pieces) == 2)
-  package <- pieces[[1]]
-  generic <- pieces[[2]]
-
-  name <- paste0(generic, ".", class)
-  method <- env_get(env, name)
-
-  old <- env_bind(global_env(), !!name := method)
-  knitr_defer(env_bind(global_env(), !!!old))
-}
-
-
+# nolint end
 # nocov end
