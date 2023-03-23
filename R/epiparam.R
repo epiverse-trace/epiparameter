@@ -117,9 +117,9 @@ epiparam <- function(epi_dist = c("all",
 #'
 #' @return Invisibly returns an [`epiparam`]. Called for side-effects
 #' (errors when invalid `epiparam` object is provided).
-validate_epiparam <- function(epiparam) {
+validate_epiparam <- function(epiparam, reconstruct = FALSE) {
 
-  if (!is_epiparam(epiparam)) {
+  if (!is_epiparam(epiparam) && isFALSE(reconstruct)) {
     stop("Object should be of class epiparam", call. = FALSE)
   }
 
