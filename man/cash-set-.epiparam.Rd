@@ -4,10 +4,20 @@
 \alias{$<-.epiparam}
 \title{Set accessor for \code{epiparam} class}
 \usage{
-\method{$}{epiparam}(epiparam, ...) <- value
+\method{$}{epiparam}(x, name) <- value
 }
 \arguments{
-\item{epiparam}{An \code{epiparam} object}
+\item{x}{An \code{epiparam} object}
+
+\item{name}{
+    A literal character string or a \link[base]{name} (possibly \link[base]{backtick}
+    quoted).  For extraction, this is normally (see under
+    \sQuote{Environments}) partially matched to the \code{\link[base]{names}}
+    of the object.
+  }
+
+\item{value}{typically an array-like \R object of a similar class as
+    \code{x}.}
 }
 \value{
 An \code{epiparam} object or a \code{data.frame}

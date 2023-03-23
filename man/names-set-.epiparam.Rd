@@ -4,10 +4,10 @@
 \alias{names<-.epiparam}
 \title{Set names on \code{epiparam} class}
 \usage{
-\method{names}{epiparam}(epiparam) <- value
+\method{names}{epiparam}(x) <- value
 }
 \arguments{
-\item{epiparam}{An \code{epiparam} object}
+\item{x}{an \R object.}
 
 \item{value}{a character vector of up to the same length as \code{x}, or
     \code{NULL}.}
