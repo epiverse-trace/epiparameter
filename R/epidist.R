@@ -429,7 +429,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
   } else {
 
     # decide on parameter format from magnitude of number
-    params <- unlist(distributional::parameters(x$prob_dist))
+    params <- parameters(x)
     format_params <- ifelse(
       test = any(params > 9.999e-3 & params < 1e4),
       yes = "f",
@@ -442,7 +442,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
         sprintf("Parameters:"),
         sprintf(
           "  %s: %s",
-          names(unlist(distributional::parameters(x$prob_dist))),
+          names(params),
           formatC(
             params,
             digits = 3,
@@ -743,9 +743,7 @@ discretise.epidist <- function(x, ...) {
     prob_dist <- stats::family(x$prob_dist)
     # TODO: make use of lognormal or lnorm consistent
     if (prob_dist == "lognormal") prob_dist <- "lnorm"
-    prob_dist_params <- unlist(
-      distributional::parameters(x$prob_dist)
-    )
+    prob_dist_params <- parameters(x)
 
     # if distribution is truncated take only parameters
     if (identical(prob_dist, "truncated")) {
@@ -756,14 +754,12 @@ discretise.epidist <- function(x, ...) {
         call. = FALSE
       )
 
-      idx <- grep(pattern = "dist.", x = names(prob_dist_params))
-      prob_dist_params <- prob_dist_params[idx]
-      names(prob_dist_params) <- gsub(
-        pattern = "dist.",
-        replacement = "",
+      idx <- grep(
+        pattern = "lower|upper",
         x = names(prob_dist_params),
-        fixed = TRUE
+        ignore.case = TRUE
       )
+      prob_dist_params <- prob_dist_params[-idx]
 
       # trunc dist family is truncated so get prob dist by unclassing dist and
       # extracting name
