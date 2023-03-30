@@ -25,11 +25,60 @@ jobs:
         run: |
           Rscript -e 'install.packages("jsonvalidate")'
 
+      - name: Data to JSON
+        run: |
+          # read in epiparameter database
+          data <- utils::read.csv(
+            file = system.file(
+              file.path("extdata", "parameters.csv"),
+              package = "epiparameter",
+              mustWork = TRUE
+            ), header = TRUE
+          )
+
+          # convert cells with arrays to numeric
+          for (i in grep(pattern = "_ci_limits$", x = colnames(data))) {
+            if (!all(is.na(data[[i]]))) {
+              data[[i]] <- lapply(
+                strsplit(x = data[[i]], split = ",", fixed = TRUE),
+                as.numeric
+              )
+            }
+          }
+
+          data_json <- jsonlite::toJSON(
+            x = data,
+            dataframe = "columns",
+            na = NULL,
+            pretty = TRUE
+          )
+        shell: Rscript {0}
+
+      - name: Schema to JSON
+        run: |
+          # read schema
+          schema <- yaml::read_yaml(
+            system.file(
+              file.path("extdata", "data_dictionary.yaml"),
+              package = "epiparameter",
+              mustWork = TRUE
+            )
+          )
+
+          schema_json <- jsonlite::toJSON(
+            x = schema,
+            dataframe = "column",
+            auto_unbox = TRUE,
+            pretty = TRUE
+          )
+        shell: Rscript {0}
+
+
       - name: Validate packages.json
         run: |
           jsonvalidate::json_validate(
-            json = file.path("inst", "extdata", "data.json"),
-            schema = file.path("inst", "extdata", "schema.json"),
+            json = data_json,
+            schema = schema_json,
             engine = "ajv",
             verbose = TRUE,
             greedy = TRUE,
