@@ -903,7 +903,7 @@ test_that("discretise works as expected on truncated dist", {
   expect_identical(edist$prob_dist$name, "gamma")
 })
 
-test_that("discretise works as expected on non-epidist object", {
+test_that("discretise fails as expected on non-epidist object", {
 
   expect_error(
     discretise("epidist"),
