@@ -501,7 +501,7 @@ epiparam_reconstruct <- function(x, to) {
   if (epiparam_can_reconstruct(x)) {
     df_reconstruct(x, to)
   } else {
-    class(x) <- "data.frame"
+    x <- as.data.frame(x)
     message("Removing crucial column in `<epiparam>` returning `<data.frame>`")
     x
   }
