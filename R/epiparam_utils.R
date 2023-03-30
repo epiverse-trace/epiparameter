@@ -544,7 +544,7 @@ df_reconstruct <- function(x, to) {
   x
 }
 
-# Registered in `.onLoad()` in zzz.R
+#' @exportS3Method dplyr::dplyr_reconstruct
 dplyr_reconstruct.epiparam <- function(data, template) {
   epiparam_reconstruct(data, template)
 }
