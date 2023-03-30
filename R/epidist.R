@@ -800,3 +800,37 @@ discretise.epidist <- function(x, ...) {
 discretise.default <- function(x, ...) {
   stop("No discretise method defined for class ", class(x))
 }
+
+
+#' Parameters method for `epidist` object
+#'
+#' Extracts the parameters of the distribution stored in an `epidist` object.
+#'
+#' @param x An `epidist` object
+#' @inheritParams distributional::parameters
+#'
+#' @importFrom distributional parameters
+#' @export
+parameters.epidist <- function(x, ...) {
+
+  # extract parameters depending on prob distribution class
+  if (inherits(x$prob_dist, "distcrete")) {
+    params <- unlist(x$prob_dist$parameters)
+  } else if (inherits(x$prob_dist, "distribution")) {
+    params <- unlist(distributional::parameters(x$prob_dist))
+    # if dist is truncated clean names
+    if (identical(stats::family(x$prob_dist), "truncated")) {
+      names(params) <- gsub(
+        pattern = "dist.",
+        replacement = "",
+        x = names(params),
+        fixed = TRUE
+      )
+    }
+  } else {
+    stop("Distribution in `epidist` not recognised.")
+  }
+
+  # return parameters
+  params
+}
