@@ -77,8 +77,8 @@ influenza_incubation
 #> Study: Linton et al. (2020) <10.3390/jcm9020538> PMID: 32079150
 #> Distribution: lognormal
 #> Parameters:
-#>   mu: 1.45569556256012
-#>   sigma: 0.554513029376191
+#>   mu: 1.456
+#>   sigma: 0.555
 ```
 
 The `<epidist>` object can be plotted.
