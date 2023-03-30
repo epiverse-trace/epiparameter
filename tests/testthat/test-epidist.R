@@ -915,3 +915,80 @@ test_that("discretise fails as expected on non-epidist object", {
     regexp = "No discretise method defined for class numeric"
   )
 })
+
+test_that("parameters works as expected on continuous gamma", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  params <- parameters(edist)
+
+  expect_vector(params, ptype = numeric(), size = 2)
+  expect_named(params, expected = c("shape", "rate"))
+})
+
+test_that("parameters works as expected on continuous lognormal", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "lnorm",
+    prob_distribution_params = c(meanlog = 1, sdlog = 1)
+  ))
+  params <- parameters(edist)
+
+  expect_vector(params, ptype = numeric(), size = 2)
+  expect_named(params, expected = c("mu", "sigma"))
+})
+
+test_that("parameters works as expected on discretised dist", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    discretise = TRUE
+  ))
+  params <- parameters(edist)
+
+  expect_vector(params, ptype = numeric(), size = 2)
+  expect_named(params, expected = c("shape", "scale"))
+})
+
+test_that("parameters works as expected on truncated dist", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    truncation = 10
+  ))
+  params <- parameters(edist)
+
+  expect_vector(params, ptype = numeric(), size = 4)
+  expect_named(params, expected = c("shape", "rate", "lower", "upper"))
+})
+
+test_that("parameters fails as expected on non-epidist object", {
+
+  expect_error(
+    parameters("epidist"),
+    regexp = paste0(
+      "(no applicable method for)*(parameters)*",
+      "(applied to an object of class)*(character)"
+    )
+  )
+
+  expect_error(
+    parameters(c(1, 2, 3)),
+    regexp = paste0(
+      "(no applicable method for)*(parameters)*",
+      "(applied to an object of class)*(numeric)"
+    )
+  )
+})
