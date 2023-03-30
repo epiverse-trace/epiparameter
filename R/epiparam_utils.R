@@ -242,28 +242,28 @@ as_epiparam <- function(x) {
   }
 
   if (inherits(x$prob_dist, "distcrete")) {
-    parameters <- unlist(x$prob_dist$parameters)
+    params <- parameters(x)
     discretised <- TRUE
     prob_dist <- x$prob_dist$name
     truncation <- NA
   } else {
-    parameters <- unlist(distributional::parameters(x$prob_dist))
+    params <- parameters(x)
     discretised <- FALSE
     prob_dist <- stats::family(x$prob_dist)
-    if (is.null(distributional::parameters(x$prob_dist)$upper)) {
+    if (isFALSE("upper" %in% names(params))) {
       truncation <- NA
     } else {
-      truncation <- distributional::parameters(x$prob_dist)$upper
+      truncation <- params[["upper"]]
     }
   }
 
   # standardise distribution parameterisation
-  class(parameters) <- ifelse(
+  class(params) <- ifelse(
     test = prob_dist == "lognormal",
     yes = "lnorm",
     no = prob_dist
   )
-  parameters <- clean_epidist_params(prob_dist_params = parameters)
+  params <- clean_epidist_params(prob_dist_params = params)
 
   if (anyNA(x$uncertainty)) {
     x$uncertainty <- lapply(
@@ -308,9 +308,9 @@ as_epiparam <- function(x) {
     lower_range = x$summary_stats$range$lower_range,
     upper_range = x$summary_stats$range$upper_range,
     shape = ifelse(
-      test = is.na(unname(parameters["shape"])),
+      test = is.na(unname(params["shape"])),
       yes = NA_real_,
-      no = parameters["shape"]
+      no = params["shape"]
     ),
     shape_ci_limits = NA,
     shape_ci = ifelse(
@@ -319,9 +319,9 @@ as_epiparam <- function(x) {
       no = x$uncertainty$shape$ci
     ),
     scale = ifelse(
-      test = is.na(unname(parameters["scale"])),
+      test = is.na(unname(params["scale"])),
       yes = NA_real_,
-      no = parameters["scale"]
+      no = params["scale"]
     ),
     scale_ci_limits = NA,
     scale_ci = ifelse(
@@ -330,9 +330,9 @@ as_epiparam <- function(x) {
       no = x$uncertainty$scale$ci
     ),
     meanlog = ifelse(
-      test = is.na(unname(parameters["mu"])),
+      test = is.na(unname(params["mu"])),
       yes = NA_real_,
-      no = parameters["mu"]
+      no = params["mu"]
     ),
     meanlog_ci_limits = NA,
     meanlog_ci = ifelse(
@@ -341,9 +341,9 @@ as_epiparam <- function(x) {
       no = x$uncertainty$meanlog$ci
     ),
     sdlog = ifelse(
-      test = is.na(unname(parameters["sigma"])),
+      test = is.na(unname(params["sigma"])),
       yes = NA_real_,
-      no = parameters["sigma"]
+      no = params["sigma"]
     ),
     sdlog_ci_limits = NA,
     sdlog_ci = ifelse(
@@ -352,9 +352,9 @@ as_epiparam <- function(x) {
       no = x$uncertainty$sdlog$ci
     ),
     dispersion = ifelse(
-      test = is.na(unname(parameters["dispersion"])),
+      test = is.na(unname(params["dispersion"])),
       yes = NA_real_,
-      no = parameters["dispersion"]
+      no = params["dispersion"]
     ),
     dispersion_ci_limits = NA,
     dispersion_ci = ifelse(
@@ -363,9 +363,9 @@ as_epiparam <- function(x) {
       no = x$uncertainty$dispersion$ci
     ),
     precision = ifelse(
-      test = is.na(unname(parameters["precision"])),
+      test = is.na(unname(params["precision"])),
       yes = NA_real_,
-      no = parameters["precision"]
+      no = params["precision"]
     ),
     precision_ci_limits = NA,
     precision_ci = ifelse(
