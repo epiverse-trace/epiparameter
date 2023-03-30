@@ -704,3 +704,99 @@ generate.epidist <- function(x, times, ...) {
   }
   out
 }
+
+#' Discretises a continuous distribution in an `epidist` object
+#'
+#' @details Converts the S3 distribution object in an `epidist` from continuous
+#' (using an object from the {distributional} package) to a discretised
+#' distribution (using an object from the {distcrete} package).
+#'
+#' @param x An `epidist` object
+#' @param ... further arguments passed to or from other methods
+#'
+#' @return An `epidist` object
+#' @export
+#'
+#' @examples
+#' ebola_incubation <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1)
+#' )
+#' discretise(ebola_incubation)
+discretise <- function(x, ...) {
+  UseMethod("discretise")
+}
+
+#' @rdname discretise
+#' @export
+discretise.epidist <- function(x, ...) {
+
+  # check if distribution is already discretised if so return early
+  if (inherits(x$prob_dist, "distcrete")) {
+    message("Distribution in `epidist` is already discretised")
+    return(x)
+  } else {
+
+    # extract prob dist and prob dist parameters from epidist
+    prob_dist <- stats::family(x$prob_dist)
+    # TODO: make use of lognormal or lnorm consistent
+    if (prob_dist == "lognormal") prob_dist <- "lnorm"
+    prob_dist_params <- unlist(
+      distributional::parameters(x$prob_dist)
+    )
+
+    # if distribution is truncated take only parameters
+    if (identical(prob_dist, "truncated")) {
+
+      warning(
+        "Discretising a truncated continuous distribution, ",
+        "returning non-truncated discretised distribution",
+        call. = FALSE
+      )
+
+      idx <- grep(pattern = "dist.", x = names(prob_dist_params))
+      prob_dist_params <- prob_dist_params[idx]
+      names(prob_dist_params) <- gsub(
+        pattern = "dist.",
+        replacement = "",
+        x = names(prob_dist_params),
+        fixed = TRUE
+      )
+
+      # trunc dist family is truncated so get prob dist by unclassing dist and
+      # extracting name
+      list_dist <- unclass(x$prob_dist)
+      prob_dist <- gsub(
+        pattern = "dist_",
+        replacement = "",
+        x = class(list_dist[[1]][[1]])[1],
+        fixed = TRUE
+      )
+    }
+
+    # standardise distribution parameter names
+    class(prob_dist_params) <- prob_dist
+    prob_dist_params <- clean_epidist_params(
+      prob_dist_params = prob_dist_params
+    )
+
+    # create a new discretised probability distribution
+    x$prob_dist <- create_prob_dist(
+      prob_dist = prob_dist,
+      prob_dist_params = prob_dist_params,
+      discretise = TRUE,
+      truncation = NA
+    )
+  }
+
+  # return epidist
+  x
+}
+
+#' @rdname discretise
+#' @export
+discretise.default <- function(x, ...) {
+  stop("No discretise method defined for class ", class(x))
+}

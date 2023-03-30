@@ -830,3 +830,88 @@ test_that("is_epidist returns FALSE when expected", {
 
   expect_false(is_epidist(false_edist))
 })
+
+test_that("discretise works as expected on continuous gamma", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  edist <- discretise(edist)
+
+  expect_s3_class(edist$prob_dist, "distcrete")
+  expect_identical(edist$prob_dist$parameters, list(shape = 1, scale = 1))
+  expect_identical(edist$prob_dist$name, "gamma")
+})
+
+test_that("discretise works as expected on continuous lognormal", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "lnorm",
+    prob_distribution_params = c(meanlog = 1, sdlog = 1)
+  ))
+  edist <- discretise(edist)
+
+  expect_s3_class(edist$prob_dist, "distcrete")
+  expect_identical(edist$prob_dist$parameters, list(meanlog = 1, sdlog = 1))
+  expect_identical(edist$prob_dist$name, "lnorm")
+})
+
+test_that("discretise works as expected on discretised dist", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    discretise = TRUE
+  ))
+  expect_message(
+    edist <- discretise(edist),
+    regexp = "Distribution in `epidist` is already discretised"
+  )
+
+  expect_s3_class(edist$prob_dist, "distcrete")
+  expect_identical(edist$prob_dist$parameters, list(shape = 1, scale = 1))
+  expect_identical(edist$prob_dist$name, "gamma")
+})
+
+test_that("discretise works as expected on truncated dist", {
+  # suppress message about citation
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    truncation = 10
+  ))
+
+  expect_warning(
+    edist <- discretise(edist),
+    regexp = paste(
+      "Discretising a truncated continuous distribution,",
+      "returning non-truncated discretised distribution"
+    )
+  )
+
+  expect_s3_class(edist$prob_dist, "distcrete")
+  expect_identical(edist$prob_dist$parameters, list(shape = 1, scale = 1))
+  expect_identical(edist$prob_dist$name, "gamma")
+})
+
+test_that("discretise works as expected on non-epidist object", {
+
+  expect_error(
+    discretise("epidist"),
+    regexp = "No discretise method defined for class character"
+  )
+
+  expect_error(
+    discretise(c(1, 2, 3)),
+    regexp = "No discretise method defined for class numeric"
+  )
+})
