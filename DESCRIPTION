@@ -54,7 +54,7 @@ Suggests:
     knitr,
     rmarkdown,
     vdiffr,
-    dplyr,
+    dplyr (>= 1.0.0),
     rlang,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
