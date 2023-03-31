@@ -21,9 +21,10 @@ jobs:
       - name: Install V8
         run: sudo apt install libv8-dev
 
-      - name: Install jsonvalidate
+      - name: Install dependencies
         run: |
-          Rscript -e 'install.packages("jsonvalidate")'
+          install.packages(c("jsonlite", "jsonvalidate", "yaml"))
+        shell: Rscript {0}
 
       - name: Data to JSON
         run: |
