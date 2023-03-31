@@ -26,7 +26,7 @@ jobs:
           install.packages(c("jsonlite", "jsonvalidate", "yaml"))
         shell: Rscript {0}
 
-      - name: Data to JSON
+      - name: Validate JSON
         run: |
           # read in epiparameter database
           data <- utils::read.csv(
@@ -50,10 +50,7 @@ jobs:
             na = NULL,
             pretty = TRUE
           )
-        shell: Rscript {0}
 
-      - name: Schema to JSON
-        run: |
           # read schema
           schema <- yaml::read_yaml(
             file.path("inst", "extdata", "data_dictionary.yaml")
@@ -65,11 +62,7 @@ jobs:
             auto_unbox = TRUE,
             pretty = TRUE
           )
-        shell: Rscript {0}
 
-
-      - name: Validate packages.json
-        run: |
           jsonvalidate::json_validate(
             json = data_json,
             schema = schema_json,
