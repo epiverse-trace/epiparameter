@@ -29,11 +29,8 @@ jobs:
         run: |
           # read in epiparameter database
           data <- utils::read.csv(
-            file = system.file(
-              file.path("extdata", "parameters.csv"),
-              package = "epiparameter",
-              mustWork = TRUE
-            ), header = TRUE
+            file = file.path("inst", "extdata", "parameters.csv"),
+            header = TRUE
           )
 
           # convert cells with arrays to numeric
@@ -58,11 +55,7 @@ jobs:
         run: |
           # read schema
           schema <- yaml::read_yaml(
-            system.file(
-              file.path("extdata", "data_dictionary.yaml"),
-              package = "epiparameter",
-              mustWork = TRUE
-            )
+            file.path("inst", "extdata", "data_dictionary.yaml")
           )
 
           schema_json <- jsonlite::toJSON(
