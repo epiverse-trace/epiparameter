@@ -1,0 +1,483 @@
+---
+title: "{epiparameter} Extraction Bias Analysis"
+output: 
+  bookdown::html_vignette2:
+    fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{{epiparameter} Extraction Bias Analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 6,
+  fig.height = 5,
+  fig.align = 'center'
+)
+```
+
+```{r setup}
+library(epiparameter)
+```
+
+The {epiparameter} R package contains a set of functions to extract parameters
+of probability distributions from summary statistics. These summary statistics can
+be the values at given percentiles of a distribution, or the median and range of
+a distribution. Using these and specifying the distribution (e.g. gamma, lognormal, etc.)
+the parameters of the distribution can be extracted by optimisation using least-squares.
+
+The precision and bias of this approach needs to be explored across the parameter space
+of the different distributions to understand potential erroneous inferences. This
+vignette aims to explore this inference bias for the three distribution currently 
+supported in {epiparameter} for parameter extraction: gamma, lognormal and weibull.
+
+## Extraction by percentiles
+
+First we explore extraction from percentiles.
+
+If a study reports the percentiles of a distribution, they are usually symmetrical
+(e.g. 5th and 95th, or 2.5th and 97.5th). However, in a few instances, only asymmetrical
+percentiles are available. We test whether asymetry to varying degrees influences the
+precision of parameter extraction for all distributions.
+
+We set up the parameter space to explore:
+
+```{r, set-up-parameter-space-percentiles}
+distributions <- c("gamma", "lnorm", "weibull")
+dist_parameters <- seq(0.5, 2, 0.5)
+lower_percentiles <- c(2.5, 5, 25, 40)
+upper_percentiles <- c(60, 95, 97.5)
+
+parameters <- expand.grid(
+  dist = distributions, 
+  param_1 = dist_parameters, 
+  param_2 = dist_parameters, 
+  lower = lower_percentiles, 
+  upper = upper_percentiles
+)
+
+# calculate the degree of asymmetry for each percentile combination
+lw_interval_diff <- abs(0 - parameters$lower)
+up_interval_diff <- abs(100 - parameters$upper)
+deg_asym <- abs(lw_interval_diff - up_interval_diff)
+
+# add degree of asymmetry to percentiles
+parameters <- cbind(parameters, deg_asym)
+
+# divide percentiles by 100 to make them probabilities for quantile functions
+parameters$lower <- parameters$lower / 100
+parameters$upper <- parameters$upper / 100
+```
+
+Now we can run the extraction for each point in parameter space:
+
+```{r, run-extraction-percentiles}
+estim_params <- list()
+# Loop through parameter space estimating parameters
+for (params_idx in seq_len(nrow(parameters))) {
+  
+  percen <- unname(unlist(parameters[params_idx, c("lower", "upper")]))
+  
+  dist <- as.character(parameters[params_idx, "dist"])
+  
+  if (dist == "lnorm") {
+    true_values <- do.call(
+      paste0("q", dist), 
+      list(
+        p = percen, 
+        meanlog = parameters[params_idx, "param_1"], 
+        sdlog = parameters[params_idx, "param_2"]
+      )
+    )
+  } else {
+    true_values <- do.call(
+      paste0("q", dist), 
+      list(
+        p = percen, 
+        shape = parameters[params_idx, "param_1"], 
+        scale = parameters[params_idx, "param_2"]
+      )
+    )  
+  }
+  
+  # message about stochastic optimisation suppressed
+  estim_params[[params_idx]] <- suppressMessages(
+    epiparameter::extract_param(
+      type = "percentiles",
+      values = true_values, 
+      distribution = dist, 
+      percentiles = percen * 100, 
+      control = list(tolerance = 10)
+    )
+  )
+}
+```
+
+
+In the above code chunk the the `extract_param()` function re-runs the optimisation
+until convergence to a set tolerance is acheived to more reliably return the global 
+optimum. For this analysis we set the tolerance to be arbitrarily large (i.e. 10) 
+to meet the convergence criteria immediately in order to save computation time. Therefore
+these results may be more biased than if the function were run with the default tolerance
+(`1e-5`).
+
+The results are collated and tidied for plotting.
+
+```{r, tidy-results-percentiles}
+# combine results
+results <- cbind(parameters, do.call(rbind, estim_params))
+colnames(results) <- c(
+  "dist", "param_1", "param_2", "lower", "upper", 
+  "deg_asym", "estim_param_1", "estim_param_2"
+)
+
+# calculate absolute difference between true parameter and estimated value
+results <- cbind(
+  results, 
+  diff_param_1 = abs(results$param_1 - results$estim_param_1),
+  diff_param_2 = abs(results$param_2 - results$estim_param_2)
+)
+```
+
+The extraction precision/bias can be explored:
+
+```{r, plot-results-percentiles, fig.cap="Parameter extraction precision"}
+# plot differences
+param_diff_plot <- ggplot2::ggplot(data = results) +
+  ggplot2::geom_point(mapping = ggplot2::aes(
+    x = diff_param_1, 
+    y = diff_param_2, 
+    colour = deg_asym
+  )) + 
+  ggplot2::scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
+  ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
+  ggplot2::labs(colour = "Percentile Asym.") + 
+  ggplot2::theme_bw() +
+  ggplot2::scale_color_viridis_c()
+
+param_diff_plot
+
+```
+
+```{r, plot-results-percentiles-dist, fig.cap="Parameter extraction precision by distribution", fig.cap="Parameter estimation precision facetted by distribution."}
+# plot differences by distribution
+param_diff_plot + 
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist)) +
+  ggplot2::theme(strip.background = ggplot2::element_blank())
+```
+
+```{r, pivot-results-percentiles}
+# tidy parameter differences to plot side-by-side
+results <- tidyr::pivot_longer(
+  data = results, cols = c("diff_param_1", "diff_param_2"), 
+  names_to = "diff_param", 
+  values_to = "diff"
+)
+```
+
+```{r, bar-plot}
+# bar plot for parameter 1 differences
+param_1_diff_bar <- ggplot2::ggplot(data = results) +
+  ggplot2::geom_col(mapping = ggplot2::aes(x = param_1, y = diff, fill = diff_param), position = "dodge") +
+  ggplot2::scale_x_continuous(name = "Parameter 1 true value") +
+  ggplot2::scale_y_continuous(name = "Parameter Difference (|true - estimated|)") +
+  ggplot2::scale_fill_brewer(labels = c("Parameter 1", "Parameter 2"), palette = "Set1") +
+  ggplot2::labs(fill = "Parameter Difference")
+param_1_diff_bar
+
+param_1_diff_bar + 
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist))
+
+# bar plot for parameter 2 differences
+param_2_diff_bar <- ggplot2::ggplot(data = results) +
+  ggplot2::geom_col(mapping = ggplot2::aes(x = param_2, y = diff, fill = diff_param), position = "dodge") +
+  ggplot2::scale_x_continuous(name = "Parameter 2 true value") +
+  ggplot2::scale_y_continuous(name = "Parameter Difference (|true - estimated|)") +
+  ggplot2::scale_fill_brewer(labels = c("Parameter 1", "Parameter 2"), palette = "Set1") +
+  ggplot2::labs(fill = "Parameter Difference")
+param_2_diff_bar
+
+param_2_diff_bar + 
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist))
+
+```
+
+## Extraction by median and range
+
+The same analysis as above can be repeated, this time using the other summary
+statistic possibly reported in studies: an inferred distribution's median and range.
+For this extraction the number of samples used to infer the distribution is required
+as this can impact the possible range exhibited by the data.
+
+Set up the parameter space:
+
+```{r, set-up-parameter-space-med-range}
+distributions <- c("gamma", "lnorm", "weibull")
+dist_parameters <- seq(0.5, 2, 0.5)
+n_samples <- c(10, 50, 100)
+
+parameters <- expand.grid(
+  dist = distributions, 
+  param_1 = dist_parameters, 
+  param_2 = dist_parameters, 
+  n_samples = n_samples
+)
+```
+
+```{r run-extraction-med-range}
+estim_params <- list()
+# Loop through parameter space estimating parameters
+for (params_idx in seq_len(nrow(parameters))) {
+  
+  dist <- as.character(parameters[params_idx, "dist"])
+  
+  n_samples <- parameters[params_idx, "n_samples"]
+  
+  if (dist == "lnorm") {
+    true_median <- do.call(
+      paste0("q", dist), 
+      list(
+        p = 0.5, 
+        meanlog = parameters[params_idx, "param_1"], 
+        sdlog = parameters[params_idx, "param_2"]
+      )
+    )
+    true_range <- do.call(
+      paste0("r", dist), 
+      list(
+        n = n_samples,
+        meanlog = parameters[params_idx, "param_1"], 
+        sdlog = parameters[params_idx, "param_2"]
+      )
+    )
+    true_range <- c(min(true_range), max(true_range))
+  } else {
+    true_median <- do.call(
+      paste0("q", dist), 
+      list(
+        p = 0.5, 
+        shape = parameters[params_idx, "param_1"], 
+        scale = parameters[params_idx, "param_2"]
+      )
+    )
+    true_range <- do.call(
+      paste0("r", dist), 
+      list(
+        n = n_samples,
+        shape = parameters[params_idx, "param_1"], 
+        scale = parameters[params_idx, "param_2"]
+      )
+    )
+    true_range <- c(min(true_range), max(true_range))
+  }
+  
+  true_values <- c(true_median, true_range)
+  
+  # message about stochastic optimisation suppressed
+  estim_params[[params_idx]] <- suppressMessages(
+    epiparameter::extract_param(
+      type = "range",
+      values = true_values, 
+      distribution = dist, 
+      samples = n_samples, 
+      control = list(tolerance = 10)
+    )
+  )
+}
+```
+
+```{r, tidy-results-med-range}
+# combine results
+results <- cbind(parameters, do.call(rbind, estim_params))
+colnames(results) <- c(
+  "dist", "param_1", "param_2", "n_samples", "estim_param_1", "estim_param_2"
+)
+
+# calculate absolute difference between true parameter and estimated value
+results <- cbind(
+  results, 
+  diff_param_1 = abs(results$param_1 - results$estim_param_1),
+  diff_param_2 = abs(results$param_2 - results$estim_param_2)
+)
+```
+
+Plot results:
+
+```{r, plot-results-med-range, fig.cap="Parameter extraction precision."}
+# plot differences
+param_diff_plot <- ggplot2::ggplot(data = results) +
+  ggplot2::geom_point(mapping = ggplot2::aes(x = diff_param_1, y = diff_param_2, colour = n_samples)) +
+  ggplot2::scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
+  ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
+  ggplot2::labs(colour = "No. Samples") + 
+  ggplot2::theme_bw() +
+  ggplot2::scale_color_viridis_c()
+
+param_diff_plot
+
+```
+
+```{r, plot-results-med-range-dist, fig.cap="Parameter extraction precision facetted by distribution."}
+
+# plot differences by distribution
+param_diff_plot + 
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist)) +
+  ggplot2::theme(strip.background = ggplot2::element_blank())
+
+```
+
+```{r, pivot-results-med-range}
+# tidy parameter differences to plot side-by-side
+results <- tidyr::pivot_longer(
+  data = results, cols = c("diff_param_1", "diff_param_2"), 
+  names_to = "diff_param", 
+  values_to = "diff"
+)
+```
+
+
+```{r, bar-plots}
+# bar plot for parameter 1 differences
+param_1_diff_bar <- ggplot2::ggplot(data = results) +
+  ggplot2::geom_col(mapping = ggplot2::aes(x = param_1, y = diff, fill = diff_param), position = "dodge") +
+  ggplot2::scale_x_continuous(name = "Parameter 1 true value") +
+  ggplot2::scale_y_continuous(name = "Parameter Difference (|true - estimated|)") +
+  ggplot2::scale_fill_brewer(labels = c("Parameter 1", "Parameter 2"), palette = "Set1") +
+  ggplot2::labs(fill = "Parameter Difference")
+param_1_diff_bar
+
+param_1_diff_bar + 
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist))
+
+# bar plot for parameter 2 differences
+param_2_diff_bar <- ggplot2::ggplot(data = results) +
+  ggplot2::geom_col(mapping = ggplot2::aes(x = param_2, y = diff, fill = diff_param), position = "dodge") +
+  ggplot2::scale_x_continuous(name = "Parameter 2 true value") +
+  ggplot2::scale_y_continuous(name = "Parameter Difference (|true - estimated|)") +
+  ggplot2::scale_fill_brewer(labels = c("Parameter 1", "Parameter 2"), palette = "Set1") +
+  ggplot2::labs(fill = "Parameter Difference")
+param_2_diff_bar
+
+param_2_diff_bar + 
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist))
+```
+
+## Extraction stability
+
+The two analyses above used a single extraction (replicate), however, it may be that
+the estimation of the parameters is unstable for a given set of percentiles or median 
+range. Therefore, we finish with a test of whether repeated extraction of parameters 
+from a single percentile has large variance which would indicate the parameter extraction
+is unstable and potentially untrustworthy.
+
+
+```{r, setup-parameter-space-stability}
+distributions <- c("gamma", "lnorm", "weibull")
+dist_parameters <- seq(0.5, 2, 0.5)
+lower_percentiles <- c(2.5, 5, 25, 40)
+upper_percentiles <- c(60, 95, 97.5)
+
+parameters <- expand.grid(
+  dist = distributions, 
+  param_1 = dist_parameters, 
+  param_2 = dist_parameters, 
+  lower = lower_percentiles, 
+  upper = upper_percentiles
+)
+
+# calculate the degree of asymmetry for each percentile combination
+lw_interval_diff <- abs(0 - parameters$lower)
+up_interval_diff <- abs(100 - parameters$upper)
+deg_asym <- abs(lw_interval_diff - up_interval_diff)
+
+# add degree of asymmetry to percentiles
+parameters <- cbind(parameters, deg_asym)
+
+# divide percentiles by 100 to make them probabilities for quantile functions
+parameters$lower <- parameters$lower / 100
+parameters$upper <- parameters$upper / 100
+```
+
+Now we can run the extraction for a set of replicates to compute the variance of
+parameter estimates over those replicates.
+
+```{r, run-extraction-stability}
+estim_params_var <- list()
+# Loop through parameter space estimating parameters
+for (params_idx in seq_len(nrow(parameters))) {
+  
+  percen <- unname(unlist(parameters[params_idx, c("lower", "upper")]))
+  
+  dist <- as.character(parameters[params_idx, "dist"])
+  
+  if (dist == "lnorm") {
+    true_values <- do.call(
+      paste0("q", dist), 
+      list(
+        p = percen, 
+        meanlog = parameters[params_idx, "param_1"], 
+        sdlog = parameters[params_idx, "param_2"]
+      )
+    )
+  } else {
+    true_values <- do.call(
+      paste0("q", dist), 
+      list(
+        p = percen, 
+        shape = parameters[params_idx, "param_1"], 
+        scale = parameters[params_idx, "param_2"]
+      )
+    )  
+  }
+  
+  # message about stochastic optimisation suppressed
+  
+  estim_params <- suppressMessages(
+    replicate(
+      n = 5, 
+      expr =  epiparameter::extract_param(
+        type = "percentiles",
+        values = true_values, 
+        distribution = dist, 
+        percentiles = percen * 100, 
+        control = list(tolerance = 10)
+      )
+    )
+  )
+  
+  estim_params_var[[params_idx]] <- apply(estim_params,MARGIN = 1, FUN = var)
+}
+```
+
+```{r, tidy-results-stability}
+
+# combine results
+results <- cbind(parameters, do.call(rbind, estim_params_var))
+colnames(results) <- c(
+  "dist", "param_1", "param_2", "lower", "upper", 
+  "deg_asym", "estim_param_1_var", "estim_param_2_var"
+)
+```
+
+```{r, plot-results}
+# plot differences
+param_diff_plot <- ggplot2::ggplot(data = results) +
+  ggplot2::geom_point(mapping = ggplot2::aes(
+    x = estim_param_1_var, 
+    y = estim_param_2_var, 
+    colour = deg_asym
+  )) + 
+  ggplot2::scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
+  ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
+  ggplot2::labs(colour = "Percentile Asym.") + 
+  ggplot2::theme_bw() +
+  ggplot2::scale_color_viridis_c()
+
+param_diff_plot
+```
+
+
+
