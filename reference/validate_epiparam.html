@@ -62,13 +62,21 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">validate_epiparam</span><span class="op">(</span><span class="va">epiparam</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">validate_epiparam</span><span class="op">(</span><span class="va">epiparam</span>, reconstruct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>epiparam</dt>
 <dd><p>An <code>epiparam</code> object</p></dd>
+
+
+<dt>reconstruct</dt>
+<dd><p>A boolean logical determining whether the validation
+should be class specific. When <code>TRUE</code> the input object must be of type
+<code>epiparam</code> (default), when <code>FALSE</code> the input object can be of another class,
+e.g. <code>data.frame</code>. This argument is used in reconstruction operations see
+<code><a href="epiparam_reconstruct.html">epiparam_reconstruct()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

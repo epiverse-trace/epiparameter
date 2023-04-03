@@ -43,6 +43,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/calc_dist_params.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/cash-set-.epiparam.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/check_optim_conv.html</loc>
   </url>
   <url>
@@ -94,6 +97,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/create_prob_dist.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/df_reconstruct.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/epidist.html</loc>
   </url>
   <url>
@@ -104,6 +110,12 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/epiparam.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/epiparam_can_reconstruct.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/epiparam_reconstruct.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param.html</loc>
@@ -179,6 +191,9 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/make_json_schema.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/names-set-.epiparam.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/nbinom_meandisp2probdisp.html</loc>
