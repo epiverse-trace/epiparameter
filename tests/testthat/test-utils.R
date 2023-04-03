@@ -56,25 +56,3 @@ test_that("calc_disc_dist_quantile fails as expected", {
     )
   )
 })
-
-test_that("make_json_data works as expected", {
-  tmp_file <- tempfile(fileext = ".json")
-
-  expect_silent(
-    make_json_data(
-      read_path = file.path("extdata", "parameters.csv"),
-      write_path = tmp_file
-    )
-  )
-})
-
-test_that("make_json_schema works as expected", {
-  tmp_file <- tempfile(fileext = ".json")
-
-  expect_silent(
-    make_json_schema(
-      read_path = file.path("extdata", "data_dictionary.yaml"),
-      write_path = tmp_file
-    )
-  )
-})

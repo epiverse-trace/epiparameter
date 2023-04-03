@@ -18,18 +18,53 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Install V8
-        run: sudo apt install libv8-dev
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages:
+            any::jsonlite
+            any::jsonvalidate
+            any::yaml
 
-      - name: Install jsonvalidate
+      - name: Validate JSON
         run: |
-          Rscript -e 'install.packages("jsonvalidate")'
+          # read in epiparameter database
+          data <- utils::read.csv(
+            file = file.path("inst", "extdata", "parameters.csv"),
+            header = TRUE
+          )
 
-      - name: Validate packages.json
-        run: |
+          # convert cells with arrays to numeric
+          for (i in grep(pattern = "_ci_limits$", x = colnames(data))) {
+            if (!all(is.na(data[[i]]))) {
+              data[[i]] <- lapply(
+                strsplit(x = data[[i]], split = ",", fixed = TRUE),
+                as.numeric
+              )
+            }
+          }
+
+          data_json <- jsonlite::toJSON(
+            x = data,
+            dataframe = "columns",
+            na = NULL,
+            pretty = TRUE
+          )
+
+          # read schema
+          schema <- yaml::read_yaml(
+            file.path("inst", "extdata", "data_dictionary.yaml")
+          )
+
+          schema_json <- jsonlite::toJSON(
+            x = schema,
+            dataframe = "column",
+            auto_unbox = TRUE,
+            pretty = TRUE
+          )
+
           jsonvalidate::json_validate(
-            json = file.path("inst", "extdata", "data.json"),
-            schema = file.path("inst", "extdata", "schema.json"),
+            json = data_json,
+            schema = schema_json,
             engine = "ajv",
             verbose = TRUE,
             greedy = TRUE,
