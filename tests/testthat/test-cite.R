@@ -16,7 +16,7 @@ test_that("get_citation works as expected for manual epidist", {
       citation = create_epidist_citation(
         author = "Smith_etal",
         year = 2000,
-        DOI = "10.19832/j.1366-9516.2012.09147.x"
+        DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint
       )
     )
   )
@@ -42,13 +42,12 @@ test_that("get_citation works as expected for epiparam", {
   eparam <- epiparam()
   citation <- get_citation(eparam)
   expect_type(citation, "list")
-  expect_identical(length(citation), nrow(eparam))
+  expect_length(citation, nrow(eparam))
 })
 
 test_that("get_citation works as expected for epiparam with one entry", {
   eparam <- epiparam()
   citation <- get_citation(eparam[12, ])
   expect_type(citation, "list")
-  expect_identical(length(citation), nrow(eparam[12, ]))
+  expect_length(citation, nrow(eparam[12, ]))
 })
-
