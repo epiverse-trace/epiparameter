@@ -9,16 +9,19 @@ test_that("create_epidist_metadata fails when vector is given for non-vb", {
 })
 
 test_that("create_epidist_citation works with PMID", {
-    citation <- create_epidist_citation(
+  # suppress message about citation
+  citation <- suppressMessages(
+    create_epidist_citation(
       author = "Smith_etal",
       year = 2002,
       DOI = "10.1282718",
       PMID = 84772544
     )
-    expect_identical(
-      citation,
-      "Smith et al. (2002) <10.1282718> PMID: 84772544"
-    )
+  )
+  expect_identical(
+    citation,
+    "Smith et al. (2002) <10.1282718> PMID: 84772544"
+  )
 })
 
 test_that("possible_epidist_params works as expected", {

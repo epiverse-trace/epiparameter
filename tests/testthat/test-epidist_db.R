@@ -1,5 +1,8 @@
 test_that("epidist_db works as expected", {
-  edist <- epidist_db(disease = "influenza", epi_dist = "serial_interval")
+  # suppress message about citation
+  edist <- suppressMessages(
+    epidist_db(disease = "influenza", epi_dist = "serial_interval")
+  )
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
@@ -20,10 +23,13 @@ test_that("epidist_db works as expected", {
 })
 
 test_that("epidist_db works as expected with author specified", {
-  edist <- epidist_db(
-    disease = "influenza",
-    epi_dist = "incubation_period",
-    author = "Ghani_etal"
+  # suppress message about citation
+  edist <- suppressMessages(
+    epidist_db(
+      disease = "influenza",
+      epi_dist = "incubation_period",
+      author = "Ghani_etal"
+    )
   )
 
   expect_s3_class(edist, class = "epidist")

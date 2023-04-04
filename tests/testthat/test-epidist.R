@@ -28,72 +28,74 @@ test_that("epidist works with minimal viable input", {
 
 test_that("epidist works with all arguments set", {
 
-  mers_dist <- epidist(
-    disease = "MERS",
-    pathogen = "MERS_CoV",
-    epi_dist = "serial_interval",
-    prob_distribution = "lnorm",
-    prob_distribution_params = c(meanlog = 2, sdlog = 1),
-    uncertainty = list(
-      meanlog = create_epidist_uncertainty(
-        ci_limits = c(1, 3),
-        ci = 95,
-        ci_type = "confidence interval"
+  # suppress message about citation
+  mers_dist <- suppressMessages(
+    epidist(
+      disease = "MERS",
+      pathogen = "MERS_CoV",
+      epi_dist = "serial_interval",
+      prob_distribution = "lnorm",
+      prob_distribution_params = c(meanlog = 2, sdlog = 1),
+      uncertainty = list(
+        meanlog = create_epidist_uncertainty(
+          ci_limits = c(1, 3),
+          ci = 95,
+          ci_type = "confidence interval"
+        ),
+        sdlog = create_epidist_uncertainty(
+          ci_limits = c(0.1, 1.9),
+          ci = 95,
+          ci_type = "confidence interval"
+        )
       ),
-      sdlog = create_epidist_uncertainty(
-        ci_limits = c(0.1, 1.9),
-        ci = 95,
-        ci_type = "confidence interval"
-      )
-    ),
-    summary_stats = create_epidist_summary_stats(
-      mean = 1,
-      mean_ci_limits = c(0.8, 1.2),
-      mean_ci = 95,
-      sd = 0.5,
-      sd_ci_limits = c(0.4, 0.6),
-      sd_ci = 95,
-      median = 1,
-      median_ci_limits = c(0.9, 1.1),
-      median_ci = 95,
-      dispersion = 1,
-      dispersion_ci_limits = c(0.9, 1.1),
-      dispersion_ci = 90,
-      lower_range = 0.1,
-      upper_range = 1.9,
-      quantiles = c(
-        q_2.5 = 0.2,
-        q_5 = 0.3,
-        q_25 = 0.5,
-        q_75 = 0.7,
-        q_87.5 = 1.1,
-        q_95 = 1.2,
-        q_97.5 = 1.5
-      )
-    ), citation = create_epidist_citation(
-      author = "Smith",
-      year = 2002,
-      PMID = 28372882,
-      DOI = "10.23271/176237.x" # nolint
-    ),
-    metadata = create_epidist_metadata(
-      sample_size = 100,
-      region = "UK",
-      transmission_mode = "vector_borne",
-      vector = NA,
-      extrinsic = FALSE,
-      inference_method = "MLE"
-    ),
-    method_assess = create_epidist_method_assess(
-      censored = TRUE,
-      right_truncated = FALSE,
-      phase_bias_adjusted = FALSE
-    ),
-    discretise = FALSE,
-    truncation = NA_real_,
-    notes = "No notes"
+      summary_stats = create_epidist_summary_stats(
+        mean = 1,
+        mean_ci_limits = c(0.8, 1.2),
+        mean_ci = 95,
+        sd = 0.5,
+        sd_ci_limits = c(0.4, 0.6),
+        sd_ci = 95,
+        median = 1,
+        median_ci_limits = c(0.9, 1.1),
+        median_ci = 95,
+        dispersion = 1,
+        dispersion_ci_limits = c(0.9, 1.1),
+        dispersion_ci = 90,
+        lower_range = 0.1,
+        upper_range = 1.9,
+        quantiles = c(
+          q_2.5 = 0.2,
+          q_5 = 0.3,
+          q_25 = 0.5,
+          q_75 = 0.7,
+          q_87.5 = 1.1,
+          q_95 = 1.2,
+          q_97.5 = 1.5
+        )
+      ), citation = create_epidist_citation(
+        author = "Smith",
+        year = 2002,
+        PMID = 28372882,
+        DOI = "10.23271/176237.x" # nolint
+      ),
+      metadata = create_epidist_metadata(
+        sample_size = 100,
+        region = "UK",
+        transmission_mode = "vector_borne",
+        vector = NA,
+        extrinsic = FALSE,
+        inference_method = "MLE"
+      ),
+      method_assess = create_epidist_method_assess(
+        censored = TRUE,
+        right_truncated = FALSE,
+        phase_bias_adjusted = FALSE
+      ),
+      discretise = FALSE,
+      truncation = NA_real_,
+      notes = "No notes"
+    )
   )
-
   expect_s3_class(mers_dist, class = "epidist")
   expect_length(mers_dist, 9)
   expect_named(
