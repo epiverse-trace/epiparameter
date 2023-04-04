@@ -32,11 +32,15 @@ get_citation.epidist <- function(x, ...) {
 #' @export
 get_citation.epiparam <- function(x, ...) {
   citation_list <- apply(x, MARGIN = 1, FUN = function(y) {
-    create_epidist_citation(
-      author = y$author,
-      year = y$year,
-      PMID = y$PMID,
-      DOI = y$DOI
+    # suppressing message as users do not need reminding of citation when
+    # retrieving citation
+    suppressMessages(
+      create_epidist_citation(
+        author = y$author,
+        year = y$year,
+        PMID = y$PMID,
+        DOI = y$DOI
+      )
     )
   },
   simplify = FALSE
