@@ -418,6 +418,11 @@ create_epidist_citation <- function(author = NA_character_,
     citation <- paste0(citation, " PMID: ", PMID)
   }
 
+  message(
+    "Using ", citation, ". \n",
+    "To retrieve the short citation use the 'get_citation' function"
+  )
+
   citation
 }
 
