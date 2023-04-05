@@ -42,20 +42,11 @@ Imports:
     stats,
     utils
 Suggests: 
-    EpiEstim,
-    EpiNow2,
-    R0,
-    outbreaks,
-    incidence2,
-    tibble,
     covr,
     knitr,
     rmarkdown,
     vdiffr,
     dplyr (>= 1.0.0),
-    rlang,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-Remotes:
-    epiforecasts/EpiNow2
 VignetteBuilder: knitr
