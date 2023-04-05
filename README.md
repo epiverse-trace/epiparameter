@@ -109,13 +109,6 @@ or the median and range of the data. This can be done for:
 - lognormal
 - weibull
 
-## `{epiparameter}` tutorial with applications
-
-For a full explanation of the functions and data stored in the
-`epiparameter` package and a few possible applications of the delay
-distribution data please see the [introduction to
-`epiparameter`](https://epiverse-trace.github.io/epiparameter/articles/epiparameter.html).
-
 ## Contributing to library of epidemiological parameters
 
 If you would like to contribute to the different epidemiological
