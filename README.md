@@ -119,8 +119,8 @@ parameters stored in the `{epiparameter}` package, you can access the
 sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing)
 and add your data. This spreadsheet contains two example entries as a
 guide to what fields can accept. See also the data dictionary (either
-yaml or JSON files) in the`{epiparameter}` package (in inst/extdata) for
-explanation of accepted entries for each column.
+yaml or JSON files) in the `{epiparameter}` package (in inst/extdata)
+for explanation of accepted entries for each column.
 
 ## Help
 
