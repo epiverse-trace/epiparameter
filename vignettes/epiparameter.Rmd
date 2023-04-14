@@ -1,0 +1,172 @@
+---
+title: "Getting Started with {epiparameter}"
+output: bookdown::html_vignette2
+vignette: >
+  %\VignetteIndexEntry{Getting Started with {epiparameter}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+It is often the case that in an infectious disease outbreak epidemiological parameters are required in order to characterise and model the dynamics of disease transmission and evaluate control strategies. In those scenarios, epidemiological parameters are commonly retrieved from the literature, and there is no currently library of parameters in order to contrast and compare different reported parameters for a range of infectious diseases and pathogens, from different published studies over time, of which some may be meta-analyses.
+
+The {epiparameter} R package is a library of epidemiological parameters, with classes to handle this data and a set of functions to manipulate and use epidemiological parameters and distributions. The package also contains functionality for converting and extracting distribution parameters from summary statistics.
+
+::: {.alert .alert-primary}
+### Use case 
+
+An outbreak of a known or potentially novel pathogen is detected and the parameters and a delay distribution (e.g. incubation period or serial interval) is required. 
+
+{epiparameter} can provide a these distributions from a selection of published sources in order to provide reliable epidemiological parameters.
+:::
+
+This vignette will provide a introduction the data stored within {epiparameter}, how to read it into R, manipulate
+the data, and the functions (and methods) implemented in the package to facilitate easy application of parameters into epidemiological pipelines.
+
+```{r setup}
+library(epiparameter)
+```
+
+## Working with {epiparameter} data
+
+{epiparameter} introduces three new classes for working with epidemiological parameters in R:
+
+- `<epiparam>`: library of epidemiolgical parameters
+- `<epidist>`: singular set of epidemiolgical parameters 
+- `<vb_epidist>`: a singular set of epidemiolgical parameters containing both an extrinsic and intrinsic distribution.
+
+#### Library of epidemiological parameters
+
+First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The `<epiparam>` class is introduced to enable users to easily explore the range of parameters that are available. The library can be read into R using the `epiparam()` function.
+
+```{r read-in-library}
+epi_dist_db <- epiparam()
+epi_dist_db
+```
+
+The `<epiparam>` class has a custom printing method which gives a summary of the information included in the database including the number of distributions, number of diseases, number of different studies among other summary metrics, as well as the first six rows of the diseases, epidemiological distributions (`epi_distribution`) and probability distribution (`prob_distribution`).
+
+The `<epiparam>` class is based (i.e. inherits from) the data frame, and therefore the same subsetting and manipulation can be carried out, including the `head()` and `tail()` of the database.
+
+```{r, subsetting-head-tail-epiparam}
+head(epi_dist_db)[, 1:5]
+tail(epi_dist_db)[, 1:5]
+```
+
+The epidemiological library contains quite a few different columns:
+
+```{r, epiparam-cols}
+colnames(epi_dist_db)
+```
+
+If subsetting of the `<epiparam>` object removes one of the crucial columns then the object is 
+converted to a data frame.
+
+```{r, epiparam-subset-disease}
+epi_dist_df <- epi_dist_db[-which(colnames(epi_dist_db) == "disease")]
+```
+
+#### Single set of epidemiolgical parameters
+
+The second class introduced in the {epiparameter} package is the `<epidist>` class. This holds a single set of epidemiological parameters. 
+
+An `<epidist>` object can be converted from one of the rows of the `<epiparam>` object or can be created manually. First we will show the conversion of `<epiparam>` &rarr; `<epidist>`. This uses the `as_epidist()` function.
+
+```{r convert-epiparam-epidist}
+# find entry for COVID-19
+epi_dist_covid <- epi_dist_db[which(epi_dist_db$disease == "COVID-19"), ]
+
+# find entry for COVID-19 incubation period
+epi_dist_covid_incub <- epi_dist_covid[which(epi_dist_covid$epi_distribution == "incubation_period"), ]
+
+# select one of the COVID-19 incubation period
+covid_incub <- epi_dist_covid_incub[10, ]
+
+# convert epiparam entry to epidist
+covid_incub <- as_epidist(covid_incub)
+covid_incub
+```
+
+The `<epidist>` object also has a custom printing method which shows the disease, pathogen (if known), the epidemiological distribution, a short citation of the study the parameters are from and the probability distribution and parameter of that distribution (if available).
+
+The opposite conversion from `<epidist>` to `<epiparam>` can also be achieved using `as_epiparam()`.
+
+```{r convert-epidist-epiparam}
+as_epiparam(covid_incub)
+```
+
+Alternatively to using entries from the {epiparameter} library,  `<epidist>` objects can be manually created.
+This may be especially useful if new parameter estimates become available but are not yet incorporated into the library.
+
+```{r}
+ebola_incubation <- epidist(
+  disease = "ebola", 
+  epi_dist= "incubation_period", 
+  prob_distribution = "lnorm", 
+  prob_distribution_params = c(meanlog = 1, sdlog = 1) 
+)
+```
+
+::: {.alert .alert-success}
+### Benefit of `<epidist>`
+
+By providing a consistent and robust object to store epidemiological parameters, `<epidist>` objects can be applied in epidemiological pipelines, for example [{episoap}](https://github.com/epiverse-trace/episoap). The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will operate as the class is unchanged.
+:::
+
+## Adding library entries
+
+The probability distribution (`prob_distribution`) argument requires the distribution specified in the standard R naming. Examples of where the distribution name and R name differ are lognormal and lnorm, negative binomial and nbinom, among others. If unsure of the name in R google will usually provide a answer. Extra arguments are also available in `epidist()` to add information on uncertainty and citation information.
+
+To add entries to the library the `bind_epiparam()` function appends a row to an existing `<epiparam>` object using either an `<epiparam>`, `<epidist>` or data frame.
+
+```{r add-to-library}
+bind_epiparam(epiparam = epi_dist_db, epi_obj = ebola_incubation)
+bind_epiparam(epiparam = epi_dist_db, epi_obj = as_epiparam(ebola_incubation))
+```
+
+## Distribution functions
+
+It is commonly required to extract the probability density function, cumulative distribution function, quantile or generate random numbers from the distribution stored in the `<epidist>` object. The distribution functions in {epiparameter} allow users to easily access these aspects.
+
+```{r epidist-dist-methods}
+density(ebola_incubation, at = 0.5)
+#cdf(ebola_incubation, q = 0.5)
+quantile(ebola_incubation, p = 0.5)
+#generate(ebola_incubation, times = 10)
+```
+
+## Plotting epidemiological distributions
+
+`<epidist>` objects can easily be plotted to see the pdf and cdf of distribution.
+
+```{r plot-epidist, fig.width=7}
+plot(ebola_incubation)
+```
+
+The default plotting range for time since infection is from zero to ten days. This can be altered by specifying the `day_range` argument when plotting an `<epidist>` object.
+
+```{r plot-epidist-dayrange, fig.width=7}
+plot(ebola_incubation, day_range = 1:25)
+```
+
+## Parameter conversion and extraction
+
+#### Conversion
+
+Parameters are often reported as mean and standard deviaton (or variance). These can be (analytically) converted to the parameters of the distribution using the range of conversion functions in the package. These have the naming convention `summary_stats2params()`. For example `gamma_meansd2shapescale()` or `lnorm_meansd2musigma()`.
+
+We also provide conversion functions in the opposite direction, parameters to summary statistics. These follow the same naming convention, for example `weibull_shapescale2meansd()`.
+
+#### Extraction
+
+The functions `extract_param()` handles all the extraction of parameter estimates from summary statistics. The two extractions currently supported in {epiparameter} are from percentiles and from median and range.
+
+## Contributing to {epiparameter}
+
+The library of epidemiological parameters is a living database, as new studies are published we hope to incorporate these. Due to the large time requirement of searching for and recording parameters in the database we welcome others to add parameters to the contributing spreadsheet. These will be incorporated into the database by the package maintainers.
