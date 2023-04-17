@@ -113,6 +113,8 @@ distribution is to return the entry with the largest sample size.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">epidist_db</span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"influenza"</span>, epi_dist <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Ghani et al. (2009) &lt;10.1371/currents.RRN1130&gt; PMID: 20029668. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the short citation use the 'get_citation' function</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Influenza</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Influenza-A-H1N1Pdm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: serial interval</span>
@@ -127,6 +129,8 @@ distribution is to return the entry with the largest sample size.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># load influenza serial interval from database</span></span></span>
 <span class="r-in"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu">epidist_db</span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"influenza"</span>, epi_dist <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Ghani et al. (2009) &lt;10.1371/currents.RRN1130&gt; PMID: 20029668. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the short citation use the 'get_citation' function</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># load database of serial intervals</span></span></span>
 <span class="r-in"><span><span class="va">eparam</span> <span class="op">&lt;-</span> <span class="fu"><a href="epiparam.html">epiparam</a></span><span class="op">(</span>epi_dist <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span></span>
@@ -134,6 +138,8 @@ distribution is to return the entry with the largest sample size.</p>
 <span class="r-in"><span><span class="va">eparam</span> <span class="op">&lt;-</span> <span class="va">eparam</span><span class="op">[</span><span class="fu"><a href="clean_disease.html">clean_disease</a></span><span class="op">(</span><span class="va">eparam</span><span class="op">$</span><span class="va">disease</span><span class="op">)</span> <span class="op">==</span> <span class="st">"influenza"</span>, <span class="op">]</span></span></span>
 <span class="r-in"><span><span class="co"># convert to `epidist`</span></span></span>
 <span class="r-in"><span><span class="va">edist2</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">eparam</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Ghani et al. (2009) &lt;10.1371/currents.RRN1130&gt; PMID: 20029668. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the short citation use the 'get_citation' function</span>
 <span class="r-in"><span><span class="co"># check the two methods produce the same `epidist` object</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">edist</span>, <span class="va">edist2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
