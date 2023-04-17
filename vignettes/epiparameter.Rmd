@@ -31,6 +31,7 @@ the data, and the functions (and methods) implemented in the package to facilita
 
 ```{r setup}
 library(epiparameter)
+library(distributional)
 ```
 
 ## Working with {epiparameter} data
