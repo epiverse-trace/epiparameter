@@ -26,7 +26,7 @@ An outbreak of a known or potentially novel pathogen is detected and the paramet
 {epiparameter} can provide a these distributions from a selection of published sources in order to provide reliable epidemiological parameters.
 :::
 
-This vignette will provide a introduction the data stored within {epiparameter}, how to read it into R, manipulate
+This vignette will provide a introduction to the data stored within {epiparameter}, how to read it into R, manipulate
 the data, and the functions (and methods) implemented in the package to facilitate easy application of parameters into epidemiological pipelines.
 
 ```{r setup}
@@ -43,7 +43,7 @@ library(epiparameter)
 
 #### Library of epidemiological parameters
 
-First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The `<epiparam>` class is introduced to enable users to easily explore the range of parameters that are available. The library can be read into R using the `epiparam()` function.
+First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The `<epiparam>` class is introduced to enable users to easily explore the range of parameters that are available. The library can be read into R using the `epiparam()` function. By default all entries in the library are supplied.
 
 ```{r read-in-library}
 epi_dist_db <- epiparam()
@@ -66,7 +66,8 @@ colnames(epi_dist_db)
 ```
 
 If subsetting of the `<epiparam>` object removes one of the crucial columns then the object is 
-converted to a data frame.
+converted to a data frame. Here removing the `disease` column causes the `<epiparam>` object
+to be converted to a data frame.
 
 ```{r, epiparam-subset-disease}
 epi_dist_df <- epi_dist_db[-which(colnames(epi_dist_db) == "disease")]
@@ -101,7 +102,19 @@ The opposite conversion from `<epidist>` to `<epiparam>` can also be achieved us
 as_epiparam(covid_incub)
 ```
 
-Alternatively to using entries from the {epiparameter} library,  `<epidist>` objects can be manually created.
+There are two alternatives to reading in `<epiparam>` objects and subsetting to `<epidist>`. 
+
+1. Extract an `<epidist>` directly from the library with `epidist_db()`.
+2. Create `<epidist>` manually with constructor function.
+
+The `epidist_db()` allows direct subsetting of the library and returns an `<epidist>` of a 
+single set of epidemiological parameters.
+
+```{r epidist_db}
+epidist_db(disease = "COVID-19", epi_dist = "incubation_period", author = "Bui_etal")
+```
+
+Additionally to using entries from the {epiparameter} library, `<epidist>` objects can be manually created.
 This may be especially useful if new parameter estimates become available but are not yet incorporated into the library.
 
 ```{r}
@@ -119,9 +132,9 @@ ebola_incubation <- epidist(
 By providing a consistent and robust object to store epidemiological parameters, `<epidist>` objects can be applied in epidemiological pipelines, for example [{episoap}](https://github.com/epiverse-trace/episoap). The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will operate as the class is unchanged.
 :::
 
-## Adding library entries
-
 The probability distribution (`prob_distribution`) argument requires the distribution specified in the standard R naming. Examples of where the distribution name and R name differ are lognormal and lnorm, negative binomial and nbinom, among others. If unsure of the name in R google will usually provide a answer. Extra arguments are also available in `epidist()` to add information on uncertainty and citation information.
+
+## Adding library entries
 
 To add entries to the library the `bind_epiparam()` function appends a row to an existing `<epiparam>` object using either an `<epiparam>`, `<epidist>` or data frame.
 
@@ -143,7 +156,7 @@ quantile(ebola_incubation, p = 0.5)
 
 ## Plotting epidemiological distributions
 
-`<epidist>` objects can easily be plotted to see the pdf and cdf of distribution.
+`<epidist>` objects can easily be plotted to see the PDF and CDF of distribution.
 
 ```{r plot-epidist, fig.width=7}
 plot(ebola_incubation)
@@ -159,7 +172,7 @@ plot(ebola_incubation, day_range = 1:25)
 
 #### Conversion
 
-Parameters are often reported as mean and standard deviaton (or variance). These can be (analytically) converted to the parameters of the distribution using the range of conversion functions in the package. These have the naming convention `summary_stats2params()`. For example `gamma_meansd2shapescale()` or `lnorm_meansd2musigma()`.
+Parameters are often reported as mean and standard deviaton (or variance). These can be (analytically) converted to the parameters of the distribution using the conversion functions in the package. These have the naming convention `summary_stats2params()`. For example `gamma_meansd2shapescale()` or `lnorm_meansd2musigma()`.
 
 We also provide conversion functions in the opposite direction, parameters to summary statistics. These follow the same naming convention, for example `weibull_shapescale2meansd()`.
 
@@ -169,4 +182,4 @@ The functions `extract_param()` handles all the extraction of parameter estimate
 
 ## Contributing to {epiparameter}
 
-The library of epidemiological parameters is a living database, as new studies are published we hope to incorporate these. Due to the large time requirement of searching for and recording parameters in the database we welcome others to add parameters to the contributing spreadsheet. These will be incorporated into the database by the package maintainers.
+The library of epidemiological parameters is a living database, as new studies are published we hope to incorporate these. Due to the large time requirement of searching for and recording parameters in the database we welcome others to add parameters to the contributing spreadsheet. These will be incorporated into the database by the package maintainers. See the [Data Collation and Synthesis Protocol](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html) vignette on information about contributing to the library of epidemiological parameters.
