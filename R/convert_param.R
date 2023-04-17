@@ -1,3 +1,140 @@
+#' Converts the parameters of the lognormal distribution to summary statistics
+#'
+#' @description Converts the meanlog and sdlog parameters of the lognormal
+#' distribution to a number of summary statistics which can be calculated
+#' analytically given the lognormal parameters
+#'
+#' @param meanlog The meanlog parameter (mean of natural logarithm) of the
+#' lognormal distribution. Also commonly called and denoted by the mu.
+#' @param sdlog The sdlog parameter (standard deviation of the natural
+#' logarithm) of the distribution. Also commonly called and denoted by sigma.
+#'
+#' @return A list of eight elements including: mean, median, mode,
+#' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
+#' skewness, and kurtosis.
+#' @export
+#'
+#' @examples
+#' convert_lnorm_params(meanlog = 1, sdlog = 1)
+convert_lnorm_params <- function(meanlog, sdlog) {
+
+  # check input
+  checkmate::assert_number(meanlog)
+  checkmate::assert_number(sdlog, lower = 0)
+
+  # calculate metrics
+  mean <- exp(meanlog + sdlog^2/2)
+  median <- exp(meanlog)
+  mode <- exp(meanlog - sdlog^2)
+  var <- (exp(sdlog^2) - 1) * exp(2*meanlog + sdlog^2)
+  sd <- sqrt(var)
+  cv <- sd / mean
+  skewness <- (exp(sdlog^2) + 2) * sqrt(exp(sdlog^2) - 1)
+  kurtosis <- exp(4 * sdlog^2) + 2 * exp(3 * sdlog^2) + 3 * exp(2 * sdlog^2) - 6
+
+  # return list of metrics
+  list(
+    mean = mean,
+    median = median,
+    mode = mode,
+    var = var,
+    sd = sd,
+    cv = cv,
+    skewness = skewness,
+    kurtosis = kurtosis
+  )
+}
+
+#' Converts the summary statistics to parameters of the lognormal distribution
+#'
+#' @description Converts the meanlog and sdlog parameters of the lognormal
+#' distribution to a number of summary statistics which can be calculated
+#' analytically given the lognormal parameters.
+#'
+#' @details The arguments input are captured and handled by name. Therefore,
+#' the names of the arguments must be correct (case-sensitive). Possible input
+#' summary statistics are: `mean`, `median`, `mode`, `var`, `sd`, `cv`,
+#' `skewness`, `kurtosis`.
+#'
+#' Not every combination of input statistics is a viable conversion, and may
+#' error. Common conversions that are implemented are mean and any measure of
+#' spread (`var`, `sd` and `cv`), or `median` and `sd`.
+#'
+#' @param ... Summary statistics to be used for calculating the lognormal
+#' distribution parameters. All arguments must be correctly named, see details
+#' for possible input.
+#'
+#' @return A list of two elements, the meanlog and sdlog
+#' @export
+#'
+#' @examples
+#' convert_lnorm_summary_stats(mean = 3, sd = 2)
+convert_lnorm_summary_stats <- function(...) {
+
+  # capture input
+  x <- list(...)
+
+  # check input
+  stopifnot(
+    "all arguments must be named" =
+      !is.null(names(x)) || isFALSE("" %in% names(x)),
+    "all values given must been numeric" =
+      all(vapply(x, is.numeric, FUN.VALUE = logical(1))),
+    "names of input must match exactly" =
+      all(names(x) %in%  c(
+        "mean", "median", "mode", "var", "sd", "cv", "skewness", "kurtosis"
+      ))
+  )
+
+  # convert var or cv into sd if available
+  if ("sd" %in% names(x)) {
+    sd <- x$sd
+  } else {
+    if ("var" %in% names(x)) {
+      sd <- sqrt(x$var)
+    }
+    if (all(c("mean", "cv") %in% names(x))) {
+      sd <- x$cv * x$mean
+    }
+  }
+
+  if ("mean" %in% names(x)) {
+    mean <- x$mean
+  }
+
+  if ("median" %in% names(x)) {
+    median <- x$median
+  }
+
+  # mean and sd to params
+  if (is.numeric(mean) && is.numeric(sd)) {
+    sdlog <- sqrt(log(sd^2 / mean^2 + 1))
+    meanlog <- log(mean^2 / sqrt(sd^2 + mean^2))
+  }
+
+  if (is.numeric(median) && is.numeric(sd)) {
+    sdlog <- sqrt(log((sd / median)^2 + 1))
+    meanlog <- log(median) - sdlog^2 / 2
+  }
+
+  # mean and median to params
+  if (is.numeric(mean) && is.numeric(median)) {
+    sdlog <- sqrt(2 * (log(mean) - log(median)))
+    meanlog <- log(median) - sdlog^2/2
+  }
+
+  # if either parameter hasn't been calculated error
+  if (!exists("meanlog") || !exists("sdlog")) {
+    stop("Cannot calculate lognormal parameters from given input")
+  }
+
+  # return list of params
+  list(
+    meanlog = meanlog,
+    sdlog = sdlog
+  )
+}
+
 #' Converts the mu (mean log) and sigma (standard deviation log) parameters of
 #' the lognormal distribution to the mean and standard deviation
 #'
