@@ -84,7 +84,7 @@ An `<epidist>` object can be converted from one of the rows of the `<epiparam>` 
 epi_dist_covid <- epi_dist_db[which(epi_dist_db$disease == "COVID-19"), ]
 
 # find entry for COVID-19 incubation period
-epi_dist_covid_incub <- epi_dist_covid[which(epi_dist_covid$epi_distribution == "incubation_period"), ]
+epi_dist_covid_incub <- epi_dist_covid[which(epi_dist_covid$epi_distribution == "incubation_period"), ] # nolint
 
 # select one of the COVID-19 incubation period
 covid_incub <- epi_dist_covid_incub[10, ]
@@ -111,7 +111,11 @@ The `epidist_db()` allows direct subsetting of the library and returns an `<epid
 single set of epidemiological parameters.
 
 ```{r epidist_db}
-epidist_db(disease = "COVID-19", epi_dist = "incubation_period", author = "Bui_etal")
+epidist_db(
+  disease = "COVID-19",
+  epi_dist = "incubation_period",
+  author = "Bui_etal"
+)
 ```
 
 Additionally to using entries from the {epiparameter} library, `<epidist>` objects can be manually created.
@@ -119,10 +123,10 @@ This may be especially useful if new parameter estimates become available but ar
 
 ```{r}
 ebola_incubation <- epidist(
-  disease = "ebola", 
-  epi_dist= "incubation_period", 
-  prob_distribution = "lnorm", 
-  prob_distribution_params = c(meanlog = 1, sdlog = 1) 
+  disease = "ebola",
+  epi_dist = "incubation_period",
+  prob_distribution = "lnorm",
+  prob_distribution_params = c(meanlog = 1, sdlog = 1)
 )
 ```
 
