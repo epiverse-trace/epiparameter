@@ -70,6 +70,8 @@ be used.
 
 ``` r
 influenza_incubation <- as_epidist(eparams[12, ])
+#> Using Linton et al. (2020) <10.3390/jcm9020538> PMID: 32079150. 
+#> To retrieve the short citation use the 'get_citation' function
 influenza_incubation
 #> Disease: COVID-19
 #> Pathogen: SARS-CoV-2
