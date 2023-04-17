@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   data_protocol: data_protocol.html
-last_built: 2023-04-05T12:46Z
+last_built: 2023-04-17T08:10Z
 urls:
   reference: https://epiverse-trace.github.io/epiparameter/reference
   article: https://epiverse-trace.github.io/epiparameter/articles
