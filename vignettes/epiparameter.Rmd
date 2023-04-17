@@ -149,9 +149,9 @@ It is commonly required to extract the probability density function, cumulative 
 
 ```{r epidist-dist-methods}
 density(ebola_incubation, at = 0.5)
-#cdf(ebola_incubation, q = 0.5)
+cdf(ebola_incubation, q = 0.5)
 quantile(ebola_incubation, p = 0.5)
-#generate(ebola_incubation, times = 10)
+generate(ebola_incubation, times = 10)
 ```
 
 ## Plotting epidemiological distributions
