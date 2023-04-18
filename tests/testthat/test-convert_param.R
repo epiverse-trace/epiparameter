@@ -1,5 +1,5 @@
-test_that("lnorm_musigma2meansd works as expected", {
-  params <- lnorm_musigma2meansd(mu = 1, sigma = 0.5)
+test_that("lnorm_meanlogsdlog2meansd works as expected", {
+  params <- lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog  = 0.5)
   expect_type(params, "list")
   expect_named(params, c("mean", "sd"))
   expect_equal(
@@ -9,43 +9,43 @@ test_that("lnorm_musigma2meansd works as expected", {
   )
 })
 
-test_that("lnorm_musigma2meansd fails as expected", {
+test_that("lnorm_meanlogsdlog2meansd fails as expected", {
   expect_error(
-    lnorm_musigma2meansd(mu = "1", sigma = 0.5),
+    lnorm_meanlogsdlog2meansd(meanlog = "1", sdlog  = 0.5),
     regexp = paste0(
-      "Assertion on 'mu' failed: Must be of type 'number',",
+      "Assertion on 'meanlog' failed: Must be of type 'number',",
       " not 'character'."
     )
   )
 
   expect_error(
-    lnorm_musigma2meansd(mu = 1, sigma = "0.5"),
+    lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog  = "0.5"),
     regexp = paste0(
-      "Assertion on 'sigma' failed: Must be of type 'number',",
+      "Assertion on 'sdlog' failed: Must be of type 'number',",
       " not 'character'."
     )
   )
 
   expect_error(
-    lnorm_musigma2meansd(mu = 1, sigma = -0.5),
-    regexp = "Assertion on 'sigma' failed: Element 1 is not >= 0."
+    lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog  = -0.5),
+    regexp = "Assertion on 'sdlog' failed: Element 1 is not >= 0."
   )
 })
 
-test_that("lnorm_meansd2musigma works as expected", {
-  params <- lnorm_meansd2musigma(mean = 1, sd = 0.5)
+test_that("lnorm_meansd2meanlogsdlog works as expected", {
+  params <- lnorm_meansd2meanlogsdlog(mean = 1, sd = 0.5)
   expect_type(params, "list")
-  expect_named(params, c("mu", "sigma"))
+  expect_named(params, c("meanlog", "sdlog"))
   expect_equal(
     params,
-    list(mu = -0.111571775657105, sigma = 0.472380727077439),
+    list(meanlog = -0.111571775657105, sdlog  = 0.472380727077439),
     tolerance = testthat_tolerance()
   )
 })
 
-test_that("lnorm_meansd2musigma fails as expected", {
+test_that("lnorm_meansd2meanlogsdlog fails as expected", {
   expect_error(
-    lnorm_meansd2musigma(mean = "1", sd = 0.5),
+    lnorm_meansd2meanlogsdlog(mean = "1", sd = 0.5),
     regexp = paste0(
       "Assertion on 'mean' failed: Must be of type 'number',",
       " not 'character'."
@@ -53,7 +53,7 @@ test_that("lnorm_meansd2musigma fails as expected", {
   )
 
   expect_error(
-    lnorm_meansd2musigma(mean = 1, sd = "0.5"),
+    lnorm_meansd2meanlogsdlog(mean = 1, sd = "0.5"),
     regexp = paste0(
       "Assertion on 'sd' failed: Must be of type 'number',",
       " not 'character'."
@@ -61,27 +61,30 @@ test_that("lnorm_meansd2musigma fails as expected", {
   )
 
   expect_error(
-    lnorm_meansd2musigma(mean = -1, sd = 0.5),
+    lnorm_meansd2meanlogsdlog(mean = -1, sd = 0.5),
     regexp = "Assertion on 'mean' failed: Element 1 is not >= 0."
   )
 
   expect_error(
-    lnorm_meansd2musigma(mean = 1, sd = -0.5),
+    lnorm_meansd2meanlogsdlog(mean = 1, sd = -0.5),
     regexp = "Assertion on 'sd' failed: Element 1 is not >= 0."
   )
 })
 
 test_that("lnorm conversions go back to original values", {
-  params_1 <- lnorm_musigma2meansd(mu = 1, sigma = 0.5)
-  params_2 <- lnorm_meansd2musigma(mean = params_1$mean, sd = params_1$sd)
+  params_1 <- lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog  = 0.5)
+  params_2 <- lnorm_meansd2meanlogsdlog(mean = params_1$mean, sd = params_1$sd)
   expect_equal(
     params_2,
-    list(mu = 1, sigma = 0.5),
+    list(meanlog = 1, sdlog  = 0.5),
     tolerance = testthat_tolerance()
   )
 
-  params_1 <- lnorm_meansd2musigma(mean = 2, sd = 1)
-  params_2 <- lnorm_musigma2meansd(mu = params_1$mu, sigma = params_1$sigma)
+  params_1 <- lnorm_meansd2meanlogsdlog(mean = 2, sd = 1)
+  params_2 <- lnorm_meanlogsdlog2meansd(
+    meanlog = params_1$meanlog,
+    sdlog  = params_1$sdlog
+  )
   expect_equal(
     params_2,
     list(mean = 2, sd = 1),

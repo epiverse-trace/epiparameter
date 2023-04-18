@@ -929,7 +929,7 @@ test_that("parameters works as expected on continuous gamma", {
   params <- parameters(edist)
 
   expect_vector(params, ptype = numeric(), size = 2)
-  expect_named(params, expected = c("shape", "rate"))
+  expect_named(params, expected = c("shape", "scale"))
 })
 
 test_that("parameters works as expected on continuous lognormal", {
@@ -943,7 +943,7 @@ test_that("parameters works as expected on continuous lognormal", {
   params <- parameters(edist)
 
   expect_vector(params, ptype = numeric(), size = 2)
-  expect_named(params, expected = c("mu", "sigma"))
+  expect_named(params, expected = c("meanlog", "sdlog"))
 })
 
 test_that("parameters works as expected on discretised dist", {
@@ -973,7 +973,7 @@ test_that("parameters works as expected on truncated dist", {
   params <- parameters(edist)
 
   expect_vector(params, ptype = numeric(), size = 4)
-  expect_named(params, expected = c("shape", "rate", "lower", "upper"))
+  expect_named(params, expected = c("shape", "scale", "lower", "upper"))
 })
 
 test_that("parameters fails as expected on non-epidist object", {

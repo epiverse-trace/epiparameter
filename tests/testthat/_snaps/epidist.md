@@ -13,7 +13,7 @@
       Distribution: gamma
       Parameters:
         shape: 1.000
-        rate: 1.000
+        scale: 1.000
 
 ---
 

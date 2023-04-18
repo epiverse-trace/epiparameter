@@ -81,7 +81,7 @@ test_that("make_epidist works as expected for gamma", {
   )
 
   expect_s3_class(edist, "epidist")
-  expect_identical(stats::family(edist$prob_dist), "gamma")
+  expect_identical(family(edist), "gamma")
 })
 
 test_that("make_epidist works as expected for weibull", {
@@ -146,7 +146,7 @@ test_that("make_epidist works as expected for weibull", {
   )))
 
   expect_s3_class(edist, "epidist")
-  expect_identical(stats::family(edist$prob_dist), "weibull")
+  expect_identical(family(edist), "weibull")
 })
 
 test_that("make_epidist works as expected for lognormal", {
@@ -210,7 +210,7 @@ test_that("make_epidist works as expected for lognormal", {
   )))
 
   expect_s3_class(edist, "epidist")
-  expect_identical(stats::family(edist$prob_dist), "lognormal")
+  expect_identical(family(edist), "lnorm")
 })
 
 test_that("make_epidist works as expected for negative binomial", {
@@ -277,7 +277,7 @@ test_that("make_epidist works as expected for negative binomial", {
     ))
   )
   expect_s3_class(edist, "epidist")
-  expect_identical(stats::family(edist$prob_dist), "negbin")
+  expect_identical(family(edist), "negbin")
 })
 
 test_that("make_epidist works as expected for geometric", {
@@ -345,7 +345,7 @@ test_that("make_epidist works as expected for geometric", {
   )
 
   expect_s3_class(edist, "epidist")
-  expect_identical(stats::family(edist$prob_dist), "geometric")
+  expect_identical(family(edist), "geometric")
 })
 
 test_that("as_epiparam works as expected", {

@@ -24,14 +24,14 @@
       Distribution: gamma
       Parameters:
         shape: 1.000
-        rate: 1.000
+        scale: 1.000
       
        <Extrinsic Distribution> 
       
       Distribution: gamma
       Parameters:
         shape: 2.000
-        rate: 0.500
+        scale: 2.000
 
 ---
 
@@ -48,14 +48,14 @@
       Distribution: gamma
       Parameters:
         shape: 1.000
-        rate: 1.000
+        scale: 1.000
       
        <Extrinsic Distribution> 
       
       Distribution: gamma
       Parameters:
         shape: 2.000
-        rate: 0.500
+        scale: 2.000
 
 ---
 
