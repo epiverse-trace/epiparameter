@@ -91,9 +91,6 @@ calc_dist_params <- function(prob_dist,
     )
   } else if (!anyNA(percentiles)) {
 
-    # TODO: make use of lognormal or lnorm consistent
-    if (prob_dist == "lognormal") prob_dist <- "lnorm"
-
     # calculate the parameters from the percentiles
     prob_dist_params <- extract_param(
       type = "percentile",
