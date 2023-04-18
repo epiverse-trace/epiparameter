@@ -87,11 +87,14 @@ convert_lnorm_summary_stats <- function(...) {
 
   # check input
   stopifnot(
+    "at least two summary statistics must be supplied" =
+      length(x) >= 2,
     "all arguments must be named" =
-      !is.null(names(x)) || isFALSE("" %in% names(x)),
+      !is.null(names(x)) && isFALSE("" %in% names(x)),
     "all values given must been numeric" =
       all(vapply(x, is.numeric, FUN.VALUE = logical(1))),
-    "names of input must match exactly" =
+    "names of input must match:
+    'mean', 'median', 'mode', 'var', 'sd', 'cv', 'skewness', 'kurtosis'" =
       all(names(x) %in%  c(
         "mean", "median", "mode", "var", "sd", "cv", "skewness", "kurtosis"
       ))
@@ -117,19 +120,16 @@ convert_lnorm_summary_stats <- function(...) {
     median <- x$median
   }
 
-  # mean and sd to params
-  if (is.numeric(mean) && is.numeric(sd)) {
+  if (is_number(mean) && is_number(sd)) {
+    # mean and sd to params
     sdlog <- sqrt(log(sd^2 / mean^2 + 1))
     meanlog <- log(mean^2 / sqrt(sd^2 + mean^2))
-  }
-
-  if (is.numeric(median) && is.numeric(sd)) {
+  } else if (is_number(median) && is_number(sd)) {
+    # median and sd to params
     sdlog <- sqrt(log((sd / median)^2 + 1))
     meanlog <- log(median) - sdlog^2 / 2
-  }
-
-  # mean and median to params
-  if (is.numeric(mean) && is.numeric(median)) {
+  } else if (is_number(mean) && is_number(median)) {
+    # mean and median to params
     sdlog <- sqrt(2 * (log(mean) - log(median)))
     meanlog <- log(median) - sdlog^2/2
   }
