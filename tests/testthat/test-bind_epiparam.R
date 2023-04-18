@@ -111,7 +111,7 @@ test_that("bind_epiparam works as expected for binding list of epidist", {
   )
   expect_identical(
     new_eparam[nrow(new_eparam) - 1, ]$prob_distribution,
-    "lognormal"
+    "lnorm"
   )
   expect_identical(new_eparam[nrow(new_eparam), ]$prob_distribution, "weibull")
   expect_identical(new_eparam[nrow(new_eparam) - 2, ]$shape, 1)
@@ -170,7 +170,7 @@ test_that("bind_epiparam works as expected for binding vb_epidist", {
   )
   expect_identical(
     new_eparam[nrow(new_eparam) - 1, ]$prob_distribution,
-    "lognormal"
+    "lnorm"
   )
   expect_identical(new_eparam[nrow(new_eparam) - 1, ]$meanlog, 1)
   expect_identical(new_eparam[nrow(new_eparam) - 1, ]$sdlog, 1)
@@ -192,7 +192,7 @@ test_that("bind_epiparam works as expected for binding vb_epidist", {
   )
   expect_identical(
     new_eparam[nrow(new_eparam), ]$prob_distribution,
-    "lognormal"
+    "lnorm"
   )
   expect_identical(new_eparam[nrow(new_eparam), ]$meanlog, 2)
   expect_identical(new_eparam[nrow(new_eparam), ]$sdlog, 2)

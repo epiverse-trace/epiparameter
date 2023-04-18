@@ -17,7 +17,7 @@ test_that("calc_dist_params works as expected converting for different dist", {
   )
 
   expect_vector(params, ptype = numeric(), size = 2)
-  expect_named(params, expected = c("mu", "sigma"))
+  expect_named(params, expected = c("meanlog", "sdlog"))
 })
 
 test_that("calc_dist_params works as expected extracting from percentiles", {
@@ -127,10 +127,10 @@ test_that("convert_params works as expected for lognormal", {
   )
 
   expect_vector(params, ptype = numeric(), size = 2)
-  expect_named(params, expected = c("mu", "sigma"))
+  expect_named(params, expected = c("meanlog", "sdlog"))
   expect_equal(
     params,
-    c(mu = 1.5352279099, sigma = 0.3852531702),
+    c(meanlog = 1.5352279099, sdlog = 0.3852531702),
     tolerance = testthat_tolerance()
   )
 })

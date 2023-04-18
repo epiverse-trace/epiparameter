@@ -17,7 +17,7 @@ test_that("create_prob_dist works as expected for continuous gamma", {
 test_that("create_prob_dist works as expected for continuous lognormal", {
   res <- create_prob_dist(
     prob_dist = "lnorm",
-    prob_dist_params = c(mu = 1, sigma = 1),
+    prob_dist_params = c(meanlog = 1, sdlog = 1),
     discretise = FALSE,
     truncation = NA
   )
@@ -113,7 +113,7 @@ test_that("create_prob_dist works as expected for discrete gamma", {
 test_that("create_prob_dist works as expected for discrete lognormal", {
   res <- create_prob_dist(
     prob_dist = "lnorm",
-    prob_dist_params = c(mu = 1, sigma = 1),
+    prob_dist_params = c(meanlog = 1, sdlog = 1),
     discretise = TRUE,
     truncation = NA
   )
