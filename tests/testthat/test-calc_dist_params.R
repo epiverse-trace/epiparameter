@@ -41,7 +41,7 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
 
   # messages for numerical optimisation suppressed
   params <- suppressMessages(calc_dist_params(
-    prob_dist = "lognormal",
+    prob_dist = "lnorm",
     prob_dist_params = NA,
     summary_stats = create_epidist_summary_stats(
       quantiles = c(q_25 = 10, q_75 = 20)
