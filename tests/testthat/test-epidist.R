@@ -994,3 +994,73 @@ test_that("parameters fails as expected on non-epidist object", {
     )
   )
 })
+
+test_that("family works as expected for distributional", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period",
+    prob_distribution = "lnorm",
+    prob_distribution_params = c(meanlog = 1, sdlog = 1)
+  ))
+  expect_identical(family(edist), "lnorm")
+})
+
+test_that("family works as expected for distcrete", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    discretise = TRUE
+  ))
+  expect_identical(family(edist), "gamma")
+})
+
+test_that("family works as expected for distributional truncated", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period",
+    prob_distribution = "weibull",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    truncation = 10
+  ))
+  expect_identical(family(edist), "weibull")
+})
+
+test_that("is_truncated works as expected for continuous distributions", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  expect_false(is_truncated(edist))
+})
+
+test_that("is_truncated works as expected for discretised distributions", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    discretise = TRUE
+  ))
+  expect_false(is_truncated(edist))
+})
+
+test_that("is_truncated works as expected for truncated distributions", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    truncation = 10
+  ))
+  expect_true(is_truncated(edist))
+})

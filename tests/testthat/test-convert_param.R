@@ -415,3 +415,98 @@ test_that("geometric_prob2mean fails as expected", {
     )
   )
 })
+
+test_that("is_number works as expected", {
+  expect_true(is_number(1))
+  expect_false(is_number("1"))
+  expect_false(is_number(c(1,2)))
+  expect_false(is_number(TRUE))
+  expect_false(is_number(NA))
+  expect_false(is_number(NA_real_))
+})
+
+test_that("convert_lnorm_params works as expected", {
+  summary_stats <- convert_lnorm_params(meanlog = 1, sdlog = 1)
+  expect_length(summary_stats, 8)
+  expect_named(
+    summary_stats,
+    c("mean", "median", "mode", "var", "sd", "cv", "skewness", "kurtosis")
+  )
+  expect_equal(
+    summary_stats,
+    list(4.481689, 2.718282, 1.000000, 34.512613, 5.874744, 1.310832,
+      6.184877, 110.936392),
+    ignore_attr = TRUE,
+    tolerance = 1e-4
+  )
+})
+
+test_that("convert_lnorm_params fails as expected", {
+  expect_error(
+    convert_lnorm_params(meanlog = "1", sdlog = 1),
+    regexp = "(Assertion)*(failed)*(Must be of type)*(number)*(not)*(character)"
+  )
+  expect_error(
+    convert_lnorm_params(meanlog = 1, sdlog = "1"),
+    regexp = "(Assertion)*(failed)*(Must be of type)*(number)*(not)*(character)"
+  )
+})
+
+test_that("convert_lnorm_summary_stats works as expected", {
+  params <- convert_lnorm_summary_stats(mean = 1, sd = 1)
+  expect_length(params, 2)
+  expect_named(params, c("meanlog", "sdlog"))
+  expect_equal(
+    params,
+    list(-0.3465736, 0.8325546),
+    ignore_attr = TRUE,
+    tolerance = 1e-4
+  )
+})
+
+test_that("convert_lnorm_summary_stats works as expected using mean and cv", {
+  params <- convert_lnorm_summary_stats(mean = 1, cv = 1)
+  expect_length(params, 2)
+  expect_named(params, c("meanlog", "sdlog"))
+  expect_equal(
+    params,
+    list(-0.3465736, 0.8325546),
+    ignore_attr = TRUE,
+    tolerance = 1e-4
+  )
+})
+
+test_that("convert_lnorm_summary_stats works as expected using median", {
+  params <- convert_lnorm_summary_stats(median = 1, var = 1)
+  expect_length(params, 2)
+  expect_named(params, c("meanlog", "sdlog"))
+  expect_equal(
+    params,
+    list(-0.3465736, 0.8325546),
+    ignore_attr = TRUE,
+    tolerance = 1e-4
+  )
+})
+
+test_that("convert_lnorm_summary_stats fails as expected", {
+  expect_error(
+    convert_lnorm_summary_stats(mean = 1),
+    regexp = "at least two summary statistics must be supplied"
+  )
+  expect_error(
+    convert_lnorm_summary_stats(mean = 1, 1),
+    regexp = "all arguments must be named"
+  )
+  expect_error(
+    convert_lnorm_summary_stats(mean = 1, sd = "1"),
+    regexp = "all values given must been numeric"
+  )
+  expect_error(
+    convert_lnorm_summary_stats(mea = 1, sd = 1),
+    regexp = "(names of input must match)"
+  )
+  expect_error(
+    convert_lnorm_summary_stats(mean = 1, kurtosis = 1),
+    regexp = "Cannot calculate lognormal parameters from given input"
+  )
+})
