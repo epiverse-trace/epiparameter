@@ -1,3 +1,14 @@
+#' Analogue to isTRUE() to check if variable is a single number
+#'
+#' @param x An R object.
+#'
+#' @return Boolean logical
+#' @keywords internal
+#' @noRd
+is_number <- function(x) {
+  is.numeric(x) && length(x) == 1 && !is.na(x)
+}
+
 #' Converts the parameters of the lognormal distribution to summary statistics
 #'
 #' @description Converts the meanlog and sdlog parameters of the lognormal
