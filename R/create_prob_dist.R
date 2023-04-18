@@ -60,8 +60,8 @@ create_prob_dist <- function(prob_dist,
       lnorm = distcrete::distcrete(
         name = "lnorm",
         interval = 1,
-        meanlog = prob_dist_params[["mu"]],
-        sdlog = prob_dist_params[["sigma"]],
+        meanlog = prob_dist_params[["meanlog"]],
+        sdlog = prob_dist_params[["sdlog"]],
         w = 1
       ),
       weibull = distcrete::distcrete(
@@ -82,8 +82,8 @@ create_prob_dist <- function(prob_dist,
         rate = 1 / prob_dist_params[["scale"]]
       ),
       lnorm = distributional::dist_lognormal(
-        mu = prob_dist_params[["mu"]],
-        sigma = prob_dist_params[["sigma"]]
+        mu = prob_dist_params[["meanlog"]],
+        sigma = prob_dist_params[["sdlog"]]
       ),
       weibull = distributional::dist_weibull(
         shape = prob_dist_params[["shape"]],

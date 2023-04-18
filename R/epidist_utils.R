@@ -581,20 +581,19 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
 clean_epidist_params.lnorm <- function(prob_dist_params) {
 
   # if meanlog and sdlog are provided convert to mu and sigma
-  if (all(c("meanlog", "sdlog") %in% names(prob_dist_params))) {
+  if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
 
     # find index so parameters can be in any order
-    meanlog_index <- which(names(prob_dist_params) == "meanlog")
-    sdlog_index <- which(names(prob_dist_params) == "sdlog")
-    names(prob_dist_params)[c(meanlog_index, sdlog_index)] <- c("mu", "sigma")
+    mu_index <- which(names(prob_dist_params) == "mu")
+    sigma_index <- which(names(prob_dist_params) == "sigma")
+    names(prob_dist_params)[c(mu_index, sigma_index)] <- c("meanlog", "sdlog")
 
     # remove class attribute from prob_dist_params
     prob_dist_params <- unclass(prob_dist_params)
 
-
     # return prob_dist_params
     return(prob_dist_params)
-  } else if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
+  } else if (all(c("meanlog", "sdlog") %in% names(prob_dist_params))) {
     # remove class attribute from prob_dist_params
     prob_dist_params <- unclass(prob_dist_params)
 
