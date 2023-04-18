@@ -330,9 +330,9 @@ as_epiparam <- function(x) {
       no = x$uncertainty$scale$ci
     ),
     meanlog = ifelse(
-      test = is.na(unname(params["mu"])),
+      test = is.na(unname(params["meanlog"])),
       yes = NA_real_,
-      no = params["mu"]
+      no = params["meanlog"]
     ),
     meanlog_ci_limits = NA,
     meanlog_ci = ifelse(
@@ -341,9 +341,9 @@ as_epiparam <- function(x) {
       no = x$uncertainty$meanlog$ci
     ),
     sdlog = ifelse(
-      test = is.na(unname(params["sigma"])),
+      test = is.na(unname(params["sdlog"])),
       yes = NA_real_,
-      no = params["sigma"]
+      no = params["sdlog"]
     ),
     sdlog_ci_limits = NA,
     sdlog_ci = ifelse(
