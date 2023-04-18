@@ -241,15 +241,14 @@ as_epiparam <- function(x) {
     }
   }
 
+  params <- parameters(x)
+  prob_dist <- family(x)
+
   if (inherits(x$prob_dist, "distcrete")) {
-    params <- parameters(x)
     discretised <- TRUE
-    prob_dist <- x$prob_dist$name
     truncation <- NA
   } else {
-    params <- parameters(x)
     discretised <- FALSE
-    prob_dist <- stats::family(x$prob_dist)
     if (isFALSE("upper" %in% names(params))) {
       truncation <- NA
     } else {
@@ -258,11 +257,7 @@ as_epiparam <- function(x) {
   }
 
   # standardise distribution parameterisation
-  class(params) <- ifelse(
-    test = prob_dist == "lognormal",
-    yes = "lnorm",
-    no = prob_dist
-  )
+  class(params) <- prob_dist
   params <- clean_epidist_params(prob_dist_params = params)
 
   if (anyNA(x$uncertainty)) {

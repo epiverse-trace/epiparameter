@@ -438,7 +438,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 
     writeLines(
       c(
-        sprintf("Distribution: %s", stats::family(x$prob_dist)),
+        sprintf("Distribution: %s", family(x)),
         sprintf("Parameters:"),
         sprintf(
           "  %s: %s",
@@ -740,13 +740,11 @@ discretise.epidist <- function(x, ...) {
   } else {
 
     # extract prob dist and prob dist parameters from epidist
-    prob_dist <- stats::family(x$prob_dist)
-    # TODO: make use of lognormal or lnorm consistent
-    if (prob_dist == "lognormal") prob_dist <- "lnorm"
+    prob_dist <- family(x)
     prob_dist_params <- parameters(x)
 
     # if distribution is truncated take only parameters
-    if (identical(prob_dist, "truncated")) {
+    if (is_truncated(x)) {
 
       warning(
         "Discretising a truncated continuous distribution, ",
@@ -814,8 +812,9 @@ parameters.epidist <- function(x, ...) {
     params <- unlist(x$prob_dist$parameters)
   } else if (inherits(x$prob_dist, "distribution")) {
     params <- unlist(distributional::parameters(x$prob_dist))
+
     # if dist is truncated clean names
-    if (identical(stats::family(x$prob_dist), "truncated")) {
+    if (is_truncated(x)) {
       names(params) <- gsub(
         pattern = "dist.",
         replacement = "",
@@ -823,6 +822,11 @@ parameters.epidist <- function(x, ...) {
         fixed = TRUE
       )
     }
+
+    # convert to meanlog and sdlog names
+    class(params) <- family(x)
+    params <- clean_epidist_params(prob_dist_params = params)
+
   } else {
     stop("Distribution in `epidist` not recognised.")
   }
