@@ -830,3 +830,64 @@ parameters.epidist <- function(x, ...) {
   # return parameters
   params
 }
+
+#' Family method for the `epidist` class
+#'
+#' @description The `family()` function is used to extract the distribution
+#' names from objects from {distributional} and {distcrete}. This method
+#' provides the same interface for `<epidist>` objects to give consistent
+#' output irrespective of the distribution class.
+#'
+#' @param object An `epidist` object
+#' @inheritParams stats::family
+#'
+#' @return A character string with the name of the distribution
+#' @importFrom stats family
+#' @export
+#'
+#' @examples
+#' # example with continuous distribution
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1)
+#' )
+#' family(edist)
+#'
+#' # example with discretised distribution
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "lnorm",
+#'   prob_distribution_params = c(meanlog = 1, sdlog = 1),
+#'   discretise = TRUE
+#' )
+#' family(edist)
+family.epidist <- function(object, ...) {
+
+  if (inherits(object$prob_dist, "distcrete")) {
+    prob_dist <- object$prob_dist$name
+  } else {
+    prob_dist <- stats::family(object$prob_dist)
+
+    if (identical(prob_dist, "truncated")) {
+      prob_dist <- gsub(
+        pattern = "dist_",
+        replacement = "",
+        x = class(unclass(unclass(object$prob_dist)[[1]])[[1]])[1],
+        fixed = TRUE
+      )
+    }
+  }
+
+  prob_dist <- ifelse(
+    test = prob_dist == "lognormal",
+    yes = "lnorm",
+    no = prob_dist
+  )
+
+  # return prob dist
+  prob_dist
+}
+}
