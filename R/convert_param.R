@@ -135,24 +135,23 @@ convert_lnorm_summary_stats <- function(...) {
   )
 }
 
-#' Converts the mu (mean log) and sigma (standard deviation log) parameters of
-#' the lognormal distribution to the mean and standard deviation
+#' Converts the meanlog and sdlog parameters of the lognormal distribution to
+#' the mean and standard deviation
 #'
-#' @param mu The mu parameter (mean of natural logarithm) of the lognormal
+#' @param meanlog The meanlog parameter of the lognormal
 #' distribution
-#' @param sigma The sigma parameter (standard deviation of the natural
-#' logarithm) of the distribution
+#' @param sdlog The sdlog parameter of the distribution
 #'
 #' @return A named list with mean and standard deviation
 #' @export
 #'
 #' @examples
-#' lnorm_musigma2meansd(1.5, 0.9)
-lnorm_musigma2meansd <- function(mu, sigma) {
-  checkmate::assert_number(mu)
-  checkmate::assert_number(sigma, lower = 0)
-  mean <- exp(mu + 0.5 * sigma^2)
-  sd <- exp(mu + 0.5 * sigma^2) * sqrt(exp(sigma^2) - 1)
+#' lnorm_meanlogsdlog2meansd(1.5, 0.9)
+lnorm_meanlogsdlog2meansd <- function(meanlog, sdlog) {
+  checkmate::assert_number(meanlog)
+  checkmate::assert_number(sdlog, lower = 0)
+  mean <- exp(meanlog + 0.5 * sdlog^2)
+  sd <- exp(meanlog + 0.5 * sdlog^2) * sqrt(exp(sdlog^2) - 1)
   list(mean = mean, sd = sd)
 }
 
@@ -166,13 +165,13 @@ lnorm_musigma2meansd <- function(mu, sigma) {
 #' @export
 #'
 #' @examples
-#' lnorm_meansd2musigma(1.0, 0.4)
-lnorm_meansd2musigma <- function(mean, sd) {
+#' lnorm_meansd2meanlogsdlog(1.0, 0.4)
+lnorm_meansd2meanlogsdlog <- function(mean, sd) {
   checkmate::assert_number(mean, lower = 0)
   checkmate::assert_number(sd, lower = 0)
-  sigma <- sqrt(log(sd^2 / mean^2 + 1))
-  mu <- log(mean^2 / sqrt(sd^2 + mean^2))
-  list(mu = mu, sigma = sigma)
+  sdlog <- sqrt(log(sd^2 / mean^2 + 1))
+  meanlog <- log(mean^2 / sqrt(sd^2 + mean^2))
+  list(meanlog = meanlog, sdlog = sdlog)
 }
 
 #' Converts the shape and scale parameters of the gamma distribution to the
