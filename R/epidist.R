@@ -890,4 +890,53 @@ family.epidist <- function(object, ...) {
   # return prob dist
   prob_dist
 }
+
+#' Check if distribution in `epidist` is truncated
+#'
+#' @details The `<epidist>` class can hold probability distribution objects
+#' from the {distributional} package or the {distcrete} package, however, only
+#' distribution objects from {distributional} can be truncated. If a
+#' `<epidist>` object has a {distcrete} object `is_truncated` will return
+#' `FALSE` by default.
+#'
+#' @param x An `epidist` object.
+#'
+#' @return A boolean logical.
+#' @export
+#'
+#' @examples
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "lnorm",
+#'   prob_distribution_params = c(meanlog = 1, sdlog = 1)
+#' )
+#' is_truncated(edist)
+#'
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "lnorm",
+#'   prob_distribution_params = c(meanlog = 1, sdlog = 1),
+#'   truncation = 10
+#' )
+#' is_truncated(edist)
+is_truncated <- function(x) {
+
+  stopifnot(
+    "is_truncated only works for `<epidist> objects`" =
+      inherits(x, "epidist")
+  )
+
+  # distcrete distributions cannot be truncated
+  if (inherits(x$prob_dist, "distcrete")) {
+    return(FALSE)
+  }
+
+  # use stats::family instead of epiparameter::family to check truncated
+  if (identical(stats::family(x$prob_dist), "truncated")) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
 }
