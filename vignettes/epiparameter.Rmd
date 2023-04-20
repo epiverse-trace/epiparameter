@@ -83,6 +83,9 @@ To see a full list of the diseases and distributions stored in the library use t
 head(list_distributions(epi_dist_db))
 ```
 
+More details on the data collation and the library of parameters can be found in
+the [Data Collation and Synthesis Protocol vignette](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html).
+
 ### Single set of epidemiolgical parameters
 
 The second class introduced in the {epiparameter} package is the `<epidist>` class. This holds a single set of epidemiological parameters. 
