@@ -149,7 +149,7 @@ ebola_incubation <- epidist(
 By providing a consistent and robust object to store epidemiological parameters, `<epidist>` objects can be applied in epidemiological pipelines, for example [{episoap}](https://github.com/epiverse-trace/episoap). The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will operate as the class is unchanged.
 :::
 
-The probability distribution (`prob_distribution`) argument requires the distribution specified in the standard R naming. Examples of where the distribution name and R name differ are lognormal and lnorm, negative binomial and nbinom, among others. If unsure of the name in R google will usually provide a answer. Extra arguments are also available in `epidist()` to add information on uncertainty and citation information.
+The probability distribution (`prob_distribution`) argument requires the distribution specified in the standard R naming. In some cases these are the same as the distribution's name, e.g., `gamma` and `weibull`. Examples of where the distribution name and R name differ are lognormal and `lnorm`, negative binomial and `nbinom`, geometric and `geom`, and poisson and `pois`. Extra arguments are also available in `epidist()` to add information on uncertainty and citation information.
 
 ## Adding library entries
 
