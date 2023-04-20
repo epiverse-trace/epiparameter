@@ -230,11 +230,117 @@ lnorm_meansd2meanlogsdlog <- function(mean, sd) {
   list(meanlog = meanlog, sdlog = sdlog)
 }
 
+#' Converts the parameters of the gamma distribution to summary statistics
+#'
+#' @description Converts the shape and scale parameters of the gamma
+#' distribution to a number of summary statistics which can be calculated
+#' analytically given the gamma parameters. One exception is the median which
+#' is calculated using [`qgamma()`] as no analytical form is available.
+#'
+#' @param shape A single numeric of the shape parameter of the gamma
+#' distribution
+#' @param scale A single numeric of the scale parameter of the gamma
+#' distribution
+#'
+#' @return A list of eight elements including: mean, median, mode,
+#' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
+#' skewness, and kurtosis.
+#' @export
+#'
+#' @examples
+#' convert_gamma_params(shape = 1, scale = 1)
+convert_gamma_params <- function(shape, scale) {
+
+  # check input
+  checkmate::assert_number(shape, lower = 0)
+  checkmate::assert_number(scale, lower = 0)
+
+  # calculate metrics
+  mean <- shape * scale
+  median <- stats::qgamma(0.5, shape, scale)
+  mode <- ifelse(
+    shape >= 1,
+    yes = (shape - 1) * scale,
+    no = 0
+  )
+  var <- shape * scale^2
+  sd <- sqrt(var)
+  cv <- sd / mean
+  skewness <- 2 / sqrt(shape)
+  kurtosis <- 6 / shape + 3
+
+  # return list of metrics
+  list(
+    mean = mean,
+    median = median,
+    mode = mode,
+    var = var,
+    sd = sd,
+    cv = cv,
+    skewness = skewness,
+    kurtosis = kurtosis
+  )
+}
+
+#' Converts the summary statistics to parameters of the gamma distribution
+#'
+#' @description Converts the summary statistics input into the shape and scale
+#' parameters of the gamma distribution.
+#'
+#' @details The arguments input are captured and handled by name. Therefore,
+#' the names of the arguments must be correct (case-sensitive). Possible input
+#' summary statistics are: `mean`, `median`, `mode`, `var`, `sd`, `cv`,
+#' `skewness`, `kurtosis`.
+#'
+#' Not every combination of input statistics is a viable conversion, and may
+#' error. Common conversions that are implemented are mean and any measure of
+#' spread (`var`, `sd` and `cv`), or `median` and `sd`.
+#'
+#' @param ... Summary statistics to be used for calculating the gamma
+#' distribution parameters. All arguments must be correctly named, see details
+#' for possible input.
+#'
+#' @return A list of two elements, the shape and scale
+#' @export
+#'
+#' @examples
+#' convert_gamma_summary_stats(mean = 3, sd = 2)
+convert_gamma_summary_stats <- function(...) {
+
+  # capture input
+  x <- list(...)
+
+  # check input
+  chk_ss(x)
+
+  # convert var or cv into sd if available
+  x <- get_sd(x)
+
+  if (is_number(x$mean) && is_number(x$sd)) {
+    # mean and sd to params
+    return(gamma_meansd2shapescale(mean = x$mean, sd = x$sd))
+  } else if (is_number(x$mode) && is_number(x$sd)) {
+    # mode and sd to params
+    shape <- (x$mode / x$sd)^2
+    scale <- x$mode / (x$sd^2)
+  }
+
+  # if either parameter hasn't been calculated, error
+  if (!exists("shape") || !exists("scale")) {
+    stop("Cannot calculate gamma parameters from given input")
+  }
+
+  # return list of params
+  list(
+    shape = shape,
+    scale = scale
+  )
+}
+
 #' Converts the shape and scale parameters of the gamma distribution to the
 #' mean and standard deviation.
 #'
-#' @param shape The shape parameter of the gamma distribution
-#' @param scale The scale parameter of the gamma distribution
+#' @inheritParams convert_gamma_params
 #'
 #' @return A named list with mean and standard deviation
 #' @export
