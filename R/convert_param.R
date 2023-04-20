@@ -374,6 +374,108 @@ gamma_meansd2shapescale <- function(mean, sd) {
   list(shape = shape, scale = scale)
 }
 
+#' Converts the parameters of the weibull distribution to summary statistics
+#'
+#' @description Converts the shape and scale parameters of the weibull
+#' distribution to a number of summary statistics which can be calculated
+#' analytically given the weibull parameters. Note the conversion uses the
+#' [`gamma()`] function.
+#'
+#' @param shape A single numeric of the shape parameter of the weibull
+#' distribution
+#' @param scale A single numeric of the scale parameter of the weibull
+#' distribution
+#'
+#' @return A list of eight elements including: mean, median, mode,
+#' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
+#' skewness, and kurtosis.
+#' @export
+#'
+#' @examples
+#' convert_weibull_params(shape = 1, scale = 1)
+convert_weibull_params <- function(shape, scale) {
+
+  # check input
+  checkmate::assert_number(shape, lower = 0)
+  checkmate::assert_number(scale, lower = 0)
+
+  # calculate metrics
+  mean <- scale * gamma(1 + 1 / shape)
+  median <- scale * (log(2))^(-1 / shape)
+  mode <- ifelse(
+    shape > 1,
+    yes = scale * ((shape - 1) / shape)^(1 / shape),
+    no = 0
+  )
+  var <- scale^2 * (gamma(1 + 2 / shape) - (gamma(1 + 1 / shape))^2)
+  sd <- sqrt(var)
+  cv <- sd / mean
+  skewness <- (gamma(1 + 3 / shape) * scale^3 - 3 *
+                 mean * sd^2 - mean^3) / (sd^3)
+  kurtosis <- (gamma(1 + 4 / shape) * scale^4 - 4 * mean *
+                 (gamma(1 + 3 / shape) * scale^3 - 3 * mean * sd^2 - mean^3) -
+                 6 * (mean^2 * sd^2 - gamma(1 + 2 / shape) *
+                        scale^2) - mean^4) / (sd^4)
+
+
+  # return list of metrics
+  list(
+    mean = mean,
+    median = median,
+    mode = mode,
+    var = var,
+    sd = sd,
+    cv = cv,
+    skewness = skewness,
+    kurtosis = kurtosis
+  )
+}
+
+#' Converts the summary statistics to parameters of the weibull distribution
+#'
+#' @description Converts the summary statistics input into the shape and scale
+#' parameters of the weibull distribution.
+#'
+#' @details The arguments input are captured and handled by name. Therefore,
+#' the names of the arguments must be correct (case-sensitive). Possible input
+#' summary statistics are: `mean`, `median`, `mode`, `var`, `sd`, `cv`,
+#' `skewness`, `kurtosis`.
+#'
+#' Not every combination of input statistics is a viable conversion, and may
+#' error. Common conversions that are implemented are mean and any measure of
+#' spread (`var`, `sd` and `cv`).
+#'
+#' @param ... Summary statistics to be used for calculating the weibull
+#' distribution parameters. All arguments must be correctly named, see details
+#' for possible input.
+#'
+#' @return A list of two elements, the shape and scale
+#' @export
+#'
+#' @examples
+#' convert_weibull_summary_stats(mean = 3, sd = 2)
+convert_weibull_summary_stats <- function(...) {
+
+  # capture input
+  x <- list(...)
+
+  # check input
+  chk_ss(x)
+
+  # convert var or cv into sd if available
+  x <- get_sd(x)
+
+  if (is_number(x$mean) && is_number(x$sd)) {
+    # mean and sd to params
+    return(weibull_meansd2shapescale(mean = x$mean, sd = x$sd))
+  }
+
+  # if either parameter hasn't been calculated, error
+  if (!exists("shape") || !exists("scale")) {
+    stop("Cannot calculate weibull parameters from given input")
+  }
+}
+
 #' Converts the mean and standard deviation of the weibull distribution to the
 #' shape and scale parameterisation.
 #'
