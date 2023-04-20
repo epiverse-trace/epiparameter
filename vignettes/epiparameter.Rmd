@@ -153,12 +153,16 @@ The probability distribution (`prob_distribution`) argument requires the distrib
 
 ## Adding library entries
 
+If a set of epidemiological parameter has been inferred and known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.
+
 To add entries to the library the `bind_epiparam()` function appends a row to an existing `<epiparam>` object using either an `<epiparam>`, `<epidist>` or data frame.
 
 ```{r add-to-library}
 bind_epiparam(epiparam = epi_dist_db, epi_obj = ebola_incubation)
 bind_epiparam(epiparam = epi_dist_db, epi_obj = as_epiparam(ebola_incubation))
 ```
+
+Note that this only adds the parameters to the library (`<epiparam>` object) in the environment, and does not save to the database file in the package.
 
 ## Distribution functions
 
