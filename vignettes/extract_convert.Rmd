@@ -1,0 +1,51 @@
+---
+title: "Parameter extraction and conversion in {epiparameter}"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Parameter extraction and conversion in {epiparameter}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The reporting of the distribution parameters in the epidemiological literature 
+is varied. In some instances the parameters themselves will be given, in others
+summary statistics of the distribution are provides, such as mean, standard 
+deviation, variance, among others. 
+
+When working with epidemiological parameters it can be useful to have the values
+of the parameters for common parameterisations of the distribution. For example
+shape and scale parameters for the gamma and weibull distribution and the meanlog
+and sdlog parameters for the lognormal distribution. 
+
+In {epiparameter} we provide a range of conversion and extraction functions in
+order to obtain distribution parameters from summary statistics and vice versa.
+
+Here we differentiate between conversion and extraction as what can be analystically
+converted, as conversions, and those that require optimisation of parameters as
+extraction. This vignette aims to describe the functionality of these conversions
+and extractions provided by the {epiparameter} package.
+
+```{r setup}
+library(epiparameter)
+```
+
+## Conversions
+
+There are two styles of conversion functions in {epiparameter}. The general conversions
+which have the function name `convert_dist_*()` (where `*` and `dist` are placeholders) convert
+either one set of parameters to many summary statistics (e.g. `convert_lnorm_params()`)
+or possibly many summary statistics input to one set of parameters (e.g. `convert_lnorm_summary_stats()`).
+The other style of function is the one-to-one conversion which has the function named `dist_param2summary_stat()`
+or `dist_summarystat2param()` (where `dist`, `param` and `summary_stat` are placeholders). These functions take
+two arguments as input and convert to two variables as output.
+
+### General conversion functions
+
+
