@@ -23,7 +23,7 @@ The {epiparameter} R package is a library of epidemiological parameters, with cl
 
 An outbreak of a known or potentially novel pathogen is detected and the parameters and a delay distribution (e.g. incubation period or serial interval) is required. 
 
-{epiparameter} can provide a these distributions from a selection of published sources in order to provide reliable epidemiological parameters.
+{epiparameter} can provide these distributions from a selection of published sources in order to provide reliable epidemiological parameters.
 :::
 
 This vignette will provide a introduction to the data stored within {epiparameter}, how to read it into R, manipulate
