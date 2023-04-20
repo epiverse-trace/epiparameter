@@ -65,11 +65,24 @@ extract_param <- function(type = c("percentiles", "range"),
   distribution <- match.arg(arg = distribution, several.ok = FALSE)
 
   # check numeric arguments
-  if (!missing(percentiles)) {
+  if (identical(type, "percentiles")) {
+    stopifnot(
+      "percentiles need to be given for type = 'percentiles'" =
+        !missing(percentiles),
+      "values vector should be c(lower, upper) check values" =
+        values[1] < values[2]
+    )
     checkmate::assert_numeric(values, len = 2)
     checkmate::assert_numeric(percentiles, len = 2)
+
   }
-  if (!missing(samples)) {
+  if (identical(type, "range")) {
+    stopifnot(
+      "samples need to be given for type = 'range'" =
+        !missing(samples),
+      "values vector should be c(median, min, max) check values" =
+        values[2] < values[1] && values[1] < values[3]
+    )
     checkmate::assert_number(samples, lower = 1)
   }
 
