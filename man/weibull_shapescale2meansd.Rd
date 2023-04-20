@@ -8,9 +8,11 @@ mean and standard deviation}
 weibull_shapescale2meansd(shape, scale)
 }
 \arguments{
-\item{shape}{The shape parameter of the weibull distribution}
+\item{shape}{A single numeric of the shape parameter of the weibull
+distribution}
 
-\item{scale}{The scale parameter of the weibull distribution}
+\item{scale}{A single numeric of the scale parameter of the weibull
+distribution}
 }
 \value{
 A named list with mean and standard deviation

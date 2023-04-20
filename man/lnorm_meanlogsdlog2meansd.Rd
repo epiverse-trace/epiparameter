@@ -8,10 +8,11 @@ the mean and standard deviation}
 lnorm_meanlogsdlog2meansd(meanlog, sdlog)
 }
 \arguments{
-\item{meanlog}{The meanlog parameter of the lognormal
-distribution}
+\item{meanlog}{The meanlog parameter (mean of natural logarithm) of the
+lognormal distribution. Also commonly called and denoted by the mu.}
 
-\item{sdlog}{The sdlog parameter of the distribution}
+\item{sdlog}{The sdlog parameter (standard deviation of the natural
+logarithm) of the distribution. Also commonly called and denoted by sigma.}
 }
 \value{
 A named list with mean and standard deviation
