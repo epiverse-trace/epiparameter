@@ -79,10 +79,10 @@ convert_lnorm_params <- function(meanlog, sdlog) {
   checkmate::assert_number(sdlog, lower = 0)
 
   # calculate metrics
-  mean <- exp(meanlog + sdlog^2/2)
+  mean <- exp(meanlog + sdlog^2 / 2)
   median <- exp(meanlog)
   mode <- exp(meanlog - sdlog^2)
-  var <- (exp(sdlog^2) - 1) * exp(2*meanlog + sdlog^2)
+  var <- (exp(sdlog^2) - 1) * exp(2 * meanlog + sdlog^2)
   sd <- sqrt(var)
   cv <- sd / mean
   skewness <- (exp(sdlog^2) + 2) * sqrt(exp(sdlog^2) - 1)
@@ -131,52 +131,22 @@ convert_lnorm_summary_stats <- function(...) {
   x <- list(...)
 
   # check input
-  stopifnot(
-    "at least two summary statistics must be supplied" =
-      length(x) >= 2,
-    "all arguments must be named" =
-      !is.null(names(x)) && isFALSE("" %in% names(x)),
-    "all values given must been numeric" =
-      all(vapply(x, is.numeric, FUN.VALUE = logical(1))),
-    "names of input must match:
-    'mean', 'median', 'mode', 'var', 'sd', 'cv', 'skewness', 'kurtosis'" =
-      all(names(x) %in%  c(
-        "mean", "median", "mode", "var", "sd", "cv", "skewness", "kurtosis"
-      ))
-  )
+  chk_ss(x)
 
   # convert var or cv into sd if available
-  if ("sd" %in% names(x)) {
-    sd <- x$sd
-  } else {
-    if ("var" %in% names(x)) {
-      sd <- sqrt(x$var)
-    }
-    if (all(c("mean", "cv") %in% names(x))) {
-      sd <- x$cv * x$mean
-    }
-  }
+  x <- get_sd(x)
 
-  if ("mean" %in% names(x)) {
-    mean <- x$mean
-  }
-
-  if ("median" %in% names(x)) {
-    median <- x$median
-  }
-
-  if (is_number(mean) && is_number(sd)) {
+  if (is_number(x$mean) && is_number(x$sd)) {
     # mean and sd to params
-    sdlog <- sqrt(log(sd^2 / mean^2 + 1))
-    meanlog <- log(mean^2 / sqrt(sd^2 + mean^2))
-  } else if (is_number(median) && is_number(sd)) {
+    return(lnorm_meansd2meanlogsdlog(mean = x$mean, sd = x$sd))
+  } else if (is_number(x$median) && is_number(x$sd)) {
     # median and sd to params
-    sdlog <- sqrt(log((sd / median)^2 + 1))
-    meanlog <- log(median) - sdlog^2 / 2
-  } else if (is_number(mean) && is_number(median)) {
+    sdlog <- sqrt(log((x$sd / x$median)^2 + 1))
+    meanlog <- log(x$median) - sdlog^2 / 2
+  } else if (is_number(x$mean) && is_number(x$median)) {
     # mean and median to params
-    sdlog <- sqrt(2 * (log(mean) - log(median)))
-    meanlog <- log(median) - sdlog^2/2
+    sdlog <- sqrt(2 * (log(x$mean) - log(x$median)))
+    meanlog <- log(x$median) - x$sdlog^2 / 2
   }
 
   # if either parameter hasn't been calculated error
@@ -194,9 +164,7 @@ convert_lnorm_summary_stats <- function(...) {
 #' Converts the meanlog and sdlog parameters of the lognormal distribution to
 #' the mean and standard deviation
 #'
-#' @param meanlog The meanlog parameter of the lognormal
-#' distribution
-#' @param sdlog The sdlog parameter of the distribution
+#' @inheritParams convert_lnorm_params
 #'
 #' @return A named list with mean and standard deviation
 #' @export
@@ -534,8 +502,7 @@ weibull_meansd2shapescale <- function(mean, sd) {
 #' Converts the shape and scale parameters of the weibull distribution to the
 #' mean and standard deviation
 #'
-#' @param shape The shape parameter of the weibull distribution
-#' @param scale The scale parameter of the weibull distribution
+#' @inheritParams convert_weibull_params
 #'
 #' @return A named list with mean and standard deviation
 #' @export

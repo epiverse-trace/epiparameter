@@ -8,9 +8,11 @@ mean and standard deviation.}
 gamma_shapescale2meansd(shape, scale)
 }
 \arguments{
-\item{shape}{The shape parameter of the gamma distribution}
+\item{shape}{A single numeric of the shape parameter of the gamma
+distribution}
 
-\item{scale}{The scale parameter of the gamma distribution}
+\item{scale}{A single numeric of the scale parameter of the gamma
+distribution}
 }
 \value{
 A named list with mean and standard deviation
