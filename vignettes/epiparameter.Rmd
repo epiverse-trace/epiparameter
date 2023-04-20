@@ -44,7 +44,7 @@ library(distributional)
 - `<epidist>`: singular set of epidemiolgical parameters 
 - `<vb_epidist>`: a singular set of epidemiolgical parameters containing both an extrinsic and intrinsic distribution.
 
-#### Library of epidemiological parameters
+### Library of epidemiological parameters
 
 First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The `<epiparam>` class is introduced to enable users to easily explore the range of parameters that are available. The library can be read into R using the `epiparam()` function. By default all entries in the library are supplied.
 
@@ -76,7 +76,7 @@ to be converted to a data frame.
 epi_dist_df <- epi_dist_db[-which(colnames(epi_dist_db) == "disease")]
 ```
 
-#### Single set of epidemiolgical parameters
+### Single set of epidemiolgical parameters
 
 The second class introduced in the {epiparameter} package is the `<epidist>` class. This holds a single set of epidemiological parameters. 
 
@@ -177,13 +177,13 @@ plot(ebola_incubation, day_range = 1:25)
 
 ## Parameter conversion and extraction
 
-#### Conversion
+### Conversion
 
 Parameters are often reported as mean and standard deviaton (or variance). These can be (analytically) converted to the parameters of the distribution using the conversion functions in the package. These have the naming convention `summary_stats2params()`. For example `gamma_meansd2shapescale()` or `lnorm_meansd2musigma()`.
 
 We also provide conversion functions in the opposite direction, parameters to summary statistics. These follow the same naming convention, for example `weibull_shapescale2meansd()`.
 
-#### Extraction
+### Extraction
 
 The functions `extract_param()` handles all the extraction of parameter estimates from summary statistics. The two extractions currently supported in {epiparameter} are from percentiles and from median and range.
 
