@@ -42,7 +42,7 @@ library(distributional)
 
 - `<epiparam>`: library of epidemiolgical parameters
 - `<epidist>`: singular set of epidemiolgical parameters 
-- `<vb_epidist>`: a singular set of epidemiolgical parameters containing both an extrinsic and intrinsic distribution.
+- `<vb_epidist>`: a singular set of epidemiolgical parameters for a vector-borne disease containing both an extrinsic and intrinsic distribution. This object contains two sets of parameters, one for the human (intrinsic) and one for the vector (extrinsic).
 
 ### Library of epidemiological parameters
 
