@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-It is often the case that in an infectious disease outbreak epidemiological parameters are required in order to characterise and model the dynamics of disease transmission and evaluate control strategies. In those scenarios, epidemiological parameters are commonly retrieved from the literature, and there is no currently library of parameters in order to contrast and compare different reported parameters for a range of infectious diseases and pathogens, from different published studies over time, of which some may be meta-analyses.
+It is often the case that in an infectious disease outbreak epidemiological parameters are required in order to characterise and model the dynamics of disease transmission and evaluate control strategies. In those scenarios, epidemiological parameters are commonly retrieved from the literature, and there is currently no library of parameters in order to contrast and compare different reported parameters for a range of infectious diseases and pathogens, from different published studies over time, of which some may be meta-analyses.
 
 The {epiparameter} R package is a library of epidemiological parameters, with classes to handle this data and a set of functions to manipulate and use epidemiological parameters and distributions. The package also contains functionality for converting and extracting distribution parameters from summary statistics.
 
