@@ -9,6 +9,51 @@ is_number <- function(x) {
   is.numeric(x) && length(x) == 1 && !is.na(x)
 }
 
+#' Adds standard deviation to the list if not present or errors
+#'
+#' @param x A list of summary statistics
+#'
+#' @return A list of summary statistics
+#' @keywords internal
+#' @noRd
+get_sd <- function(x) {
+  if (isTRUE("var" %in% names(x)) && !isTRUE("sd" %in% names(x)))  {
+    x$sd <- sqrt(x$var)
+  } else if (all(c("mean", "cv") %in% names(x)) &&
+             !isTRUE("sd" %in% names(x))) {
+    x$sd <- x$cv * x$mean
+  }
+
+  # return list of summary statistics
+  x
+}
+
+#' Checks list of summary statistics is valid for conversion
+#'
+#' @inheritParams get_sd
+#'
+#' @return Invisibly returns a list of summary statistics
+#' @keywords internal
+#' @noRd
+chk_ss <- function(x) {
+  stopifnot(
+    "at least two summary statistics must be supplied" =
+      length(x) >= 2,
+    "all arguments must be named" =
+      !is.null(names(x)) && isFALSE("" %in% names(x)),
+    "all values given must be numeric" =
+      all(vapply(x, is.numeric, FUN.VALUE = logical(1))),
+    "names of input must match:
+    'mean', 'median', 'mode', 'var', 'sd', 'cv', 'skewness', 'kurtosis'" =
+      all(names(x) %in%  c(
+        "mean", "median", "mode", "var", "sd", "cv", "skewness", "kurtosis"
+      ))
+  )
+
+  # invisibly return list of summary statistics
+  invisible(x)
+}
+
 #' Converts the parameters of the lognormal distribution to summary statistics
 #'
 #' @description Converts the meanlog and sdlog parameters of the lognormal
