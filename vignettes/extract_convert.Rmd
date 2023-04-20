@@ -1,6 +1,7 @@
 ---
 title: "Parameter extraction and conversion in {epiparameter}"
-output: rmarkdown::html_vignette
+output: bookdown::html_vignette2
+bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{Parameter extraction and conversion in {epiparameter}}
   %\VignetteEngine{knitr::rmarkdown}
@@ -15,13 +16,13 @@ knitr::opts_chunk$set(
 ```
 
 The reporting of the distribution parameters in the epidemiological literature 
-is varied. In some instances the parameters themselves will be given, in others
+is varied. In some instances the parameters themselves will be given, in others,
 summary statistics of the distribution are provides, such as mean, standard 
 deviation, variance, among others. 
 
 When working with epidemiological parameters it can be useful to have the values
-of the parameters for common parameterisations of the distribution. For example
-shape and scale parameters for the gamma and weibull distribution and the meanlog
+of the parameters for common parameterisations of the distribution. For example,
+shape and scale parameters for the gamma and weibull distribution, and the meanlog
 and sdlog parameters for the lognormal distribution. 
 
 In {epiparameter} we provide a range of conversion and extraction functions in
@@ -32,6 +33,13 @@ converted, as conversions, and those that require optimisation of parameters as
 extraction. This vignette aims to describe the functionality of these conversions
 and extractions provided by the {epiparameter} package.
 
+::: {.alert .alert-info}
+### Conversion versus extraction
+
+Use conversions when possible over extraction to avoid possible limitations associated with
+numerical optimisation used in the extraction function `extract_param()`.
+:::
+
 ```{r setup}
 library(epiparameter)
 ```
@@ -39,13 +47,189 @@ library(epiparameter)
 ## Conversions
 
 There are two styles of conversion functions in {epiparameter}. The general conversions
-which have the function name `convert_dist_*()` (where `*` and `dist` are placeholders) convert
+which have the function name `convert_dist_*()` (where `*` and `dist` are placeholders). These convert
 either one set of parameters to many summary statistics (e.g. `convert_lnorm_params()`)
-or possibly many summary statistics input to one set of parameters (e.g. `convert_lnorm_summary_stats()`).
+or a set of summary statistics input to one set of parameters (e.g. `convert_lnorm_summary_stats()`).
 The other style of function is the one-to-one conversion which has the function named `dist_param2summary_stat()`
 or `dist_summarystat2param()` (where `dist`, `param` and `summary_stat` are placeholders). These functions take
-two arguments as input and convert to two variables as output.
+two arguments as input and convert to two variables as output (e.g. `gamma_shapescale2meansd()`).
 
 ### General conversion functions
 
+#### Gamma distribution
 
+```{r}
+convert_gamma_params(shape = 2.5, scale = 1.5)
+```
+
+The general conversion functions from summary statistics to parameters (e.g. `convert_gamma_summary_stats()`) have no defined function arguments. Instead the summary statistics should be matched exactly by name.
+
+All currently supported summary statistic conversion to parameters for the gamma distribution are given below. We aim to expand these to include conversion from other combinations of summary statistics.
+
+```{r}
+convert_gamma_summary_stats(mean = 2, sd = 2)
+convert_gamma_summary_stats(mean = 2, var = 2)
+convert_gamma_summary_stats(mean = 2, cv = 2)
+convert_gamma_summary_stats(mode = 2, sd = 2)
+convert_gamma_summary_stats(mode = 2, var = 2)
+```
+
+#### Lognormal distribution
+
+```{r}
+convert_lnorm_params(meanlog = 2.5, sdlog = 1.5)
+```
+
+```{r}
+convert_lnorm_summary_stats(mean = 2, sd = 2)
+convert_lnorm_summary_stats(mean = 2, var = 2)
+convert_lnorm_summary_stats(mean = 2, cv = 2)
+convert_lnorm_summary_stats(median = 2, sd = 2)
+convert_lnorm_summary_stats(median = 2, var = 2)
+convert_lnorm_summary_stats(mean = 2, median = 2)
+```
+
+#### Weibull distribution
+
+```{r}
+convert_weibull_params(shape = 2.5, scale = 1.5)
+```
+
+```{r}
+convert_weibull_summary_stats(mean = 2, sd = 2)
+convert_weibull_summary_stats(mean = 2, var = 2)
+convert_weibull_summary_stats(mean = 2, cv = 2)
+```
+
+### Direct one-to-one conversion functions
+
+#### Gamma distribution
+
+```{r}
+gamma_shapescale2meansd(shape = 2, scale = 1)
+gamma_meansd2shapescale(mean = 2, sd = 2)
+```
+
+#### Lognormal distribution
+
+```{r}
+lnorm_meanlogsdlog2meansd(meanlog = 2, sdlog = 2)
+lnorm_meansd2meanlogsdlog(mean = 2, sd = 2)
+```
+
+#### Weibull distribution
+
+```{r}
+weibull_shapescale2meansd(shape = 2, scale = 2)
+weibull_meansd2shapescale(mean = 2, sd = 2)
+```
+
+#### Negative binomial distribution
+
+```{r}
+nbinom_probdisp2meandisp(prob = 1, dispersion = 0.5)
+nbinom_meandisp2probdisp(mean = 1, dispersion = 0.5)
+```
+
+#### Geometric distribution
+
+```{r}
+geometric_mean2prob(mean = 1)
+geometric_prob2mean(prob = 1)
+```
+
+## Extraction
+
+There are two methods of extraction implemented in {epiparameter}. One is to estimate
+the parameters given the values of two percentiles and the other is to estimate the parameters given the
+median and the range of the data. Both of these extractions are implemented in the `extract_param()` function.
+
+Here we demonstrate how each extraction using percentiles. The `type` should be `"percentiles"`, the `values` are the values reported at the percentiles given as a vector. The percentiles, given between 0 and 1, are specified as a vector in `percentiles`. The example below uses values 1 and 10 at the 2.5th and 97.5th percentile, respectively.
+
+```{r}
+extract_param(
+  type = "percentiles", 
+  values = c(1, 10), 
+  distribution = "gamma", 
+  percentiles = c(0.025, 0.975)
+)
+```
+
+In the above example we estimate parameters of the gamma distribution, but extraction is also implemented for the lognormal and weibull distributions, but specifying `"lnorm"` or `"weibull"`.
+
+A message is shown when running `extract_param()` to make the user aware that the estimates are not completely reliable due to the use of numerical optimisation and that the user should re-run the function to make sure that
+the convergence on the parameters returned from the function can be repeatedly found. This issue is mostly overcome by the internal setup of the `extract_param()` function which searches for convergence to consistent parameter estimates before returning these to the user.
+
+The alternative extraction, by median and range, can be achieved by specifying `type = "range"` and using the `samples` argument instead of the `percentiles` argument. When using `type = "percentiles"` the `samples` argument is ignored and when using `type = "range"` the `percentiles` argument is ignored.
+
+```{r}
+extract_param(type = "range", values = c(10, 5, 15), distribution = "lnorm", samples = 25)
+```
+
+In the above section it was mentioned that `extract_param()` has an internal mechanism to check that the parameters have consistently converged to the same estimates over several optimisation iterations. The tolerance of this convergence and number of times the optimisation can be repeated is specified in the `control` argument of `extract_param()`. This is set by default, and thus does not need to be specified by the user (as shown in the above examples), to `tolerance = 1e-5` and maximum number of iterations `max_iter = 1000`. In the maximum number of optimisation iterations is reached then the calculation terminates returning the most recent optimisation result to the user along with a warning message.
+
+```{r}
+# set seed to ensure warning is produced
+set.seed(1) 
+
+# lower maximum iteration to show warning
+extract_param(
+  type = "range", 
+  values = c(10, 1, 25), 
+  distribution = "lnorm", 
+  samples = 100, 
+  control = list(max_iter = 100)
+)
+```
+
+The reasoning for the maximum iterations is the amount of time the function could take cycling through optimisation routines without finding a consistent answer. If the runtime is not important and parameter accuracy is paramount then the maximum number of iterations can be increased and tolerance decreased.
+
+This `control` argument is the same whether extracting from percentiles or range.
+
+### Use cases
+
+Here we present a few example of published epidemiological parameters and distribution where the functions outlined above can be applied to get the parameters of the distribution.
+
+The 75th percentiles reported for a lognormal distribution from @nolen_extended_2016 for the incubation period for mpox (monkeypox).
+
+```{r, extract_param for monkeypox percentiles}
+# Mpox lnorm from 75% percentiles in WHO data
+extract_param(
+  type = "percentiles",
+  values = c(6, 13),
+  distribution = "lnorm",
+  percentiles = c(0.125, 0.875)
+)
+```
+
+The median and range are provided by @thornhill_monkeypox_2022 for mpox, and we want to calculate the parameters of a lognormal distribution.
+
+```{r, extract_param for monkeypox median and range}
+# Mpox lnorm from median and range in 2022:
+extract_param(
+  type = "range",
+  values = c(7, 3, 20),
+  distribution = "lnorm",
+  samples = 23
+)
+```
+
+::: {.alert .alert-warning}
+### Assuming distributions
+
+It can be the case that a study will report summary statistics for an unspecified distribution or just for the raw data. In these cases if a parameterised distribution is required for downstream analysis a functional, parametric, form may have to be assumed. 
+
+If the distribution is a delay distribution (i.e. serial interval or incubation period) it can often be sensible to assume a right-skewed distribution such as: gamma, lognormal or weibull distributions. These are also the most commonly fit distributions in epidemiological analysis of delay distributions.
+
+However, one so take care when assuming a distribution as this may drastically influence the interpretation and application of the epidemiological parameters.
+:::
+
+@donnelly_epidemiological_2003 provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by either using the general conversion function (`convert_gamma_summary_stats()`) or manually transforming the variance to the standard deviation and using the one-to-one conversion function.
+
+```{r, convert parameters}
+# SARS gamma mean and var to shape and scale
+convert_gamma_summary_stats(mean = 6.37, var = 16.7)
+gamma_meansd2shapescale(mean = 6.37, sd = sqrt(16.7))
+```
+
+## References
