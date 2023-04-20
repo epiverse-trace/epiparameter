@@ -3,7 +3,7 @@
 \name{lnorm_meansd2meanlogsdlog}
 \alias{lnorm_meansd2meanlogsdlog}
 \title{Converts the mean and standard deviation of a lognormal distribution into the
-standard parameterisation of mu (mean log) and sigma (standard deviation log)}
+standard parameterisation of meanlog (mu) and sdlog (sigma)}
 \usage{
 lnorm_meansd2meanlogsdlog(mean, sd)
 }
@@ -13,11 +13,11 @@ lnorm_meansd2meanlogsdlog(mean, sd)
 \item{sd}{Standard deviation of the lognormal distribution}
 }
 \value{
-A named list with mu and sigma
+A named list with meanlog and sdlog
 }
 \description{
 Converts the mean and standard deviation of a lognormal distribution into the
-standard parameterisation of mu (mean log) and sigma (standard deviation log)
+standard parameterisation of meanlog (mu) and sdlog (sigma)
 }
 \examples{
 lnorm_meansd2meanlogsdlog(1.0, 0.4)

@@ -180,12 +180,12 @@ lnorm_meanlogsdlog2meansd <- function(meanlog, sdlog) {
 }
 
 #' Converts the mean and standard deviation of a lognormal distribution into the
-#' standard parameterisation of mu (mean log) and sigma (standard deviation log)
+#' standard parameterisation of meanlog (mu) and sdlog (sigma)
 #'
 #' @param mean Mean (expectation) of the lognormal distribution
 #' @param sd Standard deviation of the lognormal distribution
 #'
-#' @return A named list with mu and sigma
+#' @return A named list with meanlog and sdlog
 #' @export
 #'
 #' @examples
