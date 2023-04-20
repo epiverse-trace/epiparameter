@@ -31,3 +31,4 @@ extract_param_range(
   samples = 20
 )
 }
+\keyword{internal}

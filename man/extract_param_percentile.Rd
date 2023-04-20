@@ -31,3 +31,4 @@ extract_param_percentile(
   percentiles = c(0.125, 0.875)
 )
 }
+\keyword{internal}
