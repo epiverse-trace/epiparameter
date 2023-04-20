@@ -65,8 +65,8 @@ extract_param <- function(type = c("percentiles", "range"),
   distribution <- match.arg(arg = distribution, several.ok = FALSE)
 
   # check numeric arguments
-  checkmate::assert_numeric(values)
   if (!missing(percentiles)) {
+    checkmate::assert_numeric(values, len = 2)
     checkmate::assert_numeric(percentiles, len = 2)
   }
   if (!missing(samples)) {
@@ -170,7 +170,7 @@ extract_param <- function(type = c("percentiles", "range"),
 #' @inheritParams extract_param
 #'
 #' @return A list with output from stats::optim. See ?optim for more details
-#' @export
+#' @keywords internal
 #'
 #' @examples
 #' # extract parameters of a lognormal distribution from the 75 percentiles
@@ -182,14 +182,6 @@ extract_param <- function(type = c("percentiles", "range"),
 extract_param_percentile <- function(values,
                                      distribution,
                                      percentiles) {
-  # check input
-  distribution <- match.arg(
-    arg = distribution,
-    choices = c("lnorm", "gamma", "weibull"),
-    several.ok = FALSE
-  )
-  checkmate::assert_numeric(values, len = 2)
-  checkmate::assert_numeric(percentiles, len = 2)
 
   # Set initial values for optimisation
   param <- stats::runif(n = 2, min = 0, max = 5)
@@ -235,7 +227,7 @@ extract_param_percentile <- function(values,
 #' @inheritParams extract_param
 #'
 #' @return A list with output from stats::optim. See ?optim for more details
-#' @export
+#' @keywords internal
 #'
 #' @examples
 #' # extract parameters of a gamma distribution from median and range
@@ -247,14 +239,6 @@ extract_param_percentile <- function(values,
 extract_param_range <- function(values,
                                 distribution,
                                 samples) {
-  # check input
-  distribution <- match.arg(
-    arg = distribution,
-    choices = c("lnorm", "gamma", "weibull"),
-    several.ok = FALSE
-  )
-  checkmate::assert_numeric(values, len = 3)
-  checkmate::assert_number(samples, lower = 1)
 
   # Set initial values for optimisation
   param <- stats::runif(n = 2, min = 0, max = 5)
@@ -336,6 +320,8 @@ check_optim_conv <- function(optim_params_list,
   optim_conv
 }
 
+#' Function for extracting distribution parameters
+#'
 #' Set of functions that can be used to estimate the parameters of a
 #' distribution (lognormal, gamma, weibull) via optimisation from either the
 #' percentiles or the median and ranges.
@@ -346,8 +332,10 @@ check_optim_conv <- function(optim_params_list,
 #' values at the percentiles and the percentiles, in the case of median and
 #' range it contains the median, lower range, upper range and the number of
 #' sample points to evaluate the function at
+#'
 #' @keywords internal
 #' @author Adam Kucharski
+#' @name extraction_functions
 fit_function_lnorm_range <- function(param, val) {
   # Median square residual
   median_sr <- (stats::plnorm(
@@ -385,7 +373,7 @@ fit_function_lnorm_range <- function(param, val) {
   range_sr + median_sr
 }
 
-#' @rdname fit_function_lnorm_range
+#' @rdname extraction_functions
 fit_function_gamma_range <- function(param, val) {
   # Median square residual
   median_sr <- (stats::pgamma(
@@ -423,7 +411,7 @@ fit_function_gamma_range <- function(param, val) {
   range_sr + median_sr
 }
 
-#' @rdname fit_function_lnorm_range
+#' @rdname extraction_functions
 fit_function_weibull_range <- function(param, val) {
   # Median square residual
   median_sr <- (stats::pweibull(
@@ -464,7 +452,7 @@ fit_function_weibull_range <- function(param, val) {
   unname(out)
 }
 
-#' @rdname fit_function_lnorm_range
+#' @rdname extraction_functions
 fit_function_lnorm <- function(param, val) {
   out <- (stats::plnorm(
     val[["lower"]],
@@ -481,7 +469,7 @@ fit_function_lnorm <- function(param, val) {
   unname(out)
 }
 
-#' @rdname fit_function_lnorm_range
+#' @rdname extraction_functions
 fit_function_gamma <- function(param, val) {
   out <- (stats::pgamma(
     val[["lower"]],
@@ -498,7 +486,7 @@ fit_function_gamma <- function(param, val) {
   unname(out)
 }
 
-#' @rdname fit_function_lnorm_range
+#' @rdname extraction_functions
 fit_function_weibull <- function(param, val) {
   out <- (stats::pweibull(
     val[["lower"]],
