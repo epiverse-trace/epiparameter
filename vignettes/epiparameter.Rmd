@@ -29,6 +29,8 @@ An outbreak of a known or potentially novel pathogen is detected and the paramet
 This vignette will provide a introduction to the data stored within {epiparameter}, how to read it into R, manipulate
 the data, and the functions (and methods) implemented in the package to facilitate easy application of parameters into epidemiological pipelines.
 
+The {distributional} package is loaded as some of the {epiparameter} methods uses S3 generics from this package.
+
 ```{r setup}
 library(epiparameter)
 library(distributional)
