@@ -166,7 +166,7 @@ Note that this only adds the parameters to the library (`<epiparam>` object) in 
 
 ## Distribution functions
 
-It is commonly required to extract the probability density function, cumulative distribution function, quantile or generate random numbers from the distribution stored in the `<epidist>` object. The distribution functions in {epiparameter} allow users to easily access these aspects.
+`<epidist>` objects store distributions, and mathematical functions of these distribution can easily be extracted directly from them. It is commonly required to extract the probability density function, cumulative distribution function, quantile or generate random numbers from the distribution in the `<epidist>` object. The distribution functions in {epiparameter} allow users to easily access these aspects.
 
 ```{r epidist-dist-methods}
 density(ebola_incubation, at = 0.5)
