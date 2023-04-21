@@ -637,7 +637,28 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
 #' @keywords internal
 clean_epidist_params.nbinom <- function(prob_dist_params) {
 
-  if (all(c("mean", "dispersion") %in% names(prob_dist_params))) {
+  if (all(c("n", "p") %in% names(prob_dist_params))) {
+
+    # convert prob to mean
+    prob_dist_params[["p"]] <- nbinom_probdisp2meandisp(
+      prob = prob_dist_params[["p"]],
+      dispersion = prob_dist_params[["n"]]
+    )$mean
+
+    # find index so parameters can be in any order
+    n_index <- which(names(prob_dist_params) == "n")
+    p_index <- which(names(prob_dist_params) == "p")
+    names(prob_dist_params)[c(n_index, p_index)] <- c("dispersion", "mean")
+
+    # rearrange vector
+    prob_dist_params <- prob_dist_params[c("mean", "dispersion")]
+
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # return prob_dist_params
+    return(prob_dist_params)
+  } else if (all(c("mean", "dispersion") %in% names(prob_dist_params))) {
     # remove class attribute from prob_dist_params
     prob_dist_params <- unclass(prob_dist_params)
 
@@ -673,6 +694,19 @@ clean_epidist_params.geom <- function(prob_dist_params) {
     prob_dist_params <- unclass(prob_dist_params)
 
     # return prob_dist_params
+    return(prob_dist_params)
+
+  } else if ("p" %in% names(prob_dist_params)) {
+    names(prob_dist_params) <- gsub(
+      pattern = "^p$",
+      replacement = "prob",
+      x = names(prob_dist_params)
+    )
+
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # no cleaning needed
     return(prob_dist_params)
   } else if ("prob" %in% names(prob_dist_params)) {
     # remove class attribute from prob_dist_params
