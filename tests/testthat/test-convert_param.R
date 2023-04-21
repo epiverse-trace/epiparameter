@@ -346,8 +346,8 @@ test_that("nbinom_probdisp2meandisp fails as expected", {
   )
 })
 
-test_that("geometric_mean2prob works as expected", {
-  params <- geometric_mean2prob(mean = 3)
+test_that("geom_mean2prob works as expected", {
+  params <- geom_mean2prob(mean = 3)
   expect_type(params, "list")
   expect_named(params, "prob")
   expect_equal(
@@ -357,9 +357,9 @@ test_that("geometric_mean2prob works as expected", {
   )
 })
 
-test_that("geometric_mean2prob fails as expected", {
+test_that("geom_mean2prob fails as expected", {
   expect_error(
-    geometric_mean2prob(mean = "1"),
+    geom_mean2prob(mean = "1"),
     regexp = paste0(
       "Assertion on 'mean' failed: Must be of type 'number',",
       " not 'character'."
@@ -367,22 +367,22 @@ test_that("geometric_mean2prob fails as expected", {
   )
 
   expect_error(
-    geometric_mean2prob(mean = -1),
+    geom_mean2prob(mean = -1),
     regexp = paste0(
       "Assertion on 'mean' failed: Element 1 is not >= 0."
     )
   )
 
   expect_error(
-    geometric_mean2prob(mean = Inf),
+    geom_mean2prob(mean = Inf),
     regexp = paste0(
       "Assertion on 'mean' failed: Must be finite."
     )
   )
 })
 
-test_that("geometric_prob2mean works as expected", {
-  params <- geometric_prob2mean(prob = 0.3)
+test_that("geom_prob2mean works as expected", {
+  params <- geom_prob2mean(prob = 0.3)
   expect_type(params, "list")
   expect_named(params, "mean")
   expect_equal(
@@ -392,9 +392,9 @@ test_that("geometric_prob2mean works as expected", {
   )
 })
 
-test_that("geometric_prob2mean fails as expected", {
+test_that("geom_prob2mean fails as expected", {
   expect_error(
-    geometric_prob2mean(prob = "1"),
+    geom_prob2mean(prob = "1"),
     regexp = paste0(
       "Assertion on 'prob' failed: Must be of type 'number',",
       " not 'character'."
@@ -402,14 +402,14 @@ test_that("geometric_prob2mean fails as expected", {
   )
 
   expect_error(
-    geometric_prob2mean(prob = -1),
+    geom_prob2mean(prob = -1),
     regexp = paste0(
       "Assertion on 'prob' failed: Element 1 is not >= 0."
     )
   )
 
   expect_error(
-    geometric_prob2mean(prob = 1.1),
+    geom_prob2mean(prob = 1.1),
     regexp = paste0(
       "Assertion on 'prob' failed: Element 1 is not <= 1."
     )
@@ -443,6 +443,12 @@ test_that("chk_ss is working as expected", {
   x <- list(mean = 1, sd = 1)
   expect_no_error(chk_ss(x))
 
+  x <- c(mean = 1, sd = 1)
+  expect_error(
+    chk_ss(x),
+    regexp = "input must be a list"
+  )
+
   x <- list(mean = 1)
   expect_error(
     chk_ss(x),
@@ -473,7 +479,7 @@ test_that("convert_lnorm_params works as expected", {
   expect_length(summary_stats, 8)
   expect_named(
     summary_stats,
-    c("mean", "median", "mode", "var", "sd", "cv", "skewness", "kurtosis")
+    c("mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis")
   )
   expect_equal(
     summary_stats,
@@ -533,7 +539,7 @@ test_that("convert_lnorm_summary_stats works as expected using median", {
 
 test_that("convert_lnorm_summary_stats fails as expected", {
   expect_error(
-    convert_lnorm_summary_stats(mean = 1, kurtosis = 1),
+    convert_lnorm_summary_stats(mean = 1, ex_kurtosis = 1),
     regexp = "Cannot calculate lognormal parameters from given input"
   )
 })
@@ -543,11 +549,11 @@ test_that("convert_gamma_params works as expected", {
   expect_length(summary_stats, 8)
   expect_named(
     summary_stats,
-    c("mean", "median", "mode", "var", "sd", "cv", "skewness", "kurtosis")
+    c("mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis")
   )
   expect_equal(
     summary_stats,
-    list(1, 0.6931472, 0, 1, 1, 1, 2, 9),
+    list(1, 0.6931472, 0, 1, 1, 1, 2, 6),
     ignore_attr = TRUE,
     tolerance = 1e-4
   )
@@ -576,21 +582,9 @@ test_that("convert_gamma_summary_stats works as expected", {
   )
 })
 
-test_that("convert_gamma_summary_stats works as expected using mode and sd", {
-  params <- convert_gamma_summary_stats(mode = 1, sd = 1)
-  expect_length(params, 2)
-  expect_named(params, c("shape", "scale"))
-  expect_equal(
-    params,
-    list(1, 1),
-    ignore_attr = TRUE,
-    tolerance = 1e-4
-  )
-})
-
 test_that("convert_gamma_summary_stats fails as expected", {
   expect_error(
-    convert_gamma_summary_stats(mean = 1, kurtosis = 1),
+    convert_gamma_summary_stats(mean = 1, ex_kurtosis = 1),
     regexp = "Cannot calculate gamma parameters from given input"
   )
 })
@@ -600,11 +594,11 @@ test_that("convert_weibull_params works as expected", {
   expect_length(summary_stats, 8)
   expect_named(
     summary_stats,
-    c("mean", "median", "mode", "var", "sd", "cv", "skewness", "kurtosis")
+    c("mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis")
   )
   expect_equal(
     summary_stats,
-    list(1, 1.442695, 0, 1, 1, 1, 2, 21),
+    list(1, 0.6931472, 0, 1, 1, 1, 2, 21),
     ignore_attr = TRUE,
     tolerance = 1e-4
   )
@@ -637,5 +631,96 @@ test_that("convert_weibull_summary_stats fails as expected", {
   expect_error(
     convert_weibull_summary_stats(median = 1, sd = 1),
     regexp = "Cannot calculate weibull parameters from given input"
+  )
+})
+
+test_that("convert_nbinom_params works as expected", {
+  summary_stats <- convert_nbinom_params(prob = 0.5, dispersion = 0.5)
+  expect_length(summary_stats, 8)
+  expect_named(
+    summary_stats,
+    c("mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis")
+  )
+  expect_equal(
+    summary_stats,
+    list(0.50, 0.00, 0.00, 1.00, 1.00, 2.00, 3.00, 12.25),
+    ignore_attr = TRUE,
+    tolerance = 1e-4
+  )
+})
+
+test_that("convert_nbinom_params fails as expected", {
+  expect_error(
+    convert_nbinom_params(prob = "1", dispersion = 1),
+    regexp = "(Assertion)*(failed)*(Must be of type)*(number)*(not)*(character)"
+  )
+  expect_error(
+    convert_nbinom_params(prob = 1, dispersion = "1"),
+    regexp = "(Assertion)*(failed)*(Must be of type)*(number)*(not)*(character)"
+  )
+})
+
+test_that("convert_nbinom_summary_stats works as expected", {
+  params <- convert_nbinom_summary_stats(mean = 1, sd = 1.5)
+  expect_length(params, 2)
+  expect_named(params, c("prob", "dispersion"))
+  expect_equal(
+    params,
+    list(0.4444444, 0.8),
+    ignore_attr = TRUE,
+    tolerance = 1e-4
+  )
+})
+
+test_that("convert_nbinom_summary_stats fails as expected", {
+  expect_error(
+    convert_nbinom_summary_stats(median = 1, sd = 1),
+    regexp = "(Cannot calculate negative binomial)*(from given input)"
+  )
+
+  expect_error(
+    convert_nbinom_summary_stats(mean = 2, sd = 1),
+    regexp = "(Negative binomial)*(variance-to-mean ratio of greater)"
+  )
+})
+
+test_that("convert_geom_params works as expected", {
+  summary_stats <- convert_geom_params(prob = 0.5)
+  expect_length(summary_stats, 8)
+  expect_named(
+    summary_stats,
+    c("mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis")
+  )
+  expect_equal(
+    summary_stats,
+    list(1, 0, 0, 2, 1.414214, 1.414214, 2.121320, 6.5),
+    ignore_attr = TRUE,
+    tolerance = 1e-4
+  )
+})
+
+test_that("convert_geom_params fails as expected", {
+  expect_error(
+    convert_geom_params(prob = "1"),
+    regexp = "(Assertion)*(failed)*(Must be of type)*(number)*(not)*(character)"
+  )
+})
+
+test_that("convert_geom_summary_stats works as expected", {
+  params <- convert_geom_summary_stats(mean = 1)
+  expect_length(params, 1)
+  expect_named(params, "prob")
+  expect_equal(
+    params,
+    list(0.5),
+    ignore_attr = TRUE,
+    tolerance = 1e-4
+  )
+})
+
+test_that("convert_geom_summary_stats fails as expected", {
+  expect_error(
+    convert_geom_summary_stats(mode = 1),
+    regexp = "(Cannot calculate geometric)*(from given input)"
   )
 })
