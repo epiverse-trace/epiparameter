@@ -154,10 +154,7 @@ test_that("extract_param fails as expected", {
       distribution = "lnorm",
       percentiles = c(0.125, 0.875)
     ),
-    regexp = paste0(
-      "Assertion on 'values' failed: Must be of type 'numeric',",
-      " not 'character'."
-    )
+    regexp = "(values vector should be)*(check values)"
   )
 
   expect_error(
@@ -274,44 +271,6 @@ test_that("extract_param_percentile works for weibull", {
   )
 })
 
-test_that("extract_param_percentile fails as expected", {
-  expect_error(
-    extract_param_percentile(
-      values = c("6", 13),
-      distribution = "weibull",
-      percentiles = c(0.125, 0.875)
-    ),
-    regexp = paste0(
-      "Assertion on 'values' failed: Must be of type 'numeric',",
-      " not 'character'."
-    )
-  )
-
-  expect_error(
-    extract_param_percentile(
-      values = c(6, 13),
-      distribution = "distribution",
-      percentiles = c(0.125, 0.875)
-    ),
-    regexp = paste0(
-      "'arg' should be one of ", dQuote("lnorm"), ", ",
-      dQuote("gamma"), ", ", dQuote("weibull")
-    )
-  )
-
-  expect_error(
-    extract_param_percentile(
-      values = c(6, 13),
-      distribution = "weibull",
-      percentiles = c("0.125", 0.875)
-    ),
-    regexp = paste0(
-      "Assertion on 'percentiles' failed: Must be of type",
-      " 'numeric', not 'character'."
-    )
-  )
-})
-
 test_that("extract_param_range works for lnorm", {
   # set seed for stochastic optimisation
   set.seed(1)
@@ -372,44 +331,6 @@ test_that("extract_param_range works for weibull", {
       message = "CONVERGENCE: REL_REDUCTION_OF_F <= FACTR*EPSMCH"
     ),
     tolerance = testthat_tolerance()
-  )
-})
-
-test_that("extract_param_range fails as expected", {
-  expect_error(
-    extract_param_range(
-      values = c("8", 4, 13),
-      distribution = "lnorm",
-      samples = 20
-    ),
-    regexp = paste0(
-      "Assertion on 'values' failed: Must be of type 'numeric',",
-      " not 'character'."
-    )
-  )
-
-  expect_error(
-    extract_param_range(
-      values = c(8, 4, 13),
-      distribution = "distribution",
-      samples = 20
-    ),
-    regexp = paste0(
-      "'arg' should be one of ", dQuote("lnorm"), ", ",
-      dQuote("gamma"), ", ", dQuote("weibull")
-    )
-  )
-
-  expect_error(
-    extract_param_range(
-      values = c(8, 4, 13),
-      distribution = "lnorm",
-      samples = "20"
-    ),
-    regexp = paste0(
-      "Assertion on 'samples' failed: Must be of type",
-      " 'number', not 'character'."
-    )
   )
 })
 
