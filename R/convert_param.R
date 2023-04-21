@@ -566,6 +566,114 @@ nbinom_meandisp2probdisp <- function(mean, dispersion) {
   list(prob = prob, dispersion = dispersion)
 }
 
+#' Converts the parameters of the geometric distribution to summary statistics
+#'
+#' @description Converts the probability (`prob`) of the geometric distribution
+#' to a number of summary statistics which can be calculated analytically given
+#' the geometric parameter.
+#'
+#' @details This conversion function assumes that distribution represents the
+#' number of failures before the first success (supported for zero). This is
+#' the same form as used by base R and `distributional::dist_geometric()`.
+#'
+#' @param prob The probability parameter (p) of the geometric distribution.
+#'
+#' @return A list of eight elements including: mean, median, mode,
+#' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
+#' skewness, and excess kurtosis (`ex_kurtosis`).
+#' @export
+#'
+#' @examples
+#' convert_geom_params(prob = 1)
+convert_geom_params <- function(prob) {
+
+  # check input
+  checkmate::assert_number(prob, lower = 0, upper = 1)
+
+  # calculate metrics
+  mean <- (1 - prob) / prob
+  median <- qgeom(p = 0.5, prob = prob)
+  mode <- 0
+  var <- (1 - prob) / prob^2
+  sd <- sqrt(var)
+  cv <- sd / mean
+  skewness <- (2 - prob) / sqrt(1 - prob)
+  ex_kurtosis <- 6 + prob^2 / (1 - prob)
+
+  # return list of metrics
+  list(
+    mean = mean,
+    median = median,
+    mode = mode,
+    var = var,
+    sd = sd,
+    cv = cv,
+    skewness = skewness,
+    ex_kurtosis = ex_kurtosis
+  )
+}
+
+#' Converts the summary statistics to parameters of the geometric distribution
+#'
+#' @description Converts the summary statistics of the geometric
+#' distribution the parameter (`prob`) of the geometric distribution.
+#'
+#' @details The arguments input are captured and handled by name. Therefore,
+#' the names of the arguments must be correct (case-sensitive). Possible input
+#' summary statistics are: `mean`, `median`, `mode`, `var`, `sd`, `cv`,
+#' `skewness`, `ex_kurtosis`.
+#'
+#' Not every combination of input statistics is a viable conversion, and may
+#' error. Common conversions that are implemented are mean and a measure of
+#' spread (`var`, `sd` and `cv`).
+#'
+#' This conversion function assumes that distribution represents the
+#' number of failures before the first success (supported for zero). This is
+#' the same form as used by base R and `distributional::dist_geometric()`.
+#'
+#' @param ... Summary statistics to be used for calculating the geometric
+#' distribution parameters. All arguments must be correctly named, see details
+#' for possible input.
+#'
+#' @return A list of one element, the probability parameter
+#' @export
+#'
+#' @examples
+#' convert_geom_summary_stats(mean = 3)
+convert_geom_summary_stats <- function(...) {
+
+  # capture input
+  x <- list(...)
+
+  # check input
+  stopifnot(
+    "input must be a list" =
+      is.list(x),
+    "all arguments must be named" =
+      !is.null(names(x)) && isFALSE("" %in% names(x)),
+    "all values given must be numeric" =
+      all(vapply(x, is.numeric, FUN.VALUE = logical(1))),
+    "names of input must match:
+    'mean', 'median', 'mode', 'var', 'sd', 'cv', 'skewness', 'ex_kurtosis'" =
+      all(names(x) %in%  c(
+        "mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis"
+      ))
+  )
+
+  # convert var or cv into sd if available
+  x <- get_sd(x)
+
+  # calculate mean
+  if (is_number(x$mean)) {
+    return(geom_mean2prob(mean = x$mean))
+  }
+
+  # if either parameter hasn't been calculated error
+  if (!exists("prob")) {
+    stop("Cannot calculate geometric distribution parameter from given input")
+  }
+}
+
 #' Converts the mean of the geometric distribution to the probability parameter
 #'
 #' @description The geometric distribution has two forms. This conversion
