@@ -353,7 +353,7 @@ convert_weibull_params <- function(shape, scale) {
 
   # calculate metrics
   mean <- scale * gamma(1 + 1 / shape)
-  median <- qweibull(p = 0.5, shape = shape, scale = scale)
+  median <- stats::qweibull(p = 0.5, shape = shape, scale = scale)
   mode <- ifelse(
     shape > 1,
     yes = scale * ((shape - 1) / shape)^(1 / shape),
@@ -529,7 +529,7 @@ convert_nbinom_params <- function(prob, dispersion) {
 
   # calculate metrics
   mean <- dispersion * (1 - prob) / prob
-  median <- qnbinom(p = 0.5, prob = prob, size = dispersion)
+  median <- stats::qnbinom(p = 0.5, prob = prob, size = dispersion)
   mode <- ifelse(
     test = dispersion > 1,
     yes = (dispersion - 1) * (1 - prob) / prob,
@@ -693,7 +693,7 @@ convert_geom_params <- function(prob) {
 
   # calculate metrics
   mean <- (1 - prob) / prob
-  median <- qgeom(p = 0.5, prob = prob)
+  median <- stats::qgeom(p = 0.5, prob = prob)
   mode <- 0
   var <- (1 - prob) / prob^2
   sd <- sqrt(var)
