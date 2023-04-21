@@ -16,7 +16,7 @@ parameter is also commonly represented as \emph{r}.}
 \value{
 A list of eight elements including: mean, median, mode,
 variance (\code{var}), standard deviation (\code{sd}), coefficient of variation (\code{cv}),
-skewness, and kurtosis.
+skewness, and ex_kurtosis.
 }
 \description{
 Converts the probability (\code{prob}) and dispersion parameters of

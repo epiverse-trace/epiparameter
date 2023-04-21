@@ -15,15 +15,14 @@ for possible input.}
 A list of two elements, the meanlog and sdlog
 }
 \description{
-Converts the meanlog and sdlog parameters of the lognormal
-distribution to a number of summary statistics which can be calculated
-analytically given the lognormal parameters.
+Converts the summary statistics input into the meanlog and sdlog
+parameters of the lognormal distribution.
 }
 \details{
 The arguments input are captured and handled by name. Therefore,
 the names of the arguments must be correct (case-sensitive). Possible input
 summary statistics are: \code{mean}, \code{median}, \code{mode}, \code{var}, \code{sd}, \code{cv},
-\code{skewness}, \code{kurtosis}.
+\code{skewness}, \code{ex_kurtosis}.
 
 Not every combination of input statistics is a viable conversion, and may
 error. Common conversions that are implemented are mean and any measure of

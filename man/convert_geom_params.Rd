@@ -7,17 +7,22 @@
 convert_geom_params(prob)
 }
 \arguments{
-\item{prob}{The probability parameter (p) of the geometric.}
+\item{prob}{The probability parameter (p) of the geometric distribution.}
 }
 \value{
 A list of eight elements including: mean, median, mode,
 variance (\code{var}), standard deviation (\code{sd}), coefficient of variation (\code{cv}),
-skewness, and kurtosis.
+skewness, and excess kurtosis (\code{ex_kurtosis}).
 }
 \description{
 Converts the probability (\code{prob}) of the geometric distribution
 to a number of summary statistics which can be calculated analytically given
 the geometric parameter.
+}
+\details{
+This conversion function assumes that distribution represents the
+number of failures before the first success (supported for zero). This is
+the same form as used by base R and \code{distributional::dist_geometric()}.
 }
 \examples{
 convert_geom_params(prob = 1)

@@ -16,12 +16,12 @@ logarithm) of the distribution. Also commonly called and denoted by sigma.}
 \value{
 A list of eight elements including: mean, median, mode,
 variance (\code{var}), standard deviation (\code{sd}), coefficient of variation (\code{cv}),
-skewness, and kurtosis.
+skewness, and excess kurtosis (\code{ex_kurtosis}).
 }
 \description{
 Converts the meanlog and sdlog parameters of the lognormal
 distribution to a number of summary statistics which can be calculated
-analytically given the lognormal parameters
+analytically given the lognormal parameters.
 }
 \examples{
 convert_lnorm_params(meanlog = 1, sdlog = 1)
