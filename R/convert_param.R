@@ -37,6 +37,8 @@ get_sd <- function(x) {
 #' @noRd
 chk_ss <- function(x) {
   stopifnot(
+    "input must be a list" =
+      is.list(x),
     "at least two summary statistics must be supplied" =
       length(x) >= 2,
     "all arguments must be named" =
@@ -44,9 +46,9 @@ chk_ss <- function(x) {
     "all values given must be numeric" =
       all(vapply(x, is.numeric, FUN.VALUE = logical(1))),
     "names of input must match:
-    'mean', 'median', 'mode', 'var', 'sd', 'cv', 'skewness', 'kurtosis'" =
+    'mean', 'median', 'mode', 'var', 'sd', 'cv', 'skewness', 'ex_kurtosis'" =
       all(names(x) %in%  c(
-        "mean", "median", "mode", "var", "sd", "cv", "skewness", "kurtosis"
+        "mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis"
       ))
   )
 
@@ -58,7 +60,7 @@ chk_ss <- function(x) {
 #'
 #' @description Converts the meanlog and sdlog parameters of the lognormal
 #' distribution to a number of summary statistics which can be calculated
-#' analytically given the lognormal parameters
+#' analytically given the lognormal parameters.
 #'
 #' @param meanlog The meanlog parameter (mean of natural logarithm) of the
 #' lognormal distribution. Also commonly called and denoted by the mu.
@@ -67,7 +69,7 @@ chk_ss <- function(x) {
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
-#' skewness, and kurtosis.
+#' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @export
 #'
 #' @examples
@@ -86,7 +88,8 @@ convert_lnorm_params <- function(meanlog, sdlog) {
   sd <- sqrt(var)
   cv <- sd / mean
   skewness <- (exp(sdlog^2) + 2) * sqrt(exp(sdlog^2) - 1)
-  kurtosis <- exp(4 * sdlog^2) + 2 * exp(3 * sdlog^2) + 3 * exp(2 * sdlog^2) - 6
+  ex_kurtosis <- exp(4 * sdlog^2) + 2 *
+    exp(3 * sdlog^2) + 3 * exp(2 * sdlog^2) - 6
 
   # return list of metrics
   list(
@@ -97,20 +100,19 @@ convert_lnorm_params <- function(meanlog, sdlog) {
     sd = sd,
     cv = cv,
     skewness = skewness,
-    kurtosis = kurtosis
+    ex_kurtosis = ex_kurtosis
   )
 }
 
 #' Converts the summary statistics to parameters of the lognormal distribution
 #'
-#' @description Converts the meanlog and sdlog parameters of the lognormal
-#' distribution to a number of summary statistics which can be calculated
-#' analytically given the lognormal parameters.
+#' @description Converts the summary statistics input into the meanlog and sdlog
+#' parameters of the lognormal distribution.
 #'
 #' @details The arguments input are captured and handled by name. Therefore,
 #' the names of the arguments must be correct (case-sensitive). Possible input
 #' summary statistics are: `mean`, `median`, `mode`, `var`, `sd`, `cv`,
-#' `skewness`, `kurtosis`.
+#' `skewness`, `ex_kurtosis`.
 #'
 #' Not every combination of input statistics is a viable conversion, and may
 #' error. Common conversions that are implemented are mean and any measure of
@@ -141,12 +143,8 @@ convert_lnorm_summary_stats <- function(...) {
     return(lnorm_meansd2meanlogsdlog(mean = x$mean, sd = x$sd))
   } else if (is_number(x$median) && is_number(x$sd)) {
     # median and sd to params
-    sdlog <- sqrt(log((x$sd / x$median)^2 + 1))
+    sdlog <- sqrt(log(1 + (x$sd / x$median)^2))
     meanlog <- log(x$median) - sdlog^2 / 2
-  } else if (is_number(x$mean) && is_number(x$median)) {
-    # mean and median to params
-    sdlog <- sqrt(2 * (log(x$mean) - log(x$median)))
-    meanlog <- log(x$median) - x$sdlog^2 / 2
   }
 
   # if either parameter hasn't been calculated error
@@ -205,14 +203,12 @@ lnorm_meansd2meanlogsdlog <- function(mean, sd) {
 #' analytically given the gamma parameters. One exception is the median which
 #' is calculated using [`qgamma()`] as no analytical form is available.
 #'
-#' @param shape A single numeric of the shape parameter of the gamma
-#' distribution
-#' @param scale A single numeric of the scale parameter of the gamma
-#' distribution
+#' @param shape The shape parameter of the gamma distribution
+#' @param scale The scale parameter of the gamma distribution
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
-#' skewness, and kurtosis.
+#' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @export
 #'
 #' @examples
@@ -235,7 +231,7 @@ convert_gamma_params <- function(shape, scale) {
   sd <- sqrt(var)
   cv <- sd / mean
   skewness <- 2 / sqrt(shape)
-  kurtosis <- 6 / shape + 3
+  ex_kurtosis <- 6 / shape
 
   # return list of metrics
   list(
@@ -246,7 +242,7 @@ convert_gamma_params <- function(shape, scale) {
     sd = sd,
     cv = cv,
     skewness = skewness,
-    kurtosis = kurtosis
+    ex_kurtosis = ex_kurtosis
   )
 }
 
@@ -258,7 +254,7 @@ convert_gamma_params <- function(shape, scale) {
 #' @details The arguments input are captured and handled by name. Therefore,
 #' the names of the arguments must be correct (case-sensitive). Possible input
 #' summary statistics are: `mean`, `median`, `mode`, `var`, `sd`, `cv`,
-#' `skewness`, `kurtosis`.
+#' `skewness`, `ex_kurtosis`.
 #'
 #' Not every combination of input statistics is a viable conversion, and may
 #' error. Common conversions that are implemented are mean and any measure of
@@ -287,22 +283,12 @@ convert_gamma_summary_stats <- function(...) {
   if (is_number(x$mean) && is_number(x$sd)) {
     # mean and sd to params
     return(gamma_meansd2shapescale(mean = x$mean, sd = x$sd))
-  } else if (is_number(x$mode) && is_number(x$sd)) {
-    # mode and sd to params
-    shape <- (x$mode / x$sd)^2
-    scale <- x$mode / (x$sd^2)
   }
 
   # if either parameter hasn't been calculated, error
   if (!exists("shape") || !exists("scale")) {
     stop("Cannot calculate gamma parameters from given input")
   }
-
-  # return list of params
-  list(
-    shape = shape,
-    scale = scale
-  )
 }
 
 #' Converts the shape and scale parameters of the gamma distribution to the
@@ -349,14 +335,12 @@ gamma_meansd2shapescale <- function(mean, sd) {
 #' analytically given the weibull parameters. Note the conversion uses the
 #' [`gamma()`] function.
 #'
-#' @param shape A single numeric of the shape parameter of the weibull
-#' distribution
-#' @param scale A single numeric of the scale parameter of the weibull
-#' distribution
+#' @param shape The shape parameter of the weibull distribution
+#' @param scale The scale parameter of the weibull distribution
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
-#' skewness, and kurtosis.
+#' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @export
 #'
 #' @examples
@@ -369,7 +353,7 @@ convert_weibull_params <- function(shape, scale) {
 
   # calculate metrics
   mean <- scale * gamma(1 + 1 / shape)
-  median <- scale * (log(2))^(-1 / shape)
+  median <- qweibull(p = 0.5, shape = shape, scale = scale)
   mode <- ifelse(
     shape > 1,
     yes = scale * ((shape - 1) / shape)^(1 / shape),
@@ -380,7 +364,7 @@ convert_weibull_params <- function(shape, scale) {
   cv <- sd / mean
   skewness <- (gamma(1 + 3 / shape) * scale^3 - 3 *
                  mean * sd^2 - mean^3) / (sd^3)
-  kurtosis <- (gamma(1 + 4 / shape) * scale^4 - 4 * mean *
+  ex_kurtosis <- (gamma(1 + 4 / shape) * scale^4 - 4 * mean *
                  (gamma(1 + 3 / shape) * scale^3 - 3 * mean * sd^2 - mean^3) -
                  6 * (mean^2 * sd^2 - gamma(1 + 2 / shape) *
                         scale^2) - mean^4) / (sd^4)
@@ -395,7 +379,7 @@ convert_weibull_params <- function(shape, scale) {
     sd = sd,
     cv = cv,
     skewness = skewness,
-    kurtosis = kurtosis
+    ex_kurtosis = ex_kurtosis
   )
 }
 
@@ -407,7 +391,7 @@ convert_weibull_params <- function(shape, scale) {
 #' @details The arguments input are captured and handled by name. Therefore,
 #' the names of the arguments must be correct (case-sensitive). Possible input
 #' summary statistics are: `mean`, `median`, `mode`, `var`, `sd`, `cv`,
-#' `skewness`, `kurtosis`.
+#' `skewness`, `ex_kurtosis`.
 #'
 #' Not every combination of input statistics is a viable conversion, and may
 #' error. Common conversions that are implemented are mean and any measure of
@@ -594,7 +578,7 @@ convert_nbinom_params <- function(prob, dispersion) {
 #' @export
 #'
 #' @examples
-#' convert_nbinom_summary_stats(mean = 3, sd = 1)
+#' convert_nbinom_summary_stats(mean = 1, sd = 2)
 convert_nbinom_summary_stats <- function(...) {
 
   # capture input

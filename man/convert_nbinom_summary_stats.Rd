@@ -13,23 +13,23 @@ binomial distribution parameters. All arguments must be correctly named,
 see details for possible input.}
 }
 \value{
-A list of two elements, the probability and size parameters
+A list of two elements, the probability and dispersion parameters
 }
 \description{
 Converts the summary statistics of the negative binomial
-distribution the parameters (\code{prob}) and (\code{size}) of the negative binomial
-distribution.
+distribution the parameters (\code{prob}) and (\code{dispersion}) of the negative
+binomial distribution.
 }
 \details{
 The arguments input are captured and handled by name. Therefore,
 the names of the arguments must be correct (case-sensitive). Possible input
 summary statistics are: \code{mean}, \code{median}, \code{mode}, \code{var}, \code{sd}, \code{cv},
-\code{skewness}, \code{kurtosis}.
+\code{skewness}, \code{ex_kurtosis}.
 
 Not every combination of input statistics is a viable conversion, and may
 error. Common conversions that are implemented are mean and any measure of
-spread (\code{var}, \code{sd} and \code{cv}), or \code{median} and \code{sd}.
+spread (\code{var}, \code{sd} and \code{cv}).
 }
 \examples{
-convert_nbinom_summary_stats(mean = 3)
+convert_nbinom_summary_stats(mean = 1, sd = 2)
 }

@@ -7,16 +7,14 @@
 convert_gamma_params(shape, scale)
 }
 \arguments{
-\item{shape}{A single numeric of the shape parameter of the gamma
-distribution}
+\item{shape}{The shape parameter of the gamma distribution}
 
-\item{scale}{A single numeric of the scale parameter of the gamma
-distribution}
+\item{scale}{The scale parameter of the gamma distribution}
 }
 \value{
 A list of eight elements including: mean, median, mode,
 variance (\code{var}), standard deviation (\code{sd}), coefficient of variation (\code{cv}),
-skewness, and kurtosis.
+skewness, and excess kurtosis (\code{ex_kurtosis}).
 }
 \description{
 Converts the shape and scale parameters of the gamma
