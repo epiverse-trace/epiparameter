@@ -277,7 +277,7 @@ test_that("make_epidist works as expected for negative binomial", {
     ))
   )
   expect_s3_class(edist, "epidist")
-  expect_identical(family(edist), "negbin")
+  expect_identical(family(edist), "nbinom")
 })
 
 test_that("make_epidist works as expected for geometric", {
@@ -345,7 +345,7 @@ test_that("make_epidist works as expected for geometric", {
   )
 
   expect_s3_class(edist, "epidist")
-  expect_identical(family(edist), "geometric")
+  expect_identical(family(edist), "geom")
 })
 
 test_that("as_epiparam works as expected", {

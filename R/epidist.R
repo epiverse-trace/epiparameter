@@ -891,6 +891,18 @@ family.epidist <- function(object, ...) {
     no = prob_dist
   )
 
+  prob_dist <- ifelse(
+    test = prob_dist == "negbin",
+    yes = "nbinom",
+    no = prob_dist
+  )
+
+  prob_dist <- ifelse(
+    test = prob_dist == "geometric",
+    yes = "geom",
+    no = prob_dist
+  )
+
   # return prob dist
   prob_dist
 }
