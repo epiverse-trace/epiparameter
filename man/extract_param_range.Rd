@@ -23,12 +23,4 @@ A list with output from stats::optim. See ?optim for more details
 Optimises the parameters for a specified probability distribution given the
 median and range of a sample and the number of samples
 }
-\examples{
-# extract parameters of a gamma distribution from median and range
-extract_param_range(
-  values = c(8, 6, 13),
-  distribution = "gamma",
-  samples = 20
-)
-}
 \keyword{internal}

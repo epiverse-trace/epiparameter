@@ -23,12 +23,4 @@ A list with output from stats::optim. See ?optim for more details
 Optimises the parameters for a specified probability distribution given the
 percentiles of a distribution and the values at those percentiles
 }
-\examples{
-# extract parameters of a lognormal distribution from the 75 percentiles
-extract_param_percentile(
-  values = c(6, 13),
-  distribution = "lnorm",
-  percentiles = c(0.125, 0.875)
-)
-}
 \keyword{internal}
