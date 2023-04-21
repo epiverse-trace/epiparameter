@@ -184,14 +184,6 @@ extract_param <- function(type = c("percentiles", "range"),
 #'
 #' @return A list with output from stats::optim. See ?optim for more details
 #' @keywords internal
-#'
-#' @examples
-#' # extract parameters of a lognormal distribution from the 75 percentiles
-#' extract_param_percentile(
-#'   values = c(6, 13),
-#'   distribution = "lnorm",
-#'   percentiles = c(0.125, 0.875)
-#' )
 extract_param_percentile <- function(values,
                                      distribution,
                                      percentiles) {
@@ -241,14 +233,6 @@ extract_param_percentile <- function(values,
 #'
 #' @return A list with output from stats::optim. See ?optim for more details
 #' @keywords internal
-#'
-#' @examples
-#' # extract parameters of a gamma distribution from median and range
-#' extract_param_range(
-#'   values = c(8, 6, 13),
-#'   distribution = "gamma",
-#'   samples = 20
-#' )
 extract_param_range <- function(values,
                                 distribution,
                                 samples) {
