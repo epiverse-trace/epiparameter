@@ -579,8 +579,8 @@ nbinom_meandisp2probdisp <- function(mean, dispersion) {
 #' @export
 #'
 #' @examples
-#' geometric_mean2prob(mean = 2)
-geometric_mean2prob <- function(mean) {
+#' geom_mean2prob(mean = 2)
+geom_mean2prob <- function(mean) {
   checkmate::assert_number(mean, lower = 0, finite = TRUE)
   prob <- 1 / (1 + mean)
   list(prob = prob)
@@ -600,8 +600,8 @@ geometric_mean2prob <- function(mean) {
 #' @export
 #'
 #' @examples
-#' geometric_prob2mean(prob = 0.2)
-geometric_prob2mean <- function(prob) {
+#' geom_prob2mean(prob = 0.2)
+geom_prob2mean <- function(prob) {
   checkmate::assert_number(prob, lower = 0, upper = 1)
   mean <- (1 - prob) / prob
   list(mean = mean)
