@@ -517,6 +517,125 @@ weibull_shapescale2meansd <- function(shape, scale) {
   list(mean = mean, sd = sd)
 }
 
+#' Converts the parameters of the negative binomial distribution to summary
+#' statistics
+#'
+#' @description Converts the probability (`prob`) and dispersion parameters of
+#' the negative binomial distribution to a number of summary statistics which
+#' can be calculated analytically given the negative binomial parameters.
+#' One exception is the median which is calculated using [`qnbinom()`] as no
+#' analytical form is available.
+#'
+#' @param prob The probability parameter (p) of the negative binomial
+#' @param dispersion The dispersion parameter (k) of the negative binomial. This
+#' parameter is also commonly represented as *r*.
+#'
+#' @return A list of eight elements including: mean, median, mode,
+#' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
+#' skewness, and ex_kurtosis.
+#' @export
+#'
+#' @examples
+#' convert_nbinom_params(prob = 1, dispersion = 1)
+convert_nbinom_params <- function(prob, dispersion) {
+
+  # check input
+  checkmate::assert_number(prob, lower = 0, upper = 1)
+  checkmate::assert_number(dispersion, lower = 0)
+
+  # calculate metrics
+  mean <- dispersion * (1 - prob) / prob
+  median <- qnbinom(p = 0.5, prob = prob, size = dispersion)
+  mode <- ifelse(
+    test = dispersion > 1,
+    yes = (dispersion - 1) * (1 - prob) / prob,
+    no = 0
+  )
+  var <- dispersion * (1 - prob) / prob^2
+  sd <- sqrt(var)
+  cv <- sd / mean
+  skewness <- (1 + prob) / sqrt(prob * dispersion)
+  ex_kurtosis <- 6 / dispersion + prob^2 / (1 - prob) * dispersion
+
+  # return list of metrics
+  list(
+    mean = mean,
+    median = median,
+    mode = mode,
+    var = var,
+    sd = sd,
+    cv = cv,
+    skewness = skewness,
+    ex_kurtosis = ex_kurtosis
+  )
+}
+
+#' Converts the summary statistics to parameters of the negative binomial
+#' distribution
+#'
+#' @description Converts the summary statistics of the negative binomial
+#' distribution the parameters (`prob`) and (`dispersion`) of the negative
+#' binomial distribution.
+#'
+#' @details The arguments input are captured and handled by name. Therefore,
+#' the names of the arguments must be correct (case-sensitive). Possible input
+#' summary statistics are: `mean`, `median`, `mode`, `var`, `sd`, `cv`,
+#' `skewness`, `ex_kurtosis`.
+#'
+#' Not every combination of input statistics is a viable conversion, and may
+#' error. Common conversions that are implemented are mean and any measure of
+#' spread (`var`, `sd` and `cv`).
+#'
+#' @param ... Summary statistics to be used for calculating the negative
+#' binomial distribution parameters. All arguments must be correctly named,
+#' see details for possible input.
+#'
+#' @return A list of two elements, the probability and dispersion parameters
+#' @export
+#'
+#' @examples
+#' convert_nbinom_summary_stats(mean = 3, sd = 1)
+convert_nbinom_summary_stats <- function(...) {
+
+  # capture input
+  x <- list(...)
+
+  # check input
+  chk_ss(x)
+
+  # convert var or cv into sd if available
+  x <- get_sd(x)
+
+  # calculate mean and variance
+
+  if (is_number(x$mean) && is_number(x$sd)) {
+    prob <- x$mean / x$sd^2
+    dispersion <- x$mean^2 / (x$sd^2 - x$mean)
+  }
+
+  # if either parameter hasn't been calculated error
+  if (!exists("prob") || !exists("dispersion")) {
+    stop(paste0(
+      "Cannot calculate negative binomial distribution ",
+      "parameters from given input"
+    ))
+  }
+
+  # ensure variance-to-mean ratio > 1
+  if (prob > 1 || dispersion < 0) {
+    stop(paste0(
+      "Negative binomial has a variance-to-mean ratio of greater ",
+      "than one, check input"
+    ))
+  }
+
+  # return list of parameters
+  list(
+    prob = prob,
+    dispersion = dispersion
+  )
+}
+
 #' Convert the probability and dispersion (k) parameters of the negative
 #' binomial distribution to the mean (expectation) and dispersion
 #' parameterisation
@@ -526,9 +645,7 @@ weibull_shapescale2meansd <- function(shape, scale) {
 #' of failures before a specified number of successes. This is the same form as
 #' used by `distributional::dist_negative_binomial()`.
 #'
-#' @param prob The probability parameter (p) of the negative binomial
-#' @param dispersion The dispersion parameter (k) of the negative binomial. This
-#' parameter is also commonly represented as *r*.
+#' @inheritParams convert_nbinom_params
 #'
 #' @return A named list with mean and dispersion
 #' @export
