@@ -20,14 +20,12 @@ knitr::opts_chunk$set(
 
 The [`{epiparameter}` R package](https://github.com/epiverse-trace/epiparameter) contains a library of epidemiological distribution data and functions that read and handle this data. The delay distributions describe the time between two events in epidemiology, for example incubation period, serial interval and onset-to-death; while the offspring distributions describe the number of secondary infections from a primary infection in disease transmission. The library is compiled by a process of collecting, reviewing and extracting data from peer-reviewed literature[^1], including research articles, systematic reviews and meta-analyses. 
 
-To prevent bias in the collection or assessment of the data, a well-defined methodology of searching and refining, just as with other systematic reviews and meta-analyses, is required. This document aims to provide transparency on the methodology used by the `{epiparameter}` maintainers by outlining the steps taken at each stage of the data handling. It can also serve as a guide to contributors wanting to search and provide epidemiological parameters currently missing from the library. This document should also facilitate reproducibility in the searches, results and appraisal steps.
+The `{epiparameter}` package will act as a 'living systematic review' (*sensu* @elliott_living_2014) which will be actively updated and maintained to provide a reliable source of data on epidemiological distributions. To prevent bias in the collection or assessment of the data, a well-defined methodology of searching and refining is required. This document aims to provide transparency on the methodology used by the `{epiparameter}` maintainers by outlining the steps taken at each stage of the data handling. It can also serve as a guide to contributors wanting to search and provide epidemiological parameters currently missing from the library. Contributions can be added to [this google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing). This protocol should also facilitate reproducibility in the searches, results and appraisal steps.
 
 There is a large body of work on the methods to best conduct literature searches and data collection as part of systematic reviews and meta-analyses[^2], which we use as the basis for our protocol. These sources are: 
 
 - [Cochrane Handbook](https://training.cochrane.org/handbook/current) [@higgins_cochrane_2022]
 - [PRISMA](https://www.prisma-statement.org/) [@page_prisma_2021]
-
-The `{epiparameter}` package will act as a 'living systematic review' (*sensu* @elliott_living_2014) which will be actively updated and maintained to provide the most comprehensive and reliable source of data on epidemiological distributions.
 
 ## Objective of `{epiparameter}`
 
@@ -64,38 +62,39 @@ knitr::kable(
 
 ## Guide to identifying distributions in the literature
 
-1. **Key word searches**: when searching the literature, the use of specific search phrases to ensure the correct literature is procured is required. We recommend using a search schema that includes searching for the pathogen or the disease, and the desired distribution. The search phrase can optionally include a specific variant/strain/subtype. It is not advised to constrain the search based on year of publication. Examples of searches: 
+1. **Key word searches**: when searching the literature, the use of specific search phrases to ensure the correct literature is procured is required. We use a search schema that includes searching for the pathogen or the disease, and the desired distribution. The search phrase can optionally include a specific variant/strain/subtype. The search is not constrained based on year of publication. Examples of searches: 
 - "SARS-CoV-2 incubation period"
 - "ebola serial interval"
 - "influenza H7N9 onset to admission"
 
-However, these simple search phrases can return a large number of irrelevant papers. We recommend using more specific search schema depending on the search engine used. For example, if using Google Scholar a schema like:
+However, these simple search phrases can return a large number of irrelevant papers. Using a more specific search schema depending on the search engine used. For example, if using Google Scholar a schema like:
 
 - ("Middle East Respiratory Syndrome" OR MERS) AND "onset to death" AND (estimation OR inference OR calculation)
 - (ebola OR EVD) AND "onset to death" AND (estimation OR inference OR calculation)
 
 Or if Web of Science is being used:
 
-- ("COVID-19" OR "SARS-CoV-2") AND "onset to death" AND estimat*
+- ("Middle East Respiratory Syndrome" OR MERS) AND "onset to death" AND estimat*
+- (ebola OR EVD) AND "onset to death" AND estimat*
 
 This should refine the results to a more suitable set of literature.
 
 
-1. **Literature search engines**: we recommend using a selection of search engines to prevent one source potentially omitting papers. Recommended search sites are: Google Scholar, Web of Science, PubMed, and Scopus. Across each site we performed the same search.  
+1. **Literature search engines**: using a selection of search engines to prevent one source potentially omitting papers. Suggested search sites are: Google Scholar, Web of Science, PubMed, and Scopus. Across each site we performed the same search.  
 
-1. **Adding papers**: the papers collected in the literature search can be supplemented by papers known to be relevant or through being cited by a paper in the literature search. Papers may be recommended by experts in research or public health communities. We plan to use two methods of community engagement. Firstly a open-access Google sheet allows people to add their distribution data which will then be reviewed by one of the `{epiparameter}` maintainers and incorporated if it meets quality checks. The second method - not yet implemented - involves community members uploading their data to [zenodo](https://zenodo.org/), which can then be read and loaded into R using `{epiparameter}` once checked. 
+1. **Adding papers**: in addition to the database entries from papers that have been identified in a literature search, entries can be supplemented by recommendations (i.e. from the community) or through being cited by a paper in the literature search. Papers may be recommended by experts in research or public health communities. We plan to use two methods of community engagement. Firstly a [open-access Google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing) allows people to add their distribution data which will then be reviewed by one of the `{epiparameter}` maintainers and incorporated if it meets quality checks. The second method - not yet implemented - involves community members uploading their data to [zenodo](https://zenodo.org/), which can then be read and loaded into R using `{epiparameter}` once checked. 
 
 1. **Language restrictions**: papers in English or Spanish are currently supported in `{epiparameter}`. Papers written in another language but verified by an expert can also be included in the database. However, these are not evaluated with the review process described below and as a result are flagged to the user when loaded in `{epiparameter}`.
 
 ## Guide to data refinement once sources identified
 
-1. **Removing duplicates**: studies that use multiple data sources should be screened against other papers included to ensure the the same data sets are not being included multiple times in `{epiparameter}`. This is done by checking whether papers are the primary source of data or are retrieving and citing from another primary source.
+1. **Removing duplicates**: the library of parameters does not contain duplicates of studies, but multiple entries per study can be included if a paper reports multiple results (e.g. from the full data set and then a subset of the data). Studies that use the same data, subsets or supersets of data used in other papers in the library are included.
 
-1. **Abstract and methods screening**: once a number of unique sources have been identified, each should be reviewed for its suitability by reviewing the abstract and searching for words or phrases in the paper that indicate it estimated the parameters of a distribution, this can include searching the methods section for words on types of distributions (e.g. lognormal), fitting procedures (e.g. maximum likelihood or bayesian), or searching the results for parameter estimates. If no distribution is described, the paper can be considered unsuitable at this stage.
+1. **Abstract and methods screening**: once a number of unique sources have been identified, each should be reviewed for its suitability by reviewing the abstract and searching for words or phrases in the paper that indicate it reports the parameters or summary statistics of a distribution, this can include searching the methods section for words on types of distributions (e.g. lognormal), fitting procedures (e.g. maximum likelihood or bayesian), or searching the results for parameter estimates. The `{epiparameter}` library includes entries where parameters or summary statistics are reported but a distribution is not specified. 
 
     A database of unsuitable papers will be kept to remind maintainers which papers have not been included and aids in the updating of the databse (see below) by preventing redundant reviewing a previously rejected paper.
 
-1. **Stopping criteria**: for many searches, the number of results is far larger than could be reasonably evaluated outside a full systematic review. After refining which papers contain the required information (abstract and methods screening), we recommend screening 10 papers per pathogen for each search (per search round, see updating section below for details). If the number of papers that pass the abstract and methods screening is fewer than 10 we recommending reviewing all suitable papers.
+1. **Stopping criteria**: for many searches, the number of results is far larger than could be reasonably evaluated outside a full systematic review. After refining which papers contain the required information (abstract and methods screening), around 10 papers per pathogen are screened for each search (per search round, see updating section below for details). If the number of papers that pass the abstract and methods screening is fewer than 10, all suitable papers are reviewed.
 
 1. **Full paper screening**: after the abstract and methods screening, those papers not excluded should be reviewed in full to verify they indeed contain the required information on distribution parameters and information on methodology used. It is acceptable to include a secondary source that contains information on the delay distribution when the primary source is unavailable or does not report the distribution. The inference of the delay distribution does not have to be a primary subject of the research article, for example if it was inferred to be used in estimation of $R_0$ it can still be included in the database. Additionally, distribution parameters based on illustrative values for use in simulations - rather than inferred from data - are considered unsuitable and should be excluded.
 
@@ -107,7 +106,9 @@ Note: systematic reviews focusing on effect sizes can be subject to publication 
 
 ## Guide to extracting parameters
 
-**Extracting parameters**: for any underlying distributions (e.g. gamma, lognormal), parameters (e.g. shape/scale, meanlog/sdlog), and summary statistics (e.g. mean, standard deviation, median, range or quantiles) given in the paper, values should be recorded verbatim from the paper into the database. When these are read into R using the `{epiparameter}` package, other aspects of the distribution are automatically calculated and available. For example if the mean and standard deviation of a gamma distribution is reported for a serial interval these values will be stored in the database. But once in R, the shape and scale parameters of the gamma distribution, as well as the confidence intervals, will be automatically reconstructed and the resulting distribution available for use.
+**Extracting parameters**: for any underlying distributions (e.g. gamma, lognormal), parameters (e.g. shape/scale, meanlog/sdlog), and summary statistics (e.g. mean, standard deviation, median, range or quantiles) given in the paper, values should be recorded verbatim from the paper into the database. When these are read into R using the `{epiparameter}` package, other aspects of the distribution are automatically calculated and available. For example if the mean and standard deviation of a gamma distribution is reported for a serial interval these values will be stored in the database. But once in R, the shape and scale parameters of the gamma distribution will be automatically reconstructed and the resulting distribution available for use.
+
+The `{epiparameter}` library exactly reflects the literature. By which we mean that information not present in the paper should not be imputed from prior knowledge (e.g. vector of a disease is known but not stated), or but performing calculating with reported values. This prevents the issue of not having clear provenance for the data in the library.
 
 The minimal dataset that is required to be included in the `{epiparameter}` library is:
 
