@@ -29,7 +29,7 @@ An outbreak of a known or potentially novel pathogen is detected and the paramet
 This vignette will provide a introduction to the data stored within {epiparameter}, how to read it into R, manipulate
 the data, and the functions (and methods) implemented in the package to facilitate easy application of parameters into epidemiological pipelines.
 
-The {distributional} package is loaded as some of the {epiparameter} methods uses S3 generics from this package.
+The {distributional} package is loaded as some of the {epiparameter} methods use S3 generics from this package.
 
 ```{r setup}
 library(epiparameter)
@@ -70,7 +70,7 @@ colnames(epi_dist_db)
 
 If subsetting of the `<epiparam>` object removes one of the crucial columns then the object is 
 converted to a data frame. Here removing the `disease` column causes the `<epiparam>` object
-to be converted to a data frame. See this [Epiverse-TRACE blog post](https://epiverse-trace.github.io/posts/extend-dataframes/) for a more technical description.
+to be converted to a data frame. See the Epiverse-TRACE [blog post on extending data frames](https://epiverse-trace.github.io/posts/extend-dataframes/) for a more technical description.
 
 ```{r, epiparam-subset-disease}
 epi_dist_df <- epi_dist_db[-which(colnames(epi_dist_db) == "disease")]
