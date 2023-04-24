@@ -145,9 +145,9 @@ results <- cbind(
 
 The extraction precision/bias can be explored:
 
-```{r, plot-results-percentiles, fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-# plot differences
-param_diff_plot <- ggplot2::ggplot(data = results) +
+```{r, plot-results-percentiles, fig.cap="Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
+# plot differences by distribution
+ggplot2::ggplot(data = results) +
   ggplot2::geom_point(mapping = ggplot2::aes(
     x = diff_param_1, 
     y = diff_param_2, 
@@ -157,22 +157,15 @@ param_diff_plot <- ggplot2::ggplot(data = results) +
   ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
   ggplot2::labs(colour = "Percentile Asym.") + 
   ggplot2::theme_bw() +
-  ggplot2::scale_color_viridis_c()
-
-param_diff_plot
+  ggplot2::scale_color_viridis_c() +
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
+  ggplot2::theme(strip.background = ggplot2::element_blank())
 ```
 
 The magnitude of the error is larger for parameter 1 (see axis breaks) which is either
 shape or meanlog depending on the distribution, than for parameter 2, which is either scale
 or sdlog. There is no clear pattern of higher asymmetry in percentiles resulting in higher
 bias in parameter extraction.
-
-```{r, plot-results-percentiles-dist, fig.cap="Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-# plot differences by distribution
-param_diff_plot + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
-  ggplot2::theme(strip.background = ggplot2::element_blank())
-```
 
 ```{r, pivot-results-percentiles}
 # tidy parameter differences to plot side-by-side
@@ -332,23 +325,16 @@ results <- cbind(
 Plot results:
 
 ```{r, plot-results-med-range, fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-# plot differences
-param_diff_plot <- ggplot2::ggplot(data = results) +
+
+# plot differences by distribution
+ggplot2::ggplot(data = results) +
   ggplot2::geom_point(mapping = ggplot2::aes(x = diff_param_1, y = diff_param_2, colour = n_samples)) +
   ggplot2::scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
   ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
   ggplot2::labs(colour = "No. Samples") + 
   ggplot2::theme_bw() +
-  ggplot2::scale_color_viridis_c()
-
-param_diff_plot
-```
-
-```{r, plot-results-med-range-dist, fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-
-# plot differences by distribution
-param_diff_plot + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist)) +
+  ggplot2::scale_color_viridis_c() + 
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
   ggplot2::theme(strip.background = ggplot2::element_blank())
 
 ```
@@ -496,9 +482,8 @@ colnames(results) <- c(
 )
 ```
 
-```{r, plot-results, fig.cap="Parameter extraction stability. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-# plot differences
-param_diff_plot <- ggplot2::ggplot(data = results) +
+```{r, plot-results, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
+ggplot2::ggplot(data = results) +
   ggplot2::geom_point(mapping = ggplot2::aes(
     x = estim_param_1_var, 
     y = estim_param_2_var, 
@@ -508,13 +493,7 @@ param_diff_plot <- ggplot2::ggplot(data = results) +
   ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
   ggplot2::labs(colour = "Percentile Asym.") + 
   ggplot2::theme_bw() +
-  ggplot2::scale_color_viridis_c()
-
-param_diff_plot
-```
-
-```{r, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-param_diff_plot + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist)) +
+  ggplot2::scale_color_viridis_c() + 
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
   ggplot2::theme(strip.background = ggplot2::element_blank())
 ```
