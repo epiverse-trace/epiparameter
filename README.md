@@ -23,8 +23,9 @@ statistics.
 `{epiparameter}` is developed at the [Centre for the Mathematical
 Modelling of Infectious
 Diseases](https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases)
-at the London School of Hygiene and Tropical Medicine as part of the
-[Epiverse Initiative](https://data.org/initiatives/epiverse/).
+at the [London School of Hygiene and Tropical
+Medicine](https://www.lshtm.ac.uk/) as part of
+[Epiverse-TRACE](https://data.org/initiatives/epiverse/).
 
 ## Installation
 
@@ -146,7 +147,6 @@ By contributing to this project, you agree to abide by its terms.
 
 ``` r
 citation("epiparameter")
-#> 
 #> To cite package 'epiparameter' in publications use:
 #> 
 #>   Lambert J, Kucharski A (2023). _epiparameter: Library of
