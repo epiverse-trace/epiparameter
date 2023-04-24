@@ -599,18 +599,18 @@ convert_nbinom_summary_stats <- function(...) {
 
   # if either parameter hasn't been calculated error
   if (!exists("prob") || !exists("dispersion")) {
-    stop(paste0(
+    stop(
       "Cannot calculate negative binomial distribution ",
       "parameters from given input"
-    ))
+    )
   }
 
   # ensure variance-to-mean ratio > 1
   if (prob > 1 || dispersion < 0) {
-    stop(paste0(
+    stop(
       "Negative binomial has a variance-to-mean ratio of greater ",
       "than one, check input"
-    ))
+    )
   }
 
   # return list of parameters

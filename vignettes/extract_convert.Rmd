@@ -167,9 +167,9 @@ Here we demonstrate extraction using percentiles. The `type` should be `"percent
 
 ```{r}
 extract_param(
-  type = "percentiles", 
-  values = c(1, 10), 
-  distribution = "gamma", 
+  type = "percentiles",
+  values = c(1, 10),
+  distribution = "gamma",
   percentiles = c(0.025, 0.975)
 )
 ```
@@ -182,9 +182,9 @@ The alternative extraction, by median and range, can be achieved by specifying `
 
 ```{r}
 extract_param(
-  type = "range", 
-  values = c(10, 5, 15), 
-  distribution = "lnorm", 
+  type = "range",
+  values = c(10, 5, 15),
+  distribution = "lnorm",
   samples = 25
 )
 ```
@@ -193,14 +193,14 @@ In the above section it was mentioned that `extract_param()` has an internal mec
 
 ```{r}
 # set seed to ensure warning is produced
-set.seed(1) 
+set.seed(1)
 
 # lower maximum iteration to show warning
 extract_param(
-  type = "range", 
-  values = c(10, 1, 25), 
-  distribution = "lnorm", 
-  samples = 100, 
+  type = "range",
+  values = c(10, 1, 25),
+  distribution = "lnorm",
+  samples = 100,
   control = list(max_iter = 100)
 )
 ```
