@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 
 `{epiparameter}` is an `R` package that contains a library of epidemiological parameters for infectious diseases and a set classes and helper functions to be able to work with the data. It also includes functions to extract and convert parameters from reported summary statistics.
 
-`{epiparameter}` is developed at the [Centre for the Mathematical Modelling of Infectious Diseases](https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases) at the London School of Hygiene and Tropical Medicine as part of the [Epiverse Initiative](https://data.org/initiatives/epiverse/).
+`{epiparameter}` is developed at the [Centre for the Mathematical Modelling of Infectious Diseases](https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases) at the [London School of Hygiene and Tropical Medicine](https://www.lshtm.ac.uk/) as part of [Epiverse-TRACE](https://data.org/initiatives/epiverse/).
 
 
 ## Installation
