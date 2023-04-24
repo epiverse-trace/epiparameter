@@ -42,9 +42,9 @@ db <- epiparameter::epiparam()
 dupl_rows <- duplicated(db$disease) & duplicated(db$pathogen)
 knitr::kable(
   data.frame(
-    Disease = db$disease[!dupl_rows], 
+    Disease = db$disease[!dupl_rows],
     Pathogen = db$pathogen[!dupl_rows]
-  ), 
+  ),
   align = "cc"
 )
 ```
@@ -56,8 +56,8 @@ db <- epiparameter::epiparam()
 dupl_rows <- duplicated(db$epi_distribution)
 epidist <- epiparameter::clean_epidist_name(db$epi_distribution[!dupl_rows])
 knitr::kable(
-  data.frame(epidist), 
-  align = "cc", 
+  data.frame(epidist),
+  align = "cc",
   col.names = "Epidemiological Distribution"
 )
 ```
