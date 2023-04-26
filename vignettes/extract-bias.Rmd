@@ -95,9 +95,7 @@ removing the seed should not drastically change the results or interpretation.
 set.seed(1)
 ```
 
-We define a function that can be reused throughout the vignette.
-
-```{r, define-run-extraction}
+```{r, run-extraction-percentile}
 estim_params <- list()
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
@@ -124,7 +122,7 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
       )
     )
   }
-
+  
   # message about stochastic optimisation suppressed
   estim_params[[params_idx]] <- suppressMessages(
     extract_param(
@@ -135,7 +133,6 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
       control = list(tolerance = 10)
     )
   )
-
 }
 
 # combine results
@@ -180,12 +177,7 @@ ggplot(data = results) +
   theme(strip.background = element_blank())
 ```
 
-The magnitude of the error is larger for parameter 1 (see axis breaks) which is either
-shape or meanlog depending on the distribution, than for parameter 2, which is either scale
-or sdlog. There is no clear pattern of higher asymmetry in percentiles resulting in higher
-bias in parameter extraction.
-
-## Extraction by median and range
+### Extraction by median and range
 
 The same analysis as above can be repeated, this time using the other summary
 statistic possibly reported in studies: an inferred distribution's median and range.
@@ -282,7 +274,6 @@ results <- cbind(
 Plot results:
 
 ```{r, plot-results-med-range, fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-
 # plot differences by distribution
 ggplot(data = results) +
   geom_point(
@@ -345,20 +336,19 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
   }
   
   # message about stochastic optimisation suppressed
-
-    estim <- suppressMessages(
-      replicate(
-        n = 5,
-        expr =  extract_param(
-          type = "percentiles",
-          values = true_values,
-          distribution = dist,
-          percentiles = percen,
-          control = list(tolerance = 10)
-        )
+  estim <- suppressMessages(
+    replicate(
+      n = 5,
+      expr =  extract_param(
+        type = "percentiles",
+        values = true_values,
+        distribution = dist,
+        percentiles = percen,
+        control = list(tolerance = 10)
       )
     )
-    estim_param_var[[params_idx]] <- apply(estim, MARGIN = 1, FUN = var)
+  )
+  estim_param_var[[params_idx]] <- apply(estim, MARGIN = 1, FUN = var)
 }
 
 # combine results
@@ -479,4 +469,3 @@ ggplot(data = results) +
   facet_wrap(facets = vars(dist), scales = "free") +
   theme(strip.background = element_blank())
 ```
-
