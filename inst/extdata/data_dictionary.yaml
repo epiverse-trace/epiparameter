@@ -288,7 +288,7 @@ properties:
   shape:
     description: >
       The shape parameter of the distribution. This can be
-      the shape parameter of the gamma or weibull
+      the shape parameter of the gamma or Weibull
       distribution depending on what is specified in the
       distribution field.
     examples: [4.2, 5.5]
@@ -317,7 +317,7 @@ properties:
   scale:
     description: >
       The scale parameter of the distribution. This can be
-      the shape of the gamma or weibull distribution
+      the shape of the gamma or Weibull distribution
       depending on what is specified in the distribution
       field.
     examples: [0.9, 1.1]

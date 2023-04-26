@@ -6,7 +6,7 @@
 #' instead summary statistics of a distribution are provided, the parameters
 #' can usually be calculated from the summary statistics. The
 #' `calc_dist_params()` function computes the parameters for the gamma,
-#' lognormal and weibull distributions.
+#' lognormal and Weibull distributions.
 #'
 #' This function can provide a convinient wrapper around the conversion and
 #' extraction functions it is not known which summary statistics can be used to
@@ -14,7 +14,7 @@
 #'
 #' @details The hierarchy of methods are: conversion is prioritised if the mean
 #' and standard deviation are available as these are mostly analytical
-#' conversions (except for one of the weibull conversions), next method if
+#' conversions (except for one of the Weibull conversions), next method if
 #' possible is extraction from percentiles. This method requires a lower
 #' percentile (between(0-50]) and an upper percentile(between (50-100)). If
 #' multiple percentiles in each of these ranges is provided the lowest value is

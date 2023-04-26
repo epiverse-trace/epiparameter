@@ -22,7 +22,7 @@ deviation, variance, among others.
 
 When working with epidemiological parameters it can be useful to have the values
 of the parameters for common parameterisations of the distribution. For example,
-shape and scale parameters for the gamma and weibull distribution, and the meanlog
+shape and scale parameters for the gamma and Weibull distribution, and the meanlog
 and sdlog parameters for the lognormal distribution. 
 
 In {epiparameter} we provide a range of conversion and extraction functions in
@@ -174,7 +174,7 @@ extract_param(
 )
 ```
 
-In the above example we estimate parameters of the gamma distribution, but extraction is also implemented for the lognormal and weibull distributions, but specifying `"lnorm"` or `"weibull"`.
+In the above example we estimate parameters of the gamma distribution, but extraction is also implemented for the lognormal and Weibull distributions, but specifying `"lnorm"` or `"weibull"`.
 
 A message is shown when running `extract_param()` to make the user aware that the estimates are not completely reliable due to the use of numerical optimisation. Rerunning the function to and finding the same parameters are returned indicates that they have successfully converged. This issue is mostly overcome by the internal setup of the `extract_param()` function which searches for convergence to consistent parameter estimates before returning these to the user.
 
@@ -240,7 +240,7 @@ extract_param(
 
 It can be the case that a study will report summary statistics for an unspecified distribution or just for the raw data. In these cases if a parameterised distribution is required for downstream analysis a functional, parametric, form may have to be assumed. 
 
-If the distribution is a delay distribution (i.e. serial interval or incubation period) it can often be sensible to assume a right-skewed distribution such as: gamma, lognormal or weibull distributions. These are also the most commonly fit distributions in epidemiological analysis of delay distributions.
+If the distribution is a delay distribution (i.e. serial interval or incubation period) it can often be sensible to assume a right-skewed distribution such as: gamma, lognormal or Weibull distributions. These are also the most commonly fit distributions in epidemiological analysis of delay distributions.
 
 However, one should take care when assuming a distribution as this may drastically influence the interpretation and application of the epidemiological parameters.
 :::

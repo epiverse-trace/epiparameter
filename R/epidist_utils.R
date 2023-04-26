@@ -607,7 +607,7 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a weibull distribution
+#' Standardises parameters for a Weibull distribution
 #'
 #' @inheritParams new_epidist
 #'
@@ -623,7 +623,7 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
     return(prob_dist_params)
   } else {
     stop(
-      "Names of weibull distribution parameters are incorrect",
+      "Names of Weibull distribution parameters are incorrect",
       call. = FALSE
     )
   }
