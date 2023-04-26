@@ -337,11 +337,7 @@ convert_weibull_params <- function(shape, scale) {
   # calculate metrics
   mean <- scale * gamma(1 + 1 / shape)
   median <- stats::qweibull(p = 0.5, shape = shape, scale = scale)
-  mode <- ifelse(
-    shape > 1,
-    yes = scale * ((shape - 1) / shape)^(1 / shape),
-    no = 0
-  )
+  mode <- max(scale * ((shape - 1) / shape)^(1 / shape), 0)
   var <- scale^2 * (gamma(1 + 2 / shape) - (gamma(1 + 1 / shape))^2)
   sd <- sqrt(var)
   cv <- sd / mean
