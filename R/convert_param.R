@@ -6,15 +6,16 @@
 #' @keywords internal
 #' @noRd
 get_sd <- function(x) {
-  if ("var" %in% names(x) && !"sd" %in% names(x))  {
-    x$sd <- sqrt(x$var)
-  } else if (all(c("mean", "cv") %in% names(x)) &&
-             !isTRUE("sd" %in% names(x))) {
-    x$sd <- x$cv * x$mean
-  }
-
-  # return list of summary statistics
-  x
+    if ("sd" %in% names(x)) {
+      return(x)
+    }
+    if ("var" %in% names(x))  {
+      x$sd <- sqrt(x$var)
+    } else if (all(c("mean", "cv") %in% names(x))) {
+      x$sd <- x$cv * x$mean
+    }
+    # return list of summary statistics
+    x
 }
 
 #' Checks list of summary statistics is valid for conversion
