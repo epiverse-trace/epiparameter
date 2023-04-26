@@ -52,7 +52,7 @@ test_that("clean_epidist_params fails when weibull parameters are incorrect", {
   class(weibull_params) <- "weibull"
   expect_error(
     clean_epidist_params(prob_dist_params = weibull_params),
-    regexp = "Names of weibull distribution parameters are incorrect"
+    regexp = "Names of Weibull distribution parameters are incorrect"
   )
 })
 
