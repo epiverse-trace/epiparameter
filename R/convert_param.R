@@ -25,22 +25,20 @@ get_sd <- function(x) {
 #' @keywords internal
 #' @noRd
 chk_ss <- function(x) {
-  stopifnot(
-    "input must be a list" =
-      is.list(x),
-    "at least two summary statistics must be supplied" =
-      length(x) >= 2,
-    "all arguments must be named" =
-      !is.null(names(x)) && isFALSE("" %in% names(x)),
-    "all values given must be numeric" =
-      all(vapply(x, is.numeric, FUN.VALUE = logical(1))),
-    "names of input must match:
-    'mean', 'median', 'mode', 'var', 'sd', 'cv', 'skewness', 'ex_kurtosis'" =
-      all(names(x) %in%  c(
-        "mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis"
-      ))
+  checkmate::assert_list(
+    x = x,
+    types = "numeric",
+    any.missing = FALSE,
+    all.missing = FALSE,
+    min.len = 2,
+    names = "unique"
   )
-
+  checkmate::assert_subset(
+    x = names(x),
+    choices = c(
+      "mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis"
+    )
+  )
   # invisibly return list of summary statistics
   invisible(x)
 }
