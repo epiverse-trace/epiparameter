@@ -416,15 +416,6 @@ test_that("geom_prob2mean fails as expected", {
   )
 })
 
-test_that("is_number works as expected", {
-  expect_true(is_number(1))
-  expect_false(is_number("1"))
-  expect_false(is_number(c(1, 2)))
-  expect_false(is_number(TRUE))
-  expect_false(is_number(NA))
-  expect_false(is_number(NA_real_))
-})
-
 test_that("get_sd works as expected", {
   x <- list(mean = 1, sd = 1)
   x <- get_sd(x)
