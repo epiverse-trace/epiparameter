@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-::: {.alert .alert-warning}
+::: {.alert .alert-info}
 If you are unfamiliar with the parameter extraction functionality in {epiparameter} 
 the Conversion and Extraction vignette is a great place to start.
 :::
