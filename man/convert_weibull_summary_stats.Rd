@@ -2,12 +2,12 @@
 % Please edit documentation in R/convert_param.R
 \name{convert_weibull_summary_stats}
 \alias{convert_weibull_summary_stats}
-\title{Converts the summary statistics to parameters of the weibull distribution}
+\title{Converts the summary statistics to parameters of the Weibull distribution}
 \usage{
 convert_weibull_summary_stats(...)
 }
 \arguments{
-\item{...}{Summary statistics to be used for calculating the weibull
+\item{...}{Summary statistics to be used for calculating the Weibull
 distribution parameters. All arguments must be correctly named, see details
 for possible input.}
 }
@@ -16,7 +16,7 @@ A list of two elements, the shape and scale
 }
 \description{
 Converts the summary statistics input into the shape and scale
-parameters of the weibull distribution.
+parameters of the Weibull distribution.
 }
 \details{
 The arguments input are captured and handled by name. Therefore,

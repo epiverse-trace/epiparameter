@@ -2,21 +2,21 @@
 % Please edit documentation in R/convert_param.R
 \name{weibull_meansd2shapescale}
 \alias{weibull_meansd2shapescale}
-\title{Converts the mean and standard deviation of the weibull distribution to the
+\title{Converts the mean and standard deviation of the Weibull distribution to the
 shape and scale parameterisation.}
 \usage{
 weibull_meansd2shapescale(mean, sd)
 }
 \arguments{
-\item{mean}{The mean of the weibull distribution}
+\item{mean}{The mean of the Weibull distribution}
 
-\item{sd}{The standard deviation of the weibull distribution}
+\item{sd}{The standard deviation of the Weibull distribution}
 }
 \value{
 A named list with shape and scale parameters
 }
 \description{
-Converts the mean and standard deviation of the weibull distribution to the
+Converts the mean and standard deviation of the Weibull distribution to the
 shape and scale parameterisation.
 }
 \examples{
@@ -35,7 +35,7 @@ weibull_shapescale2meansd(wss[["shape"]], wss[["scale"]])
 # [1] 0.4514356
 
 # the mean and standard deviation (sqrt(var)) are more accurately recovered
-# from a larger sample size of weibull random variables
+# from a larger sample size of Weibull random variables
 set.seed(1)
 r <- rweibull(n = 1000, shape = wss[["shape"]], scale = wss[["scale"]])
 mean(r)
