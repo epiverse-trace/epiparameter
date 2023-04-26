@@ -1,14 +1,3 @@
-#' Analogue to isTRUE() to check if variable is a single number
-#'
-#' @param x An R object.
-#'
-#' @return Boolean logical
-#' @keywords internal
-#' @noRd
-is_number <- function(x) {
-  is.numeric(x) && length(x) == 1 && !is.na(x)
-}
-
 #' Adds standard deviation to the list if not present or errors
 #'
 #' @param x A list of summary statistics
@@ -138,10 +127,10 @@ convert_lnorm_summary_stats <- function(...) {
   # convert var or cv into sd if available
   x <- get_sd(x)
 
-  if (is_number(x$mean) && is_number(x$sd)) {
+  if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     # mean and sd to params
     return(lnorm_meansd2meanlogsdlog(mean = x$mean, sd = x$sd))
-  } else if (is_number(x$median) && is_number(x$sd)) {
+  } else if (checkmate::test_number(x$median) && checkmate::test_number(x$sd)) {
     # median and sd to params
     sdlog <- sqrt(log(1 + (x$sd / x$median)^2))
     meanlog <- log(x$median) - sdlog^2 / 2
@@ -280,7 +269,7 @@ convert_gamma_summary_stats <- function(...) {
   # convert var or cv into sd if available
   x <- get_sd(x)
 
-  if (is_number(x$mean) && is_number(x$sd)) {
+  if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     # mean and sd to params
     return(gamma_meansd2shapescale(mean = x$mean, sd = x$sd))
   }
@@ -417,7 +406,7 @@ convert_weibull_summary_stats <- function(...) {
   # convert var or cv into sd if available
   x <- get_sd(x)
 
-  if (is_number(x$mean) && is_number(x$sd)) {
+  if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     # mean and sd to params
     return(weibull_meansd2shapescale(mean = x$mean, sd = x$sd))
   }
@@ -592,7 +581,7 @@ convert_nbinom_summary_stats <- function(...) {
 
   # calculate mean and variance
 
-  if (is_number(x$mean) && is_number(x$sd)) {
+  if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     prob <- x$mean / x$sd^2
     dispersion <- x$mean^2 / (x$sd^2 - x$mean)
   }
@@ -765,7 +754,7 @@ convert_geom_summary_stats <- function(...) {
   x <- get_sd(x)
 
   # calculate mean
-  if (is_number(x$mean)) {
+  if (checkmate::test_number(x$mean)) {
     return(geom_mean2prob(mean = x$mean))
   }
 
