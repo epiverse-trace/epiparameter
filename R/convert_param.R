@@ -129,7 +129,8 @@ convert_lnorm_summary_stats <- function(...) {
   if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     # mean and sd to params
     return(lnorm_meansd2meanlogsdlog(mean = x$mean, sd = x$sd))
-  } else if (checkmate::test_number(x$median) && checkmate::test_number(x$sd)) {
+  }
+  if (checkmate::test_number(x$median) && checkmate::test_number(x$sd)) {
     # median and sd to params
     sdlog <- sqrt(log(1 + (x$sd / x$median)^2))
     meanlog <- log(x$median) - sdlog^2 / 2
