@@ -84,7 +84,7 @@ test_that("make_epidist works as expected for gamma", {
   expect_identical(family(edist), "gamma")
 })
 
-test_that("make_epidist works as expected for weibull", {
+test_that("make_epidist works as expected for Weibull", {
   # suppress message about numerical approximation
   edist <- suppressMessages(make_epidist(x = list(
     disease = "influenza",

@@ -67,7 +67,7 @@ test_that("extract_param works for gamma from median and range", {
   )
 })
 
-test_that("extract_param works for weibull from percentiles", {
+test_that("extract_param works for Weibull from percentiles", {
   # set seed for stochastic optimisation
   set.seed(1)
   # suppress messages for testing
@@ -84,7 +84,7 @@ test_that("extract_param works for weibull from percentiles", {
   )
 })
 
-test_that("extract_param works for weibull from median and range", {
+test_that("extract_param works for Weibull from median and range", {
   # set seed for stochastic optimisation
   set.seed(1)
   # suppress messages for testing
@@ -250,7 +250,7 @@ test_that("extract_param_percentile works for gamma", {
   )
 })
 
-test_that("extract_param_percentile works for weibull", {
+test_that("extract_param_percentile works for Weibull", {
   # set seed for stochastic optimisation
   set.seed(1)
   weibull_params <- extract_param_percentile(
@@ -313,7 +313,7 @@ test_that("extract_param_range works for gamma", {
   )
 })
 
-test_that("extract_param_range works for weibull", {
+test_that("extract_param_range works for Weibull", {
   # set seed for stochastic optimisation
   set.seed(1)
   weibull_params <- extract_param_range(

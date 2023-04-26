@@ -316,15 +316,15 @@ gamma_meansd2shapescale <- function(mean, sd) {
   list(shape = shape, scale = scale)
 }
 
-#' Converts the parameters of the weibull distribution to summary statistics
+#' Converts the parameters of the Weibull distribution to summary statistics
 #'
-#' @description Converts the shape and scale parameters of the weibull
+#' @description Converts the shape and scale parameters of the Weibull
 #' distribution to a number of summary statistics which can be calculated
-#' analytically given the weibull parameters. Note the conversion uses the
+#' analytically given the Weibull parameters. Note the conversion uses the
 #' [`gamma()`] function.
 #'
-#' @param shape The shape parameter of the weibull distribution
-#' @param scale The scale parameter of the weibull distribution
+#' @param shape The shape parameter of the Weibull distribution
+#' @param scale The scale parameter of the Weibull distribution
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
@@ -371,10 +371,10 @@ convert_weibull_params <- function(shape, scale) {
   )
 }
 
-#' Converts the summary statistics to parameters of the weibull distribution
+#' Converts the summary statistics to parameters of the Weibull distribution
 #'
 #' @description Converts the summary statistics input into the shape and scale
-#' parameters of the weibull distribution.
+#' parameters of the Weibull distribution.
 #'
 #' @details The arguments input are captured and handled by name. Therefore,
 #' the names of the arguments must be correct (case-sensitive). Possible input
@@ -385,7 +385,7 @@ convert_weibull_params <- function(shape, scale) {
 #' error. Common conversions that are implemented are mean and any measure of
 #' spread (`var`, `sd` and `cv`).
 #'
-#' @param ... Summary statistics to be used for calculating the weibull
+#' @param ... Summary statistics to be used for calculating the Weibull
 #' distribution parameters. All arguments must be correctly named, see details
 #' for possible input.
 #'
@@ -412,15 +412,15 @@ convert_weibull_summary_stats <- function(...) {
 
   # if either parameter hasn't been calculated, error
   if (!exists("shape") || !exists("scale")) {
-    stop("Cannot calculate weibull parameters from given input")
+    stop("Cannot calculate Weibull parameters from given input")
   }
 }
 
-#' Converts the mean and standard deviation of the weibull distribution to the
+#' Converts the mean and standard deviation of the Weibull distribution to the
 #' shape and scale parameterisation.
 #'
-#' @param mean The mean of the weibull distribution
-#' @param sd The standard deviation of the weibull distribution
+#' @param mean The mean of the Weibull distribution
+#' @param sd The standard deviation of the Weibull distribution
 #'
 #' @return A named list with shape and scale parameters
 #' @export
@@ -441,7 +441,7 @@ convert_weibull_summary_stats <- function(...) {
 #' # [1] 0.4514356
 #'
 #' # the mean and standard deviation (sqrt(var)) are more accurately recovered
-#' # from a larger sample size of weibull random variables
+#' # from a larger sample size of Weibull random variables
 #' set.seed(1)
 #' r <- rweibull(n = 1000, shape = wss[["shape"]], scale = wss[["scale"]])
 #' mean(r)
@@ -471,7 +471,7 @@ weibull_meansd2shapescale <- function(mean, sd) {
   list(shape = shape, scale = scale)
 }
 
-#' Converts the shape and scale parameters of the weibull distribution to the
+#' Converts the shape and scale parameters of the Weibull distribution to the
 #' mean and standard deviation
 #'
 #' @inheritParams convert_weibull_params

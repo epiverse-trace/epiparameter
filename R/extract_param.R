@@ -3,9 +3,9 @@
 #'
 #' Summary data of distributions, as provided by reports and meta-analyses, can
 #' be used to extract the parameters of a chosen distribution. Currently
-#' available distributions are: lognormal, gamma and weibull. Extracting
+#' available distributions are: lognormal, gamma and Weibull. Extracting
 #' from a lognormal returns the meanlog and sdlog parameters, and extracting
-#' from the gamma and weibull returns the shape and scale parameters.
+#' from the gamma and Weibull returns the shape and scale parameters.
 #'
 #' @param type A `character` defining whether summary statistics based
 #' around `percentiles` (default) or `range`
@@ -320,7 +320,7 @@ check_optim_conv <- function(optim_params_list,
 #' Function for extracting distribution parameters
 #'
 #' Set of functions that can be used to estimate the parameters of a
-#' distribution (lognormal, gamma, weibull) via optimisation from either the
+#' distribution (lognormal, gamma, Weibull) via optimisation from either the
 #' percentiles or the median and ranges.
 #'
 #' @param param Named numeric vector of the distribution parameters to be

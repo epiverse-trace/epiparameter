@@ -30,7 +30,7 @@ test_that("create_prob_dist works as expected for continuous lognormal", {
   )
 })
 
-test_that("create_prob_dist works as expected for continuous weibull", {
+test_that("create_prob_dist works as expected for continuous Weibull", {
   res <- create_prob_dist(
     prob_dist = "weibull",
     prob_dist_params = c(shape = 1, scale = 1),
@@ -126,7 +126,7 @@ test_that("create_prob_dist works as expected for discrete lognormal", {
   )
 })
 
-test_that("create_prob_dist works as expected for discrete weibull", {
+test_that("create_prob_dist works as expected for discrete Weibull", {
   res <- create_prob_dist(
     prob_dist = "weibull",
     prob_dist_params = c(shape = 1, scale = 1),
