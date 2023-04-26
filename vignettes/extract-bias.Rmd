@@ -96,7 +96,7 @@ set.seed(1)
 ```
 
 ```{r, run-extraction-percentile}
-estim_params <- list()
+estim_params <- vector("list", nrow(parameters_perc))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
   
@@ -197,7 +197,7 @@ parameters_range <- expand.grid(
 ```
 
 ```{r run-extraction-med-range}
-estim_params <- list()
+estim_params <- vector("list", nrow(parameters_range))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_range))) {
   
@@ -308,7 +308,7 @@ We use the same parameter space for percentiles as defined above
 compute the variance of parameter estimates over those replicates.
 
 ```{r, run-extraction-stability-percentile}
-estim_param_var <- list()
+estim_param_var <- vector("list", nrow(parameters_perc))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
   
@@ -382,7 +382,7 @@ The same test of estimation consistency can be performed for the extraction from
 
 
 ```{r, run-extraction-stability-range}
-estim_param_var <- list()
+estim_param_var <- vector("list", nrow(parameters_range))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_range))) {
   
