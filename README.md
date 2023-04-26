@@ -80,10 +80,10 @@ influenza_incubation
 #> Pathogen: SARS-CoV-2
 #> Epi Distribution: incubation period
 #> Study: Linton et al. (2020) <10.3390/jcm9020538> PMID: 32079150
-#> Distribution: lognormal
+#> Distribution: lnorm
 #> Parameters:
-#>   mu: 1.456
-#>   sigma: 0.555
+#>   meanlog: 1.456
+#>   sdlog: 0.555
 ```
 
 The `<epidist>` object can be plotted.
@@ -102,7 +102,7 @@ of distributions:
 
 - gamma
 - lognormal
-- weibull
+- Weibull
 - negative binomial
 - geometric
 
@@ -112,7 +112,7 @@ or the median and range of the data. This can be done for:
 
 - gamma
 - lognormal
-- weibull
+- Weibull
 
 ## Contributing to library of epidemiological parameters
 
