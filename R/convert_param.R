@@ -130,16 +130,14 @@ convert_lnorm_summary_stats <- function(...) {
     # mean and sd to params
     return(lnorm_meansd2meanlogsdlog(mean = x$mean, sd = x$sd))
   }
-  if (checkmate::test_number(x$median) && checkmate::test_number(x$sd)) {
-    # median and sd to params
-    sdlog <- sqrt(log(1 + (x$sd / x$median)^2))
-    meanlog <- log(x$median) - sdlog^2 / 2
-  }
 
-  # if either parameter hasn't been calculated error
-  if (!exists("meanlog") || !exists("sdlog")) {
+  if (!(checkmate::test_number(x$median) && checkmate::test_number(x$sd))) {
     stop("Cannot calculate lognormal parameters from given input")
   }
+
+  # median and sd to params
+  sdlog <- sqrt(log(1 + (x$sd / x$median)^2))
+  meanlog <- log(x$median) - sdlog^2 / 2
 
   # return list of params
   list(
