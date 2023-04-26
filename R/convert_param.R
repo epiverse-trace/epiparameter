@@ -509,11 +509,7 @@ convert_nbinom_params <- function(prob, dispersion) {
   # calculate metrics
   mean <- dispersion * (1 - prob) / prob
   median <- stats::qnbinom(p = 0.5, prob = prob, size = dispersion)
-  mode <- ifelse(
-    test = dispersion > 1,
-    yes = (dispersion - 1) * (1 - prob) / prob,
-    no = 0
-  )
+  mode <- max((dispersion - 1) * (1 - prob) / prob, 0)
   var <- dispersion * (1 - prob) / prob^2
   sd <- sqrt(var)
   cv <- sd / mean
