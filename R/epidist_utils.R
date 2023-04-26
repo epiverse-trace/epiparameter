@@ -580,7 +580,7 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
 #' @keywords internal
 clean_epidist_params.lnorm <- function(prob_dist_params) {
 
-  # if meanlog and sdlog are provided convert to mu and sigma
+  # if mu and sigma are provided convert to meanlog and sdlog
   if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
 
     # find index so parameters can be in any order
