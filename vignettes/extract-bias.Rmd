@@ -19,10 +19,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(epiparameter)
-library(ggplot2)
-```
+::: {.alert .alert-warning}
+If you are unfamiliar with the parameter extraction functionality in {epiparameter} 
+the Conversion and Extraction vignette is a great place to start.
+:::
 
 The {epiparameter} R package contains a set of functions to extract parameters
 of probability distributions given a set of summary statistics. These summary statistics can
@@ -36,7 +36,20 @@ of the different distributions to understand potential erroneous inferences. Thi
 vignette aims to explore this inference bias for the three distribution currently 
 supported in {epiparameter} for parameter extraction: gamma, lognormal and weibull.
 
-## Extraction by percentiles
+::: {.alert .alert-warning}
+This is not an in depth analysis of the estimation methods implemented in {epiparameter}, 
+but rather a supplementary article exploring the bias and consistency of the functions.
+It is specific to the case of {epiparameter} and should not be taken as a generalised results.
+:::
+
+```{r setup}
+library(epiparameter)
+library(ggplot2)
+```
+
+## Extraction Bias
+
+### Extraction by percentiles
 
 First we explore extraction from percentiles.
 
@@ -291,6 +304,8 @@ ggplot(data = results) +
 
 ## Extraction stability
 
+### Extraction by percentiles
+
 The two analyses above used a single extraction (replicate), however, it may be that
 the estimation of the parameters is unstable for a given set of percentiles or median 
 range. Therefore, we finish with a test of whether repeated extraction of parameters 
@@ -371,6 +386,7 @@ ggplot(data = results) +
   theme(strip.background = element_blank())
 ```
 
+### Extraction by median and range
 
 The same test of estimation consistency can be performed for the extraction from median and range.
 
