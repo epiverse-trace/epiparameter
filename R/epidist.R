@@ -941,7 +941,7 @@ is_truncated <- function(x) {
 
   stopifnot(
     "is_truncated only works for `<epidist> objects`" =
-      inherits(x, "epidist")
+      is_epidist(x)
   )
 
   # distcrete distributions cannot be truncated
