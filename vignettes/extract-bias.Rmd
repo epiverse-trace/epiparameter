@@ -52,7 +52,7 @@ dist_parameters <- seq(0.5, 2, 0.5)
 lower_percentiles <- c(2.5, 5, 25, 40)
 upper_percentiles <- c(60, 95, 97.5)
 
-parameters <- expand.grid(
+parameters_perc <- expand.grid(
   dist = distributions, 
   param_1 = dist_parameters, 
   param_2 = dist_parameters, 
@@ -61,79 +61,76 @@ parameters <- expand.grid(
 )
 
 # calculate the degree of asymmetry for each percentile combination
-lw_interval_diff <- abs(0 - parameters$lower)
-up_interval_diff <- abs(100 - parameters$upper)
+lw_interval_diff <- abs(0 - parameters_perc$lower)
+up_interval_diff <- abs(100 - parameters_perc$upper)
 deg_asym <- abs(lw_interval_diff - up_interval_diff)
 
 # add degree of asymmetry to percentiles
-parameters <- cbind(parameters, deg_asym)
+parameters_perc <- cbind(parameters_perc, deg_asym)
 
 # divide percentiles by 100 to make them probabilities for quantile functions
-parameters$lower <- parameters$lower / 100
-parameters$upper <- parameters$upper / 100
+parameters_perc$lower <- parameters_perc$lower / 100
+parameters_perc$upper <- parameters_perc$upper / 100
 ```
 
-Now we can run the extraction for each point in parameter space:
+Now we can run the extraction for each point in parameter space. We set a seed
+to control for stochasticity when estimating the parameters, however changing or
+removing the seed should not drastically change the results or interpretation.
 
-```{r, run-extraction-percentiles}
+```{r, set-seed}
+set.seed(1)
+```
+
+We define a function that can be reused throughout the vignette.
+
+```{r, define-run-extraction}
 estim_params <- list()
 # Loop through parameter space estimating parameters
-for (params_idx in seq_len(nrow(parameters))) {
+for (params_idx in seq_len(nrow(parameters_perc))) {
   
-  percen <- unname(unlist(parameters[params_idx, c("lower", "upper")]))
-  
-  dist <- as.character(parameters[params_idx, "dist"])
+  dist <- as.character(parameters_perc[params_idx, "dist"])
+  percen <- unname(unlist(parameters_perc[params_idx, c("lower", "upper")]))
   
   if (dist == "lnorm") {
     true_values <- do.call(
-      paste0("q", dist), 
+      paste0("q", dist),
       list(
-        p = percen, 
-        meanlog = parameters[params_idx, "param_1"], 
-        sdlog = parameters[params_idx, "param_2"]
+        p = percen,
+        meanlog = parameters_perc[params_idx, "param_1"],
+        sdlog = parameters_perc[params_idx, "param_2"]
       )
     )
   } else {
     true_values <- do.call(
-      paste0("q", dist), 
+      paste0("q", dist),
       list(
-        p = percen, 
-        shape = parameters[params_idx, "param_1"], 
-        scale = parameters[params_idx, "param_2"]
+        p = percen,
+        shape = parameters_perc[params_idx, "param_1"],
+        scale = parameters_perc[params_idx, "param_2"]
       )
-    )  
+    )
   }
-  
+
   # message about stochastic optimisation suppressed
   estim_params[[params_idx]] <- suppressMessages(
     epiparameter::extract_param(
       type = "percentiles",
-      values = true_values, 
-      distribution = dist, 
-      percentiles = percen * 100, 
+      values = true_values,
+      distribution = dist,
+      percentiles = percen,
       control = list(tolerance = 10)
     )
   )
+
 }
-```
 
-
-In the above code chunk the the `extract_param()` function re-runs the optimisation
-until convergence to a set tolerance is acheived to more reliably return the global 
-optimum. For this analysis we set the tolerance to be arbitrarily large (i.e. 10) 
-to meet the convergence criteria immediately in order to save computation time. Therefore
-these results may be more biased than if the function were run with the default tolerance
-(`1e-5`).
-
-The results are collated and tidied for plotting.
-
-```{r, tidy-results-percentiles}
 # combine results
-results <- cbind(parameters, do.call(rbind, estim_params))
+results <- cbind(parameters_perc, do.call(rbind, estim_params))
+
 colnames(results) <- c(
   "dist", "param_1", "param_2", "lower", "upper", 
   "deg_asym", "estim_param_1", "estim_param_2"
-)
+)  
 
 # calculate absolute difference between true parameter and estimated value
 results <- cbind(
@@ -142,6 +139,13 @@ results <- cbind(
   diff_param_2 = abs(results$param_2 - results$estim_param_2)
 )
 ```
+
+In the above code chunk the `extract_param()` function re-runs the optimisation
+until convergence to a set tolerance is achieved to more reliably return the global 
+optimum. For this analysis we set the tolerance to be arbitrarily large (i.e. 10) 
+to meet the convergence criteria immediately in order to save computation time. Therefore
+these results may be more biased than if the function were run with the default tolerance
+(`1e-5`).
 
 The extraction precision/bias can be explored:
 
@@ -167,62 +171,6 @@ shape or meanlog depending on the distribution, than for parameter 2, which is e
 or sdlog. There is no clear pattern of higher asymmetry in percentiles resulting in higher
 bias in parameter extraction.
 
-```{r, pivot-results-percentiles}
-# tidy parameter differences to plot side-by-side
-results <- tidyr::pivot_longer(
-  data = results, cols = c("diff_param_1", "diff_param_2"), 
-  names_to = "diff_param", 
-  values_to = "diff"
-)
-```
-
-To determine whether the bias in parameter estimates varies across true values
-of the underlying distribution parameters, the plots below show the bias at
-each simulated value of either the shape -- for gamma and weibull -- or meanlog
-for lognormal.
-
-```{r, bar-plot-param1, fig.cap="Parameter estimation bias. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-# bar plot for parameter 1 differences
-param_1_diff_bar <- ggplot2::ggplot(data = results) +
-  ggplot2::geom_col(
-    mapping = ggplot2::aes(
-      x = param_1, 
-      y = diff, 
-      fill = diff_param), 
-    position = "dodge"
-  ) +
-  ggplot2::scale_x_continuous(name = "Parameter 1 true value") +
-  ggplot2::scale_y_continuous(name = "Parameter Difference (|true - estimated|)") +
-  ggplot2::scale_fill_brewer(labels = c("Parameter 1", "Parameter 2"), palette = "Set1") +
-  ggplot2::labs(fill = "Parameter Difference") +
-  ggplot2::theme_bw()
-param_1_diff_bar
-```
-
-```{r, bar-plot-param1-facet, fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-param_1_diff_bar + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist)) +
-  ggplot2::theme(strip.background = ggplot2::element_blank())
-```
-
-```{r, bar-plot-param2, fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-# bar plot for parameter 2 differences
-param_2_diff_bar <- ggplot2::ggplot(data = results) +
-  ggplot2::geom_col(mapping = ggplot2::aes(x = param_2, y = diff, fill = diff_param), position = "dodge") +
-  ggplot2::scale_x_continuous(name = "Parameter 2 true value") +
-  ggplot2::scale_y_continuous(name = "Parameter Difference (|true - estimated|)") +
-  ggplot2::scale_fill_brewer(labels = c("Parameter 1", "Parameter 2"), palette = "Set1") +
-  ggplot2::labs(fill = "Parameter Difference") + 
-  ggplot2::theme_bw()
-param_2_diff_bar
-```
-
-```{r, bar-plot-param2-facet, fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-param_2_diff_bar + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist)) +
-  ggplot2::theme(strip.background = ggplot2::element_blank())
-```
-
 ## Extraction by median and range
 
 The same analysis as above can be repeated, this time using the other summary
@@ -233,14 +181,11 @@ as this can impact the possible range exhibited by the data.
 Set up the parameter space:
 
 ```{r, set-up-parameter-space-med-range}
-distributions <- c("gamma", "lnorm", "weibull")
-dist_parameters <- seq(0.5, 2, 0.5)
 n_samples <- c(10, 50, 100)
-
-parameters <- expand.grid(
-  dist = distributions, 
-  param_1 = dist_parameters, 
-  param_2 = dist_parameters, 
+parameters_range <- expand.grid(
+  dist = distributions, # same as above
+  param_1 = dist_parameters, # same as above
+  param_2 = dist_parameters, # same as above
   n_samples = n_samples
 )
 ```
@@ -248,45 +193,44 @@ parameters <- expand.grid(
 ```{r run-extraction-med-range}
 estim_params <- list()
 # Loop through parameter space estimating parameters
-for (params_idx in seq_len(nrow(parameters))) {
+for (params_idx in seq_len(nrow(parameters_range))) {
   
-  dist <- as.character(parameters[params_idx, "dist"])
-  
-  n_samples <- parameters[params_idx, "n_samples"]
+  dist <- as.character(parameters_range[params_idx, "dist"])
+  n_samples <- parameters_range[params_idx, "n_samples"]
   
   if (dist == "lnorm") {
     true_median <- do.call(
-      paste0("q", dist), 
+      paste0("q", dist),
       list(
-        p = 0.5, 
-        meanlog = parameters[params_idx, "param_1"], 
-        sdlog = parameters[params_idx, "param_2"]
+        p = 0.5,
+        meanlog = parameters_range[params_idx, "param_1"],
+        sdlog = parameters_range[params_idx, "param_2"]
       )
     )
     true_range <- do.call(
-      paste0("r", dist), 
+      paste0("r", dist),
       list(
         n = n_samples,
-        meanlog = parameters[params_idx, "param_1"], 
-        sdlog = parameters[params_idx, "param_2"]
+        meanlog = parameters_range[params_idx, "param_1"],
+        sdlog = parameters_range[params_idx, "param_2"]
       )
     )
     true_range <- c(min(true_range), max(true_range))
   } else {
     true_median <- do.call(
-      paste0("q", dist), 
+      paste0("q", dist),
       list(
-        p = 0.5, 
-        shape = parameters[params_idx, "param_1"], 
-        scale = parameters[params_idx, "param_2"]
+        p = 0.5,
+        shape = parameters_range[params_idx, "param_1"],
+        scale = parameters_range[params_idx, "param_2"]
       )
     )
     true_range <- do.call(
-      paste0("r", dist), 
+      paste0("r", dist),
       list(
         n = n_samples,
-        shape = parameters[params_idx, "param_1"], 
-        scale = parameters[params_idx, "param_2"]
+        shape = parameters_range[params_idx, "param_1"],
+        scale = parameters_range[params_idx, "param_2"]
       )
     )
     true_range <- c(min(true_range), max(true_range))
@@ -296,20 +240,19 @@ for (params_idx in seq_len(nrow(parameters))) {
   
   # message about stochastic optimisation suppressed
   estim_params[[params_idx]] <- suppressMessages(
-    epiparameter::extract_param(
+    expr =  epiparameter::extract_param(
       type = "range",
-      values = true_values, 
-      distribution = dist, 
-      samples = n_samples, 
+      values = true_values,
+      distribution = dist,
+      samples = n_samples,
       control = list(tolerance = 10)
     )
   )
 }
-```
 
-```{r, tidy-results-med-range}
 # combine results
-results <- cbind(parameters, do.call(rbind, estim_params))
+results <- cbind(parameters_range, do.call(rbind, estim_params))
+
 colnames(results) <- c(
   "dist", "param_1", "param_2", "n_samples", "estim_param_1", "estim_param_2"
 )
@@ -328,7 +271,13 @@ Plot results:
 
 # plot differences by distribution
 ggplot2::ggplot(data = results) +
-  ggplot2::geom_point(mapping = ggplot2::aes(x = diff_param_1, y = diff_param_2, colour = n_samples)) +
+  ggplot2::geom_point(
+    mapping = ggplot2::aes(
+      x = diff_param_1, 
+      y = diff_param_2, 
+      colour = n_samples
+    )
+  ) +
   ggplot2::scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
   ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
   ggplot2::labs(colour = "No. Samples") + 
@@ -339,52 +288,6 @@ ggplot2::ggplot(data = results) +
 
 ```
 
-```{r, pivot-results-med-range}
-# tidy parameter differences to plot side-by-side
-results <- tidyr::pivot_longer(
-  data = results, cols = c("diff_param_1", "diff_param_2"), 
-  names_to = "diff_param", 
-  values_to = "diff"
-)
-```
-
-
-```{r, bar-plots}
-# bar plot for parameter 1 differences
-param_1_diff_bar <- ggplot2::ggplot(data = results) +
-  ggplot2::geom_col(mapping = ggplot2::aes(x = param_1, y = diff, fill = diff_param), position = "dodge") +
-  ggplot2::scale_x_continuous(name = "Parameter 1 true value") +
-  ggplot2::scale_y_continuous(name = "Parameter Difference (|true - estimated|)") +
-  ggplot2::scale_fill_brewer(labels = c("Parameter 1", "Parameter 2"), palette = "Set1") +
-  ggplot2::labs(fill = "Parameter Difference") + 
-  ggplot2::theme_bw() 
-param_1_diff_bar
-```
-
-```{r}
-param_1_diff_bar + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist)) +
-  ggplot2::theme(strip.background = ggplot2::element_blank())
-```
-
-```{r}
-# bar plot for parameter 2 differences
-param_2_diff_bar <- ggplot2::ggplot(data = results) +
-  ggplot2::geom_col(mapping = ggplot2::aes(x = param_2, y = diff, fill = diff_param), position = "dodge") +
-  ggplot2::scale_x_continuous(name = "Parameter 2 true value") +
-  ggplot2::scale_y_continuous(name = "Parameter Difference (|true - estimated|)") +
-  ggplot2::scale_fill_brewer(labels = c("Parameter 1", "Parameter 2"), palette = "Set1") +
-  ggplot2::labs(fill = "Parameter Difference") + 
-  ggplot2::theme_bw()
-param_2_diff_bar
-```
-
-```{r}
-param_2_diff_bar + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist)) +
-  ggplot2::theme(strip.background = ggplot2::element_blank())
-```
-
 ## Extraction stability
 
 The two analyses above used a single extraction (replicate), however, it may be that
@@ -393,93 +296,62 @@ range. Therefore, we finish with a test of whether repeated extraction of parame
 from a single percentile has large variance which would indicate the parameter extraction
 is unstable and potentially untrustworthy.
 
+We use the same parameter space for percentiles as defined above 
+(`parameters_perc`). Now we can run the extraction for a set of replicates to 
+compute the variance of parameter estimates over those replicates.
 
-```{r, setup-parameter-space-stability}
-distributions <- c("gamma", "lnorm", "weibull")
-dist_parameters <- seq(0.5, 2, 0.5)
-lower_percentiles <- c(2.5, 5, 25, 40)
-upper_percentiles <- c(60, 95, 97.5)
-
-parameters <- expand.grid(
-  dist = distributions, 
-  param_1 = dist_parameters, 
-  param_2 = dist_parameters, 
-  lower = lower_percentiles, 
-  upper = upper_percentiles
-)
-
-# calculate the degree of asymmetry for each percentile combination
-lw_interval_diff <- abs(0 - parameters$lower)
-up_interval_diff <- abs(100 - parameters$upper)
-deg_asym <- abs(lw_interval_diff - up_interval_diff)
-
-# add degree of asymmetry to percentiles
-parameters <- cbind(parameters, deg_asym)
-
-# divide percentiles by 100 to make them probabilities for quantile functions
-parameters$lower <- parameters$lower / 100
-parameters$upper <- parameters$upper / 100
-```
-
-Now we can run the extraction for a set of replicates to compute the variance of
-parameter estimates over those replicates.
-
-```{r, run-extraction-stability}
-estim_params_var <- list()
+```{r, run-extraction-stability-percentile}
+estim_param_var <- list()
 # Loop through parameter space estimating parameters
-for (params_idx in seq_len(nrow(parameters))) {
+for (params_idx in seq_len(nrow(parameters_perc))) {
   
-  percen <- unname(unlist(parameters[params_idx, c("lower", "upper")]))
-  
-  dist <- as.character(parameters[params_idx, "dist"])
+  dist <- as.character(parameters_perc[params_idx, "dist"])
+  percen <- unname(unlist(parameters_perc[params_idx, c("lower", "upper")]))
   
   if (dist == "lnorm") {
     true_values <- do.call(
-      paste0("q", dist), 
+      paste0("q", dist),
       list(
-        p = percen, 
-        meanlog = parameters[params_idx, "param_1"], 
-        sdlog = parameters[params_idx, "param_2"]
+        p = percen,
+        meanlog = parameters_perc[params_idx, "param_1"],
+        sdlog = parameters_perc[params_idx, "param_2"]
       )
     )
   } else {
     true_values <- do.call(
-      paste0("q", dist), 
+      paste0("q", dist),
       list(
-        p = percen, 
-        shape = parameters[params_idx, "param_1"], 
-        scale = parameters[params_idx, "param_2"]
+        p = percen,
+        shape = parameters_perc[params_idx, "param_1"],
+        scale = parameters_perc[params_idx, "param_2"]
       )
-    )  
+    )
   }
   
   # message about stochastic optimisation suppressed
-  
-  estim_params <- suppressMessages(
-    replicate(
-      n = 5, 
-      expr =  epiparameter::extract_param(
-        type = "percentiles",
-        values = true_values, 
-        distribution = dist, 
-        percentiles = percen * 100, 
-        control = list(tolerance = 10)
+
+    estim <- suppressMessages(
+      replicate(
+        n = 5,
+        expr =  epiparameter::extract_param(
+          type = "percentiles",
+          values = true_values,
+          distribution = dist,
+          percentiles = percen,
+          control = list(tolerance = 10)
+        )
       )
     )
-  )
-  
-  estim_params_var[[params_idx]] <- apply(estim_params,MARGIN = 1, FUN = var)
+    estim_param_var[[params_idx]] <- apply(estim, MARGIN = 1, FUN = var)
 }
-```
-
-```{r, tidy-results-stability}
 
 # combine results
-results <- cbind(parameters, do.call(rbind, estim_params_var))
+results <- cbind(parameters_perc, do.call(rbind, estim_param_var))
+
 colnames(results) <- c(
   "dist", "param_1", "param_2", "lower", "upper", 
   "deg_asym", "estim_param_1_var", "estim_param_2_var"
-)
+)  
 ```
 
 ```{r, plot-results, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
@@ -489,11 +361,105 @@ ggplot2::ggplot(data = results) +
     y = estim_param_2_var, 
     colour = deg_asym
   )) + 
-  ggplot2::scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
-  ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
+  ggplot2::scale_x_continuous(name = "Parameter 1 Variance") +
+  ggplot2::scale_y_continuous(name = "Parameter 2 Variance") +
   ggplot2::labs(colour = "Percentile Asym.") + 
   ggplot2::theme_bw() +
   ggplot2::scale_color_viridis_c() + 
   ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
   ggplot2::theme(strip.background = ggplot2::element_blank())
 ```
+
+
+The same test of estimation consistency can be performed for the extraction from median and range.
+
+
+```{r, run-extraction-stability-range}
+estim_param_var <- list()
+# Loop through parameter space estimating parameters
+for (params_idx in seq_len(nrow(parameters_range))) {
+  
+  dist <- as.character(parameters_range[params_idx, "dist"])
+  n_samples <- parameters_range[params_idx, "n_samples"]
+  
+  if (dist == "lnorm") {
+    true_median <- do.call(
+      paste0("q", dist),
+      list(
+        p = 0.5,
+        meanlog = parameters_range[params_idx, "param_1"],
+        sdlog = parameters_range[params_idx, "param_2"]
+      )
+    )
+    true_range <- do.call(
+      paste0("r", dist),
+      list(
+        n = n_samples,
+        meanlog = parameters_range[params_idx, "param_1"],
+        sdlog = parameters_range[params_idx, "param_2"]
+      )
+    )
+    true_range <- c(min(true_range), max(true_range))
+  } else {
+    true_median <- do.call(
+      paste0("q", dist),
+      list(
+        p = 0.5,
+        shape = parameters_range[params_idx, "param_1"],
+        scale = parameters_range[params_idx, "param_2"]
+      )
+    )
+    true_range <- do.call(
+      paste0("r", dist),
+      list(
+        n = n_samples,
+        shape = parameters_range[params_idx, "param_1"],
+        scale = parameters_range[params_idx, "param_2"]
+      )
+    )
+    true_range <- c(min(true_range), max(true_range))
+  }
+  
+  true_values <- c(true_median, true_range)
+  
+  # message about stochastic optimisation suppressed
+  estim <- suppressMessages(
+    replicate(
+      n = 5,
+      expr =  epiparameter::extract_param(
+        type = "range",
+        values = true_values,
+        distribution = dist,
+        samples = n_samples,
+        control = list(tolerance = 10)
+      )
+    )
+  )
+  estim_param_var[[params_idx]] <- apply(estim, MARGIN = 1, FUN = var)
+}
+
+# combine results
+results <- cbind(parameters_range, do.call(rbind, estim_param_var))
+
+colnames(results) <- c(
+  "dist", "param_1", "param_2", "n_samples", "estim_param_1_var", 
+  "estim_param_2_var"
+)  
+```
+
+```{r, plot-estim-var-range, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
+ggplot2::ggplot(data = results) +
+  ggplot2::geom_point(mapping = ggplot2::aes(
+    x = estim_param_1_var, 
+    y = estim_param_2_var, 
+    colour = n_samples
+  )) + 
+  ggplot2::scale_x_continuous(name = "Parameter 1 Variance") +
+  ggplot2::scale_y_continuous(name = "Parameter 2 Variance") +
+  ggplot2::labs(colour = "No. Samples") + 
+  ggplot2::theme_bw() +
+  ggplot2::scale_color_viridis_c() + 
+  ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
+  ggplot2::theme(strip.background = ggplot2::element_blank())
+```
+
