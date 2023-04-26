@@ -437,31 +437,31 @@ test_that("chk_ss is working as expected", {
   x <- c(mean = 1, sd = 1)
   expect_error(
     chk_ss(x),
-    regexp = "input must be a list"
+    regexp = "(Assertion)*(failed: Must be of type)*(list)*(double)"
   )
 
   x <- list(mean = 1)
   expect_error(
     chk_ss(x),
-    regexp = "at least two summary statistics must be supplied"
+    regexp = "(Assertion)*(failed: Must have length)*(2)*(1)"
   )
 
   x <- list(mean = 1, 1)
   expect_error(
     chk_ss(x),
-    regexp = "all arguments must be named"
+    regexp = "(Assertion)*(failed: Must have names)*(empty)"
   )
 
   x <- list(mean = 1, sd = "1")
   expect_error(
     chk_ss(x),
-    regexp = "all values given must be numeric"
+    regexp = "(Assertion)*(failed: May only contain)*(numeric)*(character)"
   )
 
   x <- list(mean = 1, ss = 1)
   expect_error(
     chk_ss(x),
-    regexp = "(names of input must match)"
+    regexp = "(Assertion)*(failed: Must be a subset)*(has additional elements)"
   )
 })
 
@@ -621,7 +621,7 @@ test_that("convert_weibull_summary_stats works as expected", {
 test_that("convert_weibull_summary_stats fails as expected", {
   expect_error(
     convert_weibull_summary_stats(median = 1, sd = 1),
-    regexp = "Cannot calculate weibull parameters from given input"
+    regexp = "Cannot calculate Weibull parameters from given input"
   )
 })
 
