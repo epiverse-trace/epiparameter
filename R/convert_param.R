@@ -6,7 +6,7 @@
 #' @keywords internal
 #' @noRd
 get_sd <- function(x) {
-  if (isTRUE("var" %in% names(x)) && !isTRUE("sd" %in% names(x)))  {
+  if ("var" %in% names(x) && !"sd" %in% names(x))  {
     x$sd <- sqrt(x$var)
   } else if (all(c("mean", "cv") %in% names(x)) &&
              !isTRUE("sd" %in% names(x))) {
