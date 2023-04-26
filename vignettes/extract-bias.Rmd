@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(epiparameter)
+library(ggplot2)
 ```
 
 The {epiparameter} R package contains a set of functions to extract parameters
@@ -113,7 +114,7 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
 
   # message about stochastic optimisation suppressed
   estim_params[[params_idx]] <- suppressMessages(
-    epiparameter::extract_param(
+    extract_param(
       type = "percentiles",
       values = true_values,
       distribution = dist,
@@ -151,19 +152,19 @@ The extraction precision/bias can be explored:
 
 ```{r, plot-results-percentiles, fig.cap="Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
 # plot differences by distribution
-ggplot2::ggplot(data = results) +
-  ggplot2::geom_point(mapping = ggplot2::aes(
+ggplot(data = results) +
+  geom_point(mapping = aes(
     x = diff_param_1, 
     y = diff_param_2, 
     colour = deg_asym
   )) + 
-  ggplot2::scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
-  ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
-  ggplot2::labs(colour = "Percentile Asym.") + 
-  ggplot2::theme_bw() +
-  ggplot2::scale_color_viridis_c() +
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
-  ggplot2::theme(strip.background = ggplot2::element_blank())
+  scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
+  scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
+  labs(colour = "Percentile Asym.") + 
+  theme_bw() +
+  scale_color_viridis_c() +
+  facet_wrap(facets = vars(dist), scales = "free") +
+  theme(strip.background = element_blank())
 ```
 
 The magnitude of the error is larger for parameter 1 (see axis breaks) which is either
@@ -240,7 +241,7 @@ for (params_idx in seq_len(nrow(parameters_range))) {
   
   # message about stochastic optimisation suppressed
   estim_params[[params_idx]] <- suppressMessages(
-    expr =  epiparameter::extract_param(
+    expr =  extract_param(
       type = "range",
       values = true_values,
       distribution = dist,
@@ -270,21 +271,21 @@ Plot results:
 ```{r, plot-results-med-range, fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
 
 # plot differences by distribution
-ggplot2::ggplot(data = results) +
-  ggplot2::geom_point(
-    mapping = ggplot2::aes(
+ggplot(data = results) +
+  geom_point(
+    mapping = aes(
       x = diff_param_1, 
       y = diff_param_2, 
       colour = n_samples
     )
   ) +
-  ggplot2::scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
-  ggplot2::scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
-  ggplot2::labs(colour = "No. Samples") + 
-  ggplot2::theme_bw() +
-  ggplot2::scale_color_viridis_c() + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
-  ggplot2::theme(strip.background = ggplot2::element_blank())
+  scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
+  scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
+  labs(colour = "No. Samples") + 
+  theme_bw() +
+  scale_color_viridis_c() + 
+  facet_wrap(facets = vars(dist), scales = "free") +
+  theme(strip.background = element_blank())
 
 ```
 
@@ -333,7 +334,7 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
     estim <- suppressMessages(
       replicate(
         n = 5,
-        expr =  epiparameter::extract_param(
+        expr =  extract_param(
           type = "percentiles",
           values = true_values,
           distribution = dist,
@@ -355,19 +356,19 @@ colnames(results) <- c(
 ```
 
 ```{r, plot-results, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-ggplot2::ggplot(data = results) +
-  ggplot2::geom_point(mapping = ggplot2::aes(
+ggplot(data = results) +
+  geom_point(mapping = aes(
     x = estim_param_1_var, 
     y = estim_param_2_var, 
     colour = deg_asym
   )) + 
-  ggplot2::scale_x_continuous(name = "Parameter 1 Variance") +
-  ggplot2::scale_y_continuous(name = "Parameter 2 Variance") +
-  ggplot2::labs(colour = "Percentile Asym.") + 
-  ggplot2::theme_bw() +
-  ggplot2::scale_color_viridis_c() + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
-  ggplot2::theme(strip.background = ggplot2::element_blank())
+  scale_x_continuous(name = "Parameter 1 Variance") +
+  scale_y_continuous(name = "Parameter 2 Variance") +
+  labs(colour = "Percentile Asym.") + 
+  theme_bw() +
+  scale_color_viridis_c() + 
+  facet_wrap(facets = vars(dist), scales = "free") +
+  theme(strip.background = element_blank())
 ```
 
 
@@ -426,7 +427,7 @@ for (params_idx in seq_len(nrow(parameters_range))) {
   estim <- suppressMessages(
     replicate(
       n = 5,
-      expr =  epiparameter::extract_param(
+      expr =  extract_param(
         type = "range",
         values = true_values,
         distribution = dist,
@@ -448,18 +449,18 @@ colnames(results) <- c(
 ```
 
 ```{r, plot-estim-var-range, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and weibull distributions, or sdlog for the lognormal distribution."}
-ggplot2::ggplot(data = results) +
-  ggplot2::geom_point(mapping = ggplot2::aes(
+ggplot(data = results) +
+  geom_point(mapping = aes(
     x = estim_param_1_var, 
     y = estim_param_2_var, 
     colour = n_samples
   )) + 
-  ggplot2::scale_x_continuous(name = "Parameter 1 Variance") +
-  ggplot2::scale_y_continuous(name = "Parameter 2 Variance") +
-  ggplot2::labs(colour = "No. Samples") + 
-  ggplot2::theme_bw() +
-  ggplot2::scale_color_viridis_c() + 
-  ggplot2::facet_wrap(facets = ggplot2::vars(dist), scales = "free") +
-  ggplot2::theme(strip.background = ggplot2::element_blank())
+  scale_x_continuous(name = "Parameter 1 Variance") +
+  scale_y_continuous(name = "Parameter 2 Variance") +
+  labs(colour = "No. Samples") + 
+  theme_bw() +
+  scale_color_viridis_c() + 
+  facet_wrap(facets = vars(dist), scales = "free") +
+  theme(strip.background = element_blank())
 ```
 
