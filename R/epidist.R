@@ -885,22 +885,12 @@ family.epidist <- function(object, ...) {
     }
   }
 
-  prob_dist <- ifelse(
-    test = prob_dist == "lognormal",
-    yes = "lnorm",
-    no = prob_dist
-  )
-
-  prob_dist <- ifelse(
-    test = prob_dist == "negbin",
-    yes = "nbinom",
-    no = prob_dist
-  )
-
-  prob_dist <- ifelse(
-    test = prob_dist == "geometric",
-    yes = "geom",
-    no = prob_dist
+  prob_dist <- switch(
+    prob_dist,
+    lognormal = "lnorm",
+    negbin = "nbinom",
+    geometric = "geom",
+    prob_dist
   )
 
   # return prob dist
