@@ -2,14 +2,14 @@
 % Please edit documentation in R/convert_param.R
 \name{convert_weibull_params}
 \alias{convert_weibull_params}
-\title{Converts the parameters of the weibull distribution to summary statistics}
+\title{Converts the parameters of the Weibull distribution to summary statistics}
 \usage{
 convert_weibull_params(shape, scale)
 }
 \arguments{
-\item{shape}{The shape parameter of the weibull distribution}
+\item{shape}{The shape parameter of the Weibull distribution}
 
-\item{scale}{The scale parameter of the weibull distribution}
+\item{scale}{The scale parameter of the Weibull distribution}
 }
 \value{
 A list of eight elements including: mean, median, mode,
@@ -17,9 +17,9 @@ variance (\code{var}), standard deviation (\code{sd}), coefficient of variation 
 skewness, and excess kurtosis (\code{ex_kurtosis}).
 }
 \description{
-Converts the shape and scale parameters of the weibull
+Converts the shape and scale parameters of the Weibull
 distribution to a number of summary statistics which can be calculated
-analytically given the weibull parameters. Note the conversion uses the
+analytically given the Weibull parameters. Note the conversion uses the
 \code{\link[=gamma]{gamma()}} function.
 }
 \examples{

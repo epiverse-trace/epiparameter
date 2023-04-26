@@ -46,9 +46,9 @@ the meanlog and sdlog; if the \code{distribution = gamma} or \code{distribution 
 \description{
 Summary data of distributions, as provided by reports and meta-analyses, can
 be used to extract the parameters of a chosen distribution. Currently
-available distributions are: lognormal, gamma and weibull. Extracting
+available distributions are: lognormal, gamma and Weibull. Extracting
 from a lognormal returns the meanlog and sdlog parameters, and extracting
-from the gamma and weibull returns the shape and scale parameters.
+from the gamma and Weibull returns the shape and scale parameters.
 }
 \examples{
 # set seed to control for stochasticity

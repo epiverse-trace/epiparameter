@@ -2,21 +2,21 @@
 % Please edit documentation in R/convert_param.R
 \name{weibull_shapescale2meansd}
 \alias{weibull_shapescale2meansd}
-\title{Converts the shape and scale parameters of the weibull distribution to the
+\title{Converts the shape and scale parameters of the Weibull distribution to the
 mean and standard deviation}
 \usage{
 weibull_shapescale2meansd(shape, scale)
 }
 \arguments{
-\item{shape}{The shape parameter of the weibull distribution}
+\item{shape}{The shape parameter of the Weibull distribution}
 
-\item{scale}{The scale parameter of the weibull distribution}
+\item{scale}{The scale parameter of the Weibull distribution}
 }
 \value{
 A named list with mean and standard deviation
 }
 \description{
-Converts the shape and scale parameters of the weibull distribution to the
+Converts the shape and scale parameters of the Weibull distribution to the
 mean and standard deviation
 }
 \examples{

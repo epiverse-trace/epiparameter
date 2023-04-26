@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{clean_epidist_params.weibull}
 \alias{clean_epidist_params.weibull}
-\title{Standardises parameters for a weibull distribution}
+\title{Standardises parameters for a Weibull distribution}
 \usage{
 \method{clean_epidist_params}{weibull}(prob_dist_params)
 }
@@ -14,6 +14,6 @@ parameters}
 Named vector of parameters
 }
 \description{
-Standardises parameters for a weibull distribution
+Standardises parameters for a Weibull distribution
 }
 \keyword{internal}
