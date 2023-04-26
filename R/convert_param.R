@@ -210,11 +210,7 @@ convert_gamma_params <- function(shape, scale) {
   # calculate metrics
   mean <- shape * scale
   median <- stats::qgamma(0.5, shape, scale)
-  mode <- ifelse(
-    shape >= 1,
-    yes = (shape - 1) * scale,
-    no = 0
-  )
+  mode <- max((shape - 1) * scale, 0)
   var <- shape * scale^2
   sd <- sqrt(var)
   cv <- sd / mean
