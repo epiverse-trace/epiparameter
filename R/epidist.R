@@ -873,9 +873,7 @@ family.epidist <- function(object, ...) {
   if (inherits(object$prob_dist, "distcrete")) {
     prob_dist <- object$prob_dist$name
   } else {
-    prob_dist <- stats::family(object$prob_dist)
-
-    if (identical(prob_dist, "truncated")) {
+    if (is_truncated(object)) {
       prob_dist <- gsub(
         pattern = "dist_",
         replacement = "",
