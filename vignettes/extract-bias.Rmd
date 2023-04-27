@@ -465,3 +465,17 @@ ggplot(data = results) +
   facet_wrap(facets = vars(dist), scales = "free") +
   theme(strip.background = element_blank())
 ```
+
+::: {.alert .alert-primary}
+From the plots in this vignette, the bias is low and precision is high
+when extracting parameters from the gamma, lognormal and Weibull distributions 
+from both percentiles of the distribution and from median and range of a data
+set.
+
+The asymmetry of percentiles and sample size of the data does not noticeably 
+influence the bias in parameter extraction.
+
+However, this does not ensure reliable extract for all use cases of the 
+`extract_param()` function and we recommend checking the output for spurious
+results.
+:::
