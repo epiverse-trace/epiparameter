@@ -65,6 +65,7 @@ extract_param <- function(type = c("percentiles", "range"),
   distribution <- match.arg(arg = distribution, several.ok = FALSE)
 
   # check numeric arguments
+  checkmate::assert_numeric(values, lower = 1e-10)
   if (identical(type, "percentiles")) {
     stopifnot(
       "percentiles need to be given for type = 'percentiles'" =
@@ -73,8 +74,7 @@ extract_param <- function(type = c("percentiles", "range"),
         values[1] < values[2]
     )
     checkmate::assert_numeric(values, len = 2)
-    checkmate::assert_numeric(percentiles, len = 2)
-
+    checkmate::assert_numeric(percentiles, lower = 0, upper = 1, len = 2)
   }
   if (identical(type, "range")) {
     stopifnot(
@@ -83,7 +83,7 @@ extract_param <- function(type = c("percentiles", "range"),
       "values vector should be c(median, min, max) check values" =
         values[2] < values[1] && values[1] < values[3]
     )
-    checkmate::assert_number(samples, lower = 1)
+    checkmate::assert_number(samples, lower = 2)
   }
 
   # prepare default control list
