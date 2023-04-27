@@ -59,6 +59,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+    <a class="dropdown-item" href="articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a>
   </div>
 </li>
       </ul>
@@ -133,10 +134,10 @@
 <span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
 <span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
 <span><span class="co">#&gt; Study: Linton et al. (2020) &lt;10.3390/jcm9020538&gt; PMID: 32079150</span></span>
-<span><span class="co">#&gt; Distribution: lognormal</span></span>
+<span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   mu: 1.456</span></span>
-<span><span class="co">#&gt;   sigma: 0.555</span></span></code></pre></div>
+<span><span class="co">#&gt;   meanlog: 1.456</span></span>
+<span><span class="co">#&gt;   sdlog: 0.555</span></span></code></pre></div>
 <p>The <code>&lt;epidist&gt;</code> object can be plotted.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">influenza_incubation</span><span class="op">)</span></span></code></pre></div>
@@ -148,7 +149,7 @@
 <ul>
 <li>gamma</li>
 <li>lognormal</li>
-<li>weibull</li>
+<li>Weibull</li>
 <li>negative binomial</li>
 <li>geometric</li>
 </ul>
@@ -156,7 +157,7 @@
 <ul>
 <li>gamma</li>
 <li>lognormal</li>
-<li>weibull</li>
+<li>Weibull</li>
 </ul>
 </div>
 </div>

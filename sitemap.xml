@@ -19,6 +19,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/articles/epiparameter.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/articles/extract_convert.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/articles/index.html</loc>
   </url>
   <url>
@@ -73,7 +76,37 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.weibull.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_gamma_params.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_gamma_summary_stats.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_geom_params.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_geom_summary_stats.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_lnorm_params.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_lnorm_summary_stats.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_nbinom_params.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_nbinom_summary_stats.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_weibull_params.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_weibull_summary_stats.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/create_epidist_citation.html</loc>
@@ -130,7 +163,10 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param_range.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/fit_function_lnorm_range.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/extraction_functions.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/family.epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/format.epidist.html</loc>
@@ -148,10 +184,10 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/gamma_shapescale2meansd.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/geometric_mean2prob.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/geom_mean2prob.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/geometric_prob2mean.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/geom_prob2mean.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/get_citation.html</loc>
@@ -178,16 +214,19 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/is_epiparam.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/is_truncated.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/is_vb_epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/list_distributions.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/lnorm_meansd2musigma.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/lnorm_meanlogsdlog2meansd.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/lnorm_musigma2meansd.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/lnorm_meansd2meanlogsdlog.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/make_epidist.html</loc>

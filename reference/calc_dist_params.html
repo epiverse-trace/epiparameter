@@ -4,7 +4,7 @@ provided (e.g. when describing the distribution in the literature) and
 instead summary statistics of a distribution are provided, the parameters
 can usually be calculated from the summary statistics. The
 calc_dist_params() function computes the parameters for the gamma,
-lognormal and weibull distributions.
+lognormal and Weibull distributions.
 This function can provide a convinient wrapper around the conversion and
 extraction functions it is not known which summary statistics can be used to
 calculate the parameters of a distribution."><title>Calculates the parameters of a probability distribution from a list of
@@ -14,7 +14,7 @@ provided (e.g. when describing the distribution in the literature) and
 instead summary statistics of a distribution are provided, the parameters
 can usually be calculated from the summary statistics. The
 calc_dist_params() function computes the parameters for the gamma,
-lognormal and weibull distributions.
+lognormal and Weibull distributions.
 This function can provide a convinient wrapper around the conversion and
 extraction functions it is not known which summary statistics can be used to
 calculate the parameters of a distribution."><meta property="og:image" content="https://epiverse-trace.github.io/epiparameter/logo.png"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -51,6 +51,7 @@ calculate the parameters of a distribution."><meta property="og:image" content="
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+    <a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -81,7 +82,7 @@ provided (e.g. when describing the distribution in the literature) and
 instead summary statistics of a distribution are provided, the parameters
 can usually be calculated from the summary statistics. The
 <code>calc_dist_params()</code> function computes the parameters for the gamma,
-lognormal and weibull distributions.</p>
+lognormal and Weibull distributions.</p>
 <p>This function can provide a convinient wrapper around the conversion and
 extraction functions it is not known which summary statistics can be used to
 calculate the parameters of a distribution.</p>
@@ -131,7 +132,7 @@ on using the median-range extraction calculation.</p></dd>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The hierarchy of methods are: conversion is prioritised if the mean
 and standard deviation are available as these are mostly analytical
-conversions (except for one of the weibull conversions), next method if
+conversions (except for one of the Weibull conversions), next method if
 possible is extraction from percentiles. This method requires a lower
 percentile (between(0-50]) and an upper percentile(between (50-100)). If
 multiple percentiles in each of these ranges is provided the lowest value is
@@ -167,8 +168,8 @@ and range of the data.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Stochastic numerical optimisation used. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Rerun function multiple times to check global optimum is found</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     shape     scale </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.0421013 0.7451263 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    shape    scale </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.005345 0.749186 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

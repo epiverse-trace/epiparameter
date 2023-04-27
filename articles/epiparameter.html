@@ -57,6 +57,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+    <a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a>
   </div>
 </li>
       </ul>
@@ -276,10 +277,10 @@ the <code><a href="../reference/as_epidist.html">as_epidist()</a></code> functio
 <span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
 <span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
 <span><span class="co">#&gt; Study: Linton et al. (2020) &lt;10.3390/jcm9020538&gt; PMID: 32079150</span></span>
-<span><span class="co">#&gt; Distribution: lognormal</span></span>
+<span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   mu: 1.525</span></span>
-<span><span class="co">#&gt;   sigma: 0.629</span></span></code></pre></div>
+<span><span class="co">#&gt;   meanlog: 1.525</span></span>
+<span><span class="co">#&gt;   sdlog: 0.629</span></span></code></pre></div>
 <p>The <code>&lt;epidist&gt;</code> object also has a custom printing
 method which shows the disease, pathogen (if known), the epidemiological
 distribution, a short citation of the study the parameters are from and
@@ -298,7 +299,7 @@ available).</p>
 <span><span class="co">#&gt; Number of studies in library: 1</span></span>
 <span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
 <span><span class="co">#&gt;    disease  epi_distribution prob_distribution</span></span>
-<span><span class="co">#&gt; 1 COVID-19 incubation_period         lognormal</span></span>
+<span><span class="co">#&gt; 1 COVID-19 incubation_period             lnorm</span></span>
 <span><span class="co">#&gt; &lt;0 more rows &amp; 53 more cols not shown&gt;</span></span></code></pre></div>
 <p>There are two alternatives to reading in
 <code>&lt;epiparam&gt;</code> objects and subsetting to
@@ -427,8 +428,8 @@ easily access these aspects.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2.718282</span></span>
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] 1.4107643 0.7287475 2.5153181 1.8634336 3.9767073 0.2874215 3.9072284</span></span>
-<span><span class="co">#&gt;  [8] 1.4103846 2.9307223 0.8060282</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] 1.864001 3.329766 5.907729 3.737708 2.667807 8.262244 8.032999 0.444957</span></span>
+<span><span class="co">#&gt;  [9] 6.012329 2.325613</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="plotting-epidemiological-distributions">Plotting epidemiological distributions<a class="anchor" aria-label="anchor" href="#plotting-epidemiological-distributions"></a>
@@ -461,7 +462,7 @@ variance). These can be (analytically) converted to the parameters of
 the distribution using the conversion functions in the package. These
 have the naming convention <code>summary_stats2params()</code>. For
 example <code><a href="../reference/gamma_meansd2shapescale.html">gamma_meansd2shapescale()</a></code> or
-<code><a href="../reference/lnorm_meansd2musigma.html">lnorm_meansd2musigma()</a></code>.</p>
+<code>lnorm_meansd2musigma()</code>.</p>
 <p>We also provide conversion functions in the opposite direction,
 parameters to summary statistics. These follow the same naming
 convention, for example <code><a href="../reference/weibull_shapescale2meansd.html">weibull_shapescale2meansd()</a></code>.</p>

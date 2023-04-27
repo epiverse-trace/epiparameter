@@ -33,6 +33,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+    <a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -116,6 +117,58 @@ stable value for the parameters and function output for multiple iterations</dd>
         <dd>Standardises the names of epidemiological distributions</dd>
       </dl><dl><dt>
           
+          <code><a href="convert_gamma_params.html">convert_gamma_params()</a></code> 
+        </dt>
+        <dd>Converts the parameters of the gamma distribution to summary statistics</dd>
+      </dl><dl><dt>
+          
+          <code><a href="convert_gamma_summary_stats.html">convert_gamma_summary_stats()</a></code> 
+        </dt>
+        <dd>Converts the summary statistics to parameters of the gamma distribution</dd>
+      </dl><dl><dt>
+          
+          <code><a href="convert_geom_params.html">convert_geom_params()</a></code> 
+        </dt>
+        <dd>Converts the parameters of the geometric distribution to summary statistics</dd>
+      </dl><dl><dt>
+          
+          <code><a href="convert_geom_summary_stats.html">convert_geom_summary_stats()</a></code> 
+        </dt>
+        <dd>Converts the summary statistics to parameters of the geometric distribution</dd>
+      </dl><dl><dt>
+          
+          <code><a href="convert_lnorm_params.html">convert_lnorm_params()</a></code> 
+        </dt>
+        <dd>Converts the parameters of the lognormal distribution to summary statistics</dd>
+      </dl><dl><dt>
+          
+          <code><a href="convert_lnorm_summary_stats.html">convert_lnorm_summary_stats()</a></code> 
+        </dt>
+        <dd>Converts the summary statistics to parameters of the lognormal distribution</dd>
+      </dl><dl><dt>
+          
+          <code><a href="convert_nbinom_params.html">convert_nbinom_params()</a></code> 
+        </dt>
+        <dd>Converts the parameters of the negative binomial distribution to summary
+statistics</dd>
+      </dl><dl><dt>
+          
+          <code><a href="convert_nbinom_summary_stats.html">convert_nbinom_summary_stats()</a></code> 
+        </dt>
+        <dd>Converts the summary statistics to parameters of the negative binomial
+distribution</dd>
+      </dl><dl><dt>
+          
+          <code><a href="convert_weibull_params.html">convert_weibull_params()</a></code> 
+        </dt>
+        <dd>Converts the parameters of the Weibull distribution to summary statistics</dd>
+      </dl><dl><dt>
+          
+          <code><a href="convert_weibull_summary_stats.html">convert_weibull_summary_stats()</a></code> 
+        </dt>
+        <dd>Converts the summary statistics to parameters of the Weibull distribution</dd>
+      </dl><dl><dt>
+          
           <code><a href="create_epidist_citation.html">create_epidist_citation()</a></code> 
         </dt>
         <dd>A helper function when creating an epidist object to create a summary
@@ -190,16 +243,9 @@ settings</dd>
 reported values of percentiles, or median and range</dd>
       </dl><dl><dt>
           
-          <code><a href="extract_param_percentile.html">extract_param_percentile()</a></code> 
+          <code><a href="family.epidist.html">family(<i>&lt;epidist&gt;</i>)</a></code> 
         </dt>
-        <dd>Optimises the parameters for a specified probability distribution given the
-percentiles of a distribution and the values at those percentiles</dd>
-      </dl><dl><dt>
-          
-          <code><a href="extract_param_range.html">extract_param_range()</a></code> 
-        </dt>
-        <dd>Optimises the parameters for a specified probability distribution given the
-median and range of a sample and the number of samples</dd>
+        <dd>Family method for the <code>epidist</code> class</dd>
       </dl><dl><dt>
           
           <code><a href="format.epidist.html">format(<i>&lt;epidist&gt;</i>)</a></code> 
@@ -229,12 +275,12 @@ shape and scale parameterisation.</dd>
 mean and standard deviation.</dd>
       </dl><dl><dt>
           
-          <code><a href="geometric_mean2prob.html">geometric_mean2prob()</a></code> 
+          <code><a href="geom_mean2prob.html">geom_mean2prob()</a></code> 
         </dt>
         <dd>Converts the mean of the geometric distribution to the probability parameter</dd>
       </dl><dl><dt>
           
-          <code><a href="geometric_prob2mean.html">geometric_prob2mean()</a></code> 
+          <code><a href="geom_prob2mean.html">geom_prob2mean()</a></code> 
         </dt>
         <dd>Converts the probability parameter of the geometric distribution to the mean
 (expectation) of the distribution</dd>
@@ -268,6 +314,11 @@ the <code>epiparameter</code> package</dd>
         <dd>Checks whether the object is an <code>epiparam</code></dd>
       </dl><dl><dt>
           
+          <code><a href="is_truncated.html">is_truncated()</a></code> 
+        </dt>
+        <dd>Check if distribution in <code>epidist</code> is truncated</dd>
+      </dl><dl><dt>
+          
           <code><a href="is_vb_epidist.html">is_vb_epidist()</a></code> 
         </dt>
         <dd>Checks whether the object is a <code>vb_epidist</code></dd>
@@ -278,16 +329,16 @@ the <code>epiparameter</code> package</dd>
         <dd>List epidemiological distributions stored in an <code>epiparam</code> object</dd>
       </dl><dl><dt>
           
-          <code><a href="lnorm_meansd2musigma.html">lnorm_meansd2musigma()</a></code> 
+          <code><a href="lnorm_meanlogsdlog2meansd.html">lnorm_meanlogsdlog2meansd()</a></code> 
         </dt>
-        <dd>Converts the mean and standard deviation of a lognormal distribution into the
-standard parameterisation of mu (mean log) and sigma (standard deviation log)</dd>
+        <dd>Converts the meanlog and sdlog parameters of the lognormal distribution to
+the mean and standard deviation</dd>
       </dl><dl><dt>
           
-          <code><a href="lnorm_musigma2meansd.html">lnorm_musigma2meansd()</a></code> 
+          <code><a href="lnorm_meansd2meanlogsdlog.html">lnorm_meansd2meanlogsdlog()</a></code> 
         </dt>
-        <dd>Converts the mu (mean log) and sigma (standard deviation log) parameters of
-the lognormal distribution to the mean and standard deviation</dd>
+        <dd>Converts the mean and standard deviation of a lognormal distribution into the
+standard parameterisation of meanlog (mu) and sdlog (sigma)</dd>
       </dl><dl><dt>
           
           <code><a href="names-set-.epiparam.html">`names&lt;-`(<i>&lt;epiparam&gt;</i>)</a></code> 
@@ -376,13 +427,13 @@ parameterisation</dd>
           
           <code><a href="weibull_meansd2shapescale.html">weibull_meansd2shapescale()</a></code> 
         </dt>
-        <dd>Converts the mean and standard deviation of the weibull distribution to the
+        <dd>Converts the mean and standard deviation of the Weibull distribution to the
 shape and scale parameterisation.</dd>
       </dl><dl><dt>
           
           <code><a href="weibull_shapescale2meansd.html">weibull_shapescale2meansd()</a></code> 
         </dt>
-        <dd>Converts the shape and scale parameters of the weibull distribution to the
+        <dd>Converts the shape and scale parameters of the Weibull distribution to the
 mean and standard deviation</dd>
       </dl></div>
   </main></div>
