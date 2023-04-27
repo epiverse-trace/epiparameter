@@ -880,6 +880,8 @@ family.epidist <- function(object, ...) {
         x = class(unclass(unclass(object$prob_dist)[[1]])[[1]])[1],
         fixed = TRUE
       )
+    } else {
+      prob_dist <- stats::family(object$prob_dist)
     }
   }
 
