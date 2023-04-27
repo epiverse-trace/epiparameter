@@ -593,7 +593,8 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
 
     # return prob_dist_params
     return(prob_dist_params)
-  } else if (all(c("meanlog", "sdlog") %in% names(prob_dist_params))) {
+  }
+  if (all(c("meanlog", "sdlog") %in% names(prob_dist_params))) {
     # remove class attribute from prob_dist_params
     prob_dist_params <- unclass(prob_dist_params)
 
