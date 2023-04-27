@@ -659,7 +659,7 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
 
     # return prob_dist_params
     return(prob_dist_params)
-  } 
+  }
   if (all(c("mean", "dispersion") %in% names(prob_dist_params))) {
     # remove class attribute from prob_dist_params
     prob_dist_params <- unclass(prob_dist_params)
