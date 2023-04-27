@@ -269,9 +269,7 @@ convert_gamma_summary_stats <- function(...) {
   }
 
   # if either parameter hasn't been calculated, error
-  if (!exists("shape") || !exists("scale")) {
-    stop("Cannot calculate gamma parameters from given input")
-  }
+  stop("Cannot calculate gamma parameters from given input")
 }
 
 #' Converts the shape and scale parameters of the gamma distribution to the
@@ -402,9 +400,7 @@ convert_weibull_summary_stats <- function(...) {
   }
 
   # if either parameter hasn't been calculated, error
-  if (!exists("shape") || !exists("scale")) {
-    stop("Cannot calculate Weibull parameters from given input")
-  }
+  stop("Cannot calculate Weibull parameters from given input")
 }
 
 #' Converts the mean and standard deviation of the Weibull distribution to the
@@ -566,33 +562,33 @@ convert_nbinom_summary_stats <- function(...) {
   x <- get_sd(x)
 
   # calculate mean and variance
-
   if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     prob <- x$mean / x$sd^2
     dispersion <- x$mean^2 / (x$sd^2 - x$mean)
+
+    # ensure variance-to-mean ratio > 1
+    if (prob > 1 || dispersion < 0) {
+      stop(
+        "Negative binomial has a variance-to-mean ratio of greater ",
+        "than one, check input"
+      )
+    }
+
+    return(
+      list(
+        prob = prob,
+        dispersion = dispersion
+      )
+    )
   }
 
   # if either parameter hasn't been calculated error
-  if (!exists("prob") || !exists("dispersion")) {
-    stop(
-      "Cannot calculate negative binomial distribution ",
-      "parameters from given input"
-    )
-  }
-
-  # ensure variance-to-mean ratio > 1
-  if (prob > 1 || dispersion < 0) {
-    stop(
-      "Negative binomial has a variance-to-mean ratio of greater ",
-      "than one, check input"
-    )
-  }
-
-  # return list of parameters
-  list(
-    prob = prob,
-    dispersion = dispersion
+  stop(
+    "Cannot calculate negative binomial distribution ",
+    "parameters from given input"
   )
+
+
 }
 
 #' Convert the probability and dispersion (k) parameters of the negative
@@ -746,9 +742,7 @@ convert_geom_summary_stats <- function(...) {
   }
 
   # if either parameter hasn't been calculated error
-  if (!exists("prob")) {
-    stop("Cannot calculate geometric distribution parameter from given input")
-  }
+  stop("Cannot calculate geometric distribution parameter from given input")
 }
 
 #' Converts the mean of the geometric distribution to the probability parameter
