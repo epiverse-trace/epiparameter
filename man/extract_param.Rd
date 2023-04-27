@@ -50,6 +50,14 @@ available distributions are: lognormal, gamma and Weibull. Extracting
 from a lognormal returns the meanlog and sdlog parameters, and extracting
 from the gamma and Weibull returns the shape and scale parameters.
 }
+\details{
+The \code{extract_param()} function works only for strictly positive
+values at the percentiles of a distribution or the median and range of data
+(numerics supplied to the \code{values} argument).
+This means that negative values at the lower percentile or lower range
+cannot be used with this function although they may present themselves in
+epidemiological data (e.g. negative serial interval).
+}
 \examples{
 # set seed to control for stochasticity
 set.seed(1)
