@@ -92,11 +92,12 @@ calc_dist_params <- function(prob_dist,
   } else if (!anyNA(percentiles)) {
 
     # calculate the parameters from the percentiles
+    # percentiles required to be [0, 1] so divide by 100
     prob_dist_params <- extract_param(
       type = "percentile",
       values = percentiles,
       distribution = prob_dist,
-      percentiles = as.numeric(names(percentiles))
+      percentiles = as.numeric(names(percentiles)) / 100
     )
   } else if (!anyNA(median_range) && !is.na(sample_size)) {
     prob_dist_params <- extract_param(

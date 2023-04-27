@@ -24,7 +24,9 @@ around \code{percentiles} (default) or \code{range}}
 Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}
 
 \item{percentiles}{A \code{vector} with two elements specifying the
-percentiles defined in \code{values} if using \code{type = "percentiles"}.}
+percentiles defined in \code{values} if using \code{type = "percentiles"}.
+Percentiles should be specified between 0 and 1. For example 2.5th and 97.5th
+percentile is given as \code{c(0.025, 0.975)}.}
 
 \item{samples}{A \code{numeric} specifying the sample size if using
 \code{type = "range"}.}
@@ -55,7 +57,7 @@ The \code{extract_param()} function works only for strictly positive
 values at the percentiles of a distribution or the median and range of data
 (numerics supplied to the \code{values} argument).
 This means that negative values at the lower percentile or lower range
-cannot be used with this function although they may present themselves in
+will not work with this function although they may present themselves in
 epidemiological data (e.g. negative serial interval).
 }
 \examples{
