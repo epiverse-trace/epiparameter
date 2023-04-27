@@ -23,6 +23,8 @@
 #' Default is `lnorm`; also takes `gamma` and `weibull`.
 #' @param percentiles A `vector` with two elements specifying the
 #' percentiles defined in `values` if using `type = "percentiles"`.
+#' Percentiles should be specified between 0 and 1. For example 2.5th and 97.5th
+#' percentile is given as `c(0.025, 0.975)`.
 #' @param samples A `numeric` specifying the sample size if using
 #' `type = "range"`.
 #' @param control A named list containing options for the optimisation. List

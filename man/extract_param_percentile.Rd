@@ -14,7 +14,9 @@ extract_param_percentile(values, distribution, percentiles)
 Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}
 
 \item{percentiles}{A \code{vector} with two elements specifying the
-percentiles defined in \code{values} if using \code{type = "percentiles"}.}
+percentiles defined in \code{values} if using \code{type = "percentiles"}.
+Percentiles should be specified between 0 and 1. For example 2.5th and 97.5th
+percentile is given as \code{c(0.025, 0.975)}.}
 }
 \value{
 A list with output from stats::optim. See ?optim for more details
