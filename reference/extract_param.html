@@ -106,7 +106,9 @@ Default is <code>lnorm</code>; also takes <code>gamma</code> and <code>weibull</
 
 <dt>percentiles</dt>
 <dd><p>A <code>vector</code> with two elements specifying the
-percentiles defined in <code>values</code> if using <code>type = "percentiles"</code>.</p></dd>
+percentiles defined in <code>values</code> if using <code>type = "percentiles"</code>.
+Percentiles should be specified between 0 and 1. For example 2.5th and 97.5th
+percentile is given as <code>c(0.025, 0.975)</code>.</p></dd>
 
 
 <dt>samples</dt>
@@ -132,6 +134,15 @@ control list are not passed to <code><a href="https://rdrr.io/r/stats/optim.html
 <p>A named <code>numeric</code> vector with the parameter values of the
 distribution. If the <code>distribution = lnorm</code> then the parameters returned are
 the meanlog and sdlog; if the <code>distribution = gamma</code> or <code>distribution = weibull</code> then the parameters returned are the shape and scale.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>The <code>extract_param()</code> function works only for strictly positive
+values at the percentiles of a distribution or the median and range of data
+(numerics supplied to the <code>values</code> argument).
+This means that negative values at the lower percentile or lower range
+will not work with this function although they may present themselves in
+epidemiological data (e.g. negative serial interval).</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
