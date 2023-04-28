@@ -301,6 +301,7 @@ extract_param_range <- function(values,
 #' of parameter estimates and function minimisation is accepted.
 #'
 #' @return Boolean
+#' @keywords internal
 check_optim_conv <- function(optim_params_list,
                              optim_params,
                              optim_conv,

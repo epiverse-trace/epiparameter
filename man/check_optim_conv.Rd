@@ -27,3 +27,4 @@ This function is to try and prevent optimisation to a local
 optimum and thus checks whether multiple optimisation routines are
 consistently finding parameter values to within a set tolerance.
 }
+\keyword{internal}
