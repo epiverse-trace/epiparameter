@@ -38,8 +38,8 @@ supported in {epiparameter} for parameter extraction: gamma, lognormal and Weibu
 
 ::: {.alert .alert-warning}
 This is not an in depth analysis of the estimation methods implemented in {epiparameter}, 
-but rather a supplementary article exploring the bias and consistency of the functions.
-It is specific to the case of {epiparameter} and should not be taken as a generalised results.
+but rather a supplementary article exploring the bias and precision of the functions.
+It is specific to the case of {epiparameter} and should not be taken as a generalisable result.
 :::
 
 ```{r setup}
@@ -56,7 +56,7 @@ First we explore extraction from percentiles.
 If a study reports the percentiles of a distribution, they are usually symmetrical
 (e.g. 5th and 95th, or 2.5th and 97.5th). However, in a few instances, only asymmetrical
 percentiles are available. We test whether asymmetry to varying degrees influences the
-precision of parameter extraction for all distributions.
+bias of parameter extraction for all distributions.
 
 We set up the parameter space to explore:
 
@@ -155,9 +155,9 @@ until convergence to a set tolerance is achieved (or a maximum number of
 iterations is reached) to more reliably return the global 
 optimum. In theory, this should help to minimise bias and instability in the 
 parameter estimation. See the function documentation (`?extract_param()`) or 
-the extraction and conversion vignette for more details.
+the [Conversion and Extraction vignette](extract_convert.html) for more details.
 
-The extraction precision/bias can be explored:
+The extraction bias can be explored:
 
 ```{r, plot-results-percentiles, fig.cap="Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
 # plot differences by distribution
@@ -174,7 +174,7 @@ ggplot(data = results) +
   scale_color_viridis_c() +
   facet_wrap(facets = vars(dist), scales = "free") +
   theme(
-    strip.background = element_blank(), 
+    strip.background = element_blank(),
     axis.text.x = element_text(angle = 30, vjust = 0.5)
   )
 ```
@@ -291,13 +291,13 @@ ggplot(data = results) +
   scale_color_viridis_c() +
   facet_wrap(facets = vars(dist), scales = "free") +
   theme(
-    strip.background = element_blank(), 
+    strip.background = element_blank(),
     axis.text.x = element_text(angle = 30, vjust = 0.5)
   )
 
 ```
 
-## Extraction stability
+## Extraction precision
 
 ### Extraction by percentiles
 
@@ -305,13 +305,13 @@ The two analyses above used a single extraction (replicate), however, it may be 
 the estimation of the parameters is unstable for a given set of percentiles or median 
 range. Therefore, we finish with a test of whether repeated extraction of parameters 
 from a single percentile has large variance which would indicate the parameter extraction
-is unstable and potentially untrustworthy.
+is unstable, imprecise, and potentially untrustworthy.
 
 We use the same parameter space for percentiles as defined above 
 (`parameters_perc`). Now we can run the extraction for a set of replicates to 
 compute the variance of parameter estimates over those replicates.
 
-```{r, run-extraction-stability-percentile}
+```{r, run-extraction-precision-percentile}
 estim_param_var <- vector("list", nrow(parameters_perc))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
@@ -363,7 +363,7 @@ colnames(results) <- c(
 )
 ```
 
-```{r, plot-results, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
+```{r, plot-results, fig.cap="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
 ggplot(data = results) +
   geom_point(mapping = aes(
     x = estim_param_1_var,
@@ -384,10 +384,10 @@ ggplot(data = results) +
 
 ### Extraction by median and range
 
-The same test of estimation consistency can be performed for the extraction from median and range.
+The same test of estimation precision can be performed for the extraction from median and range.
 
 
-```{r, run-extraction-stability-range}
+```{r, run-extraction-precision-range}
 estim_param_var <- vector("list", nrow(parameters_range))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_range))) {
@@ -459,7 +459,7 @@ colnames(results) <- c(
 )
 ```
 
-```{r, plot-estim-var-range, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
+```{r, plot-estim-var-range, fig.cap="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
 ggplot(data = results) +
   geom_point(mapping = aes(
     x = estim_param_1_var,
