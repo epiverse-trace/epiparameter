@@ -1,7 +1,7 @@
 ---
 title: "Parameter extraction and conversion in {epiparameter}"
 output: bookdown::html_vignette2
-bibliography: references.bib
+bibliography: references.json
 link-citations: true
 vignette: >
   %\VignetteIndexEntry{Parameter extraction and conversion in {epiparameter}}

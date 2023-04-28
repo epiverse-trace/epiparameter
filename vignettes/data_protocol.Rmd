@@ -1,7 +1,7 @@
 ---
 title: "Data Collation and Synthesis Protocol"
 output: rmarkdown::html_vignette
-bibliography: references.bib
+bibliography: references.json
 link-citations: true
 vignette: >
   %\VignetteIndexEntry{Data Collation and Synthesis Protocol}
