@@ -3,8 +3,9 @@ title: "{epiparameter} Extraction Bias Analysis"
 output: 
   bookdown::html_vignette2:
     fig_caption: yes
-  pkgdown:
-    as_is: true
+    code_folding: show
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{{epiparameter} Extraction Bias Analysis}
   %\VignetteEngine{knitr::rmarkdown}
@@ -159,7 +160,7 @@ the [Conversion and Extraction vignette](extract_convert.html) for more details.
 
 The extraction bias can be explored:
 
-```{r, plot-results-percentiles, fig.cap="Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
+```{r, plot-results-percentiles, class.source = 'fold-hide', fig.cap="Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
 # plot differences by distribution
 ggplot(data = results) +
   geom_point(mapping = aes(
@@ -274,7 +275,7 @@ results <- cbind(
 
 Plot results:
 
-```{r, plot-results-med-range, fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
+```{r, plot-results-med-range, class.source = 'fold-hide', fig.cap="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
 # plot differences by distribution
 ggplot(data = results) +
   geom_point(
@@ -363,7 +364,7 @@ colnames(results) <- c(
 )
 ```
 
-```{r, plot-results, fig.cap="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
+```{r, plot-results, class.source = 'fold-hide', fig.cap="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
 ggplot(data = results) +
   geom_point(mapping = aes(
     x = estim_param_1_var,
@@ -459,7 +460,7 @@ colnames(results) <- c(
 )
 ```
 
-```{r, plot-estim-var-range, fig.cap="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
+```{r, plot-estim-var-range, class.source = 'fold-hide', fig.cap="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
 ggplot(data = results) +
   geom_point(mapping = aes(
     x = estim_param_1_var,

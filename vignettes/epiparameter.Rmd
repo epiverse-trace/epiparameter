@@ -1,6 +1,10 @@
 ---
 title: "Getting Started with {epiparameter}"
-output: bookdown::html_vignette2
+output: 
+  bookdown::html_vignette2:
+    code_folding: show
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{Getting Started with {epiparameter}}
   %\VignetteEngine{knitr::rmarkdown}
