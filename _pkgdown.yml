@@ -1,6 +1,8 @@
 url: https://epiverse-trace.github.io/epiparameter
 template:
   bootstrap: 5
+  bslib:
+    font_weight_base : 300
   includes:
     in_header: |
       <!-- Google tag (gtag.js) -->
@@ -11,4 +13,119 @@ template:
         gtag('js', new Date());
         gtag('config', 'G-XZ471458FQ');
       </script>
+reference:
+  - title: epidist objects
+    desc: Class constructor, validator, and methods
+    contents:
+    - epidist
+    - discretise
+    - family.epidist
+    - format.epidist
+    - parameters.epidist
+    - plot.epidist
+    - print.epidist
+    - validate_epidist
+
+  - title: epidist helper functions
+    desc: Functions to help construct `<epidist>` objects
+    contents:
+    - create_epidist_citation
+    - create_epidist_metadata
+    - create_epidist_method_assess
+    - create_epidist_region
+    - create_epidist_summary_stats
+    - create_epidist_uncertainty
+
+  - title: epidist from {epiparameter} library
+    desc: Retrieve `<epidist>` object directly from database
+    contents:
+    - epidist_db
+
+  - title: epiparam object
+    desc: Class constructor, validator, and methods
+    contents:
+    - epiparam
+    - "`$<-.epiparam`"
+    - "`[.epiparam`"
+    - "`names<-.epiparam`"
+    - format.epiparam
+    - head.epiparam
+    - print.epiparam
+    - summary.epiparam
+    - validate_epiparam
+
+  - title: Get citation
+    desc: Get citation from epi class
+    contents:
+    - get_citation
+
+  - title: Explore epiparam
+    desc: List epi parameters as table
+    contents:
+    - list_distributions
+
+  - title: vb_epdist objects
+    desc: Class constructor, validator, and methods
+    contents:
+    - vb_epidist
+    - format.vb_epidist
+    - plot.vb_epidist
+    - print.vb_epidist
+    - validate_vb_epidist
+
+  - title: Distribution functions
+    desc: Functions for operating on `<epidist>` and `<vb_epidist>` distributions
+    contents:
+    - cdf.epidist
+
+  - title: Parameter extraction
+    desc: Extract distribution parameters from summary statistics
+    contents:
+    - extract_param
+
+  - title: Parameter conversion
+    desc: Converts distribution parameter to summary staistics and vice versa
+    contents:
+    - starts_with("convert_")
+    - matches("[[:lower:]]2[[:lower:]]")
+
+  - title: Calculate parameters from summary statistics
+    desc: Uses either extraction or conversion function to get distribution parameters
+    contents:
+    - calc_dist_params
+
+  - title: Epi object conversion
+    desc: Convert between {epiparameter} classes
+    contents:
+    - as_epidist
+    - as_epiparam
+
+  - title: Epi object checking
+    desc: Check an object is of a certain type or feature
+    contents:
+    - is_epidist
+    - is_epidist_params
+    - is_epiparam
+    - is_truncated
+    - is_vb_epidist
+
+  - title: Bind to epiparam
+    desc: Add entries to <epiparam> object
+    contents:
+    - bind_epiparam
+
+  - title: Cleaning
+    desc: Standardises name of disease or epidist object
+    contents:
+    - clean_disease
+    - clean_epidist_name
+
+  - title: Check valid parameterisation
+    desc: Check parameters are valid for `<epidist>`
+    contents:
+    - possible_epidist_params
+
+  - title: Utility function
+    contents:
+    - calc_disc_dist_quantile
 
