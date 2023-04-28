@@ -16,7 +16,7 @@
 #' @inheritParams new_epidist
 #'
 #' @return An S3 class containing the probability distribution
-#' @export
+#' @keywords internal
 #'
 #' @examples
 #' # example with continuous distribution without truncation

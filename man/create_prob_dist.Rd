@@ -64,3 +64,4 @@ create_prob_dist(
   truncation = NA
 )
 }
+\keyword{internal}
