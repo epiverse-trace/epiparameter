@@ -14,7 +14,9 @@ template:
         gtag('config', 'G-XZ471458FQ');
       </script>
 reference:
-  - title: epidist objects
+  - title: epiparameter classes
+
+  - subtitle: epidist object
     desc: Class constructor, validator, and methods
     contents:
     - epidist
@@ -25,6 +27,28 @@ reference:
     - plot.epidist
     - print.epidist
     - validate_epidist
+
+  - subtitle: epiparam object
+    desc: Class constructor, validator, and methods
+    contents:
+    - epiparam
+    - "`$<-.epiparam`"
+    - "`[.epiparam`"
+    - "`names<-.epiparam`"
+    - format.epiparam
+    - head.epiparam
+    - print.epiparam
+    - summary.epiparam
+    - validate_epiparam
+
+  - subtitle: vb_epdist object
+    desc: Class constructor, validator, and methods
+    contents:
+    - vb_epidist
+    - format.vb_epidist
+    - plot.vb_epidist
+    - print.vb_epidist
+    - validate_vb_epidist
 
   - title: epidist helper functions
     desc: Functions to help construct `<epidist>` objects
@@ -41,19 +65,6 @@ reference:
     contents:
     - epidist_db
 
-  - title: epiparam object
-    desc: Class constructor, validator, and methods
-    contents:
-    - epiparam
-    - "`$<-.epiparam`"
-    - "`[.epiparam`"
-    - "`names<-.epiparam`"
-    - format.epiparam
-    - head.epiparam
-    - print.epiparam
-    - summary.epiparam
-    - validate_epiparam
-
   - title: Get citation
     desc: Get citation from epi class
     contents:
@@ -63,15 +74,6 @@ reference:
     desc: List epi parameters as table
     contents:
     - list_distributions
-
-  - title: vb_epdist objects
-    desc: Class constructor, validator, and methods
-    contents:
-    - vb_epidist
-    - format.vb_epidist
-    - plot.vb_epidist
-    - print.vb_epidist
-    - validate_vb_epidist
 
   - title: Distribution functions
     desc: Functions for operating on `<epidist>` and `<vb_epidist>` distributions
