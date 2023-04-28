@@ -19,8 +19,9 @@
 #' @keywords internal
 #'
 #' @examples
+#' \donttest{
 #' # example with continuous distribution without truncation
-#' create_prob_dist(
+#' epiparameter:::create_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
@@ -28,7 +29,7 @@
 #' )
 #'
 #' # example with continuous distribution with truncation
-#' create_prob_dist(
+#' epiparameter:::create_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
@@ -36,12 +37,13 @@
 #' )
 #'
 #' # example with discrete distribution
-#' create_prob_dist(
+#' epiparameter:::create_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = TRUE,
 #'   truncation = NA
 #' )
+#' }
 create_prob_dist <- function(prob_dist,
                              prob_dist_params,
                              discretise,
