@@ -154,7 +154,7 @@ test_that("extract_param fails as expected", {
       distribution = "lnorm",
       percentiles = c(0.125, 0.875)
     ),
-    regexp = "(values vector should be)*(check values)"
+    regexp = "(Assertion)*(failed: Must be of type)*(numeric)*(not)*(character)"
   )
 
   expect_error(
