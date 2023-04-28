@@ -1,0 +1,669 @@
+[
+	{
+		"id": "http://zotero.org/users/8282024/items/2XGL26B5",
+		"type": "article-journal",
+		"container-title": "Emerging Infectious Diseases",
+		"DOI": "10.3201/eid2206.150579",
+		"ISSN": "1080-6040, 1080-6059",
+		"issue": "6",
+		"journalAbbreviation": "Emerg. Infect. Dis.",
+		"page": "1014-1021",
+		"source": "DOI.org (Crossref)",
+		"title": "Extended Human-to-Human Transmission during a Monkeypox Outbreak in the Democratic Republic of the Congo",
+		"URL": "http://wwwnc.cdc.gov/eid/article/22/6/15-0579_article.htm",
+		"volume": "22",
+		"author": [
+			{
+				"family": "Nolen",
+				"given": "Leisha Diane"
+			},
+			{
+				"family": "Osadebe",
+				"given": "Lynda"
+			},
+			{
+				"family": "Katomba",
+				"given": "Jacques"
+			},
+			{
+				"family": "Likofata",
+				"given": "Jacques"
+			},
+			{
+				"family": "Mukadi",
+				"given": "Daniel"
+			},
+			{
+				"family": "Monroe",
+				"given": "Benjamin"
+			},
+			{
+				"family": "Doty",
+				"given": "Jeffrey"
+			},
+			{
+				"family": "Hughes",
+				"given": "Christine Marie"
+			},
+			{
+				"family": "Kabamba",
+				"given": "Joelle"
+			},
+			{
+				"family": "Malekani",
+				"given": "Jean"
+			},
+			{
+				"family": "Bomponda",
+				"given": "Pierre Lokwa"
+			},
+			{
+				"family": "Lokota",
+				"given": "Jules Inonga"
+			},
+			{
+				"family": "Balilo",
+				"given": "Marcel Pie"
+			},
+			{
+				"family": "Likafi",
+				"given": "Toutou"
+			},
+			{
+				"family": "Lushima",
+				"given": "Robert Shongo"
+			},
+			{
+				"family": "Ilunga",
+				"given": "Benoit Kebela"
+			},
+			{
+				"family": "Nkawa",
+				"given": "Frida"
+			},
+			{
+				"family": "Pukuta",
+				"given": "Elisabeth"
+			},
+			{
+				"family": "Karhemere",
+				"given": "Stomy"
+			},
+			{
+				"family": "Tamfum",
+				"given": "Jean-Jacques Muyembe"
+			},
+			{
+				"family": "Nguete",
+				"given": "Beatrice"
+			},
+			{
+				"family": "Wemakoy",
+				"given": "Emile Okitolonda"
+			},
+			{
+				"family": "McCollum",
+				"given": "Andrea M."
+			},
+			{
+				"family": "Reynolds",
+				"given": "Mary G."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					13
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2016",
+					6
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/8282024/items/DLHNHGGP",
+		"type": "article-journal",
+		"container-title": "New England Journal of Medicine",
+		"DOI": "10.1056/NEJMoa2207323",
+		"ISSN": "0028-4793, 1533-4406",
+		"issue": "8",
+		"journalAbbreviation": "N Engl J Med",
+		"language": "en",
+		"page": "679-691",
+		"source": "DOI.org (Crossref)",
+		"title": "Monkeypox Virus Infection in Humans across 16 Countries — April–June 2022",
+		"URL": "http://www.nejm.org/doi/10.1056/NEJMoa2207323",
+		"volume": "387",
+		"author": [
+			{
+				"family": "Thornhill",
+				"given": "John P."
+			},
+			{
+				"family": "Barkati",
+				"given": "Sapha"
+			},
+			{
+				"family": "Walmsley",
+				"given": "Sharon"
+			},
+			{
+				"family": "Rockstroh",
+				"given": "Juergen"
+			},
+			{
+				"family": "Antinori",
+				"given": "Andrea"
+			},
+			{
+				"family": "Harrison",
+				"given": "Luke B."
+			},
+			{
+				"family": "Palich",
+				"given": "Romain"
+			},
+			{
+				"family": "Nori",
+				"given": "Achyuta"
+			},
+			{
+				"family": "Reeves",
+				"given": "Iain"
+			},
+			{
+				"family": "Habibi",
+				"given": "Maximillian S."
+			},
+			{
+				"family": "Apea",
+				"given": "Vanessa"
+			},
+			{
+				"family": "Boesecke",
+				"given": "Christoph"
+			},
+			{
+				"family": "Vandekerckhove",
+				"given": "Linos"
+			},
+			{
+				"family": "Yakubovsky",
+				"given": "Michal"
+			},
+			{
+				"family": "Sendagorta",
+				"given": "Elena"
+			},
+			{
+				"family": "Blanco",
+				"given": "Jose L."
+			},
+			{
+				"family": "Florence",
+				"given": "Eric"
+			},
+			{
+				"family": "Moschese",
+				"given": "Davide"
+			},
+			{
+				"family": "Maltez",
+				"given": "Fernando M."
+			},
+			{
+				"family": "Goorhuis",
+				"given": "Abraham"
+			},
+			{
+				"family": "Pourcher",
+				"given": "Valerie"
+			},
+			{
+				"family": "Migaud",
+				"given": "Pascal"
+			},
+			{
+				"family": "Noe",
+				"given": "Sebastian"
+			},
+			{
+				"family": "Pintado",
+				"given": "Claire"
+			},
+			{
+				"family": "Maggi",
+				"given": "Fabrizio"
+			},
+			{
+				"family": "Hansen",
+				"given": "Ann-Brit E."
+			},
+			{
+				"family": "Hoffmann",
+				"given": "Christian"
+			},
+			{
+				"family": "Lezama",
+				"given": "Jezer I."
+			},
+			{
+				"family": "Mussini",
+				"given": "Cristina"
+			},
+			{
+				"family": "Cattelan",
+				"given": "AnnaMaria"
+			},
+			{
+				"family": "Makofane",
+				"given": "Keletso"
+			},
+			{
+				"family": "Tan",
+				"given": "Darrell"
+			},
+			{
+				"family": "Nozza",
+				"given": "Silvia"
+			},
+			{
+				"family": "Nemeth",
+				"given": "Johannes"
+			},
+			{
+				"family": "Klein",
+				"given": "Marina B."
+			},
+			{
+				"family": "Orkin",
+				"given": "Chloe M."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					13
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					25
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/8282024/items/YNNHYGPP",
+		"type": "article-journal",
+		"container-title": "The Lancet",
+		"DOI": "10.1016/S0140-6736(03)13410-1",
+		"ISSN": "01406736",
+		"issue": "9371",
+		"journalAbbreviation": "The Lancet",
+		"language": "en",
+		"page": "1761-1766",
+		"source": "DOI.org (Crossref)",
+		"title": "Epidemiological determinants of spread of causal agent of severe acute respiratory syndrome in Hong Kong",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S0140673603134101",
+		"volume": "361",
+		"author": [
+			{
+				"family": "Donnelly",
+				"given": "Christl A"
+			},
+			{
+				"family": "Ghani",
+				"given": "Azra C"
+			},
+			{
+				"family": "Leung",
+				"given": "Gabriel M"
+			},
+			{
+				"family": "Hedley",
+				"given": "Anthony J"
+			},
+			{
+				"family": "Fraser",
+				"given": "Christophe"
+			},
+			{
+				"family": "Riley",
+				"given": "Steven"
+			},
+			{
+				"family": "Abu-Raddad",
+				"given": "Laith J"
+			},
+			{
+				"family": "Ho",
+				"given": "Lai-Ming"
+			},
+			{
+				"family": "Thach",
+				"given": "Thuan-Quoc"
+			},
+			{
+				"family": "Chau",
+				"given": "Patsy"
+			},
+			{
+				"family": "Chan",
+				"given": "King-Pan"
+			},
+			{
+				"family": "Lam",
+				"given": "Tai-Hing"
+			},
+			{
+				"family": "Tse",
+				"given": "Lai-Yin"
+			},
+			{
+				"family": "Tsang",
+				"given": "Thomas"
+			},
+			{
+				"family": "Liu",
+				"given": "Shao-Haei"
+			},
+			{
+				"family": "Kong",
+				"given": "James HB"
+			},
+			{
+				"family": "Lau",
+				"given": "Edith MC"
+			},
+			{
+				"family": "Ferguson",
+				"given": "Neil M"
+			},
+			{
+				"family": "Anderson",
+				"given": "Roy M"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					14
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2003",
+					5
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/8282024/items/2UCZEV9I",
+		"type": "book",
+		"call-number": "R723.7 .C63 2008",
+		"collection-title": "Cochrane book series",
+		"edition": "6.3",
+		"event-place": "Chichester, England ; Hoboken, NJ",
+		"ISBN": "978-0-470-69951-5",
+		"note": "OCLC: ocn154798512",
+		"number-of-pages": "649",
+		"publisher": "Wiley-Blackwell",
+		"publisher-place": "Chichester, England ; Hoboken, NJ",
+		"source": "Library of Congress ISBN",
+		"title": "Cochrane Handbook for Systematic Reviews of Interventions",
+		"URL": "www.training.cochrane.org/handbook",
+		"editor": [
+			{
+				"family": "Higgins",
+				"given": "Julian P. T."
+			},
+			{
+				"literal": "Thomas, J"
+			},
+			{
+				"literal": "Chandler, J"
+			},
+			{
+				"literal": "Cumpston, M"
+			},
+			{
+				"literal": "Li, T"
+			},
+			{
+				"literal": "Page, MJ"
+			},
+			{
+				"literal": "Welch, VA"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2022"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/8282024/items/L4U9AAGX",
+		"type": "article-journal",
+		"container-title": "BMJ",
+		"DOI": "10.1136/bmj.n71",
+		"ISSN": "1756-1833",
+		"journalAbbreviation": "BMJ",
+		"language": "en",
+		"page": "n71",
+		"source": "DOI.org (Crossref)",
+		"title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews",
+		"title-short": "The PRISMA 2020 statement",
+		"URL": "https://www.bmj.com/lookup/doi/10.1136/bmj.n71",
+		"author": [
+			{
+				"family": "Page",
+				"given": "Matthew J"
+			},
+			{
+				"family": "McKenzie",
+				"given": "Joanne E"
+			},
+			{
+				"family": "Bossuyt",
+				"given": "Patrick M"
+			},
+			{
+				"family": "Boutron",
+				"given": "Isabelle"
+			},
+			{
+				"family": "Hoffmann",
+				"given": "Tammy C"
+			},
+			{
+				"family": "Mulrow",
+				"given": "Cynthia D"
+			},
+			{
+				"family": "Shamseer",
+				"given": "Larissa"
+			},
+			{
+				"family": "Tetzlaff",
+				"given": "Jennifer M"
+			},
+			{
+				"family": "Akl",
+				"given": "Elie A"
+			},
+			{
+				"family": "Brennan",
+				"given": "Sue E"
+			},
+			{
+				"family": "Chou",
+				"given": "Roger"
+			},
+			{
+				"family": "Glanville",
+				"given": "Julie"
+			},
+			{
+				"family": "Grimshaw",
+				"given": "Jeremy M"
+			},
+			{
+				"family": "Hróbjartsson",
+				"given": "Asbjørn"
+			},
+			{
+				"family": "Lalu",
+				"given": "Manoj M"
+			},
+			{
+				"family": "Li",
+				"given": "Tianjing"
+			},
+			{
+				"family": "Loder",
+				"given": "Elizabeth W"
+			},
+			{
+				"family": "Mayo-Wilson",
+				"given": "Evan"
+			},
+			{
+				"family": "McDonald",
+				"given": "Steve"
+			},
+			{
+				"family": "McGuinness",
+				"given": "Luke A"
+			},
+			{
+				"family": "Stewart",
+				"given": "Lesley A"
+			},
+			{
+				"family": "Thomas",
+				"given": "James"
+			},
+			{
+				"family": "Tricco",
+				"given": "Andrea C"
+			},
+			{
+				"family": "Welch",
+				"given": "Vivian A"
+			},
+			{
+				"family": "Whiting",
+				"given": "Penny"
+			},
+			{
+				"family": "Moher",
+				"given": "David"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2023",
+					3,
+					9
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					3,
+					29
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/8282024/items/79AZWJUG",
+		"type": "article-journal",
+		"container-title": "PLoS Medicine",
+		"DOI": "10.1371/journal.pmed.1001603",
+		"ISSN": "1549-1676",
+		"issue": "2",
+		"journalAbbreviation": "PLoS Med",
+		"language": "en",
+		"page": "e1001603",
+		"source": "DOI.org (Crossref)",
+		"title": "Living Systematic Reviews: An Emerging Opportunity to Narrow the Evidence-Practice Gap",
+		"title-short": "Living Systematic Reviews",
+		"URL": "https://dx.plos.org/10.1371/journal.pmed.1001603",
+		"volume": "11",
+		"author": [
+			{
+				"family": "Elliott",
+				"given": "Julian H."
+			},
+			{
+				"family": "Turner",
+				"given": "Tari"
+			},
+			{
+				"family": "Clavisi",
+				"given": "Ornella"
+			},
+			{
+				"family": "Thomas",
+				"given": "James"
+			},
+			{
+				"family": "Higgins",
+				"given": "Julian P. T."
+			},
+			{
+				"family": "Mavergames",
+				"given": "Chris"
+			},
+			{
+				"family": "Gruen",
+				"given": "Russell L."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2023",
+					3,
+					9
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2014",
+					2,
+					18
+				]
+			]
+		}
+	}
+]
