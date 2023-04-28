@@ -57,6 +57,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+    <a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a>
     <a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a>
   </div>
 </li>
@@ -496,7 +497,7 @@ vector in <code>percentiles</code>. The example below uses values 1 and
 <span><span class="co">#&gt; Stochastic numerical optimisation used. </span></span>
 <span><span class="co">#&gt; Rerun function multiple times to check global optimum is found</span></span>
 <span><span class="co">#&gt;    shape    scale </span></span>
-<span><span class="co">#&gt; 3.358218 1.284182</span></span></code></pre></div>
+<span><span class="co">#&gt; 3.358210 1.284184</span></span></code></pre></div>
 <p>In the above example we estimate parameters of the gamma
 distribution, but extraction is also implemented for the lognormal and
 Weibull distributions, but specifying <code>"lnorm"</code> or
@@ -524,8 +525,8 @@ ignored.</p>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Stochastic numerical optimisation used. </span></span>
 <span><span class="co">#&gt; Rerun function multiple times to check global optimum is found</span></span>
-<span><span class="co">#&gt;  meanlog    sdlog </span></span>
-<span><span class="co">#&gt; 2.302585 1.483415</span></span></code></pre></div>
+<span><span class="co">#&gt;   meanlog     sdlog </span></span>
+<span><span class="co">#&gt; 2.3023549 0.2801077</span></span></code></pre></div>
 <p>In the above section it was mentioned that
 <code><a href="../reference/extract_param.html">extract_param()</a></code> has an internal mechanism to check that the
 parameters have consistently converged to the same estimates over
