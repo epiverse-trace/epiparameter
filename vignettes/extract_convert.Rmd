@@ -212,7 +212,7 @@ The reasoning for the default maximum number of iterations is to limit the compu
 
 Here we present examples of published epidemiological parameters and distributions where the functions outlined above can be applied to get the parameters of the distribution.
 
-The 75th percentiles reported for a lognormal distribution from @nolen_extended_2016 for the incubation period for mpox (monkeypox).
+The 75th percentiles reported for a lognormal distribution from @nolenExtendedHumantoHumanTransmission2016 for the incubation period for mpox (monkeypox).
 
 ```{r, extract_param for monkeypox percentiles}
 # Mpox lnorm from 75th percentiles in WHO data
@@ -224,7 +224,7 @@ extract_param(
 )
 ```
 
-The median and range are provided by @thornhill_monkeypox_2022 for mpox, and we want to calculate the parameters of a lognormal distribution.
+The median and range are provided by @thornhillMonkeypoxVirusInfection2022 for mpox, and we want to calculate the parameters of a lognormal distribution.
 
 ```{r, extract_param for monkeypox median and range}
 # Mpox lnorm from median and range in 2022:
@@ -246,7 +246,7 @@ If the distribution is a delay distribution (i.e. serial interval or incubation 
 However, one should take care when assuming a distribution as this may drastically influence the interpretation and application of the epidemiological parameters.
 :::
 
-@donnelly_epidemiological_2003 provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by either using the general conversion function (`convert_gamma_summary_stats()`) or manually transforming the variance to the standard deviation and using the one-to-one conversion function (`gamma_meansd2shapescale()`).
+@donnellyEpidemiologicalDeterminantsSpread2003 provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by either using the general conversion function (`convert_gamma_summary_stats()`) or manually transforming the variance to the standard deviation and using the one-to-one conversion function (`gamma_meansd2shapescale()`).
 
 ```{r, convert parameters}
 # SARS gamma mean and var to shape and scale

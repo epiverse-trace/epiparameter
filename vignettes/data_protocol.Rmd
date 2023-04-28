@@ -20,12 +20,12 @@ knitr::opts_chunk$set(
 
 The [`{epiparameter}` R package](https://github.com/epiverse-trace/epiparameter) contains a library of epidemiological distribution data and functions that read and handle this data. The delay distributions describe the time between two events in epidemiology, for example incubation period, serial interval and onset-to-death; while the offspring distributions describe the number of secondary infections from a primary infection in disease transmission. The library is compiled by a process of collecting, reviewing and extracting data from peer-reviewed literature[^1], including research articles, systematic reviews and meta-analyses. 
 
-The `{epiparameter}` package will act as a 'living systematic review' (*sensu* @elliott_living_2014) which will be actively updated and maintained to provide a reliable source of data on epidemiological distributions. To prevent bias in the collection or assessment of the data, a well-defined methodology of searching and refining is required. This document aims to provide transparency on the methodology used by the `{epiparameter}` maintainers by outlining the steps taken at each stage of the data handling. It can also serve as a guide to contributors wanting to search and provide epidemiological parameters currently missing from the library. Contributions can be added to [this google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing). This protocol should also facilitate reproducibility in the searches, results and appraisal steps.
+The `{epiparameter}` package will act as a 'living systematic review' (*sensu* @elliottLivingSystematicReviews2014) which will be actively updated and maintained to provide a reliable source of data on epidemiological distributions. To prevent bias in the collection or assessment of the data, a well-defined methodology of searching and refining is required. This document aims to provide transparency on the methodology used by the `{epiparameter}` maintainers by outlining the steps taken at each stage of the data handling. It can also serve as a guide to contributors wanting to search and provide epidemiological parameters currently missing from the library. Contributions can be added to [this google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing). This protocol should also facilitate reproducibility in the searches, results and appraisal steps.
 
 There is a large body of work on the methods to best conduct literature searches and data collection as part of systematic reviews and meta-analyses[^2], which we use as the basis for our protocol. These sources are: 
 
-- [Cochrane Handbook](https://training.cochrane.org/handbook/current) [@higgins_cochrane_2022]
-- [PRISMA](https://www.prisma-statement.org/) [@page_prisma_2021]
+- [Cochrane Handbook](https://training.cochrane.org/handbook/current) [@higginsCochraneHandbookSystematic2022]
+- [PRISMA](https://www.prisma-statement.org/) [@pagePRISMA2020Statement2021]
 
 ## Objective of `{epiparameter}`
 
