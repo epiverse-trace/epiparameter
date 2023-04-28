@@ -131,3 +131,20 @@ reference:
     contents:
     - calc_disc_dist_quantile
 
+
+articles:
+- title: Get started
+  navbar: Intro
+  contents:
+  - epiparameter
+  - extract_convert
+
+- title: Parameter library
+  navbar: Epiparameter Data
+  contents:
+  - data_protocol
+
+- title: Auxiliary
+  navbar: Auxiliary
+  contents:
+  - extract-bias
