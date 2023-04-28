@@ -67,10 +67,10 @@ lower_percentiles <- c(2.5, 5, 25, 40)
 upper_percentiles <- c(60, 95, 97.5)
 
 parameters_perc <- expand.grid(
-  dist = distributions, 
-  param_1 = dist_parameters, 
-  param_2 = dist_parameters, 
-  lower = lower_percentiles, 
+  dist = distributions,
+  param_1 = dist_parameters,
+  param_2 = dist_parameters,
+  lower = lower_percentiles,
   upper = upper_percentiles
 )
 
@@ -99,10 +99,10 @@ set.seed(1)
 estim_params <- vector("list", nrow(parameters_perc))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
-  
+
   dist <- as.character(parameters_perc[params_idx, "dist"])
   percen <- unname(unlist(parameters_perc[params_idx, c("lower", "upper")]))
-  
+
   if (dist == "lnorm") {
     true_values <- do.call(
       paste0("q", dist),
@@ -122,7 +122,7 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
       )
     )
   }
-  
+
   # message about stochastic optimisation suppressed
   estim_params[[params_idx]] <- suppressMessages(
     extract_param(
@@ -138,13 +138,13 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
 results <- cbind(parameters_perc, do.call(rbind, estim_params))
 
 colnames(results) <- c(
-  "dist", "param_1", "param_2", "lower", "upper", 
+  "dist", "param_1", "param_2", "lower", "upper",
   "deg_asym", "estim_param_1", "estim_param_2"
-)  
+)
 
 # calculate absolute difference between true parameter and estimated value
 results <- cbind(
-  results, 
+  results,
   diff_param_1 = abs(results$param_1 - results$estim_param_1),
   diff_param_2 = abs(results$param_2 - results$estim_param_2)
 )
@@ -163,13 +163,13 @@ The extraction precision/bias can be explored:
 # plot differences by distribution
 ggplot(data = results) +
   geom_point(mapping = aes(
-    x = diff_param_1, 
-    y = diff_param_2, 
+    x = diff_param_1,
+    y = diff_param_2,
     colour = deg_asym
-  )) + 
+  )) +
   scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
   scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
-  labs(colour = "Percentile Asym.") + 
+  labs(colour = "Percentile Asym.") +
   theme_bw() +
   scale_color_viridis_c() +
   facet_wrap(facets = vars(dist), scales = "free") +
@@ -199,10 +199,10 @@ parameters_range <- expand.grid(
 estim_params <- vector("list", nrow(parameters_range))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_range))) {
-  
+
   dist <- as.character(parameters_range[params_idx, "dist"])
   n_samples <- parameters_range[params_idx, "n_samples"]
-  
+
   if (dist == "lnorm") {
     true_median <- do.call(
       paste0("q", dist),
@@ -240,9 +240,9 @@ for (params_idx in seq_len(nrow(parameters_range))) {
     )
     true_range <- c(min(true_range), max(true_range))
   }
-  
+
   true_values <- c(true_median, true_range)
-  
+
   # message about stochastic optimisation suppressed
   estim_params[[params_idx]] <- suppressMessages(
     expr =  extract_param(
@@ -263,7 +263,7 @@ colnames(results) <- c(
 
 # calculate absolute difference between true parameter and estimated value
 results <- cbind(
-  results, 
+  results,
   diff_param_1 = abs(results$param_1 - results$estim_param_1),
   diff_param_2 = abs(results$param_2 - results$estim_param_2)
 )
@@ -276,16 +276,16 @@ Plot results:
 ggplot(data = results) +
   geom_point(
     mapping = aes(
-      x = diff_param_1, 
-      y = diff_param_2, 
+      x = diff_param_1,
+      y = diff_param_2,
       colour = n_samples
     )
   ) +
   scale_x_continuous(name = "Parameter 1 Difference (|true - estimated|)") +
   scale_y_continuous(name = "Parameter 2 Difference (|true - estimated|)") +
-  labs(colour = "No. Samples") + 
+  labs(colour = "No. Samples") +
   theme_bw() +
-  scale_color_viridis_c() + 
+  scale_color_viridis_c() +
   facet_wrap(facets = vars(dist), scales = "free") +
   theme(strip.background = element_blank())
 
@@ -309,10 +309,10 @@ compute the variance of parameter estimates over those replicates.
 estim_param_var <- vector("list", nrow(parameters_perc))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
-  
+
   dist <- as.character(parameters_perc[params_idx, "dist"])
   percen <- unname(unlist(parameters_perc[params_idx, c("lower", "upper")]))
-  
+
   if (dist == "lnorm") {
     true_values <- do.call(
       paste0("q", dist),
@@ -332,7 +332,7 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
       )
     )
   }
-  
+
   # message about stochastic optimisation suppressed
   estim <- suppressMessages(
     replicate(
@@ -352,23 +352,23 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
 results <- cbind(parameters_perc, do.call(rbind, estim_param_var))
 
 colnames(results) <- c(
-  "dist", "param_1", "param_2", "lower", "upper", 
+  "dist", "param_1", "param_2", "lower", "upper",
   "deg_asym", "estim_param_1_var", "estim_param_2_var"
-)  
+)
 ```
 
 ```{r, plot-results, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
 ggplot(data = results) +
   geom_point(mapping = aes(
-    x = estim_param_1_var, 
-    y = estim_param_2_var, 
+    x = estim_param_1_var,
+    y = estim_param_2_var,
     colour = deg_asym
-  )) + 
+  )) +
   scale_x_continuous(name = "Parameter 1 Variance") +
   scale_y_continuous(name = "Parameter 2 Variance") +
-  labs(colour = "Percentile Asym.") + 
+  labs(colour = "Percentile Asym.") +
   theme_bw() +
-  scale_color_viridis_c() + 
+  scale_color_viridis_c() +
   facet_wrap(facets = vars(dist), scales = "free") +
   theme(strip.background = element_blank())
 ```
@@ -382,10 +382,10 @@ The same test of estimation consistency can be performed for the extraction from
 estim_param_var <- vector("list", nrow(parameters_range))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_range))) {
-  
+
   dist <- as.character(parameters_range[params_idx, "dist"])
   n_samples <- parameters_range[params_idx, "n_samples"]
-  
+
   if (dist == "lnorm") {
     true_median <- do.call(
       paste0("q", dist),
@@ -423,9 +423,9 @@ for (params_idx in seq_len(nrow(parameters_range))) {
     )
     true_range <- c(min(true_range), max(true_range))
   }
-  
+
   true_values <- c(true_median, true_range)
-  
+
   # message about stochastic optimisation suppressed
   estim <- suppressMessages(
     replicate(
@@ -445,23 +445,23 @@ for (params_idx in seq_len(nrow(parameters_range))) {
 results <- cbind(parameters_range, do.call(rbind, estim_param_var))
 
 colnames(results) <- c(
-  "dist", "param_1", "param_2", "n_samples", "estim_param_1_var", 
+  "dist", "param_1", "param_2", "n_samples", "estim_param_1_var",
   "estim_param_2_var"
-)  
+)
 ```
 
 ```{r, plot-estim-var-range, fig.cap="Parameter extraction stability, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."}
 ggplot(data = results) +
   geom_point(mapping = aes(
-    x = estim_param_1_var, 
-    y = estim_param_2_var, 
+    x = estim_param_1_var,
+    y = estim_param_2_var,
     colour = n_samples
-  )) + 
+  )) +
   scale_x_continuous(name = "Parameter 1 Variance") +
   scale_y_continuous(name = "Parameter 2 Variance") +
-  labs(colour = "No. Samples") + 
+  labs(colour = "No. Samples") +
   theme_bw() +
-  scale_color_viridis_c() + 
+  scale_color_viridis_c() +
   facet_wrap(facets = vars(dist), scales = "free") +
   theme(strip.background = element_blank())
 ```
