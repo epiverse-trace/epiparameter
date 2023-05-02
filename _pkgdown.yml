@@ -71,7 +71,7 @@ reference:
     - extract_param
 
   - title: Parameter conversion
-    desc: Converts distribution parameter to summary staistics and vice versa
+    desc: Converts distribution parameter to summary statistics and vice versa
     contents:
     - starts_with("convert_")
     - matches("[[:lower:]]2[[:lower:]]")
