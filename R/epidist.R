@@ -602,6 +602,7 @@ is_epidist <- function(x) {
 #' vector is returned
 #'
 #' @name epidist_distribution_functions
+#' @keywords epidist_distribution_functions
 #'
 #' @examples
 #' edist <- epidist(

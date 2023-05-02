@@ -94,3 +94,4 @@ distributional::cdf(vb_edist, q = 1)
 stats::quantile(vb_edist, p = 0.2)
 distributional::generate(vb_edist, times = 10)
 }
+\keyword{epidist_distribution_functions}
