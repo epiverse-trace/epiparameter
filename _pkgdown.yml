@@ -21,11 +21,8 @@ reference:
     contents:
     - epidist
     - discretise
-    - family.epidist
-    - format.epidist
-    - parameters.epidist
-    - plot.epidist
-    - print.epidist
+    - ends_with("\\.epidist")
+    - -has_keyword("epidist_distribution_functions")
     - validate_epidist
 
   - subtitle: epiparam object
@@ -39,9 +36,8 @@ reference:
     desc: Class constructor, validator, and methods
     contents:
     - vb_epidist
-    - format.vb_epidist
-    - plot.vb_epidist
-    - print.vb_epidist
+    - ends_with("\\.vb_epidist")
+    - -has_keyword("epidist_distribution_functions")
     - validate_vb_epidist
 
   - title: epidist helper functions
