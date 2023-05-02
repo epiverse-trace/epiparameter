@@ -32,9 +32,14 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
-    <a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a>
+    <h6 class="dropdown-header" data-toc-skip>Intro</h6>
     <a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a>
+    <div class="dropdown-divider"></div>
+    <h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6>
+    <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+    <div class="dropdown-divider"></div>
+    <h6 class="dropdown-header" data-toc-skip>Auxiliary</h6>
+    <a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -57,9 +62,15 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="epiparameter-classes">epiparameter classes<a class="anchor" aria-label="anchor" href="#epiparameter-classes"></a></h2>
       
       
+
+      
+    </div><div class="section level2">
+      
+      <h3 id="epidist-object">epidist object<a class="anchor" aria-label="anchor" href="#epidist-object"></a></h3>
+      <p class="section-desc"></p><p>Class constructor, validator, and methods</p>
 
       
     </div><div id="" class="section level2">
@@ -69,32 +80,60 @@
 
       <dl><dt>
           
-          <code><a href="as_epidist.html">as_epidist()</a></code> 
+          <code><a href="epidist.html">epidist()</a></code> 
         </dt>
-        <dd>Converts rows of an epiparam object into an epidist object</dd>
+        <dd>Create an <code>epidist</code> object</dd>
       </dl><dl><dt>
           
-          <code><a href="as_epiparam.html">as_epiparam()</a></code> 
+          <code><a href="discretise.html">discretise()</a></code> 
         </dt>
-        <dd>Converts an <code>epidist</code> object to an <code>epiparam</code> object</dd>
+        <dd>Discretises a continuous distribution in an <code>epidist</code> object</dd>
       </dl><dl><dt>
           
-          <code><a href="bind_epiparam.html">bind_epiparam()</a></code> 
+          <code><a href="family.epidist.html">family(<i>&lt;epidist&gt;</i>)</a></code> 
         </dt>
-        <dd>Binds any epi data class in <span class="pkg">epiparameter</span> (<code>epidist</code>, <code>vb_epidist</code>,
-<code>epiparam</code>) or data frame to an <code>epiparam</code> object.</dd>
+        <dd>Family method for the <code>epidist</code> class</dd>
       </dl><dl><dt>
           
-          <code><a href="calc_disc_dist_quantile.html">calc_disc_dist_quantile()</a></code> 
+          <code><a href="format.epidist.html">format(<i>&lt;epidist&gt;</i>)</a></code> 
         </dt>
-        <dd>Calculate the quantiles of a probability distribution based on the vector
-of probabilities and time data (e.g. time since infection)</dd>
+        <dd>Format method for epidist class</dd>
       </dl><dl><dt>
           
-          <code><a href="calc_dist_params.html">calc_dist_params()</a></code> 
+          <code><a href="parameters.epidist.html">parameters(<i>&lt;epidist&gt;</i>)</a></code> 
         </dt>
-        <dd>Calculates the parameters of a probability distribution from a list of
-available summary statistics</dd>
+        <dd>Parameters method for <code>epidist</code> object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot.epidist.html">plot(<i>&lt;epidist&gt;</i>)</a></code> 
+        </dt>
+        <dd>PLots an <code>epidist</code> object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="print.epidist.html">print(<i>&lt;epidist&gt;</i>)</a></code> 
+        </dt>
+        <dd>Print method for epidist class</dd>
+      </dl><dl><dt>
+          
+          <code><a href="validate_epidist.html">validate_epidist()</a></code> 
+        </dt>
+        <dd><code>epidist</code> class validator</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="epiparam-object">epiparam object<a class="anchor" aria-label="anchor" href="#epiparam-object"></a></h3>
+      <p class="section-desc"></p><p>Class constructor, validator, and methods</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="epiparam.html">epiparam()</a></code> 
+        </dt>
+        <dd>Create an <code>epiparam</code> object</dd>
       </dl><dl><dt>
           
           <code><a href="cash-set-.epiparam.html">`$&lt;-`(<i>&lt;epiparam&gt;</i>)</a></code> 
@@ -102,21 +141,217 @@ available summary statistics</dd>
         <dd>Set accessor for <code>epiparam</code> class</dd>
       </dl><dl><dt>
           
-          <code><a href="check_optim_conv.html">check_optim_conv()</a></code> 
+          <code><a href="format.epiparam.html">format(<i>&lt;epiparam&gt;</i>)</a></code> 
         </dt>
-        <dd>Checks whether the optimisation of distribution parameters has converged to
-stable value for the parameters and function output for multiple iterations</dd>
+        <dd>Format method for epiparam class</dd>
       </dl><dl><dt>
           
-          <code><a href="clean_disease.html">clean_disease()</a></code> 
+          <code><a href="head.epiparam.html">head(<i>&lt;epiparam&gt;</i>)</a></code> <code><a href="head.epiparam.html">tail(<i>&lt;epiparam&gt;</i>)</a></code> 
         </dt>
-        <dd>Standardises the names of diseases</dd>
+        <dd><code>head</code> and <code>tail</code> methods for <code>epiparam</code> class</dd>
       </dl><dl><dt>
           
-          <code><a href="clean_epidist_name.html">clean_epidist_name()</a></code> 
+          <code><a href="names-set-.epiparam.html">`names&lt;-`(<i>&lt;epiparam&gt;</i>)</a></code> 
         </dt>
-        <dd>Standardises the names of epidemiological distributions</dd>
+        <dd>Set names on <code>epiparam</code> class</dd>
       </dl><dl><dt>
+          
+          <code><a href="print.epiparam.html">print(<i>&lt;epiparam&gt;</i>)</a></code> 
+        </dt>
+        <dd>Print method for epiparam class</dd>
+      </dl><dl><dt>
+          
+          <code><a href="sub-.epiparam.html">`[`(<i>&lt;epiparam&gt;</i>)</a></code> 
+        </dt>
+        <dd>Subsetting method for <code>epiparam</code></dd>
+      </dl><dl><dt>
+          
+          <code><a href="summary.epiparam.html">summary(<i>&lt;epiparam&gt;</i>)</a></code> 
+        </dt>
+        <dd>Summary method for epiparam class</dd>
+      </dl><dl><dt>
+          
+          <code><a href="validate_epiparam.html">validate_epiparam()</a></code> 
+        </dt>
+        <dd><code>epiparam</code> class validator</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="vb-epdist-object">vb_epdist object<a class="anchor" aria-label="anchor" href="#vb-epdist-object"></a></h3>
+      <p class="section-desc"></p><p>Class constructor, validator, and methods</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="vb_epidist.html">vb_epidist()</a></code> 
+        </dt>
+        <dd>Create a <code>vb_epidist</code> object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="format.vb_epidist.html">format(<i>&lt;vb_epidist&gt;</i>)</a></code> 
+        </dt>
+        <dd>Format method for vb_epidist class</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot.vb_epidist.html">plot(<i>&lt;vb_epidist&gt;</i>)</a></code> 
+        </dt>
+        <dd>Plots an <code>vb_epidist</code> object,</dd>
+      </dl><dl><dt>
+          
+          <code><a href="print.vb_epidist.html">print(<i>&lt;vb_epidist&gt;</i>)</a></code> 
+        </dt>
+        <dd>Print method for vb_epidist class</dd>
+      </dl><dl><dt>
+          
+          <code><a href="validate_vb_epidist.html">validate_vb_epidist()</a></code> 
+        </dt>
+        <dd><code>vb_epidist</code> class validator</dd>
+      </dl></div><div class="section level2">
+      <h2 id="epidist-helper-functions">epidist helper functions<a class="anchor" aria-label="anchor" href="#epidist-helper-functions"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions to help construct <code>&lt;epidist&gt;</code> objects</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="create_epidist_citation.html">create_epidist_citation()</a></code> 
+        </dt>
+        <dd>A helper function when creating an epidist object to create a summary
+statistics list with sensible defaults, type checking and arguments to help
+remember which summary statistics can be accepted in the list
+A helper function when creating an epidist object to create a citation list
+with sensible defaults, type checking and arguments to help remember which
+citation information is accepted in the list.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="create_epidist_metadata.html">create_epidist_metadata()</a></code> 
+        </dt>
+        <dd>Specify metadata associated with data set</dd>
+      </dl><dl><dt>
+          
+          <code><a href="create_epidist_method_assess.html">create_epidist_method_assess()</a></code> 
+        </dt>
+        <dd>Specify whether certain methodological aspects have been used when fitting
+the distribution</dd>
+      </dl><dl><dt>
+          
+          <code><a href="create_epidist_region.html">create_epidist_region()</a></code> 
+        </dt>
+        <dd>Specify the geography of the data entry</dd>
+      </dl><dl><dt>
+          
+          <code><a href="create_epidist_summary_stats.html">create_epidist_summary_stats()</a></code> 
+        </dt>
+        <dd>Specify any reported summary statistics for <code>epidist</code></dd>
+      </dl><dl><dt>
+          
+          <code><a href="create_epidist_uncertainty.html">create_epidist_uncertainty()</a></code> 
+        </dt>
+        <dd>Specify distribution parameter uncertainty</dd>
+      </dl></div><div class="section level2">
+      <h2 id="epidist-from-epiparameter-library">epidist from {epiparameter} library<a class="anchor" aria-label="anchor" href="#epidist-from-epiparameter-library"></a></h2>
+      
+      <p class="section-desc"></p><p>Retrieve <code>&lt;epidist&gt;</code> object directly from database</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="epidist_db.html">epidist_db()</a></code> 
+        </dt>
+        <dd>Create an <code>epidist</code> object directly from the epiparameter library (database)</dd>
+      </dl></div><div class="section level2">
+      <h2 id="get-citation">Get citation<a class="anchor" aria-label="anchor" href="#get-citation"></a></h2>
+      
+      <p class="section-desc"></p><p>Get citation from epi class</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="get_citation.html">get_citation()</a></code> 
+        </dt>
+        <dd>Method for extracting citation information from <code>&lt;epidist&gt;</code> or
+<code>&lt;epiparam&gt;</code> objects.</dd>
+      </dl></div><div class="section level2">
+      <h2 id="explore-epiparam">Explore epiparam<a class="anchor" aria-label="anchor" href="#explore-epiparam"></a></h2>
+      
+      <p class="section-desc"></p><p>List epi parameters as table</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="list_distributions.html">list_distributions()</a></code> 
+        </dt>
+        <dd>List epidemiological distributions stored in an <code>epiparam</code> object</dd>
+      </dl></div><div class="section level2">
+      <h2 id="distribution-functions">Distribution functions<a class="anchor" aria-label="anchor" href="#distribution-functions"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for operating on <code>&lt;epidist&gt;</code> and <code>&lt;vb_epidist&gt;</code> distributions</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="epidist_distribution_functions.html">density(<i>&lt;epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">cdf(<i>&lt;epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">quantile(<i>&lt;epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">generate(<i>&lt;epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">density(<i>&lt;vb_epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">cdf(<i>&lt;vb_epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">quantile(<i>&lt;vb_epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">generate(<i>&lt;vb_epidist&gt;</i>)</a></code> 
+        </dt>
+        <dd>PDF, CDF, PMF, quantiles and random number generation for <code>epidist</code> and
+<code>vb_epidist</code> objects</dd>
+      </dl></div><div class="section level2">
+      <h2 id="parameter-extraction">Parameter extraction<a class="anchor" aria-label="anchor" href="#parameter-extraction"></a></h2>
+      
+      <p class="section-desc"></p><p>Extract distribution parameters from summary statistics</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="extract_param.html">extract_param()</a></code> 
+        </dt>
+        <dd>Calculate the parameters of a parametric probability distribution from
+reported values of percentiles, or median and range</dd>
+      </dl></div><div class="section level2">
+      <h2 id="parameter-conversion">Parameter conversion<a class="anchor" aria-label="anchor" href="#parameter-conversion"></a></h2>
+      
+      <p class="section-desc"></p><p>Converts distribution parameter to summary statistics and vice versa</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="convert_gamma_params.html">convert_gamma_params()</a></code> 
         </dt>
@@ -170,100 +405,6 @@ distribution</dd>
         <dd>Converts the summary statistics to parameters of the Weibull distribution</dd>
       </dl><dl><dt>
           
-          <code><a href="create_epidist_citation.html">create_epidist_citation()</a></code> 
-        </dt>
-        <dd>A helper function when creating an epidist object to create a summary
-statistics list with sensible defaults, type checking and arguments to help
-remember which summary statistics can be accepted in the list
-A helper function when creating an epidist object to create a citation list
-with sensible defaults, type checking and arguments to help remember which
-citation information is accepted in the list.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="create_epidist_metadata.html">create_epidist_metadata()</a></code> 
-        </dt>
-        <dd>Specify metadata associated with data set</dd>
-      </dl><dl><dt>
-          
-          <code><a href="create_epidist_method_assess.html">create_epidist_method_assess()</a></code> 
-        </dt>
-        <dd>Specify whether certain methodological aspects have been used when fitting
-the distribution</dd>
-      </dl><dl><dt>
-          
-          <code><a href="create_epidist_region.html">create_epidist_region()</a></code> 
-        </dt>
-        <dd>Specify the geography of the data entry</dd>
-      </dl><dl><dt>
-          
-          <code><a href="create_epidist_summary_stats.html">create_epidist_summary_stats()</a></code> 
-        </dt>
-        <dd>Specify any reported summary statistics for <code>epidist</code></dd>
-      </dl><dl><dt>
-          
-          <code><a href="create_epidist_uncertainty.html">create_epidist_uncertainty()</a></code> 
-        </dt>
-        <dd>Specify distribution parameter uncertainty</dd>
-      </dl><dl><dt>
-          
-          <code><a href="create_prob_dist.html">create_prob_dist()</a></code> 
-        </dt>
-        <dd>Creates an distribution object depending on input parameters and distribution
-settings</dd>
-      </dl><dl><dt>
-          
-          <code><a href="discretise.html">discretise()</a></code> 
-        </dt>
-        <dd>Discretises a continuous distribution in an <code>epidist</code> object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="epidist.html">epidist()</a></code> 
-        </dt>
-        <dd>Create an <code>epidist</code> object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="epidist_db.html">epidist_db()</a></code> 
-        </dt>
-        <dd>Create an <code>epidist</code> object directly from the epiparameter library (database)</dd>
-      </dl><dl><dt>
-          
-          <code><a href="epidist_distribution_functions.html">density(<i>&lt;epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">cdf(<i>&lt;epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">quantile(<i>&lt;epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">generate(<i>&lt;epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">density(<i>&lt;vb_epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">cdf(<i>&lt;vb_epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">quantile(<i>&lt;vb_epidist&gt;</i>)</a></code> <code><a href="epidist_distribution_functions.html">generate(<i>&lt;vb_epidist&gt;</i>)</a></code> 
-        </dt>
-        <dd>PDF, CDF, PMF, quantiles and random number generation for <code>epidist</code> and
-<code>vb_epidist</code> objects</dd>
-      </dl><dl><dt>
-          
-          <code><a href="epiparam.html">epiparam()</a></code> 
-        </dt>
-        <dd>Create an <code>epiparam</code> object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="extract_param.html">extract_param()</a></code> 
-        </dt>
-        <dd>Calculate the parameters of a parametric probability distribution from
-reported values of percentiles, or median and range</dd>
-      </dl><dl><dt>
-          
-          <code><a href="family.epidist.html">family(<i>&lt;epidist&gt;</i>)</a></code> 
-        </dt>
-        <dd>Family method for the <code>epidist</code> class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="format.epidist.html">format(<i>&lt;epidist&gt;</i>)</a></code> 
-        </dt>
-        <dd>Format method for epidist class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="format.epiparam.html">format(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Format method for epiparam class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="format.vb_epidist.html">format(<i>&lt;vb_epidist&gt;</i>)</a></code> 
-        </dt>
-        <dd>Format method for vb_epidist class</dd>
-      </dl><dl><dt>
-          
           <code><a href="gamma_meansd2shapescale.html">gamma_meansd2shapescale()</a></code> 
         </dt>
         <dd>Converts the mean and standard deviation of the gamma distribution to the
@@ -287,16 +428,91 @@ mean and standard deviation.</dd>
 (expectation) of the distribution</dd>
       </dl><dl><dt>
           
-          <code><a href="get_citation.html">get_citation()</a></code> 
+          <code><a href="lnorm_meanlogsdlog2meansd.html">lnorm_meanlogsdlog2meansd()</a></code> 
         </dt>
-        <dd>Method for extracting citation information from <code>&lt;epidist&gt;</code> or
-<code>&lt;epiparam&gt;</code> objects.</dd>
+        <dd>Converts the meanlog and sdlog parameters of the lognormal distribution to
+the mean and standard deviation</dd>
       </dl><dl><dt>
           
-          <code><a href="head.epiparam.html">head(<i>&lt;epiparam&gt;</i>)</a></code> <code><a href="head.epiparam.html">tail(<i>&lt;epiparam&gt;</i>)</a></code> 
+          <code><a href="lnorm_meansd2meanlogsdlog.html">lnorm_meansd2meanlogsdlog()</a></code> 
         </dt>
-        <dd><code>head</code> and <code>tail</code> methods for <code>epiparam</code> class</dd>
+        <dd>Converts the mean and standard deviation of a lognormal distribution into the
+standard parameterisation of meanlog (mu) and sdlog (sigma)</dd>
       </dl><dl><dt>
+          
+          <code><a href="nbinom_meandisp2probdisp.html">nbinom_meandisp2probdisp()</a></code> 
+        </dt>
+        <dd>Convert the mean and dispersion (k) parameter of the negative binomial
+distribution to the probability (p) and dispersion parameters.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="nbinom_probdisp2meandisp.html">nbinom_probdisp2meandisp()</a></code> 
+        </dt>
+        <dd>Convert the probability and dispersion (k) parameters of the negative
+binomial distribution to the mean (expectation) and dispersion
+parameterisation</dd>
+      </dl><dl><dt>
+          
+          <code><a href="weibull_meansd2shapescale.html">weibull_meansd2shapescale()</a></code> 
+        </dt>
+        <dd>Converts the mean and standard deviation of the Weibull distribution to the
+shape and scale parameterisation.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="weibull_shapescale2meansd.html">weibull_shapescale2meansd()</a></code> 
+        </dt>
+        <dd>Converts the shape and scale parameters of the Weibull distribution to the
+mean and standard deviation</dd>
+      </dl></div><div class="section level2">
+      <h2 id="calculate-parameters-from-summary-statistics">Calculate parameters from summary statistics<a class="anchor" aria-label="anchor" href="#calculate-parameters-from-summary-statistics"></a></h2>
+      
+      <p class="section-desc"></p><p>Uses either extraction or conversion function to get distribution parameters</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="calc_dist_params.html">calc_dist_params()</a></code> 
+        </dt>
+        <dd>Calculates the parameters of a probability distribution from a list of
+available summary statistics</dd>
+      </dl></div><div class="section level2">
+      <h2 id="epi-object-conversion">Epi object conversion<a class="anchor" aria-label="anchor" href="#epi-object-conversion"></a></h2>
+      
+      <p class="section-desc"></p><p>Convert between {epiparameter} classes</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="as_epidist.html">as_epidist()</a></code> 
+        </dt>
+        <dd>Converts rows of an epiparam object into an epidist object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="as_epiparam.html">as_epiparam()</a></code> 
+        </dt>
+        <dd>Converts an <code>epidist</code> object to an <code>epiparam</code> object</dd>
+      </dl></div><div class="section level2">
+      <h2 id="epi-object-checking">Epi object checking<a class="anchor" aria-label="anchor" href="#epi-object-checking"></a></h2>
+      
+      <p class="section-desc"></p><p>Check an object is of a certain type or feature</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="is_epidist.html">is_epidist()</a></code> 
         </dt>
@@ -323,121 +539,81 @@ the <code>epiparameter</code> package</dd>
           <code><a href="is_vb_epidist.html">is_vb_epidist()</a></code> 
         </dt>
         <dd>Checks whether the object is a <code>vb_epidist</code></dd>
+      </dl></div><div class="section level2">
+      <h2 id="bind-to-epiparam">Bind to epiparam<a class="anchor" aria-label="anchor" href="#bind-to-epiparam"></a></h2>
+      
+      <p class="section-desc"></p><p>Add entries to <epiparam> object</epiparam></p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="bind_epiparam.html">bind_epiparam()</a></code> 
+        </dt>
+        <dd>Binds any epi data class in <span class="pkg">epiparameter</span> (<code>epidist</code>, <code>vb_epidist</code>,
+<code>epiparam</code>) or data frame to an <code>epiparam</code> object.</dd>
+      </dl></div><div class="section level2">
+      <h2 id="cleaning">Cleaning<a class="anchor" aria-label="anchor" href="#cleaning"></a></h2>
+      
+      <p class="section-desc"></p><p>Standardises name of disease or epidist object</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="clean_disease.html">clean_disease()</a></code> 
+        </dt>
+        <dd>Standardises the names of diseases</dd>
       </dl><dl><dt>
           
-          <code><a href="list_distributions.html">list_distributions()</a></code> 
+          <code><a href="clean_epidist_name.html">clean_epidist_name()</a></code> 
         </dt>
-        <dd>List epidemiological distributions stored in an <code>epiparam</code> object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="lnorm_meanlogsdlog2meansd.html">lnorm_meanlogsdlog2meansd()</a></code> 
-        </dt>
-        <dd>Converts the meanlog and sdlog parameters of the lognormal distribution to
-the mean and standard deviation</dd>
-      </dl><dl><dt>
-          
-          <code><a href="lnorm_meansd2meanlogsdlog.html">lnorm_meansd2meanlogsdlog()</a></code> 
-        </dt>
-        <dd>Converts the mean and standard deviation of a lognormal distribution into the
-standard parameterisation of meanlog (mu) and sdlog (sigma)</dd>
-      </dl><dl><dt>
-          
-          <code><a href="names-set-.epiparam.html">`names&lt;-`(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Set names on <code>epiparam</code> class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="nbinom_meandisp2probdisp.html">nbinom_meandisp2probdisp()</a></code> 
-        </dt>
-        <dd>Convert the mean and dispersion (k) parameter of the negative binomial
-distribution to the probability (p) and dispersion parameters.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="nbinom_probdisp2meandisp.html">nbinom_probdisp2meandisp()</a></code> 
-        </dt>
-        <dd>Convert the probability and dispersion (k) parameters of the negative
-binomial distribution to the mean (expectation) and dispersion
-parameterisation</dd>
-      </dl><dl><dt>
-          
-          <code><a href="parameters.epidist.html">parameters(<i>&lt;epidist&gt;</i>)</a></code> 
-        </dt>
-        <dd>Parameters method for <code>epidist</code> object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot.epidist.html">plot(<i>&lt;epidist&gt;</i>)</a></code> 
-        </dt>
-        <dd>PLots an <code>epidist</code> object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot.vb_epidist.html">plot(<i>&lt;vb_epidist&gt;</i>)</a></code> 
-        </dt>
-        <dd>Plots an <code>vb_epidist</code> object,</dd>
-      </dl><dl><dt>
+        <dd>Standardises the names of epidemiological distributions</dd>
+      </dl></div><div class="section level2">
+      <h2 id="check-valid-parameterisation">Check valid parameterisation<a class="anchor" aria-label="anchor" href="#check-valid-parameterisation"></a></h2>
+      
+      <p class="section-desc"></p><p>Check parameters are valid for <code>&lt;epidist&gt;</code></p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="possible_epidist_params.html">possible_epidist_params()</a></code> 
         </dt>
         <dd>Helper function that prints the distribution parameters accepted by
 <code>epiparameter</code></dd>
-      </dl><dl><dt>
+      </dl></div><div class="section level2">
+      <h2 id="utility-function">Utility function<a class="anchor" aria-label="anchor" href="#utility-function"></a></h2>
+      
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
-          <code><a href="print.epidist.html">print(<i>&lt;epidist&gt;</i>)</a></code> 
+          <code><a href="calc_disc_dist_quantile.html">calc_disc_dist_quantile()</a></code> 
         </dt>
-        <dd>Print method for epidist class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="print.epiparam.html">print(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Print method for epiparam class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="print.vb_epidist.html">print(<i>&lt;vb_epidist&gt;</i>)</a></code> 
-        </dt>
-        <dd>Print method for vb_epidist class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="sub-.epiparam.html">`[`(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Subsetting method for <code>epiparam</code></dd>
-      </dl><dl><dt>
-          
-          <code><a href="summary.epiparam.html">summary(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Summary method for epiparam class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="validate_epidist.html">validate_epidist()</a></code> 
-        </dt>
-        <dd><code>epidist</code> class validator</dd>
-      </dl><dl><dt>
-          
-          <code><a href="validate_epiparam.html">validate_epiparam()</a></code> 
-        </dt>
-        <dd><code>epiparam</code> class validator</dd>
-      </dl><dl><dt>
-          
-          <code><a href="validate_vb_epidist.html">validate_vb_epidist()</a></code> 
-        </dt>
-        <dd><code>vb_epidist</code> class validator</dd>
-      </dl><dl><dt>
-          
-          <code><a href="vb_epidist.html">vb_epidist()</a></code> 
-        </dt>
-        <dd>Create a <code>vb_epidist</code> object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="weibull_meansd2shapescale.html">weibull_meansd2shapescale()</a></code> 
-        </dt>
-        <dd>Converts the mean and standard deviation of the Weibull distribution to the
-shape and scale parameterisation.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="weibull_shapescale2meansd.html">weibull_shapescale2meansd()</a></code> 
-        </dt>
-        <dd>Converts the shape and scale parameters of the Weibull distribution to the
-mean and standard deviation</dd>
+        <dd>Calculate the quantiles of a probability distribution based on the vector
+of probabilities and time data (e.g. time since infection)</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
