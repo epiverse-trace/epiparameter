@@ -32,13 +32,7 @@ reference:
     desc: Class constructor, validator, and methods
     contents:
     - epiparam
-    - "`$<-.epiparam`"
-    - "`[.epiparam`"
-    - "`names<-.epiparam`"
-    - format.epiparam
-    - head.epiparam
-    - print.epiparam
-    - summary.epiparam
+    - matches("\\.epiparam$")
     - validate_epiparam
 
   - subtitle: vb_epdist object
@@ -53,12 +47,7 @@ reference:
   - title: epidist helper functions
     desc: Functions to help construct `<epidist>` objects
     contents:
-    - create_epidist_citation
-    - create_epidist_metadata
-    - create_epidist_method_assess
-    - create_epidist_region
-    - create_epidist_summary_stats
-    - create_epidist_uncertainty
+    - starts_with("create_epidist")
 
   - title: epidist from {epiparameter} library
     desc: Retrieve `<epidist>` object directly from database
