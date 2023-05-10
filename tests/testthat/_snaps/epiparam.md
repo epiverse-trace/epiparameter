@@ -4,11 +4,11 @@
       epiparam()
     Output
       Epiparam object
-      Number of distributions in library: 106
-      Number of diseases: 24
-      Number of delay distributions: 83
+      Number of distributions in library: 118
+      Number of diseases: 23
+      Number of delay distributions: 95
       Number of offspring distributions: 10
-      Number of studies in library: 42
+      Number of studies in library: 57
       <Head of library>
             disease         epi_distribution prob_distribution
       1  Adenovirus        incubation_period             lnorm
@@ -17,7 +17,7 @@
       4    COVID-19 hospitalisation_to_death             lnorm
       5    COVID-19        incubation_period              <NA>
       6    COVID-19        incubation_period           weibull
-      <100 more rows & 53 more cols not shown>
+      <112 more rows & 53 more cols not shown>
 
 ---
 
@@ -25,11 +25,11 @@
       print(epiparam())
     Output
       Epiparam object
-      Number of distributions in library: 106
-      Number of diseases: 24
-      Number of delay distributions: 83
+      Number of distributions in library: 118
+      Number of diseases: 23
+      Number of delay distributions: 95
       Number of offspring distributions: 10
-      Number of studies in library: 42
+      Number of studies in library: 57
       <Head of library>
             disease         epi_distribution prob_distribution
       1  Adenovirus        incubation_period             lnorm
@@ -38,7 +38,7 @@
       4    COVID-19 hospitalisation_to_death             lnorm
       5    COVID-19        incubation_period              <NA>
       6    COVID-19        incubation_period           weibull
-      <100 more rows & 53 more cols not shown>
+      <112 more rows & 53 more cols not shown>
 
 ---
 
@@ -46,11 +46,11 @@
       format(epiparam())
     Output
       Epiparam object
-      Number of distributions in library: 106
-      Number of diseases: 24
-      Number of delay distributions: 83
+      Number of distributions in library: 118
+      Number of diseases: 23
+      Number of delay distributions: 95
       Number of offspring distributions: 10
-      Number of studies in library: 42
+      Number of studies in library: 57
       <Head of library>
             disease         epi_distribution prob_distribution
       1  Adenovirus        incubation_period             lnorm
@@ -59,7 +59,7 @@
       4    COVID-19 hospitalisation_to_death             lnorm
       5    COVID-19        incubation_period              <NA>
       6    COVID-19        incubation_period           weibull
-      <100 more rows & 53 more cols not shown>
+      <112 more rows & 53 more cols not shown>
 
 # epiparam head & tails methods works as expected
 
@@ -83,14 +83,14 @@
         prob_distribution inference_method mean mean_ci_limits mean_ci    sd
       1             lnorm              mle   NA         NA, NA      NA    NA
       2             lnorm              mle   NA         NA, NA      NA    NA
-      3           weibull         bayesian  8.9      7.3, 10.4      95  5.40
+      3           weibull         bayesian  8.9      7.3, 10.4      95  5.70
       4             lnorm         bayesian 13.0      8.7, 20.9      95 12.70
       5              <NA>             <NA>  6.5       5.9, 7.1      95    NA
       6           weibull         bayesian  6.4     4.89, 8.50      95  3.05
         sd_ci_limits sd_ci quantile_2.5 quantile_5 quantile_25 median
       1       NA, NA    NA           NA         NA         4.8    5.6
       2       NA, NA    NA           NA         NA         2.9    3.0
-      3     4.2, 7.3    95           NA        1.7          NA    8.0
+      3     4.3, 7.8    95           NA        1.7          NA    8.0
       4    6.4, 26.0    95           NA        2.5          NA    9.1
       5       NA, NA    NA           NA         NA          NA     NA
       6   3.05, 5.30    95         1.35        1.9          NA    6.1
@@ -157,87 +157,87 @@
       tail(epiparam())
     Output
                      disease             pathogen  epi_distribution       author year
-      101    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014
-      102    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014
-      103    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014
-      104       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014
-      105       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014
-      106 Zika Virus Disease           Zika Virus incubation_period Lessler_etal 2016
+      113    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014
+      114    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014
+      115    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014
+      116       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014
+      117       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014
+      118 Zika Virus Disease           Zika Virus incubation_period Lessler_etal 2016
           sample_size region transmission_mode                             vector
-      101          18  Mixed          multiple                               <NA>
-      102           8  Mixed      vector_borne                           mosquito
-      103           6  Mixed  organ_transplant                               <NA>
-      104          91  Mixed          multiple                               <NA>
-      105          80  Mixed      vector_borne                           mosquito
-      106          25  Mixed      vector_borne Aedes aegypti and Aedes albopictus
+      113          18  Mixed          multiple                               <NA>
+      114           8  Mixed      vector_borne                           mosquito
+      115           6  Mixed  organ_transplant                               <NA>
+      116          91  Mixed          multiple                               <NA>
+      117          80  Mixed      vector_borne                           mosquito
+      118          25  Mixed      vector_borne Aedes aegypti and Aedes albopictus
           extrinsic prob_distribution inference_method mean mean_ci_limits mean_ci sd
-      101     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      102     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      103     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      104     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      105     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      106     FALSE             lnorm         bayesian   NA         NA, NA      NA NA
+      113     FALSE             lnorm              mle   NA         NA, NA      NA NA
+      114     FALSE             lnorm              mle   NA         NA, NA      NA NA
+      115     FALSE             lnorm              mle   NA         NA, NA      NA NA
+      116     FALSE             lnorm              mle   NA         NA, NA      NA NA
+      117     FALSE             lnorm              mle   NA         NA, NA      NA NA
+      118     FALSE             lnorm         bayesian   NA         NA, NA      NA NA
           sd_ci_limits sd_ci quantile_2.5 quantile_5 quantile_25 median
-      101       NA, NA    NA           NA        1.0         1.7    2.6
-      102       NA, NA    NA           NA         NA         2.8    2.9
-      103       NA, NA    NA           NA         NA         8.7   10.8
-      104       NA, NA    NA           NA        1.9         3.2    4.4
-      105       NA, NA    NA           NA        1.9         3.1    4.4
-      106       NA, NA    NA           NA        3.2         4.6    5.9
+      113       NA, NA    NA           NA        1.0         1.7    2.6
+      114       NA, NA    NA           NA         NA         2.8    2.9
+      115       NA, NA    NA           NA         NA         8.7   10.8
+      116       NA, NA    NA           NA        1.9         3.2    4.4
+      117       NA, NA    NA           NA        1.9         3.1    4.4
+      118       NA, NA    NA           NA        3.2         4.6    5.9
           median_ci_limits median_ci quantile_75 quantile_87.5 quantile_95
-      101         1.6, 3.5        95         3.8            NA         7.0
-      102         0.5, 3.1        95         3.0            NA          NA
-      103        8.4, 14.2        95        13.3            NA          NA
-      104             4, 5        95         6.3            NA        10.3
-      105         3.9, 5.0        95         6.2            NA        10.3
-      106         4.4, 7.6        95         7.6            NA        11.2
+      113         1.6, 3.5        95         3.8            NA         7.0
+      114         0.5, 3.1        95         3.0            NA          NA
+      115        8.4, 14.2        95        13.3            NA          NA
+      116             4, 5        95         6.3            NA        10.3
+      117         3.9, 5.0        95         6.2            NA        10.3
+      118         4.4, 7.6        95         7.6            NA        11.2
           quantile_97.5 lower_range upper_range shape shape_ci_limits shape_ci scale
-      101            NA          NA          NA    NA          NA, NA       NA    NA
-      102            NA          NA          NA    NA          NA, NA       NA    NA
-      103            NA          NA          NA    NA          NA, NA       NA    NA
-      104            NA          NA          NA    NA          NA, NA       NA    NA
-      105            NA          NA          NA    NA          NA, NA       NA    NA
-      106            NA          NA          NA    NA          NA, NA       NA    NA
+      113            NA          NA          NA    NA          NA, NA       NA    NA
+      114            NA          NA          NA    NA          NA, NA       NA    NA
+      115            NA          NA          NA    NA          NA, NA       NA    NA
+      116            NA          NA          NA    NA          NA, NA       NA    NA
+      117            NA          NA          NA    NA          NA, NA       NA    NA
+      118            NA          NA          NA    NA          NA, NA       NA    NA
           scale_ci_limits scale_ci meanlog meanlog_ci_limits meanlog_ci sdlog
-      101          NA, NA       NA      NA            NA, NA         NA    NA
-      102          NA, NA       NA      NA            NA, NA         NA    NA
-      103          NA, NA       NA      NA            NA, NA         NA    NA
-      104          NA, NA       NA      NA            NA, NA         NA    NA
-      105          NA, NA       NA      NA            NA, NA         NA    NA
-      106          NA, NA       NA      NA            NA, NA         NA    NA
+      113          NA, NA       NA      NA            NA, NA         NA    NA
+      114          NA, NA       NA      NA            NA, NA         NA    NA
+      115          NA, NA       NA      NA            NA, NA         NA    NA
+      116          NA, NA       NA      NA            NA, NA         NA    NA
+      117          NA, NA       NA      NA            NA, NA         NA    NA
+      118          NA, NA       NA      NA            NA, NA         NA    NA
           sdlog_ci_limits sdlog_ci dispersion dispersion_ci_limits dispersion_ci
-      101          NA, NA       NA       1.82           1.27, 2.67            95
-      102          NA, NA       NA       1.04           1.04, 1.29            95
-      103          NA, NA       NA       1.35           1.12, 1.47            95
-      104          NA, NA       NA       1.66           1.48, 1.82            95
-      105          NA, NA       NA       1.67           1.47, 1.84            95
-      106          NA, NA       NA       1.50             1.2, 1.9            95
+      113          NA, NA       NA       1.82           1.27, 2.67            95
+      114          NA, NA       NA       1.04           1.04, 1.29            95
+      115          NA, NA       NA       1.35           1.12, 1.47            95
+      116          NA, NA       NA       1.66           1.48, 1.82            95
+      117          NA, NA       NA       1.67           1.47, 1.84            95
+      118          NA, NA       NA       1.50             1.2, 1.9            95
           precision precision_ci_limits precision_ci truncation discretised censored
-      101        NA              NA, NA           NA         NA       FALSE     TRUE
-      102        NA              NA, NA           NA         NA       FALSE     TRUE
-      103        NA              NA, NA           NA         NA       FALSE     TRUE
-      104        NA              NA, NA           NA         NA       FALSE     TRUE
-      105        NA              NA, NA           NA         NA       FALSE     TRUE
-      106        NA              NA, NA           NA         NA       FALSE     TRUE
+      113        NA              NA, NA           NA         NA       FALSE     TRUE
+      114        NA              NA, NA           NA         NA       FALSE     TRUE
+      115        NA              NA, NA           NA         NA       FALSE     TRUE
+      116        NA              NA, NA           NA         NA       FALSE     TRUE
+      117        NA              NA, NA           NA         NA       FALSE     TRUE
+      118        NA              NA, NA           NA         NA       FALSE     TRUE
           right_truncated phase_bias_adjusted
-      101           FALSE               FALSE
-      102           FALSE               FALSE
-      103           FALSE               FALSE
-      104           FALSE               FALSE
-      105           FALSE               FALSE
-      106           FALSE               FALSE
+      113           FALSE               FALSE
+      114           FALSE               FALSE
+      115           FALSE               FALSE
+      116           FALSE               FALSE
+      117           FALSE               FALSE
+      118           FALSE               FALSE
                                                                                                                                                                                  notes
-      101                                                                                      Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
-      102            Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
-      103 Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only tramsission by transplant or transfusion. 
-      104                                                                                      Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
-      105            Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
-      106                                                                                     Pooled analysis on several data sets, see Lessler et al. 2016 for references of datasets
+      113                                                                                      Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      114            Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
+      115 Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only tramsission by transplant or transfusion. 
+      116                                                                                      Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets
+      117            Pooled analysis on several data sets, see Rudolph et al 2014 for references of datasets. This is a subset of data containing only mosquito-transmitted infections
+      118                                                                                     Pooled analysis on several data sets, see Lessler et al. 2016 for references of datasets
               PMID                   DOI
-      101 24639305 10.4269/ajtmh.13-0403
-      102 24639305 10.4269/ajtmh.13-0403
-      103 24639305 10.4269/ajtmh.13-0403
-      104 24639305 10.4269/ajtmh.13-0403
-      105 24639305 10.4269/ajtmh.13-0403
-      106 27821887 10.2471/BLT.16.174540
+      113 24639305 10.4269/ajtmh.13-0403
+      114 24639305 10.4269/ajtmh.13-0403
+      115 24639305 10.4269/ajtmh.13-0403
+      116 24639305 10.4269/ajtmh.13-0403
+      117 24639305 10.4269/ajtmh.13-0403
+      118 27821887 10.2471/BLT.16.174540
 
