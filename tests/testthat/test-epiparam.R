@@ -2,7 +2,7 @@ test_that("epiparam works as expected", {
   eparam <- epiparam()
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(106L, 56L))
+  expect_identical(dim(eparam), c(118L, 56L))
   expect_identical(
     colnames(eparam),
     c("disease", "pathogen", "epi_distribution", "author", "year",
@@ -91,14 +91,14 @@ test_that("epiparam works with all epi distributions", {
   eparam <- epiparam(epi_dist = "all")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(106L, 56L))
+  expect_identical(dim(eparam), c(118L, 56L))
 })
 
 test_that("epiparam works with incubation period", {
   eparam <- epiparam(epi_dist = "incubation_period")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(65L, 56L))
+  expect_identical(dim(eparam), c(72L, 56L))
 })
 
 test_that("epiparam works with onset-to-hospitalisation", {
@@ -119,7 +119,7 @@ test_that("epiparam works with serial interval", {
   eparam <- epiparam(epi_dist = "serial_interval")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(10L, 56L))
+  expect_identical(dim(eparam), c(15L, 56L))
 })
 
 test_that("epiparam works with generation time", {
@@ -171,14 +171,14 @@ test_that("epiparam head & tails methods works as expected", {
 test_that("new_epiparam works as expected", {
   eparam <- new_epiparam(epi_dist = "all")
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(106L, 56L))
+  expect_identical(dim(eparam), c(118L, 56L))
 })
 
 test_that("new_epiparam works with filtering by epi dist", {
   eparam <- new_epiparam(epi_dist = "incubation_period")
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(dim(eparam), c(65L, 56L))
+  expect_identical(dim(eparam), c(72L, 56L))
 })
 
 test_that("new_epiparam fails when expected", {

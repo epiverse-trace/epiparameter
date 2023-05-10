@@ -3,7 +3,7 @@ test_that("list_distributions works as expected with defaults", {
   eparam <- epiparam()
   dist_tbl <- list_distributions(epiparam = eparam)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(65L, 6L))
+  expect_identical(dim(dist_tbl), c(72L, 6L))
   expect_named(
     dist_tbl,
     c(
@@ -20,7 +20,7 @@ test_that("list_distributions works as expected with subset_db = FALSE", {
   eparam <- epiparam()
   dist_tbl <- list_distributions(epiparam = eparam, subset_db = FALSE)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(65L, 56L))
+  expect_identical(dim(dist_tbl), c(72L, 56L))
   expect_named(
     dist_tbl,
     c(
@@ -57,7 +57,7 @@ test_that("list_distributions works for incubation period", {
     epi_dist = "incubation_period"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(65L, 6L))
+  expect_identical(dim(incub_tbl), c(72L, 6L))
   expect_named(
     incub_tbl,
     c(
@@ -81,7 +81,7 @@ test_that("list_distributions works for incubation, subset_db = FALSE", {
     subset_db = FALSE
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(65L, 56L))
+  expect_identical(dim(incub_tbl), c(72L, 56L))
   expect_named(
     incub_tbl,
     c(
@@ -116,7 +116,7 @@ test_that("list_distributions works for different distribution", {
     epi_dist = "serial_interval"
   )
   expect_s3_class(serial_tbl, "data.frame")
-  expect_identical(dim(serial_tbl), c(10L, 6L))
+  expect_identical(dim(serial_tbl), c(15L, 6L))
   expect_named(
     serial_tbl,
     c(
@@ -140,7 +140,7 @@ test_that("list_distributions works for different dist, subset_db = FALSE", {
     subset_db = FALSE
   )
   expect_s3_class(serial_tbl, "data.frame")
-  expect_identical(dim(serial_tbl), c(10L, 56L))
+  expect_identical(dim(serial_tbl), c(15L, 56L))
   expect_named(
     serial_tbl,
     c(
