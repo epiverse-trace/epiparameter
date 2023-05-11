@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-07/schema#"
 title: epiparameter data
 description: >
   The database of epidemiological distributions for a variety of infectious
-  diseases and pathogens. Last modified 02/12/2022.
+  diseases and pathogens. Last modified 11/05/2023.
 type: object
 properties:
   disease:
