@@ -131,11 +131,11 @@ the data, and the functions (and methods) implemented in the package to facilita
 <code class="sourceCode R"><span><span class="va">epi_dist_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epiparam.html">epiparam</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">epi_dist_db</span></span>
 <span><span class="co">#&gt; Epiparam object</span></span>
-<span><span class="co">#&gt; Number of distributions in library: 106</span></span>
-<span><span class="co">#&gt; Number of diseases: 24</span></span>
-<span><span class="co">#&gt; Number of delay distributions: 83</span></span>
+<span><span class="co">#&gt; Number of distributions in library: 118</span></span>
+<span><span class="co">#&gt; Number of diseases: 23</span></span>
+<span><span class="co">#&gt; Number of delay distributions: 95</span></span>
 <span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
-<span><span class="co">#&gt; Number of studies in library: 42</span></span>
+<span><span class="co">#&gt; Number of studies in library: 57</span></span>
 <span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
 <span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
 <span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
@@ -144,7 +144,7 @@ the data, and the functions (and methods) implemented in the package to facilita
 <span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
 <span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 6    COVID-19        incubation_period           weibull</span></span>
-<span><span class="co">#&gt; &lt;100 more rows &amp; 53 more cols not shown&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; &lt;112 more rows &amp; 53 more cols not shown&gt;</span></span></code></pre></div>
 </details><p>The <code>&lt;epiparam&gt;</code> class has a custom printing method which gives a summary of the information included in the database including the number of distributions, number of diseases, number of different studies among other summary metrics, as well as the first six rows of the diseases, epidemiological distributions (<code>epi_distribution</code>) and probability distribution (<code>prob_distribution</code>).</p>
 <p>The <code>&lt;epiparam&gt;</code> class is based (i.e. inherits from) the data frame, and therefore the same subsetting and manipulation can be carried out, including the <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code> and <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail()</a></code> of the database.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -158,12 +158,12 @@ the data, and the functions (and methods) implemented in the package to facilita
 <span><span class="co">#&gt; 6    COVID-19        SARS-CoV-2        incubation_period     Bui_etal 2020</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
 <span><span class="co">#&gt;                disease             pathogen  epi_distribution       author year</span></span>
-<span><span class="co">#&gt; 101    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014</span></span>
-<span><span class="co">#&gt; 102    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014</span></span>
-<span><span class="co">#&gt; 103    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014</span></span>
-<span><span class="co">#&gt; 104       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014</span></span>
-<span><span class="co">#&gt; 105       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014</span></span>
-<span><span class="co">#&gt; 106 Zika Virus Disease           Zika Virus incubation_period Lessler_etal 2016</span></span></code></pre></div>
+<span><span class="co">#&gt; 113    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014</span></span>
+<span><span class="co">#&gt; 114    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014</span></span>
+<span><span class="co">#&gt; 115    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014</span></span>
+<span><span class="co">#&gt; 116       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014</span></span>
+<span><span class="co">#&gt; 117       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014</span></span>
+<span><span class="co">#&gt; 118 Zika Virus Disease           Zika Virus incubation_period Lessler_etal 2016</span></span></code></pre></div>
 </details><p>The epidemiological library contains quite a few different columns:</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span></span>
@@ -299,11 +299,11 @@ This may be especially useful if new parameter estimates become available but ar
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bind_epiparam.html">bind_epiparam</a></span><span class="op">(</span>epiparam <span class="op">=</span> <span class="va">epi_dist_db</span>, epi_obj <span class="op">=</span> <span class="va">ebola_incubation</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Epiparam object</span></span>
-<span><span class="co">#&gt; Number of distributions in library: 107</span></span>
-<span><span class="co">#&gt; Number of diseases: 25</span></span>
-<span><span class="co">#&gt; Number of delay distributions: 84</span></span>
+<span><span class="co">#&gt; Number of distributions in library: 119</span></span>
+<span><span class="co">#&gt; Number of diseases: 24</span></span>
+<span><span class="co">#&gt; Number of delay distributions: 96</span></span>
 <span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
-<span><span class="co">#&gt; Number of studies in library: 43</span></span>
+<span><span class="co">#&gt; Number of studies in library: 58</span></span>
 <span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
 <span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
 <span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
@@ -312,14 +312,14 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
 <span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 6    COVID-19        incubation_period           weibull</span></span>
-<span><span class="co">#&gt; &lt;101 more rows &amp; 53 more cols not shown&gt;</span></span>
+<span><span class="co">#&gt; &lt;113 more rows &amp; 53 more cols not shown&gt;</span></span>
 <span><span class="fu"><a href="../reference/bind_epiparam.html">bind_epiparam</a></span><span class="op">(</span>epiparam <span class="op">=</span> <span class="va">epi_dist_db</span>, epi_obj <span class="op">=</span> <span class="fu"><a href="../reference/as_epiparam.html">as_epiparam</a></span><span class="op">(</span><span class="va">ebola_incubation</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Epiparam object</span></span>
-<span><span class="co">#&gt; Number of distributions in library: 107</span></span>
-<span><span class="co">#&gt; Number of diseases: 25</span></span>
-<span><span class="co">#&gt; Number of delay distributions: 84</span></span>
+<span><span class="co">#&gt; Number of distributions in library: 119</span></span>
+<span><span class="co">#&gt; Number of diseases: 24</span></span>
+<span><span class="co">#&gt; Number of delay distributions: 96</span></span>
 <span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
-<span><span class="co">#&gt; Number of studies in library: 43</span></span>
+<span><span class="co">#&gt; Number of studies in library: 58</span></span>
 <span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
 <span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
 <span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
@@ -328,7 +328,7 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
 <span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 6    COVID-19        incubation_period           weibull</span></span>
-<span><span class="co">#&gt; &lt;101 more rows &amp; 53 more cols not shown&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; &lt;113 more rows &amp; 53 more cols not shown&gt;</span></span></code></pre></div>
 </details><p>Note that this only adds the parameters to the library (<code>&lt;epiparam&gt;</code> object) in the environment, and does not save to the database file in the package.</p>
 </div>
 <div class="section level2">
@@ -343,8 +343,8 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2.718282</span></span>
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] 22.5497853  1.4413095  2.3138003  1.6603233  2.5205823  4.3722150</span></span>
-<span><span class="co">#&gt;  [7]  1.8661017  1.6610521  0.7512982  2.4514076</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1]  2.538813  0.499356  2.267419  2.733210  1.642540 10.905238  5.229057</span></span>
+<span><span class="co">#&gt;  [8]  1.322231 18.096652  1.068912</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2">
