@@ -392,13 +392,12 @@ print.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 #' format(epidist)
 format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 
-  epi_dist <- clean_epidist_name(x$epi_dist)
   if (header) {
     writeLines(
       c(
         sprintf("Disease: %s", x$disease$disease),
         sprintf("Pathogen: %s", x$disease$pathogen),
-        sprintf("Epi Distribution: %s", epi_dist),
+        sprintf("Epi Distribution: %s", clean_epidist_name(x$epi_dist)),
         sprintf("Study: %s", x$citation)
       )
     )
@@ -408,19 +407,19 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
     writeLines(sprintf(vb))
   }
 
-  # print distribution
-  dist <- family(x)
-  if (is.na(dist)) {
-    writeLines(sprintf("Parameters: <no parameters>"))
-  } else {
+  if (is.object(x$prob_dist) || is.characcter(x$prob_dist)) {
     dist_string <- ifelse(
       test = inherits(x$prob_dist, "distcrete"),
       yes = "Distribution: discrete %s",
       no = "Distribution: %s"
     )
-    writeLines(sprintf(dist_string, dist))
+    writeLines(sprintf(dist_string, family(x)))
+  } else {
+    writeLines(sprintf("Parameters: <no parameters>"))
+  }
 
-    params <- parameters(x, verbose = FALSE)
+  if (is.object(x$prob_dist)) {
+    params <- parameters(x)
 
     # decide on parameter format from magnitude of number
     format_params <- ifelse(
