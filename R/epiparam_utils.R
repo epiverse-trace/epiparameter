@@ -222,7 +222,7 @@ as_epiparam <- function(x) {
   author <- NA_character_
   year <- NA_integer_
   doi <- NA_character_
-  pmid <- NA_character_
+  pmid <- NA_integer_
 
   # if citation is available extract info
   if (x$citation != "No citation available") {
@@ -237,7 +237,7 @@ as_epiparam <- function(x) {
     if (grepl(pattern = "PMID", x = x$citation, fixed = TRUE)) {
       pmid <- sub(".*PMID: ", "", x$citation)
     } else {
-      pmid <- NA
+      pmid <- NA_integer_
     }
   }
 
@@ -246,11 +246,11 @@ as_epiparam <- function(x) {
 
   if (inherits(x$prob_dist, "distcrete")) {
     discretised <- TRUE
-    truncation <- NA
+    truncation <- NA_real_
   } else {
     discretised <- FALSE
     if (isFALSE("upper" %in% names(params))) {
-      truncation <- NA
+      truncation <- NA_real_
     } else {
       truncation <- params[["upper"]]
     }
