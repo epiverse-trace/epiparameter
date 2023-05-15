@@ -2,7 +2,7 @@
 % Please edit documentation in R/bind_epiparam.R
 \name{bind_epiparam}
 \alias{bind_epiparam}
-\title{Bind an epi object to an \code{\link{<epiparam>}} object}
+\title{Bind an epi object to an \code{\link{epiparam}} object}
 \usage{
 bind_epiparam(epiparam, epi_obj)
 }
@@ -17,8 +17,8 @@ conform to the columns of an \verb{<epiparam>} object.}
 An \verb{<epiparam>} object
 }
 \description{
-Binds any epi data class in \pkg{epiparameter} (\code{\link{<epidist>}},
-\code{\link{<vb_epidist>}}, \code{\link{<epiparam>}}) or data frame to an \code{\link{<epiparam>}} object.
+Binds any epi data class in \pkg{epiparameter} (\code{\link{epidist}},
+\code{\link{vb_epidist}}, \code{\link{epiparam}}) or data frame to an \code{\link{epiparam}} object.
 }
 \details{
 The \code{\link{epiparam}} class holds the library of epidemiological
