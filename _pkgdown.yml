@@ -95,11 +95,13 @@ reference:
     - is_epiparam
     - is_truncated
     - is_vb_epidist
+    - is_parameterised
 
   - title: Bind to epiparam
     desc: Add entries to <epiparam> object
     contents:
     - bind_epiparam
+    - cbind_epiparam
 
   - title: Cleaning
     desc: Standardises name of disease or epidist object
