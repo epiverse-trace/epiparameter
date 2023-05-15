@@ -1064,3 +1064,23 @@ test_that("is_truncated works as expected for truncated distributions", {
   ))
   expect_true(is_truncated(edist))
 })
+
+test_that("is_parameterised works as expected with parameters", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  expect_true(is_parameterised(edist))
+})
+
+test_that("is_parameterised works as expected without parameters", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation_period"
+  ))
+  expect_false(is_parameterised(edist))
+})
