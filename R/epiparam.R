@@ -158,7 +158,7 @@ validate_epiparam <- function(epiparam, reconstruct = FALSE) {
   )
 
   check_limits <- apply(epiparam, MARGIN = 2, FUN = function(x) {
-    res <-  vapply(x, function(y) {
+    vapply(x, function(y) {
       length(y) == 2 && is.numeric(y)
     }, FUN.VALUE = logical(1))
   },

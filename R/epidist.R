@@ -59,7 +59,7 @@ new_epidist <- function(disease = list(),
   )
 
   # calculate parameters if not provided
-  if (!is.na(prob_dist) && any(is.na(prob_dist_params)) && auto_calc_params) {
+  if (!is.na(prob_dist) && anyNA(prob_dist_params) && auto_calc_params) {
     prob_dist_params <- calc_dist_params(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params,
@@ -68,7 +68,7 @@ new_epidist <- function(disease = list(),
     )
   }
 
-  if (!any(is.na(prob_dist_params))) {
+  if (!anyNA(prob_dist_params)) {
     # standardise distribution parameter names
     class(prob_dist_params) <- prob_dist
     prob_dist_params <- clean_epidist_params(
@@ -987,7 +987,7 @@ is_parameterised <- function(x) {
   }
 
   # no distribution parameters
-  if (any(is.na(parameters(x)))) {
+  if (anyNA(parameters(x))) {
     return(FALSE)
   }
 
