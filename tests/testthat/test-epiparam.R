@@ -25,8 +25,8 @@ test_that("epiparam works as expected", {
   expect_type(eparam$pathogen, "character")
   expect_type(eparam$epi_distribution, "character")
   expect_type(eparam$author, "character")
-  expect_type(eparam$year, "integer")
-  expect_type(eparam$sample_size, "integer")
+  expect_type(eparam$year, "double")
+  expect_type(eparam$sample_size, "double")
   expect_type(eparam$region, "character")
   expect_type(eparam$transmission_mode, "character")
   expect_type(eparam$vector, "character")
@@ -36,11 +36,11 @@ test_that("epiparam works as expected", {
   expect_type(eparam$mean, "double")
   expect_type(eparam$mean_ci_limits, "list")
   lapply(eparam$mean_ci_limits, expect_type, "double")
-  expect_type(eparam$mean_ci, "integer")
+  expect_type(eparam$mean_ci, "double")
   expect_type(eparam$sd, "double")
   expect_type(eparam$sd_ci_limits, "list")
   lapply(eparam$sd_ci_limits, expect_type, "double")
-  expect_type(eparam$sd_ci, "integer")
+  expect_type(eparam$sd_ci, "double")
   expect_type(eparam$quantile_2.5, "double")
   expect_type(eparam$quantile_5, "double")
   expect_type(eparam$quantile_25, "double")
@@ -48,42 +48,42 @@ test_that("epiparam works as expected", {
   expect_type(eparam$median_ci_limits, "list")
   lapply(eparam$median_ci_limits, expect_type, "double")
   expect_type(eparam$quantile_75, "double")
-  expect_type(eparam$quantile_87.5, "logical")
+  expect_type(eparam$quantile_87.5, "double")
   expect_type(eparam$quantile_95, "double")
   expect_type(eparam$quantile_97.5, "double")
-  expect_type(eparam$lower_range, "integer")
-  expect_type(eparam$upper_range, "integer")
+  expect_type(eparam$lower_range, "double")
+  expect_type(eparam$upper_range, "double")
   expect_type(eparam$shape, "double")
   expect_type(eparam$shape_ci_limits, "list")
   lapply(eparam$shape_ci_limits, expect_type, "double")
-  expect_type(eparam$shape_ci, "integer")
+  expect_type(eparam$shape_ci, "double")
   expect_type(eparam$scale, "double")
   expect_type(eparam$scale_ci_limits, "list")
   lapply(eparam$scale_ci_limits, expect_type, "double")
-  expect_type(eparam$scale_ci, "integer")
+  expect_type(eparam$scale_ci, "double")
   expect_type(eparam$meanlog, "double")
   expect_type(eparam$meanlog_ci_limits, "list")
   lapply(eparam$meanlog_ci_limits, expect_type, "double")
-  expect_type(eparam$meanlog_ci, "integer")
+  expect_type(eparam$meanlog_ci, "double")
   expect_type(eparam$sdlog, "double")
   expect_type(eparam$sdlog_ci_limits, "list")
   lapply(eparam$sdlog_ci_limits, expect_type, "double")
-  expect_type(eparam$sdlog_ci, "integer")
+  expect_type(eparam$sdlog_ci, "double")
   expect_type(eparam$dispersion, "double")
   expect_type(eparam$dispersion_ci_limits, "list")
   lapply(eparam$dispersion_ci_limits, expect_type, "double")
-  expect_type(eparam$dispersion_ci, "integer")
+  expect_type(eparam$dispersion_ci, "double")
   expect_type(eparam$precision, "double")
   expect_type(eparam$precision_ci_limits, "list")
   lapply(eparam$precision_ci_limits, expect_type, "double")
-  expect_type(eparam$precision_ci, "integer")
-  expect_type(eparam$truncation, "logical")
+  expect_type(eparam$precision_ci, "double")
+  expect_type(eparam$truncation, "double")
   expect_type(eparam$discretised, "logical")
   expect_type(eparam$censored, "logical")
   expect_type(eparam$right_truncated, "logical")
   expect_type(eparam$phase_bias_adjusted, "logical")
   expect_type(eparam$notes, "character")
-  expect_type(eparam$PMID, "integer")
+  expect_type(eparam$PMID, "double")
   expect_type(eparam$DOI, "character")
 })
 
@@ -205,7 +205,7 @@ test_that("validate_epidist catches class faults when expected", {
 
   eparam <- new_epiparam(epi_dist = "all")
   # suppress message about converting to data.frame
-  suppressMessages(eparam$extrinsic <- NULL)
+  suppressMessages(eparam$epi_distribution <- NULL)
   # convert back to `epiparam` to check validation
   class(eparam) <- c("epiparam", "data.frame")
   expect_error(
@@ -220,7 +220,7 @@ test_that("validate_epidist catches class faults when expected", {
   class(eparam) <- c("epiparam", "data.frame")
   expect_error(
     validate_epiparam(epiparam = eparam),
-    regexp = "disease needs to be a character"
+    regexp = "incorrect data type in character fields"
   )
 })
 
@@ -252,4 +252,29 @@ test_that("is_epiparam returns FALSE when expected", {
   eparam <- unclass(eparam)
 
   expect_false(is_epiparam(eparam))
+})
+
+test_that("epiparam_fields returns vector as expected", {
+  expect_vector(object = epiparam_fields(), ptype = character(0), size = 56)
+})
+
+test_that("epiparam_char_fields returns vector as expected", {
+  eparam <- epiparam()
+  expect_vector(
+    object = epiparam_char_fields(eparam), ptype = integer(0), size = 11
+  )
+})
+
+test_that("epiparam_num_fields returns vector as expected", {
+  eparam <- epiparam()
+  expect_vector(
+    object = epiparam_num_fields(eparam), ptype = integer(0), size = 31
+  )
+})
+
+test_that("epiparam_logic_fields returns vector as expected", {
+  eparam <- epiparam()
+  expect_vector(
+    object = epiparam_logic_fields(eparam), ptype = integer(0), size = 5
+  )
 })
