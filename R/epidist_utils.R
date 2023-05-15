@@ -724,6 +724,31 @@ clean_epidist_params.geom <- function(prob_dist_params) {
   }
 }
 
+#' Standardises parameters for a poisson distribution
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Named vector of parameters
+#' @keywords internal
+clean_epidist_params.pois <- function(prob_dist_params) {
+
+  if (names(prob_dist_params) %in% c("mean", "l")) {
+    names(prob_dist_params) <- "mean"
+
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # return prob_dist_params
+    return(prob_dist_params)
+  } else {
+    stop(
+      "Name of poisson distribution parameter is incorrect",
+      call. = FALSE
+    )
+  }
+
+}
+
 #' Default method if class of parameters is not recognised
 #'
 #' @inheritParams new_epidist
