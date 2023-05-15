@@ -379,10 +379,12 @@ test_that("as_epiparam fails as expected", {
 
 test_that("epiparam subsetting works as expected", {
   eparam <- epiparam()
-  eparam <- eparam[, -2]
+  eparam <- cbind_epiparam(eparam, extra_col = NA_real_)
+  # remove extra col
+  eparam <- eparam[, -ncol(eparam)]
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(ncol(eparam), 55L)
+  expect_identical(ncol(eparam), 56L)
 })
 
 test_that("epiparam subsetting converts to data frame as expected", {
