@@ -453,5 +453,5 @@ test_that("cbind_epiparam works as expected", {
   suppressMessages(
     expect_identical(colnames(eparam2)[ncol(eparam2)], "extra_col")
   )
-  expect_type(eparam2[ncol(eparam2)], "list")
+  suppressMessages(expect_type(eparam2[ncol(eparam2)], "list"))
 })

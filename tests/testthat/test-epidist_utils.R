@@ -74,6 +74,15 @@ test_that("clean_epidist_params fails when geom parameters are incorrect", {
   )
 })
 
+test_that("clean_epidist_params fails when pois parameters are incorrect", {
+  pois_param <- c("means" = 1)
+  class(pois_param) <- "pois"
+  expect_error(
+    clean_epidist_params(prob_dist_params = pois_param),
+    regexp = "Name of poisson distribution parameter is incorrect"
+  )
+})
+
 test_that("clean_epidist_params works for default method", {
   weibull_params <- c(meanlog = 1, sdlog = 1)
   class(weibull_params) <- "distribution"
