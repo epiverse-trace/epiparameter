@@ -59,34 +59,37 @@ new_epidist <- function(disease = list(),
   )
 
   # calculate parameters if not provided
-  if (all(is.na(prob_dist_params)) && auto_calc_params) {
-    # calculate parameters if not provided
+  if (!is.na(prob_dist) && any(is.na(prob_dist_params)) && auto_calc_params) {
     prob_dist_params <- calc_dist_params(
-        prob_dist = prob_dist,
-        prob_dist_params = prob_dist_params,
-        summary_stats = summary_stats,
-        sample_size = metadata$sample_size
-      )
+      prob_dist = prob_dist,
+      prob_dist_params = prob_dist_params,
+      summary_stats = summary_stats,
+      sample_size = metadata$sample_size
+    )
   }
 
-  # standardise distribution parameter names
-  class(prob_dist_params) <- prob_dist
-  prob_dist_params <- clean_epidist_params(
-    prob_dist_params = prob_dist_params
-  )
+  if (!any(is.na(prob_dist_params))) {
+    # standardise distribution parameter names
+    class(prob_dist_params) <- prob_dist
+    prob_dist_params <- clean_epidist_params(
+      prob_dist_params = prob_dist_params
+    )
 
-  check_epidist_params(
-    prob_dist = prob_dist,
-    prob_dist_params = prob_dist_params
-  )
+    check_epidist_params(
+      prob_dist = prob_dist,
+      prob_dist_params = prob_dist_params
+    )
 
-  # create a S3 object holding the probability distribution
-  prob_dist <- create_prob_dist(
-    prob_dist = prob_dist,
-    prob_dist_params = prob_dist_params,
-    discretise = discretise,
-    truncation = truncation
-  )
+    # create a S3 object holding the probability distribution
+    prob_dist <- create_prob_dist(
+      prob_dist = prob_dist,
+      prob_dist_params = prob_dist_params,
+      discretise = discretise,
+      truncation = truncation
+    )
+  } else {
+    message("Unparameterised <epidist> object")
+  }
 
   if (epi_dist == "offspring_distribution") {
     method_assess <- paste(
@@ -249,7 +252,7 @@ epidist <- function(disease,
                     notes = NULL) {
 
   # check input
-  checkmate::assert_string(disease, na.ok = FALSE, null.ok = FALSE)
+  checkmate::assert_string(disease)
   checkmate::assert_character(pathogen)
   checkmate::assert_string(epi_dist)
   checkmate::assert_character(
@@ -405,31 +408,21 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
     writeLines(sprintf(vb))
   }
 
-  if (inherits(x$prob_dist, "distcrete")) {
-
-    # decide on parameter format from magnitude of number
-    params <- unlist(x$prob_dist$parameters)
-    format_params <- ifelse(
-      test = any(params > 9.999e-3 & params < 1e4),
-      yes = "f",
-      no = "g"
-    )
-
-    writeLines(
-      c(
-        sprintf("Distribution: discrete %s", x$prob_dist$name),
-        sprintf("Parameters:"),
-        sprintf(
-          "  %s: %s",
-          names(x$prob_dist$parameters),
-          formatC(params, digits = 3, format = format_params)
-        )
-      )
-    )
+  # print distribution
+  dist <- family(x)
+  if (is.na(dist)) {
+    writeLines(sprintf("Parameters: <no parameters>"))
   } else {
+    dist_string <- ifelse(
+      test = inherits(x$prob_dist, "distcrete"),
+      yes = "Distribution: discrete %s",
+      no = "Distribution: %s"
+    )
+    writeLines(sprintf(dist_string, dist))
+
+    params <- parameters(x, verbose = FALSE)
 
     # decide on parameter format from magnitude of number
-    params <- parameters(x)
     format_params <- ifelse(
       test = any(params > 9.999e-3 & params < 1e4),
       yes = "f",
@@ -438,24 +431,20 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 
     writeLines(
       c(
-        sprintf("Distribution: %s", family(x)),
         sprintf("Parameters:"),
         sprintf(
           "  %s: %s",
           names(params),
-          formatC(
-            params,
-            digits = 3,
-            format = format_params
-          )
+          formatC(params, digits = 3, format = format_params)
         )
       )
     )
   }
+
   invisible(x)
 }
 
-#' PLots an `epidist` object
+#' Plots an `epidist` object
 #'
 #' @description Plots an `epidist` object by displaying the either the
 #' probability mass function (PMF), (in the case of discrete distributions)
@@ -801,10 +790,16 @@ discretise.default <- function(x, ...) {
 #'
 #' Extracts the parameters of the distribution stored in an `epidist` object.
 #'
+#' @details The <epidist> object can be unparameterised in which it lacks
+#' a probability distribution or parameters of a probability distribution.
+#' In this can the `parameters.epidist()` method with return `NA`.
+#'
 #' @param x An `epidist` object
 #' @inheritParams distributional::parameters
 #'
 #' @importFrom distributional parameters
+#' @return A named vector of parameters or `NA` when the `<epidist>` object is
+#' unparameterised
 #' @export
 parameters.epidist <- function(x, ...) {
 
@@ -827,9 +822,8 @@ parameters.epidist <- function(x, ...) {
     # convert to meanlog and sdlog names
     class(params) <- family(x)
     params <- clean_epidist_params(prob_dist_params = params)
-
   } else {
-    stop("Distribution in `epidist` not recognised.")
+    return(NA)
   }
 
   # return parameters
@@ -846,7 +840,8 @@ parameters.epidist <- function(x, ...) {
 #' @param object An `epidist` object
 #' @inheritParams stats::family
 #'
-#' @return A character string with the name of the distribution
+#' @return A character string with the name of the distribution, or `NA` when
+#' the `<epidist>` object is unparameterised.
 #' @importFrom stats family
 #' @export
 #'
@@ -873,7 +868,7 @@ family.epidist <- function(object, ...) {
 
   if (inherits(object$prob_dist, "distcrete")) {
     prob_dist <- object$prob_dist$name
-  } else {
+  } else if (inherits(object$prob_dist, "distribution")) {
     if (is_truncated(object)) {
       prob_dist <- gsub(
         pattern = "dist_",
@@ -884,6 +879,8 @@ family.epidist <- function(object, ...) {
     } else {
       prob_dist <- stats::family(object$prob_dist)
     }
+  } else {
+    return(NA)
   }
 
   prob_dist <- switch(
@@ -995,3 +992,4 @@ is_parameterised <- function(x) {
   }
 
   return(TRUE)
+}

@@ -12,7 +12,8 @@
 \item{...}{further arguments passed to methods.}
 }
 \value{
-A character string with the name of the distribution
+A character string with the name of the distribution, or \code{NA} when
+the \verb{<epidist>} object is unparameterised.
 }
 \description{
 The \code{family()} function is used to extract the distribution
