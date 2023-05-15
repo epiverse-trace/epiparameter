@@ -64,7 +64,7 @@ calc_dist_params <- function(prob_dist,
   checkmate::assert_number(sample_size, na.ok = TRUE)
   stopifnot(
     "probability distribution params must be a named vector or NA" =
-      all(is.na(prob_dist_params)) ||
+      any(is.na(prob_dist_params)) ||
       !is.null(names(prob_dist_params))
   )
 
