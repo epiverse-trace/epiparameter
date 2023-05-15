@@ -947,3 +947,51 @@ is_truncated <- function(x) {
     return(FALSE)
   }
 }
+
+#' Checks whether <epidist> object contains a distribution and parameters for
+#' that distribution.
+#'
+#' @description If the <epidist> object is missing either a probability
+#' distribution or parameters for the probability distribution,
+#' `is_parameterised` returns `FALSE`, otherwise it returns `TRUE`
+#'
+#'
+#' @param x An `epidist` object.
+#'
+#' @return A boolean logical.
+#' @export
+#'
+#' @examples
+#' # parameterised <epidist>
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation",
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1)
+#' )
+#' is_parameterised(edist)
+#'
+#' # unparameterised <epidist>
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation"
+#' )
+#' is_parameterised(edist)
+is_parameterised <- function(x) {
+
+  stopifnot(
+    "is_parameterised only works for <epidist> objects" =
+      is_epidist(x)
+  )
+
+  # no probability distribution
+  if (is.na(x$prob_dist)) {
+    return(FALSE)
+  }
+
+  # no distribution parameters
+  if (any(is.na(parameters(x)))) {
+    return(FALSE)
+  }
+
+  return(TRUE)
