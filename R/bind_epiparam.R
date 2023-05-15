@@ -1,5 +1,7 @@
-#' Binds any epi data class in \pkg{epiparameter} ([`epidist`], [`vb_epidist`],
-#' [`epiparam`]) or data frame to an [`epiparam`] object.
+#' Bind an epi object to an [`<epiparam>`] object
+#'
+#' Binds any epi data class in \pkg{epiparameter} ([`<epidist>`],
+#' [`<vb_epidist>`], [`<epiparam>`]) or data frame to an [`<epiparam>`] object.
 #'
 #' @details The [`epiparam`] class holds the library of epidemiological
 #' parameters that is stored in the \pkg{epiparameter} R package and can be
@@ -7,12 +9,20 @@
 #' the library by binding them to the bottom of an existing [`epiparam`] object
 #' loaded in R.
 #'
-#' @param epiparam An `epiparam` object
-#' @param epi_obj Either an `epidist`, `vb_epidist`, `epiparam` or list of
-#' `epidist` objects. It can also be a data frame as long as the columns conform
-#' to the columsn of an `epiparam` object.
+#' The `<epiparam>` returned by `bind_epiparam()` contains the matching columns
+#' of the input objects. Therefore, if one of the input object extra columns
+#' added with are not present in the other input object these will be missing
+#' from the returned object. This also applies whether binding other
+#' `<epiparam>` objects or `<data.frames>`. When binding `<epidist>` objects
+#' missing data fields are given a default value before
+#' binding.
 #'
-#' @return An `epiparam` object
+#' @param epiparam An `<epiparam>` object
+#' @param epi_obj Either an `<epidist>`, `<vb_epidist>`, `<epiparam>` or list of
+#' `<epidist>` objects. It can also be a data frame as long as the columns conform
+#' to the columns of an `<epiparam>` object.
+#'
+#' @return An `<epiparam>` object
 #' @export
 #'
 #' @examples
@@ -36,37 +46,74 @@ bind_epiparam <- function(epiparam, epi_obj) {
     validate_vb_epidist(epi_obj)
   } else if (is_epiparam(epi_obj)) {
     validate_epiparam(epi_obj)
-    # epiparam objects can be directly binded
-    out <- rbind(epiparam, epi_obj)
-    # validate new epiparam object
-    validate_epiparam(out)
-    return(out)
   } else if (is.data.frame(epi_obj)) {
     stopifnot(
-      "data frame provided must have the same column names as epiparam" =
-      setequal(colnames(epi_obj), colnames(epiparam))
+      "<data.frame> given must have the same column names as <epiparam>" =
+        setequal(colnames(epi_obj), colnames(epiparam))
     )
-    # data frames can be directly binded
-    out <- rbind(epiparam, epi_obj)
-    # validate new epiparam object
-    validate_epiparam(out)
-    return(out)
   } else {
     stop(
-      "Only epidist, vb_epidist or epiparam can bind to epiparam",
+      "Only <epidist>, <vb_epidist> or <epiparam> can bind to <epiparam>",
       call. = FALSE
     )
   }
 
   # convert epidist to epiparam object
-  eparam <- as_epiparam(x = epi_obj)
+  if (is_epidist(epi_obj) || inherits(epi_obj, "list") ||
+      is_vb_epidist(epi_obj)) {
+    epi_obj <- as_epiparam(x = epi_obj)
+  }
+
+  # keep matching columns between objects
+  epiparam <- epiparam[, intersect(colnames(epiparam), colnames(epi_obj))]
 
   # bind epidist to epi
-  out <- rbind(epiparam, eparam)
+  out <- rbind(epiparam, epi_obj)
 
   # validate new epiparam object
   validate_epiparam(out)
 
   # return new epiparam object
   out
+}
+
+#' Bind columns to an `<epiparam>` object
+#'
+#' @description Adds columns to an existing `<epiparam>` object.
+#'
+#' This function avoids the unclassing feature of [`cbind()`]. The work around
+#' by using `[<-` instead of `cbind()` was adapted from
+#' [`tibble::add_column()`].
+#'
+#' @details Note that if the variables passed to `cbind_epiparam()` are not of
+#' equal length to the number of rows in the `<epiparam>` object then R's
+#' recycling rules apply, see
+#' <https://r4ds.had.co.nz/vectors.html#scalars-and-recycling-rules>
+#'
+#' Adding columns should not invalidate the `<epiparam>` object, but if it does
+#' the function will throw an error and not return an `<epiparam>` object.
+#'
+#' @inheritParams bind_epiparam
+#' @param ... Variables to be added as columns to the `<epiparam>` object.
+#'
+#' @return An `<epiparam>` object
+#' @export
+#'
+#' @examples
+#' eparam <- epiparam()
+#' cbind_epiparam(eparam, extra_col = NA)
+cbind_epiparam <- function(epiparam, ...) {
+
+  # capture ... as data frame
+  df <- data.frame(...)
+
+  # solution from https://github.com/tidyverse/tibble/blob/main/R/add.R
+  end_pos <- ncol(epiparam) + seq_len(ncol(df))
+  epiparam[end_pos] <- df
+
+  # validate new epiparam object
+  validate_epiparam(epiparam)
+
+  # return epiparam
+  epiparam
 }
