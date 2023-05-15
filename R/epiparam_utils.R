@@ -382,6 +382,29 @@ as_epiparam <- function(x) {
   )
 
   # create lists for epiparam vector columns
+  eparam <- add_ci_limits(eparam = eparam, x = x)
+
+  # make data an epiparam object
+  class(eparam) <- c("epiparam", "data.frame")
+
+  # validate new epiparam object
+  validate_epiparam(eparam)
+
+  # return epiparam object
+  eparam
+}
+
+#' Adds confidence interval limits from an `epidist` object to an `epiparam`
+#' data frame
+#'
+#' @param eparam A data frame with `<epiparam>` data
+#' @param x An `<epidist>` object
+#'
+#' @return A data frame containing `<epiparam>` data
+#' @keywords internal
+#' @noRd
+add_ci_limits <- function(eparam, x) {
+
   if (is.null(x$uncertainty[["shape"]])) {
     eparam$shape_ci_limits <- I(list(c(NA_real_, NA_real_)))
   } else {
@@ -418,13 +441,7 @@ as_epiparam <- function(x) {
     eparam$precision_ci_limits <- list(x$uncertainty$precision$ci)
   }
 
-  # make data an epiparam object
-  class(eparam) <- c("epiparam", "data.frame")
-
-  # validate new epiparam object
-  validate_epiparam(eparam)
-
-  # return epiparam object
+  # return epiparam
   eparam
 }
 
