@@ -407,7 +407,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
     writeLines(sprintf(vb))
   }
 
-  if (is.object(x$prob_dist) || is.characcter(x$prob_dist)) {
+  if (is.object(x$prob_dist) || is.character(x$prob_dist)) {
     dist_string <- ifelse(
       test = inherits(x$prob_dist, "distcrete"),
       yes = "Distribution: discrete %s",

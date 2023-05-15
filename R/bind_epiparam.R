@@ -1,7 +1,7 @@
-#' Bind an epi object to an [`<epiparam>`] object
+#' Bind an epi object to an [`epiparam`] object
 #'
-#' Binds any epi data class in \pkg{epiparameter} ([`<epidist>`],
-#' [`<vb_epidist>`], [`<epiparam>`]) or data frame to an [`<epiparam>`] object.
+#' Binds any epi data class in \pkg{epiparameter} ([`epidist`],
+#' [`vb_epidist`], [`epiparam`]) or data frame to an [`epiparam`] object.
 #'
 #' @details The [`epiparam`] class holds the library of epidemiological
 #' parameters that is stored in the \pkg{epiparameter} R package and can be
