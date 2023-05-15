@@ -128,6 +128,9 @@ make_epidist <- function(x) {
         )
       )
     )
+  } else if (is.na(x$prob_distribution)) {
+    parameters <- NA_real_
+    uncertainty <- create_epidist_uncertainty()
   } else {
     stop("Distribution in epiparam object not recognised", call. = FALSE)
   }
