@@ -432,7 +432,7 @@ test_that("bind_epiparam fails as expected for binding incorrect data.frame", {
 
   expect_error(
     bind_epiparam(epiparam = eparam, epi_obj = eparam2),
-    regexp = "data frame provided must have the same column names as epiparam"
+    regexp = "<data.frame> given must have the same column names as <epiparam>"
   )
 })
 
@@ -442,6 +442,14 @@ test_that("bind_epiparam fails as expected for incorrect epi_obj class", {
 
   expect_error(
     bind_epiparam(epiparam = eparam, epi_obj = eparam2),
-    regexp = "Only epidist, vb_epidist or epiparam can bind to epiparam"
+    regexp = "Only <epidist>, <vb_epidist> or <epiparam> can bind to <epiparam>"
   )
+})
+
+test_that("cbind_epiparam works as expected", {
+  eparam <- epiparam()
+  eparam2 <- cbind_epiparam(eparam, extra_col = NA)
+  expect_identical(ncol(eparam2), ncol(eparam) + 1L)
+  expect_identical(colnames(eparam2)[ncol(eparam2)], "extra_col")
+  expect_type(eparam2[ncol(eparam2)], "list")
 })
