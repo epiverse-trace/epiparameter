@@ -637,6 +637,9 @@ NULL
 #' @importFrom stats density
 #' @export
 density.epidist <- function(x, at, ...) {
+  if (isFALSE(is_parameterised(x))) {
+    stop("<epidist> is unparameterised", call. = FALSE)
+  }
   unlist <- length(x$prob_dist) == 1
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$d(at)
@@ -651,6 +654,9 @@ density.epidist <- function(x, at, ...) {
 #' @importFrom distributional cdf
 #' @export
 cdf.epidist <- function(x, q, ...) {
+  if (isFALSE(is_parameterised(x))) {
+    stop("<epidist> is unparameterised", call. = FALSE)
+  }
   unlist <- length(x$prob_dist) == 1
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$p(q)
@@ -665,6 +671,9 @@ cdf.epidist <- function(x, q, ...) {
 #' @importFrom stats quantile
 #' @export
 quantile.epidist <- function(x, p, ...) {
+  if (isFALSE(is_parameterised(x))) {
+    stop("<epidist> is unparameterised", call. = FALSE)
+  }
   unlist <- length(x$prob_dist) == 1
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$q(p)
@@ -679,7 +688,9 @@ quantile.epidist <- function(x, p, ...) {
 #' @importFrom distributional generate
 #' @export
 generate.epidist <- function(x, times, ...) {
-
+  if (isFALSE(is_parameterised(x))) {
+    stop("<epidist> is unparameterised", call. = FALSE)
+  }
   # check times is a single number for consistent behaviour
   checkmate::assert_number(times)
   if (inherits(x$prob_dist, "distcrete")) {
@@ -878,6 +889,8 @@ family.epidist <- function(object, ...) {
     } else {
       prob_dist <- stats::family(object$prob_dist)
     }
+  } else if (is.character(object$prob_dist)) {
+    prob_dist <- object$prob_dist
   } else {
     return(NA)
   }
@@ -887,6 +900,7 @@ family.epidist <- function(object, ...) {
     lognormal = "lnorm",
     negbin = "nbinom",
     geometric = "geom",
+    poisson = "pois",
     prob_dist
   )
 
@@ -936,6 +950,12 @@ is_truncated <- function(x) {
     return(FALSE)
   }
 
+  # unparameterised objects cannot be truncated
+  # dont use is_parameterised due to infinite recursion
+  if (is.na(x$prob_dist) || is.character(x$prob_dist)) {
+    return(FALSE)
+  }
+
   # use stats::family instead of epiparameter::family to check truncated
   if (identical(stats::family(x$prob_dist), "truncated")) {
     return(TRUE)
@@ -980,15 +1000,10 @@ is_parameterised <- function(x) {
       is_epidist(x)
   )
 
-  # no probability distribution
-  if (is.na(x$prob_dist)) {
-    return(FALSE)
+  # probability distribution object
+  if (is.object(x$prob_dist)) {
+    return(TRUE)
   }
 
-  # no distribution parameters
-  if (anyNA(parameters(x))) {
-    return(FALSE)
-  }
-
-  return(TRUE)
+  return(FALSE)
 }
