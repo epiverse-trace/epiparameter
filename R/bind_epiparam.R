@@ -18,9 +18,9 @@
 #' binding.
 #'
 #' @param epiparam An `<epiparam>` object
-#' @param epi_obj Either an `<epidist>`, `<vb_epidist>`, `<epiparam>` or list of
-#' `<epidist>` objects. It can also be a data frame as long as the columns conform
-#' to the columns of an `<epiparam>` object.
+#' @param epi_obj Either an `<epidist>`, `<vb_epidist>`, `<epiparam>` or list
+#' of `<epidist>` objects. It can also be a data frame as long as the columns
+#' conform to the columns of an `<epiparam>` object.
 #'
 #' @return An `<epiparam>` object
 #' @export
