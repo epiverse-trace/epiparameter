@@ -11,6 +11,15 @@
 
 \item{...}{Additional arguments used by methods.}
 }
+\value{
+A named vector of parameters or \code{NA} when the \verb{<epidist>} object is
+unparameterised
+}
 \description{
 Extracts the parameters of the distribution stored in an \code{epidist} object.
+}
+\details{
+The \if{html}{\out{<epidist>}} object can be unparameterised in which it lacks
+a probability distribution or parameters of a probability distribution.
+In this can the \code{parameters.epidist()} method with return \code{NA}.
 }
