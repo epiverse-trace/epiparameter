@@ -21,6 +21,20 @@ new_epiparam <- function(epi_dist = character()) {
     mustWork = TRUE
   ))
 
+  # ensure type correctness
+  numeric_col <- epiparam_num_fields(params)
+  params[numeric_col] <- vapply(
+    params[numeric_col], FUN = as.numeric, FUN.VALUE = numeric(nrow(params))
+  )
+  char_col <- epiparam_char_fields(params)
+  params[char_col] <- vapply(
+    params[char_col], FUN = as.character, FUN.VALUE = character(nrow(params))
+  )
+  logic_col <- epiparam_logic_fields(params)
+  params[logic_col] <- vapply(
+    params[logic_col], FUN = as.logical, FUN.VALUE = logical(nrow(params))
+  )
+
   # convert intervals from strings to numeric vectors
   ci_cols_index <- grep(pattern = "_ci_limits$", colnames(params))
   for (i in ci_cols_index) {
@@ -128,38 +142,36 @@ validate_epiparam <- function(epiparam, reconstruct = FALSE) {
     stop("Object should be of class epiparam", call. = FALSE)
   }
 
+  col_type <- vapply(epiparam, class, FUN.VALUE = character(1))
   # check for class invariants
   stopifnot(
     "epiparam object does not contain the correct columns" =
-      c("disease", "epi_distribution", "author", "year", "transmission_mode",
-        "extrinsic", "prob_distribution", "discretised", "censored",
-        "right_truncated", "phase_bias_adjusted", "DOI") %in%
-      colnames(epiparam),
-    "disease needs to be a character" =
-      is.character(epiparam$disease),
-    "epi_distribution needs to be a character" =
-      is.character(epiparam$epi_distribution),
-    "author must be a string" =
-      is.character(epiparam$author),
-    "year must be a numeric" =
-      is.numeric(epiparam$year),
-    "transmission_mode must be a character" =
-      is.character(epiparam$transmission_mode),
-    "extrinsic must be a logical" =
-      is.logical(epiparam$extrinsic),
-    "prob_distribution needs to be a character" =
-      is.character(epiparam$prob_distribution),
-    "discretised needs to be a logical" =
-      is.logical(epiparam$discretised),
-    "censored needs to be a logical" =
-      is.logical(epiparam$censored),
-    "right_truncated needs to be a logical" =
-      is.logical(epiparam$right_truncated),
-    "phase_biase_adjusted needs to be a logical" =
-      is.logical(epiparam$phase_bias_adjusted),
-    "DOI needs to be a character" =
-      is.character(epiparam$DOI)
+      epiparam_fields() %in% colnames(epiparam),
+    "incorrect data type in character fields" =
+      all("character" == col_type[epiparam_char_fields(epiparam)]),
+    "incorrect data type in numeric fields" =
+      all(col_type[epiparam_num_fields(epiparam)] %in% c("numeric", "integer")),
+    "incorrect data type in boolean logical fields" =
+      all("logical" == col_type[epiparam_logic_fields(epiparam)]),
+    "year needs to be greater than 0" =
+      all(epiparam$year > 0 | is.na(epiparam$year))
   )
+
+  check_limits <- apply(epiparam, MARGIN = 2, FUN = function(x) {
+    res <-  vapply(x, function(y) {
+      length(y) == 2 && is.numeric(y)
+    }, FUN.VALUE = logical(1))
+  },
+  simplify = FALSE
+  )
+
+  check_limits <- all(unlist(
+    check_limits[grep(pattern = "_limits$", x = names(check_limits))]
+  ))
+
+  if (!check_limits) {
+    stop("incorrect data type in CI limits fields", call. = FALSE)
+  }
 
   invisible(epiparam)
 }
@@ -293,4 +305,66 @@ head.epiparam <- function(x, ...) {
 #' @export
 tail.epiparam <- function(x, ...) {
   utils::tail(as.data.frame(x), ...)
+}
+
+#' Fields (columns) of an `<epiparam>` object
+#'
+#' @return Character vector
+#' @keywords internal
+#' @noRd
+epiparam_fields <- function() {
+  c("disease", "pathogen", "epi_distribution", "author", "year", "sample_size",
+    "region", "transmission_mode", "vector", "extrinsic", "prob_distribution",
+    "inference_method", "mean", "mean_ci_limits", "mean_ci", "sd",
+    "sd_ci_limits", "sd_ci", "quantile_2.5", "quantile_5", "quantile_25",
+    "median", "median_ci_limits", "median_ci", "quantile_75", "quantile_87.5",
+    "quantile_95", "quantile_97.5", "lower_range", "upper_range", "shape",
+    "shape_ci_limits", "shape_ci", "scale", "scale_ci_limits", "scale_ci",
+    "meanlog", "meanlog_ci_limits", "meanlog_ci", "sdlog", "sdlog_ci_limits",
+    "sdlog_ci", "dispersion", "dispersion_ci_limits", "dispersion_ci",
+    "precision", "precision_ci_limits", "precision_ci", "truncation",
+    "discretised", "censored", "right_truncated", "phase_bias_adjusted",
+    "notes", "PMID", "DOI")
+}
+
+#' Character fields (columns) of an `<epiparam>` object
+#'
+#' @return Numeric vector
+#' @keywords internal
+#' @noRd
+epiparam_char_fields <- function(epiparam) {
+  which(
+    colnames(epiparam) %in% c(
+      "disease", "pathogen", "epi_distribution", "author", "region",
+      "transmission_mode", "vector", "prob_distribution", "inference_method",
+      "notes", "DOI"
+    )
+  )
+}
+
+#' Numeric fields (columns) of an `<epiparam>` object
+#'
+#' @return Numeric vector
+#' @keywords internal
+#' @noRd
+epiparam_num_fields <- function(epiparam) {
+  which(
+    colnames(epiparam) %in% c(
+      "year", "sample_size", "mean", "mean_ci", "sd", "sd_ci", "quantile_2.5",
+      "quantile_5", "quantile_25", "median", "median_ci", "quantile_75",
+      "quantile_87.5", "quantile_95", "quantile_97.5", "lower_range",
+      "upper_range", "shape", "shape_ci", "scale", "scale_ci", "meanlog",
+      "meanlog_ci", "sdlog", "sdlog_ci", "dispersion", "dispersion_ci",
+      "precision", "precision_ci", "truncation", "PMID"
+    )
+  )
+}
+
+epiparam_logic_fields <- function(epiparam) {
+  which(
+    colnames(epiparam) %in% c(
+      "extrinsic", "discretised", "censored", "right_truncated",
+      "phase_bias_adjusted"
+    )
+  )
 }
