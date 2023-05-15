@@ -238,7 +238,7 @@ as_epiparam <- function(x) {
     doi <- sub(">.*", "",  sub(".*<", "", x$citation))
     # extract PMID if available
     if (grepl(pattern = "PMID", x = x$citation, fixed = TRUE)) {
-      pmid <- sub(".*PMID: ", "", x$citation)
+      pmid <- as.numeric(sub(".*PMID: ", "", x$citation))
     } else {
       pmid <- NA_integer_
     }
@@ -382,49 +382,41 @@ as_epiparam <- function(x) {
   )
 
   # create lists for epiparam vector columns
-  shape_ci_limits <- ifelse(
-    test = is.null(x$uncertainty[["shape"]]),
-    yes = I(list(c(NA_real_, NA_real_))),
-    no = x$uncertainty$shape$ci
-  )
+  if (is.null(x$uncertainty[["shape"]])) {
+    eparam$shape_ci_limits <- I(list(c(NA_real_, NA_real_)))
+  } else {
+    eparam$shape_ci_limits <- list(x$uncertainty$shape$ci)
+  }
 
-  scale_ci_limits <- ifelse(
-    test = is.null(x$uncertainty[["scale"]]),
-    yes = I(list(c(NA_real_, NA_real_))),
-    no = x$uncertainty$scale$ci
-  )
+  if (is.null(x$uncertainty[["scale"]])) {
+    eparam$scale_ci_limits <- I(list(c(NA_real_, NA_real_)))
+  } else {
+    eparam$scale_ci_limits <- list(x$uncertainty$scale$ci)
+  }
 
-  meanlog_ci_limits <- ifelse(
-    test = is.null(x$uncertainty[["meanlog"]]),
-    yes = I(list(c(NA_real_, NA_real_))),
-    no = x$uncertainty$meanlog$ci
-  )
+  if (is.null(x$uncertainty[["meanlog"]])) {
+    eparam$meanlog_ci_limits <- I(list(c(NA_real_, NA_real_)))
+  } else {
+    eparam$meanlog_ci_limits <- list(x$uncertainty$meanlog$ci)
+  }
 
-  sdlog_ci_limits <- ifelse(
-    test = is.null(x$uncertainty[["sdlog"]]),
-    yes = I(list(c(NA_real_, NA_real_))),
-    no = x$uncertainty$sdlog$ci
-  )
+  if (is.null(x$uncertainty[["sdlog"]])) {
+    eparam$sdlog_ci_limits <- I(list(c(NA_real_, NA_real_)))
+  } else {
+    eparam$sdlog_ci_limits <- list(x$uncertainty$sdlog$ci)
+  }
 
-  dispersion_ci_limits <- ifelse(
-    test = is.null(x$uncertainty[["dispersion"]]),
-    yes = I(list(c(NA_real_, NA_real_))),
-    no = x$uncertainty$dispersion$ci
-  )
+  if (is.null(x$uncertainty[["dispersion"]])) {
+    eparam$dispersion_ci_limits <- I(list(c(NA_real_, NA_real_)))
+  } else {
+    eparam$dispersion_ci_limits <- list(x$uncertainty$dispersion$ci)
+  }
 
-  precision_ci_limits <- ifelse(
-    test = is.null(x$uncertainty[["precision"]]),
-    yes = I(list(c(NA_real_, NA_real_))),
-    no = x$uncertainty$precision$ci
-  )
-
-  # insert vector columns into data frame
-  eparam$shape_ci_limits <- shape_ci_limits
-  eparam$scale_ci_limits <- scale_ci_limits
-  eparam$meanlog_ci_limits <- meanlog_ci_limits
-  eparam$sdlog_ci_limits <- sdlog_ci_limits
-  eparam$dispersion_ci_limits <- dispersion_ci_limits
-  eparam$precision_ci_limits <- precision_ci_limits
+  if (is.null(x$uncertainty[["precision"]])) {
+    eparam$precision_ci_limits <- I(list(c(NA_real_, NA_real_)))
+  } else {
+    eparam$precision_ci_limits <- list(x$uncertainty$precision$ci)
+  }
 
   # make data an epiparam object
   class(eparam) <- c("epiparam", "data.frame")
