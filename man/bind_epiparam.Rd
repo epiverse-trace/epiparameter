@@ -28,8 +28,8 @@ the library by binding them to the bottom of an existing \code{\link{epiparam}} 
 loaded in R.
 
 The \verb{<epiparam>} returned by \code{bind_epiparam()} contains the matching columns
-of the input objects. Therefore, if one of the input object extra columns
-added with are not present in the other input object these will be missing
+of the input objects. Therefore, if one of the input objects contains extra
+columns which are not present in the other input object these will be missing
 from the returned object. This also applies whether binding other
 \verb{<epiparam>} objects or \verb{<data.frames>}. When binding \verb{<epidist>} objects
 missing data fields are given a default value before

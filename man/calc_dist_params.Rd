@@ -38,7 +38,7 @@ can usually be calculated from the summary statistics. The
 \code{calc_dist_params()} function computes the parameters for the gamma,
 lognormal and Weibull distributions.
 
-This function can provide a convinient wrapper around the conversion and
+This function can provide a convenient wrapper around the conversion and
 extraction functions it is not known which summary statistics can be used to
 calculate the parameters of a distribution.
 }
