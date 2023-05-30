@@ -7,7 +7,7 @@
 #' be specified. For now this must match the author entry in the database
 #' exactly to be recognised.
 #'
-#' @details The current criteria for chosing a distribution when multiple
+#' @details The current criteria for choosing a distribution when multiple
 #' entries exist in the database for a given disease and epidemiological
 #' distribution is to return the entry with the largest sample size.
 #'
