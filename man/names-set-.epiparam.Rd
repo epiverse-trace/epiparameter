@@ -16,7 +16,7 @@
 An \code{epiparam} object or a \code{data.frame}
 }
 \description{
-If the modifying the names invalidates the \code{epiparam} object
+If modifying the names invalidates the \code{epiparam} object
 (defined by its invariants, and encoded in \code{\link[=validate_epiparam]{validate_epiparam()}}) the
 subsetting will return a data frame with a message to console stating the
 class of the object has been converted to \code{data.frame} with the other

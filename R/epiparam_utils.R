@@ -465,7 +465,7 @@ add_ci_limits <- function(eparam, x) {
 
 #' Set names on `epiparam` class
 #'
-#' @description If the modifying the names invalidates the `epiparam` object
+#' @description If modifying the names invalidates the `epiparam` object
 #' (defined by its invariants, and encoded in [`validate_epiparam()`]) the
 #' subsetting will return a data frame with a message to console stating the
 #' class of the object has been converted to `data.frame` with the other
