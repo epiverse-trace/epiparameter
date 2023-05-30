@@ -10,8 +10,8 @@
 #' loaded in R.
 #'
 #' The `<epiparam>` returned by `bind_epiparam()` contains the matching columns
-#' of the input objects. Therefore, if one of the input object extra columns
-#' added with are not present in the other input object these will be missing
+#' of the input objects. Therefore, if one of the input objects contains extra
+#' columns which are not present in the other input object these will be missing
 #' from the returned object. This also applies whether binding other
 #' `<epiparam>` objects or `<data.frames>`. When binding `<epidist>` objects
 #' missing data fields are given a default value before
