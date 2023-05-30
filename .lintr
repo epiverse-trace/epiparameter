@@ -5,6 +5,10 @@ linters: linters_with_tags(
     implicit_integer_linter = NULL,
     extraction_operator_linter = NULL,
     todo_comment_linter = NULL,
-    function_argument_linter = NULL
+    function_argument_linter = NULL,
+    # Use minimum R declared in DESCRIPTION or fall back to current R version
+    backport_linter(if (length(x <- etdev::extract_min_r_version())) x else getRversion())
   )
-
+exclusions: list(
+    "tests/testthat.R" = list(unused_import_linter = Inf)
+  )
