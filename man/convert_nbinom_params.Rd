@@ -8,7 +8,7 @@ statistics}
 convert_nbinom_params(prob, dispersion)
 }
 \arguments{
-\item{prob}{The probability parameter (p) of the negative binomial}
+\item{prob}{The probability parameter (p) of the negative binomial.}
 
 \item{dispersion}{The dispersion parameter (k) of the negative binomial. This
 parameter is also commonly represented as \emph{r}.}

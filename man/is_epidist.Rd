@@ -7,7 +7,7 @@
 is_epidist(x)
 }
 \arguments{
-\item{x}{An R object}
+\item{x}{An R object.}
 }
 \value{
 A boolean logical, \code{TRUE} if the object is an \code{epidist} and \code{FALSE}

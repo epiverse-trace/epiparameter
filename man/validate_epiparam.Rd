@@ -7,7 +7,7 @@
 validate_epiparam(epiparam, reconstruct = FALSE)
 }
 \arguments{
-\item{epiparam}{An \code{epiparam} object}
+\item{epiparam}{An \code{epiparam} object.}
 
 \item{reconstruct}{A boolean logical determining whether the validation
 should be class specific. When \code{TRUE} the input object must be of type

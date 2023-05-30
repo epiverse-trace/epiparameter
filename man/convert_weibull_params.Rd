@@ -7,9 +7,9 @@
 convert_weibull_params(shape, scale)
 }
 \arguments{
-\item{shape}{The shape parameter of the Weibull distribution}
+\item{shape}{The shape parameter of the Weibull distribution.}
 
-\item{scale}{The scale parameter of the Weibull distribution}
+\item{scale}{The scale parameter of the Weibull distribution.}
 }
 \value{
 A list of eight elements including: mean, median, mode,

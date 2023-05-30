@@ -7,7 +7,7 @@
 \method{[}{epiparam}(epiparam, ...)
 }
 \arguments{
-\item{epiparam}{An \code{epiparam} object}
+\item{epiparam}{An \code{epiparam} object.}
 
 \item{...}{further arguments to be passed to or from other methods.}
 }

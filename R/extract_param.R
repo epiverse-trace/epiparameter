@@ -16,9 +16,9 @@
 #'
 #'
 #' @param type A `character` defining whether summary statistics based
-#' around `percentiles` (default) or `range`
+#' around `percentiles` (default) or `range`.
 #' @param values A `vector`. If `type = percentiles`: `c(percentile_1,
-#' percentile_2)`; and if `type = range`: `c(median, min, max)`
+#' percentile_2)`; and if `type = range`: `c(median, min, max)`.
 #' @param distribution A `character` specifying distribution to use.
 #' Default is `lnorm`; also takes `gamma` and `weibull`.
 #' @param percentiles A `vector` with two elements specifying the
@@ -292,10 +292,10 @@ extract_param_range <- function(values,
 #' consistently finding parameter values to within a set tolerance.
 #'
 #' @param optim_params_list A list, where each element is the output of
-#' stats::optim. See ?optim for more details
-#' @param optim_params A list given by the output of stats::optim
+#' stats::optim. See ?optim for more details.
+#' @param optim_params A list given by the output of stats::optim.
 #' @param optim_conv A boolean value indicating whether the optimisation has
-#' converged over multiple iterations
+#' converged over multiple iterations.
 #' @param tolerance A `numeric` specifying within which disparity convergence
 #' of parameter estimates and function minimisation is accepted.
 #'
@@ -334,11 +334,11 @@ check_optim_conv <- function(optim_params_list,
 #' percentiles or the median and ranges.
 #'
 #' @param param Named numeric vector of the distribution parameters to be
-#' optimised
+#' optimised.
 #' @param val Numeric vector, in the case of using percentiles it contains the
 #' values at the percentiles and the percentiles, in the case of median and
 #' range it contains the median, lower range, upper range and the number of
-#' sample points to evaluate the function at
+#' sample points to evaluate the function at.
 #'
 #' @keywords internal
 #' @author Adam Kucharski

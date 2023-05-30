@@ -7,9 +7,9 @@
 \method{print}{epiparam}(x, ...)
 }
 \arguments{
-\item{x}{epiparam object}
+\item{x}{epiparam object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
 Nothing (prints output)

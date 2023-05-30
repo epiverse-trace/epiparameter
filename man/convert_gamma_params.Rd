@@ -7,9 +7,9 @@
 convert_gamma_params(shape, scale)
 }
 \arguments{
-\item{shape}{The shape parameter of the gamma distribution}
+\item{shape}{The shape parameter of the gamma distribution.}
 
-\item{scale}{The scale parameter of the gamma distribution}
+\item{scale}{The scale parameter of the gamma distribution.}
 }
 \value{
 A list of eight elements including: mean, median, mode,

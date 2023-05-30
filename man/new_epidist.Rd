@@ -26,15 +26,15 @@ infectious disease specified in the study, and the \verb{$pathogen} a character
 string. If the pathogen is unknown it can be given as \code{NULL}.}
 
 \item{epi_dist}{A character string with the name of the
-epidemiological distribution type}
+epidemiological distribution type.}
 
 \item{prob_dist}{A character string specifying the probability
 distribution. This should match the R naming convention of probability
 distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-geometric is geom)}
+geometric is geom).}
 
 \item{prob_dist_params}{A named vector of probability distribution
-parameters}
+parameters.}
 
 \item{uncertainty}{A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
@@ -74,7 +74,7 @@ the distribution, use \code{create_epidist_method_assess()} to create method
 assessment.}
 
 \item{discretise}{A boolean logical whether the distribution is discretised.
-Default is FALSE which assumes a continuous probability distribution}
+Default is FALSE which assumes a continuous probability distribution.}
 
 \item{truncation}{A numeric specifying the truncation point if the inferred
 distribution was truncated, NA if not or unknown.}

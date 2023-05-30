@@ -15,9 +15,9 @@
 #' @param prob_dist A character string specifying the probability
 #' distribution. This should match the R naming convention of probability
 #' distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-#' geometric is geom)
+#' geometric is geom).
 #' @param prob_dist_params A named vector of probability distribution
-#' parameters
+#' parameters.
 #' @inheritParams epidist
 #'
 #' @return epidist object
@@ -135,17 +135,17 @@ new_epidist <- function(disease = list(),
 #' pipelines. This is where the `epidist()` function can be used to fill out
 #' each field for which information is known.
 #'
-#' @param disease A character string with name of the infectious disease
+#' @param disease A character string with name of the infectious disease.
 #' @param pathogen A character string with the name of the causative agent of
-#' disease, or NULL if not known
+#' disease, or NULL if not known.
 #' @param epi_dist A character string with the name of the
-#' epidemiological distribution type
+#' epidemiological distribution type.
 #' @param prob_distribution A character string specifying the probability
 #' distribution. This should match the R naming convention of probability
 #' distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-#' geometric is geom)
+#' geometric is geom).
 #' @param prob_distribution_params A named vector of probability distribution
-#' parameters
+#' parameters.
 #' @param uncertainty A list of named vectors with the uncertainty around
 #' the probability distribution parameters. If uncertainty around the parameter
 #' estimates is unknown use `create_epidist_uncertainty()` (which is the
@@ -178,7 +178,7 @@ new_epidist <- function(disease = list(),
 #' the distribution, use `create_epidist_method_assess()` to create method
 #' assessment.
 #' @param discretise A boolean logical whether the distribution is discretised.
-#' Default is FALSE which assumes a continuous probability distribution
+#' Default is FALSE which assumes a continuous probability distribution.
 #' @param truncation A numeric specifying the truncation point if the inferred
 #' distribution was truncated, NA if not or unknown.
 #' @param notes A character string with any additional information about the
@@ -312,7 +312,7 @@ epidist <- function(disease,
 
 #' `epidist` class validator
 #'
-#' @param epidist An `epidist` object
+#' @param epidist An `epidist` object.
 #'
 #' @return Invisibly returns an [`epidist`]. Called for side-effects (errors
 #' when invalid `epidist` object is provided).
@@ -344,14 +344,14 @@ validate_epidist <- function(epidist) {
 
 #' Print method for epidist class
 #'
-#' @param x epidist object
+#' @param x epidist object.
 #' @param header Boolean logical determining whether the header (first part) of
 #' the print method is printed. This is used internally for plotting the
-#' vb_epidist class
+#' vb_epidist class.
 #' @param vb A character string containing whether it is the intrinsic
 #' (`"Intrinsic"`) or extrinsic (`"Extrinsic"`) distribution for vector-borne
-#' diseases
-#' @param ... further arguments passed to or from other methods
+#' diseases.
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @return Invisibly returns an [`epidist`]. Called for side-effects.
 #' @export
@@ -370,13 +370,7 @@ print.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 
 #' Format method for epidist class
 #'
-#' @param x epidist object
-#' @param header Boolean logical determining whether the header (first part) of
-#' the print method is printed. This is used internally for plotting the
-#' vb_epidist class
-#' @param vb Either NULL (default) or a character string of either "Intrinsic"
-#' or "Extrinsic" which is used internally for plotting the vb_epidist class
-#' @param ... further arguments passed to or from other methods
+#' @inheritParams print.epidist
 #'
 #' @return Invisibly returns an [`epidist`]. Called for printing side-effects.
 #' @export
@@ -449,14 +443,14 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 #' distributions) and the cumulative distribution function (CDF). Resulting in
 #' a 1x2 grid plot.
 #'
-#' @param x An `epidist` object
+#' @param x An `epidist` object.
 #' @param day_range A vector with the sequence of days to be plotted on the
-#' x-axis of the distribution
-#' @param ... Allow other graphical parameters
+#' x-axis of the distribution.
+#' @param ... Allow other graphical parameters.
 #' @param vb A boolean logical determining whether the `epidist` being plotted
-#' has come from a `vb_epidist` object
+#' has come from a `vb_epidist` object.
 #' @param title Either a character string or `NULL`. If not null the character
-#' string will be printed as a title to the plot
+#' string will be printed as a title to the plot.
 #'
 #' @author Joshua W. Lambert
 #' @export
@@ -538,7 +532,7 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
 
 #' Check whether the object is an `epidist`
 #'
-#' @param x An R object
+#' @param x An R object.
 #'
 #' @return A boolean logical, `TRUE` if the object is an `epidist` and `FALSE`
 #' if not
@@ -575,12 +569,12 @@ is_epidist <- function(x) {
 #' These operate on any distribution that can be included in an `epidist`
 #' object.
 #'
-#' @param x An `epidist` or `vb_epidist` object
-#' @param at The quantiles to evaluate at
-#' @param q The quantiles to evaluate at
-#' @param p The probabilities to evaluate at
-#' @param times The number of random samples
-#' @param ... further arguments passed to or from other methods
+#' @param x An `epidist` or `vb_epidist` object.
+#' @param at The quantiles to evaluate at.
+#' @param q The quantiles to evaluate at.
+#' @param p The probabilities to evaluate at.
+#' @param times The number of random samples.
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @return If an `epidist` object is given a numeric vector is returned, if an
 #' `vb_epidist` object is given a list of two elements each with a numeric
@@ -708,8 +702,8 @@ generate.epidist <- function(x, times, ...) {
 #' (using an object from the {distributional} package) to a discretised
 #' distribution (using an object from the {distcrete} package).
 #'
-#' @param x An `epidist` object
-#' @param ... further arguments passed to or from other methods
+#' @param x An `epidist` object.
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @return An `epidist` object
 #' @export
@@ -798,7 +792,7 @@ discretise.default <- function(x, ...) {
 #' a probability distribution or parameters of a probability distribution.
 #' In this can the `parameters.epidist()` method with return `NA`.
 #'
-#' @param x An `epidist` object
+#' @param x An `epidist` object.
 #' @inheritParams distributional::parameters
 #'
 #' @importFrom distributional parameters
@@ -840,7 +834,7 @@ parameters.epidist <- function(x, ...) {
 #' provides the same interface for `<epidist>` objects to give consistent
 #' output irrespective of the distribution class.
 #'
-#' @param object An `epidist` object
+#' @param object An `epidist` object.
 #' @inheritParams stats::family
 #'
 #' @return A character string with the name of the distribution, or `NA` when

@@ -7,7 +7,7 @@
 is_vb_epidist(x)
 }
 \arguments{
-\item{x}{An R object}
+\item{x}{An R object.}
 }
 \value{
 A boolean logical, \code{TRUE} if the object is an \code{vb_epidist} and

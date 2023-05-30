@@ -7,9 +7,9 @@
 \method{print}{vb_epidist}(x, ...)
 }
 \arguments{
-\item{x}{vb_epidist object}
+\item{x}{vb_epidist object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
 Invisibly returns a \code{\link{vb_epidist}}. Called for printing

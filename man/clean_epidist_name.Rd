@@ -7,7 +7,7 @@
 clean_epidist_name(epi_dist)
 }
 \arguments{
-\item{epi_dist}{A character string with the name of the distribution}
+\item{epi_dist}{A character string with the name of the distribution.}
 }
 \value{
 Character string

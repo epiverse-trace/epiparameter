@@ -6,10 +6,10 @@
 #' distribution are not reported so the data are scraped from the plot and
 #' the quantiles are needed in order use the `extract_param()` function
 #'
-#' @param prob A numeric vector of probabilities
-#' @param days A numeric vector of days
+#' @param prob A numeric vector of probabilities.
+#' @param days A numeric vector of days.
 #' @param quantile A single numeric or vector of numerics specifying which
-#' quantiles to extract from the distribution
+#' quantiles to extract from the distribution.
 #'
 #' @return A named vector of quantiles
 #' @export

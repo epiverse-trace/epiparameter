@@ -7,17 +7,17 @@
 \method{print}{epidist}(x, header = TRUE, vb = NULL, ...)
 }
 \arguments{
-\item{x}{epidist object}
+\item{x}{epidist object.}
 
 \item{header}{Boolean logical determining whether the header (first part) of
 the print method is printed. This is used internally for plotting the
-vb_epidist class}
+vb_epidist class.}
 
 \item{vb}{A character string containing whether it is the intrinsic
 (\code{"Intrinsic"}) or extrinsic (\code{"Extrinsic"}) distribution for vector-borne
-diseases}
+diseases.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
 Invisibly returns an \code{\link{epidist}}. Called for side-effects.

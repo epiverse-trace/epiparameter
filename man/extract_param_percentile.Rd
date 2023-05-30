@@ -8,7 +8,7 @@ percentiles of a distribution and the values at those percentiles}
 extract_param_percentile(values, distribution, percentiles)
 }
 \arguments{
-\item{values}{A \code{vector}. If \code{type = percentiles}: \code{c(percentile_1, percentile_2)}; and if \code{type = range}: \code{c(median, min, max)}}
+\item{values}{A \code{vector}. If \code{type = percentiles}: \code{c(percentile_1, percentile_2)}; and if \code{type = range}: \code{c(median, min, max)}.}
 
 \item{distribution}{A \code{character} specifying distribution to use.
 Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}

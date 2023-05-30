@@ -7,7 +7,7 @@
 \method{parameters}{epidist}(x, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} object}
+\item{x}{An \code{epidist} object.}
 
 \item{...}{Additional arguments used by methods.}
 }

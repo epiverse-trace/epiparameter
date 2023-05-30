@@ -30,17 +30,17 @@
 \method{generate}{vb_epidist}(x, times, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} or \code{vb_epidist} object}
+\item{x}{An \code{epidist} or \code{vb_epidist} object.}
 
-\item{at}{The quantiles to evaluate at}
+\item{at}{The quantiles to evaluate at.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{further arguments passed to or from other methods.}
 
-\item{q}{The quantiles to evaluate at}
+\item{q}{The quantiles to evaluate at.}
 
-\item{p}{The probabilities to evaluate at}
+\item{p}{The probabilities to evaluate at.}
 
-\item{times}{The number of random samples}
+\item{times}{The number of random samples.}
 }
 \value{
 If an \code{epidist} object is given a numeric vector is returned, if an

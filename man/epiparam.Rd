@@ -11,7 +11,7 @@ epiparam(
 }
 \arguments{
 \item{epi_dist}{A character string of which epidemiological distributions
-to select}
+to select.}
 }
 \value{
 \code{epiparam} object

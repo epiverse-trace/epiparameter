@@ -13,13 +13,13 @@ create_epidist_method_assess(
 }
 \arguments{
 \item{censored}{A boolean logical whether the study used single or double
-interval censoring in the methods to infer the delay distribution}
+interval censoring in the methods to infer the delay distribution.}
 
 \item{right_truncated}{A boolean logical whether the study used right-
-truncation in the methods to infer the delay distribution}
+truncation in the methods to infer the delay distribution.}
 
 \item{phase_bias_adjusted}{A boolean logical whether the study adjusted for
-phase bias in the methods to infer the delay distribution}
+phase bias in the methods to infer the delay distribution.}
 }
 \value{
 A named list with three elements

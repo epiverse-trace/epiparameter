@@ -12,12 +12,12 @@ epidist_db(
 )
 }
 \arguments{
-\item{disease}{A character string specifying the disease}
+\item{disease}{A character string specifying the disease.}
 
 \item{epi_dist}{A character string specifying the epidemiological
-distribution}
+distribution.}
 
-\item{author}{The author of the study reporting the distribution}
+\item{author}{The author of the study reporting the distribution.}
 }
 \value{
 An \code{epidist} object

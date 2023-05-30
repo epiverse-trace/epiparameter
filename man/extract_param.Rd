@@ -16,9 +16,9 @@ extract_param(
 }
 \arguments{
 \item{type}{A \code{character} defining whether summary statistics based
-around \code{percentiles} (default) or \code{range}}
+around \code{percentiles} (default) or \code{range}.}
 
-\item{values}{A \code{vector}. If \code{type = percentiles}: \code{c(percentile_1, percentile_2)}; and if \code{type = range}: \code{c(median, min, max)}}
+\item{values}{A \code{vector}. If \code{type = percentiles}: \code{c(percentile_1, percentile_2)}; and if \code{type = range}: \code{c(median, min, max)}.}
 
 \item{distribution}{A \code{character} specifying distribution to use.
 Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}

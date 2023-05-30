@@ -7,7 +7,7 @@
 as_epidist(x)
 }
 \arguments{
-\item{x}{A epiparam object}
+\item{x}{A epiparam object.}
 }
 \value{
 An epidist object or a list of epidist objects

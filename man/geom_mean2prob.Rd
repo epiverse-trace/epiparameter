@@ -7,7 +7,7 @@
 geom_mean2prob(mean)
 }
 \arguments{
-\item{mean}{The mean (expectation) of the geometric distribution}
+\item{mean}{The mean (expectation) of the geometric distribution.}
 }
 \value{
 A named list with the probability parameter

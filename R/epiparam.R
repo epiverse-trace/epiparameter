@@ -91,7 +91,7 @@ new_epiparam <- function(epi_dist = character()) {
 #' frames with the correct columns to an existing `epiparam` object.
 #'
 #' @param epi_dist A character string of which epidemiological distributions
-#' to select
+#' to select.
 #'
 #' @return `epiparam` object
 #' @export
@@ -129,7 +129,7 @@ epiparam <- function(epi_dist = c(
 
 #' `epiparam` class validator
 #'
-#' @param epiparam An `epiparam` object
+#' @param epiparam An `epiparam` object.
 #' @param reconstruct A boolean logical determining whether the validation
 #' should be class specific. When `TRUE` the input object must be of type
 #' `epiparam` (default), when `FALSE` the input object can be of another class,
@@ -180,8 +180,8 @@ validate_epiparam <- function(epiparam, reconstruct = FALSE) {
 
 #' Print method for epiparam class
 #'
-#' @param x epiparam object
-#' @param ... further arguments passed to or from other methods
+#' @param x epiparam object.
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @return Nothing (prints output)
 #' @export
@@ -195,8 +195,8 @@ print.epiparam <- function(x, ...) {
 
 #' Format method for epiparam class
 #'
-#' @param x epiparam object
-#' @param ... further arguments passed to or from other methods
+#' @param x epiparam object.
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @return Invisibly returns an [`epiparam`]. Called for printing side-effects.
 #' @export
@@ -233,7 +233,7 @@ format.epiparam <- function(x, ...) {
 
 #' Check whether the object is an `epiparam`
 #'
-#' @param x An R object
+#' @param x An R object.
 #'
 #' @return A boolean logical, `TRUE` if the object is an `epiparam` and `FALSE`
 #' if not
@@ -249,8 +249,8 @@ is_epiparam <- function(x) {
 
 #' Summary method for epiparam class
 #'
-#' @param object epiparam object
-#' @param ... further arguments passed to or from other methods
+#' @param object epiparam object.
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @return data frame of information
 #' @export
@@ -289,8 +289,8 @@ summary.epiparam <- function(object, ...) {
 
 #' `head` and `tail` methods for [`epiparam`] class
 #'
-#' @param x An [`epiparam`] object
-#' @param ... further arguments passed to or from other methods
+#' @param x An [`epiparam`] object.
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @return Data frame
 #' @export

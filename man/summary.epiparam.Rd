@@ -7,9 +7,9 @@
 \method{summary}{epiparam}(object, ...)
 }
 \arguments{
-\item{object}{epiparam object}
+\item{object}{epiparam object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
 data frame of information

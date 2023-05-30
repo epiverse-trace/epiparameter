@@ -11,10 +11,10 @@ calc_dist_params(prob_dist, prob_dist_params, summary_stats, sample_size = NA)
 \item{prob_dist}{A character string specifying the probability
 distribution. This should match the R naming convention of probability
 distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-geometric is geom)}
+geometric is geom).}
 
 \item{prob_dist_params}{A named vector of probability distribution
-parameters}
+parameters.}
 
 \item{summary_stats}{A list of summary statistics, use
 \code{\link[=create_epidist_summary_stats]{create_epidist_summary_stats()}} to create list. This list can include

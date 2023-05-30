@@ -25,43 +25,44 @@ create_epidist_summary_stats(
 }
 \arguments{
 \item{mean}{A numeric of the mean (expectation) of the probability
-distribution}
+distribution.}
 
 \item{mean_ci_limits}{A numeric vector of length two of the confidence
-interval around the mean}
+interval around the mean.}
 
 \item{mean_ci}{A numeric specifying the confidence interval width,
-e.g. 95 would be the 95\% CI}
+e.g. 95 would be the 95\% CI.}
 
-\item{sd}{A numeric of the standard deviation of the probability distribution}
+\item{sd}{A numeric of the standard deviation of the probability
+distribution.}
 
 \item{sd_ci_limits}{A numeric vector of length 2 of the confidence interval
-around the standard deviation}
+around the standard deviation.}
 
 \item{sd_ci}{A numeric specifying the confidence interval width,
-e.g. 95 would be 95\% confidence interval}
+e.g. 95 would be 95\% confidence interval.}
 
-\item{median}{A numeric of the median of the probability distribution}
+\item{median}{A numeric of the median of the probability distribution.}
 
 \item{median_ci_limits}{A numeric vector of length two of the confidence
-interval around the median}
+interval around the median.}
 
 \item{median_ci}{A numeric specifying the confidence interval width
-of the median}
+of the median.}
 
-\item{dispersion}{A numeric of the dispersion parameter of a distribution}
+\item{dispersion}{A numeric of the dispersion parameter of a distribution.}
 
 \item{dispersion_ci_limits}{A numeric vector of length two of the confidence
-interval around the dispersion}
+interval around the dispersion.}
 
 \item{dispersion_ci}{A numeric specifying the confidence interval
-width of the dispersion parameter}
+width of the dispersion parameter.}
 
 \item{lower_range}{The lower range of the data, used to infer the parameters
-of the distribution when not provided}
+of the distribution when not provided.}
 
 \item{upper_range}{The upper range of the data, used to infer the parameters
-of the distribution when not provided}
+of the distribution when not provided.}
 
 \item{quantiles}{A numeric vector of the quantiles for the distribution.
 If quantiles are not provided a default empty vector with the 2.5th, 5th,

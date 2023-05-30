@@ -7,9 +7,9 @@
 new_vb_epidist(intrinsic_epidist, extrinsic_epidist)
 }
 \arguments{
-\item{intrinsic_epidist}{An \code{epidist} object}
+\item{intrinsic_epidist}{An \code{epidist} object.}
 
-\item{extrinsic_epidist}{An \code{epidist} object}
+\item{extrinsic_epidist}{An \code{epidist} object.}
 }
 \value{
 \code{vb_epidist} object

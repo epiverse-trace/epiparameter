@@ -7,7 +7,7 @@
 is_epiparam(x)
 }
 \arguments{
-\item{x}{An R object}
+\item{x}{An R object.}
 }
 \value{
 A boolean logical, \code{TRUE} if the object is an \code{epiparam} and \code{FALSE}

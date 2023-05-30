@@ -8,9 +8,9 @@ epiparam_reconstruct(x, to)
 }
 \arguments{
 \item{x}{A \code{data.frame} or subclass of \code{data.frame} (e.g. \code{tibble} or
-\code{epiparam})}
+\code{epiparam}).}
 
-\item{to}{The reference object, in this case an \code{epiparam} object}
+\item{to}{The reference object, in this case an \code{epiparam} object.}
 }
 \value{
 An \code{epiparam} object (if the input is valid) or a \code{data.frame}

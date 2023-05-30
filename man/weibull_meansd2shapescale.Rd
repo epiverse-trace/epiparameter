@@ -8,9 +8,9 @@ shape and scale parameterisation.}
 weibull_meansd2shapescale(mean, sd)
 }
 \arguments{
-\item{mean}{The mean of the Weibull distribution}
+\item{mean}{The mean of the Weibull distribution.}
 
-\item{sd}{The standard deviation of the Weibull distribution}
+\item{sd}{The standard deviation of the Weibull distribution.}
 }
 \value{
 A named list with shape and scale parameters

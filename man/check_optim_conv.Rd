@@ -9,12 +9,12 @@ check_optim_conv(optim_params_list, optim_params, optim_conv, tolerance)
 }
 \arguments{
 \item{optim_params_list}{A list, where each element is the output of
-stats::optim. See ?optim for more details}
+stats::optim. See ?optim for more details.}
 
-\item{optim_params}{A list given by the output of stats::optim}
+\item{optim_params}{A list given by the output of stats::optim.}
 
 \item{optim_conv}{A boolean value indicating whether the optimisation has
-converged over multiple iterations}
+converged over multiple iterations.}
 
 \item{tolerance}{A \code{numeric} specifying within which disparity convergence
 of parameter estimates and function minimisation is accepted.}

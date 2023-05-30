@@ -11,10 +11,10 @@
 #' entries exist in the database for a given disease and epidemiological
 #' distribution is to return the entry with the largest sample size.
 #'
-#' @param disease A character string specifying the disease
+#' @param disease A character string specifying the disease.
 #' @param epi_dist A character string specifying the epidemiological
-#' distribution
-#' @param author The author of the study reporting the distribution
+#' distribution.
+#' @param author The author of the study reporting the distribution.
 #'
 #' @return An `epidist` object
 #' @export

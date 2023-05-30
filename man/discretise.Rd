@@ -13,9 +13,9 @@ discretise(x, ...)
 \method{discretise}{default}(x, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} object}
+\item{x}{An \code{epidist} object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
 An \code{epidist} object

@@ -7,7 +7,7 @@
 validate_epidist(epidist)
 }
 \arguments{
-\item{epidist}{An \code{epidist} object}
+\item{epidist}{An \code{epidist} object.}
 }
 \value{
 Invisibly returns an \code{\link{epidist}}. Called for side-effects (errors

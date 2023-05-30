@@ -7,12 +7,12 @@
 \method{plot}{vb_epidist}(x, day_range = 0:10, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} object}
+\item{x}{An \code{epidist} object.}
 
 \item{day_range}{A vector with the sequence of days to be plotted on the
-x-axis of the distribution}
+x-axis of the distribution.}
 
-\item{...}{Allow other graphical parameters}
+\item{...}{Allow other graphical parameters.}
 }
 \description{
 Plots a \code{vb_epidist} object by displaying the either the

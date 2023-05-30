@@ -8,7 +8,7 @@ median and range of a sample and the number of samples}
 extract_param_range(values, distribution, samples)
 }
 \arguments{
-\item{values}{A \code{vector}. If \code{type = percentiles}: \code{c(percentile_1, percentile_2)}; and if \code{type = range}: \code{c(median, min, max)}}
+\item{values}{A \code{vector}. If \code{type = percentiles}: \code{c(percentile_1, percentile_2)}; and if \code{type = range}: \code{c(median, min, max)}.}
 
 \item{distribution}{A \code{character} specifying distribution to use.
 Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}

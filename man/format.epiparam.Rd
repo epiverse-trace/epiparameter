@@ -7,9 +7,9 @@
 \method{format}{epiparam}(x, ...)
 }
 \arguments{
-\item{x}{epiparam object}
+\item{x}{epiparam object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
 Invisibly returns an \code{\link{epiparam}}. Called for printing side-effects.

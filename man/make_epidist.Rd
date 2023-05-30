@@ -7,7 +7,7 @@
 make_epidist(x)
 }
 \arguments{
-\item{x}{List of data to be used to construct an epidist object}
+\item{x}{List of data to be used to construct an epidist object.}
 }
 \value{
 An \code{epidist} object

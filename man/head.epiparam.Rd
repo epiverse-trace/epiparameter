@@ -10,9 +10,9 @@
 \method{tail}{epiparam}(x, ...)
 }
 \arguments{
-\item{x}{An \code{\link{epiparam}} object}
+\item{x}{An \code{\link{epiparam}} object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
 Data frame

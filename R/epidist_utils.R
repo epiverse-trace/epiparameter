@@ -4,11 +4,11 @@
 #' of the distribution for the `epidist` object
 #'
 #' @param ci_limits A numeric vector of length two with the lower and upper
-#' bound of the confidence interval or credible interval
+#' bound of the confidence interval or credible interval.
 #' @param ci A numeric specifying the interval for the ci, e.g. 95 is
-#' 95% ci
+#' 95% ci.
 #' @param ci_type A character string, either "confidence interval" or "credible
-#' interval"
+#' interval".
 #'
 #' @return List of three elements:
 #'
@@ -186,10 +186,10 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
 #' region at either continent, country, region or city level. By specifying
 #' the level of the geography the other fields may be deduced.
 #'
-#' @param continent A character string specifying the continent
-#' @param country A character string specifying the country
-#' @param region A character string specifying the region
-#' @param city A character string specifying the city
+#' @param continent A character string specifying the continent.
+#' @param country A character string specifying the country.
+#' @param region A character string specifying the region.
+#' @param city A character string specifying the city.
 #'
 #' @return A named list
 #' @export
@@ -221,30 +221,31 @@ create_epidist_region <- function(continent = NA_character_,
 #' to help remember which summary statistics can be accepted in the list.
 #'
 #' @param mean A numeric of the mean (expectation) of the probability
-#' distribution
+#' distribution.
 #' @param mean_ci_limits A numeric vector of length two of the confidence
-#' interval around the mean
+#' interval around the mean.
 #' @param mean_ci A numeric specifying the confidence interval width,
-#' e.g. 95 would be the 95% CI
-#' @param sd A numeric of the standard deviation of the probability distribution
+#' e.g. 95 would be the 95% CI.
+#' @param sd A numeric of the standard deviation of the probability
+#' distribution.
 #' @param sd_ci_limits A numeric vector of length 2 of the confidence interval
-#' around the standard deviation
+#' around the standard deviation.
 #' @param sd_ci A numeric specifying the confidence interval width,
-#' e.g. 95 would be 95% confidence interval
-#' @param median A numeric of the median of the probability distribution
+#' e.g. 95 would be 95% confidence interval.
+#' @param median A numeric of the median of the probability distribution.
 #' @param median_ci_limits A numeric vector of length two of the confidence
-#' interval around the median
+#' interval around the median.
 #' @param median_ci A numeric specifying the confidence interval width
-#' of the median
-#' @param dispersion A numeric of the dispersion parameter of a distribution
+#' of the median.
+#' @param dispersion A numeric of the dispersion parameter of a distribution.
 #' @param dispersion_ci_limits A numeric vector of length two of the confidence
-#' interval around the dispersion
+#' interval around the dispersion.
 #' @param dispersion_ci A numeric specifying the confidence interval
-#' width of the dispersion parameter
+#' width of the dispersion parameter.
 #' @param lower_range The lower range of the data, used to infer the parameters
-#' of the distribution when not provided
+#' of the distribution when not provided.
 #' @param upper_range The upper range of the data, used to infer the parameters
-#' of the distribution when not provided
+#' of the distribution when not provided.
 #' @param quantiles A numeric vector of the quantiles for the distribution.
 #' If quantiles are not provided a default empty vector with the 2.5th, 5th,
 #' 25th, 75th, 95th, 97.5th quantiles are supplied.
@@ -440,11 +441,11 @@ create_epidist_citation <- function(author = NA_character_,
 #' (super)spreading.
 #'
 #' @param censored A boolean logical whether the study used single or double
-#' interval censoring in the methods to infer the delay distribution
+#' interval censoring in the methods to infer the delay distribution.
 #' @param right_truncated A boolean logical whether the study used right-
-#' truncation in the methods to infer the delay distribution
+#' truncation in the methods to infer the delay distribution.
 #' @param phase_bias_adjusted A boolean logical whether the study adjusted for
-#' phase bias in the methods to infer the delay distribution
+#' phase bias in the methods to infer the delay distribution.
 #'
 #' @return A named list with three elements
 #' @export
@@ -762,7 +763,7 @@ clean_epidist_params.default <- function(prob_dist_params) {
 
 #' Standardise the names of epidemiological distributions
 #'
-#' @param epi_dist A character string with the name of the distribution
+#' @param epi_dist A character string with the name of the distribution.
 #'
 #' @return Character string
 #' @export

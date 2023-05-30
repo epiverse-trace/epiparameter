@@ -7,7 +7,7 @@
 bind_epiparam(epiparam, epi_obj)
 }
 \arguments{
-\item{epiparam}{An \verb{<epiparam>} object}
+\item{epiparam}{An \verb{<epiparam>} object.}
 
 \item{epi_obj}{Either an \verb{<epidist>}, \verb{<vb_epidist>}, \verb{<epiparam>} or list
 of \verb{<epidist>} objects. It can also be a data frame as long as the columns

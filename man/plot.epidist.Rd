@@ -7,18 +7,18 @@
 \method{plot}{epidist}(x, day_range = 0:10, ..., vb = FALSE, title = NULL)
 }
 \arguments{
-\item{x}{An \code{epidist} object}
+\item{x}{An \code{epidist} object.}
 
 \item{day_range}{A vector with the sequence of days to be plotted on the
-x-axis of the distribution}
+x-axis of the distribution.}
 
-\item{...}{Allow other graphical parameters}
+\item{...}{Allow other graphical parameters.}
 
 \item{vb}{A boolean logical determining whether the \code{epidist} being plotted
-has come from a \code{vb_epidist} object}
+has come from a \code{vb_epidist} object.}
 
 \item{title}{Either a character string or \code{NULL}. If not null the character
-string will be printed as a title to the plot}
+string will be printed as a title to the plot.}
 }
 \description{
 Plots an \code{epidist} object by displaying the either the

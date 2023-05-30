@@ -8,7 +8,7 @@ epiparam_can_reconstruct(x)
 }
 \arguments{
 \item{x}{A \code{data.frame} or subclass of \code{data.frame} (e.g. \code{tibble} or
-\code{epiparam})}
+\code{epiparam}).}
 }
 \value{
 A boolean logical (\code{TRUE} or \code{FALSE})

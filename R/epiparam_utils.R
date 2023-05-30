@@ -6,7 +6,7 @@
 #' generation and other methods of the epidist class
 #' (see `?epidist_distribution_functions`).
 #'
-#' @param x A epiparam object
+#' @param x A epiparam object.
 #'
 #' @return An epidist object or a list of epidist objects
 #' @export
@@ -41,7 +41,7 @@ as_epidist <- function(x) {
 #' helper, including the parameters and uncertainty from the correct type of
 #' probability distribution
 #'
-#' @param x List of data to be used to construct an epidist object
+#' @param x List of data to be used to construct an epidist object.
 #'
 #' @return An `epidist` object
 #' @keywords internal
@@ -190,7 +190,7 @@ make_epidist <- function(x) {
 
 #' Convert an `epidist` object to an `epiparam` object
 #'
-#' @param x An `epidist` object
+#' @param x An `epidist` object.
 #'
 #' @return An `epiparam` object
 #' @export
@@ -395,8 +395,8 @@ as_epiparam <- function(x) {
 #' Add confidence interval limits from an `epidist` object to an `epiparam`
 #' data frame
 #'
-#' @param eparam A data frame with `<epiparam>` data
-#' @param x An `<epidist>` object
+#' @param eparam A data frame with `<epiparam>` data.
+#' @param x An `<epidist>` object.
 #'
 #' @return A data frame containing `<epiparam>` data
 #' @keywords internal
@@ -450,7 +450,7 @@ add_ci_limits <- function(eparam, x) {
 #' has been converted to `data.frame` with the other attributes of the class
 #' preserved.
 #'
-#' @param epiparam An `epiparam` object
+#' @param epiparam An `epiparam` object.
 #' @inheritParams base::subset
 #'
 #' @return An `epiparam` object or a `data.frame`
@@ -479,7 +479,7 @@ add_ci_limits <- function(eparam, x) {
 
 #' Set accessor for `epiparam` class
 #'
-#' @param x An `epiparam` object
+#' @param x An `epiparam` object.
 #' @inheritParams base::Extract
 #'
 #' @return An `epiparam` object or a `data.frame`
@@ -496,8 +496,8 @@ add_ci_limits <- function(eparam, x) {
 #' it is returned as a `data.frame`.
 #'
 #' @param x A `data.frame` or subclass of `data.frame` (e.g. `tibble` or
-#' `epiparam`)
-#' @param to The reference object, in this case an `epiparam` object
+#' `epiparam`).
+#' @param to The reference object, in this case an `epiparam` object.
 #'
 #' @return An `epiparam` object (if the input is valid) or a `data.frame`
 #' @keywords internal

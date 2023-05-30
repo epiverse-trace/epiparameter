@@ -12,13 +12,13 @@ create_epidist_region(
 )
 }
 \arguments{
-\item{continent}{A character string specifying the continent}
+\item{continent}{A character string specifying the continent.}
 
-\item{country}{A character string specifying the country}
+\item{country}{A character string specifying the country.}
 
-\item{region}{A character string specifying the region}
+\item{region}{A character string specifying the region.}
 
-\item{city}{A character string specifying the city}
+\item{city}{A character string specifying the city.}
 }
 \value{
 A named list

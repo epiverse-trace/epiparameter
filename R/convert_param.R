@@ -1,6 +1,6 @@
 #' Add standard deviation to the list if not present or errors
 #'
-#' @param x A list of summary statistics
+#' @param x A list of summary statistics.
 #'
 #' @return A list of summary statistics
 #' @keywords internal
@@ -165,8 +165,8 @@ lnorm_meanlogsdlog2meansd <- function(meanlog, sdlog) {
 #' Convert the mean and standard deviation of a lognormal distribution into the
 #' standard parameterisation of meanlog (mu) and sdlog (sigma)
 #'
-#' @param mean Mean (expectation) of the lognormal distribution
-#' @param sd Standard deviation of the lognormal distribution
+#' @param mean Mean (expectation) of the lognormal distribution.
+#' @param sd Standard deviation of the lognormal distribution.
 #'
 #' @return A named list with meanlog and sdlog
 #' @export
@@ -188,8 +188,8 @@ lnorm_meansd2meanlogsdlog <- function(mean, sd) {
 #' analytically given the gamma parameters. One exception is the median which
 #' is calculated using [`qgamma()`] as no analytical form is available.
 #'
-#' @param shape The shape parameter of the gamma distribution
-#' @param scale The scale parameter of the gamma distribution
+#' @param shape The shape parameter of the gamma distribution.
+#' @param scale The scale parameter of the gamma distribution.
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
@@ -289,8 +289,8 @@ gamma_shapescale2meansd <- function(shape, scale) {
 #' Convert the mean and standard deviation of the gamma distribution to the
 #' shape and scale parameterisation.
 #'
-#' @param mean The mean of the gamma distribution
-#' @param sd The standard deviation of the gamma distribution
+#' @param mean The mean of the gamma distribution.
+#' @param sd The standard deviation of the gamma distribution.
 #'
 #' @return A named list with shape and scale parameters
 #' @export
@@ -312,8 +312,8 @@ gamma_meansd2shapescale <- function(mean, sd) {
 #' analytically given the Weibull parameters. Note the conversion uses the
 #' [`gamma()`] function.
 #'
-#' @param shape The shape parameter of the Weibull distribution
-#' @param scale The scale parameter of the Weibull distribution
+#' @param shape The shape parameter of the Weibull distribution.
+#' @param scale The scale parameter of the Weibull distribution.
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
@@ -400,8 +400,8 @@ convert_weibull_summary_stats <- function(...) {
 #' Convert the mean and standard deviation of the Weibull distribution to the
 #' shape and scale parameterisation.
 #'
-#' @param mean The mean of the Weibull distribution
-#' @param sd The standard deviation of the Weibull distribution
+#' @param mean The mean of the Weibull distribution.
+#' @param sd The standard deviation of the Weibull distribution.
 #'
 #' @return A named list with shape and scale parameters
 #' @export
@@ -479,7 +479,7 @@ weibull_shapescale2meansd <- function(shape, scale) {
 #' One exception is the median which is calculated using [`qnbinom()`] as no
 #' analytical form is available.
 #'
-#' @param prob The probability parameter (p) of the negative binomial
+#' @param prob The probability parameter (p) of the negative binomial.
 #' @param dispersion The dispersion parameter (k) of the negative binomial. This
 #' parameter is also commonly represented as *r*.
 #'
@@ -612,7 +612,7 @@ nbinom_probdisp2meandisp <- function(prob, dispersion) {
 #' of failures before a specified number of successes. This is the same form as
 #' used by `distributional::dist_negative_binomial()`.
 #'
-#' @param mean The mean (expectation) of the negative binomial distribution
+#' @param mean The mean (expectation) of the negative binomial distribution.
 #' @param dispersion The dispersion parameter (k) of the negative binomial. This
 #' parameter is also commonly represented as *r*.
 #'
@@ -740,7 +740,7 @@ convert_geom_summary_stats <- function(...) {
 #' the first success (supported for zero). This is the same form as used by
 #' `distributional::dist_geometric()`.
 #'
-#' @param mean The mean (expectation) of the geometric distribution
+#' @param mean The mean (expectation) of the geometric distribution.
 #'
 #' @return A named list with the probability parameter
 #' @export
@@ -761,7 +761,7 @@ geom_mean2prob <- function(mean) {
 #' the first success (supported for zero). This is the same form as used by
 #' `distributional::dist_geometric()`.
 #'
-#' @param prob The probability parameter of the geometric distribution
+#' @param prob The probability parameter of the geometric distribution.
 #'
 #' @return A named list with the mean
 #' @export

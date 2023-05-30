@@ -12,7 +12,7 @@ list_distributions(
 )
 }
 \arguments{
-\item{epiparam}{An \code{epiparam} object}
+\item{epiparam}{An \code{epiparam} object.}
 
 \item{epi_dist}{A character defining parameter to be listed:
 \code{"incubation"}, \code{"onset_to_hospitalisation"}, \code{"onset_to_death"}, or

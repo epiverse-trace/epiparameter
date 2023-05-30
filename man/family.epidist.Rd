@@ -7,7 +7,7 @@
 \method{family}{epidist}(object, ...)
 }
 \arguments{
-\item{object}{An \code{epidist} object}
+\item{object}{An \code{epidist} object.}
 
 \item{...}{further arguments passed to methods.}
 }

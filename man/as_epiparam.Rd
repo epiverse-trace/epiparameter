@@ -7,7 +7,7 @@
 as_epiparam(x)
 }
 \arguments{
-\item{x}{An \code{epidist} object}
+\item{x}{An \code{epidist} object.}
 }
 \value{
 An \code{epiparam} object

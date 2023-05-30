@@ -7,7 +7,7 @@
 \method{$}{epiparam}(x, name) <- value
 }
 \arguments{
-\item{x}{An \code{epiparam} object}
+\item{x}{An \code{epiparam} object.}
 
 \item{name}{
     A literal character string or a \link[base]{name} (possibly \link[base]{backtick}

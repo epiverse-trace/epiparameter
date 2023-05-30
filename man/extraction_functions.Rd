@@ -24,12 +24,12 @@ fit_function_weibull(param, val)
 }
 \arguments{
 \item{param}{Named numeric vector of the distribution parameters to be
-optimised}
+optimised.}
 
 \item{val}{Numeric vector, in the case of using percentiles it contains the
 values at the percentiles and the percentiles, in the case of median and
 range it contains the median, lower range, upper range and the number of
-sample points to evaluate the function at}
+sample points to evaluate the function at.}
 }
 \description{
 Set of functions that can be used to estimate the parameters of a

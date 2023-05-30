@@ -9,7 +9,7 @@
 #' and the year of publication as well as the sample size of the study. If the
 #' all columns of the database are required set `subset_db = FALSE`.
 #'
-#' @param epiparam An `epiparam` object
+#' @param epiparam An `epiparam` object.
 #' @param epi_dist A character defining parameter to be listed:
 #' `"incubation"`, `"onset_to_hospitalisation"`, `"onset_to_death"`, or
 #' `"serial_interval"`. `"incubation_period"` is the default `epi_dist` so if no

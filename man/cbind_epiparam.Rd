@@ -7,7 +7,7 @@
 cbind_epiparam(epiparam, ...)
 }
 \arguments{
-\item{epiparam}{An \verb{<epiparam>} object}
+\item{epiparam}{An \verb{<epiparam>} object.}
 
 \item{...}{Variables to be added as columns to the \verb{<epiparam>} object.}
 }

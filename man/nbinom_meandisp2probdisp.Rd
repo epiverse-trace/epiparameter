@@ -8,7 +8,7 @@ distribution to the probability (p) and dispersion parameters.}
 nbinom_meandisp2probdisp(mean, dispersion)
 }
 \arguments{
-\item{mean}{The mean (expectation) of the negative binomial distribution}
+\item{mean}{The mean (expectation) of the negative binomial distribution.}
 
 \item{dispersion}{The dispersion parameter (k) of the negative binomial. This
 parameter is also commonly represented as \emph{r}.}

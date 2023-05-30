@@ -8,12 +8,12 @@ of probabilities and time data (e.g. time since infection)}
 calc_disc_dist_quantile(prob, days, quantile)
 }
 \arguments{
-\item{prob}{A numeric vector of probabilities}
+\item{prob}{A numeric vector of probabilities.}
 
-\item{days}{A numeric vector of days}
+\item{days}{A numeric vector of days.}
 
 \item{quantile}{A single numeric or vector of numerics specifying which
-quantiles to extract from the distribution}
+quantiles to extract from the distribution.}
 }
 \value{
 A named vector of quantiles

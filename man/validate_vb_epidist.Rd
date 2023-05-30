@@ -7,7 +7,7 @@
 validate_vb_epidist(vb_epidist)
 }
 \arguments{
-\item{vb_epidist}{A \code{vb_epidist} object}
+\item{vb_epidist}{A \code{vb_epidist} object.}
 }
 \value{
 Invisibly returns a \code{\link{vb_epidist}}. Called for side-effects (errors

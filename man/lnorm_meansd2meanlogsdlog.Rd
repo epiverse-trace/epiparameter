@@ -8,9 +8,9 @@ standard parameterisation of meanlog (mu) and sdlog (sigma)}
 lnorm_meansd2meanlogsdlog(mean, sd)
 }
 \arguments{
-\item{mean}{Mean (expectation) of the lognormal distribution}
+\item{mean}{Mean (expectation) of the lognormal distribution.}
 
-\item{sd}{Standard deviation of the lognormal distribution}
+\item{sd}{Standard deviation of the lognormal distribution.}
 }
 \value{
 A named list with meanlog and sdlog

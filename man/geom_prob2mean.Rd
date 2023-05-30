@@ -8,7 +8,7 @@
 geom_prob2mean(prob)
 }
 \arguments{
-\item{prob}{The probability parameter of the geometric distribution}
+\item{prob}{The probability parameter of the geometric distribution.}
 }
 \value{
 A named list with the mean

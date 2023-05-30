@@ -8,9 +8,9 @@ shape and scale parameterisation.}
 gamma_meansd2shapescale(mean, sd)
 }
 \arguments{
-\item{mean}{The mean of the gamma distribution}
+\item{mean}{The mean of the gamma distribution.}
 
-\item{sd}{The standard deviation of the gamma distribution}
+\item{sd}{The standard deviation of the gamma distribution.}
 }
 \value{
 A named list with shape and scale parameters

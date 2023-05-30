@@ -22,8 +22,8 @@ new_vb_epidist <- function(intrinsic_epidist,
 
 #' Create a `vb_epidist` object
 #'
-#' @param intrinsic_epidist An `epidist` object
-#' @param extrinsic_epidist An `epidist` object
+#' @param intrinsic_epidist An `epidist` object.
+#' @param extrinsic_epidist An `epidist` object.
 #'
 #' @description The `vb_epidist` class is an extension of the `epidist` class
 #' (although not a subclass of `epidist`). It is is used to store
@@ -90,7 +90,7 @@ vb_epidist <- function(intrinsic_epidist,
 
 #' `vb_epidist` class validator
 #'
-#' @param vb_epidist A `vb_epidist` object
+#' @param vb_epidist A `vb_epidist` object.
 #'
 #' @return Invisibly returns a [`vb_epidist`]. Called for side-effects (errors
 #' when invalid `vb_epidist` object is provided).
@@ -151,8 +151,8 @@ validate_vb_epidist <- function(vb_epidist) {
 
 #' Print method for vb_epidist class
 #'
-#' @param x vb_epidist object
-#' @param ... further arguments passed to or from other methods
+#' @param x vb_epidist object.
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @return Invisibly returns a [`vb_epidist`]. Called for printing
 #' side-effects.
@@ -180,8 +180,8 @@ print.vb_epidist <- function(x, ...) {
 
 #' Format method for vb_epidist class
 #'
-#' @param x vb_epidist object
-#' @param ... further arguments passed to or from other methods
+#' @param x vb_epidist object.
+#' @param ... further arguments passed to or from other methods.
 #'
 #' @return Invisibly returns a [`vb_epidist`] object. Usually called for
 #' printing side-effects.
@@ -213,7 +213,7 @@ format.vb_epidist <- function(x, ...) {
 
 #' Checks whether the object is a `vb_epidist`
 #'
-#' @param x An R object
+#' @param x An R object.
 #'
 #' @return A boolean logical, `TRUE` if the object is an `vb_epidist` and
 #' `FALSE` if not
@@ -253,10 +253,10 @@ is_vb_epidist <- function(x) {
 #' distributions) and the cumulative distribution function (CDF), for both the
 #' intrinsic and extrinsic distributions. This resulting in a 2x2 grid plot.
 #'
-#' @param x An `epidist` object
+#' @param x An `epidist` object.
 #' @param day_range A vector with the sequence of days to be plotted on the
-#' x-axis of the distribution
-#' @param ... Allow other graphical parameters
+#' x-axis of the distribution.
+#' @param ... Allow other graphical parameters.
 #'
 #' @author Joshua W. Lambert
 #' @export
