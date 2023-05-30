@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# epiparameter <img src="man/figures/logo.png" align="right" width="120" />
+# _{{ packagename }}_ <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -23,19 +23,19 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-`{epiparameter}` is an `R` package that contains a library of epidemiological parameters for infectious diseases and a set classes and helper functions to be able to work with the data. It also includes functions to extract and convert parameters from reported summary statistics.
+_{{ packagename }}_ is an `R` package that contains a library of epidemiological parameters for infectious diseases and a set classes and helper functions to be able to work with the data. It also includes functions to extract and convert parameters from reported summary statistics.
 
-`{epiparameter}` is developed at the [Centre for the Mathematical Modelling of Infectious Diseases](https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases) at the [London School of Hygiene and Tropical Medicine](https://www.lshtm.ac.uk/) as part of [Epiverse-TRACE](https://data.org/initiatives/epiverse/).
+_{{ packagename }}_ is developed at the [Centre for the Mathematical Modelling of Infectious Diseases](https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases) at the [London School of Hygiene and Tropical Medicine](https://www.lshtm.ac.uk/) as part of [Epiverse-TRACE](https://data.org/initiatives/epiverse/).
 
 
 ## Installation
 
-The easiest way to install the development version of `{epiparameter}` is to use the `{pak}` package:
+The easiest way to install the development version of _{{ packagename }}_ is to use the `{pak}` package:
 
 ``` r
 # check whether {pak} is installed
 if(!require("pak")) install.packages("pak")
-pak::pak("epiverse-trace/epiparameter")
+pak::pak("{{ gh_repo }}")
 ```
 
 ## Quick start
@@ -68,7 +68,7 @@ plot(influenza_incubation)
 
 ### Parameter conversion and extraction
 
-The parameters of a distribution can be converted to and from mean and standard deviation. In `{epiparameter}` we implement this for a variety of distributions:
+The parameters of a distribution can be converted to and from mean and standard deviation. In _{{ packagename }}_ we implement this for a variety of distributions:
 
 - gamma
 - lognormal
@@ -84,7 +84,7 @@ The parameters of a probability distribution can also be extracted from other su
 
 ## Contributing to library of epidemiological parameters
 
-If you would like to contribute to the different epidemiological parameters stored in the `{epiparameter}` package, you can access the [google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing) and add your data. This spreadsheet contains two example entries as a guide to what fields can accept. See also the data dictionary (either yaml or JSON files) in the `{epiparameter}` package (in inst/extdata) for explanation of accepted entries for each column.
+If you would like to contribute to the different epidemiological parameters stored in the _{{ packagename }}_ package, you can access the [google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing) and add your data. This spreadsheet contains two example entries as a guide to what fields can accept. See also the data dictionary (either yaml or JSON files) in the _{{ packagename }}_ package (in inst/extdata) for explanation of accepted entries for each column.
 
 ## Help 
 
@@ -92,11 +92,11 @@ To report a bug please open an [issue](https://github.com/epiverse-trace/epipara
 
 ## Contribute 
 
-Contributions to `{epiparameter}` are welcomed. Please follow the [package contributing guide](https://github.com/epiverse-trace/epiparameter/blob/main/.github/CONTRIBUTING.md).
+Contributions to _{{ packagename }}_ are welcomed. Please follow the [package contributing guide](https://github.com/epiverse-trace/epiparameter/blob/main/.github/CONTRIBUTING.md).
 
 ## Code of Conduct
 
-Please note that the `{epiparameter}` project is released with a [Contributor Code of Conduct](https://github.com/epiverse-trace/.github/blob/main/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the _{{ packagename }}_ project is released with a [Contributor Code of Conduct](https://github.com/epiverse-trace/.github/blob/main/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
 ## Citing this package
 
