@@ -777,8 +777,7 @@ clean_epidist_params.default <- function(prob_dist_params) {
 #' clean_epidist_name("Incubation_period")
 clean_epidist_name <- function(epi_dist) {
   out <- gsub(pattern = "_", replacement = " ", x = epi_dist, fixed = TRUE)
-  out <- tolower(out)
-  out
+  tolower(out)
 }
 
 #' Standardises the names of diseases
