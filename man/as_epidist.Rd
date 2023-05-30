@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{as_epidist}
 \alias{as_epidist}
-\title{Converts rows of an epiparam object into an epidist object}
+\title{Convert rows of an epiparam object into an epidist object}
 \usage{
 as_epidist(x)
 }
@@ -21,7 +21,7 @@ generation and other methods of the epidist class
 }
 \examples{
 \donttest{
-  eparam <- epiparam()
-  as_epidist(eparam[1, ])
+eparam <- epiparam()
+as_epidist(eparam[1, ])
 }
 }

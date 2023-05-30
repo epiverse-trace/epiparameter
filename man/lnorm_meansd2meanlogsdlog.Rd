@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_param.R
 \name{lnorm_meansd2meanlogsdlog}
 \alias{lnorm_meansd2meanlogsdlog}
-\title{Converts the mean and standard deviation of a lognormal distribution into the
+\title{Convert the mean and standard deviation of a lognormal distribution into the
 standard parameterisation of meanlog (mu) and sdlog (sigma)}
 \usage{
 lnorm_meansd2meanlogsdlog(mean, sd)
@@ -16,7 +16,7 @@ lnorm_meansd2meanlogsdlog(mean, sd)
 A named list with meanlog and sdlog
 }
 \description{
-Converts the mean and standard deviation of a lognormal distribution into the
+Convert the mean and standard deviation of a lognormal distribution into the
 standard parameterisation of meanlog (mu) and sdlog (sigma)
 }
 \examples{

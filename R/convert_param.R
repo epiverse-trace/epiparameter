@@ -1,4 +1,4 @@
-#' Adds standard deviation to the list if not present or errors
+#' Add standard deviation to the list if not present or errors
 #'
 #' @param x A list of summary statistics
 #'
@@ -18,7 +18,7 @@ get_sd <- function(x) {
   x
 }
 
-#' Checks list of summary statistics is valid for conversion
+#' Check list of summary statistics is valid for conversion
 #'
 #' @inheritParams get_sd
 #'
@@ -44,7 +44,7 @@ chk_ss <- function(x) {
   invisible(x)
 }
 
-#' Converts the parameters of the lognormal distribution to summary statistics
+#' Convert the parameters of the lognormal distribution to summary statistics
 #'
 #' @description Converts the meanlog and sdlog parameters of the lognormal
 #' distribution to a number of summary statistics which can be calculated
@@ -91,7 +91,7 @@ convert_lnorm_params <- function(meanlog, sdlog) {
   )
 }
 
-#' Converts the summary statistics to parameters of the lognormal distribution
+#' Convert the summary statistics to parameters of the lognormal distribution
 #'
 #' @description Converts the summary statistics input into the meanlog and sdlog
 #' parameters of the lognormal distribution.
@@ -144,7 +144,7 @@ convert_lnorm_summary_stats <- function(...) {
   )
 }
 
-#' Converts the meanlog and sdlog parameters of the lognormal distribution to
+#' Convert the meanlog and sdlog parameters of the lognormal distribution to
 #' the mean and standard deviation
 #'
 #' @inheritParams convert_lnorm_params
@@ -162,7 +162,7 @@ lnorm_meanlogsdlog2meansd <- function(meanlog, sdlog) {
   list(mean = mean, sd = sd)
 }
 
-#' Converts the mean and standard deviation of a lognormal distribution into the
+#' Convert the mean and standard deviation of a lognormal distribution into the
 #' standard parameterisation of meanlog (mu) and sdlog (sigma)
 #'
 #' @param mean Mean (expectation) of the lognormal distribution
@@ -181,7 +181,7 @@ lnorm_meansd2meanlogsdlog <- function(mean, sd) {
   list(meanlog = meanlog, sdlog = sdlog)
 }
 
-#' Converts the parameters of the gamma distribution to summary statistics
+#' Convert the parameters of the gamma distribution to summary statistics
 #'
 #' @description Converts the shape and scale parameters of the gamma
 #' distribution to a number of summary statistics which can be calculated
@@ -226,7 +226,7 @@ convert_gamma_params <- function(shape, scale) {
   )
 }
 
-#' Converts the summary statistics to parameters of the gamma distribution
+#' Convert the summary statistics to parameters of the gamma distribution
 #'
 #' @description Converts the summary statistics input into the shape and scale
 #' parameters of the gamma distribution.
@@ -268,7 +268,7 @@ convert_gamma_summary_stats <- function(...) {
   stop("Cannot calculate gamma parameters from given input")
 }
 
-#' Converts the shape and scale parameters of the gamma distribution to the
+#' Convert the shape and scale parameters of the gamma distribution to the
 #' mean and standard deviation.
 #'
 #' @inheritParams convert_gamma_params
@@ -286,7 +286,7 @@ gamma_shapescale2meansd <- function(shape, scale) {
   list(mean = mean, sd = sd)
 }
 
-#' Converts the mean and standard deviation of the gamma distribution to the
+#' Convert the mean and standard deviation of the gamma distribution to the
 #' shape and scale parameterisation.
 #'
 #' @param mean The mean of the gamma distribution
@@ -305,7 +305,7 @@ gamma_meansd2shapescale <- function(mean, sd) {
   list(shape = shape, scale = scale)
 }
 
-#' Converts the parameters of the Weibull distribution to summary statistics
+#' Convert the parameters of the Weibull distribution to summary statistics
 #'
 #' @description Converts the shape and scale parameters of the Weibull
 #' distribution to a number of summary statistics which can be calculated
@@ -355,7 +355,7 @@ convert_weibull_params <- function(shape, scale) {
   )
 }
 
-#' Converts the summary statistics to parameters of the Weibull distribution
+#' Convert the summary statistics to parameters of the Weibull distribution
 #'
 #' @description Converts the summary statistics input into the shape and scale
 #' parameters of the Weibull distribution.
@@ -397,7 +397,7 @@ convert_weibull_summary_stats <- function(...) {
   stop("Cannot calculate Weibull parameters from given input")
 }
 
-#' Converts the mean and standard deviation of the Weibull distribution to the
+#' Convert the mean and standard deviation of the Weibull distribution to the
 #' shape and scale parameterisation.
 #'
 #' @param mean The mean of the Weibull distribution
@@ -452,7 +452,7 @@ weibull_meansd2shapescale <- function(mean, sd) {
   list(shape = shape, scale = scale)
 }
 
-#' Converts the shape and scale parameters of the Weibull distribution to the
+#' Convert the shape and scale parameters of the Weibull distribution to the
 #' mean and standard deviation
 #'
 #' @inheritParams convert_weibull_params
@@ -470,7 +470,7 @@ weibull_shapescale2meansd <- function(shape, scale) {
   list(mean = mean, sd = sd)
 }
 
-#' Converts the parameters of the negative binomial distribution to summary
+#' Convert the parameters of the negative binomial distribution to summary
 #' statistics
 #'
 #' @description Converts the probability (`prob`) and dispersion parameters of
@@ -518,7 +518,7 @@ convert_nbinom_params <- function(prob, dispersion) {
   )
 }
 
-#' Converts the summary statistics to parameters of the negative binomial
+#' Convert the summary statistics to parameters of the negative binomial
 #' distribution
 #'
 #' @description Converts the summary statistics of the negative binomial
@@ -628,7 +628,7 @@ nbinom_meandisp2probdisp <- function(mean, dispersion) {
   list(prob = prob, dispersion = dispersion)
 }
 
-#' Converts the parameters of the geometric distribution to summary statistics
+#' Convert the parameters of the geometric distribution to summary statistics
 #'
 #' @description Converts the probability (`prob`) of the geometric distribution
 #' to a number of summary statistics which can be calculated analytically given
@@ -674,7 +674,7 @@ convert_geom_params <- function(prob) {
   )
 }
 
-#' Converts the summary statistics to parameters of the geometric distribution
+#' Convert the summary statistics to parameters of the geometric distribution
 #'
 #' @description Converts the summary statistics of the geometric
 #' distribution the parameter (`prob`) of the geometric distribution.
@@ -733,7 +733,7 @@ convert_geom_summary_stats <- function(...) {
   stop("Cannot calculate geometric distribution parameter from given input")
 }
 
-#' Converts the mean of the geometric distribution to the probability parameter
+#' Convert the mean of the geometric distribution to the probability parameter
 #'
 #' @description The geometric distribution has two forms. This conversion
 #' function assumes that distribution represents the number of failures before
@@ -753,7 +753,7 @@ geom_mean2prob <- function(mean) {
   list(prob = prob)
 }
 
-#' Converts the probability parameter of the geometric distribution to the mean
+#' Convert the probability parameter of the geometric distribution to the mean
 #' (expectation) of the distribution
 #'
 #' @description The geometric distribution has two forms. This conversion

@@ -2,12 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{create_epidist_citation}
 \alias{create_epidist_citation}
-\title{A helper function when creating an epidist object to create a summary
-statistics list with sensible defaults, type checking and arguments to help
-remember which summary statistics can be accepted in the list
-A helper function when creating an epidist object to create a citation list
-with sensible defaults, type checking and arguments to help remember which
-citation information is accepted in the list.}
+\title{Specify citation associated with a data set}
 \usage{
 create_epidist_citation(
   author = NA_character_,
@@ -33,9 +28,6 @@ assigned to papers which are unique to each paper.}
 A character string of the formatted short citation
 }
 \description{
-A helper function when creating an epidist object to create a summary
-statistics list with sensible defaults, type checking and arguments to help
-remember which summary statistics can be accepted in the list
 A helper function when creating an epidist object to create a citation list
 with sensible defaults, type checking and arguments to help remember which
 citation information is accepted in the list.

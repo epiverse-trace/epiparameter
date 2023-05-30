@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_param.R
 \name{convert_nbinom_summary_stats}
 \alias{convert_nbinom_summary_stats}
-\title{Converts the summary statistics to parameters of the negative binomial
+\title{Convert the summary statistics to parameters of the negative binomial
 distribution}
 \usage{
 convert_nbinom_summary_stats(...)

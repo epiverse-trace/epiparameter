@@ -1,4 +1,4 @@
-#' Method for extracting citation information from `<epidist>` or
+#' Extract the citation information from `<epidist>` or
 #' `<epiparam>` objects.
 #'
 #' @param x An `epidist` or `epiparam` object.

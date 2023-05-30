@@ -1,4 +1,4 @@
-#' Creates an distribution object depending on input parameters and distribution
+#' Create a distribution object depending on input parameters and distribution
 #' settings
 #'
 #' @description This function converts the probability distribution name and its

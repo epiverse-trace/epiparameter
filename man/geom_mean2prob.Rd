@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_param.R
 \name{geom_mean2prob}
 \alias{geom_mean2prob}
-\title{Converts the mean of the geometric distribution to the probability parameter}
+\title{Convert the mean of the geometric distribution to the probability parameter}
 \usage{
 geom_mean2prob(mean)
 }

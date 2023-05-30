@@ -2,9 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{is_epidist_params}
 \alias{is_epidist_params}
-\title{A helper function to check whether the vector of parameters for the
-probability distribution are in the set of possible parameters used in
-the \code{epiparameter} package}
+\title{Check if parameters are valid for an \code{epidist} object}
 \usage{
 is_epidist_params(prob_dist_params)
 }

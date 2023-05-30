@@ -43,7 +43,7 @@ vb <- vb_epidist(
       extrinsic = FALSE
     )
   ),
-  extrinsic_epidist =  epidist(
+  extrinsic_epidist = epidist(
     disease = "dengue",
     pathogen = "dengue_virus",
     epi_dist = "incubation_period",

@@ -351,10 +351,8 @@ create_epidist_summary_stats <- function(mean = NA_real_,
   )
 }
 
-#' A helper function when creating an epidist object to create a summary
-#' statistics list with sensible defaults, type checking and arguments to help
-#' remember which summary statistics can be accepted in the list
-
+#' Specify citation associated with a data set
+#'
 #' A helper function when creating an epidist object to create a citation list
 #' with sensible defaults, type checking and arguments to help remember which
 #' citation information is accepted in the list.
@@ -473,6 +471,8 @@ create_epidist_method_assess <- function(censored = NA,
   )
 }
 
+#' Check if parameters are valid for an `epidist` object
+#'
 #' A helper function to check whether the vector of parameters for the
 #' probability distribution are in the set of possible parameters used in
 #' the `epiparameter` package
@@ -517,6 +517,8 @@ is_epidist_params <- function(prob_dist_params) {
   is_valid_params
 }
 
+#' Print accepted distribution parameters
+#'
 #' Helper function that prints the distribution parameters accepted by
 #' `epiparameter`
 #'
@@ -540,7 +542,7 @@ clean_epidist_params <- function(prob_dist_params, ...) {
   UseMethod("clean_epidist_params")
 }
 
-#' Standardises parameters for a gamma distribution
+#' Standardise parameters for a gamma distribution
 #'
 #' @inheritParams new_epidist
 #'
@@ -573,7 +575,7 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a lognormal distribution
+#' Standardise parameters for a lognormal distribution
 #'
 #' @inheritParams new_epidist
 #'
@@ -607,7 +609,7 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a Weibull distribution
+#' Standardise parameters for a Weibull distribution
 #'
 #' @inheritParams new_epidist
 #'
@@ -628,7 +630,7 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a negative binomial distribution
+#' Standardise parameters for a negative binomial distribution
 #'
 #' @inheritParams new_epidist
 #'
@@ -670,7 +672,7 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a geometric distribution
+#' Standardise parameters for a geometric distribution
 #'
 #' @inheritParams new_epidist
 #'
@@ -718,7 +720,7 @@ clean_epidist_params.geom <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a poisson distribution
+#' Standardise parameters for a poisson distribution
 #'
 #' @inheritParams new_epidist
 #'
@@ -758,7 +760,7 @@ clean_epidist_params.default <- function(prob_dist_params) {
   prob_dist_params
 }
 
-#' Standardises the names of epidemiological distributions
+#' Standardise the names of epidemiological distributions
 #'
 #' @param epi_dist A character string with the name of the distribution
 #'
@@ -772,7 +774,7 @@ clean_epidist_name <- function(epi_dist) {
   tolower(out)
 }
 
-#' Standardises the names of diseases
+#' Standardise the names of diseases
 #'
 #' @param x A character string specifying a disease.
 #'

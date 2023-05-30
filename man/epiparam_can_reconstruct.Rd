@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{epiparam_can_reconstruct}
 \alias{epiparam_can_reconstruct}
-\title{Checks whether the \code{epiparam} object is valid}
+\title{Check whether the \code{epiparam} object is valid}
 \usage{
 epiparam_can_reconstruct(x)
 }

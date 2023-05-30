@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_param.R
 \name{extract_param_range}
 \alias{extract_param_range}
-\title{Optimises the parameters for a specified probability distribution given the
+\title{Optimise the parameters for a specified probability distribution given the
 median and range of a sample and the number of samples}
 \usage{
 extract_param_range(values, distribution, samples)
@@ -20,7 +20,7 @@ Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}
 A list with output from stats::optim. See ?optim for more details
 }
 \description{
-Optimises the parameters for a specified probability distribution given the
+Optimise the parameters for a specified probability distribution given the
 median and range of a sample and the number of samples
 }
 \keyword{internal}

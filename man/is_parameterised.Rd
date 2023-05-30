@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist.R
 \name{is_parameterised}
 \alias{is_parameterised}
-\title{Checks whether \if{html}{\out{<epidist>}} object contains a distribution and parameters for
+\title{Check whether \if{html}{\out{<epidist>}} object contains a distribution and parameters for
 that distribution.}
 \usage{
 is_parameterised(x)

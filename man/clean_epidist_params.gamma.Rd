@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{clean_epidist_params.gamma}
 \alias{clean_epidist_params.gamma}
-\title{Standardises parameters for a gamma distribution}
+\title{Standardise parameters for a gamma distribution}
 \usage{
 \method{clean_epidist_params}{gamma}(prob_dist_params)
 }
@@ -14,6 +14,6 @@ parameters}
 Named vector of parameters
 }
 \description{
-Standardises parameters for a gamma distribution
+Standardise parameters for a gamma distribution
 }
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{df_reconstruct}
 \alias{df_reconstruct}
-\title{Transplants the attributes of one input (\code{to}) to the other input (\code{x})}
+\title{Transplant the attributes of one input (\code{to}) to the other input (\code{x})}
 \usage{
 df_reconstruct(x, to)
 }
@@ -16,6 +16,6 @@ df_reconstruct(x, to)
 An \code{epiparam} object
 }
 \description{
-Transplants the attributes of one input (\code{to}) to the other input (\code{x})
+Transplant the attributes of one input (\code{to}) to the other input (\code{x})
 }
 \keyword{internal}

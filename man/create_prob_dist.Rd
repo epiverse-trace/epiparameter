@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_prob_dist.R
 \name{create_prob_dist}
 \alias{create_prob_dist}
-\title{Creates an distribution object depending on input parameters and distribution
+\title{Create a distribution object depending on input parameters and distribution
 settings}
 \usage{
 create_prob_dist(prob_dist, prob_dist_params, discretise, truncation)

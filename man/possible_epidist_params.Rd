@@ -2,8 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{possible_epidist_params}
 \alias{possible_epidist_params}
-\title{Helper function that prints the distribution parameters accepted by
-\code{epiparameter}}
+\title{Print accepted distribution parameters}
 \usage{
 possible_epidist_params()
 }

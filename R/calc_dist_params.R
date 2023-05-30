@@ -1,4 +1,4 @@
-#' Calculates the parameters of a probability distribution from a list of
+#' Calculate the parameters of a probability distribution from a list of
 #' available summary statistics
 #'
 #' @description When the parameters of a probability distribution are not
@@ -115,7 +115,7 @@ calc_dist_params <- function(prob_dist,
   prob_dist_params
 }
 
-#' Converts summary statistics to parameters of a probability distribution
+#' Convert summary statistics to parameters of a probability distribution
 #'
 #' @description The summary_stats object needs to have a class attribute with
 #' the name of the probability distribution in order for the correct conversion

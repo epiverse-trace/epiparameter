@@ -441,7 +441,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
   invisible(x)
 }
 
-#' Plots an `epidist` object
+#' Plot method for `epidist` class
 #'
 #' @description Plots an `epidist` object by displaying the either the
 #' probability mass function (PMF), (in the case of discrete distributions)
@@ -536,7 +536,7 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
   }
 }
 
-#' Checks whether the object is an `epidist`
+#' Check whether the object is an `epidist`
 #'
 #' @param x An R object
 #'
@@ -954,7 +954,7 @@ is_truncated <- function(x) {
   }
 }
 
-#' Checks whether <epidist> object contains a distribution and parameters for
+#' Check whether <epidist> object contains a distribution and parameters for
 #' that distribution.
 #'
 #' @description If the <epidist> object is missing either a probability

@@ -1,4 +1,4 @@
-#' Converts rows of an epiparam object into an epidist object
+#' Convert rows of an epiparam object into an epidist object
 #'
 #' @description Can convert the entries (rows) of an epiparam object to one or
 #' list of several epidist objects. This allows subsetting of epiparam records
@@ -35,7 +35,7 @@ as_epidist <- function(x) {
   out
 }
 
-#' Creates an `epidist` object from a list of input from an `epiparam` object
+#' Create an `epidist` object from a list of input from an `epiparam` object
 #'
 #' @description Unpacks list of inputs from an epiparam object into the epidist
 #' helper, including the parameters and uncertainty from the correct type of
@@ -188,7 +188,7 @@ make_epidist <- function(x) {
   )
 }
 
-#' Converts an `epidist` object to an `epiparam` object
+#' Convert an `epidist` object to an `epiparam` object
 #'
 #' @param x An `epidist` object
 #'
@@ -392,7 +392,7 @@ as_epiparam <- function(x) {
   eparam
 }
 
-#' Adds confidence interval limits from an `epidist` object to an `epiparam`
+#' Add confidence interval limits from an `epidist` object to an `epiparam`
 #' data frame
 #'
 #' @param eparam A data frame with `<epiparam>` data
@@ -460,7 +460,7 @@ add_ci_limits <- function(eparam, x) {
   epiparam_reconstruct(out, epiparam)
 }
 
-#' Set names on `epiparam` class
+#' Set names method for `epiparam` class
 #'
 #' @description If modifying the names invalidates the `epiparam` object
 #' (defined by its invariants, and encoded in [`validate_epiparam()`]) the
@@ -489,7 +489,7 @@ add_ci_limits <- function(eparam, x) {
   epiparam_reconstruct(out, x)
 }
 
-#' Decides whether `epiparam` object can be reconstructed from input
+#' Decide whether `epiparam` object can be reconstructed from input
 #'
 #' @description Uses [`epiparam_can_reconstruct()`] to determine whether the
 #' data input can be reconstructed in a valid `epiparam` object. If it can not,
@@ -511,7 +511,7 @@ epiparam_reconstruct <- function(x, to) {
   }
 }
 
-#' Checks whether the `epiparam` object is valid
+#' Check whether the `epiparam` object is valid
 #'
 #' @description This is a wrapper for [`validate_epiparam`] in a [`tryCatch()`]
 #' in order to not error if the input object is invalid and returns `TRUE` or
@@ -535,7 +535,7 @@ epiparam_can_reconstruct <- function(x) {
   !isFALSE(out)
 }
 
-#' Transplants the attributes of one input (`to`) to the other input (`x`)
+#' Transplant the attributes of one input (`to`) to the other input (`x`)
 #'
 #' @inheritParams epiparam_reconstruct
 #'

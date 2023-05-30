@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam.R
 \name{is_epiparam}
 \alias{is_epiparam}
-\title{Checks whether the object is an \code{epiparam}}
+\title{Check whether the object is an \code{epiparam}}
 \usage{
 is_epiparam(x)
 }
@@ -14,7 +14,7 @@ A boolean logical, \code{TRUE} if the object is an \code{epiparam} and \code{FAL
 if not
 }
 \description{
-Checks whether the object is an \code{epiparam}
+Check whether the object is an \code{epiparam}
 }
 \examples{
 eparam <- epiparam()

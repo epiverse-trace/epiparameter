@@ -231,7 +231,7 @@ format.epiparam <- function(x, ...) {
   invisible(x)
 }
 
-#' Checks whether the object is an `epiparam`
+#' Check whether the object is an `epiparam`
 #'
 #' @param x An R object
 #'

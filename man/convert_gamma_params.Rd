@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_param.R
 \name{convert_gamma_params}
 \alias{convert_gamma_params}
-\title{Converts the parameters of the gamma distribution to summary statistics}
+\title{Convert the parameters of the gamma distribution to summary statistics}
 \usage{
 convert_gamma_params(shape, scale)
 }

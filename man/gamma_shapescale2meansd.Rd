@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_param.R
 \name{gamma_shapescale2meansd}
 \alias{gamma_shapescale2meansd}
-\title{Converts the shape and scale parameters of the gamma distribution to the
+\title{Convert the shape and scale parameters of the gamma distribution to the
 mean and standard deviation.}
 \usage{
 gamma_shapescale2meansd(shape, scale)
@@ -16,7 +16,7 @@ gamma_shapescale2meansd(shape, scale)
 A named list with mean and standard deviation
 }
 \description{
-Converts the shape and scale parameters of the gamma distribution to the
+Convert the shape and scale parameters of the gamma distribution to the
 mean and standard deviation.
 }
 \examples{

@@ -188,7 +188,7 @@ extract_param <- function(type = c("percentiles", "range"),
   optim_params_list[[best_iter]]$par
 }
 
-#' Optimises the parameters for a specified probability distribution given the
+#' Optimise the parameters for a specified probability distribution given the
 #' percentiles of a distribution and the values at those percentiles
 #'
 #' @inheritParams extract_param
@@ -236,7 +236,7 @@ extract_param_percentile <- function(values,
   optim_params
 }
 
-#' Optimises the parameters for a specified probability distribution given the
+#' Optimise the parameters for a specified probability distribution given the
 #' median and range of a sample and the number of samples
 #'
 #' @inheritParams extract_param
@@ -284,7 +284,7 @@ extract_param_range <- function(values,
   optim_params
 }
 
-#' Checks whether the optimisation of distribution parameters has converged to
+#' Check whether the optimisation of distribution parameters has converged to
 #' stable value for the parameters and function output for multiple iterations
 #'
 #' @description This function is to try and prevent optimisation to a local
@@ -327,7 +327,7 @@ check_optim_conv <- function(optim_params_list,
   optim_conv
 }
 
-#' Function for extracting distribution parameters
+#' Functions for extracting distribution parameters
 #'
 #' Set of functions that can be used to estimate the parameters of a
 #' distribution (lognormal, gamma, Weibull) via optimisation from either the

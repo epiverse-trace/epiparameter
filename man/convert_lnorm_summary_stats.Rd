@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_param.R
 \name{convert_lnorm_summary_stats}
 \alias{convert_lnorm_summary_stats}
-\title{Converts the summary statistics to parameters of the lognormal distribution}
+\title{Convert the summary statistics to parameters of the lognormal distribution}
 \usage{
 convert_lnorm_summary_stats(...)
 }

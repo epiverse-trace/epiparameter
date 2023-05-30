@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_dist_params.R
 \name{convert_params}
 \alias{convert_params}
-\title{Converts summary statistics to parameters of a probability distribution}
+\title{Convert summary statistics to parameters of a probability distribution}
 \usage{
 convert_params(summary_stats, prob_dist)
 }

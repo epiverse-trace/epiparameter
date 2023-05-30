@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist.R
 \name{plot.epidist}
 \alias{plot.epidist}
-\title{Plots an \code{epidist} object}
+\title{Plot method for \code{epidist} class}
 \usage{
 \method{plot}{epidist}(x, day_range = 0:10, ..., vb = FALSE, title = NULL)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_dist_params.R
 \name{calc_dist_params}
 \alias{calc_dist_params}
-\title{Calculates the parameters of a probability distribution from a list of
+\title{Calculate the parameters of a probability distribution from a list of
 available summary statistics}
 \usage{
 calc_dist_params(prob_dist, prob_dist_params, summary_stats, sample_size = NA)
@@ -60,7 +60,7 @@ calc_dist_params(
   prob_dist = "gamma",
   prob_dist_params = NA,
   summary_stats = create_epidist_summary_stats(
-   quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
+    quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
   ),
   sample_size = NA
 )

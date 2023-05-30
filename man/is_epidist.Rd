@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist.R
 \name{is_epidist}
 \alias{is_epidist}
-\title{Checks whether the object is an \code{epidist}}
+\title{Check whether the object is an \code{epidist}}
 \usage{
 is_epidist(x)
 }
@@ -14,11 +14,11 @@ A boolean logical, \code{TRUE} if the object is an \code{epidist} and \code{FALS
 if not
 }
 \description{
-Checks whether the object is an \code{epidist}
+Check whether the object is an \code{epidist}
 }
 \examples{
 edist <- epidist(
-disease = "ebola",
+  disease = "ebola",
   epi_dist = "serial_interval",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1)

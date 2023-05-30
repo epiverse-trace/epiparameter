@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{clean_epidist_params.pois}
 \alias{clean_epidist_params.pois}
-\title{Standardises parameters for a poisson distribution}
+\title{Standardise parameters for a poisson distribution}
 \usage{
 \method{clean_epidist_params}{pois}(prob_dist_params)
 }
@@ -14,6 +14,6 @@ parameters}
 Named vector of parameters
 }
 \description{
-Standardises parameters for a poisson distribution
+Standardise parameters for a poisson distribution
 }
 \keyword{internal}

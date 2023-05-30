@@ -1,4 +1,4 @@
-#' Converts a vector of named percentiles into correct format and selects two
+#' Convert a vector of named percentiles into correct format and selects two
 #' values for parameter extraction
 #'
 #' @description Parameters of a probability distribution can be extracted using

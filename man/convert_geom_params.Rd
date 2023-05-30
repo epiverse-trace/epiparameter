@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_param.R
 \name{convert_geom_params}
 \alias{convert_geom_params}
-\title{Converts the parameters of the geometric distribution to summary statistics}
+\title{Convert the parameters of the geometric distribution to summary statistics}
 \usage{
 convert_geom_params(prob)
 }

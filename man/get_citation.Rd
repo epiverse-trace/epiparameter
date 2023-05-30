@@ -2,7 +2,7 @@
 % Please edit documentation in R/cite.R
 \name{get_citation}
 \alias{get_citation}
-\title{Method for extracting citation information from \verb{<epidist>} or
+\title{Extract the citation information from \verb{<epidist>} or
 \verb{<epiparam>} objects.}
 \usage{
 get_citation(x, ...)
@@ -18,7 +18,7 @@ Length of list output is equal to number of rows in the \code{epiparam} object
 passed to the function.
 }
 \description{
-Method for extracting citation information from \verb{<epidist>} or
+Extract the citation information from \verb{<epidist>} or
 \verb{<epiparam>} objects.
 }
 \examples{

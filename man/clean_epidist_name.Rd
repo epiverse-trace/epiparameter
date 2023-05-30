@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{clean_epidist_name}
 \alias{clean_epidist_name}
-\title{Standardises the names of epidemiological distributions}
+\title{Standardise the names of epidemiological distributions}
 \usage{
 clean_epidist_name(epi_dist)
 }
@@ -13,7 +13,7 @@ clean_epidist_name(epi_dist)
 Character string
 }
 \description{
-Standardises the names of epidemiological distributions
+Standardise the names of epidemiological distributions
 }
 \examples{
 clean_epidist_name("Incubation_period")

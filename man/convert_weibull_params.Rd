@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_param.R
 \name{convert_weibull_params}
 \alias{convert_weibull_params}
-\title{Converts the parameters of the Weibull distribution to summary statistics}
+\title{Convert the parameters of the Weibull distribution to summary statistics}
 \usage{
 convert_weibull_params(shape, scale)
 }

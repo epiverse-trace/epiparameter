@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{make_epidist}
 \alias{make_epidist}
-\title{Creates an \code{epidist} object from a list of input from an \code{epiparam} object}
+\title{Create an \code{epidist} object from a list of input from an \code{epiparam} object}
 \usage{
 make_epidist(x)
 }

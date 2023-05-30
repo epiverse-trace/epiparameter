@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_param.R
 \name{extract_param_percentile}
 \alias{extract_param_percentile}
-\title{Optimises the parameters for a specified probability distribution given the
+\title{Optimise the parameters for a specified probability distribution given the
 percentiles of a distribution and the values at those percentiles}
 \usage{
 extract_param_percentile(values, distribution, percentiles)
@@ -22,7 +22,7 @@ percentile is given as \code{c(0.025, 0.975)}.}
 A list with output from stats::optim. See ?optim for more details
 }
 \description{
-Optimises the parameters for a specified probability distribution given the
+Optimise the parameters for a specified probability distribution given the
 percentiles of a distribution and the values at those percentiles
 }
 \keyword{internal}

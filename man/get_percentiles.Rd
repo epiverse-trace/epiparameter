@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_percentiles.R
 \name{get_percentiles}
 \alias{get_percentiles}
-\title{Converts a vector of named percentiles into correct format and selects two
+\title{Convert a vector of named percentiles into correct format and selects two
 values for parameter extraction}
 \usage{
 get_percentiles(percentiles)
@@ -32,10 +32,10 @@ decimal places should have the decimal point in the name (e.g.
 }
 \examples{
 \dontrun{
-  # 90th interval
-  get_percentiles(c(q_5 = 1, q_95 = 10))
-  # 95th interval
-  get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
+# 90th interval
+get_percentiles(c(q_5 = 1, q_95 = 10))
+# 95th interval
+get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
 }
 }
 \keyword{internal}

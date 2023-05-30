@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{as_epiparam}
 \alias{as_epiparam}
-\title{Converts an \code{epidist} object to an \code{epiparam} object}
+\title{Convert an \code{epidist} object to an \code{epiparam} object}
 \usage{
 as_epiparam(x)
 }
@@ -13,7 +13,7 @@ as_epiparam(x)
 An \code{epiparam} object
 }
 \description{
-Converts an \code{epidist} object to an \code{epiparam} object
+Convert an \code{epidist} object to an \code{epiparam} object
 }
 \examples{
 edist <- epidist(

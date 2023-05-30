@@ -8,7 +8,7 @@
 \alias{fit_function_lnorm}
 \alias{fit_function_gamma}
 \alias{fit_function_weibull}
-\title{Function for extracting distribution parameters}
+\title{Functions for extracting distribution parameters}
 \usage{
 fit_function_lnorm_range(param, val)
 

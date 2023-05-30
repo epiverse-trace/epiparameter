@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{names<-.epiparam}
 \alias{names<-.epiparam}
-\title{Set names on \code{epiparam} class}
+\title{Set names method for \code{epiparam} class}
 \usage{
 \method{names}{epiparam}(x) <- value
 }

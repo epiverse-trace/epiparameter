@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{epiparam_reconstruct}
 \alias{epiparam_reconstruct}
-\title{Decides whether \code{epiparam} object can be reconstructed from input}
+\title{Decide whether \code{epiparam} object can be reconstructed from input}
 \usage{
 epiparam_reconstruct(x, to)
 }
