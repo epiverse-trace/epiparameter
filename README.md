@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# epiparameter <img src="man/figures/logo.png" align="right" width="120" />
+# *{{ packagename }}* <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 
@@ -14,13 +14,13 @@ coverage](https://codecov.io/gh/epiverse-trace/epiparameter/branch/main/graph/ba
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-`{epiparameter}` is an `R` package that contains a library of
+*{{ packagename }}* is an `R` package that contains a library of
 epidemiological parameters for infectious diseases and a set classes and
 helper functions to be able to work with the data. It also includes
 functions to extract and convert parameters from reported summary
 statistics.
 
-`{epiparameter}` is developed at the [Centre for the Mathematical
+*{{ packagename }}* is developed at the [Centre for the Mathematical
 Modelling of Infectious
 Diseases](https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases)
 at the [London School of Hygiene and Tropical
@@ -29,13 +29,13 @@ Medicine](https://www.lshtm.ac.uk/) as part of
 
 ## Installation
 
-The easiest way to install the development version of `{epiparameter}`
-is to use the `{pak}` package:
+The easiest way to install the development version of *{{ packagename
+}}* is to use the `{pak}` package:
 
 ``` r
 # check whether {pak} is installed
 if(!require("pak")) install.packages("pak")
-pak::pak("epiverse-trace/epiparameter")
+pak::pak("{{ gh_repo }}")
 ```
 
 ## Quick start
@@ -50,11 +50,11 @@ To load the library of epidemiological parameters into `R`:
 eparams <- epiparam()
 eparams
 #> Epiparam object
-#> Number of distributions in library: 106
-#> Number of diseases: 24
-#> Number of delay distributions: 83
+#> Number of distributions in library: 118
+#> Number of diseases: 23
+#> Number of delay distributions: 95
 #> Number of offspring distributions: 10
-#> Number of studies in library: 42
+#> Number of studies in library: 57
 #> <Head of library>
 #>       disease         epi_distribution prob_distribution
 #> 1  Adenovirus        incubation_period             lnorm
@@ -63,7 +63,7 @@ eparams
 #> 4    COVID-19 hospitalisation_to_death             lnorm
 #> 5    COVID-19        incubation_period              <NA>
 #> 6    COVID-19        incubation_period           weibull
-#> <100 more rows & 53 more cols not shown>
+#> <112 more rows & 53 more cols not shown>
 ```
 
 The library is an `<epiparam>` class, which underneath is a data frame.
@@ -97,8 +97,8 @@ plot(influenza_incubation)
 ### Parameter conversion and extraction
 
 The parameters of a distribution can be converted to and from mean and
-standard deviation. In `{epiparameter}` we implement this for a variety
-of distributions:
+standard deviation. In *{{ packagename }}* we implement this for a
+variety of distributions:
 
 - gamma
 - lognormal
@@ -117,12 +117,12 @@ or the median and range of the data. This can be done for:
 ## Contributing to library of epidemiological parameters
 
 If you would like to contribute to the different epidemiological
-parameters stored in the `{epiparameter}` package, you can access the
+parameters stored in the *{{ packagename }}* package, you can access the
 [google
 sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing)
 and add your data. This spreadsheet contains two example entries as a
 guide to what fields can accept. See also the data dictionary (either
-yaml or JSON files) in the `{epiparameter}` package (in inst/extdata)
+yaml or JSON files) in the *{{ packagename }}* package (in inst/extdata)
 for explanation of accepted entries for each column.
 
 ## Help
@@ -132,13 +132,13 @@ To report a bug please open an
 
 ## Contribute
 
-Contributions to `{epiparameter}` are welcomed. Please follow the
+Contributions to *{{ packagename }}* are welcomed. Please follow the
 [package contributing
 guide](https://github.com/epiverse-trace/epiparameter/blob/main/.github/CONTRIBUTING.md).
 
 ## Code of Conduct
 
-Please note that the `{epiparameter}` project is released with a
+Please note that the *{{ packagename }}* project is released with a
 [Contributor Code of
 Conduct](https://github.com/epiverse-trace/.github/blob/main/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
