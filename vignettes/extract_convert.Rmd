@@ -52,8 +52,8 @@ library(epiparameter)
 ## Conversions
 
 There are two styles of conversion functions in {epiparameter}. The general conversions
-which have the function name `convert_dist_*()` (where `*` and `dist` are placeholders). These convert
-either one set of parameters to many summary statistics (e.g. `convert_lnorm_params()`)
+have the function name `convert_dist_*()` (where `*` and `dist` are placeholders). These convert
+either one set of statistical distribution parameters to common summary statistics (e.g. `convert_lnorm_params()`)
 or a set of summary statistics input to one set of parameters (e.g. `convert_lnorm_summary_stats()`).
 The other style of function is the one-to-one conversion, which has the function name `dist_param2summary_stat()`
 or `dist_summarystat2param()` (where `dist`, `param` and `summary_stat` are placeholders). These functions take

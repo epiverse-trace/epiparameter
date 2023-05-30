@@ -25,9 +25,9 @@ The {epiparameter} R package is a library of epidemiological parameters, with cl
 ::: {.alert .alert-primary}
 ### Use case 
 
-An outbreak of a known or potentially novel pathogen is detected and the parameters and a delay distribution (e.g. incubation period or serial interval) is required. 
+An outbreak of a known or potentially novel pathogen is detected and key parameters such as delay distributions (e.g. incubation period or serial interval) are required to interpret early data. 
 
-{epiparameter} can provide these distributions from a selection of published sources in order to provide reliable epidemiological parameters.
+{epiparameter} can provide these distributions from a selection of published sources, such as past analysis of the same or similar pathogen, in order to provide relevant epidemiological parameters for new analysis.
 :::
 
 This vignette will provide a introduction to the data stored within {epiparameter}, how to read it into R, manipulate
@@ -66,14 +66,14 @@ head(epi_dist_db)[, 1:5]
 tail(epi_dist_db)[, 1:5]
 ```
 
-The epidemiological library contains quite a few different columns:
+The epidemiological library contains multiple columns, each storing different features of the parameter:
 
 ```{r, epiparam-cols}
 colnames(epi_dist_db)
 ```
 
-If subsetting of the `<epiparam>` object removes one of the crucial columns then the object is 
-converted to a data frame. Here removing the `disease` column causes the `<epiparam>` object
+If subsetting of the `<epiparam>` object removes one of the essential columns then the object is 
+converted to a data frame. For example, removing the `disease` column causes the below `<epiparam>` object
 to be converted to a data frame. See the Epiverse-TRACE [blog post on extending data frames](https://epiverse-trace.github.io/posts/extend-dataframes/) for a more technical description.
 
 ```{r, epiparam-subset-disease}
@@ -150,14 +150,14 @@ ebola_incubation <- epidist(
 ::: {.alert .alert-success}
 ### Benefit of `<epidist>`
 
-By providing a consistent and robust object to store epidemiological parameters, `<epidist>` objects can be applied in epidemiological pipelines, for example [{episoap}](https://github.com/epiverse-trace/episoap). The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will operate as the class is unchanged.
+By providing a consistent and robust object to store epidemiological parameters, `<epidist>` objects can be applied in epidemiological pipelines, for example [{episoap}](https://github.com/epiverse-trace/episoap). The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will continue to operate because the class is unchanged.
 :::
 
 The probability distribution (`prob_distribution`) argument requires the distribution specified in the standard R naming. In some cases these are the same as the distribution's name, e.g., `gamma` and `weibull`. Examples of where the distribution name and R name differ are lognormal and `lnorm`, negative binomial and `nbinom`, geometric and `geom`, and poisson and `pois`. Extra arguments are also available in `epidist()` to add information on uncertainty and citation information.
 
 ## Adding library entries
 
-If a set of epidemiological parameter has been inferred and known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.
+If a set of epidemiological parameter has been inferred and is known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.
 
 To add entries to the library the `bind_epiparam()` function appends a row to an existing `<epiparam>` object using either an `<epiparam>`, `<epidist>` or data frame.
 
@@ -170,7 +170,7 @@ Note that this only adds the parameters to the library (`<epiparam>` object) in 
 
 ## Distribution functions
 
-`<epidist>` objects store distributions, and mathematical functions of these distribution can easily be extracted directly from them. It is commonly required to extract the probability density function, cumulative distribution function, quantile or generate random numbers from the distribution in the `<epidist>` object. The distribution functions in {epiparameter} allow users to easily access these aspects.
+`<epidist>` objects store distributions, and mathematical functions of these distribution can easily be extracted directly from them. It is often useful to access the probability density function, cumulative distribution function, quantiles of the distribution, or generate random numbers from the distribution in the `<epidist>` object. The distribution functions in {epiparameter} allow users to easily use these.
 
 ```{r epidist-dist-methods}
 density(ebola_incubation, at = 0.5)
@@ -199,7 +199,7 @@ This plotting function can be useful for visually comparing epidemiological dist
 
 ### Conversion
 
-Parameters are often reported as mean and standard deviaton (or variance). These can be (analytically) converted to the parameters of the distribution using the conversion functions in the package. These have the naming convention `summary_stats2params()`. For example `gamma_meansd2shapescale()` or `lnorm_meansd2musigma()`.
+Parameters are often reported in the literature as mean and standard deviation (or variance). These summary statistics can often be (analytically) converted to the parameters of the distribution using the conversion functions in the package. These have the naming convention `summary_stats2params()`. For example `gamma_meansd2shapescale()` or `lnorm_meansd2musigma()`.
 
 We also provide conversion functions in the opposite direction, parameters to summary statistics. These follow the same naming convention, for example `weibull_shapescale2meansd()`.
 
