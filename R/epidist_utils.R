@@ -788,7 +788,5 @@ clean_epidist_name <- function(epi_dist) {
 #' @export
 clean_disease <- function(x) {
   checkmate::assert_character(x)
-  x <- tolower(x)
-  x <- gsub(pattern = "-| ", replacement = "_", x = x)
-  x
+  gsub(pattern = "-| ", replacement = "_", x = tolower(x))
 }
