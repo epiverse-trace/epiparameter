@@ -9,10 +9,10 @@
 #' lognormal and Weibull distributions.
 #'
 #' This function can provide a convenient wrapper around the conversion and
-#' extraction functions it is not known which summary statistics can be used to
-#' calculate the parameters of a distribution.
+#' extraction functions when it is not known which summary statistics can be
+#' used to calculate the parameters of a distribution.
 #'
-#' @details The hierarchy of methods are: conversion is prioritised if the mean
+#' @details The hierarchy of methods is: conversion is prioritised if the mean
 #' and standard deviation are available as these are mostly analytical
 #' conversions (except for one of the Weibull conversions), next method if
 #' possible is extraction from percentiles. This method requires a lower
