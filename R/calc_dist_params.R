@@ -36,7 +36,7 @@
 #'   prob_dist = "gamma",
 #'   prob_dist_params = NA,
 #'   summary_stats = create_epidist_summary_stats(
-#'    quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
+#'     quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
 #'   ),
 #'   sample_size = NA
 #' )
@@ -53,7 +53,6 @@ calc_dist_params <- function(prob_dist,
                              prob_dist_params,
                              summary_stats,
                              sample_size = NA) {
-
   # check input
   checkmate::assert_string(prob_dist)
   checkmate::assert_list(
@@ -65,7 +64,7 @@ calc_dist_params <- function(prob_dist,
   stopifnot(
     "probability distribution params must be a named vector or NA" =
       anyNA(prob_dist_params) ||
-      !is.null(names(prob_dist_params))
+        !is.null(names(prob_dist_params))
   )
 
   # extract mean and sd to see if conversion is possible
@@ -90,7 +89,6 @@ calc_dist_params <- function(prob_dist,
       prob_dist = prob_dist
     )
   } else if (!anyNA(percentiles)) {
-
     # calculate the parameters from the percentiles
     # percentiles required to be [0, 1] so divide by 100
     prob_dist_params <- extract_param(
@@ -137,7 +135,7 @@ convert_params <- function(summary_stats,
         sd = summary_stats$centre_spread$sd
       )
     ),
-    "lnorm" =  unlist(
+    "lnorm" = unlist(
       lnorm_meansd2meanlogsdlog(
         mean = summary_stats$centre_spread$mean,
         sd = summary_stats$centre_spread$sd

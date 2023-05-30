@@ -33,7 +33,6 @@ test_that("vb_epidist works with minimal viable input", {
 })
 
 test_that("vb_epidist works with all arguements set", {
-
   # message about missing citation suppressed
   dengue_dist <- suppressMessages(
     vb_epidist(
@@ -84,36 +83,35 @@ test_that("vb_epidist works with all arguements set", {
 })
 
 test_that("vb_epidist throws warning when expected", {
-
-    expect_warning(
-      suppressMessages(
-        vb_epidist(
-          intrinsic_epidist = epidist(
-            disease = "dengue",
-            epi_dist = "incubation",
-            prob_distribution = "gamma",
-            prob_distribution_params = c(shape = 1, scale = 1),
-            metadata = create_epidist_metadata(
-              transmission_mode = "natural_human_to_human",
-              extrinsic = FALSE
-            )
-          ),
-          extrinsic_epidist = epidist(
-            disease = "dengue",
-            epi_dist = "incubation",
-            prob_distribution = "gamma",
-            prob_distribution_params = c(shape = 1, scale = 1),
-            metadata = create_epidist_metadata(
-              transmission_mode = "vector_borne",
-              extrinsic = TRUE
-            )
+  expect_warning(
+    suppressMessages(
+      vb_epidist(
+        intrinsic_epidist = epidist(
+          disease = "dengue",
+          epi_dist = "incubation",
+          prob_distribution = "gamma",
+          prob_distribution_params = c(shape = 1, scale = 1),
+          metadata = create_epidist_metadata(
+            transmission_mode = "natural_human_to_human",
+            extrinsic = FALSE
+          )
+        ),
+        extrinsic_epidist = epidist(
+          disease = "dengue",
+          epi_dist = "incubation",
+          prob_distribution = "gamma",
+          prob_distribution_params = c(shape = 1, scale = 1),
+          metadata = create_epidist_metadata(
+            transmission_mode = "vector_borne",
+            extrinsic = TRUE
           )
         )
-      ),
-      regexp = paste0(
-        "(Distributions in vb_epidist class are not vector-borne)"
       )
+    ),
+    regexp = paste0(
+      "(Distributions in vb_epidist class are not vector-borne)"
     )
+  )
 
   expect_warning(
     suppressMessages(
@@ -207,7 +205,6 @@ test_that("vb_epidist throws warning when expected", {
 })
 
 test_that("vb_epidist fails as expected", {
-
   expect_error(
     suppressMessages(
       vb_epidist(
@@ -260,7 +257,8 @@ test_that("vb_epidist fails as expected", {
           )
         )
       )
-    ), regexp = "(epi distribution in intrinsic and extrinsic distributions)"
+    ),
+    regexp = "(epi distribution in intrinsic and extrinsic distributions)"
   )
 })
 
@@ -272,7 +270,6 @@ test_that("validate_vb_epidist fails as expected with input class", {
 })
 
 test_that("vb_epidist print & format method works as expected", {
-
   expect_snapshot(
     # suppress messages about citation
     dengue_dist <- suppressMessages(vb_epidist(
@@ -335,7 +332,6 @@ test_that("vb_epidist print & format method works as expected", {
 })
 
 test_that("vb_epidist.plot does not produce an error", {
-
   # message about missing citation suppressed
   dengue_dist <- suppressMessages(
     vb_epidist(
@@ -373,7 +369,6 @@ test_that("vb_epidist.plot does not produce an error", {
 })
 
 test_that("vb_epidist.plot works with non-default day_range", {
-
   # message about missing citation suppressed
   dengue_dist <- suppressMessages(
     vb_epidist(

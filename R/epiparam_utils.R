@@ -13,11 +13,10 @@
 #'
 #' @examples
 #' \donttest{
-#'   eparam <- epiparam()
-#'   as_epidist(eparam[1, ])
+#' eparam <- epiparam()
+#' as_epidist(eparam[1, ])
 #' }
 as_epidist <- function(x) {
-
   # check input
   validate_epiparam(x)
 
@@ -47,7 +46,6 @@ as_epidist <- function(x) {
 #' @return An `epidist` object
 #' @keywords internal
 make_epidist <- function(x) {
-
   # determine parameters
   if (x$prob_distribution %in% c("gamma", "weibull")) {
     parameters <- c(shape = x$shape, scale = x$scale)
@@ -55,7 +53,7 @@ make_epidist <- function(x) {
       shape = create_epidist_uncertainty(
         ci_limits = x$shape_ci_limits,
         ci = x$shape_ci,
-        ci_type =  ifelse(
+        ci_type = ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
           no = "credible interval"
@@ -77,7 +75,7 @@ make_epidist <- function(x) {
       meanlog = create_epidist_uncertainty(
         ci_limits = x$meanlog_ci_limits,
         ci = x$meanlog_ci,
-        ci_type =  ifelse(
+        ci_type = ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
           no = "credible interval"
@@ -99,7 +97,7 @@ make_epidist <- function(x) {
       mean = create_epidist_uncertainty(
         ci_limits = x$mean_ci_limits,
         ci = x$mean_ci,
-        ci_type =  ifelse(
+        ci_type = ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
           no = "credible interval"
@@ -121,7 +119,7 @@ make_epidist <- function(x) {
       mean = create_epidist_uncertainty(
         ci_limits = x$mean_ci_limits,
         ci = x$mean_ci,
-        ci_type =  ifelse(
+        ci_type = ifelse(
           test = x$inference_method == "mle",
           yes = "confidence interval",
           no = "credible interval"
@@ -206,7 +204,6 @@ make_epidist <- function(x) {
 #' )
 #' as_epiparam(edist)
 as_epiparam <- function(x) {
-
   # for vb_epidist or list of epidists call as_epiparam recursively
   if (!is_epidist(x)) {
     eparam <- as.data.frame(matrix(nrow = length(x), ncol = 56))
@@ -235,7 +232,7 @@ as_epiparam <- function(x) {
     year <- gsub(pattern = "<(.*)", replacement = "", x = x$citation)
     year <- sub("\\).*", "", sub(".*\\(", "", year))
     # extract DOI from citation
-    doi <- sub(">.*", "",  sub(".*<", "", x$citation))
+    doi <- sub(">.*", "", sub(".*<", "", x$citation))
     # extract PMID if available
     if (grepl(pattern = "PMID", x = x$citation, fixed = TRUE)) {
       pmid <- as.numeric(sub(".*PMID: ", "", x$citation))
@@ -268,7 +265,8 @@ as_epiparam <- function(x) {
       x$uncertainty,
       function(x) {
         list(ci_limits = NA_real_, ci = NA_real_, ci_type = NA_character_)
-      })
+      }
+    )
   }
 
   ## TODO: look into redudancy of median and quantile 50 in epidist and
@@ -404,7 +402,6 @@ as_epiparam <- function(x) {
 #' @keywords internal
 #' @noRd
 add_ci_limits <- function(eparam, x) {
-
   if (is.null(x$uncertainty[["shape"]])) {
     eparam$shape_ci_limits <- I(list(c(NA_real_, NA_real_)))
   } else {
@@ -526,10 +523,11 @@ epiparam_reconstruct <- function(x, to) {
 #' @return A boolean logical (`TRUE` or `FALSE`)
 #' @keywords internal
 epiparam_can_reconstruct <- function(x) {
-
   # check whether input is valid, ignoring its class
   out <- tryCatch(
-    { validate_epiparam(x, reconstruct = TRUE) },
+    {
+      validate_epiparam(x, reconstruct = TRUE)
+    },
     error = function(cnd) FALSE
   )
 

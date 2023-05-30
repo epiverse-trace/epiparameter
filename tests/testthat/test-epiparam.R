@@ -5,7 +5,8 @@ test_that("epiparam works as expected", {
   expect_identical(dim(eparam), c(118L, 56L))
   expect_identical(
     colnames(eparam),
-    c("disease", "pathogen", "epi_distribution", "author", "year",
+    c(
+      "disease", "pathogen", "epi_distribution", "author", "year",
       "sample_size", "region", "transmission_mode", "vector", "extrinsic",
       "prob_distribution", "inference_method", "mean", "mean_ci_limits",
       "mean_ci", "sd", "sd_ci_limits", "sd_ci", "quantile_2.5",
@@ -19,7 +20,8 @@ test_that("epiparam works as expected", {
       "dispersion", "dispersion_ci_limits", "dispersion_ci", "precision",
       "precision_ci_limits", "precision_ci", "truncation", "discretised",
       "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
-      "DOI")
+      "DOI"
+    )
   )
   expect_type(eparam$disease, "character")
   expect_type(eparam$pathogen, "character")
@@ -158,7 +160,7 @@ test_that("epiparam summary method works as expected", {
       "num_entries", "num_diseases", "num_delay_dist", "num_offspring_dist",
       "num_studies", "num_continuous_distributions",
       "num_discrete_distributions", "num_vector_borne_diseases"
-      )
+    )
   )
 })
 

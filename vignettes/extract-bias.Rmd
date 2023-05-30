@@ -100,7 +100,6 @@ set.seed(1)
 estim_params <- vector("list", nrow(parameters_perc))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
-
   dist <- as.character(parameters_perc[params_idx, "dist"])
   percen <- unname(unlist(parameters_perc[params_idx, c("lower", "upper")]))
 
@@ -203,7 +202,6 @@ parameters_range <- expand.grid(
 estim_params <- vector("list", nrow(parameters_range))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_range))) {
-
   dist <- as.character(parameters_range[params_idx, "dist"])
   n_samples <- parameters_range[params_idx, "n_samples"]
 
@@ -249,7 +247,7 @@ for (params_idx in seq_len(nrow(parameters_range))) {
 
   # message about stochastic optimisation suppressed
   estim_params[[params_idx]] <- suppressMessages(
-    expr =  extract_param(
+    expr = extract_param(
       type = "range",
       values = true_values,
       distribution = dist,
@@ -295,7 +293,6 @@ ggplot(data = results) +
     strip.background = element_blank(),
     axis.text.x = element_text(angle = 30, vjust = 0.5)
   )
-
 ```
 
 ## Extraction precision
@@ -316,7 +313,6 @@ compute the variance of parameter estimates over those replicates.
 estim_param_var <- vector("list", nrow(parameters_perc))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
-
   dist <- as.character(parameters_perc[params_idx, "dist"])
   percen <- unname(unlist(parameters_perc[params_idx, c("lower", "upper")]))
 
@@ -344,7 +340,7 @@ for (params_idx in seq_len(nrow(parameters_perc))) {
   estim <- suppressMessages(
     replicate(
       n = 5,
-      expr =  extract_param(
+      expr = extract_param(
         type = "percentiles",
         values = true_values,
         distribution = dist,
@@ -392,7 +388,6 @@ The same test of estimation precision can be performed for the extraction from m
 estim_param_var <- vector("list", nrow(parameters_range))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_range))) {
-
   dist <- as.character(parameters_range[params_idx, "dist"])
   n_samples <- parameters_range[params_idx, "n_samples"]
 
@@ -440,7 +435,7 @@ for (params_idx in seq_len(nrow(parameters_range))) {
   estim <- suppressMessages(
     replicate(
       n = 5,
-      expr =  extract_param(
+      expr = extract_param(
         type = "range",
         values = true_values,
         distribution = dist,

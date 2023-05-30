@@ -37,14 +37,15 @@
 #' # check the two methods produce the same `epidist` object
 #' identical(edist, edist2)
 epidist_db <- function(disease,
-                       epi_dist = c("incubation_period",
-                                    "onset_to_hospitalisation",
-                                    "onset_to_death",
-                                    "serial_interval",
-                                    "generation_time",
-                                    "offspring_distribution"),
+                       epi_dist = c(
+                         "incubation_period",
+                         "onset_to_hospitalisation",
+                         "onset_to_death",
+                         "serial_interval",
+                         "generation_time",
+                         "offspring_distribution"
+                       ),
                        author = NULL) {
-
   # check input
   checkmate::assert_string(disease)
   epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)

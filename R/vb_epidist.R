@@ -10,12 +10,12 @@
 #' @keywords internal
 new_vb_epidist <- function(intrinsic_epidist,
                            extrinsic_epidist) {
-
   # return vb_epidist object
   structure(
     list(
       intrinsic = intrinsic_epidist,
-      extrinsic = extrinsic_epidist),
+      extrinsic = extrinsic_epidist
+    ),
     class = "vb_epidist"
   )
 }
@@ -57,7 +57,7 @@ new_vb_epidist <- function(intrinsic_epidist,
 #'       extrinsic = FALSE
 #'     )
 #'   ),
-#'   extrinsic_epidist =  epidist(
+#'   extrinsic_epidist = epidist(
 #'     disease = "dengue",
 #'     pathogen = "dengue_virus",
 #'     epi_dist = "incubation_period",
@@ -71,7 +71,6 @@ new_vb_epidist <- function(intrinsic_epidist,
 #' )
 vb_epidist <- function(intrinsic_epidist,
                        extrinsic_epidist) {
-
   # check input
   validate_epidist(intrinsic_epidist)
   validate_epidist(extrinsic_epidist)
@@ -97,7 +96,6 @@ vb_epidist <- function(intrinsic_epidist,
 #' when invalid `vb_epidist` object is provided).
 #' @export
 validate_vb_epidist <- function(vb_epidist) {
-
   if (!is_vb_epidist(vb_epidist)) {
     stop("Object should be of class vb_epidist", call. = FALSE)
   }
@@ -206,7 +204,6 @@ print.vb_epidist <- function(x, ...) {
 #' )
 #' format(vb_epidist)
 format.vb_epidist <- function(x, ...) {
-
   # use epidist printing function
   print(x$intrinsic, header = TRUE, vb = "\n <Intrinsic Distribution> \n", ...)
   print(x$extrinsic, header = FALSE, vb = "\n <Extrinsic Distribution> \n", ...)
@@ -291,7 +288,6 @@ is_vb_epidist <- function(x) {
 #'
 #' plot(dengue_dist, day_range = 0:10)
 plot.vb_epidist <- function(x, day_range = 0:10, ...) {
-
   # check input
   validate_vb_epidist(x)
   checkmate::assert_numeric(day_range, min.len = 2)

@@ -8,8 +8,10 @@ test_that("epidist_db works as expected", {
   expect_length(edist, 9)
   expect_named(
     edist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
+    c(
+      "disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assess", "notes"
+    )
   )
   expect_type(edist$disease, "list")
   expect_type(edist$epi_dist, "character")
@@ -36,8 +38,10 @@ test_that("epidist_db works as expected with author specified", {
   expect_length(edist, 9)
   expect_named(
     edist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
+    c(
+      "disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+      "citation", "metadata", "method_assess", "notes"
+    )
   )
   expect_type(edist$disease, "list")
   expect_type(edist$epi_dist, "character")

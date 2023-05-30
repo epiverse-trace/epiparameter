@@ -17,7 +17,6 @@ test_that("as_epidist fails as expected when given invalidated epiparam", {
 })
 
 test_that("make_epidist works as expected for gamma", {
-
   # suppress message about citation
   edist <- suppressMessages(
     make_epidist(x = list(
@@ -214,7 +213,6 @@ test_that("make_epidist works as expected for lognormal", {
 })
 
 test_that("make_epidist works as expected for negative binomial", {
-
   # suppress message about citation
   edist <- suppressMessages(
     make_epidist(x = list(
@@ -281,7 +279,6 @@ test_that("make_epidist works as expected for negative binomial", {
 })
 
 test_that("make_epidist works as expected for geometric", {
-
   # suppress message about citation
   edist <- suppressMessages(
     make_epidist(x = list(

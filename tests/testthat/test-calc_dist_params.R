@@ -104,7 +104,6 @@ test_that("calc_dist_params messages as expected without summary stats", {
 })
 
 test_that("convert_params works as expected for gamma", {
-
   params <- convert_params(
     summary_stats = create_epidist_summary_stats(mean = 5, sd = 2),
     prob_dist = "gamma"
@@ -120,7 +119,6 @@ test_that("convert_params works as expected for gamma", {
 })
 
 test_that("convert_params works as expected for lognormal", {
-
   params <- convert_params(
     summary_stats = create_epidist_summary_stats(mean = 5, sd = 2),
     prob_dist = "lnorm"
@@ -136,7 +134,6 @@ test_that("convert_params works as expected for lognormal", {
 })
 
 test_that("convert_params works as expected for weibull", {
-
   # suppress message about numerical approximation
   params <- suppressMessages(convert_params(
     summary_stats = create_epidist_summary_stats(mean = 5, sd = 2),

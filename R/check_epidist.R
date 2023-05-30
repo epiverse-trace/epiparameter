@@ -14,7 +14,6 @@
 #'   prob_dist_params = c(shape = 1, scale = 1)
 #' )
 check_epidist_params <- function(prob_dist, prob_dist_params) {
-
   # check parameters if provided
   checkmate::assert_numeric(prob_dist_params, names = "unique")
 
@@ -56,16 +55,15 @@ check_epidist_params <- function(prob_dist, prob_dist_params) {
 #'   )
 #' )
 check_epidist_uncertainty <- function(prob_dist_params, uncertainty) {
-
   # check whether ci has been provided for each parameter
   # check that the parameters and uncertainty names match
   stopifnot(
     "uncertainty must be provided for each parameter" =
       anyNA(uncertainty) ||
-      length(prob_dist_params) == length(uncertainty),
+        length(prob_dist_params) == length(uncertainty),
     "parameters and uncertainty must be named and match" =
       anyNA(uncertainty) ||
-      identical(names(prob_dist_params), names(uncertainty))
+        identical(names(prob_dist_params), names(uncertainty))
   )
 
   invisible(uncertainty)

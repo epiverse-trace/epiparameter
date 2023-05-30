@@ -6,16 +6,16 @@
 #' @keywords internal
 #' @noRd
 get_sd <- function(x) {
-    if ("sd" %in% names(x)) {
-      return(x)
-    }
-    if ("var" %in% names(x))  {
-      x$sd <- sqrt(x$var)
-    } else if (all(c("mean", "cv") %in% names(x))) {
-      x$sd <- x$cv * x$mean
-    }
-    # return list of summary statistics
-    x
+  if ("sd" %in% names(x)) {
+    return(x)
+  }
+  if ("var" %in% names(x)) {
+    x$sd <- sqrt(x$var)
+  } else if (all(c("mean", "cv") %in% names(x))) {
+    x$sd <- x$cv * x$mean
+  }
+  # return list of summary statistics
+  x
 }
 
 #' Checks list of summary statistics is valid for conversion
@@ -63,7 +63,6 @@ chk_ss <- function(x) {
 #' @examples
 #' convert_lnorm_params(meanlog = 1, sdlog = 1)
 convert_lnorm_params <- function(meanlog, sdlog) {
-
   # check input
   checkmate::assert_number(meanlog)
   checkmate::assert_number(sdlog, lower = 0)
@@ -116,7 +115,6 @@ convert_lnorm_params <- function(meanlog, sdlog) {
 #' @examples
 #' convert_lnorm_summary_stats(mean = 3, sd = 2)
 convert_lnorm_summary_stats <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -201,7 +199,6 @@ lnorm_meansd2meanlogsdlog <- function(mean, sd) {
 #' @examples
 #' convert_gamma_params(shape = 1, scale = 1)
 convert_gamma_params <- function(shape, scale) {
-
   # check input
   checkmate::assert_number(shape, lower = 0)
   checkmate::assert_number(scale, lower = 0)
@@ -253,7 +250,6 @@ convert_gamma_params <- function(shape, scale) {
 #' @examples
 #' convert_gamma_summary_stats(mean = 3, sd = 2)
 convert_gamma_summary_stats <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -327,7 +323,6 @@ gamma_meansd2shapescale <- function(mean, sd) {
 #' @examples
 #' convert_weibull_params(shape = 1, scale = 1)
 convert_weibull_params <- function(shape, scale) {
-
   # check input
   checkmate::assert_number(shape, lower = 0)
   checkmate::assert_number(scale, lower = 0)
@@ -340,11 +335,11 @@ convert_weibull_params <- function(shape, scale) {
   sd <- sqrt(var)
   cv <- sd / mean
   skewness <- (gamma(1 + 3 / shape) * scale^3 - 3 *
-                 mean * sd^2 - mean^3) / (sd^3)
+    mean * sd^2 - mean^3) / (sd^3)
   ex_kurtosis <- (gamma(1 + 4 / shape) * scale^4 - 4 * mean *
-                 (gamma(1 + 3 / shape) * scale^3 - 3 * mean * sd^2 - mean^3) -
-                 6 * (mean^2 * sd^2 - gamma(1 + 2 / shape) *
-                        scale^2) - mean^4) / (sd^4)
+    (gamma(1 + 3 / shape) * scale^3 - 3 * mean * sd^2 - mean^3) -
+    6 * (mean^2 * sd^2 - gamma(1 + 2 / shape) *
+      scale^2) - mean^4) / (sd^4)
 
 
   # return list of metrics
@@ -384,7 +379,6 @@ convert_weibull_params <- function(shape, scale) {
 #' @examples
 #' convert_weibull_summary_stats(mean = 3, sd = 2)
 convert_weibull_summary_stats <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -497,7 +491,6 @@ weibull_shapescale2meansd <- function(shape, scale) {
 #' @examples
 #' convert_nbinom_params(prob = 1, dispersion = 1)
 convert_nbinom_params <- function(prob, dispersion) {
-
   # check input
   checkmate::assert_number(prob, lower = 0, upper = 1)
   checkmate::assert_number(dispersion, lower = 0)
@@ -551,7 +544,6 @@ convert_nbinom_params <- function(prob, dispersion) {
 #' @examples
 #' convert_nbinom_summary_stats(mean = 1, sd = 2)
 convert_nbinom_summary_stats <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -587,8 +579,6 @@ convert_nbinom_summary_stats <- function(...) {
     "Cannot calculate negative binomial distribution ",
     "parameters from given input"
   )
-
-
 }
 
 #' Convert the probability and dispersion (k) parameters of the negative
@@ -658,7 +648,6 @@ nbinom_meandisp2probdisp <- function(mean, dispersion) {
 #' @examples
 #' convert_geom_params(prob = 1)
 convert_geom_params <- function(prob) {
-
   # check input
   checkmate::assert_number(prob, lower = 0, upper = 1)
 
@@ -713,7 +702,6 @@ convert_geom_params <- function(prob) {
 #' @examples
 #' convert_geom_summary_stats(mean = 3)
 convert_geom_summary_stats <- function(...) {
-
   # capture input
   x <- list(...)
 

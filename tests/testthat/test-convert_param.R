@@ -1,5 +1,5 @@
 test_that("lnorm_meanlogsdlog2meansd works as expected", {
-  params <- lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog  = 0.5)
+  params <- lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog = 0.5)
   expect_type(params, "list")
   expect_named(params, c("mean", "sd"))
   expect_equal(
@@ -11,7 +11,7 @@ test_that("lnorm_meanlogsdlog2meansd works as expected", {
 
 test_that("lnorm_meanlogsdlog2meansd fails as expected", {
   expect_error(
-    lnorm_meanlogsdlog2meansd(meanlog = "1", sdlog  = 0.5),
+    lnorm_meanlogsdlog2meansd(meanlog = "1", sdlog = 0.5),
     regexp = paste0(
       "Assertion on 'meanlog' failed: Must be of type 'number',",
       " not 'character'."
@@ -19,7 +19,7 @@ test_that("lnorm_meanlogsdlog2meansd fails as expected", {
   )
 
   expect_error(
-    lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog  = "0.5"),
+    lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog = "0.5"),
     regexp = paste0(
       "Assertion on 'sdlog' failed: Must be of type 'number',",
       " not 'character'."
@@ -27,7 +27,7 @@ test_that("lnorm_meanlogsdlog2meansd fails as expected", {
   )
 
   expect_error(
-    lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog  = -0.5),
+    lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog = -0.5),
     regexp = "Assertion on 'sdlog' failed: Element 1 is not >= 0."
   )
 })
@@ -38,7 +38,7 @@ test_that("lnorm_meansd2meanlogsdlog works as expected", {
   expect_named(params, c("meanlog", "sdlog"))
   expect_equal(
     params,
-    list(meanlog = -0.111571775657105, sdlog  = 0.472380727077439),
+    list(meanlog = -0.111571775657105, sdlog = 0.472380727077439),
     tolerance = testthat_tolerance()
   )
 })
@@ -72,18 +72,18 @@ test_that("lnorm_meansd2meanlogsdlog fails as expected", {
 })
 
 test_that("lnorm conversions go back to original values", {
-  params_1 <- lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog  = 0.5)
+  params_1 <- lnorm_meanlogsdlog2meansd(meanlog = 1, sdlog = 0.5)
   params_2 <- lnorm_meansd2meanlogsdlog(mean = params_1$mean, sd = params_1$sd)
   expect_equal(
     params_2,
-    list(meanlog = 1, sdlog  = 0.5),
+    list(meanlog = 1, sdlog = 0.5),
     tolerance = testthat_tolerance()
   )
 
   params_1 <- lnorm_meansd2meanlogsdlog(mean = 2, sd = 1)
   params_2 <- lnorm_meanlogsdlog2meansd(
     meanlog = params_1$meanlog,
-    sdlog  = params_1$sdlog
+    sdlog = params_1$sdlog
   )
   expect_equal(
     params_2,
@@ -474,8 +474,10 @@ test_that("convert_lnorm_params works as expected", {
   )
   expect_equal(
     summary_stats,
-    list(4.481689, 2.718282, 1.000000, 34.512613, 5.874744, 1.310832,
-      6.184877, 110.936392),
+    list(
+      4.481689, 2.718282, 1.000000, 34.512613, 5.874744, 1.310832,
+      6.184877, 110.936392
+    ),
     ignore_attr = TRUE,
     tolerance = 1e-4
   )

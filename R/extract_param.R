@@ -67,9 +67,10 @@ extract_param <- function(type = c("percentiles", "range"),
                           distribution = c("lnorm", "gamma", "weibull"),
                           percentiles,
                           samples,
-                          control = list(max_iter = 1000,
-                                         tolerance = 1e-5)) {
-
+                          control = list(
+                            max_iter = 1000,
+                            tolerance = 1e-5
+                          )) {
   # check string arguments
   type <- match.arg(arg = type, several.ok = FALSE)
   distribution <- match.arg(arg = distribution, several.ok = FALSE)
@@ -197,7 +198,6 @@ extract_param <- function(type = c("percentiles", "range"),
 extract_param_percentile <- function(values,
                                      distribution,
                                      percentiles) {
-
   # Set initial values for optimisation
   param <- stats::runif(n = 2, min = 0, max = 5)
   names(values) <- c("lower", "upper")
@@ -246,7 +246,6 @@ extract_param_percentile <- function(values,
 extract_param_range <- function(values,
                                 distribution,
                                 samples) {
-
   # Set initial values for optimisation
   param <- stats::runif(n = 2, min = 0, max = 5)
   names(values) <- c("median", "lower", "upper")

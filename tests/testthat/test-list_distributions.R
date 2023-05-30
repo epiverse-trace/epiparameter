@@ -1,5 +1,4 @@
 test_that("list_distributions works as expected with defaults", {
-
   eparam <- epiparam()
   dist_tbl <- list_distributions(epiparam = eparam)
   expect_s3_class(dist_tbl, "data.frame")
