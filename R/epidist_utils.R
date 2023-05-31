@@ -507,12 +507,13 @@ is_epidist_params <- function(prob_dist_params) {
   )
 
   # check whether any combinations are valid
-  matches <- lapply(
+  matches <- vapply(
     possible_params,
     setequal,
-    y = names(prob_dist_params)
+    y = names(prob_dist_params),
+    FUN.VALUE = logical(1)
   )
-  is_valid_params <- any(unlist(lapply(matches, all)))
+  is_valid_params <- any(matches)
 
   # return check result
   is_valid_params
