@@ -297,6 +297,7 @@ test_that("new_epidist works with minimal viable input", {
       )
     ),
     citation = "Smith (2002) <10.128372837>",
+    discretise = FALSE,
     truncation = NA
   )
 
@@ -342,6 +343,7 @@ test_that("validate_epidist passes when expected", {
       )
     ),
     citation = "Smith (2002) <10.128372837>",
+    discretise = FALSE,
     truncation = NA
   )
 
@@ -370,6 +372,7 @@ test_that("validate_epidist catches class faults when expected", {
       )
     ),
     citation = "Smith (2002) <10.128372837>",
+    discretise = FALSE,
     truncation = NA
   )
 
@@ -401,6 +404,7 @@ test_that("validate_epidist catches class faults when expected", {
       )
     ),
     citation = "Smith (2002) <10.128372837>",
+    discretise = FALSE,
     truncation = NA
   )
 
@@ -432,6 +436,7 @@ test_that("validate_epidist catches class faults when expected", {
       )
     ),
     citation = "Smith (2002) <10.128372837>",
+    discretise = FALSE,
     truncation = NA
   )
 

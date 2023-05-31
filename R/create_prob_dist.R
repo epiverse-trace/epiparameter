@@ -49,17 +49,16 @@ create_prob_dist <- function(prob_dist,
                              discretise,
                              truncation) {
   if (discretise) {
+    prob_dist <- match.arg(prob_dist, choices = c("gamma", "lnorm", "weibull"))
     # create discretised probability distribution object
-  prob_dist <- do.call(
-    distcrete::distcrete,
-    c(
-      name = prob_dist,
-      interval = 1,
-      as.list(prob_dist_params),
-      w = 1
-    )
-  )
-      stop("Did not recognise distribution name", call. = FALSE)
+    prob_dist <- do.call(
+      distcrete::distcrete,
+      c(
+        name = prob_dist,
+        interval = 1,
+        as.list(prob_dist_params),
+        w = 1
+      )
     )
   } else {
     # create non-discretised probability distribution object
