@@ -38,7 +38,7 @@ new_epiparam <- function(epi_dist = character()) {
   )
 
   # convert intervals from strings to numeric vectors
-  ci_cols_index <- grep(pattern = "_ci_limits$", colnames(params))
+  ci_cols_index <- endsWith(colnames(params), "_ci_limits")
   for (i in ci_cols_index) {
     split_ci <- strsplit(as.character(params[, i]), split = ",", fixed = TRUE)
     split_ci <- lapply(split_ci, function(x) {
