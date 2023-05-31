@@ -168,7 +168,7 @@ validate_epiparam <- function(epiparam, reconstruct = FALSE) {
   )
 
   check_limits <- all(unlist(
-    check_limits[grep(pattern = "_limits$", x = names(check_limits))]
+    check_limits[endsWith(names(check_limits), "_limits")]
   ))
 
   if (!check_limits) {
