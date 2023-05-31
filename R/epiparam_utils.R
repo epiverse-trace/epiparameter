@@ -21,9 +21,7 @@ as_epidist <- function(x) {
   validate_epiparam(x)
 
   # convert each epiparam row into an epidist object
-  out <- apply(x, 1, function(y) {
-    make_epidist(x = y)
-  })
+  out <- apply(x, 1, make_epidist)
 
   # remove names of list
   names(out) <- NULL
