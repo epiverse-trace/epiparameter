@@ -50,28 +50,15 @@ create_prob_dist <- function(prob_dist,
                              truncation) {
   if (discretise) {
     # create discretised probability distribution object
-    prob_dist <- switch(prob_dist,
-      gamma = distcrete::distcrete(
-        name = "gamma",
-        interval = 1,
-        shape = prob_dist_params[["shape"]],
-        scale = prob_dist_params[["scale"]],
-        w = 1
-      ),
-      lnorm = distcrete::distcrete(
-        name = "lnorm",
-        interval = 1,
-        meanlog = prob_dist_params[["meanlog"]],
-        sdlog = prob_dist_params[["sdlog"]],
-        w = 1
-      ),
-      weibull = distcrete::distcrete(
-        name = "weibull",
-        interval = 1,
-        shape = prob_dist_params[["shape"]],
-        scale = prob_dist_params[["scale"]],
-        w = 1
-      ),
+  prob_dist <- do.call(
+    distcrete::distcrete,
+    c(
+      name = prob_dist,
+      interval = 1,
+      as.list(prob_dist_params),
+      w = 1
+    )
+  )
       stop("Did not recognise distribution name", call. = FALSE)
     )
   } else {
