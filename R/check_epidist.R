@@ -19,7 +19,7 @@ check_epidist_params <- function(prob_dist, prob_dist_params) {
 
   stopifnot(
     "distribution parameters must have valid names,
-       use possible_epidist_params() to see valid names" =
+       see epidist() documentation for valid names" =
       is_epidist_params(prob_dist_params)
   )
 
