@@ -47,9 +47,11 @@ bind_epiparam <- function(epiparam, epi_obj) {
     validate_epiparam(epi_obj)
   } else if (is.data.frame(epi_obj)) {
     stopifnot(
-      "<data.frame> given must have the same column names as <epiparam>" =
-        setequal(colnames(epi_obj), colnames(epiparam))
+      "<data.frame> given must include the all columns in <epiparam>" =
+      all(colnames(epiparam) %in% colnames(epi_obj))
     )
+    # subset epi_obj cols to those in epiparam
+    epi_obj <- epi_obj[, colnames(epiparam)]
   } else {
     stop(
       "Only <epidist>, <vb_epidist> or <epiparam> can bind to <epiparam>",

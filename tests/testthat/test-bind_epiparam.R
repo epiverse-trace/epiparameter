@@ -432,7 +432,7 @@ test_that("bind_epiparam fails as expected for binding incorrect data.frame", {
 
   expect_error(
     bind_epiparam(epiparam = eparam, epi_obj = eparam2),
-    regexp = "<data.frame> given must have the same column names as <epiparam>"
+    regexp = "<data.frame> given must include the all columns in <epiparam>"
   )
 })
 
