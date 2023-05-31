@@ -52,7 +52,7 @@ list_distributions <- function(epiparam,
   # strip epiparam class to return data frame
   class(epiparam) <- "data.frame"
 
-  if (isTRUE(subset_db)) {
+  if (subset_db) {
     epiparam <- epiparam[, c(
       "disease", "epi_distribution", "prob_distribution", "author", "year",
       "sample_size"
