@@ -80,7 +80,7 @@ bind_epiparam <- function(epiparam, epi_obj) {
 #'
 #' @description Adds columns to an existing `<epiparam>` object.
 #'
-#' This function avoids the unclassing feature of [`cbind()`]. The work around
+#' This function avoids the unclassing feature of [cbind()]. The work around
 #' by using `[<-` instead of `cbind()` was adapted from
 #' [`tibble::add_column()`].
 #'
