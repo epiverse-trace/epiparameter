@@ -48,7 +48,7 @@ create_prob_dist <- function(prob_dist,
                              prob_dist_params,
                              discretise,
                              truncation) {
-  if (isTRUE(discretise)) {
+  if (discretise) {
     # create discretised probability distribution object
     prob_dist <- switch(prob_dist,
       gamma = distcrete::distcrete(
