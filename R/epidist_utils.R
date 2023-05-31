@@ -509,7 +509,7 @@ is_epidist_params <- function(prob_dist_params) {
   # check whether any combinations are valid
   matches <- lapply(
     possible_params,
-    function(x, y) x == y,
+    setequal,
     y = names(prob_dist_params)
   )
   is_valid_params <- any(unlist(lapply(matches, all)))
