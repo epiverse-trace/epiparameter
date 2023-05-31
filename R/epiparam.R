@@ -84,9 +84,9 @@ new_epiparam <- function(epi_dist = character()) {
 #' @details The `epiparam` object has certain protected fields, and thus if
 #' one of these protected fields is removed when subsetting columns an error
 #' will be returned. The subsetting checks are carried out by
-#' [`validate_epiparam()`].
+#' [validate_epiparam()].
 #'
-#' `epiparam` objects can be added to by using [`bind_epiparam()`] to add either
+#' `epiparam` objects can be added to by using [bind_epiparam()] to add either
 #' `epidist`s, `vb_epdist`s, `epiparam`s, lists of `epdist` objects, or data
 #' frames with the correct columns to an existing `epiparam` object.
 #'
@@ -134,7 +134,7 @@ epiparam <- function(epi_dist = c(
 #' should be class specific. When `TRUE` the input object must be of type
 #' `epiparam` (default), when `FALSE` the input object can be of another class,
 #' e.g. `data.frame`. This argument is used in reconstruction operations see
-#' [`epiparam_reconstruct()`].
+#' [epiparam_reconstruct()].
 #'
 #' @return Invisibly returns an [`epiparam`]. Called for side-effects
 #' (errors when invalid `epiparam` object is provided).

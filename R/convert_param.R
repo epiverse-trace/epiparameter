@@ -186,7 +186,7 @@ lnorm_meansd2meanlogsdlog <- function(mean, sd) {
 #' @description Converts the shape and scale parameters of the gamma
 #' distribution to a number of summary statistics which can be calculated
 #' analytically given the gamma parameters. One exception is the median which
-#' is calculated using [`qgamma()`] as no analytical form is available.
+#' is calculated using [qgamma()] as no analytical form is available.
 #'
 #' @param shape The shape parameter of the gamma distribution.
 #' @param scale The scale parameter of the gamma distribution.
@@ -310,7 +310,7 @@ gamma_meansd2shapescale <- function(mean, sd) {
 #' @description Converts the shape and scale parameters of the Weibull
 #' distribution to a number of summary statistics which can be calculated
 #' analytically given the Weibull parameters. Note the conversion uses the
-#' [`gamma()`] function.
+#' [gamma()] function.
 #'
 #' @param shape The shape parameter of the Weibull distribution.
 #' @param scale The scale parameter of the Weibull distribution.
@@ -476,7 +476,7 @@ weibull_shapescale2meansd <- function(shape, scale) {
 #' @description Converts the probability (`prob`) and dispersion parameters of
 #' the negative binomial distribution to a number of summary statistics which
 #' can be calculated analytically given the negative binomial parameters.
-#' One exception is the median which is calculated using [`qnbinom()`] as no
+#' One exception is the median which is calculated using [qnbinom()] as no
 #' analytical form is available.
 #'
 #' @param prob The probability parameter (p) of the negative binomial.

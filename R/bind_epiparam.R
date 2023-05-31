@@ -82,9 +82,9 @@ bind_epiparam <- function(epiparam, epi_obj) {
 #'
 #' This function avoids the unclassing feature of [cbind()]. The work around
 #' by using `[<-` instead of `cbind()` was adapted from
-#' [`tibble::add_column()`].
+#' [tibble::add_column()].
 #'
-#' @details Note that if the variables passed to `cbind_epiparam()` are not of
+#' @details Note that if the variables passed to [cbind_epiparam()] are not of
 #' equal length to the number of rows in the `<epiparam>` object then R's
 #' recycling rules apply, see
 #' <https://r4ds.had.co.nz/vectors.html#scalars-and-recycling-rules>

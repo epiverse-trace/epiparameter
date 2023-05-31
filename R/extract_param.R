@@ -32,9 +32,9 @@
 #' the parameter extraction will run optimisation before returning result early.
 #' This prevents overly long optimisation loops if optimisation is unstable and
 #' does not converge over multiple iterations. Default is 1000 iterations. List
-#' element `$tolerance` is passed to [`check_optim_conv()`] for tolerance on
+#' element `$tolerance` is passed to [check_optim_conv()] for tolerance on
 #' parameter convergence over iterations of optimisation. Elements of in the
-#' control list are not passed to [`optim()`].
+#' control list are not passed to [optim()].
 #'
 #' @return A named `numeric` vector with the parameter values of the
 #' distribution. If the `distribution = lnorm` then the parameters returned are

@@ -3,7 +3,7 @@
 #'
 #' @description Parameters of a probability distribution can be extracted using
 #' the values given at percentiles of the distribution and the percentiles using
-#' [`extract_param()`]. `get_percentiles()` takes a named vector of percentiles
+#' [extract_param()]. `get_percentiles()` takes a named vector of percentiles
 #' (names) and values at those percentiles (elements in the vector) and selects
 #' two values as lower and upper percentiles to be used in extraction. If a
 #' lower and upper percentile are not available `NA` is returned.

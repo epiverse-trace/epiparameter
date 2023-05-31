@@ -445,7 +445,7 @@ add_ci_limits <- function(eparam, x) {
 #' Subsetting method for `epiparam`
 #'
 #' @description If the subsetting invalidates the `epiparam` object (defined by
-#' its invariants, and encoded in [`validate_epiparam()`]) the subsetting will
+#' its invariants, and encoded in [validate_epiparam()]) the subsetting will
 #' return a data frame with a message to console stating the class of the object
 #' has been converted to `data.frame` with the other attributes of the class
 #' preserved.
@@ -463,7 +463,7 @@ add_ci_limits <- function(eparam, x) {
 #' Set names method for `epiparam` class
 #'
 #' @description If modifying the names invalidates the `epiparam` object
-#' (defined by its invariants, and encoded in [`validate_epiparam()`]) the
+#' (defined by its invariants, and encoded in [validate_epiparam()]) the
 #' subsetting will return a data frame with a message to console stating the
 #' class of the object has been converted to `data.frame` with the other
 #' attributes of the class preserved.
@@ -491,7 +491,7 @@ add_ci_limits <- function(eparam, x) {
 
 #' Decide whether `epiparam` object can be reconstructed from input
 #'
-#' @description Uses [`epiparam_can_reconstruct()`] to determine whether the
+#' @description Uses [epiparam_can_reconstruct()] to determine whether the
 #' data input can be reconstructed in a valid `epiparam` object. If it can not,
 #' it is returned as a `data.frame`.
 #'
@@ -513,7 +513,7 @@ epiparam_reconstruct <- function(x, to) {
 
 #' Check whether the `epiparam` object is valid
 #'
-#' @description This is a wrapper for [`validate_epiparam`] in a [`tryCatch()`]
+#' @description This is a wrapper for [`validate_epiparam`] in a [tryCatch()]
 #' in order to not error if the input object is invalid and returns `TRUE` or
 #' `FALSE` on if the object is valid. If the object is valid it can be
 #' "reconstructed" and not downgraded to a `data.frame`.

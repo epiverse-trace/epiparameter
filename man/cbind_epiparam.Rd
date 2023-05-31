@@ -22,7 +22,7 @@ by using \verb{[<-} instead of \code{cbind()} was adapted from
 \code{\link[tibble:add_column]{tibble::add_column()}}.
 }
 \details{
-Note that if the variables passed to \code{cbind_epiparam()} are not of
+Note that if the variables passed to \code{\link[=cbind_epiparam]{cbind_epiparam()}} are not of
 equal length to the number of rows in the \verb{<epiparam>} object then R's
 recycling rules apply, see
 \url{https://r4ds.had.co.nz/vectors.html#scalars-and-recycling-rules}

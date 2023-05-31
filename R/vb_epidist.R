@@ -39,7 +39,7 @@ new_vb_epidist <- function(intrinsic_epidist,
 #' distribution (`epidist$metadata$extrinsic` is TRUE). If these two aspects
 #' are not given the construction of the class will throw a warning.
 #'
-#' @seealso [`epidist()`]
+#' @seealso [epidist()]
 #'
 #' @return `vb_epidist` object
 #' @export

@@ -128,8 +128,8 @@ new_epidist <- function(disease = list(),
 #' The `epidist` object is the functional unit provided by `{epiparameter}` to
 #' plug into epidemiological pipelines. Obtaining an `epidist` object can be
 #' achieved in two main ways. 1) The epidemiological distribution is stored in
-#' the `{epiparameter}` library and can be accessed by [`epiparam()`] and
-#' [`as_epidist()`]. 2) the alternative method is when you have information
+#' the `{epiparameter}` library and can be accessed by [epiparam()] and
+#' [as_epidist()]. 2) the alternative method is when you have information
 #' (e.g. disease and distribution parameter estimates) and would like to input
 #' this into an `epidist` object in order to work in existing analysis
 #' pipelines. This is where the `epidist()` function can be used to fill out
@@ -152,7 +152,7 @@ new_epidist <- function(disease = list(),
 #' argument default) to create a list wiht the correct names with missing
 #' values.
 #' @param summary_stats A list of summary statistics, use
-#' [`create_epidist_summary_stats()`] to create list. This list can include
+#' [create_epidist_summary_stats()] to create list. This list can include
 #' summary statistics about the inferred distribution such as it's mean and
 #' standard deviation, quantiles of the distribution, or information about the
 #' data used to fit the distribution such as lower and upper range. The summary
@@ -162,7 +162,7 @@ new_epidist <- function(disease = list(),
 #' calculate the probability distribution parameters from summary statistics if
 #' distribution parameters are not provided. Default is `TRUE`. In the case when
 #' sufficient summary statistics are provided and the parameter(s) of the
-#' distribution are not, the [`calc_dist_params()`] function is called to
+#' distribution are not, the [calc_dist_params()] function is called to
 #' calculate the parameters and add them to the `epidist` object created.
 #' @param citation A character string with the citation of the source of the
 #' data or the paper that inferred the distribution parameters, use
