@@ -53,7 +53,7 @@ epidist_db <- function(disease,
   # read in database
   eparam <- epiparam(epi_dist = epi_dist)
 
-  if (!any(grepl(pattern = disease, x = eparam$disease, ignore.case = TRUE))) {
+  if (!any(grepl(pattern = disease, x = eparam$disease, ignore.case = TRUE, fixed = TRUE))) {
     stop(epi_dist, " distribution not available for ", disease, call. = FALSE)
   }
 
