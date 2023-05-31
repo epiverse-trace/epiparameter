@@ -39,19 +39,19 @@
 #'   truncation = NA,
 #'   notes = "No notes"
 #' )
-new_epidist <- function(disease = list(),
-                        epi_dist = character(),
-                        prob_dist = list(),
-                        prob_dist_params = numeric(),
-                        uncertainty = list(),
-                        summary_stats = list(),
-                        auto_calc_params = logical(),
-                        citation = character(),
-                        metadata = list(),
-                        method_assess = list(),
-                        discretise = logical(),
-                        truncation = numeric(),
-                        notes = character()) {
+new_epidist <- function(disease,
+                        epi_dist,
+                        prob_dist,
+                        prob_dist_params,
+                        uncertainty,
+                        summary_stats,
+                        auto_calc_params,
+                        citation,
+                        metadata,
+                        method_assess,
+                        discretise,
+                        truncation,
+                        notes) {
   check_epidist_uncertainty(
     prob_dist_params = prob_dist_params,
     uncertainty = uncertainty

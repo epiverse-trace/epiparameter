@@ -5,19 +5,19 @@
 \title{Constructor for epidist class}
 \usage{
 new_epidist(
-  disease = list(),
-  epi_dist = character(),
-  prob_dist = list(),
-  prob_dist_params = numeric(),
-  uncertainty = list(),
-  summary_stats = list(),
-  auto_calc_params = logical(),
-  citation = character(),
-  metadata = list(),
-  method_assess = list(),
-  discretise = logical(),
-  truncation = numeric(),
-  notes = character()
+  disease,
+  epi_dist,
+  prob_dist,
+  prob_dist_params,
+  uncertainty,
+  summary_stats,
+  auto_calc_params,
+  citation,
+  metadata,
+  method_assess,
+  discretise,
+  truncation,
+  notes
 )
 }
 \arguments{
