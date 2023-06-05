@@ -296,9 +296,13 @@ test_that("new_epidist works with minimal viable input", {
         ci_type = "confidence interval"
       )
     ),
+    summary_stats = create_epidist_summary_stats(),
     citation = "Smith (2002) <10.128372837>",
+    metadata = create_epidist_metadata(),
+    method_assess = create_epidist_method_assess(),
     discretise = FALSE,
-    truncation = NA
+    truncation = NA,
+    notes = "No notes"
   )
 
   expect_s3_class(epidist_obj, class = "epidist")
@@ -342,9 +346,13 @@ test_that("validate_epidist passes when expected", {
         ci_type = "confidence interval"
       )
     ),
+    summary_stats = create_epidist_summary_stats(),
     citation = "Smith (2002) <10.128372837>",
+    metadata = create_epidist_metadata(),
+    method_assess = create_epidist_method_assess(),
     discretise = FALSE,
-    truncation = NA
+    truncation = NA,
+    notes = "No notes"
   )
 
   expect_silent(validate_epidist(epidist = epidist_obj))
@@ -371,9 +379,13 @@ test_that("validate_epidist catches class faults when expected", {
         ci_type = "confidence interval"
       )
     ),
+    summary_stats = create_epidist_summary_stats(),
     citation = "Smith (2002) <10.128372837>",
+    metadata = create_epidist_metadata(),
+    method_assess = create_epidist_method_assess(),
     discretise = FALSE,
-    truncation = NA
+    truncation = NA,
+    notes = "No notes"
   )
 
   epidist_obj$disease <- NULL
@@ -403,9 +415,13 @@ test_that("validate_epidist catches class faults when expected", {
         ci_type = "confidence interval"
       )
     ),
+    summary_stats = create_epidist_summary_stats(),
     citation = "Smith (2002) <10.128372837>",
+    metadata = create_epidist_metadata(),
+    method_assess = create_epidist_method_assess(),
     discretise = FALSE,
-    truncation = NA
+    truncation = NA,
+    notes = "No notes"
   )
 
   epidist_obj$disease$disease <- NULL
@@ -435,9 +451,13 @@ test_that("validate_epidist catches class faults when expected", {
         ci_type = "confidence interval"
       )
     ),
+    summary_stats = create_epidist_summary_stats(),
     citation = "Smith (2002) <10.128372837>",
+    metadata = create_epidist_metadata(),
+    method_assess = create_epidist_method_assess(),
     discretise = FALSE,
-    truncation = NA
+    truncation = NA,
+    notes = "No notes"
   )
 
   epidist_obj$epi_dist <- c("incubation", "period")
