@@ -158,7 +158,6 @@ extract_param <- function(type = c("percentiles", "range"),
     optim_conv <- check_optim_conv(
       optim_params_list = optim_params_list,
       optim_params = optim_params,
-      optim_conv = optim_conv,
       tolerance = ctrl$tolerance
     )
   }
@@ -294,8 +293,6 @@ extract_param_range <- function(values,
 #' @param optim_params_list A list, where each element is the output of
 #' stats::optim. See ?optim for more details.
 #' @param optim_params A list given by the output of stats::optim.
-#' @param optim_conv A boolean value indicating whether the optimisation has
-#' converged over multiple iterations.
 #' @param tolerance A `numeric` specifying within which disparity convergence
 #' of parameter estimates and function minimisation is accepted.
 #'
@@ -303,8 +300,8 @@ extract_param_range <- function(values,
 #' @keywords internal
 check_optim_conv <- function(optim_params_list,
                              optim_params,
-                             optim_conv,
                              tolerance) {
+  optim_conv <- FALSE
   # no pairwise comparison on first iterations
   if (length(optim_params_list) > 1) {
     # extract parameters from list
