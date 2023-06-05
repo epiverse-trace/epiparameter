@@ -20,14 +20,13 @@
 #'
 #' @return A named vector of percentiles
 #' @keywords internal
+#' @noRd
 #'
 #' @examples
-#' \dontrun{
 #' # 90th interval
 #' get_percentiles(c(q_5 = 1, q_95 = 10))
 #' # 95th interval
 #' get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
-#' }
 get_percentiles <- function(percentiles) {
   # check input
   checkmate::assert_numeric(percentiles, names = "unique")
