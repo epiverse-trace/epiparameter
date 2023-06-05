@@ -77,7 +77,7 @@ converted to a data frame. For example, removing the `disease` column causes the
 to be converted to a data frame. See the Epiverse-TRACE [blog post on extending data frames](https://epiverse-trace.github.io/posts/extend-dataframes/) for a more technical description.
 
 ```{r, epiparam-subset-disease}
-epi_dist_df <- epi_dist_db[-which(colnames(epi_dist_db) == "disease")]
+epi_dist_df <- epi_dist_db[colnames(epi_dist_db) != "disease"]
 ```
 
 To see a full list of the diseases and distributions stored in the library use the 
