@@ -382,7 +382,7 @@ create_epidist_citation <- function(author = NA_character_,
                                     DOI = NA_character_) {
   # check input
   checkmate::assert_character(author)
-  checkmate::assert_number(year)
+  checkmate::assert_number(year, na.ok = TRUE)
   checkmate::assert_number(PMID, na.ok = TRUE)
   checkmate::assert_character(DOI)
 
