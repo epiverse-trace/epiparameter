@@ -77,7 +77,7 @@ extract_param <- function(type = c("percentiles", "range"),
 
   # check numeric arguments
   checkmate::assert_numeric(values, lower = 1e-10)
-  if (identical(type, "percentiles")) {
+  if (type == "percentiles") {
     stopifnot(
       "percentiles need to be given for type = 'percentiles'" =
         !missing(percentiles),
@@ -140,7 +140,7 @@ extract_param <- function(type = c("percentiles", "range"),
   )
 
   # check numerical stability of results with different starting parameters
-  while (isFALSE(optim_conv) && i < ctrl$max_iter) {
+  while (!optim_conv && i < ctrl$max_iter) {
     # Extract distribution parameters by optimising for specific distribution
     optim_params <- do.call(
       fun_extract_param,
@@ -315,8 +315,8 @@ check_optim_conv <- function(optim_params_list,
     param_b_dist <- stats::dist(unlist(lapply(params, "[[", 2)))
 
     # any convergence within tolerance for parameters
-    res_diff <- length(which(param_a_dist < tolerance)) &&
-      length(which(param_b_dist < tolerance))
+    res_diff <- any(param_a_dist < tolerance) &&
+      any(param_b_dist < tolerance)
 
     # any convergence within tolerance for function value
     res_diff <- res_diff &&
