@@ -40,6 +40,12 @@ reference:
     - -has_keyword("epidist_distribution_functions")
     - validate_vb_epidist
 
+  - title: Accessors
+    desc: Get data from epi classes
+    contents:
+    - get_citation
+    - get_parameters
+
   - title: epidist helper functions
     desc: Functions to help construct `<epidist>` objects
     contents:
@@ -49,11 +55,6 @@ reference:
     desc: Retrieve `<epidist>` object directly from database
     contents:
     - epidist_db
-
-  - title: Get citation
-    desc: Get citation from epi class
-    contents:
-    - get_citation
 
   - title: Explore epiparam
     desc: List epi parameters as table
