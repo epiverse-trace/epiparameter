@@ -244,7 +244,7 @@ as_epiparam <- function(x) {
     }
   }
 
-  params <- parameters(x)
+  params <- get_parameters(x)
   prob_dist <- family(x)
 
   if (inherits(x$prob_dist, "distcrete")) {

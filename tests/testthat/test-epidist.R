@@ -926,7 +926,7 @@ test_that("parameters works as expected on continuous gamma", {
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  params <- parameters(edist)
+  params <- get_parameters(edist)
 
   expect_vector(params, ptype = numeric(), size = 2)
   expect_named(params, expected = c("shape", "scale"))
@@ -940,7 +940,7 @@ test_that("parameters works as expected on continuous lognormal", {
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 1, sdlog = 1)
   ))
-  params <- parameters(edist)
+  params <- get_parameters(edist)
 
   expect_vector(params, ptype = numeric(), size = 2)
   expect_named(params, expected = c("meanlog", "sdlog"))
@@ -955,7 +955,7 @@ test_that("parameters works as expected on discretised dist", {
     prob_distribution_params = c(shape = 1, scale = 1),
     discretise = TRUE
   ))
-  params <- parameters(edist)
+  params <- get_parameters(edist)
 
   expect_vector(params, ptype = numeric(), size = 2)
   expect_named(params, expected = c("shape", "scale"))
@@ -970,7 +970,7 @@ test_that("parameters works as expected on truncated dist", {
     prob_distribution_params = c(shape = 1, scale = 1),
     truncation = 10
   ))
-  params <- parameters(edist)
+  params <- get_parameters(edist)
 
   expect_vector(params, ptype = numeric(), size = 4)
   expect_named(params, expected = c("shape", "scale", "lower", "upper"))
@@ -979,7 +979,7 @@ test_that("parameters works as expected on truncated dist", {
 test_that("parameters fails as expected on non-epidist object", {
 
   expect_error(
-    parameters("epidist"),
+    get_parameters("epidist"),
     regexp = paste0(
       "(no applicable method for)*(parameters)*",
       "(applied to an object of class)*(character)"
@@ -987,7 +987,7 @@ test_that("parameters fails as expected on non-epidist object", {
   )
 
   expect_error(
-    parameters(c(1, 2, 3)),
+    get_parameters(c(1, 2, 3)),
     regexp = paste0(
       "(no applicable method for)*(parameters)*",
       "(applied to an object of class)*(numeric)"
