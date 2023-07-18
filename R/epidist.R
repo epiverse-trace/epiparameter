@@ -419,7 +419,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
   }
 
   if (is.object(x$prob_dist)) {
-    params <- parameters(x)
+    params <- get_parameters(x)
 
     # decide on parameter format from magnitude of number
     format_params <- ifelse(
@@ -741,7 +741,7 @@ discretise.epidist <- function(x, ...) {
 
     # extract prob dist and prob dist parameters from epidist
     prob_dist <- family(x)
-    prob_dist_params <- parameters(x)
+    prob_dist_params <- get_parameters(x)
 
     # if distribution is truncated take only parameters
     if (is_truncated(x)) {
@@ -793,51 +793,6 @@ discretise.epidist <- function(x, ...) {
 #' @export
 discretise.default <- function(x, ...) {
   stop("No discretise method defined for class ", class(x))
-}
-
-
-#' Parameters method for `epidist` object
-#'
-#' Extracts the parameters of the distribution stored in an `epidist` object.
-#'
-#' @details The <epidist> object can be unparameterised in which it lacks
-#' a probability distribution or parameters of a probability distribution.
-#' In this can the `parameters.epidist()` method with return `NA`.
-#'
-#' @param x An `epidist` object
-#' @inheritParams distributional::parameters
-#'
-#' @importFrom distributional parameters
-#' @return A named vector of parameters or `NA` when the `<epidist>` object is
-#' unparameterised
-#' @export
-parameters.epidist <- function(x, ...) {
-
-  # extract parameters depending on prob distribution class
-  if (inherits(x$prob_dist, "distcrete")) {
-    params <- unlist(x$prob_dist$parameters)
-  } else if (inherits(x$prob_dist, "distribution")) {
-    params <- unlist(distributional::parameters(x$prob_dist))
-
-    # if dist is truncated clean names
-    if (is_truncated(x)) {
-      names(params) <- gsub(
-        pattern = "dist.",
-        replacement = "",
-        x = names(params),
-        fixed = TRUE
-      )
-    }
-
-    # convert to meanlog and sdlog names
-    class(params) <- family(x)
-    params <- clean_epidist_params(prob_dist_params = params)
-  } else {
-    return(NA)
-  }
-
-  # return parameters
-  params
 }
 
 #' Family method for the `epidist` class
