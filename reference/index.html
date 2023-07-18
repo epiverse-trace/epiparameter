@@ -100,14 +100,9 @@
         <dd>Format method for epidist class</dd>
       </dl><dl><dt>
           
-          <code><a href="parameters.epidist.html">parameters(<i>&lt;epidist&gt;</i>)</a></code> 
-        </dt>
-        <dd>Parameters method for <code>epidist</code> object</dd>
-      </dl><dl><dt>
-          
           <code><a href="plot.epidist.html">plot(<i>&lt;epidist&gt;</i>)</a></code> 
         </dt>
-        <dd>PLots an <code>epidist</code> object</dd>
+        <dd>Plots an <code>epidist</code> object</dd>
       </dl><dl><dt>
           
           <code><a href="print.epidist.html">print(<i>&lt;epidist&gt;</i>)</a></code> 
@@ -211,6 +206,28 @@
         </dt>
         <dd><code>vb_epidist</code> class validator</dd>
       </dl></div><div class="section level2">
+      <h2 id="accessors">Accessors<a class="anchor" aria-label="anchor" href="#accessors"></a></h2>
+      
+      <p class="section-desc"></p><p>Get data from epi classes</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="get_citation.html">get_citation()</a></code> 
+        </dt>
+        <dd>Method for extracting citation information from <code>&lt;epidist&gt;</code> or
+<code>&lt;epiparam&gt;</code> objects.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_parameters.html">get_parameters()</a></code> 
+        </dt>
+        <dd>Parameters method for <code>epidist</code> object</dd>
+      </dl></div><div class="section level2">
       <h2 id="epidist-helper-functions">epidist helper functions<a class="anchor" aria-label="anchor" href="#epidist-helper-functions"></a></h2>
       
       <p class="section-desc"></p><p>Functions to help construct <code>&lt;epidist&gt;</code> objects</p>
@@ -273,23 +290,6 @@ the distribution</dd>
           <code><a href="epidist_db.html">epidist_db()</a></code> 
         </dt>
         <dd>Create an <code>epidist</code> object directly from the epiparameter library (database)</dd>
-      </dl></div><div class="section level2">
-      <h2 id="get-citation">Get citation<a class="anchor" aria-label="anchor" href="#get-citation"></a></h2>
-      
-      <p class="section-desc"></p><p>Get citation from epi class</p>
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="get_citation.html">get_citation()</a></code> 
-        </dt>
-        <dd>Method for extracting citation information from <code>&lt;epidist&gt;</code> or
-<code>&lt;epiparam&gt;</code> objects.</dd>
       </dl></div><div class="section level2">
       <h2 id="explore-epiparam">Explore epiparam<a class="anchor" aria-label="anchor" href="#explore-epiparam"></a></h2>
       
@@ -539,6 +539,12 @@ the <code>epiparameter</code> package</dd>
           <code><a href="is_vb_epidist.html">is_vb_epidist()</a></code> 
         </dt>
         <dd>Checks whether the object is a <code>vb_epidist</code></dd>
+      </dl><dl><dt>
+          
+          <code><a href="is_parameterised.html">is_parameterised()</a></code> 
+        </dt>
+        <dd>Checks whether <epidist> object contains a distribution and parameters for
+that distribution.</epidist></dd>
       </dl></div><div class="section level2">
       <h2 id="bind-to-epiparam">Bind to epiparam<a class="anchor" aria-label="anchor" href="#bind-to-epiparam"></a></h2>
       
@@ -554,8 +560,12 @@ the <code>epiparameter</code> package</dd>
           
           <code><a href="bind_epiparam.html">bind_epiparam()</a></code> 
         </dt>
-        <dd>Binds any epi data class in <span class="pkg">epiparameter</span> (<code>epidist</code>, <code>vb_epidist</code>,
-<code>epiparam</code>) or data frame to an <code>epiparam</code> object.</dd>
+        <dd>Bind an epi object to an <code>epiparam</code> object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="cbind_epiparam.html">cbind_epiparam()</a></code> 
+        </dt>
+        <dd>Bind columns to an <code>&lt;epiparam&gt;</code> object</dd>
       </dl></div><div class="section level2">
       <h2 id="cleaning">Cleaning<a class="anchor" aria-label="anchor" href="#cleaning"></a></h2>
       

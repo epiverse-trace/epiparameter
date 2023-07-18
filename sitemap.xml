@@ -52,6 +52,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/cash-set-.epiparam.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/cbind_epiparam.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/check_optim_conv.html</loc>
   </url>
   <url>
@@ -74,6 +77,9 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.nbinom.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.pois.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.weibull.html</loc>
@@ -196,6 +202,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/get_citation.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/get_parameters.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/get_percentiles.html</loc>
   </url>
   <url>
@@ -215,6 +224,9 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/is_epiparam.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/is_parameterised.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/is_truncated.html</loc>
@@ -251,9 +263,6 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/new_vb_epidist.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/parameters.epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/plot.epidist.html</loc>
