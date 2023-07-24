@@ -2,13 +2,16 @@
 % Please edit documentation in R/epidist_db.R
 \name{epidist_db}
 \alias{epidist_db}
-\title{Create an \code{epidist} object directly from the epiparameter library (database)}
+\title{Create an \code{epidist} object(s) directly from the epiparameter library
+(database)}
 \usage{
 epidist_db(
   disease,
   epi_dist = c("incubation_period", "onset_to_hospitalisation", "onset_to_death",
     "serial_interval", "generation_time", "offspring_distribution"),
-  author = NULL
+  author = NULL,
+  subset = NULL,
+  single_epidist = FALSE
 )
 }
 \arguments{
@@ -18,22 +21,49 @@ epidist_db(
 distribution}
 
 \item{author}{The author of the study reporting the distribution}
+
+\item{subset}{Either \code{NULL} or a valid R expressions that evaluates to
+logicals to subset the rows of \verb{<epiparam>}.
+
+This argument allows general \verb{<data.frame>} subsetting that can be combined
+with the subsetting done with the \code{disease} and \code{epidist} arguments
+(and \code{author} if specified). If left as \code{NULL} (default) no subsetting is
+carried out.
+
+With and without subsetting multiple entries (\verb{<epdist>} objects) can be
+returned (but see \code{single_epidist} argument).
+
+The expression can be specified without using the data object name
+(e.g. \code{df$var}) and instead just \code{var} can be supplied (see details). In
+other words, this argument works the same as the \code{subset} argument in
+\code{\link[=subset]{subset()}}. It is similar to \verb{<data-masking>} using by the \code{dplyr} package.}
+
+\item{single_epidist}{A boolean logical determining whether multiple entries
+from the library can be returned if matched by the other arguments
+(\code{disease}, \code{epi_dist}, \code{author}). This argument is used to prevent
+multiple sets of parameters being returned when only one is wanted.
+
+\strong{Warning}: If multiple entries match the arguments supplied and
+\code{single_epidist = TRUE} then the first entry will be naively returned. To
+specifically subset based on a variable use the \code{subset} argument.}
 }
 \value{
-An \code{epidist} object
+An \code{epidist} object or list of \code{epidist} objects.
 }
 \description{
-This function can extract an \code{epidist} object directly from the
-library of epidemiological parameters without having to read in an \code{epiparam}
-object and pull out an \code{epidist} object from one of the entries. If a
-distribution from a specific study is required, the \code{author} argument can
-be specified. For now this must match the author entry in the database
+This function can extract an \code{epidist} object(s) directly from
+the library of epidemiological parameters without having to read in an
+\code{epiparam} object and pull out an \code{epidist} object from one of the entries.
+If a distribution from a specific study is required, the \code{author} argument
+can be specified. For now this must match the author entry in the database
 exactly to be recognised.
 }
 \details{
-The current criteria for chosing a distribution when multiple
-entries exist in the database for a given disease and epidemiological
-distribution is to return the entry with the largest sample size.
+\code{disease}, \code{epi_dist} and \code{author} are given as individual arguments
+as these are the most common variables to subset the parameter library by.
+The \code{subset} argument facilitates all other subsetting of rows to select the
+\verb{<epidist>} object(s) desired. To subset based on multiple variables separate
+each expression with \code{&}.
 }
 \examples{
 epidist_db(disease = "influenza", epi_dist = "serial_interval")
@@ -52,4 +82,17 @@ eparam <- eparam[clean_disease(eparam$disease) == "influenza", ]
 edist2 <- as_epidist(eparam)
 # check the two methods produce the same `epidist` object
 identical(edist, edist2)
+
+# example using custom subsetting
+eparam <- epidist_db(
+  disease = "SARS",
+  epi_dist = "offspring_distribution",
+  subset = sample_size > 40
+)
+# example forcing a single <epidist> to be returned
+eparam <- epidist_db(
+  disease = "SARS",
+  epi_dist = "offspring_distribution",
+  single_epidist = TRUE
+)
 }
