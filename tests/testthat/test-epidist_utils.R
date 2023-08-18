@@ -92,6 +92,33 @@ test_that("clean_epidist_params works for default method", {
   )
 })
 
+test_that("clean_epidist_params works for unparameterised (NA), (#161)", {
+  params <- NA
+  class(params) <- "gamma"
+  res <- clean_epidist_params(prob_dist_params = params)
+  expect_identical(res, c(shape = NA, scale = NA))
+
+  class(params) <- "lnorm"
+  res <- clean_epidist_params(prob_dist_params = params)
+  expect_identical(res, c(meanlog = NA, sdlog = NA))
+
+  class(params) <- "weibull"
+  res <- clean_epidist_params(prob_dist_params = params)
+  expect_identical(res, c(shape = NA, scale = NA))
+
+  class(params) <- "nbinom"
+  res <- clean_epidist_params(prob_dist_params = params)
+  expect_identical(res, c(mean = NA, dispersion = NA))
+
+  class(params) <- "geom"
+  res <- clean_epidist_params(prob_dist_params = params)
+  expect_identical(res, c(prob = NA))
+
+  class(params) <- "pois"
+  res <- clean_epidist_params(prob_dist_params = params)
+  expect_identical(res, c(mean = NA))
+})
+
 test_that("create_epidist_region works as expected", {
   region <- create_epidist_region(
     continent = "Europe",
