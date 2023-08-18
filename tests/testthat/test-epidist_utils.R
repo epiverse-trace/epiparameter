@@ -96,27 +96,27 @@ test_that("clean_epidist_params works for unparameterised (NA), (#161)", {
   params <- NA
   class(params) <- "gamma"
   res <- clean_epidist_params(prob_dist_params = params)
-  expect_identical(res, c(shape = NA, scale = NA))
+  expect_identical(res, c(shape = NA_real_, scale = NA_real_))
 
   class(params) <- "lnorm"
   res <- clean_epidist_params(prob_dist_params = params)
-  expect_identical(res, c(meanlog = NA, sdlog = NA))
+  expect_identical(res, c(meanlog = NA_real_, sdlog = NA_real_))
 
   class(params) <- "weibull"
   res <- clean_epidist_params(prob_dist_params = params)
-  expect_identical(res, c(shape = NA, scale = NA))
+  expect_identical(res, c(shape = NA_real_, scale = NA_real_))
 
   class(params) <- "nbinom"
   res <- clean_epidist_params(prob_dist_params = params)
-  expect_identical(res, c(mean = NA, dispersion = NA))
+  expect_identical(res, c(mean = NA_real_, dispersion = NA_real_))
 
   class(params) <- "geom"
   res <- clean_epidist_params(prob_dist_params = params)
-  expect_identical(res, c(prob = NA))
+  expect_identical(res, c(prob = NA_real_))
 
   class(params) <- "pois"
   res <- clean_epidist_params(prob_dist_params = params)
-  expect_identical(res, c(mean = NA))
+  expect_identical(res, c(mean = NA_real_))
 })
 
 test_that("create_epidist_region works as expected", {

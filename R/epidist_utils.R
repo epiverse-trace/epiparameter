@@ -548,7 +548,7 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
 
   # if unparameterised return named vector of NAs
   if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(shape = NA, scale = NA)
+    prob_dist_params <- c(shape = NA_real_, scale = NA_real_)
     return(prob_dist_params)
   }
 
@@ -588,7 +588,7 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
 
   # if unparameterised return named vector of NAs
   if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(meanlog = NA, sdlog = NA)
+    prob_dist_params <- c(meanlog = NA_real_, sdlog = NA_real_)
     return(prob_dist_params)
   }
 
@@ -630,7 +630,7 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
 
   # if unparameterised return named vector of NAs
   if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(shape = NA, scale = NA)
+    prob_dist_params <- c(shape = NA_real_, scale = NA_real_)
     return(prob_dist_params)
   }
 
@@ -658,7 +658,7 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
 
   # if unparameterised return named vector of NAs
   if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(mean = NA, dispersion = NA)
+    prob_dist_params <- c(mean = NA_real_, dispersion = NA_real_)
     return(prob_dist_params)
   }
 
@@ -708,7 +708,7 @@ clean_epidist_params.geom <- function(prob_dist_params) {
 
   # if unparameterised return named NA
   if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(prob = NA)
+    prob_dist_params <- c(prob = NA_real_)
     return(prob_dist_params)
   }
 
@@ -764,7 +764,7 @@ clean_epidist_params.pois <- function(prob_dist_params) {
 
   # if unparameterised return named NA
   if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(mean = NA)
+    prob_dist_params <- c(mean = NA_real_)
     return(prob_dist_params)
   }
 
