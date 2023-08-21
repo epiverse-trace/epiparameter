@@ -159,7 +159,8 @@ chk_ss <- function(x) {
   checkmate::assert_subset(
     x = names(x),
     choices = c(
-      "mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis"
+      "mean", "median", "mode", "var", "sd", "cv", "skewness", "ex_kurtosis",
+      "dispersion"
     )
   )
   # invisibly return list of summary statistics
@@ -535,34 +536,34 @@ convert_summary_stats_nbinom <- function(...) {
   # convert var or cv into sd if available
   x <- get_sd(x)
 
-  # calculate mean and variance
-  if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
+  if (checkmate::test_number(x$mean) && checkmate::test_number(x$dispersion)) {
+    prob <- 1 / (1 + x$mean / x$dispersion)
+    dispersion <- x$dispersion
+  } else if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     prob <- x$mean / x$sd^2
     dispersion <- x$mean^2 / (x$sd^2 - x$mean)
-
-    # ensure variance-to-mean ratio > 1
-    if (prob > 1 || dispersion < 0) {
-      stop(
-        "Negative binomial has a variance-to-mean ratio of greater ",
-        "than one, check input"
-      )
-    }
-
-    return(
-      list(
-        prob = prob,
-        dispersion = dispersion
-      )
+  } else {
+    # if either parameter hasn't been calculated error
+    stop(
+      "Cannot calculate negative binomial distribution ",
+      "parameters from given input"
     )
   }
 
-  # if either parameter hasn't been calculated error
-  stop(
-    "Cannot calculate negative binomial distribution ",
-    "parameters from given input"
+  # ensure variance-to-mean ratio > 1
+  if (prob > 1 || dispersion < 0) {
+    stop(
+      "Negative binomial has a variance-to-mean ratio of greater ",
+      "than one, check input"
+    )
+  }
+
+  return(
+    list(
+      prob = prob,
+      dispersion = dispersion
+    )
   )
-
-
 }
 
 #' Converts the parameters of the geometric distribution to summary statistics
