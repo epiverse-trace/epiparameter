@@ -27,8 +27,9 @@
 #' on using the median-range extraction calculation.
 #'
 #' @return A named vector with parameters
-#' @export
+#' @keywords internal
 #' @examples
+#' \dontrun{
 #' # set seed for stochastic optimisation
 #' set.seed(1)
 #'
@@ -49,6 +50,7 @@
 #'   ),
 #'   sample_size = 25
 #' )
+#' }
 calc_dist_params <- function(prob_dist,
                              prob_dist_params,
                              summary_stats,
@@ -84,11 +86,24 @@ calc_dist_params <- function(prob_dist,
   )
 
   if (!anyNA(mean_sd)) {
-    # make mean_sd a class with the name of the prob dist for multiple dispatch
-    prob_dist_params <- convert_params(
-      summary_stats = summary_stats,
-      prob_dist = prob_dist
+    # unlist and remove NAs
+    summary_stats_ <- unlist(summary_stats)
+    summary_stats_ <- summary_stats_[!is.na(summary_stats_)]
+    # remove name prefixes from unlisting
+    names(summary_stats_) <- gsub(
+      pattern = ".*\\.",
+      replacement = "",
+      x = names(summary_stats_)
     )
+    # drop summary stats not used in conversion
+    idx <- names(summary_stats_) %in% c(
+      "mean", "median", "mode", "var", "sd", "cv",
+      "skewness", "ex_kurtosis", "dispersion"
+    )
+    summary_stats_ <- summary_stats_[idx]
+    # create flat list structure to be passed to ... in convert_summary_stats
+    args <- unlist(list(prob_dist, as.list(summary_stats_)), recursive = FALSE)
+    prob_dist_params <- unlist(do.call(convert_summary_stats, args = args))
   } else if (!anyNA(percentiles)) {
 
     # calculate the parameters from the percentiles
