@@ -75,7 +75,6 @@ reference:
     desc: Converts distribution parameter to summary statistics and vice versa
     contents:
     - starts_with("convert_")
-    - matches("[[:lower:]]2[[:lower:]]")
 
   - title: Calculate parameters from summary statistics
     desc: Uses either extraction or conversion function to get distribution parameters
