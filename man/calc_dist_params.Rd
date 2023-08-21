@@ -53,6 +53,7 @@ used for the calculation. The last method is the extraction using a median
 and range of the data.
 }
 \examples{
+\dontrun{
 # set seed for stochastic optimisation
 set.seed(1)
 
@@ -74,3 +75,5 @@ calc_dist_params(
   sample_size = 25
 )
 }
+}
+\keyword{internal}
