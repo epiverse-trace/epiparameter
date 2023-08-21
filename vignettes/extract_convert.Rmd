@@ -51,115 +51,72 @@ library(epiparameter)
 
 ## Conversions
 
-There are two styles of conversion functions in {epiparameter}. The general conversions
-which have the function name `convert_dist_*()` (where `*` and `dist` are placeholders). These convert
-either one set of parameters to many summary statistics (e.g. `convert_lnorm_params()`)
-or a set of summary statistics input to one set of parameters (e.g. `convert_lnorm_summary_stats()`).
-The other style of function is the one-to-one conversion, which has the function name `dist_param2summary_stat()`
-or `dist_summarystat2param()` (where `dist`, `param` and `summary_stat` are placeholders). These functions take
-two arguments as input and convert to two output (e.g. `gamma_shapescale2meansd()`), with the exception of the geometric conversions which have a single input and a single output.
+There are two conversion functions in {epiparameter}: `convert_params()` and `convert_summary_stats()`. `convert_params()` converts parameters to many summary statistics, and `convert_summary_stats()` converts summary statistics to a set of parameters.
 
-### General conversion functions
+### Conversion functions
 
-The general conversion functions from summary statistics to parameters (e.g. `convert_gamma_summary_stats()`) have no defined function arguments. Instead the summary statistics should be matched exactly by name.
+The conversion functions have two arguments. The first (`distribution`) defines which distribution you want to use and the second (`...`) lets you put as many named parameters or summary statistics as required. The arguments passed into `...` are matched name, and therefore need to match exactly to the names expected. See the function documentation (`?convert_params` and `?convert_summary_stats` for names).
 
 All currently supported summary statistic conversions in {epiparameter} are given below for each distribution.
 
 #### Gamma distribution
 
 ```{r}
-convert_gamma_params(shape = 2.5, scale = 1.5)
+convert_params(distribution = "gamma", shape = 2.5, scale = 1.5)
 ```
 
 ```{r}
-convert_gamma_summary_stats(mean = 2, sd = 2)
-convert_gamma_summary_stats(mean = 2, var = 2)
-convert_gamma_summary_stats(mean = 2, cv = 2)
-```
-
-#### Lognormal distribution
-
-```{r}
-convert_lnorm_params(meanlog = 2.5, sdlog = 1.5)
-```
-
-```{r}
-convert_lnorm_summary_stats(mean = 2, sd = 2)
-convert_lnorm_summary_stats(mean = 2, var = 2)
-convert_lnorm_summary_stats(mean = 2, cv = 2)
-convert_lnorm_summary_stats(median = 2, sd = 2)
-convert_lnorm_summary_stats(median = 2, var = 2)
-```
-
-#### Weibull distribution
-
-```{r}
-convert_weibull_params(shape = 2.5, scale = 1.5)
-```
-
-```{r}
-convert_weibull_summary_stats(mean = 2, sd = 2)
-convert_weibull_summary_stats(mean = 2, var = 2)
-convert_weibull_summary_stats(mean = 2, cv = 2)
-```
-
-#### Negative binomial distribution
-
-```{r}
-convert_nbinom_params(prob = 0.5, dispersion = 0.5)
-```
-
-```{r}
-convert_nbinom_summary_stats(mean = 1, sd = 1)
-convert_nbinom_summary_stats(mean = 1, var = 1)
-convert_nbinom_summary_stats(mean = 1, cv = 1)
-```
-
-#### Geometric distribution
-
-```{r}
-convert_geom_params(prob = 0.5)
-```
-
-```{r}
-convert_geom_summary_stats(mean = 1)
-```
-
-### Direct one-to-one conversion functions
-
-#### Gamma distribution
-
-```{r}
-gamma_shapescale2meansd(shape = 2, scale = 1)
-gamma_meansd2shapescale(mean = 2, sd = 2)
+convert_summary_stats(distribution = "gamma", mean = 2, sd = 2)
+convert_summary_stats(distribution = "gamma", mean = 2, var = 2)
+convert_summary_stats(distribution = "gamma", mean = 2, cv = 2)
 ```
 
 #### Lognormal distribution
 
 ```{r}
-lnorm_meanlogsdlog2meansd(meanlog = 2, sdlog = 2)
-lnorm_meansd2meanlogsdlog(mean = 2, sd = 2)
+convert_params(distribution = "lnorm", meanlog = 2.5, sdlog = 1.5)
+```
+
+```{r}
+convert_summary_stats(distribution = "lnorm", mean = 2, sd = 2)
+convert_summary_stats(distribution = "lnorm", mean = 2, var = 2)
+convert_summary_stats(distribution = "lnorm", mean = 2, cv = 2)
+convert_summary_stats(distribution = "lnorm", median = 2, sd = 2)
+convert_summary_stats(distribution = "lnorm", median = 2, var = 2)
 ```
 
 #### Weibull distribution
 
 ```{r}
-weibull_shapescale2meansd(shape = 2, scale = 2)
-weibull_meansd2shapescale(mean = 2, sd = 2)
+convert_params(distribution = "weibull", shape = 2.5, scale = 1.5)
+```
+
+```{r}
+convert_summary_stats(distribution = "weibull", mean = 2, sd = 2)
+convert_summary_stats(distribution = "weibull", mean = 2, var = 2)
+convert_summary_stats(distribution = "weibull", mean = 2, cv = 2)
 ```
 
 #### Negative binomial distribution
 
 ```{r}
-nbinom_probdisp2meandisp(prob = 1, dispersion = 0.5)
-nbinom_meandisp2probdisp(mean = 1, dispersion = 0.5)
+convert_params(distribution = "nbinom", prob = 0.5, dispersion = 0.5)
+```
+
+```{r}
+convert_summary_stats(distribution = "nbinom", mean = 1, sd = 1)
+convert_summary_stats(distribution = "nbinom", mean = 1, var = 1)
+convert_summary_stats(distribution = "nbinom", mean = 1, cv = 1)
 ```
 
 #### Geometric distribution
 
 ```{r}
-geom_mean2prob(mean = 1)
-geom_prob2mean(prob = 1)
+convert_params(distribution = "geom", prob = 0.5)
+```
+
+```{r}
+convert_summary_stats(distribution = "geom", mean = 1)
 ```
 
 ## Extraction
@@ -250,12 +207,11 @@ If the distribution is a delay distribution (i.e. serial interval or incubation 
 However, one should take care when assuming a distribution as this may drastically influence the interpretation and application of the epidemiological parameters.
 :::
 
-@donnellyEpidemiologicalDeterminantsSpread2003 provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by either using the general conversion function (`convert_gamma_summary_stats()`) or manually transforming the variance to the standard deviation and using the one-to-one conversion function (`gamma_meansd2shapescale()`).
+@donnellyEpidemiologicalDeterminantsSpread2003 provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by using the general conversion function (`convert_summary_stats()`).
 
 ```{r, convert parameters}
 # SARS gamma mean and var to shape and scale
-convert_gamma_summary_stats(mean = 6.37, var = 16.7)
-gamma_meansd2shapescale(mean = 6.37, sd = sqrt(16.7))
+convert_summary_stats(distribution = "gamma", mean = 6.37, var = 16.7)
 ```
 
 ## References
