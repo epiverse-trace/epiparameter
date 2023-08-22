@@ -143,7 +143,22 @@ epidist_db <- function(disease,
   }
 
   # convert epiparam to epidist
-  edist <- as_epidist(x = eparam)
+  if (nrow(eparam) > 1) {
+    edist <- suppressMessages(as_epidist(x = eparam))
+    unparam <- length(edist) - sum(vapply(
+      edist,
+      is_parameterised,
+      FUN.VALUE = logical(1)
+    ))
+    message(
+      "Returning ", nrow(eparam), " results. \n",
+      unparam, " are unparameterised <epidist> objects. \n",
+      "To retrieve the short citation for each use the 'get_citation' function"
+    )
+  } else {
+    edist <- as_epidist(x = eparam)
+  }
+
 
   # return epidist
   edist

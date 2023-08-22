@@ -144,14 +144,15 @@ test_that("epidist_db gives message as expected with multiple entries", {
   # set seed for stochastic optimisation
   set.seed(123)
 
-  expect_message(
-    # message about stochastic optimisation suppressed
-    epidist_db(
-      disease = "influenza",
-      epi_dist = "incubation_period",
-      author = "Reich_etal"
-    ),
-    regexp = "(Returning multiple studies that match the criteria)"
+  suppressMessages(
+    expect_message(
+      epidist_db(
+        disease = "influenza",
+        epi_dist = "incubation_period",
+        author = "Reich_etal"
+      )  ,
+      regexp = "(Returning multiple studies that match the criteria)"
+    )
   )
 })
 
