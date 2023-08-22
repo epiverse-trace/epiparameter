@@ -133,12 +133,16 @@ epidist_db <- function(disease,
   if (is.call(expr)) {
     set <- eval(expr = expr, envir = eparam, enclos = parent.frame())
     eparam <- eparam[set, ]
-    if (nrow(eparam) == 0) {
-      stop(
-        "No entries in the database meet the subset criteria.",
-        call. = FALSE
-      )
-    }
+  } else if (is.function(subset)) {
+    set <- do.call(subset, args = list(eparam))
+    eparam <- eparam[set, ]
+  }
+
+  if (nrow(eparam) == 0) {
+    stop(
+      "No entries in the database meet the subset criteria.",
+      call. = FALSE
+    )
   }
 
   # convert epiparam to epidist
