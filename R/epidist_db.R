@@ -76,12 +76,14 @@
 #'   single_epidist = TRUE
 #' )
 epidist_db <- function(disease,
-                       epi_dist = c("incubation_period",
-                                    "onset_to_hospitalisation",
-                                    "onset_to_death",
-                                    "serial_interval",
-                                    "generation_time",
-                                    "offspring_distribution"),
+                       epi_dist = c(
+                         "incubation_period",
+                         "onset_to_hospitalisation",
+                         "onset_to_death",
+                         "serial_interval",
+                         "generation_time",
+                         "offspring_distribution"
+                       ),
                        author = NULL,
                        subset = NULL,
                        single_epidist = FALSE) {
@@ -95,7 +97,8 @@ epidist_db <- function(disease,
   if (is.character(expr)) {
     stop(
       "Subsetting is done with expressions that return logical values.\n",
-      "Remove quotation marks.", call. = FALSE
+      "Remove quotation marks.",
+      call. = FALSE
     )
   }
 
@@ -130,35 +133,44 @@ epidist_db <- function(disease,
   if (is.call(expr)) {
     set <- eval(expr = expr, envir = eparam, enclos = parent.frame())
     eparam <- eparam[set, ]
-  }
-
-  if (single_epidist) {
-    eparam <- eparam[1, ]
-  } else if (nrow(eparam) > 1) {
-    message(
-      "Returning multiple studies that match the criteria.\n",
-      "Use subset to filter by entry variables or ",
-      "single_epidist to return a single entry."
-    )
+    if (nrow(eparam) == 0) {
+      stop(
+        "No entries in the database meet the subset criteria.",
+        call. = FALSE
+      )
+    }
   }
 
   # convert epiparam to epidist
-  if (nrow(eparam) > 1) {
-    edist <- suppressMessages(as_epidist(x = eparam))
-    unparam <- length(edist) - sum(vapply(
-      edist,
-      is_parameterised,
-      FUN.VALUE = logical(1)
-    ))
-    message(
-      "Returning ", nrow(eparam), " results. \n",
-      unparam, " are unparameterised <epidist> objects. \n",
-      "To retrieve the short citation for each use the 'get_citation' function"
-    )
-  } else {
+  if (nrow(eparam) == 1) {
     edist <- as_epidist(x = eparam)
-  }
+  } else {
+    edist <- suppressMessages(as_epidist(x = eparam))
+    is_param <- vapply(edist, is_parameterised, FUN.VALUE = logical(1))
 
+    if (single_epidist) {
+      # select parameterised entries
+      edist <- edist[is_param]
+      # select largest sample size
+      idx <- which.max(
+        vapply(edist, function(x) x$metadata$sample_size, FUN.VALUE = numeric(1))
+      )
+      edist <- edist[[idx]]
+
+      message(
+        "Using ", get_citation(edist), ". \n",
+        "To retrieve the short citation use the 'get_citation' function"
+      )
+    } else {
+      message(
+        "Returning ", nrow(eparam), " results that match the criteria ",
+        "(", sum(is_param), " are parameterised). \n",
+        "Use subset to filter by entry variables or ",
+        "single_epidist to return a single entry. \n",
+        "To retrieve the short citation for each use the 'get_citation' function"
+      )
+    }
+  }
 
   # return epidist
   edist
