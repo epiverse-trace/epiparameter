@@ -873,7 +873,7 @@ test_that("discretise works as expected on discretised dist", {
     discretise = TRUE
   ))
   expect_message(
-    edist <- discretise(edist),
+    discretise(edist),
     regexp = "Distribution in `epidist` is already discretised"
   )
 
@@ -893,7 +893,7 @@ test_that("discretise works as expected on truncated dist", {
   ))
 
   expect_warning(
-    edist <- discretise(edist),
+    discretise(edist),
     regexp = paste(
       "Discretising a truncated continuous distribution,",
       "returning non-truncated discretised distribution"
