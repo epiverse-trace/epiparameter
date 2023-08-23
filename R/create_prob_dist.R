@@ -93,7 +93,7 @@ create_prob_dist <- function(prob_dist,
       ),
       nbinom = distributional::dist_negative_binomial(
         size = prob_dist_params[["dispersion"]],
-        prob = convert_summary_stats(
+        prob = convert_summary_stats_to_params(
           distribution = "nbinom",
           mean = prob_dist_params[["mean"]],
           dispersion = prob_dist_params[["dispersion"]]

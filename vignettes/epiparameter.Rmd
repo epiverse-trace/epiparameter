@@ -199,7 +199,7 @@ This plotting function can be useful for visually comparing epidemiological dist
 
 ### Conversion
 
-Parameters are often reported as mean and standard deviation (or variance). These can be (analytically) converted to the parameters of the distribution using the conversion function in the package (`convert_summary_stats()`). We also provide conversion functions in the opposite direction, parameters to summary statistics (`convert_params()`).
+Parameters are often reported as mean and standard deviation (or variance). These can be (analytically) converted to the parameters of the distribution using the conversion function in the package (`convert_summary_stats_to_params()`). We also provide conversion functions in the opposite direction, parameters to summary statistics (`convert_params_to_summary_stats()`).
 
 ### Extraction
 
