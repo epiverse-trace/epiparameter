@@ -6,20 +6,7 @@ test_that("epidist_db works as expected", {
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
-  expect_named(
-    edist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
-  )
-  expect_type(edist$disease, "list")
-  expect_type(edist$epi_dist, "character")
-  expect_type(edist$prob_dist, "list")
-  expect_type(edist$uncertainty, "list")
-  expect_type(edist$summary_stats, "list")
-  expect_type(edist$citation, "character")
-  expect_type(edist$metadata, "list")
-  expect_type(edist$method_assess, "list")
-  expect_type(edist$notes, "character")
+  expect_s3_class(validate_epidist(edist), class = "epidist")
 })
 
 test_that("epidist_db works as expected with author specified", {
@@ -34,21 +21,7 @@ test_that("epidist_db works as expected with author specified", {
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
-  expect_named(
-    edist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
-  )
-  expect_type(edist$disease, "list")
-  expect_type(edist$epi_dist, "character")
-  expect_type(edist$prob_dist, "list")
-  expect_type(edist$uncertainty, "list")
-  expect_type(edist$summary_stats, "list")
-  expect_type(edist$citation, "character")
-  expect_true(grepl(pattern = "Ghani", x = edist$citation, fixed = TRUE))
-  expect_type(edist$metadata, "list")
-  expect_type(edist$method_assess, "list")
-  expect_type(edist$notes, "character")
+  expect_s3_class(validate_epidist(edist), class = "epidist")
 })
 
 test_that("epidist_db works as expected with subsetting", {
@@ -63,21 +36,21 @@ test_that("epidist_db works as expected with subsetting", {
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
-  expect_named(
-    edist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
+  expect_s3_class(validate_epidist(edist), class = "epidist")
+})
+
+test_that("epidist_db works as expected with functional subsetting", {
+  edist <- suppressMessages(
+    epidist_db(
+      disease = "COVID-19",
+      epi_dist = "incubation_period",
+      subset = is_parameterised
+    )
   )
-  expect_type(edist$disease, "list")
-  expect_type(edist$epi_dist, "character")
-  expect_type(edist$prob_dist, "character")
-  expect_type(edist$uncertainty, "list")
-  expect_type(edist$summary_stats, "list")
-  expect_type(edist$citation, "character")
-  expect_true(grepl(pattern = "Virlogeux", x = edist$citation, fixed = TRUE))
-  expect_type(edist$metadata, "list")
-  expect_type(edist$method_assess, "list")
-  expect_type(edist$notes, "character")
+
+  expect_type(edist, "list")
+  expect_length(edist, 2)
+  expect_type(lapply(edist, validate_epidist), type = "list")
 })
 
 test_that("epidist_db works as expected with single_epidist as TRUE", {
@@ -92,21 +65,22 @@ test_that("epidist_db works as expected with single_epidist as TRUE", {
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
-  expect_named(
-    edist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
+  expect_s3_class(validate_epidist(edist), class = "epidist")
+})
+
+test_that("epidist_db works as expected with subsetting and single_epidist", {
+  edist <- suppressMessages(
+    epidist_db(
+      disease = "COVID-19",
+      epi_dist = "incubation_period",
+      subset = sample_size > 50,
+      single_epidist = TRUE
+    )
   )
-  expect_type(edist$disease, "list")
-  expect_type(edist$epi_dist, "character")
-  expect_type(edist$prob_dist, "list")
-  expect_type(edist$uncertainty, "list")
-  expect_type(edist$summary_stats, "list")
-  expect_type(edist$citation, "character")
-  expect_true(grepl(pattern = "Ghani", x = edist$citation, fixed = TRUE))
-  expect_type(edist$metadata, "list")
-  expect_type(edist$method_assess, "list")
-  expect_type(edist$notes, "character")
+
+  expect_s3_class(edist, class = "epidist")
+  expect_length(edist, 9)
+  expect_s3_class(validate_epidist(edist), class = "epidist")
 })
 
 test_that("epidist_db fails as expected when author not recognised", {
@@ -117,6 +91,13 @@ test_that("epidist_db fails as expected when author not recognised", {
       author = "Lessler_et_al"
     ),
     regexp = "('arg' should be one of)"
+  )
+})
+
+test_that("epidist_db fails as expected when disease not recognised", {
+  expect_error(
+    epidist_db(disease = "COVI-19", epi_dist = "incubation_period"),
+    regexp = "(distribution not available for)"
   )
 })
 
@@ -141,18 +122,13 @@ test_that("epidist_db fails as expected with no entry in the database", {
 })
 
 test_that("epidist_db gives message as expected with multiple entries", {
-  # set seed for stochastic optimisation
-  set.seed(123)
-
-  suppressMessages(
-    expect_message(
-      epidist_db(
-        disease = "influenza",
-        epi_dist = "incubation_period",
-        author = "Reich_etal"
-      )  ,
-      regexp = "(Returning multiple studies that match the criteria)"
-    )
+  expect_message(
+    epidist_db(
+      disease = "influenza",
+      epi_dist = "incubation_period",
+      author = "Reich_etal"
+    ),
+    regexp = "(Returning)*(results that match the criteria)"
   )
 })
 
@@ -164,5 +140,16 @@ test_that("epidist_db fails as expected when subset given as string", {
       subset = "author == 'Lessler_et_al'"
     ),
     regexp = "(Subsetting is done with expressions)"
+  )
+})
+
+test_that("epidist_db fails as expected when subset returns no results", {
+  expect_error(
+    epidist_db(
+      disease = "covid-19",
+      epi_dist = "incubation_period",
+      subset = year == 2018
+    ),
+    regexp = "No entries in the database meet the subset criteria"
   )
 })

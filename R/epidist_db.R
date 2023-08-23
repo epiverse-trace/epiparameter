@@ -4,9 +4,13 @@
 #' @description This function can extract an `epidist` object(s) directly from
 #' the library of epidemiological parameters without having to read in an
 #' `epiparam` object and pull out an `epidist` object from one of the entries.
+#'
 #' If a distribution from a specific study is required, the `author` argument
-#' can be specified. For now this must match the author entry in the database
-#' exactly to be recognised.
+#' can be specified.
+#'
+#' Multiple entries (`<epidist>` objects) can be returned, use the arguments
+#' to subset entries and use `single_epidist = TRUE` to force a single
+#' `<epidist>` to be returned.
 #'
 #' @details `disease`, `epi_dist` and `author` are given as individual arguments
 #' as these are the most common variables to subset the parameter library by.
@@ -14,33 +18,35 @@
 #' `<epidist>` object(s) desired. To subset based on multiple variables separate
 #' each expression with `&`.
 #'
-#' @param disease A character string specifying the disease
-#' @param epi_dist A character string specifying the epidemiological
-#' distribution
-#' @param author The author of the study reporting the distribution
+#' @param disease A `character` string specifying the disease.
+#' @param epi_dist A `character` string specifying the epidemiological
+#' distribution.
+#' @param author A `character` string specifying the author of the study
+#' reporting the distribution.
 #' @param subset Either `NULL` or a valid R expressions that evaluates to
-#' logicals to subset the rows of `<epiparam>`.
+#' logicals to subset the rows of `<epiparam>`, or a function that can be
+#' applied directly to an `<epiparam>` object.
 #'
 #' This argument allows general `<data.frame>` subsetting that can be combined
 #' with the subsetting done with the `disease` and `epidist` arguments
 #' (and `author` if specified). If left as `NULL` (default) no subsetting is
 #' carried out.
 #'
-#' With and without subsetting multiple entries (`<epdist>` objects) can be
-#' returned (but see `single_epidist` argument).
-#'
 #' The expression can be specified without using the data object name
 #' (e.g. `df$var`) and instead just `var` can be supplied (see details). In
 #' other words, this argument works the same as the `subset` argument in
 #' [`subset()`]. It is similar to `<data-masking>` using by the `dplyr` package.
-#' @param single_epidist A boolean logical determining whether multiple entries
-#' from the library can be returned if matched by the other arguments
-#' (`disease`, `epi_dist`, `author`). This argument is used to prevent
-#' multiple sets of parameters being returned when only one is wanted.
 #'
-#' **Warning**: If multiple entries match the arguments supplied and
-#' `single_epidist = TRUE` then the first entry will be naively returned. To
-#' specifically subset based on a variable use the `subset` argument.
+#' @param single_epidist A boolean `logical` determining whether a single
+#' `<epidist>` or multiple entries from the library can be returned if
+#' matched by the other arguments (`disease`, `epi_dist`, `author`). This
+#' argument is used to prevent multiple sets of parameters being returned
+#' when only one is wanted.
+#'
+#' **Note**: If multiple entries match the arguments supplied and
+#' `single_epidist = TRUE` then the `<epidist>` that is parameterised and
+#' has the largest sample size will be returned. If multiple entries
+#' are equal after this sorting the first entry will be returned.
 #'
 #' @return An `epidist` object or list of `epidist` objects.
 #' @export
@@ -69,6 +75,14 @@
 #'   epi_dist = "offspring_distribution",
 #'   subset = sample_size > 40
 #' )
+#'
+#' # example using functional subsetting
+#' eparam <- epidist_db(
+#'   disease = "COVID-19",
+#'   epi_dist = "incubation_period",
+#'   subset = is_parameterised
+#' )
+#'
 #' # example forcing a single <epidist> to be returned
 #' eparam <- epidist_db(
 #'   disease = "SARS",
@@ -159,7 +173,11 @@ epidist_db <- function(disease,
       }
       # select largest sample size
       idx <- which.max(
-        vapply(edist, function(x) x$metadata$sample_size, FUN.VALUE = numeric(1))
+        vapply(
+          edist,
+          function(x) x$metadata$sample_size,
+          FUN.VALUE = numeric(1)
+        )
       )
       edist <- edist[[idx]]
 
@@ -173,7 +191,8 @@ epidist_db <- function(disease,
         "(", sum(is_param), " are parameterised). \n",
         "Use subset to filter by entry variables or ",
         "single_epidist to return a single entry. \n",
-        "To retrieve the short citation for each use the 'get_citation' function"
+        "To retrieve the short citation for each use the ",
+        "'get_citation' function"
       )
     }
   }
