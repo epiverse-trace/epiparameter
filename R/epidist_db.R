@@ -154,7 +154,9 @@ epidist_db <- function(disease,
 
     if (single_epidist) {
       # select parameterised entries
-      edist <- edist[is_param]
+      if (sum(is_param) >= 1) {
+        edist <- edist[is_param]
+      }
       # select largest sample size
       idx <- which.max(
         vapply(edist, function(x) x$metadata$sample_size, FUN.VALUE = numeric(1))
