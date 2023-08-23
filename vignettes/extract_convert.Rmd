@@ -51,72 +51,80 @@ library(epiparameter)
 
 ## Conversions
 
-There are two conversion functions in {epiparameter}: `convert_params()` and `convert_summary_stats()`. `convert_params()` converts parameters to many summary statistics, and `convert_summary_stats()` converts summary statistics to a set of parameters.
+There are two conversion functions in {epiparameter}: `convert_params_to_summary_stats()` and `convert_summary_stats_to_params()`. `convert_params_to_summary_stats()` converts parameters to many summary statistics, and `convert_summary_stats_to_params()` converts summary statistics to a set of parameters.
 
 ### Conversion functions
 
-The conversion functions have two arguments. The first (`distribution`) defines which distribution you want to use and the second (`...`) lets you put as many named parameters or summary statistics as required. The arguments passed into `...` are matched name, and therefore need to match exactly to the names expected. See the function documentation (`?convert_params` and `?convert_summary_stats` for names).
+The conversion functions have two arguments. The first (`distribution`) defines which distribution you want to use and the second (`...`) lets you put as many named parameters or summary statistics as required. The arguments passed into `...` are matched name, and therefore need to match exactly to the names expected. See the function documentation (`?convert_params_to_summary_stats` and `?convert_summary_stats_to_params` for names).
 
 All currently supported summary statistic conversions in {epiparameter} are given below for each distribution.
 
 #### Gamma distribution
 
 ```{r}
-convert_params(distribution = "gamma", shape = 2.5, scale = 1.5)
+convert_params_to_summary_stats(
+  distribution = "gamma", shape = 2.5, scale = 1.5
+)
 ```
 
 ```{r}
-convert_summary_stats(distribution = "gamma", mean = 2, sd = 2)
-convert_summary_stats(distribution = "gamma", mean = 2, var = 2)
-convert_summary_stats(distribution = "gamma", mean = 2, cv = 2)
+convert_summary_stats_to_params(distribution = "gamma", mean = 2, sd = 2)
+convert_summary_stats_to_params(distribution = "gamma", mean = 2, var = 2)
+convert_summary_stats_to_params(distribution = "gamma", mean = 2, cv = 2)
 ```
 
 #### Lognormal distribution
 
 ```{r}
-convert_params(distribution = "lnorm", meanlog = 2.5, sdlog = 1.5)
+convert_params_to_summary_stats(
+  distribution = "lnorm", meanlog = 2.5, sdlog = 1.5
+)
 ```
 
 ```{r}
-convert_summary_stats(distribution = "lnorm", mean = 2, sd = 2)
-convert_summary_stats(distribution = "lnorm", mean = 2, var = 2)
-convert_summary_stats(distribution = "lnorm", mean = 2, cv = 2)
-convert_summary_stats(distribution = "lnorm", median = 2, sd = 2)
-convert_summary_stats(distribution = "lnorm", median = 2, var = 2)
+convert_summary_stats_to_params(distribution = "lnorm", mean = 2, sd = 2)
+convert_summary_stats_to_params(distribution = "lnorm", mean = 2, var = 2)
+convert_summary_stats_to_params(distribution = "lnorm", mean = 2, cv = 2)
+convert_summary_stats_to_params(distribution = "lnorm", median = 2, sd = 2)
+convert_summary_stats_to_params(distribution = "lnorm", median = 2, var = 2)
 ```
 
 #### Weibull distribution
 
 ```{r}
-convert_params(distribution = "weibull", shape = 2.5, scale = 1.5)
+convert_params_to_summary_stats(
+  distribution = "weibull", shape = 2.5, scale = 1.5
+)
 ```
 
 ```{r}
-convert_summary_stats(distribution = "weibull", mean = 2, sd = 2)
-convert_summary_stats(distribution = "weibull", mean = 2, var = 2)
-convert_summary_stats(distribution = "weibull", mean = 2, cv = 2)
+convert_summary_stats_to_params(distribution = "weibull", mean = 2, sd = 2)
+convert_summary_stats_to_params(distribution = "weibull", mean = 2, var = 2)
+convert_summary_stats_to_params(distribution = "weibull", mean = 2, cv = 2)
 ```
 
 #### Negative binomial distribution
 
 ```{r}
-convert_params(distribution = "nbinom", prob = 0.5, dispersion = 0.5)
+convert_params_to_summary_stats(
+  distribution = "nbinom", prob = 0.5, dispersion = 0.5
+)
 ```
 
 ```{r}
-convert_summary_stats(distribution = "nbinom", mean = 1, sd = 1)
-convert_summary_stats(distribution = "nbinom", mean = 1, var = 1)
-convert_summary_stats(distribution = "nbinom", mean = 1, cv = 1)
+convert_summary_stats_to_params(distribution = "nbinom", mean = 1, sd = 1)
+convert_summary_stats_to_params(distribution = "nbinom", mean = 1, var = 1)
+convert_summary_stats_to_params(distribution = "nbinom", mean = 1, cv = 1)
 ```
 
 #### Geometric distribution
 
 ```{r}
-convert_params(distribution = "geom", prob = 0.5)
+convert_params_to_summary_stats(distribution = "geom", prob = 0.5)
 ```
 
 ```{r}
-convert_summary_stats(distribution = "geom", mean = 1)
+convert_summary_stats_to_params(distribution = "geom", mean = 1)
 ```
 
 ## Extraction
@@ -207,11 +215,11 @@ If the distribution is a delay distribution (i.e. serial interval or incubation 
 However, one should take care when assuming a distribution as this may drastically influence the interpretation and application of the epidemiological parameters.
 :::
 
-@donnellyEpidemiologicalDeterminantsSpread2003 provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by using the general conversion function (`convert_summary_stats()`).
+@donnellyEpidemiologicalDeterminantsSpread2003 provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by using the general conversion function (`convert_summary_stats_to_params()`).
 
 ```{r, convert parameters}
 # SARS gamma mean and var to shape and scale
-convert_summary_stats(distribution = "gamma", mean = 6.37, var = 16.7)
+convert_summary_stats_to_params(distribution = "gamma", mean = 6.37, var = 16.7)
 ```
 
 ## References

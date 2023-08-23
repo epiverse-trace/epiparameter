@@ -37,7 +37,7 @@
 #'   prob_dist = "gamma",
 #'   prob_dist_params = NA,
 #'   summary_stats = create_epidist_summary_stats(
-#'    quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
+#'     quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
 #'   ),
 #'   sample_size = NA
 #' )
@@ -55,7 +55,6 @@ calc_dist_params <- function(prob_dist,
                              prob_dist_params,
                              summary_stats,
                              sample_size = NA) {
-
   # check input
   checkmate::assert_string(prob_dist)
   checkmate::assert_list(
@@ -67,7 +66,7 @@ calc_dist_params <- function(prob_dist,
   stopifnot(
     "probability distribution params must be a named vector or NA" =
       anyNA(prob_dist_params) ||
-      !is.null(names(prob_dist_params))
+        !is.null(names(prob_dist_params))
   )
 
   # extract mean and sd to see if conversion is possible
@@ -101,11 +100,12 @@ calc_dist_params <- function(prob_dist,
       "skewness", "ex_kurtosis", "dispersion"
     )
     summary_stats_ <- summary_stats_[idx]
-    # create flat list structure to be passed to ... in convert_summary_stats
+    # create flat list structure to be passed to ... in conversion
     args <- unlist(list(prob_dist, as.list(summary_stats_)), recursive = FALSE)
-    prob_dist_params <- unlist(do.call(convert_summary_stats, args = args))
+    prob_dist_params <- unlist(do.call(
+      convert_summary_stats_to_params, args = args
+    ))
   } else if (!anyNA(percentiles)) {
-
     # calculate the parameters from the percentiles
     # percentiles required to be [0, 1] so divide by 100
     prob_dist_params <- extract_param(

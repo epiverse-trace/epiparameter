@@ -35,13 +35,15 @@
 #' @export
 #'
 #' @examples
-#' convert_summary_stats(distribution = "lnorm", mean = 1, sd = 1)
-#' convert_summary_stats(distribution = "weibull", mean = 2, var = 2)
-#' convert_summary_stats(distribution = "geom", mean = 2)
-convert_summary_stats <- function(distribution = c("lnorm", "gamma", "weibull",
-                                                   "nbinom", "geom"),
-                                  ...) {
-
+#' convert_summary_stats_to_params(distribution = "lnorm", mean = 1, sd = 1)
+#' convert_summary_stats_to_params(distribution = "weibull", mean = 2, var = 2)
+#' convert_summary_stats_to_params(distribution = "geom", mean = 2)
+convert_summary_stats_to_params <- function(distribution = c( # nolint
+                                              "lnorm", "gamma",
+                                              "weibull",
+                                              "nbinom", "geom"
+                                            ),
+                                            ...) {
   # check input
   distribution <- match.arg(distribution)
   if (!checkmate::test_list(list(...), min.len = 1, names = "unique")) {
@@ -77,7 +79,7 @@ convert_summary_stats <- function(distribution = c("lnorm", "gamma", "weibull",
 #' distributions in R, for example the lognormal distribution is `lnorm`,
 #' and its parameters are `meanlog` and `sdlog`.
 #'
-#' @inheritParams convert_summary_stats
+#' @inheritParams convert_summary_stats_to_params
 #' @param ... `Numeric` named parameter(s) used to convert to summary
 #' statistics. An example is the meanlog and sdlog parameters of the
 #' lognormal (`lnorm`) distribution.
@@ -88,13 +90,20 @@ convert_summary_stats <- function(distribution = c("lnorm", "gamma", "weibull",
 #' @export
 #'
 #' @examples
-#' convert_params(distribution = "lnorm", meanlog = 1, sdlog = 2)
-#' convert_params(distribution = "gamma", shape = 1, scale = 1)
-#' convert_params(distribution = "nbinom", prob = 0.5, dispersion = 2)
-convert_params <- function(distribution = c("lnorm", "gamma", "weibull",
-                                            "nbinom", "geom"),
-                           ...) {
-
+#' convert_params_to_summary_stats(
+#'   distribution = "lnorm", meanlog = 1, sdlog = 2
+#' )
+#' convert_params_to_summary_stats(
+#'   distribution = "gamma", shape = 1, scale = 1
+#' )
+#' convert_params_to_summary_stats(
+#'   distribution = "nbinom", prob = 0.5, dispersion = 2
+#' )
+convert_params_to_summary_stats <- function(distribution = c( # nolint
+                                              "lnorm", "gamma", "weibull",
+                                              "nbinom", "geom"
+                                            ),
+                                            ...) {
   # check input
   distribution <- match.arg(distribution)
   if (!checkmate::test_list(list(...), min.len = 1, names = "unique")) {
@@ -131,7 +140,7 @@ get_sd <- function(x) {
   if ("sd" %in% names(x)) {
     return(x)
   }
-  if ("var" %in% names(x))  {
+  if ("var" %in% names(x)) {
     x$sd <- sqrt(x$var)
   } else if (all(c("mean", "cv") %in% names(x))) {
     x$sd <- x$cv * x$mean
@@ -173,14 +182,13 @@ chk_ss <- function(x) {
 #' distribution to a number of summary statistics which can be calculated
 #' analytically given the lognormal parameters.
 #'
-#' @inheritParams convert_params
+#' @inheritParams convert_params_to_summary_stats
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
 convert_params_lnorm <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -225,12 +233,11 @@ convert_params_lnorm <- function(...) {
 #' @description Converts the summary statistics input into the meanlog and sdlog
 #' parameters of the lognormal distribution.
 #'
-#' @inheritParams convert_summary_stats
+#' @inheritParams convert_summary_stats_to_params
 #'
 #' @return A list of two elements, the meanlog and sdlog
 #' @keywords internal
 convert_summary_stats_lnorm <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -271,14 +278,13 @@ convert_summary_stats_lnorm <- function(...) {
 #' analytically given the gamma parameters. One exception is the median which
 #' is calculated using [`qgamma()`] as no analytical form is available.
 #'
-#' @inheritParams convert_params
+#' @inheritParams convert_params_to_summary_stats
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
 convert_params_gamma <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -322,12 +328,11 @@ convert_params_gamma <- function(...) {
 #' @description Converts the summary statistics input into the shape and scale
 #' parameters of the gamma distribution.
 #'
-#' @inheritParams convert_summary_stats
+#' @inheritParams convert_summary_stats_to_params
 #'
 #' @return A list of two elements, the shape and scale
 #' @keywords internal
 convert_summary_stats_gamma <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -357,14 +362,13 @@ convert_summary_stats_gamma <- function(...) {
 #' analytically given the Weibull parameters. Note the conversion uses the
 #' [`gamma()`] function.
 #'
-#' @inheritParams convert_params
+#' @inheritParams convert_params_to_summary_stats
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
 convert_params_weibull <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -388,12 +392,12 @@ convert_params_weibull <- function(...) {
   sd <- sqrt(var)
   cv <- sd / mean
   skewness <- (gamma(1 + 3 / shape) * scale^3 - 3 *
-                 mean * sd^2 - mean^3) / (sd^3)
+    mean * sd^2 - mean^3) / (sd^3)
   ex_kurtosis <- (gamma(1 + 4 / shape) * scale^4 - 4 * mean *
-                    (gamma(1 + 3 / shape) * scale^3 - 3 * mean *
-                       sd^2 - mean^3) -
-                    6 * (mean^2 * sd^2 - gamma(1 + 2 / shape) *
-                           scale^2) - mean^4) / (sd^4)
+    (gamma(1 + 3 / shape) * scale^3 - 3 * mean *
+      sd^2 - mean^3) -
+    6 * (mean^2 * sd^2 - gamma(1 + 2 / shape) *
+      scale^2) - mean^4) / (sd^4)
 
 
   # return list of metrics
@@ -414,12 +418,11 @@ convert_params_weibull <- function(...) {
 #' @description Converts the summary statistics input into the shape and scale
 #' parameters of the Weibull distribution.
 #'
-#' @inheritParams convert_summary_stats
+#' @inheritParams convert_summary_stats_to_params
 #'
 #' @return A list of two elements, the shape and scale
 #' @keywords internal
 convert_summary_stats_weibull <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -465,14 +468,13 @@ convert_summary_stats_weibull <- function(...) {
 #' The parameters are `prob` and `dispersion` (which is also commonly
 #' represented as *r*).
 #'
-#' @inheritParams convert_params
+#' @inheritParams convert_params_to_summary_stats
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and ex_kurtosis.
 #' @keywords internal
 convert_params_nbinom <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -521,12 +523,11 @@ convert_params_nbinom <- function(...) {
 #' distribution the parameters (`prob`) and (`dispersion`) of the negative
 #' binomial distribution.
 #'
-#' @inheritParams convert_summary_stats
+#' @inheritParams convert_summary_stats_to_params
 #'
 #' @return A list of two elements, the probability and dispersion parameters
 #' @keywords internal
 convert_summary_stats_nbinom <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -576,14 +577,13 @@ convert_summary_stats_nbinom <- function(...) {
 #' number of failures before the first success (supported for zero). This is
 #' the same form as used by base R and `distributional::dist_geometric()`.
 #'
-#' @inheritParams convert_params
+#' @inheritParams convert_params_to_summary_stats
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
 convert_params_geom <- function(...) {
-
   # capture input
   x <- list(...)
 
@@ -629,12 +629,11 @@ convert_params_geom <- function(...) {
 #' number of failures before the first success (supported for zero). This is
 #' the same form as used by base R and `distributional::dist_geometric()`.
 #'
-#' @inheritParams convert_summary_stats
+#' @inheritParams convert_summary_stats_to_params
 #'
 #' @return A list of one element, the probability parameter
 #' @keywords internal
 convert_summary_stats_geom <- function(...) {
-
   # capture input
   x <- list(...)
 
