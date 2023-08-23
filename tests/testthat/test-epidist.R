@@ -900,6 +900,8 @@ test_that("discretise works as expected on truncated dist", {
     )
   )
 
+  edist <- suppressWarnings(discretise(edist))
+
   expect_s3_class(edist$prob_dist, "distcrete")
   expect_identical(edist$prob_dist$parameters, list(shape = 1, scale = 1))
   expect_identical(edist$prob_dist$name, "gamma")
