@@ -101,7 +101,6 @@ epidist_db <- function(disease,
                        author = NULL,
                        subset = NULL,
                        single_epidist = FALSE) {
-  browser()
   # check input
   checkmate::assert_string(disease)
   epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)
