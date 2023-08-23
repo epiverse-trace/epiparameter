@@ -32,8 +32,8 @@ with the subsetting done with the \code{disease} and \code{epidist} arguments
 (and \code{author} if specified). If left as \code{NULL} (default) no subsetting is
 carried out.
 
-The expression can be specified without using the data object name
-(e.g. \code{df$var}) and instead just \code{var} can be supplied (see details). In
+The expression should be specified without using the data object name
+(e.g. \code{df$var}) and instead just \code{var} should be supplied. In
 other words, this argument works the same as the \code{subset} argument in
 \code{\link[=subset]{subset()}}. It is similar to \verb{<data-masking>} using by the \code{dplyr} package.}
 

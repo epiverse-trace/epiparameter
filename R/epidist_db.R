@@ -32,8 +32,8 @@
 #' (and `author` if specified). If left as `NULL` (default) no subsetting is
 #' carried out.
 #'
-#' The expression can be specified without using the data object name
-#' (e.g. `df$var`) and instead just `var` can be supplied (see details). In
+#' The expression should be specified without using the data object name
+#' (e.g. `df$var`) and instead just `var` should be supplied. In
 #' other words, this argument works the same as the `subset` argument in
 #' [`subset()`]. It is similar to `<data-masking>` using by the `dplyr` package.
 #'
@@ -101,6 +101,7 @@ epidist_db <- function(disease,
                        author = NULL,
                        subset = NULL,
                        single_epidist = FALSE) {
+  browser()
   # check input
   checkmate::assert_string(disease)
   epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)
