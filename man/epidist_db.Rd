@@ -45,8 +45,9 @@ when only one is wanted.
 
 \strong{Note}: If multiple entries match the arguments supplied and
 \code{single_epidist = TRUE} then the \verb{<epidist>} that is parameterised and
-has the largest sample size will be returned. If multiple entries
-are equal after this sorting the first entry will be returned.}
+has the largest sample size will be returned (see \code{\link[=is_parameterised]{is_parameterised()}}).
+If multiple entries are equal after this sorting the first entry will
+be returned.}
 }
 \value{
 An \code{epidist} object or list of \code{epidist} objects.

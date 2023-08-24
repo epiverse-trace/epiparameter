@@ -45,8 +45,9 @@
 #'
 #' **Note**: If multiple entries match the arguments supplied and
 #' `single_epidist = TRUE` then the `<epidist>` that is parameterised and
-#' has the largest sample size will be returned. If multiple entries
-#' are equal after this sorting the first entry will be returned.
+#' has the largest sample size will be returned (see [`is_parameterised()`]).
+#' If multiple entries are equal after this sorting the first entry will
+#' be returned.
 #'
 #' @return An `epidist` object or list of `epidist` objects.
 #' @export
@@ -162,6 +163,7 @@ epidist_db <- function(disease,
   # convert epiparam to epidist
   if (nrow(eparam) == 1) {
     edist <- as_epidist(x = eparam)
+    validate_epidist(edist)
   } else {
     edist <- suppressMessages(as_epidist(x = eparam))
     is_param <- vapply(edist, is_parameterised, FUN.VALUE = logical(1))
@@ -180,12 +182,15 @@ epidist_db <- function(disease,
         )
       )
       edist <- edist[[idx]]
+      validate_epidist(edist)
 
       message(
         "Using ", get_citation(edist), ". \n",
         "To retrieve the short citation use the 'get_citation' function"
       )
     } else {
+      lapply(edist, validate_epidist)
+
       message(
         "Returning ", nrow(eparam), " results that match the criteria ",
         "(", sum(is_param), " are parameterised). \n",

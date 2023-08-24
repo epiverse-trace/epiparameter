@@ -402,7 +402,7 @@ test_that("validate_epidist catches class faults when expected", {
 
   expect_error(
     validate_epidist(epidist = epidist_obj),
-    regexp = "(epidist must contains a disease)"
+    regexp = "(epidist must contain a disease)"
   )
 
   epidist_obj <- new_epidist(

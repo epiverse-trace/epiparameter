@@ -333,7 +333,7 @@ validate_epidist <- function(epidist) {
       c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
         "citation", "metadata", "method_assess", "notes") %in%
       attributes(epidist)$names,
-    "epidist must contains a disease (single character string)" =
+    "epidist must contain a disease (single character string)" =
       is.character(epidist$disease$disease) &&
       length(epidist$disease$disease) == 1,
     "epidist must contain an epidemiological distribution" =
