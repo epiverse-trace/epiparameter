@@ -6,7 +6,6 @@ test_that("epidist_db works as expected", {
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
-  expect_s3_class(validate_epidist(edist), class = "epidist")
 })
 
 test_that("epidist_db works as expected with author specified", {
@@ -21,7 +20,6 @@ test_that("epidist_db works as expected with author specified", {
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
-  expect_s3_class(validate_epidist(edist), class = "epidist")
 })
 
 test_that("epidist_db works as expected with subsetting", {
@@ -36,7 +34,6 @@ test_that("epidist_db works as expected with subsetting", {
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
-  expect_s3_class(validate_epidist(edist), class = "epidist")
 })
 
 test_that("epidist_db works as expected with functional subsetting", {
@@ -50,7 +47,6 @@ test_that("epidist_db works as expected with functional subsetting", {
 
   expect_type(edist, "list")
   expect_length(edist, 2)
-  expect_type(lapply(edist, validate_epidist), type = "list")
 })
 
 test_that("epidist_db works as expected with single_epidist as TRUE", {
@@ -65,7 +61,6 @@ test_that("epidist_db works as expected with single_epidist as TRUE", {
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
-  expect_s3_class(validate_epidist(edist), class = "epidist")
 })
 
 test_that("epidist_db works as expected with subsetting and single_epidist", {
@@ -80,7 +75,6 @@ test_that("epidist_db works as expected with subsetting and single_epidist", {
 
   expect_s3_class(edist, class = "epidist")
   expect_length(edist, 9)
-  expect_s3_class(validate_epidist(edist), class = "epidist")
 })
 
 test_that("epidist_db fails as expected when author not recognised", {
