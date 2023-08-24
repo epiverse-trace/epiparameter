@@ -39,6 +39,22 @@ properties:
     type: array
     items:
       type: string
+  title:
+    description: >
+      The title of the article that published the epidemiological parameters.
+    examples: ["Incubation period of COVID-19", "Serial internval of Ebola"]
+    type: array
+    items:
+      type: string
+  journal:
+    description: >
+      The name of the journal that published the article that published the
+      epidemiological parameters. This can also be a pre-print server, e.g.,
+      medRxiv.
+    examples: ["The Lancet", "PLoS One", "medRxiv"]
+    type: array
+    items:
+      type: string
   year:
     description: >
       The year the paper or report was published.
