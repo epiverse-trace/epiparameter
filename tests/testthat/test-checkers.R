@@ -1,15 +1,21 @@
 test_that("is_parameterised works as expected for epiparam", {
-  res <- is_parameterised(epiparam())
-  expect_length(res, 118)
+  eparam <- epiparam()
+  res <- is_parameterised(eparam)
+  expect_length(res, nrow(eparam))
   expect_type(res, type = "logical")
 })
 
 test_that("is_parameterised works as expected with epiparam parameters", {
+  eparam <- epiparam(epi_dist = "incubation_period")
+  eparam <- subset(eparam, author == "McAloon_etal")
+  eparam <- subset(eparam, sample_size == max(sample_size))
   expect_true(is_parameterised(epiparam()[15, ]))
 })
 
 test_that("is_parameterised works as expected without epiparam parameters", {
-  expect_false(is_parameterised(epiparam()[1, ]))
+  eparam <- epiparam(epi_dist = "incubation_period")
+  eparam <- subset(eparam, author == "Alene_etal")
+  expect_false(is_parameterised(eparam))
 })
 
 test_that("is_parameterised works when dist is not recognised", {
