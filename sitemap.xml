@@ -85,37 +85,40 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.weibull.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_gamma_params.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_gamma.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_gamma_summary_stats.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_geom.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_geom_params.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_lnorm.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_geom_summary_stats.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_nbinom.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_lnorm_params.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_to_summary_stats.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_lnorm_summary_stats.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_weibull.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_nbinom_params.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_gamma.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_nbinom_summary_stats.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_geom.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_lnorm.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_weibull_params.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_nbinom.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_weibull_summary_stats.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_to_params.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_weibull.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/create_epidist_citation.html</loc>
@@ -187,18 +190,6 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/format.vb_epidist.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/gamma_meansd2shapescale.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/gamma_shapescale2meansd.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/geom_mean2prob.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/geom_prob2mean.html</loc>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/get_citation.html</loc>
   </url>
   <url>
@@ -238,22 +229,10 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/list_distributions.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/lnorm_meanlogsdlog2meansd.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/lnorm_meansd2meanlogsdlog.html</loc>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/make_epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/names-set-.epiparam.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/nbinom_meandisp2probdisp.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/nbinom_probdisp2meandisp.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/new_epidist.html</loc>
@@ -299,11 +278,5 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/vb_epidist.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/weibull_meansd2shapescale.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/weibull_shapescale2meansd.html</loc>
   </url>
 </urlset>

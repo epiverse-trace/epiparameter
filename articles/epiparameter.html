@@ -343,8 +343,8 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2.718282</span></span>
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1]  4.546682  1.202927 14.384589  2.496031  2.390572  1.886580 10.525280</span></span>
-<span><span class="co">#&gt;  [8]  1.810460  3.370225  6.202762</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1]  0.4804472  1.0783511  2.3626523  2.6646382  0.7334530  1.7067434</span></span>
+<span><span class="co">#&gt;  [7]  1.7509006  6.0337692 14.4653677  1.8551690</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2">
@@ -366,8 +366,7 @@ This may be especially useful if new parameter estimates become available but ar
 <div class="section level3">
 <h3 id="conversion">Conversion<a class="anchor" aria-label="anchor" href="#conversion"></a>
 </h3>
-<p>Parameters are often reported as mean and standard deviaton (or variance). These can be (analytically) converted to the parameters of the distribution using the conversion functions in the package. These have the naming convention <code>summary_stats2params()</code>. For example <code><a href="../reference/gamma_meansd2shapescale.html">gamma_meansd2shapescale()</a></code> or <code>lnorm_meansd2musigma()</code>.</p>
-<p>We also provide conversion functions in the opposite direction, parameters to summary statistics. These follow the same naming convention, for example <code><a href="../reference/weibull_shapescale2meansd.html">weibull_shapescale2meansd()</a></code>.</p>
+<p>Parameters are often reported as mean and standard deviation (or variance). These can be (analytically) converted to the parameters of the distribution using the conversion function in the package (<code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>). We also provide conversion functions in the opposite direction, parameters to summary statistics (<code><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats()</a></code>).</p>
 </div>
 <div class="section level3">
 <h3 id="extraction">Extraction<a class="anchor" aria-label="anchor" href="#extraction"></a>
