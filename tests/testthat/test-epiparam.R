@@ -115,7 +115,7 @@ test_that("validate_epiparam passes when expected", {
 test_that("validate_epidist catches class faults when expected", {
   eparam <- new_epiparam(epi_dist = "all")
   # suppress message about converting to data.frame
-  suppressMessages(eparam <- eparam[, -1])
+  suppressMessages(eparam <- eparam[, -1]) # nolint
   expect_error(
     validate_epiparam(epiparam = eparam),
     regexp = "Object should be of class epiparam"
@@ -123,7 +123,7 @@ test_that("validate_epidist catches class faults when expected", {
 
   eparam <- new_epiparam(epi_dist = "all")
   # suppress message about converting to data.frame
-  suppressMessages(eparam$epi_distribution <- NULL)
+  suppressMessages(eparam$epi_distribution <- NULL) # nolint
   # convert back to `epiparam` to check validation
   class(eparam) <- c("epiparam", "data.frame")
   expect_error(
@@ -133,7 +133,7 @@ test_that("validate_epidist catches class faults when expected", {
 
   eparam <- new_epiparam(epi_dist = "all")
   # suppress message about converting to data.frame
-  suppressMessages(eparam$disease <- 1)
+  suppressMessages(eparam$disease <- 1) # nolint
   # convert back to `epiparam` to check validation
   class(eparam) <- c("epiparam", "data.frame")
   expect_error(
@@ -145,7 +145,7 @@ test_that("validate_epidist catches class faults when expected", {
 test_that("validate_epidist fails when expected for reconstructed = TRUE", {
   eparam <- new_epiparam(epi_dist = "all")
   # suppress message about converting to data.frame
-  suppressMessages(eparam <- eparam[, -1])
+  suppressMessages(eparam <- eparam[, -1]) # nolint
   expect_error(
     validate_epiparam(epiparam = eparam, reconstruct = TRUE),
     regexp = "epiparam object does not contain the correct columns"

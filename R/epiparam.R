@@ -157,7 +157,7 @@ validate_epiparam <- function(epiparam, reconstruct = FALSE) {
       all(epiparam$year > 0 | is.na(epiparam$year))
   )
 
-  check_limits <- apply(epiparam, MARGIN = 2, FUN = function(x) {
+  check_limits <- apply(epiparam, MARGIN = 2, FUN = function(x) { # nolint
     vapply(x, function(y) {
       length(y) == 2 && is.numeric(y)
     }, FUN.VALUE = logical(1))
