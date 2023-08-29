@@ -9,7 +9,7 @@ test_that("as_epidist works as expected", {
 test_that("as_epidist fails as expected when given invalidated epiparam", {
   eparam <- epiparam()
   # suppress message about returning data.frame
-  suppressMessages(eparam$disease <- NULL)
+  suppressMessages(eparam$disease <- NULL) # nolint
   expect_error(
     as_epidist(x = eparam[12, ]),
     regexp = "Object should be of class epiparam"
@@ -400,7 +400,7 @@ test_that("epiparam subsetting works as expected", {
 test_that("epiparam subsetting converts to data frame as expected", {
   eparam <- epiparam()
   expect_message(
-    res <- eparam[, -1],
+    res <- eparam[, -1], # nolint
     regexp = "Removing crucial column in `<epiparam>` returning `<data.frame>`"
   )
   expect_s3_class(res, class = "data.frame")
