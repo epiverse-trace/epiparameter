@@ -349,13 +349,14 @@ create_epidist_summary_stats <- function(mean = NA_real_,
   )
 }
 
-#' A helper function when creating an epidist object to create a summary
-#' statistics list with sensible defaults, type checking and arguments to help
-#' remember which summary statistics can be accepted in the list
-
-#' A helper function when creating an epidist object to create a citation list
-#' with sensible defaults, type checking and arguments to help remember which
-#' citation information is accepted in the list.
+#' Create a citation for an epidist object
+#'
+#' @description A helper function when creating an epidist object to create a
+#' citation list with sensible defaults, type checking and arguments to help
+#' remember which citation information is accepted in the list.
+#'
+#' @details This function acts as a wrapper around [`bibentry()`] to create
+#' citations for sources reporting epidemiological parameters.
 #'
 #' @param author A `character` string of the surname of the first author. This
 #' can be underscore separated from a second author, or underscore separated
@@ -371,7 +372,7 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #' @param DOI A `character` string of the Digital Object Identifier (DOI)
 #' assigned to papers which are unique to each paper.
 #'
-#' @return A character string of the formatted short citation
+#' @return A `bibentry` object of the citation
 #' @export
 #'
 #' @examples
