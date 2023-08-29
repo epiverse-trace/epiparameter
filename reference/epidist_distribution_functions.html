@@ -152,7 +152,7 @@ vector is returned</p>
 <span class="r-in"><span>  prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
 <span class="r-in"><span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as either author, year or DOI is missing</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as author, year, journal or title is missing</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># example of each distribution method for an `epidist` object</span></span></span>
 <span class="r-in"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/density.html" class="external-link">density</a></span><span class="op">(</span><span class="va">edist</span>, at <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
@@ -162,8 +162,8 @@ vector is returned</p>
 <span class="r-in"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">edist</span>, p <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2231436</span>
 <span class="r-in"><span><span class="fu">distributional</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">edist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.15510950 0.04174018 1.35943903 0.02715777 0.58688484 2.35339224</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.47045915 0.04842208 2.80952412 0.17321448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.7904167 0.2034870 0.4172202 4.5949025 1.6512810 0.9232983 0.6540200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 1.7817255 3.8646485 1.5638131</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">vb_edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="vb_epidist.html">vb_epidist</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  intrinsic_epidist <span class="op">=</span> <span class="fu"><a href="epidist.html">epidist</a></span><span class="op">(</span></span></span>
@@ -184,8 +184,8 @@ vector is returned</p>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as either author, year or DOI is missing</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as either author, year or DOI is missing</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as author, year, journal or title is missing</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as author, year, journal or title is missing</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># example of each distribution method for an `vb_epidist` object</span></span></span>
 <span class="r-in"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/density.html" class="external-link">density</a></span><span class="op">(</span><span class="va">vb_edist</span>, at <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
@@ -211,12 +211,12 @@ vector is returned</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">distributional</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">vb_edist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $intrinsic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.7582855 0.2675988 0.1716412 0.7006194 3.0959492 1.9983268 1.7121933</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.4045004 4.4564304 0.1776517</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.2917825 1.0271575 0.8352335 0.1660253 0.1269189 1.2325861 0.1430985</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.9479660 0.2557934 2.3613684</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $extrinsic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.51159791 0.03933133 0.56812676 2.88458344 0.98063488 0.24391311</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.47562124 0.35295003 0.48102166 0.04635576</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.42124372 2.89268061 0.63532555 0.01912275 0.29064293 0.38058068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 3.01300782 0.70625124 1.83984229 1.20488134</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

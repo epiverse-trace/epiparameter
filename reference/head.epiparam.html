@@ -96,20 +96,34 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="epiparam.html">epiparam</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       disease          pathogen         epi_distribution       author year</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Adenovirus        Adenovirus        incubation_period Lessler_etal 2009</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Chikungunya Chikungunya Virus        incubation_period Rudolph_etal 2014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal 2020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal 2020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    COVID-19        SARS-CoV-2        incubation_period   Alene_etal 2021</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6    COVID-19        SARS-CoV-2        incubation_period     Bui_etal 2020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   sample_size  region              transmission_mode           vector extrinsic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1          14     USA                   experimental             &lt;NA&gt;     FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2          21   Mixed                   vector_borne Aedes albopictus     FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3          39   China         natural_human_to_human             &lt;NA&gt;     FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4          39   China         natural_human_to_human             &lt;NA&gt;     FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        1453   Mixed natural_natural_human_to_human             &lt;NA&gt;     FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6          19 Vietnam natural_natural_human_to_human             &lt;NA&gt;     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       disease          pathogen         epi_distribution       author</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Adenovirus        Adenovirus        incubation_period Lessler_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Chikungunya Chikungunya Virus        incubation_period Rudolph_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    COVID-19        SARS-CoV-2        incubation_period   Alene_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6    COVID-19        SARS-CoV-2        incubation_period     Bui_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                            title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                                                                       Serial interval and incubation period of COVID-19: a systematic review and meta-analysis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                                                                                                     Estimation of the incubation period of COVID-19 in Vietnam</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 journal year sample_size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                        The Lancet Infectious Diseases 2009          14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 The American Journal of Tropical Medicine and Hygiene 2014          21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                          Journal of Clinical Medicine 2020          39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                          Journal of Clinical Medicine 2020          39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                               BMC Infectious Diseases 2021        1453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                              PLoS One 2020          19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    region              transmission_mode           vector extrinsic</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     USA                   experimental             &lt;NA&gt;     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   Mixed                   vector_borne Aedes albopictus     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   China         natural_human_to_human             &lt;NA&gt;     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   China         natural_human_to_human             &lt;NA&gt;     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   Mixed natural_natural_human_to_human             &lt;NA&gt;     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 Vietnam natural_natural_human_to_human             &lt;NA&gt;     FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   prob_distribution inference_method mean mean_ci_limits mean_ci    sd</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1             lnorm              mle   NA         NA, NA      NA    NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2             lnorm              mle   NA         NA, NA      NA    NA</span>
@@ -181,27 +195,41 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5 33706702    10.1186/s12879-021-05950-x</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6 33362233  10.1371/journal.pone.0243889</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="fu"><a href="epiparam.html">epiparam</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                disease             pathogen  epi_distribution       author year</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 113    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 114    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 115    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 116       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 117       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 118 Zika Virus Disease           Zika Virus incubation_period Lessler_etal 2016</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     sample_size region transmission_mode                             vector</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 113          18  Mixed          multiple                               &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 114           8  Mixed      vector_borne                           mosquito</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 115           6  Mixed  organ_transplant                               &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 116          91  Mixed          multiple                               &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 117          80  Mixed      vector_borne                           mosquito</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 118          25  Mixed      vector_borne Aedes aegypti and Aedes albopictus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     extrinsic prob_distribution inference_method mean mean_ci_limits mean_ci sd</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 113     FALSE             lnorm              mle   NA         NA, NA      NA NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 114     FALSE             lnorm              mle   NA         NA, NA      NA NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 115     FALSE             lnorm              mle   NA         NA, NA      NA NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 116     FALSE             lnorm              mle   NA         NA, NA      NA NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 117     FALSE             lnorm              mle   NA         NA, NA      NA NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 118     FALSE             lnorm         bayesian   NA         NA, NA      NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                disease             pathogen  epi_distribution       author</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113    West Nile Fever      West Nile Virus incubation_period Rudolph_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114    West Nile Fever      West Nile Virus incubation_period Rudolph_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115    West Nile Fever      West Nile Virus incubation_period Rudolph_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118 Zika Virus Disease           Zika Virus incubation_period Lessler_etal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                    title</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113                           Incubation periods of mosquito-borne viral infections: a systematic review</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114                           Incubation periods of mosquito-borne viral infections: a systematic review</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115                           Incubation periods of mosquito-borne viral infections: a systematic review</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116                           Incubation periods of mosquito-borne viral infections: a systematic review</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117                           Incubation periods of mosquito-borne viral infections: a systematic review</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118 Times to key events in Zika virus infection and implications for blood donation: a systematic review</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   journal year sample_size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113 The American Journal of Tropical Medicine and Hygiene 2014          18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114 The American Journal of Tropical Medicine and Hygiene 2014           8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115 The American Journal of Tropical Medicine and Hygiene 2014           6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116 The American Journal of Tropical Medicine and Hygiene 2014          91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117 The American Journal of Tropical Medicine and Hygiene 2014          80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118             Bulletin of the World Health Organization 2016          25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     region transmission_mode                             vector extrinsic</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113  Mixed          multiple                               &lt;NA&gt;     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114  Mixed      vector_borne                           mosquito     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115  Mixed  organ_transplant                               &lt;NA&gt;     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116  Mixed          multiple                               &lt;NA&gt;     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117  Mixed      vector_borne                           mosquito     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118  Mixed      vector_borne Aedes aegypti and Aedes albopictus     FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     prob_distribution inference_method mean mean_ci_limits mean_ci sd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113             lnorm              mle   NA         NA, NA      NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114             lnorm              mle   NA         NA, NA      NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115             lnorm              mle   NA         NA, NA      NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116             lnorm              mle   NA         NA, NA      NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117             lnorm              mle   NA         NA, NA      NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118             lnorm         bayesian   NA         NA, NA      NA NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     sd_ci_limits sd_ci quantile_2.5 quantile_5 quantile_25 median</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 113       NA, NA    NA           NA        1.0         1.7    2.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 114       NA, NA    NA           NA         NA         2.8    2.9</span>
