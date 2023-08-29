@@ -20,31 +20,8 @@ test_that("list_distributions works as expected with subset_db = FALSE", {
   eparam <- epiparam()
   dist_tbl <- list_distributions(epiparam = eparam, subset_db = FALSE)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(72L, 56L))
-  expect_named(
-    dist_tbl,
-    c(
-      "disease", "pathogen", "epi_distribution", "author", "year",
-      "sample_size", "region", "transmission_mode", "vector", "extrinsic",
-      "prob_distribution", "inference_method", "mean", "mean_ci_limits",
-      "mean_ci", "sd", "sd_ci_limits", "sd_ci",
-      "quantile_2.5",
-      "quantile_5", "quantile_25", "median", "median_ci_limits",
-      "median_ci",
-      "quantile_75", "quantile_87.5", "quantile_95", "quantile_97.5",
-      "lower_range", "upper_range", "shape", "shape_ci_limits",
-      "shape_ci",
-      "scale", "scale_ci_limits", "scale_ci", "meanlog",
-      "meanlog_ci_limits",
-      "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci",
-      "dispersion", "dispersion_ci_limits", "dispersion_ci",
-      "precision",
-      "precision_ci_limits", "precision_ci", "truncation",
-      "discretised",
-      "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
-      "DOI"
-    )
-  )
+  expect_identical(dim(dist_tbl), c(72L, 58L))
+  expect_named(dist_tbl, epiparam_fields())
   expect_snapshot(
     list_distributions(epiparam = eparam, subset_db = FALSE)
   )
@@ -81,25 +58,8 @@ test_that("list_distributions works for incubation, subset_db = FALSE", {
     subset_db = FALSE
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(72L, 56L))
-  expect_named(
-    incub_tbl,
-    c(
-      "disease", "pathogen", "epi_distribution", "author", "year",
-      "sample_size", "region", "transmission_mode", "vector", "extrinsic",
-      "prob_distribution", "inference_method", "mean", "mean_ci_limits",
-      "mean_ci", "sd", "sd_ci_limits", "sd_ci", "quantile_2.5",
-      "quantile_5", "quantile_25", "median", "median_ci_limits", "median_ci",
-      "quantile_75", "quantile_87.5", "quantile_95", "quantile_97.5",
-      "lower_range", "upper_range", "shape", "shape_ci_limits", "shape_ci",
-      "scale", "scale_ci_limits", "scale_ci", "meanlog", "meanlog_ci_limits",
-      "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci",
-      "dispersion", "dispersion_ci_limits", "dispersion_ci", "precision",
-      "precision_ci_limits", "precision_ci", "truncation", "discretised",
-      "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
-      "DOI"
-    )
-  )
+  expect_identical(dim(incub_tbl), c(72L, 58L))
+  expect_named(incub_tbl, epiparam_fields())
   expect_snapshot(
     list_distributions(
       epiparam = eparam,
@@ -140,25 +100,8 @@ test_that("list_distributions works for different dist, subset_db = FALSE", {
     subset_db = FALSE
   )
   expect_s3_class(serial_tbl, "data.frame")
-  expect_identical(dim(serial_tbl), c(15L, 56L))
-  expect_named(
-    serial_tbl,
-    c(
-      "disease", "pathogen", "epi_distribution", "author", "year",
-      "sample_size", "region", "transmission_mode", "vector", "extrinsic",
-      "prob_distribution", "inference_method", "mean", "mean_ci_limits",
-      "mean_ci", "sd", "sd_ci_limits", "sd_ci", "quantile_2.5",
-      "quantile_5", "quantile_25", "median", "median_ci_limits", "median_ci",
-      "quantile_75", "quantile_87.5", "quantile_95", "quantile_97.5",
-      "lower_range", "upper_range", "shape", "shape_ci_limits", "shape_ci",
-      "scale", "scale_ci_limits", "scale_ci", "meanlog", "meanlog_ci_limits",
-      "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci",
-      "dispersion", "dispersion_ci_limits", "dispersion_ci", "precision",
-      "precision_ci_limits", "precision_ci", "truncation", "discretised",
-      "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
-      "DOI"
-    )
-  )
+  expect_identical(dim(serial_tbl), c(15L, 58L))
+  expect_named(serial_tbl, epiparam_fields())
   expect_snapshot(
     list_distributions(
       epiparam = eparam,

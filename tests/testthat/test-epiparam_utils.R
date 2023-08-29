@@ -25,6 +25,8 @@ test_that("make_epidist works as expected for gamma", {
       pathogen = "influenza-A-H1N1pdm",
       epi_distribution = "incubation_period",
       author = "Ghani_etal",
+      title = "Incubation period of influenza",
+      journal = "Journal of Epi",
       year = 2009,
       sample_size = 16,
       region = "UK",
@@ -91,6 +93,8 @@ test_that("make_epidist works as expected for Weibull", {
     pathogen = "influenza-A-H1N1pdm",
     epi_distribution = "incubation_period",
     author = "Ghani_etal",
+    title = "Dynamics of H1N1pdm Influenza",
+    journal = "PLoS Current",
     year = 2009,
     sample_size = 16,
     region = "UK",
@@ -155,6 +159,8 @@ test_that("make_epidist works as expected for lognormal", {
     pathogen = "influenza-A-H1N1pdm",
     epi_distribution = "incubation_period",
     author = "Ghani_etal",
+    title = "Dynamics of H1N1pdm Influenza",
+    journal = "PLoS Current",
     year = 2009,
     sample_size = 16,
     region = "UK",
@@ -222,6 +228,8 @@ test_that("make_epidist works as expected for negative binomial", {
       pathogen = NA,
       epi_distribution = "offspring_distribution",
       author = "Smith_etal",
+      title = "Dynamics of H1N1pdm Influenza",
+      journal = "PLoS Current",
       year = 2002,
       sample_size = 45,
       region = "UK",
@@ -289,6 +297,8 @@ test_that("make_epidist works as expected for geometric", {
       pathogen = NA,
       epi_distribution = "offspring_distribution",
       author = "Smith_etal",
+      title = "Dynamics of H1N1pdm Influenza",
+      journal = "PLoS Current",
       year = 2002,
       sample_size = 45,
       region = "UK",
@@ -384,7 +394,7 @@ test_that("epiparam subsetting works as expected", {
   eparam <- eparam[, -ncol(eparam)]
 
   expect_s3_class(eparam, "epiparam")
-  expect_identical(ncol(eparam), 56L)
+  expect_identical(ncol(eparam), 58L)
 })
 
 test_that("epiparam subsetting converts to data frame as expected", {

@@ -10,20 +10,6 @@ test_that("epidist works with minimal viable input", {
 
   expect_s3_class(ebola_dist, class = "epidist")
   expect_length(ebola_dist, 9)
-  expect_named(
-    ebola_dist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
-  )
-  expect_type(ebola_dist$disease, "list")
-  expect_type(ebola_dist$epi_dist, "character")
-  expect_type(ebola_dist$prob_dist, "list")
-  expect_type(ebola_dist$uncertainty, "list")
-  expect_type(ebola_dist$summary_stats, "list")
-  expect_type(ebola_dist$citation, "character")
-  expect_type(ebola_dist$metadata, "list")
-  expect_type(ebola_dist$method_assess, "list")
-  expect_type(ebola_dist$notes, "character")
 })
 
 test_that("epidist works with all arguments set", {
@@ -98,20 +84,6 @@ test_that("epidist works with all arguments set", {
   )
   expect_s3_class(mers_dist, class = "epidist")
   expect_length(mers_dist, 9)
-  expect_named(
-    mers_dist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
-  )
-  expect_type(mers_dist$disease, "list")
-  expect_type(mers_dist$epi_dist, "character")
-  expect_type(mers_dist$prob_dist, "list")
-  expect_type(mers_dist$uncertainty, "list")
-  expect_type(mers_dist$summary_stats, "list")
-  expect_type(mers_dist$citation, "character")
-  expect_type(mers_dist$metadata, "list")
-  expect_type(mers_dist$method_assess, "list")
-  expect_type(mers_dist$notes, "character")
 })
 
 test_that("epidist works with default helper functions", {
@@ -134,20 +106,6 @@ test_that("epidist works with default helper functions", {
 
   expect_s3_class(sars_dist, class = "epidist")
   expect_length(sars_dist, 9)
-  expect_named(
-    sars_dist,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
-  )
-  expect_type(sars_dist$disease, "list")
-  expect_type(sars_dist$epi_dist, "character")
-  expect_type(sars_dist$prob_dist, "list")
-  expect_type(sars_dist$uncertainty, "list")
-  expect_type(sars_dist$summary_stats, "list")
-  expect_type(sars_dist$citation, "character")
-  expect_type(sars_dist$metadata, "list")
-  expect_type(sars_dist$method_assess, "list")
-  expect_type(sars_dist$notes, "character")
 })
 
 test_that("epidist fails as expected", {
@@ -272,71 +230,73 @@ test_that("epidist.plot works with non-default day_range", {
 
 test_that("new_epidist works with minimal viable input", {
 
-  epidist_obj <- new_epidist(
-    disease = list(
-      disease = "ebola",
-      pathogen = "ebola_virus"
-    ),
-    epi_dist = "incubation",
-    prob_dist = "gamma",
-    prob_dist_params = c(shape = 1, scale = 1),
-    uncertainty = list(
-      shape = create_epidist_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
+  epidist_obj <- suppressMessages(
+    new_epidist(
+      disease = list(
+        disease = "ebola",
+        pathogen = "ebola_virus"
       ),
-      scale = create_epidist_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
-      )
-    ),
-    citation = "Smith (2002) <10.128372837>",
-    truncation = NA
+      epi_dist = "incubation",
+      prob_dist = "gamma",
+      prob_dist_params = c(shape = 1, scale = 1),
+      uncertainty = list(
+        shape = create_epidist_uncertainty(
+          ci_limits = c(0, 2),
+          ci = 95,
+          ci_type = "confidence interval"
+        ),
+        scale = create_epidist_uncertainty(
+          ci_limits = c(0, 2),
+          ci = 95,
+          ci_type = "confidence interval"
+        )
+      ),
+      citation = create_epidist_citation(
+        author = "Smith_etal",
+        year = 2002,
+        title = "Ebola incubation",
+        journal = "Journal of Epi"
+      ),
+      truncation = NA
+    )
   )
 
   expect_s3_class(epidist_obj, class = "epidist")
   expect_length(epidist_obj, 9)
-  expect_named(
-    epidist_obj,
-    c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-      "citation", "metadata", "method_assess", "notes")
-  )
-  expect_type(epidist_obj$disease, "list")
-  expect_type(epidist_obj$epi_dist, "character")
-  expect_type(epidist_obj$prob_dist, "list")
-  expect_type(epidist_obj$uncertainty, "list")
-  expect_type(epidist_obj$summary_stats, "list")
-  expect_type(epidist_obj$citation, "character")
-  expect_type(epidist_obj$metadata, "list")
-  expect_type(epidist_obj$method_assess, "list")
-  expect_type(epidist_obj$notes, "character")
+  expect_s3_class(validate_epidist(epidist_obj), class = "epidist")
 })
 
 test_that("validate_epidist passes when expected", {
-  epidist_obj <- new_epidist(
-    disease = list(
-      disease = "ebola",
-      pathogen = "ebola_virus"
-    ),
-    epi_dist = "incubation",
-    prob_dist = "gamma",
-    prob_dist_params = c(shape = 1, scale = 1),
-    uncertainty = list(
-      shape = create_epidist_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
+  epidist_obj <- suppressMessages(
+    new_epidist(
+      disease = list(
+        disease = "ebola",
+        pathogen = "ebola_virus"
       ),
-      scale = create_epidist_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
-      )
-    ),
-    citation = "Smith (2002) <10.128372837>",
-    truncation = NA
+      epi_dist = "incubation",
+      prob_dist = "gamma",
+      prob_dist_params = c(shape = 1, scale = 1),
+      uncertainty = list(
+        shape = create_epidist_uncertainty(
+          ci_limits = c(0, 2),
+          ci = 95,
+          ci_type = "confidence interval"
+        ),
+        scale = create_epidist_uncertainty(
+          ci_limits = c(0, 2),
+          ci = 95,
+          ci_type = "confidence interval"
+        )
+      ),
+      citation = create_epidist_citation(
+        author = "Smith_etal",
+        year = 2000,
+        title = "Ebola incubation",
+        journal = "Journal of Epi",
+        DOI = "10.1872372hc"
+      ),
+      truncation = NA
+    )
   )
 
   expect_silent(validate_epidist(epidist = epidist_obj))

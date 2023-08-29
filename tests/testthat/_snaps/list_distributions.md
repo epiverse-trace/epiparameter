@@ -228,79 +228,225 @@
       70          Yellow Fever        Yellow Fever Viruses incubation_period
       71          Yellow Fever        Yellow Fever Viruses incubation_period
       72    Zika Virus Disease                  Zika Virus incubation_period
-                          author year sample_size
-      1             Lessler_etal 2009          14
-      2             Rudolph_etal 2014          21
-      3               Alene_etal 2021        1453
-      4                 Bui_etal 2020          19
-      5               Elias_etal 2021       28675
-      6               Lauer_etal 2020         181
-      7               Lauer_etal 2020          99
-      8               Lauer_etal 2020         108
-      9               Lauer_etal 2020          73
-      10             Linton_etal 2020          52
-      11             Linton_etal 2020         158
-      12             Linton_etal 2020          52
-      13            McAloon_etal 2020        1357
-      14            McAloon_etal 2020        1269
-      15                Men_etal 2020          59
-      16                Rai_etal 2022        6241
-      17          Chan_Johansson 2012         146
-      18          Chan_Johansson 2012         146
-      19          Chan_Johansson 2012         153
-      20            Rudolph_etal 2014         169
-      21            Rudolph_etal 2014         124
-      22            Eichner_etal 2011         196
-      23 WHO_Ebola_Response_Team 2015          49
-      24 WHO_Ebola_Response_Team 2015         957
-      25 WHO_Ebola_Response_Team 2015         792
-      26  WHO_Ebola_ResponseTeam 2015        1798
-      27            Lessler_etal 2009          13
-      28              Ghani_etal 2009          16
-      29            Lessler_etal 2009         151
-      30            Lessler_etal 2009          90
-      31            Lessler_etal 2009          78
-      32            Lessler_etal 2009         124
-      33          Nishiura_Inaba 2011          72
-      34          Nishiura_Inaba 2011          72
-      35              Reich_etal 2009         151
-      36              Reich_etal 2009         151
-      37              Tuite_etal 2010         316
-      38          Virlogeux_etal 2015         229
-      39          Virlogeux_etal 2015         229
-      40          Virlogeux_etal 2016         395
-      41          Virlogeux_etal 2016         173
-      42          Virlogeux_etal 2016         222
-      43            Rudolph_etal 2014           6
-      44                  Pavlin 2014          76
-      45                  Pavlin 2014          18
-      46            Lessler_etal 2009          55
-      47             Assiri_etal 2013          23
-      48            Cowling_etal 2015         166
-      49           Charniga_etal 2022          22
-      50            Guzetta_etal 2022         255
-      51           Madewell_etal 2022          35
-      52           Madewell_etal 2022          36
-      53              Miura_etal 2022          18
-      54               Wang_etal 2022          16
-      55               Wang_etal 2022          27
-      56               Wang_etal 2022         114
-      57                Wei_etal 2022          NA
-      58                Wei_etal 2022          NA
-      59                Wei_etal 2022          NA
-      60            Lessler_etal 2009          11
-      61            Lessler_etal 2009          28
-      62            Rudolph_etal 2014          23
-      63            Lessler_etal 2009          24
-      64              Reich_etal 2009          24
-      65              Reich_etal 2009          24
-      66            Lessler_etal 2009         157
-      67            Rudolph_etal 2014          18
-      68            Rudolph_etal 2014           8
-      69            Rudolph_etal 2014           6
-      70            Rudolph_etal 2014          91
-      71            Rudolph_etal 2014          80
-      72            Lessler_etal 2016          25
+                          author
+      1             Lessler_etal
+      2             Rudolph_etal
+      3               Alene_etal
+      4                 Bui_etal
+      5               Elias_etal
+      6               Lauer_etal
+      7               Lauer_etal
+      8               Lauer_etal
+      9               Lauer_etal
+      10             Linton_etal
+      11             Linton_etal
+      12             Linton_etal
+      13            McAloon_etal
+      14            McAloon_etal
+      15                Men_etal
+      16                Rai_etal
+      17          Chan_Johansson
+      18          Chan_Johansson
+      19          Chan_Johansson
+      20            Rudolph_etal
+      21            Rudolph_etal
+      22            Eichner_etal
+      23 WHO_Ebola_Response_Team
+      24 WHO_Ebola_Response_Team
+      25 WHO_Ebola_Response_Team
+      26  WHO_Ebola_ResponseTeam
+      27            Lessler_etal
+      28              Ghani_etal
+      29            Lessler_etal
+      30            Lessler_etal
+      31            Lessler_etal
+      32            Lessler_etal
+      33          Nishiura_Inaba
+      34          Nishiura_Inaba
+      35              Reich_etal
+      36              Reich_etal
+      37              Tuite_etal
+      38          Virlogeux_etal
+      39          Virlogeux_etal
+      40          Virlogeux_etal
+      41          Virlogeux_etal
+      42          Virlogeux_etal
+      43            Rudolph_etal
+      44                  Pavlin
+      45                  Pavlin
+      46            Lessler_etal
+      47             Assiri_etal
+      48            Cowling_etal
+      49           Charniga_etal
+      50            Guzetta_etal
+      51           Madewell_etal
+      52           Madewell_etal
+      53              Miura_etal
+      54               Wang_etal
+      55               Wang_etal
+      56               Wang_etal
+      57                Wei_etal
+      58                Wei_etal
+      59                Wei_etal
+      60            Lessler_etal
+      61            Lessler_etal
+      62            Rudolph_etal
+      63            Lessler_etal
+      64              Reich_etal
+      65              Reich_etal
+      66            Lessler_etal
+      67            Rudolph_etal
+      68            Rudolph_etal
+      69            Rudolph_etal
+      70            Rudolph_etal
+      71            Rudolph_etal
+      72            Lessler_etal
+                                                                                                                                                                                  title
+      1                                                                                                   Incubation periods of acute respiratory viral infections: a systematic review
+      2                                                                                                      Incubation periods of mosquito-borne viral infections: a systematic review
+      3                                                                                        Serial interval and incubation period of COVID-19: a systematic review and meta-analysis
+      4                                                                                                                      Estimation of the incubation period of COVID-19 in Vietnam
+      5                                                                                                                              The incubation period of COVID-19: A meta-analysis
+      6                                                 The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application
+      7                                                 The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application
+      8                                                 The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application
+      9                                                 The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application
+      10 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data
+      11 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data
+      12 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data
+      13                                                                           Incubation period of COVID-19: a rapid systematic review and meta-analysis of observational research
+      14                                                                           Incubation period of COVID-19: a rapid systematic review and meta-analysis of observational research
+      15                                                                                                                  Estimate the incubation period of coronavirus 2019 (COVID-19)
+      16                                                                                                          Incubation period for COVID-19: a systematic review and meta-analysis
+      17                                                                                                                                       The Incubation Periods of Dengue Viruses
+      18                                                                                                                                       The Incubation Periods of Dengue Viruses
+      19                                                                                                                                       The Incubation Periods of Dengue Viruses
+      20                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      21                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      22                                                                                                                     Incubation period of ebola hemorrhagic virus subtype zaire
+      23                                                                                                 West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      24                                                                                                 West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      25                                                                                                 West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      26                                                                                                 West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      27                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      28                                                                                                     The Early Transmission Dynamics of H1N1pdm Influenza in the United Kingdom
+      29                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      30                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      31                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      32                                                                                                         Outbreak of 2009 Pandemic Influenza A (H1N1) at a New York City School
+      33                     Estimation of the incubation period of influenza A (H1N1-2009) among imported cases: addressing censoring using outbreak data at the origin of importation
+      34                     Estimation of the incubation period of influenza A (H1N1-2009) among imported cases: addressing censoring using outbreak data at the origin of importation
+      35                                                                                                                    Estimating incubation period distributions with coarse data
+      36                                                                                                                    Estimating incubation period distributions with coarse data
+      37                                                                                       Estimated epidemiologic parameters and morbidity associated with pandemic H1N1 influenza
+      38                                                                        Estimating the Distribution of the Incubation Periods of Human Avian Influenza A(H7N9) Virus Infections
+      39                                                                        Estimating the Distribution of the Incubation Periods of Human Avian Influenza A(H7N9) Virus Infections
+      40                                                                     Association between the Severity of Influenza A(H7N9) Virus Infections and Length of the Incubation Period
+      41                                                                     Association between the Severity of Influenza A(H7N9) Virus Infections and Length of the Incubation Period
+      42                                                                     Association between the Severity of Influenza A(H7N9) Virus Infections and Length of the Incubation Period
+      43                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      44                                                                          Calculation of incubation period and serial interval from multiple outbreaks of Marburg virus disease
+      45                                                                          Calculation of incubation period and serial interval from multiple outbreaks of Marburg virus disease
+      46                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      47                                                                                                              Hospital Outbreak of Middle East Respiratory Syndrome Coronavirus
+      48                                                                                   Preliminary epidemiological assessment of MERS-CoV outbreak in South Korea, May to June 2015
+      49                                                                                    Estimating the incubation period of monkeypox virus during the 2022 multi-national outbreak
+      50                                                                 Early Estimates of Monkeypox Incubation Period, Generation Time, and Reproduction Number, Italy, May-June 2022
+      51                                                       Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2022
+      52                                                       Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2023
+      53                                                                                         Estimated incubation period for monkeypox cases confirmed in the Netherlands, May 2022
+      54                                                                                                          Serial intervals and incubation periods of the monkeypox virus clades
+      55                                                                                                          Serial intervals and incubation periods of the monkeypox virus clades
+      56                                                                                                          Serial intervals and incubation periods of the monkeypox virus clades
+      57                                                                                                                     Study and prediction of the 2022 global monkeypox epidemic
+      58                                                                                                                     Study and prediction of the 2022 global monkeypox epidemic
+      59                                                                                                                     Study and prediction of the 2022 global monkeypox epidemic
+      60                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      61                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      62                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      63                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      64                                                                                                                    Estimating incubation period distributions with coarse data
+      65                                                                                                                    Estimating incubation period distributions with coarse data
+      66                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      67                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      68                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      69                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      70                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      71                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      72                                                                           Times to key events in Zika virus infection and implications for blood donation: a systematic review
+                                                       journal year sample_size
+      1                         The Lancet Infectious Diseases 2009          14
+      2  The American Journal of Tropical Medicine and Hygiene 2014          21
+      3                                BMC Infectious Diseases 2021        1453
+      4                                               PLoS One 2020          19
+      5           International Journal of Infectious Diseases 2021       28675
+      6                            Annals of Internal Medicine 2020         181
+      7                            Annals of Internal Medicine 2020          99
+      8                            Annals of Internal Medicine 2020         108
+      9                            Annals of Internal Medicine 2020          73
+      10                          Journal of Clinical Medicine 2020          52
+      11                          Journal of Clinical Medicine 2020         158
+      12                          Journal of Clinical Medicine 2020          52
+      13                                              BMJ Open 2020        1357
+      14                                              BMJ Open 2020        1269
+      15                                               medRxiv 2020          59
+      16             Zeitschrift fur Gesundheitswissenschaften 2022        6241
+      17                                              PLoS One 2012         146
+      18                                              PLoS One 2012         146
+      19                                              PLoS One 2012         153
+      20 The American Journal of Tropical Medicine and Hygiene 2014         169
+      21 The American Journal of Tropical Medicine and Hygiene 2014         124
+      22         Osong Public Health and Research Perspectives 2011         196
+      23                   The New England Journal of Medicine 2015          49
+      24                   The New England Journal of Medicine 2015         957
+      25                   The New England Journal of Medicine 2015         792
+      26                   The New England Journal of Medicine 2015        1798
+      27                        The Lancet Infectious Diseases 2009          13
+      28                                         PLoS Currents 2009          16
+      29                        The Lancet Infectious Diseases 2009         151
+      30                        The Lancet Infectious Diseases 2009          90
+      31                        The Lancet Infectious Diseases 2009          78
+      32                   The New England Journal of Medicine 2009         124
+      33                        Journal of Theoretical Biology 2011          72
+      34                        Journal of Theoretical Biology 2011          72
+      35                                Statistics in Medicine 2009         151
+      36                                Statistics in Medicine 2009         151
+      37                  Canadian Medical Association Journal 2010         316
+      38                      American Journal of Epidemiology 2015         229
+      39                      American Journal of Epidemiology 2015         229
+      40                                              PLoS One 2016         395
+      41                                              PLoS One 2016         173
+      42                                              PLoS One 2016         222
+      43 The American Journal of Tropical Medicine and Hygiene 2014           6
+      44                                    BMC Research Notes 2014          76
+      45                                    BMC Research Notes 2014          18
+      46                        The Lancet Infectious Diseases 2009          55
+      47                   The New England Journal of Medicine 2013          23
+      48                                      Eurosurveillance 2015         166
+      49                                               medRxiv 2022          22
+      50                          Emerging Infectious Diseases 2022         255
+      51                                               medRxiv 2022          35
+      52                                               medRxiv 2022          36
+      53                                      Eurosurveillance 2022          18
+      54                            Journal of Travel Medicine 2022          16
+      55                            Journal of Travel Medicine 2022          27
+      56                            Journal of Travel Medicine 2022         114
+      57                  Journal of Biosafety and Biosecurity 2022          NA
+      58                  Journal of Biosafety and Biosecurity 2022          NA
+      59                  Journal of Biosafety and Biosecurity 2022          NA
+      60                        The Lancet Infectious Diseases 2009          11
+      61                        The Lancet Infectious Diseases 2009          28
+      62 The American Journal of Tropical Medicine and Hygiene 2014          23
+      63                        The Lancet Infectious Diseases 2009          24
+      64                                Statistics in Medicine 2009          24
+      65                                Statistics in Medicine 2009          24
+      66                        The Lancet Infectious Diseases 2009         157
+      67 The American Journal of Tropical Medicine and Hygiene 2014          18
+      68 The American Journal of Tropical Medicine and Hygiene 2014           8
+      69 The American Journal of Tropical Medicine and Hygiene 2014           6
+      70 The American Journal of Tropical Medicine and Hygiene 2014          91
+      71 The American Journal of Tropical Medicine and Hygiene 2014          80
+      72             Bulletin of the World Health Organization 2016          25
                                        region              transmission_mode
       1                                   USA                   experimental
       2                                 Mixed                   vector_borne
@@ -1408,79 +1554,225 @@
       70          Yellow Fever        Yellow Fever Viruses incubation_period
       71          Yellow Fever        Yellow Fever Viruses incubation_period
       72    Zika Virus Disease                  Zika Virus incubation_period
-                          author year sample_size
-      1             Lessler_etal 2009          14
-      2             Rudolph_etal 2014          21
-      3               Alene_etal 2021        1453
-      4                 Bui_etal 2020          19
-      5               Elias_etal 2021       28675
-      6               Lauer_etal 2020         181
-      7               Lauer_etal 2020          99
-      8               Lauer_etal 2020         108
-      9               Lauer_etal 2020          73
-      10             Linton_etal 2020          52
-      11             Linton_etal 2020         158
-      12             Linton_etal 2020          52
-      13            McAloon_etal 2020        1357
-      14            McAloon_etal 2020        1269
-      15                Men_etal 2020          59
-      16                Rai_etal 2022        6241
-      17          Chan_Johansson 2012         146
-      18          Chan_Johansson 2012         146
-      19          Chan_Johansson 2012         153
-      20            Rudolph_etal 2014         169
-      21            Rudolph_etal 2014         124
-      22            Eichner_etal 2011         196
-      23 WHO_Ebola_Response_Team 2015          49
-      24 WHO_Ebola_Response_Team 2015         957
-      25 WHO_Ebola_Response_Team 2015         792
-      26  WHO_Ebola_ResponseTeam 2015        1798
-      27            Lessler_etal 2009          13
-      28              Ghani_etal 2009          16
-      29            Lessler_etal 2009         151
-      30            Lessler_etal 2009          90
-      31            Lessler_etal 2009          78
-      32            Lessler_etal 2009         124
-      33          Nishiura_Inaba 2011          72
-      34          Nishiura_Inaba 2011          72
-      35              Reich_etal 2009         151
-      36              Reich_etal 2009         151
-      37              Tuite_etal 2010         316
-      38          Virlogeux_etal 2015         229
-      39          Virlogeux_etal 2015         229
-      40          Virlogeux_etal 2016         395
-      41          Virlogeux_etal 2016         173
-      42          Virlogeux_etal 2016         222
-      43            Rudolph_etal 2014           6
-      44                  Pavlin 2014          76
-      45                  Pavlin 2014          18
-      46            Lessler_etal 2009          55
-      47             Assiri_etal 2013          23
-      48            Cowling_etal 2015         166
-      49           Charniga_etal 2022          22
-      50            Guzetta_etal 2022         255
-      51           Madewell_etal 2022          35
-      52           Madewell_etal 2022          36
-      53              Miura_etal 2022          18
-      54               Wang_etal 2022          16
-      55               Wang_etal 2022          27
-      56               Wang_etal 2022         114
-      57                Wei_etal 2022          NA
-      58                Wei_etal 2022          NA
-      59                Wei_etal 2022          NA
-      60            Lessler_etal 2009          11
-      61            Lessler_etal 2009          28
-      62            Rudolph_etal 2014          23
-      63            Lessler_etal 2009          24
-      64              Reich_etal 2009          24
-      65              Reich_etal 2009          24
-      66            Lessler_etal 2009         157
-      67            Rudolph_etal 2014          18
-      68            Rudolph_etal 2014           8
-      69            Rudolph_etal 2014           6
-      70            Rudolph_etal 2014          91
-      71            Rudolph_etal 2014          80
-      72            Lessler_etal 2016          25
+                          author
+      1             Lessler_etal
+      2             Rudolph_etal
+      3               Alene_etal
+      4                 Bui_etal
+      5               Elias_etal
+      6               Lauer_etal
+      7               Lauer_etal
+      8               Lauer_etal
+      9               Lauer_etal
+      10             Linton_etal
+      11             Linton_etal
+      12             Linton_etal
+      13            McAloon_etal
+      14            McAloon_etal
+      15                Men_etal
+      16                Rai_etal
+      17          Chan_Johansson
+      18          Chan_Johansson
+      19          Chan_Johansson
+      20            Rudolph_etal
+      21            Rudolph_etal
+      22            Eichner_etal
+      23 WHO_Ebola_Response_Team
+      24 WHO_Ebola_Response_Team
+      25 WHO_Ebola_Response_Team
+      26  WHO_Ebola_ResponseTeam
+      27            Lessler_etal
+      28              Ghani_etal
+      29            Lessler_etal
+      30            Lessler_etal
+      31            Lessler_etal
+      32            Lessler_etal
+      33          Nishiura_Inaba
+      34          Nishiura_Inaba
+      35              Reich_etal
+      36              Reich_etal
+      37              Tuite_etal
+      38          Virlogeux_etal
+      39          Virlogeux_etal
+      40          Virlogeux_etal
+      41          Virlogeux_etal
+      42          Virlogeux_etal
+      43            Rudolph_etal
+      44                  Pavlin
+      45                  Pavlin
+      46            Lessler_etal
+      47             Assiri_etal
+      48            Cowling_etal
+      49           Charniga_etal
+      50            Guzetta_etal
+      51           Madewell_etal
+      52           Madewell_etal
+      53              Miura_etal
+      54               Wang_etal
+      55               Wang_etal
+      56               Wang_etal
+      57                Wei_etal
+      58                Wei_etal
+      59                Wei_etal
+      60            Lessler_etal
+      61            Lessler_etal
+      62            Rudolph_etal
+      63            Lessler_etal
+      64              Reich_etal
+      65              Reich_etal
+      66            Lessler_etal
+      67            Rudolph_etal
+      68            Rudolph_etal
+      69            Rudolph_etal
+      70            Rudolph_etal
+      71            Rudolph_etal
+      72            Lessler_etal
+                                                                                                                                                                                  title
+      1                                                                                                   Incubation periods of acute respiratory viral infections: a systematic review
+      2                                                                                                      Incubation periods of mosquito-borne viral infections: a systematic review
+      3                                                                                        Serial interval and incubation period of COVID-19: a systematic review and meta-analysis
+      4                                                                                                                      Estimation of the incubation period of COVID-19 in Vietnam
+      5                                                                                                                              The incubation period of COVID-19: A meta-analysis
+      6                                                 The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application
+      7                                                 The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application
+      8                                                 The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application
+      9                                                 The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application
+      10 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data
+      11 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data
+      12 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data
+      13                                                                           Incubation period of COVID-19: a rapid systematic review and meta-analysis of observational research
+      14                                                                           Incubation period of COVID-19: a rapid systematic review and meta-analysis of observational research
+      15                                                                                                                  Estimate the incubation period of coronavirus 2019 (COVID-19)
+      16                                                                                                          Incubation period for COVID-19: a systematic review and meta-analysis
+      17                                                                                                                                       The Incubation Periods of Dengue Viruses
+      18                                                                                                                                       The Incubation Periods of Dengue Viruses
+      19                                                                                                                                       The Incubation Periods of Dengue Viruses
+      20                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      21                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      22                                                                                                                     Incubation period of ebola hemorrhagic virus subtype zaire
+      23                                                                                                 West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      24                                                                                                 West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      25                                                                                                 West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      26                                                                                                 West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      27                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      28                                                                                                     The Early Transmission Dynamics of H1N1pdm Influenza in the United Kingdom
+      29                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      30                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      31                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      32                                                                                                         Outbreak of 2009 Pandemic Influenza A (H1N1) at a New York City School
+      33                     Estimation of the incubation period of influenza A (H1N1-2009) among imported cases: addressing censoring using outbreak data at the origin of importation
+      34                     Estimation of the incubation period of influenza A (H1N1-2009) among imported cases: addressing censoring using outbreak data at the origin of importation
+      35                                                                                                                    Estimating incubation period distributions with coarse data
+      36                                                                                                                    Estimating incubation period distributions with coarse data
+      37                                                                                       Estimated epidemiologic parameters and morbidity associated with pandemic H1N1 influenza
+      38                                                                        Estimating the Distribution of the Incubation Periods of Human Avian Influenza A(H7N9) Virus Infections
+      39                                                                        Estimating the Distribution of the Incubation Periods of Human Avian Influenza A(H7N9) Virus Infections
+      40                                                                     Association between the Severity of Influenza A(H7N9) Virus Infections and Length of the Incubation Period
+      41                                                                     Association between the Severity of Influenza A(H7N9) Virus Infections and Length of the Incubation Period
+      42                                                                     Association between the Severity of Influenza A(H7N9) Virus Infections and Length of the Incubation Period
+      43                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      44                                                                          Calculation of incubation period and serial interval from multiple outbreaks of Marburg virus disease
+      45                                                                          Calculation of incubation period and serial interval from multiple outbreaks of Marburg virus disease
+      46                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      47                                                                                                              Hospital Outbreak of Middle East Respiratory Syndrome Coronavirus
+      48                                                                                   Preliminary epidemiological assessment of MERS-CoV outbreak in South Korea, May to June 2015
+      49                                                                                    Estimating the incubation period of monkeypox virus during the 2022 multi-national outbreak
+      50                                                                 Early Estimates of Monkeypox Incubation Period, Generation Time, and Reproduction Number, Italy, May-June 2022
+      51                                                       Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2022
+      52                                                       Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2023
+      53                                                                                         Estimated incubation period for monkeypox cases confirmed in the Netherlands, May 2022
+      54                                                                                                          Serial intervals and incubation periods of the monkeypox virus clades
+      55                                                                                                          Serial intervals and incubation periods of the monkeypox virus clades
+      56                                                                                                          Serial intervals and incubation periods of the monkeypox virus clades
+      57                                                                                                                     Study and prediction of the 2022 global monkeypox epidemic
+      58                                                                                                                     Study and prediction of the 2022 global monkeypox epidemic
+      59                                                                                                                     Study and prediction of the 2022 global monkeypox epidemic
+      60                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      61                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      62                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      63                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      64                                                                                                                    Estimating incubation period distributions with coarse data
+      65                                                                                                                    Estimating incubation period distributions with coarse data
+      66                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      67                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      68                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      69                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      70                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      71                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      72                                                                           Times to key events in Zika virus infection and implications for blood donation: a systematic review
+                                                       journal year sample_size
+      1                         The Lancet Infectious Diseases 2009          14
+      2  The American Journal of Tropical Medicine and Hygiene 2014          21
+      3                                BMC Infectious Diseases 2021        1453
+      4                                               PLoS One 2020          19
+      5           International Journal of Infectious Diseases 2021       28675
+      6                            Annals of Internal Medicine 2020         181
+      7                            Annals of Internal Medicine 2020          99
+      8                            Annals of Internal Medicine 2020         108
+      9                            Annals of Internal Medicine 2020          73
+      10                          Journal of Clinical Medicine 2020          52
+      11                          Journal of Clinical Medicine 2020         158
+      12                          Journal of Clinical Medicine 2020          52
+      13                                              BMJ Open 2020        1357
+      14                                              BMJ Open 2020        1269
+      15                                               medRxiv 2020          59
+      16             Zeitschrift fur Gesundheitswissenschaften 2022        6241
+      17                                              PLoS One 2012         146
+      18                                              PLoS One 2012         146
+      19                                              PLoS One 2012         153
+      20 The American Journal of Tropical Medicine and Hygiene 2014         169
+      21 The American Journal of Tropical Medicine and Hygiene 2014         124
+      22         Osong Public Health and Research Perspectives 2011         196
+      23                   The New England Journal of Medicine 2015          49
+      24                   The New England Journal of Medicine 2015         957
+      25                   The New England Journal of Medicine 2015         792
+      26                   The New England Journal of Medicine 2015        1798
+      27                        The Lancet Infectious Diseases 2009          13
+      28                                         PLoS Currents 2009          16
+      29                        The Lancet Infectious Diseases 2009         151
+      30                        The Lancet Infectious Diseases 2009          90
+      31                        The Lancet Infectious Diseases 2009          78
+      32                   The New England Journal of Medicine 2009         124
+      33                        Journal of Theoretical Biology 2011          72
+      34                        Journal of Theoretical Biology 2011          72
+      35                                Statistics in Medicine 2009         151
+      36                                Statistics in Medicine 2009         151
+      37                  Canadian Medical Association Journal 2010         316
+      38                      American Journal of Epidemiology 2015         229
+      39                      American Journal of Epidemiology 2015         229
+      40                                              PLoS One 2016         395
+      41                                              PLoS One 2016         173
+      42                                              PLoS One 2016         222
+      43 The American Journal of Tropical Medicine and Hygiene 2014           6
+      44                                    BMC Research Notes 2014          76
+      45                                    BMC Research Notes 2014          18
+      46                        The Lancet Infectious Diseases 2009          55
+      47                   The New England Journal of Medicine 2013          23
+      48                                      Eurosurveillance 2015         166
+      49                                               medRxiv 2022          22
+      50                          Emerging Infectious Diseases 2022         255
+      51                                               medRxiv 2022          35
+      52                                               medRxiv 2022          36
+      53                                      Eurosurveillance 2022          18
+      54                            Journal of Travel Medicine 2022          16
+      55                            Journal of Travel Medicine 2022          27
+      56                            Journal of Travel Medicine 2022         114
+      57                  Journal of Biosafety and Biosecurity 2022          NA
+      58                  Journal of Biosafety and Biosecurity 2022          NA
+      59                  Journal of Biosafety and Biosecurity 2022          NA
+      60                        The Lancet Infectious Diseases 2009          11
+      61                        The Lancet Infectious Diseases 2009          28
+      62 The American Journal of Tropical Medicine and Hygiene 2014          23
+      63                        The Lancet Infectious Diseases 2009          24
+      64                                Statistics in Medicine 2009          24
+      65                                Statistics in Medicine 2009          24
+      66                        The Lancet Infectious Diseases 2009         157
+      67 The American Journal of Tropical Medicine and Hygiene 2014          18
+      68 The American Journal of Tropical Medicine and Hygiene 2014           8
+      69 The American Journal of Tropical Medicine and Hygiene 2014           6
+      70 The American Journal of Tropical Medicine and Hygiene 2014          91
+      71 The American Journal of Tropical Medicine and Hygiene 2014          80
+      72             Bulletin of the World Health Organization 2016          25
                                        region              transmission_mode
       1                                   USA                   experimental
       2                                 Mixed                   vector_borne
@@ -2417,22 +2709,54 @@
       13                  Mpox          Mpox Virus  serial_interval
       14                  Mpox  Mpox Virus Clade I  serial_interval
       15                  Mpox          Mpox Virus  serial_interval
-                          author year sample_size       region
-      1               Alene_etal 2021        3924        Mixed
-      2  WHO_Ebola_Response_Team 2015         305  West Africa
-      3  WHO_Ebola_Response_Team 2015          37       Guinea
-      4  WHO_Ebola_Response_Team 2015         147      Liberia
-      5  WHO_Ebola_Response_Team 2015         112 Sierra Leone
-      6               Ghani_etal 2009          58           UK
-      7            Ajelli_Merler 2012         374       Angola
-      8                   Pavlin 2014          38        Mixed
-      9              Assiri_etal 2013          23 Saudi Arabia
-      10            Cowling_etal 2015          99  South Korea
-      11                Guo_etal 2022          42        Mixed
-      12           Madewell_etal 2022          57          USA
-      13           Madewell_etal 2022          40          USA
-      14               Wang_etal 2022          16        Congo
-      15               Wang_etal 2022          34        Mixed
+                          author
+      1               Alene_etal
+      2  WHO_Ebola_Response_Team
+      3  WHO_Ebola_Response_Team
+      4  WHO_Ebola_Response_Team
+      5  WHO_Ebola_Response_Team
+      6               Ghani_etal
+      7            Ajelli_Merler
+      8                   Pavlin
+      9              Assiri_etal
+      10            Cowling_etal
+      11                Guo_etal
+      12           Madewell_etal
+      13           Madewell_etal
+      14               Wang_etal
+      15               Wang_etal
+                                                                                                                            title
+      1                                  Serial interval and incubation period of COVID-19: a systematic review and meta-analysis
+      2                                            West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      3                                            West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      4                                            West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      5                                            West African Ebola Epidemic after One Year — Slowing but Not Yet under Control
+      6                                                The Early Transmission Dynamics of H1N1pdm Influenza in the United Kingdom
+      7                              Transmission Potential and Design of Adequate Control Measures for Marburg Hemorrhagic Fever
+      8                     Calculation of incubation period and serial interval from multiple outbreaks of Marburg virus disease
+      9                                                         Hospital Outbreak of Middle East Respiratory Syndrome Coronavirus
+      10                             Preliminary epidemiological assessment of MERS-CoV outbreak in South Korea, May to June 2016
+      11                                         Estimation of the serial interval of monkeypox during the early outbreak in 2022
+      12 Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2024
+      13 Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2025
+      14                                                    Serial intervals and incubation periods of the monkeypox virus clades
+      15                                                    Serial intervals and incubation periods of the monkeypox virus clades
+                                     journal year sample_size       region
+      1              BMC Infectious Diseases 2021        3924        Mixed
+      2  The New England Journal of Medicine 2015         305  West Africa
+      3  The New England Journal of Medicine 2015          37       Guinea
+      4  The New England Journal of Medicine 2015         147      Liberia
+      5  The New England Journal of Medicine 2015         112 Sierra Leone
+      6                        PLoS Currents 2009          58           UK
+      7                             PLoS One 2012         374       Angola
+      8                   BMC Research Notes 2014          38        Mixed
+      9  The New England Journal of Medicine 2013          23 Saudi Arabia
+      10                    Eurosurveillance 2015          99  South Korea
+      11         Journal of Medical Virology 2022          42        Mixed
+      12                             medRxiv 2022          57          USA
+      13                             medRxiv 2022          40          USA
+      14          Journal of Travel Medicine 2022          16        Congo
+      15          Journal of Travel Medicine 2022          34        Mixed
                       transmission_mode vector extrinsic prob_distribution
       1  natural_natural_human_to_human   <NA>     FALSE              <NA>
       2  natural_natural_human_to_human   <NA>     FALSE             gamma

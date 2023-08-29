@@ -2,7 +2,7 @@ test_that("get_citation works as expected for epidist from db", {
   eparam <- epiparam()
   # suppress message about citation
   edist <- suppressMessages(as_epidist(eparam[12, ]))
-  expect_type(get_citation(edist), "character")
+  expect_s3_class(get_citation(edist), "bibentry")
 })
 
 test_that("get_citation works as expected for manual epidist", {
@@ -16,11 +16,13 @@ test_that("get_citation works as expected for manual epidist", {
       citation = create_epidist_citation(
         author = "Smith_etal",
         year = 2000,
+        title = "Incubation period of COVID",
+        journal = "Journal of Epi",
         DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint
       )
     )
   )
-  expect_type(get_citation(edist), "character")
+  expect_s3_class(get_citation(edist), "bibentry")
 })
 
 test_that("get_citation works as expected for epidist missing citation", {
@@ -34,8 +36,9 @@ test_that("get_citation works as expected for epidist missing citation", {
     )
   )
   citation <- get_citation(edist)
-  expect_type(citation, "character")
-  expect_identical(citation, "No citation available")
+  expect_s3_class(citation, "bibentry")
+  expect_null(citation$year)
+  expect_identical(citation$title, "No citation")
 })
 
 test_that("get_citation works as expected for epiparam", {
