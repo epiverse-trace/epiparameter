@@ -1,26 +1,58 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+#
+# Reproduce locally by running:
+# ```r
+# pak::pak(c("any::pkgdown", "."), dependencies = "Config/Needs/website")
+# pkgdown::build_site()
+# ```
 on:
   push:
     branches: [main, master]
+    paths:
+      - 'README.Rmd'
+      - 'README.md'
+      - 'index.Rmd'
+      - 'index.md'
+      - 'man/**'
+      - 'vignettes/**'
+      - '_pkgdown.yml'
+      - 'pkgdown/**'
+      - 'DESCRIPTION'
+      - '.Rbuildignore'
+      - '.github/**'
   pull_request:
-    branches: [main, master]
+    paths:
+      - 'README.Rmd'
+      - 'README.md'
+      - 'index.Rmd'
+      - 'index.md'
+      - 'man/**'
+      - 'vignettes/**'
+      - '_pkgdown.yml'
+      - 'pkgdown/**'
+      - 'DESCRIPTION'
+      - '.Rbuildignore'
+      - '.github/**'
   release:
     types: [published]
   workflow_dispatch:
 
 name: pkgdown
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   pkgdown:
     runs-on: ubuntu-latest
-    # Only restrict concurrency for non-PR jobs
-    concurrency:
-      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -41,6 +73,11 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          clean: false
+          # We clean on releases because we want to remove old vignettes,
+          # figures, etc. that have been deleted from the `main` branch.
+          # But we clean ONLY on releases because we want to be able to keep
+          # both the 'stable' and 'dev' websites.
+          # Also discussed in https://github.com/r-lib/actions/issues/484
+          clean: ${{ github.event_name == 'release' }}
           branch: gh-pages
           folder: docs
