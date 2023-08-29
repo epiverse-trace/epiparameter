@@ -313,18 +313,19 @@ tail.epiparam <- function(x, ...) {
 #' @keywords internal
 #' @noRd
 epiparam_fields <- function() {
-  c("disease", "pathogen", "epi_distribution", "author", "year", "sample_size",
-    "region", "transmission_mode", "vector", "extrinsic", "prob_distribution",
-    "inference_method", "mean", "mean_ci_limits", "mean_ci", "sd",
-    "sd_ci_limits", "sd_ci", "quantile_2.5", "quantile_5", "quantile_25",
-    "median", "median_ci_limits", "median_ci", "quantile_75", "quantile_87.5",
-    "quantile_95", "quantile_97.5", "lower_range", "upper_range", "shape",
-    "shape_ci_limits", "shape_ci", "scale", "scale_ci_limits", "scale_ci",
-    "meanlog", "meanlog_ci_limits", "meanlog_ci", "sdlog", "sdlog_ci_limits",
-    "sdlog_ci", "dispersion", "dispersion_ci_limits", "dispersion_ci",
-    "precision", "precision_ci_limits", "precision_ci", "truncation",
-    "discretised", "censored", "right_truncated", "phase_bias_adjusted",
-    "notes", "PMID", "DOI")
+  c("disease", "pathogen", "epi_distribution", "author", "title", "journal",
+    "year", "sample_size", "region", "transmission_mode", "vector",
+    "extrinsic", "prob_distribution", "inference_method", "mean",
+    "mean_ci_limits", "mean_ci", "sd", "sd_ci_limits", "sd_ci", "quantile_2.5",
+    "quantile_5", "quantile_25", "median", "median_ci_limits", "median_ci",
+    "quantile_75", "quantile_87.5", "quantile_95", "quantile_97.5",
+    "lower_range", "upper_range", "shape", "shape_ci_limits", "shape_ci",
+    "scale", "scale_ci_limits", "scale_ci", "meanlog", "meanlog_ci_limits",
+    "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci", "dispersion",
+    "dispersion_ci_limits", "dispersion_ci", "precision",
+    "precision_ci_limits", "precision_ci", "truncation", "discretised",
+    "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
+    "DOI")
 }
 
 #' Character fields (columns) of an `<epiparam>` object
@@ -335,9 +336,9 @@ epiparam_fields <- function() {
 epiparam_char_fields <- function(epiparam) {
   which(
     colnames(epiparam) %in% c(
-      "disease", "pathogen", "epi_distribution", "author", "region",
-      "transmission_mode", "vector", "prob_distribution", "inference_method",
-      "notes", "DOI"
+      "disease", "pathogen", "epi_distribution", "author", "title", "journal",
+      "region", "transmission_mode", "vector", "prob_distribution",
+      "inference_method", "notes", "DOI"
     )
   )
 }

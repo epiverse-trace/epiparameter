@@ -170,8 +170,10 @@ make_epidist <- function(x) {
     citation = create_epidist_citation(
       author = x$author,
       year = x$year,
-      PMID = x$PMID,
-      DOI = x$DOI
+      title = x$title,
+      journal = x$journal,
+      DOI = x$DOI,
+      PMID = x$PMID
     ),
     metadata = create_epidist_metadata(
       sample_size = x$sample_size,
@@ -209,7 +211,7 @@ as_epiparam <- function(x) {
 
   # for vb_epidist or list of epidists call as_epiparam recursively
   if (!is_epidist(x)) {
-    eparam <- as.data.frame(matrix(nrow = length(x), ncol = 56))
+    eparam <- as.data.frame(matrix(nrow = length(x), ncol = 58))
     for (i in seq_along(x)) {
       if (i == 1) colnames(eparam) <- colnames(as_epiparam(x[[i]]))
       eparam[i, ] <- as_epiparam(x[[i]])
@@ -220,29 +222,6 @@ as_epiparam <- function(x) {
 
   # check input
   validate_epidist(x)
-
-  # set default citation
-  author <- NA_character_
-  year <- NA_integer_
-  doi <- NA_character_
-  pmid <- NA_integer_
-
-  # if citation is available extract info
-  if (x$citation != "No citation available") {
-    # extract author from citation
-    author <- sub(" \\(.*", "", x$citation)
-    # extract year from citation
-    year <- gsub(pattern = "<(.*)", replacement = "", x = x$citation)
-    year <- sub("\\).*", "", sub(".*\\(", "", year))
-    # extract DOI from citation
-    doi <- sub(">.*", "",  sub(".*<", "", x$citation))
-    # extract PMID if available
-    if (grepl(pattern = "PMID", x = x$citation, fixed = TRUE)) {
-      pmid <- as.numeric(sub(".*PMID: ", "", x$citation))
-    } else {
-      pmid <- NA_integer_
-    }
-  }
 
   params <- get_parameters(x)
   prob_dist <- family(x)
@@ -271,6 +250,17 @@ as_epiparam <- function(x) {
       })
   }
 
+  author <- ifelse(
+    test = is.null(x$citation$author),
+    yes = NA_character_,
+    no = Reduce(
+      f = function(x, y) {
+        paste(x, y, sep = "_")
+      },
+      x = x$citation$author
+    )
+  )
+
   ## TODO: look into redudancy of median and quantile 50 in epidist and
   ## epiparam class
 
@@ -279,7 +269,21 @@ as_epiparam <- function(x) {
     pathogen = x$disease$pathogen,
     epi_distribution = x$epi_dist,
     author = author,
-    year = as.numeric(year),
+    title = ifelse(
+      test = is.null(x$citation$title),
+      yes = NA_character_,
+      no = x$citation$title
+    ),
+    journal = ifelse(
+      test = is.null(x$citation$journal),
+      yes = NA_character_,
+      no = x$citation$journal
+    ),
+    year = ifelse(
+      test = is.null(x$citation$year),
+      yes = NA_integer_,
+      no = as.numeric(x$citation$year)
+    ),
     sample_size = x$metadata$sample_size,
     region = x$metadata$region,
     transmission_mode = x$metadata$transmission_mode,
@@ -377,8 +381,16 @@ as_epiparam <- function(x) {
     right_truncated = x$method_assess$right_truncated,
     phase_bias_adjusted = x$method_assess$phase_bias_adjusted,
     notes = x$notes,
-    PMID = pmid,
-    DOI = doi
+    PMID = ifelse(
+      test = is.null(x$citation$PMID),
+      yes = NA_integer_,
+      no = as.numeric(x$citation$PMID)
+    ),
+    DOI = ifelse(
+      test = is.null(x$citation$doi),
+      yes =  NA_character_,
+      no = x$citation$doi
+    )
   )
 
   # create lists for epiparam vector columns
