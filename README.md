@@ -50,11 +50,11 @@ To load the library of epidemiological parameters into `R`:
 eparams <- epiparam()
 eparams
 #> Epiparam object
-#> Number of distributions in library: 106
-#> Number of diseases: 24
-#> Number of delay distributions: 83
+#> Number of distributions in library: 118
+#> Number of diseases: 23
+#> Number of delay distributions: 95
 #> Number of offspring distributions: 10
-#> Number of studies in library: 42
+#> Number of studies in library: 57
 #> <Head of library>
 #>       disease         epi_distribution prob_distribution
 #> 1  Adenovirus        incubation_period             lnorm
@@ -63,7 +63,7 @@ eparams
 #> 4    COVID-19 hospitalisation_to_death             lnorm
 #> 5    COVID-19        incubation_period              <NA>
 #> 6    COVID-19        incubation_period           weibull
-#> <100 more rows & 53 more cols not shown>
+#> <112 more rows & 55 more cols not shown>
 ```
 
 The library is an `<epiparam>` class, which underneath is a data frame.
@@ -73,13 +73,21 @@ be used.
 
 ``` r
 influenza_incubation <- as_epidist(eparams[12, ])
-#> Using Linton et al. (2020) <10.3390/jcm9020538> PMID: 32079150. 
-#> To retrieve the short citation use the 'get_citation' function
+#> Using Linton, etal (2020). "Incubation Period and Other Epidemiological
+#> Characteristics of 2019 Novel Coronavirus Infections with Right
+#> Truncation: A Statistical Analysis of Publicly Available Case Data."
+#> _Journal of Clinical Medicine_. doi:10.3390/jcm9020538
+#> <https://doi.org/10.3390/jcm9020538>. 
+#> To retrieve the citation use the 'get_citation' function
 influenza_incubation
 #> Disease: COVID-19
 #> Pathogen: SARS-CoV-2
 #> Epi Distribution: incubation period
-#> Study: Linton et al. (2020) <10.3390/jcm9020538> PMID: 32079150
+#> Study: Linton, etal (2020). "Incubation Period and Other Epidemiological
+#> Characteristics of 2019 Novel Coronavirus Infections with Right
+#> Truncation: A Statistical Analysis of Publicly Available Case Data."
+#> _Journal of Clinical Medicine_. doi:10.3390/jcm9020538
+#> <https://doi.org/10.3390/jcm9020538>.
 #> Distribution: lnorm
 #> Parameters:
 #>   meanlog: 1.456
