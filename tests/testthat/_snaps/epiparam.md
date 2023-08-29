@@ -17,7 +17,7 @@
       4    COVID-19 hospitalisation_to_death             lnorm
       5    COVID-19        incubation_period              <NA>
       6    COVID-19        incubation_period           weibull
-      <112 more rows & 53 more cols not shown>
+      <112 more rows & 55 more cols not shown>
 
 ---
 
@@ -38,7 +38,7 @@
       4    COVID-19 hospitalisation_to_death             lnorm
       5    COVID-19        incubation_period              <NA>
       6    COVID-19        incubation_period           weibull
-      <112 more rows & 53 more cols not shown>
+      <112 more rows & 55 more cols not shown>
 
 ---
 
@@ -59,27 +59,41 @@
       4    COVID-19 hospitalisation_to_death             lnorm
       5    COVID-19        incubation_period              <NA>
       6    COVID-19        incubation_period           weibull
-      <112 more rows & 53 more cols not shown>
+      <112 more rows & 55 more cols not shown>
 
 # epiparam head & tails methods works as expected
 
     Code
       head(epiparam())
     Output
-            disease          pathogen         epi_distribution       author year
-      1  Adenovirus        Adenovirus        incubation_period Lessler_etal 2009
-      2 Chikungunya Chikungunya Virus        incubation_period Rudolph_etal 2014
-      3    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal 2020
-      4    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal 2020
-      5    COVID-19        SARS-CoV-2        incubation_period   Alene_etal 2021
-      6    COVID-19        SARS-CoV-2        incubation_period     Bui_etal 2020
-        sample_size  region              transmission_mode           vector extrinsic
-      1          14     USA                   experimental             <NA>     FALSE
-      2          21   Mixed                   vector_borne Aedes albopictus     FALSE
-      3          39   China         natural_human_to_human             <NA>     FALSE
-      4          39   China         natural_human_to_human             <NA>     FALSE
-      5        1453   Mixed natural_natural_human_to_human             <NA>     FALSE
-      6          19 Vietnam natural_natural_human_to_human             <NA>     FALSE
+            disease          pathogen         epi_distribution       author
+      1  Adenovirus        Adenovirus        incubation_period Lessler_etal
+      2 Chikungunya Chikungunya Virus        incubation_period Rudolph_etal
+      3    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal
+      4    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal
+      5    COVID-19        SARS-CoV-2        incubation_period   Alene_etal
+      6    COVID-19        SARS-CoV-2        incubation_period     Bui_etal
+                                                                                                                                                                                 title
+      1                                                                                                  Incubation periods of acute respiratory viral infections: a systematic review
+      2                                                                                                     Incubation periods of mosquito-borne viral infections: a systematic review
+      3 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data
+      4 Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data
+      5                                                                                       Serial interval and incubation period of COVID-19: a systematic review and meta-analysis
+      6                                                                                                                     Estimation of the incubation period of COVID-19 in Vietnam
+                                                      journal year sample_size
+      1                        The Lancet Infectious Diseases 2009          14
+      2 The American Journal of Tropical Medicine and Hygiene 2014          21
+      3                          Journal of Clinical Medicine 2020          39
+      4                          Journal of Clinical Medicine 2020          39
+      5                               BMC Infectious Diseases 2021        1453
+      6                                              PLoS One 2020          19
+         region              transmission_mode           vector extrinsic
+      1     USA                   experimental             <NA>     FALSE
+      2   Mixed                   vector_borne Aedes albopictus     FALSE
+      3   China         natural_human_to_human             <NA>     FALSE
+      4   China         natural_human_to_human             <NA>     FALSE
+      5   Mixed natural_natural_human_to_human             <NA>     FALSE
+      6 Vietnam natural_natural_human_to_human             <NA>     FALSE
         prob_distribution inference_method mean mean_ci_limits mean_ci    sd
       1             lnorm              mle   NA         NA, NA      NA    NA
       2             lnorm              mle   NA         NA, NA      NA    NA
@@ -156,27 +170,41 @@
     Code
       tail(epiparam())
     Output
-                     disease             pathogen  epi_distribution       author year
-      113    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014
-      114    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014
-      115    West Nile Fever      West Nile Virus incubation_period Rudolph_etal 2014
-      116       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014
-      117       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal 2014
-      118 Zika Virus Disease           Zika Virus incubation_period Lessler_etal 2016
-          sample_size region transmission_mode                             vector
-      113          18  Mixed          multiple                               <NA>
-      114           8  Mixed      vector_borne                           mosquito
-      115           6  Mixed  organ_transplant                               <NA>
-      116          91  Mixed          multiple                               <NA>
-      117          80  Mixed      vector_borne                           mosquito
-      118          25  Mixed      vector_borne Aedes aegypti and Aedes albopictus
-          extrinsic prob_distribution inference_method mean mean_ci_limits mean_ci sd
-      113     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      114     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      115     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      116     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      117     FALSE             lnorm              mle   NA         NA, NA      NA NA
-      118     FALSE             lnorm         bayesian   NA         NA, NA      NA NA
+                     disease             pathogen  epi_distribution       author
+      113    West Nile Fever      West Nile Virus incubation_period Rudolph_etal
+      114    West Nile Fever      West Nile Virus incubation_period Rudolph_etal
+      115    West Nile Fever      West Nile Virus incubation_period Rudolph_etal
+      116       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal
+      117       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal
+      118 Zika Virus Disease           Zika Virus incubation_period Lessler_etal
+                                                                                                         title
+      113                           Incubation periods of mosquito-borne viral infections: a systematic review
+      114                           Incubation periods of mosquito-borne viral infections: a systematic review
+      115                           Incubation periods of mosquito-borne viral infections: a systematic review
+      116                           Incubation periods of mosquito-borne viral infections: a systematic review
+      117                           Incubation periods of mosquito-borne viral infections: a systematic review
+      118 Times to key events in Zika virus infection and implications for blood donation: a systematic review
+                                                        journal year sample_size
+      113 The American Journal of Tropical Medicine and Hygiene 2014          18
+      114 The American Journal of Tropical Medicine and Hygiene 2014           8
+      115 The American Journal of Tropical Medicine and Hygiene 2014           6
+      116 The American Journal of Tropical Medicine and Hygiene 2014          91
+      117 The American Journal of Tropical Medicine and Hygiene 2014          80
+      118             Bulletin of the World Health Organization 2016          25
+          region transmission_mode                             vector extrinsic
+      113  Mixed          multiple                               <NA>     FALSE
+      114  Mixed      vector_borne                           mosquito     FALSE
+      115  Mixed  organ_transplant                               <NA>     FALSE
+      116  Mixed          multiple                               <NA>     FALSE
+      117  Mixed      vector_borne                           mosquito     FALSE
+      118  Mixed      vector_borne Aedes aegypti and Aedes albopictus     FALSE
+          prob_distribution inference_method mean mean_ci_limits mean_ci sd
+      113             lnorm              mle   NA         NA, NA      NA NA
+      114             lnorm              mle   NA         NA, NA      NA NA
+      115             lnorm              mle   NA         NA, NA      NA NA
+      116             lnorm              mle   NA         NA, NA      NA NA
+      117             lnorm              mle   NA         NA, NA      NA NA
+      118             lnorm         bayesian   NA         NA, NA      NA NA
           sd_ci_limits sd_ci quantile_2.5 quantile_5 quantile_25 median
       113       NA, NA    NA           NA        1.0         1.7    2.6
       114       NA, NA    NA           NA         NA         2.8    2.9

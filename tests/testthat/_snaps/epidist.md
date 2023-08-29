@@ -4,12 +4,12 @@
       epidist(disease = "ebola", epi_dist = "incubation", prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1))
     Message <simpleMessage>
-      Citation cannot be created as either author, year or DOI is missing
+      Citation cannot be created as author, year, journal or title is missing
     Output
       Disease: ebola
       Pathogen: NA
       Epi Distribution: incubation
-      Study: No citation available
+      Study: (????). "No citation."
       Distribution: gamma
       Parameters:
         shape: 1.000
@@ -21,12 +21,12 @@
       epidist(disease = "ebola", epi_dist = "incubation", prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1), discretise = TRUE)
     Message <simpleMessage>
-      Citation cannot be created as either author, year or DOI is missing
+      Citation cannot be created as author, year, journal or title is missing
     Output
       Disease: ebola
       Pathogen: NA
       Epi Distribution: incubation
-      Study: No citation available
+      Study: (????). "No citation."
       Distribution: discrete gamma
       Parameters:
         shape: 1.000

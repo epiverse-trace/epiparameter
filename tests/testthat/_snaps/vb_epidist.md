@@ -17,7 +17,7 @@
       Disease: dengue
       Pathogen: NA
       Epi Distribution: incubation
-      Study: No citation available
+      Study: (????). "No citation."
       
        <Intrinsic Distribution> 
       
@@ -41,7 +41,7 @@
       Disease: dengue
       Pathogen: NA
       Epi Distribution: incubation
-      Study: No citation available
+      Study: (????). "No citation."
       
        <Intrinsic Distribution> 
       
@@ -76,7 +76,7 @@
       Disease: dengue
       Pathogen: NA
       Epi Distribution: incubation
-      Study: No citation available
+      Study: (????). "No citation."
       
        <Intrinsic Distribution> 
       
@@ -100,7 +100,7 @@
       Disease: dengue
       Pathogen: NA
       Epi Distribution: incubation
-      Study: No citation available
+      Study: (????). "No citation."
       
        <Intrinsic Distribution> 
       
