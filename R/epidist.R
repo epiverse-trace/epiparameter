@@ -267,7 +267,7 @@ epidist <- function(disease,
     types = c("list", "double", "logical", "null"),
     names = "unique"
   )
-  checkmate::assert_string(citation)
+  checkmate::assert_class(citation, classes = "bibentry")
   checkmate::assert_list(metadata)
   checkmate::assert_list(method_assess)
   checkmate::assert_number(truncation, na.ok = TRUE)
@@ -338,6 +338,9 @@ validate_epidist <- function(epidist) {
       length(epidist$disease$disease) == 1,
     "epidist must contain an epidemiological distribution" =
       is.character(epidist$epi_dist) && length(epidist$epi_dist) == 1,
+    "epidist must contain a <distribution> or <distcrete> distribution or NA" =
+      inherits(epidist$prob_dist, c("distribution", "distcrete")) ||
+      is.na(epidist$prob_dist) || is.character(epidist$prob_dist),
     "epidisit must contain uncertainty, summary stats and metadata" =
       all(
         is.list(epidist$uncertainty),
@@ -345,7 +348,7 @@ validate_epidist <- function(epidist) {
         is.list(epidist$metadata)
       ),
     "epidist must contain a citation" =
-      is.character(epidist$citation)
+      inherits(epidist$citation, "bibentry")
   )
 
   invisible(epidist)
@@ -406,7 +409,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
         sprintf("Disease: %s", x$disease$disease),
         sprintf("Pathogen: %s", x$disease$pathogen),
         sprintf("Epi Distribution: %s", clean_epidist_name(x$epi_dist)),
-        sprintf("Study: %s", x$citation)
+        sprintf("Study: %s", format(x$citation))
       )
     )
   }

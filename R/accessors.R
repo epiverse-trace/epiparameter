@@ -73,6 +73,10 @@ get_citation <- function(x, ...) {
 
 #' @export
 get_citation.epidist <- function(x, ...) {
+  if (!inherits(x$citation, "bibentry")) {
+    stop("Citation should be a <bibentry>", call. = FALSE)
+  }
+
   # return citation
   x$citation
 }
@@ -86,8 +90,10 @@ get_citation.epiparam <- function(x, ...) {
       create_epidist_citation(
         author = y$author,
         year = y$year,
-        PMID = y$PMID,
-        DOI = y$DOI
+        title = y$title,
+        journal = y$journal,
+        DOI = y$DOI,
+        PMID = y$PMID
       )
     )
   },
