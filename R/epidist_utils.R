@@ -357,13 +357,18 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #' with sensible defaults, type checking and arguments to help remember which
 #' citation information is accepted in the list.
 #'
-#' @param author A character string of the surname of the first author. This
+#' @param author A `character` string of the surname of the first author. This
 #' can be underscore separated from a second author, or underscore separated
 #' from "etal" if there are more than two authors.
-#' @param year A numeric of the year of publication
-#' @param PMID A character string with the PubMed unique identifier number
+#' @param year A `numeric` of the year of publication
+#' @param title A `character` string with the title of the article that
+#' published the epidemiological parameters.
+#' @param journal A `character` string with the name of the journal that
+#' published the article that published the epidemiological parameters.
+#' This can also be a pre-print server, e.g., medRxiv.
+#' @param PMID A `character` string with the PubMed unique identifier number
 #' assigned to papers to give them a unique identifier within PubMed.
-#' @param DOI A character string of the Digital Object Identifier (DOI)
+#' @param DOI A `character` string of the Digital Object Identifier (DOI)
 #' assigned to papers which are unique to each paper.
 #'
 #' @return A character string of the formatted short citation
@@ -377,50 +382,45 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #' )
 create_epidist_citation <- function(author = NA_character_,
                                     year = NA_integer_,
-                                    PMID = NA_character_,
-                                    DOI = NA_character_) {
+                                    title = NA_character_,
+                                    journal = NA_character_,
+                                    DOI = NA_character_,
+                                    PMID = NA_character_) {
   # check input
   checkmate::assert_character(author)
   checkmate::assert_number(year, na.ok = TRUE)
+  checkmate::assert_character(title)
+  checkmate::assert_character(journal)
   checkmate::assert_number(PMID, na.ok = TRUE)
   checkmate::assert_character(DOI)
 
-  if (is.na(author) || is.na(year) || is.na(DOI)) {
+  if (is.na(author) || is.na(year) || is.na(journal) || is.na(title)) {
     message(
-      "Citation cannot be created as either author, year or DOI is missing"
+      "Citation cannot be created as author, year, journal or title is missing"
     )
-    return("No citation available")
+    return(utils::bibentry(bibtype = "Misc", title = "No citation"))
   }
 
-  # change author formatting if multiple authors or et al
-  author <- gsub(
-    pattern = "_",
-    replacement = " ",
-    x = author,
-    fixed = TRUE
+  if (!inherits(author, "person")) {
+    # imperfect solution as library currently only has first author
+    author_names <- unlist(strsplit(x = author, split = "_", fixed = TRUE))
+    authors <- lapply(author_names, utils::as.person)
+    authors <- Reduce(c, authors)
+  }
+
+  citation <- utils::bibentry(
+    bibtype = "article",
+    author = authors,
+    year = year,
+    title = title,
+    journal = journal,
+    doi = DOI
   )
-  author <- gsub(
-    pattern = "etal",
-    replacement = "et al.",
-    x = author,
-    fixed = TRUE
-  )
-
-  # check if study has two authors and if so insert ampersand
-  num_authors <- length(unlist(strsplit(x = author, split = " ", fixed = TRUE)))
-  if (identical(num_authors, 2L)) {
-    author <- gsub(pattern = " ", replacement = " & ", x = author, fixed = TRUE)
-  }
-
-  citation <- paste0(author, " (", year, ") ", "<", DOI, ">")
-
-  if (!is.na(PMID)) {
-    citation <- paste0(citation, " PMID: ", PMID)
-  }
+  citation$PMID <- PMID
 
   message(
-    "Using ", citation, ". \n",
-    "To retrieve the short citation use the 'get_citation' function"
+    "Using ", format(citation), " \n",
+    "To retrieve the citation use the 'get_citation' function"
   )
 
   citation
