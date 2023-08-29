@@ -12,22 +12,31 @@ citation information is accepted in the list.}
 create_epidist_citation(
   author = NA_character_,
   year = NA_integer_,
-  PMID = NA_character_,
-  DOI = NA_character_
+  title = NA_character_,
+  journal = NA_character_,
+  DOI = NA_character_,
+  PMID = NA_character_
 )
 }
 \arguments{
-\item{author}{A character string of the surname of the first author. This
+\item{author}{A \code{character} string of the surname of the first author. This
 can be underscore separated from a second author, or underscore separated
 from "etal" if there are more than two authors.}
 
-\item{year}{A numeric of the year of publication}
+\item{year}{A \code{numeric} of the year of publication}
 
-\item{PMID}{A character string with the PubMed unique identifier number
-assigned to papers to give them a unique identifier within PubMed.}
+\item{title}{A \code{character} string with the title of the article that
+published the epidemiological parameters.}
 
-\item{DOI}{A character string of the Digital Object Identifier (DOI)
+\item{journal}{A \code{character} string with the name of the journal that
+published the article that published the epidemiological parameters.
+This can also be a pre-print server, e.g., medRxiv.}
+
+\item{DOI}{A \code{character} string of the Digital Object Identifier (DOI)
 assigned to papers which are unique to each paper.}
+
+\item{PMID}{A \code{character} string with the PubMed unique identifier number
+assigned to papers to give them a unique identifier within PubMed.}
 }
 \value{
 A character string of the formatted short citation
