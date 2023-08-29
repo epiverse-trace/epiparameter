@@ -2,12 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{create_epidist_citation}
 \alias{create_epidist_citation}
-\title{A helper function when creating an epidist object to create a summary
-statistics list with sensible defaults, type checking and arguments to help
-remember which summary statistics can be accepted in the list
-A helper function when creating an epidist object to create a citation list
-with sensible defaults, type checking and arguments to help remember which
-citation information is accepted in the list.}
+\title{Create a citation for an epidist object}
 \usage{
 create_epidist_citation(
   author = NA_character_,
@@ -39,15 +34,16 @@ assigned to papers which are unique to each paper.}
 assigned to papers to give them a unique identifier within PubMed.}
 }
 \value{
-A character string of the formatted short citation
+A \code{bibentry} object of the citation
 }
 \description{
-A helper function when creating an epidist object to create a summary
-statistics list with sensible defaults, type checking and arguments to help
-remember which summary statistics can be accepted in the list
-A helper function when creating an epidist object to create a citation list
-with sensible defaults, type checking and arguments to help remember which
-citation information is accepted in the list.
+A helper function when creating an epidist object to create a
+citation list with sensible defaults, type checking and arguments to help
+remember which citation information is accepted in the list.
+}
+\details{
+This function acts as a wrapper around \code{\link[=bibentry]{bibentry()}} to create
+citations for sources reporting epidemiological parameters.
 }
 \examples{
 create_epidist_citation(
