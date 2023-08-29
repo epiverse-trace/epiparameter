@@ -42,7 +42,6 @@ Imports:
     stats,
     utils
 Suggests: 
-    covr,
     knitr,
     bookdown,
     rmarkdown,
