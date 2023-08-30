@@ -1,0 +1,24 @@
+citHeader("To cite epiparameter in publications use:")
+
+bibentry(
+  bibtype = "Manual",
+  title = "Library of Epidemiological Parameters",
+  author = c(
+        person(
+            given = "Joshua W.",
+            family = "Lambert"
+        ),
+        person(
+            given = "Adam",
+            family = "Kucharski"
+        )
+      ),
+  year = "2023",
+  url = "https://github.com/epiverse-trace/epiparameter",
+  textVersion =
+  sprintf("%s %s %s",
+  "Joshua W. Lambert and Adam Kucharski (2023).",
+  "epiparameter: Library of Epidemiological Parameters,",
+  "website: https://github.com/epiverse-trace/epiparameter/"
+  )
+)
