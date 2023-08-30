@@ -16,6 +16,7 @@ object."><meta property="og:image" content="https://epiverse-trace.github.io/epi
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-XZ471458FQ');
 </script></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -162,8 +163,8 @@ vector is returned</p>
 <span class="r-in"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">edist</span>, p <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2231436</span>
 <span class="r-in"><span><span class="fu">distributional</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">edist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.6781916 0.4798464 0.1889366 0.4560354 0.5374472 0.6161752 0.9367782</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 1.8370463 1.2440815 0.4693470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.558977654 1.085863217 1.307222759 1.006873073 0.493360433 0.374828587</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.155936803 1.523430236 2.811251501 0.004487612</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">vb_edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="vb_epidist.html">vb_epidist</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  intrinsic_epidist <span class="op">=</span> <span class="fu"><a href="epidist.html">epidist</a></span><span class="op">(</span></span></span>
@@ -211,12 +212,12 @@ vector is returned</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">distributional</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">vb_edist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $intrinsic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.02963710 0.55297112 0.94422630 1.12013584 0.75139743 0.56991815</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 1.42268318 0.01366566 1.71398831 0.94567380</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 4.4204810 2.7250077 2.6456521 0.5888632 2.1541720 0.1499318 0.1838474</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.2467372 1.0790228 0.9927525</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $extrinsic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.68500600 0.50120942 1.08983919 1.32603684 1.39580724 1.89100609</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.01855346 1.49425631 0.03124899 2.42500838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.00866119 0.55448029 0.91624729 0.36624216 2.06143313 0.03559792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.37900651 0.94150575 2.75357589 0.35590688</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
