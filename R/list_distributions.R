@@ -44,7 +44,7 @@ list_distributions <- function(epiparam,
   # check input
   validate_epiparam(epiparam)
   epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)
-  checkmate::assert_logical(subset_db)
+  checkmate::assert_logical(subset_db, len = 1)
 
   # subset to chosen distribution
   epiparam <- epiparam[epiparam$epi_distribution == epi_dist, ]
@@ -52,7 +52,7 @@ list_distributions <- function(epiparam,
   # strip epiparam class to return data frame
   class(epiparam) <- "data.frame"
 
-  if (isTRUE(subset_db)) {
+  if (subset_db) {
     epiparam <- epiparam[, c(
       "disease", "epi_distribution", "prob_distribution", "author", "year",
       "sample_size"

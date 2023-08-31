@@ -8,7 +8,7 @@
 #'
 #' @examples
 #' eparam <- epiparameter:::new_epiparam("all")
-new_epiparam <- function(epi_dist = character()) {
+new_epiparam <- function(epi_dist) {
 
   # check input
   checkmate::assert_string(epi_dist)
