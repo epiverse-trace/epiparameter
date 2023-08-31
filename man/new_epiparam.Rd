@@ -4,7 +4,7 @@
 \alias{new_epiparam}
 \title{epiparam constructor}
 \usage{
-new_epiparam(epi_dist = character())
+new_epiparam(epi_dist)
 }
 \value{
 epiparam object

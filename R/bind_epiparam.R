@@ -10,8 +10,8 @@
 #' loaded in R.
 #'
 #' The `<epiparam>` returned by `bind_epiparam()` contains the matching columns
-#' of the input objects. Therefore, if one of the input object extra columns
-#' added with are not present in the other input object these will be missing
+#' of the input objects. Therefore, if one of the input objects contains extra
+#' columns which are not present in the other input object these will be missing
 #' from the returned object. This also applies whether binding other
 #' `<epiparam>` objects or `<data.frames>`. When binding `<epidist>` objects
 #' missing data fields are given a default value before
@@ -48,12 +48,15 @@ bind_epiparam <- function(epiparam, epi_obj) {
     validate_epiparam(epi_obj)
   } else if (is.data.frame(epi_obj)) {
     stopifnot(
-      "<data.frame> given must have the same column names as <epiparam>" =
-        setequal(colnames(epi_obj), colnames(epiparam))
+      "<data.frame> given must include all columns in <epiparam>" =
+        all(colnames(epiparam) %in% colnames(epi_obj))
     )
+    # subset epi_obj cols to those in epiparam
+    epi_obj <- epi_obj[, colnames(epiparam)]
   } else {
     stop(
-      "Only <epidist>, <vb_epidist> or <epiparam> can bind to <epiparam>",
+      "Only <epidist>, <vb_epidist>, <epiparam> or <data.frame>",
+      " can bind to <epiparam>",
       call. = FALSE
     )
   }

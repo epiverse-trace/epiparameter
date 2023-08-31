@@ -22,9 +22,7 @@ as_epidist <- function(x) {
   validate_epiparam(x)
 
   # convert each epiparam row into an epidist object
-  out <- apply(x, 1, function(y) {
-    make_epidist(x = y)
-  })
+  out <- apply(x, 1, make_epidist)
 
   # remove names of list
   names(out) <- NULL
@@ -231,7 +229,7 @@ as_epiparam <- function(x) {
     truncation <- NA_real_
   } else {
     discretised <- FALSE
-    if (isFALSE("upper" %in% names(params))) {
+    if (!("upper" %in% names(params))) {
       truncation <- NA_real_
     } else {
       truncation <- params[["upper"]]
@@ -309,66 +307,42 @@ as_epiparam <- function(x) {
     quantile_97.5 = unname(x$summary_stats$quantiles["q_97.5"]),
     lower_range = x$summary_stats$range$lower_range,
     upper_range = x$summary_stats$range$upper_range,
-    shape = ifelse(
-      test = is.na(unname(params["shape"])),
-      yes = NA_real_,
-      no = params["shape"]
-    ),
+    shape = unname(params["shape"]),
     shape_ci_limits = NA,
     shape_ci = ifelse(
       test = is.null(x$uncertainty[["shape"]]),
       yes = NA_real_,
       no = x$uncertainty$shape$ci
     ),
-    scale = ifelse(
-      test = is.na(unname(params["scale"])),
-      yes = NA_real_,
-      no = params["scale"]
-    ),
+    scale = unname(params["scale"]),
     scale_ci_limits = NA,
     scale_ci = ifelse(
       test = is.null(x$uncertainty[["scale"]]),
       yes = NA_real_,
       no = x$uncertainty$scale$ci
     ),
-    meanlog = ifelse(
-      test = is.na(unname(params["meanlog"])),
-      yes = NA_real_,
-      no = params["meanlog"]
-    ),
+    meanlog = unname(params["meanlog"]),
     meanlog_ci_limits = NA,
     meanlog_ci = ifelse(
       test = is.null(x$uncertainty[["meanlog"]]),
       yes = NA_real_,
       no = x$uncertainty$meanlog$ci
     ),
-    sdlog = ifelse(
-      test = is.na(unname(params["sdlog"])),
-      yes = NA_real_,
-      no = params["sdlog"]
-    ),
+    sdlog = unname(params["sdlog"]),
     sdlog_ci_limits = NA,
     sdlog_ci = ifelse(
       test = is.null(x$uncertainty[["sdlog"]]),
       yes = NA_real_,
       no = x$uncertainty$sdlog$ci
     ),
-    dispersion = ifelse(
-      test = is.na(unname(params["dispersion"])),
-      yes = NA_real_,
-      no = params["dispersion"]
-    ),
+    dispersion = unname(params["dispersion"]),
     dispersion_ci_limits = NA,
     dispersion_ci = ifelse(
       test = is.null(x$uncertainty[["dispersion"]]),
       yes = NA_real_,
       no = x$uncertainty$dispersion$ci
     ),
-    precision = ifelse(
-      test = is.na(unname(params["precision"])),
-      yes = NA_real_,
-      no = params["precision"]
-    ),
+    precision = unname(params["precision"]),
     precision_ci_limits = NA,
     precision_ci = ifelse(
       test = is.null(x$uncertainty[["precision"]]),
