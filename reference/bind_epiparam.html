@@ -102,8 +102,8 @@ manipulated. The <code>bind_epiparam()</code> function allows users to add entri
 the library by binding them to the bottom of an existing <code><a href="epiparam.html">epiparam</a></code> object
 loaded in R.</p>
 <p>The <code>&lt;epiparam&gt;</code> returned by <code>bind_epiparam()</code> contains the matching columns
-of the input objects. Therefore, if one of the input object extra columns
-added with are not present in the other input object these will be missing
+of the input objects. Therefore, if one of the input objects contains extra
+columns which are not present in the other input object these will be missing
 from the returned object. This also applies whether binding other
 <code>&lt;epiparam&gt;</code> objects or <code>&lt;data.frames&gt;</code>. When binding <code>&lt;epidist&gt;</code> objects
 missing data fields are given a default value before
