@@ -415,7 +415,7 @@ test_that("bind_epiparam fails as expected for binding corrupt epiparam", {
   eparam <- epiparam()
   eparam2 <- epiparam()
   # suppress message about converting to data.frame
-  suppressMessages(eparam2$disease <- NULL)
+  suppressMessages(eparam2$disease <- NULL) # nolint
   # convert back to epiparam for testing bind_epiparam
   class(eparam2) <- c("epiparam", "data.frame")
   expect_error(
