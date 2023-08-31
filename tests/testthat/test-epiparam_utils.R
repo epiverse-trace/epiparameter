@@ -389,7 +389,7 @@ test_that("as_epiparam fails as expected", {
 
 test_that("epiparam subsetting works as expected", {
   eparam <- epiparam()
-  eparam <- cbind_epiparam(eparam, extra_col = NA_real_)
+  eparam <- suppressMessages(dplyr::bind_cols(eparam, extra_col = NA_real_))
   # remove extra col
   eparam <- eparam[, -ncol(eparam)]
 

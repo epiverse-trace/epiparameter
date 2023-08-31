@@ -91,7 +91,6 @@ reference:
     desc: Add entries to <epiparam> object
     contents:
     - bind_epiparam
-    - cbind_epiparam
 
   - title: Cleaning
     desc: Standardises name of disease or epidist object
