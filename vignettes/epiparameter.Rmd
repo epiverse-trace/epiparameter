@@ -159,7 +159,7 @@ The probability distribution (`prob_distribution`) argument requires the distrib
 
 If a set of epidemiological parameter has been inferred and known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.
 
-To add entries to the library the `bind_epiparam()` function appends a row to an existing `<epiparam>` object using either an `<epiparam>`, `<epidist>` or data frame.
+To add entries to the library we provide a function to bind data to `<epiparam>` objects: `bind_epiparam()`. This function is provided as multiple data types (classes) can be bound to an existing `<epiparam>` object (which itself is a subclass of a `<data.frame>`). `bind_epiparam()` can bind `<epiparam>`, `<epidist>` (including `<vb_epdist>`), `<data.frames>` and `lists`.
 
 ```{r add-to-library}
 bind_epiparam(epiparam = epi_dist_db, epi_obj = ebola_incubation)
@@ -167,6 +167,8 @@ bind_epiparam(epiparam = epi_dist_db, epi_obj = as_epiparam(ebola_incubation))
 ```
 
 Note that this only adds the parameters to the library (`<epiparam>` object) in the environment, and does not save to the database file in the package.
+
+For binding columns to `<epiparam>` use either `tibble::add_column()` or `dplyr::bind_cols()`. Using `cbind()` will unclass the `<epiparam>` object (i.e. convert an `<epiparam>` to a `<data.frame>`). Note that `dplyr::bind_cols()` will print a message that a `<data.frame>` is being returned, but this is not the case.
 
 ## Distribution functions
 
