@@ -101,6 +101,40 @@ test_that("extract_param works for Weibull from median and range", {
   )
 })
 
+test_that("extract_param works for norm from percentiles", {
+  # set seed for stochastic optimisation
+  set.seed(1)
+  # suppress messages for testing
+  norm_params <- suppressMessages(extract_param(
+    type = "percentiles",
+    values = c(6, 13),
+    distribution = "norm",
+    percentiles = c(0.125, 0.875)
+  ))
+  expect_equal(
+    norm_params,
+    c(mean = 9.5, sd = 3.04255375956),
+    tolerance = testthat_tolerance()
+  )
+})
+
+test_that("extract_param works for norm from median and range", {
+  # set seed for stochastic optimisation
+  set.seed(1)
+  # suppress messages for testing
+  norm_params <- suppressMessages(extract_param(
+    type = "range",
+    values = c(8, 4, 13),
+    distribution = "norm",
+    samples = 20
+  ))
+  expect_equal(
+    norm_params,
+    c(mean = 8.00251593243, sd = 2.40820948602),
+    tolerance = testthat_tolerance()
+  )
+})
+
 test_that("extract_param warns when max_iter exceeded", {
   # set seed for stochastic optimisation
   set.seed(1)
@@ -380,6 +414,16 @@ test_that("fit_range works for weibull for valid input", {
   expect_equal(weibull_range, reference, tolerance = testthat_tolerance())
 })
 
+test_that("fit_range works for norm for valid input", {
+  norm_range <- fit_range(
+    param = c(mean = 2.0, sd = 0.5),
+    val = c(median = 8, lower = 4, upper = 13, n = 20),
+    dist = "norm"
+  )
+  reference <- 0.25
+  expect_equal(norm_range, reference, tolerance = testthat_tolerance())
+})
+
 test_that("fit_percentiles works for lnorm for valud input", {
   lnorm <- fit_percentiles(
     param = c(meanlog = 2.0, sdlog = 0.5),
@@ -408,4 +452,14 @@ test_that("fit_percentiles works for weibull for valid input", {
   )
   reference <- 0.78125
   expect_equal(weibull, reference, tolerance = testthat_tolerance())
+})
+
+test_that("fit_percentiles works for norm for valud input", {
+  norm <- fit_percentiles(
+    param = c(mean = 2.0, sd = 0.5),
+    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875),
+    dist = "norm"
+  )
+  reference <- 0.78125
+  expect_equal(norm, reference, tolerance = testthat_tolerance())
 })

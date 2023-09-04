@@ -64,7 +64,7 @@
 #' )
 extract_param <- function(type = c("percentiles", "range"),
                           values,
-                          distribution = c("lnorm", "gamma", "weibull"),
+                          distribution = c("lnorm", "gamma", "weibull", "norm"),
                           percentiles,
                           samples,
                           control = list(
@@ -76,7 +76,7 @@ extract_param <- function(type = c("percentiles", "range"),
   distribution <- match.arg(arg = distribution, several.ok = FALSE)
 
   # check numeric arguments
-  checkmate::assert_numeric(values, lower = 1e-10)
+  checkmate::assert_numeric(values)
   if (type == "percentiles") {
     stopifnot(
       "percentiles need to be given for type = 'percentiles'" =
@@ -186,7 +186,11 @@ extract_param <- function(type = c("percentiles", "range"),
                            percentiles,
                            samples) {
   # Set initial values for optimisation
-  param <- stats::runif(n = 2, min = 0, max = 5)
+  if (distribution == "norm") {
+    param <- c(stats::median(values), (stats::sd(values) / 3))
+  } else {
+    param <- stats::runif(n = 2, min = 0, max = 5)
+  }
 
   if (!missing(percentiles)) {
     names(values) <- c("lower", "upper")
@@ -211,6 +215,10 @@ extract_param <- function(type = c("percentiles", "range"),
   if (distribution == "weibull") {
     names(param) <- c("shape", "scale")
     lower <- c(1e-10, 1e-10)
+  }
+  if (distribution == "norm") {
+    names(param) <- c("mean", "sd")
+    lower <- c(-1e5, 1e-10)
   }
 
   optim_params <- stats::optim(
@@ -287,25 +295,28 @@ check_optim_conv <- function(optim_params_list,
 #' @name extraction_functions
 fit_range <- function(param,
                       val,
-                      dist = c("lnorm", "gamma", "weibull")) {
+                      dist = c("lnorm", "gamma", "weibull", "norm")) {
   # check input
   dist <- match.arg(dist)
 
   cumulative <- switch(dist,
     lnorm = stats::plnorm,
     gamma = stats::pgamma,
-    weibull = stats::pweibull
+    weibull = stats::pweibull,
+    norm = stats::pnorm
   )
   density <- switch(dist,
     lnorm = stats::dlnorm,
     gamma = stats::dgamma,
-    weibull = stats::dweibull
+    weibull = stats::dweibull,
+    norm = stats::dnorm
   )
 
   param_names <- switch(dist,
     lnorm = c("meanlog", "sdlog"),
     gamma = c("shape", "scale"),
-    weibull = c("shape", "scale")
+    weibull = c("shape", "scale"),
+    norm = c("mean", "sd")
   )
 
   args <- list(
@@ -342,19 +353,21 @@ fit_range <- function(param,
 #' @rdname extraction_functions
 fit_percentiles <- function(param,
                             val,
-                            dist = c("lnorm", "gamma", "weibull")) {
+                            dist = c("lnorm", "gamma", "weibull", "norm")) {
   # check input
   dist <- match.arg(dist)
 
   cumulative <- switch(dist,
     lnorm = stats::plnorm,
     gamma = stats::pgamma,
-    weibull = stats::pweibull
+    weibull = stats::pweibull,
+    norm = stats::pnorm
   )
   param_names <- switch(dist,
     lnorm = c("meanlog", "sdlog"),
     gamma = c("shape", "scale"),
-    weibull = c("shape", "scale")
+    weibull = c("shape", "scale"),
+    norm = c("mean", "sd")
   )
 
   args <- list(
@@ -370,6 +383,5 @@ fit_percentiles <- function(param,
   args[[1]] <- val[["upper"]]
   upper <- (do.call(cumulative, args = args) - val[["q2"]])^2
 
-  out <- lower + upper
-  out
+  lower + upper
 }

@@ -8,7 +8,7 @@ reported values of percentiles, or median and range}
 extract_param(
   type = c("percentiles", "range"),
   values,
-  distribution = c("lnorm", "gamma", "weibull"),
+  distribution = c("lnorm", "gamma", "weibull", "norm"),
   percentiles,
   samples,
   control = list(max_iter = 1000, tolerance = 1e-05)
