@@ -6,9 +6,9 @@
 \alias{fit_percentiles}
 \title{Function for extracting distribution parameters}
 \usage{
-fit_range(param, val, dist = c("lnorm", "gamma", "weibull"))
+fit_range(param, val, dist = c("lnorm", "gamma", "weibull", "norm"))
 
-fit_percentiles(param, val, dist = c("lnorm", "gamma", "weibull"))
+fit_percentiles(param, val, dist = c("lnorm", "gamma", "weibull", "norm"))
 }
 \arguments{
 \item{param}{Named numeric vector of the distribution parameters to be
