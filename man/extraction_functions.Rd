@@ -25,8 +25,8 @@ lognormal).}
 }
 \description{
 Set of functions that can be used to estimate the parameters of a
-distribution (lognormal, gamma, Weibull) via optimisation from either the
-percentiles or the median and ranges.
+distribution (lognormal, gamma, Weibull, normal) via optimisation from
+either the percentiles or the median and ranges.
 }
 \author{
 Adam Kucharski, Joshua W. Lambert

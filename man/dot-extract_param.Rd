@@ -12,7 +12,7 @@ median and range of a sample and the number of samples.}
 \item{values}{A \code{vector}. If \code{type = percentiles}: \code{c(percentile_1, percentile_2)}; and if \code{type = range}: \code{c(median, min, max)}}
 
 \item{distribution}{A \code{character} specifying distribution to use.
-Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}
+Default is \code{lnorm}; also takes \code{gamma}, \code{weibull} and \code{norm}.}
 
 \item{percentiles}{A \code{vector} with two elements specifying the
 percentiles defined in \code{values} if using \code{type = "percentiles"}.

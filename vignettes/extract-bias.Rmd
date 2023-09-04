@@ -34,8 +34,10 @@ optimisation using least-squares.
 
 The precision and bias of this approach needs to be explored across the parameter space
 of the different distributions to understand potential erroneous inferences. This
-vignette aims to explore this inference bias for the three distributions currently 
-supported in {epiparameter} for parameter extraction: gamma, lognormal and Weibull.
+vignette aims to explore this inference bias for three distributions currently 
+supported in {epiparameter} for parameter extraction: gamma, lognormal and Weibull. Extraction
+of parameters from a normal distribution is also supported in {epiparameter} but we
+do not test that in this vignette.
 
 ::: {.alert .alert-warning}
 This is not an in depth analysis of the estimation methods implemented in {epiparameter}, 

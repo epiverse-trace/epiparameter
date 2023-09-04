@@ -144,7 +144,7 @@ extract_param(
 )
 ```
 
-In the above example we estimate parameters of the gamma distribution, but extraction is also implemented for the lognormal and Weibull distributions, but specifying `"lnorm"` or `"weibull"`.
+In the above example we estimate parameters of the gamma distribution, but extraction is also implemented for the lognormal, normal and Weibull distributions, but specifying `"lnorm"`, `"norm"` or `"weibull"`.
 
 A message is shown when running `extract_param()` to make the user aware that the estimates are not completely reliable due to the use of numerical optimisation. Rerunning the function to and finding the same parameters are returned indicates that they have successfully converged. This issue is mostly overcome by the internal setup of the `extract_param()` function which searches for convergence to consistent parameter estimates before returning these to the user.
 

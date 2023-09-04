@@ -3,24 +3,25 @@
 #'
 #' Summary data of distributions, as provided by reports and meta-analyses, can
 #' be used to extract the parameters of a chosen distribution. Currently
-#' available distributions are: lognormal, gamma and Weibull. Extracting
-#' from a lognormal returns the meanlog and sdlog parameters, and extracting
-#' from the gamma and Weibull returns the shape and scale parameters.
+#' available distributions are: lognormal, gamma, Weibull and normal.
+#' Extracting from a lognormal returns the meanlog and sdlog parameters,
+#' extracting from the gamma and Weibull returns the shape and scale parameters,
+#' and extracting from the normal returns the mean and sd parameters.
 #'
-#' @details The `extract_param()` function works only for strictly positive
-#' values at the percentiles of a distribution or the median and range of data
-#' (numerics supplied to the `values` argument).
+#' @details For `gamma`, `lnorm` and `weibull`, `extract_param()` works only
+#' for strictly positive values at the percentiles of a distribution or the
+#' median and range of data (numerics supplied to the `values` argument).
 #' This means that negative values at the lower percentile or lower range
 #' will not work with this function although they may present themselves in
-#' epidemiological data (e.g. negative serial interval).
-#'
+#' epidemiological data (e.g. negative serial interval). For the `norm`
+#' distribution negative values are allowed.
 #'
 #' @param type A `character` defining whether summary statistics based
 #' around `percentiles` (default) or `range`
 #' @param values A `vector`. If `type = percentiles`: `c(percentile_1,
 #' percentile_2)`; and if `type = range`: `c(median, min, max)`
 #' @param distribution A `character` specifying distribution to use.
-#' Default is `lnorm`; also takes `gamma` and `weibull`.
+#' Default is `lnorm`; also takes `gamma`, `weibull` and `norm`.
 #' @param percentiles A `vector` with two elements specifying the
 #' percentiles defined in `values` if using `type = "percentiles"`.
 #' Percentiles should be specified between 0 and 1. For example 2.5th and 97.5th
@@ -39,7 +40,8 @@
 #' @return A named `numeric` vector with the parameter values of the
 #' distribution. If the `distribution = lnorm` then the parameters returned are
 #' the meanlog and sdlog; if the `distribution = gamma` or `distribution =
-#' weibull` then the parameters returned are the shape and scale.
+#' weibull` then the parameters returned are the shape and scale; if
+#' `distribution = norm` then the parameters returned are mean and sd.
 #' @keywords extract
 #' @author Adam Kucharski, Joshua W. Lambert
 #' @export
@@ -76,7 +78,12 @@ extract_param <- function(type = c("percentiles", "range"),
   distribution <- match.arg(arg = distribution, several.ok = FALSE)
 
   # check numeric arguments
-  checkmate::assert_numeric(values)
+  if (distribution == "norm") {
+    checkmate::assert_numeric(values)
+  } else {
+    checkmate::assert_numeric(values, lower = 1e-10)
+  }
+
   if (type == "percentiles") {
     stopifnot(
       "percentiles need to be given for type = 'percentiles'" =
@@ -277,8 +284,8 @@ check_optim_conv <- function(optim_params_list,
 #' Function for extracting distribution parameters
 #'
 #' Set of functions that can be used to estimate the parameters of a
-#' distribution (lognormal, gamma, Weibull) via optimisation from either the
-#' percentiles or the median and ranges.
+#' distribution (lognormal, gamma, Weibull, normal) via optimisation from
+#' either the percentiles or the median and ranges.
 #'
 #' @param param Named numeric vector of the distribution parameters to be
 #' optimised

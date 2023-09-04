@@ -21,7 +21,7 @@ around \code{percentiles} (default) or \code{range}}
 \item{values}{A \code{vector}. If \code{type = percentiles}: \code{c(percentile_1, percentile_2)}; and if \code{type = range}: \code{c(median, min, max)}}
 
 \item{distribution}{A \code{character} specifying distribution to use.
-Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}.}
+Default is \code{lnorm}; also takes \code{gamma}, \code{weibull} and \code{norm}.}
 
 \item{percentiles}{A \code{vector} with two elements specifying the
 percentiles defined in \code{values} if using \code{type = "percentiles"}.
@@ -43,22 +43,25 @@ control list are not passed to \code{\link[=optim]{optim()}}.}
 \value{
 A named \code{numeric} vector with the parameter values of the
 distribution. If the \code{distribution = lnorm} then the parameters returned are
-the meanlog and sdlog; if the \code{distribution = gamma} or \code{distribution = weibull} then the parameters returned are the shape and scale.
+the meanlog and sdlog; if the \code{distribution = gamma} or \code{distribution = weibull} then the parameters returned are the shape and scale; if
+\code{distribution = norm} then the parameters returned are mean and sd.
 }
 \description{
 Summary data of distributions, as provided by reports and meta-analyses, can
 be used to extract the parameters of a chosen distribution. Currently
-available distributions are: lognormal, gamma and Weibull. Extracting
-from a lognormal returns the meanlog and sdlog parameters, and extracting
-from the gamma and Weibull returns the shape and scale parameters.
+available distributions are: lognormal, gamma, Weibull and normal.
+Extracting from a lognormal returns the meanlog and sdlog parameters,
+extracting from the gamma and Weibull returns the shape and scale parameters,
+and extracting from the normal returns the mean and sd parameters.
 }
 \details{
-The \code{extract_param()} function works only for strictly positive
-values at the percentiles of a distribution or the median and range of data
-(numerics supplied to the \code{values} argument).
+For \code{gamma}, \code{lnorm} and \code{weibull}, \code{extract_param()} works only
+for strictly positive values at the percentiles of a distribution or the
+median and range of data (numerics supplied to the \code{values} argument).
 This means that negative values at the lower percentile or lower range
 will not work with this function although they may present themselves in
-epidemiological data (e.g. negative serial interval).
+epidemiological data (e.g. negative serial interval). For the \code{norm}
+distribution negative values are allowed.
 }
 \examples{
 # set seed to control for stochasticity
