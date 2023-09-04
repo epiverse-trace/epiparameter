@@ -2,25 +2,13 @@
 % Please edit documentation in R/extract_param.R
 \name{extraction_functions}
 \alias{extraction_functions}
-\alias{fit_function_lnorm_range}
-\alias{fit_function_gamma_range}
-\alias{fit_function_weibull_range}
-\alias{fit_function_lnorm}
-\alias{fit_function_gamma}
-\alias{fit_function_weibull}
+\alias{fit_range}
+\alias{fit_percentiles}
 \title{Function for extracting distribution parameters}
 \usage{
-fit_function_lnorm_range(param, val)
+fit_range(param, val, dist = c("lnorm", "gamma", "weibull"))
 
-fit_function_gamma_range(param, val)
-
-fit_function_weibull_range(param, val)
-
-fit_function_lnorm(param, val)
-
-fit_function_gamma(param, val)
-
-fit_function_weibull(param, val)
+fit_percentiles(param, val, dist = c("lnorm", "gamma", "weibull"))
 }
 \arguments{
 \item{param}{Named numeric vector of the distribution parameters to be
@@ -30,6 +18,10 @@ optimised}
 values at the percentiles and the percentiles, in the case of median and
 range it contains the median, lower range, upper range and the number of
 sample points to evaluate the function at}
+
+\item{dist}{A \code{character} string with the name of the distribution for
+fitting. Naming follows the base R distribution names (e.g. \code{lnorm} for
+lognormal).}
 }
 \description{
 Set of functions that can be used to estimate the parameters of a
@@ -37,6 +29,6 @@ distribution (lognormal, gamma, Weibull) via optimisation from either the
 percentiles or the median and ranges.
 }
 \author{
-Adam Kucharski
+Adam Kucharski, Joshua W. Lambert
 }
 \keyword{internal}
