@@ -208,14 +208,15 @@ test_that("extract_param fails as expected", {
   )
 })
 
-test_that("extract_param_percentile works for lnorm", {
+test_that(".extract_param works for lnorm percentiles", {
   # set seed for stochastic optimisation
   set.seed(1)
-  lnorm_params <- extract_param_percentile(
+  lnorm_params <- .extract_param(
     values = c(6, 13),
     distribution = "lnorm",
     percentiles = c(0.125, 0.875)
   )
+
   expect_equal(
     lnorm_params,
     list(
@@ -229,14 +230,15 @@ test_that("extract_param_percentile works for lnorm", {
   )
 })
 
-test_that("extract_param_percentile works for gamma", {
+test_that(".extract_param works for gamma percentiles", {
   # set seed for stochastic optimisation
   set.seed(1)
-  gamma_params <- extract_param_percentile(
+  gamma_params <- .extract_param(
     values = c(6, 13),
     distribution = "gamma",
     percentiles = c(0.125, 0.875)
   )
+
   expect_equal(
     gamma_params,
     list(
@@ -250,14 +252,15 @@ test_that("extract_param_percentile works for gamma", {
   )
 })
 
-test_that("extract_param_percentile works for Weibull", {
+test_that(".extract_param works for Weibull percentiles", {
   # set seed for stochastic optimisation
   set.seed(1)
-  weibull_params <- extract_param_percentile(
+  weibull_params <- .extract_param(
     values = c(6, 13),
     distribution = "weibull",
     percentiles = c(0.125, 0.875)
   )
+
   expect_equal(
     weibull_params,
     list(
@@ -271,14 +274,15 @@ test_that("extract_param_percentile works for Weibull", {
   )
 })
 
-test_that("extract_param_range works for lnorm", {
+test_that(".extract_param works for lnorm range", {
   # set seed for stochastic optimisation
   set.seed(1)
-  lnorm_params <- extract_param_range(
+  lnorm_params <- .extract_param(
     values = c(8, 4, 13),
     distribution = "lnorm",
     samples = 20
   )
+
   expect_equal(
     lnorm_params,
     list(
@@ -292,14 +296,15 @@ test_that("extract_param_range works for lnorm", {
   )
 })
 
-test_that("extract_param_range works for gamma", {
+test_that(".extract_param works for gamma range", {
   # set seed for stochastic optimisation
   set.seed(1)
-  gamma_params <- extract_param_range(
+  gamma_params <- .extract_param(
     values = c(8, 4, 13),
     distribution = "gamma",
     samples = 20
   )
+
   expect_equal(
     gamma_params,
     list(
@@ -313,14 +318,15 @@ test_that("extract_param_range works for gamma", {
   )
 })
 
-test_that("extract_param_range works for Weibull", {
+test_that(".extract_param works for Weibull range", {
   # set seed for stochastic optimisation
   set.seed(1)
-  weibull_params <- extract_param_range(
+  weibull_params <- .extract_param(
     values = c(8, 4, 13),
     distribution = "weibull",
     samples = 20
   )
+
   expect_equal(
     weibull_params,
     list(
@@ -334,55 +340,71 @@ test_that("extract_param_range works for Weibull", {
   )
 })
 
-test_that("fit_function_lnorm_range works for valid input", {
-  lnorm_range <- fit_function_lnorm_range(
+test_that(".extract_param fails as expected", {
+  expect_error(
+    .extract_param(
+      values = c(8, 4, 13),
+      distribution = "weibull"
+    ),
+    regexp = "percentiles or samples arguments must be specified"
+  )
+})
+
+test_that("fit_range works for lnorm for valid input", {
+  lnorm_range <- fit_range(
     param = c(meanlog = 2.0, sdlog = 0.5),
-    val = c(median = 8, lower = 4, upper = 13, n = 20)
+    val = c(median = 8, lower = 4, upper = 13, n = 20),
+    dist = "lnorm"
   )
   reference <- 0.00396181460097
   expect_equal(lnorm_range, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_function_gamma_range works for valid input", {
-  gamma_range <- fit_function_gamma_range(
+test_that("fit_range works for gamma for valid input", {
+  gamma_range <- fit_range(
     param = c(shape = 2.0, scale = 0.5),
-    val = c(median = 8, lower = 4, upper = 13, n = 20)
+    val = c(median = 8, lower = 4, upper = 13, n = 20),
+    dist = "gamma"
   )
   reference <- 0.249998086906
   expect_equal(gamma_range, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_function_weibull_range works for valid input", {
-  weibull_range <- fit_function_weibull_range(
+test_that("fit_range works for weibull for valid input", {
+  weibull_range <- fit_range(
     param = c(shape = 2.0, scale = 0.5),
-    val = c(median = 8, lower = 4, upper = 13, n = 20)
+    val = c(median = 8, lower = 4, upper = 13, n = 20),
+    dist = "weibull"
   )
   reference <- 0.25
   expect_equal(weibull_range, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_function_lnorm works for valud input", {
-  lnorm <- fit_function_lnorm(
+test_that("fit_percentiles works for lnorm for valud input", {
+  lnorm <- fit_percentiles(
     param = c(meanlog = 2.0, sdlog = 0.5),
-    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875)
+    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875),
+    dist = "lnorm"
   )
   reference <- 0.0456127816304
   expect_equal(lnorm, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_function_gamma works for valid input", {
-  gamma <- fit_function_gamma(
+test_that("fit_percentiles works for gamma for valid input", {
+  gamma <- fit_percentiles(
     param = c(shape = 2.0, scale = 0.5),
-    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875)
+    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875),
+    dist = "gamma"
   )
   reference <- 0.781110225514
   expect_equal(gamma, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_function_weibull works for valid input", {
-  weibull <- fit_function_weibull(
+test_that("fit_percentiles works for weibull for valid input", {
+  weibull <- fit_percentiles(
     param = c(shape = 2.0, scale = 0.5),
-    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875)
+    val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875),
+    dist = "weibull"
   )
   reference <- 0.78125
   expect_equal(weibull, reference, tolerance = testthat_tolerance())
