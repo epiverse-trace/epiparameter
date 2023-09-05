@@ -516,25 +516,6 @@ is_epidist_params <- function(prob_dist_params) {
   is_valid_params
 }
 
-#' Helper function that prints the distribution parameters accepted by
-#' `epiparameter`
-#'
-#' @return Nothing, prints to console
-#' @export
-#'
-#' @examples
-#' possible_epidist_params()
-possible_epidist_params <- function() {
-  cat(
-    "Gamma or Weibull must be either 'shape' and 'scale' or 'shape' and 'rate'",
-    "Lognormal must be 'mealog' and 'sdlog' or 'mu' and 'sigma'",
-    "Negative Binomial must be 'mean' and 'dispersion'",
-    "Poisson must be 'mean'",
-    "Geometric must be 'prob'",
-    sep = "\n"
-  )
-}
-
 clean_epidist_params <- function(prob_dist_params, ...) {
   UseMethod("clean_epidist_params")
 }

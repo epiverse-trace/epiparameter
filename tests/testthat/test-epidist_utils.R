@@ -25,10 +25,6 @@ test_that("create_epidist_citation works with PMID", {
   expect_identical(citation$PMID, "84772544")
 })
 
-test_that("possible_epidist_params works as expected", {
-  expect_output(possible_epidist_params())
-})
-
 test_that("clean_epidist_params fails when gamma parameters are incorrect", {
   gamma_params <- c(meanlog = 1, sdlog = 1)
   class(gamma_params) <- "gamma"
