@@ -98,11 +98,6 @@ reference:
     - clean_disease
     - clean_epidist_name
 
-  - title: Check valid parameterisation
-    desc: Check parameters are valid for `<epidist>`
-    contents:
-    - possible_epidist_params
-
   - title: Utility function
     contents:
     - calc_disc_dist_quantile

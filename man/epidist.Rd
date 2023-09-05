@@ -103,6 +103,17 @@ this into an \code{epidist} object in order to work in existing analysis
 pipelines. This is where the \code{epidist()} function can be used to fill out
 each field for which information is known.
 }
+\details{
+Accepted \verb{<epidist>} distribution parameterisations are:
+\itemize{
+\item Gamma must be either 'shape' and 'scale' or 'shape' and 'rate'
+\item Weibull must be 'shape' and 'scale'
+\item Lognormal must be 'mealog' and 'sdlog' or 'mu' and 'sigma'
+\item Negative Binomial must be either 'mean' and 'dispersion' or 'n' and 'p'
+\item Geometric must be either 'mean' or 'prob'
+\item Poisson must be 'mean'
+}
+}
 \examples{
 # minimal input required for `epidist`
 ebola_incubation <- epidist(

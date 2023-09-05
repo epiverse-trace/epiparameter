@@ -135,6 +135,14 @@ new_epidist <- function(disease = list(),
 #' pipelines. This is where the `epidist()` function can be used to fill out
 #' each field for which information is known.
 #'
+#' @details Accepted `<epidist>` distribution parameterisations are:
+#' - Gamma must be either 'shape' and 'scale' or 'shape' and 'rate'
+#' - Weibull must be 'shape' and 'scale'
+#' - Lognormal must be 'mealog' and 'sdlog' or 'mu' and 'sigma'
+#' - Negative Binomial must be either 'mean' and 'dispersion' or 'n' and 'p'
+#' - Geometric must be either 'mean' or 'prob'
+#' - Poisson must be 'mean'
+#'
 #' @param disease A character string with name of the infectious disease
 #' @param pathogen A character string with the name of the causative agent of
 #' disease, or NULL if not known
