@@ -19,9 +19,6 @@ test_that("calc_dist_params works as expected converting for different dist", {
 })
 
 test_that("calc_dist_params works as expected extracting from percentiles", {
-  # set seed for stochastic optimisation
-  set.seed(1)
-
   # messages for numerical optimisation suppressed
   params <- suppressMessages(calc_dist_params(
     prob_dist = "gamma",
@@ -32,9 +29,6 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
 
   expect_vector(params, ptype = numeric(), size = 2)
   expect_named(params, expected = c("shape", "scale"))
-
-  # set seed for stochastic optimisation
-  set.seed(1)
 
   # messages for numerical optimisation suppressed
   params <- suppressMessages(calc_dist_params(
@@ -49,9 +43,6 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
 })
 
 test_that("calc_dist_params works as expected extracting from median & range", {
-  # set seed for stochastic optimisation
-  set.seed(1)
-
   # messages for numerical optimisation suppressed
   params <- suppressMessages(calc_dist_params(
     prob_dist = "gamma",
@@ -69,7 +60,7 @@ test_that("calc_dist_params works as expected extracting from median & range", {
 
 test_that("calc_dist_params fails as expected extracting without sample size", {
   expect_message(
-    params <- calc_dist_params(
+    params <- calc_dist_params( # nolint
       prob_dist = "gamma",
       summary_stats = create_epidist_summary_stats(
         median = 10,
@@ -86,7 +77,7 @@ test_that("calc_dist_params fails as expected extracting without sample size", {
 
 test_that("calc_dist_params messages as expected without summary stats", {
   expect_message(
-    params <- calc_dist_params(
+    params <- calc_dist_params( # nolint
       prob_dist = "gamma",
       summary_stats = create_epidist_summary_stats(mean = 5, median = 5)
     ),
