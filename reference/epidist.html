@@ -222,6 +222,15 @@ data, inference method or disease.</p></dd>
 
 <p>An <code>epidist</code> object</p>
     </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Accepted <code>&lt;epidist&gt;</code> distribution parameterisations are:</p><ul><li><p>Gamma must be either 'shape' and 'scale' or 'shape' and 'rate'</p></li>
+<li><p>Weibull must be 'shape' and 'scale'</p></li>
+<li><p>Lognormal must be 'mealog' and 'sdlog' or 'mu' and 'sigma'</p></li>
+<li><p>Negative Binomial must be either 'mean' and 'dispersion' or 'n' and 'p'</p></li>
+<li><p>Geometric must be either 'mean' or 'prob'</p></li>
+<li><p>Poisson must be 'mean'</p></li>
+</ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
@@ -258,7 +267,9 @@ data, inference method or disease.</p></dd>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  citation <span class="op">=</span> <span class="fu"><a href="create_epidist_citation.html">create_epidist_citation</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    author <span class="op">=</span> <span class="st">"Smith_etal"</span>,</span></span>
-<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2010</span>,</span></span>
+<span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2002</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"COVID-19 incubation period"</span>,</span></span>
+<span class="r-in"><span>    journal <span class="op">=</span> <span class="st">"Epi Journal"</span>,</span></span>
 <span class="r-in"><span>    DOI <span class="op">=</span> <span class="st">"10.19832/j.1366-9516.2012.09147.x"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  metadata <span class="op">=</span> <span class="fu"><a href="create_epidist_metadata.html">create_epidist_metadata</a></span><span class="op">(</span></span></span>
@@ -274,7 +285,10 @@ data, inference method or disease.</p></dd>
 <span class="r-in"><span>  truncation <span class="op">=</span> <span class="cn">NA</span>,</span></span>
 <span class="r-in"><span>  notes <span class="op">=</span> <span class="st">"No notes"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as author, year, journal or title is missing</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Smith, etal (2002). “COVID-19 incubation period.” _Epi Journal_.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> doi:10.19832/j.1366-9516.2012.09147.x</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.19832/j.1366-9516.2012.09147.x&gt;. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation use the 'get_citation' function</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
