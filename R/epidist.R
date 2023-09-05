@@ -280,7 +280,7 @@ epidist <- function(disease,
   checkmate::assert_list(metadata)
   checkmate::assert_list(method_assess)
   checkmate::assert_number(truncation, na.ok = TRUE)
-  checkmate::assert_logical(discretise)
+  checkmate::assert_logical(discretise, len = 1)
   checkmate::assert_character(notes, null.ok = TRUE)
 
   # check whether ci has been provided for each parameter

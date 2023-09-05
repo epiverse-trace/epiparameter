@@ -162,7 +162,7 @@ test_that("create_prob_dist fails for unrecognised discretised dist", {
       discretise = TRUE,
       truncation = NA
     ),
-    regexp = "Did not recognise distribution name"
+    regexp = "(arg)*(should be one of)*(gamma)*(lnorm)*(weibull)"
   )
 })
 
