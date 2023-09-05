@@ -406,7 +406,7 @@ create_epidist_citation <- function(author = NA_character_,
 
   if (!inherits(author, "person")) {
     # imperfect solution as library currently only has first author
-    author_names <- unlist(strsplit(x = author, split = "_", fixed = TRUE))
+    author_names <- strsplit(x = author, split = "_", fixed = TRUE)
     authors <- lapply(author_names, utils::as.person)
     authors <- Reduce(c, authors)
   }
