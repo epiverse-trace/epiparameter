@@ -379,6 +379,8 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #' create_epidist_citation(
 #'   author = "Smith_etal",
 #'   year = 2002,
+#'   title = "COVID-19 incubation period",
+#'   journal = "Epi Journal",
 #'   DOI = "10.19832/j.1366-9516.2012.09147.x"
 #' )
 create_epidist_citation <- function(author = NA_character_,
@@ -386,14 +388,14 @@ create_epidist_citation <- function(author = NA_character_,
                                     title = NA_character_,
                                     journal = NA_character_,
                                     DOI = NA_character_,
-                                    PMID = NA_character_) {
+                                    PMID = NA_integer_) {
   # check input
   checkmate::assert_character(author)
   checkmate::assert_number(year, na.ok = TRUE)
   checkmate::assert_character(title)
   checkmate::assert_character(journal)
-  checkmate::assert_number(PMID, na.ok = TRUE)
   checkmate::assert_character(DOI)
+  checkmate::assert_number(PMID, na.ok = TRUE)
 
   if (is.na(author) || is.na(year) || is.na(journal) || is.na(title)) {
     message(
@@ -505,12 +507,13 @@ is_epidist_params <- function(prob_dist_params) {
   )
 
   # check whether any combinations are valid
-  matches <- lapply(
+  matches <- vapply(
     possible_params,
-    function(x, y) x == y,
-    y = names(prob_dist_params)
+    setequal,
+    y = names(prob_dist_params),
+    FUN.VALUE = logical(1)
   )
-  is_valid_params <- any(unlist(lapply(matches, all)))
+  is_valid_params <- any(matches)
 
   # return check result
   is_valid_params
@@ -796,8 +799,7 @@ clean_epidist_params.default <- function(prob_dist_params) {
 #' clean_epidist_name("Incubation_period")
 clean_epidist_name <- function(epi_dist) {
   out <- gsub(pattern = "_", replacement = " ", x = epi_dist, fixed = TRUE)
-  out <- tolower(out)
-  out
+  tolower(out)
 }
 
 #' Standardises the names of diseases
@@ -808,7 +810,5 @@ clean_epidist_name <- function(epi_dist) {
 #' @export
 clean_disease <- function(x) {
   checkmate::assert_character(x)
-  x <- tolower(x)
-  x <- gsub(pattern = "-| ", replacement = "_", x = x)
-  x
+  gsub(pattern = "-| ", replacement = "_", x = tolower(x))
 }

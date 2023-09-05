@@ -10,7 +10,7 @@ create_epidist_citation(
   title = NA_character_,
   journal = NA_character_,
   DOI = NA_character_,
-  PMID = NA_character_
+  PMID = NA_integer_
 )
 }
 \arguments{
@@ -49,6 +49,8 @@ citations for sources reporting epidemiological parameters.
 create_epidist_citation(
   author = "Smith_etal",
   year = 2002,
+  title = "COVID-19 incubation period",
+  journal = "Epi Journal",
   DOI = "10.19832/j.1366-9516.2012.09147.x"
 )
 }
