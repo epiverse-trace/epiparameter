@@ -5,16 +5,13 @@
 \title{Calculates the parameters of a probability distribution from a list of
 available summary statistics}
 \usage{
-calc_dist_params(prob_dist, prob_dist_params, summary_stats, sample_size = NA)
+calc_dist_params(prob_dist, summary_stats, sample_size = NA)
 }
 \arguments{
 \item{prob_dist}{A character string specifying the probability
 distribution. This should match the R naming convention of probability
 distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
 geometric is geom)}
-
-\item{prob_dist_params}{A named vector of probability distribution
-parameters}
 
 \item{summary_stats}{A list of summary statistics, use
 \code{\link[=create_epidist_summary_stats]{create_epidist_summary_stats()}} to create list. This list can include
@@ -38,28 +35,27 @@ can usually be calculated from the summary statistics. The
 \code{calc_dist_params()} function computes the parameters for the gamma,
 lognormal and Weibull distributions.
 
-This function can provide a convinient wrapper around the conversion and
-extraction functions it is not known which summary statistics can be used to
-calculate the parameters of a distribution.
+This function can provide a convenient wrapper around the conversion and
+extraction functions when it is not known which summary statistics can be
+used to calculate the parameters of a distribution.
 }
 \details{
-The hierarchy of methods are: conversion is prioritised if the mean
-and standard deviation are available as these are mostly analytical
-conversions (except for one of the Weibull conversions), next method if
-possible is extraction from percentiles. This method requires a lower
-percentile (between(0-50]) and an upper percentile(between (50-100)). If
-multiple percentiles in each of these ranges is provided the lowest value is
-used for the calculation. The last method is the extraction using a median
-and range of the data.
+The hierarchy of methods is:
+\enumerate{
+\item Conversion is prioritised if the mean and standard deviation are
+available as these are mostly analytical conversions (except for one of the
+Weibull conversions)
+\item Next method if possible is extraction from percentiles. This method
+requires a lower percentile (between(0-50]) and an upper percentile
+(between (50-100)). If multiple percentiles in each of these ranges is
+provided the lowest value is used for the calculation.
+\item The last method is the extraction using a median and range of the data.
+}
 }
 \examples{
 \dontrun{
-# set seed for stochastic optimisation
-set.seed(1)
-
 calc_dist_params(
   prob_dist = "gamma",
-  prob_dist_params = NA,
   summary_stats = create_epidist_summary_stats(
     quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
   ),
@@ -68,7 +64,6 @@ calc_dist_params(
 
 calc_dist_params(
   prob_dist = "gamma",
-  prob_dist_params = NA,
   summary_stats = create_epidist_summary_stats(
     median = 5, lower_range = 3, upper_range = 12
   ),
