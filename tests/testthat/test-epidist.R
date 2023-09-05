@@ -257,6 +257,7 @@ test_that("new_epidist works with minimal viable input", {
         title = "Ebola incubation",
         journal = "Journal of Epi"
       ),
+      discretise = FALSE,
       truncation = NA
     )
   )
@@ -295,6 +296,7 @@ test_that("validate_epidist passes when expected", {
         journal = "Journal of Epi",
         DOI = "10.1872372hc"
       ),
+      discretise = FALSE,
       truncation = NA
     )
   )
@@ -324,6 +326,7 @@ test_that("validate_epidist catches class faults when expected", {
       )
     ),
     citation = "Smith (2002) <10.128372837>",
+    discretise = FALSE,
     truncation = NA
   )
 
@@ -355,6 +358,7 @@ test_that("validate_epidist catches class faults when expected", {
       )
     ),
     citation = "Smith (2002) <10.128372837>",
+    discretise = FALSE,
     truncation = NA
   )
 
@@ -386,6 +390,7 @@ test_that("validate_epidist catches class faults when expected", {
       )
     ),
     citation = "Smith (2002) <10.128372837>",
+    discretise = FALSE,
     truncation = NA
   )
 
