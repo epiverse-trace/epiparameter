@@ -62,7 +62,6 @@ new_epidist <- function(disease = list(),
   if (!is.na(prob_dist) && anyNA(prob_dist_params) && auto_calc_params) {
     prob_dist_params <- calc_dist_params(
       prob_dist = prob_dist,
-      prob_dist_params = prob_dist_params,
       summary_stats = summary_stats,
       sample_size = metadata$sample_size
     )

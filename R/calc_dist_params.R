@@ -8,18 +8,20 @@
 #' `calc_dist_params()` function computes the parameters for the gamma,
 #' lognormal and Weibull distributions.
 #'
-#' This function can provide a convinient wrapper around the conversion and
-#' extraction functions it is not known which summary statistics can be used to
-#' calculate the parameters of a distribution.
+#' This function can provide a convenient wrapper around the conversion and
+#' extraction functions when it is not known which summary statistics can be
+#' used to calculate the parameters of a distribution.
 #'
-#' @details The hierarchy of methods are: conversion is prioritised if the mean
-#' and standard deviation are available as these are mostly analytical
-#' conversions (except for one of the Weibull conversions), next method if
-#' possible is extraction from percentiles. This method requires a lower
-#' percentile (between(0-50]) and an upper percentile(between (50-100)). If
-#' multiple percentiles in each of these ranges is provided the lowest value is
-#' used for the calculation. The last method is the extraction using a median
-#' and range of the data.
+#' @details The hierarchy of methods is:
+#'
+#' 1. Conversion is prioritised if the mean and standard deviation are
+#' available as these are mostly analytical conversions (except for one of the
+#' Weibull conversions)
+#' 2. Next method if possible is extraction from percentiles. This method
+#' requires a lower percentile (between(0-50]) and an upper percentile
+#' (between (50-100)). If multiple percentiles in each of these ranges is
+#' provided the lowest value is used for the calculation.
+#' 3. The last method is the extraction using a median and range of the data.
 #'
 #' @inheritParams new_epidist
 #' @inheritParams epidist
@@ -30,12 +32,8 @@
 #' @keywords internal
 #' @examples
 #' \dontrun{
-#' # set seed for stochastic optimisation
-#' set.seed(1)
-#'
 #' calc_dist_params(
 #'   prob_dist = "gamma",
-#'   prob_dist_params = NA,
 #'   summary_stats = create_epidist_summary_stats(
 #'     quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
 #'   ),
@@ -44,7 +42,6 @@
 #'
 #' calc_dist_params(
 #'   prob_dist = "gamma",
-#'   prob_dist_params = NA,
 #'   summary_stats = create_epidist_summary_stats(
 #'     median = 5, lower_range = 3, upper_range = 12
 #'   ),
@@ -52,22 +49,8 @@
 #' )
 #' }
 calc_dist_params <- function(prob_dist,
-                             prob_dist_params,
                              summary_stats,
                              sample_size = NA) {
-  # check input
-  checkmate::assert_string(prob_dist)
-  checkmate::assert_list(
-    summary_stats,
-    types = c("list", "double", "logical", "null"),
-    names = "unique"
-  )
-  checkmate::assert_number(sample_size, na.ok = TRUE)
-  stopifnot(
-    "probability distribution params must be a named vector or NA" =
-      anyNA(prob_dist_params) ||
-        !is.null(names(prob_dist_params))
-  )
 
   # extract mean and sd to see if conversion is possible
   mean_sd <- c(
@@ -126,6 +109,7 @@ calc_dist_params <- function(prob_dist,
       "No adequate summary statistics available to calculate the parameters ",
       "of the ", prob_dist, " distribution"
     )
+    return(NA)
   }
 
   # return params
