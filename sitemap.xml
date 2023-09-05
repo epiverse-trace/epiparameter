@@ -145,6 +145,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/discretise.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-extract_param.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/epidist.html</loc>
   </url>
   <url>
@@ -164,12 +167,6 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param_percentile.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param_range.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/extraction_functions.html</loc>

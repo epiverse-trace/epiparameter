@@ -110,8 +110,10 @@ a data set to which a distribution can be fit. Using these and specifying the di
 optimisation using least-squares.</p>
 <p>The precision and bias of this approach needs to be explored across the parameter space
 of the different distributions to understand potential erroneous inferences. This
-vignette aims to explore this inference bias for the three distributions currently
-supported in {epiparameter} for parameter extraction: gamma, lognormal and Weibull.</p>
+vignette aims to explore this inference bias for three distributions currently
+supported in {epiparameter} for parameter extraction: gamma, lognormal and Weibull. Extraction
+of parameters from a normal distribution is also supported in {epiparameter} but we
+do not test that in this vignette.</p>
 <div class="alert alert-warning">
 <p>This is not an in depth analysis of the estimation methods implemented in {epiparameter},
 but rather a supplementary article exploring the bias and precision of the functions.
@@ -520,6 +522,21 @@ Figure 3: Parameter extraction precision, facetted by distribution. Parameter 1 
 <span>  <span class="op">)</span></span>
 <span>  <span class="va">estim_param_var</span><span class="op">[[</span><span class="va">params_idx</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">estim</span>, MARGIN <span class="op">=</span> <span class="fl">1</span>, FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
+<span><span class="co">#&gt; Warning: Maximum optimisation iterations reached, returning result early. </span></span>
+<span><span class="co">#&gt; Result may not be reliable.</span></span>
+<span></span>
+<span><span class="co">#&gt; Warning: Maximum optimisation iterations reached, returning result early. </span></span>
+<span><span class="co">#&gt; Result may not be reliable.</span></span>
+<span></span>
+<span><span class="co">#&gt; Warning: Maximum optimisation iterations reached, returning result early. </span></span>
+<span><span class="co">#&gt; Result may not be reliable.</span></span>
+<span></span>
+<span><span class="co">#&gt; Warning: Maximum optimisation iterations reached, returning result early. </span></span>
+<span><span class="co">#&gt; Result may not be reliable.</span></span>
+<span></span>
+<span><span class="co">#&gt; Warning: Maximum optimisation iterations reached, returning result early. </span></span>
+<span><span class="co">#&gt; Result may not be reliable.</span></span>
+<span></span>
 <span><span class="co">#&gt; Warning: Maximum optimisation iterations reached, returning result early. </span></span>
 <span><span class="co">#&gt; Result may not be reliable.</span></span>
 <span></span>
