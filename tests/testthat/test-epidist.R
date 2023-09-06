@@ -1,5 +1,4 @@
 test_that("epidist works with minimal viable input", {
-
   # message about missing citation suppressed
   ebola_dist <- suppressMessages(epidist(
     disease = "ebola",
@@ -13,7 +12,6 @@ test_that("epidist works with minimal viable input", {
 })
 
 test_that("epidist works with all arguments set", {
-
   # suppress message about citation
   mers_dist <- suppressMessages(
     epidist(
@@ -109,7 +107,6 @@ test_that("epidist works with default helper functions", {
 })
 
 test_that("epidist fails as expected", {
-
   expect_error(
     epidist(
       disease = 1,
@@ -117,8 +114,9 @@ test_that("epidist fails as expected", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
     ),
-    regexp = paste0("Assertion on 'disease' failed: Must be of type ",
-                   "'string', not 'double'."
+    regexp = paste0(
+      "Assertion on 'disease' failed: Must be of type ",
+      "'string', not 'double'."
     )
   )
 
@@ -129,8 +127,9 @@ test_that("epidist fails as expected", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
     ),
-    regexp = paste0("Assertion on 'epi_dist' failed: Must be of type ",
-                   "'string', not 'double'."
+    regexp = paste0(
+      "Assertion on 'epi_dist' failed: Must be of type ",
+      "'string', not 'double'."
     )
   )
 
@@ -149,17 +148,19 @@ test_that("epidist fails as expected", {
 
   expect_error(
     # message about missing citation suppressed
-    suppressMessages(epidist(
-      disease = "ebola",
-      epi_dist = "incubation",
-      prob_distribution = "gamma",
-      prob_distribution_params = c(shape = "NA", scale = 1)
-    ),
-    regexp = paste0(
-      "(Assertion on 'prob_distribution_params' failed)*(Must be of type)*",
-      "(numeric)*(NULL)*(character)."
+    suppressMessages(
+      epidist(
+        disease = "ebola",
+        epi_dist = "incubation",
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = "NA", scale = 1)
+      ),
+      regexp = paste0(
+        "(Assertion on 'prob_distribution_params' failed)*(Must be of type)*",
+        "(numeric)*(NULL)*(character)."
+      )
     )
-  ))
+  )
 })
 
 test_that("epidist.print works as expected", {
@@ -182,7 +183,6 @@ test_that("epidist.print works as expected", {
 })
 
 test_that("epidist.plot does not produce an error", {
-
   ebola_dist <- suppressMessages(epidist(
     disease = "ebola",
     epi_dist = "incubation",
@@ -201,7 +201,6 @@ test_that("epidist.plot does not produce an error", {
 })
 
 test_that("epidist.plot works with non-default day_range", {
-
   ebola_dist <- suppressMessages(epidist(
     disease = "ebola",
     epi_dist = "incubation",
@@ -229,7 +228,6 @@ test_that("epidist.plot works with non-default day_range", {
 })
 
 test_that("new_epidist works with minimal viable input", {
-
   epidist_obj <- suppressMessages(
     new_epidist(
       disease = list(
@@ -403,10 +401,10 @@ test_that("validate_epidist catches class faults when expected", {
 })
 
 test_that("validate_epidist fails as expected with input class", {
-    expect_error(
-      validate_epidist(epidist = 1),
-      regexp = "Object should be of class epidist"
-    )
+  expect_error(
+    validate_epidist(epidist = 1),
+    regexp = "Object should be of class epidist"
+  )
 })
 
 test_that("density works as expected on continuous epidist object", {
@@ -778,7 +776,7 @@ test_that("generate fails as expected on discrete epidist object with vector
 test_that("is_epidist returns TRUE when expected", {
   # suppress message about citation
   edist <- suppressMessages(epidist(
-  disease = "ebola",
+    disease = "ebola",
     epi_dist = "serial_interval",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
@@ -873,7 +871,6 @@ test_that("discretise works as expected on truncated dist", {
 })
 
 test_that("discretise fails as expected on non-epidist object", {
-
   expect_error(
     discretise("epidist"),
     regexp = "No discretise method defined for class character"
@@ -944,7 +941,6 @@ test_that("parameters works as expected on truncated dist", {
 })
 
 test_that("parameters fails as expected on non-epidist object", {
-
   expect_error(
     get_parameters("epidist"),
     regexp = paste0(

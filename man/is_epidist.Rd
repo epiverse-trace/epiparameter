@@ -18,7 +18,7 @@ Checks whether the object is an \code{epidist}
 }
 \examples{
 edist <- epidist(
-disease = "ebola",
+  disease = "ebola",
   epi_dist = "serial_interval",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1)

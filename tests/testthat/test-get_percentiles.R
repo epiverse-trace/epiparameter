@@ -25,9 +25,8 @@ test_that("get_percentiles fails as expected", {
 })
 
 test_that("get_sym_percentiles works as expected for symmetrical", {
-
   # trivial case
-  percentiles <- c("5" = 5,  "95" = 15)
+  percentiles <- c("5" = 5, "95" = 15)
   sym_percentiles <- get_sym_percentiles(percentiles = percentiles)
   expect_identical(sym_percentiles, c("5" = 5, "95" = 15))
 
@@ -54,9 +53,8 @@ test_that("get_sym_percentiles works as expected for symmetrical", {
 })
 
 test_that("get_sym_percentiles works as expected for asymmetrical", {
-
   # trivial case
-  percentiles <- c("2.5" = 5,  "95" = 15)
+  percentiles <- c("2.5" = 5, "95" = 15)
   sym_percentiles <- get_sym_percentiles(percentiles = percentiles)
   expect_identical(sym_percentiles, c("2.5" = 5, "95" = 15))
 
@@ -83,7 +81,6 @@ test_that("get_sym_percentiles works as expected for asymmetrical", {
 })
 
 test_that("get_sym_percentiles works as expected for all NAs", {
-
-  percentiles <- c("2.5" = NA,  "95" = NA)
+  percentiles <- c("2.5" = NA, "95" = NA)
   expect_true(is.na(get_sym_percentiles(percentiles = percentiles)))
 })

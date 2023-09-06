@@ -21,7 +21,7 @@ generation and other methods of the epidist class
 }
 \examples{
 \donttest{
-  eparam <- epiparam()
-  as_epidist(eparam[1, ])
+eparam <- epiparam()
+as_epidist(eparam[1, ])
 }
 }

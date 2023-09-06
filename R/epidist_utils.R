@@ -33,7 +33,7 @@
 #' # lengh of list should match number of parameters
 #' list(
 #'   shape = create_epidist_uncertainty(
-#'     ci_limits = c(1,3),
+#'     ci_limits = c(1, 3),
 #'     ci = 95,
 #'     ci_type = "confidence interval"
 #'   ),
@@ -50,13 +50,14 @@
 #' # or give NA as the first argument
 #' create_epidist_uncertainty(NA)
 create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
-
   # when no uncertainty is given
-  if (anyNA(ci_limits)) return(list(
-    ci_limits = NA_real_,
-    ci = c(NA_real_, NA_real_),
-    ci_type = NA_character_
-  ))
+  if (anyNA(ci_limits)) {
+    return(list(
+      ci_limits = NA_real_,
+      ci = c(NA_real_, NA_real_),
+      ci_type = NA_character_
+    ))
+  }
 
   # check input
   checkmate::assert_numeric(ci_limits, any.missing = FALSE, len = 2)
@@ -147,7 +148,6 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
                                     vector = NA_character_,
                                     extrinsic = FALSE,
                                     inference_method = NA_character_) {
-
   # check input
   checkmate::assert_number(
     sample_size,
@@ -200,7 +200,6 @@ create_epidist_region <- function(continent = NA_character_,
                                   country = NA_character_,
                                   region = NA_character_,
                                   city = NA_character_) {
-
   checkmate::assert_string(continent, na.ok = TRUE)
   checkmate::assert_string(country, na.ok = TRUE)
   checkmate::assert_string(region, na.ok = TRUE)
@@ -213,7 +212,6 @@ create_epidist_region <- function(continent = NA_character_,
     region = region,
     city = city
   )
-
 }
 
 #' Specify any reported summary statistics for `epidist`
@@ -285,12 +283,16 @@ create_epidist_summary_stats <- function(mean = NA_real_,
                                          sd_ci_limits = c(NA_real_, NA_real_),
                                          sd_ci = NA_real_,
                                          median = NA_real_,
-                                         median_ci_limits = c(NA_real_,
-                                                              NA_real_),
+                                         median_ci_limits = c(
+                                           NA_real_,
+                                           NA_real_
+                                         ),
                                          median_ci = NA_real_,
                                          dispersion = NA_real_,
-                                         dispersion_ci_limits = c(NA_real_,
-                                                                  NA_real_),
+                                         dispersion_ci_limits = c(
+                                           NA_real_,
+                                           NA_real_
+                                         ),
                                          dispersion_ci = NA_real_,
                                          lower_range = NA_real_,
                                          upper_range = NA_real_,
@@ -301,8 +303,8 @@ create_epidist_summary_stats <- function(mean = NA_real_,
                                            "q_50" = NA_real_,
                                            "q_75" = NA_real_,
                                            "q_95" = NA_real_,
-                                           "q_97.5" = NA_real_)) {
-
+                                           "q_97.5" = NA_real_
+                                         )) {
   # check input
   checkmate::assert_number(mean, na.ok = TRUE)
   checkmate::assert_numeric(mean_ci_limits, len = 2, any.missing = TRUE)
@@ -322,8 +324,8 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 
   stopifnot(
     "quantiles vector should have names with 'q_' prefix" =
-     !is.null(names(quantiles)) &&
-      all(startsWith(x = names(quantiles), prefix = "q_"))
+      !is.null(names(quantiles)) &&
+        all(startsWith(x = names(quantiles), prefix = "q_"))
   )
 
   # return list of summary stats
@@ -530,7 +532,6 @@ clean_epidist_params <- function(prob_dist_params, ...) {
 #' @return Named vector of parameters
 #' @keywords internal
 clean_epidist_params.gamma <- function(prob_dist_params) {
-
   # if unparameterised return named vector of NAs
   if (isTRUE(is.na(prob_dist_params))) {
     prob_dist_params <- c(shape = NA_real_, scale = NA_real_)
@@ -570,7 +571,6 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
 #' @return Named vector of parameters
 #' @keywords internal
 clean_epidist_params.lnorm <- function(prob_dist_params) {
-
   # if unparameterised return named vector of NAs
   if (isTRUE(is.na(prob_dist_params))) {
     prob_dist_params <- c(meanlog = NA_real_, sdlog = NA_real_)
@@ -579,7 +579,6 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
 
   # if mu and sigma are provided convert to meanlog and sdlog
   if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
-
     # find index so parameters can be in any order
     mu_index <- which(names(prob_dist_params) == "mu")
     sigma_index <- which(names(prob_dist_params) == "sigma")
@@ -612,7 +611,6 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
 #' @return Named vector of parameters
 #' @keywords internal
 clean_epidist_params.weibull <- function(prob_dist_params) {
-
   # if unparameterised return named vector of NAs
   if (isTRUE(is.na(prob_dist_params))) {
     prob_dist_params <- c(shape = NA_real_, scale = NA_real_)
@@ -640,7 +638,6 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
 #' @return Named vector of parameters
 #' @keywords internal
 clean_epidist_params.nbinom <- function(prob_dist_params) {
-
   # if unparameterised return named vector of NAs
   if (isTRUE(is.na(prob_dist_params))) {
     prob_dist_params <- c(mean = NA_real_, dispersion = NA_real_)
@@ -648,7 +645,6 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
   }
 
   if (all(c("n", "p") %in% names(prob_dist_params))) {
-
     # convert prob to mean
     prob_dist_params[["p"]] <- convert_params_to_summary_stats(
       distribution = "nbinom",
@@ -691,7 +687,6 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
 #' @return Named vector of parameters
 #' @keywords internal
 clean_epidist_params.geom <- function(prob_dist_params) {
-
   # if unparameterised return named NA
   if (isTRUE(is.na(prob_dist_params))) {
     prob_dist_params <- c(prob = NA_real_)
@@ -713,7 +708,6 @@ clean_epidist_params.geom <- function(prob_dist_params) {
 
     # return prob_dist_params
     return(prob_dist_params)
-
   } else if ("p" %in% names(prob_dist_params)) {
     names(prob_dist_params) <- gsub(
       pattern = "^p$",
@@ -747,7 +741,6 @@ clean_epidist_params.geom <- function(prob_dist_params) {
 #' @return Named vector of parameters
 #' @keywords internal
 clean_epidist_params.pois <- function(prob_dist_params) {
-
   # if unparameterised return named NA
   if (isTRUE(is.na(prob_dist_params))) {
     prob_dist_params <- c(mean = NA_real_)
@@ -768,7 +761,6 @@ clean_epidist_params.pois <- function(prob_dist_params) {
       call. = FALSE
     )
   }
-
 }
 
 #' Default method if class of parameters is not recognised

@@ -18,7 +18,6 @@ get_parameters <- function(x, ...) {
 
 #' @export
 get_parameters.epidist <- function(x, ...) {
-
   # extract parameters depending on prob distribution class
   if (inherits(x$prob_dist, "distcrete")) {
     params <- unlist(x$prob_dist$parameters)
@@ -83,21 +82,22 @@ get_citation.epidist <- function(x, ...) {
 
 #' @export
 get_citation.epiparam <- function(x, ...) {
-  citation_list <- apply(x, MARGIN = 1, FUN = function(y) {
-    # suppressing message as users do not need reminding of citation when
-    # retrieving citation
-    suppressMessages(
-      create_epidist_citation(
-        author = y$author,
-        year = y$year,
-        title = y$title,
-        journal = y$journal,
-        DOI = y$DOI,
-        PMID = y$PMID
+  citation_list <- apply(x,
+    MARGIN = 1, FUN = function(y) {
+      # suppressing message as users do not need reminding of citation when
+      # retrieving citation
+      suppressMessages(
+        create_epidist_citation(
+          author = y$author,
+          year = y$year,
+          title = y$title,
+          journal = y$journal,
+          DOI = y$DOI,
+          PMID = y$PMID
+        )
       )
-    )
-  },
-  simplify = FALSE
+    },
+    simplify = FALSE
   )
 
   # remove names from list
