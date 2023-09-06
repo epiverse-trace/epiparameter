@@ -51,7 +51,7 @@ library(epiparameter)
 
 ## Conversions
 
-There are two conversion functions in {epiparameter}: `convert_params_to_summary_stats()` and `convert_summary_stats_to_params()`. `convert_params_to_summary_stats()` converts parameters to many summary statistics, and `convert_summary_stats_to_params()` converts summary statistics to a set of parameters.
+There are two conversion functions in {epiparameter}: `convert_params_to_summary_stats()` and `convert_summary_stats_to_params()`. `convert_params_to_summary_stats()` converts one set of statistical distribution parameters to common summary statistics, and `convert_summary_stats_to_params()` converts summary statistics to a set of parameters.
 
 ### Conversion functions
 
