@@ -62,8 +62,8 @@ The `<epiparam>` class has a custom printing method which gives a summary of the
 The `<epiparam>` class is based (i.e. inherits from) the data frame, and therefore the same subsetting and manipulation can be carried out, including the `head()` and `tail()` of the database.
 
 ```{r, subsetting-head-tail-epiparam}
-head(epi_dist_db)[, 1:5]
-tail(epi_dist_db)[, 1:5]
+head(epi_dist_db)[, 1:4]
+tail(epi_dist_db)[, 1:4]
 ```
 
 The epidemiological library contains multiple columns, each storing different features of the parameter:
@@ -98,10 +98,10 @@ An `<epidist>` object can be converted from one of the rows of the `<epiparam>` 
 
 ```{r convert-epiparam-epidist}
 # find entry for COVID-19
-epi_dist_covid <- epi_dist_db[which(epi_dist_db$disease == "COVID-19"), ]
+epi_dist_covid <- epi_dist_db[epi_dist_db$disease == "COVID-19", ]
 
 # find entry for COVID-19 incubation period
-epi_dist_covid_incub <- epi_dist_covid[which(epi_dist_covid$epi_distribution == "incubation_period"), ] # nolint
+epi_dist_covid_incub <- epi_dist_covid[epi_dist_covid$epi_distribution == "incubation_period", ] # nolint
 
 # select one of the COVID-19 incubation period
 covid_incub <- epi_dist_covid_incub[10, ]
@@ -111,7 +111,7 @@ covid_incub <- as_epidist(covid_incub)
 covid_incub
 ```
 
-The `<epidist>` object also has a custom printing method which shows the disease, pathogen (if known), the epidemiological distribution, a short citation of the study the parameters are from and the probability distribution and parameter of that distribution (if available).
+The `<epidist>` object also has a custom printing method which shows the disease, pathogen (if known), the epidemiological distribution, a citation of the study the parameters are from and the probability distribution and parameter of that distribution (if available).
 
 The opposite conversion from `<epidist>` to `<epiparam>` can also be achieved using `as_epiparam()`.
 

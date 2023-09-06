@@ -55,7 +55,7 @@ There are two conversion functions in {epiparameter}: `convert_params_to_summary
 
 ### Conversion functions
 
-The conversion functions have two arguments. The first (`distribution`) defines which distribution you want to use and the second (`...`) lets you put as many named parameters or summary statistics as required. The arguments passed into `...` are matched name, and therefore need to match exactly to the names expected. See the function documentation (`?convert_params_to_summary_stats` and `?convert_summary_stats_to_params` for names).
+The conversion functions have two arguments. The first (`distribution`) defines which distribution you want to use and the second (`...`) lets you put as many named parameters or summary statistics as required. The arguments passed into `...` are matched by name, and therefore need to match exactly to the names expected. See the function documentation (`?convert_params_to_summary_stats` and `?convert_summary_stats_to_params` for names).
 
 All currently supported summary statistic conversions in {epiparameter} are given below for each distribution.
 
