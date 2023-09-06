@@ -44,7 +44,7 @@ create_epidist_uncertainty(
 # lengh of list should match number of parameters
 list(
   shape = create_epidist_uncertainty(
-    ci_limits = c(1,3),
+    ci_limits = c(1, 3),
     ci = 95,
     ci_type = "confidence interval"
   ),

@@ -51,7 +51,6 @@ test_that("convert_params_to_summary_stats works as expected", {
     ),
     tolerance = 1e-4
   )
-
 })
 
 test_that("convert_summary_stats_to_params works as expected", {

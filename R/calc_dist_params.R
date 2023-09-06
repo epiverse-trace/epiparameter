@@ -51,7 +51,6 @@
 calc_dist_params <- function(prob_dist,
                              summary_stats,
                              sample_size = NA) {
-
   # extract mean and sd to see if conversion is possible
   mean_sd <- c(
     mean = summary_stats$centre_spread$mean,
@@ -86,7 +85,8 @@ calc_dist_params <- function(prob_dist,
     # create flat list structure to be passed to ... in conversion
     args <- unlist(list(prob_dist, as.list(summary_stats_)), recursive = FALSE)
     prob_dist_params <- unlist(do.call(
-      convert_summary_stats_to_params, args = args
+      convert_summary_stats_to_params,
+      args = args
     ))
   } else if (!anyNA(percentiles)) {
     # calculate the parameters from the percentiles

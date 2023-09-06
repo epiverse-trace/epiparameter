@@ -76,7 +76,7 @@ test_that("epiparam summary method works as expected", {
       "num_entries", "num_diseases", "num_delay_dist", "num_offspring_dist",
       "num_studies", "num_continuous_distributions",
       "num_discrete_distributions", "num_vector_borne_diseases"
-      )
+    )
   )
 })
 

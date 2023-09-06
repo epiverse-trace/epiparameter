@@ -23,13 +23,12 @@
 #'
 #' @examples
 #' \dontrun{
-#'   # 90th interval
-#'   get_percentiles(c(q_5 = 1, q_95 = 10))
-#'   # 95th interval
-#'   get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
+#' # 90th interval
+#' get_percentiles(c(q_5 = 1, q_95 = 10))
+#' # 95th interval
+#' get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
 #' }
 get_percentiles <- function(percentiles) {
-
   # check input
   checkmate::assert_numeric(percentiles, names = "unique")
 
@@ -64,7 +63,6 @@ get_percentiles <- function(percentiles) {
 #' and upper (second element) percentiles
 #' @keywords internal
 get_sym_percentiles <- function(percentiles) {
-
   # make a copy of percentiles
   percentiles_ <- percentiles
 
@@ -80,7 +78,7 @@ get_sym_percentiles <- function(percentiles) {
 
   # if upper or lower percentiles are not available return percentiles
   if (identical(length(lower_intervals), 0L) ||
-      identical(length(upper_intervals), 0L)) {
+    identical(length(upper_intervals), 0L)) {
     return(NA)
   }
 

@@ -35,7 +35,6 @@
 #' )
 #' bind_epiparam(eparam, edist)
 bind_epiparam <- function(epiparam, epi_obj) {
-
   # check input
   validate_epiparam(epiparam)
   if (is_epidist(epi_obj)) {
@@ -63,7 +62,7 @@ bind_epiparam <- function(epiparam, epi_obj) {
 
   # convert epidist to epiparam object
   if (is_epidist(epi_obj) || inherits(epi_obj, "list") ||
-      is_vb_epidist(epi_obj)) {
+    is_vb_epidist(epi_obj)) {
     epi_obj <- as_epiparam(x = epi_obj)
   }
 

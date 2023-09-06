@@ -48,7 +48,6 @@ create_prob_dist <- function(prob_dist,
                              prob_dist_params,
                              discretise,
                              truncation) {
-
   if (discretise) {
     prob_dist <- match.arg(prob_dist, choices = c("gamma", "lnorm", "weibull"))
     # create discretised probability distribution object
@@ -63,8 +62,7 @@ create_prob_dist <- function(prob_dist,
     )
   } else {
     # create non-discretised probability distribution object
-    prob_dist <- switch(
-      prob_dist,
+    prob_dist <- switch(prob_dist,
       gamma = distributional::dist_gamma(
         shape = prob_dist_params[["shape"]],
         rate = 1 / prob_dist_params[["scale"]]

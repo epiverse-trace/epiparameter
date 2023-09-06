@@ -52,7 +52,6 @@ new_epidist <- function(disease = list(),
                         discretise = logical(),
                         truncation = numeric(),
                         notes = character()) {
-
   check_epidist_uncertainty(
     prob_dist_params = prob_dist_params,
     uncertainty = uncertainty
@@ -259,7 +258,6 @@ epidist <- function(disease,
                     discretise = FALSE,
                     truncation = NA_real_,
                     notes = NULL) {
-
   # check input
   checkmate::assert_string(disease)
   checkmate::assert_character(pathogen)
@@ -288,10 +286,10 @@ epidist <- function(disease,
   stopifnot(
     "uncertainty must be provided for each parameter" =
       anyNA(uncertainty, recursive = TRUE) ||
-      length(prob_distribution_params) == length(uncertainty),
+        length(prob_distribution_params) == length(uncertainty),
     "probability distribution params must be a named vector or NA" =
       anyNA(prob_distribution_params, recursive = TRUE) ||
-      !is.null(names(prob_distribution_params))
+        !is.null(names(prob_distribution_params))
   )
 
   # call epidist constructor
@@ -331,7 +329,6 @@ epidist <- function(disease,
 #' Nothing, errors when invalid `epidist` object is provided
 #' @export
 validate_epidist <- function(epidist) {
-
   if (!is_epidist(epidist)) {
     stop("Object should be of class epidist", call. = FALSE)
   }
@@ -339,17 +336,19 @@ validate_epidist <- function(epidist) {
   # check for class invariants
   stopifnot(
     "epidist object does not contain the correct attributes" =
-      c("disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-        "citation", "metadata", "method_assess", "notes") %in%
-      attributes(epidist)$names,
+      c(
+        "disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
+        "citation", "metadata", "method_assess", "notes"
+      ) %in%
+        attributes(epidist)$names,
     "epidist must contain a disease (single character string)" =
       is.character(epidist$disease$disease) &&
-      length(epidist$disease$disease) == 1,
+        length(epidist$disease$disease) == 1,
     "epidist must contain an epidemiological distribution" =
       is.character(epidist$epi_dist) && length(epidist$epi_dist) == 1,
     "epidist must contain a <distribution> or <distcrete> distribution or NA" =
       inherits(epidist$prob_dist, c("distribution", "distcrete")) ||
-      is.na(epidist$prob_dist) || is.character(epidist$prob_dist),
+        is.na(epidist$prob_dist) || is.character(epidist$prob_dist),
     "epidisit must contain uncertainty, summary stats and metadata" =
       all(
         is.list(epidist$uncertainty),
@@ -411,7 +410,6 @@ print.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 #' )
 #' format(epidist)
 format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
-
   if (header) {
     writeLines(
       c(
@@ -505,7 +503,6 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 #'
 #' plot(edist, day_range = 0:10)
 plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
-
   # check input
   validate_epidist(x)
   checkmate::assert_numeric(day_range, min.len = 2)
@@ -569,7 +566,7 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
 #'
 #' @examples
 #' edist <- epidist(
-#' disease = "ebola",
+#'   disease = "ebola",
 #'   epi_dist = "serial_interval",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1)
@@ -752,20 +749,17 @@ discretise <- function(x, ...) {
 #' @rdname discretise
 #' @export
 discretise.epidist <- function(x, ...) {
-
   # check if distribution is already discretised if so return early
   if (inherits(x$prob_dist, "distcrete")) {
     message("Distribution in `epidist` is already discretised")
     return(x)
   } else {
-
     # extract prob dist and prob dist parameters from epidist
     prob_dist <- family(x)
     prob_dist_params <- get_parameters(x)
 
     # if distribution is truncated take only parameters
     if (is_truncated(x)) {
-
       warning(
         "Discretising a truncated continuous distribution, ",
         "returning non-truncated discretised distribution",
@@ -850,7 +844,6 @@ discretise.default <- function(x, ...) {
 #' )
 #' family(edist)
 family.epidist <- function(object, ...) {
-
   if (inherits(object$prob_dist, "distcrete")) {
     prob_dist <- object$prob_dist$name
   } else if (inherits(object$prob_dist, "distribution")) {
@@ -870,8 +863,7 @@ family.epidist <- function(object, ...) {
     return(NA)
   }
 
-  prob_dist <- switch(
-    prob_dist,
+  prob_dist <- switch(prob_dist,
     lognormal = "lnorm",
     negbin = "nbinom",
     geometric = "geom",
@@ -914,7 +906,6 @@ family.epidist <- function(object, ...) {
 #' )
 #' is_truncated(edist)
 is_truncated <- function(x) {
-
   stopifnot(
     "is_truncated only works for `<epidist> objects`" =
       is_epidist(x)

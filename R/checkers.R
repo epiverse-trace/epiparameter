@@ -35,7 +35,6 @@ is_parameterised <- function(x, ...) {
 
 #' @export
 is_parameterised.epiparam <- function(x, ...) {
-
   chkDots(...)
 
   has_params <- vapply(
@@ -72,7 +71,6 @@ is_parameterised.epiparam <- function(x, ...) {
 
 #' @export
 is_parameterised.epidist <- function(x, ...) {
-
   chkDots(...)
 
   # probability distribution object

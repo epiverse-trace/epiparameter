@@ -9,7 +9,6 @@
 #' @examples
 #' eparam <- epiparameter:::new_epiparam("all")
 new_epiparam <- function(epi_dist) {
-
   # check input
   checkmate::assert_string(epi_dist)
 
@@ -24,15 +23,18 @@ new_epiparam <- function(epi_dist) {
   # ensure type correctness
   numeric_col <- epiparam_num_fields(params)
   params[numeric_col] <- vapply(
-    params[numeric_col], FUN = as.numeric, FUN.VALUE = numeric(nrow(params))
+    params[numeric_col],
+    FUN = as.numeric, FUN.VALUE = numeric(nrow(params))
   )
   char_col <- epiparam_char_fields(params)
   params[char_col] <- vapply(
-    params[char_col], FUN = as.character, FUN.VALUE = character(nrow(params))
+    params[char_col],
+    FUN = as.character, FUN.VALUE = character(nrow(params))
   )
   logic_col <- epiparam_logic_fields(params)
   params[logic_col] <- vapply(
-    params[logic_col], FUN = as.logical, FUN.VALUE = logical(nrow(params))
+    params[logic_col],
+    FUN = as.logical, FUN.VALUE = logical(nrow(params))
   )
 
   # convert intervals from strings to numeric vectors
@@ -62,7 +64,6 @@ new_epiparam <- function(epi_dist) {
   rownames(params) <- NULL
 
   structure(params, class = c("epiparam", "data.frame"))
-
 }
 
 #' Create an `epiparam` object
@@ -104,14 +105,15 @@ new_epiparam <- function(epi_dist) {
 #'
 #' # subset by disease
 #' influenza_dists <- eparam[eparam$disease == "influenza", ]
-epiparam <- function(epi_dist = c("all",
-                                  "incubation_period",
-                                  "onset_to_hospitalisation",
-                                  "onset_to_death",
-                                  "serial_interval",
-                                  "generation_time",
-                                  "offspring_distribution")) {
-
+epiparam <- function(epi_dist = c(
+                       "all",
+                       "incubation_period",
+                       "onset_to_hospitalisation",
+                       "onset_to_death",
+                       "serial_interval",
+                       "generation_time",
+                       "offspring_distribution"
+                     )) {
   # check input
   epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)
 
@@ -137,7 +139,6 @@ epiparam <- function(epi_dist = c("all",
 #' @return Invisibly returns an [`epiparam`]. Called for side-effects
 #' (errors when invalid `epiparam` object is provided).
 validate_epiparam <- function(epiparam, reconstruct = FALSE) {
-
   if (!is_epiparam(epiparam) && isFALSE(reconstruct)) {
     stop("Object should be of class epiparam", call. = FALSE)
   }
@@ -157,12 +158,13 @@ validate_epiparam <- function(epiparam, reconstruct = FALSE) {
       all(epiparam$year > 0 | is.na(epiparam$year))
   )
 
-  check_limits <- apply(epiparam, MARGIN = 2, FUN = function(x) { # nolint
-    vapply(x, function(y) {
-      length(y) == 2 && is.numeric(y)
-    }, FUN.VALUE = logical(1))
-  },
-  simplify = FALSE
+  check_limits <- apply(epiparam,
+    MARGIN = 2, FUN = function(x) { # nolint
+      vapply(x, function(y) {
+        length(y) == 2 && is.numeric(y)
+      }, FUN.VALUE = logical(1))
+    },
+    simplify = FALSE
   )
 
   check_limits <- all(unlist(
@@ -262,7 +264,8 @@ summary.epiparam <- function(object, ...) {
   num_delay_dist <- sum(
     object$epi_distribution %in% c(
       "incubation_period", "generation_time",
-      "serial_interval", "onset_to_death")
+      "serial_interval", "onset_to_death"
+    )
   )
   num_offspring_dist <- sum(
     object$epi_distribution %in% "offspring_distribution"
@@ -272,14 +275,15 @@ summary.epiparam <- function(object, ...) {
   num_disc_dist <- sum(object$discetised)
   num_vector_borne <- sum(object$extrinsic)
   # return epiparam summary
-  list(num_entries = num_entries,
-       num_diseases = num_diseases,
-       num_delay_dist = num_delay_dist,
-       num_offspring_dist = num_offspring_dist,
-       num_studies = num_studies,
-       num_continuous_distributions = num_cont_dist,
-       num_discrete_distributions = num_disc_dist,
-       num_vector_borne_diseases = num_vector_borne
+  list(
+    num_entries = num_entries,
+    num_diseases = num_diseases,
+    num_delay_dist = num_delay_dist,
+    num_offspring_dist = num_offspring_dist,
+    num_studies = num_studies,
+    num_continuous_distributions = num_cont_dist,
+    num_discrete_distributions = num_disc_dist,
+    num_vector_borne_diseases = num_vector_borne
   )
 }
 
@@ -298,7 +302,7 @@ summary.epiparam <- function(object, ...) {
 #' head(epiparam())
 #' tail(epiparam())
 head.epiparam <- function(x, ...) {
- utils::head(as.data.frame(x), ...)
+  utils::head(as.data.frame(x), ...)
 }
 
 #' @rdname head.epiparam
@@ -313,7 +317,8 @@ tail.epiparam <- function(x, ...) {
 #' @keywords internal
 #' @noRd
 epiparam_fields <- function() {
-  c("disease", "pathogen", "epi_distribution", "author", "title", "journal",
+  c(
+    "disease", "pathogen", "epi_distribution", "author", "title", "journal",
     "year", "sample_size", "region", "transmission_mode", "vector",
     "extrinsic", "prob_distribution", "inference_method", "mean",
     "mean_ci_limits", "mean_ci", "sd", "sd_ci_limits", "sd_ci", "quantile_2.5",
@@ -325,7 +330,8 @@ epiparam_fields <- function() {
     "dispersion_ci_limits", "dispersion_ci", "precision",
     "precision_ci_limits", "precision_ci", "truncation", "discretised",
     "censored", "right_truncated", "phase_bias_adjusted", "notes", "PMID",
-    "DOI")
+    "DOI"
+  )
 }
 
 #' Character fields (columns) of an `<epiparam>` object

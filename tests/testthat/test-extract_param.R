@@ -146,7 +146,8 @@ test_that("extract_param warns when max_iter exceeded", {
       distribution = "lnorm",
       percentiles = c(0.05, 0.95),
       control = list(max_iter = 5)
-    )), regexp = paste0(
+    )),
+    regexp = paste0(
       "(Maximum optimisation iterations reached)*(returning result early)*",
       "(Result may not be reliable)"
     )
@@ -160,7 +161,8 @@ test_that("extract_param warns when max_iter exceeded", {
       distribution = "lnorm",
       samples = 10,
       control = list(max_iter = 5)
-    )), regexp = paste0(
+    )),
+    regexp = paste0(
       "(Maximum optimisation iterations reached)*(returning result early)*",
       "(Result may not be reliable)"
     )
