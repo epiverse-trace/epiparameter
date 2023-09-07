@@ -1,22 +1,21 @@
-#' Calculates the parameters of a probability distribution from a list of
-#' available summary statistics
+#' Calculate the parameters of a probability distribution from a list of
+#' summary statistics
 #'
-#' @description When the parameters of a probability distribution are not
+#' @description If parameters of a probability distribution are not
 #' provided (e.g. when describing the distribution in the literature) and
 #' instead summary statistics of a distribution are provided, the parameters
-#' can usually be calculated from the summary statistics. The
-#' `calc_dist_params()` function computes the parameters for the gamma,
-#' lognormal and Weibull distributions.
+#' can usually be calculated from the summary statistics.
 #'
-#' This function can provide a convenient wrapper around the conversion and
-#' extraction functions when it is not known which summary statistics can be
-#' used to calculate the parameters of a distribution.
+#' This function can provide a convenient wrapper around
+#' [convert_summary_stats_to_params()] and [extract_param()]
+#' when it is not known which summary statistics can be used to
+#' calculate the parameters of a distribution.
 #'
 #' @details The hierarchy of methods is:
 #'
 #' 1. Conversion is prioritised if the mean and standard deviation are
 #' available as these are mostly analytical conversions (except for one of the
-#' Weibull conversions)
+#' Weibull conversions).
 #' 2. Next method if possible is extraction from percentiles. This method
 #' requires a lower percentile (between(0-50]) and an upper percentile
 #' (between (50-100)). If multiple percentiles in each of these ranges is
@@ -28,7 +27,7 @@
 #' @param sample_size The sample size of the data. Only needed when falling back
 #' on using the median-range extraction calculation.
 #'
-#' @return A named vector with parameters
+#' @return A named `numeric` vector with parameters.
 #' @keywords internal
 #' @examples
 #' \dontrun{

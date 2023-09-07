@@ -2,19 +2,19 @@
 % Please edit documentation in R/epiparam.R
 \name{is_epiparam}
 \alias{is_epiparam}
-\title{Checks whether the object is an \code{epiparam}}
+\title{Check object is an \verb{<epiparam>}}
 \usage{
 is_epiparam(x)
 }
 \arguments{
-\item{x}{An R object}
+\item{x}{An \R object.}
 }
 \value{
-A boolean logical, \code{TRUE} if the object is an \code{epiparam} and \code{FALSE}
-if not
+A boolean \code{logical}, \code{TRUE} if the object is an \verb{<epiparam>} and
+\code{FALSE} if not.
 }
 \description{
-Checks whether the object is an \code{epiparam}
+Check object is an \verb{<epiparam>}
 }
 \examples{
 eparam <- epiparam()

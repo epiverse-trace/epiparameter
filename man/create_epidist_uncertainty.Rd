@@ -8,29 +8,29 @@ create_epidist_uncertainty(ci_limits = NA_real_, ci, ci_type)
 }
 \arguments{
 \item{ci_limits}{A numeric vector of length two with the lower and upper
-bound of the confidence interval or credible interval}
+bound of the confidence interval or credible interval.}
 
 \item{ci}{A numeric specifying the interval for the ci, e.g. 95 is
-95\% ci}
+95\% ci.}
 
-\item{ci_type}{A character string, either "confidence interval" or "credible
-interval"}
+\item{ci_type}{A character string, either \code{"confidence interval"} or
+\code{"credible interval"}.}
 }
 \value{
 List of three elements:
 \enumerate{
 \item \verb{$ci_limits} is the upper and lower bounds
 of the CI (either confidence interval or credible interval) (i.e. a two
-element numeric vector)
+element numeric vector).
 \item \verb{$ci} the interval (e.g. 95 is 95\% CI) given by a
-single numeric
+single numeric.
 \item \verb{$ci_type} a character string specifying the type of
 uncertainty (can be either \code{"confidence interval"} or \code{"credible interval"}).
 }
 }
 \description{
 A helper function when creating uncertainty for the parameters
-of the distribution for the \code{epidist} object
+of the distribution for the \verb{<epidist>} object.
 }
 \examples{
 # example with uncertainty for a single parameter

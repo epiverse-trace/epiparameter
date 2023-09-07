@@ -1,9 +1,11 @@
-#' epiparam constructor
+#' Constructor for `<epiparam>` class
 #'
 #' @description The constructor reads the data stored internally in the package
-#' and subsets by epidemiological distribution (epi_dist)
+#' and subsets by epidemiological distribution (`epi_dist`).
 #'
-#' @return epiparam object
+#' @inheritParams epidist
+#'
+#' @inherit epiparam return
 #' @keywords internal
 #'
 #' @examples
@@ -66,34 +68,34 @@ new_epiparam <- function(epi_dist) {
   structure(params, class = c("epiparam", "data.frame"))
 }
 
-#' Create an `epiparam` object
+#' Create an `<epiparam>` object
 #'
-#' @description The `epiparam` class holds information on epidemiological
+#' @description The `<epiparam>` class holds information on epidemiological
 #' distribution and their estimated parameters as well as other information and
 #' metadata. This library of epidemiological parameters is compiled from
-#' primary literature sources. An `epiparam` object can be used to compare the
+#' primary literature sources. An `<epiparam>` object can be used to compare the
 #' availability of distribution for a certain disease or pathogen, or refine
-#' by, for example, region or sample size. Additionally, the `epiparam` class
-#' can be subset and converted into `epidist` or `vb_epidist` objects to the be
-#' used in epidemiological analysis in which a delay distribution or offspring
-#' distribution is required.
+#' by, for example, region or sample size. Additionally, the `<epiparam>` class
+#' can be subset and converted into `<epidist>` or `<vb_epidist>` objects to
+#' the be used in epidemiological analysis in which a delay distribution or
+#' offspring distribution is required.
 #'
-#' The `epiparam()` function reads the library of epidemiological parameters
-#' from `{epiparameter}` into memory and stores it as an `epiparam` object.
+#' The [epiparam()] function reads the library of epidemiological parameters
+#' from `{epiparameter}` into memory and stores it as an `<epiparam>` object.
 #'
-#' @details The `epiparam` object has certain protected fields, and thus if
+#' @details The `<epiparam>` object has certain protected fields, and thus if
 #' one of these protected fields is removed when subsetting columns an error
 #' will be returned. The subsetting checks are carried out by
-#' [`validate_epiparam()`].
+#' [validate_epiparam()].
 #'
-#' `epiparam` objects can be added to by using [`bind_epiparam()`] to add either
-#' `epidist`s, `vb_epdist`s, `epiparam`s, lists of `epdist` objects, or data
-#' frames with the correct columns to an existing `epiparam` object.
+#' Data can be added to `<epiparam>` objects by using [bind_epiparam()], this
+#' can add information from `<epidist>`, `<vb_epdist>`, `<epiparam>`, lists
+#' of `<epdist>` objects, or data frames with the correct columns to an
+#' existing `<epiparam>` object.
 #'
-#' @param epi_dist A character string of which epidemiological distributions
-#' to select
+#' @inheritParams epidist
 #'
-#' @return `epiparam` object
+#' @return An `<epiparam>` object.
 #' @export
 #'
 #' @examples
@@ -127,17 +129,17 @@ epiparam <- function(epi_dist = c(
   epiparam
 }
 
-#' `epiparam` class validator
+#' Validator for `<epiparam>` class
 #'
-#' @param epiparam An `epiparam` object
-#' @param reconstruct A boolean logical determining whether the validation
+#' @param epiparam An `<epiparam>` object.
+#' @param reconstruct A boolean `logical` determining whether the validation
 #' should be class specific. When `TRUE` the input object must be of type
-#' `epiparam` (default), when `FALSE` the input object can be of another class,
-#' e.g. `data.frame`. This argument is used in reconstruction operations see
-#' [`epiparam_reconstruct()`].
+#' `<epiparam>` (default), when `FALSE` the input object can be of another
+#' class, e.g. data frame. This argument is used in reconstruction operations
+#' see [`epiparam_reconstruct()`].
 #'
-#' @return Invisibly returns an [`epiparam`]. Called for side-effects
-#' (errors when invalid `epiparam` object is provided).
+#' @return Invisibly returns an `<epiparam>`. Called for side-effects
+#' (errors when invalid `<epiparam>` object is provided).
 validate_epiparam <- function(epiparam, reconstruct = FALSE) {
   if (!is_epiparam(epiparam) && isFALSE(reconstruct)) {
     stop("Object should be of class epiparam", call. = FALSE)
@@ -178,12 +180,12 @@ validate_epiparam <- function(epiparam, reconstruct = FALSE) {
   invisible(epiparam)
 }
 
-#' Print method for epiparam class
+#' Print method for `<epiparam>` class
 #'
-#' @param x epiparam object
-#' @param ... further arguments passed to or from other methods
+#' @param x An `<epiparam>` object.
+#' @inheritParams print.epidist
 #'
-#' @return Nothing (prints output)
+#' @return Invisibly returns an `<epiparam>`. Called for side-effects.
 #' @export
 #'
 #' @examples
@@ -193,12 +195,11 @@ print.epiparam <- function(x, ...) {
   format(x, ...)
 }
 
-#' Format method for epiparam class
+#' Format method for `<epiparam>` class
 #'
-#' @param x epiparam object
-#' @param ... further arguments passed to or from other methods
+#' @inheritParams print.epiparam
 #'
-#' @return Invisibly returns an [`epiparam`]. Called for printing side-effects.
+#' @return Invisibly returns an `<epiparam>`. Called for printing side-effects.
 #' @export
 #'
 #' @examples
@@ -231,12 +232,12 @@ format.epiparam <- function(x, ...) {
   invisible(x)
 }
 
-#' Checks whether the object is an `epiparam`
+#' Check object is an `<epiparam>`
 #'
-#' @param x An R object
+#' @inheritParams is_epidist
 #'
-#' @return A boolean logical, `TRUE` if the object is an `epiparam` and `FALSE`
-#' if not
+#' @return A boolean `logical`, `TRUE` if the object is an `<epiparam>` and
+#' `FALSE` if not.
 #' @export
 #'
 #' @examples
@@ -247,10 +248,10 @@ is_epiparam <- function(x) {
   inherits(x, "epiparam")
 }
 
-#' Summary method for epiparam class
+#' Summary method for `<epiparam>` class
 #'
-#' @param object epiparam object
-#' @param ... further arguments passed to or from other methods
+#' @param object An `<epiparam>` object.
+#' @inheritParams is_parameterised
 #'
 #' @return data frame of information
 #' @export
@@ -259,6 +260,7 @@ is_epiparam <- function(x) {
 #' x <- epiparam()
 #' summary(x)
 summary.epiparam <- function(object, ...) {
+  chkDots(...)
   num_entries <- nrow(object)
   num_diseases <- length(unique(object$disease))
   num_delay_dist <- sum(
@@ -287,10 +289,9 @@ summary.epiparam <- function(object, ...) {
   )
 }
 
-#' `head` and `tail` methods for [`epiparam`] class
+#' [head()] and [tail()] methods for `<epiparam>` class
 #'
-#' @param x An [`epiparam`] object
-#' @param ... further arguments passed to or from other methods
+#' @inheritParams print.epiparam
 #'
 #' @return Data frame
 #' @export
@@ -311,9 +312,9 @@ tail.epiparam <- function(x, ...) {
   utils::tail(as.data.frame(x), ...)
 }
 
-#' Fields (columns) of an `<epiparam>` object
+#' State column names of an `<epiparam>` object
 #'
-#' @return Character vector
+#' @return `Character` vector.
 #' @keywords internal
 #' @noRd
 epiparam_fields <- function() {
@@ -334,9 +335,9 @@ epiparam_fields <- function() {
   )
 }
 
-#' Character fields (columns) of an `<epiparam>` object
+#' State columns of `<epiparam>` object containing `character`s
 #'
-#' @return Numeric vector
+#' @return `Numeric` vector.
 #' @keywords internal
 #' @noRd
 epiparam_char_fields <- function(epiparam) {
@@ -349,9 +350,9 @@ epiparam_char_fields <- function(epiparam) {
   )
 }
 
-#' Numeric fields (columns) of an `<epiparam>` object
+#' State columns of `<epiparam>` object containing `numeric`s
 #'
-#' @return Numeric vector
+#' @return `Numeric` vector.
 #' @keywords internal
 #' @noRd
 epiparam_num_fields <- function(epiparam) {
@@ -367,6 +368,11 @@ epiparam_num_fields <- function(epiparam) {
   )
 }
 
+#' State columns of `<epiparam>` object containing `logical`s
+#'
+#' @return `Numeric` vector.
+#' @keywords internal
+#' @noRd
 epiparam_logic_fields <- function(epiparam) {
   which(
     colnames(epiparam) %in% c(

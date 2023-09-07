@@ -2,16 +2,16 @@
 % Please edit documentation in R/epidist_utils.R
 \name{clean_disease}
 \alias{clean_disease}
-\title{Standardises the names of diseases}
+\title{Standardise the names of diseases}
 \usage{
 clean_disease(x)
 }
 \arguments{
-\item{x}{A character string specifying a disease.}
+\item{x}{A \code{character} string specifying a disease.}
 }
 \value{
-A character string of equal length to the input
+A \code{character} vector of equal length to the input.
 }
 \description{
-Standardises the names of diseases
+Standardise the names of diseases
 }

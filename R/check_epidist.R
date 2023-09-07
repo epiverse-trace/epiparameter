@@ -1,5 +1,4 @@
-#' Checks the probability distribution name and parameters to be used in an
-#' `epidist` object
+#' Check the probability distribution name and parameters for `<epidist>` object
 #'
 #' @inheritParams new_epidist
 #'
@@ -27,7 +26,7 @@ check_epidist_params <- function(prob_dist, prob_dist_params) {
   invisible(prob_dist_params)
 }
 
-#' Checks the parameter uncertainty list in an `epidist` object
+#' Check the parameter uncertainty in an `<epidist>` object
 #'
 #' @inheritParams new_epidist
 #' @inheritParams epidist

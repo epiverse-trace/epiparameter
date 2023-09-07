@@ -2,28 +2,28 @@
 % Please edit documentation in R/epidist.R
 \name{print.epidist}
 \alias{print.epidist}
-\title{Print method for epidist class}
+\title{Print method for \verb{<epidist>} class}
 \usage{
 \method{print}{epidist}(x, header = TRUE, vb = NULL, ...)
 }
 \arguments{
-\item{x}{epidist object}
+\item{x}{An \verb{<epidist>} object.}
 
-\item{header}{Boolean logical determining whether the header (first part) of
-the print method is printed. This is used internally for plotting the
-vb_epidist class}
+\item{header}{Boolean \code{logical} determining whether the header (first part)
+of the print method is printed. This is used internally for plotting the
+\verb{<vb_epidist>} class.}
 
-\item{vb}{A character string containing whether it is the intrinsic
+\item{vb}{A \code{character} string containing whether it is the intrinsic
 (\code{"Intrinsic"}) or extrinsic (\code{"Extrinsic"}) distribution for vector-borne
-diseases}
+diseases.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{\link{dots} Extra arguments passed to or from other methods.}
 }
 \value{
-Invisibly returns an \code{\link{epidist}}. Called for side-effects.
+Invisibly returns an \verb{<epidist>}. Called for side-effects.
 }
 \description{
-Print method for epidist class
+Print method for \verb{<epidist>} class
 }
 \examples{
 epidist <- epidist(

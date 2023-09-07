@@ -2,19 +2,19 @@
 % Please edit documentation in R/epidist.R
 \name{is_epidist}
 \alias{is_epidist}
-\title{Checks whether the object is an \code{epidist}}
+\title{Check object is an \verb{<epidist>}}
 \usage{
 is_epidist(x)
 }
 \arguments{
-\item{x}{An R object}
+\item{x}{An \R object.}
 }
 \value{
-A boolean logical, \code{TRUE} if the object is an \code{epidist} and \code{FALSE}
-if not
+A boolean logical, \code{TRUE} if the object is an \verb{<epidist>} and \code{FALSE}
+if not.
 }
 \description{
-Checks whether the object is an \code{epidist}
+Check object is an \verb{<epidist>}
 }
 \examples{
 edist <- epidist(

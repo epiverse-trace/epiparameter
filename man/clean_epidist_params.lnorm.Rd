@@ -2,18 +2,18 @@
 % Please edit documentation in R/epidist_utils.R
 \name{clean_epidist_params.lnorm}
 \alias{clean_epidist_params.lnorm}
-\title{Standardises parameters for a lognormal distribution}
+\title{Standardise parameters for a lognormal distribution}
 \usage{
 \method{clean_epidist_params}{lnorm}(prob_dist_params)
 }
 \arguments{
 \item{prob_dist_params}{A named vector of probability distribution
-parameters}
+parameters.}
 }
 \value{
-Named vector of parameters
+Named \code{numeric} vector of parameters.
 }
 \description{
-Standardises parameters for a lognormal distribution
+Standardise parameters for a lognormal distribution
 }
 \keyword{internal}

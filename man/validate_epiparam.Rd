@@ -2,23 +2,23 @@
 % Please edit documentation in R/epiparam.R
 \name{validate_epiparam}
 \alias{validate_epiparam}
-\title{\code{epiparam} class validator}
+\title{Validator for \verb{<epiparam>} class}
 \usage{
 validate_epiparam(epiparam, reconstruct = FALSE)
 }
 \arguments{
-\item{epiparam}{An \code{epiparam} object}
+\item{epiparam}{An \verb{<epiparam>} object.}
 
-\item{reconstruct}{A boolean logical determining whether the validation
+\item{reconstruct}{A boolean \code{logical} determining whether the validation
 should be class specific. When \code{TRUE} the input object must be of type
-\code{epiparam} (default), when \code{FALSE} the input object can be of another class,
-e.g. \code{data.frame}. This argument is used in reconstruction operations see
-\code{\link[=epiparam_reconstruct]{epiparam_reconstruct()}}.}
+\verb{<epiparam>} (default), when \code{FALSE} the input object can be of another
+class, e.g. data frame. This argument is used in reconstruction operations
+see \code{\link[=epiparam_reconstruct]{epiparam_reconstruct()}}.}
 }
 \value{
-Invisibly returns an \code{\link{epiparam}}. Called for side-effects
-(errors when invalid \code{epiparam} object is provided).
+Invisibly returns an \verb{<epiparam>}. Called for side-effects
+(errors when invalid \verb{<epiparam>} object is provided).
 }
 \description{
-\code{epiparam} class validator
+Validator for \verb{<epiparam>} class
 }

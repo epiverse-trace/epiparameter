@@ -2,20 +2,20 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{df_reconstruct}
 \alias{df_reconstruct}
-\title{Transplants the attributes of one input (\code{to}) to the other input (\code{x})}
+\title{Transplant the attributes of one input (\code{to}) to the other input (\code{x})}
 \usage{
 df_reconstruct(x, to)
 }
 \arguments{
-\item{x}{A \code{data.frame} or subclass of \code{data.frame} (e.g. \code{tibble} or
-\code{epiparam})}
+\item{x}{A \code{data.frame} or subclass of \code{data.frame} (e.g. \verb{<tibble>} or
+\verb{<epiparam>}).}
 
-\item{to}{The reference object, in this case an \code{epiparam} object}
+\item{to}{The reference object, in this case an \verb{<epiparam>} object.}
 }
 \value{
-An \code{epiparam} object
+An \verb{<epiparam>} object.
 }
 \description{
-Transplants the attributes of one input (\code{to}) to the other input (\code{x})
+Transplant the attributes of one input (\code{to}) to the other input (\code{x})
 }
 \keyword{internal}

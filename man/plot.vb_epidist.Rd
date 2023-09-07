@@ -2,20 +2,20 @@
 % Please edit documentation in R/vb_epidist.R
 \name{plot.vb_epidist}
 \alias{plot.vb_epidist}
-\title{Plots an \code{vb_epidist} object,}
+\title{Plot method for \verb{<vb_epidist>} class}
 \usage{
 \method{plot}{vb_epidist}(x, day_range = 0:10, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} object}
+\item{x}{A \verb{<vb_epidist>} object.}
 
 \item{day_range}{A vector with the sequence of days to be plotted on the
-x-axis of the distribution}
+x-axis of the distribution.}
 
-\item{...}{Allow other graphical parameters}
+\item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Plots a \code{vb_epidist} object by displaying the either the
+Plot a \verb{<vb_epidist>} object by displaying the either the
 probability mass function (PMF), (in the case of discrete distributions)
 or probability density function (PDF) (in the case of continuous
 distributions) and the cumulative distribution function (CDF), for both the

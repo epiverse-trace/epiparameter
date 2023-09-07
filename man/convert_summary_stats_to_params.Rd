@@ -10,7 +10,7 @@ convert_summary_stats_to_params(
 )
 }
 \arguments{
-\item{distribution}{A \code{character} specifying distribution to use.
+\item{distribution}{A \code{character} string specifying distribution to use.
 Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}, \code{nbinom} and \code{geom}.}
 
 \item{...}{\code{Numeric} named summary statistics used to convert to
@@ -22,8 +22,8 @@ A list of either one or two elements (depending on how many
 parameters the distribution has).
 }
 \description{
-Converts the summary statistics for a range of distributions to
-a distribution's parameters. Most summary statistics are calculated
+Convert the summary statistics for a range of distributions to
+the distribution's parameters. Most summary statistics are calculated
 analytically given the parameters. An exception is the Weibull distribution
 which uses a root finding numerical method.
 }
@@ -45,7 +45,7 @@ distribution parameters. In this case the function will error stating that
 the parameters cannot be calculated from the given input.
 
 The distribution names and parameter names follow the style of
-distributions in R, for example the lognormal distribution is \code{lnorm},
+distributions in \R, for example the lognormal distribution is \code{lnorm},
 and its parameters are \code{meanlog} and \code{sdlog}.
 }
 \examples{

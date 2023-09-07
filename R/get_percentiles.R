@@ -1,9 +1,9 @@
-#' Converts a vector of named percentiles into correct format and selects two
+#' Convert a vector of named percentiles into correct format and selects two
 #' values for parameter extraction
 #'
 #' @description Parameters of a probability distribution can be extracted using
 #' the values given at percentiles of the distribution and the percentiles using
-#' [`extract_param()`]. `get_percentiles()` takes a named vector of percentiles
+#' [extract_param()]. [get_percentiles()] takes a named vector of percentiles
 #' (names) and values at those percentiles (elements in the vector) and selects
 #' two values as lower and upper percentiles to be used in extraction. If a
 #' lower and upper percentile are not available `NA` is returned.
@@ -18,7 +18,7 @@
 #' @param percentiles A named vector of values at percentiles with the names the
 #' percentiles. See Details for the accepted vector name format.
 #'
-#' @return A named vector of percentiles
+#' @return A named `numeric` vector of percentiles.
 #' @keywords internal
 #'
 #' @examples
@@ -59,8 +59,8 @@ get_percentiles <- function(percentiles) {
 #' @param percentiles A named vector of percentiles. The names are in the
 #' correct format to be converted to their numeric value using `as.numeric()`.
 #'
-#' @return A named numeric vector of two elements with the lower (first element)
-#' and upper (second element) percentiles
+#' @return A named `numeric` vector of two elements with the lower
+#' (first element) and upper (second element) percentiles.
 #' @keywords internal
 get_sym_percentiles <- function(percentiles) {
   # make a copy of percentiles

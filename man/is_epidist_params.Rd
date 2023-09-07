@@ -2,23 +2,21 @@
 % Please edit documentation in R/epidist_utils.R
 \name{is_epidist_params}
 \alias{is_epidist_params}
-\title{A helper function to check whether the vector of parameters for the
-probability distribution are in the set of possible parameters used in
-the \code{epiparameter} package}
+\title{Check whether the vector of parameters for the probability distribution
+are in the set of possible parameters used in the epiparameter package}
 \usage{
 is_epidist_params(prob_dist_params)
 }
 \arguments{
 \item{prob_dist_params}{A named vector of probability distribution
-parameters}
+parameters.}
 }
 \value{
-A logical boolean
+A boolean \code{logical}.
 }
 \description{
-A helper function to check whether the vector of parameters for the
-probability distribution are in the set of possible parameters used in
-the \code{epiparameter} package
+Check whether the vector of parameters for the probability distribution
+are in the set of possible parameters used in the epiparameter package
 }
 \examples{
 is_epidist_params(prob_dist_params = c(shape = 2, scale = 1))

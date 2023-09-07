@@ -2,17 +2,17 @@
 % Please edit documentation in R/vb_epidist.R
 \name{validate_vb_epidist}
 \alias{validate_vb_epidist}
-\title{\code{vb_epidist} class validator}
+\title{Validator for \verb{<vb_epidist>} class}
 \usage{
 validate_vb_epidist(vb_epidist)
 }
 \arguments{
-\item{vb_epidist}{A \code{vb_epidist} object}
+\item{vb_epidist}{A \verb{<vb_epidist>} object}
 }
 \value{
-Invisibly returns a \code{\link{vb_epidist}}. Called for side-effects (errors
-when invalid \code{vb_epidist} object is provided).
+Invisibly returns a \verb{<vb_epidist>}. Called for side-effects (errors
+when invalid \verb{<vb_epidist>} object is provided).
 }
 \description{
-\code{vb_epidist} class validator
+Validator for \verb{<vb_epidist>} class
 }

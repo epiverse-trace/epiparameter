@@ -2,25 +2,26 @@
 % Please edit documentation in R/checkers.R
 \name{is_parameterised}
 \alias{is_parameterised}
-\title{Checks whether \if{html}{\out{<epidist>}} or \if{html}{\out{<epiparam>}} object contains a distribution and
-parameters for that distribution.}
+\title{Check if \verb{<epidist>} or \verb{<epiparam>} object contain a distribution and
+distribution parameters}
 \usage{
 is_parameterised(x, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} or \code{epiparam} object.}
+\item{x}{An \verb{<epidist>} or \verb{<epiparam>} object.}
 
-\item{...}{\code{\link{dots}} not used, extra arguments supplied will cause a warning.}
+\item{...}{\link{dots} not used, extra arguments supplied will cause a warning.}
 }
 \value{
-A boolean logical for \if{html}{\out{<epidist>}} or vector of boolean for each entry
-in the \if{html}{\out{<epiparam>}}.
+A single boolean \code{logical} for \verb{<epidist>} or vector of boolean
+\code{logical}s with length equal to the number of rows in the \verb{<epiparam>}.
+If the \verb{<epidist>} object or a row in the \verb{<epiparam>} is missing either
+a probability distribution or parameters for the probability distribution
+returns \code{FALSE}, otherwise it returns \code{TRUE}.
 }
 \description{
-If the \if{html}{\out{<epidist>}} object or a row in the \if{html}{\out{<epiparam>}} data frame
-is missing either a probability distribution or parameters for the
-probability distribution, \code{is_parameterised} returns \code{FALSE}, otherwise
-it returns \code{TRUE}.
+Check if \verb{<epidist>} or \verb{<epiparam>} object contain a distribution and
+distribution parameters
 }
 \examples{
 # parameterised <epidist>

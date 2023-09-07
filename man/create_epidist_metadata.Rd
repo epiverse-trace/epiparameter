@@ -60,9 +60,9 @@ intrinsic or extrinsic distribution as well as method of distribution
 parameter estimation.
 }
 \description{
-A helper function when creating an epidist object to create a
-metadata list with sensible defaults, type checking and arguments to help
-remember metadata list structure (element names)
+A helper function when creating an \verb{<epidist>} object to
+create a metadata list with sensible defaults, type checking and arguments
+to help remember metadata list structure (element names).
 }
 \details{
 In vector-borne diseases the transmissibility of a disease is

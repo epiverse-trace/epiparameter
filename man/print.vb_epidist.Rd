@@ -2,21 +2,21 @@
 % Please edit documentation in R/vb_epidist.R
 \name{print.vb_epidist}
 \alias{print.vb_epidist}
-\title{Print method for vb_epidist class}
+\title{Print method for \verb{<vb_epidist>} class}
 \usage{
 \method{print}{vb_epidist}(x, ...)
 }
 \arguments{
-\item{x}{vb_epidist object}
+\item{x}{A \verb{<vb_epidist>} object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{\link{dots} Extra arguments passed to or from other methods.}
 }
 \value{
-Invisibly returns a \code{\link{vb_epidist}}. Called for printing
+Invisibly returns a \verb{<vb_epidist>}. Called for printing
 side-effects.
 }
 \description{
-Print method for vb_epidist class
+Print method for \verb{<vb_epidist>} class
 }
 \examples{
 vb_epidist <- vb_epidist(

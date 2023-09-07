@@ -1,7 +1,7 @@
 #' Convert the summary statistics of a distribution to parameters
 #'
-#' @description Converts the summary statistics for a range of distributions to
-#' a distribution's parameters. Most summary statistics are calculated
+#' @description Convert the summary statistics for a range of distributions to
+#' the distribution's parameters. Most summary statistics are calculated
 #' analytically given the parameters. An exception is the Weibull distribution
 #' which uses a root finding numerical method.
 #'
@@ -21,10 +21,10 @@
 #' the parameters cannot be calculated from the given input.
 #'
 #' The distribution names and parameter names follow the style of
-#' distributions in R, for example the lognormal distribution is `lnorm`,
+#' distributions in \R, for example the lognormal distribution is `lnorm`,
 #' and its parameters are `meanlog` and `sdlog`.
 #'
-#' @param distribution A `character` specifying distribution to use.
+#' @param distribution A `character` string specifying distribution to use.
 #' Default is `lnorm`; also takes `gamma` and `weibull`, `nbinom` and `geom`.
 #' @param ... `Numeric` named summary statistics used to convert to
 #' parameter(s). An example is the meanlog and sdlog parameters of the
@@ -71,12 +71,12 @@ convert_summary_stats_to_params <- function(distribution = c( # nolint
 
 #' Convert the parameter(s) of a distribution to summary statistics
 #'
-#' @description Converts the parameters for a range of distributions to a
+#' @description Convert the parameters for a range of distributions to a
 #' number of summary statistics. All summary statistics are calculated
 #' analytically given the parameters.
 #'
 #' @details The distribution names and parameter names follow the style of
-#' distributions in R, for example the lognormal distribution is `lnorm`,
+#' distributions in \R, for example the lognormal distribution is `lnorm`,
 #' and its parameters are `meanlog` and `sdlog`.
 #'
 #' @inheritParams convert_summary_stats_to_params
@@ -228,14 +228,14 @@ convert_params_lnorm <- function(...) {
   )
 }
 
-#' Converts the summary statistics to parameters of the lognormal distribution
+#' Convert summary statistics to parameters of the lognormal distribution
 #'
-#' @description Converts the summary statistics input into the meanlog and sdlog
+#' @description Convert the summary statistics input into the meanlog and sdlog
 #' parameters of the lognormal distribution.
 #'
 #' @inheritParams convert_summary_stats_to_params
 #'
-#' @return A list of two elements, the meanlog and sdlog
+#' @return A list of two elements: meanlog and sdlog
 #' @keywords internal
 convert_summary_stats_lnorm <- function(...) {
   # capture input
@@ -271,12 +271,12 @@ convert_summary_stats_lnorm <- function(...) {
   )
 }
 
-#' Converts the parameters of the gamma distribution to summary statistics
+#' Convert parameters of the gamma distribution to summary statistics
 #'
-#' @description Converts the shape and scale parameters of the gamma
+#' @description Convert the shape and scale parameters of the gamma
 #' distribution to a number of summary statistics which can be calculated
 #' analytically given the gamma parameters. One exception is the median which
-#' is calculated using [`qgamma()`] as no analytical form is available.
+#' is calculated using [qgamma()] as no analytical form is available.
 #'
 #' @inheritParams convert_params_to_summary_stats
 #'
@@ -323,9 +323,9 @@ convert_params_gamma <- function(...) {
   )
 }
 
-#' Converts the summary statistics to parameters of the gamma distribution
+#' Convert summary statistics to parameters of the gamma distribution
 #'
-#' @description Converts the summary statistics input into the shape and scale
+#' @description Convert the summary statistics input into the shape and scale
 #' parameters of the gamma distribution.
 #'
 #' @inheritParams convert_summary_stats_to_params
@@ -355,12 +355,12 @@ convert_summary_stats_gamma <- function(...) {
   stop("Cannot calculate gamma parameters from given input")
 }
 
-#' Converts the parameters of the Weibull distribution to summary statistics
+#' Convert parameters of the Weibull distribution to summary statistics
 #'
-#' @description Converts the shape and scale parameters of the Weibull
+#' @description Convert the shape and scale parameters of the Weibull
 #' distribution to a number of summary statistics which can be calculated
 #' analytically given the Weibull parameters. Note the conversion uses the
-#' [`gamma()`] function.
+#' [gamma()] function.
 #'
 #' @inheritParams convert_params_to_summary_stats
 #'
@@ -413,14 +413,14 @@ convert_params_weibull <- function(...) {
   )
 }
 
-#' Converts the summary statistics to parameters of the Weibull distribution
+#' Convert summary statistics to parameters of the Weibull distribution
 #'
-#' @description Converts the summary statistics input into the shape and scale
+#' @description Convert summary statistics input into the shape and scale
 #' parameters of the Weibull distribution.
 #'
 #' @inheritParams convert_summary_stats_to_params
 #'
-#' @return A list of two elements, the shape and scale
+#' @return A list of two elements, the shape and scale.
 #' @keywords internal
 convert_summary_stats_weibull <- function(...) {
   # capture input
@@ -456,13 +456,13 @@ convert_summary_stats_weibull <- function(...) {
   stop("Cannot calculate Weibull parameters from given input")
 }
 
-#' Converts the parameters of the negative binomial distribution to summary
+#' Convert parameters of the negative binomial distribution to summary
 #' statistics
 #'
-#' @description Converts the probability (`prob`) and dispersion parameters of
+#' @description Convert the probability (`prob`) and dispersion parameters of
 #' the negative binomial distribution to a number of summary statistics which
 #' can be calculated analytically given the negative binomial parameters.
-#' One exception is the median which is calculated using [`qnbinom()`] as no
+#' One exception is the median which is calculated using [qnbinom()] as no
 #' analytical form is available.
 #'
 #' The parameters are `prob` and `dispersion` (which is also commonly
@@ -516,16 +516,16 @@ convert_params_nbinom <- function(...) {
   )
 }
 
-#' Converts the summary statistics to parameters of the negative binomial
+#' Convert summary statistics to parameters of the negative binomial
 #' distribution
 #'
-#' @description Converts the summary statistics of the negative binomial
+#' @description Convert summary statistics of the negative binomial
 #' distribution the parameters (`prob`) and (`dispersion`) of the negative
 #' binomial distribution.
 #'
 #' @inheritParams convert_summary_stats_to_params
 #'
-#' @return A list of two elements, the probability and dispersion parameters
+#' @return A list of two elements, the probability and dispersion parameters.
 #' @keywords internal
 convert_summary_stats_nbinom <- function(...) {
   # capture input
@@ -567,15 +567,15 @@ convert_summary_stats_nbinom <- function(...) {
   )
 }
 
-#' Converts the parameters of the geometric distribution to summary statistics
+#' Convert parameter of the geometric distribution to summary statistics
 #'
-#' @description Converts the probability (`prob`) of the geometric distribution
+#' @description Convert the probability (`prob`) of the geometric distribution
 #' to a number of summary statistics which can be calculated analytically given
 #' the geometric parameter.
 #'
 #' @details This conversion function assumes that distribution represents the
 #' number of failures before the first success (supported for zero). This is
-#' the same form as used by base R and `distributional::dist_geometric()`.
+#' the same form as used by base R and [distributional::dist_geometric()].
 #'
 #' @inheritParams convert_params_to_summary_stats
 #'
@@ -620,18 +620,18 @@ convert_params_geom <- function(...) {
   )
 }
 
-#' Converts the summary statistics to parameters of the geometric distribution
+#' Convert summary statistics to parameters of the geometric distribution
 #'
-#' @description Converts the summary statistics of the geometric
+#' @description Convert summary statistics of the geometric
 #' distribution the parameter (`prob`) of the geometric distribution.
 #'
 #' @details This conversion function assumes that distribution represents the
 #' number of failures before the first success (supported for zero). This is
-#' the same form as used by base R and `distributional::dist_geometric()`.
+#' the same form as used by base R and [distributional::dist_geometric()].
 #'
 #' @inheritParams convert_summary_stats_to_params
 #'
-#' @return A list of one element, the probability parameter
+#' @return A list of one element, the probability parameter.
 #' @keywords internal
 convert_summary_stats_geom <- function(...) {
   # capture input

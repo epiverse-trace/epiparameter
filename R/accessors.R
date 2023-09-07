@@ -1,16 +1,16 @@
-#' Parameters method for `epidist` object
+#' Get parameters from an `<epidist>` object
 #'
-#' Extracts the parameters of the distribution stored in an `epidist` object.
+#' Extract the parameters of the distribution stored in an `<epidist>` object.
 #'
-#' @details The <epidist> object can be unparameterised in which it lacks
+#' @details The `<epidist>` object can be unparameterised in which it lacks
 #' a probability distribution or parameters of a probability distribution.
 #' In this can the `parameters.epidist()` method with return `NA`.
 #'
-#' @param x An `epidist` object
+#' @inheritParams print.epidist
 #' @param ... Extra arguments to be passed to the method.
 #'
 #' @return A named vector of parameters or `NA` when the `<epidist>` object is
-#' unparameterised
+#' unparameterised.
 #' @export
 get_parameters <- function(x, ...) {
   UseMethod("get_parameters")
@@ -45,14 +45,13 @@ get_parameters.epidist <- function(x, ...) {
   params
 }
 
-#' Method for extracting citation information from `<epidist>` or
-#' `<epiparam>` objects.
+#' Extract citation information from `<epidist>` or `<epiparam>` objects
 #'
-#' @param x An `epidist` or `epiparam` object.
+#' @param x An `<epidist>` or `<epiparam>` object.
 #' @param ... Extra arguments to be passed to the method.
 #'
 #' @return A single character string or list of character string citations.
-#' Length of list output is equal to number of rows in the `epiparam` object
+#' Length of list output is equal to number of rows in the `<epiparam>` object
 #' passed to the function.
 #' @export
 #'

@@ -2,20 +2,20 @@
 % Please edit documentation in R/epiparam.R
 \name{print.epiparam}
 \alias{print.epiparam}
-\title{Print method for epiparam class}
+\title{Print method for \verb{<epiparam>} class}
 \usage{
 \method{print}{epiparam}(x, ...)
 }
 \arguments{
-\item{x}{epiparam object}
+\item{x}{An \verb{<epiparam>} object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{\link{dots} Extra arguments passed to or from other methods.}
 }
 \value{
-Nothing (prints output)
+Invisibly returns an \verb{<epiparam>}. Called for side-effects.
 }
 \description{
-Print method for epiparam class
+Print method for \verb{<epiparam>} class
 }
 \examples{
 epiparam <- epiparam()

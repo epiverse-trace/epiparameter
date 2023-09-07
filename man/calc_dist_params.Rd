@@ -2,8 +2,8 @@
 % Please edit documentation in R/calc_dist_params.R
 \name{calc_dist_params}
 \alias{calc_dist_params}
-\title{Calculates the parameters of a probability distribution from a list of
-available summary statistics}
+\title{Calculate the parameters of a probability distribution from a list of
+summary statistics}
 \usage{
 calc_dist_params(prob_dist, summary_stats, sample_size = NA)
 }
@@ -11,7 +11,7 @@ calc_dist_params(prob_dist, summary_stats, sample_size = NA)
 \item{prob_dist}{A character string specifying the probability
 distribution. This should match the R naming convention of probability
 distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-geometric is geom)}
+geometric is geom).}
 
 \item{summary_stats}{A list of summary statistics, use
 \code{\link[=create_epidist_summary_stats]{create_epidist_summary_stats()}} to create list. This list can include
@@ -25,26 +25,25 @@ interval around mean and standard deviation.}
 on using the median-range extraction calculation.}
 }
 \value{
-A named vector with parameters
+A named \code{numeric} vector with parameters.
 }
 \description{
-When the parameters of a probability distribution are not
+If parameters of a probability distribution are not
 provided (e.g. when describing the distribution in the literature) and
 instead summary statistics of a distribution are provided, the parameters
-can usually be calculated from the summary statistics. The
-\code{calc_dist_params()} function computes the parameters for the gamma,
-lognormal and Weibull distributions.
+can usually be calculated from the summary statistics.
 
-This function can provide a convenient wrapper around the conversion and
-extraction functions when it is not known which summary statistics can be
-used to calculate the parameters of a distribution.
+This function can provide a convenient wrapper around
+\code{\link[=convert_summary_stats_to_params]{convert_summary_stats_to_params()}} and \code{\link[=extract_param]{extract_param()}}
+when it is not known which summary statistics can be used to
+calculate the parameters of a distribution.
 }
 \details{
 The hierarchy of methods is:
 \enumerate{
 \item Conversion is prioritised if the mean and standard deviation are
 available as these are mostly analytical conversions (except for one of the
-Weibull conversions)
+Weibull conversions).
 \item Next method if possible is extraction from percentiles. This method
 requires a lower percentile (between(0-50]) and an upper percentile
 (between (50-100)). If multiple percentiles in each of these ranges is

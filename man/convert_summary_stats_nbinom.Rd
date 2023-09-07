@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_summary_stats_nbinom}
 \alias{convert_summary_stats_nbinom}
-\title{Converts the summary statistics to parameters of the negative binomial
+\title{Convert summary statistics to parameters of the negative binomial
 distribution}
 \usage{
 convert_summary_stats_nbinom(...)
@@ -13,10 +13,10 @@ parameter(s). An example is the meanlog and sdlog parameters of the
 lognormal (\code{lnorm}) distribution.}
 }
 \value{
-A list of two elements, the probability and dispersion parameters
+A list of two elements, the probability and dispersion parameters.
 }
 \description{
-Converts the summary statistics of the negative binomial
+Convert summary statistics of the negative binomial
 distribution the parameters (\code{prob}) and (\code{dispersion}) of the negative
 binomial distribution.
 }

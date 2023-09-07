@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_summary_stats_weibull}
 \alias{convert_summary_stats_weibull}
-\title{Converts the summary statistics to parameters of the Weibull distribution}
+\title{Convert summary statistics to parameters of the Weibull distribution}
 \usage{
 convert_summary_stats_weibull(...)
 }
@@ -12,10 +12,10 @@ parameter(s). An example is the meanlog and sdlog parameters of the
 lognormal (\code{lnorm}) distribution.}
 }
 \value{
-A list of two elements, the shape and scale
+A list of two elements, the shape and scale.
 }
 \description{
-Converts the summary statistics input into the shape and scale
+Convert summary statistics input into the shape and scale
 parameters of the Weibull distribution.
 }
 \keyword{internal}

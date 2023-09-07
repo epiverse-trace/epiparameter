@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_params_weibull}
 \alias{convert_params_weibull}
-\title{Converts the parameters of the Weibull distribution to summary statistics}
+\title{Convert parameters of the Weibull distribution to summary statistics}
 \usage{
 convert_params_weibull(...)
 }
@@ -17,7 +17,7 @@ variance (\code{var}), standard deviation (\code{sd}), coefficient of variation 
 skewness, and excess kurtosis (\code{ex_kurtosis}).
 }
 \description{
-Converts the shape and scale parameters of the Weibull
+Convert the shape and scale parameters of the Weibull
 distribution to a number of summary statistics which can be calculated
 analytically given the Weibull parameters. Note the conversion uses the
 \code{\link[=gamma]{gamma()}} function.

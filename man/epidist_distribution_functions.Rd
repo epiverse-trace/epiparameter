@@ -10,8 +10,8 @@
 \alias{cdf.vb_epidist}
 \alias{quantile.vb_epidist}
 \alias{generate.vb_epidist}
-\title{PDF, CDF, PMF, quantiles and random number generation for \code{epidist} and
-\code{vb_epidist} objects}
+\title{PDF, CDF, PMF, quantiles and random number generation for \verb{<epidist>} and
+\verb{<vb_epidist>} objects}
 \usage{
 \method{density}{epidist}(x, at, ...)
 
@@ -30,28 +30,28 @@
 \method{generate}{vb_epidist}(x, times, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} or \code{vb_epidist} object}
+\item{x}{An \verb{<epidist>} or \verb{<vb_epidist>} object.}
 
-\item{at}{The quantiles to evaluate at}
+\item{at}{The quantiles to evaluate at.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{\link{dots} Extra arguments passed to or from other methods.}
 
-\item{q}{The quantiles to evaluate at}
+\item{q}{The quantiles to evaluate at.}
 
-\item{p}{The probabilities to evaluate at}
+\item{p}{The probabilities to evaluate at.}
 
-\item{times}{The number of random samples}
+\item{times}{The number of random samples.}
 }
 \value{
-If an \code{epidist} object is given a numeric vector is returned, if an
-\code{vb_epidist} object is given a list of two elements each with a numeric
-vector is returned
+If an \verb{<epidist>} object is given a numeric vector is returned, if an
+\verb{<vb_epidist>} object is given a list of two elements each with a numeric
+vector is returned.
 }
 \description{
-The epidist object holds a probability distribution which can
-either be a continuous or discrete distribution. These are the density,
+The \verb{<epidist>} object holds a probability distribution which
+can either be a continuous or discrete distribution. These are the density,
 cumulative distribution, quantile and random number generation functions.
-These operate on any distribution that can be included in an \code{epidist}
+These operate on any distribution that can be included in an \verb{<epidist>}
 object.
 }
 \examples{

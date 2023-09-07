@@ -1,16 +1,15 @@
-#' Checks whether <epidist> or <epiparam> object contains a distribution and
-#' parameters for that distribution.
+#' Check if `<epidist>` or `<epiparam>` object contain a distribution and
+#' distribution parameters
 #'
-#' @description If the <epidist> object or a row in the <epiparam> data frame
-#' is missing either a probability distribution or parameters for the
-#' probability distribution, `is_parameterised` returns `FALSE`, otherwise
-#' it returns `TRUE`.
 #'
-#' @param x An `epidist` or `epiparam` object.
-#' @param ... [`dots`] not used, extra arguments supplied will cause a warning.
+#' @param x An `<epidist>` or `<epiparam>` object.
+#' @param ... [dots] not used, extra arguments supplied will cause a warning.
 #'
-#' @return A boolean logical for <epidist> or vector of boolean for each entry
-#' in the <epiparam>.
+#' @return A single boolean `logical` for `<epidist>` or vector of boolean
+#' `logical`s with length equal to the number of rows in the `<epiparam>`.
+#' If the `<epidist>` object or a row in the `<epiparam>` is missing either
+#' a probability distribution or parameters for the probability distribution
+#' returns `FALSE`, otherwise it returns `TRUE`.
 #' @export
 #'
 #' @examples

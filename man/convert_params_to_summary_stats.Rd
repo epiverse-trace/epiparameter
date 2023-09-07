@@ -10,7 +10,7 @@ convert_params_to_summary_stats(
 )
 }
 \arguments{
-\item{distribution}{A \code{character} specifying distribution to use.
+\item{distribution}{A \code{character} string specifying distribution to use.
 Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}, \code{nbinom} and \code{geom}.}
 
 \item{...}{\code{Numeric} named parameter(s) used to convert to summary
@@ -23,13 +23,13 @@ variance (\code{var}), standard deviation (\code{sd}), coefficient of variation 
 skewness, and excess kurtosis (\code{ex_kurtosis}).
 }
 \description{
-Converts the parameters for a range of distributions to a
+Convert the parameters for a range of distributions to a
 number of summary statistics. All summary statistics are calculated
 analytically given the parameters.
 }
 \details{
 The distribution names and parameter names follow the style of
-distributions in R, for example the lognormal distribution is \code{lnorm},
+distributions in \R, for example the lognormal distribution is \code{lnorm},
 and its parameters are \code{meanlog} and \code{sdlog}.
 }
 \examples{

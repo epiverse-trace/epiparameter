@@ -4,7 +4,7 @@
 \alias{discretise}
 \alias{discretise.epidist}
 \alias{discretise.default}
-\title{Discretises a continuous distribution in an \code{epidist} object}
+\title{Discretises a continuous distribution in an \verb{<epidist>} object}
 \usage{
 discretise(x, ...)
 
@@ -13,20 +13,20 @@ discretise(x, ...)
 \method{discretise}{default}(x, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} object}
+\item{x}{An \verb{<epidist>} object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{\link{dots} Extra arguments passed to or from other methods.}
 }
 \value{
-An \code{epidist} object
+An \verb{<epidist>} object.
 }
 \description{
-Discretises a continuous distribution in an \code{epidist} object
+Discretises a continuous distribution in an \verb{<epidist>} object
 }
 \details{
-Converts the S3 distribution object in an \code{epidist} from continuous
-(using an object from the {distributional} package) to a discretised
-distribution (using an object from the {distcrete} package).
+Converts the S3 distribution object in an \verb{<epidist>} from
+continuous (using an object from the \code{{distributional}} package) to a
+discretised distribution (using an object from the \code{{distcrete}} package).
 }
 \examples{
 ebola_incubation <- epidist(

@@ -62,7 +62,7 @@ reference:
     - extract_param
 
   - title: Parameter conversion
-    desc: Converts distribution parameter to summary statistics and vice versa
+    desc: Convert distribution parameter to summary statistics and vice versa
     contents:
     - starts_with("convert_")
 
@@ -93,7 +93,7 @@ reference:
     - bind_epiparam
 
   - title: Cleaning
-    desc: Standardises name of disease or epidist object
+    desc: Standardise name of disease or epidist object
     contents:
     - clean_disease
     - clean_epidist_name

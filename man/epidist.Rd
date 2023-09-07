@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist.R
 \name{epidist}
 \alias{epidist}
-\title{Create an \code{epidist} object}
+\title{Create an \verb{<epidist>} object}
 \usage{
 epidist(
   disease,
@@ -22,25 +22,25 @@ epidist(
 )
 }
 \arguments{
-\item{disease}{A character string with name of the infectious disease}
+\item{disease}{A \code{character} string with name of the infectious disease.}
 
-\item{pathogen}{A character string with the name of the causative agent of
-disease, or NULL if not known}
+\item{pathogen}{A \code{character} string with the name of the causative agent of
+disease, or NULL if not known.}
 
-\item{epi_dist}{A character string with the name of the
-epidemiological distribution type}
+\item{epi_dist}{A \code{character} string with the name of the
+epidemiological distribution type.}
 
-\item{prob_distribution}{A character string specifying the probability
-distribution. This should match the R naming convention of probability
-distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-geometric is geom)}
+\item{prob_distribution}{A \code{character} string specifying the probability
+distribution. This should match the \R naming convention of probability
+distributions (e.g. lognormal is \code{lnorm}, negative binomial is \code{nbinom}, and
+geometric is \code{geom}).}
 
 \item{prob_distribution_params}{A named vector of probability distribution
-parameters}
+parameters.}
 
 \item{uncertainty}{A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
-estimates is unknown use \code{create_epidist_uncertainty()} (which is the
+estimates is unknown use \code{\link[=create_epidist_uncertainty]{create_epidist_uncertainty()}} (which is the
 argument default) to create a list wiht the correct names with missing
 values.}
 
@@ -52,14 +52,14 @@ data used to fit the distribution such as lower and upper range. The summary
 statistics can also include uncertainty around metrics such as confidence
 interval around mean and standard deviation.}
 
-\item{auto_calc_params}{A boolean logical determining whether to try and
+\item{auto_calc_params}{A boolean \code{logical} determining whether to try and
 calculate the probability distribution parameters from summary statistics if
 distribution parameters are not provided. Default is \code{TRUE}. In the case when
 sufficient summary statistics are provided and the parameter(s) of the
 distribution are not, the \code{\link[=calc_dist_params]{calc_dist_params()}} function is called to
 calculate the parameters and add them to the \code{epidist} object created.}
 
-\item{citation}{A character string with the citation of the source of the
+\item{citation}{A \code{character} string with the citation of the source of the
 data or the paper that inferred the distribution parameters, use
 \code{create_epidist_citation()} to create citation.}
 
@@ -75,33 +75,38 @@ delay distribution such as extrinsic incubation period) unless
 the distribution, use \code{create_epidist_method_assess()} to create method
 assessment.}
 
-\item{discretise}{A boolean logical whether the distribution is discretised.
+\item{discretise}{A boolean \code{logical} whether the distribution is
+discretised.
 Default is FALSE which assumes a continuous probability distribution}
 
-\item{truncation}{A numeric specifying the truncation point if the inferred
-distribution was truncated, NA if not or unknown.}
+\item{truncation}{A \code{numeric} specifying the truncation point if the inferred
+distribution was truncated, \code{NA} if not or unknown.}
 
-\item{notes}{A character string with any additional information about the
+\item{notes}{A \code{character} string with any additional information about the
 data, inference method or disease.}
 }
 \value{
-An \code{epidist} object
+An \verb{<epidist>} object.
 }
 \description{
-The \code{epidist} class is used to store epidemiological parameters
-for a single disease. These epidemiological parameters cover a variety of
-aspects including delay distributions (e.g. incubation periods and serial
-intervals, among others) and offspring distributions.
+The \verb{<epidist>} class is used to store epidemiological
+parameters for a single disease. These epidemiological parameters cover a
+variety of aspects including delay distributions (e.g. incubation periods
+and serial intervals, among others) and offspring distributions.
 
-The \code{epidist} object is the functional unit provided by \code{{epiparameter}} to
-plug into epidemiological pipelines. Obtaining an \code{epidist} object can be
-achieved in two main ways. 1) The epidemiological distribution is stored in
+The \verb{<epidist>} object is the functional unit provided by \code{{epiparameter}} to
+plug into epidemiological pipelines. Obtaining an \verb{<epidist>} object can be
+achieved in two main ways:
+\enumerate{
+\item The epidemiological distribution is stored in
 the \code{{epiparameter}} library and can be accessed by \code{\link[=epiparam]{epiparam()}} and
-\code{\link[=as_epidist]{as_epidist()}}. 2) the alternative method is when you have information
+\code{\link[=as_epidist]{as_epidist()}}.
+\item The alternative method is when you have information
 (e.g. disease and distribution parameter estimates) and would like to input
-this into an \code{epidist} object in order to work in existing analysis
+this into an \verb{<epidist>} object in order to work in existing analysis
 pipelines. This is where the \code{epidist()} function can be used to fill out
 each field for which information is known.
+}
 }
 \details{
 Accepted \verb{<epidist>} distribution parameterisations are:

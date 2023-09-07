@@ -2,19 +2,19 @@
 % Please edit documentation in R/vb_epidist.R
 \name{is_vb_epidist}
 \alias{is_vb_epidist}
-\title{Checks whether the object is a \code{vb_epidist}}
+\title{Check object is a \verb{<vb_epidist>}}
 \usage{
 is_vb_epidist(x)
 }
 \arguments{
-\item{x}{An R object}
+\item{x}{An \R object.}
 }
 \value{
-A boolean logical, \code{TRUE} if the object is an \code{vb_epidist} and
-\code{FALSE} if not
+A boolean \code{logical}, \code{TRUE} if the object is a \verb{<vb_epidist>} and
+\code{FALSE} if not.
 }
 \description{
-Checks whether the object is a \code{vb_epidist}
+Check object is a \verb{<vb_epidist>}
 }
 \examples{
 vb_edist <- vb_epidist(

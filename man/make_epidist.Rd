@@ -2,19 +2,20 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{make_epidist}
 \alias{make_epidist}
-\title{Creates an \code{epidist} object from a list of input from an \code{epiparam} object}
+\title{Create an \verb{<epidist>} object from a list of input from an
+\verb{<epiparam>} object}
 \usage{
 make_epidist(x)
 }
 \arguments{
-\item{x}{List of data to be used to construct an epidist object}
+\item{x}{List of data to be used to construct an \verb{<epidist>} object.}
 }
 \value{
-An \code{epidist} object
+An \verb{<epidist>} object.
 }
 \description{
-Unpacks list of inputs from an epiparam object into the epidist
-helper, including the parameters and uncertainty from the correct type of
-probability distribution
+Unpacks list of inputs from an \verb{<epiparam>} object into
+the \verb{<epidist>} helper, including the parameters and uncertainty from
+the correct type of probability distribution.
 }
 \keyword{internal}

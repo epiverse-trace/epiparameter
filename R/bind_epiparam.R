@@ -1,28 +1,28 @@
-#' Bind an epi object to an [`epiparam`] object
+#' Bind an epi object to an `<epiparam>` object
 #'
-#' Binds any epi data class in \pkg{epiparameter} ([`epidist`],
-#' [`vb_epidist`], [`epiparam`]) or data frame to an [`epiparam`] object.
+#' Bind any epi data class in \pkg{epiparameter} (`<epidist>`,
+#' `<vb_epidist>`, `<epiparam>`) or data frame to an `<epiparam>` object.
 #'
-#' @details The [`epiparam`] class holds the library of epidemiological
+#' @details The `<epiparam>` class holds the library of epidemiological
 #' parameters that is stored in the \pkg{epiparameter} R package and can be
 #' manipulated. The [bind_epiparam()] function allows users to add entries to
-#' the library by binding them to the bottom of an existing [`epiparam`] object
+#' the library by binding them to the bottom of an existing `<epiparam>` object
 #' loaded in R.
 #'
-#' The `<epiparam>` returned by `bind_epiparam()` contains the matching columns
-#' of the input objects. Therefore, if one of the input objects contains extra
-#' columns which are not present in the other input object these will be missing
-#' from the returned object. This also applies whether binding other
-#' `<epiparam>` objects or `<data.frames>`. When binding `<epidist>` objects
-#' missing data fields are given a default value before
+#' The `<epiparam>` returned by [bind_epiparam()] contains the matching
+#' columns of the input objects. Therefore, if one of the input objects
+#' contains extra columns which are not present in the other input object
+#' these will be missing from the returned object. This also applies whether
+#' binding other `<epiparam>` or `<data.frame>` objects. When binding
+#' `<epidist>` objects missing data fields are given a default value before
 #' binding.
 #'
-#' @param epiparam An `<epiparam>` object
+#' @inheritParams validate_epiparam
 #' @param epi_obj Either an `<epidist>`, `<vb_epidist>`, `<epiparam>` or list
 #' of `<epidist>` objects. It can also be a data frame as long as the columns
 #' conform to the columns of an `<epiparam>` object.
 #'
-#' @return An `<epiparam>` object
+#' @inherit epiparam return
 #' @export
 #'
 #' @examples

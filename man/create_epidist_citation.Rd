@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{create_epidist_citation}
 \alias{create_epidist_citation}
-\title{Create a citation for an epidist object}
+\title{Create a citation for an \verb{<epidist>} object}
 \usage{
 create_epidist_citation(
   author = NA_character_,
@@ -18,7 +18,7 @@ create_epidist_citation(
 can be underscore separated from a second author, or underscore separated
 from "etal" if there are more than two authors.}
 
-\item{year}{A \code{numeric} of the year of publication}
+\item{year}{A \code{numeric} of the year of publication.}
 
 \item{title}{A \code{character} string with the title of the article that
 published the epidemiological parameters.}
@@ -34,11 +34,11 @@ assigned to papers which are unique to each paper.}
 assigned to papers to give them a unique identifier within PubMed.}
 }
 \value{
-A \code{bibentry} object of the citation
+A \verb{<bibentry>} object of the citation
 }
 \description{
-A helper function when creating an epidist object to create a
-citation list with sensible defaults, type checking and arguments to help
+A helper function when creating an \verb{<epidist>} object to create
+a citation list with sensible defaults, type checking and arguments to help
 remember which citation information is accepted in the list.
 }
 \details{

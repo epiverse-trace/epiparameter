@@ -2,22 +2,24 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{as_epidist}
 \alias{as_epidist}
-\title{Converts rows of an epiparam object into an epidist object}
+\title{Convert \verb{<epiparam>} to \verb{<epidist>}}
 \usage{
 as_epidist(x)
 }
 \arguments{
-\item{x}{A epiparam object}
+\item{x}{A \verb{<epiparam>} object.}
 }
 \value{
-An epidist object or a list of epidist objects
+An \verb{<epidist>} object or a list of \verb{<epidist>} objects.
 }
 \description{
-Can convert the entries (rows) of an epiparam object to one or
-list of several epidist objects. This allows subsetting of epiparam records
-into a class that can then be used to to calculate the cdf, random number
-generation and other methods of the epidist class
-(see \code{?epidist_distribution_functions}).
+Convert the entries (rows) of an \verb{<epiparam>} object to one or
+list of several \verb{<epidist>} objects.
+
+Epidemiological distributions and parameters can be converted from database
+entries (i.e. rows in \verb{<epiparam>}) into \verb{<epidist>} objects in order
+use the distribution functions (see \code{?epidist_distribution_functions}) and
+and other methods of the \verb{<epidist>} class.
 }
 \examples{
 \donttest{

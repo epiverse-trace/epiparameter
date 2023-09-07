@@ -3,22 +3,22 @@
 \name{head.epiparam}
 \alias{head.epiparam}
 \alias{tail.epiparam}
-\title{\code{head} and \code{tail} methods for \code{\link{epiparam}} class}
+\title{\code{\link[=head]{head()}} and \code{\link[=tail]{tail()}} methods for \verb{<epiparam>} class}
 \usage{
 \method{head}{epiparam}(x, ...)
 
 \method{tail}{epiparam}(x, ...)
 }
 \arguments{
-\item{x}{An \code{\link{epiparam}} object}
+\item{x}{An \verb{<epiparam>} object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{\link{dots} Extra arguments passed to or from other methods.}
 }
 \value{
 Data frame
 }
 \description{
-\code{head} and \code{tail} methods for \code{\link{epiparam}} class
+\code{\link[=head]{head()}} and \code{\link[=tail]{tail()}} methods for \verb{<epiparam>} class
 }
 \examples{
 head(epiparam())

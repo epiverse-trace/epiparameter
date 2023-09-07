@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_summary_stats_lnorm}
 \alias{convert_summary_stats_lnorm}
-\title{Converts the summary statistics to parameters of the lognormal distribution}
+\title{Convert summary statistics to parameters of the lognormal distribution}
 \usage{
 convert_summary_stats_lnorm(...)
 }
@@ -12,10 +12,10 @@ parameter(s). An example is the meanlog and sdlog parameters of the
 lognormal (\code{lnorm}) distribution.}
 }
 \value{
-A list of two elements, the meanlog and sdlog
+A list of two elements: meanlog and sdlog
 }
 \description{
-Converts the summary statistics input into the meanlog and sdlog
+Convert the summary statistics input into the meanlog and sdlog
 parameters of the lognormal distribution.
 }
 \keyword{internal}
