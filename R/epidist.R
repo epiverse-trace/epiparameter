@@ -52,9 +52,14 @@ new_epidist <- function(disease = list(),
                         discretise = logical(),
                         truncation = numeric(),
                         notes = character()) {
-  check_epidist_uncertainty(
-    prob_dist_params = prob_dist_params,
-    uncertainty = uncertainty
+  # check ci has been given for each param and param and uncertainty names match
+  stopifnot(
+    "uncertainty must be provided for each parameter" =
+      anyNA(uncertainty) ||
+      length(prob_dist_params) == length(uncertainty),
+    "parameters and uncertainty must be named and match" =
+      anyNA(uncertainty) ||
+      identical(names(prob_dist_params), names(uncertainty))
   )
 
   # calculate parameters if not provided
@@ -73,9 +78,12 @@ new_epidist <- function(disease = list(),
       prob_dist_params = prob_dist_params
     )
 
-    check_epidist_params(
-      prob_dist = prob_dist,
-      prob_dist_params = prob_dist_params
+    # check the params
+    checkmate::assert_numeric(prob_dist_params, names = "unique")
+    stopifnot(
+      "distribution parameters must have valid names,
+       see epidist() documentation for valid names" =
+        is_epidist_params(prob_dist_params)
     )
 
     # create a S3 object holding the probability distribution
