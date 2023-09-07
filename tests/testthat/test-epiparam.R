@@ -176,23 +176,21 @@ test_that("epiparam_fields returns vector as expected", {
   expect_vector(object = epiparam_fields(), ptype = character(0), size = 58)
 })
 
-test_that("epiparam_char_fields returns vector as expected", {
+test_that("epiparam_col_type returns vector as expected", {
   eparam <- epiparam()
   expect_vector(
-    object = epiparam_char_fields(eparam), ptype = integer(0), size = 13
+    object = epiparam_col_type(eparam, col_type = "character"),
+    ptype = integer(0),
+    size = 13
   )
-})
-
-test_that("epiparam_num_fields returns vector as expected", {
-  eparam <- epiparam()
   expect_vector(
-    object = epiparam_num_fields(eparam), ptype = integer(0), size = 31
+    object = epiparam_col_type(eparam, col_type = "numeric"),
+    ptype = integer(0),
+    size = 31
   )
-})
-
-test_that("epiparam_logic_fields returns vector as expected", {
-  eparam <- epiparam()
   expect_vector(
-    object = epiparam_logic_fields(eparam), ptype = integer(0), size = 5
+    object = epiparam_col_type(eparam, col_type = "logical"),
+    ptype = integer(0),
+    size = 5
   )
 })

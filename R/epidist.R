@@ -56,10 +56,10 @@ new_epidist <- function(disease = list(),
   stopifnot(
     "uncertainty must be provided for each parameter" =
       anyNA(uncertainty) ||
-      length(prob_dist_params) == length(uncertainty),
+        length(prob_dist_params) == length(uncertainty),
     "parameters and uncertainty must be named and match" =
       anyNA(uncertainty) ||
-      identical(names(prob_dist_params), names(uncertainty))
+        identical(names(prob_dist_params), names(uncertainty))
   )
 
   # calculate parameters if not provided
