@@ -2,20 +2,20 @@
 % Please edit documentation in R/epiparam.R
 \name{summary.epiparam}
 \alias{summary.epiparam}
-\title{Summary method for epiparam class}
+\title{Summary method for \verb{<epiparam>} class}
 \usage{
 \method{summary}{epiparam}(object, ...)
 }
 \arguments{
-\item{object}{epiparam object}
+\item{object}{An \verb{<epiparam>} object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{\link{dots} not used, extra arguments supplied will cause a warning.}
 }
 \value{
 data frame of information
 }
 \description{
-Summary method for epiparam class
+Summary method for \verb{<epiparam>} class
 }
 \examples{
 x <- epiparam()

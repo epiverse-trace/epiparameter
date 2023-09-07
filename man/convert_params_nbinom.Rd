@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_params_nbinom}
 \alias{convert_params_nbinom}
-\title{Converts the parameters of the negative binomial distribution to summary
+\title{Convert parameters of the negative binomial distribution to summary
 statistics}
 \usage{
 convert_params_nbinom(...)
@@ -18,7 +18,7 @@ variance (\code{var}), standard deviation (\code{sd}), coefficient of variation 
 skewness, and ex_kurtosis.
 }
 \description{
-Converts the probability (\code{prob}) and dispersion parameters of
+Convert the probability (\code{prob}) and dispersion parameters of
 the negative binomial distribution to a number of summary statistics which
 can be calculated analytically given the negative binomial parameters.
 One exception is the median which is calculated using \code{\link[=qnbinom]{qnbinom()}} as no

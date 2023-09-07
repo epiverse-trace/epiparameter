@@ -2,37 +2,37 @@
 % Please edit documentation in R/bind_epiparam.R
 \name{bind_epiparam}
 \alias{bind_epiparam}
-\title{Bind an epi object to an \code{\link{epiparam}} object}
+\title{Bind an epi object to an \verb{<epiparam>} object}
 \usage{
 bind_epiparam(epiparam, epi_obj)
 }
 \arguments{
-\item{epiparam}{An \verb{<epiparam>} object}
+\item{epiparam}{An \verb{<epiparam>} object.}
 
 \item{epi_obj}{Either an \verb{<epidist>}, \verb{<vb_epidist>}, \verb{<epiparam>} or list
 of \verb{<epidist>} objects. It can also be a data frame as long as the columns
 conform to the columns of an \verb{<epiparam>} object.}
 }
 \value{
-An \verb{<epiparam>} object
+An \verb{<epiparam>} object.
 }
 \description{
-Binds any epi data class in \pkg{epiparameter} (\code{\link{epidist}},
-\code{\link{vb_epidist}}, \code{\link{epiparam}}) or data frame to an \code{\link{epiparam}} object.
+Bind any epi data class in \pkg{epiparameter} (\verb{<epidist>},
+\verb{<vb_epidist>}, \verb{<epiparam>}) or data frame to an \verb{<epiparam>} object.
 }
 \details{
-The \code{\link{epiparam}} class holds the library of epidemiological
+The \verb{<epiparam>} class holds the library of epidemiological
 parameters that is stored in the \pkg{epiparameter} R package and can be
 manipulated. The \code{\link[=bind_epiparam]{bind_epiparam()}} function allows users to add entries to
-the library by binding them to the bottom of an existing \code{\link{epiparam}} object
+the library by binding them to the bottom of an existing \verb{<epiparam>} object
 loaded in R.
 
-The \verb{<epiparam>} returned by \code{bind_epiparam()} contains the matching columns
-of the input objects. Therefore, if one of the input objects contains extra
-columns which are not present in the other input object these will be missing
-from the returned object. This also applies whether binding other
-\verb{<epiparam>} objects or \verb{<data.frames>}. When binding \verb{<epidist>} objects
-missing data fields are given a default value before
+The \verb{<epiparam>} returned by \code{\link[=bind_epiparam]{bind_epiparam()}} contains the matching
+columns of the input objects. Therefore, if one of the input objects
+contains extra columns which are not present in the other input object
+these will be missing from the returned object. This also applies whether
+binding other \verb{<epiparam>} or \verb{<data.frame>} objects. When binding
+\verb{<epidist>} objects missing data fields are given a default value before
 binding.
 }
 \examples{

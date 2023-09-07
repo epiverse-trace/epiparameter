@@ -2,19 +2,17 @@
 % Please edit documentation in R/epidist.R
 \name{validate_epidist}
 \alias{validate_epidist}
-\title{\code{epidist} class validator}
+\title{Validator for \verb{<epidist>} class}
 \usage{
 validate_epidist(epidist)
 }
 \arguments{
-\item{epidist}{An \code{epidist} object}
+\item{epidist}{An \verb{<epidist>} object}
 }
 \value{
-Invisibly returns an \code{\link{epidist}}. Called for side-effects (errors
-when invalid \code{epidist} object is provided).
-
-Nothing, errors when invalid \code{epidist} object is provided
+Invisibly returns an \verb{<epidist>}. Called for side-effects (errors
+when invalid \verb{<epidist>} object is provided).
 }
 \description{
-\code{epidist} class validator
+Validator for \verb{<epidist>} class
 }

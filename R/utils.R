@@ -4,14 +4,14 @@
 #' @description This function can be used in cases where the data on a fitted
 #' distribution is not openly available and the summary statistics of the
 #' distribution are not reported so the data are scraped from the plot and
-#' the quantiles are needed in order use the `extract_param()` function
+#' the quantiles are needed in order use the [extract_param()] function.
 #'
-#' @param prob A numeric vector of probabilities
-#' @param days A numeric vector of days
-#' @param quantile A single numeric or vector of numerics specifying which
-#' quantiles to extract from the distribution
+#' @param prob A `numeric` vector of probabilities.
+#' @param days A `numeric` vector of days.
+#' @param quantile A single `numeric` or vector of `numerics` specifying which
+#' quantiles to extract from the distribution.
 #'
-#' @return A named vector of quantiles
+#' @return A named vector of quantiles.
 #' @export
 #'
 #' @examples

@@ -12,8 +12,8 @@ get_sym_percentiles(percentiles)
 correct format to be converted to their numeric value using \code{as.numeric()}.}
 }
 \value{
-A named numeric vector of two elements with the lower (first element)
-and upper (second element) percentiles
+A named \code{numeric} vector of two elements with the lower
+(first element) and upper (second element) percentiles.
 }
 \description{
 Get the lower and upper percentiles with a preference for symmetrical

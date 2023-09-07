@@ -2,8 +2,7 @@
 % Please edit documentation in R/epidist_utils.R
 \name{create_epidist_method_assess}
 \alias{create_epidist_method_assess}
-\title{Specify whether certain methodological aspects have been used when fitting
-the distribution}
+\title{Specify methodological aspects of distribution fitting}
 \usage{
 create_epidist_method_assess(
   censored = NA,
@@ -12,22 +11,23 @@ create_epidist_method_assess(
 )
 }
 \arguments{
-\item{censored}{A boolean logical whether the study used single or double
+\item{censored}{A boolean \code{logical} whether the study used single or double
 interval censoring in the methods to infer the delay distribution}
 
-\item{right_truncated}{A boolean logical whether the study used right-
+\item{right_truncated}{A boolean \code{logical} whether the study used right-
 truncation in the methods to infer the delay distribution}
 
-\item{phase_bias_adjusted}{A boolean logical whether the study adjusted for
+\item{phase_bias_adjusted}{A boolean \code{logical} whether the study adjusted for
 phase bias in the methods to infer the delay distribution}
 }
 \value{
 A named list with three elements
 }
 \description{
-A helper function when creating an epidist object to create a
-method assessment list with sensible defaults, type checking and arguments
-to help remember which method assessments can be accepted in the list
+A helper function when creating an \verb{<epidist>} object to
+create a method assessment list with sensible defaults, type checking and
+arguments to help remember which method assessments can be accepted in
+the list.
 }
 \details{
 Currently, the method assessment focuses on common methodological

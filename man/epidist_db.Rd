@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist_db.R
 \name{epidist_db}
 \alias{epidist_db}
-\title{Create an \code{epidist} object(s) directly from the epiparameter library
+\title{Create an \verb{<epidist>} object(s) directly from the epiparameter library
 (database)}
 \usage{
 epidist_db(
@@ -50,12 +50,12 @@ If multiple entries are equal after this sorting the first entry will
 be returned.}
 }
 \value{
-An \code{epidist} object or list of \code{epidist} objects.
+An \verb{<epidist>} object or list of \verb{<epidist>} objects.
 }
 \description{
-This function can extract an \code{epidist} object(s) directly from
-the library of epidemiological parameters without having to read in an
-\code{epiparam} object and pull out an \code{epidist} object from one of the entries.
+Extract an \verb{<epidist>} object(s) directly from
+the library of epidemiological parameters. This bypasses the need to
+read in an \verb{<epiparam>} object and convert to an \verb{<epidist>} object.
 
 If a distribution from a specific study is required, the \code{author} argument
 can be specified.

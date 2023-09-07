@@ -2,24 +2,22 @@
 % Please edit documentation in R/accessors.R
 \name{get_citation}
 \alias{get_citation}
-\title{Method for extracting citation information from \verb{<epidist>} or
-\verb{<epiparam>} objects.}
+\title{Extract citation information from \verb{<epidist>} or \verb{<epiparam>} objects}
 \usage{
 get_citation(x, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} or \code{epiparam} object.}
+\item{x}{An \verb{<epidist>} or \verb{<epiparam>} object.}
 
 \item{...}{Extra arguments to be passed to the method.}
 }
 \value{
 A single character string or list of character string citations.
-Length of list output is equal to number of rows in the \code{epiparam} object
+Length of list output is equal to number of rows in the \verb{<epiparam>} object
 passed to the function.
 }
 \description{
-Method for extracting citation information from \verb{<epidist>} or
-\verb{<epiparam>} objects.
+Extract citation information from \verb{<epidist>} or \verb{<epiparam>} objects
 }
 \examples{
 

@@ -2,20 +2,20 @@
 % Please edit documentation in R/epiparam.R
 \name{format.epiparam}
 \alias{format.epiparam}
-\title{Format method for epiparam class}
+\title{Format method for \verb{<epiparam>} class}
 \usage{
 \method{format}{epiparam}(x, ...)
 }
 \arguments{
-\item{x}{epiparam object}
+\item{x}{An \verb{<epiparam>} object.}
 
-\item{...}{further arguments passed to or from other methods}
+\item{...}{\link{dots} Extra arguments passed to or from other methods.}
 }
 \value{
-Invisibly returns an \code{\link{epiparam}}. Called for printing side-effects.
+Invisibly returns an \verb{<epiparam>}. Called for printing side-effects.
 }
 \description{
-Format method for epiparam class
+Format method for \verb{<epiparam>} class
 }
 \examples{
 x <- epiparam()

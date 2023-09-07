@@ -2,16 +2,20 @@
 % Please edit documentation in R/epiparam.R
 \name{new_epiparam}
 \alias{new_epiparam}
-\title{epiparam constructor}
+\title{Constructor for \verb{<epiparam>} class}
 \usage{
 new_epiparam(epi_dist)
 }
+\arguments{
+\item{epi_dist}{A \code{character} string with the name of the
+epidemiological distribution type.}
+}
 \value{
-epiparam object
+An \verb{<epiparam>} object.
 }
 \description{
 The constructor reads the data stored internally in the package
-and subsets by epidemiological distribution (epi_dist)
+and subsets by epidemiological distribution (\code{epi_dist}).
 }
 \examples{
 eparam <- epiparameter:::new_epiparam("all")

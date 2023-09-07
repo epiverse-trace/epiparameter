@@ -2,12 +2,12 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{[.epiparam}
 \alias{[.epiparam}
-\title{Subsetting method for \code{epiparam}}
+\title{Subset method for \verb{<epiparam>} class}
 \usage{
 \method{[}{epiparam}(epiparam, ...)
 }
 \arguments{
-\item{epiparam}{An \code{epiparam} object}
+\item{epiparam}{An \verb{<epiparam>} object.}
 
 \item{...}{further arguments to be passed to or from other methods.}
 }
@@ -15,9 +15,9 @@
 An \code{epiparam} object or a \code{data.frame}
 }
 \description{
-If the subsetting invalidates the \code{epiparam} object (defined by
-its invariants, and encoded in \code{\link[=validate_epiparam]{validate_epiparam()}}) the subsetting will
-return a data frame with a message to console stating the class of the object
-has been converted to \code{data.frame} with the other attributes of the class
-preserved.
+If the subsetting invalidates the \verb{<epiparam>} object (defined
+by its invariants, and encoded in \code{\link[=validate_epiparam]{validate_epiparam()}}) the subsetting
+will return a data frame with a message to console stating the class of the
+object has been converted to \code{data.frame} with the other attributes of the
+class preserved.
 }

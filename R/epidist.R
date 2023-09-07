@@ -1,6 +1,6 @@
-#' Constructor for epidist class
+#' Constructor for `<epidist>` class
 #'
-#' @description Creates an epidist object. The
+#' @description Create an `<epidist>` object. The
 #' constructor will search whether parameters of the probability distribution
 #' are supplied and if not look to see whether they can be inferred/extracted/
 #' converted from summary statistics provided. It will also convert the
@@ -9,18 +9,18 @@
 #' `{distributional}` when `discretise = FALSE`, or a `distcrete` object from
 #' `{distcrete}` when `discretise = TRUE`.
 #'
-#' @param disease A list contains the `$disease` a character string of the
-#' infectious disease specified in the study, and the `$pathogen` a character
+#' @param disease A list containing the `$disease` a `character` string of the
+#' infectious disease specified in the study, and the `$pathogen` a `character`
 #' string. If the pathogen is unknown it can be given as `NULL`.
 #' @param prob_dist A character string specifying the probability
 #' distribution. This should match the R naming convention of probability
 #' distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-#' geometric is geom)
+#' geometric is geom).
 #' @param prob_dist_params A named vector of probability distribution
-#' parameters
+#' parameters.
 #' @inheritParams epidist
 #'
-#' @return epidist object
+#' @inherit epidist return
 #' @keywords internal
 #'
 #' @examples
@@ -117,20 +117,22 @@ new_epidist <- function(disease = list(),
   )
 }
 
-#' Create an `epidist` object
+#' Create an `<epidist>` object
 #'
-#' @description The `epidist` class is used to store epidemiological parameters
-#' for a single disease. These epidemiological parameters cover a variety of
-#' aspects including delay distributions (e.g. incubation periods and serial
-#' intervals, among others) and offspring distributions.
+#' @description The `<epidist>` class is used to store epidemiological
+#' parameters for a single disease. These epidemiological parameters cover a
+#' variety of aspects including delay distributions (e.g. incubation periods
+#' and serial intervals, among others) and offspring distributions.
 #'
-#' The `epidist` object is the functional unit provided by `{epiparameter}` to
-#' plug into epidemiological pipelines. Obtaining an `epidist` object can be
-#' achieved in two main ways. 1) The epidemiological distribution is stored in
-#' the `{epiparameter}` library and can be accessed by [`epiparam()`] and
-#' [`as_epidist()`]. 2) the alternative method is when you have information
+#' The `<epidist>` object is the functional unit provided by `{epiparameter}` to
+#' plug into epidemiological pipelines. Obtaining an `<epidist>` object can be
+#' achieved in two main ways:
+#' 1. The epidemiological distribution is stored in
+#' the `{epiparameter}` library and can be accessed by [epiparam()] and
+#' [as_epidist()].
+#' 2. The alternative method is when you have information
 #' (e.g. disease and distribution parameter estimates) and would like to input
-#' this into an `epidist` object in order to work in existing analysis
+#' this into an `<epidist>` object in order to work in existing analysis
 #' pipelines. This is where the `epidist()` function can be used to fill out
 #' each field for which information is known.
 #'
@@ -142,36 +144,36 @@ new_epidist <- function(disease = list(),
 #' - Geometric must be either 'mean' or 'prob'
 #' - Poisson must be 'mean'
 #'
-#' @param disease A character string with name of the infectious disease
-#' @param pathogen A character string with the name of the causative agent of
-#' disease, or NULL if not known
-#' @param epi_dist A character string with the name of the
-#' epidemiological distribution type
-#' @param prob_distribution A character string specifying the probability
-#' distribution. This should match the R naming convention of probability
-#' distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-#' geometric is geom)
+#' @param disease A `character` string with name of the infectious disease.
+#' @param pathogen A `character` string with the name of the causative agent of
+#' disease, or NULL if not known.
+#' @param epi_dist A `character` string with the name of the
+#' epidemiological distribution type.
+#' @param prob_distribution A `character` string specifying the probability
+#' distribution. This should match the \R naming convention of probability
+#' distributions (e.g. lognormal is `lnorm`, negative binomial is `nbinom`, and
+#' geometric is `geom`).
 #' @param prob_distribution_params A named vector of probability distribution
-#' parameters
+#' parameters.
 #' @param uncertainty A list of named vectors with the uncertainty around
 #' the probability distribution parameters. If uncertainty around the parameter
-#' estimates is unknown use `create_epidist_uncertainty()` (which is the
+#' estimates is unknown use [create_epidist_uncertainty()] (which is the
 #' argument default) to create a list wiht the correct names with missing
 #' values.
 #' @param summary_stats A list of summary statistics, use
-#' [`create_epidist_summary_stats()`] to create list. This list can include
+#' [create_epidist_summary_stats()] to create list. This list can include
 #' summary statistics about the inferred distribution such as it's mean and
 #' standard deviation, quantiles of the distribution, or information about the
 #' data used to fit the distribution such as lower and upper range. The summary
 #' statistics can also include uncertainty around metrics such as confidence
 #' interval around mean and standard deviation.
-#' @param auto_calc_params A boolean logical determining whether to try and
+#' @param auto_calc_params A boolean `logical` determining whether to try and
 #' calculate the probability distribution parameters from summary statistics if
 #' distribution parameters are not provided. Default is `TRUE`. In the case when
 #' sufficient summary statistics are provided and the parameter(s) of the
-#' distribution are not, the [`calc_dist_params()`] function is called to
+#' distribution are not, the [calc_dist_params()] function is called to
 #' calculate the parameters and add them to the `epidist` object created.
-#' @param citation A character string with the citation of the source of the
+#' @param citation A `character` string with the citation of the source of the
 #' data or the paper that inferred the distribution parameters, use
 #' `create_epidist_citation()` to create citation.
 #' @param metadata A list of metadata, this can include: sample size, the
@@ -184,14 +186,15 @@ new_epidist <- function(disease = list(),
 #' @param method_assess A list of methodological aspects used when fitting
 #' the distribution, use `create_epidist_method_assess()` to create method
 #' assessment.
-#' @param discretise A boolean logical whether the distribution is discretised.
+#' @param discretise A boolean `logical` whether the distribution is
+#' discretised.
 #' Default is FALSE which assumes a continuous probability distribution
-#' @param truncation A numeric specifying the truncation point if the inferred
-#' distribution was truncated, NA if not or unknown.
-#' @param notes A character string with any additional information about the
+#' @param truncation A `numeric` specifying the truncation point if the inferred
+#' distribution was truncated, `NA` if not or unknown.
+#' @param notes A `character` string with any additional information about the
 #' data, inference method or disease.
 #'
-#' @return An `epidist` object
+#' @return An `<epidist>` object.
 #' @export
 #'
 #' @examples
@@ -319,14 +322,13 @@ epidist <- function(disease,
   epidist
 }
 
-#' `epidist` class validator
+#' Validator for `<epidist>` class
 #'
-#' @param epidist An `epidist` object
+#' @param epidist An `<epidist>` object
 #'
-#' @return Invisibly returns an [`epidist`]. Called for side-effects (errors
-#' when invalid `epidist` object is provided).
+#' @return Invisibly returns an `<epidist>`. Called for side-effects (errors
+#' when invalid `<epidist>` object is provided).
 #'
-#' Nothing, errors when invalid `epidist` object is provided
 #' @export
 validate_epidist <- function(epidist) {
   if (!is_epidist(epidist)) {
@@ -362,18 +364,18 @@ validate_epidist <- function(epidist) {
   invisible(epidist)
 }
 
-#' Print method for epidist class
+#' Print method for `<epidist>` class
 #'
-#' @param x epidist object
-#' @param header Boolean logical determining whether the header (first part) of
-#' the print method is printed. This is used internally for plotting the
-#' vb_epidist class
-#' @param vb A character string containing whether it is the intrinsic
+#' @param x An `<epidist>` object.
+#' @param header Boolean `logical` determining whether the header (first part)
+#' of the print method is printed. This is used internally for plotting the
+#' `<vb_epidist>` class.
+#' @param vb A `character` string containing whether it is the intrinsic
 #' (`"Intrinsic"`) or extrinsic (`"Extrinsic"`) distribution for vector-borne
-#' diseases
-#' @param ... further arguments passed to or from other methods
+#' diseases.
+#' @param ... [dots] Extra arguments passed to or from other methods.
 #'
-#' @return Invisibly returns an [`epidist`]. Called for side-effects.
+#' @return Invisibly returns an `<epidist>`. Called for side-effects.
 #' @export
 #'
 #' @examples
@@ -388,17 +390,16 @@ print.epidist <- function(x, header = TRUE, vb = NULL, ...) {
   format(x, header = header, vb = vb, ...)
 }
 
-#' Format method for epidist class
+#' Format method for `<epidist>` class
 #'
-#' @param x epidist object
+#' @inheritParams print.epidist
 #' @param header Boolean logical determining whether the header (first part) of
 #' the print method is printed. This is used internally for plotting the
 #' vb_epidist class
 #' @param vb Either NULL (default) or a character string of either "Intrinsic"
 #' or "Extrinsic" which is used internally for plotting the vb_epidist class
-#' @param ... further arguments passed to or from other methods
 #'
-#' @return Invisibly returns an [`epidist`]. Called for printing side-effects.
+#' @return Invisibly returns an `<epidist>`. Called for printing side-effects.
 #' @export
 #'
 #' @examples
@@ -461,22 +462,22 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
   invisible(x)
 }
 
-#' Plots an `epidist` object
+#' Plot method for `<epidist>` class
 #'
-#' @description Plots an `epidist` object by displaying the either the
+#' @description Plot an `<epidist>` object by displaying the either the
 #' probability mass function (PMF), (in the case of discrete distributions)
 #' or probability density function (PDF) (in the case of continuous
 #' distributions) and the cumulative distribution function (CDF). Resulting in
 #' a 1x2 grid plot.
 #'
-#' @param x An `epidist` object
+#' @param x An `<epidist>` object.
 #' @param day_range A vector with the sequence of days to be plotted on the
-#' x-axis of the distribution
-#' @param ... Allow other graphical parameters
+#' x-axis of the distribution.
 #' @param vb A boolean logical determining whether the `epidist` being plotted
-#' has come from a `vb_epidist` object
+#' has come from a `vb_epidist` object.
 #' @param title Either a character string or `NULL`. If not null the character
-#' string will be printed as a title to the plot
+#' string will be printed as a title to the plot.
+#' @inheritParams base::print
 #'
 #' @author Joshua W. Lambert
 #' @export
@@ -556,12 +557,12 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
   }
 }
 
-#' Checks whether the object is an `epidist`
+#' Check object is an `<epidist>`
 #'
-#' @param x An R object
+#' @param x An \R object.
 #'
-#' @return A boolean logical, `TRUE` if the object is an `epidist` and `FALSE`
-#' if not
+#' @return A boolean logical, `TRUE` if the object is an `<epidist>` and `FALSE`
+#' if not.
 #' @export
 #'
 #' @examples
@@ -586,25 +587,25 @@ is_epidist <- function(x) {
   inherits(x, "epidist")
 }
 
-#' PDF, CDF, PMF, quantiles and random number generation for `epidist` and
-#' `vb_epidist` objects
+#' PDF, CDF, PMF, quantiles and random number generation for `<epidist>` and
+#' `<vb_epidist>` objects
 #'
-#' @description The epidist object holds a probability distribution which can
-#' either be a continuous or discrete distribution. These are the density,
+#' @description The `<epidist>` object holds a probability distribution which
+#' can either be a continuous or discrete distribution. These are the density,
 #' cumulative distribution, quantile and random number generation functions.
-#' These operate on any distribution that can be included in an `epidist`
+#' These operate on any distribution that can be included in an `<epidist>`
 #' object.
 #'
-#' @param x An `epidist` or `vb_epidist` object
-#' @param at The quantiles to evaluate at
-#' @param q The quantiles to evaluate at
-#' @param p The probabilities to evaluate at
-#' @param times The number of random samples
-#' @param ... further arguments passed to or from other methods
+#' @param x An `<epidist>` or `<vb_epidist>` object.
+#' @param at The quantiles to evaluate at.
+#' @param q The quantiles to evaluate at.
+#' @param p The probabilities to evaluate at.
+#' @param times The number of random samples.
+#' @inheritParams print.epidist
 #'
-#' @return If an `epidist` object is given a numeric vector is returned, if an
-#' `vb_epidist` object is given a list of two elements each with a numeric
-#' vector is returned
+#' @return If an `<epidist>` object is given a numeric vector is returned, if an
+#' `<vb_epidist>` object is given a list of two elements each with a numeric
+#' vector is returned.
 #'
 #' @name epidist_distribution_functions
 #' @keywords epidist_distribution_functions
@@ -722,16 +723,15 @@ generate.epidist <- function(x, times, ...) {
   out
 }
 
-#' Discretises a continuous distribution in an `epidist` object
+#' Discretises a continuous distribution in an `<epidist>` object
 #'
-#' @details Converts the S3 distribution object in an `epidist` from continuous
-#' (using an object from the {distributional} package) to a discretised
-#' distribution (using an object from the {distcrete} package).
+#' @details Converts the S3 distribution object in an `<epidist>` from
+#' continuous (using an object from the `{distributional}` package) to a
+#' discretised distribution (using an object from the `{distcrete}` package).
 #'
-#' @param x An `epidist` object
-#' @param ... further arguments passed to or from other methods
+#' @inheritParams print.epidist
 #'
-#' @return An `epidist` object
+#' @inherit epidist return
 #' @export
 #'
 #' @examples
@@ -809,14 +809,14 @@ discretise.default <- function(x, ...) {
   stop("No discretise method defined for class ", class(x))
 }
 
-#' Family method for the `epidist` class
+#' Family method for the `<epidist>` class
 #'
-#' @description The `family()` function is used to extract the distribution
-#' names from objects from {distributional} and {distcrete}. This method
+#' @description The [family()] function is used to extract the distribution
+#' names from objects from `{distributional}` and `{distcrete}`. This method
 #' provides the same interface for `<epidist>` objects to give consistent
-#' output irrespective of the distribution class.
+#' output irrespective of the internal distribution class.
 #'
-#' @param object An `epidist` object
+#' @param object An `<epidist>` object.
 #' @inheritParams stats::family
 #'
 #' @return A character string with the name of the distribution, or `NA` when
@@ -875,17 +875,17 @@ family.epidist <- function(object, ...) {
   prob_dist
 }
 
-#' Check if distribution in `epidist` is truncated
+#' Check if distribution in `<epidist>` is truncated
 #'
 #' @details The `<epidist>` class can hold probability distribution objects
-#' from the {distributional} package or the {distcrete} package, however, only
-#' distribution objects from {distributional} can be truncated. If a
-#' `<epidist>` object has a {distcrete} object `is_truncated` will return
-#' `FALSE` by default.
+#' from the `{distributional}` package or the `{distcrete}` package,
+#' however, only distribution objects from `{distributional}` can be truncated.
+#' If a `<epidist>` object has a `<distcrete>` object `is_truncated` will
+#' return `FALSE` by default.
 #'
-#' @param x An `epidist` object.
+#' @inheritParams print.epidist
 #'
-#' @return A boolean logical.
+#' @return A boolean `logical`.
 #' @export
 #'
 #' @examples

@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_params_geom}
 \alias{convert_params_geom}
-\title{Converts the parameters of the geometric distribution to summary statistics}
+\title{Convert parameter of the geometric distribution to summary statistics}
 \usage{
 convert_params_geom(...)
 }
@@ -17,13 +17,13 @@ variance (\code{var}), standard deviation (\code{sd}), coefficient of variation 
 skewness, and excess kurtosis (\code{ex_kurtosis}).
 }
 \description{
-Converts the probability (\code{prob}) of the geometric distribution
+Convert the probability (\code{prob}) of the geometric distribution
 to a number of summary statistics which can be calculated analytically given
 the geometric parameter.
 }
 \details{
 This conversion function assumes that distribution represents the
 number of failures before the first success (supported for zero). This is
-the same form as used by base R and \code{distributional::dist_geometric()}.
+the same form as used by base R and \code{\link[distributional:dist_geometric]{distributional::dist_geometric()}}.
 }
 \keyword{internal}

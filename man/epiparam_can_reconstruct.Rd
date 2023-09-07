@@ -2,19 +2,19 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{epiparam_can_reconstruct}
 \alias{epiparam_can_reconstruct}
-\title{Checks whether the \code{epiparam} object is valid}
+\title{Check whether the \verb{<epiparam>} object is valid}
 \usage{
 epiparam_can_reconstruct(x)
 }
 \arguments{
-\item{x}{A \code{data.frame} or subclass of \code{data.frame} (e.g. \code{tibble} or
-\code{epiparam})}
+\item{x}{A \code{data.frame} or subclass of \code{data.frame} (e.g. \verb{<tibble>} or
+\verb{<epiparam>}).}
 }
 \value{
-A boolean logical (\code{TRUE} or \code{FALSE})
+A boolean \code{logical}.
 }
 \description{
-This is a wrapper for \code{\link{validate_epiparam}} in a \code{\link[=tryCatch]{tryCatch()}}
+This is a wrapper for \code{\link[=validate_epiparam]{validate_epiparam()}} in a \code{\link[=tryCatch]{tryCatch()}}
 in order to not error if the input object is invalid and returns \code{TRUE} or
 \code{FALSE} on if the object is valid. If the object is valid it can be
 "reconstructed" and not downgraded to a \code{data.frame}.

@@ -2,18 +2,18 @@
 % Please edit documentation in R/epidist_utils.R
 \name{clean_epidist_params.geom}
 \alias{clean_epidist_params.geom}
-\title{Standardises parameters for a geometric distribution}
+\title{Standardise parameters for a geometric distribution}
 \usage{
 \method{clean_epidist_params}{geom}(prob_dist_params)
 }
 \arguments{
 \item{prob_dist_params}{A named vector of probability distribution
-parameters}
+parameters.}
 }
 \value{
-Named vector of parameters
+Named \code{numeric} vector of parameters.
 }
 \description{
-Standardises parameters for a geometric distribution
+Standardise parameters for a geometric distribution
 }
 \keyword{internal}

@@ -1,22 +1,22 @@
 #' Specify distribution parameter uncertainty
 #'
 #' @description A helper function when creating uncertainty for the parameters
-#' of the distribution for the `epidist` object
+#' of the distribution for the `<epidist>` object.
 #'
 #' @param ci_limits A numeric vector of length two with the lower and upper
-#' bound of the confidence interval or credible interval
+#' bound of the confidence interval or credible interval.
 #' @param ci A numeric specifying the interval for the ci, e.g. 95 is
-#' 95% ci
-#' @param ci_type A character string, either "confidence interval" or "credible
-#' interval"
+#' 95% ci.
+#' @param ci_type A character string, either `"confidence interval"` or
+#' `"credible interval"`.
 #'
 #' @return List of three elements:
 #'
 #' 1. `$ci_limits` is the upper and lower bounds
 #' of the CI (either confidence interval or credible interval) (i.e. a two
-#' element numeric vector)
+#' element numeric vector).
 #' 2. `$ci` the interval (e.g. 95 is 95% CI) given by a
-#' single numeric
+#' single numeric.
 #' 3. `$ci_type` a character string specifying the type of
 #' uncertainty (can be either `"confidence interval"` or `"credible interval"`).
 #' @export
@@ -79,9 +79,9 @@ create_epidist_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 
 #' Specify metadata associated with data set
 #'
-#' @description A helper function when creating an epidist object to create a
-#' metadata list with sensible defaults, type checking and arguments to help
-#' remember metadata list structure (element names)
+#' @description A helper function when creating an `<epidist>` object to
+#' create a metadata list with sensible defaults, type checking and arguments
+#' to help remember metadata list structure (element names).
 #'
 #' @details In vector-borne diseases the transmissibility of a disease is
 #' dependent on both the time taken for a host (i.e. human) to become
@@ -186,12 +186,12 @@ create_epidist_metadata <- function(sample_size = NA_integer_,
 #' region at either continent, country, region or city level. By specifying
 #' the level of the geography the other fields may be deduced.
 #'
-#' @param continent A character string specifying the continent
-#' @param country A character string specifying the country
-#' @param region A character string specifying the region
-#' @param city A character string specifying the city
+#' @param continent A `character` string specifying the continent.
+#' @param country A `character` string specifying the country.
+#' @param region A `character` string specifying the region.
+#' @param city A `character` string specifying the city.
 #'
-#' @return A named list
+#' @return A named list.
 #' @export
 #'
 #' @examples
@@ -214,38 +214,40 @@ create_epidist_region <- function(continent = NA_character_,
   )
 }
 
-#' Specify any reported summary statistics for `epidist`
+#' Specify reported summary statistics
 #'
-#' @description A helper function when creating an epidist object to create a
-#' summary statistics list with sensible defaults, type checking and arguments
-#' to help remember which summary statistics can be accepted in the list.
+#' @description A helper function when creating an `<epidist>` object to
+#' create a summary statistics list with sensible defaults, type checking
+#' and arguments to help remember which summary statistics can be accepted in
+#' the list.
 #'
-#' @param mean A numeric of the mean (expectation) of the probability
-#' distribution
-#' @param mean_ci_limits A numeric vector of length two of the confidence
-#' interval around the mean
-#' @param mean_ci A numeric specifying the confidence interval width,
+#' @param mean A `numeric` of the mean (expectation) of the probability
+#' distribution.
+#' @param mean_ci_limits A `numeric` vector of length two of the confidence
+#' interval around the mean.
+#' @param mean_ci A `numeric` specifying the confidence interval width,
 #' e.g. 95 would be the 95% CI
-#' @param sd A numeric of the standard deviation of the probability distribution
-#' @param sd_ci_limits A numeric vector of length 2 of the confidence interval
-#' around the standard deviation
-#' @param sd_ci A numeric specifying the confidence interval width,
-#' e.g. 95 would be 95% confidence interval
-#' @param median A numeric of the median of the probability distribution
-#' @param median_ci_limits A numeric vector of length two of the confidence
-#' interval around the median
-#' @param median_ci A numeric specifying the confidence interval width
-#' of the median
-#' @param dispersion A numeric of the dispersion parameter of a distribution
-#' @param dispersion_ci_limits A numeric vector of length two of the confidence
-#' interval around the dispersion
-#' @param dispersion_ci A numeric specifying the confidence interval
-#' width of the dispersion parameter
+#' @param sd A `numeric` of the standard deviation of the probability
+#' distribution.
+#' @param sd_ci_limits A `numeric` vector of length 2 of the confidence interval
+#' around the standard deviation.
+#' @param sd_ci A `numeric` specifying the confidence interval width,
+#' e.g. 95 would be 95% confidence interval.
+#' @param median A `numeric` of the median of the probability distribution.
+#' @param median_ci_limits A `numeric` vector of length two of the confidence
+#' interval around the median.
+#' @param median_ci A `numeric` specifying the confidence interval width
+#' of the median.
+#' @param dispersion A `numeric` of the dispersion parameter of a distribution.
+#' @param dispersion_ci_limits A `numeric` vector of length two of the
+#' confidence interval around the dispersion.
+#' @param dispersion_ci A `numeric` specifying the confidence interval
+#' width of the dispersion parameter.
 #' @param lower_range The lower range of the data, used to infer the parameters
-#' of the distribution when not provided
+#' of the distribution when not provided.
 #' @param upper_range The upper range of the data, used to infer the parameters
-#' of the distribution when not provided
-#' @param quantiles A numeric vector of the quantiles for the distribution.
+#' of the distribution when not provided.
+#' @param quantiles A `numeric` vector of the quantiles for the distribution.
 #' If quantiles are not provided a default empty vector with the 2.5th, 5th,
 #' 25th, 75th, 95th, 97.5th quantiles are supplied.
 #'
@@ -351,19 +353,19 @@ create_epidist_summary_stats <- function(mean = NA_real_,
   )
 }
 
-#' Create a citation for an epidist object
+#' Create a citation for an `<epidist>` object
 #'
-#' @description A helper function when creating an epidist object to create a
-#' citation list with sensible defaults, type checking and arguments to help
+#' @description A helper function when creating an `<epidist>` object to create
+#' a citation list with sensible defaults, type checking and arguments to help
 #' remember which citation information is accepted in the list.
 #'
-#' @details This function acts as a wrapper around [`bibentry()`] to create
+#' @details This function acts as a wrapper around [bibentry()] to create
 #' citations for sources reporting epidemiological parameters.
 #'
 #' @param author A `character` string of the surname of the first author. This
 #' can be underscore separated from a second author, or underscore separated
 #' from "etal" if there are more than two authors.
-#' @param year A `numeric` of the year of publication
+#' @param year A `numeric` of the year of publication.
 #' @param title A `character` string with the title of the article that
 #' published the epidemiological parameters.
 #' @param journal A `character` string with the name of the journal that
@@ -374,7 +376,7 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #' @param DOI A `character` string of the Digital Object Identifier (DOI)
 #' assigned to papers which are unique to each paper.
 #'
-#' @return A `bibentry` object of the citation
+#' @return A `<bibentry>` object of the citation
 #' @export
 #'
 #' @examples
@@ -431,12 +433,12 @@ create_epidist_citation <- function(author = NA_character_,
   citation
 }
 
-#' Specify whether certain methodological aspects have been used when fitting
-#' the distribution
+#' Specify methodological aspects of distribution fitting
 #'
-#' @description A helper function when creating an epidist object to create a
-#' method assessment list with sensible defaults, type checking and arguments
-#' to help remember which method assessments can be accepted in the list
+#' @description A helper function when creating an `<epidist>` object to
+#' create a method assessment list with sensible defaults, type checking and
+#' arguments to help remember which method assessments can be accepted in
+#' the list.
 #'
 #' @details Currently, the method assessment focuses on common methodological
 #' aspects of delay distributions (e.g. incubation period, serial interval,
@@ -444,11 +446,11 @@ create_epidist_citation <- function(author = NA_character_,
 #' may be important when fitting offspring distributions to data on disease
 #' (super)spreading.
 #'
-#' @param censored A boolean logical whether the study used single or double
+#' @param censored A boolean `logical` whether the study used single or double
 #' interval censoring in the methods to infer the delay distribution
-#' @param right_truncated A boolean logical whether the study used right-
+#' @param right_truncated A boolean `logical` whether the study used right-
 #' truncation in the methods to infer the delay distribution
-#' @param phase_bias_adjusted A boolean logical whether the study adjusted for
+#' @param phase_bias_adjusted A boolean `logical` whether the study adjusted for
 #' phase bias in the methods to infer the delay distribution
 #'
 #' @return A named list with three elements
@@ -476,13 +478,12 @@ create_epidist_method_assess <- function(censored = NA,
   )
 }
 
-#' A helper function to check whether the vector of parameters for the
-#' probability distribution are in the set of possible parameters used in
-#' the `epiparameter` package
+#' Check whether the vector of parameters for the probability distribution
+#' are in the set of possible parameters used in the epiparameter package
 #'
 #' @inheritParams new_epidist
 #'
-#' @return A logical boolean
+#' @return A boolean `logical`.
 #' @export
 #'
 #' @examples
@@ -525,11 +526,11 @@ clean_epidist_params <- function(prob_dist_params, ...) {
   UseMethod("clean_epidist_params")
 }
 
-#' Standardises parameters for a gamma distribution
+#' Standardise parameters for a gamma distribution
 #'
 #' @inheritParams new_epidist
 #'
-#' @return Named vector of parameters
+#' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.gamma <- function(prob_dist_params) {
   # if unparameterised return named vector of NAs
@@ -564,11 +565,11 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a lognormal distribution
+#' Standardise parameters for a lognormal distribution
 #'
 #' @inheritParams new_epidist
 #'
-#' @return Named vector of parameters
+#' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.lnorm <- function(prob_dist_params) {
   # if unparameterised return named vector of NAs
@@ -604,11 +605,11 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a Weibull distribution
+#' Standardise parameters for a Weibull distribution
 #'
 #' @inheritParams new_epidist
 #'
-#' @return Named vector of parameters
+#' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.weibull <- function(prob_dist_params) {
   # if unparameterised return named vector of NAs
@@ -631,11 +632,11 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a negative binomial distribution
+#' Standardise parameters for a negative binomial distribution
 #'
 #' @inheritParams new_epidist
 #'
-#' @return Named vector of parameters
+#' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.nbinom <- function(prob_dist_params) {
   # if unparameterised return named vector of NAs
@@ -680,11 +681,11 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a geometric distribution
+#' Standardise parameters for a geometric distribution
 #'
 #' @inheritParams new_epidist
 #'
-#' @return Named vector of parameters
+#' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.geom <- function(prob_dist_params) {
   # if unparameterised return named NA
@@ -734,11 +735,11 @@ clean_epidist_params.geom <- function(prob_dist_params) {
   }
 }
 
-#' Standardises parameters for a poisson distribution
+#' Standardise parameters for a poisson distribution
 #'
 #' @inheritParams new_epidist
 #'
-#' @return Named vector of parameters
+#' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.pois <- function(prob_dist_params) {
   # if unparameterised return named NA
@@ -767,7 +768,7 @@ clean_epidist_params.pois <- function(prob_dist_params) {
 #'
 #' @inheritParams new_epidist
 #'
-#' @return Named vector of parameters
+#' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.default <- function(prob_dist_params) {
   # print message that cleaning function not dispatched
@@ -780,11 +781,11 @@ clean_epidist_params.default <- function(prob_dist_params) {
   prob_dist_params
 }
 
-#' Standardises the names of epidemiological distributions
+#' Standardise the names of epidemiological distributions
 #'
-#' @param epi_dist A character string with the name of the distribution
+#' @param epi_dist A `character` string with the name of the distribution.
 #'
-#' @return Character string
+#' @return A `character` vector of equal length to the input.
 #' @export
 #'
 #' @examples
@@ -794,11 +795,11 @@ clean_epidist_name <- function(epi_dist) {
   tolower(out)
 }
 
-#' Standardises the names of diseases
+#' Standardise the names of diseases
 #'
-#' @param x A character string specifying a disease.
+#' @param x A `character` string specifying a disease.
 #'
-#' @return A character string of equal length to the input
+#' @return A `character` vector of equal length to the input.
 #' @export
 clean_disease <- function(x) {
   checkmate::assert_character(x)

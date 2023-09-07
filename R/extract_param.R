@@ -17,9 +17,9 @@
 #' distribution negative values are allowed.
 #'
 #' @param type A `character` defining whether summary statistics based
-#' around `percentiles` (default) or `range`
+#' around `percentiles` (default) or `range`.
 #' @param values A `vector`. If `type = percentiles`: `c(percentile_1,
-#' percentile_2)`; and if `type = range`: `c(median, min, max)`
+#' percentile_2)`; and if `type = range`: `c(median, min, max)`.
 #' @param distribution A `character` specifying distribution to use.
 #' Default is `lnorm`; also takes `gamma`, `weibull` and `norm`.
 #' @param percentiles A `vector` with two elements specifying the
@@ -33,9 +33,9 @@
 #' the parameter extraction will run optimisation before returning result early.
 #' This prevents overly long optimisation loops if optimisation is unstable and
 #' does not converge over multiple iterations. Default is 1000 iterations. List
-#' element `$tolerance` is passed to [`check_optim_conv()`] for tolerance on
+#' element `$tolerance` is passed to [check_optim_conv()] for tolerance on
 #' parameter convergence over iterations of optimisation. Elements of in the
-#' control list are not passed to [`optim()`].
+#' control list are not passed to [optim()].
 #'
 #' @return A named `numeric` vector with the parameter values of the
 #' distribution. If the `distribution = lnorm` then the parameters returned are
@@ -186,7 +186,7 @@ extract_param <- function(type = c("percentiles", "range"),
 #'
 #' @inheritParams extract_param
 #'
-#' @return A list with output from [`stats::optim()`].
+#' @return A list with output from [stats::optim()].
 #' @keywords internal
 .extract_param <- function(values,
                            distribution,
@@ -240,7 +240,7 @@ extract_param <- function(type = c("percentiles", "range"),
   optim_params
 }
 
-#' Checks whether the optimisation of distribution parameters has converged to
+#' Check whether the optimisation of distribution parameters has converged to
 #' stable value for the parameters and function output for multiple iterations
 #'
 #' @description This function is to try and prevent optimisation to a local
@@ -248,8 +248,8 @@ extract_param <- function(type = c("percentiles", "range"),
 #' consistently finding parameter values to within a set tolerance.
 #'
 #' @param optim_params_list A list, where each element is the output of
-#' stats::optim. See ?optim for more details
-#' @param optim_params A list given by the output of stats::optim
+#' [stats::optim()]. See `?optim` for more details.
+#' @param optim_params A list given by the output of [stats::optim()].
 #' @param tolerance A `numeric` specifying within which disparity convergence
 #' of parameter estimates and function minimisation is accepted.
 #'
@@ -287,12 +287,12 @@ check_optim_conv <- function(optim_params_list,
 #' distribution (lognormal, gamma, Weibull, normal) via optimisation from
 #' either the percentiles or the median and ranges.
 #'
-#' @param param Named numeric vector of the distribution parameters to be
-#' optimised
-#' @param val Numeric vector, in the case of using percentiles it contains the
-#' values at the percentiles and the percentiles, in the case of median and
+#' @param param Named `numeric` vector of the distribution parameters to be
+#' optimised.
+#' @param val `Numeric` vector, in the case of using percentiles it contains
+#' the values at the percentiles and the percentiles, in the case of median and
 #' range it contains the median, lower range, upper range and the number of
-#' sample points to evaluate the function at
+#' sample points to evaluate the function at.
 #' @param dist A `character` string with the name of the distribution for
 #' fitting. Naming follows the base R distribution names (e.g. `lnorm` for
 #' lognormal).

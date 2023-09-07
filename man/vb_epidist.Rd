@@ -2,32 +2,32 @@
 % Please edit documentation in R/vb_epidist.R
 \name{vb_epidist}
 \alias{vb_epidist}
-\title{Create a \code{vb_epidist} object}
+\title{Create a \verb{<vb_epidist>} object}
 \usage{
 vb_epidist(intrinsic_epidist, extrinsic_epidist)
 }
 \arguments{
-\item{intrinsic_epidist}{An \code{epidist} object}
+\item{intrinsic_epidist}{An \verb{<epidist>} object.}
 
-\item{extrinsic_epidist}{An \code{epidist} object}
+\item{extrinsic_epidist}{An \verb{<epidist>} object.}
 }
 \value{
-\code{vb_epidist} object
+\verb{<vb_epidist>} object
 }
 \description{
-The \code{vb_epidist} class is an extension of the \code{epidist} class
-(although not a subclass of \code{epidist}). It is is used to store
-epidemiological parameters for vector-borne diseases. It has the same
-methods (\code{print()}, \code{format()}, \code{plot()}, \code{generate()}, \code{cdf()}, \code{density()},
-\code{quantile()}) as the \code{epidist} class and therefore there are used
-identically.
+The \verb{<vb_epidist>} class is an extension of the
+\verb{<epidist>} class (although not a subclass of \verb{<epidist>}). It is is
+used to store epidemiological parameters for vector-borne diseases.
+It has the same methods (\code{print()}, \code{format()}, \code{plot()}, \code{generate()},
+\code{cdf()}, \code{density()}, \code{quantile()}) as the \verb{<epidist>} class and
+therefore they are used identically.
 }
 \details{
-The \code{epidist} objects should contain metadata (\code{epidist$metadata})
-indicating it is a vector-borne disease
-(\code{epidist$metadata$transmission_mode == "vector_borne"}) and the extrinsic
+The \verb{<epidist>} objects should contain metadata
+(\code{epidist$metadata}) indicating it is a vector-borne disease
+(\code{epidist$metadata$transmission_mode = "vector_borne"}) and the extrinsic
 distribution should indicate in the metadata that it is the extrinsic
-distribution (\code{epidist$metadata$extrinsic} is TRUE). If these two aspects
+distribution (\code{epidist$metadata$extrinsic = TRUE}). If these two aspects
 are not given the construction of the class will throw a warning.
 }
 \examples{

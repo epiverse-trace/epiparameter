@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_summary_stats_geom}
 \alias{convert_summary_stats_geom}
-\title{Converts the summary statistics to parameters of the geometric distribution}
+\title{Convert summary statistics to parameters of the geometric distribution}
 \usage{
 convert_summary_stats_geom(...)
 }
@@ -12,15 +12,15 @@ parameter(s). An example is the meanlog and sdlog parameters of the
 lognormal (\code{lnorm}) distribution.}
 }
 \value{
-A list of one element, the probability parameter
+A list of one element, the probability parameter.
 }
 \description{
-Converts the summary statistics of the geometric
+Convert summary statistics of the geometric
 distribution the parameter (\code{prob}) of the geometric distribution.
 }
 \details{
 This conversion function assumes that distribution represents the
 number of failures before the first success (supported for zero). This is
-the same form as used by base R and \code{distributional::dist_geometric()}.
+the same form as used by base R and \code{\link[distributional:dist_geometric]{distributional::dist_geometric()}}.
 }
 \keyword{internal}

@@ -1,14 +1,16 @@
-#' Converts rows of an epiparam object into an epidist object
+#' Convert `<epiparam>` to `<epidist>`
 #'
-#' @description Can convert the entries (rows) of an epiparam object to one or
-#' list of several epidist objects. This allows subsetting of epiparam records
-#' into a class that can then be used to to calculate the cdf, random number
-#' generation and other methods of the epidist class
-#' (see `?epidist_distribution_functions`).
+#' @description Convert the entries (rows) of an `<epiparam>` object to one or
+#' list of several `<epidist>` objects.
 #'
-#' @param x A epiparam object
+#' Epidemiological distributions and parameters can be converted from database
+#' entries (i.e. rows in `<epiparam>`) into `<epidist>` objects in order
+#' use the distribution functions (see `?epidist_distribution_functions`) and
+#' and other methods of the `<epidist>` class.
 #'
-#' @return An epidist object or a list of epidist objects
+#' @param x A `<epiparam>` object.
+#'
+#' @return An `<epidist>` object or a list of `<epidist>` objects.
 #' @export
 #'
 #' @examples
@@ -33,15 +35,16 @@ as_epidist <- function(x) {
   out
 }
 
-#' Creates an `epidist` object from a list of input from an `epiparam` object
+#' Create an `<epidist>` object from a list of input from an
+#' `<epiparam>` object
 #'
-#' @description Unpacks list of inputs from an epiparam object into the epidist
-#' helper, including the parameters and uncertainty from the correct type of
-#' probability distribution
+#' @description Unpacks list of inputs from an `<epiparam>` object into
+#' the `<epidist>` helper, including the parameters and uncertainty from
+#' the correct type of probability distribution.
 #'
-#' @param x List of data to be used to construct an epidist object
+#' @param x List of data to be used to construct an `<epidist>` object.
 #'
-#' @return An `epidist` object
+#' @inherit epidist return
 #' @keywords internal
 make_epidist <- function(x) {
   # determine parameters
@@ -188,11 +191,11 @@ make_epidist <- function(x) {
   )
 }
 
-#' Converts an `epidist` object to an `epiparam` object
+#' Convert an `<epidist>` object to an `<epiparam>` object
 #'
-#' @param x An `epidist` object
+#' @inheritParams print.epidist
 #'
-#' @return An `epiparam` object
+#' @return An `<epiparam>` object.
 #' @export
 #'
 #' @examples
@@ -382,7 +385,7 @@ as_epiparam <- function(x) {
 #' data frame
 #'
 #' @param eparam A data frame with `<epiparam>` data
-#' @param x An `<epidist>` object
+#' @inheritParams print.epidist
 #'
 #' @return A data frame containing `<epiparam>` data
 #' @keywords internal
@@ -428,15 +431,15 @@ add_ci_limits <- function(eparam, x) {
   eparam
 }
 
-#' Subsetting method for `epiparam`
+#' Subset method for `<epiparam>` class
 #'
-#' @description If the subsetting invalidates the `epiparam` object (defined by
-#' its invariants, and encoded in [`validate_epiparam()`]) the subsetting will
-#' return a data frame with a message to console stating the class of the object
-#' has been converted to `data.frame` with the other attributes of the class
-#' preserved.
+#' @description If the subsetting invalidates the `<epiparam>` object (defined
+#' by its invariants, and encoded in [validate_epiparam()]) the subsetting
+#' will return a data frame with a message to console stating the class of the
+#' object has been converted to `data.frame` with the other attributes of the
+#' class preserved.
 #'
-#' @param epiparam An `epiparam` object
+#' @inheritParams validate_epiparam
 #' @inheritParams base::subset
 #'
 #' @return An `epiparam` object or a `data.frame`
@@ -446,12 +449,12 @@ add_ci_limits <- function(eparam, x) {
   epiparam_reconstruct(out, epiparam)
 }
 
-#' Set names on `epiparam` class
+#' Set names for `<epiparam>` class
 #'
-#' @description If the modifying the names invalidates the `epiparam` object
-#' (defined by its invariants, and encoded in [`validate_epiparam()`]) the
+#' @description If the modifying the names invalidates the `<epiparam>` object
+#' (defined by its invariants, and encoded in [validate_epiparam()]) the
 #' subsetting will return a data frame with a message to console stating the
-#' class of the object has been converted to `data.frame` with the other
+#' class of the object has been converted to data frame with the other
 #' attributes of the class preserved.
 #'
 #' @inheritParams base::names
@@ -475,17 +478,17 @@ add_ci_limits <- function(eparam, x) {
   epiparam_reconstruct(out, x)
 }
 
-#' Decides whether `epiparam` object can be reconstructed from input
+#' Decide whether `<epiparam>` object can be reconstructed from input
 #'
-#' @description Uses [`epiparam_can_reconstruct()`] to determine whether the
-#' data input can be reconstructed in a valid `epiparam` object. If it can not,
-#' it is returned as a `data.frame`.
+#' @description Uses [epiparam_can_reconstruct()] to determine whether the
+#' data input can be reconstructed in a valid `<epiparam>` object. If it can
+#' not, it is returned as a data frame.
 #'
-#' @param x A `data.frame` or subclass of `data.frame` (e.g. `tibble` or
-#' `epiparam`)
-#' @param to The reference object, in this case an `epiparam` object
+#' @param x A `data.frame` or subclass of `data.frame` (e.g. `<tibble>` or
+#' `<epiparam>`).
+#' @param to The reference object, in this case an `<epiparam>` object.
 #'
-#' @return An `epiparam` object (if the input is valid) or a `data.frame`
+#' @return An `<epiparam>` object (if the input is valid) or a `data.frame`.
 #' @keywords internal
 epiparam_reconstruct <- function(x, to) {
   if (epiparam_can_reconstruct(x)) {
@@ -497,16 +500,16 @@ epiparam_reconstruct <- function(x, to) {
   }
 }
 
-#' Checks whether the `epiparam` object is valid
+#' Check whether the `<epiparam>` object is valid
 #'
-#' @description This is a wrapper for [`validate_epiparam`] in a [`tryCatch()`]
+#' @description This is a wrapper for [validate_epiparam()] in a [tryCatch()]
 #' in order to not error if the input object is invalid and returns `TRUE` or
 #' `FALSE` on if the object is valid. If the object is valid it can be
 #' "reconstructed" and not downgraded to a `data.frame`.
 #'
 #' @inheritParams epiparam_reconstruct
 #'
-#' @return A boolean logical (`TRUE` or `FALSE`)
+#' @return A boolean `logical`.
 #' @keywords internal
 epiparam_can_reconstruct <- function(x) {
   # check whether input is valid, ignoring its class
@@ -521,11 +524,11 @@ epiparam_can_reconstruct <- function(x) {
   !isFALSE(out)
 }
 
-#' Transplants the attributes of one input (`to`) to the other input (`x`)
+#' Transplant the attributes of one input (`to`) to the other input (`x`)
 #'
 #' @inheritParams epiparam_reconstruct
 #'
-#' @return An `epiparam` object
+#' @inherit epiparam return
 #' @keywords internal
 df_reconstruct <- function(x, to) {
   attrs <- attributes(to)

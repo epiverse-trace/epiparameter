@@ -12,16 +12,16 @@ create_epidist_region(
 )
 }
 \arguments{
-\item{continent}{A character string specifying the continent}
+\item{continent}{A \code{character} string specifying the continent.}
 
-\item{country}{A character string specifying the country}
+\item{country}{A \code{character} string specifying the country.}
 
-\item{region}{A character string specifying the region}
+\item{region}{A \code{character} string specifying the region.}
 
-\item{city}{A character string specifying the city}
+\item{city}{A \code{character} string specifying the city.}
 }
 \value{
-A named list
+A named list.
 }
 \description{
 The geography of the data set can be a single geographical

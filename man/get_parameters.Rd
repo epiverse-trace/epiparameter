@@ -2,24 +2,24 @@
 % Please edit documentation in R/accessors.R
 \name{get_parameters}
 \alias{get_parameters}
-\title{Parameters method for \code{epidist} object}
+\title{Get parameters from an \verb{<epidist>} object}
 \usage{
 get_parameters(x, ...)
 }
 \arguments{
-\item{x}{An \code{epidist} object}
+\item{x}{An \verb{<epidist>} object.}
 
 \item{...}{Extra arguments to be passed to the method.}
 }
 \value{
 A named vector of parameters or \code{NA} when the \verb{<epidist>} object is
-unparameterised
+unparameterised.
 }
 \description{
-Extracts the parameters of the distribution stored in an \code{epidist} object.
+Extract the parameters of the distribution stored in an \verb{<epidist>} object.
 }
 \details{
-The \if{html}{\out{<epidist>}} object can be unparameterised in which it lacks
+The \verb{<epidist>} object can be unparameterised in which it lacks
 a probability distribution or parameters of a probability distribution.
 In this can the \code{parameters.epidist()} method with return \code{NA}.
 }

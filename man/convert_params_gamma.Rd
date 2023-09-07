@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_params_gamma}
 \alias{convert_params_gamma}
-\title{Converts the parameters of the gamma distribution to summary statistics}
+\title{Convert parameters of the gamma distribution to summary statistics}
 \usage{
 convert_params_gamma(...)
 }
@@ -17,7 +17,7 @@ variance (\code{var}), standard deviation (\code{sd}), coefficient of variation 
 skewness, and excess kurtosis (\code{ex_kurtosis}).
 }
 \description{
-Converts the shape and scale parameters of the gamma
+Convert the shape and scale parameters of the gamma
 distribution to a number of summary statistics which can be calculated
 analytically given the gamma parameters. One exception is the median which
 is calculated using \code{\link[=qgamma]{qgamma()}} as no analytical form is available.

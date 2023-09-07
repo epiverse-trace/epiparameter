@@ -2,7 +2,7 @@
 % Please edit documentation in R/epidist.R
 \name{new_epidist}
 \alias{new_epidist}
-\title{Constructor for epidist class}
+\title{Constructor for \verb{<epidist>} class}
 \usage{
 new_epidist(
   disease = list(),
@@ -21,24 +21,24 @@ new_epidist(
 )
 }
 \arguments{
-\item{disease}{A list contains the \verb{$disease} a character string of the
-infectious disease specified in the study, and the \verb{$pathogen} a character
+\item{disease}{A list containing the \verb{$disease} a \code{character} string of the
+infectious disease specified in the study, and the \verb{$pathogen} a \code{character}
 string. If the pathogen is unknown it can be given as \code{NULL}.}
 
-\item{epi_dist}{A character string with the name of the
-epidemiological distribution type}
+\item{epi_dist}{A \code{character} string with the name of the
+epidemiological distribution type.}
 
 \item{prob_dist}{A character string specifying the probability
 distribution. This should match the R naming convention of probability
 distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-geometric is geom)}
+geometric is geom).}
 
 \item{prob_dist_params}{A named vector of probability distribution
-parameters}
+parameters.}
 
 \item{uncertainty}{A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
-estimates is unknown use \code{create_epidist_uncertainty()} (which is the
+estimates is unknown use \code{\link[=create_epidist_uncertainty]{create_epidist_uncertainty()}} (which is the
 argument default) to create a list wiht the correct names with missing
 values.}
 
@@ -50,14 +50,14 @@ data used to fit the distribution such as lower and upper range. The summary
 statistics can also include uncertainty around metrics such as confidence
 interval around mean and standard deviation.}
 
-\item{auto_calc_params}{A boolean logical determining whether to try and
+\item{auto_calc_params}{A boolean \code{logical} determining whether to try and
 calculate the probability distribution parameters from summary statistics if
 distribution parameters are not provided. Default is \code{TRUE}. In the case when
 sufficient summary statistics are provided and the parameter(s) of the
 distribution are not, the \code{\link[=calc_dist_params]{calc_dist_params()}} function is called to
 calculate the parameters and add them to the \code{epidist} object created.}
 
-\item{citation}{A character string with the citation of the source of the
+\item{citation}{A \code{character} string with the citation of the source of the
 data or the paper that inferred the distribution parameters, use
 \code{create_epidist_citation()} to create citation.}
 
@@ -73,20 +73,21 @@ delay distribution such as extrinsic incubation period) unless
 the distribution, use \code{create_epidist_method_assess()} to create method
 assessment.}
 
-\item{discretise}{A boolean logical whether the distribution is discretised.
+\item{discretise}{A boolean \code{logical} whether the distribution is
+discretised.
 Default is FALSE which assumes a continuous probability distribution}
 
-\item{truncation}{A numeric specifying the truncation point if the inferred
-distribution was truncated, NA if not or unknown.}
+\item{truncation}{A \code{numeric} specifying the truncation point if the inferred
+distribution was truncated, \code{NA} if not or unknown.}
 
-\item{notes}{A character string with any additional information about the
+\item{notes}{A \code{character} string with any additional information about the
 data, inference method or disease.}
 }
 \value{
-epidist object
+An \verb{<epidist>} object.
 }
 \description{
-Creates an epidist object. The
+Create an \verb{<epidist>} object. The
 constructor will search whether parameters of the probability distribution
 are supplied and if not look to see whether they can be inferred/extracted/
 converted from summary statistics provided. It will also convert the

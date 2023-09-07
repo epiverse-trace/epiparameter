@@ -2,18 +2,18 @@
 % Please edit documentation in R/epidist_utils.R
 \name{clean_epidist_params.nbinom}
 \alias{clean_epidist_params.nbinom}
-\title{Standardises parameters for a negative binomial distribution}
+\title{Standardise parameters for a negative binomial distribution}
 \usage{
 \method{clean_epidist_params}{nbinom}(prob_dist_params)
 }
 \arguments{
 \item{prob_dist_params}{A named vector of probability distribution
-parameters}
+parameters.}
 }
 \value{
-Named vector of parameters
+Named \code{numeric} vector of parameters.
 }
 \description{
-Standardises parameters for a negative binomial distribution
+Standardise parameters for a negative binomial distribution
 }
 \keyword{internal}

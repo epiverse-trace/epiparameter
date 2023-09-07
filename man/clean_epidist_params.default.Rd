@@ -8,10 +8,10 @@
 }
 \arguments{
 \item{prob_dist_params}{A named vector of probability distribution
-parameters}
+parameters.}
 }
 \value{
-Named vector of parameters
+Named \code{numeric} vector of parameters.
 }
 \description{
 Default method if class of parameters is not recognised

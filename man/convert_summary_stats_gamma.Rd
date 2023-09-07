@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_summary_stats_gamma}
 \alias{convert_summary_stats_gamma}
-\title{Converts the summary statistics to parameters of the gamma distribution}
+\title{Convert summary statistics to parameters of the gamma distribution}
 \usage{
 convert_summary_stats_gamma(...)
 }
@@ -15,7 +15,7 @@ lognormal (\code{lnorm}) distribution.}
 A list of two elements, the shape and scale
 }
 \description{
-Converts the summary statistics input into the shape and scale
+Convert the summary statistics input into the shape and scale
 parameters of the gamma distribution.
 }
 \keyword{internal}

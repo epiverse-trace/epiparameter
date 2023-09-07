@@ -2,22 +2,22 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{epiparam_reconstruct}
 \alias{epiparam_reconstruct}
-\title{Decides whether \code{epiparam} object can be reconstructed from input}
+\title{Decide whether \verb{<epiparam>} object can be reconstructed from input}
 \usage{
 epiparam_reconstruct(x, to)
 }
 \arguments{
-\item{x}{A \code{data.frame} or subclass of \code{data.frame} (e.g. \code{tibble} or
-\code{epiparam})}
+\item{x}{A \code{data.frame} or subclass of \code{data.frame} (e.g. \verb{<tibble>} or
+\verb{<epiparam>}).}
 
-\item{to}{The reference object, in this case an \code{epiparam} object}
+\item{to}{The reference object, in this case an \verb{<epiparam>} object.}
 }
 \value{
-An \code{epiparam} object (if the input is valid) or a \code{data.frame}
+An \verb{<epiparam>} object (if the input is valid) or a \code{data.frame}.
 }
 \description{
 Uses \code{\link[=epiparam_can_reconstruct]{epiparam_can_reconstruct()}} to determine whether the
-data input can be reconstructed in a valid \code{epiparam} object. If it can not,
-it is returned as a \code{data.frame}.
+data input can be reconstructed in a valid \verb{<epiparam>} object. If it can
+not, it is returned as a data frame.
 }
 \keyword{internal}

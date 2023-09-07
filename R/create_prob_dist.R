@@ -1,12 +1,15 @@
-#' Creates an distribution object depending on input parameters and distribution
-#' settings
+#' Create a distribution object from distribution name and parameters
 #'
-#' @description This function converts the probability distribution name and its
-#' parameters into an S3 class holding the distribution and parameters. The
-#' class holding the distribution depends on whether it is a continuous or
-#' discrete distribution. For continuous distributions the `{distributional}`
-#' package and classes are used, for discrete distributions the `{distcrete}`
-#' package is used. For details on the properties of the distribution classes
+#' @description Creates an S3 class holding the distribution and parameters
+#' from the probability distribution name, its parameters and distribution
+#' truncation and discretisation.
+#'
+#' The class holding the distribution depends on whether it is a discretised
+#' distribution. For continuous and discrete distributions S3 classes from the
+#' `{distributional}` package are used, for discretised continuous
+#' distributions the an S3 class from the `{distcrete}` package is used.
+#'
+#' For details on the properties of the distribution classes
 #' from each respective package see their documentation (either
 #' `?distributional` or `?distcrete`)
 #'
@@ -15,7 +18,7 @@
 #'
 #' @inheritParams new_epidist
 #'
-#' @return An S3 class containing the probability distribution
+#' @return An S3 class containing the probability distribution.
 #' @keywords internal
 #'
 #' @examples

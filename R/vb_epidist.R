@@ -1,15 +1,16 @@
-#' Constructor for `vb_epidist` class
+#' Constructor for `<vb_epidist>` class
 #'
-#' @description Create an `vb_epidist` object by binding two `epidist` objects
-#' and assigning the `vb_epidist` class. Not extra checks are made as these
-#' take place in the `epidist` helper function.
+#' @description Create an `<vb_epidist>` object by binding two
+#' `<epidist>` objects and assigning the `<vb_epidist>` class.
 #'
 #' @inheritParams vb_epidist
 #'
-#' @return `vb_epidist` object
+#' @return `<vb_epidist>` object
 #' @keywords internal
 new_vb_epidist <- function(intrinsic_epidist,
                            extrinsic_epidist) {
+  # input checking is done in epidist()
+
   # return vb_epidist object
   structure(
     list(
@@ -20,28 +21,28 @@ new_vb_epidist <- function(intrinsic_epidist,
   )
 }
 
-#' Create a `vb_epidist` object
+#' Create a `<vb_epidist>` object
 #'
-#' @param intrinsic_epidist An `epidist` object
-#' @param extrinsic_epidist An `epidist` object
+#' @param intrinsic_epidist An `<epidist>` object.
+#' @param extrinsic_epidist An `<epidist>` object.
 #'
-#' @description The `vb_epidist` class is an extension of the `epidist` class
-#' (although not a subclass of `epidist`). It is is used to store
-#' epidemiological parameters for vector-borne diseases. It has the same
-#' methods (`print()`, `format()`, `plot()`, `generate()`, `cdf()`, `density()`,
-#' `quantile()`) as the `epidist` class and therefore there are used
-#' identically.
+#' @description The `<vb_epidist>` class is an extension of the
+#' `<epidist>` class (although not a subclass of `<epidist>`). It is is
+#' used to store epidemiological parameters for vector-borne diseases.
+#' It has the same methods (`print()`, `format()`, `plot()`, `generate()`,
+#' `cdf()`, `density()`, `quantile()`) as the `<epidist>` class and
+#' therefore they are used identically.
 #'
-#' @details The `epidist` objects should contain metadata (`epidist$metadata`)
-#' indicating it is a vector-borne disease
-#' (`epidist$metadata$transmission_mode == "vector_borne"`) and the extrinsic
+#' @details The `<epidist>` objects should contain metadata
+#' (`epidist$metadata`) indicating it is a vector-borne disease
+#' (`epidist$metadata$transmission_mode = "vector_borne"`) and the extrinsic
 #' distribution should indicate in the metadata that it is the extrinsic
-#' distribution (`epidist$metadata$extrinsic` is TRUE). If these two aspects
+#' distribution (`epidist$metadata$extrinsic = TRUE`). If these two aspects
 #' are not given the construction of the class will throw a warning.
 #'
-#' @seealso [`epidist()`]
+#' @seealso [epidist()]
 #'
-#' @return `vb_epidist` object
+#' @return `<vb_epidist>` object
 #' @export
 #'
 #' @examples
@@ -88,12 +89,12 @@ vb_epidist <- function(intrinsic_epidist,
   vb_epidist
 }
 
-#' `vb_epidist` class validator
+#' Validator for `<vb_epidist>` class
 #'
-#' @param vb_epidist A `vb_epidist` object
+#' @param vb_epidist A `<vb_epidist>` object
 #'
-#' @return Invisibly returns a [`vb_epidist`]. Called for side-effects (errors
-#' when invalid `vb_epidist` object is provided).
+#' @return Invisibly returns a `<vb_epidist>`. Called for side-effects (errors
+#' when invalid `<vb_epidist>` object is provided).
 #' @export
 validate_vb_epidist <- function(vb_epidist) {
   if (!is_vb_epidist(vb_epidist)) {
@@ -149,12 +150,12 @@ validate_vb_epidist <- function(vb_epidist) {
   invisible(vb_epidist)
 }
 
-#' Print method for vb_epidist class
+#' Print method for `<vb_epidist>` class
 #'
-#' @param x vb_epidist object
-#' @param ... further arguments passed to or from other methods
+#' @param x A `<vb_epidist>` object.
+#' @inheritParams print.epidist
 #'
-#' @return Invisibly returns a [`vb_epidist`]. Called for printing
+#' @return Invisibly returns a `<vb_epidist>`. Called for printing
 #' side-effects.
 #' @export
 #'
@@ -178,13 +179,11 @@ print.vb_epidist <- function(x, ...) {
   format(x, ...)
 }
 
-#' Format method for vb_epidist class
+#' Format method for `<vb_epidist>` class
 #'
-#' @param x vb_epidist object
-#' @param ... further arguments passed to or from other methods
+#' @inheritParams print.vb_epidist
 #'
-#' @return Invisibly returns a [`vb_epidist`] object. Usually called for
-#' printing side-effects.
+#' @inherit print.vb_epidist return
 #' @export
 #'
 #' @examples
@@ -211,12 +210,12 @@ format.vb_epidist <- function(x, ...) {
   invisible(x)
 }
 
-#' Checks whether the object is a `vb_epidist`
+#' Check object is a `<vb_epidist>`
 #'
-#' @param x An R object
+#' @inheritParams is_epidist
 #'
-#' @return A boolean logical, `TRUE` if the object is an `vb_epidist` and
-#' `FALSE` if not
+#' @return A boolean `logical`, `TRUE` if the object is a `<vb_epidist>` and
+#' `FALSE` if not.
 #' @export
 #'
 #' @examples
@@ -245,18 +244,16 @@ is_vb_epidist <- function(x) {
   inherits(x, "vb_epidist")
 }
 
-#' Plots an `vb_epidist` object,
+#' Plot method for `<vb_epidist>` class
 #'
-#' @description Plots a `vb_epidist` object by displaying the either the
+#' @description Plot a `<vb_epidist>` object by displaying the either the
 #' probability mass function (PMF), (in the case of discrete distributions)
 #' or probability density function (PDF) (in the case of continuous
 #' distributions) and the cumulative distribution function (CDF), for both the
 #' intrinsic and extrinsic distributions. This resulting in a 2x2 grid plot.
 #'
-#' @param x An `epidist` object
-#' @param day_range A vector with the sequence of days to be plotted on the
-#' x-axis of the distribution
-#' @param ... Allow other graphical parameters
+#' @param x A `<vb_epidist>` object.
+#' @inheritParams plot.epidist
 #'
 #' @author Joshua W. Lambert
 #' @export

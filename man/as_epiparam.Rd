@@ -2,18 +2,18 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{as_epiparam}
 \alias{as_epiparam}
-\title{Converts an \code{epidist} object to an \code{epiparam} object}
+\title{Convert an \verb{<epidist>} object to an \verb{<epiparam>} object}
 \usage{
 as_epiparam(x)
 }
 \arguments{
-\item{x}{An \code{epidist} object}
+\item{x}{An \verb{<epidist>} object.}
 }
 \value{
-An \code{epiparam} object
+An \verb{<epiparam>} object.
 }
 \description{
-Converts an \code{epidist} object to an \code{epiparam} object
+Convert an \verb{<epidist>} object to an \verb{<epiparam>} object
 }
 \examples{
 edist <- epidist(

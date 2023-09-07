@@ -2,25 +2,25 @@
 % Please edit documentation in R/epidist.R
 \name{is_truncated}
 \alias{is_truncated}
-\title{Check if distribution in \code{epidist} is truncated}
+\title{Check if distribution in \verb{<epidist>} is truncated}
 \usage{
 is_truncated(x)
 }
 \arguments{
-\item{x}{An \code{epidist} object.}
+\item{x}{An \verb{<epidist>} object.}
 }
 \value{
-A boolean logical.
+A boolean \code{logical}.
 }
 \description{
-Check if distribution in \code{epidist} is truncated
+Check if distribution in \verb{<epidist>} is truncated
 }
 \details{
 The \verb{<epidist>} class can hold probability distribution objects
-from the {distributional} package or the {distcrete} package, however, only
-distribution objects from {distributional} can be truncated. If a
-\verb{<epidist>} object has a {distcrete} object \code{is_truncated} will return
-\code{FALSE} by default.
+from the \code{{distributional}} package or the \code{{distcrete}} package,
+however, only distribution objects from \code{{distributional}} can be truncated.
+If a \verb{<epidist>} object has a \verb{<distcrete>} object \code{is_truncated} will
+return \code{FALSE} by default.
 }
 \examples{
 edist <- epidist(

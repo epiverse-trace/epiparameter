@@ -2,8 +2,7 @@
 % Please edit documentation in R/create_prob_dist.R
 \name{create_prob_dist}
 \alias{create_prob_dist}
-\title{Creates an distribution object depending on input parameters and distribution
-settings}
+\title{Create a distribution object from distribution name and parameters}
 \usage{
 create_prob_dist(prob_dist, prob_dist_params, discretise, truncation)
 }
@@ -11,27 +10,32 @@ create_prob_dist(prob_dist, prob_dist_params, discretise, truncation)
 \item{prob_dist}{A character string specifying the probability
 distribution. This should match the R naming convention of probability
 distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-geometric is geom)}
+geometric is geom).}
 
 \item{prob_dist_params}{A named vector of probability distribution
-parameters}
+parameters.}
 
-\item{discretise}{A boolean logical whether the distribution is discretised.
+\item{discretise}{A boolean \code{logical} whether the distribution is
+discretised.
 Default is FALSE which assumes a continuous probability distribution}
 
-\item{truncation}{A numeric specifying the truncation point if the inferred
-distribution was truncated, NA if not or unknown.}
+\item{truncation}{A \code{numeric} specifying the truncation point if the inferred
+distribution was truncated, \code{NA} if not or unknown.}
 }
 \value{
-An S3 class containing the probability distribution
+An S3 class containing the probability distribution.
 }
 \description{
-This function converts the probability distribution name and its
-parameters into an S3 class holding the distribution and parameters. The
-class holding the distribution depends on whether it is a continuous or
-discrete distribution. For continuous distributions the \code{{distributional}}
-package and classes are used, for discrete distributions the \code{{distcrete}}
-package is used. For details on the properties of the distribution classes
+Creates an S3 class holding the distribution and parameters
+from the probability distribution name, its parameters and distribution
+truncation and discretisation.
+
+The class holding the distribution depends on whether it is a discretised
+distribution. For continuous and discrete distributions S3 classes from the
+\code{{distributional}} package are used, for discretised continuous
+distributions the an S3 class from the \code{{distcrete}} package is used.
+
+For details on the properties of the distribution classes
 from each respective package see their documentation (either
 \code{?distributional} or \code{?distcrete})
 }

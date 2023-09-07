@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam.R
 \name{epiparam}
 \alias{epiparam}
-\title{Create an \code{epiparam} object}
+\title{Create an \verb{<epiparam>} object}
 \usage{
 epiparam(
   epi_dist = c("all", "incubation_period", "onset_to_hospitalisation", "onset_to_death",
@@ -10,35 +10,36 @@ epiparam(
 )
 }
 \arguments{
-\item{epi_dist}{A character string of which epidemiological distributions
-to select}
+\item{epi_dist}{A \code{character} string with the name of the
+epidemiological distribution type.}
 }
 \value{
-\code{epiparam} object
+An \verb{<epiparam>} object.
 }
 \description{
-The \code{epiparam} class holds information on epidemiological
+The \verb{<epiparam>} class holds information on epidemiological
 distribution and their estimated parameters as well as other information and
 metadata. This library of epidemiological parameters is compiled from
-primary literature sources. An \code{epiparam} object can be used to compare the
+primary literature sources. An \verb{<epiparam>} object can be used to compare the
 availability of distribution for a certain disease or pathogen, or refine
-by, for example, region or sample size. Additionally, the \code{epiparam} class
-can be subset and converted into \code{epidist} or \code{vb_epidist} objects to the be
-used in epidemiological analysis in which a delay distribution or offspring
-distribution is required.
+by, for example, region or sample size. Additionally, the \verb{<epiparam>} class
+can be subset and converted into \verb{<epidist>} or \verb{<vb_epidist>} objects to
+the be used in epidemiological analysis in which a delay distribution or
+offspring distribution is required.
 
-The \code{epiparam()} function reads the library of epidemiological parameters
-from \code{{epiparameter}} into memory and stores it as an \code{epiparam} object.
+The \code{\link[=epiparam]{epiparam()}} function reads the library of epidemiological parameters
+from \code{{epiparameter}} into memory and stores it as an \verb{<epiparam>} object.
 }
 \details{
-The \code{epiparam} object has certain protected fields, and thus if
+The \verb{<epiparam>} object has certain protected fields, and thus if
 one of these protected fields is removed when subsetting columns an error
 will be returned. The subsetting checks are carried out by
 \code{\link[=validate_epiparam]{validate_epiparam()}}.
 
-\code{epiparam} objects can be added to by using \code{\link[=bind_epiparam]{bind_epiparam()}} to add either
-\code{epidist}s, \code{vb_epdist}s, \code{epiparam}s, lists of \code{epdist} objects, or data
-frames with the correct columns to an existing \code{epiparam} object.
+Data can be added to \verb{<epiparam>} objects by using \code{\link[=bind_epiparam]{bind_epiparam()}}, this
+can add information from \verb{<epidist>}, \verb{<vb_epdist>}, \verb{<epiparam>}, lists
+of \verb{<epdist>} objects, or data frames with the correct columns to an
+existing \verb{<epiparam>} object.
 }
 \examples{
 # the object can be made without arguments

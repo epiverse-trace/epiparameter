@@ -2,7 +2,7 @@
 % Please edit documentation in R/epiparam_utils.R
 \name{names<-.epiparam}
 \alias{names<-.epiparam}
-\title{Set names on \code{epiparam} class}
+\title{Set names for \verb{<epiparam>} class}
 \usage{
 \method{names}{epiparam}(x) <- value
 }
@@ -16,9 +16,9 @@
 An \code{epiparam} object or a \code{data.frame}
 }
 \description{
-If the modifying the names invalidates the \code{epiparam} object
+If the modifying the names invalidates the \verb{<epiparam>} object
 (defined by its invariants, and encoded in \code{\link[=validate_epiparam]{validate_epiparam()}}) the
 subsetting will return a data frame with a message to console stating the
-class of the object has been converted to \code{data.frame} with the other
+class of the object has been converted to data frame with the other
 attributes of the class preserved.
 }

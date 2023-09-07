@@ -1,9 +1,9 @@
-#' Create an `epidist` object(s) directly from the epiparameter library
+#' Create an `<epidist>` object(s) directly from the epiparameter library
 #' (database)
 #'
-#' @description This function can extract an `epidist` object(s) directly from
-#' the library of epidemiological parameters without having to read in an
-#' `epiparam` object and pull out an `epidist` object from one of the entries.
+#' @description Extract an `<epidist>` object(s) directly from
+#' the library of epidemiological parameters. This bypasses the need to
+#' read in an `<epiparam>` object and convert to an `<epidist>` object.
 #'
 #' If a distribution from a specific study is required, the `author` argument
 #' can be specified.
@@ -35,7 +35,7 @@
 #' The expression should be specified without using the data object name
 #' (e.g. `df$var`) and instead just `var` should be supplied. In
 #' other words, this argument works the same as the `subset` argument in
-#' [`subset()`]. It is similar to `<data-masking>` using by the `dplyr` package.
+#' [subset()]. It is similar to `<data-masking>` using by the `dplyr` package.
 #'
 #' @param single_epidist A boolean `logical` determining whether a single
 #' `<epidist>` or multiple entries from the library can be returned if
@@ -45,11 +45,11 @@
 #'
 #' **Note**: If multiple entries match the arguments supplied and
 #' `single_epidist = TRUE` then the `<epidist>` that is parameterised and
-#' has the largest sample size will be returned (see [`is_parameterised()`]).
+#' has the largest sample size will be returned (see [is_parameterised()]).
 #' If multiple entries are equal after this sorting the first entry will
 #' be returned.
 #'
-#' @return An `epidist` object or list of `epidist` objects.
+#' @return An `<epidist>` object or list of `<epidist>` objects.
 #' @export
 #'
 #' @examples

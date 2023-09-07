@@ -2,12 +2,12 @@
 % Please edit documentation in R/epidist.R
 \name{family.epidist}
 \alias{family.epidist}
-\title{Family method for the \code{epidist} class}
+\title{Family method for the \verb{<epidist>} class}
 \usage{
 \method{family}{epidist}(object, ...)
 }
 \arguments{
-\item{object}{An \code{epidist} object}
+\item{object}{An \verb{<epidist>} object.}
 
 \item{...}{further arguments passed to methods.}
 }
@@ -16,10 +16,10 @@ A character string with the name of the distribution, or \code{NA} when
 the \verb{<epidist>} object is unparameterised.
 }
 \description{
-The \code{family()} function is used to extract the distribution
-names from objects from {distributional} and {distcrete}. This method
+The \code{\link[=family]{family()}} function is used to extract the distribution
+names from objects from \code{{distributional}} and \code{{distcrete}}. This method
 provides the same interface for \verb{<epidist>} objects to give consistent
-output irrespective of the distribution class.
+output irrespective of the internal distribution class.
 }
 \examples{
 # example with continuous distribution

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_percentiles.R
 \name{get_percentiles}
 \alias{get_percentiles}
-\title{Converts a vector of named percentiles into correct format and selects two
+\title{Convert a vector of named percentiles into correct format and selects two
 values for parameter extraction}
 \usage{
 get_percentiles(percentiles)
@@ -12,12 +12,12 @@ get_percentiles(percentiles)
 percentiles. See Details for the accepted vector name format.}
 }
 \value{
-A named vector of percentiles
+A named \code{numeric} vector of percentiles.
 }
 \description{
 Parameters of a probability distribution can be extracted using
 the values given at percentiles of the distribution and the percentiles using
-\code{\link[=extract_param]{extract_param()}}. \code{get_percentiles()} takes a named vector of percentiles
+\code{\link[=extract_param]{extract_param()}}. \code{\link[=get_percentiles]{get_percentiles()}} takes a named vector of percentiles
 (names) and values at those percentiles (elements in the vector) and selects
 two values as lower and upper percentiles to be used in extraction. If a
 lower and upper percentile are not available \code{NA} is returned.

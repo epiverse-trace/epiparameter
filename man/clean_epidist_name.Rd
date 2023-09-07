@@ -2,18 +2,18 @@
 % Please edit documentation in R/epidist_utils.R
 \name{clean_epidist_name}
 \alias{clean_epidist_name}
-\title{Standardises the names of epidemiological distributions}
+\title{Standardise the names of epidemiological distributions}
 \usage{
 clean_epidist_name(epi_dist)
 }
 \arguments{
-\item{epi_dist}{A character string with the name of the distribution}
+\item{epi_dist}{A \code{character} string with the name of the distribution.}
 }
 \value{
-Character string
+A \code{character} vector of equal length to the input.
 }
 \description{
-Standardises the names of epidemiological distributions
+Standardise the names of epidemiological distributions
 }
 \examples{
 clean_epidist_name("Incubation_period")
