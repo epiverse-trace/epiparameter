@@ -168,7 +168,6 @@ removing the seed should not drastically change the results or interpretation.</
 <code class="sourceCode R"><span><span class="va">estim_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># Loop through parameter space estimating parameters</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">params_idx</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span></span>
 <span>  <span class="va">dist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">[</span><span class="va">params_idx</span>, <span class="st">"dist"</span><span class="op">]</span><span class="op">)</span></span>
 <span>  <span class="va">percen</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">[</span><span class="va">params_idx</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lower"</span>, <span class="st">"upper"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -269,7 +268,6 @@ as this can impact the possible range exhibited by the data.</p>
 <code class="sourceCode R"><span><span class="va">estim_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_range</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># Loop through parameter space estimating parameters</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">params_idx</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_range</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span></span>
 <span>  <span class="va">dist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">parameters_range</span><span class="op">[</span><span class="va">params_idx</span>, <span class="st">"dist"</span><span class="op">]</span><span class="op">)</span></span>
 <span>  <span class="va">n_samples</span> <span class="op">&lt;-</span> <span class="va">parameters_range</span><span class="op">[</span><span class="va">params_idx</span>, <span class="st">"n_samples"</span><span class="op">]</span></span>
 <span></span>
@@ -315,7 +313,7 @@ as this can impact the possible range exhibited by the data.</p>
 <span></span>
 <span>  <span class="co"># message about stochastic optimisation suppressed</span></span>
 <span>  <span class="va">estim_params</span><span class="op">[[</span><span class="va">params_idx</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span></span>
-<span>    expr <span class="op">=</span>  <span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
+<span>    expr <span class="op">=</span> <span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
 <span>      type <span class="op">=</span> <span class="st">"range"</span>,</span>
 <span>      values <span class="op">=</span> <span class="va">true_values</span>,</span>
 <span>      distribution <span class="op">=</span> <span class="va">dist</span>,</span>
@@ -386,7 +384,6 @@ compute the variance of parameter estimates over those replicates.</p>
 <code class="sourceCode R"><span><span class="va">estim_param_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># Loop through parameter space estimating parameters</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">params_idx</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span></span>
 <span>  <span class="va">dist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">[</span><span class="va">params_idx</span>, <span class="st">"dist"</span><span class="op">]</span><span class="op">)</span></span>
 <span>  <span class="va">percen</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">[</span><span class="va">params_idx</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lower"</span>, <span class="st">"upper"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -414,7 +411,7 @@ compute the variance of parameter estimates over those replicates.</p>
 <span>  <span class="va">estim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate</a></span><span class="op">(</span></span>
 <span>      n <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>      expr <span class="op">=</span>  <span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
+<span>      expr <span class="op">=</span> <span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
 <span>        type <span class="op">=</span> <span class="st">"percentiles"</span>,</span>
 <span>        values <span class="op">=</span> <span class="va">true_values</span>,</span>
 <span>        distribution <span class="op">=</span> <span class="va">dist</span>,</span>
@@ -464,7 +461,6 @@ Figure 3: Parameter extraction precision, facetted by distribution. Parameter 1 
 <code class="sourceCode R"><span><span class="va">estim_param_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_range</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># Loop through parameter space estimating parameters</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">params_idx</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_range</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span></span>
 <span>  <span class="va">dist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">parameters_range</span><span class="op">[</span><span class="va">params_idx</span>, <span class="st">"dist"</span><span class="op">]</span><span class="op">)</span></span>
 <span>  <span class="va">n_samples</span> <span class="op">&lt;-</span> <span class="va">parameters_range</span><span class="op">[</span><span class="va">params_idx</span>, <span class="st">"n_samples"</span><span class="op">]</span></span>
 <span></span>
@@ -512,7 +508,7 @@ Figure 3: Parameter extraction precision, facetted by distribution. Parameter 1 
 <span>  <span class="va">estim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate</a></span><span class="op">(</span></span>
 <span>      n <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>      expr <span class="op">=</span>  <span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
+<span>      expr <span class="op">=</span> <span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
 <span>        type <span class="op">=</span> <span class="st">"range"</span>,</span>
 <span>        values <span class="op">=</span> <span class="va">true_values</span>,</span>
 <span>        distribution <span class="op">=</span> <span class="va">dist</span>,</span>
