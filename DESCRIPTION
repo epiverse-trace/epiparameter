@@ -20,9 +20,16 @@ Authors@R:
         person(
             given = "Hugo",
             family = "Gruson",
-            role = c("ctb"),
-            email = "hugo.gruson@lshtm.ac.uk",
+            role = c("ctb", "rev"),
+            email = "hugo.gruson@data.org",
             comment = c(ORCID = "https://orcid.org/0000-0002-4094-1476")
+        ),
+        person(
+            given = "Pratik",
+            family = "Gupte",
+            role = c("rev"),
+            email = "pratik.gupte@lshtm.ac.uk",
+            comment = c(ORCID = "https://orcid.org/0000-0001-5294-7819")
         )
       )
 Description: Library of epidemiological parameters for infectious diseases and a
