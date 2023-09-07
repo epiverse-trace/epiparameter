@@ -155,20 +155,18 @@ By contributing to this project, you agree to abide by its terms.
 
 ``` r
 citation("epiparameter")
-#> To cite package 'epiparameter' in publications use:
+#> To cite epiparameter in publications use:
 #> 
-#>   Lambert J, Kucharski A (2023). _epiparameter: Library of
-#>   Epidemiological Parameters_.
-#>   https://github.com/epiverse-trace/epiparameter,
-#>   https://epiverse-trace.github.io/epiparameter/.
+#>   Joshua W. Lambert and Adam Kucharski (2023). epiparameter: Library of
+#>   Epidemiological Parameters, website:
+#>   https://github.com/epiverse-trace/epiparameter/
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {epiparameter: Library of Epidemiological Parameters},
+#>     title = {Library of Epidemiological Parameters},
 #>     author = {Joshua W. Lambert and Adam Kucharski},
 #>     year = {2023},
-#>     note = {https://github.com/epiverse-trace/epiparameter,
-#> https://epiverse-trace.github.io/epiparameter/},
+#>     url = {https://github.com/epiverse-trace/epiparameter},
 #>   }
 ```
