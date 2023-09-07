@@ -401,7 +401,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <span><span class="co">#&gt; Stochastic numerical optimisation used. </span></span>
 <span><span class="co">#&gt; Rerun function multiple times to check global optimum is found</span></span>
 <span><span class="co">#&gt;    shape    scale </span></span>
-<span><span class="co">#&gt; 3.358212 1.284183</span></span></code></pre></div>
+<span><span class="co">#&gt; 3.358187 1.284186</span></span></code></pre></div>
 </details><p>In the above example we estimate parameters of the gamma distribution, but extraction is also implemented for the lognormal, normal and Weibull distributions, but specifying <code>"lnorm"</code>, <code>"norm"</code> or <code>"weibull"</code>.</p>
 <p>A message is shown when running <code><a href="../reference/extract_param.html">extract_param()</a></code> to make the user aware that the estimates are not completely reliable due to the use of numerical optimisation. Rerunning the function to and finding the same parameters are returned indicates that they have successfully converged. This issue is mostly overcome by the internal setup of the <code><a href="../reference/extract_param.html">extract_param()</a></code> function which searches for convergence to consistent parameter estimates before returning these to the user.</p>
 <p>The alternative extraction, by median and range, can be achieved by specifying <code>type = "range"</code> and using the <code>samples</code> argument instead of the <code>percentiles</code> argument. When using <code>type = "percentiles"</code> the <code>samples</code> argument is ignored and when using <code>type = "range"</code> the <code>percentiles</code> argument is ignored.</p>
@@ -415,7 +415,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <span><span class="co">#&gt; Stochastic numerical optimisation used. </span></span>
 <span><span class="co">#&gt; Rerun function multiple times to check global optimum is found</span></span>
 <span><span class="co">#&gt;  meanlog    sdlog </span></span>
-<span><span class="co">#&gt; 2.302585 3.652107</span></span></code></pre></div>
+<span><span class="co">#&gt; 2.302585 2.646129</span></span></code></pre></div>
 </details><p>In the above section it was mentioned that <code><a href="../reference/extract_param.html">extract_param()</a></code> has an internal mechanism to check that the parameters have consistently converged to the same estimates over several optimisation iterations. The tolerance of this convergence and number of times the optimisation can be repeated is specified in the <code>control</code> argument of <code><a href="../reference/extract_param.html">extract_param()</a></code>. This is set by default (<code>tolerance = 1e-5</code> and <code>max_iter = 1000</code>), and thus does not need to be specified by the user (as shown in the above examples). In the case that the maximum number of optimisation iterations is reached, the calculation terminates returning the most recent optimisation result to the user along with a warning message.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># set seed to ensure warning is produced</span></span>
