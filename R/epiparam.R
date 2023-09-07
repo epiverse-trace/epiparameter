@@ -23,17 +23,17 @@ new_epiparam <- function(epi_dist) {
   ))
 
   # ensure type correctness
-  numeric_col <- epiparam_num_fields(params)
+  numeric_col <- epiparam_col_type(epiparam = params, col_type = "numeric")
   params[numeric_col] <- vapply(
     params[numeric_col],
     FUN = as.numeric, FUN.VALUE = numeric(nrow(params))
   )
-  char_col <- epiparam_char_fields(params)
+  char_col <- epiparam_col_type(params, col_type = "character")
   params[char_col] <- vapply(
     params[char_col],
     FUN = as.character, FUN.VALUE = character(nrow(params))
   )
-  logic_col <- epiparam_logic_fields(params)
+  logic_col <- epiparam_col_type(params, col_type = "logical")
   params[logic_col] <- vapply(
     params[logic_col],
     FUN = as.logical, FUN.VALUE = logical(nrow(params))
@@ -151,11 +151,19 @@ validate_epiparam <- function(epiparam, reconstruct = FALSE) {
     "epiparam object does not contain the correct columns" =
       epiparam_fields() %in% colnames(epiparam),
     "incorrect data type in character fields" =
-      all("character" == col_type[epiparam_char_fields(epiparam)]),
+      all(
+        "character" ==
+          col_type[epiparam_col_type(epiparam, col_type = "character")]
+      ),
     "incorrect data type in numeric fields" =
-      all(col_type[epiparam_num_fields(epiparam)] %in% c("numeric", "integer")),
+      all(
+        col_type[epiparam_col_type(epiparam, col_type = "numeric")] %in%
+          c("numeric", "integer")
+      ),
     "incorrect data type in boolean logical fields" =
-      all("logical" == col_type[epiparam_logic_fields(epiparam)]),
+      all(
+        "logical" == col_type[epiparam_col_type(epiparam, col_type = "logical")]
+      ),
     "year needs to be greater than 0" =
       all(epiparam$year > 0 | is.na(epiparam$year))
   )
@@ -335,49 +343,39 @@ epiparam_fields <- function() {
   )
 }
 
-#' State columns of `<epiparam>` object containing `character`s
+#' State which columns of `<epiparam>` object contain specified data type
 #'
 #' @return `Numeric` vector.
 #' @keywords internal
 #' @noRd
-epiparam_char_fields <- function(epiparam) {
-  which(
-    colnames(epiparam) %in% c(
-      "disease", "pathogen", "epi_distribution", "author", "title", "journal",
-      "region", "transmission_mode", "vector", "prob_distribution",
-      "inference_method", "notes", "DOI"
-    )
-  )
-}
+epiparam_col_type <- function(epiparam,
+                              col_type = c("numeric", "character", "logical")) {
+  col_type <- match.arg(col_type)
 
-#' State columns of `<epiparam>` object containing `numeric`s
-#'
-#' @return `Numeric` vector.
-#' @keywords internal
-#' @noRd
-epiparam_num_fields <- function(epiparam) {
-  which(
-    colnames(epiparam) %in% c(
-      "year", "sample_size", "mean", "mean_ci", "sd", "sd_ci", "quantile_2.5",
-      "quantile_5", "quantile_25", "median", "median_ci", "quantile_75",
-      "quantile_87.5", "quantile_95", "quantile_97.5", "lower_range",
-      "upper_range", "shape", "shape_ci", "scale", "scale_ci", "meanlog",
-      "meanlog_ci", "sdlog", "sdlog_ci", "dispersion", "dispersion_ci",
-      "precision", "precision_ci", "truncation", "PMID"
+  out <- switch(col_type,
+    numeric = which(
+      colnames(epiparam) %in% c(
+        "year", "sample_size", "mean", "mean_ci", "sd", "sd_ci", "quantile_2.5",
+        "quantile_5", "quantile_25", "median", "median_ci", "quantile_75",
+        "quantile_87.5", "quantile_95", "quantile_97.5", "lower_range",
+        "upper_range", "shape", "shape_ci", "scale", "scale_ci", "meanlog",
+        "meanlog_ci", "sdlog", "sdlog_ci", "dispersion", "dispersion_ci",
+        "precision", "precision_ci", "truncation", "PMID"
+      )
+    ),
+    character = which(
+      colnames(epiparam) %in% c(
+        "disease", "pathogen", "epi_distribution", "author", "title", "journal",
+        "region", "transmission_mode", "vector", "prob_distribution",
+        "inference_method", "notes", "DOI"
+      )
+    ),
+    logical = which(
+      colnames(epiparam) %in% c(
+        "extrinsic", "discretised", "censored", "right_truncated",
+        "phase_bias_adjusted"
+      )
     )
   )
-}
-
-#' State columns of `<epiparam>` object containing `logical`s
-#'
-#' @return `Numeric` vector.
-#' @keywords internal
-#' @noRd
-epiparam_logic_fields <- function(epiparam) {
-  which(
-    colnames(epiparam) %in% c(
-      "extrinsic", "discretised", "censored", "right_truncated",
-      "phase_bias_adjusted"
-    )
-  )
+  out
 }
