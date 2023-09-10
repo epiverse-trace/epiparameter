@@ -20,6 +20,20 @@ authors:
   given-names: Adam
   email: adam.kucharski@lshtm.ac.uk
   orcid: https://orcid.org/0000-0001-8814-9421
+preferred-citation:
+  type: manual
+  title: Library of Epidemiological Parameters
+  authors:
+  - family-names: Lambert
+    given-names: Joshua W.
+    email: joshua.lambert@lshtm.ac.uk
+    orcid: https://orcid.org/0000-0001-5218-3046
+  - family-names: Kucharski
+    given-names: Adam
+    email: adam.kucharski@lshtm.ac.uk
+    orcid: https://orcid.org/0000-0001-8814-9421
+  year: '2023'
+  url: https://github.com/epiverse-trace/epiparameter
 repository-code: https://github.com/epiverse-trace/epiparameter
 url: https://epiverse-trace.github.io/epiparameter/
 contact:
@@ -275,6 +289,21 @@ references:
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
   year: '2023'
   version: '>= 3.0.0'
+- type: software
+  title: spelling
+  abstract: 'spelling: Tools for Spell Checking in R'
+  notes: Suggests
+  url: https://docs.ropensci.org/spelling/
+  repository: https://CRAN.R-project.org/package=spelling
+  authors:
+  - family-names: Ooms
+    given-names: Jeroen
+    email: jeroen@berkeley.edu
+    orcid: https://orcid.org/0000-0002-4035-0289
+  - family-names: Hester
+    given-names: Jim
+    email: james.hester@rstudio.com
+  year: '2023'
