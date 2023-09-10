@@ -12,5 +12,9 @@ linters: linters_with_tags(
     backport_linter(if (length(x <- etdev::extract_min_r_version())) x else getRversion())
   )
 exclusions: list(
-    "tests/testthat.R" = list(unused_import_linter = Inf)
+    "tests/testthat.R" = list(unused_import_linter = Inf),
+    "data-raw" = list(
+      missing_package_linter = Inf,
+      namespace_linter = Inf
+    )
   )
