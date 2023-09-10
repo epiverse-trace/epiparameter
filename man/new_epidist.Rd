@@ -39,7 +39,7 @@ parameters.}
 \item{uncertainty}{A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
 estimates is unknown use \code{\link[=create_epidist_uncertainty]{create_epidist_uncertainty()}} (which is the
-argument default) to create a list wiht the correct names with missing
+argument default) to create a list with the correct names with missing
 values.}
 
 \item{summary_stats}{A list of summary statistics, use

@@ -147,7 +147,7 @@ new_epidist <- function(disease = list(),
 #' @details Accepted `<epidist>` distribution parameterisations are:
 #' - Gamma must be either 'shape' and 'scale' or 'shape' and 'rate'
 #' - Weibull must be 'shape' and 'scale'
-#' - Lognormal must be 'mealog' and 'sdlog' or 'mu' and 'sigma'
+#' - Lognormal must be 'meanlog' and 'sdlog' or 'mu' and 'sigma'
 #' - Negative Binomial must be either 'mean' and 'dispersion' or 'n' and 'p'
 #' - Geometric must be either 'mean' or 'prob'
 #' - Poisson must be 'mean'
@@ -166,7 +166,7 @@ new_epidist <- function(disease = list(),
 #' @param uncertainty A list of named vectors with the uncertainty around
 #' the probability distribution parameters. If uncertainty around the parameter
 #' estimates is unknown use [create_epidist_uncertainty()] (which is the
-#' argument default) to create a list wiht the correct names with missing
+#' argument default) to create a list with the correct names with missing
 #' values.
 #' @param summary_stats A list of summary statistics, use
 #' [create_epidist_summary_stats()] to create list. This list can include

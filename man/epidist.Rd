@@ -41,7 +41,7 @@ parameters.}
 \item{uncertainty}{A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
 estimates is unknown use \code{\link[=create_epidist_uncertainty]{create_epidist_uncertainty()}} (which is the
-argument default) to create a list wiht the correct names with missing
+argument default) to create a list with the correct names with missing
 values.}
 
 \item{summary_stats}{A list of summary statistics, use
@@ -113,7 +113,7 @@ Accepted \verb{<epidist>} distribution parameterisations are:
 \itemize{
 \item Gamma must be either 'shape' and 'scale' or 'shape' and 'rate'
 \item Weibull must be 'shape' and 'scale'
-\item Lognormal must be 'mealog' and 'sdlog' or 'mu' and 'sigma'
+\item Lognormal must be 'meanlog' and 'sdlog' or 'mu' and 'sigma'
 \item Negative Binomial must be either 'mean' and 'dispersion' or 'n' and 'p'
 \item Geometric must be either 'mean' or 'prob'
 \item Poisson must be 'mean'

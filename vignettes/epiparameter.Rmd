@@ -44,9 +44,9 @@ library(distributional)
 
 {epiparameter} introduces three new classes for working with epidemiological parameters in R:
 
-- `<epiparam>`: library of epidemiolgical parameters
-- `<epidist>`: singular set of epidemiolgical parameters 
-- `<vb_epidist>`: a singular set of epidemiolgical parameters for a vector-borne disease containing both an extrinsic and intrinsic distribution. This object contains two sets of parameters, one for the human (intrinsic) and one for the vector (extrinsic).
+- `<epiparam>`: library of epidemiological parameters
+- `<epidist>`: singular set of epidemiological parameters 
+- `<vb_epidist>`: a singular set of epidemiological parameters for a vector-borne disease containing both an extrinsic and intrinsic distribution. This object contains two sets of parameters, one for the human (intrinsic) and one for the vector (extrinsic).
 
 ### Library of epidemiological parameters
 
@@ -90,7 +90,7 @@ head(list_distributions(epi_dist_db))
 More details on the data collation and the library of parameters can be found in
 the [Data Collation and Synthesis Protocol vignette](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html).
 
-### Single set of epidemiolgical parameters
+### Single set of epidemiological parameters
 
 The second class introduced in the {epiparameter} package is the `<epidist>` class. This holds a single set of epidemiological parameters. 
 
