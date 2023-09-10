@@ -96,7 +96,7 @@ This should refine the results to a more suitable set of literature.
 
 1. **Abstract and methods screening**: once a number of unique sources have been identified, each should be reviewed for its suitability by reviewing the abstract and searching for words or phrases in the paper that indicate it reports the parameters or summary statistics of a distribution, this can include searching the methods section for words on types of distributions (e.g. lognormal), fitting procedures (e.g. maximum likelihood or bayesian), or searching the results for parameter estimates. The `{epiparameter}` library includes entries where parameters or summary statistics are reported but a distribution is not specified. 
 
-    A database of unsuitable papers will be kept to remind maintainers which papers have not been included and aids in the updating of the databse (see below) by preventing redundant reviewing a previously rejected paper.
+    A database of unsuitable papers will be kept to remind maintainers which papers have not been included and aids in the updating of the database (see below) by preventing redundant reviewing a previously rejected paper.
 
 1. **Stopping criteria**: for many searches, the number of results is far larger than could be reasonably evaluated outside a full systematic review. After refining which papers contain the required information (abstract and methods screening), around 10 papers per pathogen are screened for each search (per search round, see updating section below for details). If the number of papers that pass the abstract and methods screening is fewer than 10, all suitable papers are reviewed.
 
@@ -104,7 +104,7 @@ This should refine the results to a more suitable set of literature.
 
     Again, any papers excluded at this stage should be recorded in the database of unsuitable sources with reasoning to prevent having to reassess when updating the database.
 
-1. **Post hoc removal**: if any `{epiparameter}` parameters are later identified as being inappropriate then they can be removed from the database. In most cases this is unlikely as limitations can be appended onto data entries to make users aware of limitations (e.g. around assumptions used to infer the distirbution), only in the most extreme cases will data be completely removed from the database.
+1. **Post hoc removal**: if any `{epiparameter}` parameters are later identified as being inappropriate then they can be removed from the database. In most cases this is unlikely as limitations can be appended onto data entries to make users aware of limitations (e.g. around assumptions used to infer the distribution), only in the most extreme cases will data be completely removed from the database.
 
 Note: systematic reviews focusing on effect sizes can be subject to publication bias (e.g. more positive or significant results in the literature). However, distribution inference does not focus on significance testing or effect sizes, so this bias is not considered in the collection process.
 
@@ -135,12 +135,12 @@ Data that are recommended but not essential:
 
 - Name of pathogen
 - Sample size of data used to fit the distribution
-- The region the data was collected, at either a natioanl, continental or global level
+- The region the data was collected, at either a national, continental or global level
 - Type of vector
-- Uncertainty in the estimated parameters or summary statistics, this needs to be provided with the type inference used (e.g. maximum likelihood or bayesian) to avoid potential misuse of uncertainty (e.g. mistaking confindence interval for credible interval)
-- Additional unique identifiers for a paper, for exampel PubMed ID (PMID) 
+- Uncertainty in the estimated parameters or summary statistics, this needs to be provided with the type inference used (e.g. maximum likelihood or bayesian) to avoid potential misuse of uncertainty (e.g. mistaking confidence interval for credible interval)
+- Additional unique identifiers for a paper, for example PubMed ID (PMID) 
 - Whether the distribution fitted adjusted for phase bias
-- Whether the disribution used interval-censoring
+- Whether the distribution used interval-censoring
 - Whether the distribution was right-truncated and the truncation point
 - 'Notes': this can include general statements about the distribution or methodology used in the paper. These notes can be accessed when using the package to make users aware of possible limitations in the distribution parameters that may not fit in other categories
 
@@ -148,7 +148,7 @@ See the data dictionary included in `{epiparameter}` for all database fields wit
 
 ## Data quality assessment in `{epiparameter}`
 
-The inference of parameters for a delay distribution often requires methological adjustments to correct for factors that would otherwise bias the estimates. These includes accounting for interval-censoring of the data when the timing of an event (e.g. exposure to a pathogen) is not know with certainty, but rather within a time window. Or adjusting for phase bias when the distribution is estimated during a growing or skrinking stage of an epidemic. The aim of `{epiparameter}` is not to make a judgement on which parameters are 'better' than others, but to notify and warn the user of the potential limitations of the data. The aspects assessed are: 1) whether the method includes single or double interval-censoring when the exposure or onset times are not known with certainty (i.e. on a single day); 2) does the method adjust for phase bias when the outbreak is in an ascending or descending phase. These are indicated by boolean values to indicate whether they are reported in the paper and users are recommended to refer back to the paper to determine whether estimates are biased.
+The inference of parameters for a delay distribution often requires methodological adjustments to correct for factors that would otherwise bias the estimates. These includes accounting for interval-censoring of the data when the timing of an event (e.g. exposure to a pathogen) is not know with certainty, but rather within a time window. Or adjusting for phase bias when the distribution is estimated during a growing or shrinking stage of an epidemic. The aim of `{epiparameter}` is not to make a judgement on which parameters are 'better' than others, but to notify and warn the user of the potential limitations of the data. The aspects assessed are: 1) whether the method includes single or double interval-censoring when the exposure or onset times are not known with certainty (i.e. on a single day); 2) does the method adjust for phase bias when the outbreak is in an ascending or descending phase. These are indicated by boolean values to indicate whether they are reported in the paper and users are recommended to refer back to the paper to determine whether estimates are biased.
 
 ## Guide to the `{epiparameter}` review process
 
@@ -156,7 +156,7 @@ For a set of parameters to be included in the database it must pass the abstract
 
 ## Updating parameters in the database
 
-Because search and review stages are time consuming and cannot be continuously carried out, we aim to keep the `{epiparameter}` library up-to-date as a living data library by conducting regular searches (i.e. every 3-4 months) to fill in any missing papers or new publication since the last search. The epidemiological literature can expand rapidly, especially during a new outbreak. Therefore we can optionally include new studies that are of use to the epidemiological community in between regular updates. These small additions will still be subject to the data quality assessment and diagnostics to ensure accuracy, and will likely be picked up in the subsquent literature searches. It is likely that for existing pathogens that have not had a major increase in incidence since the last update few new papers will be reporting delay distributions. In these cases papers that were not previously reviewed due to limited reviewing time for each round of updates are now checked.
+Because search and review stages are time consuming and cannot be continuously carried out, we aim to keep the `{epiparameter}` library up-to-date as a living data library by conducting regular searches (i.e. every 3-4 months) to fill in any missing papers or new publication since the last search. The epidemiological literature can expand rapidly, especially during a new outbreak. Therefore we can optionally include new studies that are of use to the epidemiological community in between regular updates. These small additions will still be subject to the data quality assessment and diagnostics to ensure accuracy, and will likely be picked up in the subsequent literature searches. It is likely that for existing pathogens that have not had a major increase in incidence since the last update few new papers will be reporting delay distributions. In these cases papers that were not previously reviewed due to limited reviewing time for each round of updates are now checked.
 
 We particularly value community contributions to the database, so everyone can benefit from analysis that has already been conducted, and duplicated of effort is reduced.
 
