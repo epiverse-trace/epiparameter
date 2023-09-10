@@ -118,11 +118,11 @@ the data, and the functions (and methods) implemented in the package to facilita
 <p>{epiparameter} introduces three new classes for working with epidemiological parameters in R:</p>
 <ul>
 <li>
-<code>&lt;epiparam&gt;</code>: library of epidemiolgical parameters</li>
+<code>&lt;epiparam&gt;</code>: library of epidemiological parameters</li>
 <li>
-<code>&lt;epidist&gt;</code>: singular set of epidemiolgical parameters</li>
+<code>&lt;epidist&gt;</code>: singular set of epidemiological parameters</li>
 <li>
-<code>&lt;vb_epidist&gt;</code>: a singular set of epidemiolgical parameters for a vector-borne disease containing both an extrinsic and intrinsic distribution. This object contains two sets of parameters, one for the human (intrinsic) and one for the vector (extrinsic).</li>
+<code>&lt;vb_epidist&gt;</code>: a singular set of epidemiological parameters for a vector-borne disease containing both an extrinsic and intrinsic distribution. This object contains two sets of parameters, one for the human (intrinsic) and one for the vector (extrinsic).</li>
 </ul>
 <div class="section level3">
 <h3 id="library-of-epidemiological-parameters">Library of epidemiological parameters<a class="anchor" aria-label="anchor" href="#library-of-epidemiological-parameters"></a>
@@ -209,7 +209,7 @@ to be converted to a data frame. See the Epiverse-TRACE <a href="https://epivers
 the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data Collation and Synthesis Protocol vignette</a>.</p>
 </div>
 <div class="section level3">
-<h3 id="single-set-of-epidemiolgical-parameters">Single set of epidemiolgical parameters<a class="anchor" aria-label="anchor" href="#single-set-of-epidemiolgical-parameters"></a>
+<h3 id="single-set-of-epidemiological-parameters">Single set of epidemiological parameters<a class="anchor" aria-label="anchor" href="#single-set-of-epidemiological-parameters"></a>
 </h3>
 <p>The second class introduced in the {epiparameter} package is the <code>&lt;epidist&gt;</code> class. This holds a single set of epidemiological parameters.</p>
 <p>An <code>&lt;epidist&gt;</code> object can be converted from one of the rows of the <code>&lt;epiparam&gt;</code> object or can be created manually. First we will show the conversion of <code>&lt;epiparam&gt;</code> → <code>&lt;epidist&gt;</code>. This uses the <code><a href="../reference/as_epidist.html">as_epidist()</a></code> function.</p>
@@ -358,8 +358,8 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2.718282</span></span>
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] 1.8560728 0.5779716 5.2973324 2.8186305 2.9410072 5.4764343 4.4171745</span></span>
-<span><span class="co">#&gt;  [8] 2.6720431 5.2530238 7.7691710</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1]  1.0747317  4.2903191  1.2725813 11.6488808  3.8358552  2.4931755</span></span>
+<span><span class="co">#&gt;  [7]  1.2580112  0.8380663  5.0968182  1.0800110</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2">
