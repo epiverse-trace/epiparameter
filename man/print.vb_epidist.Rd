@@ -20,13 +20,13 @@ Print method for \verb{<vb_epidist>} class
 }
 \examples{
 vb_epidist <- vb_epidist(
-  intrinsic = epidist(
+  intrinsic_epidist = epidist(
     disease = "ebola",
     epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ),
-  extrinsic = epidist(
+  extrinsic_epidist = epidist(
     disease = "ebola",
     epi_dist = "incubation_period",
     prob_distribution = "gamma",
