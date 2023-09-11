@@ -1027,3 +1027,50 @@ test_that("is_truncated works as expected for truncated distributions", {
   ))
   expect_true(is_truncated(edist))
 })
+
+test_that("mean works as expected when mean is supplied", {
+  edist <- suppressMessages(
+    epidist(
+      disease = "Ebola",
+      epi_dist = "incubation_period",
+      prob_distribution = "gamma",
+      summary_stats = create_epidist_summary_stats(mean = 5)
+    )
+  )
+  expect_identical(mean(edist), 5)
+})
+
+test_that("mean works as expected with params and no mean", {
+  edist <- suppressMessages(
+    epidist(
+      disease = "Ebola",
+      epi_dist = "incubation_period",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  )
+  expect_identical(mean(edist), 1)
+})
+
+test_that("mean works as expected with no params and no mean", {
+  edist <- suppressMessages(
+    epidist(
+      disease = "Ebola",
+      epi_dist = "incubation_period",
+      prob_distribution = "gamma"
+    )
+  )
+  expect_true(is.na(mean(edist)))
+})
+
+test_that("mean works for corrupted epidist", {
+  edist <- suppressMessages(
+    epidist(
+      disease = "Ebola",
+      epi_dist = "incubation_period",
+      prob_distribution = "gamma"
+    )
+  )
+  edist$summary_stats <- list()
+  expect_true(is.na(mean(edist)))
+})
