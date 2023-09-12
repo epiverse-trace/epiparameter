@@ -34,6 +34,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/index.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/news/index.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/as_epidist.html</loc>
   </url>
   <url>
@@ -224,6 +227,9 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/make_epidist.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/mean.epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/names-set-.epiparam.html</loc>
