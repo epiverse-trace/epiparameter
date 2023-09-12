@@ -71,7 +71,9 @@ new_epidist <- function(disease = list(),
     )
   }
 
-  if (!anyNA(prob_dist_params)) {
+  if (anyNA(prob_dist_params)) {
+    message("Unparameterised <epidist> object")
+  } else {
     # standardise distribution parameter names
     class(prob_dist_params) <- prob_dist
     prob_dist_params <- clean_epidist_params(
@@ -93,8 +95,6 @@ new_epidist <- function(disease = list(),
       discretise = discretise,
       truncation = truncation
     )
-  } else {
-    message("Unparameterised <epidist> object")
   }
 
   if (epi_dist == "offspring_distribution") {
