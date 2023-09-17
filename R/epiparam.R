@@ -25,12 +25,12 @@ new_epiparam <- function(epi_dist) {
   )
 
   # collapse nested lists into vectors (JSON arrays)
-  paramsJSON <- lapply(paramsJSON, function(x) {
-    lapply(x, function(y)  if (length(y) == 2) unlist(y) else y)
+  paramsJSON <- lapply(paramsJSON, function(x) { # nolint
+    lapply(x, function(y) if (length(y) == 2) unlist(y) else y)
   })
 
   # convert nulls to NA
-  paramsJSON <- lapply(paramsJSON, function(x) {
+  paramsJSON <- lapply(paramsJSON, function(x) { # nolint
     lapply(x, function(y) if (is.null(y)) NA else y)
   })
 
@@ -305,7 +305,7 @@ summary.epiparam <- function(object, ...) {
     )
   )
   num_offspring_dist <- sum(
-    object$epi_distribution %in% "offspring_distribution"
+    object$epi_distribution == "offspring_distribution"
   )
   num_studies <- length(unique(object$DOI))
   num_cont_dist <- nrow(object) - sum(object$discretised)
