@@ -21,50 +21,13 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages:
-            any::jsonlite
             any::jsonvalidate
-            any::yaml
 
       - name: Validate JSON
         run: |
-          # read in epiparameter database
-          data <- utils::read.csv(
-            file = file.path("inst", "extdata", "parameters.csv"),
-            header = TRUE
-          )
-
-          # convert cells with arrays to numeric
-          for (i in grep(pattern = "_ci_limits$", x = colnames(data))) {
-            if (!all(is.na(data[[i]]))) {
-              data[[i]] <- lapply(
-                strsplit(x = data[[i]], split = ",", fixed = TRUE),
-                as.numeric
-              )
-            }
-          }
-
-          data_json <- jsonlite::toJSON(
-            x = data,
-            dataframe = "columns",
-            na = NULL,
-            pretty = TRUE
-          )
-
-          # read schema
-          schema <- yaml::read_yaml(
-            file.path("inst", "extdata", "data_dictionary.yaml")
-          )
-
-          schema_json <- jsonlite::toJSON(
-            x = schema,
-            dataframe = "column",
-            auto_unbox = TRUE,
-            pretty = TRUE
-          )
-
           jsonvalidate::json_validate(
-            json = data_json,
-            schema = schema_json,
+            json = file.path("inst", "extdata", "parameters.json"),
+            schema = file.path("inst", "extdata", "data_dictionary.json"),
             engine = "ajv",
             verbose = TRUE,
             greedy = TRUE,
