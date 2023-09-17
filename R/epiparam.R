@@ -14,15 +14,41 @@ new_epiparam <- function(epi_dist) {
   # check input
   checkmate::assert_string(epi_dist)
 
-  # Extract relevant values
-  params <- utils::read.csv(system.file(
-    "extdata",
-    "parameters.csv",
-    package = "epiparameter",
-    mustWork = TRUE
+  # read in library
+  paramsJSON <- jsonlite::read_json(
+    path = system.file(
+      "extdata",
+      "parameters.json",
+      package = "epiparameter",
+      mustWork = TRUE
+    )
+  )
+
+  # collapse nested lists into vectors (JSON arrays)
+  paramsJSON <- lapply(paramsJSON, function(x) {
+    lapply(x, function(y)  if (length(y) == 2) unlist(y) else y)
+  })
+
+  # convert nulls to NA
+  paramsJSON <- lapply(paramsJSON, function(x) {
+    lapply(x, function(y) if (is.null(y)) NA else y)
+  })
+
+  # pre-allocate data.frame
+  num_col <- length(names(paramsJSON[[1]]))
+  num_row <- length(paramsJSON)
+  params <- as.data.frame(matrix(
+    nrow = num_row,
+    ncol = num_col,
+    dimnames = list(NULL, names(paramsJSON[[1]]))
   ))
 
-  # ensure type correctness
+  # col-wise filling to accommodate nested cells
+  for (i in seq_along(paramsJSON[[1]])) {
+    params[[i]] <- I(lapply(paramsJSON, "[[", i))
+  }
+
+  # ensure type and length correctness
   numeric_col <- epiparam_col_type(epiparam = params, col_type = "numeric")
   params[numeric_col] <- vapply(
     params[numeric_col],
@@ -31,22 +57,23 @@ new_epiparam <- function(epi_dist) {
   char_col <- epiparam_col_type(params, col_type = "character")
   params[char_col] <- vapply(
     params[char_col],
-    FUN = as.character, FUN.VALUE = character(nrow(params))
+    FUN = function(x) as.character(unlist(x)),
+    FUN.VALUE = character(nrow(params))
   )
   logic_col <- epiparam_col_type(params, col_type = "logical")
   params[logic_col] <- vapply(
     params[logic_col],
     FUN = as.logical, FUN.VALUE = logical(nrow(params))
   )
-
-  # convert intervals from strings to numeric vectors
   ci_cols_index <- grep(pattern = "_ci_limits$", colnames(params))
   for (i in ci_cols_index) {
-    split_ci <- strsplit(as.character(params[, i]), split = ",", fixed = TRUE)
-    split_ci <- lapply(split_ci, function(x) {
-      if (all(is.na(x))) c(NA_real_, NA_real_) else as.numeric(x)
+    params[[i]] <- lapply(params[[i]], function(x) {
+      if (all(is.na(x)) || length(x) == 1) {
+        c(NA_real_, NA_real_)
+      } else {
+        as.numeric(x)
+      }
     })
-    params[[i]] <- split_ci
   }
 
   # order params by pathogen, delay dist and study
