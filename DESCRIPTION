@@ -53,7 +53,7 @@ Suggests:
     knitr,
     bookdown,
     rmarkdown,
-    vdiffr,
+    vdiffr (>= 1.0.7),
     dplyr (>= 1.0.0),
     ggplot2,
     testthat (>= 3.0.0),
