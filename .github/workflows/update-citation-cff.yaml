@@ -29,7 +29,6 @@ jobs:
           extra-packages: |
             any::cffr
             any::V8
-            vdiffr@1.0.5
 
       - name: Update CITATION.cff
         run: |
