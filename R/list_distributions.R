@@ -9,6 +9,10 @@
 #' and the year of publication as well as the sample size of the study. If the
 #' all columns of the database are required set `subset_db = FALSE`.
 #'
+#' @details The `<data.frame>` returned by [list_distributions()] contains some
+#' vector columns and some list columns. For example, the `author` column is a
+#' list as each paper can contain multiple authors.
+#'
 #' @inheritParams validate_epiparam
 #' @param epi_dist A character defining parameter to be listed:
 #' `"incubation"`, `"onset_to_hospitalisation"`, `"onset_to_death"`, or
