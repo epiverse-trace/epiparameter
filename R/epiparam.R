@@ -26,7 +26,7 @@ new_epiparam <- function(epi_dist) {
 
   # collapse nested lists into vectors (JSON arrays)
   paramsJSON <- lapply(paramsJSON, function(x) { # nolint
-    lapply(x, function(y) if (length(y) == 2) unlist(y) else y)
+    lapply(x, unlist)
   })
 
   # convert nulls to NA
@@ -376,7 +376,12 @@ epiparam_fields <- function() {
 #' @keywords internal
 #' @noRd
 epiparam_col_type <- function(epiparam,
-                              col_type = c("numeric", "character", "logical")) {
+                              col_type = c(
+                                "numeric",
+                                "character",
+                                "logical",
+                                "list"
+                              )) {
   col_type <- match.arg(col_type)
 
   out <- switch(col_type,
@@ -392,7 +397,7 @@ epiparam_col_type <- function(epiparam,
     ),
     character = which(
       colnames(epiparam) %in% c(
-        "disease", "pathogen", "epi_distribution", "author", "title", "journal",
+        "disease", "pathogen", "epi_distribution", "title", "journal",
         "region", "transmission_mode", "vector", "prob_distribution",
         "inference_method", "notes", "DOI"
       )
@@ -401,6 +406,13 @@ epiparam_col_type <- function(epiparam,
       colnames(epiparam) %in% c(
         "extrinsic", "discretised", "censored", "right_truncated",
         "phase_bias_adjusted"
+      )
+    ),
+    list = which(
+      colnames(epiparam) %in% c(
+        "author", "mean_ci_limits", "sd_ci_limits", "median_ci_limits",
+        "shape_ci_limits", "scale_ci_limits", "meanlog_ci_limits",
+        "sdlog_ci_limits", "dispersion_ci_limits", "precision_ci_limits"
       )
     )
   )
