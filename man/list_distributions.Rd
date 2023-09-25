@@ -32,6 +32,11 @@ epidemiological distribution, probability distribution, author of the study
 and the year of publication as well as the sample size of the study. If the
 all columns of the database are required set \code{subset_db = FALSE}.
 }
+\details{
+The \verb{<data.frame>} returned by \code{\link[=list_distributions]{list_distributions()}} contains some
+vector columns and some list columns. For example, the \code{author} column is a
+list as each paper can contain multiple authors.
+}
 \examples{
 eparam <- epiparam()
 list_distributions(epiparam = eparam, epi_dist = "incubation_period")
