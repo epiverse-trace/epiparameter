@@ -14,7 +14,7 @@ test_that("epidist_db works as expected with author specified", {
     epidist_db(
       disease = "influenza",
       epi_dist = "incubation_period",
-      author = "Ghani_etal"
+      author = "Ghani"
     )
   )
 
@@ -84,7 +84,7 @@ test_that("epidist_db fails as expected when author not recognised", {
       epi_dist = "incubation_period",
       author = "Lessler_et_al"
     ),
-    regexp = "('arg' should be one of)"
+    regexp = "Parameters by Lessler_et_al are not available for influenza"
   )
 })
 
@@ -120,7 +120,7 @@ test_that("epidist_db gives message as expected with multiple entries", {
     epidist_db(
       disease = "influenza",
       epi_dist = "incubation_period",
-      author = "Reich_etal"
+      author = "Reich"
     ),
     regexp = "(Returning)*(results that match the criteria)"
   )
