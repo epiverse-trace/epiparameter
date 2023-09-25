@@ -22,9 +22,12 @@
         "type": "string"
       },
       "author": {
-        "description": "For single authored papers the surname of the first author. For papers with two authors both surnames can be given separated by an underscore. For papers with more than two authors the surname of the first author can be given with \"_etal\".",
-        "examples": ["Smith", "Smith_Jones", "Smith_etal"],
-        "type": "string"
+        "description": "An array of characters where each character is an author. Authors names should be stated as any given name(s) and family name(s). Single author publications should still be stored as arrays. Give all authors of the publication.",
+        "examples": [["John Smith"], ["John Smith", "Amy Jones"]],
+        "type": "array",
+        "items": {
+          "character"
+        }
       },
       "title": {
         "description": "The title of the article that published the epidemiological parameters.",
