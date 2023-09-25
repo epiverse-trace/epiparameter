@@ -401,23 +401,16 @@ create_epidist_citation <- function(author = NA_character_,
   checkmate::assert_character(DOI)
   checkmate::assert_number(PMID, na.ok = TRUE)
 
-  if (is.na(author) || is.na(year) || is.na(journal) || is.na(title)) {
+  if (anyNA(author) || is.na(year) || is.na(journal) || is.na(title)) {
     message(
       "Citation cannot be created as author, year, journal or title is missing"
     )
     return(utils::bibentry(bibtype = "Misc", title = "No citation"))
   }
 
-  if (!inherits(author, "person")) {
-    # imperfect solution as library currently only has first author
-    author_names <- strsplit(x = author, split = "_", fixed = TRUE)
-    authors <- lapply(author_names, utils::as.person)
-    authors <- Reduce(c, authors)
-  }
-
   citation <- utils::bibentry(
     bibtype = "article",
-    author = authors,
+    author = author,
     year = year,
     title = title,
     journal = journal,
