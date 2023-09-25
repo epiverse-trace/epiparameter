@@ -22,7 +22,9 @@
 #' @param epi_dist A `character` string specifying the epidemiological
 #' distribution.
 #' @param author A `character` string specifying the author of the study
-#' reporting the distribution.
+#' reporting the distribution. Only the first author will be matched. It is
+#' recommended to use the family name as first names may or may not be
+#' initialised.
 #' @param subset Either `NULL` or a valid R expressions that evaluates to
 #' logicals to subset the rows of `<epiparam>`, or a function that can be
 #' applied directly to an `<epiparam>` object.
@@ -136,12 +138,18 @@ epidist_db <- function(disease,
 
   # extract study by author if given
   if (!is.null(author)) {
-    study <- match.arg(
-      arg = author,
-      choices = unique(eparam$author),
-      several.ok = FALSE
-    )
-    eparam <- eparam[eparam$author == study, ]
+    first_author <- lapply(eparam$author, "[[", 1)
+    author_set <- grepl(pattern = author, x = first_author, ignore.case = TRUE)
+
+    if (!any(author_set)) {
+      stop(
+        "Parameters by ", author, " are not available for ", disease,
+        call. = FALSE
+      )
+    }
+
+    # subset by authors
+    eparam <- subset(eparam, author_set)
   }
 
   # subset by subset conditions
