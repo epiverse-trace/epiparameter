@@ -21,7 +21,9 @@ epidist_db(
 distribution.}
 
 \item{author}{A \code{character} string specifying the author of the study
-reporting the distribution.}
+reporting the distribution. Only the first author will be matched. It is
+recommended to use the family name as first names may or may not be
+initialised.}
 
 \item{subset}{Either \code{NULL} or a valid R expressions that evaluates to
 logicals to subset the rows of \verb{<epiparam>}, or a function that can be
