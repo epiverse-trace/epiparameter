@@ -131,7 +131,7 @@ single set of epidemiological parameters.
 epidist_db(
   disease = "COVID-19",
   epi_dist = "incubation_period",
-  author = "Bui_etal"
+  author = "Bui"
 )
 ```
 

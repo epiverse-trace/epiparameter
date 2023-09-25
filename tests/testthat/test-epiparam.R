@@ -181,7 +181,7 @@ test_that("epiparam_col_type returns vector as expected", {
   expect_vector(
     object = epiparam_col_type(eparam, col_type = "character"),
     ptype = integer(0),
-    size = 13
+    size = 12
   )
   expect_vector(
     object = epiparam_col_type(eparam, col_type = "numeric"),
