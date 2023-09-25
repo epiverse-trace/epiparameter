@@ -7,14 +7,16 @@ test_that("is_parameterised works as expected for epiparam", {
 
 test_that("is_parameterised works as expected with epiparam parameters", {
   eparam <- epiparam(epi_dist = "incubation_period")
-  eparam <- subset(eparam, author == "McAloon_etal")
+  set <- lapply(eparam, grepl, pattern = "McAloon")$author
+  eparam <- subset(eparam, set)
   eparam <- subset(eparam, sample_size == max(sample_size))
   expect_true(is_parameterised(eparam))
 })
 
 test_that("is_parameterised works as expected without epiparam parameters", {
   eparam <- epiparam(epi_dist = "incubation_period")
-  eparam <- subset(eparam, author == "Alene_etal")
+  set <- lapply(eparam, grepl, pattern = "Alene")$author
+  eparam <- subset(eparam, set)
   expect_false(is_parameterised(eparam))
 })
 
