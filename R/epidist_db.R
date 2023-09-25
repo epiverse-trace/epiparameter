@@ -193,7 +193,7 @@ epidist_db <- function(disease,
       validate_epidist(edist)
 
       message(
-        "Using ", get_citation(edist), ". \n",
+        "Using ", format(get_citation(edist)), ". \n",
         "To retrieve the short citation use the 'get_citation' function"
       )
     } else {
