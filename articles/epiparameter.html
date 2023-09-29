@@ -139,7 +139,7 @@ the data, and the functions (and methods) implemented in the package to facilita
 <span><span class="co">#&gt; Number of diseases: 23</span></span>
 <span><span class="co">#&gt; Number of delay distributions: 95</span></span>
 <span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
-<span><span class="co">#&gt; Number of studies in library: 57</span></span>
+<span><span class="co">#&gt; Number of studies in library: 45</span></span>
 <span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
 <span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
 <span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
@@ -147,27 +147,27 @@ the data, and the functions (and methods) implemented in the package to facilita
 <span><span class="co">#&gt; 3    COVID-19 hospitalisation_to_death           weibull</span></span>
 <span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
 <span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6    COVID-19        incubation_period           weibull</span></span>
+<span><span class="co">#&gt; 6    COVID-19        incubation_period              &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; &lt;112 more rows &amp; 55 more cols not shown&gt;</span></span></code></pre></div>
 </details><p>The <code>&lt;epiparam&gt;</code> class has a custom printing method which gives a summary of the information included in the database including the number of distributions, number of diseases, number of different studies among other summary metrics, as well as the first six rows of the diseases, epidemiological distributions (<code>epi_distribution</code>) and probability distribution (<code>prob_distribution</code>).</p>
 <p>The <code>&lt;epiparam&gt;</code> class is based (i.e. inherits from) the data frame, and therefore the same subsetting and manipulation can be carried out, including the <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code> and <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail()</a></code> of the database.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
 <span><span class="co">#&gt;       disease          pathogen         epi_distribution       author</span></span>
-<span><span class="co">#&gt; 1  Adenovirus        Adenovirus        incubation_period Lessler_etal</span></span>
-<span><span class="co">#&gt; 2 Chikungunya Chikungunya Virus        incubation_period Rudolph_etal</span></span>
-<span><span class="co">#&gt; 3    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal</span></span>
-<span><span class="co">#&gt; 4    COVID-19        SARS-CoV-2 hospitalisation_to_death  Linton_etal</span></span>
-<span><span class="co">#&gt; 5    COVID-19        SARS-CoV-2        incubation_period   Alene_etal</span></span>
-<span><span class="co">#&gt; 6    COVID-19        SARS-CoV-2        incubation_period     Bui_etal</span></span>
+<span><span class="co">#&gt; 1  Adenovirus        Adenovirus        incubation_period Justin L....</span></span>
+<span><span class="co">#&gt; 2 Chikungunya Chikungunya Virus        incubation_period Kara E R....</span></span>
+<span><span class="co">#&gt; 3    COVID-19        SARS-CoV-2 hospitalisation_to_death Natalie ....</span></span>
+<span><span class="co">#&gt; 4    COVID-19        SARS-CoV-2 hospitalisation_to_death Natalie ....</span></span>
+<span><span class="co">#&gt; 5    COVID-19        SARS-CoV-2        incubation_period Balram R....</span></span>
+<span><span class="co">#&gt; 6    COVID-19        SARS-CoV-2        incubation_period Christel....</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
 <span><span class="co">#&gt;                disease             pathogen  epi_distribution       author</span></span>
-<span><span class="co">#&gt; 113    West Nile Fever      West Nile Virus incubation_period Rudolph_etal</span></span>
-<span><span class="co">#&gt; 114    West Nile Fever      West Nile Virus incubation_period Rudolph_etal</span></span>
-<span><span class="co">#&gt; 115    West Nile Fever      West Nile Virus incubation_period Rudolph_etal</span></span>
-<span><span class="co">#&gt; 116       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal</span></span>
-<span><span class="co">#&gt; 117       Yellow Fever Yellow Fever Viruses incubation_period Rudolph_etal</span></span>
-<span><span class="co">#&gt; 118 Zika Virus Disease           Zika Virus incubation_period Lessler_etal</span></span></code></pre></div>
+<span><span class="co">#&gt; 113    West Nile Fever      West Nile Virus incubation_period Kara E R....</span></span>
+<span><span class="co">#&gt; 114    West Nile Fever      West Nile Virus incubation_period Kara E R....</span></span>
+<span><span class="co">#&gt; 115    West Nile Fever      West Nile Virus incubation_period Kara E R....</span></span>
+<span><span class="co">#&gt; 116       Yellow Fever Yellow Fever Viruses incubation_period Kara E R....</span></span>
+<span><span class="co">#&gt; 117       Yellow Fever Yellow Fever Viruses incubation_period Kara E R....</span></span>
+<span><span class="co">#&gt; 118 Zika Virus Disease           Zika Virus incubation_period Justin L....</span></span></code></pre></div>
 </details><p>The epidemiological library contains multiple columns, each storing different features of the parameter:</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span></span>
@@ -202,12 +202,12 @@ to be converted to a data frame. See the Epiverse-TRACE <a href="https://epivers
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       disease  epi_distribution prob_distribution       author year sample_size</span></span>
-<span><span class="co">#&gt; 1  Adenovirus incubation_period             lnorm Lessler_etal 2009          14</span></span>
-<span><span class="co">#&gt; 2 Chikungunya incubation_period             lnorm Rudolph_etal 2014          21</span></span>
-<span><span class="co">#&gt; 3    COVID-19 incubation_period              &lt;NA&gt;   Alene_etal 2021        1453</span></span>
-<span><span class="co">#&gt; 4    COVID-19 incubation_period           weibull     Bui_etal 2020          19</span></span>
-<span><span class="co">#&gt; 5    COVID-19 incubation_period              &lt;NA&gt;   Elias_etal 2021       28675</span></span>
-<span><span class="co">#&gt; 6    COVID-19 incubation_period             lnorm   Lauer_etal 2020         181</span></span></code></pre></div>
+<span><span class="co">#&gt; 1  Adenovirus incubation_period             lnorm Justin L.... 2009          14</span></span>
+<span><span class="co">#&gt; 2 Chikungunya incubation_period             lnorm Kara E R.... 2014          21</span></span>
+<span><span class="co">#&gt; 3    COVID-19 incubation_period              &lt;NA&gt; Balram R.... 2022        6241</span></span>
+<span><span class="co">#&gt; 4    COVID-19 incubation_period              &lt;NA&gt; Christel.... 2021       28675</span></span>
+<span><span class="co">#&gt; 5    COVID-19 incubation_period             lnorm Conor Mc.... 2020        1357</span></span>
+<span><span class="co">#&gt; 6    COVID-19 incubation_period             lnorm Conor Mc.... 2020        1269</span></span></code></pre></div>
 </details><p>More details on the data collation and the library of parameters can be found in
 the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data Collation and Synthesis Protocol vignette</a>.</p>
 </div>
@@ -228,20 +228,22 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span></span>
 <span><span class="co"># convert epiparam entry to epidist</span></span>
 <span><span class="va">covid_incub</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">covid_incub</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using Linton, etal (2020). "Incubation Period and Other Epidemiological</span></span>
-<span><span class="co">#&gt; Characteristics of 2019 Novel Coronavirus Infections with Right</span></span>
-<span><span class="co">#&gt; Truncation: A Statistical Analysis of Publicly Available Case Data."</span></span>
-<span><span class="co">#&gt; _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span></span>
+<span><span class="co">#&gt; Using Linton NM, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov AR, Jung S,</span></span>
+<span><span class="co">#&gt; Yuan B, Kinoshita R, Nishiura H (2020). "Incubation Period and Other</span></span>
+<span><span class="co">#&gt; Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span></span>
+<span><span class="co">#&gt; with Right Truncation: A Statistical Analysis of Publicly Available</span></span>
+<span><span class="co">#&gt; Case Data." _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span></span>
 <span><span class="co">#&gt; &lt;https://doi.org/10.3390/jcm9020538&gt;. </span></span>
 <span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
 <span><span class="va">covid_incub</span></span>
 <span><span class="co">#&gt; Disease: COVID-19</span></span>
 <span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
 <span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
-<span><span class="co">#&gt; Study: Linton, etal (2020). "Incubation Period and Other Epidemiological</span></span>
-<span><span class="co">#&gt; Characteristics of 2019 Novel Coronavirus Infections with Right</span></span>
-<span><span class="co">#&gt; Truncation: A Statistical Analysis of Publicly Available Case Data."</span></span>
-<span><span class="co">#&gt; _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span></span>
+<span><span class="co">#&gt; Study: Linton NM, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov AR, Jung S,</span></span>
+<span><span class="co">#&gt; Yuan B, Kinoshita R, Nishiura H (2020). "Incubation Period and Other</span></span>
+<span><span class="co">#&gt; Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span></span>
+<span><span class="co">#&gt; with Right Truncation: A Statistical Analysis of Publicly Available</span></span>
+<span><span class="co">#&gt; Case Data." _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span></span>
 <span><span class="co">#&gt; &lt;https://doi.org/10.3390/jcm9020538&gt;.</span></span>
 <span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
@@ -272,18 +274,20 @@ single set of epidemiological parameters.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span>,</span>
-<span>  author <span class="op">=</span> <span class="st">"Bui_etal"</span></span>
+<span>  author <span class="op">=</span> <span class="st">"Bui"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using Bui, etal (2020). "Estimation of the incubation period of COVID-19 in</span></span>
-<span><span class="co">#&gt; Vietnam." _PLoS One_. doi:10.1371/journal.pone.0243889</span></span>
+<span><span class="co">#&gt; Using Bui LV, Nguyen HT, Levine H, Nguyen HN, Nguyen T, Nguyen TP, Nguyen TT,</span></span>
+<span><span class="co">#&gt; Do TTT, Pham NT, Bui MH (2020). "Estimation of the incubation period of</span></span>
+<span><span class="co">#&gt; COVID-19 in Vietnam." _PLoS One_. doi:10.1371/journal.pone.0243889</span></span>
 <span><span class="co">#&gt; &lt;https://doi.org/10.1371/journal.pone.0243889&gt;. </span></span>
 <span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
 <span><span class="co">#&gt; Numerical approximation used, results may be unreliable.</span></span>
 <span><span class="co">#&gt; Disease: COVID-19</span></span>
 <span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
 <span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
-<span><span class="co">#&gt; Study: Bui, etal (2020). "Estimation of the incubation period of COVID-19 in</span></span>
-<span><span class="co">#&gt; Vietnam." _PLoS One_. doi:10.1371/journal.pone.0243889</span></span>
+<span><span class="co">#&gt; Study: Bui LV, Nguyen HT, Levine H, Nguyen HN, Nguyen T, Nguyen TP, Nguyen TT,</span></span>
+<span><span class="co">#&gt; Do TTT, Pham NT, Bui MH (2020). "Estimation of the incubation period of</span></span>
+<span><span class="co">#&gt; COVID-19 in Vietnam." _PLoS One_. doi:10.1371/journal.pone.0243889</span></span>
 <span><span class="co">#&gt; &lt;https://doi.org/10.1371/journal.pone.0243889&gt;.</span></span>
 <span><span class="co">#&gt; Distribution: weibull</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
@@ -320,7 +324,7 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="co">#&gt; Number of diseases: 24</span></span>
 <span><span class="co">#&gt; Number of delay distributions: 96</span></span>
 <span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
-<span><span class="co">#&gt; Number of studies in library: 58</span></span>
+<span><span class="co">#&gt; Number of studies in library: 46</span></span>
 <span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
 <span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
 <span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
@@ -328,7 +332,7 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="co">#&gt; 3    COVID-19 hospitalisation_to_death           weibull</span></span>
 <span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
 <span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6    COVID-19        incubation_period           weibull</span></span>
+<span><span class="co">#&gt; 6    COVID-19        incubation_period              &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; &lt;113 more rows &amp; 55 more cols not shown&gt;</span></span>
 <span><span class="fu"><a href="../reference/bind_epiparam.html">bind_epiparam</a></span><span class="op">(</span>epiparam <span class="op">=</span> <span class="va">epi_dist_db</span>, epi_obj <span class="op">=</span> <span class="fu"><a href="../reference/as_epiparam.html">as_epiparam</a></span><span class="op">(</span><span class="va">ebola_incubation</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Epiparam object</span></span>
@@ -336,7 +340,7 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="co">#&gt; Number of diseases: 24</span></span>
 <span><span class="co">#&gt; Number of delay distributions: 96</span></span>
 <span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
-<span><span class="co">#&gt; Number of studies in library: 58</span></span>
+<span><span class="co">#&gt; Number of studies in library: 46</span></span>
 <span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
 <span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
 <span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
@@ -344,7 +348,7 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="co">#&gt; 3    COVID-19 hospitalisation_to_death           weibull</span></span>
 <span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
 <span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6    COVID-19        incubation_period           weibull</span></span>
+<span><span class="co">#&gt; 6    COVID-19        incubation_period              &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; &lt;113 more rows &amp; 55 more cols not shown&gt;</span></span></code></pre></div>
 </details><p>Note that this only adds the parameters to the library (<code>&lt;epiparam&gt;</code> object) in the environment, and does not save to the database file in the package.</p>
 <p>For binding columns to <code>&lt;epiparam&gt;</code> use either <code><a href="https://tibble.tidyverse.org/reference/add_column.html" class="external-link">tibble::add_column()</a></code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_cols.html" class="external-link">dplyr::bind_cols()</a></code>. Using <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind()</a></code> will unclass the <code>&lt;epiparam&gt;</code> object (i.e. convert an <code>&lt;epiparam&gt;</code> to a <code>&lt;data.frame&gt;</code>). Note that <code><a href="https://dplyr.tidyverse.org/reference/bind_cols.html" class="external-link">dplyr::bind_cols()</a></code> will print a message that a <code>&lt;data.frame&gt;</code> is being returned, but this is not the case.</p>
@@ -361,8 +365,8 @@ This may be especially useful if new parameter estimates become available but ar
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2.718282</span></span>
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] 6.0328795 0.5115718 4.1888816 2.3522825 5.7842960 0.7441899 1.7949980</span></span>
-<span><span class="co">#&gt;  [8] 0.9551194 4.8602080 1.4433203</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] 0.8081253 6.1001306 2.5296198 0.6906505 1.7992655 1.5417898 3.8884307</span></span>
+<span><span class="co">#&gt;  [8] 2.6759952 4.6786973 2.1731529</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2">

@@ -120,7 +120,9 @@ distribution.</p></dd>
 
 <dt>author</dt>
 <dd><p>A <code>character</code> string specifying the author of the study
-reporting the distribution.</p></dd>
+reporting the distribution. Only the first author will be matched. It is
+recommended to use the family name as first names may or may not be
+initialised.</p></dd>
 
 
 <dt>subset</dt>
@@ -168,17 +170,21 @@ each expression with <code>&amp;</code>.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">epidist_db</span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"influenza"</span>, epi_dist <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Ghani, etal (2009). “The Early Transmission Dynamics of H1N1pdm</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Influenza in the United Kingdom.” _PLoS Currents_.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> doi:10.1371/currents.RRN1130</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Ghani A, Baguelin M, Griffin J, Flasche S, van Hoek AJ, Cauchemez S,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Donnelly C, Robertson C, White M, Truscott J, Fraser C, Garske T, White</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> P, Leach S, Hall I, Jenkins H, Ferguson N, Cooper B (2009). “The Early</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Transmission Dynamics of H1N1pdm Influenza in the United Kingdom.”</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> _PLoS Currents_. doi:10.1371/currents.RRN1130</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/currents.RRN1130&gt;. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation use the 'get_citation' function</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Influenza</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Influenza-A-H1N1Pdm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: serial interval</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Ghani, etal (2009). “The Early Transmission Dynamics of H1N1pdm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Influenza in the United Kingdom.” _PLoS Currents_.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1371/currents.RRN1130</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Ghani A, Baguelin M, Griffin J, Flasche S, van Hoek AJ, Cauchemez S,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Donnelly C, Robertson C, White M, Truscott J, Fraser C, Garske T, White</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P, Leach S, Hall I, Jenkins H, Ferguson N, Cooper B (2009). “The Early</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Transmission Dynamics of H1N1pdm Influenza in the United Kingdom.”</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> _PLoS Currents_. doi:10.1371/currents.RRN1130</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/currents.RRN1130&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: gamma</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
@@ -190,9 +196,11 @@ each expression with <code>&amp;</code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># load influenza serial interval from database</span></span></span>
 <span class="r-in"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu">epidist_db</span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"influenza"</span>, epi_dist <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Ghani, etal (2009). “The Early Transmission Dynamics of H1N1pdm</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Influenza in the United Kingdom.” _PLoS Currents_.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> doi:10.1371/currents.RRN1130</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Ghani A, Baguelin M, Griffin J, Flasche S, van Hoek AJ, Cauchemez S,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Donnelly C, Robertson C, White M, Truscott J, Fraser C, Garske T, White</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> P, Leach S, Hall I, Jenkins H, Ferguson N, Cooper B (2009). “The Early</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Transmission Dynamics of H1N1pdm Influenza in the United Kingdom.”</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> _PLoS Currents_. doi:10.1371/currents.RRN1130</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/currents.RRN1130&gt;. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation use the 'get_citation' function</span>
 <span class="r-in"><span></span></span>
@@ -202,9 +210,11 @@ each expression with <code>&amp;</code>.</p>
 <span class="r-in"><span><span class="va">eparam</span> <span class="op">&lt;-</span> <span class="va">eparam</span><span class="op">[</span><span class="fu"><a href="clean_disease.html">clean_disease</a></span><span class="op">(</span><span class="va">eparam</span><span class="op">$</span><span class="va">disease</span><span class="op">)</span> <span class="op">==</span> <span class="st">"influenza"</span>, <span class="op">]</span></span></span>
 <span class="r-in"><span><span class="co"># convert to `epidist`</span></span></span>
 <span class="r-in"><span><span class="va">edist2</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">eparam</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Ghani, etal (2009). “The Early Transmission Dynamics of H1N1pdm</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Influenza in the United Kingdom.” _PLoS Currents_.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> doi:10.1371/currents.RRN1130</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Ghani A, Baguelin M, Griffin J, Flasche S, van Hoek AJ, Cauchemez S,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Donnelly C, Robertson C, White M, Truscott J, Fraser C, Garske T, White</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> P, Leach S, Hall I, Jenkins H, Ferguson N, Cooper B (2009). “The Early</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Transmission Dynamics of H1N1pdm Influenza in the United Kingdom.”</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> _PLoS Currents_. doi:10.1371/currents.RRN1130</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/currents.RRN1130&gt;. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation use the 'get_citation' function</span>
 <span class="r-in"><span><span class="co"># check the two methods produce the same `epidist` object</span></span></span>
@@ -217,9 +227,9 @@ each expression with <code>&amp;</code>.</p>
 <span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"offspring_distribution"</span>,</span></span>
 <span class="r-in"><span>  subset <span class="op">=</span> <span class="va">sample_size</span> <span class="op">&gt;</span> <span class="fl">40</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Lloyd-Smith, etal (2005). “Superspreading and the effect of individual</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> variation on disease emergence.” _Nature_. doi:10.1038/nature04153</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1038/nature04153&gt;. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Lloyd-Smith JO, Schreiber SJ, Kopp PE, Getz WM (2005). “Superspreading</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> and the effect of individual variation on disease emergence.” _Nature_.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation use the 'get_citation' function</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># example using functional subsetting</span></span></span>
@@ -238,7 +248,9 @@ each expression with <code>&amp;</code>.</p>
 <span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"offspring_distribution"</span>,</span></span>
 <span class="r-in"><span>  single_epidist <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using list(author = list(list(given = NULL, family = "Lloyd-Smith", role = NULL, email = NULL, comment = NULL), list(given = NULL, family = "etal", role = NULL, email = NULL, comment = NULL)), year = "2005", title = "Superspreading and the effect of individual variation on disease emergence", journal = "Nature", doi = "10.1038/nature04153", pmid = "16292310"). </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using Lloyd-Smith JO, Schreiber SJ, Kopp PE, Getz WM (2005). “Superspreading</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> and the effect of individual variation on disease emergence.” _Nature_.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the short citation use the 'get_citation' function</span>
 </code></pre></div>
     </div>
