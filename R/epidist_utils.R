@@ -299,13 +299,13 @@ create_epidist_summary_stats <- function(mean = NA_real_,
                                          lower_range = NA_real_,
                                          upper_range = NA_real_,
                                          quantiles = c(
-                                           "q_2.5" = NA_real_,
-                                           "q_5" = NA_real_,
-                                           "q_25" = NA_real_,
-                                           "q_50" = NA_real_,
-                                           "q_75" = NA_real_,
-                                           "q_95" = NA_real_,
-                                           "q_97.5" = NA_real_
+                                           q_2.5 = NA_real_,
+                                           q_5 = NA_real_,
+                                           q_25 = NA_real_,
+                                           q_50 = NA_real_,
+                                           q_75 = NA_real_,
+                                           q_95 = NA_real_,
+                                           q_97.5 = NA_real_
                                          )) {
   # check input
   checkmate::assert_number(mean, na.ok = TRUE)
