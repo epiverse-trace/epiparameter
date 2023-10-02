@@ -18,9 +18,25 @@
 #' `<epidist>` object(s) desired. To subset based on multiple variables separate
 #' each expression with `&`.
 #'
+#' List of epidemiological distributions:
+#'
+#' * "all" (default, returns all entries in library)
+#' * "incubation period"
+#' * "onset to hospitalisation"
+#' * "onset to death"
+#' * "serial interval"
+#' * "generation time"
+#' * "offspring distribution"
+#' * "hospitalisation to death"
+#' * "hospitalisation to discharge"
+#' * "notification to death"
+#' * "notification to discharge"
+#' * "onset to discharge"
+#' * "onset to ventilation"
+#'
 #' @param disease A `character` string specifying the disease.
 #' @param epi_dist A `character` string specifying the epidemiological
-#' distribution.
+#' distribution. See details for full list of epidemiological distributions.
 #' @param author A `character` string specifying the author of the study
 #' reporting the distribution. Only the first author will be matched. It is
 #' recommended to use the family name as first names may or may not be
@@ -93,20 +109,23 @@
 #'   single_epidist = TRUE
 #' )
 epidist_db <- function(disease,
-                       epi_dist = c(
-                         "incubation_period",
-                         "onset_to_hospitalisation",
-                         "onset_to_death",
-                         "serial_interval",
-                         "generation_time",
-                         "offspring_distribution"
-                       ),
+                       epi_dist = "all",
                        author = NULL,
                        subset = NULL,
                        single_epidist = FALSE) {
   # check input
   checkmate::assert_string(disease)
-  epi_dist <- match.arg(arg = epi_dist, several.ok = FALSE)
+  epi_dist <- match.arg(
+    arg = epi_dist,
+    choices = c(
+      "all", "incubation period", "onset to hospitalisation", "onset to death",
+      "serial interval", "generation time", "offspring distribution",
+      "hospitalisation to death", "hospitalisation to discharge",
+      "notification to death", "notification to discharge",
+      "onset to discharge", "onset to ventilation"
+    ),
+    several.ok = FALSE
+  )
   checkmate::assert_logical(single_epidist, len = 1)
 
   # capture expression from subset and check type
@@ -120,25 +139,38 @@ epidist_db <- function(disease,
   }
 
   # read in database
-  eparam <- epiparam(epi_dist = epi_dist)
+  multi_epidist <- .read_epidist_db(epi_dist = epi_dist)
+  attrib <- attributes(multi_epidist)
 
-  if (!any(grepl(pattern = disease, x = eparam$disease, ignore.case = TRUE))) {
+  disease_db <- vapply(
+    multi_epidist, function(x) x$disease$disease,
+    FUN.VALUE = character(1)
+  )
+  if (!any(grepl(pattern = disease, x = disease_db, ignore.case = TRUE))) {
     stop(epi_dist, " distribution not available for ", disease, call. = FALSE)
   }
 
   # match disease names against data
   disease <- match.arg(
     arg = clean_disease(disease),
-    choices = clean_disease(unique(eparam$disease)),
+    choices = clean_disease(unique(disease_db)),
     several.ok = FALSE
   )
 
   # filter based on pathogen and delay distribution
-  eparam <- eparam[clean_disease(eparam$disease) == disease, ]
+  multi_epidist <- Filter(f = function(x) {
+    grepl(
+      pattern = disease,
+      x = clean_disease(x$disease$disease),
+      ignore.case = TRUE
+    )
+  }, multi_epidist)
 
   # extract study by author if given
   if (!is.null(author)) {
-    first_author <- lapply(eparam$author, "[[", 1)
+    first_author <- lapply(multi_epidist, function(x) {
+      x$citation$author[1]
+    })
     author_set <- grepl(pattern = author, x = first_author, ignore.case = TRUE)
 
     if (!any(author_set)) {
@@ -149,69 +181,67 @@ epidist_db <- function(disease,
     }
 
     # subset by authors
-    eparam <- subset(eparam, author_set)
+    multi_epidist <- subset(multi_epidist, author_set)
   }
 
   # subset by subset conditions
   if (is.call(expr)) {
-    set <- eval(expr = expr, envir = eparam, enclos = parent.frame())
-    eparam <- eparam[set, ]
+    nse_subject <- as.character(expr)[2]
+    cond_list <- lapply(multi_epidist, .is_cond_epidist, expr, nse_subject)
+    set <- vapply(cond_list, function(x) any(unlist(x)), FUN.VALUE = logical(1))
+    multi_epidist <- multi_epidist[set]
   } else if (is.function(subset)) {
-    set <- do.call(subset, args = list(eparam))
-    eparam <- eparam[set, ]
+    set <- vapply(multi_epidist, subset, FUN.VALUE = logical(1))
+    multi_epidist <- multi_epidist[set]
   }
 
-  if (nrow(eparam) == 0) {
+  attributes(multi_epidist) <- attrib
+
+  if (length(multi_epidist) == 0) {
     stop(
       "No entries in the database meet the subset criteria.",
       call. = FALSE
     )
   }
 
-  # convert epiparam to epidist
-  if (nrow(eparam) == 1) {
-    edist <- as_epidist(x = eparam)
-    validate_epidist(edist)
-  } else {
-    edist <- suppressMessages(as_epidist(x = eparam))
-    is_param <- vapply(edist, is_parameterised, FUN.VALUE = logical(1))
+  lapply(multi_epidist, validate_epidist)
+  is_param <- vapply(multi_epidist, is_parameterised, FUN.VALUE = logical(1))
 
-    if (single_epidist) {
-      # select parameterised entries
-      if (sum(is_param) >= 1) {
-        edist <- edist[is_param]
-      }
-      # select largest sample size
-      idx <- which.max(
-        vapply(
-          edist,
-          function(x) x$metadata$sample_size,
-          FUN.VALUE = numeric(1)
-        )
-      )
-      edist <- edist[[idx]]
-      validate_epidist(edist)
-
-      message(
-        "Using ", format(get_citation(edist)), ". \n",
-        "To retrieve the short citation use the 'get_citation' function"
-      )
-    } else {
-      lapply(edist, validate_epidist)
-
-      message(
-        "Returning ", nrow(eparam), " results that match the criteria ",
-        "(", sum(is_param), " are parameterised). \n",
-        "Use subset to filter by entry variables or ",
-        "single_epidist to return a single entry. \n",
-        "To retrieve the short citation for each use the ",
-        "'get_citation' function"
-      )
+  if (single_epidist) {
+    # select parameterised entries
+    if (sum(is_param) >= 1) {
+      edist <- multi_epidist[is_param]
     }
+    # select largest sample size
+    idx <- which.max(
+      vapply(
+        multi_epidist,
+        function(x) x$metadata$sample_size,
+        FUN.VALUE = numeric(1)
+      )
+    )
+    edist <- multi_epidist[[idx]]
+
+    message(
+      "Using ", format(get_citation(edist)), ". \n",
+      "To retrieve the short citation use the 'get_citation' function"
+    )
+
+    return(edist)
   }
 
+  message(
+    "Returning ", length(multi_epidist), " results that match the criteria ",
+    "(", sum(is_param), " are parameterised). \n",
+    "Use subset to filter by entry variables or ",
+    "single_epidist to return a single entry. \n",
+    "To retrieve the short citation for each use the ",
+    "'get_citation' function"
+  )
+
+
   # return epidist
-  edist
+  multi_epidist
 }
 
 #' Reads in parameter library and formats data to <epidist>
