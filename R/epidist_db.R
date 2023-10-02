@@ -214,6 +214,42 @@ epidist_db <- function(disease,
   edist
 }
 
+#' Reads in parameter library and formats data to <epidist>
+#'
+#' @inheritParams epidist_db
+#'
+#' @return `<multi_epidist>` object (i.e. a list of `<epidist>` with nicer
+#' printing)
+#' @keywords internal
+#' @noRd
+.read_epidist_db <- function(epi_dist = c(
+  "all",
+  "incubation_period",
+  "onset_to_hospitalisation",
+  "onset_to_death",
+  "serial_interval",
+  "generation_time",
+  "offspring_distribution"
+)) {
+  paramsJSON <- jsonlite::read_json(
+    path = system.file(
+      "extdata",
+      "parameters.json",
+      package = "epiparameter",
+      mustWork = TRUE
+    )
+  )
+
+  # suppress individual <epidist> constructor messages
+  multi_epidist <- suppressMessages(lapply(paramsJSON, .format_epidist))
+
+  # create and return <multi_epidist> class
+  structure(
+    multi_epidist,
+    class = "multi_epidist"
+  )
+}
+
 #' Format data from JSON database into `<epidist>` objects
 #'
 #' @param x A single entry (element/object) from the database.
