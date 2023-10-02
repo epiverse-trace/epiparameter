@@ -25,8 +25,8 @@ recommended to use the family name as first names may or may not be
 initialised.}
 
 \item{subset}{Either \code{NULL} or a valid R expressions that evaluates to
-logicals to subset the rows of \verb{<epiparam>}, or a function that can be
-applied directly to an \verb{<epiparam>} object.
+logicals to subset the list of \verb{<epidist>}, or a function that can be
+applied over a list of \verb{<epidist>} objects.
 
 This argument allows general \verb{<data.frame>} subsetting that can be combined
 with the subsetting done with the \code{disease} and \code{epidist} arguments
@@ -54,9 +54,11 @@ be returned.}
 An \verb{<epidist>} object or list of \verb{<epidist>} objects.
 }
 \description{
-Extract an \verb{<epidist>} object(s) directly from
-the library of epidemiological parameters. This bypasses the need to
-read in an \verb{<epiparam>} object and convert to an \verb{<epidist>} object.
+Extract \verb{<epidist>} object(s) directly from
+the library of epidemiological parameters. The \package{epiparameter}
+library of epidemiological parameters is compiled from primary literature
+sources. The list output from \code{\link[=epidist_db]{epidist_db()}} can be subset by disease,
+pathogen, epidemiological distribution, sample size, or region.
 
 If a distribution from a specific study is required, the \code{author} argument
 can be specified.
@@ -91,21 +93,6 @@ List of epidemiological distributions:
 }
 \examples{
 epidist_db(disease = "influenza", epi_dist = "serial_interval")
-
-# comparison between using `epidist_db()` and `epiparam()` with
-# `as_epidist()`
-
-# load influenza serial interval from database
-edist <- epidist_db(disease = "influenza", epi_dist = "serial_interval")
-
-# load database of serial intervals
-eparam <- epiparam(epi_dist = "serial_interval")
-# subset database to only influenza entries
-eparam <- eparam[clean_disease(eparam$disease) == "influenza", ]
-# convert to `epidist`
-edist2 <- as_epidist(eparam)
-# check the two methods produce the same `epidist` object
-identical(edist, edist2)
 
 # example using custom subsetting
 eparam <- epidist_db(
