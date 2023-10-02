@@ -7,8 +7,7 @@
 \usage{
 epidist_db(
   disease,
-  epi_dist = c("incubation_period", "onset_to_hospitalisation", "onset_to_death",
-    "serial_interval", "generation_time", "offspring_distribution"),
+  epi_dist = "all",
   author = NULL,
   subset = NULL,
   single_epidist = FALSE
@@ -18,7 +17,7 @@ epidist_db(
 \item{disease}{A \code{character} string specifying the disease.}
 
 \item{epi_dist}{A \code{character} string specifying the epidemiological
-distribution.}
+distribution. See details for full list of epidemiological distributions.}
 
 \item{author}{A \code{character} string specifying the author of the study
 reporting the distribution. Only the first author will be matched. It is
@@ -72,6 +71,23 @@ as these are the most common variables to subset the parameter library by.
 The \code{subset} argument facilitates all other subsetting of rows to select the
 \verb{<epidist>} object(s) desired. To subset based on multiple variables separate
 each expression with \code{&}.
+
+List of epidemiological distributions:
+\itemize{
+\item "all" (default, returns all entries in library)
+\item "incubation period"
+\item "onset to hospitalisation"
+\item "onset to death"
+\item "serial interval"
+\item "generation time"
+\item "offspring distribution"
+\item "hospitalisation to death"
+\item "hospitalisation to discharge"
+\item "notification to death"
+\item "notification to discharge"
+\item "onset to discharge"
+\item "onset to ventilation"
+}
 }
 \examples{
 epidist_db(disease = "influenza", epi_dist = "serial_interval")
