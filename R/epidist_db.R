@@ -411,3 +411,22 @@ epidist_db <- function(disease,
     uncertainty = uncertainty
   )
 }
+
+#' Check `<epidist>` based on condition
+#'
+#' @return list of logical booleans.
+#' @keywords internal
+#' @noRd
+.is_cond_epidist <- function(lst, condition, nse_subject) {
+  # check input
+  stopifnot(is_epidist(lst))
+  # apply condition to <epidist> name matching elements
+  lapply(lst, function(x) {
+    if (nse_subject %in% names(x)) {
+      # <epidist> is only nested once so no need for recursive search
+      eval(expr = condition, envir = x)
+    } else {
+      FALSE
+    }
+  })
+}
