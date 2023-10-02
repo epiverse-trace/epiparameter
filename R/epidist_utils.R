@@ -290,23 +290,9 @@ create_epidist_summary_stats <- function(mean = NA_real_,
                                            NA_real_
                                          ),
                                          median_ci = NA_real_,
-                                         dispersion = NA_real_,
-                                         dispersion_ci_limits = c(
-                                           NA_real_,
-                                           NA_real_
-                                         ),
-                                         dispersion_ci = NA_real_,
                                          lower_range = NA_real_,
                                          upper_range = NA_real_,
-                                         quantiles = c(
-                                           q_2.5 = NA_real_,
-                                           q_5 = NA_real_,
-                                           q_25 = NA_real_,
-                                           q_50 = NA_real_,
-                                           q_75 = NA_real_,
-                                           q_95 = NA_real_,
-                                           q_97.5 = NA_real_
-                                         )) {
+                                         quantiles = NA_real_) {
   # check input
   checkmate::assert_number(mean, na.ok = TRUE)
   checkmate::assert_numeric(mean_ci_limits, len = 2, any.missing = TRUE)
@@ -317,39 +303,26 @@ create_epidist_summary_stats <- function(mean = NA_real_,
   checkmate::assert_number(median, na.ok = TRUE)
   checkmate::assert_numeric(median_ci_limits, len = 2, any.missing = TRUE)
   checkmate::assert_number(median_ci, na.ok = TRUE)
-  checkmate::assert_number(dispersion, na.ok = TRUE)
-  checkmate::assert_numeric(dispersion_ci_limits, len = 2, any.missing = TRUE)
-  checkmate::assert_number(dispersion_ci, na.ok = TRUE)
   checkmate::assert_number(lower_range, na.ok = TRUE)
   checkmate::assert_number(upper_range, na.ok = TRUE)
   checkmate::assert_numeric(quantiles)
-
-  stopifnot(
-    "quantiles vector should have names with 'q_' prefix" =
-      !is.null(names(quantiles)) &&
-        all(startsWith(x = names(quantiles), prefix = "q_"))
-  )
+  if (!is.na(quantiles)) {
+    checkmate::assert_named(quantiles)
+  }
 
   # return list of summary stats
   list(
-    centre_spread = list(
-      mean = mean,
-      mean_ci_limits = mean_ci_limits,
-      mean_ci = mean_ci,
-      sd = sd,
-      sd_ci_limits = sd_ci_limits,
-      sd_ci = sd_ci,
-      median = median,
-      median_ci_limits = median_ci_limits,
-      median_ci = median_ci
-    ),
+    mean = mean,
+    mean_ci_limits = mean_ci_limits,
+    mean_ci = mean_ci,
+    sd = sd,
+    sd_ci_limits = sd_ci_limits,
+    sd_ci = sd_ci,
+    median = median,
+    median_ci_limits = median_ci_limits,
+    median_ci = median_ci,
     quantiles = quantiles,
-    range = list(lower_range = lower_range, upper_range = upper_range),
-    dispersion = list(
-      dispersion = dispersion,
-      dispersion_ci_limits = dispersion_ci_limits,
-      dispersion_ci = dispersion_ci
-    )
+    range = c(lower_range, upper_range)
   )
 }
 
@@ -585,6 +558,10 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
     return(prob_dist_params)
   }
   if (all(c("meanlog", "sdlog") %in% names(prob_dist_params))) {
+    # remove extra parameters
+    param_idx <- names(prob_dist_params) %in% c("meanlog", "sdlog")
+    prob_dist_params <- prob_dist_params[param_idx]
+
     # remove class attribute from prob_dist_params
     prob_dist_params <- unclass(prob_dist_params)
 
@@ -785,7 +762,7 @@ clean_epidist_params.default <- function(prob_dist_params) {
 #' clean_epidist_name("Incubation_period")
 clean_epidist_name <- function(epi_dist) {
   out <- gsub(pattern = "_", replacement = " ", x = epi_dist, fixed = TRUE)
-  tolower(out)
+  trimws(tolower(out))
 }
 
 #' Standardise the names of diseases
@@ -831,3 +808,4 @@ has_r_params <- function(prob_dist, prob_dist_params) {
     return(out)
   }
   return(FALSE)
+}
