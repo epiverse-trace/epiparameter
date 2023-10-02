@@ -63,9 +63,10 @@ new_epidist <- function(disease = list(),
   )
 
   # calculate parameters if not provided
-  if (!is.na(prob_dist) && anyNA(prob_dist_params) && auto_calc_params) {
+  if (!has_r_params(prob_dist, prob_dist_params) && auto_calc_params) {
     prob_dist_params <- calc_dist_params(
       prob_dist = prob_dist,
+      prob_dist_params = prob_dist_params,
       summary_stats = summary_stats,
       sample_size = metadata$sample_size
     )
@@ -282,7 +283,7 @@ epidist <- function(disease,
   checkmate::assert_list(uncertainty, names = "unique")
   checkmate::assert_list(
     summary_stats,
-    types = c("list", "double", "logical", "null"),
+    types = c("list", "double", "integer", "logical", "null"),
     names = "unique"
   )
   checkmate::assert_class(citation, classes = "bibentry")
