@@ -144,7 +144,7 @@ epidist_db <- function(disease,
     several.ok = FALSE
   )
 
-  # filter based on pathogen and delay distribution
+  # filter based on disease
   multi_epidist <- Filter(f = function(x) {
     grepl(
       pattern = disease,
@@ -239,15 +239,7 @@ epidist_db <- function(disease,
 #' printing)
 #' @keywords internal
 #' @noRd
-.read_epidist_db <- function(epi_dist = c(
-  "all",
-  "incubation_period",
-  "onset_to_hospitalisation",
-  "onset_to_death",
-  "serial_interval",
-  "generation_time",
-  "offspring_distribution"
-)) {
+.read_epidist_db <- function(epi_dist) {
   paramsJSON <- jsonlite::read_json(
     path = system.file(
       "extdata",
@@ -259,6 +251,14 @@ epidist_db <- function(disease,
 
   # suppress individual <epidist> constructor messages
   multi_epidist <- suppressMessages(lapply(paramsJSON, .format_epidist))
+
+  # filter by disease
+  if (epi_dist != "all") {
+    multi_epidist <- Filter(
+      f = function(x) x$epi_dist == epi_dist,
+      x = multi_epidist
+    )
+  }
 
   # create and return <multi_epidist> class
   structure(
@@ -355,7 +355,7 @@ epidist_db <- function(disease,
   if (length(params) == 0) {
     return(
       list(
-        params = NA,
+        params = NA_real_,
         uncertainty = create_epidist_uncertainty()
       )
     )
