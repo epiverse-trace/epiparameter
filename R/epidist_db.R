@@ -491,6 +491,24 @@ print.multi_epidist <- function(x, ...) {
           length(unique(
             vapply(x, function(y) y$disease$disease, FUN.VALUE = character(1))
           ))
+        ),
+        sprintf(
+          "  Number of delay distributions: %s",
+          sum(
+            vapply(
+              x, function(y) y$epi_dist != "offspring distribution",
+              FUN.VALUE = logical(1)
+            )
+          )
+        ),
+        sprintf(
+          "  Number of offspring distributions: %s",
+          sum(
+            vapply(
+              x, function(y) y$epi_dist == "offspring distribution",
+              FUN.VALUE = logical(1)
+            )
+          )
         )
       )
     )
