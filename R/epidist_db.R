@@ -287,3 +287,91 @@ epidist_db <- function(disease,
     notes = x$notes
   )
 }
+
+#' Format parameters and their uncertainty
+#'
+#' @param x A single entry (element/object) from the database.
+#'
+#' @return A list with parameters (`$params`) and uncertainty (`$uncertainty`).
+#' @keywords internal
+#' @noRd
+.format_params <- function(x) {
+  params <- lapply(x$probability_distribution$parameters, unlist)
+
+  # return unparameterised
+  if (length(params) == 0) {
+    return(
+      list(
+        params = NA,
+        uncertainty = create_epidist_uncertainty()
+      )
+    )
+  }
+
+  # return params without uncertainty
+  if (!any(grepl(pattern = "ci", x = names(params)))) {
+    uncertainty <- lapply(
+      vector(mode = "list", length = length(params)),
+      function(x) x <- create_epidist_uncertainty()
+    )
+    names(uncertainty) <- names(params)
+    return(
+      list(
+        params = unlist(params),
+        uncertainty = uncertainty
+      )
+    )
+  }
+
+  # add ci to params without for consistent data struct
+  params_ <- vector(mode = "list")
+  for (i in seq_along(params)) {
+    nm <- names(params)[i]
+    nms <- names(params)[grepl(pattern = nm, x = names(params))]
+    if (!any(grepl(pattern = "_ci", x = nms))) {
+      params_ci <- list(params[[i]], c(NA_real_, NA_real_), NA_real_)
+      names(params_ci) <- c(nm, paste0(nm, "_ci_limits"), paste0(nm, "_ci"))
+      params_ <- append(params_, params_ci)
+    } else {
+      params_ <- append(params_, params[i])
+    }
+  }
+  params <- params_
+
+  # params and uncertainty
+  ci_limits <- params[grepl(pattern = "ci_limits$", x = names(params))]
+  ci <- params[grepl(pattern = "ci$", x = names(params))]
+  ci_type <- switch(x$metadata$inference_method,
+                    "mle" = "confidence_interval",
+                    "bayesian" = "credible_interval",
+                    NA_character_
+  )
+
+  # separate parameters and uncertainty
+  ci_idx <- grepl(pattern = "_ci", x = names(params))
+  uncertainty <- params[ci_idx]
+  params <- params[!ci_idx]
+
+  # default uncertainty for each parameters
+  uncertainty <- lapply(
+    vector(mode = "list", length = length(params)),
+    function(x) x <- create_epidist_uncertainty()
+  )
+
+  for (i in seq_along(ci_limits)) {
+    uncertainty[[i]] <- list(
+      ci_limits = ci_limits[[i]],
+      ci = ci[[i]],
+      ci_type = ci_type
+    )
+  }
+
+  params <- unlist(params)
+  names(uncertainty) <- names(params)
+
+  # return params and uncertainty
+  list(
+    params = params,
+    uncertainty = uncertainty
+  )
+}
