@@ -14,13 +14,9 @@ create_epidist_summary_stats(
   median = NA_real_,
   median_ci_limits = c(NA_real_, NA_real_),
   median_ci = NA_real_,
-  dispersion = NA_real_,
-  dispersion_ci_limits = c(NA_real_, NA_real_),
-  dispersion_ci = NA_real_,
   lower_range = NA_real_,
   upper_range = NA_real_,
-  quantiles = c(q_2.5 = NA_real_, q_5 = NA_real_, q_25 = NA_real_, q_50 = NA_real_, q_75
-    = NA_real_, q_95 = NA_real_, q_97.5 = NA_real_)
+  quantiles = NA_real_
 )
 }
 \arguments{
@@ -50,14 +46,6 @@ interval around the median.}
 \item{median_ci}{A \code{numeric} specifying the confidence interval width
 of the median.}
 
-\item{dispersion}{A \code{numeric} of the dispersion parameter of a distribution.}
-
-\item{dispersion_ci_limits}{A \code{numeric} vector of length two of the
-confidence interval around the dispersion.}
-
-\item{dispersion_ci}{A \code{numeric} specifying the confidence interval
-width of the dispersion parameter.}
-
 \item{lower_range}{The lower range of the data, used to infer the parameters
 of the distribution when not provided.}
 
@@ -67,6 +55,14 @@ of the distribution when not provided.}
 \item{quantiles}{A \code{numeric} vector of the quantiles for the distribution.
 If quantiles are not provided a default empty vector with the 2.5th, 5th,
 25th, 75th, 95th, 97.5th quantiles are supplied.}
+
+\item{dispersion}{A \code{numeric} of the dispersion parameter of a distribution.}
+
+\item{dispersion_ci_limits}{A \code{numeric} vector of length two of the
+confidence interval around the dispersion.}
+
+\item{dispersion_ci}{A \code{numeric} specifying the confidence interval
+width of the dispersion parameter.}
 }
 \value{
 A nested list of summary statistics. The highest level are
