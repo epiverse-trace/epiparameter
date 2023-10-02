@@ -460,3 +460,40 @@ epidist_db <- function(disease,
     }
   })
 }
+
+#' Print method for `<multi_epidist>` class
+#'
+#' @param x A `<multi_epidist>` object.
+#' @inheritParams print.epidist
+#'
+#' @return Invisibly returns a `<multi_epidist>`. Called for side-effects.
+#' @export
+print.multi_epidist <- function(x, ...) {
+  if (length(x) <= 5) {
+    NextMethod()
+  } else {
+    chkDots(...)
+    writeLines(
+      c(
+        sprintf("List of <epidist> objects"),
+        sprintf("  Number of entries in library: %s", length(x)),
+        sprintf(
+          "  Number of studies in library: %s",
+          length(unique(
+            vapply(
+              x, function(y) y$citation$DOI,
+              FUN.VALUE = character(1)
+            )
+          ))
+        ),
+        sprintf(
+          "  Number of diseases: %s",
+          length(unique(
+            vapply(x, function(y) y$disease$disease, FUN.VALUE = character(1))
+          ))
+        )
+      )
+    )
+    invisible(x)
+  }
+}
