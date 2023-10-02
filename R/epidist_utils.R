@@ -798,3 +798,36 @@ clean_disease <- function(x) {
   checkmate::assert_character(x)
   gsub(pattern = "-| ", replacement = "_", x = tolower(x))
 }
+
+#' Check if the parameters match the parameterisation used in R
+#'
+#' @description Parameter names need to match exactly, vector of parameters
+#' can include others and parameters of interest can be a subset (i.e. checked
+#' using [%in%]).
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Boolean logical.
+#' @keywords internal
+#' @noRd
+has_r_params <- function(prob_dist, prob_dist_params) {
+  if (is.na(prob_dist) || anyNA(prob_dist_params)) {
+    return(FALSE)
+  }
+  if (prob_dist %in% c("gamma", "weibull")) {
+    out <- all(c("shape", "scale") %in% names(prob_dist_params))
+    return(out)
+  }
+  if (prob_dist == "lnorm") {
+    out <- all(c("meanlog", "sdlog") %in% names(prob_dist_params))
+    return(out)
+  }
+  if (prob_dist == "nbinom") {
+    out <- all(c("mean", "dispersion") %in% names(prob_dist_params))
+    return(out)
+  }
+  if (prob_dist %in% c("geom", "pois")) {
+    out <- "mean" %in% names(prob_dist_params)
+    return(out)
+  }
+  return(FALSE)
