@@ -213,3 +213,77 @@ epidist_db <- function(disease,
   # return epidist
   edist
 }
+
+#' Format data from JSON database into `<epidist>` objects
+#'
+#' @param x A single entry (element/object) from the database.
+#'
+#' @return An `<epidist>` object.
+#' @keywords internal
+#' @noRd
+.format_epidist <- function(x) {
+  # convert nulls to NA
+  null2na <- function(l) {
+    if (is.list(l)) l <- lapply(l, null2na) else if (is.null(l)) l <- NA
+    l
+  }
+  x <- lapply(x, null2na)
+
+  # format parameters and parameter uncertainty
+  params_uncertainty <- .format_params(x)
+  params <- params_uncertainty$params
+  uncertainty <- params_uncertainty$uncertainty
+
+  # format summary statistics
+  ss <- lapply(x$summary_statistics, unlist)
+  names(ss$quantile_values) <- ss$quantile_names
+  ss$quantile_names <- NULL
+  names(ss)[names(ss) == "quantile_values"] <- "quantiles"
+
+  # format citation
+  cit <- lapply(x$citation, unlist)
+  cit$PMID <- ifelse(is.null(cit$PMID), yes = NA_real_, no = cit$PMID)
+  cit <- suppressMessages(
+    create_epidist_citation(
+      author = cit$author,
+      year = cit$year,
+      title = cit$title,
+      journal = cit$journal,
+      DOI = cit$DOI,
+      PMID = cit$PMID
+    )
+  )
+
+  # format metadata
+  meta <- create_epidist_metadata()
+  meta[names(x$metadata)] <- x$metadata
+
+  # format method assessment
+  method <- create_epidist_method_assess()
+  truncation <- ifelse(
+    is.null(x$method_assessment$truncation),
+    yes = NA_real_,
+    no = x$method_assessment$truncation
+  )
+  discretised <- x$method_assessment$discretised
+  x$method_assessment[c("truncation", "discretised")] <- NULL
+  method[names(x$method_assessment)] <- x$method_assessment
+
+  # return <epidist>
+  epidist(
+    disease = x$disease,
+    pathogen = x$pathogen,
+    epi_dist = x$epi_distribution,
+    prob_distribution = x$probability_distribution$prob_distribution,
+    prob_distribution_params = params,
+    uncertainty = uncertainty,
+    summary_stats = ss,
+    auto_calc_params = TRUE,
+    citation = cit,
+    metadata = meta,
+    method_assess = method,
+    discretise = discretised,
+    truncation = truncation,
+    notes = x$notes
+  )
+}
