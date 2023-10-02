@@ -31,15 +31,6 @@
 get_percentiles <- function(percentiles) {
   # check input
   checkmate::assert_numeric(percentiles, names = "unique")
-
-  # change percentile names to give correct numbers
-  names(percentiles) <- gsub(
-    pattern = "q_",
-    replacement = "",
-    x = names(percentiles),
-    fixed = TRUE
-  )
-
   checkmate::assert_numeric(
     as.numeric(names(percentiles)),
     lower = 0,
