@@ -956,7 +956,7 @@ is_truncated <- function(x) {
 mean.epidist <- function(x, ...) {
 
   # extract mean if given
-  mean <- x$summary_stats$centre_spread$mean
+  mean <- x$summary_stats$mean
 
   # if mean is not given try and convert from parameters
   if (is.na(mean) && is_parameterised(x)) {
