@@ -2,26 +2,25 @@
 % Please edit documentation in R/checkers.R
 \name{is_parameterised}
 \alias{is_parameterised}
-\title{Check if \verb{<epidist>} or \verb{<epiparam>} object contain a distribution and
-distribution parameters}
+\title{Check if \verb{<epidist>} or list of \verb{<epidist>} objects contains a distribution
+and distribution parameters}
 \usage{
 is_parameterised(x, ...)
 }
 \arguments{
-\item{x}{An \verb{<epidist>} or \verb{<epiparam>} object.}
+\item{x}{An \verb{<epidist>} or list of \verb{<epidist>} objects.}
 
 \item{...}{\link{dots} not used, extra arguments supplied will cause a warning.}
 }
 \value{
-A single boolean \code{logical} for \verb{<epidist>} or vector of boolean
-\code{logical}s with length equal to the number of rows in the \verb{<epiparam>}.
-If the \verb{<epidist>} object or a row in the \verb{<epiparam>} is missing either
-a probability distribution or parameters for the probability distribution
-returns \code{FALSE}, otherwise it returns \code{TRUE}.
+A single boolean \code{logical} for \verb{<epidist>} or vector of \code{logical}s
+equal in length to the list of \verb{<epidist>} objects input. If the \verb{<epidist>}
+object is missing either a probability distribution or parameters for
+the probability distribution returns \code{FALSE}, otherwise it returns \code{TRUE}.
 }
 \description{
-Check if \verb{<epidist>} or \verb{<epiparam>} object contain a distribution and
-distribution parameters
+Check if \verb{<epidist>} or list of \verb{<epidist>} objects contains a distribution
+and distribution parameters
 }
 \examples{
 # parameterised <epidist>
@@ -38,5 +37,9 @@ edist <- epidist(
   disease = "ebola",
   epi_dist = "incubation"
 )
+is_parameterised(edist)
+
+# list of <epidist>
+edist <- epidist_db()
 is_parameterised(edist)
 }
