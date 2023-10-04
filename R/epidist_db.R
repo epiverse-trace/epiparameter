@@ -1,11 +1,12 @@
-#' Create an `<epidist>` object(s) directly from the epiparameter library
+#' Create `<epidist>` object(s) directly from the epiparameter library
 #' (database)
 #'
 #' @description Extract `<epidist>` object(s) directly from
 #' the library of epidemiological parameters. The \package{epiparameter}
 #' library of epidemiological parameters is compiled from primary literature
-#' sources. The list output from [epidist_db()] can be subset by disease,
-#' pathogen, epidemiological distribution, sample size, or region.
+#' sources. The list output from [epidist_db()] can be subset by the data it
+#' contains, for example by: disease, pathogen, epidemiological distribution,
+#' sample size, region, etc.
 #'
 #' If a distribution from a specific study is required, the `author` argument
 #' can be specified.
@@ -47,15 +48,25 @@
 #' logicals to subset the list of `<epidist>`, or a function that can be
 #' applied over a list of `<epidist>` objects.
 #'
-#' This argument allows general `<data.frame>` subsetting that can be combined
-#' with the subsetting done with the `disease` and `epidist` arguments
-#' (and `author` if specified). If left as `NULL` (default) no subsetting is
-#' carried out.
+#' Subsetting (using `subset`) can be combined with the subsetting done with
+#' the `disease` and `epidist` arguments (and `author` if specified). If left
+#' as `NULL` (default) no subsetting is carried out.
+#'
+#' The `subset` argument is similar to subsetting a `<data.frame>`, but the
+#' difference is that fixed comparisons and not vectorised comparisons are
+#' needed. For example `sample_size > 10` is a valid subset expression, but
+#' `sample_size == max(sample_size)`, which would be a valid subset expression
+#' for a `<data.frame>` does not work. The vectorised expression will often
+#' not error, but will likely return unexpected results. For the
+#' `sample_size == max(sample_size)` example it will always return `TRUE`
+#' (except for `NA`s) as it is a single numeric so will be equal to it's
+#' max value.
 #'
 #' The expression should be specified without using the data object name
 #' (e.g. `df$var`) and instead just `var` should be supplied. In
-#' other words, this argument works the same as the `subset` argument in
-#' [subset()]. It is similar to `<data-masking>` using by the `dplyr` package.
+#' other words, this argument uses non-standard evaluation, just as the
+#' `subset` argument in [subset()], and is similar to `<data-masking>` used
+#' by the `dplyr` package.
 #'
 #' @param single_epidist A boolean `logical` determining whether a single
 #' `<epidist>` or multiple entries from the library can be returned if
@@ -201,6 +212,10 @@ epidist_db <- function(disease = "all",
     "To retrieve the short citation for each use the ",
     "'get_citation' function"
   )
+
+  if (length(multi_epidist) == 1) {
+    multi_epidist <- multi_epidist[[1]]
+  }
 
   # return epidist
   multi_epidist
