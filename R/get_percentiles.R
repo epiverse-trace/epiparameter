@@ -11,9 +11,9 @@
 #' It also formats the vector names so that they can be correctly converted to
 #' numeric using `as.numeric()`.
 #'
-#' @details  The name format is "q_" followed by the value. Numbers with
-#' decimal places should have the decimal point in the name (e.g.
-#' `c(2.5 = 1, 97.5 = 10)`).
+#' @details  The name format is a character of the value of the percentile.
+#' Numbers with decimal places should have the decimal point in the name (e.g.
+#' `c("2.5" = 1, "97.5" = 10)`).
 #'
 #' @param percentiles A named vector of values at percentiles with the names the
 #' percentiles. See Details for the accepted vector name format.
@@ -24,9 +24,9 @@
 #' @examples
 #' \dontrun{
 #' # 90th interval
-#' get_percentiles(c(q_5 = 1, q_95 = 10))
+#' get_percentiles(c("5" = 1, "95" = 10))
 #' # 95th interval
-#' get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
+#' get_percentiles(c("2.5" = 1, "97.5" = 10))
 #' }
 get_percentiles <- function(percentiles) {
   # check input
