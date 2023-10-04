@@ -1517,11 +1517,17 @@
   "pathogen": "Monkeypox Virus",
   "epi_distribution": "offspring distribution",
   "probability_distribution": {
-    "prob_distribution": "geom",
-    "parameters": { }
+    "prob_distribution": "nbinom",
+    "parameters": {
+      "dispersion": 0.58,
+      "dispersion_ci_limits": [0.32, 3.57],
+      "dispersion_ci": 90
+    }
   },
   "summary_statistics": {
-    "mean": 0.32
+    "mean": 0.32,
+    "mean_ci_limits": [0.22, 0.40],
+    "mean_ci": 90
   },
   "citation": {
     "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
@@ -1545,18 +1551,24 @@
     "right_truncated": false,
     "phase_bias_adjusted": false
   },
-  "notes": "Only the mean for the negative binomial is reported and this is used to approximate the mean of the geometric"
+  "notes": "In the model comparison the geometric model was the better fit to the monkeypox data, however, only the parameters of the negative binomial were reported as so are stored in the database."
 },
 {
   "disease": "Pneumonic Plague",
   "pathogen": "Yersinia Pestis",
   "epi_distribution": "offspring distribution",
   "probability_distribution": {
-    "prob_distribution": "geom",
-    "parameters": { }
+    "prob_distribution": "nbinom",
+    "parameters": {
+      "dispersion": 1.37,
+      "dispersion_ci_limits": [0.88, 3.53],
+      "dispersion_ci": 90
+    }
   },
   "summary_statistics": {
-    "mean": 1.32
+    "mean": 1.32,
+    "mean_ci_limits": [1.01, 1.61],
+    "mean_ci": 90
   },
   "citation": {
     "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
@@ -1580,18 +1592,22 @@
     "right_truncated": false,
     "phase_bias_adjusted": false
   },
-  "notes": "Only the mean for the negative binomial is reported and this is used to approximate the mean of the geometric"
+  "notes": "In the model comparison the geometric model was the better fit to the Pneumonic Plague data, however, only the parameters of the negative binomial were reported as so are stored in the database."
 },
 {
   "disease": "Hantavirus Pulmonary Syndrome",
   "pathogen": "Hantavirus (Andes Virus)",
   "epi_distribution": "offspring distribution",
   "probability_distribution": {
-    "prob_distribution": "geom",
-    "parameters": { }
+    "prob_distribution": "nbinom",
+    "parameters": {
+      "dispersion": 1.66
+    }
   },
   "summary_statistics": {
-    "mean": 0.7
+    "mean": 0.7,
+    "mean_ci_limits": [0.20, 1.05],
+    "mean_ci": 90
   },
   "citation": {
     "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
@@ -1615,18 +1631,22 @@
     "right_truncated": false,
     "phase_bias_adjusted": false
   },
-  "notes": "Only the mean for the negative binomial is reported and this is used to approximate the mean of the geometric"
+  "notes": "In the model comparison the geometric model was the better fit to the Hantavirus data, however, only the parameters of the negative binomial were reported as so are stored in the database. The uncertainty for the dispersion parameter is currently not stored in the database as the upper bound for the confidence interval is infinite, and currently infinite values are not supported."
 },
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
   "epi_distribution": "offspring distribution",
   "probability_distribution": {
-    "prob_distribution": "pois",
-    "parameters": { }
+    "prob_distribution": "nbinom",
+    "parameters": {
+      "dispersion": 5.10
+    }
   },
   "summary_statistics": {
-    "mean": 1.5
+    "mean": 1.5,
+    "mean_ci_limits": [0.85, 2.08],
+    "mean_ci": 90
   },
   "citation": {
     "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
@@ -1650,7 +1670,7 @@
     "right_truncated": false,
     "phase_bias_adjusted": false
   },
-  "notes": "Only the mean for the negative binomial is reported and this is used to approximate the mean of the poisson"
+  "notes": "In the model comparison the poisson model was the better fit to the Ebola data, however, only the parameters of the negative binomial were reported as so are stored in the database. The uncertainty for the dispersion parameter is currently not stored in the database as the upper bound for the confidence interval is infinite, and currently infinite values are not supported."
 },
 {
   "disease": "Dengue",
