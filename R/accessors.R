@@ -45,32 +45,31 @@ get_parameters.epidist <- function(x, ...) {
   params
 }
 
-#' Extract citation information from `<epidist>` or `<epiparam>` objects
+#' Extract citation information from `<epidist>` or list of `<epidist>` objects
 #'
-#' @param x An `<epidist>` or `<epiparam>` object.
-#' @param ... Extra arguments to be passed to the method.
+#' @param x An `<epidist>` or list of `<epidist>` objects.
+#' @inheritParams is_parameterised
 #'
 #' @return A single character string or list of character string citations.
-#' Length of list output is equal to number of rows in the `<epiparam>` object
-#' passed to the function.
+#' Length of list output is equal to number of elements in the `<epidist>`
+#' object passed to the function.
 #' @export
 #'
 #' @examples
-#'
-#' # example with epidist
-#' eparam <- epiparam()
-#' edist <- as_epidist(eparam[12, ])
+#' # example with <epidist>
+#' edist <- epidist_db(single_epidist = TRUE)
 #' get_citation(edist)
 #'
-#' # example with epiparam
-#' eparam <- epiparam()
-#' get_citation(eparam)
+#' # example with list of <epidist>
+#' edist <- epidist_db()
+#' get_citation(edist)
 get_citation <- function(x, ...) {
   UseMethod("get_citation")
 }
 
 #' @export
 get_citation.epidist <- function(x, ...) {
+  chkDots(...)
   if (!inherits(x$citation, "bibentry")) {
     stop("Citation should be a <bibentry>", call. = FALSE)
   }
@@ -80,27 +79,9 @@ get_citation.epidist <- function(x, ...) {
 }
 
 #' @export
-get_citation.epiparam <- function(x, ...) {
-  citation_list <- apply(x,
-    MARGIN = 1, FUN = function(y) {
-      # suppressing message as users do not need reminding of citation when
-      # retrieving citation
-      suppressMessages(
-        create_epidist_citation(
-          author = y$author,
-          year = y$year,
-          title = y$title,
-          journal = y$journal,
-          DOI = y$DOI,
-          PMID = y$PMID
-        )
-      )
-    },
-    simplify = FALSE
-  )
-
-  # remove names from list
-  citation_list <- unname(citation_list)
+get_citation.multi_epidist <- function(x, ...) {
+  chkDots(...)
+  citation_list <- lapply(x, get_citation)
 
   # return citation list
   citation_list
