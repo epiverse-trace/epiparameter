@@ -24,5 +24,8 @@ Check whether the vector of parameters for the probability distribution
 are in the set of possible parameters used in the epiparameter package
 }
 \examples{
-is_epidist_params(prob_dist_params = c(shape = 2, scale = 1))
+is_epidist_params(
+  prob_dist = "gamma",
+  prob_dist_params = c(shape = 2, scale = 1)
+)
 }

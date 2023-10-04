@@ -453,7 +453,10 @@ create_epidist_method_assess <- function(censored = NA,
 #' @export
 #'
 #' @examples
-#' is_epidist_params(prob_dist_params = c(shape = 2, scale = 1))
+#' is_epidist_params(
+#'   prob_dist = "gamma",
+#'   prob_dist_params = c(shape = 2, scale = 1)
+#' )
 is_epidist_params <- function(prob_dist, prob_dist_params) {
 
   if (is.na(prob_dist) || anyNA(prob_dist_params)) {
