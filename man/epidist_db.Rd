@@ -2,11 +2,11 @@
 % Please edit documentation in R/epidist_db.R
 \name{epidist_db}
 \alias{epidist_db}
-\title{Create an \verb{<epidist>} object(s) directly from the epiparameter library
+\title{Create \verb{<epidist>} object(s) directly from the epiparameter library
 (database)}
 \usage{
 epidist_db(
-  disease,
+  disease = "all",
   epi_dist = "all",
   author = NULL,
   subset = NULL,
@@ -28,15 +28,25 @@ initialised.}
 logicals to subset the list of \verb{<epidist>}, or a function that can be
 applied over a list of \verb{<epidist>} objects.
 
-This argument allows general \verb{<data.frame>} subsetting that can be combined
-with the subsetting done with the \code{disease} and \code{epidist} arguments
-(and \code{author} if specified). If left as \code{NULL} (default) no subsetting is
-carried out.
+Subsetting (using \code{subset}) can be combined with the subsetting done with
+the \code{disease} and \code{epidist} arguments (and \code{author} if specified). If left
+as \code{NULL} (default) no subsetting is carried out.
+
+The \code{subset} argument is similar to subsetting a \verb{<data.frame>}, but the
+difference is that fixed comparisons and not vectorised comparisons are
+needed. For example \code{sample_size > 10} is a valid subset expression, but
+\code{sample_size == max(sample_size)}, which would be a valid subset expression
+for a \verb{<data.frame>} does not work. The vectorised expression will often
+not error, but will likely return unexpected results. For the
+\code{sample_size == max(sample_size)} example it will always return \code{TRUE}
+(except for \code{NA}s) as it is a single numeric so will be equal to it's
+max value.
 
 The expression should be specified without using the data object name
 (e.g. \code{df$var}) and instead just \code{var} should be supplied. In
-other words, this argument works the same as the \code{subset} argument in
-\code{\link[=subset]{subset()}}. It is similar to \verb{<data-masking>} using by the \code{dplyr} package.}
+other words, this argument uses non-standard evaluation, just as the
+\code{subset} argument in \code{\link[=subset]{subset()}}, and is similar to \verb{<data-masking>} used
+by the \code{dplyr} package.}
 
 \item{single_epidist}{A boolean \code{logical} determining whether a single
 \verb{<epidist>} or multiple entries from the library can be returned if
@@ -57,8 +67,9 @@ An \verb{<epidist>} object or list of \verb{<epidist>} objects.
 Extract \verb{<epidist>} object(s) directly from
 the library of epidemiological parameters. The \package{epiparameter}
 library of epidemiological parameters is compiled from primary literature
-sources. The list output from \code{\link[=epidist_db]{epidist_db()}} can be subset by disease,
-pathogen, epidemiological distribution, sample size, or region.
+sources. The list output from \code{\link[=epidist_db]{epidist_db()}} can be subset by the data it
+contains, for example by: disease, pathogen, epidemiological distribution,
+sample size, region, etc.
 
 If a distribution from a specific study is required, the \code{author} argument
 can be specified.
