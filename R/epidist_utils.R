@@ -499,12 +499,6 @@ clean_epidist_params <- function(prob_dist_params, ...) {
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.gamma <- function(prob_dist_params) {
-  # if unparameterised return named vector of NAs
-  if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(shape = NA_real_, scale = NA_real_)
-    return(prob_dist_params)
-  }
-
   # if shape and rate are provided convert to shape and scale
   if (all(c("shape", "rate") %in% names(prob_dist_params))) {
     prob_dist_params[["rate"]] <- 1 / prob_dist_params[["rate"]]
@@ -538,12 +532,6 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.lnorm <- function(prob_dist_params) {
-  # if unparameterised return named vector of NAs
-  if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(meanlog = NA_real_, sdlog = NA_real_)
-    return(prob_dist_params)
-  }
-
   # if mu and sigma are provided convert to meanlog and sdlog
   if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
     # find index so parameters can be in any order
@@ -582,12 +570,6 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.weibull <- function(prob_dist_params) {
-  # if unparameterised return named vector of NAs
-  if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(shape = NA_real_, scale = NA_real_)
-    return(prob_dist_params)
-  }
-
   if (all(c("shape", "scale") %in% names(prob_dist_params))) {
     # remove class attribute from prob_dist_params
     prob_dist_params <- unclass(prob_dist_params)
@@ -609,12 +591,6 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.nbinom <- function(prob_dist_params) {
-  # if unparameterised return named vector of NAs
-  if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(mean = NA_real_, dispersion = NA_real_)
-    return(prob_dist_params)
-  }
-
   if (all(c("n", "p") %in% names(prob_dist_params))) {
     # convert prob to mean
     prob_dist_params[["p"]] <- convert_params_to_summary_stats(
@@ -658,12 +634,6 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.geom <- function(prob_dist_params) {
-  # if unparameterised return named NA
-  if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(prob = NA_real_)
-    return(prob_dist_params)
-  }
-
   # if mean is provided convert to prob
   if ("mean" %in% names(prob_dist_params)) {
     prob_dist_params[["mean"]] <- 1 / prob_dist_params[["mean"]]
@@ -712,12 +682,6 @@ clean_epidist_params.geom <- function(prob_dist_params) {
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.pois <- function(prob_dist_params) {
-  # if unparameterised return named NA
-  if (isTRUE(is.na(prob_dist_params))) {
-    prob_dist_params <- c(mean = NA_real_)
-    return(prob_dist_params)
-  }
-
   if (names(prob_dist_params) %in% c("mean", "l")) {
     names(prob_dist_params) <- "mean"
 
