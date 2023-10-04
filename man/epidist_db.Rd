@@ -65,7 +65,7 @@ An \verb{<epidist>} object or list of \verb{<epidist>} objects.
 }
 \description{
 Extract \verb{<epidist>} object(s) directly from
-the library of epidemiological parameters. The \package{epiparameter}
+the library of epidemiological parameters. The epiparameter
 library of epidemiological parameters is compiled from primary literature
 sources. The list output from \code{\link[=epidist_db]{epidist_db()}} can be subset by the data it
 contains, for example by: disease, pathogen, epidemiological distribution,

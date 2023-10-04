@@ -2,7 +2,7 @@
 #' (database)
 #'
 #' @description Extract `<epidist>` object(s) directly from
-#' the library of epidemiological parameters. The \package{epiparameter}
+#' the library of epidemiological parameters. The epiparameter
 #' library of epidemiological parameters is compiled from primary literature
 #' sources. The list output from [epidist_db()] can be subset by the data it
 #' contains, for example by: disease, pathogen, epidemiological distribution,
@@ -230,7 +230,7 @@ epidist_db <- function(disease = "all",
 #' @keywords internal
 #' @noRd
 .read_epidist_db <- function() {
-  paramsJSON <- jsonlite::read_json(
+  params_json <- jsonlite::read_json(
     path = system.file(
       "extdata",
       "parameters.json",
@@ -240,7 +240,7 @@ epidist_db <- function(disease = "all",
   )
 
   # suppress individual <epidist> constructor messages
-  multi_epidist <- suppressMessages(lapply(paramsJSON, .format_epidist))
+  multi_epidist <- suppressMessages(lapply(params_json, .format_epidist))
 
   # create and return <multi_epidist> class
   structure(
