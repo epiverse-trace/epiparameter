@@ -2,31 +2,29 @@
 % Please edit documentation in R/accessors.R
 \name{get_citation}
 \alias{get_citation}
-\title{Extract citation information from \verb{<epidist>} or \verb{<epiparam>} objects}
+\title{Extract citation information from \verb{<epidist>} or list of \verb{<epidist>} objects}
 \usage{
 get_citation(x, ...)
 }
 \arguments{
-\item{x}{An \verb{<epidist>} or \verb{<epiparam>} object.}
+\item{x}{An \verb{<epidist>} or list of \verb{<epidist>} objects.}
 
-\item{...}{Extra arguments to be passed to the method.}
+\item{...}{\link{dots} not used, extra arguments supplied will cause a warning.}
 }
 \value{
 A single character string or list of character string citations.
-Length of list output is equal to number of rows in the \verb{<epiparam>} object
-passed to the function.
+Length of list output is equal to number of elements in the \verb{<epidist>}
+object passed to the function.
 }
 \description{
-Extract citation information from \verb{<epidist>} or \verb{<epiparam>} objects
+Extract citation information from \verb{<epidist>} or list of \verb{<epidist>} objects
 }
 \examples{
-
-# example with epidist
-eparam <- epiparam()
-edist <- as_epidist(eparam[12, ])
+# example with <epidist>
+edist <- epidist_db(single_epidist = TRUE)
 get_citation(edist)
 
-# example with epiparam
-eparam <- epiparam()
-get_citation(eparam)
+# example with list of <epidist>
+edist <- epidist_db()
+get_citation(edist)
 }
