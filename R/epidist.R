@@ -425,7 +425,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
       c(
         sprintf("Disease: %s", x$disease$disease),
         sprintf("Pathogen: %s", x$disease$pathogen),
-        sprintf("Epi Distribution: %s", clean_epidist_name(x$epi_dist)),
+        sprintf("Epi Distribution: %s", clean_epi_dist(x$epi_dist)),
         sprintf("Study: %s", format(x$citation))
       )
     )
