@@ -367,7 +367,12 @@ validate_epidist <- function(epidist) {
         is.list(epidist$metadata)
       ),
     "epidist must contain a citation" =
-      inherits(epidist$citation, "bibentry")
+      inherits(epidist$citation, "bibentry"),
+    "epidist distribution must be either <distribution> or <distcrete>" =
+      inherits(epidist$prob_dist, c("distribution", "distcrete")) ||
+        is.na(epidist$prob_dist) || is.character(epidist$prob_dist),
+    "epidist notes must be a character string" =
+      is.character(epidist$notes) && length(epidist$notes) == 1
   )
 
   invisible(epidist)
