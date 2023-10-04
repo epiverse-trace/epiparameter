@@ -753,16 +753,17 @@ clean_epidist_params.default <- function(prob_dist_params) {
 
 #' Standardise the names of epidemiological distributions
 #'
-#' @param epi_dist A `character` string with the name of the distribution.
+#' @param x A `character` string with the name of the distribution.
 #'
 #' @return A `character` vector of equal length to the input.
 #' @export
 #'
 #' @examples
-#' clean_epidist_name("Incubation_period")
-clean_epidist_name <- function(epi_dist) {
-  out <- gsub(pattern = "_", replacement = " ", x = epi_dist, fixed = TRUE)
-  trimws(tolower(out))
+#' clean_epi_dist("Incubation_period")
+clean_epi_dist <- function(x) {
+  checkmate::assert_character(x)
+  gsub(pattern = "_|-", replacement = " ", x = trimws(tolower(x)))
+
 }
 
 #' Standardise the names of diseases
@@ -773,5 +774,5 @@ clean_epidist_name <- function(epi_dist) {
 #' @export
 clean_disease <- function(x) {
   checkmate::assert_character(x)
-  gsub(pattern = "-| ", replacement = "_", x = tolower(x))
+  gsub(pattern = "_|-", replacement = " ", x = trimws(tolower(x)))
 }
