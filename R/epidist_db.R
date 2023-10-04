@@ -95,24 +95,14 @@
 #'   epi_dist = "offspring_distribution",
 #'   single_epidist = TRUE
 #' )
-epidist_db <- function(disease,
+epidist_db <- function(disease = "all",
                        epi_dist = "all",
                        author = NULL,
                        subset = NULL,
                        single_epidist = FALSE) {
   # check input
   checkmate::assert_string(disease)
-  epi_dist <- match.arg(
-    arg = epi_dist,
-    choices = c(
-      "all", "incubation period", "onset to hospitalisation", "onset to death",
-      "serial interval", "generation time", "offspring distribution",
-      "hospitalisation to death", "hospitalisation to discharge",
-      "notification to death", "notification to discharge",
-      "onset to discharge", "onset to ventilation"
-    ),
-    several.ok = FALSE
-  )
+  checkmate::assert_string(epi_dist)
   checkmate::assert_logical(single_epidist, len = 1)
 
   # capture expression from subset and check type
@@ -126,32 +116,14 @@ epidist_db <- function(disease,
   }
 
   # read in database
-  multi_epidist <- .read_epidist_db(epi_dist = epi_dist)
+  multi_epidist <- .read_epidist_db()
   attrib <- attributes(multi_epidist)
 
-  disease_db <- vapply(
-    multi_epidist, function(x) x$disease$disease,
-    FUN.VALUE = character(1)
+  multi_epidist <- .filter_epidist_db(
+    multi_epidist = multi_epidist,
+    disease = disease,
+    epi_dist = epi_dist
   )
-  if (!any(grepl(pattern = disease, x = disease_db, ignore.case = TRUE))) {
-    stop(epi_dist, " distribution not available for ", disease, call. = FALSE)
-  }
-
-  # match disease names against data
-  disease <- match.arg(
-    arg = clean_disease(disease),
-    choices = clean_disease(unique(disease_db)),
-    several.ok = FALSE
-  )
-
-  # filter based on disease
-  multi_epidist <- Filter(f = function(x) {
-    grepl(
-      pattern = disease,
-      x = clean_disease(x$disease$disease),
-      ignore.case = TRUE
-    )
-  }, multi_epidist)
 
   # extract study by author if given
   if (!is.null(author)) {
@@ -161,8 +133,11 @@ epidist_db <- function(disease,
     author_set <- grepl(pattern = author, x = first_author, ignore.case = TRUE)
 
     if (!any(author_set)) {
+      disease_str <- ifelse(
+        test = disease == "all", yes = "", no = paste(" for", disease)
+      )
       stop(
-        "Parameters by ", author, " are not available for ", disease,
+        "Parameters by ", author, " are not available", disease_str,
         call. = FALSE
       )
     }
@@ -176,6 +151,7 @@ epidist_db <- function(disease,
     nse_subject <- as.character(expr)[2]
     cond_list <- lapply(multi_epidist, .is_cond_epidist, expr, nse_subject)
     set <- vapply(cond_list, function(x) any(unlist(x)), FUN.VALUE = logical(1))
+    set[is.na(set)] <- FALSE
     multi_epidist <- multi_epidist[set]
   } else if (is.function(subset)) {
     set <- vapply(multi_epidist, subset, FUN.VALUE = logical(1))
@@ -186,7 +162,7 @@ epidist_db <- function(disease,
 
   if (length(multi_epidist) == 0) {
     stop(
-      "No entries in the database meet the subset criteria.",
+      "No entries in the database meet the search criteria.",
       call. = FALSE
     )
   }
@@ -226,7 +202,6 @@ epidist_db <- function(disease,
     "'get_citation' function"
   )
 
-
   # return epidist
   multi_epidist
 }
@@ -239,7 +214,7 @@ epidist_db <- function(disease,
 #' printing)
 #' @keywords internal
 #' @noRd
-.read_epidist_db <- function(epi_dist) {
+.read_epidist_db <- function() {
   paramsJSON <- jsonlite::read_json(
     path = system.file(
       "extdata",
@@ -252,19 +227,86 @@ epidist_db <- function(disease,
   # suppress individual <epidist> constructor messages
   multi_epidist <- suppressMessages(lapply(paramsJSON, .format_epidist))
 
-  # filter by disease
-  if (epi_dist != "all") {
-    multi_epidist <- Filter(
-      f = function(x) x$epi_dist == epi_dist,
-      x = multi_epidist
-    )
-  }
-
   # create and return <multi_epidist> class
   structure(
     multi_epidist,
     class = "multi_epidist"
   )
+}
+
+#' Filter a list of `<epidist>` objects by disease and epi distribution
+#'
+#' @param multi_epidist A list of `<epidist>` objects.
+#' @inheritParams epidist_db
+#'
+#' @return A list of `<epidist>` objects.
+#' @keywords internal
+#' @noRd
+.filter_epidist_db <- function(multi_epidist, disease, epi_dist) {
+  # copy of user input
+  disease_ <- disease
+  epi_dist_ <- epi_dist
+
+  # clean input strings
+  disease <- clean_disease(disease)
+  epi_dist <- clean_epi_dist(epi_dist)
+
+  # get valid options from db
+  disease_db <- vapply(
+    multi_epidist, function(x) x$disease$disease,
+    FUN.VALUE = character(1)
+  )
+  epi_dist_db <- vapply(
+    multi_epidist, function(x) x$epi_dist,
+    FUN.VALUE = character(1)
+  )
+  disease_db <- c("all", clean_disease(unique(disease_db)))
+  epi_dist_db <- c("all", clean_epi_dist(unique(epi_dist_db)))
+
+  # partial matching and custom error msg
+  tryCatch(
+    error = function(cnd) {
+      disease_str <- ifelse(
+        test = disease == "all", yes = "", no = paste(" for", disease_)
+      )
+      epi_dist_str <- ifelse(test = epi_dist == "all", yes = "", no = epi_dist_)
+      stop(
+        epi_dist_str, " distribution not available", disease_str,
+        call. = FALSE
+      )
+    },
+    {
+      disease <- match.arg(
+        arg = disease,
+        choices = disease_db,
+        several.ok = FALSE
+      )
+      epi_dist <- match.arg(
+        arg = epi_dist,
+        choices = epi_dist_db,
+        several.ok = FALSE
+      )
+    }
+  )
+
+  # filter based on disease
+  if (disease != "all") {
+    multi_epidist <- Filter(
+      f = function(x) clean_disease(x$disease$disease) == disease,
+      x = multi_epidist
+    )
+  }
+
+  # filter by epi dist
+  if (epi_dist != "all") {
+    multi_epidist <- Filter(
+      f = function(x) clean_epi_dist(x$epi_dist) == epi_dist,
+      x = multi_epidist
+    )
+  }
+
+  # return multi_epidist
+  multi_epidist
 }
 
 #' Format data from JSON database into `<epidist>` objects
