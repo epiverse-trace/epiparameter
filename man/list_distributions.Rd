@@ -2,35 +2,25 @@
 % Please edit documentation in R/list_distributions.R
 \name{list_distributions}
 \alias{list_distributions}
-\title{List epidemiological distributions stored in an \code{epiparam} object}
+\title{List epidemiological distributions stored in the epiparameter library}
 \usage{
-list_distributions(
-  epiparam,
-  epi_dist = c("incubation_period", "onset_to_hospitalisation", "onset_to_death",
-    "serial_interval", "generation_time", "offspring_distribution"),
-  subset_db = TRUE
-)
+list_distributions(disease = "all", epi_dist = "all", ..., multi_epidist)
 }
 \arguments{
-\item{epiparam}{An \verb{<epiparam>} object.}
+\item{disease}{A \code{character} string with name of the infectious disease.}
 
-\item{epi_dist}{A character defining parameter to be listed:
-\code{"incubation"}, \code{"onset_to_hospitalisation"}, \code{"onset_to_death"}, or
-\code{"serial_interval"}. \code{"incubation_period"} is the default \code{epi_dist} so if no
-\code{epi_dist} is specified the incubation periods will be returned.}
+\item{epi_dist}{A \code{character} string with the name of the
+epidemiological distribution type.}
 
-\item{subset_db}{A boolean logical that determines whether a subset, defaults
-is TRUE.}
+\item{multi_epidist}{Either an \verb{<epidist>} object or a list of \verb{<epidist>}
+objects.}
 }
 \description{
-This function subsets an \code{epiparam} object to return only the
-chosen epidemiological distribution. The results are returned as a data
-frame to better see all of the returned distributions.
-
-By default the resulting data frame is subset to only return the disease,
-epidemiological distribution, probability distribution, author of the study
-and the year of publication as well as the sample size of the study. If the
-all columns of the database are required set \code{subset_db = FALSE}.
+This function subsets the epidemiological parameter library to
+return only the chosen epidemiological distribution. The results are
+returned as a data frame containing the disease, epidemiological
+distribution, probability distribution, author of the study, and the year
+of publication.
 }
 \details{
 The \verb{<data.frame>} returned by \code{\link[=list_distributions]{list_distributions()}} contains some
@@ -38,18 +28,16 @@ vector columns and some list columns. For example, the \code{author} column is a
 list as each paper can contain multiple authors.
 }
 \examples{
-eparam <- epiparam()
-list_distributions(epiparam = eparam, epi_dist = "incubation_period")
-# the default for list_distributions() without any arguments is to return the
-# incubation period
-list_distributions(epiparam = eparam)
-# this same process can be achieved when loading the library
-eparam <- epiparam(epi_dist = "incubation_period")
+list_distributions(disease = "COVID-19", epi_dist = "incubation_period")
 
-# filtering for onset to death
-list_distributions(epiparam = eparam, epi_dist = "onset_to_death")
+# example using list of `<epidist>` objects in memory
+epidist_lst <- epidist_db(disease = "COVID-19")
+list_distributions(multi_epidist = epidist_lst)
+
+# example filtering an existing list to incubation periods
+epidist_lst <- epidist_db(disease = "COVID-19")
+list_distributions(multi_epidist = epidist_lst, epi_dist = "incubation period")
 }
 \author{
 Adam Kucharski, Joshua W. Lambert
 }
-\keyword{distributions}
