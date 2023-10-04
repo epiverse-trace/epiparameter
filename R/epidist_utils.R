@@ -454,38 +454,38 @@ create_epidist_method_assess <- function(censored = NA,
 #'
 #' @examples
 #' is_epidist_params(prob_dist_params = c(shape = 2, scale = 1))
-is_epidist_params <- function(prob_dist_params) {
+is_epidist_params <- function(prob_dist, prob_dist_params) {
+
+  if (is.na(prob_dist) || anyNA(prob_dist_params)) {
+    return(FALSE)
+  }
+
   # check input
   checkmate::assert_numeric(
     prob_dist_params,
     min.len = 1,
-    max.len = 2,
     names = "unique"
   )
 
   # create dictionary of valid parameter combinations
   possible_params <- list(
-    c("shape", "scale"),
-    c("shape", "rate"),
-    c("meanlog", "sdlog"),
-    c("mu", "sigma"),
-    "mean",
-    "prob",
-    c("mean", "dispersion"),
-    c("mean", "k")
+    gamma = list(c("shape", "scale"), c("shape", "rate")),
+    weibull = list(c("shape", "scale")),
+    lnorm = list(c("meanlog", "sdlog"), c("mu", "sigma")),
+    nbinom = list(c("mean", "dispersion"), c("mean", "k"), c("n", "p")),
+    geom = list("mean", "p", "prob"),
+    pois = list("mean", "l")
   )
+  possible_params <- possible_params[[prob_dist]]
 
   # check whether any combinations are valid
   matches <- vapply(
-    possible_params,
-    setequal,
-    y = names(prob_dist_params),
+    possible_params, setequal, y = names(prob_dist_params),
     FUN.VALUE = logical(1)
   )
-  is_valid_params <- any(matches)
 
-  # return check result
-  is_valid_params
+  # return whether check for valid params result
+  any(matches)
 }
 
 clean_epidist_params <- function(prob_dist_params, ...) {
@@ -774,38 +774,4 @@ clean_epidist_name <- function(epi_dist) {
 clean_disease <- function(x) {
   checkmate::assert_character(x)
   gsub(pattern = "-| ", replacement = "_", x = tolower(x))
-}
-
-#' Check if the parameters match the parameterisation used in R
-#'
-#' @description Parameter names need to match exactly, vector of parameters
-#' can include others and parameters of interest can be a subset (i.e. checked
-#' using [%in%]).
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Boolean logical.
-#' @keywords internal
-#' @noRd
-has_r_params <- function(prob_dist, prob_dist_params) {
-  if (is.na(prob_dist) || anyNA(prob_dist_params)) {
-    return(FALSE)
-  }
-  if (prob_dist %in% c("gamma", "weibull")) {
-    out <- all(c("shape", "scale") %in% names(prob_dist_params))
-    return(out)
-  }
-  if (prob_dist == "lnorm") {
-    out <- all(c("meanlog", "sdlog") %in% names(prob_dist_params))
-    return(out)
-  }
-  if (prob_dist == "nbinom") {
-    out <- all(c("mean", "dispersion") %in% names(prob_dist_params))
-    return(out)
-  }
-  if (prob_dist %in% c("geom", "pois")) {
-    out <- "mean" %in% names(prob_dist_params)
-    return(out)
-  }
-  return(FALSE)
 }
