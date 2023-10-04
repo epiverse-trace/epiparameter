@@ -62,8 +62,22 @@ new_epidist <- function(disease = list(),
         identical(names(prob_dist_params), names(uncertainty))
   )
 
-  # calculate parameters if not provided
-  if (!has_r_params(prob_dist, prob_dist_params) && auto_calc_params) {
+  # include mean in prob_dist_params
+  if (!is.null(summary_stats$mean) && !is.na(summary_stats$mean)) {
+    prob_dist_params <- c(
+      prob_dist_params[!is.na(prob_dist_params)],
+      mean = summary_stats$mean
+    )
+  }
+
+  if (is_epidist_params(prob_dist, prob_dist_params)) {
+    # standardise common distribution parameters
+    class(prob_dist_params) <- prob_dist
+    prob_dist_params <- clean_epidist_params(
+      prob_dist_params = prob_dist_params
+    )
+  } else if (auto_calc_params) {
+    # calculate parameters if not provided
     prob_dist_params <- calc_dist_params(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params,
@@ -75,20 +89,6 @@ new_epidist <- function(disease = list(),
   if (anyNA(prob_dist_params)) {
     message("Unparameterised <epidist> object")
   } else {
-    # standardise distribution parameter names
-    class(prob_dist_params) <- prob_dist
-    prob_dist_params <- clean_epidist_params(
-      prob_dist_params = prob_dist_params
-    )
-
-    # check the params
-    checkmate::assert_numeric(prob_dist_params, names = "unique")
-    stopifnot(
-      "distribution parameters must have valid names,
-       see epidist() documentation for valid names" =
-        is_epidist_params(prob_dist_params)
-    )
-
     # create a S3 object holding the probability distribution
     prob_dist <- create_prob_dist(
       prob_dist = prob_dist,
