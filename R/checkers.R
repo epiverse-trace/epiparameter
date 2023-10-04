@@ -1,15 +1,13 @@
-#' Check if `<epidist>` or `<epiparam>` object contain a distribution and
-#' distribution parameters
+#' Check if `<epidist>` or list of `<epidist>` objects contains a distribution
+#' and distribution parameters
 #'
-#'
-#' @param x An `<epidist>` or `<epiparam>` object.
+#' @param x An `<epidist>` or list of `<epidist>` objects.
 #' @param ... [dots] not used, extra arguments supplied will cause a warning.
 #'
-#' @return A single boolean `logical` for `<epidist>` or vector of boolean
-#' `logical`s with length equal to the number of rows in the `<epiparam>`.
-#' If the `<epidist>` object or a row in the `<epiparam>` is missing either
-#' a probability distribution or parameters for the probability distribution
-#' returns `FALSE`, otherwise it returns `TRUE`.
+#' @return A single boolean `logical` for `<epidist>` or vector of `logical`s
+#' equal in length to the list of `<epidist>` objects input. If the `<epidist>`
+#' object is missing either a probability distribution or parameters for
+#' the probability distribution returns `FALSE`, otherwise it returns `TRUE`.
 #' @export
 #'
 #' @examples
@@ -28,44 +26,12 @@
 #'   epi_dist = "incubation"
 #' )
 #' is_parameterised(edist)
+#'
+#' # list of <epidist>
+#' edist <- epidist_db()
+#' is_parameterised(edist)
 is_parameterised <- function(x, ...) {
   UseMethod("is_parameterised")
-}
-
-#' @export
-is_parameterised.epiparam <- function(x, ...) {
-  chkDots(...)
-
-  has_params <- vapply(
-    as.data.frame(t(x)),
-    FUN = function(y) {
-      if (is.na(y$prob_distribution)) {
-        return(FALSE)
-      }
-      if (y$prob_distribution %in% c("gamma", "weibull")) {
-        out <- !is.na(y$shape) && !is.na(y$scale)
-        return(out)
-      }
-      if (y$prob_distribution == "lnorm") {
-        out <- !is.na(y$meanlog) && !is.na(y$sdlog)
-        return(out)
-      }
-      if (y$prob_distribution == "nbinom") {
-        out <- !is.na(y$mean) && !is.na(y$dispersion)
-        return(out)
-      }
-      if (y$prob_distribution %in% c("geom", "pois")) {
-        out <- !is.na(y$mean)
-        return(out)
-      }
-      return(FALSE)
-    },
-    FUN.VALUE = logical(1),
-    USE.NAMES = FALSE
-  )
-
-  # return result
-  has_params
 }
 
 #' @export
@@ -78,4 +44,12 @@ is_parameterised.epidist <- function(x, ...) {
   }
 
   return(FALSE)
+}
+
+#' @export
+is_parameterised.multi_epidist <- function(x, ...) {
+  chkDots(...)
+
+  # return logical vector
+  vapply(x, is_parameterised, FUN.VALUE = logical(1))
 }
