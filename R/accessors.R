@@ -47,7 +47,6 @@ get_parameters.epidist <- function(x, ...) {
 
 #' Extract citation information from `<epidist>` or list of `<epidist>` objects
 #'
-#' @param x An `<epidist>` or list of `<epidist>` objects.
 #' @inheritParams is_parameterised
 #'
 #' @return A single character string or list of character string citations.
