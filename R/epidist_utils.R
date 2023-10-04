@@ -306,7 +306,7 @@ create_epidist_summary_stats <- function(mean = NA_real_,
   checkmate::assert_number(lower_range, na.ok = TRUE)
   checkmate::assert_number(upper_range, na.ok = TRUE)
   checkmate::assert_numeric(quantiles)
-  if (!is.na(quantiles)) {
+  if (!all(is.na(quantiles))) {
     checkmate::assert_named(quantiles)
   }
 
