@@ -34,7 +34,7 @@
 #' calc_dist_params(
 #'   prob_dist = "gamma",
 #'   summary_stats = create_epidist_summary_stats(
-#'     quantiles = c(q_2.5 = 0.2, q_97.5 = 9.2)
+#'     quantiles = c("2.5" = 0.2, "97.5" = 9.2)
 #'   ),
 #'   sample_size = NA
 #' )
@@ -50,7 +50,7 @@
 calc_dist_params <- function(prob_dist,
                              prob_dist_params,
                              summary_stats,
-                             sample_size = NA) {
+                             sample_size) {
   if (is.na(prob_dist)) {
     message(
       "No adequate summary statistics available to calculate the parameters ",
@@ -58,7 +58,8 @@ calc_dist_params <- function(prob_dist,
     )
     return(NA)
   }
-  if (!is.null(summary_stats$quantiles)) {
+
+  if (!is.null(summary_stats$quantiles) && any(!is.na(summary_stats$quantiles))) {
     # convert percentile names to numbers
     percentiles <- get_percentiles(summary_stats$quantiles)
   } else {
@@ -73,10 +74,13 @@ calc_dist_params <- function(prob_dist,
 
   # extract dispersion
   disp <- unname(prob_dist_params[names(prob_dist_params) == "dispersion"])
+  median_disp <- c(median = summary_stats$median, dispersion = disp)
+
+  # extract mean and sd
+  mean_sd <- c(summary_stats$mean, summary_stats$sd)
 
   # convert from mean and sd
-  if (is.numeric(summary_stats$mean) && is.numeric(summary_stats$sd)) {
-    # unlist and remove NAs
+  if (all(is.numeric(mean_sd)) && !anyNA(mean_sd) && length(mean_sd) == 2) {
     summary_stats_ <- unlist(summary_stats)
     summary_stats_ <- summary_stats_[!is.na(summary_stats_)]
     # remove name prefixes from unlisting
@@ -97,7 +101,7 @@ calc_dist_params <- function(prob_dist,
       convert_summary_stats_to_params,
       args = args
     ))
-  } else if (is.numeric(summary_stats$median) && is.numeric(disp)) {
+  } else if (all(is.numeric(median_disp) && length(median_disp) == 2)) {
     med <- summary_stats$median
     meanlog <- log(med / sqrt(1 + disp^2))
     sdlog <- sqrt(log(1 + disp^2))
@@ -112,7 +116,7 @@ calc_dist_params <- function(prob_dist,
       percentiles = as.numeric(names(percentiles)) / 100
     )
   } else if (all(is.numeric(median_range)) && length(median_range) == 3 &&
-             !is.na(sample_size)) {
+    !is.na(sample_size)) {
     prob_dist_params <- extract_param(
       type = "range",
       values = median_range,
