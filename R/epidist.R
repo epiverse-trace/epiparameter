@@ -137,8 +137,7 @@ new_epidist <- function(disease = list(),
 #' plug into epidemiological pipelines. Obtaining an `<epidist>` object can be
 #' achieved in two main ways:
 #' 1. The epidemiological distribution is stored in
-#' the `{epiparameter}` library and can be accessed by [epiparam()] and
-#' [as_epidist()].
+#' the `{epiparameter}` library and can be accessed by [epidist_db()].
 #' 2. The alternative method is when you have information
 #' (e.g. disease and distribution parameter estimates) and would like to input
 #' this into an `<epidist>` object in order to work in existing analysis
