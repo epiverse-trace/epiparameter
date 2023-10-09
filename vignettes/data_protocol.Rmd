@@ -20,11 +20,15 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r, load-epiparameter, echo=FALSE}
+library(epiparameter)
+```
+
 ## About the package
 
-The [`{epiparameter}` R package](https://github.com/epiverse-trace/epiparameter) contains a library of epidemiological distribution data and functions that read and handle this data. The delay distributions describe the time between two events in epidemiology, for example incubation period, serial interval and onset-to-death; while the offspring distributions describe the number of secondary infections from a primary infection in disease transmission. The library is compiled by a process of collecting, reviewing and extracting data from peer-reviewed literature[^1], including research articles, systematic reviews and meta-analyses. 
+The [`{epiparameter}` R package](https://github.com/epiverse-trace/epiparameter) contains a library of epidemiological parameter data and functions that read and handle this data. The delay distributions describe the time between two events in epidemiology, for example incubation period, serial interval and onset-to-death; while the offspring distributions describe the number of secondary infections from a primary infection in disease transmission. The library is compiled by a process of collecting, reviewing and extracting data from peer-reviewed literature[^1], including research articles, systematic reviews and meta-analyses. 
 
-The `{epiparameter}` package will act as a 'living systematic review' (*sensu* @elliottLivingSystematicReviews2014) which will be actively updated and maintained to provide a reliable source of data on epidemiological distributions. To prevent bias in the collection or assessment of the data, a well-defined methodology of searching and refining is required. This document aims to provide transparency on the methodology used by the `{epiparameter}` maintainers by outlining the steps taken at each stage of the data handling. It can also serve as a guide to contributors wanting to search and provide epidemiological parameters currently missing from the library. Contributions can be added to [this google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing). This protocol should also facilitate reproducibility in the searches, results and appraisal steps.
+The `{epiparameter}` package will act as a 'living systematic review' (*sensu* @elliottLivingSystematicReviews2014) which will be actively updated and maintained to provide a reliable source of data on epidemiological distributions. To prevent bias in the collection or assessment of the data, a well-defined methodology of searching and refining is required. This document aims to provide transparency on the methodology used by the `{epiparameter}` maintainers by outlining the steps taken at each stage of the data handling. It can also serve as a guide to contributors wanting to search and provide epidemiological parameters currently missing from the library. This protocol should also facilitate reproducibility in the searches, results and appraisal steps.
 
 There is a large body of work on the methods to best conduct literature searches and data collection as part of systematic reviews and meta-analyses[^2], which we use as the basis for our protocol. These sources are: 
 
@@ -33,19 +37,26 @@ There is a large body of work on the methods to best conduct literature searches
 
 ## Objective of `{epiparameter}`
 
-As defined by the PRISMA guidelines, having a clearly stated objective helps to refine the goal of the project. `{epiparameter}`'s objective is to provide a collection of distributions for a range of infectious diseases that is as accurate, unbiased and as comprehensive  as possible. Such distributions will enable outbreak analysts to easily access these distributions for routine analysis. For example, delay distributions are necessary for: calculating case fatality rates adjusting for delay to outcome, quantifying implications of different screening measures and quarantine periods, estimating reproduction numbers, and scenario modelling using transmission dynamic models.
+As defined by the PRISMA guidelines, having a clearly stated objective helps to refine the goal of the project. `{epiparameter}`'s objective is to provide information for a collection of distributions for a range of infectious diseases that is as accurate, unbiased and as comprehensive  as possible. Such distributions will enable outbreak analysts to easily access these distributions for routine analysis. For example, delay distributions are necessary for: calculating case fatality rates adjusting for delay to outcome, quantifying implications of different screening measures and quarantine periods, estimating reproduction numbers, and scenario modelling using transmission dynamic models.
+
+## Contributing to the package
+
+To contribute to the `{epiparameter}` library of epidemiological parameter information, added your data to [this google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing). This will then be integrated into the `{epiparameter}` library by the package maintainers, and the information will then be accessible to all `{epiparameter}` package users. 
 
 ## Scope of package
 
 The `{epiparameter}` package spans a range of infectious diseases, including several distributions for each disease when available. The pathogens and diseases that are currently systematically searched for and included in the package library are:
 
 ```{r show-diseases, echo=FALSE}
-db <- epiparameter::epiparam()
-dupl_rows <- duplicated(db$disease) & duplicated(db$pathogen)
+db <- epidist_db()
+x <- lapply(db, "[[", "disease")
+x <- unique(lapply(x, Reduce, f = c))
+disease <- sapply(x, "[[", 1)
+pathogen <- sapply(x, "[[", 2)
 knitr::kable(
   data.frame(
-    Disease = db$disease[!dupl_rows],
-    Pathogen = db$pathogen[!dupl_rows]
+    Disease = disease,
+    Pathogen = pathogen
   ),
   align = "cc"
 )
@@ -54,11 +65,10 @@ knitr::kable(
 The distributions currently included in the literature search for each pathogen/disease are:
 
 ```{r, show-epidists, echo=FALSE}
-db <- epiparameter::epiparam()
-dupl_rows <- duplicated(db$epi_distribution)
-epidist <- epiparameter::clean_epidist_name(db$epi_distribution[!dupl_rows])
+db <- epidist_db()
+epi_dist <- clean_epi_dist(unique(sapply(db, "[[", "epi_dist")))
 knitr::kable(
-  data.frame(epidist),
+  data.frame(epi_dist),
   align = "cc",
   col.names = "Epidemiological Distribution"
 )
@@ -84,7 +94,7 @@ Or if Web of Science is being used:
 This should refine the results to a more suitable set of literature.
 
 
-1. **Literature search engines**: using a selection of search engines to prevent one source potentially omitting papers. Suggested search sites are: Google Scholar, Web of Science, PubMed, and Scopus. Across each site we performed the same search.  
+1. **Literature search engines**: using a selection of search engines to prevent one source potentially omitting papers. Suggested search sites are: Google Scholar, Web of Science, PubMed, and Scopus.
 
 1. **Adding papers**: in addition to the database entries from papers that have been identified in a literature search, entries can be supplemented by recommendations (i.e. from the community) or through being cited by a paper in the literature search. Papers may be recommended by experts in research or public health communities. We plan to use two methods of community engagement. Firstly a [open-access Google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing) allows people to add their distribution data which will then be reviewed by one of the `{epiparameter}` maintainers and incorporated if it meets quality checks. The second method - not yet implemented - involves community members uploading their data to [zenodo](https://zenodo.org/), which can then be read and loaded into R using `{epiparameter}` once checked. 
 
@@ -94,7 +104,7 @@ This should refine the results to a more suitable set of literature.
 
 1. **Removing duplicates**: the library of parameters does not contain duplicates of studies, but multiple entries per study can be included if a paper reports multiple results (e.g. from the full data set and then a subset of the data). Studies that use the same data, subsets or supersets of data used in other papers in the library are included.
 
-1. **Abstract and methods screening**: once a number of unique sources have been identified, each should be reviewed for its suitability by reviewing the abstract and searching for words or phrases in the paper that indicate it reports the parameters or summary statistics of a distribution, this can include searching the methods section for words on types of distributions (e.g. lognormal), fitting procedures (e.g. maximum likelihood or bayesian), or searching the results for parameter estimates. The `{epiparameter}` library includes entries where parameters or summary statistics are reported but a distribution is not specified. 
+1. **Abstract and methods screening**: once a number of unique sources have been identified, each should be reviewed for its suitability by reviewing the abstract and searching for words or phrases in the paper that indicate it reports the parameters or summary statistics of a distribution, this can include searching the methods section for words on types of distributions (e.g. lognormal), fitting procedures (e.g. maximum likelihood or bayesian), or searching the results for parameter estimates. The `{epiparameter}` library includes entries where parameters or summary statistics are reported but a distribution is not specified, and entries where the distribution is specified but the parameters are not reported. 
 
     A database of unsuitable papers will be kept to remind maintainers which papers have not been included and aids in the updating of the database (see below) by preventing redundant reviewing a previously rejected paper.
 
@@ -112,37 +122,17 @@ Note: systematic reviews focusing on effect sizes can be subject to publication 
 
 **Extracting parameters**: for any underlying distributions (e.g. gamma, lognormal), parameters (e.g. shape/scale, meanlog/sdlog), and summary statistics (e.g. mean, standard deviation, median, range or quantiles) given in the paper, values should be recorded verbatim from the paper into the database. When these are read into R using the `{epiparameter}` package, other aspects of the distribution are automatically calculated and available. For example if the mean and standard deviation of a gamma distribution is reported for a serial interval these values will be stored in the database. But once in R, the shape and scale parameters of the gamma distribution will be automatically reconstructed and the resulting distribution available for use.
 
-The `{epiparameter}` library exactly reflects the literature. By which we mean that information not present in the paper should not be imputed from prior knowledge (e.g. vector of a disease is known but not stated), or but performing calculating with reported values. This prevents the issue of not having clear provenance for the data in the library.
+The `{epiparameter}` library exactly reflects the literature. By which we mean that information not present in the paper should not be imputed from prior knowledge (e.g. vector of a disease is known but not stated), or by performing calculating with reported values. This prevents the issue of not having clear provenance for the data in the library.
 
-The minimal dataset that is required to be included in the `{epiparameter}` library is:
+The requirements of each entry in the database is defined by the data dictionary. Here we outline the minimal dataset that is required to be included in the `{epiparameter}` library is:
 
 - Name of disease
 - Type of distribution
-- Author(s) of the paper 
-- The year of publication
-- The transmission mode of the pathogen (i.e. directly transmitted or vector-borne)
+- Citation information (author(s) of the paper, the year of publication, publication title and journal, and DOI)
 - Whether the distribution is extrinsic (e.g. extrinsic incubation period). If the disease is not vector-borne this should be NA.
-- The type of distribution fitted, either the only distribution fit or the best-fit from a set of candidate distributions
-- Parameters or summary statistics for the distribution, these must be one of:
-    - Parameter of the distribution (e.g. shape and scale in the case of gamma, meanlog and sdlog in the case of lognormal, etc.)
-    - Mean and standard deviation (or equivalently variance or coefficient of variation)
-    - Median and range
-    - Any two quantiles. Ideally there would be a lower quantile (q < 0.5) and an upper quantile (q > 0.5) to ensure reliable estimation of parameters
 - Whether the distribution fitted was discretised, this is a boolean (true or false).
-- The Digital Object Identifier (DOI) of the paper
 
-Data that are recommended but not essential:
-
-- Name of pathogen
-- Sample size of data used to fit the distribution
-- The region the data was collected, at either a national, continental or global level
-- Type of vector
-- Uncertainty in the estimated parameters or summary statistics, this needs to be provided with the type inference used (e.g. maximum likelihood or bayesian) to avoid potential misuse of uncertainty (e.g. mistaking confidence interval for credible interval)
-- Additional unique identifiers for a paper, for example PubMed ID (PMID) 
-- Whether the distribution fitted adjusted for phase bias
-- Whether the distribution used interval-censoring
-- Whether the distribution was right-truncated and the truncation point
-- 'Notes': this can include general statements about the distribution or methodology used in the paper. These notes can be accessed when using the package to make users aware of possible limitations in the distribution parameters that may not fit in other categories
+All other information for each database entry is non-essential.
 
 See the data dictionary included in `{epiparameter}` for all database fields with a description of each and the range of possible values each field can take.
 
