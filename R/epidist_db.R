@@ -184,7 +184,7 @@ epidist_db <- function(disease = "all",
   if (single_epidist) {
     # select parameterised entries
     if (sum(is_param) >= 1) {
-      edist <- multi_epidist[is_param]
+      multi_epidist <- multi_epidist[is_param]
     }
     # select largest sample size
     idx <- which.max(
@@ -194,14 +194,14 @@ epidist_db <- function(disease = "all",
         FUN.VALUE = numeric(1)
       )
     )
-    edist <- multi_epidist[[idx]]
+    single_epidist <- multi_epidist[[idx]]
 
     message(
-      "Using ", format(get_citation(edist)), ". \n",
+      "Using ", format(get_citation(single_epidist)), ". \n",
       "To retrieve the short citation use the 'get_citation' function"
     )
 
-    return(edist)
+    return(single_epidist)
   }
 
   message(
