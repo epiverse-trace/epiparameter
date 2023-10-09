@@ -32,7 +32,9 @@ list_distributions <- function(disease = "all",
                                multi_epidist) {
   # read in data if not given
   if (missing(multi_epidist)) {
-    multi_epidist <- epidist_db(disease = disease, epi_dist = epi_dist, ...)
+    multi_epidist <- suppressMessages(
+      epidist_db(disease = disease, epi_dist = epi_dist, ...)
+    )
   }
 
   # wrap <epidist> in list for apply functions
