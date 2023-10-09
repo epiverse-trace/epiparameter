@@ -99,8 +99,7 @@ plug into epidemiological pipelines. Obtaining an \verb{<epidist>} object can be
 achieved in two main ways:
 \enumerate{
 \item The epidemiological distribution is stored in
-the \code{{epiparameter}} library and can be accessed by \code{\link[=epiparam]{epiparam()}} and
-\code{\link[=as_epidist]{as_epidist()}}.
+the \code{{epiparameter}} library and can be accessed by \code{\link[=epidist_db]{epidist_db()}}.
 \item The alternative method is when you have information
 (e.g. disease and distribution parameter estimates) and would like to input
 this into an \verb{<epidist>} object in order to work in existing analysis
