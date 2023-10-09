@@ -12,6 +12,8 @@ list_distributions(disease = "all", epi_dist = "all", ..., multi_epidist)
 \item{epi_dist}{A \code{character} string with the name of the
 epidemiological distribution type.}
 
+\item{...}{\link{dots} Extra arguments to be passed to \code{\link[=epidist_db]{epidist_db()}}.}
+
 \item{multi_epidist}{Either an \verb{<epidist>} object or a list of \verb{<epidist>}
 objects.}
 }

@@ -13,6 +13,7 @@
 #' @inheritParams epidist
 #' @param multi_epidist Either an `<epidist>` object or a list of `<epidist>`
 #' objects.
+#' @param ... [dots] Extra arguments to be passed to [epidist_db()].
 #'
 #' @author Adam Kucharski, Joshua W. Lambert
 #' @export

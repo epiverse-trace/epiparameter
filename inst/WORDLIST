@@ -27,6 +27,7 @@ etal
 etc
 extdata
 lnorm
+md
 meanlog
 medRxiv
 monkeypox
@@ -34,6 +35,7 @@ mpox
 nbinom
 parameterisations
 parameterised
+pkgdown
 poisson
 prob
 sd

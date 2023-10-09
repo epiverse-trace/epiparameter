@@ -55,14 +55,6 @@ of the distribution when not provided.}
 \item{quantiles}{A \code{numeric} vector of the quantiles for the distribution.
 If quantiles are not provided a default empty vector with the 2.5th, 5th,
 25th, 75th, 95th, 97.5th quantiles are supplied.}
-
-\item{dispersion}{A \code{numeric} of the dispersion parameter of a distribution.}
-
-\item{dispersion_ci_limits}{A \code{numeric} vector of length two of the
-confidence interval around the dispersion.}
-
-\item{dispersion_ci}{A \code{numeric} specifying the confidence interval
-width of the dispersion parameter.}
 }
 \value{
 A nested list of summary statistics. The highest level are
