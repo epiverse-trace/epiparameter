@@ -10,7 +10,7 @@ Initial release of {epiparameter}, an R package to work with epidemiological par
 * The package contains a few utility functions.
 * Four vignettes are included in this initial release. One as an introduction to the package (`epiparameter.Rmd`), one as an tutorial on converting and extracting parameters (`extract_convert.Rmd`), one on the protocol used to collect entries for the library of epidemiological parameters (`data_protocol.Rmd`) and a supplementary vignette which quantifies the bias from using the parameter extraction (`extract_param()`) from {epiparameter} (`extract-bias.Rmd`).
 * Unit tests and documentation files.
-* Continuous integration workflows for R package checks, rendering the README.md, calculating test coverage, deploying the pkgdown website, updates the package citation, and validatingt the parameter library JSON file.
+* Continuous integration workflows for R package checks, rendering the README.md, calculating test coverage, deploying the pkgdown website, updates the package citation, and validating the parameter library JSON file.
 
 ## Breaking changes
 

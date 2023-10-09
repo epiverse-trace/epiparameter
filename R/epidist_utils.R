@@ -238,11 +238,6 @@ create_epidist_region <- function(continent = NA_character_,
 #' interval around the median.
 #' @param median_ci A `numeric` specifying the confidence interval width
 #' of the median.
-#' @param dispersion A `numeric` of the dispersion parameter of a distribution.
-#' @param dispersion_ci_limits A `numeric` vector of length two of the
-#' confidence interval around the dispersion.
-#' @param dispersion_ci A `numeric` specifying the confidence interval
-#' width of the dispersion parameter.
 #' @param lower_range The lower range of the data, used to infer the parameters
 #' of the distribution when not provided.
 #' @param upper_range The upper range of the data, used to infer the parameters

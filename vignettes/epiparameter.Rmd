@@ -71,7 +71,7 @@ If the `list_distributions()` function is not supplied with a list of `<epidist>
 head(list_distributions())
 ```
 
-`list_distributions()` can also subet the database, when either supplied to the function (first example) or when the entries are fetched directly from the database (second example).
+`list_distributions()` can also subset the database, when either supplied to the function (first example) or when the entries are fetched directly from the database (second example).
 
 ```{r, list-distributions-subset}
 list_distributions(disease = "Ebola")
@@ -136,7 +136,7 @@ The probability distribution (`prob_distribution`) argument requires the distrib
 
 ## Subsetting database
 
-The database can be subset directly by `epidist_db()`. Here the results can be subset by author. It is recommended to use the family name of the first author instead of the full name. Only the first author will be matching when the entrie is from a source with multiple authors.
+The database can be subset directly by `epidist_db()`. Here the results can be subset by author. It is recommended to use the family name of the first author instead of the full name. Only the first author will be matched when the entry is from a source with multiple authors.
 
 ```{r epidist-db-subset-author}
 epidist_db(
