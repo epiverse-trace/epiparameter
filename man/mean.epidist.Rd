@@ -20,7 +20,7 @@ Mean method for \verb{<epidist>} class
 \examples{
 edist <- epidist_db(
   disease = "COVID-19",
-  epi_dist = "incubation_period",
+  epi_dist = "incubation period",
   single_epidist = TRUE
 )
 mean(edist)

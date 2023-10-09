@@ -954,14 +954,18 @@ is_truncated <- function(x) {
 #' @examples
 #' edist <- epidist_db(
 #'   disease = "COVID-19",
-#'   epi_dist = "incubation_period",
+#'   epi_dist = "incubation period",
 #'   single_epidist = TRUE
 #' )
 #' mean(edist)
 mean.epidist <- function(x, ...) {
 
   # extract mean if given
-  mean <- x$summary_stats$mean
+  if (utils::hasName(x$summary_stats, "mean")) {
+    mean <- x$summary_stats$mean
+  } else {
+    return(NA)
+  }
 
   # if mean is not given try and convert from parameters
   if (is.na(mean) && is_parameterised(x)) {
@@ -970,8 +974,6 @@ mean.epidist <- function(x, ...) {
     args <- c(dist, as.list(params))
     summary_stats <- do.call(convert_params_to_summary_stats, args = args)
     mean <- summary_stats$mean
-  } else if (is.null(mean)) {
-    mean <- NA
   }
 
   # return mean or NA
