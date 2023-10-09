@@ -47,16 +47,20 @@ library(epiparameter)
 To load the library of epidemiological parameters into `R`:
 
 ```{r load-data}
-eparams <- epiparam()
-eparams
+epidists <- epidist_db()
+epidists
 ```
 
-The library is an `<epiparam>` class, which underneath is a data frame.
+This results a list of database entries. Each entry of the library is an `<epidist>` object.
 
-Each entry of the library can be converted into an `<epidist>` object to be used.
+The results can be filtered by disease and epidemiological distribution. Here we set `single_epidist = TRUE` as we only want a single database entry returned, and by default (`single_epidist = FALSE`) it will return all database entries that match the disease (`disease`) and epidemiological distribution (`epi_dist`).
 
-```{r convert-epiparam}
-influenza_incubation <- as_epidist(eparams[12, ])
+```{r load-single-epidist}
+influenza_incubation <- epidist_db(
+  disease = "influenza", 
+  epi_dist = "incubation period", 
+  single_epidist = TRUE
+)
 influenza_incubation
 ```
 
