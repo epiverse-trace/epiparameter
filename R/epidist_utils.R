@@ -453,7 +453,6 @@ create_epidist_method_assess <- function(censored = NA,
 #'   prob_dist_params = c(shape = 2, scale = 1)
 #' )
 is_epidist_params <- function(prob_dist, prob_dist_params) {
-
   if (is.na(prob_dist) || anyNA(prob_dist_params)) {
     return(FALSE)
   }
@@ -727,7 +726,6 @@ clean_epidist_params.default <- function(prob_dist_params) {
 clean_epi_dist <- function(x) {
   checkmate::assert_character(x)
   gsub(pattern = "_|-", replacement = " ", x = trimws(tolower(x)))
-
 }
 
 #' Standardise the names of diseases

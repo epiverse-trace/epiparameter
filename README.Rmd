@@ -57,8 +57,8 @@ The results can be filtered by disease and epidemiological distribution. Here we
 
 ```{r load-single-epidist}
 influenza_incubation <- epidist_db(
-  disease = "influenza", 
-  epi_dist = "incubation period", 
+  disease = "influenza",
+  epi_dist = "incubation period",
   single_epidist = TRUE
 )
 influenza_incubation

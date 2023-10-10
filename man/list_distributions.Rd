@@ -38,7 +38,10 @@ list_distributions(multi_epidist = epidist_lst)
 
 # example filtering an existing list to incubation periods
 epidist_lst <- epidist_db(disease = "COVID-19")
-list_distributions(multi_epidist = epidist_lst, epi_dist = "incubation period")
+list_distributions(
+  multi_epidist = epidist_lst,
+  epi_dist = "incubation period"
+)
 }
 \author{
 Adam Kucharski, Joshua W. Lambert
