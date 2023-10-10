@@ -80,8 +80,8 @@ list_distributions <- function(disease = "all",
     FUN.VALUE = character(1)
   )
   author <- lapply(multi_epidist, function(x) x$citation$author)
-  year <- vapply( # nolint lambda
-    multi_epidist, function(x) as.numeric(x$citation$year),
+  year <- vapply(
+    multi_epidist, function(x) as.numeric(x$citation$year), # nolint lambda
     FUN.VALUE = numeric(1)
   )
 
