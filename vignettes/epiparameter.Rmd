@@ -95,25 +95,25 @@ An `<epidist>` object can be:
 # fetch <epidist> for COVID-19 incubation period from database
 # return only a single <epidist>
 covid_incubation <- epidist_db(
-  disease = "COVID-19", 
-  epi_dist = "incubation period", 
+  disease = "COVID-19",
+  epi_dist = "incubation period",
   single_epidist = TRUE
 )
 covid_incubation
 
 # <epidist> using constructor function
 covid_incubation <- epidist(
-  disease = "COVID-19", 
-  pathogen = "SARS-CoV-2", 
+  disease = "COVID-19",
+  pathogen = "SARS-CoV-2",
   epi_dist = "incubation period",
-  prob_distribution = "gamma", 
-  prob_distribution_params = c(shape = 2, scale = 1), 
-  summary_stats = create_epidist_summary_stats(mean = 2), 
+  prob_distribution = "gamma",
+  prob_distribution_params = c(shape = 2, scale = 1),
+  summary_stats = create_epidist_summary_stats(mean = 2),
   citation = create_epidist_citation(
-    author = c("John Smith", "Amy Jones"), 
-    year = 2022, 
-    title = "COVID Incubation Period", 
-    journal = "Epi Journal", 
+    author = c("John Smith", "Amy Jones"),
+    year = 2022,
+    title = "COVID Incubation Period",
+    journal = "Epi Journal",
     DOI = "10.27861182.x"
   )
 )
@@ -141,7 +141,7 @@ The database can be subset directly by `epidist_db()`. Here the results can be s
 ```{r epidist-db-subset-author}
 epidist_db(
   disease = "COVID-19",
-  epi_dist = "incubation period", 
+  epi_dist = "incubation period",
   author = "Linton"
 )
 ```
@@ -167,8 +167,8 @@ The library of epidemiological parameters is a living database, as new studies a
 
 ```{r epidist-dist-methods}
 ebola_incubation <- epidist_db(
-  disease = "Ebola", 
-  epi_dist = "incubation period", 
+  disease = "Ebola",
+  epi_dist = "incubation period",
   single_epidist = TRUE
 )
 

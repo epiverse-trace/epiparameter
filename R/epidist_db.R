@@ -419,7 +419,7 @@ epidist_db <- function(disease = "all",
   }
 
   # return params without uncertainty
-  if (!any(grepl(pattern = "ci", x = names(params)))) {
+  if (!any(grepl(pattern = "ci", x = names(params), fixed = TRUE))) {
     uncertainty <- lapply(
       vector(mode = "list", length = length(params)),
       function(x) x <- create_epidist_uncertainty()
@@ -438,7 +438,7 @@ epidist_db <- function(disease = "all",
   for (i in seq_along(params)) {
     nm <- names(params)[i]
     nms <- names(params)[grepl(pattern = nm, x = names(params))]
-    if (!any(grepl(pattern = "_ci", x = nms))) {
+    if (!any(grepl(pattern = "_ci", x = nms, fixed = TRUE))) {
       params_ci <- list(params[[i]], c(NA_real_, NA_real_), NA_real_)
       names(params_ci) <- c(nm, paste0(nm, "_ci_limits"), paste0(nm, "_ci"))
       params_ <- append(params_, params_ci)
@@ -449,16 +449,17 @@ epidist_db <- function(disease = "all",
   params <- params_
 
   # params and uncertainty
-  ci_limits <- params[grepl(pattern = "ci_limits$", x = names(params))]
-  ci <- params[grepl(pattern = "ci$", x = names(params))]
+  ci_limits <- params[!is.na(names(params)) &
+    endsWith(names(params), suffix = "ci_limits")]
+  ci <- params[!is.na(names(params)) & endsWith(names(params), suffix = "ci")]
   ci_type <- switch(x$metadata$inference_method,
-                    "mle" = "confidence_interval",
-                    "bayesian" = "credible_interval",
-                    NA_character_
+    "mle" = "confidence_interval",
+    "bayesian" = "credible_interval",
+    NA_character_
   )
 
   # separate parameters and uncertainty
-  ci_idx <- grepl(pattern = "_ci", x = names(params))
+  ci_idx <- grepl(pattern = "_ci", x = names(params), fixed = TRUE)
   uncertainty <- params[ci_idx]
   params <- params[!ci_idx]
 

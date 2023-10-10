@@ -47,7 +47,7 @@
 #'   sample_size = 25
 #' )
 #' }
-calc_dist_params <- function(prob_dist,
+calc_dist_params <- function(prob_dist, # nolint cyclocomp
                              prob_dist_params,
                              summary_stats,
                              sample_size) {
@@ -59,7 +59,8 @@ calc_dist_params <- function(prob_dist,
     return(NA)
   }
 
-  if (!is.null(summary_stats$quantiles) && any(!is.na(summary_stats$quantiles))) {
+  if (!is.null(summary_stats$quantiles) &&
+    !all(is.na(summary_stats$quantiles))) {
     # convert percentile names to numbers
     percentiles <- get_percentiles(summary_stats$quantiles)
   } else {

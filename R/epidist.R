@@ -958,7 +958,6 @@ is_truncated <- function(x) {
 #' )
 #' mean(edist)
 mean.epidist <- function(x, ...) {
-
   # extract mean if given
   if (utils::hasName(x$summary_stats, "mean")) {
     mean <- x$summary_stats$mean
