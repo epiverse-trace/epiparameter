@@ -71,16 +71,16 @@ list_distributions <- function(disease = "all",
   prob_dist <- vapply(
     multi_epidist, function(x) {
       switch(class(x$prob_dist)[1],
-        "distcrete" = family(x),
-        "distribution" = family(x),
-        "character" = x$prob_dist,
-        "logical" = NA_character_
+        distcrete = family(x),
+        distribution = family(x),
+        character = x$prob_dist,
+        logical = NA_character_
       )
     },
     FUN.VALUE = character(1)
   )
   author <- lapply(multi_epidist, function(x) x$citation$author)
-  year <- vapply(
+  year <- vapply( # nolint lambda
     multi_epidist, function(x) as.numeric(x$citation$year),
     FUN.VALUE = numeric(1)
   )
