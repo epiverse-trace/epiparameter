@@ -438,12 +438,12 @@ epidist_db <- function(disease = "all",
   for (i in seq_along(params)) {
     nm <- names(params)[i]
     nms <- names(params)[grepl(pattern = nm, x = names(params))]
-    if (!any(grepl(pattern = "_ci", x = nms, fixed = TRUE))) {
+    if (any(grepl(pattern = "_ci", x = nms, fixed = TRUE))) {
+      params_ <- append(params_, params[i])
+    } else {
       params_ci <- list(params[[i]], c(NA_real_, NA_real_), NA_real_)
       names(params_ci) <- c(nm, paste0(nm, "_ci_limits"), paste0(nm, "_ci"))
       params_ <- append(params_, params_ci)
-    } else {
-      params_ <- append(params_, params[i])
     }
   }
   params <- params_
@@ -453,8 +453,8 @@ epidist_db <- function(disease = "all",
     endsWith(names(params), suffix = "ci_limits")]
   ci <- params[!is.na(names(params)) & endsWith(names(params), suffix = "ci")]
   ci_type <- switch(x$metadata$inference_method,
-    "mle" = "confidence_interval",
-    "bayesian" = "credible_interval",
+    mle = "confidence_interval",
+    bayesian = "credible_interval",
     NA_character_
   )
 
