@@ -50,7 +50,7 @@ test_that("get_citation works as expected for epidist from db", {
   # suppress message about return
   edist <- suppressMessages(epidist_db())
   citation <- get_citation(edist)
-  expect_true(is.list(citation))
+  expect_type(citation, "list")
   expect_length(citation, length(edist))
 })
 
@@ -94,4 +94,24 @@ test_that("get_citation works as expected for epidist missing citation", {
   expect_s3_class(citation, "bibentry")
   expect_null(citation$year)
   expect_identical(citation$title, "No citation")
+})
+
+test_that("get_citation works as expected for non-bibentry citation", {
+  # suppress message about citation
+  edist <- suppressMessages(
+    epidist_db(single_epidist = TRUE)
+  )
+  edist$citation <- "WHO-Ebola-Response-Team (2015) NEJM"
+  expect_error(get_citation(edist), regexp = "Citation should be a <bibentry>")
+})
+
+test_that("get_citation produces warnings with extra arguments", {
+  # suppress message about citation
+  edist <- suppressMessages(
+    epidist_db(single_epidist = TRUE)
+  )
+  expect_warning(
+    get_citation(edist, extra_arg = "args"),
+    regexp = "(extra argument)*(will be disregarded)"
+  )
 })

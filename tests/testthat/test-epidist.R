@@ -42,25 +42,19 @@ test_that("epidist works with all arguments set", {
         median = 1,
         median_ci_limits = c(0.9, 1.1),
         median_ci = 95,
-        dispersion = 1,
-        dispersion_ci_limits = c(0.9, 1.1),
-        dispersion_ci = 90,
         lower_range = 0.1,
         upper_range = 1.9,
         quantiles = c(
-          q_2.5 = 0.2,
-          q_5 = 0.3,
-          q_25 = 0.5,
-          q_75 = 0.7,
-          q_87.5 = 1.1,
-          q_95 = 1.2,
-          q_97.5 = 1.5
+          "2.5" = 0.2, "5" = 0.3, "25" = 0.5, "75" = 0.7, "87.5" = 1.1,
+          "95" = 1.2, "97.5" = 1.5
         )
       ), citation = create_epidist_citation(
-        author = "Smith",
+        author = "John Smith",
         year = 2002,
-        PMID = 28372882,
-        DOI = "10.23271/176237.x" # nolint
+        title = "A title",
+        journal = "A journal",
+        DOI = "10.23271/176237.x", # nolint
+        PMID = 28372882
       ),
       metadata = create_epidist_metadata(
         sample_size = 100,
@@ -256,7 +250,8 @@ test_that("new_epidist works with minimal viable input", {
         journal = "Journal of Epi"
       ),
       discretise = FALSE,
-      truncation = NA
+      truncation = NA,
+      notes = "No notes"
     )
   )
 
@@ -295,7 +290,8 @@ test_that("validate_epidist passes when expected", {
         DOI = "10.1872372hc"
       ),
       discretise = FALSE,
-      truncation = NA
+      truncation = NA,
+      notes = "No notes"
     )
   )
 
