@@ -1,158 +1,221 @@
-test_that("list_distributions works as expected with defaults", {
-  eparam <- epiparam()
-  dist_tbl <- list_distributions(epiparam = eparam)
+# Data to be reused by multiple testing blocks
+edist <- suppressMessages(epidist_db())
+
+test_that("list_distributions works as expected supplied with db", {
+  dist_tbl <- list_distributions(multi_epidist = edist)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(72L, 6L))
+  expect_identical(dim(dist_tbl), c(118L, 5L))
   expect_named(
     dist_tbl,
-    c(
-      "disease", "epi_distribution", "prob_distribution", "author", "year",
-      "sample_size"
-    )
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
   )
-  expect_snapshot(
-    list_distributions(epiparam = eparam)
-  )
+  expect_snapshot(dist_tbl)
 })
 
-test_that("list_distributions works as expected with subset_db = FALSE", {
-  eparam <- epiparam()
-  dist_tbl <- list_distributions(epiparam = eparam, subset_db = FALSE)
+test_that("list_distributions works as expected without db", {
+  dist_tbl <- list_distributions()
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(72L, 58L))
-  expect_named(dist_tbl, epiparam_fields())
-  expect_snapshot(
-    list_distributions(epiparam = eparam, subset_db = FALSE)
+  expect_identical(dim(dist_tbl), c(118L, 5L))
+  expect_named(
+    dist_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
   )
+  expect_snapshot(dist_tbl)
 })
 
-test_that("list_distributions works for incubation period", {
-  eparam <- epiparam()
+test_that("list_distributions works for incubation period with db", {
   incub_tbl <- list_distributions(
-    epiparam = eparam,
-    epi_dist = "incubation_period"
+    multi_epidist = edist,
+    epi_dist = "incubation period"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(72L, 6L))
+  expect_identical(dim(incub_tbl), c(72L, 5L))
   expect_named(
     incub_tbl,
-    c(
-      "disease", "epi_distribution", "prob_distribution", "author", "year",
-      "sample_size"
-    )
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
   )
-  expect_snapshot(
-    list_distributions(
-      epiparam = eparam,
-      epi_dist = "incubation_period"
-    )
-  )
+  expect_snapshot(incub_tbl)
 })
 
-test_that("list_distributions works for incubation, subset_db = FALSE", {
-  eparam <- epiparam()
-  incub_tbl <- list_distributions(
-    epiparam = eparam,
-    epi_dist = "incubation",
-    subset_db = FALSE
-  )
+test_that("list_distributions works for incubation period without db", {
+  incub_tbl <- list_distributions(epi_dist = "incubation period")
+
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(72L, 58L))
-  expect_named(incub_tbl, epiparam_fields())
-  expect_snapshot(
-    list_distributions(
-      epiparam = eparam,
-      epi_dist = "incubation",
-      subset_db = FALSE
-    )
+  expect_identical(dim(incub_tbl), c(72L, 5L))
+  expect_named(
+    incub_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
   )
+  expect_snapshot(incub_tbl)
 })
 
-test_that("list_distributions works for different distribution", {
-  eparam <- epiparam()
+test_that("list_distributions works for different distribution with db", {
   serial_tbl <- list_distributions(
-    epiparam = eparam,
-    epi_dist = "serial_interval"
+    multi_epidist = edist,
+    epi_dist = "serial interval"
   )
   expect_s3_class(serial_tbl, "data.frame")
-  expect_identical(dim(serial_tbl), c(15L, 6L))
+  expect_identical(dim(serial_tbl), c(15L, 5L))
   expect_named(
     serial_tbl,
-    c(
-      "disease", "epi_distribution", "prob_distribution", "author", "year",
-      "sample_size"
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(serial_tbl)
+})
+
+test_that("list_distributions works for different distribution without db", {
+  serial_tbl <- list_distributions(epi_dist = "serial interval")
+  expect_s3_class(serial_tbl, "data.frame")
+  expect_identical(dim(serial_tbl), c(15L, 5L))
+  expect_named(
+    serial_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(serial_tbl)
+})
+
+test_that("list_distributions works for COVID-19 db", {
+  incub_tbl <- list_distributions(
+    multi_epidist = edist,
+    disease = "COVID-19"
+  )
+  expect_s3_class(incub_tbl, "data.frame")
+  expect_identical(dim(incub_tbl), c(23L, 5L))
+  expect_named(
+    incub_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(incub_tbl)
+})
+
+test_that("list_distributions works for COVID-19 without db", {
+  incub_tbl <- list_distributions(disease = "COVID-19")
+  expect_s3_class(incub_tbl, "data.frame")
+  expect_identical(dim(incub_tbl), c(23L, 5L))
+  expect_named(
+    incub_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(incub_tbl)
+})
+
+test_that("list_distributions works for disease & epi_dist subset with db", {
+  incub_tbl <- list_distributions(
+    multi_epidist = edist,
+    disease = "COVID-19",
+    epi_dist = "incubation period"
+  )
+  expect_s3_class(incub_tbl, "data.frame")
+  expect_identical(dim(incub_tbl), c(14L, 5L))
+  expect_named(
+    incub_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(incub_tbl)
+})
+
+test_that("list_distributions works for disease & epi_dist subset without db", {
+  incub_tbl <- list_distributions(
+    disease = "COVID-19",
+    epi_dist = "incubation period"
+  )
+  expect_s3_class(incub_tbl, "data.frame")
+  expect_identical(dim(incub_tbl), c(14L, 5L))
+  expect_named(
+    incub_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(incub_tbl)
+})
+
+test_that("list_distribution works when supplied a subset db", {
+  edist <- suppressMessages(epidist_db(disease = "COVID-19"))
+  covid_tbl <- list_distributions(multi_epidist = edist, disease = "COVID-19")
+  expect_s3_class(covid_tbl, "data.frame")
+  expect_identical(dim(covid_tbl), c(23L, 5L))
+  expect_named(
+    covid_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(covid_tbl)
+})
+
+test_that("list_distributions works as expected supplied with <epidist>", {
+  edist <- suppressMessages(epidist_db(single_epidist = TRUE))
+  dist_tbl <- list_distributions(multi_epidist = edist)
+  expect_s3_class(dist_tbl, "data.frame")
+  expect_identical(dim(dist_tbl), c(1L, 5L))
+  expect_named(
+    dist_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(dist_tbl)
+})
+
+test_that("list_distributions works as expected with discretised <epidist>", {
+  edist <- suppressMessages(
+    epidist(
+      disease = "Ebola",
+      epi_dist = "serial interval",
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      citation = create_epidist_citation(
+        author = "John Smith",
+        year = 2022,
+        title = "A title",
+        journal = "A journal",
+        DOI = "10.32561.x"
+      ),
+      discretise = TRUE
     )
   )
-  expect_snapshot(
-    list_distributions(
-      epiparam = eparam,
-      epi_dist = "serial_interval"
-    )
+  dist_tbl <- list_distributions(multi_epidist = edist)
+  expect_s3_class(dist_tbl, "data.frame")
+  expect_identical(dim(dist_tbl), c(1L, 5L))
+  expect_named(
+    dist_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(dist_tbl)
+})
+
+test_that("list_distribution fails correctly when subsetting a subset db", {
+  edist <- suppressMessages(epidist_db(disease = "Ebola"))
+  expect_error(
+    list_distributions(multi_epidist = edist, disease = "COVID-19"),
+    regexp = "(distribution not available for COVID-19)"
   )
 })
 
-test_that("list_distributions works for different dist, subset_db = FALSE", {
-  eparam <- epiparam()
-  serial_tbl <- list_distributions(
-    epiparam = eparam,
-    epi_dist = "serial_interval",
-    subset_db = FALSE
+test_that("list_distribution works passing arg to epidist_db", {
+  covid_tbl <- list_distributions(disease = "COVID-19", author = "Linton")
+  expect_s3_class(covid_tbl, "data.frame")
+  expect_identical(dim(covid_tbl), c(11L, 5L))
+  expect_named(
+    covid_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
   )
-  expect_s3_class(serial_tbl, "data.frame")
-  expect_identical(dim(serial_tbl), c(15L, 58L))
-  expect_named(serial_tbl, epiparam_fields())
-  expect_snapshot(
-    list_distributions(
-      epiparam = eparam,
-      epi_dist = "serial_interval",
-      subset_db = FALSE
-    )
-  )
+  expect_snapshot(covid_tbl)
 })
 
 test_that("list_distributions fails correctly", {
   # check for incorrect input
   expect_error(
     list_distributions(
-      epiparam = data.frame(),
-      epi_dist = "incubation_period",
-      subset_db = TRUE
+      multi_epidist = list(),
+      epi_dist = "incubation_period"
     ),
-    regexp = "Object should be of class epiparam"
+    regexp = "List of <epidist> objects should be supplied to multi_epidist"
   )
 
   expect_error(
-    list_distributions(
-      epiparam = epiparam(),
-      epi_dist = "random",
-      subset_db = TRUE
-    ),
-    regexp = paste0(
-      "('arg' should be one of)*(incubation_period)*",
-      "(onset_to_hospitalisation)*(onset_to_death)*(serial_interval)*",
-      "(generation_time)"
-    )
-  )
-
-  expect_error(
-    list_distributions(
-      epiparam = epiparam(),
-      epi_dist = "incubation_period",
-      subset_db = "true"
-    ),
-    regexp = paste0(
-      "Assertion on 'subset_db' failed: Must be of type 'logical', ",
-      "not 'character'."
-    )
+    list_distributions(epi_dist = "random"),
+    regexp = "random distribution not available"
   )
 
   # check for multiple match input
   expect_error(
-    list_distributions(epiparam = epiparam(), epi_dist = "onset"),
-    regexp = paste0(
-      "('arg' should be one of)*(incubation_period)*",
-      "(onset_to_hospitalisation)*(onset_to_death)*(serial_interval)*",
-      "(generation_time)"
-    )
+    list_distributions(epi_dist = "onset"),
+    regexp = "onset distribution not available"
   )
 })

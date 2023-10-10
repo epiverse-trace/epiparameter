@@ -1,14 +1,14 @@
 test_that("get_percentiles works as expected", {
-  res <- get_percentiles(c(q_5 = 1, q_95 = 10))
+  res <- get_percentiles(c("5" = 1, "95" = 10))
   expect_identical(res, c("5" = 1, "95" = 10))
 
-  res <- get_percentiles(c(q_2.5 = 1, q_97.5 = 10))
+  res <- get_percentiles(c("2.5" = 1, "97.5" = 10))
   expect_identical(res, c("2.5" = 1, "97.5" = 10))
 
-  res <- get_percentiles(c(q_5 = 1, q_45 = 10))
+  res <- get_percentiles(c("5" = 1, "45" = 10))
   expect_identical(res, NA)
 
-  res <- get_percentiles(c(q_55 = 1, q_90 = 10))
+  res <- get_percentiles(c("55" = 1, "90" = 10))
   expect_identical(res, NA)
 })
 

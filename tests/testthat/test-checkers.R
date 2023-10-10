@@ -1,34 +1,3 @@
-test_that("is_parameterised works as expected for epiparam", {
-  eparam <- epiparam()
-  res <- is_parameterised(eparam)
-  expect_length(res, nrow(eparam))
-  expect_type(res, type = "logical")
-})
-
-test_that("is_parameterised works as expected with epiparam parameters", {
-  eparam <- epiparam(epi_dist = "incubation_period")
-  set <- lapply(eparam, grepl, pattern = "McAloon")$author
-  eparam <- subset(eparam, set)
-  eparam <- subset(eparam, sample_size == max(sample_size))
-  expect_true(is_parameterised(eparam))
-})
-
-test_that("is_parameterised works as expected without epiparam parameters", {
-  eparam <- epiparam(epi_dist = "incubation_period")
-  set <- lapply(eparam, grepl, pattern = "Alene")$author
-  eparam <- subset(eparam, set)
-  expect_false(is_parameterised(eparam))
-})
-
-test_that("is_parameterised works when dist is not recognised", {
-  eparam <- epiparam()
-  eparam <- rbind(eparam, eparam[1, ])
-  eparam[nrow(eparam), "prob_distribution"] <- "lognormal"
-  res <- is_parameterised(eparam)
-  expect_length(res, 119)
-  expect_type(res, type = "logical")
-})
-
 test_that("is_parameterised works as expected with epidist parameters", {
   # message about missing citation suppressed
   edist <- suppressMessages(epidist(
@@ -46,5 +15,29 @@ test_that("is_parameterised works as expected without epidist parameters", {
     disease = "ebola",
     epi_dist = "incubation_period"
   ))
+  expect_false(is_parameterised(edist))
+})
+
+test_that("is_parameterised works as expected for multi_epidist", {
+  edist <- suppressMessages(epidist_db())
+  res <- is_parameterised(edist)
+  expect_vector(res, ptype = logical(1), size = length(edist))
+})
+
+test_that("is_parameterised works as expected with multi_epidist parameters", {
+  edist <- suppressMessages(
+    epidist_db(
+      epi_dist = "incubation period",
+      author = "McAloon",
+      single_epidist = TRUE
+    )
+  )
+  expect_true(is_parameterised(edist))
+})
+
+test_that("is_parameterised works as expected without epiparam parameters", {
+  edist <- suppressMessages(
+    epidist_db(epi_dist = "incubation period", author = "Alene")
+  )
   expect_false(is_parameterised(edist))
 })
