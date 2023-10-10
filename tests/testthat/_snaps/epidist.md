@@ -3,7 +3,7 @@
     Code
       epidist(disease = "ebola", epi_dist = "incubation", prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1))
-    Message <simpleMessage>
+    Message
       Citation cannot be created as author, year, journal or title is missing
     Output
       Disease: ebola
@@ -20,7 +20,7 @@
     Code
       epidist(disease = "ebola", epi_dist = "incubation", prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1), discretise = TRUE)
-    Message <simpleMessage>
+    Message
       Citation cannot be created as author, year, journal or title is missing
     Output
       Disease: ebola

@@ -2,7 +2,7 @@
 
     Code
       epidist_db()
-    Message <simpleMessage>
+    Message
       Returning 118 results that match the criteria (95 are parameterised). 
       Use subset to filter by entry variables or single_epidist to return a single entry. 
       To retrieve the short citation for each use the 'get_citation' function
@@ -18,7 +18,7 @@
 
     Code
       epidist_db(disease = "SARS", epi_dist = "offspring distribution")
-    Message <simpleMessage>
+    Message
       Returning 2 results that match the criteria (2 are parameterised). 
       Use subset to filter by entry variables or single_epidist to return a single entry. 
       To retrieve the short citation for each use the 'get_citation' function
