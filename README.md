@@ -47,51 +47,53 @@ library(epiparameter)
 To load the library of epidemiological parameters into `R`:
 
 ``` r
-eparams <- epiparam()
-eparams
-#> Epiparam object
-#> Number of distributions in library: 118
-#> Number of diseases: 23
-#> Number of delay distributions: 95
-#> Number of offspring distributions: 10
-#> Number of studies in library: 57
-#> <Head of library>
-#>       disease         epi_distribution prob_distribution
-#> 1  Adenovirus        incubation_period             lnorm
-#> 2 Chikungunya        incubation_period             lnorm
-#> 3    COVID-19 hospitalisation_to_death           weibull
-#> 4    COVID-19 hospitalisation_to_death             lnorm
-#> 5    COVID-19        incubation_period              <NA>
-#> 6    COVID-19        incubation_period           weibull
-#> <112 more rows & 55 more cols not shown>
+epidists <- epidist_db()
+#> Returning 118 results that match the criteria (95 are parameterised). 
+#> Use subset to filter by entry variables or single_epidist to return a single entry. 
+#> To retrieve the short citation for each use the 'get_citation' function
+epidists
+#> List of <epidist> objects
+#>   Number of entries in library: 118
+#>   Number of studies in library: 45
+#>   Number of diseases: 23
+#>   Number of delay distributions: 108
+#>   Number of offspring distributions: 10
 ```
 
-The library is an `<epiparam>` class, which underneath is a data frame.
+This results a list of database entries. Each entry of the library is an
+`<epidist>` object.
 
-Each entry of the library can be converted into an `<epidist>` object to
-be used.
+The results can be filtered by disease and epidemiological distribution.
+Here we set `single_epidist = TRUE` as we only want a single database
+entry returned, and by default (`single_epidist = FALSE`) it will return
+all database entries that match the disease (`disease`) and
+epidemiological distribution (`epi_dist`).
 
 ``` r
-influenza_incubation <- as_epidist(eparams[12, ])
-#> Using Linton, etal (2020). "Incubation Period and Other Epidemiological
-#> Characteristics of 2019 Novel Coronavirus Infections with Right
-#> Truncation: A Statistical Analysis of Publicly Available Case Data."
-#> _Journal of Clinical Medicine_. doi:10.3390/jcm9020538
-#> <https://doi.org/10.3390/jcm9020538>. 
-#> To retrieve the citation use the 'get_citation' function
+influenza_incubation <- epidist_db(
+  disease = "influenza",
+  epi_dist = "incubation period",
+  single_epidist = TRUE
+)
+#> Using Virlogeux V, Li M, Tsang TK, Feng L, Fang VJ, Jiang H, Wu P, Zheng J,
+#> Lau EHY, Cao Y, Qin Y, Liao Q, Yu H, Cowling BJ (2015). "Estimating the
+#> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)
+#> Virus Infections." _American Journal of Epidemiology_.
+#> doi:10.1093/aje/kwv115 <https://doi.org/10.1093/aje/kwv115>.. 
+#> To retrieve the short citation use the 'get_citation' function
 influenza_incubation
-#> Disease: COVID-19
-#> Pathogen: SARS-CoV-2
+#> Disease: Influenza
+#> Pathogen: Influenza-A-H7N9
 #> Epi Distribution: incubation period
-#> Study: Linton, etal (2020). "Incubation Period and Other Epidemiological
-#> Characteristics of 2019 Novel Coronavirus Infections with Right
-#> Truncation: A Statistical Analysis of Publicly Available Case Data."
-#> _Journal of Clinical Medicine_. doi:10.3390/jcm9020538
-#> <https://doi.org/10.3390/jcm9020538>.
-#> Distribution: lnorm
+#> Study: Virlogeux V, Li M, Tsang TK, Feng L, Fang VJ, Jiang H, Wu P, Zheng J,
+#> Lau EHY, Cao Y, Qin Y, Liao Q, Yu H, Cowling BJ (2015). "Estimating the
+#> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)
+#> Virus Infections." _American Journal of Epidemiology_.
+#> doi:10.1093/aje/kwv115 <https://doi.org/10.1093/aje/kwv115>.
+#> Distribution: weibull
 #> Parameters:
-#>   meanlog: 1.456
-#>   sdlog: 0.555
+#>   shape: 2.101
+#>   scale: 3.839
 ```
 
 The `<epidist>` object can be plotted.
