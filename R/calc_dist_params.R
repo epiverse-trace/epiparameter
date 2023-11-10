@@ -59,8 +59,13 @@ calc_dist_params <- function(prob_dist, # nolint cyclocomp
     return(NA)
   }
 
-  if (!is.null(summary_stats$quantiles) &&
-    !all(is.na(summary_stats$quantiles))) {
+  is_percentiles <- checkmate::test_numeric(
+    summary_stats$quantiles,
+    all.missing = FALSE,
+    names = "unique",
+    null.ok = FALSE
+  )
+  if (is_percentiles) {
     # convert percentile names to numbers
     percentiles <- get_percentiles(summary_stats$quantiles)
   } else {
@@ -80,8 +85,12 @@ calc_dist_params <- function(prob_dist, # nolint cyclocomp
   # extract mean and sd
   mean_sd <- c(summary_stats$mean, summary_stats$sd)
 
+  is_mean_sd <- checkmate::test_numeric(mean_sd, any.missing = FALSE, len = 2)
+  is_median_disp <- checkmate::test_numeric(median_disp, len = 2)
+  is_median_range <- checkmate::test_numeric(median_range, len = 3) &&
+    checkmate::test_numeric(sample_size, any.missing = FALSE)
   # convert from mean and sd
-  if (all(is.numeric(mean_sd)) && !anyNA(mean_sd) && length(mean_sd) == 2) {
+  if (is_mean_sd) {
     summary_stats_ <- unlist(summary_stats)
     summary_stats_ <- summary_stats_[!is.na(summary_stats_)]
     # remove name prefixes from unlisting
@@ -102,7 +111,7 @@ calc_dist_params <- function(prob_dist, # nolint cyclocomp
       convert_summary_stats_to_params,
       args = args
     ))
-  } else if (all(is.numeric(median_disp) && length(median_disp) == 2)) {
+  } else if (is_median_disp) {
     med <- summary_stats$median
     meanlog <- log(med / sqrt(1 + disp^2))
     sdlog <- sqrt(log(1 + disp^2))
@@ -116,8 +125,7 @@ calc_dist_params <- function(prob_dist, # nolint cyclocomp
       distribution = prob_dist,
       percentiles = as.numeric(names(percentiles)) / 100
     )
-  } else if (all(is.numeric(median_range)) && length(median_range) == 3 &&
-    !is.na(sample_size)) {
+  } else if (is_median_range) {
     prob_dist_params <- extract_param(
       type = "range",
       values = median_range,
