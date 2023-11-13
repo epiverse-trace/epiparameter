@@ -85,10 +85,15 @@ calc_dist_params <- function(prob_dist, # nolint cyclocomp
   # extract mean and sd
   mean_sd <- c(summary_stats$mean, summary_stats$sd)
 
-  is_mean_sd <- checkmate::test_numeric(mean_sd, any.missing = FALSE, len = 2)
-  is_median_disp <- checkmate::test_numeric(median_disp, len = 2)
-  is_median_range <- checkmate::test_numeric(median_range, len = 3) &&
-    checkmate::test_numeric(sample_size, any.missing = FALSE)
+  is_mean_sd <- checkmate::test_numeric(
+    mean_sd, any.missing = FALSE, len = 2, finite = TRUE
+  )
+  is_median_disp <- checkmate::test_numeric(
+    median_disp, len = 2, finite = TRUE
+  )
+  is_median_range <- checkmate::test_numeric(
+    median_range, len = 3, finite = TRUE
+  ) && checkmate::test_count(sample_size, positive = TRUE)
   # convert from mean and sd
   if (is_mean_sd) {
     summary_stats_ <- unlist(summary_stats)
