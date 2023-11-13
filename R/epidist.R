@@ -370,9 +370,6 @@ validate_epidist <- function(epidist) {
       ),
     "epidist must contain a citation" =
       inherits(epidist$citation, "bibentry"),
-    "epidist distribution must be either <distribution> or <distcrete>" =
-      inherits(epidist$prob_dist, c("distribution", "distcrete")) ||
-        is.na(epidist$prob_dist) || is.character(epidist$prob_dist),
     "epidist notes must be a character string" =
       checkmate::test_character(epidist$notes, len = 1)
   )
