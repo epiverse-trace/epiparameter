@@ -764,6 +764,10 @@ discretise <- function(x, ...) {
 
 #' @rdname discretise
 #' @export
+discretize <- discretise
+
+#' @rdname discretise
+#' @export
 discretise.epidist <- function(x, ...) {
   # check if distribution is already discretised if so return early
   if (inherits(x$prob_dist, "distcrete")) {
