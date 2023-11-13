@@ -2,11 +2,14 @@
 % Please edit documentation in R/epidist.R
 \name{discretise}
 \alias{discretise}
+\alias{discretize}
 \alias{discretise.epidist}
 \alias{discretise.default}
 \title{Discretises a continuous distribution in an \verb{<epidist>} object}
 \usage{
 discretise(x, ...)
+
+discretize(x, ...)
 
 \method{discretise}{epidist}(x, ...)
 

@@ -2,10 +2,13 @@
 % Please edit documentation in R/checkers.R
 \name{is_parameterised}
 \alias{is_parameterised}
+\alias{is_parameterized}
 \title{Check if \verb{<epidist>} or list of \verb{<epidist>} objects contains a distribution
 and distribution parameters}
 \usage{
 is_parameterised(x, ...)
+
+is_parameterized(x, ...)
 }
 \arguments{
 \item{x}{An \verb{<epidist>} or list of \verb{<epidist>} objects.}

@@ -34,6 +34,10 @@ is_parameterised <- function(x, ...) {
   UseMethod("is_parameterised")
 }
 
+#' @rdname is_parameterised
+#' @export
+is_parameterized <- is_parameterised
+
 #' @export
 is_parameterised.epidist <- function(x, ...) {
   chkDots(...)
