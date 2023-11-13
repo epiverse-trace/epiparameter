@@ -37,7 +37,6 @@ The {distributional} package is loaded as some of the {epiparameter} methods use
 
 ```{r setup}
 library(epiparameter)
-library(distributional)
 ```
 
 ## Working with {epiparameter} data
