@@ -613,6 +613,7 @@ is_epidist <- function(x) {
 #' @param p The probabilities to evaluate at.
 #' @param times The number of random samples.
 #' @inheritParams print.epidist
+#' @inheritParams distributional::cdf
 #'
 #' @return If an `<epidist>` object is given a numeric vector is returned, if an
 #' `<vb_epidist>` object is given a list of two elements each with a numeric
@@ -693,6 +694,7 @@ cdf.epidist <- function(x, q, ..., log = FALSE) {
   unlist <- length(x$prob_dist) == 1
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$p(q)
+    if (log) out <- log(out)
   } else {
     out <- distributional::cdf(x$prob_dist, q = q, ..., log = log)
   }

@@ -38,6 +38,8 @@
 
 \item{q}{The quantiles to evaluate at.}
 
+\item{log}{If \code{TRUE}, probabilities will be given as log probabilities.}
+
 \item{p}{The probabilities to evaluate at.}
 
 \item{times}{The number of random samples.}
