@@ -966,7 +966,7 @@ mean.epidist <- function(x, ...) {
   if (utils::hasName(x$summary_stats, "mean")) {
     mean <- x$summary_stats$mean
   } else {
-    return(NA)
+    return(NA_real_)
   }
 
   # if mean is not given try and convert from parameters
