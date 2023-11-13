@@ -282,8 +282,9 @@ epidist <- function(disease,
   checkmate::assert_list(uncertainty, names = "unique")
   checkmate::assert_list(
     summary_stats,
-    types = c("list", "double", "integer", "logical", "null"),
-    names = "unique"
+    types = c("numeric", "logical"),
+    names = "unique",
+    null.ok = TRUE
   )
   checkmate::assert_class(citation, classes = "bibentry")
   checkmate::assert_list(metadata)
