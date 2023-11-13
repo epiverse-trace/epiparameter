@@ -679,10 +679,14 @@ density.epidist <- function(x, at, ...) {
   out
 }
 
+#' @importFrom distributional cdf
+#' @export
+distributional::cdf
+
 #' @rdname epidist_distribution_functions
 #' @importFrom distributional cdf
 #' @export
-cdf.epidist <- function(x, q, ...) {
+cdf.epidist <- function(x, q, ..., log = FALSE) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epidist> is unparameterised", call. = FALSE)
   }
@@ -690,7 +694,7 @@ cdf.epidist <- function(x, q, ...) {
   if (inherits(x$prob_dist, "distcrete")) {
     out <- x$prob_dist$p(q)
   } else {
-    out <- distributional::cdf(x$prob_dist, q = q)
+    out <- distributional::cdf(x$prob_dist, q = q, ..., log = log)
   }
   out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
@@ -712,6 +716,10 @@ quantile.epidist <- function(x, p, ...) {
   out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
 }
+
+#' @importFrom distributional generate
+#' @export
+distributional::generate
 
 #' @rdname epidist_distribution_functions
 #' @importFrom distributional generate
