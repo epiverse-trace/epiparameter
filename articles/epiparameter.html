@@ -113,8 +113,7 @@
 the data, and the functions (and methods) implemented in the package to facilitate easy application of parameters into epidemiological pipelines.</p>
 <p>The {distributional} package is loaded as some of the {epiparameter} methods use S3 generics from this package.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.mitchelloharawild.com/distributional/" class="external-link">distributional</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiverse-trace/epiparameter" class="external-link">epiparameter</a></span><span class="op">)</span></span></code></pre></div>
 </details><div class="section level2">
 <h2 id="working-with-epiparameter-data">Working with {epiparameter} data<a class="anchor" aria-label="anchor" href="#working-with-epiparameter-data"></a>
 </h2>
@@ -387,8 +386,8 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 8.224347</span></span>
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1]  8.8140741 20.7374960  0.9383332  2.2714632  4.4190396 21.9706100</span></span>
-<span><span class="co">#&gt;  [7]  7.7642116  2.4797863  5.4891977  0.4606174</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1]  7.746258  5.088046  3.142063  1.293850 18.219787 18.582176 36.897254</span></span>
+<span><span class="co">#&gt;  [8] 17.665510 15.139368 11.832363</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2">
