@@ -89,7 +89,7 @@
         <dd>Create an <code>&lt;epidist&gt;</code> object</dd>
       </dl><dl><dt>
           
-          <code><a href="discretise.html">discretise()</a></code> 
+          <code><a href="discretise.html">discretise()</a></code> <code><a href="discretise.html">discretize()</a></code> 
         </dt>
         <dd>Discretises a continuous distribution in an <code>&lt;epidist&gt;</code> object</dd>
       </dl><dl><dt>
@@ -122,62 +122,11 @@
           <code><a href="validate_epidist.html">validate_epidist()</a></code> 
         </dt>
         <dd>Validator for <code>&lt;epidist&gt;</code> class</dd>
-      </dl></div><div class="section level2">
-      
-      <h3 id="epiparam-object">epiparam object<a class="anchor" aria-label="anchor" href="#epiparam-object"></a></h3>
-      <p class="section-desc"></p><p>Class constructor, validator, and methods</p>
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="epiparam.html">epiparam()</a></code> 
-        </dt>
-        <dd>Create an <code>&lt;epiparam&gt;</code> object</dd>
       </dl><dl><dt>
           
-          <code><a href="cash-set-.epiparam.html">`$&lt;-`(<i>&lt;epiparam&gt;</i>)</a></code> 
+          <code><a href="print.multi_epidist.html">print(<i>&lt;multi_epidist&gt;</i>)</a></code> 
         </dt>
-        <dd>Set accessor for <code>epiparam</code> class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="format.epiparam.html">format(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Format method for <code>&lt;epiparam&gt;</code> class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="head.epiparam.html">head(<i>&lt;epiparam&gt;</i>)</a></code> <code><a href="head.epiparam.html">tail(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd><code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code> and <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail()</a></code> methods for <code>&lt;epiparam&gt;</code> class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="names-set-.epiparam.html">`names&lt;-`(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Set names for <code>&lt;epiparam&gt;</code> class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="print.epiparam.html">print(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Print method for <code>&lt;epiparam&gt;</code> class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="sub-.epiparam.html">`[`(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Subset method for <code>&lt;epiparam&gt;</code> class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="summary.epiparam.html">summary(<i>&lt;epiparam&gt;</i>)</a></code> 
-        </dt>
-        <dd>Summary method for <code>&lt;epiparam&gt;</code> class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="validate_epiparam.html">validate_epiparam()</a></code> 
-        </dt>
-        <dd>Validator for <code>&lt;epiparam&gt;</code> class</dd>
+        <dd>Print method for <code>&lt;multi_epidist&gt;</code> class</dd>
       </dl></div><div class="section level2">
       
       <h3 id="vb-epdist-object">vb_epdist object<a class="anchor" aria-label="anchor" href="#vb-epdist-object"></a></h3>
@@ -229,7 +178,7 @@
           
           <code><a href="get_citation.html">get_citation()</a></code> 
         </dt>
-        <dd>Extract citation information from <code>&lt;epidist&gt;</code> or <code>&lt;epiparam&gt;</code> objects</dd>
+        <dd>Extract citation information from <code>&lt;epidist&gt;</code> or list of <code>&lt;epidist&gt;</code> objects</dd>
       </dl><dl><dt>
           
           <code><a href="get_parameters.html">get_parameters()</a></code> 
@@ -291,7 +240,7 @@
           
           <code><a href="epidist_db.html">epidist_db()</a></code> 
         </dt>
-        <dd>Create an <code>&lt;epidist&gt;</code> object(s) directly from the epiparameter library
+        <dd>Create <code>&lt;epidist&gt;</code> object(s) directly from the epiparameter library
 (database)</dd>
       </dl></div><div class="section level2">
       <h2 id="explore-epiparam">Explore epiparam<a class="anchor" aria-label="anchor" href="#explore-epiparam"></a></h2>
@@ -308,7 +257,7 @@
           
           <code><a href="list_distributions.html">list_distributions()</a></code> 
         </dt>
-        <dd>List epidemiological distributions stored in an <code>epiparam</code> object</dd>
+        <dd>List epidemiological distributions stored in the epiparameter library</dd>
       </dl></div><div class="section level2">
       <h2 id="distribution-functions">Distribution functions<a class="anchor" aria-label="anchor" href="#distribution-functions"></a></h2>
       
@@ -365,44 +314,6 @@ reported values of percentiles, or median and range</dd>
         </dt>
         <dd>Convert the summary statistics of a distribution to parameters</dd>
       </dl></div><div class="section level2">
-      <h2 id="calculate-parameters-from-summary-statistics">Calculate parameters from summary statistics<a class="anchor" aria-label="anchor" href="#calculate-parameters-from-summary-statistics"></a></h2>
-      
-      <p class="section-desc"></p><p>Uses either extraction or conversion function to get distribution parameters</p>
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="calc_dist_params.html">calc_dist_params()</a></code> 
-        </dt>
-        <dd>Calculate the parameters of a probability distribution from a list of
-summary statistics</dd>
-      </dl></div><div class="section level2">
-      <h2 id="epi-object-conversion">Epi object conversion<a class="anchor" aria-label="anchor" href="#epi-object-conversion"></a></h2>
-      
-      <p class="section-desc"></p><p>Convert between {epiparameter} classes</p>
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="as_epidist.html">as_epidist()</a></code> 
-        </dt>
-        <dd>Convert <code>&lt;epiparam&gt;</code> to <code>&lt;epidist&gt;</code></dd>
-      </dl><dl><dt>
-          
-          <code><a href="as_epiparam.html">as_epiparam()</a></code> 
-        </dt>
-        <dd>Convert an <code>&lt;epidist&gt;</code> object to an <code>&lt;epiparam&gt;</code> object</dd>
-      </dl></div><div class="section level2">
       <h2 id="epi-object-checking">Epi object checking<a class="anchor" aria-label="anchor" href="#epi-object-checking"></a></h2>
       
       <p class="section-desc"></p><p>Check an object is of a certain type or feature</p>
@@ -426,11 +337,6 @@ summary statistics</dd>
 are in the set of possible parameters used in the epiparameter package</dd>
       </dl><dl><dt>
           
-          <code><a href="is_epiparam.html">is_epiparam()</a></code> 
-        </dt>
-        <dd>Check object is an <code>&lt;epiparam&gt;</code></dd>
-      </dl><dl><dt>
-          
           <code><a href="is_truncated.html">is_truncated()</a></code> 
         </dt>
         <dd>Check if distribution in <code>&lt;epidist&gt;</code> is truncated</dd>
@@ -441,26 +347,10 @@ are in the set of possible parameters used in the epiparameter package</dd>
         <dd>Check object is a <code>&lt;vb_epidist&gt;</code></dd>
       </dl><dl><dt>
           
-          <code><a href="is_parameterised.html">is_parameterised()</a></code> 
+          <code><a href="is_parameterised.html">is_parameterised()</a></code> <code><a href="is_parameterised.html">is_parameterized()</a></code> 
         </dt>
-        <dd>Check if <code>&lt;epidist&gt;</code> or <code>&lt;epiparam&gt;</code> object contain a distribution and
-distribution parameters</dd>
-      </dl></div><div class="section level2">
-      <h2 id="bind-to-epiparam">Bind to epiparam<a class="anchor" aria-label="anchor" href="#bind-to-epiparam"></a></h2>
-      
-      <p class="section-desc"></p><p>Add entries to <epiparam> object</epiparam></p>
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="bind_epiparam.html">bind_epiparam()</a></code> 
-        </dt>
-        <dd>Bind an epi object to an <code>&lt;epiparam&gt;</code> object</dd>
+        <dd>Check if <code>&lt;epidist&gt;</code> or list of <code>&lt;epidist&gt;</code> objects contains a distribution
+and distribution parameters</dd>
       </dl></div><div class="section level2">
       <h2 id="cleaning">Cleaning<a class="anchor" aria-label="anchor" href="#cleaning"></a></h2>
       
@@ -479,7 +369,7 @@ distribution parameters</dd>
         <dd>Standardise the names of diseases</dd>
       </dl><dl><dt>
           
-          <code><a href="clean_epidist_name.html">clean_epidist_name()</a></code> 
+          <code><a href="clean_epi_dist.html">clean_epi_dist()</a></code> 
         </dt>
         <dd>Standardise the names of epidemiological distributions</dd>
       </dl></div><div class="section level2">

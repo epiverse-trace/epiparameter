@@ -118,124 +118,218 @@ the data, and the functions (and methods) implemented in the package to facilita
 </details><div class="section level2">
 <h2 id="working-with-epiparameter-data">Working with {epiparameter} data<a class="anchor" aria-label="anchor" href="#working-with-epiparameter-data"></a>
 </h2>
-<p>{epiparameter} introduces three new classes for working with epidemiological parameters in R:</p>
+<p>{epiparameter} introduces two new classes for working with epidemiological parameters in R:</p>
 <ul>
 <li>
-<code>&lt;epiparam&gt;</code>: library of epidemiological parameters</li>
+<code>&lt;epidist&gt;</code>: Contains the name of the disease, the name of the epidemiological distribution, parameters (if available) and citation information of parameter source, as well as other information.</li>
 <li>
-<code>&lt;epidist&gt;</code>: singular set of epidemiological parameters</li>
-<li>
-<code>&lt;vb_epidist&gt;</code>: a singular set of epidemiological parameters for a vector-borne disease containing both an extrinsic and intrinsic distribution. This object contains two sets of parameters, one for the human (intrinsic) and one for the vector (extrinsic).</li>
+<code>&lt;vb_epidist&gt;</code>: A list of two <code>&lt;epidist&gt;</code> objects for a vector-borne disease. One for the human (intrinsic) distribution, and one for the vector (extrinsic).</li>
 </ul>
 <div class="section level3">
 <h3 id="library-of-epidemiological-parameters">Library of epidemiological parameters<a class="anchor" aria-label="anchor" href="#library-of-epidemiological-parameters"></a>
 </h3>
-<p>First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The <code>&lt;epiparam&gt;</code> class is introduced to enable users to easily explore the range of parameters that are available. The library can be read into R using the <code><a href="../reference/epiparam.html">epiparam()</a></code> function. By default all entries in the library are supplied.</p>
+<p>First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The library is stored in the package as a JSON file and can be read into R using the <code><a href="../reference/epidist_db.html">epidist_db()</a></code> function. By default all entries in the library are supplied.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">epi_dist_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epiparam.html">epiparam</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">epi_dist_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Returning 118 results that match the criteria (95 are parameterised). </span></span>
+<span><span class="co">#&gt; Use subset to filter by entry variables or single_epidist to return a single entry. </span></span>
+<span><span class="co">#&gt; To retrieve the short citation for each use the 'get_citation' function</span></span>
 <span><span class="va">epi_dist_db</span></span>
-<span><span class="co">#&gt; Epiparam object</span></span>
-<span><span class="co">#&gt; Number of distributions in library: 118</span></span>
-<span><span class="co">#&gt; Number of diseases: 23</span></span>
-<span><span class="co">#&gt; Number of delay distributions: 95</span></span>
-<span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
-<span><span class="co">#&gt; Number of studies in library: 45</span></span>
-<span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
-<span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
-<span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
-<span><span class="co">#&gt; 2 Chikungunya        incubation_period             lnorm</span></span>
-<span><span class="co">#&gt; 3    COVID-19 hospitalisation_to_death           weibull</span></span>
-<span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
-<span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6    COVID-19        incubation_period              &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; &lt;112 more rows &amp; 55 more cols not shown&gt;</span></span></code></pre></div>
-</details><p>The <code>&lt;epiparam&gt;</code> class has a custom printing method which gives a summary of the information included in the database including the number of distributions, number of diseases, number of different studies among other summary metrics, as well as the first six rows of the diseases, epidemiological distributions (<code>epi_distribution</code>) and probability distribution (<code>prob_distribution</code>).</p>
-<p>The <code>&lt;epiparam&gt;</code> class is based (i.e. inherits from) the data frame, and therefore the same subsetting and manipulation can be carried out, including the <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code> and <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail()</a></code> of the database.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
-<span><span class="co">#&gt;       disease          pathogen         epi_distribution       author</span></span>
-<span><span class="co">#&gt; 1  Adenovirus        Adenovirus        incubation_period Justin L....</span></span>
-<span><span class="co">#&gt; 2 Chikungunya Chikungunya Virus        incubation_period Kara E R....</span></span>
-<span><span class="co">#&gt; 3    COVID-19        SARS-CoV-2 hospitalisation_to_death Natalie ....</span></span>
-<span><span class="co">#&gt; 4    COVID-19        SARS-CoV-2 hospitalisation_to_death Natalie ....</span></span>
-<span><span class="co">#&gt; 5    COVID-19        SARS-CoV-2        incubation_period Balram R....</span></span>
-<span><span class="co">#&gt; 6    COVID-19        SARS-CoV-2        incubation_period Christel....</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
-<span><span class="co">#&gt;                disease             pathogen  epi_distribution       author</span></span>
-<span><span class="co">#&gt; 113    West Nile Fever      West Nile Virus incubation_period Kara E R....</span></span>
-<span><span class="co">#&gt; 114    West Nile Fever      West Nile Virus incubation_period Kara E R....</span></span>
-<span><span class="co">#&gt; 115    West Nile Fever      West Nile Virus incubation_period Kara E R....</span></span>
-<span><span class="co">#&gt; 116       Yellow Fever Yellow Fever Viruses incubation_period Kara E R....</span></span>
-<span><span class="co">#&gt; 117       Yellow Fever Yellow Fever Viruses incubation_period Kara E R....</span></span>
-<span><span class="co">#&gt; 118 Zika Virus Disease           Zika Virus incubation_period Justin L....</span></span></code></pre></div>
-</details><p>The epidemiological library contains multiple columns, each storing different features of the parameter:</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "disease"              "pathogen"             "epi_distribution"    </span></span>
-<span><span class="co">#&gt;  [4] "author"               "title"                "journal"             </span></span>
-<span><span class="co">#&gt;  [7] "year"                 "sample_size"          "region"              </span></span>
-<span><span class="co">#&gt; [10] "transmission_mode"    "vector"               "extrinsic"           </span></span>
-<span><span class="co">#&gt; [13] "prob_distribution"    "inference_method"     "mean"                </span></span>
-<span><span class="co">#&gt; [16] "mean_ci_limits"       "mean_ci"              "sd"                  </span></span>
-<span><span class="co">#&gt; [19] "sd_ci_limits"         "sd_ci"                "quantile_2.5"        </span></span>
-<span><span class="co">#&gt; [22] "quantile_5"           "quantile_25"          "median"              </span></span>
-<span><span class="co">#&gt; [25] "median_ci_limits"     "median_ci"            "quantile_75"         </span></span>
-<span><span class="co">#&gt; [28] "quantile_87.5"        "quantile_95"          "quantile_97.5"       </span></span>
-<span><span class="co">#&gt; [31] "lower_range"          "upper_range"          "shape"               </span></span>
-<span><span class="co">#&gt; [34] "shape_ci_limits"      "shape_ci"             "scale"               </span></span>
-<span><span class="co">#&gt; [37] "scale_ci_limits"      "scale_ci"             "meanlog"             </span></span>
-<span><span class="co">#&gt; [40] "meanlog_ci_limits"    "meanlog_ci"           "sdlog"               </span></span>
-<span><span class="co">#&gt; [43] "sdlog_ci_limits"      "sdlog_ci"             "dispersion"          </span></span>
-<span><span class="co">#&gt; [46] "dispersion_ci_limits" "dispersion_ci"        "precision"           </span></span>
-<span><span class="co">#&gt; [49] "precision_ci_limits"  "precision_ci"         "truncation"          </span></span>
-<span><span class="co">#&gt; [52] "discretised"          "censored"             "right_truncated"     </span></span>
-<span><span class="co">#&gt; [55] "phase_bias_adjusted"  "notes"                "PMID"                </span></span>
-<span><span class="co">#&gt; [58] "DOI"</span></span></code></pre></div>
-</details><p>If subsetting of the <code>&lt;epiparam&gt;</code> object removes one of the essential columns then the object is<br>
-converted to a data frame. For example, removing the <code>disease</code> column causes the below <code>&lt;epiparam&gt;</code> object
-to be converted to a data frame. See the Epiverse-TRACE <a href="https://epiverse-trace.github.io/posts/extend-dataframes/" class="external-link">blog post on extending data frames</a> for a more technical description.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">epi_dist_df</span> <span class="op">&lt;-</span> <span class="va">epi_dist_db</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span> <span class="op">!=</span> <span class="st">"disease"</span><span class="op">]</span></span>
-<span><span class="co">#&gt; Removing crucial column in `&lt;epiparam&gt;` returning `&lt;data.frame&gt;`</span></span></code></pre></div>
-</details><p>To see a full list of the diseases and distributions stored in the library use the
+<span><span class="co">#&gt; List of &lt;epidist&gt; objects</span></span>
+<span><span class="co">#&gt;   Number of entries in library: 118</span></span>
+<span><span class="co">#&gt;   Number of studies in library: 45</span></span>
+<span><span class="co">#&gt;   Number of diseases: 23</span></span>
+<span><span class="co">#&gt;   Number of delay distributions: 108</span></span>
+<span><span class="co">#&gt;   Number of offspring distributions: 10</span></span></code></pre></div>
+</details><p>The output is a list of <code>&lt;epidist&gt;</code> objects, where each element in the list corresponds to an entry in the parameter database. <em>Technical note</em>: the reason the object does not look like a regular R list is because it uses a custom print method which will print a summary of the data to the console when there are more than 5 entries to prevent a large list flooding the console. When the number of database entries returned is less than or equal to 5 the print will look like a standard R list.</p>
+<p>To see a full list of the diseases and distributions stored in the library use the
 <code><a href="../reference/list_distributions.html">list_distributions()</a></code> function. Here we show the first six rows of the output.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span><span class="va">epi_dist_db</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       disease  epi_distribution prob_distribution       author year sample_size</span></span>
-<span><span class="co">#&gt; 1  Adenovirus incubation_period             lnorm Justin L.... 2009          14</span></span>
-<span><span class="co">#&gt; 2 Chikungunya incubation_period             lnorm Kara E R.... 2014          21</span></span>
-<span><span class="co">#&gt; 3    COVID-19 incubation_period              &lt;NA&gt; Balram R.... 2022        6241</span></span>
-<span><span class="co">#&gt; 4    COVID-19 incubation_period              &lt;NA&gt; Christel.... 2021       28675</span></span>
-<span><span class="co">#&gt; 5    COVID-19 incubation_period             lnorm Conor Mc.... 2020        1357</span></span>
-<span><span class="co">#&gt; 6    COVID-19 incubation_period             lnorm Conor Mc.... 2020        1269</span></span></code></pre></div>
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>multi_epidist <span class="op">=</span> <span class="va">epi_dist_db</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;             disease  epi_distribution prob_distribution       author year</span></span>
+<span><span class="co">#&gt; 1        Adenovirus incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 2 Human Coronavirus incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 3              SARS incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 4         Influenza incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 5         Influenza incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 6         Influenza incubation period             lnorm Justin L.... 2009</span></span></code></pre></div>
+</details><p>If the <code><a href="../reference/list_distributions.html">list_distributions()</a></code> function is not supplied with a list of <code>&lt;epidist&gt;</code> objects it can fetch the entries from the database.</p>
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;             disease  epi_distribution prob_distribution       author year</span></span>
+<span><span class="co">#&gt; 1        Adenovirus incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 2 Human Coronavirus incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 3              SARS incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 4         Influenza incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 5         Influenza incubation period             lnorm Justin L.... 2009</span></span>
+<span><span class="co">#&gt; 6         Influenza incubation period             lnorm Justin L.... 2009</span></span></code></pre></div>
+</details><p><code><a href="../reference/list_distributions.html">list_distributions()</a></code> can also subset the database, when either supplied to the function (first example) or when the entries are fetched directly from the database (second example).</p>
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"Ebola"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                disease             epi_distribution prob_distribution</span></span>
+<span><span class="co">#&gt; 1  Ebola Virus Disease       offspring distribution            nbinom</span></span>
+<span><span class="co">#&gt; 2  Ebola Virus Disease            incubation period             lnorm</span></span>
+<span><span class="co">#&gt; 3  Ebola Virus Disease               onset to death             gamma</span></span>
+<span><span class="co">#&gt; 4  Ebola Virus Disease            incubation period             gamma</span></span>
+<span><span class="co">#&gt; 5  Ebola Virus Disease            incubation period             gamma</span></span>
+<span><span class="co">#&gt; 6  Ebola Virus Disease            incubation period             gamma</span></span>
+<span><span class="co">#&gt; 7  Ebola Virus Disease            incubation period             gamma</span></span>
+<span><span class="co">#&gt; 8  Ebola Virus Disease              serial interval             gamma</span></span>
+<span><span class="co">#&gt; 9  Ebola Virus Disease              serial interval             gamma</span></span>
+<span><span class="co">#&gt; 10 Ebola Virus Disease              serial interval             gamma</span></span>
+<span><span class="co">#&gt; 11 Ebola Virus Disease              serial interval             gamma</span></span>
+<span><span class="co">#&gt; 12 Ebola Virus Disease     hospitalisation to death             gamma</span></span>
+<span><span class="co">#&gt; 13 Ebola Virus Disease hospitalisation to discharge             gamma</span></span>
+<span><span class="co">#&gt; 14 Ebola Virus Disease        notification to death             gamma</span></span>
+<span><span class="co">#&gt; 15 Ebola Virus Disease    notification to discharge             gamma</span></span>
+<span><span class="co">#&gt; 16 Ebola Virus Disease               onset to death             gamma</span></span>
+<span><span class="co">#&gt; 17 Ebola Virus Disease           onset to discharge             gamma</span></span>
+<span><span class="co">#&gt;          author year</span></span>
+<span><span class="co">#&gt; 1  J. O. Ll.... 2005</span></span>
+<span><span class="co">#&gt; 2  Martin E.... 2011</span></span>
+<span><span class="co">#&gt; 3  The-Ebol.... 2018</span></span>
+<span><span class="co">#&gt; 4  WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 5  WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 6  WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 7  WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 8  WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 9  WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 10 WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 11 WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 12 WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 13 WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 14 WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 15 WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 16 WHO-Ebol.... 2015</span></span>
+<span><span class="co">#&gt; 17 WHO-Ebol.... 2015</span></span></code></pre></div>
 </details><p>More details on the data collation and the library of parameters can be found in
 the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data Collation and Synthesis Protocol vignette</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="single-set-of-epidemiological-parameters">Single set of epidemiological parameters<a class="anchor" aria-label="anchor" href="#single-set-of-epidemiological-parameters"></a>
 </h3>
-<p>The second class introduced in the {epiparameter} package is the <code>&lt;epidist&gt;</code> class. This holds a single set of epidemiological parameters.</p>
-<p>An <code>&lt;epidist&gt;</code> object can be converted from one of the rows of the <code>&lt;epiparam&gt;</code> object or can be created manually. First we will show the conversion of <code>&lt;epiparam&gt;</code> → <code>&lt;epidist&gt;</code>. This uses the <code><a href="../reference/as_epidist.html">as_epidist()</a></code> function.</p>
+<p>The core data structure introduced in the {epiparameter} package is the <code>&lt;epidist&gt;</code> class. This holds a single set of epidemiological parameters.</p>
+<p>An <code>&lt;epidist&gt;</code> object can be:</p>
+<ol style="list-style-type: decimal">
+<li>Pulled from database (<code><a href="../reference/epidist_db.html">epidist_db()</a></code>)</li>
+<li>Created manually (using the class constructor function: <code><a href="../reference/epidist.html">epidist()</a></code>)</li>
+</ol>
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># &lt;epidist&gt; from database</span></span>
+<span></span>
+<span><span class="co"># fetch &lt;epidist&gt; for COVID-19 incubation period from database</span></span>
+<span><span class="co"># return only a single &lt;epidist&gt;</span></span>
+<span><span class="va">covid_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
+<span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span>
+<span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
+<span>  single_epidist <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using McAloon C, Collins Á, Hunt K, Barber A, Byrne AW, Butler F, Casey M,</span></span>
+<span><span class="co">#&gt; Griffin J, Lane E, McEvoy D, Wall P, Green M, O'Grady L, More SJ</span></span>
+<span><span class="co">#&gt; (2020). "Incubation period of COVID-19: a rapid systematic review and</span></span>
+<span><span class="co">#&gt; meta-analysis of observational research." _BMJ Open_.</span></span>
+<span><span class="co">#&gt; doi:10.1136/bmjopen-2020-039652</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1136/bmjopen-2020-039652&gt;.. </span></span>
+<span><span class="co">#&gt; To retrieve the short citation use the 'get_citation' function</span></span>
+<span><span class="va">covid_incubation</span></span>
+<span><span class="co">#&gt; Disease: COVID-19</span></span>
+<span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
+<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
+<span><span class="co">#&gt; Study: McAloon C, Collins Á, Hunt K, Barber A, Byrne AW, Butler F, Casey M,</span></span>
+<span><span class="co">#&gt; Griffin J, Lane E, McEvoy D, Wall P, Green M, O'Grady L, More SJ</span></span>
+<span><span class="co">#&gt; (2020). "Incubation period of COVID-19: a rapid systematic review and</span></span>
+<span><span class="co">#&gt; meta-analysis of observational research." _BMJ Open_.</span></span>
+<span><span class="co">#&gt; doi:10.1136/bmjopen-2020-039652</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1136/bmjopen-2020-039652&gt;.</span></span>
+<span><span class="co">#&gt; Distribution: lnorm</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   meanlog: 1.660</span></span>
+<span><span class="co">#&gt;   sdlog: 0.480</span></span>
+<span></span>
+<span><span class="co"># &lt;epidist&gt; using constructor function</span></span>
+<span><span class="va">covid_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span></span>
+<span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span>
+<span>  pathogen <span class="op">=</span> <span class="st">"SARS-CoV-2"</span>,</span>
+<span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
+<span>  prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span>
+<span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">2</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  summary_stats <span class="op">=</span> <span class="fu"><a href="../reference/create_epidist_summary_stats.html">create_epidist_summary_stats</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  citation <span class="op">=</span> <span class="fu"><a href="../reference/create_epidist_citation.html">create_epidist_citation</a></span><span class="op">(</span></span>
+<span>    author <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"John Smith"</span>, <span class="st">"Amy Jones"</span><span class="op">)</span>,</span>
+<span>    year <span class="op">=</span> <span class="fl">2022</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"COVID Incubation Period"</span>,</span>
+<span>    journal <span class="op">=</span> <span class="st">"Epi Journal"</span>,</span>
+<span>    DOI <span class="op">=</span> <span class="st">"10.27861182.x"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using Smith J, Jones A (2022). "COVID Incubation Period." _Epi Journal_.</span></span>
+<span><span class="co">#&gt; doi:10.27861182.x &lt;https://doi.org/10.27861182.x&gt;. </span></span>
+<span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
+<span><span class="va">covid_incubation</span></span>
+<span><span class="co">#&gt; Disease: COVID-19</span></span>
+<span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
+<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
+<span><span class="co">#&gt; Study: Smith J, Jones A (2022). "COVID Incubation Period." _Epi Journal_.</span></span>
+<span><span class="co">#&gt; doi:10.27861182.x &lt;https://doi.org/10.27861182.x&gt;.</span></span>
+<span><span class="co">#&gt; Distribution: gamma</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   shape: 2.000</span></span>
+<span><span class="co">#&gt;   scale: 1.000</span></span></code></pre></div>
+</details><p>Not all arguments are specified in the example using the class constructor (<code><a href="../reference/epidist.html">epidist()</a></code>) above, for example the <code>metadata</code> or parameter uncertainty (<code>uncertainty</code>) is not provided. See the help documentation for the <code><a href="../reference/epidist.html">epidist()</a></code> function using <code><a href="../reference/epidist.html">?epidist</a></code> to see each argument. Also see documentation for <code>&lt;epidist&gt;</code> helper functions, e.g., <code>?create_epidist_citation()</code>.</p>
+<p>Manually creating <code>&lt;epidist&gt;</code> objects can be especially useful if new parameter estimates become available but are not yet incorporated into the {epiparameter} library.</p>
+<p>As seen in the examples in this vignette, the <code>&lt;epidist&gt;</code> class has a custom printing method which shows the disease, pathogen (if known), the epidemiological distribution, a citation of the study the parameters are from and the probability distribution and parameter of that distribution (if available).</p>
+</div>
+<div class="section level3 alert alert-success">
+<h3 id="benefit-of-epidist">Benefit of <code>&lt;epidist&gt;</code><a class="anchor" aria-label="anchor" href="#benefit-of-epidist"></a>
+</h3>
+<p>By providing a consistent and robust object to store epidemiological parameters, <code>&lt;epidist&gt;</code> objects can be applied in epidemiological pipelines, for example <a href="https://github.com/epiverse-trace/episoap" class="external-link">{episoap}</a>. The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will continue to operate because the class is unchanged.</p>
+</div>
+<p>The probability distribution (<code>prob_distribution</code>) argument requires the distribution specified in the standard R naming. In some cases these are the same as the distribution’s name, e.g., <code>gamma</code> and <code>weibull</code>. Examples of where the distribution name and R name differ are lognormal and <code>lnorm</code>, negative binomial and <code>nbinom</code>, geometric and <code>geom</code>, and poisson and <code>pois</code>.</p>
+</div>
+<div class="section level2">
+<h2 id="subsetting-database">Subsetting database<a class="anchor" aria-label="anchor" href="#subsetting-database"></a>
+</h2>
+<p>The database can be subset directly by <code><a href="../reference/epidist_db.html">epidist_db()</a></code>. Here the results can be subset by author. It is recommended to use the family name of the first author instead of the full name. Only the first author will be matched when the entry is from a source with multiple authors.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># find entry for COVID-19</span></span>
-<span><span class="va">epi_dist_covid</span> <span class="op">&lt;-</span> <span class="va">epi_dist_db</span><span class="op">[</span><span class="va">epi_dist_db</span><span class="op">$</span><span class="va">disease</span> <span class="op">==</span> <span class="st">"COVID-19"</span>, <span class="op">]</span></span>
-<span></span>
-<span><span class="co"># find entry for COVID-19 incubation period</span></span>
-<span><span class="va">epi_dist_covid_incub</span> <span class="op">&lt;-</span> <span class="va">epi_dist_covid</span><span class="op">[</span><span class="va">epi_dist_covid</span><span class="op">$</span><span class="va">epi_distribution</span> <span class="op">==</span> <span class="st">"incubation_period"</span>, <span class="op">]</span> <span class="co"># nolint</span></span>
-<span></span>
-<span><span class="co"># select one of the COVID-19 incubation period</span></span>
-<span><span class="va">covid_incub</span> <span class="op">&lt;-</span> <span class="va">epi_dist_covid_incub</span><span class="op">[</span><span class="fl">10</span>, <span class="op">]</span></span>
-<span></span>
-<span><span class="co"># convert epiparam entry to epidist</span></span>
-<span><span class="va">covid_incub</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">covid_incub</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using Linton NM, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov AR, Jung S,</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
+<span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span>
+<span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
+<span>  author <span class="op">=</span> <span class="st">"Linton"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Returning 3 results that match the criteria (3 are parameterised). </span></span>
+<span><span class="co">#&gt; Use subset to filter by entry variables or single_epidist to return a single entry. </span></span>
+<span><span class="co">#&gt; To retrieve the short citation for each use the 'get_citation' function</span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; Disease: COVID-19</span></span>
+<span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
+<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
+<span><span class="co">#&gt; Study: Linton NM, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov AR, Jung S,</span></span>
 <span><span class="co">#&gt; Yuan B, Kinoshita R, Nishiura H (2020). "Incubation Period and Other</span></span>
 <span><span class="co">#&gt; Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span></span>
 <span><span class="co">#&gt; with Right Truncation: A Statistical Analysis of Publicly Available</span></span>
 <span><span class="co">#&gt; Case Data." _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span></span>
-<span><span class="co">#&gt; &lt;https://doi.org/10.3390/jcm9020538&gt;. </span></span>
-<span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
-<span><span class="va">covid_incub</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.3390/jcm9020538&gt;.</span></span>
+<span><span class="co">#&gt; Distribution: lnorm</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   meanlog: 1.456</span></span>
+<span><span class="co">#&gt;   sdlog: 0.555</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; Disease: COVID-19</span></span>
+<span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
+<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
+<span><span class="co">#&gt; Study: Linton NM, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov AR, Jung S,</span></span>
+<span><span class="co">#&gt; Yuan B, Kinoshita R, Nishiura H (2020). "Incubation Period and Other</span></span>
+<span><span class="co">#&gt; Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span></span>
+<span><span class="co">#&gt; with Right Truncation: A Statistical Analysis of Publicly Available</span></span>
+<span><span class="co">#&gt; Case Data." _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.3390/jcm9020538&gt;.</span></span>
+<span><span class="co">#&gt; Distribution: lnorm</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   meanlog: 1.611</span></span>
+<span><span class="co">#&gt;   sdlog: 0.472</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; Disease: COVID-19</span></span>
 <span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
 <span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
@@ -248,136 +342,64 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   meanlog: 1.525</span></span>
-<span><span class="co">#&gt;   sdlog: 0.629</span></span></code></pre></div>
-</details><p>The <code>&lt;epidist&gt;</code> object also has a custom printing method which shows the disease, pathogen (if known), the epidemiological distribution, a citation of the study the parameters are from and the probability distribution and parameter of that distribution (if available).</p>
-<p>The opposite conversion from <code>&lt;epidist&gt;</code> to <code>&lt;epiparam&gt;</code> can also be achieved using <code><a href="../reference/as_epiparam.html">as_epiparam()</a></code>.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/as_epiparam.html">as_epiparam</a></span><span class="op">(</span><span class="va">covid_incub</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Epiparam object</span></span>
-<span><span class="co">#&gt; Number of distributions in library: 1</span></span>
-<span><span class="co">#&gt; Number of diseases: 1</span></span>
-<span><span class="co">#&gt; Number of delay distributions: 1</span></span>
-<span><span class="co">#&gt; Number of offspring distributions: 0</span></span>
-<span><span class="co">#&gt; Number of studies in library: 1</span></span>
-<span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
-<span><span class="co">#&gt;    disease  epi_distribution prob_distribution</span></span>
-<span><span class="co">#&gt; 1 COVID-19 incubation_period             lnorm</span></span>
-<span><span class="co">#&gt; &lt;0 more rows &amp; 55 more cols not shown&gt;</span></span></code></pre></div>
-</details><p>There are two alternatives to reading in <code>&lt;epiparam&gt;</code> objects and subsetting to <code>&lt;epidist&gt;</code>.</p>
-<ol style="list-style-type: decimal">
-<li>Extract an <code>&lt;epidist&gt;</code> directly from the library with <code><a href="../reference/epidist_db.html">epidist_db()</a></code>.</li>
-<li>Create <code>&lt;epidist&gt;</code> manually with constructor function.</li>
-</ol>
-<p>The <code><a href="../reference/epidist_db.html">epidist_db()</a></code> allows direct subsetting of the library and returns an <code>&lt;epidist&gt;</code> of a
-single set of epidemiological parameters.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
-<span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span>
-<span>  epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span>,</span>
-<span>  author <span class="op">=</span> <span class="st">"Bui"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using Bui LV, Nguyen HT, Levine H, Nguyen HN, Nguyen T, Nguyen TP, Nguyen TT,</span></span>
-<span><span class="co">#&gt; Do TTT, Pham NT, Bui MH (2020). "Estimation of the incubation period of</span></span>
-<span><span class="co">#&gt; COVID-19 in Vietnam." _PLoS One_. doi:10.1371/journal.pone.0243889</span></span>
-<span><span class="co">#&gt; &lt;https://doi.org/10.1371/journal.pone.0243889&gt;. </span></span>
-<span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
-<span><span class="co">#&gt; Numerical approximation used, results may be unreliable.</span></span>
-<span><span class="co">#&gt; Disease: COVID-19</span></span>
-<span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
-<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
-<span><span class="co">#&gt; Study: Bui LV, Nguyen HT, Levine H, Nguyen HN, Nguyen T, Nguyen TP, Nguyen TT,</span></span>
-<span><span class="co">#&gt; Do TTT, Pham NT, Bui MH (2020). "Estimation of the incubation period of</span></span>
-<span><span class="co">#&gt; COVID-19 in Vietnam." _PLoS One_. doi:10.1371/journal.pone.0243889</span></span>
-<span><span class="co">#&gt; &lt;https://doi.org/10.1371/journal.pone.0243889&gt;.</span></span>
-<span><span class="co">#&gt; Distribution: weibull</span></span>
-<span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   shape: 2.217</span></span>
-<span><span class="co">#&gt;   scale: 7.226</span></span></code></pre></div>
-</details><p>Additionally to using entries from the {epiparameter} library, <code>&lt;epidist&gt;</code> objects can be manually created.
-This may be especially useful if new parameter estimates become available but are not yet incorporated into the library.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ebola_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span></span>
-<span>  disease <span class="op">=</span> <span class="st">"ebola"</span>,</span>
-<span>  epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span>,</span>
-<span>  prob_distribution <span class="op">=</span> <span class="st">"lnorm"</span>,</span>
-<span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>meanlog <span class="op">=</span> <span class="fl">1</span>, sdlog <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Citation cannot be created as author, year, journal or title is missing</span></span></code></pre></div>
-</details>
-</div>
-<div class="section level3 alert alert-success">
-<h3 id="benefit-of-epidist">Benefit of <code>&lt;epidist&gt;</code><a class="anchor" aria-label="anchor" href="#benefit-of-epidist"></a>
-</h3>
-<p>By providing a consistent and robust object to store epidemiological parameters, <code>&lt;epidist&gt;</code> objects can be applied in epidemiological pipelines, for example <a href="https://github.com/epiverse-trace/episoap" class="external-link">{episoap}</a>. The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will continue to operate because the class is unchanged.</p>
-</div>
-<p>The probability distribution (<code>prob_distribution</code>) argument requires the distribution specified in the standard R naming. In some cases these are the same as the distribution’s name, e.g., <code>gamma</code> and <code>weibull</code>. Examples of where the distribution name and R name differ are lognormal and <code>lnorm</code>, negative binomial and <code>nbinom</code>, geometric and <code>geom</code>, and poisson and <code>pois</code>. Extra arguments are also available in <code><a href="../reference/epidist.html">epidist()</a></code> to add information on uncertainty and citation information.</p>
+<span><span class="co">#&gt;   sdlog: 0.629</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attr(,"class")</span></span>
+<span><span class="co">#&gt; [1] "multi_epidist"</span></span></code></pre></div>
+</details><p>The results can be further subset using the <code>subset</code> argument, for example <code>subset = sample_size &gt; 100</code> will return entries with a sample size greater than 100. See <code>?epidist_db()</code> for details on how to use this argument to subset which database entries get returned.</p>
 </div>
 <div class="section level2">
-<h2 id="adding-library-entries">Adding library entries<a class="anchor" aria-label="anchor" href="#adding-library-entries"></a>
+<h2 id="adding-library-entries-and-contributing-to-epiparameter">Adding library entries and contributing to {epiparameter}<a class="anchor" aria-label="anchor" href="#adding-library-entries-and-contributing-to-epiparameter"></a>
 </h2>
 <p>If a set of epidemiological parameter has been inferred and is known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.</p>
-<p>To add entries to the library we provide a function to bind data to <code>&lt;epiparam&gt;</code> objects: <code><a href="../reference/bind_epiparam.html">bind_epiparam()</a></code>. This function is provided as multiple data types (classes) can be bound to an existing <code>&lt;epiparam&gt;</code> object (which itself is a subclass of a <code>&lt;data.frame&gt;</code>). <code><a href="../reference/bind_epiparam.html">bind_epiparam()</a></code> can bind <code>&lt;epiparam&gt;</code>, <code>&lt;epidist&gt;</code> (including <code>&lt;vb_epdist&gt;</code>), <code>&lt;data.frames&gt;</code> and <code>lists</code>.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/bind_epiparam.html">bind_epiparam</a></span><span class="op">(</span>epiparam <span class="op">=</span> <span class="va">epi_dist_db</span>, epi_obj <span class="op">=</span> <span class="va">ebola_incubation</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Epiparam object</span></span>
-<span><span class="co">#&gt; Number of distributions in library: 119</span></span>
-<span><span class="co">#&gt; Number of diseases: 24</span></span>
-<span><span class="co">#&gt; Number of delay distributions: 96</span></span>
-<span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
-<span><span class="co">#&gt; Number of studies in library: 46</span></span>
-<span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
-<span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
-<span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
-<span><span class="co">#&gt; 2 Chikungunya        incubation_period             lnorm</span></span>
-<span><span class="co">#&gt; 3    COVID-19 hospitalisation_to_death           weibull</span></span>
-<span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
-<span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6    COVID-19        incubation_period              &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; &lt;113 more rows &amp; 55 more cols not shown&gt;</span></span>
-<span><span class="fu"><a href="../reference/bind_epiparam.html">bind_epiparam</a></span><span class="op">(</span>epiparam <span class="op">=</span> <span class="va">epi_dist_db</span>, epi_obj <span class="op">=</span> <span class="fu"><a href="../reference/as_epiparam.html">as_epiparam</a></span><span class="op">(</span><span class="va">ebola_incubation</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Epiparam object</span></span>
-<span><span class="co">#&gt; Number of distributions in library: 119</span></span>
-<span><span class="co">#&gt; Number of diseases: 24</span></span>
-<span><span class="co">#&gt; Number of delay distributions: 96</span></span>
-<span><span class="co">#&gt; Number of offspring distributions: 10</span></span>
-<span><span class="co">#&gt; Number of studies in library: 46</span></span>
-<span><span class="co">#&gt; &lt;Head of library&gt;</span></span>
-<span><span class="co">#&gt;       disease         epi_distribution prob_distribution</span></span>
-<span><span class="co">#&gt; 1  Adenovirus        incubation_period             lnorm</span></span>
-<span><span class="co">#&gt; 2 Chikungunya        incubation_period             lnorm</span></span>
-<span><span class="co">#&gt; 3    COVID-19 hospitalisation_to_death           weibull</span></span>
-<span><span class="co">#&gt; 4    COVID-19 hospitalisation_to_death             lnorm</span></span>
-<span><span class="co">#&gt; 5    COVID-19        incubation_period              &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 6    COVID-19        incubation_period              &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; &lt;113 more rows &amp; 55 more cols not shown&gt;</span></span></code></pre></div>
-</details><p>Note that this only adds the parameters to the library (<code>&lt;epiparam&gt;</code> object) in the environment, and does not save to the database file in the package.</p>
-<p>For binding columns to <code>&lt;epiparam&gt;</code> use either <code><a href="https://tibble.tidyverse.org/reference/add_column.html" class="external-link">tibble::add_column()</a></code> or <code><a href="https://dplyr.tidyverse.org/reference/bind_cols.html" class="external-link">dplyr::bind_cols()</a></code>. Using <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind()</a></code> will unclass the <code>&lt;epiparam&gt;</code> object (i.e. convert an <code>&lt;epiparam&gt;</code> to a <code>&lt;data.frame&gt;</code>). Note that <code><a href="https://dplyr.tidyverse.org/reference/bind_cols.html" class="external-link">dplyr::bind_cols()</a></code> will print a message that a <code>&lt;data.frame&gt;</code> is being returned, but this is not the case.</p>
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># wrap &lt;epidist&gt; in list to append to database</span></span>
+<span><span class="va">new_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/append.html" class="external-link">append</a></span><span class="op">(</span><span class="va">epi_dist_db</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">covid_incubation</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</details><p>Note that this only adds the parameters to the library in the environment, and does not save to the database file in the package.</p>
+<p>The library of epidemiological parameters is a living database, as new studies are published we hope to incorporate these. Due to the large time requirement of searching for and recording parameters in the database we welcome others to add parameters by either making a pull request to the package or adding information to the contributing spreadsheet. These will be incorporated into the database by the package maintainers. See the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data Collation and Synthesis Protocol</a> vignette on information about contributing to the library of epidemiological parameters.</p>
 </div>
 <div class="section level2">
 <h2 id="distribution-functions">Distribution functions<a class="anchor" aria-label="anchor" href="#distribution-functions"></a>
 </h2>
 <p><code>&lt;epidist&gt;</code> objects store distributions, and mathematical functions of these distribution can easily be extracted directly from them. It is often useful to access the probability density function, cumulative distribution function, quantiles of the distribution, or generate random numbers from the distribution in the <code>&lt;epidist&gt;</code> object. The distribution functions in {epiparameter} allow users to easily use these.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/density.html" class="external-link">density</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, at <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.1902978</span></span>
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
+<span>  disease <span class="op">=</span> <span class="st">"Ebola"</span>,</span>
+<span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
+<span>  single_epidist <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using WHO-Ebola-Response-Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake</span></span>
+<span><span class="co">#&gt; IM, Brennan R, Cori A, Donnelly CA, Dorigatti I, Dye C, Eckmanns T,</span></span>
+<span><span class="co">#&gt; Ferguson NM, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W,</span></span>
+<span><span class="co">#&gt; Holmes D, Hugonnet S, Iyengar S, Jombart T, Krishnan R, Meijers S,</span></span>
+<span><span class="co">#&gt; Mills HL, Mohamed Y, Nedjati-Gilani G, Newton E, Nouvellet P, Pelletier</span></span>
+<span><span class="co">#&gt; L, Perkins D, Riley S, Sagrado M, Schnitzler J, Schumacher D, Shah A,</span></span>
+<span><span class="co">#&gt; Van Kerkhove MD, Varsaneux O, Kannangarage NW (2015). "West African</span></span>
+<span><span class="co">#&gt; Ebola Epidemic after One Year — Slowing but Not Yet under Control."</span></span>
+<span><span class="co">#&gt; _The New England Journal of Medicine_. doi:10.1056/NEJMc1414992</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1056/NEJMc1414992&gt;.. </span></span>
+<span><span class="co">#&gt; To retrieve the short citation use the 'get_citation' function</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/density.html" class="external-link">density</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, at <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.03608013</span></span>
 <span><span class="fu"><a href="https://pkg.mitchelloharawild.com/distributional/reference/cdf.html" class="external-link">cdf</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, q <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.04521373</span></span>
+<span><span class="co">#&gt; [1] 0.01178094</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 2.718282</span></span>
+<span><span class="co">#&gt; [1] 8.224347</span></span>
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1]  1.570591  9.197860  2.741593  2.433209  1.256197  2.414679  3.015974</span></span>
-<span><span class="co">#&gt;  [8] 18.379079  1.866402  2.499036</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1]  8.8140741 20.7374960  0.9383332  2.2714632  4.4190396 21.9706100</span></span>
+<span><span class="co">#&gt;  [7]  7.7642116  2.4797863  5.4891977  0.4606174</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2">
 <h2 id="plotting-epidemiological-distributions">Plotting epidemiological distributions<a class="anchor" aria-label="anchor" href="#plotting-epidemiological-distributions"></a>
 </h2>
 <p><code>&lt;epidist&gt;</code> objects can easily be plotted to see the PDF and CDF of distribution.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_incubation</span><span class="op">)</span></span></code></pre></div>
 </details><p><img src="epiparameter_files/figure-html/plot-epidist-1.png"><!-- --></p>
 <p>The default plotting range for time since infection is from zero to ten days. This can be altered by specifying the <code>day_range</code> argument when plotting an <code>&lt;epidist&gt;</code> object.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, day_range <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">25</span><span class="op">)</span></span></code></pre></div>
 </details><p><img src="epiparameter_files/figure-html/plot-epidist-dayrange-1.png"><!-- --></p>
 <p>This plotting function can be useful for visually comparing epidemiological distributions from different publications on the same disease. In addition, plotting the distribution after manually creating an <code>&lt;epidist&gt;</code> help to check that the parameters are sensible and produce the expected distribution.</p>
@@ -395,11 +417,6 @@ This may be especially useful if new parameter estimates become available but ar
 </h3>
 <p>The functions <code><a href="../reference/extract_param.html">extract_param()</a></code> handles all the extraction of parameter estimates from summary statistics. The two extractions currently supported in {epiparameter} are from percentiles and from median and range.</p>
 </div>
-</div>
-<div class="section level2">
-<h2 id="contributing-to-epiparameter">Contributing to {epiparameter}<a class="anchor" aria-label="anchor" href="#contributing-to-epiparameter"></a>
-</h2>
-<p>The library of epidemiological parameters is a living database, as new studies are published we hope to incorporate these. Due to the large time requirement of searching for and recording parameters in the database we welcome others to add parameters to the contributing spreadsheet. These will be incorporated into the database by the package maintainers. See the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data Collation and Synthesis Protocol</a> vignette on information about contributing to the library of epidemiological parameters.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
