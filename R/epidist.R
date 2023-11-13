@@ -353,15 +353,13 @@ validate_epidist <- function(epidist) {
       ) %in%
         attributes(epidist)$names,
     "epidist must contain a disease (single character string)" =
-    checkmate::test_character(epidist$disease$disease, len = 1),
+    checkmate::test_string(epidist$disease$disease),
     "epidist must contain an epidemiological distribution" =
-      checkmate::test_character(epidist$epi_dist, len = 1),
+      checkmate::test_string(epidist$epi_dist),
     "epidist must contain a <distribution> or <distcrete> distribution or NA" =
     checkmate::test_multi_class(
       epidist$prob_dist, classes = c("distribution", "distcrete")
-    ) || checkmate::test_character(
-      epidist$prob_dist, any.missing = TRUE, len = 1
-    ),
+    ) || checkmate::test_string(epidist$prob_dist, na.ok = TRUE),
     "epidisit must contain uncertainty, summary stats and metadata" =
       all(
         is.list(epidist$uncertainty),
@@ -371,7 +369,7 @@ validate_epidist <- function(epidist) {
     "epidist must contain a citation" =
       inherits(epidist$citation, "bibentry"),
     "epidist notes must be a character string" =
-      checkmate::test_character(epidist$notes, len = 1)
+      checkmate::test_string(epidist$notes)
   )
 
   invisible(epidist)
