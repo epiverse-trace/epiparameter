@@ -15,7 +15,7 @@
 \usage{
 \method{density}{epidist}(x, at, ...)
 
-\method{cdf}{epidist}(x, q, ...)
+\method{cdf}{epidist}(x, q, ..., log = FALSE)
 
 \method{quantile}{epidist}(x, p, ...)
 
