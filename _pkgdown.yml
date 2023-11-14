@@ -3,6 +3,10 @@ template:
   package: epiversetheme
   bslib:
     font_weight_base : 300
+
+development:
+  mode: auto
+
 reference:
   - title: epiparameter classes
 
@@ -96,3 +100,8 @@ articles:
   navbar: Auxiliary
   contents:
   - extract-bias
+
+- title: Developer Documentation
+  navbar: Developer Documentation
+  contents:
+  - design_principles
