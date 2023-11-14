@@ -1,0 +1,54 @@
+---
+title: "Design Principles for {epiparameter}"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Design Principles for {epiparameter}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette outlines the design decisions that have been taken during the development of the {epiparameter} R package, and provides some of the reasoning, and possible pros and cons of each decision.
+
+This document is primarily intended to be read by those interested in understanding the code within the package and for potential package contributors.
+
+## Scope
+
+The {epiparameter} R package is a library of epidemiological parameters, and provides a class (i.e. data structure) and helper functions for working with epidemiological parameters and distributions. The `<epidist>` class is the main functional object for working with epidemiological parameters and can hold information on delay distributions (e.g. incubation period, serial interval, onset-to-death distribution) and offspring distributions. The class has a number of methods, including allowing the user to easily calculate the PDF, CDF, and quantile, generate random numbers, calculate the distribution mean, and plot the distribution. An `<epidist>` object can be created with the constructor function `epidist()`, and if uncertain whether an object is an `<epidist>`, it can be validated with `validate_epidist()`.
+
+The package also converts distribution parameters to summary statistics, and vice versa. This is achieved either by conversion or extraction and both of these methods and the functions used are explained in the [Parameter extraction and conversion in {epiparameter} vignette](extract_convert.html).
+
+## Output
+
+The output of the `epidist()` constructor function is an `<epidist>` object. This is a list of nine elements, where each element is either a single type (e.g. `character`), a non-nested `list` or another class. Classes as `<epidist>` elements are used when there is existing well developed infrastructure for handling certain data types. The `$prod_dist` element uses a distribution class -- if there is a parameterised distribution available -- using either the `<distribution>` class from {distributional} or the `<distcrete>` class from {distcrete}. The `$citation` is handled using the `<bibentry>` class from the {utils} package (included as part of the base R recommended packages). 
+
+Other functions return the simplest type possible, this may be an atomic vector (including single element vectors), or un-nested lists.
+
+## Design decisions
+
+- Conversion functions are designed to handle multiple distributions and not have a function for each distribution.
+
+- If there are a large number of entries returned when reading epidemiological parameters from the library using the `epidist_db()` function, it can flood the console, due to the default `list` printing in R. This is the reasoning for the `<multi_epidist>` object which is a minimal class to enable cleaner and more descriptive printing for a large list of `<epidist>` objects.
+
+## Dependencies
+
+The aim is to restrict the number of dependencies to a minimal required set for ease of maintenance. The current hard dependencies are:
+
+* [{checkmate}](https://CRAN.R-project.org/package=checkmate)
+* [{distributional}](https://CRAN.R-project.org/package=distributional)
+* [{distcrete}](https://CRAN.R-project.org/package=distcrete)
+* [{jsonlite}](https://CRAN.R-project.org/package=jsonlite)
+* {stats}
+* {utils}
+
+{stats} and {utils} are distributed with the R language so are viewed as a lightweight dependencies, that should already be installed on a user's machine if they have R. {checkmate} is an input checking package widely used across Epiverse-TRACE packages. {distributional} and {distcrete} are used to import S3 classes for handling and working with distributions. Both are required as only {distcrete} can handle discretised distributions. {jsonlite} is used to read the parameter library which is stored as a JSON file.
+
+## Contribute
+
+In addition to the [package contributing guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md), please refer to the [{epiparameter} specific contributing guidelines for adding epidemiological parameter to the package library](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html#contributing-to-the-package).
