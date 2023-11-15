@@ -158,3 +158,11 @@ test_that("epidist_db print method works as expected for <= 5 <epidist>", {
     epidist_db(disease = "SARS", epi_dist = "offspring distribution")
   )
 })
+
+test_that(".read_epidist_db works as expected", {
+  edist <- .read_epidist_db()
+  expect_s3_class(edist, class = "multi_epidist")
+  expect_type(edist, type = "list")
+  expect_length(edist, 118)
+  expect_true(all(vapply(edist, is_epidist, FUN.VALUE = logical(1))))
+})
