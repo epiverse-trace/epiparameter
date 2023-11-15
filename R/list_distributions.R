@@ -13,34 +13,22 @@
 #' @inheritParams epidist
 #' @param multi_epidist Either an `<epidist>` object or a list of `<epidist>`
 #' objects.
-#' @param ... [dots] Extra arguments to be passed to [epidist_db()].
 #'
-#' @author Adam Kucharski, Joshua W. Lambert
+#' @author Joshua W. Lambert, Adam Kucharski
 #' @export
 #' @examples
-#' list_distributions(disease = "COVID-19", epi_dist = "incubation_period")
-#'
-#' # example using list of `<epidist>` objects in memory
-#' epidist_lst <- epidist_db(disease = "COVID-19")
-#' list_distributions(multi_epidist = epidist_lst)
+#' epidist_list <- epidist_db(disease = "COVID-19")
+#' list_distributions(multi_epidist = epidist_list)
 #'
 #' # example filtering an existing list to incubation periods
-#' epidist_lst <- epidist_db(disease = "COVID-19")
+#' epidist_list <- epidist_db(disease = "COVID-19")
 #' list_distributions(
-#'   multi_epidist = epidist_lst,
+#'   multi_epidist = epidist_list,
 #'   epi_dist = "incubation period"
 #' )
-list_distributions <- function(disease = "all",
-                               epi_dist = "all",
-                               ...,
-                               multi_epidist) {
-  # read in data if not given
-  if (missing(multi_epidist)) {
-    multi_epidist <- suppressMessages(
-      epidist_db(disease = disease, epi_dist = epi_dist, ...)
-    )
-  }
-
+list_distributions <- function(multi_epidist,
+                               disease = "all",
+                               epi_dist = "all") {
   # wrap <epidist> in list for apply functions
   if (is_epidist(multi_epidist)) {
     multi_epidist <- list(multi_epidist)

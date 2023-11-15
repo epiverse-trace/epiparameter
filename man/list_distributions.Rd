@@ -4,18 +4,16 @@
 \alias{list_distributions}
 \title{List epidemiological distributions stored in the epiparameter library}
 \usage{
-list_distributions(disease = "all", epi_dist = "all", ..., multi_epidist)
+list_distributions(multi_epidist, disease = "all", epi_dist = "all")
 }
 \arguments{
+\item{multi_epidist}{Either an \verb{<epidist>} object or a list of \verb{<epidist>}
+objects.}
+
 \item{disease}{A \code{character} string with name of the infectious disease.}
 
 \item{epi_dist}{A \code{character} string with the name of the
 epidemiological distribution type.}
-
-\item{...}{\link{dots} Extra arguments to be passed to \code{\link[=epidist_db]{epidist_db()}}.}
-
-\item{multi_epidist}{Either an \verb{<epidist>} object or a list of \verb{<epidist>}
-objects.}
 }
 \description{
 This function subsets the epidemiological parameter library to
@@ -30,19 +28,16 @@ vector columns and some list columns. For example, the \code{author} column is a
 list as each paper can contain multiple authors.
 }
 \examples{
-list_distributions(disease = "COVID-19", epi_dist = "incubation_period")
-
-# example using list of `<epidist>` objects in memory
-epidist_lst <- epidist_db(disease = "COVID-19")
-list_distributions(multi_epidist = epidist_lst)
+epidist_list <- epidist_db(disease = "COVID-19")
+list_distributions(multi_epidist = epidist_list)
 
 # example filtering an existing list to incubation periods
-epidist_lst <- epidist_db(disease = "COVID-19")
+epidist_list <- epidist_db(disease = "COVID-19")
 list_distributions(
-  multi_epidist = epidist_lst,
+  multi_epidist = epidist_list,
   epi_dist = "incubation period"
 )
 }
 \author{
-Adam Kucharski, Joshua W. Lambert
+Joshua W. Lambert, Adam Kucharski
 }
