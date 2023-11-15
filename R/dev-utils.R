@@ -3,7 +3,8 @@ release_bullets <- function() { # nocov start
 
   c(
     "Run `goodpractice::gp()`",
-    "Review [WORDLIST](https://docs.cran.dev/spelling#wordlist)"
+    "Review [WORDLIST](https://docs.cran.dev/spelling#wordlist)",
+    "Update sysdata by running data-raw script"
   )
 
 } # nocov end
