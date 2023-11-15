@@ -44,7 +44,7 @@ reference:
     contents:
     - epidist_db
 
-  - title: Explore epiparam
+  - title: Explore epiparameters
     desc: List epi parameters as table
     contents:
     - list_distributions
