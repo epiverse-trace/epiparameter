@@ -126,8 +126,13 @@ epidist_db <- function(disease = "all",
     )
   }
 
-  # read in database
-  multi_epidist <- .read_epidist_db()
+  # read database from sysdata if available if not recreate list of <epidist>
+  tryCatch(
+    error = function(cnd) {
+      multi_epidist <- .read_epidist_db()
+    },
+    multi_epidist <- multi_epidist
+  )
   attrib <- attributes(multi_epidist)
 
   multi_epidist <- .filter_epidist_db(
