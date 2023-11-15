@@ -12,3 +12,4 @@
 ^Meta$
 ^.lintr$
 ^CITATION\.cff$
+^data-raw$
