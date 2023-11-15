@@ -64,16 +64,10 @@ To see a full list of the diseases and distributions stored in the library use t
 head(list_distributions(multi_epidist = epi_dist_db))
 ```
 
-If the `list_distributions()` function is not supplied with a list of `<epidist>` objects it can fetch the entries from the database.
-
-```{r, list-distribution-read-db}
-head(list_distributions())
-```
-
-`list_distributions()` can also subset the database, when either supplied to the function (first example) or when the entries are fetched directly from the database (second example).
+`list_distributions()` can also subset the database supplied to the function.
 
 ```{r, list-distributions-subset}
-list_distributions(disease = "Ebola")
+list_distributions(multi_epidist = epi_dist_db, disease = "Ebola")
 ```
 
 More details on the data collation and the library of parameters can be found in
