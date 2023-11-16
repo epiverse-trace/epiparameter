@@ -471,7 +471,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
     lnorm = list(c("meanlog", "sdlog"), c("mu", "sigma")),
     nbinom = list(c("mean", "dispersion"), c("mean", "k"), c("n", "p")),
     geom = list("mean", "p", "prob"),
-    pois = list("mean", "l")
+    pois = list("mean", "l", "lambda")
   )
   possible_params <- possible_params[[prob_dist]]
 
@@ -681,7 +681,7 @@ clean_epidist_params.geom <- function(prob_dist_params) {
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
 clean_epidist_params.pois <- function(prob_dist_params) {
-  if (names(prob_dist_params) %in% c("mean", "l")) {
+  if (names(prob_dist_params) %in% c("mean", "l", "lambda")) {
     names(prob_dist_params) <- "mean"
 
     # remove class attribute from prob_dist_params
