@@ -141,6 +141,11 @@ test_that("clean_epidist_params works as expected for pois", {
   class(pois_params) <- "pois"
   params <- clean_epidist_params(prob_dist_params = pois_params)
   expect_identical(params, c(mean = 0.5))
+
+  pois_params <- c(lambda = 0.5)
+  class(pois_params) <- "pois"
+  params <- clean_epidist_params(prob_dist_params = pois_params)
+  expect_identical(params, c(mean = 0.5))
 })
 
 test_that("clean_epidist_params fails when pois parameters are incorrect", {
