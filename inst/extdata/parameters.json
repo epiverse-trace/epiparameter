@@ -3710,6 +3710,175 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
+  "epi_distribution": "serial interval",
+  "probability_distribution": {
+    "prob_distribution": "lnorm",
+    "parameters": { }
+  },
+  "summary_statistics": {
+    "mean": 4.7,
+    "mean_ci_limits": [3.7, 6.0],
+    "mean_ci": 95,
+    "sd": 2.9,
+    "sd_ci_limits": [1.9, 4.9],
+    "sd_ci": 95,
+    "median": 4.0,
+    "median_ci_limits": [3.1, 4.9],
+    "median_ci": 95
+  },
+  "citation": {
+    "author": ["Hiroshi Nishiura", "Natalie M. Linton", "Andrei R. Akhmetzhanov"],
+    "title": "Serial interval of novel coronavirus (COVID-19) infections",
+    "journal": "International Journal of Infectious Diseases",
+    "year": 2020,
+    "PMID": 32145466,
+    "DOI": "10.1016/j.ijid.2020.02.060"
+  },
+  "metadata": {
+    "sample_size": 28,
+    "region": "Mixed",
+    "transmission_mode": "natural_natural_human_to_human",
+    "extrinsic": false,
+    "inference_method": "bayesian"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": true,
+    "right_truncated": true,
+    "phase_bias_adjusted": false
+  },
+  "notes": "These estimates are from fitting to the entire dataset of contact pairs, including pairs that are uncertain."
+},
+{
+  "disease": "COVID-19",
+  "pathogen": "SARS-CoV-2",
+  "epi_distribution": "serial interval",
+  "probability_distribution": {
+    "prob_distribution": "weibull",
+    "parameters": { }
+  },
+  "summary_statistics": {
+    "mean": 4.8,
+    "mean_ci_limits": [3.8, 6.1],
+    "mean_ci": 95,
+    "sd": 2.3,
+    "sd_ci_limits": [1.6, 3.5],
+    "sd_ci": 95,
+    "median": 4.6,
+    "median_ci_limits": [3.5, 5.9],
+    "median_ci": 95
+  },
+  "citation": {
+    "author": ["Hiroshi Nishiura", "Natalie M. Linton", "Andrei R. Akhmetzhanov"],
+    "title": "Serial interval of novel coronavirus (COVID-19) infections",
+    "journal": "International Journal of Infectious Diseases",
+    "year": 2020,
+    "PMID": 32145466,
+    "DOI": "10.1016/j.ijid.2020.02.060"
+  },
+  "metadata": {
+    "sample_size": 18,
+    "region": "Mixed",
+    "transmission_mode": "natural_natural_human_to_human",
+    "extrinsic": false,
+    "inference_method": "bayesian"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": true,
+    "right_truncated": true,
+    "phase_bias_adjusted": false
+  },
+  "notes": "These estimates are from fitting to a subset of the dataset of contact pairs, only including pairs that are the most certain."
+},
+{
+  "disease": "COVID-19",
+  "pathogen": "SARS-CoV-2",
+  "epi_distribution": "incubation period",
+  "probability_distribution": {
+    "prob_distribution": "weibull",
+    "parameters": { }
+  },
+  "summary_statistics": {
+    "quantile_values": [1, 1.1, 13.7, 15, 17.8],
+    "quantile_names": ["2.5", "5", "95", "97.5", "99"],
+    "median": 5.4,
+    "median_ci_limits": [4.8, 6.0],
+    "median_ci": 95
+  },
+  "citation": {
+    "author": ["Lin Yang", "Jingyi Dai", "Jun Zhao", "Yunfu Wang", "Pingji Deng", "Jing Wang"],
+    "title": "Estimation of incubation period and serial interval of COVID-19: analysis of 178 cases and 131 transmission chains in Hubei province, China",
+    "journal": "Epidemiology and Infection",
+    "year": 2020,
+    "PMID": 32594928,
+    "DOI": "10.1017/S0950268820001338"
+  },
+  "metadata": {
+    "sample_size": 178,
+    "region": "Hubei province, China",
+    "transmission_mode": "natural_natural_human_to_human",
+    "extrinsic": false,
+    "inference_method": "mle"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": true,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "No additional notes."
+},
+{
+  "disease": "COVID-19",
+  "pathogen": "SARS-CoV-2",
+  "epi_distribution": "serial interval",
+  "probability_distribution": {
+    "prob_distribution": "norm",
+    "parameters": {
+      "mean": 4.6,
+      "mean_ci_limits": [3.7, 5.5],
+      "mean_ci": 95,
+       "sd": 4.4,
+       "sd_ci_limits": [3.8, 5.0],
+       "sd_ci": 95
+    }
+  },
+  "summary_statistics": {
+    "quantile_values": [11.8, 14.8],
+    "quantile_names": ["95", "99"],
+    "median": 4.6
+  },
+  "citation": {
+    "author": ["Lin Yang", "Jingyi Dai", "Jun Zhao", "Yunfu Wang", "Pingji Deng", "Jing Wang"],
+    "title": "Estimation of incubation period and serial interval of COVID-19: analysis of 178 cases and 131 transmission chains in Hubei province, China",
+    "journal": "Epidemiology and Infection",
+    "year": 2020,
+    "PMID": 32594928,
+    "DOI": "10.1017/S0950268820001338"
+  },
+  "metadata": {
+    "sample_size": 131,
+    "region": "Hubei province, China",
+    "transmission_mode": "natural_natural_human_to_human",
+    "extrinsic": false,
+    "inference_method": "mle"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": true,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "No additional notes."
+},
+{
+  "disease": "COVID-19",
+  "pathogen": "SARS-CoV-2",
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
