@@ -168,7 +168,7 @@ test_that(".read_epidist_db works as expected", {
 })
 
 test_that("sysdata is the same as .read_epidist_db output", {
-  sysdat <- edist <- suppressMessages(epidist_db())
+  sysdat <- suppressMessages(epidist_db())
   db <- .read_epidist_db()
   expect_equal(sysdat, db, tolerance = 1e-3)
 })
