@@ -133,15 +133,15 @@ the data, and the functions (and methods) implemented in the package to facilita
 <p>First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The library is stored in the package as a JSON file and can be read into R using the <code><a href="../reference/epidist_db.html">epidist_db()</a></code> function. By default all entries in the library are supplied.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">epi_dist_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Returning 118 results that match the criteria (95 are parameterised). </span></span>
+<span><span class="co">#&gt; Returning 122 results that match the criteria (99 are parameterised). </span></span>
 <span><span class="co">#&gt; Use subset to filter by entry variables or single_epidist to return a single entry. </span></span>
 <span><span class="co">#&gt; To retrieve the short citation for each use the 'get_citation' function</span></span>
 <span><span class="va">epi_dist_db</span></span>
 <span><span class="co">#&gt; List of &lt;epidist&gt; objects</span></span>
-<span><span class="co">#&gt;   Number of entries in library: 118</span></span>
-<span><span class="co">#&gt;   Number of studies in library: 45</span></span>
+<span><span class="co">#&gt;   Number of entries in library: 122</span></span>
+<span><span class="co">#&gt;   Number of studies in library: 47</span></span>
 <span><span class="co">#&gt;   Number of diseases: 23</span></span>
-<span><span class="co">#&gt;   Number of delay distributions: 108</span></span>
+<span><span class="co">#&gt;   Number of delay distributions: 112</span></span>
 <span><span class="co">#&gt;   Number of offspring distributions: 10</span></span></code></pre></div>
 </details><p>The output is a list of <code>&lt;epidist&gt;</code> objects, where each element in the list corresponds to an entry in the parameter database. <em>Technical note</em>: the reason the object does not look like a regular R list is because it uses a custom print method which will print a summary of the data to the console when there are more than 5 entries to prevent a large list flooding the console. When the number of database entries returned is less than or equal to 5 the print will look like a standard R list.</p>
 <p>To see a full list of the diseases and distributions stored in the library use the
@@ -379,8 +379,8 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 8.224347</span></span>
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] 19.3694102 13.4133615  3.9716769 11.7017214 17.0325729  3.9756972</span></span>
-<span><span class="co">#&gt;  [7]  6.5477800 19.7865969  0.8924226  2.3666398</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1]  4.834932  5.757839 11.986206  2.746721 17.268358 14.920173 24.191567</span></span>
+<span><span class="co">#&gt;  [8]  8.742066  7.070072  6.826231</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2">
