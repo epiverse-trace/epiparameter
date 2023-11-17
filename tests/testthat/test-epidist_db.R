@@ -47,7 +47,7 @@ test_that("epidist_db works as expected with functional subsetting", {
 
   expect_type(edist, "list")
   expect_s3_class(edist, "multi_epidist")
-  expect_length(edist, 10)
+  expect_length(edist, 11)
 })
 
 test_that("epidist_db works as expected with single_epidist as TRUE", {
@@ -165,4 +165,10 @@ test_that(".read_epidist_db works as expected", {
   expect_type(edist, type = "list")
   expect_length(edist, 122)
   expect_true(all(vapply(edist, is_epidist, FUN.VALUE = logical(1))))
+})
+
+test_that("sysdata is the same as .read_epidist_db output", {
+  sysdat <- edist <- suppressMessages(epidist_db())
+  db <- .read_epidist_db()
+  expect_equal(sysdat, db, tolerance = 1e-3)
 })
