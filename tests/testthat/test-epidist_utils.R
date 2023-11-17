@@ -149,7 +149,7 @@ test_that("clean_epidist_params works as expected for pois", {
 })
 
 test_that("clean_epidist_params fails when pois parameters are incorrect", {
-  pois_param <- c("means" = 1)
+  pois_param <- c(means = 1)
   class(pois_param) <- "pois"
   expect_error(
     clean_epidist_params(prob_dist_params = pois_param),
