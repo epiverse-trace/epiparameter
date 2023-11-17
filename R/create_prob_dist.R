@@ -92,6 +92,10 @@ create_prob_dist <- function(prob_dist,
       pois = distributional::dist_poisson(
         lambda = unname(prob_dist_params)
       ),
+      norm = distributional::dist_normal(
+        mu = prob_dist_params[["mean"]],
+        sigma = prob_dist_params[["sd"]]
+      ),
       stop("Did not recognise distribution name", call. = FALSE)
     )
   }
