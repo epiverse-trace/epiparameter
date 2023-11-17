@@ -471,7 +471,8 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
     lnorm = list(c("meanlog", "sdlog"), c("mu", "sigma")),
     nbinom = list(c("mean", "dispersion"), c("mean", "k"), c("n", "p")),
     geom = list("mean", "p", "prob"),
-    pois = list("mean", "l", "lambda")
+    pois = list("mean", "l"),
+    norm = list(c("mean", "sd"), c("mu", "sigma"))
   )
   possible_params <- possible_params[[prob_dist]]
 
@@ -692,6 +693,43 @@ clean_epidist_params.pois <- function(prob_dist_params) {
   } else {
     stop(
       "Name of poisson distribution parameter is incorrect",
+      call. = FALSE
+    )
+  }
+}
+
+#' Standardise parameters for a Normal distribution
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Named `numeric` vector of parameters.
+#' @keywords internal
+clean_epidist_params.norm <- function(prob_dist_params) {
+  if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
+
+    # find index so parameters can be in any order
+    mean_index <- which(names(prob_dist_params) == "mu")
+    sd_index <- which(names(prob_dist_params) == "sigma")
+    names(prob_dist_params)[c(mean_index, sd_index)] <- c("mean", "sd")
+
+    # rearrange vector
+    prob_dist_params <- prob_dist_params[c("mean", "sd")]
+
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # return prob_dist_params
+    return(prob_dist_params)
+  }
+  if (all(c("mean", "sd") %in% names(prob_dist_params))) {
+    # remove class attribute from prob_dist_params
+    prob_dist_params <- unclass(prob_dist_params)
+
+    # no cleaning needed
+    return(prob_dist_params)
+  } else {
+    stop(
+      "Names of normal distribution parameters are incorrect",
       call. = FALSE
     )
   }
