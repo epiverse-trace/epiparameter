@@ -94,34 +94,38 @@
       88                       COVID-19            incubation period
       89                       COVID-19            incubation period
       90                       COVID-19              serial interval
-      91                       COVID-19            incubation period
-      92                       COVID-19            incubation period
+      91                       COVID-19              serial interval
+      92                       COVID-19              serial interval
       93                       COVID-19            incubation period
-      94                       COVID-19            incubation period
+      94                       COVID-19              serial interval
       95                       COVID-19            incubation period
       96                       COVID-19            incubation period
-      97                       COVID-19     onset to hospitalisation
-      98                       COVID-19     onset to hospitalisation
-      99                       COVID-19               onset to death
-      100                      COVID-19     hospitalisation to death
-      101                      COVID-19            incubation period
+      97                       COVID-19            incubation period
+      98                       COVID-19            incubation period
+      99                       COVID-19            incubation period
+      100                      COVID-19            incubation period
+      101                      COVID-19     onset to hospitalisation
       102                      COVID-19     onset to hospitalisation
-      103                      COVID-19     onset to hospitalisation
-      104                      COVID-19               onset to death
-      105                      COVID-19     hospitalisation to death
-      106                      COVID-19            incubation period
-      107                      COVID-19            incubation period
-      108                      COVID-19            incubation period
-      109                      COVID-19            incubation period
-      110                          Mpox              serial interval
-      111                          Mpox              serial interval
-      112                          Mpox              serial interval
-      113                          Mpox            incubation period
-      114                          Mpox            incubation period
-      115                          Mpox            incubation period
-      116                          Mpox            incubation period
+      103                      COVID-19               onset to death
+      104                      COVID-19     hospitalisation to death
+      105                      COVID-19            incubation period
+      106                      COVID-19     onset to hospitalisation
+      107                      COVID-19     onset to hospitalisation
+      108                      COVID-19               onset to death
+      109                      COVID-19     hospitalisation to death
+      110                      COVID-19            incubation period
+      111                      COVID-19            incubation period
+      112                      COVID-19            incubation period
+      113                      COVID-19            incubation period
+      114                          Mpox              serial interval
+      115                          Mpox              serial interval
+      116                          Mpox              serial interval
       117                          Mpox            incubation period
       118                          Mpox            incubation period
+      119                          Mpox            incubation period
+      120                          Mpox            incubation period
+      121                          Mpox            incubation period
+      122                          Mpox            incubation period
           prob_distribution       author year
       1               lnorm Justin L.... 2009
       2               lnorm Justin L.... 2009
@@ -213,34 +217,38 @@
       88               <NA> Balram R.... 2022
       89               <NA> Muluneh .... 2021
       90               <NA> Muluneh .... 2021
-      91               <NA> Christel.... 2021
-      92            weibull Long V. .... 2020
-      93              lnorm Conor Mc.... 2020
-      94              lnorm Conor Mc.... 2020
-      95              lnorm Natalie .... 2020
-      96              lnorm Natalie .... 2020
-      97              gamma Natalie .... 2020
-      98              gamma Natalie .... 2020
+      91              lnorm Hiroshi .... 2020
+      92            weibull Hiroshi .... 2020
+      93            weibull Lin Yang.... 2020
+      94               norm Lin Yang.... 2020
+      95               <NA> Christel.... 2021
+      96            weibull Long V. .... 2020
+      97              lnorm Conor Mc.... 2020
+      98              lnorm Conor Mc.... 2020
       99              lnorm Natalie .... 2020
-      100           weibull Natalie .... 2020
-      101             lnorm Natalie .... 2020
-      102             lnorm Natalie .... 2020
+      100             lnorm Natalie .... 2020
+      101             gamma Natalie .... 2020
+      102             gamma Natalie .... 2020
       103             lnorm Natalie .... 2020
-      104             lnorm Natalie .... 2020
+      104           weibull Natalie .... 2020
       105             lnorm Natalie .... 2020
-      106             lnorm Stephen .... 2020
-      107             lnorm Stephen .... 2020
-      108             lnorm Stephen .... 2020
-      109             lnorm Stephen .... 2020
-      110             gamma Zihao Gu.... 2022
-      111              <NA> Shuqi Wa.... 2022
-      112              <NA> Shuqi Wa.... 2022
-      113              <NA> Shuqi Wa.... 2022
-      114              <NA> Shuqi Wa.... 2022
+      106             lnorm Natalie .... 2020
+      107             lnorm Natalie .... 2020
+      108             lnorm Natalie .... 2020
+      109             lnorm Natalie .... 2020
+      110             lnorm Stephen .... 2020
+      111             lnorm Stephen .... 2020
+      112             lnorm Stephen .... 2020
+      113             lnorm Stephen .... 2020
+      114             gamma Zihao Gu.... 2022
       115              <NA> Shuqi Wa.... 2022
-      116              <NA> Fengying.... 2022
-      117              <NA> Fengying.... 2022
-      118              <NA> Fengying.... 2022
+      116              <NA> Shuqi Wa.... 2022
+      117              <NA> Shuqi Wa.... 2022
+      118              <NA> Shuqi Wa.... 2022
+      119              <NA> Shuqi Wa.... 2022
+      120              <NA> Fengying.... 2022
+      121              <NA> Fengying.... 2022
+      122              <NA> Fengying.... 2022
 
 # list_distributions works for incubation period with db
 
@@ -303,23 +311,24 @@
       53              COVID-19 incubation period              <NA> Ke Men, .... 2020
       54              COVID-19 incubation period              <NA> Balram R.... 2022
       55              COVID-19 incubation period              <NA> Muluneh .... 2021
-      56              COVID-19 incubation period              <NA> Christel.... 2021
-      57              COVID-19 incubation period           weibull Long V. .... 2020
-      58              COVID-19 incubation period             lnorm Conor Mc.... 2020
+      56              COVID-19 incubation period           weibull Lin Yang.... 2020
+      57              COVID-19 incubation period              <NA> Christel.... 2021
+      58              COVID-19 incubation period           weibull Long V. .... 2020
       59              COVID-19 incubation period             lnorm Conor Mc.... 2020
-      60              COVID-19 incubation period             lnorm Natalie .... 2020
+      60              COVID-19 incubation period             lnorm Conor Mc.... 2020
       61              COVID-19 incubation period             lnorm Natalie .... 2020
       62              COVID-19 incubation period             lnorm Natalie .... 2020
-      63              COVID-19 incubation period             lnorm Stephen .... 2020
+      63              COVID-19 incubation period             lnorm Natalie .... 2020
       64              COVID-19 incubation period             lnorm Stephen .... 2020
       65              COVID-19 incubation period             lnorm Stephen .... 2020
       66              COVID-19 incubation period             lnorm Stephen .... 2020
-      67                  Mpox incubation period              <NA> Shuqi Wa.... 2022
+      67              COVID-19 incubation period             lnorm Stephen .... 2020
       68                  Mpox incubation period              <NA> Shuqi Wa.... 2022
       69                  Mpox incubation period              <NA> Shuqi Wa.... 2022
-      70                  Mpox incubation period              <NA> Fengying.... 2022
+      70                  Mpox incubation period              <NA> Shuqi Wa.... 2022
       71                  Mpox incubation period              <NA> Fengying.... 2022
       72                  Mpox incubation period              <NA> Fengying.... 2022
+      73                  Mpox incubation period              <NA> Fengying.... 2022
 
 # list_distributions works for different distribution with db
 
@@ -339,9 +348,12 @@
       10                  MERS  serial interval             lnorm Abdullah.... 2013
       11                  MERS  serial interval             gamma B J Cowl.... 2015
       12              COVID-19  serial interval              <NA> Muluneh .... 2021
-      13                  Mpox  serial interval             gamma Zihao Gu.... 2022
-      14                  Mpox  serial interval              <NA> Shuqi Wa.... 2022
-      15                  Mpox  serial interval              <NA> Shuqi Wa.... 2022
+      13              COVID-19  serial interval             lnorm Hiroshi .... 2020
+      14              COVID-19  serial interval           weibull Hiroshi .... 2020
+      15              COVID-19  serial interval              norm Lin Yang.... 2020
+      16                  Mpox  serial interval             gamma Zihao Gu.... 2022
+      17                  Mpox  serial interval              <NA> Shuqi Wa.... 2022
+      18                  Mpox  serial interval              <NA> Shuqi Wa.... 2022
 
 # list_distributions works for COVID-19 db
 
@@ -353,25 +365,29 @@
       2  COVID-19        incubation period              <NA> Balram R.... 2022
       3  COVID-19        incubation period              <NA> Muluneh .... 2021
       4  COVID-19          serial interval              <NA> Muluneh .... 2021
-      5  COVID-19        incubation period              <NA> Christel.... 2021
-      6  COVID-19        incubation period           weibull Long V. .... 2020
-      7  COVID-19        incubation period             lnorm Conor Mc.... 2020
-      8  COVID-19        incubation period             lnorm Conor Mc.... 2020
-      9  COVID-19        incubation period             lnorm Natalie .... 2020
-      10 COVID-19        incubation period             lnorm Natalie .... 2020
-      11 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
-      12 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
-      13 COVID-19           onset to death             lnorm Natalie .... 2020
-      14 COVID-19 hospitalisation to death           weibull Natalie .... 2020
-      15 COVID-19        incubation period             lnorm Natalie .... 2020
-      16 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
-      17 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
-      18 COVID-19           onset to death             lnorm Natalie .... 2020
-      19 COVID-19 hospitalisation to death             lnorm Natalie .... 2020
-      20 COVID-19        incubation period             lnorm Stephen .... 2020
-      21 COVID-19        incubation period             lnorm Stephen .... 2020
-      22 COVID-19        incubation period             lnorm Stephen .... 2020
-      23 COVID-19        incubation period             lnorm Stephen .... 2020
+      5  COVID-19          serial interval             lnorm Hiroshi .... 2020
+      6  COVID-19          serial interval           weibull Hiroshi .... 2020
+      7  COVID-19        incubation period           weibull Lin Yang.... 2020
+      8  COVID-19          serial interval              norm Lin Yang.... 2020
+      9  COVID-19        incubation period              <NA> Christel.... 2021
+      10 COVID-19        incubation period           weibull Long V. .... 2020
+      11 COVID-19        incubation period             lnorm Conor Mc.... 2020
+      12 COVID-19        incubation period             lnorm Conor Mc.... 2020
+      13 COVID-19        incubation period             lnorm Natalie .... 2020
+      14 COVID-19        incubation period             lnorm Natalie .... 2020
+      15 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
+      16 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
+      17 COVID-19           onset to death             lnorm Natalie .... 2020
+      18 COVID-19 hospitalisation to death           weibull Natalie .... 2020
+      19 COVID-19        incubation period             lnorm Natalie .... 2020
+      20 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
+      21 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
+      22 COVID-19           onset to death             lnorm Natalie .... 2020
+      23 COVID-19 hospitalisation to death             lnorm Natalie .... 2020
+      24 COVID-19        incubation period             lnorm Stephen .... 2020
+      25 COVID-19        incubation period             lnorm Stephen .... 2020
+      26 COVID-19        incubation period             lnorm Stephen .... 2020
+      27 COVID-19        incubation period             lnorm Stephen .... 2020
 
 # list_distributions works for disease & epi_dist subset with db
 
@@ -382,17 +398,18 @@
       1  COVID-19 incubation period              <NA> Ke Men, .... 2020
       2  COVID-19 incubation period              <NA> Balram R.... 2022
       3  COVID-19 incubation period              <NA> Muluneh .... 2021
-      4  COVID-19 incubation period              <NA> Christel.... 2021
-      5  COVID-19 incubation period           weibull Long V. .... 2020
-      6  COVID-19 incubation period             lnorm Conor Mc.... 2020
+      4  COVID-19 incubation period           weibull Lin Yang.... 2020
+      5  COVID-19 incubation period              <NA> Christel.... 2021
+      6  COVID-19 incubation period           weibull Long V. .... 2020
       7  COVID-19 incubation period             lnorm Conor Mc.... 2020
-      8  COVID-19 incubation period             lnorm Natalie .... 2020
+      8  COVID-19 incubation period             lnorm Conor Mc.... 2020
       9  COVID-19 incubation period             lnorm Natalie .... 2020
       10 COVID-19 incubation period             lnorm Natalie .... 2020
-      11 COVID-19 incubation period             lnorm Stephen .... 2020
+      11 COVID-19 incubation period             lnorm Natalie .... 2020
       12 COVID-19 incubation period             lnorm Stephen .... 2020
       13 COVID-19 incubation period             lnorm Stephen .... 2020
       14 COVID-19 incubation period             lnorm Stephen .... 2020
+      15 COVID-19 incubation period             lnorm Stephen .... 2020
 
 # list_distribution works when supplied a subset db
 
@@ -404,25 +421,29 @@
       2  COVID-19        incubation period              <NA> Balram R.... 2022
       3  COVID-19        incubation period              <NA> Muluneh .... 2021
       4  COVID-19          serial interval              <NA> Muluneh .... 2021
-      5  COVID-19        incubation period              <NA> Christel.... 2021
-      6  COVID-19        incubation period           weibull Long V. .... 2020
-      7  COVID-19        incubation period             lnorm Conor Mc.... 2020
-      8  COVID-19        incubation period             lnorm Conor Mc.... 2020
-      9  COVID-19        incubation period             lnorm Natalie .... 2020
-      10 COVID-19        incubation period             lnorm Natalie .... 2020
-      11 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
-      12 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
-      13 COVID-19           onset to death             lnorm Natalie .... 2020
-      14 COVID-19 hospitalisation to death           weibull Natalie .... 2020
-      15 COVID-19        incubation period             lnorm Natalie .... 2020
-      16 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
-      17 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
-      18 COVID-19           onset to death             lnorm Natalie .... 2020
-      19 COVID-19 hospitalisation to death             lnorm Natalie .... 2020
-      20 COVID-19        incubation period             lnorm Stephen .... 2020
-      21 COVID-19        incubation period             lnorm Stephen .... 2020
-      22 COVID-19        incubation period             lnorm Stephen .... 2020
-      23 COVID-19        incubation period             lnorm Stephen .... 2020
+      5  COVID-19          serial interval             lnorm Hiroshi .... 2020
+      6  COVID-19          serial interval           weibull Hiroshi .... 2020
+      7  COVID-19        incubation period           weibull Lin Yang.... 2020
+      8  COVID-19          serial interval              norm Lin Yang.... 2020
+      9  COVID-19        incubation period              <NA> Christel.... 2021
+      10 COVID-19        incubation period           weibull Long V. .... 2020
+      11 COVID-19        incubation period             lnorm Conor Mc.... 2020
+      12 COVID-19        incubation period             lnorm Conor Mc.... 2020
+      13 COVID-19        incubation period             lnorm Natalie .... 2020
+      14 COVID-19        incubation period             lnorm Natalie .... 2020
+      15 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
+      16 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
+      17 COVID-19           onset to death             lnorm Natalie .... 2020
+      18 COVID-19 hospitalisation to death           weibull Natalie .... 2020
+      19 COVID-19        incubation period             lnorm Natalie .... 2020
+      20 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
+      21 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
+      22 COVID-19           onset to death             lnorm Natalie .... 2020
+      23 COVID-19 hospitalisation to death             lnorm Natalie .... 2020
+      24 COVID-19        incubation period             lnorm Stephen .... 2020
+      25 COVID-19        incubation period             lnorm Stephen .... 2020
+      26 COVID-19        incubation period             lnorm Stephen .... 2020
+      27 COVID-19        incubation period             lnorm Stephen .... 2020
 
 # list_distributions works as expected supplied with <epidist>
 

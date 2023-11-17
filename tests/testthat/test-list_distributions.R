@@ -4,7 +4,7 @@ edist <- suppressMessages(epidist_db())
 test_that("list_distributions works as expected supplied with db", {
   dist_tbl <- list_distributions(multi_epidist = edist)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(118L, 5L))
+  expect_identical(dim(dist_tbl), c(122L, 5L))
   expect_named(
     dist_tbl,
     c("disease", "epi_distribution", "prob_distribution", "author", "year")
@@ -18,7 +18,7 @@ test_that("list_distributions works for incubation period with db", {
     epi_dist = "incubation period"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(72L, 5L))
+  expect_identical(dim(incub_tbl), c(73L, 5L))
   expect_named(
     incub_tbl,
     c("disease", "epi_distribution", "prob_distribution", "author", "year")
@@ -32,7 +32,7 @@ test_that("list_distributions works for different distribution with db", {
     epi_dist = "serial interval"
   )
   expect_s3_class(serial_tbl, "data.frame")
-  expect_identical(dim(serial_tbl), c(15L, 5L))
+  expect_identical(dim(serial_tbl), c(18L, 5L))
   expect_named(
     serial_tbl,
     c("disease", "epi_distribution", "prob_distribution", "author", "year")
@@ -46,7 +46,7 @@ test_that("list_distributions works for COVID-19 db", {
     disease = "COVID-19"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(23L, 5L))
+  expect_identical(dim(incub_tbl), c(27L, 5L))
   expect_named(
     incub_tbl,
     c("disease", "epi_distribution", "prob_distribution", "author", "year")
@@ -61,7 +61,7 @@ test_that("list_distributions works for disease & epi_dist subset with db", {
     epi_dist = "incubation period"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(14L, 5L))
+  expect_identical(dim(incub_tbl), c(15L, 5L))
   expect_named(
     incub_tbl,
     c("disease", "epi_distribution", "prob_distribution", "author", "year")
@@ -73,7 +73,7 @@ test_that("list_distribution works when supplied a subset db", {
   edist <- suppressMessages(epidist_db(disease = "COVID-19"))
   covid_tbl <- list_distributions(multi_epidist = edist, disease = "COVID-19")
   expect_s3_class(covid_tbl, "data.frame")
-  expect_identical(dim(covid_tbl), c(23L, 5L))
+  expect_identical(dim(covid_tbl), c(27L, 5L))
   expect_named(
     covid_tbl,
     c("disease", "epi_distribution", "prob_distribution", "author", "year")

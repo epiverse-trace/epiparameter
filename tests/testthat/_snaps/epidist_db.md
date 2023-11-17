@@ -3,15 +3,15 @@
     Code
       epidist_db()
     Message
-      Returning 118 results that match the criteria (95 are parameterised). 
+      Returning 122 results that match the criteria (99 are parameterised). 
       Use subset to filter by entry variables or single_epidist to return a single entry. 
       To retrieve the short citation for each use the 'get_citation' function
     Output
       List of <epidist> objects
-        Number of entries in library: 118
-        Number of studies in library: 45
+        Number of entries in library: 122
+        Number of studies in library: 47
         Number of diseases: 23
-        Number of delay distributions: 108
+        Number of delay distributions: 112
         Number of offspring distributions: 10
 
 # epidist_db print method works as expected for <= 5 <epidist>
