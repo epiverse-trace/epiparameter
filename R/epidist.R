@@ -893,6 +893,7 @@ family.epidist <- function(object, ...) {
     negbin = "nbinom",
     geometric = "geom",
     poisson = "pois",
+    normal = "norm",
     prob_dist
   )
 
