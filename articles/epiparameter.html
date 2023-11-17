@@ -155,19 +155,9 @@ the data, and the functions (and methods) implemented in the package to facilita
 <span><span class="co">#&gt; 4         Influenza incubation period             lnorm Justin L.... 2009</span></span>
 <span><span class="co">#&gt; 5         Influenza incubation period             lnorm Justin L.... 2009</span></span>
 <span><span class="co">#&gt; 6         Influenza incubation period             lnorm Justin L.... 2009</span></span></code></pre></div>
-</details><p>If the <code><a href="../reference/list_distributions.html">list_distributions()</a></code> function is not supplied with a list of <code>&lt;epidist&gt;</code> objects it can fetch the entries from the database.</p>
+</details><p><code><a href="../reference/list_distributions.html">list_distributions()</a></code> can also subset the database supplied to the function.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             disease  epi_distribution prob_distribution       author year</span></span>
-<span><span class="co">#&gt; 1        Adenovirus incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 2 Human Coronavirus incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 3              SARS incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 4         Influenza incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 5         Influenza incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 6         Influenza incubation period             lnorm Justin L.... 2009</span></span></code></pre></div>
-</details><p><code><a href="../reference/list_distributions.html">list_distributions()</a></code> can also subset the database, when either supplied to the function (first example) or when the entries are fetched directly from the database (second example).</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"Ebola"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>multi_epidist <span class="op">=</span> <span class="va">epi_dist_db</span>, disease <span class="op">=</span> <span class="st">"Ebola"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                disease             epi_distribution prob_distribution</span></span>
 <span><span class="co">#&gt; 1  Ebola Virus Disease       offspring distribution            nbinom</span></span>
 <span><span class="co">#&gt; 2  Ebola Virus Disease            incubation period             lnorm</span></span>
@@ -216,7 +206,7 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <li>Pulled from database (<code><a href="../reference/epidist_db.html">epidist_db()</a></code>)</li>
 <li>Created manually (using the class constructor function: <code><a href="../reference/epidist.html">epidist()</a></code>)</li>
 </ol>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># &lt;epidist&gt; from database</span></span>
 <span></span>
 <span><span class="co"># fetch &lt;epidist&gt; for COVID-19 incubation period from database</span></span>
@@ -292,7 +282,7 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <h2 id="subsetting-database">Subsetting database<a class="anchor" aria-label="anchor" href="#subsetting-database"></a>
 </h2>
 <p>The database can be subset directly by <code><a href="../reference/epidist_db.html">epidist_db()</a></code>. Here the results can be subset by author. It is recommended to use the family name of the first author instead of the full name. Only the first author will be matched when the entry is from a source with multiple authors.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
@@ -354,7 +344,7 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <h2 id="adding-library-entries-and-contributing-to-epiparameter">Adding library entries and contributing to {epiparameter}<a class="anchor" aria-label="anchor" href="#adding-library-entries-and-contributing-to-epiparameter"></a>
 </h2>
 <p>If a set of epidemiological parameter has been inferred and is known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># wrap &lt;epidist&gt; in list to append to database</span></span>
 <span><span class="va">new_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/append.html" class="external-link">append</a></span><span class="op">(</span><span class="va">epi_dist_db</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">covid_incubation</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </details><p>Note that this only adds the parameters to the library in the environment, and does not save to the database file in the package.</p>
@@ -364,7 +354,7 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <h2 id="distribution-functions">Distribution functions<a class="anchor" aria-label="anchor" href="#distribution-functions"></a>
 </h2>
 <p><code>&lt;epidist&gt;</code> objects store distributions, and mathematical functions of these distribution can easily be extracted directly from them. It is often useful to access the probability density function, cumulative distribution function, quantiles of the distribution, or generate random numbers from the distribution in the <code>&lt;epidist&gt;</code> object. The distribution functions in {epiparameter} allow users to easily use these.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ebola_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"Ebola"</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
@@ -389,19 +379,19 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 8.224347</span></span>
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1]  2.529025 10.074217 40.872584  1.183168 12.170399 12.184598  4.986605</span></span>
-<span><span class="co">#&gt;  [8]  5.680214 14.718568  1.140882</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] 19.3694102 13.4133615  3.9716769 11.7017214 17.0325729  3.9756972</span></span>
+<span><span class="co">#&gt;  [7]  6.5477800 19.7865969  0.8924226  2.3666398</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2">
 <h2 id="plotting-epidemiological-distributions">Plotting epidemiological distributions<a class="anchor" aria-label="anchor" href="#plotting-epidemiological-distributions"></a>
 </h2>
 <p><code>&lt;epidist&gt;</code> objects can easily be plotted to see the PDF and CDF of distribution.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_incubation</span><span class="op">)</span></span></code></pre></div>
 </details><p><img src="epiparameter_files/figure-html/plot-epidist-1.png"><!-- --></p>
 <p>The default plotting range for time since infection is from zero to ten days. This can be altered by specifying the <code>day_range</code> argument when plotting an <code>&lt;epidist&gt;</code> object.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, day_range <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">25</span><span class="op">)</span></span></code></pre></div>
 </details><p><img src="epiparameter_files/figure-html/plot-epidist-dayrange-1.png"><!-- --></p>
 <p>This plotting function can be useful for visually comparing epidemiological distributions from different publications on the same disease. In addition, plotting the distribution after manually creating an <code>&lt;epidist&gt;</code> help to check that the parameters are sensible and produce the expected distribution.</p>
