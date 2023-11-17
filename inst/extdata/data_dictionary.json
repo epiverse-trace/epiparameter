@@ -30,7 +30,7 @@
             "description": "The name of the probability distribution, following R language distribution naming. A probability distribution can be null in cases when summary statistics are reported by a distribution is not given.",
             "examples": ["lnorm", "gamma"],
             "type": ["string", "null"],
-            "enum": ["lnorm", "gamma", "weibull", "nbinom", "geom", "pois", null]
+            "enum": ["lnorm", "gamma", "weibull", "nbinom", "geom", "pois", "norm", null]
           },
           "parameters": {
             "type": "object",
