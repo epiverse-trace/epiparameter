@@ -24,9 +24,10 @@ object."><meta property="og:image" content="https://epiverse-trace.github.io/epi
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     
+    <a href="https://epiverse-trace.github.io/" class="external-link"><img src="../logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
     <a class="navbar-brand me-2" href="../index.html">epiparameter</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9000</small>
+    <small class="nav-text text-danger me-auto version-number" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -173,8 +174,8 @@ vector is returned.</p>
 <span class="r-in"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">edist</span>, p <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2231436</span>
 <span class="r-in"><span><span class="fu">distributional</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">edist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.44446712 0.05872960 0.10919887 0.18584899 0.27857081 0.75349235</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.17270311 0.01328245 0.31568093 1.52477615</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.9785326 0.4193746 2.7811498 1.5390762 0.3897427 0.3354779 0.5329570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.9676845 0.4251761 0.2063093</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">vb_edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="vb_epidist.html">vb_epidist</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  intrinsic_epidist <span class="op">=</span> <span class="fu"><a href="epidist.html">epidist</a></span><span class="op">(</span></span></span>
@@ -222,12 +223,12 @@ vector is returned.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">distributional</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">vb_edist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $intrinsic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.616220582 0.543480577 0.713345372 0.509305479 0.252403170 2.582682495</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.007712462 0.411692087 0.303270042 0.633656346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.4285245 2.6109861 0.5592734 0.6070333 0.2990433 0.5172271 1.7537422</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 1.1612033 1.4120489 0.6103459</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $extrinsic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.1550722 1.1623114 3.3700883 2.0117157 1.2256817 2.2921809 1.1110283</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.8680312 0.1709603 2.6036155</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.007907913 0.400922480 1.519587805 0.272699774 0.290073478 3.278683995</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.455842626 0.005956728 0.069896270 0.521392701</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
