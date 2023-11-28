@@ -19,7 +19,32 @@
       "median_ci": 95
     },
     "citation": {
-      "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+      "author": [
+        {
+          "given": "Justin",
+          "family": "Lessler"
+        },
+        {
+          "given": "Nicholas G.",
+          "family": "Reich"
+        },
+        {
+          "given": "Ron",
+          "family": "Brookmeyer"
+        },
+        {
+          "given": "Trish M.",
+          "family": "Perl"
+        },
+        {
+          "given": "Kenrad E.",
+          "family": "Nelson"
+        },
+        {
+          "given": "Derek A. T.",
+          "family": "Cummings"
+        }
+      ],
       "title": "Incubation periods of acute respiratory viral infections: a systematic review",
       "journal": "The Lancet Infectious Diseases",
       "year": 2009,
@@ -62,7 +87,32 @@
       "median_ci": 95
     },
     "citation": {
-      "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+      "author": [
+        {
+          "given": "Justin",
+          "family": "Lessler"
+        },
+        {
+          "given": "Nicholas G.",
+          "family": "Reich"
+        },
+        {
+          "given": "Ron",
+          "family": "Brookmeyer"
+        },
+        {
+          "given": "Trish M.",
+          "family": "Perl"
+        },
+        {
+          "given": "Kenrad E.",
+          "family": "Nelson"
+        },
+        {
+          "given": "Derek A. T.",
+          "family": "Cummings"
+        }
+      ],
       "title": "Incubation periods of acute respiratory viral infections: a systematic review",
       "journal": "The Lancet Infectious Diseases",
       "year": 2009,
@@ -105,7 +155,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given":  "Kenrad E.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of acute respiratory viral infections: a systematic review",
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
@@ -148,7 +223,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Kenrad E.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of acute respiratory viral infections: a systematic review",
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
@@ -191,7 +291,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Kenrad E.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of acute respiratory viral infections: a systematic review",
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
@@ -234,7 +359,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Kenrad E.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of acute respiratory viral infections: a systematic review",
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
@@ -277,7 +427,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Kenrad E.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of acute respiratory viral infections: a systematic review",
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
@@ -320,7 +495,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Kenrad E.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of acute respiratory viral infections: a systematic review",
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
@@ -363,7 +563,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Kenrad E.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of acute respiratory viral infections: a systematic review",
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
@@ -406,7 +631,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Ron Brookmeyer", "Trish M. Perl", "Kenrad E. Nelson", "Derek A. T. Cummings"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Kenrad E.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of acute respiratory viral infections: a systematic review",
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
@@ -449,7 +699,24 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Nicholas G. Reich", "Justin Lessler", "Derek A. T. Cummings", "Ron Brookmeyer"],
+    "author": [
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      }
+    ],
     "title": "Estimating incubation period distributions with coarse data",
     "journal": "Statistics in Medicine",
     "year": 2009,
@@ -492,7 +759,24 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Nicholas G. Reich", "Justin Lessler", "Derek A. T. Cummings", "Ron Brookmeyer"],
+    "author": [
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      }
+    ],
     "title": "Estimating incubation period distributions with coarse data",
     "journal": "Statistics in Medicine",
     "year": 2009,
@@ -535,7 +819,24 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Nicholas G. Reich", "Justin Lessler", "Derek A. T. Cummings", "Ron Brookmeyer"],
+    "author": [
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      }
+    ],
     "title": "Estimating incubation period distributions with coarse data",
     "journal": "Statistics in Medicine",
     "year": 2009,
@@ -578,7 +879,24 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Nicholas G. Reich", "Justin Lessler", "Derek A. T. Cummings", "Ron Brookmeyer"],
+    "author": [
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Ron",
+        "family": "Brookmeyer"
+      }
+    ],
     "title": "Estimating incubation period distributions with coarse data",
     "journal": "Statistics in Medicine",
     "year": 2009,
@@ -620,7 +938,16 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Hiroshi Nishiura", "Hisashi Inaba"],
+    "author": [
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      },
+      {
+        "given": "Hisashi",
+        "family": "Inaba"
+      }
+    ],
     "title": "Estimation of the incubation period of influenza A (H1N1-2009) among imported cases: addressing censoring using outbreak data at the origin of importation",
     "journal": "Journal of Theoretical Biology",
     "year": 2011,
@@ -662,7 +989,16 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Hiroshi Nishiura", "Hisashi Inaba"],
+    "author": [
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      },
+      {
+        "given": "Hisashi",
+        "family": "Inaba"
+      }
+    ],
     "title": "Estimation of the incubation period of influenza A (H1N1-2009) among imported cases: addressing censoring using outbreak data at the origin of importation",
     "journal": "Journal of Theoretical Biology",
     "year": 2011,
@@ -702,7 +1038,64 @@
     "quantile_names": ["95"]
   },
   "citation": {
-    "author": ["Victor Virlogeux", "Ming Li", "Tim K. Tsang", "Luzhao Feng", "Vicky J. Fang", "Hui Jiang", "Peng Wu", "Jiandong Zheng", "Eric H. Y. Lau", "Yu Cao", "Ying Qin", "Qiaohong Liao", "Hongjie Yu", "Benjamin J. Cowling"],
+    "author": [
+      {
+        "given": "Victor",
+        "family": "Virlogeux"
+      },
+      {
+        "given": "Ming",
+        "family": "Li"
+      },
+      {
+        "given":  "Tim K.",
+        "family": "Tsang"
+      },
+      {
+        "given": "Luzhao",
+        "family": "Feng"
+      },
+      {
+        "given": "Vicky J.",
+        "family": "Fang"
+      },
+      {
+        "given": "Hui",
+        "family": "Jiang"
+      },
+      {
+        "given": "Peng",
+        "family": "Wu"
+      },
+      {
+        "given": "Jiandong",
+        "family": "Zheng"
+      },
+      {
+        "given": "Eric H. Y.",
+        "family": "Lau"
+      },
+      {
+        "given": "Yu",
+        "family": "Cao"
+      },
+      {
+        "given": "Ying",
+        "family": "Qin"
+      },
+      {
+        "given": "Qiaohong",
+        "family": "Liao"
+      },
+      {
+        "given": "Hongjie",
+        "family": "Yu"
+      },
+      {
+        "given":  "Benjamin J.",
+        "family": "Cowling"
+      }
+    ],
     "title": "Estimating the Distribution of the Incubation Periods of Human Avian Influenza A(H7N9) Virus Infections",
     "journal": "American Journal of Epidemiology",
     "year": 2015,
@@ -742,7 +1135,64 @@
     "quantile_names": ["95"]
   },
   "citation": {
-    "author": ["Victor Virlogeux", "Ming Li", "Tim K. Tsang", "Luzhao Feng", "Vicky J. Fang", "Hui Jiang", "Peng Wu", "Jiandong Zheng", "Eric H. Y. Lau", "Yu Cao", "Ying Qin", "Qiaohong Liao", "Hongjie Yu", "Benjamin J. Cowling"],
+    "author": [
+      {
+        "given": "Victor",
+        "family": "Virlogeux"
+      },
+      {
+        "given": "Ming",
+        "family": "Li"
+      },
+      {
+        "given": "Tim K.",
+        "family": "Tsang"
+      },
+      {
+        "given": "Luzhao",
+        "family": "Feng"
+      },
+      {
+        "given": "Vicky J.",
+        "family": "Fang"
+      },
+      {
+        "given": "Hui",
+        "family": "Jiang"
+      },
+      {
+        "given": "Peng",
+        "family": "Wu"
+      },
+      {
+        "given": "Jiandong",
+        "family": "Zheng"
+      },
+      {
+        "given": "Eric H. Y.",
+        "family": "Lau"
+      },
+      {
+        "given": "Yu",
+        "family": "Cao"
+      },
+      {
+        "given": "Ying",
+        "family": "Qin"
+      },
+      {
+        "given": "Qiaohong",
+        "family": "Liao"
+      },
+      {
+        "given": "Hongjie",
+        "family": "Yu"
+      },
+      {
+        "given": "Benjamin J.",
+        "family": "Cowling"
+      }
+    ],
     "title": "Estimating the Distribution of the Incubation Periods of Human Avian Influenza A(H7N9) Virus Infections",
     "journal": "American Journal of Epidemiology",
     "year": 2015,
@@ -779,7 +1229,64 @@
     "mean_ci": 95
   },
   "citation": {
-    "author": ["Victor Virlogeux", "Juan Yang", "Vicky J Fang", "Luzhao Feng", "Tim K Tsang", "Hui Jiang", "Peng Wu", "Jiandong Zheng", "Eric H Y Lau", "Ying Qin", "Zhibin Peng", "J S Malik Peiris", "Hongjie Yu", "Benjamin J Cowling"],
+    "author": [
+      {
+        "given": "Victor",
+        "family": "Virlogeux"
+      },
+      {
+        "given": "Juan",
+        "family": "Yang"
+      },
+      {
+        "given": "Vicky J.",
+        "family": "Fang"
+      },
+      {
+        "given": "Luzhao",
+        "family": "Feng"
+      },
+      {
+        "given": "Tim K. ",
+        "family": "Tsang"
+      },
+      {
+        "given": "Hui",
+        "family": "Jiang"
+      },
+      {
+        "given": "Peng",
+        "family": "Wu"
+      },
+      {
+        "given": "Jiandong",
+        "family": "Zheng"
+      },
+      {
+        "given": "Eric H. Y.",
+        "family": "Lau"
+      },
+      {
+        "given": "Ying",
+        "family": "Qin"
+      },
+      {
+        "given": "Zhibin",
+        "family": "Peng"
+      },
+      {
+        "given": "J. S. Malik",
+        "family": "Peiris"
+      },
+      {
+        "given": "Hongjie",
+        "family": "Yu"
+      },
+      {
+        "given": "Benjamin J.",
+        "family": "Cowling"
+      }
+    ],
     "title": "Association between the Severity of Influenza A(H7N9) Virus Infections and Length of the Incubation Period",
     "journal": "PLoS One",
     "year": 2016,
@@ -823,7 +1330,64 @@
     "mean_ci": 95
   },
   "citation": {
-    "author": ["Victor Virlogeux", "Juan Yang", "Vicky J. Fang", "Luzhao Feng", "Tim K. Tsang", "Hui Jiang", "Peng Wu", "Jiandong Zheng", "Eric H. Y. Lau", "Ying Qin", "Zhibin Peng", "J. S. Malik Peiris", "Hongjie Yu", "Benjamin J. Cowling"],
+    "author": [
+      {
+        "given": "Victor",
+        "family": "Virlogeux"
+      },
+      {
+        "given": "Juan",
+        "family": "Yang"
+      },
+      {
+        "given": "Vicky J.",
+        "family": "Fang"
+      },
+      {
+        "given": "Luzhao",
+        "family": "Feng"
+      },
+      {
+        "given": "Tim K.",
+        "family": "Tsang"
+      },
+      {
+        "given": "Hui",
+        "family": "Jiang"
+      },
+      {
+        "given": "Peng",
+        "family": "Wu"
+      },
+      {
+        "given": "Jiandong",
+        "family": "Zheng"
+      },
+      {
+        "given": "Eric H. Y.",
+        "family": "Lau"
+      },
+      {
+        "given": "Ying",
+        "family": "Qin"
+      },
+      {
+        "given": "Zhibin",
+        "family": "Peng"
+      },
+      {
+        "given": "J. S. Malik",
+        "family": "Peiris"
+      },
+      {
+        "given": "Hongjie",
+        "family": "Yu"
+      },
+      {
+        "given": "Benjamin J.",
+        "family": "Cowling"
+      }
+    ],
     "title": "Association between the Severity of Influenza A(H7N9) Virus Infections and Length of the Incubation Period",
     "journal": "PLoS One",
     "year": 2016,
@@ -867,7 +1431,64 @@
     "mean_ci": 95
   },
   "citation": {
-    "author": ["Victor Virlogeux", "Juan Yang", "Vicky J. Fang", "Luzhao Feng", "Tim K. Tsang", "Hui Jiang", "Peng Wu", "Jiandong Zheng", "Eric H. Y. Lau", "Ying Qin", "Zhibin Peng", "J. S. Malik Peiris", "Hongjie Yu", "Benjamin J. Cowling"],
+    "author": [
+      {
+        "given": "Victor",
+        "family": "Virlogeux"
+      },
+      {
+        "given": "Juan",
+        "family": "Yang"
+      },
+      {
+        "given":"Vicky J.",
+        "family": "Fang"
+      },
+      {
+        "given": "Luzhao",
+        "family": "Feng"
+      },
+      {
+        "given": "Tim K.",
+        "family": "Tsang"
+      },
+      {
+        "given": "Hui",
+        "family": "Jiang"
+      },
+      {
+        "given": "Peng",
+        "family": "Wu"
+      },
+      {
+        "given": "Jiandong",
+        "family": "Zheng"
+      },
+      {
+        "given": "Eric H. Y.",
+        "family": "Lau"
+      },
+      {
+        "given": "Ying",
+        "family": "Qin"
+      },
+      {
+        "given": "Zhibin",
+        "family": "Peng"
+      },
+      {
+        "given": "J. S. Malik",
+        "family": "Peiris"
+      },
+      {
+        "given": "Hongjie",
+        "family": "Yu"
+      },
+      {
+        "given": "Benjamin J.",
+        "family": "Cowling"
+      }
+    ],
     "title": "Association between the Severity of Influenza A(H7N9) Virus Infections and Length of the Incubation Period",
     "journal": "PLoS One",
     "year": 2016,
@@ -905,7 +1526,52 @@
     "median": 4
   },
   "citation": {
-    "author": ["Ashleigh R Tuite", "Amy L Greer", "Michael Whelan", "Anne-Luise Winter", "Brenda Lee", "Ping Yan", "Jianhong Wu", "Seyed Moghadas", "David Buckeridge", "Babak Pourbohloul", "David N Fisman"],
+    "author": [
+      {
+        "given": "Ashleigh R.",
+        "family": "Tuite"
+      },
+      {
+        "given": "Amy L.",
+        "family": "Greer"
+      },
+      {
+        "given": "Michael",
+        "family": "Whelan"
+      },
+      {
+        "given": "Anne-Luise",
+        "family": "Winter"
+      },
+      {
+        "given": "Brenda",
+        "family": "Lee"
+      },
+      {
+        "given": "Ping",
+        "family": "Yan"
+      },
+      {
+        "given": "Jianhong",
+        "family": "Wu"
+      },
+      {
+        "given": "Seyed",
+        "family": "Moghadas"
+      },
+      {
+        "given": "David",
+        "family": "Buckeridge"
+      },
+      {
+        "given": "Babak",
+        "family": "Pourbohloul"
+      },
+      {
+        "given": "David N.",
+        "family": "Fisman"
+      }
+    ],
     "title": "Estimated epidemiologic parameters and morbidity associated with pandemic H1N1 influenza",
     "journal": "Canadian Medical Association Journal",
     "year": 2010,
@@ -941,7 +1607,80 @@
     "sd": 0.49
   },
   "citation": {
-    "author": ["Azra Ghani", "Marc Baguelin", "Jamie Griffin", "Stefan Flasche", "Albert Jan van Hoek", "Simon Cauchemez", "Christl Donnelly", "Chris Robertson", "Michael White", "James Truscott", "Christophe Fraser", "Tini Garske", "Peter White", "Steve Leach", "Ian Hall", "Helen Jenkins", "Neil Ferguson", "Ben Cooper"],
+    "author": [
+      {
+        "given": "Azra",
+        "family": "Ghani"
+      },
+      {
+        "given": "Marc",
+        "family": "Baguelin"
+      },
+      {
+        "given": "Jamie",
+        "family": "Griffin"
+      },
+      {
+        "given": "Stefan",
+        "family": "Flasche"
+      },
+      {
+        "given": "Albert Jan",
+        "family": "van Hoek"
+      },
+      {
+        "given": "Simon",
+        "family": "Cauchemez"
+      },
+      {
+        "given": "Christl",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Chris",
+        "family": "Robertson"
+      },
+      {
+        "given": "Michael",
+        "family": "White"
+      },
+      {
+        "given": "James",
+        "family": "Truscott"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Peter",
+        "family": "White"
+      },
+      {
+        "given": "Steve",
+        "family": "Leach"
+      },
+      {
+        "given": "Ian",
+        "family": "Hall"
+      },
+      {
+        "given": "Helen",
+        "family": "Jenkins"
+      },
+      {
+        "given": "Neil",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Ben",
+        "family": "Cooper"
+      }
+    ],
     "title": "The Early Transmission Dynamics of H1N1pdm Influenza in the United Kingdom",
     "journal": "PLoS Currents",
     "year": 2009,
@@ -977,7 +1716,80 @@
     "sd": 1.55
   },
   "citation": {
-    "author": ["Azra Ghani", "Marc Baguelin", "Jamie Griffin", "Stefan Flasche", "Albert Jan van Hoek", "Simon Cauchemez", "Christl Donnelly", "Chris Robertson", "Michael White", "James Truscott", "Christophe Fraser", "Tini Garske", "Peter White", "Steve Leach", "Ian Hall", "Helen Jenkins", "Neil Ferguson", "Ben Cooper"],
+    "author": [
+      {
+        "given": "Azra",
+        "family": "Ghani"
+      },
+      {
+        "given": "Marc",
+        "family": "Baguelin"
+      },
+      {
+        "given": "Jamie",
+        "family": "Griffin"
+      },
+      {
+        "given": "Stefan",
+        "family": "Flasche"
+      },
+      {
+        "given": "Albert Jan",
+        "family": "van Hoek"
+      },
+      {
+        "given": "Simon",
+        "family": "Cauchemez"
+      },
+      {
+        "given": "Christl",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Chris",
+        "family": "Robertson"
+      },
+      {
+        "given": "Michael",
+        "family": "White"
+      },
+      {
+        "given": "James",
+        "family": "Truscott"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Peter",
+        "family": "White"
+      },
+      {
+        "given": "Steve",
+        "family": "Leach"
+      },
+      {
+        "given": "Ian",
+        "family": "Hall"
+      },
+      {
+        "given": "Helen",
+        "family": "Jenkins"
+      },
+      {
+        "given": "Neil",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Ben",
+        "family": "Cooper"
+      }
+    ],
     "title": "The Early Transmission Dynamics of H1N1pdm Influenza in the United Kingdom",
     "journal": "PLoS Currents",
     "year": 2009,
@@ -1016,7 +1828,24 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Derek A.T. Cummings", "New-York-City-Department-of-Health-and-Mental-Hygiene-Swine-Influenza-Investigation-Team"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Derek A.T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "New York City Department of Health and Mental Hygiene Swine Influenza Investigation Team",
+        "family": null
+      }
+    ],
     "title": "Outbreak of 2009 Pandemic Influenza A (H1N1) at a New York City School",
     "journal": "The New England Journal of Medicine",
     "year": 2009,
@@ -1058,7 +1887,24 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Nicholas G. Reich", "Derek A.T. Cummings", "New-York-City-Department-of-Health-and-Mental-Hygiene-Swine-Influenza-Investigation-Team"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Derek A.T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "New York City Department of Health and Mental Hygiene Swine Influenza Investigation Team",
+        "family": null
+      }
+    ],
     "title": "Outbreak of 2009 Pandemic Influenza A (H1N1) at a New York City School",
     "journal": "The New England Journal of Medicine",
     "year": 2009,
@@ -1094,7 +1940,12 @@
     "upper_range": 26
   },
   "citation": {
-    "author": ["Boris I. Pavlin"],
+    "author": [
+      {
+        "given": "Boris I.",
+        "family": "Pavlin"
+      }
+    ],
     "title": "Calculation of incubation period and serial interval from multiple outbreaks of Marburg virus disease",
     "journal": "BMC Research Notes",
     "year": 2014,
@@ -1131,7 +1982,12 @@
     "upper_range": 13
   },
   "citation": {
-    "author": ["Boris I. Pavlin"],
+    "author": [
+      {
+        "given": "Boris I.",
+        "family": "Pavlin"
+      }
+    ],
     "title": "Calculation of incubation period and serial interval from multiple outbreaks of Marburg virus disease",
     "journal": "BMC Research Notes",
     "year": 2014,
@@ -1168,7 +2024,12 @@
     "median": 11
   },
   "citation": {
-    "author": ["Boris I. Pavlin"],
+    "author": [
+      {
+        "given": "Boris I.",
+        "family": "Pavlin"
+      }
+    ],
     "title": "Calculation of incubation period and serial interval from multiple outbreaks of Marburg virus disease",
     "journal": "BMC Research Notes",
     "year": 2014,
@@ -1205,7 +2066,72 @@
     "upper_range": 16
   },
   "citation": {
-    "author": ["Robert Colebunders", "Antoine Tshomba", "Maria D Van Kerkhove", "Daniel G Bausch", "Pat Campbell", "Modeste Libande", "Patricia Pirard", "Florimond Tshioko", "Simon Mardel", "Sabue Mulangu", "Hilde Sleurs", "Pierre E Rollin", "Jean-Jacques Muyembe-Tamfum", "Benjamin Jeffs", "Matthias Borchert", "International Scientific and Technical Committee 'DRC Watsa/Durba 1999 Marburg Outbreak Investigation Group'"],
+    "author": [
+      {
+        "given": "Robert",
+        "family": "Colebunders"
+      },
+      {
+        "given": "Antoine",
+        "family": "Tshomba"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Daniel G.",
+        "family": "Bausch"
+      },
+      {
+        "given": "Pat",
+        "family": "Campbell"
+      },
+      {
+        "given": "Modeste",
+        "family": "Libande"
+      },
+      {
+        "given": "Patricia",
+        "family": "Pirard"
+      },
+      {
+        "given": "Florimond",
+        "family": "Tshioko"
+      },
+      {
+        "given": "Simon",
+        "family": "Mardel"
+      },
+      {
+        "given": "Sabue",
+        "family": "Mulangu"
+      },
+      {
+        "given": "Hilde",
+        "family": "Sleurs"
+      },
+      {
+        "given": "Pierre E.",
+        "family": "Rollin"
+      },
+      {
+        "given": "Jean-Jacques",
+        "family": "Muyembe-Tamfum"
+      },
+      {
+        "given": "Benjamin",
+        "family": "Jeffs"
+      },
+      {
+        "given": "Matthias",
+        "family": "Borchert"
+      },
+      {
+        "given": "International Scientific and Technical Committee 'DRC Watsa/Durba 1999 Marburg Outbreak Investigation Group'",
+        "family": null
+      }
+    ],
     "title": "Marburg hemorrhagic fever in Durba and Watsa, Democratic Republic of the Congo: clinical documentation, features of illness, and treatment",
     "journal": "The Journal of Infectious Diseases",
     "year": 2007,
@@ -1245,7 +2171,16 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["Marco Ajelli", "Stefano Merler"],
+    "author": [
+      {
+        "given": "Marco",
+        "family": "Ajelli"
+      },
+      {
+        "given": "Stefano",
+        "family": "Merler"
+      }
+    ],
     "title": "Transmission Potential and Design of Adequate Control Measures for Marburg Hemorrhagic Fever",
     "journal": "PLoS One",
     "year": 2012,
@@ -1286,7 +2221,24 @@
     "mean_ci": 90
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1327,7 +2279,24 @@
     "mean_ci": 90
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1368,7 +2337,24 @@
     "mean_ci": 90
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1409,7 +2395,24 @@
     "mean_ci": 90
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1450,7 +2453,24 @@
     "mean_ci": 90
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1489,7 +2509,24 @@
     "mean": 1.49
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1530,7 +2567,24 @@
     "mean_ci": 90
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1571,7 +2625,24 @@
     "mean_ci": 90
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1610,7 +2681,24 @@
     "mean_ci": 90
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1649,7 +2737,24 @@
     "mean_ci": 90
   },
   "citation": {
-    "author": ["J. O. Lloyd-Smith", "S. J. Schreiber", "P. E. Kopp", "W. M. Getz"],
+    "author": [
+      {
+        "given": "J. O.",
+        "family": "Lloyd-Smith"
+      },
+      {
+        "given": "S. J.",
+        "family": "Schreiber"
+      },
+      {
+        "given": "P. E.",
+        "family": "Kopp"
+      },
+      {
+        "given": "W. M.",
+        "family": "Getz"
+      }
+    ],
     "title": "Superspreading and the effect of individual variation on disease emergence",
     "journal": "Nature",
     "year": 2005,
@@ -1688,7 +2793,16 @@
     "quantile_names": ["2.5", "97.5"]
   },
   "citation": {
-    "author": ["Miranda Chan", "Michael A. Johansson"],
+    "author": [
+      {
+        "given": "Miranda",
+        "family": "Chan"
+      },
+      {
+        "given": "Michael A.",
+        "family": "Johansson"
+      }
+    ],
     "title": "The Incubation Periods of Dengue Viruses",
     "journal": "PLoS One",
     "year": 2012,
@@ -1732,7 +2846,16 @@
     "quantile_names": ["2.5" ,"97.5"]
   },
   "citation": {
-    "author": ["Miranda Chan", "Michael A. Johansson"],
+    "author": [
+      {
+        "given": "Miranda",
+        "family": "Chan"
+      },
+      {
+        "given": "Michael A.",
+        "family": "Johansson"
+      }
+    ],
     "title": "The Incubation Periods of Dengue Viruses",
     "journal": "PLoS One",
     "year": 2012,
@@ -1779,7 +2902,16 @@
     "quantile_names": ["2.5", "97.5"]
   },
   "citation": {
-    "author": ["Miranda Chan", "Michael A. Johansson"],
+    "author": [
+      {
+        "given": "Miranda",
+        "family": "Chan"
+      },
+      {
+        "given": "Michael A.",
+        "family": "Johansson"
+      }
+    ],
     "title": "The Incubation Periods of Dengue Viruses",
     "journal": "PLoS One",
     "year": 2012,
@@ -1823,7 +2955,48 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Justin Lessler", "Cassandra T Ott", "Andrea C Carcelen", "Jacob M Konikoff", "Joe Williamson", "Qifang Bi", "Lauren M Kucirka", "Derek A. T. Cummings", "Nicholas G Reich", "Lelia H Chaisson"],
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Cassandra T.",
+        "family": "Ott"
+      },
+      {
+        "given": "Andrea C.",
+        "family": "Carcelen"
+      },
+      {
+        "given": "Jacob M.",
+        "family": "Konikoff"
+      },
+      {
+        "given": "Joe",
+        "family": "Williamson"
+      },
+      {
+        "given": "Qifang",
+        "family": "Bi"
+      },
+      {
+        "given": "Lauren M.",
+        "family": "Kucirka"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Lelia H.",
+        "family": "Chaisson"
+      }
+    ],
     "title": "Times to key events in Zika virus infection and implications for blood donation: a systematic review",
     "journal": "Bulletin of the World Health Organization",
     "year": 2016,
@@ -1867,7 +3040,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -1911,7 +3105,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -1954,7 +3169,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -1998,7 +3234,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -2042,7 +3299,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -2086,7 +3364,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -2129,7 +3428,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -2173,7 +3493,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -2216,7 +3557,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -2259,7 +3621,28 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kara E Rudolph", "Justin Lessler", "Rachael M Moloney", "Brittany Kmush", "Derek A T Cummings"],
+    "author": [
+      {
+        "given": "Kara E.",
+        "family": "Rudolph"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      },
+      {
+        "given": "Rachael M.",
+        "family": "Moloney"
+      },
+      {
+        "given": "Brittany",
+        "family": "Kmush"
+      },
+      {
+        "given": "Derek A. T.",
+        "family": "Cummings"
+      }
+    ],
     "title": "Incubation periods of mosquito-borne viral infections: a systematic review",
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
@@ -2302,7 +3685,56 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Fuminari Miura", "Catharina E van Ewijk", "Jantien A Backer", "Maria Xiridou", "Eelco Franz", "Eline Op de Coul", "Diederik Brandwagt", "Brigitte van Cleef", "Gini van Rijckevorsel", "Corien Swaan", "Susan van den Hof", "Jacco Wallinga"],
+    "author": [
+      {
+        "given": "Fuminari",
+        "family": "Miura"
+      },
+      {
+        "given": "Catharina E.",
+        "family": "van Ewijk"
+      },
+      {
+        "given": "Jantien A.",
+        "family": "Backer"
+      },
+      {
+        "given": "Maria",
+        "family": "Xiridou"
+      },
+      {
+        "given": "Eelco",
+        "family": "Franz"
+      },
+      {
+        "given": "Eline",
+        "family": "Op de Coul"
+      },
+      {
+        "given": "Diederik",
+        "family": "Brandwagt"
+      },
+      {
+        "given": "Brigitte",
+        "family": "van Cleef"
+      },
+      {
+        "given": "Gini",
+        "family": "van Rijckevorsel"
+      },
+      {
+        "given": "Corien",
+        "family": "Swaan"
+      },
+      {
+        "given": "Susan",
+        "family": "van den Hof"
+      },
+      {
+        "given": "Jacco",
+        "family": "Wallinga"
+      }
+    ],
     "title": "Estimated incubation period for monkeypox cases confirmed in the Netherlands, May 2022",
     "journal": "Eurosurveillance",
     "year": 2022,
@@ -2347,7 +3779,60 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Kelly Charniga", "Nina B. Masters", "Rachel B. Slayton", "Lucas Gosdin", "Faisal S. Minhaj", "David Philpott", "Dallas Smith", "Shannon Gearhart", "Francisco Alvarado-Ramy", "Clive Brown", "Michelle A. Waltenburg", "Christine M. Hughes", "Yoshinori Nakazawa"],
+    "author": [
+      {
+        "given": "Kelly",
+        "family": "Charniga"
+      },
+      {
+        "given": "Nina B.",
+        "family": "Masters"
+      },
+      {
+        "given": "Rachel B.",
+        "family": "Slayton"
+      },
+      {
+        "given": "Lucas",
+        "family": "Gosdin"
+      },
+      {
+        "given": "Faisal S.",
+        "family": "Minhaj"
+      },
+      {
+        "given": "David",
+        "family": "Philpott"
+      },
+      {
+        "given": "Dallas",
+        "family": "Smith"
+      },
+      {
+        "given": "Shannon",
+        "family": "Gearhart"
+      },
+      {
+        "given": "Francisco",
+        "family": "Alvarado-Ramy"
+      },
+      {
+        "given": "Clive",
+        "family": "Brown"
+      },
+      {
+        "given": "Michelle A.",
+        "family": "Waltenburg"
+      },
+      {
+        "given": "Christine M.",
+        "family": "Hughes"
+      },
+      {
+        "given": "Yoshinori",
+        "family": "Nakazawa"
+      }
+    ],
     "title": "Estimating the incubation period of monkeypox virus during the 2022 multi-national outbreak",
     "journal": "medRxiv",
     "year": 2022,
@@ -2386,7 +3871,60 @@
     "quantile_names": ["5", "95"]
   },
   "citation": {
-    "author": ["Giorgio Guzzetta", "Alessia Mammone", "Federica Ferraro", "Anna Caraglia", "Alessia Rapiti", "Valentina Marziano", "Piero Poletti", "Danilo Cereda", "Francesco Vairo", "Giovanna Mattei", "Francesco Maraglino", "Giovanni Rezza", "Stefano Merler"],
+    "author": [
+      {
+        "given": "Giorgio",
+        "family": "Guzzetta"
+      },
+      {
+        "given": "Alessia",
+        "family": "Mammone"
+      },
+      {
+        "given": "Federica",
+        "family": "Ferraro"
+      },
+      {
+        "given": "Anna",
+        "family": "Caraglia"
+      },
+      {
+        "given": "Alessia",
+        "family": "Rapiti"
+      },
+      {
+        "given": "Valentina",
+        "family": "Marziano"
+      },
+      {
+        "given": "Piero",
+        "family": "Poletti"
+      },
+      {
+        "given": "Danilo",
+        "family": "Cereda"
+      },
+      {
+        "given": "Francesco",
+        "family": "Vairo"
+      },
+      {
+        "given": "Giovanna",
+        "family": "Mattei"
+      },
+      {
+        "given": "Francesco",
+        "family": "Maraglino"
+      },
+      {
+        "given": "Giovanni",
+        "family": "Rezza"
+      },
+      {
+        "given": "Stefano",
+        "family": "Merler"
+      }
+    ],
     "title": "Early Estimates of Monkeypox Incubation Period, Generation Time, and Reproduction Number, Italy, May-June 2022",
     "journal": "Emerging Infectious Diseases",
     "year": 2022,
@@ -2433,7 +3971,88 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["Zachary J. Madewell", "Kelly Charniga", "Nina B. Masters", "Jason Asher", "Lily Fahrenwald", "William Still", "Judy Chen", "Naama Kipperman", "David Bui", "Meghan Shea", "Lori Saathoff-Huber", "Shannon Johnson", "Khalil Harbi", "Abby L. Berns", "Taidy Perez", "Emily Gateley", "Ian H. Spicknall", "Yoshinori Nakazawa", "Thomas L. Gift", "2022-Monkeypox-Outbreak-Response-Team"],
+    "author": [
+      {
+        "given": "Zachary J.",
+        "family": "Madewell"
+      },
+      {
+        "given": "Kelly",
+        "family": "Charniga"
+      },
+      {
+        "given": "Nina B.",
+        "family": "Masters"
+      },
+      {
+        "given": "Jason",
+        "family": "Asher"
+      },
+      {
+        "given": "Lily",
+        "family": "Fahrenwald"
+      },
+      {
+        "given": "William",
+        "family": "Still"
+      },
+      {
+        "given": "Judy",
+        "family": "Chen"
+      },
+      {
+        "given": "Naama",
+        "family": "Kipperman"
+      },
+      {
+        "given": "David",
+        "family": "Bui"
+      },
+      {
+        "given": "Meghan",
+        "family": "Shea"
+      },
+      {
+        "given": "Lori",
+        "family": "Saathoff-Huber"
+      },
+      {
+        "given": "Shannon",
+        "family": "Johnson"
+      },
+      {
+        "given": "Khalil",
+        "family": "Harbi"
+      },
+      {
+        "given": "Abby L.",
+        "family": "Berns"
+      },
+      {
+        "given": "Taidy",
+        "family": "Perez"
+      },
+      {
+        "given": "Emily",
+        "family": "Gateley"
+      },
+      {
+        "given": "Ian H.",
+        "family": "Spicknall"
+      },
+      {
+        "given": "Yoshinori",
+        "family": "Nakazawa"
+      },
+      {
+        "given": "Thomas L.",
+        "family": "Gift"
+      },
+      {
+        "given": "2022 Monkeypox Outbreak Response Team",
+        "family": null
+      }
+    ],
     "title": "Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2022",
     "journal": "medRxiv",
     "year": 2022,
@@ -2480,7 +4099,88 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["Zachary J. Madewell", "Kelly Charniga", "Nina B. Masters", "Jason Asher", "Lily Fahrenwald", "William Still", "Judy Chen", "Naama Kipperman", "David Bui", "Meghan Shea", "Lori Saathoff-Huber", "Shannon Johnson", "Khalil Harbi", "Abby L. Berns", "Taidy Perez", "Emily Gateley", "Ian H. Spicknall", "Yoshinori Nakazawa", "Thomas L. Gift", "2022-Monkeypox-Outbreak-Response-Team"],
+    "author": [
+      {
+        "given": "Zachary J.",
+        "family": "Madewell"
+      },
+      {
+        "given": "Kelly",
+        "family": "Charniga"
+      },
+      {
+        "given": "Nina B.",
+        "family": "Masters"
+      },
+      {
+        "given": "Jason",
+        "family": "Asher"
+      },
+      {
+        "given": "Lily",
+        "family": "Fahrenwald"
+      },
+      {
+        "given": "William",
+        "family": "Still"
+      },
+      {
+        "given": "Judy",
+        "family": "Chen"
+      },
+      {
+        "given": "Naama",
+        "family": "Kipperman"
+      },
+      {
+        "given": "David",
+        "family": "Bui"
+      },
+      {
+        "given": "Meghan",
+        "family": "Shea"
+      },
+      {
+        "given": "Lori",
+        "family": "Saathoff-Huber"
+      },
+      {
+        "given": "Shannon",
+        "family": "Johnson"
+      },
+      {
+        "given": "Khalil",
+        "family": "Harbi"
+      },
+      {
+        "given": "Abby L.",
+        "family": "Berns"
+      },
+      {
+        "given": "Taidy",
+        "family": "Perez"
+      },
+      {
+        "given": "Emily",
+        "family": "Gateley"
+      },
+      {
+        "given": "Ian H.",
+        "family": "Spicknall"
+      },
+      {
+        "given": "Yoshinori",
+        "family": "Nakazawa"
+      },
+      {
+        "given": "Thomas L.",
+        "family": "Gift"
+      },
+      {
+        "given": "2022 Monkeypox Outbreak Response Team",
+        "family": null
+      }
+    ],
     "title": "Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2023",
     "journal": "medRxiv",
     "year": 2022,
@@ -2527,7 +4227,88 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["Zachary J. Madewell", "Kelly Charniga", "Nina B. Masters", "Jason Asher", "Lily Fahrenwald", "William Still", "Judy Chen", "Naama Kipperman", "David Bui", "Meghan Shea", "Lori Saathoff-Huber", "Shannon Johnson", "Khalil Harbi", "Abby L. Berns", "Taidy Perez", "Emily Gateley", "Ian H. Spicknall", "Yoshinori Nakazawa", "Thomas L. Gift", "2022-Monkeypox-Outbreak-Response-Team"],
+    "author": [
+      {
+        "given": "Zachary J.",
+        "family": "Madewell"
+      },
+      {
+        "given": "Kelly",
+        "family": "Charniga"
+      },
+      {
+        "given": "Nina B.",
+        "family": "Masters"
+      },
+      {
+        "given": "Jason",
+        "family": "Asher"
+      },
+      {
+        "given": "Lily",
+        "family": "Fahrenwald"
+      },
+      {
+        "given": "William",
+        "family": "Still"
+      },
+      {
+        "given": "Judy",
+        "family": "Chen"
+      },
+      {
+        "given": "Naama",
+        "family": "Kipperman"
+      },
+      {
+        "given": "David",
+        "family": "Bui"
+      },
+      {
+        "given": "Meghan",
+        "family": "Shea"
+      },
+      {
+        "given": "Lori",
+        "family": "Saathoff-Huber"
+      },
+      {
+        "given": "Shannon",
+        "family": "Johnson"
+      },
+      {
+        "given": "Khalil",
+        "family": "Harbi"
+      },
+      {
+        "given": "Abby L.",
+        "family": "Berns"
+      },
+      {
+        "given": "Taidy",
+        "family": "Perez"
+      },
+      {
+        "given": "Emily",
+        "family": "Gateley"
+      },
+      {
+        "given": "Ian H.",
+        "family": "Spicknall"
+      },
+      {
+        "given": "Yoshinori",
+        "family": "Nakazawa"
+      },
+      {
+        "given": "Thomas L.",
+        "family": "Gift"
+      },
+      {
+        "given": "2022 Monkeypox Outbreak Response Team",
+        "family": null
+      }
+    ],
     "title": "Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2024",
     "journal": "medRxiv",
     "year": 2022,
@@ -2574,7 +4355,88 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["Zachary J. Madewell", "Kelly Charniga", "Nina B. Masters", "Jason Asher", "Lily Fahrenwald", "William Still", "Judy Chen", "Naama Kipperman", "David Bui", "Meghan Shea", "Lori Saathoff-Huber", "Shannon Johnson", "Khalil Harbi", "Abby L. Berns", "Taidy Perez", "Emily Gateley", "Ian H. Spicknall", "Yoshinori Nakazawa", "Thomas L. Gift", "2022-Monkeypox-Outbreak-Response-Team"],
+    "author": [
+      {
+        "given": "Zachary J.",
+        "family": "Madewell"
+      },
+      {
+        "given": "Kelly",
+        "family": "Charniga"
+      },
+      {
+        "given": "Nina B.",
+        "family": "Masters"
+      },
+      {
+        "given": "Jason",
+        "family": "Asher"
+      },
+      {
+        "given": "Lily",
+        "family": "Fahrenwald"
+      },
+      {
+        "given": "William",
+        "family": "Still"
+      },
+      {
+        "given": "Judy",
+        "family": "Chen"
+      },
+      {
+        "given": "Naama",
+        "family": "Kipperman"
+      },
+      {
+        "given": "David",
+        "family": "Bui"
+      },
+      {
+        "given": "Meghan",
+        "family": "Shea"
+      },
+      {
+        "given": "Lori",
+        "family": "Saathoff-Huber"
+      },
+      {
+        "given": "Shannon",
+        "family": "Johnson"
+      },
+      {
+        "given": "Khalil",
+        "family": "Harbi"
+      },
+      {
+        "given": "Abby L.",
+        "family": "Berns"
+      },
+      {
+        "given": "Taidy",
+        "family": "Perez"
+      },
+      {
+        "given": "Emily",
+        "family": "Gateley"
+      },
+      {
+        "given": "Ian H.",
+        "family": "Spicknall"
+      },
+      {
+        "given": "Yoshinori",
+        "family": "Nakazawa"
+      },
+      {
+        "given": "Thomas L.",
+        "family": "Gift"
+      },
+      {
+        "given": "2022 Monkeypox Outbreak Response Team",
+        "family": null
+      }
+    ],
     "title": "Serial interval and incubation period estimates of monkeypox virus infection in 12 U.S. jurisdictions, May – August 2025",
     "journal": "medRxiv",
     "year": 2022,
@@ -2610,7 +4472,20 @@
     "sd": 4.31
   },
   "citation": {
-    "author": ["Martin Eichner", "Scott F Dowell", "Nina Firese"],
+    "author": [
+      {
+        "given": "Martin",
+        "family": "Eichner"
+      },
+      {
+        "given": "Scott F.",
+        "family": "Dowell"
+      },
+      {
+        "given": "Nina",
+        "family": "Firese"
+      }
+    ],
     "title": "Incubation period of ebola hemorrhagic virus subtype zaire",
     "journal": "Osong Public Health and Research Perspectives",
     "year": 2011,
@@ -2657,7 +4532,332 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["The-Ebola-Outbreak-Epidemiology-Team", "Ahmadou Barry", "Steve Ahuka-Mundeke", "Yahaya Ali Ahmed", "Yokouide Allarangar", "Julienne Anoko", "Brett Nicholas Archer", "Aaron Aruna Abedi", "Jayshree Bagaria", "Marie Roseline Darnycka Belizaire", "Sangeeta Bhatia", "Théophile Bokenge", "Emanuele Bruni", "Anne Cori", "Ernest Dabire", "Amadou Mouctar Diallo", "Boubacar Diallo", "Christl Ann Donnelly", "Ilaria Dorigatti", "Tshewang Choden Dorji", "Aura Rocio Escobar Corado Waeber", "Ibrahima Socé Fall", "Neil M Ferguson", "Richard Gareth FitzJohn", "Gervais Leon Folefack Tengomo", "Pierre Bernard Henri Formenty", "Alpha Forna", "Anne Fortin", "Tini Garske", "Katy AM Gaythorpe", "Celine Gurry", "Esther Hamblion", "Mamoudou Harouna Djingarey", "Christopher Haskew", "Stéphane Alexandre Louis Hugonnet", "Natsuko Imai", "Benido Impouma", "Guylain Kabongo", "Oly Ilunga Kalenga", "Emerencienne Kibangou", "Theresa Min-Hyung Lee", "Charles Okot Lukoya", "Ousmane Ly", "Sheila Makiala-Mandanda", "Augustin Mamba", "Placide Mbala-Kingebeni", "Franck Fortune Roland Mboussou", "Tamayi Mlanda", "Vital Mondonge Makuma", "Oliver Morgan", "Anastasie Mujinga Mulumba", "Patrick Mukadi Kakoni", "Daniel Mukadi-Bamuleka", "Jean-Jaques Muyembe", "Ndjoloko Tambwe Bathé", "Patricia Ndumbi Ngamala", "Roland Ngom", "Guillaume Ngoy", "Pierre Nouvellet", "Justus Nsio", "Kevin Babila Ousman", "Emilie Peron", "Jonathan Aaron Polonsky", "Michael J. Ryan", "Alhassane Touré", "Rodney Towner", "Gaston Tshapenda", "Reinhilde Van De Weerdt", "Maria Van Kerkhove", "Annika Wendland", "N'Da Konan Michel Yao", "Zabulon Yoti", "Etienne Yuma", "Guy Kalambayi Kabamba", "Jean de Dieu Lukwesa Mwati", "Gisele Mbuy", "Leopold Lubula", "Anny Mutombo", "Oscar Mavila", "Yyonne Lay", "Emma Kitenge"],
+    "author": [
+      {
+        "given": "The Ebola Outbreak Epidemiology Team",
+        "family": null
+      },
+      {
+        "given": "Ahmadou",
+        "family": "Barry"
+      },
+      {
+        "given": "Steve",
+        "family": "Ahuka-Mundeke"
+      },
+      {
+        "given":  "Yahaya",
+        "family": "Ali Ahmed"
+      },
+      {
+        "given": "Yokouide",
+        "family": "Allarangar"
+      },
+      {
+        "given": "Julienne",
+        "family": "Anoko"
+      },
+      {
+        "given": "Brett Nicholas",
+        "family": "Archer"
+      },
+      {
+        "given": "Aaron Aruna",
+        "family": "Abedi"
+      },
+      {
+        "given": "Jayshree",
+        "family": "Bagaria"
+      },
+      {
+        "given": "Marie Roseline Darnycka",
+        "family": "Belizaire"
+      },
+      {
+        "given": "Sangeeta",
+        "family": "Bhatia"
+      },
+      {
+        "given": "Théophile",
+        "family": "Bokenge"
+      },
+      {
+        "given": "Emanuele",
+        "family": "Bruni"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Ernest",
+        "family": "Dabire"
+      },
+      {
+        "given": "Amadou Mouctar",
+        "family": "Diallo"
+      },
+      {
+        "given": "Boubacar",
+        "family": "Diallo"
+      },
+      {
+        "given": "Christl Ann",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Tshewang Choden",
+        "family": "Dorji"
+      },
+      {
+        "given": "Aura Rocio Escobar Corado",
+        "family": "Waeber"
+      },
+      {
+        "given": "Ibrahima Socé",
+        "family": "Fall"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Richard Gareth",
+        "family": "FitzJohn"
+      },
+      {
+        "given": "Gervais Leon Folefack",
+        "family": "Tengomo"
+      },
+      {
+        "given": "Pierre Bernard Henri",
+        "family": "Formenty"
+      },
+      {
+        "given": "Alpha",
+        "family": "Forna"
+      },
+      {
+        "given": "Anne",
+        "family": "Fortin"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Katy A. M.",
+        "family": "Gaythorpe"
+      },
+      {
+        "given": "Celine",
+        "family": "Gurry"
+      },
+      {
+        "given": "Esther",
+        "family": "Hamblion"
+      },
+      {
+        "given": "Mamoudou Harouna",
+        "family": "Djingarey"
+      },
+      {
+        "given": "Christopher",
+        "family": "Haskew"
+      },
+      {
+        "given": "Stéphane Alexandre Louis",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Natsuko",
+        "family": "Imai"
+      },
+      {
+        "given": "Benido",
+        "family": "Impouma"
+      },
+      {
+        "given": "Guylain",
+        "family": "Kabongo"
+      },
+      {
+        "given": "Oly Ilunga",
+        "family": "Kalenga"
+      },
+      {
+        "given": "Emerencienne",
+        "family": "Kibangou"
+      },
+      {
+        "given": "Theresa Min-Hyung",
+        "family": "Lee"
+      },
+      {
+        "given": "Charles Okot",
+        "family": "Lukoya"
+      },
+      {
+        "given": "Ousmane",
+        "family": "Ly"
+      },
+      {
+        "given": "Sheila",
+        "family": "Makiala-Mandanda"
+      },
+      {
+        "given": "Augustin",
+        "family": "Mamba"
+      },
+      {
+        "given": "Placide",
+        "family": "Mbala-Kingebeni"
+      },
+      {
+        "given": "Franck Fortune Roland",
+        "family": "Mboussou"
+      },
+      {
+        "given": "Tamayi",
+        "family": "Mlanda"
+      },
+      {
+        "given": "Vital Mondonge",
+        "family": "Makuma"
+      },
+      {
+        "given": "Oliver",
+        "family": "Morgan"
+      },
+      {
+        "given": "Anastasie Mujinga",
+        "family": "Mulumba"
+      },
+      {
+        "given": "Patrick Mukadi",
+        "family": "Kakoni"
+      },
+      {
+        "given": "Daniel",
+        "family": "Mukadi-Bamuleka"
+      },
+      {
+        "given": "Jean-Jaques",
+        "family": "Muyembe"
+      },
+      {
+        "given": "Ndjoloko Tambwe",
+        "family": "Bathé"
+      },
+      {
+        "given": "Patricia",
+        "family": "Ndumbi Ngamala"
+      },
+      {
+        "given": "Roland",
+        "family": "Ngom"
+      },
+      {
+        "given": "Guillaume",
+        "family": "Ngoy"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Justus",
+        "family": "Nsio"
+      },
+      {
+        "given": "Kevin Babila",
+        "family": "Ousman"
+      },
+      {
+        "given": "Emilie",
+        "family": "Peron"
+      },
+      {
+        "given": "Jonathan Aaron",
+        "family": "Polonsky"
+      },
+      {
+        "given": "Michael J.",
+        "family": "Ryan"
+      },
+      {
+        "given": "Alhassane",
+        "family": "Touré"
+      },
+      {
+        "given": "Rodney",
+        "family": "Towner"
+      },
+      {
+        "given": "Gaston",
+        "family": "Tshapenda"
+      },
+      {
+        "given": "Reinhilde",
+        "family": "Van De Weerdt"
+      },
+      {
+        "given": "Maria",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Annika",
+        "family": "Wendland"
+      },
+      {
+        "given": "N'Da Konan Michel",
+        "family": "Yao"
+      },
+      {
+        "given": "Zabulon",
+        "family": "Yoti"
+      },
+      {
+        "given": "Etienne",
+        "family": "Yuma"
+      },
+      {
+        "given": "Guy",
+        "family": "Kalambayi Kabamba"
+      },
+      {
+        "given": "Jean de Dieu Lukwesa",
+        "family": "Mwati"
+      },
+      {
+        "given": "Gisele",
+        "family": "Mbuy"
+      },
+      {
+        "given": "Leopold",
+        "family": "Lubula"
+      },
+      {
+        "given": "Anny",
+        "family": "Mutombo"
+      },
+      {
+        "given": "Oscar",
+        "family": "Mavila"
+      },
+      {
+        "given": "Yyonne",
+        "family": "Lay"
+      },
+      {
+        "given": "Emma",
+        "family": "Kitenge"
+      }
+    ],
     "title": "Outbreak of Ebola virus disease in the Democratic Republic of the Congo, April–May, 2018: an epidemiological study",
     "journal": "The Lancet",
     "year": 2018,
@@ -2697,7 +4897,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -2737,7 +5090,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -2777,7 +5283,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -2817,7 +5476,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -2857,7 +5669,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -2897,7 +5862,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -2937,7 +6055,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -2977,7 +6248,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -3017,7 +6441,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -3057,7 +6634,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -3097,7 +6827,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -3137,7 +7020,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -3177,7 +7213,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -3217,7 +7406,160 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["WHO-Ebola-Response-Team", "Junerlyn Agua-Agum", "Archchun Ariyarajah", "Bruce Aylward", "Isobel M. Blake", "Richard Brennan", "Anne Cori", "Christl A. Donnelly", "Ilaria Dorigatti", "Christopher Dye", "Tim Eckmanns", "Neil M. Ferguson", "Pierre Formenty", "Christophe Fraser", "Erika Garcia", "Tini Garske", "Wes Hinsley", "David Holmes", "Stéphane Hugonnet", "Swathi Iyengar", "Thibaut Jombart", "Ravi Krishnan", "Sascha Meijers", "Harriet L. Mills", "Yasmine Mohamed", "Gemma Nedjati-Gilani", "Emily Newton", "Pierre Nouvellet", "Louise Pelletier", "Devin Perkins", "Steven Riley", "Maria Sagrado", "Johannes Schnitzler", "Dirk Schumacher", "Anita Shah", "Maria D. Van Kerkhove", "Olivia Varsaneux", "Niluka Wijekoon Kannangarage"],
+    "author": [
+      {
+        "given": "WHO Ebola Response Team",
+        "family": null
+      },
+      {
+        "given": "Junerlyn",
+        "family": "Agua-Agum"
+      },
+      {
+        "given": "Archchun",
+        "family": "Ariyarajah"
+      },
+      {
+        "given": "Bruce",
+        "family": "Aylward"
+      },
+      {
+        "given": "Isobel M.",
+        "family": "Blake"
+      },
+      {
+        "given": "Richard",
+        "family": "Brennan"
+      },
+      {
+        "given": "Anne",
+        "family": "Cori"
+      },
+      {
+        "given": "Christl A.",
+        "family": "Donnelly"
+      },
+      {
+        "given": "Ilaria",
+        "family": "Dorigatti"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dye"
+      },
+      {
+        "given": "Tim",
+        "family": "Eckmanns"
+      },
+      {
+        "given": "Neil M.",
+        "family": "Ferguson"
+      },
+      {
+        "given": "Pierre",
+        "family": "Formenty"
+      },
+      {
+        "given": "Christophe",
+        "family": "Fraser"
+      },
+      {
+        "given": "Erika",
+        "family": "Garcia"
+      },
+      {
+        "given": "Tini",
+        "family": "Garske"
+      },
+      {
+        "given": "Wes",
+        "family": "Hinsley"
+      },
+      {
+        "given": "David",
+        "family": "Holmes"
+      },
+      {
+        "given": "Stéphane",
+        "family": "Hugonnet"
+      },
+      {
+        "given": "Swathi",
+        "family": "Iyengar"
+      },
+      {
+        "given": "Thibaut",
+        "family": "Jombart"
+      },
+      {
+        "given": "Ravi",
+        "family": "Krishnan"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meijers"
+      },
+      {
+        "given": "Harriet L.",
+        "family": "Mills"
+      },
+      {
+        "given": "Yasmine",
+        "family": "Mohamed"
+      },
+      {
+        "given": "Gemma",
+        "family": "Nedjati-Gilani"
+      },
+      {
+        "given": "Emily",
+        "family": "Newton"
+      },
+      {
+        "given": "Pierre",
+        "family": "Nouvellet"
+      },
+      {
+        "given": "Louise",
+        "family": "Pelletier"
+      },
+      {
+        "given": "Devin",
+        "family": "Perkins"
+      },
+      {
+        "given": "Steven",
+        "family": "Riley"
+      },
+      {
+        "given": "Maria",
+        "family": "Sagrado"
+      },
+      {
+        "given": "Johannes",
+        "family": "Schnitzler"
+      },
+      {
+        "given": "Dirk",
+        "family": "Schumacher"
+      },
+      {
+        "given": "Anita",
+        "family": "Shah"
+      },
+      {
+        "given": "Maria D.",
+        "family": "Van Kerkhove"
+      },
+      {
+        "given": "Olivia",
+        "family": "Varsaneux"
+      },
+      {
+        "given": "Niluka Wijekoon",
+        "family": "Kannangarage"
+      }
+    ],
     "title": "West African Ebola Epidemic after One Year — Slowing but Not Yet under Control",
     "journal": "The New England Journal of Medicine",
     "year": 2015,
@@ -3256,7 +7598,84 @@
     "median_ci": null
   },
   "citation": {
-    "author": ["Abdullah Assiri", "Allison McGeer", "Trish M. Perl", "Connie S. Price", "Abdullah A. Al Rabeeah", "Derek A.T. Cummings", "Zaki N. Alabdullatif", "Maher Assad", "Abdulmohsen Almulhim", "Hatem Makhdoom", "Hossam Madani", "Rafat Alhakeem", "Jaffar A. Al-Tawfiq", "Matthew Cotten", "Simon J. Watson", "Paul Kellam", "Alimuddin I. Zumla", "Ziad A. Memish", "KSA-MERSCOV-Investigation-Team"],
+    "author": [
+      {
+        "given": "Abdullah",
+        "family": "Assiri"
+      },
+      {
+        "given": "Allison",
+        "family": "McGeer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Connie S.",
+        "family": "Price"
+      },
+      {
+        "given": "Abdullah A.",
+        "family": "Al Rabeeah"
+      },
+      {
+        "given": "Derek A.T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Zaki N.",
+        "family": "Alabdullatif"
+      },
+      {
+        "given": "Maher",
+        "family": "Assad"
+      },
+      {
+        "given": "Abdulmohsen",
+        "family": "Almulhim"
+      },
+      {
+        "given": "Hatem",
+        "family": "Makhdoom"
+      },
+      {
+        "given": "Hossam",
+        "family": "Madani"
+      },
+      {
+        "given": "Rafat",
+        "family": "Alhakeem"
+      },
+      {
+        "given": "Jaffar A.",
+        "family": "Al-Tawfiq"
+      },
+      {
+        "given": "Matthew",
+        "family": "Cotten"
+      },
+      {
+        "given": "Simon J.",
+        "family": "Watson"
+      },
+      {
+        "given": "Paul",
+        "family": "Kellam"
+      },
+      {
+        "given": "Alimuddin I.",
+        "family": "Zumla"
+      },
+      {
+        "given": "Ziad A.",
+        "family": "Memish"
+      },
+      {
+        "given": "KSA MERSCOV Investigation Team",
+        "family": null
+      }
+    ],
     "title": "Hospital Outbreak of Middle East Respiratory Syndrome Coronavirus",
     "journal": "The New England Journal of Medicine",
     "year": 2013,
@@ -3295,7 +7714,84 @@
     "median_ci": null
   },
   "citation": {
-    "author": ["Abdullah Assiri", "Allison McGeer", "Trish M. Perl", "Connie S. Price", "Abdullah A. Al Rabeeah", "Derek A.T. Cummings", "Zaki N. Alabdullatif", "Maher Assad", "Abdulmohsen Almulhim", "Hatem Makhdoom", "Hossam Madani", "Rafat Alhakeem", "Jaffar A. Al-Tawfiq", "Matthew Cotten", "Simon J. Watson", "Paul Kellam", "Alimuddin I. Zumla", "Ziad A. Memish", "KSA-MERSCOV-Investigation-Team"],
+    "author": [
+      {
+        "given": "Abdullah",
+        "family": "Assiri"
+      },
+      {
+        "given": "Allison",
+        "family": "McGeer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Connie S.",
+        "family": "Price"
+      },
+      {
+        "given": "Abdullah A.",
+        "family": "Al Rabeeah"
+      },
+      {
+        "given": "Derek A.T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Zaki N.",
+        "family": "Alabdullatif"
+      },
+      {
+        "given": "Maher",
+        "family": "Assad"
+      },
+      {
+        "given": "Abdulmohsen",
+        "family": "Almulhim"
+      },
+      {
+        "given": "Hatem",
+        "family": "Makhdoom"
+      },
+      {
+        "given": "Hossam",
+        "family": "Madani"
+      },
+      {
+        "given": "Rafat",
+        "family": "Alhakeem"
+      },
+      {
+        "given": "Jaffar A.",
+        "family": "Al-Tawfiq"
+      },
+      {
+        "given": "Matthew",
+        "family": "Cotten"
+      },
+      {
+        "given": "Simon J.",
+        "family": "Watson"
+      },
+      {
+        "given": "Paul",
+        "family": "Kellam"
+      },
+      {
+        "given": "Alimuddin I.",
+        "family": "Zumla"
+      },
+      {
+        "given": "Ziad A.",
+        "family": "Memish"
+      },
+      {
+        "given": "KSA MERSCOV Investigation Team",
+        "family": null
+      }
+    ],
     "title": "Hospital Outbreak of Middle East Respiratory Syndrome Coronavirus",
     "journal": "The New England Journal of Medicine",
     "year": 2013,
@@ -3332,7 +7828,84 @@
     "upper_range": 10
   },
   "citation": {
-    "author": ["Abdullah Assiri", "Allison McGeer", "Trish M. Perl", "Connie S. Price", "Abdullah A. Al Rabeeah", "Derek A.T. Cummings", "Zaki N. Alabdullatif", "Maher Assad", "Abdulmohsen Almulhim", "Hatem Makhdoom", "Hossam Madani", "Rafat Alhakeem", "Jaffar A. Al-Tawfiq", "Matthew Cotten", "Simon J. Watson", "Paul Kellam", "Alimuddin I. Zumla", "Ziad A. Memish", "KSA-MERSCOV-Investigation-Team"],
+    "author": [
+      {
+        "given": "Abdullah",
+        "family": "Assiri"
+      },
+      {
+        "given": "Allison",
+        "family": "McGeer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Connie S.",
+        "family": "Price"
+      },
+      {
+        "given": "Abdullah A.",
+        "family": "Al Rabeeah"
+      },
+      {
+        "given": "Derek A.T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Zaki N.",
+        "family": "Alabdullatif"
+      },
+      {
+        "given": "Maher",
+        "family": "Assad"
+      },
+      {
+        "given": "Abdulmohsen",
+        "family": "Almulhim"
+      },
+      {
+        "given": "Hatem",
+        "family": "Makhdoom"
+      },
+      {
+        "given": "Hossam",
+        "family": "Madani"
+      },
+      {
+        "given": "Rafat",
+        "family": "Alhakeem"
+      },
+      {
+        "given": "Jaffar A.",
+        "family": "Al-Tawfiq"
+      },
+      {
+        "given": "Matthew",
+        "family": "Cotten"
+      },
+      {
+        "given": "Simon J.",
+        "family": "Watson"
+      },
+      {
+        "given": "Paul",
+        "family": "Kellam"
+      },
+      {
+        "given": "Alimuddin I.",
+        "family": "Zumla"
+      },
+      {
+        "given": "Ziad A.",
+        "family": "Memish"
+      },
+      {
+        "given": "KSA MERSCOV Investigation Team",
+        "family": null
+      }
+    ],
     "title": "Hospital Outbreak of Middle East Respiratory Syndrome Coronavirus",
     "journal": "The New England Journal of Medicine",
     "year": 2013,
@@ -3369,7 +7942,84 @@
     "upper_range": 27
   },
   "citation": {
-    "author": ["Abdullah Assiri", "Allison McGeer", "Trish M. Perl", "Connie S. Price", "Abdullah A. Al Rabeeah", "Derek A.T. Cummings", "Zaki N. Alabdullatif", "Maher Assad", "Abdulmohsen Almulhim", "Hatem Makhdoom", "Hossam Madani", "Rafat Alhakeem", "Jaffar A. Al-Tawfiq", "Matthew Cotten", "Simon J. Watson", "Paul Kellam", "Alimuddin I. Zumla", "Ziad A. Memish", "KSA-MERSCOV-Investigation-Team"],
+    "author": [
+      {
+        "given": "Abdullah",
+        "family": "Assiri"
+      },
+      {
+        "given": "Allison",
+        "family": "McGeer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Connie S.",
+        "family": "Price"
+      },
+      {
+        "given": "Abdullah A.",
+        "family": "Al Rabeeah"
+      },
+      {
+        "given": "Derek A.T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Zaki N.",
+        "family": "Alabdullatif"
+      },
+      {
+        "given": "Maher",
+        "family": "Assad"
+      },
+      {
+        "given": "Abdulmohsen",
+        "family": "Almulhim"
+      },
+      {
+        "given": "Hatem",
+        "family": "Makhdoom"
+      },
+      {
+        "given": "Hossam",
+        "family": "Madani"
+      },
+      {
+        "given": "Rafat",
+        "family": "Alhakeem"
+      },
+      {
+        "given": "Jaffar A.",
+        "family": "Al-Tawfiq"
+      },
+      {
+        "given": "Matthew",
+        "family": "Cotten"
+      },
+      {
+        "given": "Simon J.",
+        "family": "Watson"
+      },
+      {
+        "given": "Paul",
+        "family": "Kellam"
+      },
+      {
+        "given": "Alimuddin I.",
+        "family": "Zumla"
+      },
+      {
+        "given": "Ziad A.",
+        "family": "Memish"
+      },
+      {
+        "given": "KSA MERSCOV Investigation Team",
+        "family": null
+      }
+    ],
     "title": "Hospital Outbreak of Middle East Respiratory Syndrome Coronavirus",
     "journal": "The New England Journal of Medicine",
     "year": 2013,
@@ -3406,7 +8056,84 @@
     "upper_range": 11
   },
   "citation": {
-    "author": ["Abdullah Assiri", "Allison McGeer", "Trish M. Perl", "Connie S. Price", "Abdullah A. Al Rabeeah", "Derek A.T. Cummings", "Zaki N. Alabdullatif", "Maher Assad", "Abdulmohsen Almulhim", "Hatem Makhdoom", "Hossam Madani", "Rafat Alhakeem", "Jaffar A. Al-Tawfiq", "Matthew Cotten", "Simon J. Watson", "Paul Kellam", "Alimuddin I. Zumla", "Ziad A. Memish", "KSA-MERSCOV-Investigation-Team"],
+    "author": [
+      {
+        "given": "Abdullah",
+        "family": "Assiri"
+      },
+      {
+        "given": "Allison",
+        "family": "McGeer"
+      },
+      {
+        "given": "Trish M.",
+        "family": "Perl"
+      },
+      {
+        "given": "Connie S.",
+        "family": "Price"
+      },
+      {
+        "given": "Abdullah A.",
+        "family": "Al Rabeeah"
+      },
+      {
+        "given": "Derek A.T.",
+        "family": "Cummings"
+      },
+      {
+        "given": "Zaki N.",
+        "family": "Alabdullatif"
+      },
+      {
+        "given": "Maher",
+        "family": "Assad"
+      },
+      {
+        "given": "Abdulmohsen",
+        "family": "Almulhim"
+      },
+      {
+        "given": "Hatem",
+        "family": "Makhdoom"
+      },
+      {
+        "given": "Hossam",
+        "family": "Madani"
+      },
+      {
+        "given": "Rafat",
+        "family": "Alhakeem"
+      },
+      {
+        "given": "Jaffar A.",
+        "family": "Al-Tawfiq"
+      },
+      {
+        "given": "Matthew",
+        "family": "Cotten"
+      },
+      {
+        "given": "Simon J.",
+        "family": "Watson"
+      },
+      {
+        "given": "Paul",
+        "family": "Kellam"
+      },
+      {
+        "given": "Alimuddin I.",
+        "family": "Zumla"
+      },
+      {
+        "given": "Ziad A.",
+        "family": "Memish"
+      },
+      {
+        "given": "KSA MERSCOV Investigation Team",
+        "family": null
+      }
+    ],
     "title": "Hospital Outbreak of Middle East Respiratory Syndrome Coronavirus",
     "journal": "The New England Journal of Medicine",
     "year": 2013,
@@ -3446,7 +8173,32 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["Kenji Mizumoto", "Akira Endo", "Gerardo Chowell", "Yuichiro Miyamatsu", "Masaya Saitoh", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Kenji",
+        "family": "Mizumoto"
+      },
+      {
+        "given": "Akira",
+        "family": "Endo"
+      },
+      {
+        "given": "Gerardo",
+        "family": "Chowell"
+      },
+      {
+        "given": "Yuichiro",
+        "family": "Miyamatsu"
+      },
+      {
+        "given": "Masaya",
+        "family": "Saitoh"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Real-time characterization of risks of death associated with the Middle East respiratory syndrome (MERS) in the Republic of Korea, 2015",
     "journal": "BMC Medicine",
     "year": 2015,
@@ -3488,7 +8240,32 @@
     "quantile_names": ["95"]
   },
   "citation": {
-    "author": ["B J Cowling", "M Park", "V J Fang", "P Wu", "G M Leung", "J T Wu"],
+    "author": [
+      {
+        "given": "B. J.",
+        "family": "Cowling"
+      },
+      {
+        "given": "M.",
+        "family": "Park"
+      },
+      {
+        "given": "V. J.",
+        "family": "Fang"
+      },
+      {
+        "given": "P.",
+        "family": "Wu"
+      },
+      {
+        "given": "G. M.",
+        "family": "Leung"
+      },
+      {
+        "given": "J. T.",
+        "family": "Wu"
+      }
+    ],
     "title": "Preliminary epidemiological assessment of MERS-CoV outbreak in South Korea, May to June 2015",
     "journal": "Eurosurveillance",
     "year": 2015,
@@ -3528,7 +8305,32 @@
     "sd_ci": 95
   },
   "citation": {
-    "author": ["B J Cowling", "M Park", "V J Fang", "P Wu", "G M Leung", "J T Wu"],
+    "author": [
+      {
+        "given": "B. J.",
+        "family": "Cowling"
+      },
+      {
+        "given": "M.",
+        "family": "Park"
+      },
+      {
+        "given": "V. J.",
+        "family": "Fang"
+      },
+      {
+        "given": "P.",
+        "family": "Wu"
+      },
+      {
+        "given": "G. M.",
+        "family": "Leung"
+      },
+      {
+        "given": "J. T.",
+        "family": "Wu"
+      }
+    ],
     "title": "Preliminary epidemiological assessment of MERS-CoV outbreak in South Korea, May to June 2016",
     "journal": "Eurosurveillance",
     "year": 2015,
@@ -3573,7 +8375,36 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Ke Men", "Xia Wang", "Li Yihao", "Guangwei Zhang", "Jingjing Hu", "Yanyan Gao", "Henry Han"],
+    "author": [
+      {
+        "given": "Ke",
+        "family": "Men"
+      },
+      {
+        "given": "Xia",
+        "family": "Wang"
+      },
+      {
+        "given": "Li",
+        "family": "Yihao"
+      },
+      {
+        "given": "Guangwei",
+        "family": "Zhang"
+      },
+      {
+        "given": "Jingjing",
+        "family": "Hu"
+      },
+      {
+        "given": "Yanyan",
+        "family": "Gao"
+      },
+      {
+        "given": "Henry",
+        "family": "Han"
+      }
+    ],
     "title": "Estimate the incubation period of coronavirus 2019 (COVID-19)",
     "journal": "medRxiv",
     "year": 2020,
@@ -3610,7 +8441,20 @@
     "mean_ci": 95
   },
   "citation": {
-    "author": ["Balram Rai", "Anandi Shukla", "Laxmi Kant Dwivedi"],
+    "author": [
+      {
+        "given": "Balram",
+        "family": "Rai"
+      },
+      {
+        "given": "Anandi",
+        "family": "Shukla"
+      },
+      {
+        "given": "Laxmi Kant",
+        "family": "Dwivedi"
+      }
+    ],
     "title": "Incubation period for COVID-19: a systematic review and meta-analysis",
     "journal": "Zeitschrift fur Gesundheitswissenschaften",
     "year": 2022,
@@ -3647,7 +8491,32 @@
     "mean_ci": 95
   },
   "citation": {
-    "author": ["Muluneh Alene", "Leltework Yismaw", "Moges Agazhe Assemie", "Daniel Bekele Ketema", "Wodaje Gietaneh", "Tilahun Yemanu Birhan"],
+    "author": [
+      {
+        "given": "Muluneh",
+        "family": "Alene"
+      },
+      {
+        "given": "Leltework",
+        "family": "Yismaw"
+      },
+      {
+        "given": "Moges Agazhe",
+        "family": "Assemie"
+      },
+      {
+        "given": "Daniel Bekele",
+        "family": "Ketema"
+      },
+      {
+        "given": "Wodaje",
+        "family": "Gietaneh"
+      },
+      {
+        "given": "Tilahun Yemanu",
+        "family": "Birhan"
+      }
+    ],
     "title": "Serial interval and incubation period of COVID-19: a systematic review and meta-analysis",
     "journal": "BMC Infectious Diseases",
     "year": 2021,
@@ -3684,7 +8553,32 @@
     "mean_ci": 95
   },
   "citation": {
-    "author": ["Muluneh Alene", "Leltework Yismaw", "Moges Agazhe Assemie", "Daniel Bekele Ketema", "Wodaje Gietaneh", "Tilahun Yemanu Birhan"],
+    "author": [
+      {
+        "given": "Muluneh",
+        "family": "Alene"
+      },
+      {
+        "given": "Leltework",
+        "family": "Yismaw"
+      },
+      {
+        "given": "Moges Agazhe",
+        "family": "Assemie"
+      },
+      {
+        "given": "Daniel Bekele",
+        "family": "Ketema"
+      },
+      {
+        "given": "Wodaje",
+        "family": "Gietaneh"
+      },
+      {
+        "given": "Tilahun Yemanu",
+        "family": "Birhan"
+      }
+    ],
     "title": "Serial interval and incubation period of COVID-19: a systematic review and meta-analysis",
     "journal": "BMC Infectious Diseases",
     "year": 2021,
@@ -3727,7 +8621,20 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Hiroshi Nishiura", "Natalie M. Linton", "Andrei R. Akhmetzhanov"],
+    "author": [
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      },
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      }
+    ],
     "title": "Serial interval of novel coronavirus (COVID-19) infections",
     "journal": "International Journal of Infectious Diseases",
     "year": 2020,
@@ -3770,7 +8677,20 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Hiroshi Nishiura", "Natalie M. Linton", "Andrei R. Akhmetzhanov"],
+    "author": [
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      },
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      }
+    ],
     "title": "Serial interval of novel coronavirus (COVID-19) infections",
     "journal": "International Journal of Infectious Diseases",
     "year": 2020,
@@ -3809,7 +8729,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Lin Yang", "Jingyi Dai", "Jun Zhao", "Yunfu Wang", "Pingji Deng", "Jing Wang"],
+    "author": [
+      {
+        "given": "Lin",
+        "family": "Yang"
+      },
+      {
+        "given": "Jingyi",
+        "family": "Dai"
+      },
+      {
+        "given": "Jun",
+        "family": "Zhao"
+      },
+      {
+        "given": "Yunfu",
+        "family": "Wang"
+      },
+      {
+        "given": "Pingji",
+        "family": "Deng"
+      },
+      {
+        "given": "Jing",
+        "family": "Wang"
+      }
+    ],
     "title": "Estimation of incubation period and serial interval of COVID-19: analysis of 178 cases and 131 transmission chains in Hubei province, China",
     "journal": "Epidemiology and Infection",
     "year": 2020,
@@ -3853,7 +8798,32 @@
     "median": 4.6
   },
   "citation": {
-    "author": ["Lin Yang", "Jingyi Dai", "Jun Zhao", "Yunfu Wang", "Pingji Deng", "Jing Wang"],
+    "author": [
+      {
+        "given": "Lin",
+        "family": "Yang"
+      },
+      {
+        "given": "Jingyi",
+        "family": "Dai"
+      },
+      {
+        "given": "Jun",
+        "family": "Zhao"
+      },
+      {
+        "given": "Yunfu",
+        "family": "Wang"
+      },
+      {
+        "given": "Pingji",
+        "family": "Deng"
+      },
+      {
+        "given": "Jing",
+        "family": "Wang"
+      }
+    ],
     "title": "Estimation of incubation period and serial interval of COVID-19: analysis of 178 cases and 131 transmission chains in Hubei province, China",
     "journal": "Epidemiology and Infection",
     "year": 2020,
@@ -3890,7 +8860,28 @@
     "mean_ci": 95
   },
   "citation": {
-    "author": ["Christelle Elias", "Abel Sekri", "Pierre Leblanc", "Michel Cucherat", "Philippe Vanhems"],
+    "author": [
+      {
+        "given": "Christelle",
+        "family": "Elias"
+      },
+      {
+        "given": "Abel",
+        "family": "Sekri"
+      },
+      {
+        "given": "Pierre",
+        "family": "Leblanc"
+      },
+      {
+        "given": "Michel",
+        "family": "Cucherat"
+      },
+      {
+        "given": "Philippe",
+        "family": "Vanhems"
+      }
+    ],
     "title": "The incubation period of COVID-19: A meta-analysis",
     "journal": "International Journal of Infectious Diseases",
     "year": 2021,
@@ -3933,7 +8924,48 @@
     "median": 6.1
   },
   "citation": {
-    "author": ["Long V. Bui", "Ha T. Nguyen", "Hagai Levine", "Ha N. Nguyen", "Thu-Anh Nguyen", "Thuy P. Nguyen", "Truong T. Nguyen", "Toan T. T. Do", "Ngoc T. Pham", "My Hanh Bui"],
+    "author": [
+      {
+        "given": "Long V.",
+        "family": "Bui"
+      },
+      {
+        "given": "Ha T.",
+        "family": "Nguyen"
+      },
+      {
+        "given": "Hagai",
+        "family": "Levine"
+      },
+      {
+        "given": "Ha N.",
+        "family": "Nguyen"
+      },
+      {
+        "given": "Thu-Anh",
+        "family": "Nguyen"
+      },
+      {
+        "given": "Thuy P.",
+        "family": "Nguyen"
+      },
+      {
+        "given": "Truong T.",
+        "family": "Nguyen"
+      },
+      {
+        "given": "Toan T. T.",
+        "family": "Do"
+      },
+      {
+        "given": "Ngoc T.",
+        "family": "Pham"
+      },
+      {
+        "given": "My Hanh",
+        "family": "Bui"
+      }
+    ],
     "title": "Estimation of the incubation period of COVID-19 in Vietnam",
     "journal": "PLoS One",
     "year": 2020,
@@ -3973,7 +9005,64 @@
   },
   "summary_statistics": { },
   "citation": {
-    "author": ["Conor McAloon", "Áine Collins", "Kevin Hunt", "Ann Barber", "Andrew W Byrne", "Francis Butler", "Miriam Casey", "John Griffin", "Elizabeth Lane", "David McEvoy", "Patrick Wall", "Martin Green", "Luke O'Grady", "Simon J More"],
+    "author": [
+      {
+        "given": "Conor",
+        "family": "McAloon"
+      },
+      {
+        "given": "Áine",
+        "family": "Collins"
+      },
+      {
+        "given": "Kevin",
+        "family": "Hunt"
+      },
+      {
+        "given": "Ann",
+        "family": "Barber"
+      },
+      {
+        "given": "Andrew W.",
+        "family": "Byrne"
+      },
+      {
+        "given": "Francis",
+        "family": "Butler"
+      },
+      {
+        "given": "Miriam",
+        "family": "Casey"
+      },
+      {
+        "given": "John",
+        "family": "Griffin"
+      },
+      {
+        "given": "Elizabeth",
+        "family": "Lane"
+      },
+      {
+        "given": "David",
+        "family": "McEvoy"
+      },
+      {
+        "given": "Patrick",
+        "family": "Wall"
+      },
+      {
+        "given": "Martin",
+        "family": "Green"
+      },
+      {
+        "given": "Luke",
+        "family": "O'Grady"
+      },
+      {
+        "given": "Simon J.",
+        "family": "More"
+      }
+    ],
     "title": "Incubation period of COVID-19: a rapid systematic review and meta-analysis of observational research",
     "journal": "BMJ Open",
     "year": 2020,
@@ -4022,7 +9111,64 @@
     "quantile_names": ["95"]
   },
   "citation": {
-    "author": ["Conor McAloon", "Áine Collins", "Kevin Hunt", "Ann Barber", "Andrew W Byrne", "Francis Butler", "Miriam Casey", "John Griffin", "Elizabeth Lane", "David McEvoy", "Patrick Wall", "Martin Green", "Luke O'Grady", "Simon J More"],
+    "author": [
+      {
+        "given": "Conor",
+        "family": "McAloon"
+      },
+      {
+        "given": "Áine",
+        "family": "Collins"
+      },
+      {
+        "given": "Kevin",
+        "family": "Hunt"
+      },
+      {
+        "given": "Ann",
+        "family": "Barber"
+      },
+      {
+        "given": "Andrew W.",
+        "family": "Byrne"
+      },
+      {
+        "given": "Francis",
+        "family": "Butler"
+      },
+      {
+        "given": "Miriam",
+        "family": "Casey"
+      },
+      {
+        "given": "John",
+        "family": "Griffin"
+      },
+      {
+        "given": "Elizabeth",
+        "family": "Lane"
+      },
+      {
+        "given": "David",
+        "family": "McEvoy"
+      },
+      {
+        "given": "Patrick",
+        "family": "Wall"
+      },
+      {
+        "given": "Martin",
+        "family": "Green"
+      },
+      {
+        "given": "Luke",
+        "family": "O'Grady"
+      },
+      {
+        "given": "Simon J.",
+        "family": "More"
+      }
+    ],
     "title": "Incubation period of COVID-19: a rapid systematic review and meta-analysis of observational research",
     "journal": "BMJ Open",
     "year": 2020,
@@ -4067,7 +9213,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4112,7 +9295,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4157,7 +9377,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4202,7 +9459,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4247,7 +9541,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4292,7 +9623,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4337,7 +9705,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4382,7 +9787,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4427,7 +9869,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4472,7 +9951,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4517,7 +10033,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Natalie M. Linton", "Tetsuro Kobayashi", "Yichi Yang", "Katsuma Hayashi", "Andrei R. Akhmetzhanov", "Sung-mok Jung", "Baoyin Yuan", "Ryo Kinoshita", "Hiroshi Nishiura"],
+    "author": [
+      {
+        "given": "Natalie M.",
+        "family": "Linton"
+      },
+      {
+        "given": "Tetsuro",
+        "family": "Kobayashi"
+      },
+      {
+        "given": "Yichi",
+        "family": "Yang"
+      },
+      {
+        "given": "Katsuma",
+        "family": "Hayashi"
+      },
+      {
+        "given": "Andrei R.",
+        "family": "Akhmetzhanov"
+      },
+      {
+        "given": "Sung-mok",
+        "family": "Jung"
+      },
+      {
+        "given": "Baoyin",
+        "family": "Yuan"
+      },
+      {
+        "given": "Ryo",
+        "family": "Kinoshita"
+      },
+      {
+        "given": "Hiroshi",
+        "family": "Nishiura"
+      }
+    ],
     "title": "Incubation Period and Other Epidemiological Characteristics of 2019 Novel Coronavirus Infections with Right Truncation: A Statistical Analysis of Publicly Available Case Data",
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
@@ -4561,7 +10114,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Stephen A Lauer", "Kyra H Grantz", "Qifang Bi", "Forrest K Jones", "Qulu Zheng", "Hannah R Meredith", "Andrew S Azman", "Nicholas G Reich", "Justin Lessler"],
+    "author": [
+      {
+        "given": "Stephen A.",
+        "family": "Lauer"
+      },
+      {
+        "given": "Kyra H.",
+        "family": "Grantz"
+      },
+      {
+        "given": "Qifang",
+        "family": "Bi"
+      },
+      {
+        "given": "Forrest K.",
+        "family": "Jones"
+      },
+      {
+        "given": "Qulu",
+        "family": "Zheng"
+      },
+      {
+        "given": "Hannah R.",
+        "family": "Meredith"
+      },
+      {
+        "given": "Andrew S.",
+        "family": "Azman"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      }
+    ],
     "title": "The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application",
     "journal": "Annals of Internal Medicine",
     "year": 2020,
@@ -4600,7 +10190,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Stephen A Lauer", "Kyra H Grantz", "Qifang Bi", "Forrest K Jones", "Qulu Zheng", "Hannah R Meredith", "Andrew S Azman", "Nicholas G Reich", "Justin Lessler"],
+    "author": [
+      {
+        "given": "Stephen A.",
+        "family": "Lauer"
+      },
+      {
+        "given": "Kyra H.",
+        "family": "Grantz"
+      },
+      {
+        "given": "Qifang",
+        "family": "Bi"
+      },
+      {
+        "given": "Forrest K.",
+        "family": "Jones"
+      },
+      {
+        "given": "Qulu",
+        "family": "Zheng"
+      },
+      {
+        "given": "Hannah R.",
+        "family": "Meredith"
+      },
+      {
+        "given": "Andrew S.",
+        "family": "Azman"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      }
+    ],
     "title": "The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application",
     "journal": "Annals of Internal Medicine",
     "year": 2020,
@@ -4639,7 +10266,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Stephen A Lauer", "Kyra H Grantz", "Qifang Bi", "Forrest K Jones", "Qulu Zheng", "Hannah R Meredith", "Andrew S Azman", "Nicholas G Reich", "Justin Lessler"],
+    "author": [
+      {
+        "given": "Stephen A.",
+        "family": "Lauer"
+      },
+      {
+        "given": "Kyra H.",
+        "family": "Grantz"
+      },
+      {
+        "given": "Qifang",
+        "family": "Bi"
+      },
+      {
+        "given": "Forrest K.",
+        "family": "Jones"
+      },
+      {
+        "given": "Qulu",
+        "family": "Zheng"
+      },
+      {
+        "given": "Hannah R.",
+        "family": "Meredith"
+      },
+      {
+        "given": "Andrew S.",
+        "family": "Azman"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      }
+    ],
     "title": "The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application",
     "journal": "Annals of Internal Medicine",
     "year": 2020,
@@ -4678,7 +10342,44 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Stephen A Lauer", "Kyra H Grantz", "Qifang Bi", "Forrest K Jones", "Qulu Zheng", "Hannah R Meredith", "Andrew S Azman", "Nicholas G Reich", "Justin Lessler"],
+    "author": [
+      {
+        "given": "Stephen A.",
+        "family": "Lauer"
+      },
+      {
+        "given": "Kyra H.",
+        "family": "Grantz"
+      },
+      {
+        "given": "Qifang",
+        "family": "Bi"
+      },
+      {
+        "given": "Forrest K.",
+        "family": "Jones"
+      },
+      {
+        "given": "Qulu",
+        "family": "Zheng"
+      },
+      {
+        "given": "Hannah R.",
+        "family": "Meredith"
+      },
+      {
+        "given": "Andrew S.",
+        "family": "Azman"
+      },
+      {
+        "given": "Nicholas G.",
+        "family": "Reich"
+      },
+      {
+        "given": "Justin",
+        "family": "Lessler"
+      }
+    ],
     "title": "The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application",
     "journal": "Annals of Internal Medicine",
     "year": 2020,
@@ -4723,7 +10424,32 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Zihao Guo", "Shi Zhao", "Shengzhi Sun", "Daihai He", "Ka Chun Chong", "Eng Kiong Yeoh"],
+    "author": [
+      {
+        "given": "Zihao",
+        "family": "Guo"
+      },
+      {
+        "given": "Shi",
+        "family": "Zhao"
+      },
+      {
+        "given": "Shengzhi",
+        "family": "Sun"
+      },
+      {
+        "given": "Daihai",
+        "family": "He"
+      },
+      {
+        "given": "Ka Chun",
+        "family": "Chong"
+      },
+      {
+        "given": "Eng Kiong",
+        "family": "Yeoh"
+      }
+    ],
     "title": "Estimation of the serial interval of monkeypox during the early outbreak in 2022",
     "journal": "Journal of Medical Virology",
     "year": 2022,
@@ -4760,7 +10486,40 @@
     "median": 9.67
   },
   "citation": {
-    "author": ["Shuqi Wang", "Fengdi Zhang", "Zhilu Yuan", "Mingda Xu", "Zhen Wang", "Chao Gao", "Renzhong Guo", "Zhanwei Du"],
+    "author": [
+      {
+        "given": "Shuqi",
+        "family": "Wang"
+      },
+      {
+        "given": "Fengdi",
+        "family": "Zhang"
+      },
+      {
+        "given": "Zhilu",
+        "family": "Yuan"
+      },
+      {
+        "given": "Mingda",
+        "family": "Xu"
+      },
+      {
+        "given": "Zhen",
+        "family": "Wang"
+      },
+      {
+        "given": "Chao",
+        "family": "Gao"
+      },
+      {
+        "given": "Renzhong",
+        "family": "Guo"
+      },
+      {
+        "given": "Zhanwei",
+        "family": "Du"
+      }
+    ],
     "title": "Serial intervals and incubation periods of the monkeypox virus clades",
     "journal": "Journal of Travel Medicine",
     "year": 2022,
@@ -4797,7 +10556,40 @@
     "median": 9.78
   },
   "citation": {
-    "author": ["Shuqi Wang", "Fengdi Zhang", "Zhilu Yuan", "Mingda Xu", "Zhen Wang", "Chao Gao", "Renzhong Guo", "Zhanwei Du"],
+    "author": [
+      {
+        "given": "Shuqi",
+        "family": "Wang"
+      },
+      {
+        "given": "Fengdi",
+        "family": "Zhang"
+      },
+      {
+        "given": "Zhilu",
+        "family": "Yuan"
+      },
+      {
+        "given": "Mingda",
+        "family": "Xu"
+      },
+      {
+        "given": "Zhen",
+        "family": "Wang"
+      },
+      {
+        "given": "Chao",
+        "family": "Gao"
+      },
+      {
+        "given": "Renzhong",
+        "family": "Guo"
+      },
+      {
+        "given": "Zhanwei",
+        "family": "Du"
+      }
+    ],
     "title": "Serial intervals and incubation periods of the monkeypox virus clades",
     "journal": "Journal of Travel Medicine",
     "year": 2022,
@@ -4834,7 +10626,40 @@
     "median": 9.5
   },
   "citation": {
-    "author": ["Shuqi Wang", "Fengdi Zhang", "Zhilu Yuan", "Mingda Xu", "Zhen Wang", "Chao Gao", "Renzhong Guo", "Zhanwei Du"],
+    "author": [
+      {
+        "given": "Shuqi",
+        "family": "Wang"
+      },
+      {
+        "given": "Fengdi",
+        "family": "Zhang"
+      },
+      {
+        "given": "Zhilu",
+        "family": "Yuan"
+      },
+      {
+        "given": "Mingda",
+        "family": "Xu"
+      },
+      {
+        "given": "Zhen",
+        "family": "Wang"
+      },
+      {
+        "given": "Chao",
+        "family": "Gao"
+      },
+      {
+        "given": "Renzhong",
+        "family": "Guo"
+      },
+      {
+        "given": "Zhanwei",
+        "family": "Du"
+      }
+    ],
     "title": "Serial intervals and incubation periods of the monkeypox virus clades",
     "journal": "Journal of Travel Medicine",
     "year": 2022,
@@ -4871,7 +10696,40 @@
     "median": 16.76
   },
   "citation": {
-    "author": ["Shuqi Wang", "Fengdi Zhang", "Zhilu Yuan", "Mingda Xu", "Zhen Wang", "Chao Gao", "Renzhong Guo", "Zhanwei Du"],
+    "author": [
+      {
+        "given": "Shuqi",
+        "family": "Wang"
+      },
+      {
+        "given": "Fengdi",
+        "family": "Zhang"
+      },
+      {
+        "given": "Zhilu",
+        "family": "Yuan"
+      },
+      {
+        "given": "Mingda",
+        "family": "Xu"
+      },
+      {
+        "given": "Zhen",
+        "family": "Wang"
+      },
+      {
+        "given": "Chao",
+        "family": "Gao"
+      },
+      {
+        "given": "Renzhong",
+        "family": "Guo"
+      },
+      {
+        "given": "Zhanwei",
+        "family": "Du"
+      }
+    ],
     "title": "Serial intervals and incubation periods of the monkeypox virus clades",
     "journal": "Journal of Travel Medicine",
     "year": 2022,
@@ -4908,7 +10766,40 @@
     "median_ci": 95
   },
   "citation": {
-    "author": ["Shuqi Wang", "Fengdi Zhang", "Zhilu Yuan", "Mingda Xu", "Zhen Wang", "Chao Gao", "Renzhong Guo", "Zhanwei Du"],
+    "author": [
+      {
+        "given": "Shuqi",
+        "family": "Wang"
+      },
+      {
+        "given": "Fengdi",
+        "family": "Zhang"
+      },
+      {
+        "given": "Zhilu",
+        "family": "Yuan"
+      },
+      {
+        "given": "Mingda",
+        "family": "Xu"
+      },
+      {
+        "given": "Zhen",
+        "family": "Wang"
+      },
+      {
+        "given": "Chao",
+        "family": "Gao"
+      },
+      {
+        "given": "Renzhong",
+        "family": "Guo"
+      },
+      {
+        "given": "Zhanwei",
+        "family": "Du"
+      }
+    ],
     "title": "Serial intervals and incubation periods of the monkeypox virus clades",
     "journal": "Journal of Travel Medicine",
     "year": 2022,
@@ -4945,7 +10836,64 @@
     "mean_ci": 95
   },
   "citation": {
-    "author": ["Fengying Wei", "Zhihang Peng", "Zhen Jin", "Jinjie Wang", "Ximing Xu", "Xinyan Zhang", "Jun Xu", "Zixiong Ren", "Yao Bai", "Xiaoli Wang", "Bulai Lu", "Zhaojun Wang", "Jianguo Xu", "Senzhong Huang"],
+    "author": [
+      {
+        "given": "Fengying",
+        "family": "Wei"
+      },
+      {
+        "given": "Zhihang",
+        "family": "Peng"
+      },
+      {
+        "given": "Zhen",
+        "family": "Jin"
+      },
+      {
+        "given": "Jinjie",
+        "family": "Wang"
+      },
+      {
+        "given": "Ximing",
+        "family": "Xu"
+      },
+      {
+        "given": "Xinyan",
+        "family": "Zhang"
+      },
+      {
+        "given": "Jun",
+        "family": "Xu"
+      },
+      {
+        "given": "Zixiong",
+        "family": "Ren"
+      },
+      {
+        "given": "Yao",
+        "family": "Bai"
+      },
+      {
+        "given": "Xiaoli",
+        "family": "Wang"
+      },
+      {
+        "given": "Bulai",
+        "family": "Lu"
+      },
+      {
+        "given": "Zhaojun",
+        "family": "Wang"
+      },
+      {
+        "given": "Jianguo",
+        "family": "Xu"
+      },
+      {
+        "given": "Senzhong",
+        "family": "Huang"
+      }
+    ],
     "title": "Study and prediction of the 2022 global monkeypox epidemic",
     "journal": "Journal of Biosafety and Biosecurity",
     "year": 2022,
@@ -4982,7 +10930,64 @@
     "mean_ci": 95
   },
   "citation": {
-    "author": ["Fengying Wei", "Zhihang Peng", "Zhen Jin", "Jinjie Wang", "Ximing Xu", "Xinyan Zhang", "Jun Xu", "Zixiong Ren", "Yao Bai", "Xiaoli Wang", "Bulai Lu", "Zhaojun Wang", "Jianguo Xu", "Senzhong Huang"],
+    "author": [
+      {
+        "given": "Fengying",
+        "family": "Wei"
+      },
+      {
+        "given": "Zhihang",
+        "family": "Peng"
+      },
+      {
+        "given": "Zhen",
+        "family": "Jin"
+      },
+      {
+        "given": "Jinjie",
+        "family": "Wang"
+      },
+      {
+        "given": "Ximing",
+        "family": "Xu"
+      },
+      {
+        "given": "Xinyan",
+        "family": "Zhang"
+      },
+      {
+        "given": "Jun",
+        "family": "Xu"
+      },
+      {
+        "given": "Zixiong",
+        "family": "Ren"
+      },
+      {
+        "given": "Yao",
+        "family": "Bai"
+      },
+      {
+        "given": "Xiaoli",
+        "family": "Wang"
+      },
+      {
+        "given": "Bulai",
+        "family": "Lu"
+      },
+      {
+        "given": "Zhaojun",
+        "family": "Wang"
+      },
+      {
+        "given": "Jianguo",
+        "family": "Xu"
+      },
+      {
+        "given": "Senzhong",
+        "family": "Huang"
+      }
+    ],
     "title": "Study and prediction of the 2022 global monkeypox epidemic",
     "journal": "Journal of Biosafety and Biosecurity",
     "year": 2022,
@@ -5021,7 +11026,64 @@
     "quantile_names": ["95"]
   },
   "citation": {
-    "author": ["Fengying Wei", "Zhihang Peng", "Zhen Jin", "Jinjie Wang", "Ximing Xu", "Xinyan Zhang", "Jun Xu", "Zixiong Ren", "Yao Bai", "Xiaoli Wang", "Bulai Lu", "Zhaojun Wang", "Jianguo Xu", "Senzhong Huang"],
+    "author": [
+      {
+        "given": "Fengying",
+        "family": "Wei"
+      },
+      {
+        "given": "Zhihang",
+        "family": "Peng"
+      },
+      {
+        "given": "Zhen",
+        "family": "Jin"
+      },
+      {
+        "given": "Jinjie",
+        "family": "Wang"
+      },
+      {
+        "given": "Ximing",
+        "family": "Xu"
+      },
+      {
+        "given": "Xinyan",
+        "family": "Zhang"
+      },
+      {
+        "given": "Jun",
+        "family": "Xu"
+      },
+      {
+        "given": "Zixiong",
+        "family": "Ren"
+      },
+      {
+        "given": "Yao",
+        "family": "Bai"
+      },
+      {
+        "given": "Xiaoli",
+        "family": "Wang"
+      },
+      {
+        "given": "Bulai",
+        "family": "Lu"
+      },
+      {
+        "given": "Zhaojun",
+        "family": "Wang"
+      },
+      {
+        "given": "Jianguo",
+        "family": "Xu"
+      },
+      {
+        "given": "Senzhong",
+        "family": "Huang"
+      }
+    ],
     "title": "Study and prediction of the 2022 global monkeypox epidemic",
     "journal": "Journal of Biosafety and Biosecurity",
     "year": 2022,
