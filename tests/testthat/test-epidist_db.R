@@ -172,3 +172,19 @@ test_that("sysdata is the same as .read_epidist_db output", {
   db <- .read_epidist_db()
   expect_equal(sysdat, db, tolerance = 1e-3)
 })
+
+test_that(".read_epidist_db fails correctly when jsonlite is not installed", {
+  with_mocked_bindings(
+    .is_pkg_installed = function(package) FALSE,
+    code = expect_error(
+      .read_epidist_db(),
+      regexp =
+        "Cannot use this internal function without \\{jsonlite\\} installed" # nolint file.path
+    )
+  )
+})
+
+test_that(".is_pkg_installed works as expected", {
+  expect_true(.is_pkg_installed(package = "distributional"))
+  expect_false(.is_pkg_installed(package = "jsonlit"))
+})
