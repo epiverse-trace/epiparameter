@@ -350,7 +350,12 @@ epidist_db <- function(disease = "all",
   names(ss)[names(ss) == "quantile_values"] <- "quantiles"
 
   # format citation
-  cit <- lapply(x$citation, unlist)
+  cit <- x$citation
+  cit$author <- lapply(
+    cit$author,
+    function(aut) utils::person(given = aut$given, family = aut$family)
+  )
+  cit$author <- Reduce(f = c, x = cit$author)
   cit$PMID <- ifelse(is.null(cit$PMID), yes = NA_real_, no = cit$PMID)
   cit <- suppressMessages(
     create_epidist_citation(
