@@ -229,6 +229,14 @@ epidist_db <- function(disease = "all",
 #' @keywords internal
 #' @noRd
 .read_epidist_db <- function() {
+
+  if (!.is_pkg_installed("jsonlite")) {
+    stop(
+      "Cannot use this internal function without {jsonlite} installed",
+      call. = FALSE
+    )
+  }
+
   params_json <- jsonlite::read_json(
     path = system.file(
       "extdata",
@@ -563,4 +571,18 @@ print.multi_epidist <- function(x, ...) {
     )
     invisible(x)
   }
+}
+
+#' Check whether a package is installed
+#'
+#' @details This functions allows mock testing for when a package is not
+#' installed on a users system (i.e. not a dependency of {epiparameter}).
+#'
+#' @inheritParams base::requireNamespace
+#'
+#' @return Invisibly returns a boolean `logical`.
+#' @noRd
+#' @keywords internal
+.is_pkg_installed <- function(package) {
+  requireNamespace(package, quietly = TRUE)
 }
