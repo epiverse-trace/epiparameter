@@ -257,7 +257,7 @@
           },
           "title": {
             "description": "The title of the article that published the epidemiological parameters.",
-            "examples": ["Incubation period of COVID-19", "Serial internval of Ebola"],
+            "examples": ["Incubation period of COVID-19", "Serial interval of Ebola"],
             "type": "string"
           },
           "journal": {
