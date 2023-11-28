@@ -43,11 +43,12 @@ The aim is to restrict the number of dependencies to a minimal required set for 
 * [{checkmate}](https://CRAN.R-project.org/package=checkmate)
 * [{distributional}](https://CRAN.R-project.org/package=distributional)
 * [{distcrete}](https://CRAN.R-project.org/package=distcrete)
-* [{jsonlite}](https://CRAN.R-project.org/package=jsonlite)
 * {stats}
 * {utils}
 
-{stats} and {utils} are distributed with the R language so are viewed as a lightweight dependencies, that should already be installed on a user's machine if they have R. {checkmate} is an input checking package widely used across Epiverse-TRACE packages. {distributional} and {distcrete} are used to import S3 classes for handling and working with distributions. Both are required as only {distcrete} can handle discretised distributions. {jsonlite} is used to read the parameter library which is stored as a JSON file.
+{stats} and {utils} are distributed with the R language so are viewed as a lightweight dependencies, that should already be installed on a user's machine if they have R. {checkmate} is an input checking package widely used across Epiverse-TRACE packages. {distributional} and {distcrete} are used to import S3 classes for handling and working with distributions. Both are required as only {distcrete} can handle discretised distributions.
+
+[{jsonlite}](https://CRAN.R-project.org/package=jsonlite) is a suggested dependency because it is used to read the parameter library which is stored as a JSON file. However, it is only read by an internal function and instead the data is available to the user via `sysdata.rda`, so {jsonlite} is not required as an imported dependency.
 
 ## Contribute
 
