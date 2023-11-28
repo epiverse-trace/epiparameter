@@ -69,7 +69,7 @@ test_that("get_citation works as expected for manual epidist", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
       citation = create_epidist_citation(
-        author = "Smith_etal",
+        author = person(given = "John F.", family = "Smith"),
         year = 2000,
         title = "Incubation period of COVID",
         journal = "Journal of Epi",

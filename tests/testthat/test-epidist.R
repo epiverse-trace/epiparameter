@@ -49,7 +49,7 @@ test_that("epidist works with all arguments set", {
           "95" = 1.2, "97.5" = 1.5
         )
       ), citation = create_epidist_citation(
-        author = "John Smith",
+        author = person(given = "John", family = "Smith"),
         year = 2002,
         title = "A title",
         journal = "A journal",
@@ -244,7 +244,7 @@ test_that("new_epidist works with minimal viable input", {
         )
       ),
       citation = create_epidist_citation(
-        author = "Smith_etal",
+        author = person(given = "John", family = "Smith"),
         year = 2002,
         title = "Ebola incubation",
         journal = "Journal of Epi"
@@ -283,7 +283,7 @@ test_that("validate_epidist passes when expected", {
         )
       ),
       citation = create_epidist_citation(
-        author = "Smith_etal",
+        author = person(given = "John", family = "Smith"),
         year = 2000,
         title = "Ebola incubation",
         journal = "Journal of Epi",

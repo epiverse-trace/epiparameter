@@ -101,7 +101,7 @@ test_that("list_distributions works as expected with discretised <epidist>", {
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
       citation = create_epidist_citation(
-        author = "John Smith",
+        author = person(given = "John", family = "Smith"),
         year = 2022,
         title = "A title",
         journal = "A journal",

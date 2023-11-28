@@ -172,16 +172,16 @@
       43              lnorm Miranda .... 2012
       44              lnorm Miranda .... 2012
       45              lnorm Justin L.... 2016
-      46              lnorm Kara E R.... 2014
-      47              lnorm Kara E R.... 2014
-      48              lnorm Kara E R.... 2014
-      49              lnorm Kara E R.... 2014
-      50              lnorm Kara E R.... 2014
-      51              lnorm Kara E R.... 2014
-      52              lnorm Kara E R.... 2014
-      53              lnorm Kara E R.... 2014
-      54              lnorm Kara E R.... 2014
-      55              lnorm Kara E R.... 2014
+      46              lnorm Kara E. .... 2014
+      47              lnorm Kara E. .... 2014
+      48              lnorm Kara E. .... 2014
+      49              lnorm Kara E. .... 2014
+      50              lnorm Kara E. .... 2014
+      51              lnorm Kara E. .... 2014
+      52              lnorm Kara E. .... 2014
+      53              lnorm Kara E. .... 2014
+      54              lnorm Kara E. .... 2014
+      55              lnorm Kara E. .... 2014
       56              lnorm Fuminari.... 2022
       57              lnorm Kelly Ch.... 2022
       58              gamma Giorgio .... 2022
@@ -190,29 +190,29 @@
       61              gamma Zachary .... 2022
       62              gamma Zachary .... 2022
       63              lnorm Martin E.... 2011
-      64              gamma The-Ebol.... 2018
-      65              gamma WHO-Ebol.... 2015
-      66              gamma WHO-Ebol.... 2015
-      67              gamma WHO-Ebol.... 2015
-      68              gamma WHO-Ebol.... 2015
-      69              gamma WHO-Ebol.... 2015
-      70              gamma WHO-Ebol.... 2015
-      71              gamma WHO-Ebol.... 2015
-      72              gamma WHO-Ebol.... 2015
-      73              gamma WHO-Ebol.... 2015
-      74              gamma WHO-Ebol.... 2015
-      75              gamma WHO-Ebol.... 2015
-      76              gamma WHO-Ebol.... 2015
-      77              gamma WHO-Ebol.... 2015
-      78              gamma WHO-Ebol.... 2015
+      64              gamma The Ebol.... 2018
+      65              gamma WHO Ebol.... 2015
+      66              gamma WHO Ebol.... 2015
+      67              gamma WHO Ebol.... 2015
+      68              gamma WHO Ebol.... 2015
+      69              gamma WHO Ebol.... 2015
+      70              gamma WHO Ebol.... 2015
+      71              gamma WHO Ebol.... 2015
+      72              gamma WHO Ebol.... 2015
+      73              gamma WHO Ebol.... 2015
+      74              gamma WHO Ebol.... 2015
+      75              gamma WHO Ebol.... 2015
+      76              gamma WHO Ebol.... 2015
+      77              gamma WHO Ebol.... 2015
+      78              gamma WHO Ebol.... 2015
       79              lnorm Abdullah.... 2013
       80              lnorm Abdullah.... 2013
       81               <NA> Abdullah.... 2013
       82               <NA> Abdullah.... 2013
       83               <NA> Abdullah.... 2013
       84              gamma Kenji Mi.... 2015
-      85              gamma B J Cowl.... 2015
-      86              gamma B J Cowl.... 2015
+      85              gamma B. J. Co.... 2015
+      86              gamma B. J. Co.... 2015
       87               <NA> Ke Men, .... 2020
       88               <NA> Balram R.... 2022
       89               <NA> Muluneh .... 2021
@@ -286,28 +286,28 @@
       28                Dengue incubation period             lnorm Miranda .... 2012
       29                Dengue incubation period             lnorm Miranda .... 2012
       30    Zika Virus Disease incubation period             lnorm Justin L.... 2016
-      31           Chikungunya incubation period             lnorm Kara E R.... 2014
-      32                Dengue incubation period             lnorm Kara E R.... 2014
-      33                Dengue incubation period             lnorm Kara E R.... 2014
-      34 Japanese Encephalitis incubation period             lnorm Kara E R.... 2014
-      35     Rift Valley Fever incubation period             lnorm Kara E R.... 2014
-      36       West Nile Fever incubation period             lnorm Kara E R.... 2014
-      37       West Nile Fever incubation period             lnorm Kara E R.... 2014
-      38       West Nile Fever incubation period             lnorm Kara E R.... 2014
-      39          Yellow Fever incubation period             lnorm Kara E R.... 2014
-      40          Yellow Fever incubation period             lnorm Kara E R.... 2014
+      31           Chikungunya incubation period             lnorm Kara E. .... 2014
+      32                Dengue incubation period             lnorm Kara E. .... 2014
+      33                Dengue incubation period             lnorm Kara E. .... 2014
+      34 Japanese Encephalitis incubation period             lnorm Kara E. .... 2014
+      35     Rift Valley Fever incubation period             lnorm Kara E. .... 2014
+      36       West Nile Fever incubation period             lnorm Kara E. .... 2014
+      37       West Nile Fever incubation period             lnorm Kara E. .... 2014
+      38       West Nile Fever incubation period             lnorm Kara E. .... 2014
+      39          Yellow Fever incubation period             lnorm Kara E. .... 2014
+      40          Yellow Fever incubation period             lnorm Kara E. .... 2014
       41                  Mpox incubation period             lnorm Fuminari.... 2022
       42                  Mpox incubation period             lnorm Kelly Ch.... 2022
       43                  Mpox incubation period             gamma Giorgio .... 2022
       44                  Mpox incubation period             lnorm Zachary .... 2022
       45                  Mpox incubation period             lnorm Zachary .... 2022
       46   Ebola Virus Disease incubation period             lnorm Martin E.... 2011
-      47   Ebola Virus Disease incubation period             gamma WHO-Ebol.... 2015
-      48   Ebola Virus Disease incubation period             gamma WHO-Ebol.... 2015
-      49   Ebola Virus Disease incubation period             gamma WHO-Ebol.... 2015
-      50   Ebola Virus Disease incubation period             gamma WHO-Ebol.... 2015
+      47   Ebola Virus Disease incubation period             gamma WHO Ebol.... 2015
+      48   Ebola Virus Disease incubation period             gamma WHO Ebol.... 2015
+      49   Ebola Virus Disease incubation period             gamma WHO Ebol.... 2015
+      50   Ebola Virus Disease incubation period             gamma WHO Ebol.... 2015
       51                  MERS incubation period             lnorm Abdullah.... 2013
-      52                  MERS incubation period             gamma B J Cowl.... 2015
+      52                  MERS incubation period             gamma B. J. Co.... 2015
       53              COVID-19 incubation period              <NA> Ke Men, .... 2020
       54              COVID-19 incubation period              <NA> Balram R.... 2022
       55              COVID-19 incubation period              <NA> Muluneh .... 2021
@@ -341,12 +341,12 @@
       3  Marburg Virus Disease  serial interval             gamma Marco Aj.... 2012
       4                   Mpox  serial interval             gamma Zachary .... 2022
       5                   Mpox  serial interval             gamma Zachary .... 2022
-      6    Ebola Virus Disease  serial interval             gamma WHO-Ebol.... 2015
-      7    Ebola Virus Disease  serial interval             gamma WHO-Ebol.... 2015
-      8    Ebola Virus Disease  serial interval             gamma WHO-Ebol.... 2015
-      9    Ebola Virus Disease  serial interval             gamma WHO-Ebol.... 2015
+      6    Ebola Virus Disease  serial interval             gamma WHO Ebol.... 2015
+      7    Ebola Virus Disease  serial interval             gamma WHO Ebol.... 2015
+      8    Ebola Virus Disease  serial interval             gamma WHO Ebol.... 2015
+      9    Ebola Virus Disease  serial interval             gamma WHO Ebol.... 2015
       10                  MERS  serial interval             lnorm Abdullah.... 2013
-      11                  MERS  serial interval             gamma B J Cowl.... 2015
+      11                  MERS  serial interval             gamma B. J. Co.... 2015
       12              COVID-19  serial interval              <NA> Muluneh .... 2021
       13              COVID-19  serial interval             lnorm Hiroshi .... 2020
       14              COVID-19  serial interval           weibull Hiroshi .... 2020
@@ -451,7 +451,7 @@
       dist_tbl
     Output
                     disease epi_distribution prob_distribution       author year
-      1 Ebola Virus Disease   onset to death             gamma WHO-Ebol.... 2015
+      1 Ebola Virus Disease   onset to death             gamma WHO Ebol.... 2015
 
 # list_distributions works as expected with discretised <epidist>
 

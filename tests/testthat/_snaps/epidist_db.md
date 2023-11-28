@@ -27,8 +27,8 @@
       Disease: SARS
       Pathogen: SARS-Cov-1
       Epi Distribution: offspring distribution
-      Study: Lloyd-Smith JO, Schreiber SJ, Kopp PE, Getz WM (2005). "Superspreading
-      and the effect of individual variation on disease emergence." _Nature_.
+      Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). "Superspreading and
+      the effect of individual variation on disease emergence." _Nature_.
       doi:10.1038/nature04153 <https://doi.org/10.1038/nature04153>.
       Distribution: nbinom
       Parameters:
@@ -39,8 +39,8 @@
       Disease: SARS
       Pathogen: SARS-Cov-1
       Epi Distribution: offspring distribution
-      Study: Lloyd-Smith JO, Schreiber SJ, Kopp PE, Getz WM (2005). "Superspreading
-      and the effect of individual variation on disease emergence." _Nature_.
+      Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). "Superspreading and
+      the effect of individual variation on disease emergence." _Nature_.
       doi:10.1038/nature04153 <https://doi.org/10.1038/nature04153>.
       Distribution: nbinom
       Parameters:
