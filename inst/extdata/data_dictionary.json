@@ -237,11 +237,22 @@
         "type": "object",
         "properties": {
           "author": {
-            "description": "An array of characters where each character is an author. Authors names should be stated as any given name(s) and family name(s). Single author publications should still be stored as arrays. Give all authors of the publication.",
-            "examples": [["John Smith"], ["John Smith", "Amy Jones"]],
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "given": {
+                 "description": "A character string with the given name(s) of the author. Middle name, initialised or not, should be included in the given name, not the family name. This is combined with the family name field to create the full name. Give all authors of the publication as separate authors. Following R's person class, give teams, institutes and companies in the given name and not in the family name.",
+                "examples": ["John", "Amy", "WHO Team"],
+                "type": "string"
+                },
+                "family": {
+                  "description": "A character string with the family name(s) of the author. Middle name, initialised or not, should be included in the given name, not the family name. This is combined with the given name field to create the full name. When organisations or teams are supplied as a given name, the family name is null.",
+                 "examples": ["Smith", "Jones"],
+                 "type": ["string", "null"]
+                }
+              },
+              "required": ["given", "family"]
             }
           },
           "title": {
