@@ -103,7 +103,10 @@ covid_incubation <- epidist(
   prob_distribution_params = c(shape = 2, scale = 1),
   summary_stats = create_epidist_summary_stats(mean = 2),
   citation = create_epidist_citation(
-    author = c("John Smith", "Amy Jones"),
+    author = person(
+      given = list("John", "Amy"),
+      family = list("Smith", "Jones")
+    ),
     year = 2022,
     title = "COVID Incubation Period",
     journal = "Epi Journal",

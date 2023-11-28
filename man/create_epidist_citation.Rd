@@ -5,7 +5,7 @@
 \title{Create a citation for an \verb{<epidist>} object}
 \usage{
 create_epidist_citation(
-  author = NA_character_,
+  author = utils::person(),
   year = NA_integer_,
   title = NA_character_,
   journal = NA_character_,
@@ -14,9 +14,12 @@ create_epidist_citation(
 )
 }
 \arguments{
-\item{author}{A \code{character} string of the surname of the first author. This
-can be underscore separated from a second author, or underscore separated
-from "etal" if there are more than two authors.}
+\item{author}{Either a \verb{<person>}, a \code{character} string, or a vector or list
+of \code{characters} in the case of multiple authors. Specify the full name
+(\verb{"<given name>" "<family name>"}). When using \code{characters} make sure the
+name can be converted to a \verb{<person>} (see \code{\link[=as.person]{as.person()}}). Use white space
+separation between names. Multiple names can be stored within a single
+\verb{<person>} (see \code{\link[=person]{person()}}).}
 
 \item{year}{A \code{numeric} of the year of publication.}
 
@@ -47,7 +50,7 @@ citations for sources reporting epidemiological parameters.
 }
 \examples{
 create_epidist_citation(
-  author = "Smith_etal",
+  author = person(given = "John", family = "Smith"),
   year = 2002,
   title = "COVID-19 incubation period",
   journal = "Epi Journal",
