@@ -236,7 +236,7 @@ new_epidist <- function(disease = list(),
 #'     sd = 1
 #'   ),
 #'   citation = create_epidist_citation(
-#'     author = "Smith_etal",
+#'     author = person(given = "John", family = "Smith"),
 #'     year = 2002,
 #'     title = "COVID-19 incubation period",
 #'     journal = "Epi Journal",
