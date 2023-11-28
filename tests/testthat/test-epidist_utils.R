@@ -8,11 +8,75 @@ test_that("create_epidist_metadata fails when vector is given for non-vb", {
   )
 })
 
+test_that("create_epidist_citation works with different author inputs", {
+  cit <- suppressMessages(create_epidist_citation(
+    author = person(given = "John", family = "Smith"),
+    year = 2002,
+    title = "COVID-19 incubation period",
+    journal = "Epi Journal",
+    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+  ))
+  expect_s3_class(cit, class = "bibentry")
+  expect_s3_class(cit$author, class = "person")
+  expect_identical(cit$author$given, "John")
+  expect_identical(cit$author$family, "Smith")
+
+  cit <- suppressMessages(create_epidist_citation(
+    author = person(
+      given = list("John", "Amy"), family = list("Smith", "Jones")
+    ),
+    year = 2002,
+    title = "COVID-19 incubation period",
+    journal = "Epi Journal",
+    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+  ))
+  expect_s3_class(cit, class = "bibentry")
+  expect_s3_class(cit$author, class = "person")
+  expect_identical(cit$author$given, list("John", "Amy"))
+  expect_identical(cit$author$family, list("Smith", "Jones"))
+
+  cit <- suppressMessages(create_epidist_citation(
+    author = "John Smith",
+    year = 2002,
+    title = "COVID-19 incubation period",
+    journal = "Epi Journal",
+    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+  ))
+  expect_s3_class(cit, class = "bibentry")
+  expect_s3_class(cit$author, class = "person")
+  expect_identical(cit$author$given, "John")
+  expect_identical(cit$author$family, "Smith")
+
+  cit <- suppressMessages(create_epidist_citation(
+    author = c("John Smith", "Amy Jones", "WHO Team"),
+    year = 2002,
+    title = "COVID-19 incubation period",
+    journal = "Epi Journal",
+    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+  ))
+  expect_s3_class(cit, class = "bibentry")
+  expect_s3_class(cit$author, class = "person")
+  expect_identical(cit$author$given, list("John", "Amy", "WHO"))
+  expect_identical(cit$author$family, list("Smith", "Jones", "Team"))
+
+  cit <- suppressMessages(create_epidist_citation(
+    author = list("John Smith", "Amy Jones", "WHO Team"),
+    year = 2002,
+    title = "COVID-19 incubation period",
+    journal = "Epi Journal",
+    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+  ))
+  expect_s3_class(cit, class = "bibentry")
+  expect_s3_class(cit$author, class = "person")
+  expect_identical(cit$author$given, list("John", "Amy", "WHO"))
+  expect_identical(cit$author$family, list("Smith", "Jones", "Team"))
+})
+
 test_that("create_epidist_citation works with PMID", {
   # suppress message about citation
   citation <- suppressMessages(
     create_epidist_citation(
-      author = "Smith_etal",
+      author = person(given = "John", family = "Smith"),
       year = 2002,
       title = "Incubation period of COVID",
       journal = "Journal of Epi",
