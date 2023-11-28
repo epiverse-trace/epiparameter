@@ -59,6 +59,11 @@ get_parameters.epidist <- function(x, ...) {
 #' edist <- epidist_db(single_epidist = TRUE)
 #' get_citation(edist)
 #'
+#' # example returning bibtex format
+#' edist <- epidist_db(disease = "COVID-19", single_epidist = TRUE)
+#' cit <- get_citation(edist)
+#' format(cit, style = "bibtex")
+#'
 #' # example with list of <epidist>
 #' edist <- epidist_db()
 #' get_citation(edist)
