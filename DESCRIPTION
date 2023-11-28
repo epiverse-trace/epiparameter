@@ -46,10 +46,10 @@ Imports:
     checkmate,
     distributional,
     distcrete,
-    jsonlite,
     stats,
     utils
 Suggests: 
+    jsonlite,
     knitr,
     bookdown,
     rmarkdown,
