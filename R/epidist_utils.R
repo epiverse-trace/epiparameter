@@ -330,9 +330,12 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #' @details This function acts as a wrapper around [bibentry()] to create
 #' citations for sources reporting epidemiological parameters.
 #'
-#' @param author A `character` string of the surname of the first author. This
-#' can be underscore separated from a second author, or underscore separated
-#' from "etal" if there are more than two authors.
+#' @param author Either a `<person>`, a `character` string, or a vector or list
+#' of `characters` in the case of multiple authors. Specify the full name
+#' (`"<given name>" "<family name>"`). When using `characters` make sure the
+#' name can be converted to a `<person>` (see [as.person()]). Use white space
+#' separation between names. Multiple names can be stored within a single
+#' `<person>` (see [person()]).
 #' @param year A `numeric` of the year of publication.
 #' @param title A `character` string with the title of the article that
 #' published the epidemiological parameters.
@@ -349,27 +352,38 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #'
 #' @examples
 #' create_epidist_citation(
-#'   author = "Smith_etal",
+#'   author = person(given = "John", family = "Smith"),
 #'   year = 2002,
 #'   title = "COVID-19 incubation period",
 #'   journal = "Epi Journal",
 #'   DOI = "10.19832/j.1366-9516.2012.09147.x"
 #' )
-create_epidist_citation <- function(author = NA_character_,
+create_epidist_citation <- function(author = utils::person(),
                                     year = NA_integer_,
                                     title = NA_character_,
                                     journal = NA_character_,
                                     DOI = NA_character_,
                                     PMID = NA_integer_) {
+  # if not <person> try and convert author to <person>
+  if (!inherits(author, "person"))
+    tryCatch(expr = {
+      author <- lapply(author, utils::as.person)
+      author <- Reduce(f = c, x = author)
+    },
+    error = function(cnd) {
+      stop("Authors incorrectly formatted", call. = FALSE)
+    }
+  )
+
   # check input
-  checkmate::assert_character(author)
+  checkmate::assert_class(author, classes = "person")
   checkmate::assert_number(year, na.ok = TRUE)
   checkmate::assert_character(title)
   checkmate::assert_character(journal)
   checkmate::assert_character(DOI)
   checkmate::assert_number(PMID, na.ok = TRUE)
 
-  if (anyNA(author) || is.na(year) || is.na(journal) || is.na(title)) {
+  if (length(author) == 0 || is.na(year) || is.na(journal) || is.na(title)) {
     message(
       "Citation cannot be created as author, year, journal or title is missing"
     )
