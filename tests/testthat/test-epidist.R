@@ -1070,3 +1070,80 @@ test_that("mean works for corrupted epidist", {
   edist$summary_stats <- list()
   expect_true(is.na(mean(edist)))
 })
+
+test_that("as.function works as expected for density", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  edist_func <- as.function(edist, func_type = "density")
+  expect_type(edist_func, type = "closure")
+  expect_length(formals(edist_func), 1)
+})
+
+test_that("as.function works as expected for cdf", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  edist_func <- as.function(edist, func_type = "cdf")
+  expect_type(edist_func, type = "closure")
+  expect_length(formals(edist_func), 1)
+})
+
+test_that("as.function works as expected for generate", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  edist_func <- as.function(edist, func_type = "generate")
+  expect_type(edist_func, type = "closure")
+  expect_length(formals(edist_func), 1)
+})
+
+test_that("as.function works as expected for quantile", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  edist_func <- as.function(edist, func_type = "quantile")
+  expect_type(edist_func, type = "closure")
+  expect_length(formals(edist_func), 1)
+})
+
+test_that("as.function fails as expected", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  expect_error(
+    as.function(edist, func_type = "random"),
+    regexp = "(arg)*(should be one of)*(density)*(cdf)*(generate)*(quantile)"
+  )
+
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma"
+  ))
+  expect_error(
+    as.function(edist),
+    regexp = "Cannot convert unparameterised <epidist> to distribution function"
+  )
+})
