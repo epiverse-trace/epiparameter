@@ -168,6 +168,9 @@ test_that(".read_epidist_db works as expected", {
 })
 
 test_that("sysdata is the same as .read_epidist_db output", {
+  # .read_epidist_db uses numerical optimisation which can converge to
+  # different parameter estimates
+  set.seed(1)
   sysdat <- suppressMessages(epidist_db())
   db <- .read_epidist_db()
   expect_equal(sysdat, db, tolerance = 1e-3)
