@@ -128,6 +128,19 @@ Length of list output is equal to number of elements in the <code>&lt;epidist&gt
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># example returning bibtex format</span></span></span>
+<span class="r-in"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"COVID-19"</span>, single_epidist <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using McAloon C, Collins Á, Hunt K, Barber A, Byrne A, Butler F, Casey M,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Griffin J, Lane E, McEvoy D, Wall P, Green M, O'Grady L, More S (2020).</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> “Incubation period of COVID-19: a rapid systematic review and</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> meta-analysis of observational research.” _BMJ Open_.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> doi:10.1136/bmjopen-2020-039652</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1136/bmjopen-2020-039652&gt;.. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the short citation use the 'get_citation' function</span>
+<span class="r-in"><span><span class="va">cit</span> <span class="op">&lt;-</span> <span class="fu">get_citation</span><span class="op">(</span><span class="va">edist</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">cit</span>, style <span class="op">=</span> <span class="st">"bibtex"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "@Article{,\n  author = {Conor McAloon and Áine Collins and Kevin Hunt and Ann Barber and Andrew W. Byrne and Francis Butler and Miriam Casey and John Griffin and Elizabeth Lane and David McEvoy and Patrick Wall and Martin Green and Luke O'Grady and Simon J. More},\n  year = {2020},\n  title = {Incubation period of COVID-19: a rapid systematic review and meta-analysis of observational research},\n  journal = {BMJ Open},\n  doi = {10.1136/bmjopen-2020-039652},\n  pmid = {32801208},\n}"</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># example with list of &lt;epidist&gt;</span></span></span>
 <span class="r-in"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 122 results that match the criteria (99 are parameterised). </span>

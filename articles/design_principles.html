@@ -181,7 +181,6 @@ are:</p>
 <li><a href="https://CRAN.R-project.org/package=checkmate" class="external-link">{checkmate}</a></li>
 <li><a href="https://CRAN.R-project.org/package=distributional" class="external-link">{distributional}</a></li>
 <li><a href="https://CRAN.R-project.org/package=distcrete" class="external-link">{distcrete}</a></li>
-<li><a href="https://CRAN.R-project.org/package=jsonlite" class="external-link">{jsonlite}</a></li>
 <li>{stats}</li>
 <li>{utils}</li>
 </ul>
@@ -191,8 +190,13 @@ user’s machine if they have R. {checkmate} is an input checking package
 widely used across Epiverse-TRACE packages. {distributional} and
 {distcrete} are used to import S3 classes for handling and working with
 distributions. Both are required as only {distcrete} can handle
-discretised distributions. {jsonlite} is used to read the parameter
-library which is stored as a JSON file.</p>
+discretised distributions.</p>
+<p><a href="https://CRAN.R-project.org/package=jsonlite" class="external-link">{jsonlite}</a>
+is a suggested dependency because it is used to read the parameter
+library which is stored as a JSON file. However, it is only read by an
+internal function and instead the data is available to the user via
+<code>sysdata.rda</code>, so {jsonlite} is not required as an imported
+dependency.</p>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
