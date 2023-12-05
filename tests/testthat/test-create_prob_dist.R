@@ -142,6 +142,22 @@ test_that("create_prob_dist works as expected for discrete Weibull", {
   )
 })
 
+test_that("create_prob_dist works as expected for discrete normal", {
+  res <- create_prob_dist(
+    prob_dist = "norm",
+    prob_dist_params = c(mean = 1, sd = 1),
+    discretise = TRUE,
+    truncation = NA
+  )
+
+  expect_s3_class(res, "distcrete")
+  expect_identical(res$name, "norm")
+  expect_identical(
+    res$parameters,
+    list(mean = 1, sd = 1)
+  )
+})
+
 test_that("create_prob_dist works as expected for truncated continuous", {
   res <- create_prob_dist(
     prob_dist = "gamma",
