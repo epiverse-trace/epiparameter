@@ -52,7 +52,10 @@ create_prob_dist <- function(prob_dist,
                              discretise,
                              truncation) {
   if (discretise) {
-    prob_dist <- match.arg(prob_dist, choices = c("gamma", "lnorm", "weibull"))
+    prob_dist <- match.arg(
+      prob_dist,
+      choices = c("gamma", "lnorm", "weibull", "norm")
+    )
     # create discretised probability distribution object
     prob_dist <- do.call(
       distcrete::distcrete,
