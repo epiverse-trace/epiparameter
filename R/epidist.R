@@ -122,9 +122,13 @@ new_epidist <- function(disease = list(),
       method_assess = method_assess,
       notes = notes
     ),
-    class = "epidist"
+    class = "epidist",
+    .epiparameter_namespace = .epiparameter_namespace
   )
 }
+
+# Load {epiparameter} namespace when using <epidist> (incl. serialised objects)
+.epiparameter_namespace <- function() NULL
 
 #' Create an `<epidist>` object
 #'
