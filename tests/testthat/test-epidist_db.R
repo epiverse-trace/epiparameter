@@ -168,6 +168,7 @@ test_that(".read_epidist_db works as expected", {
 })
 
 test_that("sysdata is the same as .read_epidist_db output", {
+  skip_on_covr()
   # .read_epidist_db uses numerical optimisation which can converge to
   # different parameter estimates
   set.seed(1)
