@@ -24,6 +24,14 @@ get_parameters <- function(x, ...) {
 #' @return A named vector of parameters or `NA` when the `<epidist>` object is
 #' unparameterised.
 #' @export
+#'
+#' @examples
+#' edist <- epidist_db(
+#'   disease = "COVID-19",
+#'   epi_dist = "serial interval",
+#'   single_epidist = TRUE
+#' )
+#' get_parameters(edist)
 get_parameters.epidist <- function(x, ...) {
   # extract parameters depending on prob distribution class
   if (inherits(x$prob_dist, "distcrete")) {
