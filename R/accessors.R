@@ -1,3 +1,15 @@
+#' Get parameters from an object
+#'
+#' Extract the parameters stored in an R object.
+#'
+#' @param x an R object
+#' @param ... Extra arguments to be passed to the method.
+#'
+#' @export
+get_parameters <- function(x, ...) {
+  UseMethod("get_parameters")
+}
+
 #' Get parameters from an `<epidist>` object
 #'
 #' Extract the parameters of the distribution stored in an `<epidist>` object.
@@ -11,11 +23,6 @@
 #'
 #' @return A named vector of parameters or `NA` when the `<epidist>` object is
 #' unparameterised.
-#' @export
-get_parameters <- function(x, ...) {
-  UseMethod("get_parameters")
-}
-
 #' @export
 get_parameters.epidist <- function(x, ...) {
   # extract parameters depending on prob distribution class
