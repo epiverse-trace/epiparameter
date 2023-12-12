@@ -153,7 +153,7 @@ epidist_db <- function(disease = "all",
     }
 
     # subset by authors
-    multi_epidist <- subset(multi_epidist, author_set)
+    multi_epidist <- multi_epidist[author_set]
   }
 
   # subset by subset conditions
