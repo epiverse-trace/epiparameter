@@ -78,6 +78,34 @@ test_that("epidist_db works as expected with subsetting and single_epidist", {
   expect_length(edist, 9)
 })
 
+test_that("epidist_db works as expected with subsetting and author", {
+  edist <- suppressMessages(
+    epidist_db(
+      disease = "COVID-19",
+      epi_dist = "incubation period",
+      author = "McAloon",
+      subset = sample_size > 10
+    )
+  )
+
+  expect_s3_class(edist, class = "multi_epidist")
+  expect_length(edist, 2)
+})
+
+test_that("epidist_db works as expected with subsetting by prod_dist", {
+  edist <- suppressMessages(
+    epidist_db(
+      disease = "COVID-19",
+      epi_dist = "serial interval",
+      author = "Nishiura",
+      subset = prob_dist == "weibull"
+    )
+  )
+
+  expect_s3_class(edist, class = "epidist")
+  expect_length(edist, 9)
+})
+
 test_that("epidist_db fails as expected when author not recognised", {
   expect_error(
     epidist_db(
