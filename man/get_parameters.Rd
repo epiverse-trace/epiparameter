@@ -7,10 +7,10 @@
 get_parameters(x, ...)
 }
 \arguments{
-\item{x}{an R object}
+\item{x}{an object used to select a method.}
 
-\item{...}{Extra arguments to be passed to the method.}
+\item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Extract the parameters stored in an R object.
+Extract the parameters stored in an \R object.
 }

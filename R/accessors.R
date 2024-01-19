@@ -1,9 +1,8 @@
 #' Get parameters from an object
 #'
-#' Extract the parameters stored in an R object.
+#' Extract the parameters stored in an \R object.
 #'
-#' @param x an R object
-#' @param ... Extra arguments to be passed to the method.
+#' @inheritParams base::print
 #'
 #' @export
 get_parameters <- function(x, ...) {
@@ -15,8 +14,8 @@ get_parameters <- function(x, ...) {
 #' Extract the parameters of the distribution stored in an `<epidist>` object.
 #'
 #' @details The `<epidist>` object can be unparameterised in which it lacks
-#' a probability distribution or parameters of a probability distribution.
-#' In this can the `parameters.epidist()` method with return `NA`.
+#' a probability distribution or parameters of a probability distribution,
+#' in this case the `get_parameters.epidist()` method will return `NA`.
 #'
 #' @inheritParams print.epidist
 #' @param ... Extra arguments to be passed to the method.
