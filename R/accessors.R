@@ -59,13 +59,25 @@ get_parameters.epidist <- function(x, ...) {
   params
 }
 
-#' Extract citation information from `<epidist>` or list of `<epidist>` objects
+#' Get citation from an object
 #'
-#' @inheritParams is_parameterised
+#' Extract the citation stored in an \R object.
 #'
-#' @return A single character string or list of character string citations.
-#' Length of list output is equal to number of elements in the `<epidist>`
-#' object passed to the function.
+#' @inheritParams base::print
+#'
+#' @export
+get_citation <- function(x, ...) {
+  UseMethod("get_citation")
+}
+
+#' Get citation from an `<epidist>` object
+#'
+#' Extract the citation stored in an `<epidist>` object.
+#'
+#' @inheritParams print.epidist
+#' @param ... Extra arguments to be passed to the method.
+#'
+#' @return A `<bibentry>` object.
 #' @export
 #'
 #' @examples
@@ -77,15 +89,6 @@ get_parameters.epidist <- function(x, ...) {
 #' edist <- epidist_db(disease = "COVID-19", single_epidist = TRUE)
 #' cit <- get_citation(edist)
 #' format(cit, style = "bibtex")
-#'
-#' # example with list of <epidist>
-#' edist <- epidist_db()
-#' get_citation(edist)
-get_citation <- function(x, ...) {
-  UseMethod("get_citation")
-}
-
-#' @export
 get_citation.epidist <- function(x, ...) {
   chkDots(...)
   if (!inherits(x$citation, "bibentry")) {
@@ -96,7 +99,21 @@ get_citation.epidist <- function(x, ...) {
   x$citation
 }
 
+#' Get citation from a list of `<epidist>` objects
+#'
+#' Extract the citation stored in a list of `<epidist>` objects.
+#'
+#' @inheritParams print.epidist
+#' @param ... Extra arguments to be passed to the method.
+#'
+#' @return A list of `<bibentry>` objects. The length of output list is
+#' equal to the length of the list of `<epidist>` objects supplied.
 #' @export
+#'
+#' @examples
+#' # example with list of <epidist>
+#' edist <- epidist_db()
+#' get_citation(edist)
 get_citation.multi_epidist <- function(x, ...) {
   chkDots(...)
   citation_list <- lapply(x, get_citation)

@@ -2,34 +2,15 @@
 % Please edit documentation in R/accessors.R
 \name{get_citation}
 \alias{get_citation}
-\title{Extract citation information from \verb{<epidist>} or list of \verb{<epidist>} objects}
+\title{Get citation from an object}
 \usage{
 get_citation(x, ...)
 }
 \arguments{
-\item{x}{An \verb{<epidist>} or list of \verb{<epidist>} objects.}
+\item{x}{an object used to select a method.}
 
-\item{...}{\link{dots} not used, extra arguments supplied will cause a warning.}
-}
-\value{
-A single character string or list of character string citations.
-Length of list output is equal to number of elements in the \verb{<epidist>}
-object passed to the function.
+\item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Extract citation information from \verb{<epidist>} or list of \verb{<epidist>} objects
-}
-\examples{
-# example with <epidist>
-edist <- epidist_db(single_epidist = TRUE)
-get_citation(edist)
-
-# example returning bibtex format
-edist <- epidist_db(disease = "COVID-19", single_epidist = TRUE)
-cit <- get_citation(edist)
-format(cit, style = "bibtex")
-
-# example with list of <epidist>
-edist <- epidist_db()
-get_citation(edist)
+Extract the citation stored in an \R object.
 }
