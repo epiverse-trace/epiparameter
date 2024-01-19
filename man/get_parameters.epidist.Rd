@@ -20,8 +20,8 @@ Extract the parameters of the distribution stored in an \verb{<epidist>} object.
 }
 \details{
 The \verb{<epidist>} object can be unparameterised in which it lacks
-a probability distribution or parameters of a probability distribution.
-In this can the \code{parameters.epidist()} method with return \code{NA}.
+a probability distribution or parameters of a probability distribution,
+in this case the \code{get_parameters.epidist()} method will return \code{NA}.
 }
 \examples{
 edist <- epidist_db(
