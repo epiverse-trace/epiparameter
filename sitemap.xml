@@ -169,7 +169,16 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/format.vb_epidist.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/get_citation.epidist.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/get_citation.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/get_citation.multi_epidist.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/get_parameters.epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/get_parameters.html</loc>
