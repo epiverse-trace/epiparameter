@@ -76,6 +76,7 @@ geom_epidist2 <- function(x, cumulative, p_limits, ...) {
         ggplot2::aes(xdist = x$prob_dist),
         fill = "#106BA0",
         p_limits = p_limits,
+        point_interval = NULL,
         ...
       )
     } else {
