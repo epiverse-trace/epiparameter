@@ -82,6 +82,7 @@ reference:
   - title: Utility function
     contents:
     - calc_disc_dist_quantile
+    - theme_epiparameter
 
 
 articles:
