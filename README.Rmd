@@ -64,10 +64,16 @@ influenza_incubation <- epidist_db(
 influenza_incubation
 ```
 
-The `<epidist>` object can be plotted.
+The `<epidist>` object can be plotted as a probability density.
 
 ```{r plot-epidist}
 plot(influenza_incubation)
+```
+
+Alternatively as a cumulative distribution, with the day range modified.
+
+```{r plot-cumulative-epidist}
+plot(influenza_incubation, day_range = c(0, 15), cumulative = TRUE)
 ```
 
 ### Parameter conversion and extraction
