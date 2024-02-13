@@ -38,7 +38,7 @@ test_that("convert_params_to_summary_stats works as expected", {
     ),
     list(
       mean = 1, median = 0.6931472, mode = 0, var = 1, sd = 1, cv = 1,
-      skewness = 2, ex_kurtosis = 21
+      skewness = 2, ex_kurtosis = 6
     ),
     tolerance = 1e-4
   )
