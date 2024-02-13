@@ -346,8 +346,10 @@ convert_summary_stats_gamma <- function(...) {
     # mean and sd to params
     checkmate::assert_number(x$mean, lower = 0)
     checkmate::assert_number(x$sd, lower = 0)
-    shape <- x$mean^2 / x$sd^2
-    scale <- x$sd^2 / x$mean
+    shape <- (x$mean)^2 / x$sd^2
+    scale <- x$sd^2 / abs(x$mean)
+    checkmate::assert_number(shape, lower = 0)
+    checkmate::assert_number(scale, lower = 0)
     return(list(shape = shape, scale = scale))
   }
 
@@ -386,18 +388,15 @@ convert_params_weibull <- function(...) {
 
   # calculate metrics
   mean <- scale * gamma(1 + 1 / shape)
-  median <- stats::qweibull(p = 0.5, shape = shape, scale = scale)
-  mode <- max(scale * ((shape - 1) / shape)^(1 / shape), 0)
+  median <- scale * (log(2))^(1/shape)
+  mode <- ifelse(shape > 1, scale * ((shape - 1) / shape)^(1 / shape), 0)
   var <- scale^2 * (gamma(1 + 2 / shape) - (gamma(1 + 1 / shape))^2)
   sd <- sqrt(var)
   cv <- sd / mean
   skewness <- (gamma(1 + 3 / shape) * scale^3 - 3 *
     mean * sd^2 - mean^3) / (sd^3)
-  ex_kurtosis <- (gamma(1 + 4 / shape) * scale^4 - 4 * mean *
-    (gamma(1 + 3 / shape) * scale^3 - 3 * mean *
-      sd^2 - mean^3) -
-    6 * (mean^2 * sd^2 - gamma(1 + 2 / shape) *
-      scale^2) - mean^4) / (sd^4)
+  ex_kurtosis <- ((gamma(1 + 4 / shape) * scale^4 - 4 * skewness * mean *
+    sd^3 -  6 * mean^2 * sd^2 - mean^4) / (sd^4)) - 3
 
 
   # return list of metrics
@@ -571,7 +570,8 @@ convert_summary_stats_nbinom <- function(...) {
 #'
 #' @description Convert the probability (`prob`) of the geometric distribution
 #' to a number of summary statistics which can be calculated analytically given
-#' the geometric parameter.
+#' the geometric parameter. One exception is the median which is calculated
+#' using [stats::qgeom()] as the analytical form is not always unique.
 #'
 #' @details This conversion function assumes that distribution represents the
 #' number of failures before the first success (supported for zero). This is
