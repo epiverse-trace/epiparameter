@@ -8,28 +8,28 @@ Authors@R:
             family = "Lambert",
             role = c("aut", "cre", "cph"),
             email = "joshua.lambert@lshtm.ac.uk",
-            comment = c(ORCID = "https://orcid.org/0000-0001-5218-3046")
+            comment = c(ORCID = "0000-0001-5218-3046")
         ),
         person(
             given = "Adam", 
             family = "Kucharski",
             role = c("aut", "cph"),
             email = "adam.kucharski@lshtm.ac.uk", 
-            comment = c(ORCID = "https://orcid.org/0000-0001-8814-9421")
+            comment = c(ORCID = "0000-0001-8814-9421")
         ),
         person(
             given = "Hugo",
             family = "Gruson",
             role = c("ctb", "rev"),
             email = "hugo.gruson@data.org",
-            comment = c(ORCID = "https://orcid.org/0000-0002-4094-1476")
+            comment = c(ORCID = "0000-0002-4094-1476")
         ),
         person(
             given = "Pratik",
             family = "Gupte",
             role = c("rev"),
             email = "pratik.gupte@lshtm.ac.uk",
-            comment = c(ORCID = "https://orcid.org/0000-0001-5294-7819")
+            comment = c(ORCID = "0000-0001-5294-7819")
         )
       )
 Description: Library of epidemiological parameters for infectious diseases and a
