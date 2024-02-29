@@ -7,9 +7,9 @@
 convert_summary_stats_gamma(...)
 }
 \arguments{
-\item{...}{\link{dots} \code{Numeric} named summary statistics used to convert to
-parameter(s). An example is the \code{mean} and \code{sd} parameters of the
-lognormal (\code{lnorm}) distribution.}
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> \code{Numeric} named summary
+statistics used to convert to parameter(s). An example is the \code{mean}
+and \code{sd} parameters of the lognormal (\code{lnorm}) distribution.}
 }
 \value{
 A list of two elements, the shape and scale

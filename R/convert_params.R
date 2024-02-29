@@ -26,9 +26,9 @@
 #'
 #' @param distribution A `character` string specifying distribution to use.
 #' Default is `lnorm`; also takes `gamma` and `weibull`, `nbinom` and `geom`.
-#' @param ... [dots] `Numeric` named summary statistics used to convert to
-#' parameter(s). An example is the `mean` and `sd` parameters of the
-#' lognormal (`lnorm`) distribution.
+#' @param ... <[`dynamic-dots`][rlang::dyn-dots]> `Numeric` named summary
+#' statistics used to convert to parameter(s). An example is the `mean`
+#' and `sd` parameters of the lognormal (`lnorm`) distribution.
 #'
 #' @return A list of either one or two elements (depending on how many
 #' parameters the distribution has).
@@ -46,7 +46,9 @@ convert_summary_stats_to_params <- function(distribution = c( # nolint
                                             ...) {
   # check input
   distribution <- match.arg(distribution)
-  if (!checkmate::test_list(list(...), min.len = 1, names = "unique")) {
+  # capture dynamic dots
+  dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
+  if (!checkmate::test_list(dots, min.len = 1, names = "unique")) {
     stop(
       "Summary statistics need to be named and supplied to the function",
       call. = FALSE
@@ -63,7 +65,7 @@ convert_summary_stats_to_params <- function(distribution = c( # nolint
   )
 
   # call selected function
-  out <- do.call(func, list(...))
+  out <- do.call(func, dots)
 
   # return output
   out
@@ -80,9 +82,9 @@ convert_summary_stats_to_params <- function(distribution = c( # nolint
 #' and its parameters are `meanlog` and `sdlog`.
 #'
 #' @inheritParams convert_summary_stats_to_params
-#' @param ... [dots] `Numeric` named parameter(s) used to convert to summary
-#' statistics. An example is the `meanlog` and `sdlog` parameters of the
-#' lognormal (`lnorm`) distribution.
+#' @param ... <[`dynamic-dots`][rlang::dyn-dots]> `Numeric` named parameter(s)
+#' used to convert to summary statistics. An example is the `meanlog` and
+#' `sdlog` parameters of the lognormal (`lnorm`) distribution.
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
@@ -106,7 +108,9 @@ convert_params_to_summary_stats <- function(distribution = c( # nolint
                                             ...) {
   # check input
   distribution <- match.arg(distribution)
-  if (!checkmate::test_list(list(...), min.len = 1, names = "unique")) {
+  # capture dynamic dots
+  dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
+  if (!checkmate::test_list(dots, min.len = 1, names = "unique")) {
     stop(
       "Parameter(s) need to be named and supplied to the function",
       call. = FALSE
@@ -123,7 +127,7 @@ convert_params_to_summary_stats <- function(distribution = c( # nolint
   )
 
   # call selected function
-  out <- do.call(func, list(...))
+  out <- do.call(func, dots)
 
   # return output
   out
@@ -189,8 +193,8 @@ chk_ss <- function(x) {
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
 convert_params_lnorm <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
   if (all(c("meanlog", "sdlog") %in% names(x))) {
@@ -238,8 +242,8 @@ convert_params_lnorm <- function(...) {
 #' @return A list of two elements: meanlog and sdlog
 #' @keywords internal
 convert_summary_stats_lnorm <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input
   chk_ss(x)
@@ -285,8 +289,8 @@ convert_summary_stats_lnorm <- function(...) {
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
 convert_params_gamma <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
   if (all(c("shape", "scale") %in% names(x))) {
@@ -333,8 +337,8 @@ convert_params_gamma <- function(...) {
 #' @return A list of two elements, the shape and scale
 #' @keywords internal
 convert_summary_stats_gamma <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input
   chk_ss(x)
@@ -371,8 +375,8 @@ convert_summary_stats_gamma <- function(...) {
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
 convert_params_weibull <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
   if (all(c("shape", "scale") %in% names(x))) {
@@ -422,8 +426,8 @@ convert_params_weibull <- function(...) {
 #' @return A list of two elements, the shape and scale.
 #' @keywords internal
 convert_summary_stats_weibull <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input
   chk_ss(x)
@@ -474,8 +478,8 @@ convert_summary_stats_weibull <- function(...) {
 #' skewness, and ex_kurtosis.
 #' @keywords internal
 convert_params_nbinom <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
   if (all(c("prob", "dispersion") %in% names(x))) {
@@ -527,8 +531,8 @@ convert_params_nbinom <- function(...) {
 #' @return A list of two elements, the probability and dispersion parameters.
 #' @keywords internal
 convert_summary_stats_nbinom <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input
   chk_ss(x)
@@ -584,8 +588,8 @@ convert_summary_stats_nbinom <- function(...) {
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
 convert_params_geom <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
   if (all("prob" %in% names(x))) {
@@ -634,8 +638,8 @@ convert_params_geom <- function(...) {
 #' @return A list of one element, the probability parameter.
 #' @keywords internal
 convert_summary_stats_geom <- function(...) {
-  # capture input
-  x <- list(...)
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input
   checkmate::assert_list(

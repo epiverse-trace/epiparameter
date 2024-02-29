@@ -13,9 +13,9 @@ convert_params_to_summary_stats(
 \item{distribution}{A \code{character} string specifying distribution to use.
 Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}, \code{nbinom} and \code{geom}.}
 
-\item{...}{\link{dots} \code{Numeric} named parameter(s) used to convert to summary
-statistics. An example is the \code{meanlog} and \code{sdlog} parameters of the
-lognormal (\code{lnorm}) distribution.}
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> \code{Numeric} named parameter(s)
+used to convert to summary statistics. An example is the \code{meanlog} and
+\code{sdlog} parameters of the lognormal (\code{lnorm}) distribution.}
 }
 \value{
 A list of eight elements including: mean, median, mode,

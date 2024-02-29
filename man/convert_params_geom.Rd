@@ -7,9 +7,9 @@
 convert_params_geom(...)
 }
 \arguments{
-\item{...}{\link{dots} \code{Numeric} named parameter(s) used to convert to summary
-statistics. An example is the \code{meanlog} and \code{sdlog} parameters of the
-lognormal (\code{lnorm}) distribution.}
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> \code{Numeric} named parameter(s)
+used to convert to summary statistics. An example is the \code{meanlog} and
+\code{sdlog} parameters of the lognormal (\code{lnorm}) distribution.}
 }
 \value{
 A list of eight elements including: mean, median, mode,
