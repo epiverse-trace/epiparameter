@@ -33,6 +33,7 @@ get_parameters <- function(x, ...) {
 #' )
 #' get_parameters(edist)
 get_parameters.epidist <- function(x, ...) {
+  chkDots(...)
   # extract parameters depending on prob distribution class
   if (inherits(x$prob_dist, "distcrete")) {
     params <- unlist(x$prob_dist$parameters)
