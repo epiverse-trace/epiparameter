@@ -46,6 +46,7 @@ Imports:
     checkmate,
     distributional,
     distcrete,
+    rlang,
     stats,
     utils
 Suggests: 
