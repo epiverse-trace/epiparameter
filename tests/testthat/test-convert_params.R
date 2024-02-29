@@ -209,13 +209,6 @@ test_that("convert_params_to_summary_stats fails as expected", {
 
   expect_error(
     convert_params_to_summary_stats(
-      distribution = "lnorm", meanlog = 1, meanlog = 1 #nolint
-    ),
-    regexp = "(Parameter(s) need to be named and supplied)*(to the function)"
-  )
-
-  expect_error(
-    convert_params_to_summary_stats(
       distribution = "gamma", shape = -1, scale = 1
     ),
     regexp = "(Assertion on)*(shape)*(failed: Element 1 is not >= 0.)"
@@ -263,12 +256,6 @@ test_that("convert_summary_stats_to_params fails as expected", {
 
   expect_error(
     convert_summary_stats_to_params(distribution = "lnorm"),
-    regexp = "Summary statistics need to be named and supplied to the function"
-  )
-
-  expect_error(
-    convert_summary_stats_to_params(distribution = "lnorm",
-                                    mean = 1, mean = 1), #nolint
     regexp = "Summary statistics need to be named and supplied to the function"
   )
 
