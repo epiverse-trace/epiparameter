@@ -53,6 +53,49 @@ test_that("convert_params_to_summary_stats works as expected", {
   )
 })
 
+test_that("convert_params_to_summary_stats works as expected with dyn-dots", {
+  expect_identical(
+    convert_params_to_summary_stats(
+      distribution = "lnorm", meanlog = 1, sdlog = 0.5
+    ),
+    convert_params_to_summary_stats(
+      distribution = "lnorm", !!!list(meanlog = 1, sdlog = 0.5)
+    )
+  )
+
+  expect_identical(
+    convert_params_to_summary_stats(
+      distribution = "nbinom", prob = 0.5, dispersion = 1
+    ),
+    convert_params_to_summary_stats(
+      distribution = "nbinom", !!!list(prob = 0.5, dispersion = 1)
+    )
+  )
+
+  expect_identical(
+    convert_params_to_summary_stats(
+      distribution = "gamma", shape = 1, scale = 1
+    ),
+    convert_params_to_summary_stats(
+      distribution = "gamma", !!!list(shape = 1, scale = 1)
+    )
+  )
+
+  expect_equal(
+    convert_params_to_summary_stats(
+      distribution = "weibull", shape = 1, scale = 1
+    ),
+    convert_params_to_summary_stats(
+      distribution = "weibull", !!!list(shape = 1, scale = 1)
+    )
+  )
+
+  expect_equal(
+    convert_params_to_summary_stats(distribution = "geom", prob = 0.5),
+    convert_params_to_summary_stats(distribution = "geom", !!!list(prob = 0.5))
+  )
+})
+
 test_that("convert_summary_stats_to_params works as expected", {
   expect_equal(
     convert_summary_stats_to_params(distribution = "gamma", mean = 1, sd = 0.5),
@@ -96,6 +139,58 @@ test_that("convert_summary_stats_to_params works as expected", {
     convert_summary_stats_to_params(distribution = "geom", mean = 0.5),
     list(prob = 0.6666667),
     tolerance = 1e-4
+  )
+})
+
+test_that("convert_summary_stats_to_params works as expected with dyn-dots", {
+  expect_identical(
+    convert_summary_stats_to_params(distribution = "gamma", mean = 1, sd = 0.5),
+    convert_summary_stats_to_params(
+      distribution = "gamma", !!!list(mean = 1, sd = 0.5)
+    )
+  )
+
+  expect_identical(
+    suppressMessages(
+      convert_summary_stats_to_params(
+        distribution = "weibull", mean = 0.5, cv = 1
+      )
+    ),
+    suppressMessages(
+      convert_summary_stats_to_params(
+        distribution = "weibull", !!!list(mean = 0.5, cv = 1)
+      )
+    )
+  )
+
+  expect_identical(
+    convert_summary_stats_to_params(distribution = "lnorm", median = 1, sd = 1),
+    convert_summary_stats_to_params(
+      distribution = "lnorm", !!!list(median = 1, sd = 1)
+    )
+  )
+
+  expect_identical(
+    convert_summary_stats_to_params(
+      distribution = "nbinom", mean = 1, dispersion = 1
+    ),
+    convert_summary_stats_to_params(
+      distribution = "nbinom", !!!list(mean = 1, dispersion = 1)
+    )
+  )
+
+  expect_identical(
+    convert_summary_stats_to_params(
+      distribution = "nbinom", mean = 1, sd = 1.5
+    ),
+    convert_summary_stats_to_params(
+      distribution = "nbinom", !!!list(mean = 1, sd = 1.5)
+    )
+  )
+
+  expect_identical(
+    convert_summary_stats_to_params(distribution = "geom", mean = 0.5),
+    convert_summary_stats_to_params(distribution = "geom", !!!list(mean = 0.5))
   )
 })
 
