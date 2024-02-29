@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{A \verb{<vb_epidist>} object.}
 
-\item{...}{\link{dots} Extra arguments passed to or from other methods.}
+\item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
 \value{
 Invisibly returns a \verb{<vb_epidist>}. Called for printing

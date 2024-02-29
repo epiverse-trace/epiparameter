@@ -34,7 +34,7 @@
 
 \item{at}{The quantiles to evaluate at.}
 
-\item{...}{\link{dots} Extra arguments passed to or from other methods.}
+\item{...}{\link{dots} Extra arguments to be passed to the method.}
 
 \item{q}{The quantiles to evaluate at.}
 

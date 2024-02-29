@@ -388,7 +388,7 @@ validate_epidist <- function(epidist) {
 #' @param vb A `character` string containing whether it is the intrinsic
 #' (`"Intrinsic"`) or extrinsic (`"Extrinsic"`) distribution for vector-borne
 #' diseases.
-#' @param ... [dots] Extra arguments passed to or from other methods.
+#' @param ... [dots] Extra arguments to be passed to the method.
 #'
 #' @return Invisibly returns an `<epidist>`. Called for side-effects.
 #' @export
@@ -755,6 +755,7 @@ generate.epidist <- function(x, times, ...) {
 #' discretised distribution (using an object from the `{distcrete}` package).
 #'
 #' @inheritParams print.epidist
+#' @param ... [dots] Extra arguments to be passed to the method.
 #'
 #' @inherit epidist return
 #' @export
@@ -963,6 +964,7 @@ is_truncated <- function(x) {
 #' Mean method for `<epidist>` class
 #'
 #' @inheritParams print.epidist
+#' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
 #' @return A `numeric` mean of a distribution or `NA`.
 #' @export
@@ -975,6 +977,7 @@ is_truncated <- function(x) {
 #' )
 #' mean(edist)
 mean.epidist <- function(x, ...) {
+  chkDots(...)
   # extract mean if given
   if (utils::hasName(x$summary_stats, "mean")) {
     mean <- x$summary_stats$mean

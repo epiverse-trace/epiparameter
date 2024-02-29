@@ -18,7 +18,7 @@ discretize(x, ...)
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
 
-\item{...}{\link{dots} Extra arguments passed to or from other methods.}
+\item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
 \value{
 An \verb{<epidist>} object.

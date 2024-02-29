@@ -3,6 +3,7 @@
 #' Extract the parameters stored in an \R object.
 #'
 #' @inheritParams base::print
+#' @param ... [dots] Extra arguments to be passed to the method.
 #'
 #' @export
 get_parameters <- function(x, ...) {
@@ -18,7 +19,7 @@ get_parameters <- function(x, ...) {
 #' in this case the `get_parameters.epidist()` method will return `NA`.
 #'
 #' @inheritParams print.epidist
-#' @param ... Extra arguments to be passed to the method.
+#' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
 #' @return A named vector of parameters or `NA` when the `<epidist>` object is
 #' unparameterised.
@@ -64,6 +65,7 @@ get_parameters.epidist <- function(x, ...) {
 #' Extract the citation stored in an \R object.
 #'
 #' @inheritParams base::print
+#' @param ... [dots] Extra arguments to be passed to the method.
 #'
 #' @export
 get_citation <- function(x, ...) {
@@ -75,7 +77,7 @@ get_citation <- function(x, ...) {
 #' Extract the citation stored in an `<epidist>` object.
 #'
 #' @inheritParams print.epidist
-#' @param ... Extra arguments to be passed to the method.
+#' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
 #' @return A `<bibentry>` object.
 #' @export
@@ -104,7 +106,7 @@ get_citation.epidist <- function(x, ...) {
 #' Extract the citation stored in a list of `<epidist>` objects.
 #'
 #' @inheritParams print.epidist
-#' @param ... Extra arguments to be passed to the method.
+#' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
 #' @return A list of `<bibentry>` objects. The length of output list is
 #' equal to the length of the list of `<epidist>` objects supplied.

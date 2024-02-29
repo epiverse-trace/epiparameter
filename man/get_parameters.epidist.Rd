@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
 
-\item{...}{Extra arguments to be passed to the method.}
+\item{...}{\link{dots} Not used, extra arguments supplied will cause a warning.}
 }
 \value{
 A named vector of parameters or \code{NA} when the \verb{<epidist>} object is

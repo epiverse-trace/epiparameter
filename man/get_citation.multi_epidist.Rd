@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
 
-\item{...}{Extra arguments to be passed to the method.}
+\item{...}{\link{dots} Not used, extra arguments supplied will cause a warning.}
 }
 \value{
 A list of \verb{<bibentry>} objects. The length of output list is

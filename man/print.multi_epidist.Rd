@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{A \verb{<multi_epidist>} object.}
 
-\item{...}{\link{dots} Extra arguments passed to or from other methods.}
+\item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
 \value{
 Invisibly returns a \verb{<multi_epidist>}. Called for side-effects.
