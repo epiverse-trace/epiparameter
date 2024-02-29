@@ -499,7 +499,7 @@ convert_params_nbinom <- function(...) {
   var <- dispersion * (1 - prob) / prob^2
   sd <- sqrt(var)
   cv <- sd / mean
-  skewness <- (1 + prob) / sqrt(prob * dispersion)
+  skewness <- (2 - prob) / sqrt((1 - prob) * dispersion)
   ex_kurtosis <- 6 / dispersion + prob^2 / (1 - prob) * dispersion
 
   # return list of metrics
