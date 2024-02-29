@@ -13,7 +13,7 @@ is_parameterized(x, ...)
 \arguments{
 \item{x}{An \verb{<epidist>} or list of \verb{<epidist>} objects.}
 
-\item{...}{\link{dots} not used, extra arguments supplied will cause a warning.}
+\item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
 \value{
 A single boolean \code{logical} for \verb{<epidist>} or vector of \code{logical}s

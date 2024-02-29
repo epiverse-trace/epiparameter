@@ -26,8 +26,8 @@
 #'
 #' @param distribution A `character` string specifying distribution to use.
 #' Default is `lnorm`; also takes `gamma` and `weibull`, `nbinom` and `geom`.
-#' @param ... `Numeric` named summary statistics used to convert to
-#' parameter(s). An example is the meanlog and sdlog parameters of the
+#' @param ... [dots] `Numeric` named summary statistics used to convert to
+#' parameter(s). An example is the `mean` and `sd` parameters of the
 #' lognormal (`lnorm`) distribution.
 #'
 #' @return A list of either one or two elements (depending on how many
@@ -80,8 +80,8 @@ convert_summary_stats_to_params <- function(distribution = c( # nolint
 #' and its parameters are `meanlog` and `sdlog`.
 #'
 #' @inheritParams convert_summary_stats_to_params
-#' @param ... `Numeric` named parameter(s) used to convert to summary
-#' statistics. An example is the meanlog and sdlog parameters of the
+#' @param ... [dots] `Numeric` named parameter(s) used to convert to summary
+#' statistics. An example is the `meanlog` and `sdlog` parameters of the
 #' lognormal (`lnorm`) distribution.
 #'
 #' @return A list of eight elements including: mean, median, mode,

@@ -7,8 +7,8 @@
 convert_summary_stats_lnorm(...)
 }
 \arguments{
-\item{...}{\code{Numeric} named summary statistics used to convert to
-parameter(s). An example is the meanlog and sdlog parameters of the
+\item{...}{\link{dots} \code{Numeric} named summary statistics used to convert to
+parameter(s). An example is the \code{mean} and \code{sd} parameters of the
 lognormal (\code{lnorm}) distribution.}
 }
 \value{

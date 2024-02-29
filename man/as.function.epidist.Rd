@@ -13,7 +13,7 @@
 convert \verb{<epidist>} object into. Default is \code{"density"}. Other options are
 \code{"cdf"}, \code{"generate"}, or \code{"quantile"}.}
 
-\item{...}{\link{dots} Extra arguments passed to or from other methods.}
+\item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
 \value{
 A \link{function} object.

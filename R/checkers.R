@@ -2,7 +2,7 @@
 #' and distribution parameters
 #'
 #' @param x An `<epidist>` or list of `<epidist>` objects.
-#' @param ... [dots] not used, extra arguments supplied will cause a warning.
+#' @param ... [dots] Extra arguments to be passed to the method.
 #'
 #' @return A single boolean `logical` for `<epidist>` or vector of `logical`s
 #' equal in length to the list of `<epidist>` objects input. If the `<epidist>`

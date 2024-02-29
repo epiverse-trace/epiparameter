@@ -7,8 +7,8 @@
 convert_params_geom(...)
 }
 \arguments{
-\item{...}{\code{Numeric} named parameter(s) used to convert to summary
-statistics. An example is the meanlog and sdlog parameters of the
+\item{...}{\link{dots} \code{Numeric} named parameter(s) used to convert to summary
+statistics. An example is the \code{meanlog} and \code{sdlog} parameters of the
 lognormal (\code{lnorm}) distribution.}
 }
 \value{
@@ -19,7 +19,8 @@ skewness, and excess kurtosis (\code{ex_kurtosis}).
 \description{
 Convert the probability (\code{prob}) of the geometric distribution
 to a number of summary statistics which can be calculated analytically given
-the geometric parameter.
+the geometric parameter. One exception is the median which is calculated
+using \code{\link[stats:Geometric]{stats::qgeom()}} as the analytical form is not always unique.
 }
 \details{
 This conversion function assumes that distribution represents the

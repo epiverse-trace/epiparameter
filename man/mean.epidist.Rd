@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
 
-\item{...}{\link{dots} Extra arguments passed to or from other methods.}
+\item{...}{\link{dots} Not used, extra arguments supplied will cause a warning.}
 }
 \value{
 A \code{numeric} mean of a distribution or \code{NA}.

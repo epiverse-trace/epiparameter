@@ -16,7 +16,7 @@ vb_epidist class}
 \item{vb}{Either NULL (default) or a character string of either "Intrinsic"
 or "Extrinsic" which is used internally for plotting the vb_epidist class}
 
-\item{...}{\link{dots} Extra arguments passed to or from other methods.}
+\item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
 \value{
 Invisibly returns an \verb{<epidist>}. Called for printing side-effects.

@@ -17,7 +17,7 @@ of the print method is printed. This is used internally for plotting the
 (\code{"Intrinsic"}) or extrinsic (\code{"Extrinsic"}) distribution for vector-borne
 diseases.}
 
-\item{...}{\link{dots} Extra arguments passed to or from other methods.}
+\item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
 \value{
 Invisibly returns an \verb{<epidist>}. Called for side-effects.

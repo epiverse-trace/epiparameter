@@ -7,8 +7,8 @@
 convert_params_weibull(...)
 }
 \arguments{
-\item{...}{\code{Numeric} named parameter(s) used to convert to summary
-statistics. An example is the meanlog and sdlog parameters of the
+\item{...}{\link{dots} \code{Numeric} named parameter(s) used to convert to summary
+statistics. An example is the \code{meanlog} and \code{sdlog} parameters of the
 lognormal (\code{lnorm}) distribution.}
 }
 \value{

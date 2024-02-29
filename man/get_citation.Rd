@@ -9,7 +9,7 @@ get_citation(x, ...)
 \arguments{
 \item{x}{an object used to select a method.}
 
-\item{...}{further arguments passed to or from other methods.}
+\item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
 \description{
 Extract the citation stored in an \R object.
