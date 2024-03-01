@@ -537,6 +537,7 @@ epidist_db <- function(disease = "all",
 #' @export
 print.multi_epidist <- function(x, ...) {
   if (length(x) <= 5) {
+    x <- unclass(x)
     NextMethod()
   } else {
     chkDots(...)
