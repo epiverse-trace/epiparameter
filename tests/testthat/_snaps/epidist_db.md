@@ -47,6 +47,4 @@
         mean: 0.940
         dispersion: 0.170
       
-      attr(,"class")
-      [1] "multi_epidist"
 
