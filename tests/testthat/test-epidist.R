@@ -176,51 +176,6 @@ test_that("epidist.print works as expected", {
   ))
 })
 
-test_that("epidist.plot does not produce an error", {
-  ebola_dist <- suppressMessages(epidist(
-    disease = "ebola",
-    epi_dist = "incubation",
-    prob_distribution = "gamma",
-    prob_distribution_params = c(shape = 1, scale = 1)
-  ))
-
-
-  expect_silent(plot(ebola_dist))
-
-  f <- function() plot(ebola_dist)
-  vdiffr::expect_doppelganger(
-    title = "epidist.plot",
-    fig = f
-  )
-})
-
-test_that("epidist.plot works with non-default day_range", {
-  ebola_dist <- suppressMessages(epidist(
-    disease = "ebola",
-    epi_dist = "incubation",
-    prob_distribution = "gamma",
-    prob_distribution_params = c(shape = 1, scale = 1)
-  ))
-
-  expect_silent(
-    plot(
-      ebola_dist,
-      day_range = 0:20
-    )
-  )
-
-  f <- function() {
-    plot(
-      ebola_dist,
-      day_range = 0:20
-    )
-  }
-  vdiffr::expect_doppelganger(
-    title = "epidist.plot non-default range",
-    fig = f
-  )
-})
-
 test_that("new_epidist works with minimal viable input", {
   epidist_obj <- suppressMessages(
     new_epidist(

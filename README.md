@@ -48,15 +48,15 @@ To load the library of epidemiological parameters into `R`:
 
 ``` r
 epidists <- epidist_db()
-#> Returning 118 results that match the criteria (95 are parameterised). 
+#> Returning 122 results that match the criteria (99 are parameterised). 
 #> Use subset to filter by entry variables or single_epidist to return a single entry. 
 #> To retrieve the short citation for each use the 'get_citation' function
 epidists
 #> List of <epidist> objects
-#>   Number of entries in library: 118
-#>   Number of studies in library: 45
+#>   Number of entries in library: 122
+#>   Number of studies in library: 47
 #>   Number of diseases: 23
-#>   Number of delay distributions: 108
+#>   Number of delay distributions: 112
 #>   Number of offspring distributions: 10
 ```
 
@@ -75,8 +75,8 @@ influenza_incubation <- epidist_db(
   epi_dist = "incubation period",
   single_epidist = TRUE
 )
-#> Using Virlogeux V, Li M, Tsang TK, Feng L, Fang VJ, Jiang H, Wu P, Zheng J,
-#> Lau EHY, Cao Y, Qin Y, Liao Q, Yu H, Cowling BJ (2015). "Estimating the
+#> Using Virlogeux V, Li M, Tsang T, Feng L, Fang V, Jiang H, Wu P, Zheng J, Lau
+#> E, Cao Y, Qin Y, Liao Q, Yu H, Cowling B (2015). "Estimating the
 #> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)
 #> Virus Infections." _American Journal of Epidemiology_.
 #> doi:10.1093/aje/kwv115 <https://doi.org/10.1093/aje/kwv115>.. 
@@ -85,8 +85,8 @@ influenza_incubation
 #> Disease: Influenza
 #> Pathogen: Influenza-A-H7N9
 #> Epi Distribution: incubation period
-#> Study: Virlogeux V, Li M, Tsang TK, Feng L, Fang VJ, Jiang H, Wu P, Zheng J,
-#> Lau EHY, Cao Y, Qin Y, Liao Q, Yu H, Cowling BJ (2015). "Estimating the
+#> Study: Virlogeux V, Li M, Tsang T, Feng L, Fang V, Jiang H, Wu P, Zheng J, Lau
+#> E, Cao Y, Qin Y, Liao Q, Yu H, Cowling B (2015). "Estimating the
 #> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)
 #> Virus Infections." _American Journal of Epidemiology_.
 #> doi:10.1093/aje/kwv115 <https://doi.org/10.1093/aje/kwv115>.
@@ -96,13 +96,21 @@ influenza_incubation
 #>   scale: 3.839
 ```
 
-The `<epidist>` object can be plotted.
+The `<epidist>` object can be plotted as a probability density.
 
 ``` r
 plot(influenza_incubation)
 ```
 
 <img src="man/figures/README-plot-epidist-1.png" width="75%" style="display: block; margin: auto;" />
+
+Alternatively as a cumulative distribution, with the day range modified.
+
+``` r
+plot(influenza_incubation, day_range = c(0, 15), cumulative = TRUE)
+```
+
+<img src="man/figures/README-plot-cumulative-epidist-1.png" width="75%" style="display: block; margin: auto;" />
 
 ### Parameter conversion and extraction
 

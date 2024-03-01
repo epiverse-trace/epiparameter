@@ -185,7 +185,7 @@ plot(ebola_incubation)
 The default plotting range for time since infection is from zero to ten days. This can be altered by specifying the `day_range` argument when plotting an `<epidist>` object.
 
 ```{r plot-epidist-dayrange, fig.width=7}
-plot(ebola_incubation, day_range = 1:25)
+plot(ebola_incubation, day_range = c(1, 25))
 ```
 
 This plotting function can be useful for visually comparing epidemiological distributions from different publications on the same disease. In addition, plotting the distribution after manually creating an `<epidist>` help to check that the parameters are sensible and produce the expected distribution. 
