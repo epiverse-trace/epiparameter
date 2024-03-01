@@ -279,7 +279,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="co">#&gt; [1] 0.3586318</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $ex_kurtosis</span></span>
-<span><span class="co">#&gt; [1] 122.3898</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] -0.1432169</span></span></code></pre></div>
 </details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span>distribution <span class="op">=</span> <span class="st">"weibull"</span>, mean <span class="op">=</span> <span class="fl">2</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Numerical approximation used, results may be unreliable.</span></span>
@@ -422,7 +422,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <span><span class="co">#&gt; Stochastic numerical optimisation used. </span></span>
 <span><span class="co">#&gt; Rerun function multiple times to check global optimum is found</span></span>
 <span><span class="co">#&gt;  meanlog    sdlog </span></span>
-<span><span class="co">#&gt; 2.302585 4.922181</span></span></code></pre></div>
+<span><span class="co">#&gt; 2.302582 4.436760</span></span></code></pre></div>
 </details><p>In the above section it was mentioned that <code><a href="../reference/extract_param.html">extract_param()</a></code> has an internal mechanism to check that the parameters have consistently converged to the same estimates over several optimisation iterations. The tolerance of this convergence and number of times the optimisation can be repeated is specified in the <code>control</code> argument of <code><a href="../reference/extract_param.html">extract_param()</a></code>. This is set by default (<code>tolerance = 1e-5</code> and <code>max_iter = 1000</code>), and thus does not need to be specified by the user (as shown in the above examples). In the case that the maximum number of optimisation iterations is reached, the calculation terminates returning the most recent optimisation result to the user along with a warning message.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># set seed to ensure warning is produced</span></span>
@@ -447,7 +447,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <h3 id="use-cases">Use cases<a class="anchor" aria-label="anchor" href="#use-cases"></a>
 </h3>
 <p>Here we present examples of published epidemiological parameters and distributions where the functions outlined above can be applied to get the parameters of the distribution.</p>
-<p>The 75th percentiles reported for a lognormal distribution from <span class="citation">Nolen et al. (<a href="#ref-nolenExtendedHumantoHumanTransmission2016" role="doc-biblioref">2016</a>)</span> for the incubation period for mpox (monkeypox).</p>
+<p>The 75th percentiles reported for a lognormal distribution from <span class="citation">Nolen et al. (<a href="#ref-nolenExtendedHumantoHumanTransmission2016">2016</a>)</span> for the incubation period for mpox (monkeypox).</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mpox lnorm from 75th percentiles in WHO data</span></span>
 <span><span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
@@ -460,7 +460,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <span><span class="co">#&gt; Rerun function multiple times to check global optimum is found</span></span>
 <span><span class="co">#&gt;   meanlog     sdlog </span></span>
 <span><span class="co">#&gt; 2.1783544 0.3360684</span></span></code></pre></div>
-</details><p>The median and range are provided by <span class="citation">Thornhill et al. (<a href="#ref-thornhillMonkeypoxVirusInfection2022" role="doc-biblioref">2022</a>)</span> for mpox, and we want to calculate the parameters of a lognormal distribution.</p>
+</details><p>The median and range are provided by <span class="citation">Thornhill et al. (<a href="#ref-thornhillMonkeypoxVirusInfection2022">2022</a>)</span> for mpox, and we want to calculate the parameters of a lognormal distribution.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mpox lnorm from median and range in 2022:</span></span>
 <span><span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
@@ -482,7 +482,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <p>If the distribution is a delay distribution (i.e. serial interval or incubation period) it can often be sensible to assume a right-skewed distribution such as: gamma, lognormal or Weibull distributions. These are also the most commonly fit distributions in epidemiological analysis of delay distributions.</p>
 <p>However, one should take care when assuming a distribution as this may drastically influence the interpretation and application of the epidemiological parameters.</p>
 </div>
-<p><span class="citation">Donnelly et al. (<a href="#ref-donnellyEpidemiologicalDeterminantsSpread2003" role="doc-biblioref">2003</a>)</span> provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by using the general conversion function (<code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>).</p>
+<p><span class="citation">Donnelly et al. (<a href="#ref-donnellyEpidemiologicalDeterminantsSpread2003">2003</a>)</span> provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by using the general conversion function (<code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>).</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># SARS gamma mean and var to shape and scale</span></span>
 <span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span>distribution <span class="op">=</span> <span class="st">"gamma"</span>, mean <span class="op">=</span> <span class="fl">6.37</span>, var <span class="op">=</span> <span class="fl">16.7</span><span class="op">)</span></span>
@@ -496,7 +496,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <div class="section level2 unnumbered">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-donnellyEpidemiologicalDeterminantsSpread2003" class="csl-entry">
 Donnelly, Christl A, Azra C Ghani, Gabriel M Leung, Anthony J Hedley, Christophe Fraser, Steven Riley, Laith J Abu-Raddad, et al. 2003. <span>“Epidemiological Determinants of Spread of Causal Agent of Severe Acute Respiratory Syndrome in Hong Kong.”</span> <em>The Lancet</em> 361 (9371): 1761–66. <a href="https://doi.org/10.1016/S0140-6736(03)13410-1" class="external-link">https://doi.org/10.1016/S0140-6736(03)13410-1</a>.
 </div>
