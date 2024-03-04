@@ -7,6 +7,7 @@
 \usage{
 epidist_db(
   disease = "all",
+  pathogen = "all",
   epi_dist = "all",
   author = NULL,
   subset = NULL,
@@ -15,6 +16,8 @@ epidist_db(
 }
 \arguments{
 \item{disease}{A \code{character} string specifying the disease.}
+
+\item{pathogen}{A \code{character} string specifying the pathogen.}
 
 \item{epi_dist}{A \code{character} string specifying the epidemiological
 distribution. See details for full list of epidemiological distributions.}
