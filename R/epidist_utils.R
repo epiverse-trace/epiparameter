@@ -766,27 +766,21 @@ clean_epidist_params.default <- function(prob_dist_params) {
   prob_dist_params
 }
 
-#' Standardise the names of epidemiological distributions
+#' Standardise the variables input by users
 #'
-#' @param x A `character` string with the name of the distribution.
+#' @description
+#' Checks a user has supplied a `character` string and converts
+#' to \pkg{epiparameter} standards: lower-case and whitespace instead of
+#' dashes or underscores.
 #'
-#' @return A `character` vector of equal length to the input.
-#' @export
+#' Examples of strings needing to be cleaned are: disease and pathogen names,
+#' and epidemiological distributions.
 #'
-#' @examples
-#' clean_epi_dist("Incubation_period")
-clean_epi_dist <- function(x) {
-  checkmate::assert_character(x)
-  gsub(pattern = "_|-", replacement = " ", x = trimws(tolower(x)))
-}
-
-#' Standardise the names of diseases
-#'
-#' @param x A `character` string specifying a disease.
+#' @param x A `character` string.
 #'
 #' @return A `character` vector of equal length to the input.
-#' @export
-clean_disease <- function(x) {
+#' @keywords internal
+.clean_string <- function(x) {
   checkmate::assert_character(x)
   gsub(pattern = "_|-", replacement = " ", x = trimws(tolower(x)))
 }

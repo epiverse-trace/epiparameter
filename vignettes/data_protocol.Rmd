@@ -66,7 +66,7 @@ The distributions currently included in the literature search for each pathogen/
 
 ```{r, show-epidists, echo=FALSE}
 db <- epidist_db()
-epi_dist <- clean_epi_dist(unique(
+epi_dist <- epiparameter:::.clean_string(unique(
   vapply(db, "[[", FUN.VALUE = character(1), "epi_dist")
 ))
 knitr::kable(
