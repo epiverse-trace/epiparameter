@@ -38,6 +38,7 @@
 #' * "onset to ventilation"
 #'
 #' @param disease A `character` string specifying the disease.
+#' @param pathogen A `character` string specifying the pathogen.
 #' @param epi_dist A `character` string specifying the epidemiological
 #' distribution. See details for full list of epidemiological distributions.
 #' @param author A `character` string specifying the author of the study
@@ -107,12 +108,14 @@
 #'   single_epidist = TRUE
 #' )
 epidist_db <- function(disease = "all",
+                       pathogen = "all",
                        epi_dist = "all",
                        author = NULL,
                        subset = NULL,
                        single_epidist = FALSE) {
   # check input
   checkmate::assert_string(disease)
+  checkmate::assert_string(pathogen)
   checkmate::assert_string(epi_dist)
   checkmate::assert_logical(single_epidist, len = 1)
 
@@ -132,6 +135,7 @@ epidist_db <- function(disease = "all",
   multi_epidist <- .filter_epidist_db(
     multi_epidist = multi_epidist,
     disease = disease,
+    pathogen = pathogen,
     epi_dist = epi_dist
   )
 
@@ -264,43 +268,45 @@ epidist_db <- function(disease = "all",
 #' @return A list of `<epidist>` objects.
 #' @keywords internal
 #' @noRd
-.filter_epidist_db <- function(multi_epidist, disease, epi_dist) {
+.filter_epidist_db <- function(multi_epidist, disease, pathogen, epi_dist) {
   # copy of user input
   disease_ <- disease
+  pathogen_ <- pathogen
   epi_dist_ <- epi_dist
 
   # clean input strings
-  disease <- clean_disease(disease)
-  epi_dist <- clean_epi_dist(epi_dist)
+  disease <- .clean_string(disease)
+  pathogen <- .clean_string(pathogen)
+  epi_dist <- .clean_string(epi_dist)
 
   # get valid options from db
   disease_db <- vapply(
     multi_epidist, function(x) x$disease$disease,
     FUN.VALUE = character(1)
   )
+  pathogen_db <- vapply(
+    multi_epidist, function(x) x$disease$pathogen,
+    FUN.VALUE = character(1)
+  )
   epi_dist_db <- vapply(
     multi_epidist, function(x) x$epi_dist,
     FUN.VALUE = character(1)
   )
-  disease_db <- c("all", clean_disease(unique(disease_db)))
-  epi_dist_db <- c("all", clean_epi_dist(unique(epi_dist_db)))
+  disease_db <- c("all", .clean_string(unique(disease_db)))
+  pathogen_db <- c("all", .clean_string(unique(pathogen_db)))
+  epi_dist_db <- c("all", .clean_string(unique(epi_dist_db)))
 
   # partial matching and custom error msg
   tryCatch(
-    error = function(cnd) {
-      disease_str <- ifelse(
-        test = disease == "all", yes = "", no = paste(" for", disease_)
-      )
-      epi_dist_str <- ifelse(test = epi_dist == "all", yes = "", no = epi_dist_)
-      stop(
-        epi_dist_str, " distribution not available", disease_str,
-        call. = FALSE
-      )
-    },
     {
       disease <- match.arg(
         arg = disease,
         choices = disease_db,
+        several.ok = FALSE
+      )
+      pathogen <- match.arg(
+        arg = pathogen,
+        choices = pathogen_db,
         several.ok = FALSE
       )
       epi_dist <- match.arg(
@@ -308,13 +314,34 @@ epidist_db <- function(disease = "all",
         choices = epi_dist_db,
         several.ok = FALSE
       )
+    },
+    error = function(cnd) {
+      disease_str <- ifelse(
+        test = disease == "all", yes = "", no = paste(" for", disease_)
+      )
+      pathogen_str <- ifelse(
+        test = pathogen == "all", yes = "", no = paste(" for", pathogen_)
+      )
+      epi_dist_str <- ifelse(test = epi_dist == "all", yes = "", no = epi_dist_)
+      stop(
+        epi_dist_str, " distribution not available", disease_str, pathogen_str,
+        call. = FALSE
+      )
     }
   )
 
   # filter based on disease
   if (disease != "all") {
     multi_epidist <- Filter(
-      f = function(x) clean_disease(x$disease$disease) == disease,
+      f = function(x) .clean_string(x$disease$disease) == disease,
+      x = multi_epidist
+    )
+  }
+
+  # filter based on pathogen
+  if (pathogen != "all") {
+    multi_epidist <- Filter(
+      f = function(x) .clean_string(x$disease$pathogen) == pathogen,
       x = multi_epidist
     )
   }
@@ -322,7 +349,7 @@ epidist_db <- function(disease = "all",
   # filter by epi dist
   if (epi_dist != "all") {
     multi_epidist <- Filter(
-      f = function(x) clean_epi_dist(x$epi_dist) == epi_dist,
+      f = function(x) .clean_string(x$epi_dist) == epi_dist,
       x = multi_epidist
     )
   }
