@@ -106,6 +106,19 @@ test_that("epidist_db works as expected with subsetting by prod_dist", {
   expect_length(edist, 9)
 })
 
+test_that("epidist_db works as expected with subsetting by pathogen", {
+  # suppress message about citation
+  edist <- suppressMessages(
+    epidist_db(
+      pathogen = "SARS-CoV-2",
+      epi_dist = "incubation period"
+    )
+  )
+
+  expect_s3_class(edist, class = "multi_epidist")
+  expect_length(edist, 15)
+})
+
 test_that("epidist_db fails as expected when author not recognised", {
   expect_error(
     epidist_db(
