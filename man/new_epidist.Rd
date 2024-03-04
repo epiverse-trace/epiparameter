@@ -5,7 +5,8 @@
 \title{Constructor for \verb{<epidist>} class}
 \usage{
 new_epidist(
-  disease = list(),
+  disease = character(),
+  pathogen = character(),
   epi_dist = character(),
   prob_dist = list(),
   prob_dist_params = numeric(),
@@ -21,9 +22,10 @@ new_epidist(
 )
 }
 \arguments{
-\item{disease}{A list containing the \verb{$disease} a \code{character} string of the
-infectious disease specified in the study, and the \verb{$pathogen} a \code{character}
-string. If the pathogen is unknown it can be given as \code{NULL}.}
+\item{disease}{A \code{character} string with name of the infectious disease.}
+
+\item{pathogen}{A \code{character} string with the name of the causative agent of
+disease, or \code{NA} if not known.}
 
 \item{epi_dist}{A \code{character} string with the name of the
 epidemiological distribution type.}
@@ -98,7 +100,8 @@ probability distribution (\code{prob_dist}) and its parameters
 }
 \examples{
 epiparameter:::new_epidist(
-  disease = list(disease = "ebola", pathogen = "ebola_virus"),
+  disease = "ebola",
+  pathogen = "ebola_virus",
   epi_dist = "incubation_period",
   prob_dist = "gamma",
   prob_dist_params = c(shape = 1, scale = 1),

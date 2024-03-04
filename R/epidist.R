@@ -9,9 +9,6 @@
 #' `{distributional}` when `discretise = FALSE`, or a `distcrete` object from
 #' `{distcrete}` when `discretise = TRUE`.
 #'
-#' @param disease A list containing the `$disease` a `character` string of the
-#' infectious disease specified in the study, and the `$pathogen` a `character`
-#' string. If the pathogen is unknown it can be given as `NULL`.
 #' @param prob_dist A character string specifying the probability
 #' distribution. This should match the R naming convention of probability
 #' distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
@@ -25,7 +22,8 @@
 #'
 #' @examples
 #' epiparameter:::new_epidist(
-#'   disease = list(disease = "ebola", pathogen = "ebola_virus"),
+#'   disease = "ebola",
+#'   pathogen = "ebola_virus",
 #'   epi_dist = "incubation_period",
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
@@ -39,7 +37,8 @@
 #'   truncation = NA,
 #'   notes = "No notes"
 #' )
-new_epidist <- function(disease = list(),
+new_epidist <- function(disease = character(),
+                        pathogen = character(),
                         epi_dist = character(),
                         prob_dist = list(),
                         prob_dist_params = numeric(),
@@ -113,6 +112,7 @@ new_epidist <- function(disease = list(),
   structure(
     list(
       disease = disease,
+      pathogen = pathogen,
       epi_dist = epi_dist,
       prob_dist = prob_dist,
       uncertainty = uncertainty,
@@ -158,7 +158,7 @@ new_epidist <- function(disease = list(),
 #'
 #' @param disease A `character` string with name of the infectious disease.
 #' @param pathogen A `character` string with the name of the causative agent of
-#' disease, or NULL if not known.
+#' disease, or `NA` if not known.
 #' @param epi_dist A `character` string with the name of the
 #' epidemiological distribution type.
 #' @param prob_distribution A `character` string specifying the probability
@@ -310,10 +310,8 @@ epidist <- function(disease,
 
   # call epidist constructor
   epidist <- new_epidist(
-    disease = list(
-      disease = disease,
-      pathogen = pathogen
-    ),
+    disease = disease,
+    pathogen = pathogen,
     epi_dist = epi_dist,
     prob_dist = prob_distribution,
     prob_dist_params = prob_distribution_params,
@@ -357,7 +355,7 @@ validate_epidist <- function(epidist) {
       ) %in%
         attributes(epidist)$names,
     "epidist must contain a disease (single character string)" =
-    checkmate::test_string(epidist$disease$disease),
+    checkmate::test_string(epidist$disease),
     "epidist must contain an epidemiological distribution" =
       checkmate::test_string(epidist$epi_dist),
     "epidist must contain a <distribution> or <distcrete> distribution or NA" =
@@ -429,8 +427,8 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
   if (header) {
     writeLines(
       c(
-        sprintf("Disease: %s", x$disease$disease),
-        sprintf("Pathogen: %s", x$disease$pathogen),
+        sprintf("Disease: %s", x$disease),
+        sprintf("Pathogen: %s", x$pathogen),
         sprintf("Epi Distribution: %s", .clean_string(x$epi_dist)),
         sprintf("Study: %s", format(x$citation))
       )
