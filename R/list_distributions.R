@@ -28,6 +28,7 @@
 #' )
 list_distributions <- function(multi_epidist,
                                disease = "all",
+                               pathogen = "all",
                                epi_dist = "all") {
   # wrap <epidist> in list for apply functions
   if (is_epidist(multi_epidist)) {
@@ -44,6 +45,7 @@ list_distributions <- function(multi_epidist,
   multi_epidist <- .filter_epidist_db(
     multi_epidist = multi_epidist,
     disease = disease,
+    pathogen = pathogen,
     epi_dist = epi_dist
   )
 

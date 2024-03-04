@@ -4,13 +4,21 @@
 \alias{list_distributions}
 \title{List epidemiological distributions stored in the epiparameter library}
 \usage{
-list_distributions(multi_epidist, disease = "all", epi_dist = "all")
+list_distributions(
+  multi_epidist,
+  disease = "all",
+  pathogen = "all",
+  epi_dist = "all"
+)
 }
 \arguments{
 \item{multi_epidist}{Either an \verb{<epidist>} object or a list of \verb{<epidist>}
 objects.}
 
 \item{disease}{A \code{character} string with name of the infectious disease.}
+
+\item{pathogen}{A \code{character} string with the name of the causative agent of
+disease, or NULL if not known.}
 
 \item{epi_dist}{A \code{character} string with the name of the
 epidemiological distribution type.}
