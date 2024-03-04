@@ -49,10 +49,8 @@ The `{epiparameter}` package spans a range of infectious diseases, including sev
 
 ```{r show-diseases, echo=FALSE}
 db <- epidist_db()
-x <- lapply(db, "[[", "disease")
-x <- unique(lapply(x, Reduce, f = c))
-disease <- vapply(x, "[[", FUN.VALUE = character(1), 1)
-pathogen <- vapply(x, "[[", FUN.VALUE = character(1), 2)
+disease <- vapply(db, "[[", FUN.VALUE = character(1), "disease")
+pathogen <- vapply(db, "[[", FUN.VALUE = character(1), "pathogen")
 knitr::kable(
   data.frame(
     Disease = disease,
