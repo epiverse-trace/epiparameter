@@ -73,12 +73,6 @@ reference:
     - is_vb_epidist
     - is_parameterised
 
-  - title: Cleaning
-    desc: Standardise name of disease or epidist object
-    contents:
-    - clean_disease
-    - clean_epi_dist
-
   - title: Utility function
     contents:
     - calc_disc_dist_quantile
