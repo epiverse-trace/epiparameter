@@ -54,6 +54,20 @@ test_that("list_distributions works for COVID-19 db", {
   expect_snapshot(incub_tbl)
 })
 
+test_that("list_distributions works for SARS-CoV-2 db", {
+  incub_tbl <- list_distributions(
+    multi_epidist = edist,
+    pathogen = "SARS-CoV-2"
+  )
+  expect_s3_class(incub_tbl, "data.frame")
+  expect_identical(dim(incub_tbl), c(27L, 5L))
+  expect_named(
+    incub_tbl,
+    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+  )
+  expect_snapshot(incub_tbl)
+})
+
 test_that("list_distributions works for disease & epi_dist subset with db", {
   incub_tbl <- list_distributions(
     multi_epidist = edist,

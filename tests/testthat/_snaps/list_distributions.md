@@ -389,6 +389,40 @@
       26 COVID-19        incubation period             lnorm Stephen .... 2020
       27 COVID-19        incubation period             lnorm Stephen .... 2020
 
+# list_distributions works for SARS-CoV-2 db
+
+    Code
+      incub_tbl
+    Output
+          disease         epi_distribution prob_distribution       author year
+      1  COVID-19        incubation period              <NA> Ke Men, .... 2020
+      2  COVID-19        incubation period              <NA> Balram R.... 2022
+      3  COVID-19        incubation period              <NA> Muluneh .... 2021
+      4  COVID-19          serial interval              <NA> Muluneh .... 2021
+      5  COVID-19          serial interval             lnorm Hiroshi .... 2020
+      6  COVID-19          serial interval           weibull Hiroshi .... 2020
+      7  COVID-19        incubation period           weibull Lin Yang.... 2020
+      8  COVID-19          serial interval              norm Lin Yang.... 2020
+      9  COVID-19        incubation period              <NA> Christel.... 2021
+      10 COVID-19        incubation period           weibull Long V. .... 2020
+      11 COVID-19        incubation period             lnorm Conor Mc.... 2020
+      12 COVID-19        incubation period             lnorm Conor Mc.... 2020
+      13 COVID-19        incubation period             lnorm Natalie .... 2020
+      14 COVID-19        incubation period             lnorm Natalie .... 2020
+      15 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
+      16 COVID-19 onset to hospitalisation             gamma Natalie .... 2020
+      17 COVID-19           onset to death             lnorm Natalie .... 2020
+      18 COVID-19 hospitalisation to death           weibull Natalie .... 2020
+      19 COVID-19        incubation period             lnorm Natalie .... 2020
+      20 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
+      21 COVID-19 onset to hospitalisation             lnorm Natalie .... 2020
+      22 COVID-19           onset to death             lnorm Natalie .... 2020
+      23 COVID-19 hospitalisation to death             lnorm Natalie .... 2020
+      24 COVID-19        incubation period             lnorm Stephen .... 2020
+      25 COVID-19        incubation period             lnorm Stephen .... 2020
+      26 COVID-19        incubation period             lnorm Stephen .... 2020
+      27 COVID-19        incubation period             lnorm Stephen .... 2020
+
 # list_distributions works for disease & epi_dist subset with db
 
     Code
