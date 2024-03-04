@@ -51,7 +51,7 @@ list_distributions <- function(multi_epidist,
 
   disease <- vapply(
     multi_epidist,
-    function(x) x$disease$disease,
+    function(x) x$disease,
     FUN.VALUE = character(1)
   )
   epi_dist <- vapply(

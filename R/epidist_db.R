@@ -281,11 +281,11 @@ epidist_db <- function(disease = "all",
 
   # get valid options from db
   disease_db <- vapply(
-    multi_epidist, function(x) x$disease$disease,
+    multi_epidist, function(x) x$disease,
     FUN.VALUE = character(1)
   )
   pathogen_db <- vapply(
-    multi_epidist, function(x) x$disease$pathogen,
+    multi_epidist, function(x) x$pathogen,
     FUN.VALUE = character(1)
   )
   epi_dist_db <- vapply(
@@ -333,7 +333,7 @@ epidist_db <- function(disease = "all",
   # filter based on disease
   if (disease != "all") {
     multi_epidist <- Filter(
-      f = function(x) .clean_string(x$disease$disease) == disease,
+      f = function(x) .clean_string(x$disease) == disease,
       x = multi_epidist
     )
   }
@@ -341,7 +341,7 @@ epidist_db <- function(disease = "all",
   # filter based on pathogen
   if (pathogen != "all") {
     multi_epidist <- Filter(
-      f = function(x) .clean_string(x$disease$pathogen) == pathogen,
+      f = function(x) .clean_string(x$pathogen) == pathogen,
       x = multi_epidist
     )
   }
@@ -584,7 +584,7 @@ print.multi_epidist <- function(x, ...) {
         sprintf(
           "  Number of diseases: %s",
           length(unique(
-            vapply(x, function(y) y$disease$disease, FUN.VALUE = character(1))
+            vapply(x, function(y) y$disease, FUN.VALUE = character(1))
           ))
         ),
         sprintf(

@@ -104,8 +104,8 @@ validate_vb_epidist <- function(vb_epidist) {
   stopifnot(
     "diseases in intrinsic and extrinsic distribution are different" =
       identical(
-        vb_epidist$intrinsic$disease$disease,
-        vb_epidist$extrinsic$disease$disease
+        vb_epidist$intrinsic$disease,
+        vb_epidist$extrinsic$disease
       ),
     "epi distribution in intrinsic and extrinsic distributions are different" =
       identical(

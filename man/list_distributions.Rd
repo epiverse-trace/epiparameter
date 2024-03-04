@@ -18,7 +18,7 @@ objects.}
 \item{disease}{A \code{character} string with name of the infectious disease.}
 
 \item{pathogen}{A \code{character} string with the name of the causative agent of
-disease, or NULL if not known.}
+disease, or \code{NA} if not known.}
 
 \item{epi_dist}{A \code{character} string with the name of the
 epidemiological distribution type.}
