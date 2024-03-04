@@ -8,7 +8,7 @@ test_that("epidist works with minimal viable input", {
   ))
 
   expect_s3_class(ebola_dist, class = "epidist")
-  expect_length(ebola_dist, 9)
+  expect_length(ebola_dist, 10)
 })
 
 test_that("epidist works with all arguments set", {
@@ -75,7 +75,7 @@ test_that("epidist works with all arguments set", {
     )
   )
   expect_s3_class(mers_dist, class = "epidist")
-  expect_length(mers_dist, 9)
+  expect_length(mers_dist, 10)
 })
 
 test_that("epidist works with default helper functions", {
@@ -97,7 +97,7 @@ test_that("epidist works with default helper functions", {
   ))
 
   expect_s3_class(sars_dist, class = "epidist")
-  expect_length(sars_dist, 9)
+  expect_length(sars_dist, 10)
 })
 
 test_that("epidist fails as expected", {
@@ -224,10 +224,8 @@ test_that("epidist.plot works with non-default day_range", {
 test_that("new_epidist works with minimal viable input", {
   epidist_obj <- suppressMessages(
     new_epidist(
-      disease = list(
-        disease = "ebola",
-        pathogen = "ebola_virus"
-      ),
+      disease = "ebola",
+      pathogen = "ebola_virus",
       epi_dist = "incubation",
       prob_dist = "gamma",
       prob_dist_params = c(shape = 1, scale = 1),
@@ -256,17 +254,15 @@ test_that("new_epidist works with minimal viable input", {
   )
 
   expect_s3_class(epidist_obj, class = "epidist")
-  expect_length(epidist_obj, 9)
+  expect_length(epidist_obj, 10)
   expect_s3_class(validate_epidist(epidist_obj), class = "epidist")
 })
 
 test_that("validate_epidist passes when expected", {
   epidist_obj <- suppressMessages(
     new_epidist(
-      disease = list(
-        disease = "ebola",
-        pathogen = "ebola_virus"
-      ),
+      disease = "ebola",
+      pathogen = "ebola_virus",
       epi_dist = "incubation",
       prob_dist = "gamma",
       prob_dist_params = c(shape = 1, scale = 1),
@@ -300,10 +296,8 @@ test_that("validate_epidist passes when expected", {
 
 test_that("validate_epidist catches class faults when expected", {
   epidist_obj <- new_epidist(
-    disease = list(
-      disease = "ebola",
-      pathogen = "ebola_virus"
-    ),
+    disease = "ebola",
+    pathogen = "ebola_virus",
     epi_dist = "incubation",
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1),
@@ -332,10 +326,8 @@ test_that("validate_epidist catches class faults when expected", {
   )
 
   epidist_obj <- new_epidist(
-    disease = list(
-      disease = "ebola",
-      pathogen = "ebola_virus"
-    ),
+    disease = "ebola",
+    pathogen = "ebola_virus",
     epi_dist = "incubation",
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1),
@@ -356,7 +348,7 @@ test_that("validate_epidist catches class faults when expected", {
     truncation = NA
   )
 
-  epidist_obj$disease$disease <- NULL
+  epidist_obj$disease <- factor("disease")
 
   expect_error(
     validate_epidist(epidist = epidist_obj),
@@ -364,10 +356,8 @@ test_that("validate_epidist catches class faults when expected", {
   )
 
   epidist_obj <- new_epidist(
-    disease = list(
-      disease = "ebola",
-      pathogen = "ebola_virus"
-    ),
+    disease = "ebola",
+    pathogen = "ebola_virus",
     epi_dist = "incubation",
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1),

@@ -5,7 +5,7 @@ test_that("epidist_db works as expected", {
   )
 
   expect_s3_class(edist, class = "epidist")
-  expect_length(edist, 9)
+  expect_length(edist, 10)
 })
 
 test_that("epidist_db works as expected with author specified", {
@@ -19,7 +19,7 @@ test_that("epidist_db works as expected with author specified", {
   )
 
   expect_s3_class(edist, class = "epidist")
-  expect_length(edist, 9)
+  expect_length(edist, 10)
 })
 
 test_that("epidist_db works as expected with subsetting", {
@@ -61,7 +61,7 @@ test_that("epidist_db works as expected with single_epidist as TRUE", {
   )
 
   expect_s3_class(edist, class = "epidist")
-  expect_length(edist, 9)
+  expect_length(edist, 10)
 })
 
 test_that("epidist_db works as expected with subsetting and single_epidist", {
@@ -75,7 +75,7 @@ test_that("epidist_db works as expected with subsetting and single_epidist", {
   )
 
   expect_s3_class(edist, class = "epidist")
-  expect_length(edist, 9)
+  expect_length(edist, 10)
 })
 
 test_that("epidist_db works as expected with subsetting and author", {
@@ -103,7 +103,7 @@ test_that("epidist_db works as expected with subsetting by prod_dist", {
   )
 
   expect_s3_class(edist, class = "epidist")
-  expect_length(edist, 9)
+  expect_length(edist, 10)
 })
 
 test_that("epidist_db works as expected with subsetting by pathogen", {
