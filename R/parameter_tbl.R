@@ -1,4 +1,4 @@
-#' List epidemiological distributions stored in the epiparameter library
+#' Provide epidemiological distributions in a tabular format
 #'
 #' @description This function subsets the epidemiological parameter library to
 #' return only the chosen epidemiological distribution. The results are
@@ -6,7 +6,7 @@
 #' distribution, probability distribution, author of the study, and the year
 #' of publication.
 #'
-#' @details The `<data.frame>` returned by [list_distributions()] contains some
+#' @details The `<data.frame>` returned by [parameter_tbl()] contains some
 #' vector columns and some list columns. For example, the `author` column is a
 #' list as each paper can contain multiple authors.
 #'
@@ -18,18 +18,18 @@
 #' @export
 #' @examples
 #' epidist_list <- epidist_db(disease = "COVID-19")
-#' list_distributions(multi_epidist = epidist_list)
+#' parameter_tbl(multi_epidist = epidist_list)
 #'
 #' # example filtering an existing list to incubation periods
 #' epidist_list <- epidist_db(disease = "COVID-19")
-#' list_distributions(
+#' parameter_tbl(
 #'   multi_epidist = epidist_list,
 #'   epi_dist = "incubation period"
 #' )
-list_distributions <- function(multi_epidist,
-                               disease = "all",
-                               pathogen = "all",
-                               epi_dist = "all") {
+parameter_tbl <- function(multi_epidist,
+                          disease = "all",
+                          pathogen = "all",
+                          epi_dist = "all") {
   # wrap <epidist> in list for apply functions
   if (is_epidist(multi_epidist)) {
     multi_epidist <- list(multi_epidist)

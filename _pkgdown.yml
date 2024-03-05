@@ -52,9 +52,9 @@ reference:
     - as_epidist.data.frame
 
   - title: Explore epiparameters
-    desc: List epi parameters as table
+    desc: Table of epi parameters
     contents:
-    - list_distributions
+    - parameter_tbl
 
   - title: Distribution functions
     desc: Functions for operating on `<epidist>` and `<vb_epidist>` distributions
