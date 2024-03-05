@@ -4,10 +4,11 @@ edist <- suppressMessages(epidist_db())
 test_that("parameter_tbl works as expected supplied with db", {
   dist_tbl <- parameter_tbl(multi_epidist = edist)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(122L, 5L))
+  expect_identical(dim(dist_tbl), c(122L, 6L))
   expect_named(
     dist_tbl,
-    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+    c("disease", "epi_distribution", "prob_distribution",
+      "author", "year", "sample_size")
   )
   expect_snapshot(dist_tbl)
 })
@@ -18,10 +19,11 @@ test_that("parameter_tbl works for incubation period with db", {
     epi_dist = "incubation period"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(73L, 5L))
+  expect_identical(dim(incub_tbl), c(73L, 6L))
   expect_named(
     incub_tbl,
-    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+    c("disease", "epi_distribution", "prob_distribution",
+      "author", "year", "sample_size")
   )
   expect_snapshot(incub_tbl)
 })
@@ -32,10 +34,11 @@ test_that("parameter_tbl works for different distribution with db", {
     epi_dist = "serial interval"
   )
   expect_s3_class(serial_tbl, "data.frame")
-  expect_identical(dim(serial_tbl), c(18L, 5L))
+  expect_identical(dim(serial_tbl), c(18L, 6L))
   expect_named(
     serial_tbl,
-    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+    c("disease", "epi_distribution", "prob_distribution",
+      "author", "year", "sample_size")
   )
   expect_snapshot(serial_tbl)
 })
@@ -46,10 +49,11 @@ test_that("parameter_tbl works for COVID-19 db", {
     disease = "COVID-19"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(27L, 5L))
+  expect_identical(dim(incub_tbl), c(27L, 6L))
   expect_named(
     incub_tbl,
-    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+    c("disease", "epi_distribution", "prob_distribution",
+      "author", "year", "sample_size")
   )
   expect_snapshot(incub_tbl)
 })
@@ -60,10 +64,11 @@ test_that("parameter_tbl works for SARS-CoV-2 db", {
     pathogen = "SARS-CoV-2"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(27L, 5L))
+  expect_identical(dim(incub_tbl), c(27L, 6L))
   expect_named(
     incub_tbl,
-    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+    c("disease", "epi_distribution", "prob_distribution",
+      "author", "year", "sample_size")
   )
   expect_snapshot(incub_tbl)
 })
@@ -75,10 +80,11 @@ test_that("parameter_tbl works for disease & epi_dist subset with db", {
     epi_dist = "incubation period"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(15L, 5L))
+  expect_identical(dim(incub_tbl), c(15L, 6L))
   expect_named(
     incub_tbl,
-    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+    c("disease", "epi_distribution", "prob_distribution",
+      "author", "year", "sample_size")
   )
   expect_snapshot(incub_tbl)
 })
@@ -87,10 +93,11 @@ test_that("parameter_tbl works when supplied a subset db", {
   edist <- suppressMessages(epidist_db(disease = "COVID-19"))
   covid_tbl <- parameter_tbl(multi_epidist = edist, disease = "COVID-19")
   expect_s3_class(covid_tbl, "data.frame")
-  expect_identical(dim(covid_tbl), c(27L, 5L))
+  expect_identical(dim(covid_tbl), c(27L, 6L))
   expect_named(
     covid_tbl,
-    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+    c("disease", "epi_distribution", "prob_distribution",
+      "author", "year", "sample_size")
   )
   expect_snapshot(covid_tbl)
 })
@@ -99,10 +106,11 @@ test_that("parameter_tbl works as expected supplied with <epidist>", {
   edist <- suppressMessages(epidist_db(single_epidist = TRUE))
   dist_tbl <- parameter_tbl(multi_epidist = edist)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(1L, 5L))
+  expect_identical(dim(dist_tbl), c(1L, 6L))
   expect_named(
     dist_tbl,
-    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+    c("disease", "epi_distribution", "prob_distribution",
+      "author", "year", "sample_size")
   )
   expect_snapshot(dist_tbl)
 })
@@ -126,10 +134,11 @@ test_that("parameter_tbl works as expected with discretised <epidist>", {
   )
   dist_tbl <- parameter_tbl(multi_epidist = edist)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(1L, 5L))
+  expect_identical(dim(dist_tbl), c(1L, 6L))
   expect_named(
     dist_tbl,
-    c("disease", "epi_distribution", "prob_distribution", "author", "year")
+    c("disease", "epi_distribution", "prob_distribution",
+      "author", "year", "sample_size")
   )
   expect_snapshot(dist_tbl)
 })
