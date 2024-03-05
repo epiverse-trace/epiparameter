@@ -74,6 +74,11 @@ parameter_tbl <- function(multi_epidist,
     multi_epidist, function(x) as.numeric(x$citation$year), # nolint lambda
     FUN.VALUE = numeric(1)
   )
+  sample_size <- vapply(
+    multi_epidist,
+    function(x) x$metadata$sample_size,
+    FUN.VALUE = numeric(1)
+  )
 
   # return data frame
   data.frame(
@@ -81,6 +86,7 @@ parameter_tbl <- function(multi_epidist,
     epi_distribution = epi_dist,
     prob_distribution = prob_dist,
     author = I(author),
-    year = year
+    year = year,
+    sample_size
   )
 }
