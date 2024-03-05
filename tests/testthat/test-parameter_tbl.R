@@ -1,8 +1,8 @@
 # Data to be reused by multiple testing blocks
 edist <- suppressMessages(epidist_db())
 
-test_that("list_distributions works as expected supplied with db", {
-  dist_tbl <- list_distributions(multi_epidist = edist)
+test_that("parameter_tbl works as expected supplied with db", {
+  dist_tbl <- parameter_tbl(multi_epidist = edist)
   expect_s3_class(dist_tbl, "data.frame")
   expect_identical(dim(dist_tbl), c(122L, 5L))
   expect_named(
@@ -12,8 +12,8 @@ test_that("list_distributions works as expected supplied with db", {
   expect_snapshot(dist_tbl)
 })
 
-test_that("list_distributions works for incubation period with db", {
-  incub_tbl <- list_distributions(
+test_that("parameter_tbl works for incubation period with db", {
+  incub_tbl <- parameter_tbl(
     multi_epidist = edist,
     epi_dist = "incubation period"
   )
@@ -26,8 +26,8 @@ test_that("list_distributions works for incubation period with db", {
   expect_snapshot(incub_tbl)
 })
 
-test_that("list_distributions works for different distribution with db", {
-  serial_tbl <- list_distributions(
+test_that("parameter_tbl works for different distribution with db", {
+  serial_tbl <- parameter_tbl(
     multi_epidist = edist,
     epi_dist = "serial interval"
   )
@@ -40,8 +40,8 @@ test_that("list_distributions works for different distribution with db", {
   expect_snapshot(serial_tbl)
 })
 
-test_that("list_distributions works for COVID-19 db", {
-  incub_tbl <- list_distributions(
+test_that("parameter_tbl works for COVID-19 db", {
+  incub_tbl <- parameter_tbl(
     multi_epidist = edist,
     disease = "COVID-19"
   )
@@ -54,8 +54,8 @@ test_that("list_distributions works for COVID-19 db", {
   expect_snapshot(incub_tbl)
 })
 
-test_that("list_distributions works for SARS-CoV-2 db", {
-  incub_tbl <- list_distributions(
+test_that("parameter_tbl works for SARS-CoV-2 db", {
+  incub_tbl <- parameter_tbl(
     multi_epidist = edist,
     pathogen = "SARS-CoV-2"
   )
@@ -68,8 +68,8 @@ test_that("list_distributions works for SARS-CoV-2 db", {
   expect_snapshot(incub_tbl)
 })
 
-test_that("list_distributions works for disease & epi_dist subset with db", {
-  incub_tbl <- list_distributions(
+test_that("parameter_tbl works for disease & epi_dist subset with db", {
+  incub_tbl <- parameter_tbl(
     multi_epidist = edist,
     disease = "COVID-19",
     epi_dist = "incubation period"
@@ -83,9 +83,9 @@ test_that("list_distributions works for disease & epi_dist subset with db", {
   expect_snapshot(incub_tbl)
 })
 
-test_that("list_distribution works when supplied a subset db", {
+test_that("parameter_tbl works when supplied a subset db", {
   edist <- suppressMessages(epidist_db(disease = "COVID-19"))
-  covid_tbl <- list_distributions(multi_epidist = edist, disease = "COVID-19")
+  covid_tbl <- parameter_tbl(multi_epidist = edist, disease = "COVID-19")
   expect_s3_class(covid_tbl, "data.frame")
   expect_identical(dim(covid_tbl), c(27L, 5L))
   expect_named(
@@ -95,9 +95,9 @@ test_that("list_distribution works when supplied a subset db", {
   expect_snapshot(covid_tbl)
 })
 
-test_that("list_distributions works as expected supplied with <epidist>", {
+test_that("parameter_tbl works as expected supplied with <epidist>", {
   edist <- suppressMessages(epidist_db(single_epidist = TRUE))
-  dist_tbl <- list_distributions(multi_epidist = edist)
+  dist_tbl <- parameter_tbl(multi_epidist = edist)
   expect_s3_class(dist_tbl, "data.frame")
   expect_identical(dim(dist_tbl), c(1L, 5L))
   expect_named(
@@ -107,7 +107,7 @@ test_that("list_distributions works as expected supplied with <epidist>", {
   expect_snapshot(dist_tbl)
 })
 
-test_that("list_distributions works as expected with discretised <epidist>", {
+test_that("parameter_tbl works as expected with discretised <epidist>", {
   edist <- suppressMessages(
     epidist(
       disease = "Ebola",
@@ -124,7 +124,7 @@ test_that("list_distributions works as expected with discretised <epidist>", {
       discretise = TRUE
     )
   )
-  dist_tbl <- list_distributions(multi_epidist = edist)
+  dist_tbl <- parameter_tbl(multi_epidist = edist)
   expect_s3_class(dist_tbl, "data.frame")
   expect_identical(dim(dist_tbl), c(1L, 5L))
   expect_named(
@@ -134,18 +134,18 @@ test_that("list_distributions works as expected with discretised <epidist>", {
   expect_snapshot(dist_tbl)
 })
 
-test_that("list_distribution fails correctly when subsetting a subset db", {
+test_that("parameter_tbl fails correctly when subsetting a subset db", {
   edist <- suppressMessages(epidist_db(disease = "Ebola"))
   expect_error(
-    list_distributions(multi_epidist = edist, disease = "COVID-19"),
+    parameter_tbl(multi_epidist = edist, disease = "COVID-19"),
     regexp = "(distribution not available for COVID-19)"
   )
 })
 
-test_that("list_distributions fails correctly", {
+test_that("parameter_tbl fails correctly", {
   # check for incorrect input
   expect_error(
-    list_distributions(
+    parameter_tbl(
       multi_epidist = list(),
       epi_dist = "incubation_period"
     ),
@@ -153,13 +153,13 @@ test_that("list_distributions fails correctly", {
   )
 
   expect_error(
-    list_distributions(multi_epidist = edist, epi_dist = "random"),
+    parameter_tbl(multi_epidist = edist, epi_dist = "random"),
     regexp = "random distribution not available"
   )
 
   # check for multiple match input
   expect_error(
-    list_distributions(multi_epidist = edist, epi_dist = "onset"),
+    parameter_tbl(multi_epidist = edist, epi_dist = "onset"),
     regexp = "onset distribution not available"
   )
 })

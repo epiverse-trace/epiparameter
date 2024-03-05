@@ -1,4 +1,4 @@
-# list_distributions works as expected supplied with db
+# parameter_tbl works as expected supplied with db
 
     Code
       dist_tbl
@@ -250,7 +250,7 @@
       121              <NA> Fengying.... 2022
       122              <NA> Fengying.... 2022
 
-# list_distributions works for incubation period with db
+# parameter_tbl works for incubation period with db
 
     Code
       incub_tbl
@@ -330,7 +330,7 @@
       72                  Mpox incubation period              <NA> Fengying.... 2022
       73                  Mpox incubation period              <NA> Fengying.... 2022
 
-# list_distributions works for different distribution with db
+# parameter_tbl works for different distribution with db
 
     Code
       serial_tbl
@@ -355,7 +355,7 @@
       17                  Mpox  serial interval              <NA> Shuqi Wa.... 2022
       18                  Mpox  serial interval              <NA> Shuqi Wa.... 2022
 
-# list_distributions works for COVID-19 db
+# parameter_tbl works for COVID-19 db
 
     Code
       incub_tbl
@@ -389,7 +389,7 @@
       26 COVID-19        incubation period             lnorm Stephen .... 2020
       27 COVID-19        incubation period             lnorm Stephen .... 2020
 
-# list_distributions works for SARS-CoV-2 db
+# parameter_tbl works for SARS-CoV-2 db
 
     Code
       incub_tbl
@@ -423,7 +423,7 @@
       26 COVID-19        incubation period             lnorm Stephen .... 2020
       27 COVID-19        incubation period             lnorm Stephen .... 2020
 
-# list_distributions works for disease & epi_dist subset with db
+# parameter_tbl works for disease & epi_dist subset with db
 
     Code
       incub_tbl
@@ -445,7 +445,7 @@
       14 COVID-19 incubation period             lnorm Stephen .... 2020
       15 COVID-19 incubation period             lnorm Stephen .... 2020
 
-# list_distribution works when supplied a subset db
+# parameter_tbl works when supplied a subset db
 
     Code
       covid_tbl
@@ -479,7 +479,7 @@
       26 COVID-19        incubation period             lnorm Stephen .... 2020
       27 COVID-19        incubation period             lnorm Stephen .... 2020
 
-# list_distributions works as expected supplied with <epidist>
+# parameter_tbl works as expected supplied with <epidist>
 
     Code
       dist_tbl
@@ -487,7 +487,7 @@
                     disease epi_distribution prob_distribution       author year
       1 Ebola Virus Disease   onset to death             gamma WHO Ebol.... 2015
 
-# list_distributions works as expected with discretised <epidist>
+# parameter_tbl works as expected with discretised <epidist>
 
     Code
       dist_tbl
