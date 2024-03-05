@@ -126,129 +126,129 @@
       120                          Mpox            incubation period
       121                          Mpox            incubation period
       122                          Mpox            incubation period
-          prob_distribution       author year
-      1               lnorm Justin L.... 2009
-      2               lnorm Justin L.... 2009
-      3               lnorm Justin L.... 2009
-      4               lnorm Justin L.... 2009
-      5               lnorm Justin L.... 2009
-      6               lnorm Justin L.... 2009
-      7               lnorm Justin L.... 2009
-      8               lnorm Justin L.... 2009
-      9               lnorm Justin L.... 2009
-      10              lnorm Justin L.... 2009
-      11              lnorm Nicholas.... 2009
-      12              lnorm Nicholas.... 2009
-      13              lnorm Nicholas.... 2009
-      14              lnorm Nicholas.... 2009
-      15              gamma Hiroshi .... 2011
-      16            weibull Hiroshi .... 2011
-      17            weibull Victor V.... 2015
-      18              gamma Victor V.... 2015
-      19            weibull Victor V.... 2016
-      20            weibull Victor V.... 2016
-      21            weibull Victor V.... 2016
-      22              lnorm Ashleigh.... 2010
-      23              gamma Azra Gha.... 2009
-      24              gamma Azra Gha.... 2009
-      25              lnorm Justin L.... 2009
-      26            weibull Justin L.... 2009
-      27               <NA> Boris I..... 2014
-      28               <NA> Boris I..... 2014
-      29               <NA> Boris I..... 2014
-      30               <NA> Robert C.... 2007
-      31              gamma Marco Aj.... 2012
-      32             nbinom J. O. Ll.... 2005
-      33             nbinom J. O. Ll.... 2005
-      34             nbinom J. O. Ll.... 2005
-      35             nbinom J. O. Ll.... 2005
-      36             nbinom J. O. Ll.... 2005
-      37             nbinom J. O. Ll.... 2005
-      38             nbinom J. O. Ll.... 2005
-      39             nbinom J. O. Ll.... 2005
-      40             nbinom J. O. Ll.... 2005
-      41             nbinom J. O. Ll.... 2005
-      42              lnorm Miranda .... 2012
-      43              lnorm Miranda .... 2012
-      44              lnorm Miranda .... 2012
-      45              lnorm Justin L.... 2016
-      46              lnorm Kara E. .... 2014
-      47              lnorm Kara E. .... 2014
-      48              lnorm Kara E. .... 2014
-      49              lnorm Kara E. .... 2014
-      50              lnorm Kara E. .... 2014
-      51              lnorm Kara E. .... 2014
-      52              lnorm Kara E. .... 2014
-      53              lnorm Kara E. .... 2014
-      54              lnorm Kara E. .... 2014
-      55              lnorm Kara E. .... 2014
-      56              lnorm Fuminari.... 2022
-      57              lnorm Kelly Ch.... 2022
-      58              gamma Giorgio .... 2022
-      59              lnorm Zachary .... 2022
-      60              lnorm Zachary .... 2022
-      61              gamma Zachary .... 2022
-      62              gamma Zachary .... 2022
-      63              lnorm Martin E.... 2011
-      64              gamma The Ebol.... 2018
-      65              gamma WHO Ebol.... 2015
-      66              gamma WHO Ebol.... 2015
-      67              gamma WHO Ebol.... 2015
-      68              gamma WHO Ebol.... 2015
-      69              gamma WHO Ebol.... 2015
-      70              gamma WHO Ebol.... 2015
-      71              gamma WHO Ebol.... 2015
-      72              gamma WHO Ebol.... 2015
-      73              gamma WHO Ebol.... 2015
-      74              gamma WHO Ebol.... 2015
-      75              gamma WHO Ebol.... 2015
-      76              gamma WHO Ebol.... 2015
-      77              gamma WHO Ebol.... 2015
-      78              gamma WHO Ebol.... 2015
-      79              lnorm Abdullah.... 2013
-      80              lnorm Abdullah.... 2013
-      81               <NA> Abdullah.... 2013
-      82               <NA> Abdullah.... 2013
-      83               <NA> Abdullah.... 2013
-      84              gamma Kenji Mi.... 2015
-      85              gamma B. J. Co.... 2015
-      86              gamma B. J. Co.... 2015
-      87               <NA> Ke Men, .... 2020
-      88               <NA> Balram R.... 2022
-      89               <NA> Muluneh .... 2021
-      90               <NA> Muluneh .... 2021
-      91              lnorm Hiroshi .... 2020
-      92            weibull Hiroshi .... 2020
-      93            weibull Lin Yang.... 2020
-      94               norm Lin Yang.... 2020
-      95               <NA> Christel.... 2021
-      96            weibull Long V. .... 2020
-      97              lnorm Conor Mc.... 2020
-      98              lnorm Conor Mc.... 2020
-      99              lnorm Natalie .... 2020
-      100             lnorm Natalie .... 2020
-      101             gamma Natalie .... 2020
-      102             gamma Natalie .... 2020
-      103             lnorm Natalie .... 2020
-      104           weibull Natalie .... 2020
-      105             lnorm Natalie .... 2020
-      106             lnorm Natalie .... 2020
-      107             lnorm Natalie .... 2020
-      108             lnorm Natalie .... 2020
-      109             lnorm Natalie .... 2020
-      110             lnorm Stephen .... 2020
-      111             lnorm Stephen .... 2020
-      112             lnorm Stephen .... 2020
-      113             lnorm Stephen .... 2020
-      114             gamma Zihao Gu.... 2022
-      115              <NA> Shuqi Wa.... 2022
-      116              <NA> Shuqi Wa.... 2022
-      117              <NA> Shuqi Wa.... 2022
-      118              <NA> Shuqi Wa.... 2022
-      119              <NA> Shuqi Wa.... 2022
-      120              <NA> Fengying.... 2022
-      121              <NA> Fengying.... 2022
-      122              <NA> Fengying.... 2022
+          prob_distribution       author year sample_size
+      1               lnorm Justin L.... 2009          14
+      2               lnorm Justin L.... 2009          13
+      3               lnorm Justin L.... 2009         157
+      4               lnorm Justin L.... 2009         151
+      5               lnorm Justin L.... 2009          90
+      6               lnorm Justin L.... 2009          78
+      7               lnorm Justin L.... 2009          55
+      8               lnorm Justin L.... 2009          11
+      9               lnorm Justin L.... 2009          24
+      10              lnorm Justin L.... 2009          28
+      11              lnorm Nicholas.... 2009         151
+      12              lnorm Nicholas.... 2009         151
+      13              lnorm Nicholas.... 2009          24
+      14              lnorm Nicholas.... 2009          24
+      15              gamma Hiroshi .... 2011          72
+      16            weibull Hiroshi .... 2011          72
+      17            weibull Victor V.... 2015         229
+      18              gamma Victor V.... 2015         229
+      19            weibull Victor V.... 2016         395
+      20            weibull Victor V.... 2016         173
+      21            weibull Victor V.... 2016         222
+      22              lnorm Ashleigh.... 2010         316
+      23              gamma Azra Gha.... 2009          16
+      24              gamma Azra Gha.... 2009          58
+      25              lnorm Justin L.... 2009         124
+      26            weibull Justin L.... 2009          16
+      27               <NA> Boris I..... 2014          76
+      28               <NA> Boris I..... 2014          18
+      29               <NA> Boris I..... 2014          38
+      30               <NA> Robert C.... 2007          77
+      31              gamma Marco Aj.... 2012         374
+      32             nbinom J. O. Ll.... 2005          57
+      33             nbinom J. O. Ll.... 2005          33
+      34             nbinom J. O. Ll.... 2005          32
+      35             nbinom J. O. Ll.... 2005          25
+      36             nbinom J. O. Ll.... 2005          25
+      37             nbinom J. O. Ll.... 2005          47
+      38             nbinom J. O. Ll.... 2005         147
+      39             nbinom J. O. Ll.... 2005          74
+      40             nbinom J. O. Ll.... 2005          20
+      41             nbinom J. O. Ll.... 2005          13
+      42              lnorm Miranda .... 2012         146
+      43              lnorm Miranda .... 2012         146
+      44              lnorm Miranda .... 2012         153
+      45              lnorm Justin L.... 2016          25
+      46              lnorm Kara E. .... 2014          21
+      47              lnorm Kara E. .... 2014         169
+      48              lnorm Kara E. .... 2014         124
+      49              lnorm Kara E. .... 2014           6
+      50              lnorm Kara E. .... 2014          23
+      51              lnorm Kara E. .... 2014          18
+      52              lnorm Kara E. .... 2014           8
+      53              lnorm Kara E. .... 2014           6
+      54              lnorm Kara E. .... 2014          91
+      55              lnorm Kara E. .... 2014          80
+      56              lnorm Fuminari.... 2022          18
+      57              lnorm Kelly Ch.... 2022          22
+      58              gamma Giorgio .... 2022         255
+      59              lnorm Zachary .... 2022          35
+      60              lnorm Zachary .... 2022          36
+      61              gamma Zachary .... 2022          57
+      62              gamma Zachary .... 2022          40
+      63              lnorm Martin E.... 2011         196
+      64              gamma The Ebol.... 2018          14
+      65              gamma WHO Ebol.... 2015        1798
+      66              gamma WHO Ebol.... 2015          49
+      67              gamma WHO Ebol.... 2015         957
+      68              gamma WHO Ebol.... 2015         792
+      69              gamma WHO Ebol.... 2015         305
+      70              gamma WHO Ebol.... 2015          37
+      71              gamma WHO Ebol.... 2015         147
+      72              gamma WHO Ebol.... 2015         112
+      73              gamma WHO Ebol.... 2015        1167
+      74              gamma WHO Ebol.... 2015        1004
+      75              gamma WHO Ebol.... 2015        2536
+      76              gamma WHO Ebol.... 2015        1324
+      77              gamma WHO Ebol.... 2015        2741
+      78              gamma WHO Ebol.... 2015        1335
+      79              lnorm Abdullah.... 2013          23
+      80              lnorm Abdullah.... 2013          23
+      81               <NA> Abdullah.... 2013          23
+      82               <NA> Abdullah.... 2013          23
+      83               <NA> Abdullah.... 2013          23
+      84              gamma Kenji Mi.... 2015         185
+      85              gamma B. J. Co.... 2015         166
+      86              gamma B. J. Co.... 2015          99
+      87               <NA> Ke Men, .... 2020          59
+      88               <NA> Balram R.... 2022        6241
+      89               <NA> Muluneh .... 2021        1453
+      90               <NA> Muluneh .... 2021        3924
+      91              lnorm Hiroshi .... 2020          28
+      92            weibull Hiroshi .... 2020          18
+      93            weibull Lin Yang.... 2020         178
+      94               norm Lin Yang.... 2020         131
+      95               <NA> Christel.... 2021       28675
+      96            weibull Long V. .... 2020          19
+      97              lnorm Conor Mc.... 2020        1357
+      98              lnorm Conor Mc.... 2020        1269
+      99              lnorm Natalie .... 2020          52
+      100             lnorm Natalie .... 2020         158
+      101             gamma Natalie .... 2020         155
+      102             gamma Natalie .... 2020          34
+      103             lnorm Natalie .... 2020          34
+      104           weibull Natalie .... 2020          39
+      105             lnorm Natalie .... 2020          52
+      106             lnorm Natalie .... 2020         155
+      107             lnorm Natalie .... 2020          34
+      108             lnorm Natalie .... 2020          34
+      109             lnorm Natalie .... 2020          39
+      110             lnorm Stephen .... 2020         181
+      111             lnorm Stephen .... 2020          99
+      112             lnorm Stephen .... 2020         108
+      113             lnorm Stephen .... 2020          73
+      114             gamma Zihao Gu.... 2022          42
+      115              <NA> Shuqi Wa.... 2022          16
+      116              <NA> Shuqi Wa.... 2022          34
+      117              <NA> Shuqi Wa.... 2022          16
+      118              <NA> Shuqi Wa.... 2022          27
+      119              <NA> Shuqi Wa.... 2022         114
+      120              <NA> Fengying.... 2022          NA
+      121              <NA> Fengying.... 2022          NA
+      122              <NA> Fengying.... 2022          NA
 
 # parameter_tbl works for incubation period with db
 
@@ -329,6 +329,80 @@
       71                  Mpox incubation period              <NA> Fengying.... 2022
       72                  Mpox incubation period              <NA> Fengying.... 2022
       73                  Mpox incubation period              <NA> Fengying.... 2022
+         sample_size
+      1           14
+      2           13
+      3          157
+      4          151
+      5           90
+      6           78
+      7           55
+      8           11
+      9           24
+      10          28
+      11         151
+      12         151
+      13          24
+      14          24
+      15          72
+      16          72
+      17         229
+      18         229
+      19         395
+      20         173
+      21         222
+      22         316
+      23          16
+      24         124
+      25          76
+      26          18
+      27         146
+      28         146
+      29         153
+      30          25
+      31          21
+      32         169
+      33         124
+      34           6
+      35          23
+      36          18
+      37           8
+      38           6
+      39          91
+      40          80
+      41          18
+      42          22
+      43         255
+      44          35
+      45          36
+      46         196
+      47        1798
+      48          49
+      49         957
+      50         792
+      51          23
+      52         166
+      53          59
+      54        6241
+      55        1453
+      56         178
+      57       28675
+      58          19
+      59        1357
+      60        1269
+      61          52
+      62         158
+      63          52
+      64         181
+      65          99
+      66         108
+      67          73
+      68          16
+      69          27
+      70         114
+      71          NA
+      72          NA
+      73          NA
 
 # parameter_tbl works for different distribution with db
 
@@ -354,6 +428,25 @@
       16                  Mpox  serial interval             gamma Zihao Gu.... 2022
       17                  Mpox  serial interval              <NA> Shuqi Wa.... 2022
       18                  Mpox  serial interval              <NA> Shuqi Wa.... 2022
+         sample_size
+      1           58
+      2           38
+      3          374
+      4           57
+      5           40
+      6          305
+      7           37
+      8          147
+      9          112
+      10          23
+      11          99
+      12        3924
+      13          28
+      14          18
+      15         131
+      16          42
+      17          16
+      18          34
 
 # parameter_tbl works for COVID-19 db
 
@@ -388,6 +481,34 @@
       25 COVID-19        incubation period             lnorm Stephen .... 2020
       26 COVID-19        incubation period             lnorm Stephen .... 2020
       27 COVID-19        incubation period             lnorm Stephen .... 2020
+         sample_size
+      1           59
+      2         6241
+      3         1453
+      4         3924
+      5           28
+      6           18
+      7          178
+      8          131
+      9        28675
+      10          19
+      11        1357
+      12        1269
+      13          52
+      14         158
+      15         155
+      16          34
+      17          34
+      18          39
+      19          52
+      20         155
+      21          34
+      22          34
+      23          39
+      24         181
+      25          99
+      26         108
+      27          73
 
 # parameter_tbl works for SARS-CoV-2 db
 
@@ -422,28 +543,56 @@
       25 COVID-19        incubation period             lnorm Stephen .... 2020
       26 COVID-19        incubation period             lnorm Stephen .... 2020
       27 COVID-19        incubation period             lnorm Stephen .... 2020
+         sample_size
+      1           59
+      2         6241
+      3         1453
+      4         3924
+      5           28
+      6           18
+      7          178
+      8          131
+      9        28675
+      10          19
+      11        1357
+      12        1269
+      13          52
+      14         158
+      15         155
+      16          34
+      17          34
+      18          39
+      19          52
+      20         155
+      21          34
+      22          34
+      23          39
+      24         181
+      25          99
+      26         108
+      27          73
 
 # parameter_tbl works for disease & epi_dist subset with db
 
     Code
       incub_tbl
     Output
-          disease  epi_distribution prob_distribution       author year
-      1  COVID-19 incubation period              <NA> Ke Men, .... 2020
-      2  COVID-19 incubation period              <NA> Balram R.... 2022
-      3  COVID-19 incubation period              <NA> Muluneh .... 2021
-      4  COVID-19 incubation period           weibull Lin Yang.... 2020
-      5  COVID-19 incubation period              <NA> Christel.... 2021
-      6  COVID-19 incubation period           weibull Long V. .... 2020
-      7  COVID-19 incubation period             lnorm Conor Mc.... 2020
-      8  COVID-19 incubation period             lnorm Conor Mc.... 2020
-      9  COVID-19 incubation period             lnorm Natalie .... 2020
-      10 COVID-19 incubation period             lnorm Natalie .... 2020
-      11 COVID-19 incubation period             lnorm Natalie .... 2020
-      12 COVID-19 incubation period             lnorm Stephen .... 2020
-      13 COVID-19 incubation period             lnorm Stephen .... 2020
-      14 COVID-19 incubation period             lnorm Stephen .... 2020
-      15 COVID-19 incubation period             lnorm Stephen .... 2020
+          disease  epi_distribution prob_distribution       author year sample_size
+      1  COVID-19 incubation period              <NA> Ke Men, .... 2020          59
+      2  COVID-19 incubation period              <NA> Balram R.... 2022        6241
+      3  COVID-19 incubation period              <NA> Muluneh .... 2021        1453
+      4  COVID-19 incubation period           weibull Lin Yang.... 2020         178
+      5  COVID-19 incubation period              <NA> Christel.... 2021       28675
+      6  COVID-19 incubation period           weibull Long V. .... 2020          19
+      7  COVID-19 incubation period             lnorm Conor Mc.... 2020        1357
+      8  COVID-19 incubation period             lnorm Conor Mc.... 2020        1269
+      9  COVID-19 incubation period             lnorm Natalie .... 2020          52
+      10 COVID-19 incubation period             lnorm Natalie .... 2020         158
+      11 COVID-19 incubation period             lnorm Natalie .... 2020          52
+      12 COVID-19 incubation period             lnorm Stephen .... 2020         181
+      13 COVID-19 incubation period             lnorm Stephen .... 2020          99
+      14 COVID-19 incubation period             lnorm Stephen .... 2020         108
+      15 COVID-19 incubation period             lnorm Stephen .... 2020          73
 
 # parameter_tbl works when supplied a subset db
 
@@ -478,6 +627,34 @@
       25 COVID-19        incubation period             lnorm Stephen .... 2020
       26 COVID-19        incubation period             lnorm Stephen .... 2020
       27 COVID-19        incubation period             lnorm Stephen .... 2020
+         sample_size
+      1           59
+      2         6241
+      3         1453
+      4         3924
+      5           28
+      6           18
+      7          178
+      8          131
+      9        28675
+      10          19
+      11        1357
+      12        1269
+      13          52
+      14         158
+      15         155
+      16          34
+      17          34
+      18          39
+      19          52
+      20         155
+      21          34
+      22          34
+      23          39
+      24         181
+      25          99
+      26         108
+      27          73
 
 # parameter_tbl works as expected supplied with <epidist>
 
@@ -486,12 +663,14 @@
     Output
                     disease epi_distribution prob_distribution       author year
       1 Ebola Virus Disease   onset to death             gamma WHO Ebol.... 2015
+        sample_size
+      1        2741
 
 # parameter_tbl works as expected with discretised <epidist>
 
     Code
       dist_tbl
     Output
-        disease epi_distribution prob_distribution     author year
-      1   Ebola  serial interval             gamma John Smith 2022
+        disease epi_distribution prob_distribution     author year sample_size
+      1   Ebola  serial interval             gamma John Smith 2022          NA
 
