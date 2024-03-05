@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{A \verb{<multi_epidist>} object.}
 
-\item{...}{additional arguments to be passed to or from methods.}
+\item{...}{\link{dots} Not used, extra arguments supplied will cause a warning.}
 }
 \value{
 A \verb{<data.frame>} with as many rows as length of input list.
