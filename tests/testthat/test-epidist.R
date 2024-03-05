@@ -1137,3 +1137,36 @@ test_that("as.function fails as expected", {
     regexp = "Cannot convert unparameterised <epidist> to distribution function"
   )
 })
+
+test_that("as.data.frame works for <epidist>", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist(
+    disease = "ebola",
+    epi_dist = "incubation",
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  ))
+  df <- as.data.frame(edist)
+  expect_s3_class(df, class = "data.frame")
+  expect_identical(dim(df), c(1L, 10L))
+  expect_identical(
+    colnames(df),
+    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+      "uncertainty", "summary_stats", "citation", "metadata", "method_assess",
+      "notes")
+  )
+})
+
+test_that("as.data.frame works for <epidist> from db", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist_db(single_epidist = TRUE))
+  df <- as.data.frame(edist)
+  expect_s3_class(df, class = "data.frame")
+  expect_identical(dim(df), c(1L, 10L))
+  expect_identical(
+    colnames(df),
+    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+      "uncertainty", "summary_stats", "citation", "metadata", "method_assess",
+      "notes")
+  )
+})
