@@ -49,11 +49,8 @@ parameter_tbl <- function(multi_epidist,
     epi_dist = epi_dist
   )
 
-  disease <- vapply(
-    multi_epidist,
-    function(x) x$disease,
-    FUN.VALUE = character(1)
-  )
+  disease <- vapply(multi_epidist, "[[", "disease", FUN.VALUE = character(1))
+  pathogen <- vapply(multi_epidist, "[[", "pathogen", FUN.VALUE = character(1))
   epi_dist <- vapply(
     multi_epidist, "[[", "epi_dist",
     FUN.VALUE = character(1)
@@ -83,6 +80,7 @@ parameter_tbl <- function(multi_epidist,
   # return data frame
   data.frame(
     disease = disease,
+    pathogen = pathogen,
     epi_distribution = epi_dist,
     prob_distribution = prob_dist,
     author = I(author),
