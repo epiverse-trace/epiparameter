@@ -60,16 +60,16 @@ epi_dist_db
 The output is a list of `<epidist>` objects, where each element in the list corresponds to an entry in the parameter database. *Technical note*: the reason the object does not look like a regular R list is because it uses a custom print method which will print a summary of the data to the console when there are more than 5 entries to prevent a large list flooding the console. When the number of database entries returned is less than or equal to 5 the print will look like a standard R list.
 
 To see a full list of the diseases and distributions stored in the library use the 
-`list_distributions()` function. Here we show the first six rows of the output.
+`parameter_tbl()` function. Here we show the first six rows of the output.
 
-```{r, list-distributions}
-head(list_distributions(multi_epidist = epi_dist_db))
+```{r, parameter-tbl}
+head(parameter_tbl(multi_epidist = epi_dist_db))
 ```
 
-`list_distributions()` can also subset the database supplied to the function.
+`parameter_tbl()` can also subset the database supplied to the function.
 
-```{r, list-distributions-subset}
-list_distributions(multi_epidist = epi_dist_db, disease = "Ebola")
+```{r, parameter-tbl-subset}
+parameter_tbl(multi_epidist = epi_dist_db, disease = "Ebola")
 ```
 
 More details on the data collation and the library of parameters can be found in
