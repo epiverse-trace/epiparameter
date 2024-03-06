@@ -108,6 +108,20 @@ references:
     given-names: Thibaut
   year: '2024'
 - type: software
+  title: pillar
+  abstract: 'pillar: Coloured Formatting for Columns'
+  notes: Imports
+  url: https://pillar.r-lib.org/
+  repository: https://CRAN.R-project.org/package=pillar
+  authors:
+  - family-names: Müller
+    given-names: Kirill
+    email: kirill@cynkra.com
+    orcid: https://orcid.org/0000-0002-1416-3412
+  - family-names: Wickham
+    given-names: Hadley
+  year: '2024'
+- type: software
   title: rlang
   abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
   notes: Imports
@@ -301,7 +315,7 @@ references:
   title: spelling
   abstract: 'spelling: Tools for Spell Checking in R'
   notes: Suggests
-  url: https://docs.ropensci.org/spelling/
+  url: https://ropensci.r-universe.dev/spelling
   repository: https://CRAN.R-project.org/package=spelling
   authors:
   - family-names: Ooms
