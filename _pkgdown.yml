@@ -45,9 +45,9 @@ reference:
     - epidist_db
 
   - title: Explore epiparameters
-    desc: Table of epi parameters
+    desc: Table of epi distributions
     contents:
-    - parameter_tbl
+    - distribution_tbl
 
   - title: Distribution functions
     desc: Functions for operating on `<epidist>` and `<vb_epidist>` distributions

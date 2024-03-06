@@ -1,10 +1,10 @@
-# parameter_tbl works as expected supplied with db
+# distribution_tbl works as expected supplied with db
 
     Code
       dist_tbl
     Output
-      # Parameter table:
-      # A data frame:    122 x 7
+      # Distribution table:
+      # A data frame:       122 x 7
          disease  pathogen epi_distribution prob_distribution author  year sample_size
          <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
        1 Adenovi~ Adenovi~ incubation peri~ lnorm             Lessl~  2009          14
@@ -19,13 +19,13 @@
       10 Rhinovi~ Rhinovi~ incubation peri~ lnorm             Lessl~  2009          28
       # i 112 more rows
 
-# parameter_tbl works for incubation period with db
+# distribution_tbl works for incubation period with db
 
     Code
       incub_tbl
     Output
-      # Parameter table:
-      # A data frame:    73 x 7
+      # Distribution table:
+      # A data frame:       73 x 7
          disease  pathogen epi_distribution prob_distribution author  year sample_size
          <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
        1 Adenovi~ Adenovi~ incubation peri~ lnorm             Lessl~  2009          14
@@ -40,13 +40,13 @@
       10 Rhinovi~ Rhinovi~ incubation peri~ lnorm             Lessl~  2009          28
       # i 63 more rows
 
-# parameter_tbl works for different distribution with db
+# distribution_tbl works for different distribution with db
 
     Code
       serial_tbl
     Output
-      # Parameter table:
-      # A data frame:    18 x 7
+      # Distribution table:
+      # A data frame:       18 x 7
          disease  pathogen epi_distribution prob_distribution author  year sample_size
          <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
        1 Influen~ Influen~ serial interval  gamma             Ghani~  2009          58
@@ -68,13 +68,13 @@
       17 Mpox     Mpox Vi~ serial interval  <NA>              Wang ~  2022          16
       18 Mpox     Mpox Vi~ serial interval  <NA>              Wang ~  2022          34
 
-# parameter_tbl works for COVID-19 db
+# distribution_tbl works for COVID-19 db
 
     Code
       incub_tbl
     Output
-      # Parameter table:
-      # A data frame:    27 x 7
+      # Distribution table:
+      # A data frame:       27 x 7
          disease  pathogen epi_distribution prob_distribution author  year sample_size
          <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
        1 COVID-19 SARS-Co~ incubation peri~ <NA>              Men e~  2020          59
@@ -89,13 +89,13 @@
       10 COVID-19 SARS-Co~ incubation peri~ weibull           Bui e~  2020          19
       # i 17 more rows
 
-# parameter_tbl works for SARS-CoV-2 db
+# distribution_tbl works for SARS-CoV-2 db
 
     Code
       incub_tbl
     Output
-      # Parameter table:
-      # A data frame:    27 x 7
+      # Distribution table:
+      # A data frame:       27 x 7
          disease  pathogen epi_distribution prob_distribution author  year sample_size
          <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
        1 COVID-19 SARS-Co~ incubation peri~ <NA>              Men e~  2020          59
@@ -110,13 +110,13 @@
       10 COVID-19 SARS-Co~ incubation peri~ weibull           Bui e~  2020          19
       # i 17 more rows
 
-# parameter_tbl works for disease & epi_dist subset with db
+# distribution_tbl works for disease & epi_dist subset with db
 
     Code
       incub_tbl
     Output
-      # Parameter table:
-      # A data frame:    15 x 7
+      # Distribution table:
+      # A data frame:       15 x 7
          disease  pathogen epi_distribution prob_distribution author  year sample_size
          <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
        1 COVID-19 SARS-Co~ incubation peri~ <NA>              Men e~  2020          59
@@ -135,13 +135,13 @@
       14 COVID-19 SARS-Co~ incubation peri~ lnorm             Lauer~  2020         108
       15 COVID-19 SARS-Co~ incubation peri~ lnorm             Lauer~  2020          73
 
-# parameter_tbl works when supplied a subset db
+# distribution_tbl works when supplied a subset db
 
     Code
       covid_tbl
     Output
-      # Parameter table:
-      # A data frame:    27 x 7
+      # Distribution table:
+      # A data frame:       27 x 7
          disease  pathogen epi_distribution prob_distribution author  year sample_size
          <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
        1 COVID-19 SARS-Co~ incubation peri~ <NA>              Men e~  2020          59
@@ -156,24 +156,24 @@
       10 COVID-19 SARS-Co~ incubation peri~ weibull           Bui e~  2020          19
       # i 17 more rows
 
-# parameter_tbl works as expected supplied with <epidist>
+# distribution_tbl works as expected supplied with <epidist>
 
     Code
       dist_tbl
     Output
-      # Parameter table:
-      # A data frame:    1 x 7
+      # Distribution table:
+      # A data frame:       1 x 7
         disease   pathogen epi_distribution prob_distribution author  year sample_size
         <chr>     <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
       1 Ebola Vi~ Ebola V~ onset to death   gamma             WHO E~  2015        2741
 
-# parameter_tbl works as expected with discretised <epidist>
+# distribution_tbl works as expected with discretised <epidist>
 
     Code
       dist_tbl
     Output
-      # Parameter table:
-      # A data frame:    1 x 7
+      # Distribution table:
+      # A data frame:       1 x 7
         disease pathogen epi_distribution prob_distribution author  year sample_size
         <chr>   <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
       1 Ebola   <NA>     serial interval  gamma             Smith   2022          NA

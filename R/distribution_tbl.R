@@ -14,15 +14,15 @@
 #' @export
 #' @examples
 #' epidist_list <- epidist_db(disease = "COVID-19")
-#' parameter_tbl(multi_epidist = epidist_list)
+#' distribution_tbl(multi_epidist = epidist_list)
 #'
 #' # example filtering an existing list to incubation periods
 #' epidist_list <- epidist_db(disease = "COVID-19")
-#' parameter_tbl(
+#' distribution_tbl(
 #'   multi_epidist = epidist_list,
 #'   epi_dist = "incubation period"
 #' )
-parameter_tbl <- function(multi_epidist,
+distribution_tbl <- function(multi_epidist,
                           disease = "all",
                           pathogen = "all",
                           epi_dist = "all") {
@@ -97,22 +97,22 @@ parameter_tbl <- function(multi_epidist,
     year = year,
     sample_size
   )
-  class(df) <- c("parameter_tbl", class(df))
+  class(df) <- c("distribution_tbl", class(df))
 
   # return data
   df
 }
 
 #' @export
-print.parameter_tbl <- function(x, ...) {
-  # p_tbl subclass needed see https://github.com/tidyverse/ggplot2/issues/4786
-  class(x) <- c("p_tbl", "tbl", "data.frame")
+print.distribution_tbl <- function(x, ...) {
+  # d_tbl subclass needed see https://github.com/tidyverse/ggplot2/issues/4786
+  class(x) <- c("d_tbl", "tbl", "data.frame")
   print(x, ...)
 }
 
 #' @importFrom pillar tbl_sum
 #' @export
-tbl_sum.p_tbl <- function(x, ...) {
+tbl_sum.d_tbl <- function(x, ...) {
   default_header <- NextMethod()
-  c("Parameter table" = "", default_header)
+  c("Distribution table" = "", default_header)
 }
