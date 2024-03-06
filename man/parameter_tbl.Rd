@@ -2,7 +2,7 @@
 % Please edit documentation in R/parameter_tbl.R
 \name{parameter_tbl}
 \alias{parameter_tbl}
-\title{Provide epidemiological distributions in a tabular format}
+\title{Table of epidemiological distributions}
 \usage{
 parameter_tbl(
   multi_epidist,
@@ -29,11 +29,6 @@ return only the chosen epidemiological distribution. The results are
 returned as a data frame containing the disease, epidemiological
 distribution, probability distribution, author of the study, and the year
 of publication.
-}
-\details{
-The \verb{<data.frame>} returned by \code{\link[=parameter_tbl]{parameter_tbl()}} contains some
-vector columns and some list columns. For example, the \code{author} column is a
-list as each paper can contain multiple authors.
 }
 \examples{
 epidist_list <- epidist_db(disease = "COVID-19")

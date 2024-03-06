@@ -29,7 +29,7 @@ Imports:
     distcrete,
     distributional,
     graphics,
-    rlang,
+    pillar,
     stats,
     utils
 Suggests: 
