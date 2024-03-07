@@ -2,16 +2,21 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_params_to_summary_stats}
 \alias{convert_params_to_summary_stats}
+\alias{convert_params_to_summary_stats.character}
+\alias{convert_params_to_summary_stats.epidist}
 \title{Convert the parameter(s) of a distribution to summary statistics}
 \usage{
-convert_params_to_summary_stats(
-  distribution = c("lnorm", "gamma", "weibull", "nbinom", "geom"),
+convert_params_to_summary_stats(x, ...)
+
+\method{convert_params_to_summary_stats}{character}(
+  x = c("lnorm", "gamma", "weibull", "nbinom", "geom"),
   ...
 )
+
+\method{convert_params_to_summary_stats}{epidist}(x, ...)
 }
 \arguments{
-\item{distribution}{A \code{character} string specifying distribution to use.
-Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}, \code{nbinom} and \code{geom}.}
+\item{x}{An \R object.}
 
 \item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> \code{Numeric} named parameter(s)
 used to convert to summary statistics. An example is the \code{meanlog} and
@@ -33,13 +38,20 @@ distributions in \R, for example the lognormal distribution is \code{lnorm},
 and its parameters are \code{meanlog} and \code{sdlog}.
 }
 \examples{
-convert_params_to_summary_stats(
-  distribution = "lnorm", meanlog = 1, sdlog = 2
+# example using characters
+convert_params_to_summary_stats("lnorm", meanlog = 1, sdlog = 2)
+convert_params_to_summary_stats("gamma", shape = 1, scale = 1)
+convert_params_to_summary_stats("nbinom", prob = 0.5, dispersion = 2)
+
+# example using <epidist>
+epidist <- epidist_db(single_epidist = TRUE)
+convert_params_to_summary_stats(epidist)
+
+# example using <epidist> and specifying parameters
+epidist <- epidist_db(
+  disease = "Influenza",
+  author = "Virlogeux",
+  subset = prob_dist == "weibull"
 )
-convert_params_to_summary_stats(
-  distribution = "gamma", shape = 1, scale = 1
-)
-convert_params_to_summary_stats(
-  distribution = "nbinom", prob = 0.5, dispersion = 2
-)
+convert_params_to_summary_stats(epidist[[2]], shape = 1, scale = 1)
 }
