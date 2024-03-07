@@ -24,36 +24,103 @@
 #' distributions in \R, for example the lognormal distribution is `lnorm`,
 #' and its parameters are `meanlog` and `sdlog`.
 #'
-#' @param distribution A `character` string specifying distribution to use.
-#' Default is `lnorm`; also takes `gamma` and `weibull`, `nbinom` and `geom`.
+#' @param x An \R object.
 #' @param ... <[`dynamic-dots`][rlang::dyn-dots]> `Numeric` named summary
 #' statistics used to convert to parameter(s). An example is the `mean`
-#' and `sd` parameters of the lognormal (`lnorm`) distribution.
+#' and `sd` summary statistics for the lognormal (`lnorm`) distribution.
 #'
 #' @return A list of either one or two elements (depending on how many
 #' parameters the distribution has).
 #' @export
 #'
 #' @examples
-#' convert_summary_stats_to_params(distribution = "lnorm", mean = 1, sd = 1)
-#' convert_summary_stats_to_params(distribution = "weibull", mean = 2, var = 2)
-#' convert_summary_stats_to_params(distribution = "geom", mean = 2)
-convert_summary_stats_to_params <- function(distribution = c( # nolint
-                                              "lnorm", "gamma",
-                                              "weibull",
-                                              "nbinom", "geom"
-                                            ),
-                                            ...) {
+#' # examples using characters
+#' convert_summary_stats_to_params("lnorm", mean = 1, sd = 1)
+#' convert_summary_stats_to_params("weibull", mean = 2, var = 2)
+#' convert_summary_stats_to_params("geom", mean = 2)
+#'
+#' # examples using <epidist>
+#' epidist <- epidist_db(single_epidist = TRUE)
+#' convert_summary_stats_to_params(epidist)
+#'
+#' # example using <epidist> and specifying summary stats
+#' epidist$summary_stats <- list()
+#' convert_summary_stats_to_params(epidist, mean = 10, sd = 2)
+convert_summary_stats_to_params <- function(x, ...) {
+  UseMethod("convert_summary_stats_to_params")
+}
+
+#' @rdname convert_summary_stats_to_params
+#' @export
+convert_summary_stats_to_params.character <- function(x = c("lnorm", "gamma",
+                                                            "weibull", "nbinom",
+                                                            "geom"),
+                                                      ...) {
   # check input
-  distribution <- match.arg(distribution)
+  x <- match.arg(x)
   # capture dynamic dots
   dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
   if (!checkmate::test_list(dots, min.len = 1, names = "unique")) {
     stop(
-      "Summary statistics need to be named and supplied to the function",
+      "Summary statistics need to be named and supplied to the function ",
+      "through `...`",
       call. = FALSE
     )
   }
+
+  # dispatch to function based on distribution specified
+  func <- switch(x,
+    lnorm = convert_summary_stats_lnorm,
+    gamma = convert_summary_stats_gamma,
+    weibull = convert_summary_stats_weibull,
+    nbinom = convert_summary_stats_nbinom,
+    geom = convert_summary_stats_geom
+  )
+
+  # call selected function
+  out <- do.call(func, dots)
+
+  # return output
+  out
+}
+
+#' @rdname convert_summary_stats_to_params
+#' @export
+convert_summary_stats_to_params.epidist <- function(x, ...) {
+  # check input
+  x <- validate_epidist(x)
+  # capture dynamic dots
+  dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
+
+  # warn for modification
+  if (any(names(dots) %in% names(x$summary_stats))) {
+    warning(
+      "One or more summary statistics in <epidist> are being overwritten by ",
+      "those supplied through `...`",
+      call. = FALSE
+    )
+  }
+  summary_stats <- utils::modifyList(x$summary_stats, dots)
+
+  # remove <epidist> summary stats not accepted by internal conversion
+  summary_stats_set <- names(summary_stats) %in%
+    c("mean", "median", "mode", "var", "sd", "cv",
+      "skewness", "ex_kurtosis", "dispersion")
+  summary_stats <- summary_stats[summary_stats_set]
+
+  if (!checkmate::test_list(summary_stats, min.len = 1, names = "unique")) {
+    stop(
+      "Summary statistics need to be named and supplied to the function ",
+      "or in <epidist>",
+      call. = FALSE
+    )
+  }
+
+  # get and check distribution name
+  distribution <- match.arg(
+    family(x),
+    choices = c("lnorm", "gamma", "weibull", "nbinom", "geom")
+  )
 
   # dispatch to function based on distribution specified
   func <- switch(distribution,
@@ -65,7 +132,7 @@ convert_summary_stats_to_params <- function(distribution = c( # nolint
   )
 
   # call selected function
-  out <- do.call(func, dots)
+  out <- do.call(func, summary_stats)
 
   # return output
   out
@@ -92,30 +159,105 @@ convert_summary_stats_to_params <- function(distribution = c( # nolint
 #' @export
 #'
 #' @examples
-#' convert_params_to_summary_stats(
-#'   distribution = "lnorm", meanlog = 1, sdlog = 2
+#' # example using characters
+#' convert_params_to_summary_stats("lnorm", meanlog = 1, sdlog = 2)
+#' convert_params_to_summary_stats("gamma", shape = 1, scale = 1)
+#' convert_params_to_summary_stats("nbinom", prob = 0.5, dispersion = 2)
+#'
+#' # example using <epidist>
+#' epidist <- epidist_db(single_epidist = TRUE)
+#' convert_params_to_summary_stats(epidist)
+#'
+#' # example using <epidist> and specifying parameters
+#' epidist <- epidist_db(
+#'   disease = "Influenza",
+#'   author = "Virlogeux",
+#'   subset = prob_dist == "weibull"
 #' )
-#' convert_params_to_summary_stats(
-#'   distribution = "gamma", shape = 1, scale = 1
-#' )
-#' convert_params_to_summary_stats(
-#'   distribution = "nbinom", prob = 0.5, dispersion = 2
-#' )
-convert_params_to_summary_stats <- function(distribution = c( # nolint
-                                              "lnorm", "gamma", "weibull",
-                                              "nbinom", "geom"
-                                            ),
-                                            ...) {
+#' convert_params_to_summary_stats(epidist[[2]], shape = 1, scale = 1)
+convert_params_to_summary_stats <- function(x, ...) {
+  UseMethod("convert_params_to_summary_stats")
+}
+
+#' @rdname convert_params_to_summary_stats
+#' @export
+convert_params_to_summary_stats.character <- function(x = c("lnorm", "gamma",
+                                                            "weibull", "nbinom",
+                                                            "geom"),
+                                                      ...) {
   # check input
-  distribution <- match.arg(distribution)
+  x <- match.arg(x)
   # capture dynamic dots
   dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
   if (!checkmate::test_list(dots, min.len = 1, names = "unique")) {
     stop(
-      "Parameter(s) need to be named and supplied to the function",
+      "Parameter(s) need to be named and supplied to the function ",
+      "through `...`",
       call. = FALSE
     )
   }
+
+  # dispatch to function based on distribution specified
+  func <- switch(x,
+    lnorm = convert_params_lnorm,
+    gamma = convert_params_gamma,
+    weibull = convert_params_weibull,
+    nbinom = convert_params_nbinom,
+    geom = convert_params_geom
+  )
+
+  # call selected function
+  out <- do.call(func, dots)
+
+  # return output
+  out
+}
+
+#' @rdname convert_params_to_summary_stats
+#' @export
+convert_params_to_summary_stats.epidist <- function(x, ...) {
+  # check input
+  x <- validate_epidist(x)
+  # capture dynamic dots
+  dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
+
+
+  if (!is_parameterised(x)) {
+    if (length(dots) > 0) {
+      # unparameterised with parameters supplied through `...`
+      return(convert_params_to_summary_stats(x$prob_dist, ...))
+    }
+    # unparameterised with no parameters supplied through `...`
+    stop(
+      "<epidist> supplied has no parameters and none are suppled through `...`",
+      call. = FALSE
+    )
+  }
+
+  parameters <- as.list(get_parameters(x))
+
+  # warn for modification
+  if (any(names(dots) %in% names(parameters))) {
+    warning(
+      "One or more parameters in <epidist> are being overwritten by ",
+      "those supplied through `...`",
+      call. = FALSE
+    )
+  }
+  parameters <- utils::modifyList(parameters, dots)
+
+  if (!checkmate::test_list(parameters, min.len = 1, names = "unique")) {
+    stop(
+      "Parameters need to be named and supplied to the function",
+      call. = FALSE
+    )
+  }
+
+  # get and check distribution name
+  distribution <- match.arg(
+    family(x),
+    choices = c("lnorm", "gamma", "weibull", "nbinom", "geom")
+  )
 
   # dispatch to function based on distribution specified
   func <- switch(distribution,
@@ -127,7 +269,7 @@ convert_params_to_summary_stats <- function(distribution = c( # nolint
   )
 
   # call selected function
-  out <- do.call(func, dots)
+  out <- do.call(func, parameters)
 
   # return output
   out

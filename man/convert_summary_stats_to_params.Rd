@@ -2,20 +2,25 @@
 % Please edit documentation in R/convert_params.R
 \name{convert_summary_stats_to_params}
 \alias{convert_summary_stats_to_params}
+\alias{convert_summary_stats_to_params.character}
+\alias{convert_summary_stats_to_params.epidist}
 \title{Convert the summary statistics of a distribution to parameters}
 \usage{
-convert_summary_stats_to_params(
-  distribution = c("lnorm", "gamma", "weibull", "nbinom", "geom"),
+convert_summary_stats_to_params(x, ...)
+
+\method{convert_summary_stats_to_params}{character}(
+  x = c("lnorm", "gamma", "weibull", "nbinom", "geom"),
   ...
 )
+
+\method{convert_summary_stats_to_params}{epidist}(x, ...)
 }
 \arguments{
-\item{distribution}{A \code{character} string specifying distribution to use.
-Default is \code{lnorm}; also takes \code{gamma} and \code{weibull}, \code{nbinom} and \code{geom}.}
+\item{x}{An \R object.}
 
 \item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> \code{Numeric} named summary
 statistics used to convert to parameter(s). An example is the \code{mean}
-and \code{sd} parameters of the lognormal (\code{lnorm}) distribution.}
+and \code{sd} summary statistics for the lognormal (\code{lnorm}) distribution.}
 }
 \value{
 A list of either one or two elements (depending on how many
@@ -49,7 +54,16 @@ distributions in \R, for example the lognormal distribution is \code{lnorm},
 and its parameters are \code{meanlog} and \code{sdlog}.
 }
 \examples{
-convert_summary_stats_to_params(distribution = "lnorm", mean = 1, sd = 1)
-convert_summary_stats_to_params(distribution = "weibull", mean = 2, var = 2)
-convert_summary_stats_to_params(distribution = "geom", mean = 2)
+# examples using characters
+convert_summary_stats_to_params("lnorm", mean = 1, sd = 1)
+convert_summary_stats_to_params("weibull", mean = 2, var = 2)
+convert_summary_stats_to_params("geom", mean = 2)
+
+# examples using <epidist>
+epidist <- epidist_db(single_epidist = TRUE)
+convert_summary_stats_to_params(epidist)
+
+# example using <epidist> and specifying summary stats
+epidist$summary_stats <- list()
+convert_summary_stats_to_params(epidist, mean = 10, sd = 2)
 }

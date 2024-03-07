@@ -10,7 +10,7 @@ convert_summary_stats_nbinom(...)
 \arguments{
 \item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> \code{Numeric} named summary
 statistics used to convert to parameter(s). An example is the \code{mean}
-and \code{sd} parameters of the lognormal (\code{lnorm}) distribution.}
+and \code{sd} summary statistics for the lognormal (\code{lnorm}) distribution.}
 }
 \value{
 A list of two elements, the probability and dispersion parameters.
