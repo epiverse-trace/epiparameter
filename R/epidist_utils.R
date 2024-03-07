@@ -608,7 +608,7 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
   if (all(c("n", "p") %in% names(prob_dist_params))) {
     # convert prob to mean
     prob_dist_params[["p"]] <- convert_params_to_summary_stats(
-      distribution = "nbinom",
+      "nbinom",
       prob = prob_dist_params[["p"]],
       dispersion = prob_dist_params[["n"]]
     )$mean
