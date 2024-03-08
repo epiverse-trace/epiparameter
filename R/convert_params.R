@@ -70,11 +70,11 @@ convert_summary_stats_to_params.character <- function(x = c("lnorm", "gamma",
 
   # dispatch to function based on distribution specified
   func <- switch(x,
-    lnorm = convert_summary_stats_lnorm,
-    gamma = convert_summary_stats_gamma,
-    weibull = convert_summary_stats_weibull,
-    nbinom = convert_summary_stats_nbinom,
-    geom = convert_summary_stats_geom
+    lnorm = .convert_summary_stats_lnorm,
+    gamma = .convert_summary_stats_gamma,
+    weibull = .convert_summary_stats_weibull,
+    nbinom = .convert_summary_stats_nbinom,
+    geom = .convert_summary_stats_geom
   )
 
   # call selected function
@@ -124,11 +124,11 @@ convert_summary_stats_to_params.epidist <- function(x, ...) {
 
   # dispatch to function based on distribution specified
   func <- switch(distribution,
-    lnorm = convert_summary_stats_lnorm,
-    gamma = convert_summary_stats_gamma,
-    weibull = convert_summary_stats_weibull,
-    nbinom = convert_summary_stats_nbinom,
-    geom = convert_summary_stats_geom
+    lnorm = .convert_summary_stats_lnorm,
+    gamma = .convert_summary_stats_gamma,
+    weibull = .convert_summary_stats_weibull,
+    nbinom = .convert_summary_stats_nbinom,
+    geom = .convert_summary_stats_geom
   )
 
   # call selected function
@@ -199,11 +199,11 @@ convert_params_to_summary_stats.character <- function(x = c("lnorm", "gamma",
 
   # dispatch to function based on distribution specified
   func <- switch(x,
-    lnorm = convert_params_lnorm,
-    gamma = convert_params_gamma,
-    weibull = convert_params_weibull,
-    nbinom = convert_params_nbinom,
-    geom = convert_params_geom
+    lnorm = .convert_params_lnorm,
+    gamma = .convert_params_gamma,
+    weibull = .convert_params_weibull,
+    nbinom = .convert_params_nbinom,
+    geom = .convert_params_geom
   )
 
   # call selected function
@@ -261,11 +261,11 @@ convert_params_to_summary_stats.epidist <- function(x, ...) {
 
   # dispatch to function based on distribution specified
   func <- switch(distribution,
-    lnorm = convert_params_lnorm,
-    gamma = convert_params_gamma,
-    weibull = convert_params_weibull,
-    nbinom = convert_params_nbinom,
-    geom = convert_params_geom
+    lnorm = .convert_params_lnorm,
+    gamma = .convert_params_gamma,
+    weibull = .convert_params_weibull,
+    nbinom = .convert_params_nbinom,
+    geom = .convert_params_geom
   )
 
   # call selected function
@@ -334,7 +334,7 @@ chk_ss <- function(x) {
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
-convert_params_lnorm <- function(...) {
+.convert_params_lnorm <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -383,7 +383,7 @@ convert_params_lnorm <- function(...) {
 #'
 #' @return A list of two elements: meanlog and sdlog
 #' @keywords internal
-convert_summary_stats_lnorm <- function(...) {
+.convert_summary_stats_lnorm <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -430,7 +430,7 @@ convert_summary_stats_lnorm <- function(...) {
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
-convert_params_gamma <- function(...) {
+.convert_params_gamma <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -478,7 +478,7 @@ convert_params_gamma <- function(...) {
 #'
 #' @return A list of two elements, the shape and scale
 #' @keywords internal
-convert_summary_stats_gamma <- function(...) {
+.convert_summary_stats_gamma <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -516,7 +516,7 @@ convert_summary_stats_gamma <- function(...) {
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
-convert_params_weibull <- function(...) {
+.convert_params_weibull <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -567,7 +567,7 @@ convert_params_weibull <- function(...) {
 #'
 #' @return A list of two elements, the shape and scale.
 #' @keywords internal
-convert_summary_stats_weibull <- function(...) {
+.convert_summary_stats_weibull <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -619,7 +619,7 @@ convert_summary_stats_weibull <- function(...) {
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and ex_kurtosis.
 #' @keywords internal
-convert_params_nbinom <- function(...) {
+.convert_params_nbinom <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -672,7 +672,7 @@ convert_params_nbinom <- function(...) {
 #'
 #' @return A list of two elements, the probability and dispersion parameters.
 #' @keywords internal
-convert_summary_stats_nbinom <- function(...) {
+.convert_summary_stats_nbinom <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -729,7 +729,7 @@ convert_summary_stats_nbinom <- function(...) {
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
 #' skewness, and excess kurtosis (`ex_kurtosis`).
 #' @keywords internal
-convert_params_geom <- function(...) {
+.convert_params_geom <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -779,7 +779,7 @@ convert_params_geom <- function(...) {
 #'
 #' @return A list of one element, the probability parameter.
 #' @keywords internal
-convert_summary_stats_geom <- function(...) {
+.convert_summary_stats_geom <- function(...) {
   # capture dynamic dots
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
