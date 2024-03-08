@@ -246,13 +246,6 @@ convert_params_to_summary_stats.epidist <- function(x, ...) {
   }
   parameters <- utils::modifyList(parameters, dots)
 
-  if (!checkmate::test_list(parameters, min.len = 1, names = "unique")) {
-    stop(
-      "Parameters need to be named and supplied to the function",
-      call. = FALSE
-    )
-  }
-
   # get and check distribution name
   distribution <- match.arg(
     family(x),
