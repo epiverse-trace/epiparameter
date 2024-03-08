@@ -17,6 +17,7 @@ reference:
     - discretise
     - ends_with("\\.epidist")
     - -has_keyword("epidist_distribution_functions")
+    - -starts_with("convert_")
     - validate_epidist
     - ends_with("\\.multi_epidist")
 
