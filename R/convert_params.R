@@ -92,8 +92,9 @@ convert_summary_stats_to_params.epidist <- function(x, ...) {
   # capture dynamic dots
   dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
+  numeric_ss <- names(x$summary_stats)[!is.na(x$summary_stats)]
   # warn for modification
-  if (any(names(dots) %in% names(x$summary_stats))) {
+  if (any(names(dots) %in% numeric_ss)) {
     warning(
       "One or more summary statistics in <epidist> are being overwritten by ",
       "those supplied through `...`",
