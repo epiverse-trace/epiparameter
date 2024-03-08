@@ -46,7 +46,7 @@
 #' # example using <epidist> and specifying summary stats
 #' epidist$summary_stats <- list()
 #' convert_summary_stats_to_params(epidist, mean = 10, sd = 2)
-convert_summary_stats_to_params <- function(x, ...) {
+convert_summary_stats_to_params <- function(x, ...) { # nolint object_length_linter
   UseMethod("convert_summary_stats_to_params")
 }
 
@@ -175,7 +175,7 @@ convert_summary_stats_to_params.epidist <- function(x, ...) {
 #'   subset = prob_dist == "weibull"
 #' )
 #' convert_params_to_summary_stats(epidist[[2]], shape = 1, scale = 1)
-convert_params_to_summary_stats <- function(x, ...) {
+convert_params_to_summary_stats <- function(x, ...) { # nolint object_length_linter
   UseMethod("convert_params_to_summary_stats")
 }
 
