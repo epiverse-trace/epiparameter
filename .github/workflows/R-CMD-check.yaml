@@ -22,6 +22,7 @@ on:
       - 'LICENSE'
       - '.Rbuildignore'
       - '.github/workflows/R-CMD-check.yaml'
+  merge_group:
   pull_request:
     paths:
       - 'data/**'
@@ -62,11 +63,9 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
-      # Exists since R 4.3.0 but `false` by default
-      _R_CHECK_LENGTH_COLON_: true
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -78,14 +77,14 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages:
-            any::rcmdcheck
+          extra-packages: any::rcmdcheck
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
         id: rcmdcheck
         with:
           upload-snapshots: true
+          error-on: '"note"'
 
       # fail-fast but only if rcmdcheck step fails
       - name: Manual fail-fast
