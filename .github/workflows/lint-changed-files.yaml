@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [main, master]
+    paths:
+      - '**.R'
+      - '**.Rmd'
+      - '**/.lintr'
+      - '**/.lintr.R'
 
 name: lint-changed-files
 
