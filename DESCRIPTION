@@ -1,65 +1,45 @@
 Package: epiparameter
 Title: Library of Epidemiological Parameters
 Version: 0.0.0.9000
-Authors@R: 
-    c(
-        person(
-            given = "Joshua W.",
-            family = "Lambert",
-            role = c("aut", "cre", "cph"),
-            email = "joshua.lambert@lshtm.ac.uk",
-            comment = c(ORCID = "0000-0001-5218-3046")
-        ),
-        person(
-            given = "Adam", 
-            family = "Kucharski",
-            role = c("aut", "cph"),
-            email = "adam.kucharski@lshtm.ac.uk", 
-            comment = c(ORCID = "0000-0001-8814-9421")
-        ),
-        person(
-            given = "Hugo",
-            family = "Gruson",
-            role = c("ctb", "rev"),
-            email = "hugo.gruson@data.org",
-            comment = c(ORCID = "0000-0002-4094-1476")
-        ),
-        person(
-            given = "Pratik",
-            family = "Gupte",
-            role = c("rev"),
-            email = "pratik.gupte@lshtm.ac.uk",
-            comment = c(ORCID = "0000-0001-5294-7819")
-        )
-      )
-Description: Library of epidemiological parameters for infectious diseases and a
-    set of classes and helper functions. 
+Authors@R: c(
+    person("Joshua W.", "Lambert", , "joshua.lambert@lshtm.ac.uk", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-5218-3046")),
+    person("Adam", "Kucharski", , "adam.kucharski@lshtm.ac.uk", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0001-8814-9421")),
+    person("Hugo", "Gruson", , "hugo.gruson@data.org", role = c("ctb", "rev"),
+           comment = c(ORCID = "0000-0002-4094-1476")),
+    person("Pratik", "Gupte", , "pratik.gupte@lshtm.ac.uk", role = "rev",
+           comment = c(ORCID = "0000-0001-5294-7819"))
+  )
+Description: Library of epidemiological parameters for infectious diseases
+    and a set of classes and helper functions.
 License: MIT + file LICENSE
-URL: https://github.com/epiverse-trace/epiparameter, https://epiverse-trace.github.io/epiparameter/
+URL: https://github.com/epiverse-trace/epiparameter,
+    https://epiverse-trace.github.io/epiparameter/
 BugReports: https://github.com/epiverse-trace/epiparameter/issues
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
 Depends: 
     R (>= 3.6.0)
 Imports:
     checkmate,
-    distributional,
     distcrete,
+    distributional,
     rlang,
     stats,
     utils
 Suggests: 
+    bookdown,
+    ggplot2,
     jsonlite,
     knitr,
-    bookdown,
     rmarkdown,
-    vdiffr (>= 1.0.7),
-    ggplot2,
+    spelling,
     testthat (>= 3.0.0),
-    spelling
+    vdiffr (>= 1.0.7)
+VignetteBuilder: 
+    knitr
+Config/Needs/website:epiverse-trace/epiversetheme
 Config/testthat/edition: 3
-Config/Needs/website:
-    epiverse-trace/epiversetheme
-VignetteBuilder: knitr
+Encoding: UTF-8
 Language: en-GB
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
