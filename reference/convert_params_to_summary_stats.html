@@ -83,17 +83,22 @@ analytically given the parameters.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span></span>
-<span>  distribution <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lnorm"</span>, <span class="st">"gamma"</span>, <span class="st">"weibull"</span>, <span class="st">"nbinom"</span>, <span class="st">"geom"</span><span class="op">)</span>,</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for character</span></span>
+<span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lnorm"</span>, <span class="st">"gamma"</span>, <span class="st">"weibull"</span>, <span class="st">"nbinom"</span>, <span class="st">"geom"</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for epidist</span></span>
+<span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>distribution</dt>
-<dd><p>A <code>character</code> string specifying distribution to use.
-Default is <code>lnorm</code>; also takes <code>gamma</code> and <code>weibull</code>, <code>nbinom</code> and <code>geom</code>.</p></dd>
+    <dl><dt>x</dt>
+<dd><p>An <span style="R">R</span> object.</p></dd>
 
 
 <dt>...</dt>
@@ -119,9 +124,8 @@ and its parameters are <code>meanlog</code> and <code>sdlog</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  distribution <span class="op">=</span> <span class="st">"lnorm"</span>, meanlog <span class="op">=</span> <span class="fl">1</span>, sdlog <span class="op">=</span> <span class="fl">2</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># example using characters</span></span></span>
+<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="st">"lnorm"</span>, meanlog <span class="op">=</span> <span class="fl">1</span>, sdlog <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mean</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.08554</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -146,9 +150,7 @@ and its parameters are <code>meanlog</code> and <code>sdlog</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ex_kurtosis</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9220557</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  distribution <span class="op">=</span> <span class="st">"gamma"</span>, shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="st">"gamma"</span>, shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mean</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -173,9 +175,7 @@ and its parameters are <code>meanlog</code> and <code>sdlog</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ex_kurtosis</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  distribution <span class="op">=</span> <span class="st">"nbinom"</span>, prob <span class="op">=</span> <span class="fl">0.5</span>, dispersion <span class="op">=</span> <span class="fl">2</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="st">"nbinom"</span>, prob <span class="op">=</span> <span class="fl">0.5</span>, dispersion <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mean</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -199,6 +199,80 @@ and its parameters are <code>meanlog</code> and <code>sdlog</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ex_kurtosis</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># example using &lt;epidist&gt;</span></span></span>
+<span class="r-in"><span><span class="va">epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span>single_epidist <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Hugonnet S, Iyengar S, Jombart T, Krishnan R, Meijers S, Mills H,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Mohamed Y, Nedjati-Gilani G, Newton E, Nouvellet P, Pelletier L,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Perkins D, Riley S, Sagrado M, Schnitzler J, Schumacher D, Shah A, Van</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Kerkhove M, Varsaneux O, Kannangarage N (2015). “West African Ebola</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Epidemic after One Year — Slowing but Not Yet under Control.” _The New</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the short citation use the 'get_citation' function</span>
+<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="va">epidist</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $mean</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 8.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $median</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2648484</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $mode</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.204878</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $var</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 40.96</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $cv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.7804878</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $skewness</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.560976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ex_kurtosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.654967</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># example using &lt;epidist&gt; and specifying parameters</span></span></span>
+<span class="r-in"><span><span class="va">epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  disease <span class="op">=</span> <span class="st">"Influenza"</span>,</span></span>
+<span class="r-in"><span>  author <span class="op">=</span> <span class="st">"Virlogeux"</span>,</span></span>
+<span class="r-in"><span>  subset <span class="op">=</span> <span class="va">prob_dist</span> <span class="op">==</span> <span class="st">"weibull"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 4 results that match the criteria (3 are parameterised). </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epidist to return a single entry. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the short citation for each use the 'get_citation' function</span>
+<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="va">epidist</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $mean</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $median</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6931472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $mode</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $var</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $cv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $skewness</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ex_kurtosis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

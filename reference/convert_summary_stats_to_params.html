@@ -86,23 +86,28 @@ which uses a root finding numerical method.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span></span>
-<span>  distribution <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lnorm"</span>, <span class="st">"gamma"</span>, <span class="st">"weibull"</span>, <span class="st">"nbinom"</span>, <span class="st">"geom"</span><span class="op">)</span>,</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for character</span></span>
+<span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lnorm"</span>, <span class="st">"gamma"</span>, <span class="st">"weibull"</span>, <span class="st">"nbinom"</span>, <span class="st">"geom"</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for epidist</span></span>
+<span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>distribution</dt>
-<dd><p>A <code>character</code> string specifying distribution to use.
-Default is <code>lnorm</code>; also takes <code>gamma</code> and <code>weibull</code>, <code>nbinom</code> and <code>geom</code>.</p></dd>
+    <dl><dt>x</dt>
+<dd><p>An <span style="R">R</span> object.</p></dd>
 
 
 <dt>...</dt>
 <dd><p>&lt;<code><a href="https://rlang.r-lib.org/reference/dyn-dots.html" class="external-link">dynamic-dots</a></code>&gt; <code>Numeric</code> named summary
 statistics used to convert to parameter(s). An example is the <code>mean</code>
-and <code>sd</code> parameters of the lognormal (<code>lnorm</code>) distribution.</p></dd>
+and <code>sd</code> summary statistics for the lognormal (<code>lnorm</code>) distribution.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -132,14 +137,15 @@ and its parameters are <code>meanlog</code> and <code>sdlog</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span>distribution <span class="op">=</span> <span class="st">"lnorm"</span>, mean <span class="op">=</span> <span class="fl">1</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># examples using characters</span></span></span>
+<span class="r-in"><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span><span class="st">"lnorm"</span>, mean <span class="op">=</span> <span class="fl">1</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $meanlog</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.3465736</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sdlog</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.8325546</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span>distribution <span class="op">=</span> <span class="st">"weibull"</span>, mean <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span><span class="st">"weibull"</span>, mean <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Numerical approximation used, results may be unreliable.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $shape</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.435521</span>
@@ -147,9 +153,40 @@ and its parameters are <code>meanlog</code> and <code>sdlog</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $scale</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.202641</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span>distribution <span class="op">=</span> <span class="st">"geom"</span>, mean <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span><span class="st">"geom"</span>, mean <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.3333333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># examples using &lt;epidist&gt;</span></span></span>
+<span class="r-in"><span><span class="va">epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span>single_epidist <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Using WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Hugonnet S, Iyengar S, Jombart T, Krishnan R, Meijers S, Mills H,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Mohamed Y, Nedjati-Gilani G, Newton E, Nouvellet P, Pelletier L,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Perkins D, Riley S, Sagrado M, Schnitzler J, Schumacher D, Shah A, Van</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Kerkhove M, Varsaneux O, Kannangarage N (2015). “West African Ebola</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Epidemic after One Year — Slowing but Not Yet under Control.” _The New</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the short citation use the 'get_citation' function</span>
+<span class="r-in"><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span><span class="va">epidist</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $shape</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.641602</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $scale</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4.995122</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># example using &lt;epidist&gt; and specifying summary stats</span></span></span>
+<span class="r-in"><span><span class="va">epidist</span><span class="op">$</span><span class="va">summary_stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">convert_summary_stats_to_params</span><span class="op">(</span><span class="va">epidist</span>, mean <span class="op">=</span> <span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $shape</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $scale</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

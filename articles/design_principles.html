@@ -160,8 +160,19 @@ lists.</p>
 <h2 id="design-decisions">Design decisions<a class="anchor" aria-label="anchor" href="#design-decisions"></a>
 </h2>
 <ul>
-<li><p>Conversion functions are designed to handle multiple
-distributions and not have a function for each distribution.</p></li>
+<li><p>The conversion functions (<code>convert_*</code>) are S3 generic
+functions with methods provided by {epiparameter} for
+<code>character</code> and <code>&lt;epidist&gt;</code> input. This
+follows the design pattern of other packages, such as <a href="https://dplyr.tidyverse.org/" class="external-link">{dplyr}</a>, which export their key
+data transformation functions as S3 generics to allow other developers
+to extend the conversions to other data objects.</p></li>
+<li><p>The conversion functions are designed to have a single function
+exported to the user for summary statistics to parameters, and another
+function exported for parameters to summary statistics. These functions
+use a <code><a href="https://rdrr.io/r/base/switch.html" class="external-link">switch()</a></code> to dispatch to the internal conversion
+functions. This provides a minimal number of conversion functions in the
+package namespace compared to exporting a conversion function for every
+distribution.</p></li>
 <li><p>If there are a large number of entries returned when reading
 epidemiological parameters from the library using the
 <code><a href="../reference/epidist_db.html">epidist_db()</a></code> function, it can flood the console, due to the

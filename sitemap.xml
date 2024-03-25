@@ -76,40 +76,10 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.weibull.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_gamma.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_geom.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_lnorm.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_nbinom.html</loc>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_to_summary_stats.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_weibull.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_gamma.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_geom.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_lnorm.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_nbinom.html</loc>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_to_params.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_summary_stats_weibull.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/create_epidist_citation.html</loc>
@@ -137,6 +107,36 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-clean_string.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_params_gamma.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_params_geom.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_params_lnorm.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_params_nbinom.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_params_weibull.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_summary_stats_gamma.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_summary_stats_geom.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_summary_stats_lnorm.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_summary_stats_nbinom.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-convert_summary_stats_weibull.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-extract_param.html</loc>
