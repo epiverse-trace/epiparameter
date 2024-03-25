@@ -13,3 +13,4 @@
 ^.lintr$
 ^CITATION\.cff$
 ^data-raw$
+^tools$
