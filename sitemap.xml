@@ -4,9 +4,6 @@
     <loc>https://epiverse-trace.github.io/epiparameter/404.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/CONTRIBUTING.html</loc>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/LICENSE-text.html</loc>
   </url>
   <url>
@@ -149,6 +146,9 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/epidist_distribution_functions.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/epiparameter-package.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param.html</loc>
