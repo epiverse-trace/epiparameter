@@ -1,0 +1,102 @@
+url: https://epiverse-trace.github.io/epiparameter
+template:
+  package: epiversetheme
+  bslib:
+    font_weight_base : 300
+
+development:
+  mode: auto
+
+reference:
+  - title: epiparameter classes
+
+  - subtitle: epidist object
+    desc: Class constructor, validator, and methods
+    contents:
+    - epidist
+    - discretise
+    - ends_with("\\.epidist")
+    - -has_keyword("epidist_distribution_functions")
+    - -starts_with("convert_")
+    - validate_epidist
+    - ends_with("\\.multi_epidist")
+
+  - subtitle: vb_epdist object
+    desc: Class constructor, validator, and methods
+    contents:
+    - vb_epidist
+    - ends_with("\\.vb_epidist")
+    - -has_keyword("epidist_distribution_functions")
+    - validate_vb_epidist
+
+  - title: Accessors
+    desc: Get data from epi classes
+    contents:
+    - get_citation
+    - get_parameters
+
+  - title: epidist helper functions
+    desc: Functions to help construct `<epidist>` objects
+    contents:
+    - starts_with("create_epidist")
+
+  - title: epidist from {epiparameter} library
+    desc: Retrieve `<epidist>` object directly from database
+    contents:
+    - epidist_db
+
+  - title: Explore epiparameters
+    desc: List epi parameters as table
+    contents:
+    - list_distributions
+
+  - title: Distribution functions
+    desc: Functions for operating on `<epidist>` and `<vb_epidist>` distributions
+    contents:
+    - cdf.epidist
+
+  - title: Parameter extraction
+    desc: Extract distribution parameters from summary statistics
+    contents:
+    - extract_param
+
+  - title: Parameter conversion
+    desc: Convert distribution parameter to summary statistics and vice versa
+    contents:
+    - starts_with("convert_")
+
+  - title: Epi object checking
+    desc: Check an object is of a certain type or feature
+    contents:
+    - is_epidist
+    - is_epidist_params
+    - is_truncated
+    - is_vb_epidist
+    - is_parameterised
+
+  - title: Utility function
+    contents:
+    - calc_disc_dist_quantile
+
+
+articles:
+- title: Get started
+  navbar: Intro
+  contents:
+  - epiparameter
+  - extract_convert
+
+- title: Parameter library
+  navbar: Epiparameter Data
+  contents:
+  - data_protocol
+
+- title: Auxiliary
+  navbar: Auxiliary
+  contents:
+  - extract-bias
+
+- title: Developer Documentation
+  navbar: Developer Documentation
+  contents:
+  - design_principles
