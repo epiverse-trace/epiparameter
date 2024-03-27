@@ -1037,3 +1037,42 @@ as.function.epidist <- function(x,
   # return distribution function
   x
 }
+
+
+#' [as.data.frame] method for `<epidist>` class
+#'
+#' @details
+#' The `<data.frame>` returned will contain some atomic columns (i.e. one
+#' object per row), and other columns that are lists (i.e. multiple objects per
+#' row). The list columns can contain lists or S3 objects (e.g. `<bibentry>`
+#' object in the `citation` column).
+#'
+#'
+#' @inheritParams print.epidist
+#' @param ... [dots] Not used, extra arguments supplied will cause a warning.
+#'
+#' @return A `<data.frame>` with a single row.
+#' @export
+as.data.frame.epidist <- function(x, ...) {
+  chkDots(...)
+  # check object as could be invalidated by user
+  validate_epidist(x)
+
+  # make data frame
+  df <- data.frame(
+    disease = x$disease,
+    pathogen = x$pathogen,
+    epi_distribution = x$epi_dist,
+    prob_distribution = I(list(prob_dist = x$prob_dist)),
+    uncertainty = I(list(uncertainty = x$uncertainty)),
+    summary_stats = I(list(summary_stats = x$summary_stats)),
+    citation = I(x$citation),
+    metadata = I(list(metadata = x$metadata)),
+    method_assess = I(list(method_assess = x$method_assess)),
+    notes = x$notes
+  )
+  row.names(df) <- NULL
+
+  # return data frame
+  df
+}

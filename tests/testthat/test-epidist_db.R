@@ -234,3 +234,17 @@ test_that(".is_pkg_installed works as expected", {
   expect_true(.is_pkg_installed(package = "distributional"))
   expect_false(.is_pkg_installed(package = "jsonlit"))
 })
+
+test_that("as.data.frame works for <multi_epidist>", {
+  # message about missing citation suppressed
+  edist <- suppressMessages(epidist_db())
+  df <- as.data.frame(edist)
+  expect_s3_class(df, class = "data.frame")
+  expect_identical(dim(df), c(122L, 10L))
+  expect_identical(
+    colnames(df),
+    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+      "uncertainty", "summary_stats", "citation", "metadata", "method_assess",
+      "notes")
+  )
+})
