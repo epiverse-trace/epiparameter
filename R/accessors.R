@@ -109,8 +109,9 @@ get_citation.epidist <- function(x, ...) {
 #' @inheritParams print.epidist
 #' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
-#' @return A list of `<bibentry>` objects. The length of output list is
-#' equal to the length of the list of `<epidist>` objects supplied.
+#' @return A `<bibentry>` object containing multiple references. The length of
+#' output `<bibentry>` is equal to the length of the list of `<epidist>`
+#' objects supplied.
 #' @export
 #'
 #' @examples
@@ -119,8 +120,10 @@ get_citation.epidist <- function(x, ...) {
 #' get_citation(edist)
 get_citation.multi_epidist <- function(x, ...) {
   chkDots(...)
+  # dispatches to get_citation.epidist method
   citation_list <- lapply(x, get_citation)
-
-  # return citation list
-  citation_list
+  # dispatches to c.bibentry method
+  multi_bibentry <- Reduce(f = c, x = citation_list)
+  # return <bibentry>
+  multi_bibentry
 }
