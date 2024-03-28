@@ -9,7 +9,9 @@ linters: all_linters(
       modify_defaults(
         default_undesirable_functions,
         citEntry = "use the more modern bibentry() function",
-        library = NULL # too many false positive in too many files
+        library = NULL, # too many false positive in too many files
+        structure = NULL, # used for class constructor functions
+        par = NULL # used with on.exit() and {withrs} is not a dependency
       )
     ),
     function_argument_linter = NULL,
