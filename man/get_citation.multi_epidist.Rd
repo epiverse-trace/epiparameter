@@ -12,8 +12,9 @@
 \item{...}{\link{dots} Not used, extra arguments supplied will cause a warning.}
 }
 \value{
-A list of \verb{<bibentry>} objects. The length of output list is
-equal to the length of the list of \verb{<epidist>} objects supplied.
+A \verb{<bibentry>} object containing multiple references. The length of
+output \verb{<bibentry>} is equal to the length of the list of \verb{<epidist>}
+objects supplied.
 }
 \description{
 Extract the citation stored in a list of \verb{<epidist>} objects.
