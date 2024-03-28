@@ -95,8 +95,11 @@
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A list of <code>&lt;bibentry&gt;</code> objects. The length of output list is
-equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied.</p>
+<p>A <code>&lt;bibentry&gt;</code> object containing multiple references. The length of
+output <code>&lt;bibentry&gt;</code> is equal to the length of the list of <code>&lt;epidist&gt;</code></p>
+
+
+<p>objects supplied.</p>
     </div>
 
     <div class="section level2">
@@ -105,155 +108,132 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-in"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 122 results that match the criteria (99 are parameterised). </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epidist to return a single entry. </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the short citation for each use the 'get_citation' function</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
 <span class="r-in"><span><span class="fu"><a href="get_citation.html">get_citation</a></span><span class="op">(</span><span class="va">edist</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-6&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-7&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-8&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[4]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-9&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[5]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-10&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[6]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-11&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[7]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-12&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[8]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-13</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-13&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[9]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-14</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-14&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[10]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-15&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[11]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reich N, Lessler J, Cummings D, Brookmeyer R (2009). “Estimating</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> incubation period distributions with coarse data.” _Statistics in</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Medicine_. doi:10.1002/sim.3659 &lt;https://doi.org/10.1002/sim.3659&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[12]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reich N, Lessler J, Cummings D, Brookmeyer R (2009). “Estimating</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> incubation period distributions with coarse data.” _Statistics in</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Medicine_. doi:10.1002/sim.3659 &lt;https://doi.org/10.1002/sim.3659&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[13]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reich N, Lessler J, Cummings D, Brookmeyer R (2009). “Estimating</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> incubation period distributions with coarse data.” _Statistics in</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Medicine_. doi:10.1002/sim.3659 &lt;https://doi.org/10.1002/sim.3659&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[14]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reich N, Lessler J, Cummings D, Brookmeyer R (2009). “Estimating</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> incubation period distributions with coarse data.” _Statistics in</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Medicine_. doi:10.1002/sim.3659 &lt;https://doi.org/10.1002/sim.3659&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[15]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nishiura H, Inaba H (2011). “Estimation of the incubation period of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> influenza A (H1N1-2009) among imported cases: addressing censoring</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> using outbreak data at the origin of importation.” _Journal of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Theoretical Biology_. doi:10.1016/j.jtbi.2010.12.017</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.jtbi.2010.12.017&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[16]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nishiura H, Inaba H (2011). “Estimation of the incubation period of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> influenza A (H1N1-2009) among imported cases: addressing censoring</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> using outbreak data at the origin of importation.” _Journal of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Theoretical Biology_. doi:10.1016/j.jtbi.2010.12.017</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.jtbi.2010.12.017&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[17]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Virlogeux V, Li M, Tsang T, Feng L, Fang V, Jiang H, Wu P, Zheng J, Lau</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> E, Cao Y, Qin Y, Liao Q, Yu H, Cowling B (2015). “Estimating the</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Virus Infections.” _American Journal of Epidemiology_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1093/aje/kwv115 &lt;https://doi.org/10.1093/aje/kwv115&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[18]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Virlogeux V, Li M, Tsang T, Feng L, Fang V, Jiang H, Wu P, Zheng J, Lau</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> E, Cao Y, Qin Y, Liao Q, Yu H, Cowling B (2015). “Estimating the</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Virus Infections.” _American Journal of Epidemiology_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1093/aje/kwv115 &lt;https://doi.org/10.1093/aje/kwv115&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[19]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Virlogeux V, Yang J, Fang V, Feng L, Tsang T, Jiang H, Wu P, Zheng J,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lau E, Qin Y, Peng Z, Peiris J, Yu H, Cowling B (2016). “Association</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> between the Severity of Influenza A(H7N9) Virus Infections and Length</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> of the Incubation Period.” _PLoS One_. doi:10.1371/journal.pone.0148506</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/journal.pone.0148506&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[20]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Virlogeux V, Yang J, Fang V, Feng L, Tsang T, Jiang H, Wu P, Zheng J,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lau E, Qin Y, Peng Z, Peiris J, Yu H, Cowling B (2016). “Association</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> between the Severity of Influenza A(H7N9) Virus Infections and Length</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> of the Incubation Period.” _PLoS One_. doi:10.1371/journal.pone.0148506</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/journal.pone.0148506&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[21]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Virlogeux V, Yang J, Fang V, Feng L, Tsang T, Jiang H, Wu P, Zheng J,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lau E, Qin Y, Peng Z, Peiris J, Yu H, Cowling B (2016). “Association</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> between the Severity of Influenza A(H7N9) Virus Infections and Length</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> of the Incubation Period.” _PLoS One_. doi:10.1371/journal.pone.0148506</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/journal.pone.0148506&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[22]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Tuite A, Greer A, Whelan M, Winter A, Lee B, Yan P, Wu J, Moghadas S,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Buckeridge D, Pourbohloul B, Fisman D (2010). “Estimated epidemiologic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> parameters and morbidity associated with pandemic H1N1 influenza.”</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _Canadian Medical Association Journal_. doi:10.1503/cmaj.091807</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1503/cmaj.091807&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[23]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Ghani A, Baguelin M, Griffin J, Flasche S, van Hoek A, Cauchemez S,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Donnelly C, Robertson C, White M, Truscott J, Fraser C, Garske T, White</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> P, Leach S, Hall I, Jenkins H, Ferguson N, Cooper B (2009). “The Early</span>
@@ -261,7 +241,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> _PLoS Currents_. doi:10.1371/currents.RRN1130</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/currents.RRN1130&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[24]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Ghani A, Baguelin M, Griffin J, Flasche S, van Hoek A, Cauchemez S,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Donnelly C, Robertson C, White M, Truscott J, Fraser C, Garske T, White</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> P, Leach S, Hall I, Jenkins H, Ferguson N, Cooper B (2009). “The Early</span>
@@ -269,39 +248,33 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> _PLoS Currents_. doi:10.1371/currents.RRN1130</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/currents.RRN1130&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[25]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Cummings D, New York City Department of Health and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mental Hygiene Swine Influenza Investigation Team (2009). “Outbreak of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2009 Pandemic Influenza A (H1N1) at a New York City School.” _The New</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMoa0906089</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMoa0906089&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[26]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Reich N, Cummings D, New York City Department of Health and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mental Hygiene Swine Influenza Investigation Team (2009). “Outbreak of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2009 Pandemic Influenza A (H1N1) at a New York City School.” _The New</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMoa0906089</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMoa0906089&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[27]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pavlin B (2014). “Calculation of incubation period and serial interval</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> from multiple outbreaks of Marburg virus disease.” _BMC Research</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Notes_. doi:10.1186/1756-0500-7-906</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1186/1756-0500-7-906&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[28]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pavlin B (2014). “Calculation of incubation period and serial interval</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> from multiple outbreaks of Marburg virus disease.” _BMC Research</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Notes_. doi:10.1186/1756-0500-7-906</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1186/1756-0500-7-906&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[29]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pavlin B (2014). “Calculation of incubation period and serial interval</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> from multiple outbreaks of Marburg virus disease.” _BMC Research</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Notes_. doi:10.1186/1756-0500-7-906</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1186/1756-0500-7-906&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[30]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Colebunders R, Tshomba A, Van Kerkhove M, Bausch D, Campbell P, Libande</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M, Pirard P, Tshioko F, Mardel S, Mulangu S, Sleurs H, Rollin P,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Muyembe-Tamfum J, Jeffs B, Borchert M, International Scientific and</span>
@@ -311,145 +284,119 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> features of illness, and treatment.” _The Journal of Infectious</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Diseases_. doi:10.1086/520543 &lt;https://doi.org/10.1086/520543&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[31]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Ajelli M, Merler S (2012). “Transmission Potential and Design of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Adequate Control Measures for Marburg Hemorrhagic Fever.” _PLoS One_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1371/journal.pone.0050948</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/journal.pone.0050948&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[32]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[33]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[34]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[35]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[36]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[37]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[38]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[39]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[40]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[41]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[42]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chan M, Johansson M (2012). “The Incubation Periods of Dengue Viruses.”</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _PLoS One_. doi:10.1371/journal.pone.0050972</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/journal.pone.0050972&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[43]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chan M, Johansson M (2012). “The Incubation Periods of Dengue Viruses.”</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _PLoS One_. doi:10.1371/journal.pone.0050972</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/journal.pone.0050972&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[44]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chan M, Johansson M (2012). “The Incubation Periods of Dengue Viruses.”</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _PLoS One_. doi:10.1371/journal.pone.0050972</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/journal.pone.0050972&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[45]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lessler J, Ott C, Carcelen A, Konikoff J, Williamson J, Bi Q, Kucirka</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> L, Cummings D, Reich N, Chaisson L (2016). “Times to key events in Zika</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> virus infection and implications for blood donation: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _Bulletin of the World Health Organization_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.2471/BLT.16.174540 &lt;https://doi.org/10.2471/BLT.16.174540&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[46]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[47]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[48]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[49]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[50]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[51]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[52]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[53]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[54]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[55]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rudolph K, Lessler J, Moloney R, Kmush B, Cummings D (2014).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of mosquito-borne viral infections: a systematic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The American Journal of Tropical Medicine and Hygiene_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.4269/ajtmh.13-0403 &lt;https://doi.org/10.4269/ajtmh.13-0403&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[56]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Miura F, van Ewijk C, Backer J, Xiridou M, Franz E, Op de Coul E,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brandwagt D, van Cleef B, van Rijckevorsel G, Swaan C, van den Hof S,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wallinga J (2022). “Estimated incubation period for monkeypox cases</span>
@@ -457,7 +404,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.2807/1560-7917.ES.2022.27.24.2200448</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.2807/1560-7917.ES.2022.27.24.2200448&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[57]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Charniga K, Masters N, Slayton R, Gosdin L, Minhaj F, Philpott D, Smith</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> D, Gearhart S, Alvarado-Ramy F, Brown C, Waltenburg M, Hughes C,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nakazawa Y (2022). “Estimating the incubation period of monkeypox virus</span>
@@ -465,7 +411,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1101/2022.06.22.22276713</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1101/2022.06.22.22276713&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[58]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Guzzetta G, Mammone A, Ferraro F, Caraglia A, Rapiti A, Marziano V,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Poletti P, Cereda D, Vairo F, Mattei G, Maraglino F, Rezza G, Merler S</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (2022). “Early Estimates of Monkeypox Incubation Period, Generation</span>
@@ -473,7 +418,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Infectious Diseases_. doi:10.3201/eid2810.221126</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3201/eid2810.221126&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[59]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Madewell Z, Charniga K, Masters N, Asher J, Fahrenwald L, Still W, Chen</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> J, Kipperman N, Bui D, Shea M, Saathoff-Huber L, Johnson S, Harbi K,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Berns A, Perez T, Gateley E, Spicknall I, Nakazawa Y, Gift T, 2022</span>
@@ -483,7 +427,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1101/2022.10.26.22281516</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1101/2022.10.26.22281516&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[60]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Madewell Z, Charniga K, Masters N, Asher J, Fahrenwald L, Still W, Chen</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> J, Kipperman N, Bui D, Shea M, Saathoff-Huber L, Johnson S, Harbi K,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Berns A, Perez T, Gateley E, Spicknall I, Nakazawa Y, Gift T, 2022</span>
@@ -493,7 +436,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1101/2022.10.26.22281516</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1101/2022.10.26.22281516&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[61]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Madewell Z, Charniga K, Masters N, Asher J, Fahrenwald L, Still W, Chen</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> J, Kipperman N, Bui D, Shea M, Saathoff-Huber L, Johnson S, Harbi K,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Berns A, Perez T, Gateley E, Spicknall I, Nakazawa Y, Gift T, 2022</span>
@@ -503,7 +445,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1101/2022.10.26.22281516</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1101/2022.10.26.22281516&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[62]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Madewell Z, Charniga K, Masters N, Asher J, Fahrenwald L, Still W, Chen</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> J, Kipperman N, Bui D, Shea M, Saathoff-Huber L, Johnson S, Harbi K,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Berns A, Perez T, Gateley E, Spicknall I, Nakazawa Y, Gift T, 2022</span>
@@ -513,13 +454,11 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1101/2022.10.26.22281516</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1101/2022.10.26.22281516&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[63]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Eichner M, Dowell S, Firese N (2011). “Incubation period of ebola</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> hemorrhagic virus subtype zaire.” _Osong Public Health and Research</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Perspectives_. doi:10.1016/j.phrp.2011.04.001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.phrp.2011.04.001&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[64]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The Ebola Outbreak Epidemiology Team, Barry A, Ahuka-Mundeke S, Ali</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Ahmed Y, Allarangar Y, Anoko J, Archer B, Abedi A, Bagaria J, Belizaire</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M, Bhatia S, Bokenge T, Bruni E, Cori A, Dabire E, Diallo A, Diallo B,</span>
@@ -538,7 +477,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> study.” _The Lancet_. doi:10.1016/S0140-6736(18)31387-4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S0140-6736%2818%2931387-4&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[65]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -550,7 +488,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[66]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -562,7 +499,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[67]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -574,7 +510,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[68]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -586,7 +521,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[69]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -598,7 +532,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[70]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -610,7 +543,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[71]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -622,7 +554,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[72]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -634,7 +565,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[73]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -646,7 +576,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[74]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -658,7 +587,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[75]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -670,7 +598,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[76]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -682,7 +609,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[77]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -694,7 +620,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[78]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> WHO Ebola Response Team, Agua-Agum J, Ariyarajah A, Aylward B, Blake I,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Brennan R, Cori A, Donnelly C, Dorigatti I, Dye C, Eckmanns T, Ferguson</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Formenty P, Fraser C, Garcia E, Garske T, Hinsley W, Holmes D,</span>
@@ -706,7 +631,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> England Journal of Medicine_. doi:10.1056/NEJMc1414992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[79]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Assiri A, McGeer A, Perl T, Price C, Al Rabeeah A, Cummings D,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Alabdullatif Z, Assad M, Almulhim A, Makhdoom H, Madani H, Alhakeem R,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Al-Tawfiq J, Cotten M, Watson S, Kellam P, Zumla A, Memish Z, KSA</span>
@@ -715,7 +639,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Medicine_. doi:10.1056/NEJMoa1306742</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMoa1306742&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[80]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Assiri A, McGeer A, Perl T, Price C, Al Rabeeah A, Cummings D,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Alabdullatif Z, Assad M, Almulhim A, Makhdoom H, Madani H, Alhakeem R,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Al-Tawfiq J, Cotten M, Watson S, Kellam P, Zumla A, Memish Z, KSA</span>
@@ -724,7 +647,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Medicine_. doi:10.1056/NEJMoa1306742</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMoa1306742&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[81]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Assiri A, McGeer A, Perl T, Price C, Al Rabeeah A, Cummings D,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Alabdullatif Z, Assad M, Almulhim A, Makhdoom H, Madani H, Alhakeem R,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Al-Tawfiq J, Cotten M, Watson S, Kellam P, Zumla A, Memish Z, KSA</span>
@@ -733,7 +655,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Medicine_. doi:10.1056/NEJMoa1306742</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMoa1306742&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[82]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Assiri A, McGeer A, Perl T, Price C, Al Rabeeah A, Cummings D,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Alabdullatif Z, Assad M, Almulhim A, Makhdoom H, Madani H, Alhakeem R,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Al-Tawfiq J, Cotten M, Watson S, Kellam P, Zumla A, Memish Z, KSA</span>
@@ -742,7 +663,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Medicine_. doi:10.1056/NEJMoa1306742</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMoa1306742&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[83]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Assiri A, McGeer A, Perl T, Price C, Al Rabeeah A, Cummings D,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Alabdullatif Z, Assad M, Almulhim A, Makhdoom H, Madani H, Alhakeem R,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Al-Tawfiq J, Cotten M, Watson S, Kellam P, Zumla A, Memish Z, KSA</span>
@@ -751,92 +671,78 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Medicine_. doi:10.1056/NEJMoa1306742</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1056/NEJMoa1306742&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[84]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mizumoto K, Endo A, Chowell G, Miyamatsu Y, Saitoh M, Nishiura H</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (2015). “Real-time characterization of risks of death associated with</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the Middle East respiratory syndrome (MERS) in the Republic of Korea,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2015.” _BMC Medicine_. doi:10.1186/s12916-015-0468-3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1186/s12916-015-0468-3&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[85]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cowling B, Park M, Fang V, Wu P, Leung G, Wu J (2015). “Preliminary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> epidemiological assessment of MERS-CoV outbreak in South Korea, May to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> June 2015.” _Eurosurveillance_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.2807/1560-7917.es2015.20.25.21163</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.2807/1560-7917.es2015.20.25.21163&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[86]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cowling B, Park M, Fang V, Wu P, Leung G, Wu J (2015). “Preliminary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> epidemiological assessment of MERS-CoV outbreak in South Korea, May to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> June 2016.” _Eurosurveillance_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.2807/1560-7917.es2015.20.25.21163</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.2807/1560-7917.es2015.20.25.21163&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[87]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Men K, Wang X, Yihao L, Zhang G, Hu J, Gao Y, Han H (2020). “Estimate</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> the incubation period of coronavirus 2019 (COVID-19).” _medRxiv_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1101/2020.02.24.20027474</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1101/2020.02.24.20027474&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[88]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rai B, Shukla A, Dwivedi L (2022). “Incubation period for COVID-19: a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> systematic review and meta-analysis.” _Zeitschrift fur</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gesundheitswissenschaften_. doi:10.1007/s10389-021-01478-1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1007/s10389-021-01478-1&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[89]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Alene M, Yismaw L, Assemie M, Ketema D, Gietaneh W, Birhan T (2021).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Serial interval and incubation period of COVID-19: a systematic review</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> and meta-analysis.” _BMC Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1186/s12879-021-05950-x</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1186/s12879-021-05950-x&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[90]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Alene M, Yismaw L, Assemie M, Ketema D, Gietaneh W, Birhan T (2021).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Serial interval and incubation period of COVID-19: a systematic review</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> and meta-analysis.” _BMC Infectious Diseases_.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1186/s12879-021-05950-x</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1186/s12879-021-05950-x&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[91]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nishiura H, Linton N, Akhmetzhanov A (2020). “Serial interval of novel</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> coronavirus (COVID-19) infections.” _International Journal of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Infectious Diseases_. doi:10.1016/j.ijid.2020.02.060</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.ijid.2020.02.060&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[92]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nishiura H, Linton N, Akhmetzhanov A (2020). “Serial interval of novel</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> coronavirus (COVID-19) infections.” _International Journal of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Infectious Diseases_. doi:10.1016/j.ijid.2020.02.060</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.ijid.2020.02.060&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[93]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Yang L, Dai J, Zhao J, Wang Y, Deng P, Wang J (2020). “Estimation of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> incubation period and serial interval of COVID-19: analysis of 178</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cases and 131 transmission chains in Hubei province, China.”</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _Epidemiology and Infection_. doi:10.1017/S0950268820001338</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1017/S0950268820001338&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[94]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Yang L, Dai J, Zhao J, Wang Y, Deng P, Wang J (2020). “Estimation of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> incubation period and serial interval of COVID-19: analysis of 178</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cases and 131 transmission chains in Hubei province, China.”</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _Epidemiology and Infection_. doi:10.1017/S0950268820001338</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1017/S0950268820001338&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[95]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Elias C, Sekri A, Leblanc P, Cucherat M, Vanhems P (2021). “The</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> incubation period of COVID-19: A meta-analysis.” _International Journal</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> of Infectious Diseases_. doi:10.1016/j.ijid.2021.01.069</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.ijid.2021.01.069&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[96]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Bui L, Nguyen H, Levine H, Nguyen H, Nguyen T, Nguyen T, Nguyen T, Do</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> T, Pham N, Bui M (2020). “Estimation of the incubation period of</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> COVID-19 in Vietnam.” _PLoS One_. doi:10.1371/journal.pone.0243889</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1371/journal.pone.0243889&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[97]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> McAloon C, Collins Á, Hunt K, Barber A, Byrne A, Butler F, Casey M,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Griffin J, Lane E, McEvoy D, Wall P, Green M, O'Grady L, More S (2020).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation period of COVID-19: a rapid systematic review and</span>
@@ -844,7 +750,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1136/bmjopen-2020-039652</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1136/bmjopen-2020-039652&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[98]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> McAloon C, Collins Á, Hunt K, Barber A, Byrne A, Butler F, Casey M,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Griffin J, Lane E, McEvoy D, Wall P, Green M, O'Grady L, More S (2020).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation period of COVID-19: a rapid systematic review and</span>
@@ -852,7 +757,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1136/bmjopen-2020-039652</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1136/bmjopen-2020-039652&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[99]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -860,7 +764,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[100]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -868,7 +771,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[101]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -876,7 +778,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[102]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -884,7 +785,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[103]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -892,7 +792,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[104]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -900,7 +799,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[105]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -908,7 +806,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[106]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -916,7 +813,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[107]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -924,7 +820,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[108]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -932,7 +827,6 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[109]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -940,91 +834,77 @@ equal to the length of the list of <code>&lt;epidist&gt;</code> objects supplied
 <span class="r-out co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[110]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lauer S, Grantz K, Bi Q, Jones F, Zheng Q, Meredith H, Azman A, Reich</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Lessler J (2020). “The Incubation Period of Coronavirus Disease 2019</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (COVID-19) From Publicly Reported Confirmed Cases: Estimation and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Application.” _Annals of Internal Medicine_. doi:10.7326/M20-0504</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.7326/M20-0504&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[111]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lauer S, Grantz K, Bi Q, Jones F, Zheng Q, Meredith H, Azman A, Reich</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Lessler J (2020). “The Incubation Period of Coronavirus Disease 2019</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (COVID-19) From Publicly Reported Confirmed Cases: Estimation and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Application.” _Annals of Internal Medicine_. doi:10.7326/M20-0504</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.7326/M20-0504&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[112]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lauer S, Grantz K, Bi Q, Jones F, Zheng Q, Meredith H, Azman A, Reich</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Lessler J (2020). “The Incubation Period of Coronavirus Disease 2019</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (COVID-19) From Publicly Reported Confirmed Cases: Estimation and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Application.” _Annals of Internal Medicine_. doi:10.7326/M20-0504</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.7326/M20-0504&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[113]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Lauer S, Grantz K, Bi Q, Jones F, Zheng Q, Meredith H, Azman A, Reich</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> N, Lessler J (2020). “The Incubation Period of Coronavirus Disease 2019</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (COVID-19) From Publicly Reported Confirmed Cases: Estimation and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Application.” _Annals of Internal Medicine_. doi:10.7326/M20-0504</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.7326/M20-0504&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[114]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Guo Z, Zhao S, Sun S, He D, Chong K, Yeoh E (2022). “Estimation of the</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> serial interval of monkeypox during the early outbreak in 2022.”</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _Journal of Medical Virology_. doi:10.1002/jmv.28248</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1002/jmv.28248&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[115]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wang S, Zhang F, Yuan Z, Xu M, Wang Z, Gao C, Guo R, Du Z (2022).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Serial intervals and incubation periods of the monkeypox virus</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> clades.” _Journal of Travel Medicine_. doi:10.1093/jtm/taac105</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1093/jtm/taac105&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[116]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wang S, Zhang F, Yuan Z, Xu M, Wang Z, Gao C, Guo R, Du Z (2022).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Serial intervals and incubation periods of the monkeypox virus</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> clades.” _Journal of Travel Medicine_. doi:10.1093/jtm/taac105</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1093/jtm/taac105&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[117]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wang S, Zhang F, Yuan Z, Xu M, Wang Z, Gao C, Guo R, Du Z (2022).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Serial intervals and incubation periods of the monkeypox virus</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> clades.” _Journal of Travel Medicine_. doi:10.1093/jtm/taac105</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1093/jtm/taac105&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[118]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wang S, Zhang F, Yuan Z, Xu M, Wang Z, Gao C, Guo R, Du Z (2022).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Serial intervals and incubation periods of the monkeypox virus</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> clades.” _Journal of Travel Medicine_. doi:10.1093/jtm/taac105</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1093/jtm/taac105&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[119]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wang S, Zhang F, Yuan Z, Xu M, Wang Z, Gao C, Guo R, Du Z (2022).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> “Serial intervals and incubation periods of the monkeypox virus</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> clades.” _Journal of Travel Medicine_. doi:10.1093/jtm/taac105</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1093/jtm/taac105&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[120]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wei F, Peng Z, Jin Z, Wang J, Xu X, Zhang X, Xu J, Ren Z, Bai Y, Wang</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> X, Lu B, Wang Z, Xu J, Huang S (2022). “Study and prediction of the</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2022 global monkeypox epidemic.” _Journal of Biosafety and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Biosecurity_. doi:10.1016/j.jobb.2022.12.001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.jobb.2022.12.001&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[121]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wei F, Peng Z, Jin Z, Wang J, Xu X, Zhang X, Xu J, Ren Z, Bai Y, Wang</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> X, Lu B, Wang Z, Xu J, Huang S (2022). “Study and prediction of the</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2022 global monkeypox epidemic.” _Journal of Biosafety and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Biosecurity_. doi:10.1016/j.jobb.2022.12.001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.jobb.2022.12.001&gt;.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[122]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wei F, Peng Z, Jin Z, Wang J, Xu X, Zhang X, Xu J, Ren Z, Bai Y, Wang</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> X, Lu B, Wang Z, Xu J, Huang S (2022). “Study and prediction of the</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2022 global monkeypox epidemic.” _Journal of Biosafety and</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Biosecurity_. doi:10.1016/j.jobb.2022.12.001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.jobb.2022.12.001&gt;.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
