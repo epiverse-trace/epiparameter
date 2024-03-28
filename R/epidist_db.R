@@ -201,7 +201,7 @@ epidist_db <- function(disease = "all",
 
     message(
       "Using ", format(get_citation(single_epidist)), ". \n",
-      "To retrieve the short citation use the 'get_citation' function"
+      "To retrieve the citation use the 'get_citation' function"
     )
 
     return(single_epidist)
@@ -212,7 +212,7 @@ epidist_db <- function(disease = "all",
     "(", sum(is_param), " are parameterised). \n",
     "Use subset to filter by entry variables or ",
     "single_epidist to return a single entry. \n",
-    "To retrieve the short citation for each use the ",
+    "To retrieve the citation for each use the ",
     "'get_citation' function"
   )
 
