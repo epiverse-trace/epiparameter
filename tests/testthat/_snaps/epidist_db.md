@@ -5,7 +5,7 @@
     Message
       Returning 122 results that match the criteria (99 are parameterised). 
       Use subset to filter by entry variables or single_epidist to return a single entry. 
-      To retrieve the short citation for each use the 'get_citation' function
+      To retrieve the citation for each use the 'get_citation' function
     Output
       List of <epidist> objects
         Number of entries in library: 122
@@ -21,7 +21,7 @@
     Message
       Returning 2 results that match the criteria (2 are parameterised). 
       Use subset to filter by entry variables or single_epidist to return a single entry. 
-      To retrieve the short citation for each use the 'get_citation' function
+      To retrieve the citation for each use the 'get_citation' function
     Output
       [[1]]
       Disease: SARS
