@@ -89,7 +89,11 @@ The parameters of a probability distribution can also be extracted from other su
 
 ## Contributing to library of epidemiological parameters
 
-If you would like to contribute to the different epidemiological parameters stored in the `{epiparameter}` package, you can access the [google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing) and add your data. This spreadsheet contains two example entries as a guide to what fields can accept. See also the data dictionary (either yaml or JSON files) in the `{epiparameter}` package (in inst/extdata) for explanation of accepted entries for each column.
+If you would like to contribute to the different epidemiological parameters stored in the `{epiparameter}` package, you can add data to a public [google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing). This spreadsheet contains two example entries as a guide to what fields can accept. We are monitoring this sheet for new entries that will subsequently be included in the package.
+
+Alternatively, parameters can be added to the [JSON file holding the data](https://github.com/epiverse-trace/epiparameter/blob/main/inst/extdata/parameters.json) base directly via a Pull Request.
+
+You can find explanation of accepted entries for each column in the [data dictionary](https://github.com/epiverse-trace/epiparameter/blob/main/inst/extdata/data_dictionary.json).
 
 ## Help 
 
