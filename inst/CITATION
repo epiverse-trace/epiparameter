@@ -1,24 +1,23 @@
-citHeader("To cite epiparameter in publications use:")
+# Code copied from citation()
+author <- meta$`Authors@R`
+if (length(author)) {
+    aar <- .read_authors_at_R_field(author)
+    author <- Filter(function(e) {
+        !(is.null(e$given) && is.null(e$family)) && !is.na(match("aut",
+            e$role))
+    }, aar)
+}
+
+if (is.null(meta$Date)) {
+  date <- format(Sys.Date(), "%Y")
+} else {
+  date <- format(meta$Date, "%Y")
+}
 
 bibentry(
   bibtype = "Manual",
-  title = "Library of Epidemiological Parameters",
-  author = c(
-        person(
-            given = "Joshua W.",
-            family = "Lambert"
-        ),
-        person(
-            given = "Adam",
-            family = "Kucharski"
-        )
-      ),
-  year = "2023",
-  url = "https://github.com/epiverse-trace/epiparameter",
-  textVersion =
-  sprintf("%s %s %s",
-  "Joshua W. Lambert and Adam Kucharski (2023).",
-  "epiparameter: Library of Epidemiological Parameters,",
-  "website: https://github.com/epiverse-trace/epiparameter/"
-  )
+  title   = paste0(meta$Package, ": ", gsub("[[:space:]]+", " ", meta$Title)),
+  author  = author,
+  year    = date,
+  url     = meta$URL
 )
