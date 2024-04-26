@@ -54,23 +54,4 @@ provided the lowest value is used for the calculation.
 \item The last method is the extraction using a median and range of the data.
 }
 }
-\examples{
-\dontrun{
-calc_dist_params(
-  prob_dist = "gamma",
-  summary_stats = create_epidist_summary_stats(
-    quantiles = c("2.5" = 0.2, "97.5" = 9.2)
-  ),
-  sample_size = NA
-)
-
-calc_dist_params(
-  prob_dist = "gamma",
-  summary_stats = create_epidist_summary_stats(
-    median = 5, lower_range = 3, upper_range = 12
-  ),
-  sample_size = 25
-)
-}
-}
 \keyword{internal}
