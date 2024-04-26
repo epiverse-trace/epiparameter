@@ -1,7 +1,7 @@
-# -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v1.0.0
+# --------------------------------------------
+# CITATION file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
-# -----------------------------------------------------------
+# --------------------------------------------
  
 cff-version: 1.2.0
 message: 'To cite package "epiparameter" in publications use:'
@@ -22,7 +22,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8814-9421
 preferred-citation:
   type: manual
-  title: Library of Epidemiological Parameters
+  title: 'epiparameter: Library of Epidemiological Parameters'
   authors:
   - family-names: Lambert
     given-names: Joshua W.
@@ -32,8 +32,11 @@ preferred-citation:
     given-names: Adam
     email: adam.kucharski@lshtm.ac.uk
     orcid: https://orcid.org/0000-0001-8814-9421
-  year: '2023'
+  year: '2024'
   url: https://github.com/epiverse-trace/epiparameter
+  identifiers:
+  - type: url
+    value: https://epiverse-trace.github.io/epiparameter/
 repository-code: https://github.com/epiverse-trace/epiparameter
 url: https://epiverse-trace.github.io/epiparameter/
 contact:
@@ -310,3 +313,7 @@ references:
     email: lise.vaudor@ens-lyon.fr
   year: '2024'
   version: '>= 1.0.7'
+identifiers:
+- type: url
+  value: https://epiverse-trace.github.io/epiparameter/
+
