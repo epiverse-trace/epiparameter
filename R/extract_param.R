@@ -238,7 +238,8 @@ extract_param <- function(type = c("percentiles", "range"),
     method = "L-BFGS-B",
     val = values_in,
     dist = distribution,
-    lower = lower
+    lower = lower,
+    upper = upper
   ), error = function(e) {
     stop("found inf value in ", distribution)
   })
