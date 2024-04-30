@@ -214,22 +214,18 @@ extract_param <- function(type = c("percentiles", "range"),
   if (distribution == "lnorm") {
     names(param) <- c("meanlog", "sdlog")
     lower <- c(-1e5, 1e-10)
-    upper <- c(1e10, 1e10)
   }
   if (distribution == "gamma") {
     names(param) <- c("shape", "scale")
     lower <- c(1e-10, 1e-10)
-    upper <- c(1e10, 1e10)
   }
   if (distribution == "weibull") {
     names(param) <- c("shape", "scale")
-    lower <- c(1e-3, 1e-3)
-    upper <- c(1e10, 1e10)
+    lower <- c(1e-5, 1e-5)
   }
   if (distribution == "norm") {
     names(param) <- c("mean", "sd")
     lower <- c(-1e5, 1e-10)
-    upper <- c(1e10, 1e10)
   }
 
   optim_params <- tryCatch(stats::optim(
@@ -238,8 +234,7 @@ extract_param <- function(type = c("percentiles", "range"),
     method = "L-BFGS-B",
     val = values_in,
     dist = distribution,
-    lower = lower,
-    upper = upper
+    lower = lower
   ), error = function(e) {
     stop("found inf value in ", distribution)
   })
