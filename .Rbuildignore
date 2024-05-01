@@ -14,3 +14,4 @@
 ^CITATION\.cff$
 ^data-raw$
 ^tools$
+^vignettes/figure$
