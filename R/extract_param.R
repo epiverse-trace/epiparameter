@@ -221,7 +221,7 @@ extract_param <- function(type = c("percentiles", "range"),
   }
   if (distribution == "weibull") {
     names(param) <- c("shape", "scale")
-    lower <- c(1e-10, 1e-10)
+    lower <- c(1e-5, 1e-5)
   }
   if (distribution == "norm") {
     names(param) <- c("mean", "sd")
