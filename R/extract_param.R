@@ -228,16 +228,14 @@ extract_param <- function(type = c("percentiles", "range"),
     lower <- c(-1e5, 1e-10)
   }
 
-  optim_params <- tryCatch(stats::optim(
+  optim_params <- stats::optim(
     param,
     fit_func,
     method = "L-BFGS-B",
     val = values_in,
     dist = distribution,
     lower = lower
-  ), error = function(e) {
-    stop("found inf value in ", distribution)
-  })
+  )
 
   optim_params
 }
