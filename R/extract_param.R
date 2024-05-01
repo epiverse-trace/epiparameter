@@ -81,12 +81,7 @@ extract_param <- function(type = c("percentiles", "range"),
   if (distribution == "norm") {
     checkmate::assert_numeric(values)
   } else {
-
-    # if (any(values <= 1e-10)) {
-    #   stop("Distribution is ", distribution, " Values are ", values, " Samples are ", samples)
-    # }
-
-    checkmate::assert_numeric(values, lower = 0)
+    checkmate::assert_numeric(values, lower = 1e-10)
   }
 
   if (type == "percentiles") {
@@ -100,11 +95,6 @@ extract_param <- function(type = c("percentiles", "range"),
     checkmate::assert_numeric(percentiles, lower = 0, upper = 1, len = 2)
   }
   if (identical(type, "range")) {
-
-    if (!(values[2] < values[1] && values[1] < values[3])) {
-      stop("Distribution is ", distribution, " Values are ", values, " Type is ", type)
-    }
-
     stopifnot(
       "samples need to be given for type = 'range'" =
         !missing(samples),
@@ -231,7 +221,7 @@ extract_param <- function(type = c("percentiles", "range"),
   }
   if (distribution == "weibull") {
     names(param) <- c("shape", "scale")
-    lower <- c(1e-5, 1e-5)
+    lower <- c(1e-10, 1e-10)
   }
   if (distribution == "norm") {
     names(param) <- c("mean", "sd")

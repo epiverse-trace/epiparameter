@@ -206,46 +206,54 @@ estim_params <- vector("list", nrow(parameters_range))
 for (params_idx in seq_len(nrow(parameters_range))) {
   dist <- as.character(parameters_range[params_idx, "dist"])
   n_samples <- parameters_range[params_idx, "n_samples"]
-  if (dist == "lnorm") {
-    true_median <- do.call(
-      paste0("q", dist),
-      list(
-        p = 0.5,
-        meanlog = parameters_range[params_idx, "param_1"],
-        sdlog = parameters_range[params_idx, "param_2"]
+  
+  # while loop to ensure values are min < median < max
+  resample_values <- TRUE
+  while (resample_values) {
+    if (dist == "lnorm") {
+      true_median <- do.call(
+        paste0("q", dist),
+        list(
+          p = 0.5,
+          meanlog = parameters_range[params_idx, "param_1"],
+          sdlog = parameters_range[params_idx, "param_2"]
+        )
       )
-    )
-    true_range <- do.call(
-      paste0("r", dist),
-      list(
-        n = n_samples,
-        meanlog = parameters_range[params_idx, "param_1"],
-        sdlog = parameters_range[params_idx, "param_2"]
+      true_range <- do.call(
+        paste0("r", dist),
+        list(
+          n = n_samples,
+          meanlog = parameters_range[params_idx, "param_1"],
+          sdlog = parameters_range[params_idx, "param_2"]
+        )
       )
-    )
-    true_range <- c(min(true_range), max(true_range))
-  } else {
-    true_median <- do.call(
-      paste0("q", dist),
-      list(
-        p = 0.5,
-        shape = parameters_range[params_idx, "param_1"],
-        scale = parameters_range[params_idx, "param_2"]
+      true_range <- c(min(true_range), max(true_range))
+    } else {
+      true_median <- do.call(
+        paste0("q", dist),
+        list(
+          p = 0.5,
+          shape = parameters_range[params_idx, "param_1"],
+          scale = parameters_range[params_idx, "param_2"]
+        )
       )
-    )
-    true_range <- do.call(
-      paste0("r", dist),
-      list(
-        n = n_samples,
-        shape = parameters_range[params_idx, "param_1"],
-        scale = parameters_range[params_idx, "param_2"]
+      true_range <- do.call(
+        paste0("r", dist),
+        list(
+          n = n_samples,
+          shape = parameters_range[params_idx, "param_1"],
+          scale = parameters_range[params_idx, "param_2"]
+        )
       )
-    )
-    true_range <- c(min(true_range), max(true_range))
+      true_range <- c(min(true_range), max(true_range))
+    }
+    
+    true_values <- c(true_median, true_range)
+    if (true_values[2] < true_values[1] && true_values[1] < true_values[3]) {
+      resample_values <- FALSE
+    }
   }
-
-  true_values <- c(true_median, true_range)
-
+  
   # message about stochastic optimisation suppressed
   estim_params[[params_idx]] <- suppressMessages(
     expr = extract_param(
@@ -392,46 +400,53 @@ for (params_idx in seq_len(nrow(parameters_range))) {
   dist <- as.character(parameters_range[params_idx, "dist"])
   n_samples <- parameters_range[params_idx, "n_samples"]
 
-  if (dist == "lnorm") {
-    true_median <- do.call(
-      paste0("q", dist),
-      list(
-        p = 0.5,
-        meanlog = parameters_range[params_idx, "param_1"],
-        sdlog = parameters_range[params_idx, "param_2"]
+  # while loop to ensure values are min < median < max
+  resample_values <- TRUE
+  while (resample_values) {
+    if (dist == "lnorm") {
+      true_median <- do.call(
+        paste0("q", dist),
+        list(
+          p = 0.5,
+          meanlog = parameters_range[params_idx, "param_1"],
+          sdlog = parameters_range[params_idx, "param_2"]
+        )
       )
-    )
-    true_range <- do.call(
-      paste0("r", dist),
-      list(
-        n = n_samples,
-        meanlog = parameters_range[params_idx, "param_1"],
-        sdlog = parameters_range[params_idx, "param_2"]
+      true_range <- do.call(
+        paste0("r", dist),
+        list(
+          n = n_samples,
+          meanlog = parameters_range[params_idx, "param_1"],
+          sdlog = parameters_range[params_idx, "param_2"]
+        )
       )
-    )
-    true_range <- c(min(true_range), max(true_range))
-  } else {
-    true_median <- do.call(
-      paste0("q", dist),
-      list(
-        p = 0.5,
-        shape = parameters_range[params_idx, "param_1"],
-        scale = parameters_range[params_idx, "param_2"]
+      true_range <- c(min(true_range), max(true_range))
+    } else {
+      true_median <- do.call(
+        paste0("q", dist),
+        list(
+          p = 0.5,
+          shape = parameters_range[params_idx, "param_1"],
+          scale = parameters_range[params_idx, "param_2"]
+        )
       )
-    )
-    true_range <- do.call(
-      paste0("r", dist),
-      list(
-        n = n_samples,
-        shape = parameters_range[params_idx, "param_1"],
-        scale = parameters_range[params_idx, "param_2"]
+      true_range <- do.call(
+        paste0("r", dist),
+        list(
+          n = n_samples,
+          shape = parameters_range[params_idx, "param_1"],
+          scale = parameters_range[params_idx, "param_2"]
+        )
       )
-    )
-    true_range <- c(min(true_range), max(true_range))
+      true_range <- c(min(true_range), max(true_range))
+    }
+    
+    true_values <- c(true_median, true_range)
+    if (true_values[2] < true_values[1] && true_values[1] < true_values[3]) {
+      resample_values <- FALSE
+    }
   }
-
-  true_values <- c(true_median, true_range)
-
+  
   # message about stochastic optimisation suppressed
   estim <- suppressMessages(
     replicate(
