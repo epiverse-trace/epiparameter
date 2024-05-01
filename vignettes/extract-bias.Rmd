@@ -43,6 +43,7 @@ It is specific to the case of {epiparameter} and should not be taken as a genera
 ```r
 library(epiparameter)
 library(ggplot2)
+#> Learn more about the underlying theory at https://ggplot2-book.org/
 ```
 
 ## Extraction Bias
@@ -178,6 +179,7 @@ ggplot(data = results) +
     strip.background = element_blank(),
     axis.text.x = element_text(angle = 30, vjust = 0.5)
   )
+#> Warning in vp$just: partial match of 'just' to 'justification'
 ```
 
 ![Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](figure/plot-results-percentiles-1.png)
@@ -305,6 +307,7 @@ ggplot(data = results) +
     strip.background = element_blank(),
     axis.text.x = element_text(angle = 30, vjust = 0.5)
   )
+#> Warning in vp$just: partial match of 'just' to 'justification'
 ```
 
 ![Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](figure/plot-results-med-range-1.png)
@@ -393,6 +396,7 @@ ggplot(data = results) +
     strip.background = element_blank(),
     axis.text.x = element_text(angle = 30, vjust = 0.5)
   )
+#> Warning in vp$just: partial match of 'just' to 'justification'
 ```
 
 ![Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](figure/plot-results-1.png)
@@ -499,6 +503,7 @@ ggplot(data = results) +
     strip.background = element_blank(),
     axis.text.x = element_text(angle = 30, vjust = 0.5)
   )
+#> Warning in vp$just: partial match of 'just' to 'justification'
 ```
 
 ![Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](figure/plot-estim-var-range-1.png)
