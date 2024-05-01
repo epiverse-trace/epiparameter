@@ -206,7 +206,6 @@ estim_params <- vector("list", nrow(parameters_range))
 for (params_idx in seq_len(nrow(parameters_range))) {
   dist <- as.character(parameters_range[params_idx, "dist"])
   n_samples <- parameters_range[params_idx, "n_samples"]
-  print(params_idx)
   if (dist == "lnorm") {
     true_median <- do.call(
       paste0("q", dist),
