@@ -81,6 +81,11 @@ extract_param <- function(type = c("percentiles", "range"),
   if (distribution == "norm") {
     checkmate::assert_numeric(values)
   } else {
+
+    if (any(values <= 1e-10)) {
+      stop("Distribution is ", distribution, " Values are ", values, " Samples are ", samples)
+    }
+
     checkmate::assert_numeric(values, lower = 1e-10)
   }
 
