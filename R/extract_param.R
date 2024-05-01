@@ -81,7 +81,7 @@ extract_param <- function(type = c("percentiles", "range"),
   if (distribution == "norm") {
     checkmate::assert_numeric(values)
   } else {
-    checkmate::assert_numeric(values, lower = 1e-10)
+    checkmate::assert_numeric(values, lower = 0)
   }
 
   if (type == "percentiles") {
