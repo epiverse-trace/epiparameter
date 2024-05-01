@@ -85,10 +85,3 @@ jobs:
         with:
           upload-snapshots: true
           error-on: '"note"'
-
-      # fail-fast but only if rcmdcheck step fails
-      - name: Manual fail-fast
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: always() && steps.rcmdcheck.outcome == 'failure'
-        run: gh run cancel ${{ github.run_id }}
