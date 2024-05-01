@@ -101,7 +101,7 @@ extract_param <- function(type = c("percentiles", "range"),
   }
   if (identical(type, "range")) {
 
-    if (values[2] < values[1] && values[1] < values[3]) {
+    if (!(values[2] < values[1] && values[1] < values[3])) {
       stop("Distribution is ", distribution, " Values are ", values, " Type is ", type)
     }
 
