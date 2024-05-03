@@ -50,7 +50,7 @@ To load the library of epidemiological parameters into `R`:
 epidists <- epidist_db()
 #> Returning 122 results that match the criteria (99 are parameterised). 
 #> Use subset to filter by entry variables or single_epidist to return a single entry. 
-#> To retrieve the short citation for each use the 'get_citation' function
+#> To retrieve the citation for each use the 'get_citation' function
 epidists
 #> List of <epidist> objects
 #>   Number of entries in library: 122
@@ -80,7 +80,7 @@ influenza_incubation <- epidist_db(
 #> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)
 #> Virus Infections." _American Journal of Epidemiology_.
 #> doi:10.1093/aje/kwv115 <https://doi.org/10.1093/aje/kwv115>.. 
-#> To retrieve the short citation use the 'get_citation' function
+#> To retrieve the citation use the 'get_citation' function
 influenza_incubation
 #> Disease: Influenza
 #> Pathogen: Influenza-A-H7N9
@@ -156,18 +156,19 @@ By contributing to this project, you agree to abide by its terms.
 
 ``` r
 citation("epiparameter")
-#> To cite epiparameter in publications use:
+#> To cite package 'epiparameter' in publications use:
 #> 
-#>   Joshua W. Lambert and Adam Kucharski (2023). epiparameter: Library of
-#>   Epidemiological Parameters, website:
-#>   https://github.com/epiverse-trace/epiparameter/
+#>   Lambert J, Kucharski A (2024). _epiparameter: Library of
+#>   Epidemiological Parameters with Helper Functions and Classes_.
+#>   <https://github.com/epiverse-trace/epiparameter,https://epiverse-trace.github.io/epiparameter/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {Library of Epidemiological Parameters},
+#>     title = {epiparameter: Library of Epidemiological Parameters with Helper Functions and Classes},
 #>     author = {Joshua W. Lambert and Adam Kucharski},
-#>     year = {2023},
-#>     url = {https://github.com/epiverse-trace/epiparameter},
+#>     year = {2024},
+#>     url = {https://github.com/epiverse-trace/epiparameter,
+#> https://epiverse-trace.github.io/epiparameter/},
 #>   }
 ```
