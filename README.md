@@ -123,6 +123,7 @@ or the median and range of the data. This can be done for:
 - gamma
 - lognormal
 - Weibull
+- normal
 
 ## Contributing to library of epidemiological parameters
 
@@ -158,17 +159,17 @@ By contributing to this project, you agree to abide by its terms.
 citation("epiparameter")
 #> To cite package 'epiparameter' in publications use:
 #> 
-#>   Lambert J, Kucharski A (2024). _epiparameter: Library of
+#>   Lambert J, Kucharski A, Tamayo C (2024). _epiparameter: Library of
 #>   Epidemiological Parameters with Helper Functions and Classes_.
-#>   <https://github.com/epiverse-trace/epiparameter,https://epiverse-trace.github.io/epiparameter/>.
+#>   <https://github.com/epiverse-trace/epiparameter/,https://epiverse-trace.github.io/epiparameter/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {epiparameter: Library of Epidemiological Parameters with Helper Functions and Classes},
-#>     author = {Joshua W. Lambert and Adam Kucharski},
+#>     author = {Joshua W. Lambert and Adam Kucharski and Carmen Tamayo},
 #>     year = {2024},
-#>     url = {https://github.com/epiverse-trace/epiparameter,
+#>     url = {https://github.com/epiverse-trace/epiparameter/,
 #> https://epiverse-trace.github.io/epiparameter/},
 #>   }
 ```
