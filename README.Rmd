@@ -85,6 +85,7 @@ The parameters of a probability distribution can also be extracted from other su
 - gamma
 - lognormal
 - Weibull
+- normal
 
 ## Contributing to library of epidemiological parameters
 
