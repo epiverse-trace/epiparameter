@@ -4,7 +4,7 @@
 \name{epiparameter-package}
 \alias{epiparameter}
 \alias{epiparameter-package}
-\title{epiparameter: Library of Epidemiological Parameters}
+\title{epiparameter: Library of Epidemiological Parameters with Helper Functions and Classes}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
@@ -13,7 +13,7 @@ Library of epidemiological parameters for infectious diseases and a set of class
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/epiverse-trace/epiparameter}
+  \item \url{https://github.com/epiverse-trace/epiparameter/}
   \item \url{https://epiverse-trace.github.io/epiparameter/}
   \item Report bugs at \url{https://github.com/epiverse-trace/epiparameter/issues}
 }
@@ -25,6 +25,7 @@ Useful links:
 Authors:
 \itemize{
   \item Adam Kucharski \email{adam.kucharski@lshtm.ac.uk} (\href{https://orcid.org/0000-0001-8814-9421}{ORCID}) [copyright holder]
+  \item Carmen Tamayo \email{carmen.tamayo-cuartero@lshtm.ac.uk} (\href{https://orcid.org/0000-0003-4184-2864}{ORCID})
 }
 
 Other contributors:
