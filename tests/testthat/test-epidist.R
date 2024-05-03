@@ -53,7 +53,7 @@ test_that("epidist works with all arguments set", {
         year = 2002,
         title = "A title",
         journal = "A journal",
-        DOI = "10.23271/176237.x", # nolint
+        DOI = "10.23271/176237.x",
         PMID = 28372882
       ),
       metadata = create_epidist_metadata(
