@@ -1,6 +1,10 @@
 # epiparameter 0.1.0
 
-Initial release of {epiparameter}, an R package to work with epidemiological parameters and distributions, and contains a library of epidemiological parameters.
+Initial release of the {epiparameter} R package. {epiparameter} provides:
+
+1. A library of epidemiological parameters extracted from the literature for a range of diseases.
+
+2. Functions and classes (with class methods) to work with epidemiological parameters and distributions.
 
 ## New features
 
