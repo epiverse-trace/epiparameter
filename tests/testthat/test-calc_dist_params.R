@@ -69,7 +69,7 @@ test_that("calc_dist_params works as expected extracting from median & range", {
 
 test_that("calc_dist_params fails as expected extracting without sample size", {
   expect_message(
-    params <- calc_dist_params( # nolint
+    params <- calc_dist_params(
       prob_dist = "gamma",
       prob_dist_params = NA,
       summary_stats = create_epidist_summary_stats(
@@ -87,7 +87,7 @@ test_that("calc_dist_params fails as expected extracting without sample size", {
 
 test_that("calc_dist_params messages as expected without summary stats", {
   expect_message(
-    params <- calc_dist_params( # nolint
+    params <- calc_dist_params(
       prob_dist = "gamma",
       prob_dist_params = NA,
       summary_stats = create_epidist_summary_stats(mean = 5, median = 5),

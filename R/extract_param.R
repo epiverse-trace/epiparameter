@@ -119,7 +119,7 @@ extract_param <- function(type = c("percentiles", "range"),
 
   # Validate inputs
   switch(type,
-    percentiles = stopifnot( # nolint
+    percentiles = stopifnot( # nolint consecutive_assertion_linter
       "'values' and 'percentiles' need to be a vector of length 2" =
         type == "percentiles" && length(values) == 2 || length(percentiles) == 2
     ),
