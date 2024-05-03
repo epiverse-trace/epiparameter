@@ -27,15 +27,15 @@ numeric using \code{as.numeric()}.
 }
 \details{
 The name format is a character of the value of the percentile.
-Numbers with decimal places should have the decimal point in the name (e.g.
-\code{c("2.5" = 1, "97.5" = 10)}).
-}
-\examples{
-\dontrun{
-# 90th interval
-get_percentiles(c("5" = 1, "95" = 10))
-# 95th interval
-get_percentiles(c("2.5" = 1, "97.5" = 10))
-}
+Numbers with decimal places should have the decimal point in the name. For
+example the 5th and 95th percentile can be given as
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{get_percentiles(c("5" = 1, "95" = 10))
+}\if{html}{\out{</div>}}
+
+or the 2.5th and 97.5th percentile can be given as
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{get_percentiles(c("2.5" = 1, "97.5" = 10))
+}\if{html}{\out{</div>}}
 }
 \keyword{internal}
