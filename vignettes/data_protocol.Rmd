@@ -32,7 +32,7 @@ The `{epiparameter}` package will act as a 'living systematic review' (*sensu* @
 
 There is a large body of work on the methods to best conduct literature searches and data collection as part of systematic reviews and meta-analyses[^2], which we use as the basis for our protocol. These sources are: 
 
-- [Cochrane Handbook](https://training.cochrane.org/handbook/current) [@higginsCochraneHandbookSystematic2022]
+- [Cochrane Handbook](https://training.cochrane.org/handbook/current/) [@higginsCochraneHandbookSystematic2022]
 - [PRISMA](https://www.prisma-statement.org/) [@pagePRISMA2020Statement2021]
 
 ## Objective of `{epiparameter}`
