@@ -1,3 +1,5 @@
+# epiparameter (development version)
+
 # epiparameter 0.1.0
 
 Initial release of the {epiparameter} R package. {epiparameter} provides:
