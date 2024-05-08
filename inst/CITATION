@@ -19,5 +19,6 @@ bibentry(
   title   = paste0(meta$Package, ": ", gsub("[[:space:]]+", " ", meta$Title)),
   author  = author,
   year    = date,
+  doi     = "10.5281/zenodo.11110881",
   url     = meta$URL
 )
