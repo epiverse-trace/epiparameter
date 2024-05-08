@@ -12,6 +12,7 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 coverage](https://codecov.io/gh/epiverse-trace/epiparameter/branch/main/graph/badge.svg)](https://app.codecov.io/gh/epiverse-trace/epiparameter?branch=main)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11110881.svg)](https://doi.org/10.5281/zenodo.11110881)
 <!-- badges: end -->
 
 `{epiparameter}` is an `R` package that contains a library of
@@ -168,6 +169,8 @@ citation("epiparameter")
 #> 
 #>   Lambert J, Kucharski A, Tamayo C (2024). _epiparameter: Library of
 #>   Epidemiological Parameters with Helper Functions and Classes_.
+#>   doi:10.5281/zenodo.11110881
+#>   <https://doi.org/10.5281/zenodo.11110881>,
 #>   <https://github.com/epiverse-trace/epiparameter/,https://epiverse-trace.github.io/epiparameter/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -176,6 +179,7 @@ citation("epiparameter")
 #>     title = {epiparameter: Library of Epidemiological Parameters with Helper Functions and Classes},
 #>     author = {Joshua W. Lambert and Adam Kucharski and Carmen Tamayo},
 #>     year = {2024},
+#>     doi = {10.5281/zenodo.11110881},
 #>     url = {https://github.com/epiverse-trace/epiparameter/,
 #> https://epiverse-trace.github.io/epiparameter/},
 #>   }
