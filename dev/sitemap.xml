@@ -34,6 +34,12 @@
     <loc>https://epiverse-trace.github.io/epiparameter/dev/news/index.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/as.data.frame.epidist.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/as.data.frame.multi_epidist.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/as.function.epidist.html</loc>
   </url>
   <url>
