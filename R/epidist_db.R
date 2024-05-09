@@ -611,20 +611,6 @@ print.multi_epidist <- function(x, ...) {
   }
 }
 
-#' [as.data.frame] method for `<multi_epidist>` class
-#'
-#' @inherit as.data.frame.epidist details
-#'
-#' @inheritParams print.multi_epidist
-#' @param ... [dots] Not used, extra arguments supplied will cause a warning.
-#'
-#' @return A `<data.frame>` with as many rows as length of input list.
-#' @export
-as.data.frame.multi_epidist <- function(x, ...) {
-  chkDots(...)
-  do.call(rbind, lapply(x, as.data.frame))
-}
-
 #' Check whether a package is installed
 #'
 #' @details This functions allows mock testing for when a package is not
