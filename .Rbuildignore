@@ -16,3 +16,4 @@
 ^tools$
 ^vignettes/*.orig$
 ^vignettes/figure$
+^vignettes/articles$

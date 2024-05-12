@@ -1,0 +1,160 @@
+---
+title: "Using {epireview} with {epiparameter}"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(epiparameter)
+library(epireview)
+```
+
+The article describes how to use the {epireview} R package with {epiparameter}. {epireview} provides epidemiological parameters for a range of pathogens extracted from the literature by the Pathogen Epidemiology Review Group (PERG) in systematic reviews. The {epiparameter} R package can use these epidemiological parameters and can convert them into `<epidist>` objects.
+
+::: {.alert .alert-warning}
+This feature of interoperability of {epireview} and {epiparameter} is still under development. Currently only delay distributions (in {epireview} termed Human delay) are compatible with this feature. Attempting to convert other epidemiological parameters from {epireview} to {epiparameter} `<epidist>` objects will likely error with an uninformative error message.
+:::
+
+## Converting from {epireview} entries into an `<epidist>` object
+
+The {epireview} package nicely provides epidemiological parameter data from systematically reviewing the literature, and {epiparameter} provides custom data structures for working with epidemiological data in R. Therefore, reading in data from the {epireview} R package and converting it to an `<epidist>` object will hopefully provide the greatest utility when applied in outbreak analytics. 
+
+Here we start we a simple example of reading in the Marburg data from {epireview} and converting to an `<epidist>` object using `as_epidist()` function from the {epiparameter} package.
+
+```{r, load-marburg}
+marburg_data <- epireview::load_epidata("marburg")
+```
+
+This loads a list with four tables, specifically `tibbles`, that contain the bibliographic information (`$articles`), epidemiological parameters (`$params`), epidemiological models (`$models`), and outbreak information (`$outbreaks`).
+
+```{r, marburg-list-names}
+names(marburg_data)
+```
+
+We will start by just using the epidemiological parameter table to convert information into an `<epidist>`.
+
+```{r, marburg-params}
+marburg_params <- marburg_data$params
+```
+
+Given that currently only delay distributions are supported for the conversion (this feature is still under active development) we will filter to only include these.
+
+```{r, subset-marburg-params}
+delay_dist_rows <- grepl(
+  pattern = "Human delay",
+  x = marburg_params$parameter_type,
+  fixed = TRUE
+)
+marburg_params <- marburg_params[delay_dist_rows, ]
+marburg_params
+```
+
+We will select the second entry, which is an incubation period, to use as the first example:
+
+```{r, select-marburg-entry}
+marburg_incub <- marburg_params[2, ]
+marburg_incub
+```
+
+Then we can simply pass our epidemiological parameter set to `as_epidist()` to do the conversion.
+
+```{r, convert-to-epidist-single-entry}
+marburg_incub_epidist <- as_epidist(marburg_incub)
+marburg_incub_epidist
+```
+
+The resulting `<epidist>` does not contain a parameterised probability distribution, instead it contains a range for the incubation period (in `$summary_stats`), and the `$metadata` shows that this is a single case from South Africa.
+
+```{r, show-epidist-single-entry-data}
+marburg_incub_epidist$summary_stats
+marburg_incub_epidist$metadata
+```
+
+## Creating an `<epidist>` with full citation
+
+The last example showed how to convert the epidemiological parameter information, however, you may have noticed that the citation that was created did not contain the information for a full citation.
+
+```{r, show-incomplete-citation}
+marburg_incub_epidist$citation
+```
+
+In order to provide a complete citation to the `<epidist>` object, which is highly recommended so that you know the provenance of the parameters and can correctly attribute the original authors, we will need to also provide the bibliographic information from {epireview} as well as the epidemiological parameters.
+
+The article data needs to be loaded from {epireview} using `epireview::load_epidata_raw()` rather than `epireview::load_data()` because `load_data()` subsets the bibliographic information to only provide: `"id"`, `"first_author_surname"`, `"year_publication"`, and `"article_label"` columns.
+
+```{r, load-epreview-articles}
+marburg_articles <- epireview::load_epidata_raw(
+  pathogen = "marburg",
+  table = "article"
+)
+marburg_articles
+```
+
+We need to match the entry in the epidemiological parameter table with the citation information in the article table to ensure we are using the correct citation for the parameter set. Thankfully, this can easily be achieved as {epireview} provides unique IDs to each table to link entries.
+
+```{r, match-parameter-to-article}
+article_row <- match(marburg_incub$id, marburg_articles$id)
+article_row
+```
+
+```{r, subset-articles}
+marburg_incub_article <- marburg_articles[article_row, ]
+marburg_incub_article
+```
+
+Now we can repeat the example of converting to `<epidist>` as shown above, but this time pass the bibliographic information as well as the epidemiological parameter information to create a full citation. The bibliographic information needs to be passed with the `articles` argument. 
+
+```{r, convert-to-epidist-full-citation}
+marburg_incub_epidist <- as_epidist(
+  marburg_incub, 
+  articles = marburg_incub_article
+)
+marburg_incub_epidist
+```
+
+```{r, show-full-citation}
+marburg_incub_epidist$citation
+```
+
+::: {.alert .alert-info}
+The `as_epidist()` function is an S3 generic. If you are not familiar with S3 object-oriented programming in R, then this detail is not important, however, it does mean that the `articles` argument is not explicitly in the function definition of `as_epidist()` (i.e. it will not show up on autocomplete when typing out the function and will not be shown if you read the function help page `?as_epidist()`). Instead, the argument is specified as part of the `...` argument. This is because the `articles` argument is only required when converting data from {epireview} into `<epidist>`, and other data that can be converted to `<epidist>` objects do not require this argument.
+:::
+
+## Multi-row {epireview} entries
+
+The way the {epireview} data is stored means that some epidemiological parameter entries require multiple rows. This can be, for example, because they contain two summary statistics (e.g. mean and standard deviation) that are kept on separate rows. In order to create `<epidist>` objects that contains the full information for each entry multiple rows of the epidemiological parameters table from {epireview} can be given to `as_epidist()` to create a single `<epidist>` object.
+
+We can search in the data which entries have multiple rows by checking if there are duplicated parameter types and IDs. Remembering that we are using only the delay distributions (i.e. Human delay) from the epidemiological parameters, that we subset above. 
+
+```{r, check-multi-row-entries}
+multi_row_entries <- duplicated(marburg_params$parameter_type) &
+  duplicated(marburg_params$id)
+multi_row_ids <- marburg_params$id[multi_row_entries]
+```
+
+```{r, subset-multi-row-entries}
+multi_row_marburg_params <- 
+  marburg_params[marburg_params$id %in% multi_row_ids, ]
+```
+
+This step should be verified manually to ensure that the entries that have been selected are indeed multiple rows for the same reported epidemiological parameter. We use the first two rows of this subset table, which are the mean and standard deviation for the generation time of Marburg disease. 
+
+```{r, subset-multi-row-marburg-entry}
+marburg_gt <- multi_row_marburg_params[1:2, ]
+```
+
+We can now convert this to an `<epidist>`.
+
+```{r, convert-multi-row-entry-to-epidist}
+marburg_gt_epidist <- as_epidist(marburg_gt)
+marburg_gt_epidist
+marburg_gt_epidist$summary_stats
+```
+
+## Limitations
+
