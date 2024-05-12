@@ -995,5 +995,3 @@ mean.epidist <- function(x, ...) {
   # return mean or NA
   mean
 }
-
-
