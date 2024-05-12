@@ -45,6 +45,12 @@ reference:
     contents:
     - epidist_db
 
+  - title: Coercion
+    desc: Convert data from and to `<epidist>`
+    contents:
+    - as_epidist
+    - as_epidist.data.frame
+
   - title: Explore epiparameters
     desc: List epi parameters as table
     contents:
@@ -78,6 +84,11 @@ reference:
     contents:
     - calc_disc_dist_quantile
 
+  - title: Package data
+    desc: Data stored in the package
+    contents:
+    - epireview_core_cols
+
 
 articles:
 - title: Get started
@@ -90,6 +101,11 @@ articles:
   navbar: Epiparameter Data
   contents:
   - data_protocol
+
+- title: Data from other packages
+  navbar: Handling data from other packages
+  contents:
+  - articles/data_from_epireview
 
 - title: Auxiliary
   navbar: Auxiliary
