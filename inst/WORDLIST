@@ -12,6 +12,7 @@ distcrete
 dplyr
 ebola
 epidist
+epireview
 episoap
 Epiverse
 estimat
@@ -22,6 +23,7 @@ facetted
 jsonlite
 Lifecycle
 lnorm
+Marburg
 md
 meanlog
 medRxiv
@@ -32,6 +34,7 @@ nbinom
 ORCID
 parameterisations
 parameterised
+PERG
 pkgdown
 PMF
 poisson
