@@ -156,5 +156,56 @@ marburg_gt_epidist
 marburg_gt_epidist$summary_stats
 ```
 
-## Limitations
+## Entries with probability distributions
 
+For this example we will load the Ebola epidemiological parameters from the {epireview} package (as there are no entries for Marburg that have parametric distributions).
+
+```{r, load-ebola}
+ebola_data <- epireview::load_epidata("ebola")
+```
+
+We will again subset the data to just use the epidemiological parameter table, and subset that table to just the delay distributions.
+
+```{r, ebola-params}
+ebola_params <- ebola_data$params
+```
+
+```{r, subset-ebola-params}
+delay_dist_rows <- grepl(
+  pattern = "Human delay",
+  x = ebola_params$parameter_type,
+  fixed = TRUE
+)
+ebola_params <- ebola_params[delay_dist_rows, ]
+ebola_params
+```
+
+We will select the 358th entry, which is a serial interval, as this entry has estimated and reported a Weibull distribution:
+
+```{r, select-ebola-entry}
+ebola_si <- ebola_params[358, ]
+ebola_si
+```
+
+We can now convert this to an `<epidist>` object.
+
+```{r, convert-to-prob-dist-epidist-single-entry}
+ebola_si_epidist <- as_epidist(ebola_si)
+ebola_si_epidist
+```
+
+With the probability distribution for the serial interval we can utilise some of the `<epidist>` methods. Here we illustrate this by checking that the `<epidist>` is parameterised, plotting the PDF and CDF, and generating 10 random numbers sampling from the distribution.
+
+```{r, is-epidist-parameterised}
+is_parameterised(ebola_si_epidist)
+```
+
+```{r, plot-epidist}
+plot(ebola_si_epidist, day_range = 0:50)
+```
+
+```{r, generate-epidist}
+generate(ebola_si_epidist, times = 10)
+```
+
+## Limitations
