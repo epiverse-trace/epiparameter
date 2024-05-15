@@ -340,6 +340,10 @@ epireview_to_epidist <- function(x, ...) {
   }
 
   params <- c(x$distribution_par1_value, x$distribution_par2_value)
+  param_names <- .clean_string(
+    c(x$distribution_par1_type, x$distribution_par2_type)
+  )
+  names(params) <- param_names
   if (all(is.na(params))) {
     params <- NA_character_
   }
@@ -351,6 +355,9 @@ epireview_to_epidist <- function(x, ...) {
       par1 = x$distribution_par1_uncertainty,
       par2 = x$distribution_par2_uncertainty
     )
+    if (all(!is.na(params))) {
+      names(param_uncertainty) <- param_names
+    }
     uncertainty <- lapply(
       param_uncertainty,
       function(x) if (!x) create_epidist_uncertainty() else x
@@ -388,18 +395,24 @@ epireview_to_epidist <- function(x, ...) {
     x = x1$parameter_type
   )
 
+  region <- as.vector(
+    na.omit(c(x1$population_location, x1$population_country)),
+    mode = "character"
+  )
+  region <- ifelse(test = length(region) == 0, yes = NA, no = region)
+
   epidist(
     disease = disease[1],
     pathogen = x1$pathogen,
     epi_dist = epi_dist,
-    prob_distribution = x1$distribution_type,
+    prob_distribution = .clean_string(x1$distribution_type),
     prob_distribution_params = params,
     uncertainty = uncertainty,
     summary_stats = summary_stats,
     citation = citation,
     metadata = create_epidist_metadata(
       sample_size = x1$population_sample_size,
-      region = paste(x1$population_location, x1$population_country, sep = ", ")
+      region = region
     )
   )
 }
