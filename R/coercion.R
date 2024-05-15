@@ -184,7 +184,7 @@ epidist_df_to_epidist <- function(x, ...) {
     )
   }
   if (identical(stats::family(prob_dist), "truncated")) {
-    truncation <- distributional::parameters(dist)$upper
+    truncation <- distributional::parameters(x$prob_distribution)$upper
   } else {
     truncation <- NA_real_
   }
@@ -400,7 +400,7 @@ epireview_to_epidist <- function(x, ...) {
   )
 
   region <- as.vector(
-    na.omit(c(x1$population_location, x1$population_country)),
+    stats::na.omit(c(x1$population_location, x1$population_country)),
     mode = "character"
   )
   region <- ifelse(test = length(region) == 0, yes = NA, no = region)
