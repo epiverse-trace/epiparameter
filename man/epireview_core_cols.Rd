@@ -3,8 +3,8 @@
 \docType{data}
 \name{epireview_core_cols}
 \alias{epireview_core_cols}
-\title{A vector of \code{character} strings with the core column names of the epidemiological parameter data
-exported by the \pkg{epireview} R package.}
+\title{A vector of \code{character} strings with the core column names of the
+epidemiological parameter data exported by the \pkg{epireview} R package.}
 \format{
 \subsection{\code{epireview_core_cols}}{
 
