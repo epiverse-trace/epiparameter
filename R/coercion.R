@@ -384,6 +384,10 @@ epireview_to_epidist <- function(x, ...) {
     "disease"
   )
   disease <- epiparameter_db_disease[pathogen_idx]
+  # temp solution for the only pathogen in {epireview} not in {epiparameter}
+  if (length(disease) == 0) {
+    disease <- "Lassa fever"
+  }
   if (length(unique(disease)) > 1) {
     stop("Disease lookup returned different names", call. = FALSE)
   }
