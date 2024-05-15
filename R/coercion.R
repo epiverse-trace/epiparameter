@@ -316,10 +316,13 @@ epireview_to_epidist <- function(x, ...) {
       x$parameter_uncertainty_lower_value,
       x$parameter_uncertainty_upper_value
     )
-    # TODO: 2 entries...
-    ss_uncertainty <- vector(mode = "list", length = 2)
-    ss_uncertainty[[1]] <- sapply(summary_stat_uncertainty, "[[", 1)
-    ss_uncertainty[[2]] <- sapply(summary_stat_uncertainty, "[[", 2)
+    ss_uncertainty <- vector(
+      mode = "list",
+      length = length(summary_stat_type_uncertainty)
+    )
+    for (i in seq_along(ss_uncertainty)) {
+      ss_uncertainty[[i]] <- sapply(summary_stat_uncertainty, "[[", i)
+    }
     summary_stats[summary_stat_type_uncertainty] <- ss_uncertainty
     # get the interval
     interval <- as.numeric(gsub(
