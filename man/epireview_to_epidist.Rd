@@ -10,9 +10,6 @@ epireview_to_epidist(x, ...)
 \item{x}{A \verb{<data.frame>}.}
 
 \item{...}{\link{dots} Extra arguments to pass to \code{\link[=epidist]{epidist()}}.}
-
-\item{article}{A \verb{<data.frame>} with bibliographic information on the
-epidemiological parameters. See Details for more information.}
 }
 \value{
 An \verb{<epidist>} object.

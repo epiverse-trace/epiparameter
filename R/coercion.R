@@ -199,7 +199,7 @@ epidist_df_to_epidist <- function(x, ...) {
   }
 
   # remove <AsIs> from citation
-  class(x$citation) <- class(x$citation)[!class(x$citation) == "AsIs"]
+  class(x$citation) <- class(x$citation)[!class(x$citation) == "AsIs"] # nolint class_equals_linter
 
   # return <epidist> from class constructor
   epidist(
@@ -228,8 +228,6 @@ epidist_df_to_epidist <- function(x, ...) {
 #' as it will be matched by name by `$`.
 #'
 #' @param x A `<data.frame>`.
-#' @param article A `<data.frame>` with bibliographic information on the
-#' epidemiological parameters. See Details for more information.
 #' @param ... [dots] Extra arguments to pass to [epidist()].
 #'
 #' @inherit epidist return
