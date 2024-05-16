@@ -111,7 +111,7 @@ Now we can repeat the example of converting to `<epidist>` as shown above, but t
 
 ```{r, convert-to-epidist-full-citation}
 marburg_incub_epidist <- as_epidist(
-  marburg_incub, 
+  marburg_incub,
   articles = marburg_incub_article
 )
 marburg_incub_epidist
@@ -138,7 +138,7 @@ multi_row_ids <- marburg_params$id[multi_row_entries]
 ```
 
 ```{r, subset-multi-row-entries}
-multi_row_marburg_params <- 
+multi_row_marburg_params <-
   marburg_params[marburg_params$id %in% multi_row_ids, ]
 ```
 
