@@ -7,6 +7,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/dev/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/articles/data_from_epireview.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/articles/data_protocol.html</loc>
   </url>
   <url>
@@ -41,6 +44,12 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/as.function.epidist.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/as_epidist.data.frame.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/as_epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/calc_disc_dist_quantile.html</loc>
@@ -148,10 +157,19 @@
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/epidist_db.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/epidist_df_to_epidist.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/epidist_distribution_functions.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/epiparameter-package.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/epireview_core_cols.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/epireview_to_epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/extract_param.html</loc>
@@ -196,7 +214,13 @@
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/is_epidist.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/is_epidist_df.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/is_epidist_params.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/is_epireview.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/is_parameterised.html</loc>

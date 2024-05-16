@@ -13,7 +13,6 @@ The alternative method is when you have information
 this into an &amp;lt;epidist&amp;gt; object in order to work in existing analysis
 pipelines. This is where the epidist() function can be used to fill out
 each field for which information is known.
-
 "><title>Create an &lt;epidist&gt; object — epidist • epiparameter</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Create an &lt;epidist&gt; object — epidist"><meta property="og:description" content="The &amp;lt;epidist&amp;gt; class is used to store epidemiological
 parameters for a single disease. These epidemiological parameters cover a
 variety of aspects including delay distributions (e.g. incubation periods
@@ -28,32 +27,20 @@ The alternative method is when you have information
 this into an &amp;lt;epidist&amp;gt; object in order to work in existing analysis
 pipelines. This is where the epidist() function can be used to fill out
 each field for which information is known.
-
-"><meta property="og:image" content="https://epiverse-trace.github.io/epiparameter/logo.png"><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script><script>
+"><meta property="og:image" content="https://epiverse-trace.github.io/epiparameter/logo.png"><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-XZ471458FQ');
 </script></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
-
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark" data-bs-theme="dark"><div class="container">
-    
     <a href="https://epiverse-trace.github.io/" class="external-link"><img src="../logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
     <a class="navbar-brand me-2" href="../index.html">epiparameter</a>
-
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.0.9000</small>
-
-    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../articles/epiparameter.html">Get started</a>
@@ -62,13 +49,16 @@ each field for which information is known.
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <button href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" type="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</button>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <h6 class="dropdown-header" data-toc-skip>Intro</h6>
     <a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a>
     <div class="dropdown-divider"></div>
     <h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6>
     <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+    <div class="dropdown-divider"></div>
+    <h6 class="dropdown-header" data-toc-skip>Handling data from other packages</h6>
+    <a class="dropdown-item" href="../articles/data_from_epireview.html">Using {epireview} with {epiparameter}</a>
     <div class="dropdown-divider"></div>
     <h6 class="dropdown-header" data-toc-skip>Auxiliary</h6>
     <a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a>
@@ -84,13 +74,10 @@ each field for which information is known.
 <input type="search" class="form-control" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json"></form></li>
 <li class="nav-item">
   <a class="external-link nav-link" href="https://github.com/epiverse-trace/epiparameter/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
+    <span class="fa fab fa-github fa-lg"></span>
   </a>
 </li>
       </ul></div>
-
-    
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
@@ -99,7 +86,6 @@ each field for which information is known.
       <small class="dont-index">Source: <a href="https://github.com/epiverse-trace/epiparameter/blob/HEAD/R/epidist.R" class="external-link"><code>R/epidist.R</code></a></small>
       <div class="d-none name"><code>epidist.Rd</code></div>
     </div>
-
     <div class="ref-description section level2">
     <p>The <code>&lt;epidist&gt;</code> class is used to store epidemiological
 parameters for a single disease. These epidemiological parameters cover a
@@ -115,7 +101,6 @@ this into an <code>&lt;epidist&gt;</code> object in order to work in existing an
 pipelines. This is where the <code>epidist()</code> function can be used to fill out
 each field for which information is known.</p></li>
 </ol></div>
-
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">epidist</span><span class="op">(</span></span>
@@ -135,43 +120,30 @@ each field for which information is known.</p></li>
 <span>  notes <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
-
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt id="arg-disease">disease<a class="anchor" aria-label="anchor" href="#arg-disease"></a></dt>
 <dd><p>A <code>character</code> string with name of the infectious disease.</p></dd>
-
-
 <dt id="arg-pathogen">pathogen<a class="anchor" aria-label="anchor" href="#arg-pathogen"></a></dt>
 <dd><p>A <code>character</code> string with the name of the causative agent of
 disease, or <code>NA</code> if not known.</p></dd>
-
-
 <dt id="arg-epi-dist">epi_dist<a class="anchor" aria-label="anchor" href="#arg-epi-dist"></a></dt>
 <dd><p>A <code>character</code> string with the name of the
 epidemiological distribution type.</p></dd>
-
-
 <dt id="arg-prob-distribution">prob_distribution<a class="anchor" aria-label="anchor" href="#arg-prob-distribution"></a></dt>
 <dd><p>A <code>character</code> string specifying the probability
 distribution. This should match the <span style="R">R</span> naming convention of probability
 distributions (e.g. lognormal is <code>lnorm</code>, negative binomial is <code>nbinom</code>, and
 geometric is <code>geom</code>).</p></dd>
-
-
 <dt id="arg-prob-distribution-params">prob_distribution_params<a class="anchor" aria-label="anchor" href="#arg-prob-distribution-params"></a></dt>
 <dd><p>A named vector of probability distribution
 parameters.</p></dd>
-
-
 <dt id="arg-uncertainty">uncertainty<a class="anchor" aria-label="anchor" href="#arg-uncertainty"></a></dt>
 <dd><p>A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
 estimates is unknown use <code><a href="create_epidist_uncertainty.html">create_epidist_uncertainty()</a></code> (which is the
 argument default) to create a list with the correct names with missing
 values.</p></dd>
-
-
 <dt id="arg-summary-stats">summary_stats<a class="anchor" aria-label="anchor" href="#arg-summary-stats"></a></dt>
 <dd><p>A list of summary statistics, use
 <code><a href="create_epidist_summary_stats.html">create_epidist_summary_stats()</a></code> to create list. This list can include
@@ -180,8 +152,6 @@ standard deviation, quantiles of the distribution, or information about the
 data used to fit the distribution such as lower and upper range. The summary
 statistics can also include uncertainty around metrics such as confidence
 interval around mean and standard deviation.</p></dd>
-
-
 <dt id="arg-auto-calc-params">auto_calc_params<a class="anchor" aria-label="anchor" href="#arg-auto-calc-params"></a></dt>
 <dd><p>A boolean <code>logical</code> determining whether to try and
 calculate the probability distribution parameters from summary statistics if
@@ -189,14 +159,10 @@ distribution parameters are not provided. Default is <code>TRUE</code>. In the c
 sufficient summary statistics are provided and the parameter(s) of the
 distribution are not, the <code><a href="calc_dist_params.html">calc_dist_params()</a></code> function is called to
 calculate the parameters and add them to the <code>epidist</code> object created.</p></dd>
-
-
 <dt id="arg-citation">citation<a class="anchor" aria-label="anchor" href="#arg-citation"></a></dt>
 <dd><p>A <code>character</code> string with the citation of the source of the
 data or the paper that inferred the distribution parameters, use
 <code><a href="create_epidist_citation.html">create_epidist_citation()</a></code> to create citation.</p></dd>
-
-
 <dt id="arg-metadata">metadata<a class="anchor" aria-label="anchor" href="#arg-metadata"></a></dt>
 <dd><p>A list of metadata, this can include: sample size, the
 transmission mode of the disease (e.g. is it vector-borne or directly
@@ -205,34 +171,23 @@ vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 delay distribution such as extrinsic incubation period) unless
 <code>transmission_mode = "vector_borne"</code> is contained in the metadata. Use
 <code><a href="create_epidist_metadata.html">create_epidist_metadata()</a></code> to create metadata.</p></dd>
-
-
 <dt id="arg-method-assess">method_assess<a class="anchor" aria-label="anchor" href="#arg-method-assess"></a></dt>
 <dd><p>A list of methodological aspects used when fitting
 the distribution, use <code><a href="create_epidist_method_assess.html">create_epidist_method_assess()</a></code> to create method
 assessment.</p></dd>
-
-
 <dt id="arg-discretise">discretise<a class="anchor" aria-label="anchor" href="#arg-discretise"></a></dt>
 <dd><p>A boolean <code>logical</code> whether the distribution is
 discretised.
 Default is FALSE which assumes a continuous probability distribution</p></dd>
-
-
 <dt id="arg-truncation">truncation<a class="anchor" aria-label="anchor" href="#arg-truncation"></a></dt>
 <dd><p>A <code>numeric</code> specifying the truncation point if the inferred
 distribution was truncated, <code>NA</code> if not or unknown.</p></dd>
-
-
 <dt id="arg-notes">notes<a class="anchor" aria-label="anchor" href="#arg-notes"></a></dt>
 <dd><p>A <code>character</code> string with any additional information about the
 data, inference method or disease.</p></dd>
-
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    
-
 <p>An <code>&lt;epidist&gt;</code> object.</p>
     </div>
     <div class="section level2">
@@ -244,7 +199,6 @@ data, inference method or disease.</p></dd>
 <li><p>Geometric must be either 'mean' or 'prob'</p></li>
 <li><p>Poisson must be 'mean'</p></li>
 </ul></div>
-
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># minimal input required for `epidist`</span></span></span>
@@ -304,23 +258,14 @@ data, inference method or disease.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation use the 'get_citation' function</span>
 </code></pre></div>
     </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
-
-
     <footer><div class="pkgdown-footer-left">
   <p>Developed by Joshua W. Lambert, Adam Kucharski, Carmen Tamayo.</p>
 </div>
-
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
-
     </footer></div>
-
-  
-
-  
-
   </body></html>
 
