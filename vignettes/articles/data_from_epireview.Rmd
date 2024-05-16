@@ -125,11 +125,14 @@ The `as_epiparameter()` function is an S3 generic. If you are not familiar with 
 
 ## Multi-row {epireview} entries
 
+In general, all required values for a parameter are represented as a _single_ entry in epireview. In a small number of cases, particularly for Marburg Virus Disease (as the first pathogen we extracted), values captured for a parameter are on multiple rows. We are trying to avoid this as _linking_ these entries is very challenging. We provide further information in the limitations section below. 
+
 The way the {epireview} data is stored means that some epidemiological parameter entries require multiple rows. This can be, for example, because they contain two summary statistics (e.g. mean and standard deviation) that are kept on separate rows. In order to create `<epiparameter>` objects that contains the full information for each entry multiple rows of the epidemiological parameters table from {epireview} can be given to `as_epiparameter()` to create a single `<epiparameter>` object.
 
 We can search which entries in the data have multiple rows by checking if there are duplicated parameter types and IDs. Remember that it is only possible to convert delay distributions into epiparameter objects (i.e. known as _Human delay_ parameter types in {epireview}). 
 
 ```{r, check-multi-row-entries}
+marburg_params <-  epireview::get_parameter( marburg_data$params, "Human delay - generation time")
 multi_row_entries <- duplicated(marburg_params$parameter_type) &
   duplicated(marburg_params$id)
 multi_row_ids <- marburg_params$id[multi_row_entries]
@@ -275,5 +278,11 @@ plot(ebola_si_epiparameter, cumulative = TRUE)
 quantile(ebola_si_epiparameter, p = 0.5)
 generate(ebola_si_epiparameter, times = 10)
 ```
+
+## Limitations
+
+- The _database schema_ of epireview has evolved over time as the Imperial PERG team extracted more pathogens. 
+- A list of [parameter types](https://mrc-ide.github.io/epireview/articles/pathogen_database_field_options.html) is available in the epireview package 
+- It is important to differentiate between variablity of the sample (e.g. sample standard deviation) and uncertainty of the estimate (e.g. 95% confidence interval or credible interval). From the database version of epireview of Zika we will explicitly expose this to remove any ambiguity of the extracted data. Please note that in the Marburg, Lassa and Ebola datasets there may be some ambiguity between variability and uncertainty.
 
 ## References
