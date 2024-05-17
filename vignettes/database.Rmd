@@ -1,0 +1,38 @@
+---
+title: "Current database"
+output:
+  bookdown::html_vignette2:
+    fig_caption: yes
+    code_folding: show
+pkgdown:
+  as_is: true
+vignette: >
+  %\VignetteIndexEntry{Current database}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+library("DT")
+library("epiparameter")
+
+db <- epidist_db()
+tbl <- lapply(db, function(x) {
+  data.frame(
+    disease = x$disease,
+    pathogen = x$pathogen,
+    epi_dist = x$epi_dist,
+    url = paste0('<a href="https://doi.org', x$citation$doi, '">' , x$citation$doi, '</a>')
+  )
+})
+tb <- do.call(rbind, tbl)
+## sort by disease then pathogen
+tb <- tb[order(tb$disease, tb$pathogen), ]
+datatable(
+  tb,
+  rownames = FALSE,
+  colnames = c("Disease", "Pathogen", "Distribution", "Reference"),
+  escape = FALSE,
+  options = list(pageLength = 50)
+)
+```
