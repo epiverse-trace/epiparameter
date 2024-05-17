@@ -101,6 +101,7 @@ articles:
   navbar: Epiparameter Data
   contents:
   - data_protocol
+  - database
 
 - title: Data from other packages
   navbar: Handling data from other packages
