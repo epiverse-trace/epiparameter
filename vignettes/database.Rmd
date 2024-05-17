@@ -22,7 +22,9 @@ tbl <- lapply(db, function(x) {
     disease = x$disease,
     pathogen = x$pathogen,
     epi_dist = x$epi_dist,
-    url = paste0('<a href="https://doi.org', x$citation$doi, '">' , x$citation$doi, '</a>')
+    url = paste0(
+      "<a href=\"https://doi.org", x$citation$doi, "\">", x$citation$doi, "</a>"
+    )
   )
 })
 tb <- do.call(rbind, tbl)
