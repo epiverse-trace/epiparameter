@@ -37,7 +37,8 @@ Suggests:
     rmarkdown,
     spelling,
     testthat (>= 3.0.0),
-    vdiffr (>= 1.0.7)
+    vdiffr (>= 1.0.7),
+    DT
 VignetteBuilder: 
     knitr
 Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview
