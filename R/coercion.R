@@ -319,7 +319,12 @@ epireview_to_epidist <- function(x, ...) {
       length = length(summary_stat_type_uncertainty)
     )
     for (i in seq_along(ss_uncertainty)) {
-      ss_uncertainty[[i]] <- sapply(summary_stat_uncertainty, "[[", i)
+      ss_uncertainty[[i]] <- vapply(
+        summary_stat_uncertainty,
+        "[[",
+        FUN.VALUE = numeric(1),
+        i
+      )
     }
     summary_stats[summary_stat_type_uncertainty] <- ss_uncertainty
     # get the interval
@@ -353,12 +358,12 @@ epireview_to_epidist <- function(x, ...) {
       par1 = x$distribution_par1_uncertainty,
       par2 = x$distribution_par2_uncertainty
     )
-    if (all(!is.na(params))) {
+    if (!anyNA(params)) {
       names(param_uncertainty) <- param_names
     }
     uncertainty <- lapply(
       param_uncertainty,
-      function(x) if (!x) create_epidist_uncertainty() else x
+      function(x) if (x) x else create_epidist_uncertainty()
     )
   }
 
@@ -392,7 +397,7 @@ epireview_to_epidist <- function(x, ...) {
 
   # clean parameter type name by removing the parameter class
   epi_dist <- gsub(
-    pattern = paste0(x1$parameter_class, " \\- "),
+    pattern = paste0(x1$parameter_class, " \\- "), # nolint nonportable_path_linter
     replacement = "",
     x = x1$parameter_type
   )
