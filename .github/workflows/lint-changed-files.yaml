@@ -35,7 +35,9 @@ jobs:
             any::lintr
             any::purrr
             epiverse-trace/etdev
-          needs: check
+          needs: |
+            check
+            website
 
       - name: Install package
         run: R CMD INSTALL .
