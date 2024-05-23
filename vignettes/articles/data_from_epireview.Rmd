@@ -27,7 +27,7 @@ The {epireview} package nicely provides epidemiological parameter data from syst
 Here we start we a simple example of reading in the Marburg data from {epireview} and converting to an `<epidist>` object using `as_epidist()` function from the {epiparameter} package.
 
 ```{r, load-marburg}
-marburg_data <- epireview::load_epidata("marburg")
+marburg_data <- load_epidata("marburg")
 ```
 
 This loads a list with four tables, specifically `tibbles`, that contain the bibliographic information (`$articles`), epidemiological parameters (`$params`), epidemiological models (`$models`), and outbreak information (`$outbreaks`).
@@ -88,7 +88,7 @@ In order to provide a complete citation to the `<epidist>` object, which is high
 The article data needs to be loaded from {epireview} using `epireview::load_epidata_raw()` rather than `epireview::load_data()` because `load_data()` subsets the bibliographic information to only provide: `"id"`, `"first_author_surname"`, `"year_publication"`, and `"article_label"` columns.
 
 ```{r, load-epreview-articles}
-marburg_articles <- epireview::load_epidata_raw(
+marburg_articles <- load_epidata_raw(
   pathogen = "marburg",
   table = "article"
 )
@@ -161,7 +161,7 @@ marburg_gt_epidist$summary_stats
 For this example we will load the Ebola epidemiological parameters from the {epireview} package (as there are no entries for Marburg that have parametric distributions).
 
 ```{r, load-ebola}
-ebola_data <- epireview::load_epidata("ebola")
+ebola_data <- load_epidata("ebola")
 ```
 
 We will again subset the data to just use the epidemiological parameter table, and subset that table to just the delay distributions.
