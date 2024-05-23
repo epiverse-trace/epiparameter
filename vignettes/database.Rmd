@@ -4,8 +4,6 @@ output:
   bookdown::html_vignette2:
     fig_caption: yes
     code_folding: show
-pkgdown:
-  as_is: true
 vignette: >
   %\VignetteIndexEntry{Current database}
   %\VignetteEngine{knitr::rmarkdown}
