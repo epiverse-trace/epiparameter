@@ -11,6 +11,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0003-4184-2864")),
     person("Hugo", "Gruson", , "hugo.gruson@data.org", role = c("ctb", "rev"),
            comment = c(ORCID = "0000-0002-4094-1476")),
+    person("Sebastian", "Funk", , "sebastian.funk@lshtm.ac.uk", role = "ctb",
+           comment = c(ORCID = "0000-0002-2842-3406")),
     person("Pratik", "Gupte", , "pratik.gupte@lshtm.ac.uk", role = "rev",
            comment = c(ORCID = "0000-0001-5294-7819"))
   )
@@ -31,20 +33,20 @@ Imports:
     utils
 Suggests: 
     bookdown,
+    DT,
     ggplot2,
     jsonlite,
     knitr,
     rmarkdown,
     spelling,
     testthat (>= 3.0.0),
-    vdiffr (>= 1.0.7),
-    DT
+    vdiffr (>= 1.0.7)
 VignetteBuilder: 
     knitr
 Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB
+LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
-LazyData: true
