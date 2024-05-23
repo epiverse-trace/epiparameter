@@ -1,6 +1,6 @@
 pandoc: 3.1.11
 pkgdown: 2.0.9.9000
-pkgdown_sha: cf719ba763fdaaf9b285cb2871dad8c746e9e6b7
+pkgdown_sha: 98d30d834b33ce896310ee7a9ae89de11809d8e2
 articles:
   articles/data_from_epireview: data_from_epireview.html
   data_protocol: data_protocol.html
@@ -8,7 +8,7 @@ articles:
   epiparameter: epiparameter.html
   extract_convert: extract_convert.html
   extract-bias: extract-bias.html
-last_built: 2024-05-16T07:09Z
+last_built: 2024-05-23T14:44Z
 urls:
   reference: https://epiverse-trace.github.io/epiparameter/reference
   article: https://epiverse-trace.github.io/epiparameter/articles

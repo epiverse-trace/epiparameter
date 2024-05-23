@@ -7,12 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="epiparameter">
 <title>Using {epireview} with {epiparameter} • epiparameter</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -30,8 +24,8 @@
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark" data-bs-theme="dark"><div class="container">
-    <a href="https://epiverse-trace.github.io/" class="external-link"><img src="../logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
+    <nav class="navbar navbar-expand-lg fixed-top bg-dark" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+    <a href="https://epiverse-trace.github.io/" class="external-link"><img src="https://epiverse-trace.github.io/blueprints/logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
     <a class="navbar-brand me-2" href="../index.html">epiparameter</a>
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.0.9000</small>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,44 +33,35 @@
     </button>
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../articles/epiparameter.html">Get started</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../articles/epiparameter.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <button href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" type="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</button>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <h6 class="dropdown-header" data-toc-skip>Intro</h6>
-    <a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6>
-    <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Handling data from other packages</h6>
-    <a class="dropdown-item" href="../articles/data_from_epireview.html">Using {epireview} with {epiparameter}</a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Auxiliary</h6>
-    <a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Developer Documentation</h6>
-    <a class="dropdown-item" href="../articles/design_principles.html">Design Principles for {epiparameter}</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Intro</h6></li>
+    <li><a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6></li>
+    <li><a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Handling data from other packages</h6></li>
+    <li><a class="dropdown-item" href="../articles/data_from_epireview.html">Using {epireview} with {epiparameter}</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Auxiliary</h6></li>
+    <li><a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Developer Documentation</h6></li>
+    <li><a class="dropdown-item" href="../articles/design_principles.html">Design Principles for {epiparameter}</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
-<li><form class="form-inline" role="search">
-<input type="search" class="form-control" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/epiverse-trace/epiparameter/" aria-label="github">
-    <span class="fa fab fa-github fa-lg"></span>
-  </a>
-</li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/epiverse-trace/epiparameter/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
   </div>
@@ -125,7 +110,7 @@ provide the greatest utility when applied in outbreak analytics.</p>
 using <code><a href="../reference/as_epidist.html">as_epidist()</a></code> function from the {epiparameter}
 package.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">marburg_data</span> <span class="op">&lt;-</span> <span class="fu">epireview</span><span class="fu">::</span><span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">load_epidata</a></span><span class="op">(</span><span class="st">"marburg"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">marburg_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">load_epidata</a></span><span class="op">(</span><span class="st">"marburg"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in pretty_article_label(articles, mark_multiple): There are 1 articles</span></span>
 <span><span class="co">#&gt; with missing first author surname.</span></span>
 <span><span class="co">#&gt; Warning in pretty_article_label(articles, mark_multiple): There are 1 articles</span></span>
@@ -205,8 +190,9 @@ use as the first example:</p>
 <span><span class="co">#&gt; Warning: Cannot create full citation for epidemiological parameters without bibliographic information </span></span>
 <span><span class="co">#&gt;  see ?epireview_to_epidist for help.</span></span>
 <span><span class="co">#&gt; No adequate summary statistics available to calculate the parameters of the NA distribution</span></span>
-<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span>
-<span><span class="va">marburg_incub_epidist</span></span>
+<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">marburg_incub_epidist</span></span>
 <span><span class="co">#&gt; Disease: Marburg Virus Disease</span></span>
 <span><span class="co">#&gt; Pathogen: Marburg virus</span></span>
 <span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
@@ -217,7 +203,7 @@ parameterised probability distribution, instead it contains a range for
 the incubation period (in <code>$summary_stats</code>), and the
 <code>$metadata</code> shows that this is a single case from South
 Africa.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_incub_epidist</span><span class="op">$</span><span class="va">summary_stats</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt; [1] NA</span></span>
@@ -250,8 +236,9 @@ Africa.</p>
 <span><span class="co">#&gt; [1] NA</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $range</span></span>
-<span><span class="co">#&gt; [1] 7 8</span></span>
-<span><span class="va">marburg_incub_epidist</span><span class="op">$</span><span class="va">metadata</span></span>
+<span><span class="co">#&gt; [1] 7 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">marburg_incub_epidist</span><span class="op">$</span><span class="va">metadata</span></span>
 <span><span class="co">#&gt; $sample_size</span></span>
 <span><span class="co">#&gt; [1] 1</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -276,7 +263,7 @@ Africa.</p>
 <p>The last example showed how to convert the epidemiological parameter
 information, however, you may have noticed that the citation that was
 created did not contain the information for a full citation.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_incub_epidist</span><span class="op">$</span><span class="va">citation</span></span>
 <span><span class="co">#&gt; Gear (1975). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span></code></pre></div>
 <p>In order to provide a complete citation to the
@@ -292,8 +279,8 @@ subsets the bibliographic information to only provide:
 <code>"id"</code>, <code>"first_author_surname"</code>,
 <code>"year_publication"</code>, and <code>"article_label"</code>
 columns.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">marburg_articles</span> <span class="op">&lt;-</span> <span class="fu">epireview</span><span class="fu">::</span><span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata_raw.html" class="external-link">load_epidata_raw</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">marburg_articles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata_raw.html" class="external-link">load_epidata_raw</a></span><span class="op">(</span></span>
 <span>  pathogen <span class="op">=</span> <span class="st">"marburg"</span>,</span>
 <span>  table <span class="op">=</span> <span class="st">"article"</span></span>
 <span><span class="op">)</span></span>
@@ -323,11 +310,11 @@ with the citation information in the article table to ensure we are
 using the correct citation for the parameter set. Thankfully, this can
 easily be achieved as {epireview} provides unique IDs to each table to
 link entries.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">article_row</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="va">marburg_incub</span><span class="op">$</span><span class="va">id</span>, <span class="va">marburg_articles</span><span class="op">$</span><span class="va">id</span><span class="op">)</span></span>
 <span><span class="va">article_row</span></span>
 <span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_incub_article</span> <span class="op">&lt;-</span> <span class="va">marburg_articles</span><span class="op">[</span><span class="va">article_row</span>, <span class="op">]</span></span>
 <span><span class="va">marburg_incub_article</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 25</span></span></span>
@@ -345,7 +332,7 @@ link entries.</p>
 bibliographic information as well as the epidemiological parameter
 information to create a full citation. The bibliographic information
 needs to be passed with the <code>articles</code> argument.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_incub_epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epidist.html">as_epidist</a></span><span class="op">(</span></span>
 <span>  <span class="va">marburg_incub</span>,</span>
 <span>  articles <span class="op">=</span> <span class="va">marburg_incub_article</span></span>
@@ -355,8 +342,9 @@ needs to be passed with the <code>articles</code> argument.</p>
 <span><span class="co">#&gt; &lt;https://doi.org/10.1136/bmj.4.5995.489&gt;. </span></span>
 <span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
 <span><span class="co">#&gt; No adequate summary statistics available to calculate the parameters of the NA distribution</span></span>
-<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span>
-<span><span class="va">marburg_incub_epidist</span></span>
+<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">marburg_incub_epidist</span></span>
 <span><span class="co">#&gt; Disease: Marburg Virus Disease</span></span>
 <span><span class="co">#&gt; Pathogen: Marburg virus</span></span>
 <span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
@@ -364,7 +352,7 @@ needs to be passed with the <code>articles</code> argument.</p>
 <span><span class="co">#&gt; British Medical Journal_. doi:10.1136/bmj.4.5995.489</span></span>
 <span><span class="co">#&gt; &lt;https://doi.org/10.1136/bmj.4.5995.489&gt;.</span></span>
 <span><span class="co">#&gt; Distribution: NA</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_incub_epidist</span><span class="op">$</span><span class="va">citation</span></span>
 <span><span class="co">#&gt; Gear (1975). "Outbreak of Marburg virus disease in Johannesburg." _The</span></span>
 <span><span class="co">#&gt; British Medical Journal_. doi:10.1136/bmj.4.5995.489</span></span>
@@ -399,11 +387,11 @@ single <code>&lt;epidist&gt;</code> object.</p>
 checking if there are duplicated parameter types and IDs. Remembering
 that we are using only the delay distributions (i.e. Human delay) from
 the epidemiological parameters, that we subset above.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">multi_row_entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">duplicated</a></span><span class="op">(</span><span class="va">marburg_params</span><span class="op">$</span><span class="va">parameter_type</span><span class="op">)</span> <span class="op">&amp;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">duplicated</a></span><span class="op">(</span><span class="va">marburg_params</span><span class="op">$</span><span class="va">id</span><span class="op">)</span></span>
 <span><span class="va">multi_row_ids</span> <span class="op">&lt;-</span> <span class="va">marburg_params</span><span class="op">$</span><span class="va">id</span><span class="op">[</span><span class="va">multi_row_entries</span><span class="op">]</span></span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">multi_row_marburg_params</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">marburg_params</span><span class="op">[</span><span class="va">marburg_params</span><span class="op">$</span><span class="va">id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">multi_row_ids</span>, <span class="op">]</span></span></code></pre></div>
 <p>This step should be verified manually to ensure that the entries that
@@ -411,24 +399,26 @@ have been selected are indeed multiple rows for the same reported
 epidemiological parameter. We use the first two rows of this subset
 table, which are the mean and standard deviation for the generation time
 of Marburg disease.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_gt</span> <span class="op">&lt;-</span> <span class="va">multi_row_marburg_params</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
 <p>We can now convert this to an <code>&lt;epidist&gt;</code>.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_gt_epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">marburg_gt</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using Ajelli (2012). "&lt;title not available&gt;." _&lt;journal not available&gt;_. </span></span>
 <span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
 <span><span class="co">#&gt; Warning: Cannot create full citation for epidemiological parameters without bibliographic information </span></span>
 <span><span class="co">#&gt;  see ?epireview_to_epidist for help.</span></span>
 <span><span class="co">#&gt; No adequate summary statistics available to calculate the parameters of the NA distribution</span></span>
-<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span>
-<span><span class="va">marburg_gt_epidist</span></span>
+<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">marburg_gt_epidist</span></span>
 <span><span class="co">#&gt; Disease: Marburg Virus Disease</span></span>
 <span><span class="co">#&gt; Pathogen: Marburg virus</span></span>
 <span><span class="co">#&gt; Epi Distribution: generation time</span></span>
 <span><span class="co">#&gt; Study: Ajelli (2012). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
-<span><span class="co">#&gt; Distribution: NA</span></span>
-<span><span class="va">marburg_gt_epidist</span><span class="op">$</span><span class="va">summary_stats</span></span>
+<span><span class="co">#&gt; Distribution: NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">marburg_gt_epidist</span><span class="op">$</span><span class="va">summary_stats</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt; [1] 9</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -468,8 +458,8 @@ of Marburg disease.</p>
 <p>For this example we will load the Ebola epidemiological parameters
 from the {epireview} package (as there are no entries for Marburg that
 have parametric distributions).</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ebola_data</span> <span class="op">&lt;-</span> <span class="fu">epireview</span><span class="fu">::</span><span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">load_epidata</a></span><span class="op">(</span><span class="st">"ebola"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">load_epidata</a></span><span class="op">(</span><span class="st">"ebola"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: One or more parsing issues, call `problems()` on your data frame for details,</span></span>
 <span><span class="co">#&gt; e.g.:</span></span>
 <span><span class="co">#&gt;   dat &lt;- vroom(...)</span></span>
@@ -479,15 +469,14 @@ have parametric distributions).</p>
 <span><span class="co">#&gt; e.g.:</span></span>
 <span><span class="co">#&gt;   dat &lt;- vroom(...)</span></span>
 <span><span class="co">#&gt;   problems(dat)</span></span>
-<span><span class="co">#&gt; Warning in epireview::load_epidata("ebola"): No outbreaks information found for</span></span>
-<span><span class="co">#&gt; ebola</span></span>
+<span><span class="co">#&gt; Warning in load_epidata("ebola"): No outbreaks information found for ebola</span></span>
 <span><span class="co">#&gt; Data loaded for ebola</span></span></code></pre></div>
 <p>We will again subset the data to just use the epidemiological
 parameter table, and subset that table to just the delay
 distributions.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ebola_params</span> <span class="op">&lt;-</span> <span class="va">ebola_data</span><span class="op">$</span><span class="va">params</span></span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">delay_dist_rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span></span>
 <span>  pattern <span class="op">=</span> <span class="st">"Human delay"</span>,</span>
 <span>  x <span class="op">=</span> <span class="va">ebola_params</span><span class="op">$</span><span class="va">parameter_type</span>,</span>
@@ -517,7 +506,7 @@ distributions.</p>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_upper_value &lt;dbl&gt;, …</span></span></span></code></pre></div>
 <p>We will select the 358th entry, which is a serial interval, as this
 entry has estimated and reported a Weibull distribution:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ebola_si</span> <span class="op">&lt;-</span> <span class="va">ebola_params</span><span class="op">[</span><span class="fl">358</span>, <span class="op">]</span></span>
 <span><span class="va">ebola_si</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 77</span></span></span>
@@ -533,13 +522,14 @@ entry has estimated and reported a Weibull distribution:</p>
 <span><span class="co">#&gt; <span style="color: #949494;">#   cfr_ifr_numerator &lt;int&gt;, cfr_ifr_denominator &lt;int&gt;, …</span></span></span></code></pre></div>
 <p>We can now convert this to an <code>&lt;epidist&gt;</code>
 object.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ebola_si_epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">ebola_si</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using Marziano (2023). "&lt;title not available&gt;." _&lt;journal not available&gt;_. </span></span>
 <span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
 <span><span class="co">#&gt; Warning: Cannot create full citation for epidemiological parameters without bibliographic information </span></span>
-<span><span class="co">#&gt;  see ?epireview_to_epidist for help.</span></span>
-<span><span class="va">ebola_si_epidist</span></span>
+<span><span class="co">#&gt;  see ?epireview_to_epidist for help.</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_si_epidist</span></span>
 <span><span class="co">#&gt; Disease: Ebola Virus Disease</span></span>
 <span><span class="co">#&gt; Pathogen: Ebola virus</span></span>
 <span><span class="co">#&gt; Epi Distribution: serial interval</span></span>
@@ -553,13 +543,13 @@ utilise some of the <code>&lt;epidist&gt;</code> methods. Here we
 illustrate this by checking that the <code>&lt;epidist&gt;</code> is
 parameterised, plotting the PDF and CDF, and generating 10 random
 numbers sampling from the distribution.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/is_parameterised.html">is_parameterised</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span>, day_range <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">50</span><span class="op">)</span></span></code></pre></div>
-<p><img src="data_from_epireview_files/figure-html/plot-epidist-1.png" width="700"></p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<p><img src="data_from_epireview_files/figure-html/plot-epidist-1.png" width="768"></p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] 17.129838  3.840887  6.913068 14.383495 25.033088  8.693642  8.263781</span></span>
 <span><span class="co">#&gt;  [8] 11.451308  5.219772  4.697018</span></span></code></pre></div>

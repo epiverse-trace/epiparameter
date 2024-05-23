@@ -7,12 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="epiparameter">
 <title>Parameter extraction and conversion in {epiparameter} • epiparameter</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -30,8 +24,8 @@
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark" data-bs-theme="dark"><div class="container">
-    <a href="https://epiverse-trace.github.io/" class="external-link"><img src="../logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
+    <nav class="navbar navbar-expand-lg fixed-top bg-dark" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+    <a href="https://epiverse-trace.github.io/" class="external-link"><img src="https://epiverse-trace.github.io/blueprints/logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
     <a class="navbar-brand me-2" href="../index.html">epiparameter</a>
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.0.9000</small>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,44 +33,35 @@
     </button>
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../articles/epiparameter.html">Get started</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../articles/epiparameter.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <button href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" type="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</button>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <h6 class="dropdown-header" data-toc-skip>Intro</h6>
-    <a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6>
-    <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Handling data from other packages</h6>
-    <a class="dropdown-item" href="../articles/data_from_epireview.html">Using {epireview} with {epiparameter}</a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Auxiliary</h6>
-    <a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Developer Documentation</h6>
-    <a class="dropdown-item" href="../articles/design_principles.html">Design Principles for {epiparameter}</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Intro</h6></li>
+    <li><a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6></li>
+    <li><a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Handling data from other packages</h6></li>
+    <li><a class="dropdown-item" href="../articles/data_from_epireview.html">Using {epireview} with {epiparameter}</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Auxiliary</h6></li>
+    <li><a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Developer Documentation</h6></li>
+    <li><a class="dropdown-item" href="../articles/design_principles.html">Design Principles for {epiparameter}</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
-<li><form class="form-inline" role="search">
-<input type="search" class="form-control" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/epiverse-trace/epiparameter/" aria-label="github">
-    <span class="fa fab fa-github fa-lg"></span>
-  </a>
-</li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/epiverse-trace/epiparameter/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
   </div>
@@ -157,14 +142,16 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="co">#&gt; [1] 1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $scale</span></span>
-<span><span class="co">#&gt; [1] 2</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"gamma"</span>, mean <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"gamma"</span>, mean <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $shape</span></span>
 <span><span class="co">#&gt; [1] 2</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $scale</span></span>
-<span><span class="co">#&gt; [1] 1</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"gamma"</span>, mean <span class="op">=</span> <span class="fl">2</span>, cv <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"gamma"</span>, mean <span class="op">=</span> <span class="fl">2</span>, cv <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $shape</span></span>
 <span><span class="co">#&gt; [1] 0.25</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -176,7 +163,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <h4 id="using-an-epidist">Using an <code>&lt;epidist&gt;</code><a class="anchor" aria-label="anchor" href="#using-an-epidist"></a>
 </h4>
 <p>An example with parameters provided by <code>&lt;epidist&gt;</code></p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"&lt;Disease name&gt;"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"&lt;Pathogen name&gt;"</span>,</span>
@@ -184,8 +171,9 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span>  prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span>
 <span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">2.5</span>, scale <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Citation cannot be created as author, year, journal or title is missing</span></span>
-<span><span class="fu"><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats</a></span><span class="op">(</span><span class="va">edist</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Citation cannot be created as author, year, journal or title is missing</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats</a></span><span class="op">(</span><span class="va">edist</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt; [1] 3.75</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -210,7 +198,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="co">#&gt; $ex_kurtosis</span></span>
 <span><span class="co">#&gt; [1] 2.4</span></span></code></pre></div>
 </details><p>An example with <code>&lt;epidist&gt;</code> missing parameters and supplied through <code>...</code></p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"&lt;Disease name&gt;"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"&lt;Pathogen name&gt;"</span>,</span>
@@ -219,8 +207,9 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Citation cannot be created as author, year, journal or title is missing</span></span>
 <span><span class="co">#&gt; No adequate summary statistics available to calculate the parameters of the gamma distribution</span></span>
-<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span>
-<span><span class="fu"><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats</a></span><span class="op">(</span><span class="va">edist</span>, shape <span class="op">=</span> <span class="fl">2.5</span>, scale <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats</a></span><span class="op">(</span><span class="va">edist</span>, shape <span class="op">=</span> <span class="fl">2.5</span>, scale <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt; [1] 3.75</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -245,7 +234,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="co">#&gt; $ex_kurtosis</span></span>
 <span><span class="co">#&gt; [1] 2.4</span></span></code></pre></div>
 </details><p>An example with summary statistics provided by <code>&lt;epidist&gt;</code></p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"&lt;Disease name&gt;"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"&lt;Pathogen name&gt;"</span>,</span>
@@ -253,15 +242,16 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span>  prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span>
 <span>  summary_stats <span class="op">=</span> <span class="fu"><a href="../reference/create_epidist_summary_stats.html">create_epidist_summary_stats</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">3.75</span>, sd <span class="op">=</span> <span class="fl">2.37</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Citation cannot be created as author, year, journal or title is missing</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="va">edist</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Citation cannot be created as author, year, journal or title is missing</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="va">edist</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $shape</span></span>
 <span><span class="co">#&gt; [1] 2.503605</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $scale</span></span>
 <span><span class="co">#&gt; [1] 1.49784</span></span></code></pre></div>
 </details><p>An example with <code>&lt;epidist&gt;</code> missing summary statistics and supplied through <code>...</code></p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">edist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"&lt;Disease name&gt;"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"&lt;Pathogen name&gt;"</span>,</span>
@@ -270,8 +260,9 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Citation cannot be created as author, year, journal or title is missing</span></span>
 <span><span class="co">#&gt; No adequate summary statistics available to calculate the parameters of the gamma distribution</span></span>
-<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="va">edist</span>, mean <span class="op">=</span> <span class="fl">3.75</span>, sd <span class="op">=</span> <span class="fl">2.37</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="va">edist</span>, mean <span class="op">=</span> <span class="fl">3.75</span>, sd <span class="op">=</span> <span class="fl">2.37</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $shape</span></span>
 <span><span class="co">#&gt; [1] 2.503605</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -282,7 +273,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <div class="section level4">
 <h4 id="lognormal-distribution">Lognormal distribution<a class="anchor" aria-label="anchor" href="#lognormal-distribution"></a>
 </h4>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats</a></span><span class="op">(</span><span class="st">"lnorm"</span>, meanlog <span class="op">=</span> <span class="fl">2.5</span>, sdlog <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt; [1] 37.52472</span></span>
@@ -307,32 +298,36 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $ex_kurtosis</span></span>
 <span><span class="co">#&gt; [1] 10075.25</span></span></code></pre></div>
-</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"lnorm"</span>, mean <span class="op">=</span> <span class="fl">2</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $meanlog</span></span>
 <span><span class="co">#&gt; [1] 0.3465736</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $sdlog</span></span>
-<span><span class="co">#&gt; [1] 0.8325546</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"lnorm"</span>, mean <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.8325546</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"lnorm"</span>, mean <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $meanlog</span></span>
 <span><span class="co">#&gt; [1] 0.4904146</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $sdlog</span></span>
-<span><span class="co">#&gt; [1] 0.6367614</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"lnorm"</span>, mean <span class="op">=</span> <span class="fl">2</span>, cv <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.6367614</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"lnorm"</span>, mean <span class="op">=</span> <span class="fl">2</span>, cv <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $meanlog</span></span>
 <span><span class="co">#&gt; [1] -0.1115718</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $sdlog</span></span>
-<span><span class="co">#&gt; [1] 1.268636</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"lnorm"</span>, median <span class="op">=</span> <span class="fl">2</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.268636</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"lnorm"</span>, median <span class="op">=</span> <span class="fl">2</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $meanlog</span></span>
 <span><span class="co">#&gt; [1] 0.3465736</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $sdlog</span></span>
-<span><span class="co">#&gt; [1] 0.8325546</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"lnorm"</span>, median <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.8325546</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"lnorm"</span>, median <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $meanlog</span></span>
 <span><span class="co">#&gt; [1] 0.4904146</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -343,7 +338,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <div class="section level4">
 <h4 id="weibull-distribution">Weibull distribution<a class="anchor" aria-label="anchor" href="#weibull-distribution"></a>
 </h4>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats</a></span><span class="op">(</span><span class="st">"weibull"</span>, shape <span class="op">=</span> <span class="fl">2.5</span>, scale <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt; [1] 1.330896</span></span>
@@ -368,22 +363,24 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $ex_kurtosis</span></span>
 <span><span class="co">#&gt; [1] -0.1432169</span></span></code></pre></div>
-</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"weibull"</span>, mean <span class="op">=</span> <span class="fl">2</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Numerical approximation used, results may be unreliable.</span></span>
 <span><span class="co">#&gt; $shape</span></span>
 <span><span class="co">#&gt; [1] 1.000016</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $scale</span></span>
-<span><span class="co">#&gt; [1] 2.000014</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"weibull"</span>, mean <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2.000014</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"weibull"</span>, mean <span class="op">=</span> <span class="fl">2</span>, var <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Numerical approximation used, results may be unreliable.</span></span>
 <span><span class="co">#&gt; $shape</span></span>
 <span><span class="co">#&gt; [1] 1.435521</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $scale</span></span>
-<span><span class="co">#&gt; [1] 2.202641</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"weibull"</span>, mean <span class="op">=</span> <span class="fl">2</span>, cv <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2.202641</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"weibull"</span>, mean <span class="op">=</span> <span class="fl">2</span>, cv <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Numerical approximation used, results may be unreliable.</span></span>
 <span><span class="co">#&gt; $shape</span></span>
 <span><span class="co">#&gt; [1] 0.5427068</span></span>
@@ -395,7 +392,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <div class="section level4">
 <h4 id="negative-binomial-distribution">Negative binomial distribution<a class="anchor" aria-label="anchor" href="#negative-binomial-distribution"></a>
 </h4>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats</a></span><span class="op">(</span><span class="st">"nbinom"</span>, prob <span class="op">=</span> <span class="fl">0.5</span>, dispersion <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt; [1] 0.5</span></span>
@@ -420,20 +417,22 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $ex_kurtosis</span></span>
 <span><span class="co">#&gt; [1] 12.25</span></span></code></pre></div>
-</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"nbinom"</span>, mean <span class="op">=</span> <span class="fl">1</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $prob</span></span>
 <span><span class="co">#&gt; [1] 1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $dispersion</span></span>
-<span><span class="co">#&gt; [1] Inf</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"nbinom"</span>, mean <span class="op">=</span> <span class="fl">1</span>, var <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] Inf</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"nbinom"</span>, mean <span class="op">=</span> <span class="fl">1</span>, var <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $prob</span></span>
 <span><span class="co">#&gt; [1] 1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $dispersion</span></span>
-<span><span class="co">#&gt; [1] Inf</span></span>
-<span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"nbinom"</span>, mean <span class="op">=</span> <span class="fl">1</span>, cv <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] Inf</span></span></code></pre></div>
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"nbinom"</span>, mean <span class="op">=</span> <span class="fl">1</span>, cv <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $prob</span></span>
 <span><span class="co">#&gt; [1] 1</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -444,7 +443,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <div class="section level4">
 <h4 id="geometric-distribution">Geometric distribution<a class="anchor" aria-label="anchor" href="#geometric-distribution"></a>
 </h4>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats</a></span><span class="op">(</span><span class="st">"geom"</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt; [1] 1</span></span>
@@ -469,7 +468,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $ex_kurtosis</span></span>
 <span><span class="co">#&gt; [1] 6.5</span></span></code></pre></div>
-</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+</details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"geom"</span>, mean <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $prob</span></span>
 <span><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
@@ -484,7 +483,7 @@ numerical optimisation used in the extraction function <code><a href="../referen
 the parameters given the values of two percentiles, and the other is to estimate the parameters given the
 median and the range of the data. Both of these extractions are implemented in the <code><a href="../reference/extract_param.html">extract_param()</a></code> function.</p>
 <p>Here we demonstrate extraction using percentiles. The <code>type</code> should be <code>"percentiles"</code>, the <code>values</code> are the values reported at the percentiles, given as a vector. The percentiles, given between 0 and 1, are specified as a vector in <code>percentiles</code>. The example below uses values 1 and 10 at the 2.5th and 97.5th percentile, respectively.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
 <span>  type <span class="op">=</span> <span class="st">"percentiles"</span>,</span>
 <span>  values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>,</span>
@@ -498,7 +497,7 @@ median and the range of the data. Both of these extractions are implemented in t
 </details><p>In the above example we estimate parameters of the gamma distribution, but extraction is also implemented for the lognormal, normal and Weibull distributions, but specifying <code>"lnorm"</code>, <code>"norm"</code> or <code>"weibull"</code>.</p>
 <p>A message is shown when running <code><a href="../reference/extract_param.html">extract_param()</a></code> to make the user aware that the estimates are not completely reliable due to the use of numerical optimisation. Rerunning the function to and finding the same parameters are returned indicates that they have successfully converged. This issue is mostly overcome by the internal setup of the <code><a href="../reference/extract_param.html">extract_param()</a></code> function which searches for convergence to consistent parameter estimates before returning these to the user.</p>
 <p>The alternative extraction, by median and range, can be achieved by specifying <code>type = "range"</code> and using the <code>samples</code> argument instead of the <code>percentiles</code> argument. When using <code>type = "percentiles"</code> the <code>samples</code> argument is ignored and when using <code>type = "range"</code> the <code>percentiles</code> argument is ignored.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
 <span>  type <span class="op">=</span> <span class="st">"range"</span>,</span>
 <span>  values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">5</span>, <span class="fl">15</span><span class="op">)</span>,</span>
@@ -510,7 +509,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <span><span class="co">#&gt;  meanlog    sdlog </span></span>
 <span><span class="co">#&gt; 2.302584 3.939920</span></span></code></pre></div>
 </details><p>In the above section it was mentioned that <code><a href="../reference/extract_param.html">extract_param()</a></code> has an internal mechanism to check that the parameters have consistently converged to the same estimates over several optimisation iterations. The tolerance of this convergence and number of times the optimisation can be repeated is specified in the <code>control</code> argument of <code><a href="../reference/extract_param.html">extract_param()</a></code>. This is set by default (<code>tolerance = 1e-5</code> and <code>max_iter = 1000</code>), and thus does not need to be specified by the user (as shown in the above examples). In the case that the maximum number of optimisation iterations is reached, the calculation terminates returning the most recent optimisation result to the user along with a warning message.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># set seed to ensure warning is produced</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -534,7 +533,7 @@ median and the range of the data. Both of these extractions are implemented in t
 </h3>
 <p>Here we present examples of published epidemiological parameters and distributions where the functions outlined above can be applied to get the parameters of the distribution.</p>
 <p>The 75th percentiles reported for a lognormal distribution from <span class="citation">Nolen et al. (<a href="#ref-nolenExtendedHumantoHumanTransmission2016">2016</a>)</span> for the incubation period for mpox (monkeypox).</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mpox lnorm from 75th percentiles in WHO data</span></span>
 <span><span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
 <span>  type <span class="op">=</span> <span class="st">"percentiles"</span>,</span>
@@ -547,7 +546,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <span><span class="co">#&gt;   meanlog     sdlog </span></span>
 <span><span class="co">#&gt; 2.1783544 0.3360684</span></span></code></pre></div>
 </details><p>The median and range are provided by <span class="citation">Thornhill et al. (<a href="#ref-thornhillMonkeypoxVirusInfection2022">2022</a>)</span> for mpox, and we want to calculate the parameters of a lognormal distribution.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mpox lnorm from median and range in 2022:</span></span>
 <span><span class="fu"><a href="../reference/extract_param.html">extract_param</a></span><span class="op">(</span></span>
 <span>  type <span class="op">=</span> <span class="st">"range"</span>,</span>
@@ -569,7 +568,7 @@ median and the range of the data. Both of these extractions are implemented in t
 <p>However, one should take care when assuming a distribution as this may drastically influence the interpretation and application of the epidemiological parameters.</p>
 </div>
 <p><span class="citation">Donnelly et al. (<a href="#ref-donnellyEpidemiologicalDeterminantsSpread2003">2003</a>)</span> provides the mean and variance of the gamma distribution for the incubation period of SARS. This conversion can be achieved by using the general conversion function (<code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>).</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># SARS gamma mean and var to shape and scale</span></span>
 <span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="st">"gamma"</span>, mean <span class="op">=</span> <span class="fl">6.37</span>, var <span class="op">=</span> <span class="fl">16.7</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $shape</span></span>
