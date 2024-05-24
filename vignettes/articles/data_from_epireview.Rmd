@@ -201,7 +201,7 @@ is_parameterised(ebola_si_epidist)
 ```
 
 ```{r, plot-epidist}
-plot(ebola_si_epidist, day_range = 0:50)
+plot(ebola_si_epidist)
 ```
 
 ```{r, generate-epidist}
