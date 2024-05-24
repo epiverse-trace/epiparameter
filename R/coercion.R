@@ -281,7 +281,7 @@ epireview_to_epidist <- function(x, ...) {
       year = article$year_publication,
       title = article$article_title,
       journal = article$journal,
-      DOI = article$doi
+      doi = article$doi
     )
   }
 

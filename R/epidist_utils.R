@@ -344,7 +344,7 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #' This can also be a pre-print server, e.g., medRxiv.
 #' @param PMID A `character` string with the PubMed unique identifier number
 #' assigned to papers to give them a unique identifier within PubMed.
-#' @param DOI A `character` string of the Digital Object Identifier (DOI)
+#' @param doi A `character` string of the Digital Object Identifier (DOI)
 #' assigned to papers which are unique to each paper.
 #'
 #' @return A `<bibentry>` object of the citation
@@ -356,13 +356,13 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #'   year = 2002,
 #'   title = "COVID-19 incubation period",
 #'   journal = "Epi Journal",
-#'   DOI = "10.19832/j.1366-9516.2012.09147.x"
+#'   doi = "10.19832/j.1366-9516.2012.09147.x"
 #' )
 create_epidist_citation <- function(author = utils::person(),
                                     year = NA_integer_,
                                     title = NA_character_,
                                     journal = NA_character_,
-                                    DOI = NA_character_,
+                                    doi = NA_character_,
                                     PMID = NA_integer_) {
   # if not <person> try and convert author to <person>
   if (!inherits(author, "person"))
@@ -380,7 +380,7 @@ create_epidist_citation <- function(author = utils::person(),
   checkmate::assert_number(year, na.ok = TRUE)
   checkmate::assert_character(title)
   checkmate::assert_character(journal)
-  checkmate::assert_character(DOI)
+  checkmate::assert_character(doi)
   checkmate::assert_number(PMID, na.ok = TRUE)
 
   if (length(author) == 0 || is.na(year) || is.na(journal) || is.na(title)) {

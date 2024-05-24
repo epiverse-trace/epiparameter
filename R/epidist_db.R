@@ -398,7 +398,7 @@ epidist_db <- function(disease = "all",
       year = cit$year,
       title = cit$title,
       journal = cit$journal,
-      DOI = cit$DOI,
+      doi = cit$doi,
       PMID = cit$PMID
     )
   )
@@ -576,7 +576,7 @@ print.multi_epidist <- function(x, ...) {
           "  Number of studies in library: %s",
           length(unique(
             vapply(
-              x, function(y) y$citation$DOI,
+              x, function(y) y$citation$doi,
               FUN.VALUE = character(1)
             )
           ))

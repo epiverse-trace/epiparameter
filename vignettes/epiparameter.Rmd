@@ -112,7 +112,7 @@ covid_incubation <- epidist(
     year = 2022,
     title = "COVID Incubation Period",
     journal = "Epi Journal",
-    DOI = "10.27861182.x"
+    doi = "10.27861182.x"
   )
 )
 covid_incubation

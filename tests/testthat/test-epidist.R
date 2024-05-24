@@ -53,7 +53,7 @@ test_that("epidist works with all arguments set", {
         year = 2002,
         title = "A title",
         journal = "A journal",
-        DOI = "10.23271/176237.x",
+        doi = "10.23271/176237.x",
         PMID = 28372882
       ),
       metadata = create_epidist_metadata(
@@ -283,7 +283,7 @@ test_that("validate_epidist passes when expected", {
         year = 2000,
         title = "Ebola incubation",
         journal = "Journal of Epi",
-        DOI = "10.1872372hc"
+        doi = "10.1872372hc"
       ),
       discretise = FALSE,
       truncation = NA,

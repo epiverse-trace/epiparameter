@@ -14,7 +14,7 @@ test_that("create_epidist_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -28,7 +28,7 @@ test_that("create_epidist_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -40,7 +40,7 @@ test_that("create_epidist_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -52,7 +52,7 @@ test_that("create_epidist_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -64,7 +64,7 @@ test_that("create_epidist_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    DOI = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -80,7 +80,7 @@ test_that("create_epidist_citation works with PMID", {
       year = 2002,
       title = "Incubation period of COVID",
       journal = "Journal of Epi",
-      DOI = "10.1282718",
+      doi = "10.1282718",
       PMID = 84772544
     )
   )

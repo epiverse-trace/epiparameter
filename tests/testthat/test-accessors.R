@@ -73,7 +73,7 @@ test_that("get_citation works as expected for manual epidist", {
         year = 2000,
         title = "Incubation period of COVID",
         journal = "Journal of Epi",
-        DOI = "10.19832/j.1366-9516.2012.09147.x"
+        doi = "10.19832/j.1366-9516.2012.09147.x"
       )
     )
   )

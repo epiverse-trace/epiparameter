@@ -153,7 +153,7 @@ ebola_incubation <- epidist(
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    DOI = "10.19832/j.1366-9516.2012.09147.x"
+    doi = "10.19832/j.1366-9516.2012.09147.x"
   ),
   metadata = create_epidist_metadata(
     sample_size = 10,
