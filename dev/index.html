@@ -96,8 +96,9 @@
 <code class="sourceCode R"><span><span class="va">epidists</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/epidist_db.html">epidist_db</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Returning 122 results that match the criteria (99 are parameterised). </span></span>
 <span><span class="co">#&gt; Use subset to filter by entry variables or single_epidist to return a single entry. </span></span>
-<span><span class="co">#&gt; To retrieve the citation for each use the 'get_citation' function</span></span>
-<span><span class="va">epidists</span></span>
+<span><span class="co">#&gt; To retrieve the citation for each use the 'get_citation' function</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">epidists</span></span>
 <span><span class="co">#&gt; List of &lt;epidist&gt; objects</span></span>
 <span><span class="co">#&gt;   Number of entries in library: 122</span></span>
 <span><span class="co">#&gt;   Number of studies in library: 47</span></span>
@@ -106,7 +107,7 @@
 <span><span class="co">#&gt;   Number of offspring distributions: 10</span></span></code></pre></div>
 <p>This results a list of database entries. Each entry of the library is an <code>&lt;epidist&gt;</code> object.</p>
 <p>The results can be filtered by disease and epidemiological distribution. Here we set <code>single_epidist = TRUE</code> as we only want a single database entry returned, and by default (<code>single_epidist = FALSE</code>) it will return all database entries that match the disease (<code>disease</code>) and epidemiological distribution (<code>epi_dist</code>).</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">influenza_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"influenza"</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
@@ -117,8 +118,9 @@
 <span><span class="co">#&gt; Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)</span></span>
 <span><span class="co">#&gt; Virus Infections." _American Journal of Epidemiology_.</span></span>
 <span><span class="co">#&gt; doi:10.1093/aje/kwv115 &lt;https://doi.org/10.1093/aje/kwv115&gt;.. </span></span>
-<span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
-<span><span class="va">influenza_incubation</span></span>
+<span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">influenza_incubation</span></span>
 <span><span class="co">#&gt; Disease: Influenza</span></span>
 <span><span class="co">#&gt; Pathogen: Influenza-A-H7N9</span></span>
 <span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
@@ -132,9 +134,13 @@
 <span><span class="co">#&gt;   shape: 2.101</span></span>
 <span><span class="co">#&gt;   scale: 3.839</span></span></code></pre></div>
 <p>The <code>&lt;epidist&gt;</code> object can be plotted.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">influenza_incubation</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-epidist-1.png" width="75%" style="display: block; margin: auto;"></p>
+<p>The CDF can also be plotted by setting <code>cumulative = TRUE</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">influenza_incubation</span>, cumulative <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-plot-epidist-cdf-1.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="section level3">
 <h3 id="parameter-conversion-and-extraction">Parameter conversion and extraction<a class="anchor" aria-label="anchor" href="#parameter-conversion-and-extraction"></a>
 </h3>
@@ -180,7 +186,7 @@
 <div class="section level2">
 <h2 id="citing-this-package">Citing this package<a class="anchor" aria-label="anchor" href="#citing-this-package"></a>
 </h2>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"epiparameter"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; To cite package 'epiparameter' in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>

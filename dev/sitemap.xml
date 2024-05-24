@@ -214,6 +214,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/is_continuous.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/is_epidist.html</loc>
   </url>
   <url>
@@ -248,9 +251,6 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/plot.epidist.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/plot.vb_epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/print.epidist.html</loc>
