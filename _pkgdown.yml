@@ -74,11 +74,7 @@ reference:
   - title: Epi object checking
     desc: Check an object is of a certain type or feature
     contents:
-    - is_epidist
-    - is_epidist_params
-    - is_truncated
-    - is_vb_epidist
-    - is_parameterised
+    - starts_with("is_")
 
   - title: Utility function
     contents:
