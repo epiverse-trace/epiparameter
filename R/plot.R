@@ -9,6 +9,8 @@
 #' @param day_range Either `NULL` or a `numeric` vector of length 2 with the
 #' first and last day to plot on the x-axis. If `NULL` the distribution is
 #' plotted between day 0 and the 99th quantile of the distribution.
+#' @param cumulative A boolean `logical`, default is `FALSE`.
+#' `cumulative = TRUE` plots the cumulative distribution function (CDF).
 #' @inheritParams base::print
 #'
 #' @author Joshua W. Lambert
@@ -45,10 +47,10 @@ plot.epidist <- function(x,
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(graphics::par(oldpar))
 
-  if (inherits(x$prob_dist, "distcrete")) {
-    main <- "Probability Mass Function"
-  } else {
+  if (is_continuous(x)) {
     main <- "Probability Density Function"
+  } else {
+    main <- "Probability Mass Function"
   }
 
   if (is.null(day_range)) {
@@ -57,32 +59,56 @@ plot.epidist <- function(x,
     day_range <- seq(day_range[1], day_range[2], length.out = 1000)
   }
 
-  if (cumulative) {
-    # plot CDF
-    plot(
-      day_range,
-      distributional::cdf(x, q = day_range),
-      ylab = "",
-      xlab = "Time since infection",
-      type = "l",
-      lwd = 2,
-      pch = 16,
-      ylim = c(0, 1),
-      main = "Cumulative Distribution Function",
-      ...
-    )
+  xlab <- paste(tools::toTitleCase(x$epi_dist), "(Days)")
+
+  if (is_continuous(x)) {
+    if (cumulative) {
+      # plot CDF
+      plot(
+        day_range,
+        cdf(x, q = day_range),
+        ylab = "",
+        xlab = xlab,
+        type = "l",
+        lwd = 2,
+        pch = 16,
+        ylim = c(0, 1),
+        main = "Cumulative Distribution Function",
+        ...
+      )
+    } else {
+      # plot either PDF or PMF
+      plot(
+        day_range,
+        density(x, at = day_range),
+        ylab = "",
+        xlab = xlab,
+        type = "l",
+        lwd = 2,
+        pch = 16,
+        main = main,
+        ...
+      )
+    }
   } else {
-    # plot either PDF or PMF
-    plot(
-      day_range,
-      stats::density(x, at = day_range),
-      ylab = "",
-      xlab = "Time since infection",
-      type = "l",
-      lwd = 2,
-      pch = 16,
-      main = main,
-      ...
-    )
+    if (cumulative) {
+      graphics::barplot(
+        cdf(x, q = unique(round(day_range))),
+        names.arg = unique(round(day_range)),
+        xlab = xlab,
+        ylab = "",
+        main = "Cumulative Distribution Function",
+        ...
+      )
+    } else {
+      graphics::barplot(
+        density(x, at = unique(round(day_range))),
+        names.arg = unique(round(day_range)),
+        xlab = xlab,
+        ylab = "",
+        main = main,
+        ...
+      )
+    }
   }
 }
