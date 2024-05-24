@@ -54,7 +54,7 @@ test_that("epidist works with all arguments set", {
         title = "A title",
         journal = "A journal",
         doi = "10.23271/176237.x",
-        PMID = 28372882
+        pmid = 28372882
       ),
       metadata = create_epidist_metadata(
         sample_size = 100,

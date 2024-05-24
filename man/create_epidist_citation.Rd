@@ -10,7 +10,7 @@ create_epidist_citation(
   title = NA_character_,
   journal = NA_character_,
   doi = NA_character_,
-  PMID = NA_integer_
+  pmid = NA_integer_
 )
 }
 \arguments{
@@ -33,8 +33,8 @@ This can also be a pre-print server, e.g., medRxiv.}
 \item{doi}{A \code{character} string of the Digital Object Identifier (DOI)
 assigned to papers which are unique to each paper.}
 
-\item{PMID}{A \code{character} string with the PubMed unique identifier number
-assigned to papers to give them a unique identifier within PubMed.}
+\item{pmid}{A \code{character} string with the PubMed unique identifier number
+(PMID) assigned to papers to give them a unique identifier within PubMed.}
 }
 \value{
 A \verb{<bibentry>} object of the citation
