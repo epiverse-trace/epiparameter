@@ -52,6 +52,9 @@ epidists <- epidist_db()
 #> Returning 122 results that match the criteria (99 are parameterised). 
 #> Use subset to filter by entry variables or single_epidist to return a single entry. 
 #> To retrieve the citation for each use the 'get_citation' function
+```
+
+``` r
 epidists
 #> List of <epidist> objects
 #>   Number of entries in library: 122
@@ -82,6 +85,9 @@ influenza_incubation <- epidist_db(
 #> Virus Infections." _American Journal of Epidemiology_.
 #> doi:10.1093/aje/kwv115 <https://doi.org/10.1093/aje/kwv115>.. 
 #> To retrieve the citation use the 'get_citation' function
+```
+
+``` r
 influenza_incubation
 #> Disease: Influenza
 #> Pathogen: Influenza-A-H7N9
@@ -104,6 +110,14 @@ plot(influenza_incubation)
 ```
 
 <img src="man/figures/README-plot-epidist-1.png" width="75%" style="display: block; margin: auto;" />
+
+The CDF can also be plotted by setting `cumulative = TRUE`.
+
+``` r
+plot(influenza_incubation, cumulative = TRUE)
+```
+
+<img src="man/figures/README-plot-epidist-cdf-1.png" width="75%" style="display: block; margin: auto;" />
 
 ### Parameter conversion and extraction
 
