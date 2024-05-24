@@ -119,7 +119,7 @@ test_that("list_distributions works as expected with discretised <epidist>", {
         year = 2022,
         title = "A title",
         journal = "A journal",
-        DOI = "10.32561.x"
+        doi = "10.32561.x"
       ),
       discretise = TRUE
     )

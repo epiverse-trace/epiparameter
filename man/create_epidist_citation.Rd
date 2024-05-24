@@ -9,7 +9,7 @@ create_epidist_citation(
   year = NA_integer_,
   title = NA_character_,
   journal = NA_character_,
-  DOI = NA_character_,
+  doi = NA_character_,
   PMID = NA_integer_
 )
 }
@@ -30,7 +30,7 @@ published the epidemiological parameters.}
 published the article that published the epidemiological parameters.
 This can also be a pre-print server, e.g., medRxiv.}
 
-\item{DOI}{A \code{character} string of the Digital Object Identifier (DOI)
+\item{doi}{A \code{character} string of the Digital Object Identifier (DOI)
 assigned to papers which are unique to each paper.}
 
 \item{PMID}{A \code{character} string with the PubMed unique identifier number
@@ -54,6 +54,6 @@ create_epidist_citation(
   year = 2002,
   title = "COVID-19 incubation period",
   journal = "Epi Journal",
-  DOI = "10.19832/j.1366-9516.2012.09147.x"
+  doi = "10.19832/j.1366-9516.2012.09147.x"
 )
 }
