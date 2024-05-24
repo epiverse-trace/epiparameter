@@ -9,10 +9,6 @@
 #' @param day_range Either `NULL` or a `numeric` vector of length 2 with the
 #' first and last day to plot on the x-axis. If `NULL` the distribution is
 #' plotted between day 0 and the 99th quantile of the distribution.
-#' @param vb A boolean logical determining whether the `epidist` being plotted
-#' has come from a `vb_epidist` object.
-#' @param title Either a character string or `NULL`. If not null the character
-#' string will be printed as a title to the plot.
 #' @inheritParams base::print
 #'
 #' @author Joshua W. Lambert
@@ -40,18 +36,14 @@
 plot.epidist <- function(x,
                          day_range = NULL,
                          cumulative = FALSE,
-                         ...,
-                         vb = FALSE,
-                         title = NULL) {
+                         ...) {
   # check input
   validate_epidist(x)
   checkmate::assert_numeric(day_range, len = 2, null.ok = TRUE)
   checkmate::assert_logical(cumulative, any.missing = FALSE, len = 1)
 
-  if (isFALSE(vb)) {
-    oldpar <- graphics::par(no.readonly = TRUE)
-    on.exit(graphics::par(oldpar))
-  }
+  oldpar <- graphics::par(no.readonly = TRUE)
+  on.exit(graphics::par(oldpar))
 
   if (inherits(x$prob_dist, "distcrete")) {
     main <- "Probability Mass Function"
@@ -92,15 +84,5 @@ plot.epidist <- function(x,
       main = main,
       ...
     )
-  }
-
-  if (!is.null(title)) {
-    if (grepl(pattern = "intrinsic", x = title, ignore.case = TRUE)) {
-      line <- -1
-    } else {
-      line <- -15
-    }
-    # add a plot title
-    graphics::title(title, outer = TRUE, line = line)
   }
 }

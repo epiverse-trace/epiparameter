@@ -4,7 +4,7 @@
 \alias{plot.epidist}
 \title{Plot method for \verb{<epidist>} class}
 \usage{
-\method{plot}{epidist}(x, day_range = NULL, cumulative = FALSE, ..., vb = FALSE, title = NULL)
+\method{plot}{epidist}(x, day_range = NULL, cumulative = FALSE, ...)
 }
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
@@ -14,12 +14,6 @@ first and last day to plot on the x-axis. If \code{NULL} the distribution is
 plotted between day 0 and the 99th quantile of the distribution.}
 
 \item{...}{further arguments passed to or from other methods.}
-
-\item{vb}{A boolean logical determining whether the \code{epidist} being plotted
-has come from a \code{vb_epidist} object.}
-
-\item{title}{Either a character string or \code{NULL}. If not null the character
-string will be printed as a title to the plot.}
 }
 \description{
 Plot an \verb{<epidist>} object by displaying the either the
