@@ -864,6 +864,45 @@ is_truncated <- function(x) {
   }
 }
 
+#' Check if distribution in `<epidist>` is continuous
+#'
+#' @details The `<epidist>` class can hold `<distribution>` and `<distcrete>`
+#' probability distribution objects from the \pkg{distributional} package and
+#' the \pkg{distcrete} package, respectively. `<distribution>` objects can be
+#' continuous or discrete distributions (e.g. gamma or negative binomial),
+#' and all `<distcrete>` objects are discrete.
+#'
+#' @inheritParams print.epidist
+#'
+#' @return A boolean `logical`.
+#' @export
+#'
+#' @examples
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "incubation_period",
+#'   prob_distribution = "lnorm",
+#'   prob_distribution_params = c(meanlog = 1, sdlog = 1)
+#' )
+#' is_continuous(edist)
+#' is_continuous(discretise(edist))
+#'
+#' edist <- epidist(
+#'   disease = "ebola",
+#'   epi_dist = "offspring distribution",
+#'   prob_distribution = "nbinom",
+#'   prob_distribution_params = c(mean = 2, dispersion = 0.5)
+#' )
+#' is_continuous(edist)
+is_continuous <- function(x) {
+  stopifnot(
+    "is_truncated only works for `<epidist> objects`" =
+      is_epidist(x)
+  )
+  family(x) %in% c("gamma", "lnorm", "weibull", "normal") &&
+    !inherits(x$prob_dist, "distcrete")
+}
+
 #' Mean method for `<epidist>` class
 #'
 #' @inheritParams print.epidist
