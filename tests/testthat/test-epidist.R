@@ -205,14 +205,14 @@ test_that("epidist.plot works with non-default day_range", {
   expect_silent(
     plot(
       ebola_dist,
-      day_range = 0:20
+      day_range = c(0, 20)
     )
   )
 
   f <- function() {
     plot(
       ebola_dist,
-      day_range = 0:20
+      day_range = c(0, 20)
     )
   }
   vdiffr::expect_doppelganger(
