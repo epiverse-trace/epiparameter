@@ -13,6 +13,9 @@
 first and last day to plot on the x-axis. If \code{NULL} the distribution is
 plotted between day 0 and the 99th quantile of the distribution.}
 
+\item{cumulative}{A boolean \code{logical}, default is \code{FALSE}.
+\code{cumulative = TRUE} plots the cumulative distribution function (CDF).}
+
 \item{...}{further arguments passed to or from other methods.}
 }
 \description{
