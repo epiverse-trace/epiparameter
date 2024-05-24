@@ -28,6 +28,7 @@ Imports:
     checkmate,
     distcrete,
     distributional,
+    graphics,
     rlang,
     stats,
     utils
