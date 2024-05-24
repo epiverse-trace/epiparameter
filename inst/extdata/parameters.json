@@ -49,7 +49,7 @@
       "journal": "The Lancet Infectious Diseases",
       "year": 2009,
       "PMID": 19393959,
-      "DOI": "10.1016/S1473-3099(09)70069-6"
+      "doi": "10.1016/S1473-3099(09)70069-6"
     },
     "metadata": {
       "sample_size": 14,
@@ -117,7 +117,7 @@
       "journal": "The Lancet Infectious Diseases",
       "year": 2009,
       "PMID": 19393959,
-      "DOI": "10.1016/S1473-3099(09)70069-7"
+      "doi": "10.1016/S1473-3099(09)70069-7"
     },
     "metadata": {
       "sample_size": 13,
@@ -185,7 +185,7 @@
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
     "PMID": 19393959,
-    "DOI": "10.1016/S1473-3099(09)70069-8"
+    "doi": "10.1016/S1473-3099(09)70069-8"
   },
   "metadata": {
     "sample_size": 157,
@@ -253,7 +253,7 @@
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
     "PMID": 19393959,
-    "DOI": "10.1016/S1473-3099(09)70069-9"
+    "doi": "10.1016/S1473-3099(09)70069-9"
   },
   "metadata": {
     "sample_size": 151,
@@ -321,7 +321,7 @@
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
     "PMID": 19393959,
-    "DOI": "10.1016/S1473-3099(09)70069-10"
+    "doi": "10.1016/S1473-3099(09)70069-10"
   },
   "metadata": {
     "sample_size": 90,
@@ -389,7 +389,7 @@
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
     "PMID": 19393959,
-    "DOI": "10.1016/S1473-3099(09)70069-11"
+    "doi": "10.1016/S1473-3099(09)70069-11"
   },
   "metadata": {
   "sample_size": 78,
@@ -457,7 +457,7 @@
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
     "PMID": 19393959,
-    "DOI": "10.1016/S1473-3099(09)70069-12"
+    "doi": "10.1016/S1473-3099(09)70069-12"
   },
   "metadata": {
     "sample_size": 55,
@@ -525,7 +525,7 @@
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
     "PMID": 19393959,
-    "DOI": "10.1016/S1473-3099(09)70069-13"
+    "doi": "10.1016/S1473-3099(09)70069-13"
   },
   "metadata": {
     "sample_size": 11,
@@ -593,7 +593,7 @@
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
     "PMID": 19393959,
-    "DOI": "10.1016/S1473-3099(09)70069-14"
+    "doi": "10.1016/S1473-3099(09)70069-14"
   },
   "metadata": {
     "sample_size": 24,
@@ -661,7 +661,7 @@
     "journal": "The Lancet Infectious Diseases",
     "year": 2009,
     "PMID": 19393959,
-    "DOI": "10.1016/S1473-3099(09)70069-15"
+    "doi": "10.1016/S1473-3099(09)70069-15"
   },
   "metadata": {
     "sample_size": 28,
@@ -721,7 +721,7 @@
     "journal": "Statistics in Medicine",
     "year": 2009,
     "PMID": 19598148,
-    "DOI": "10.1002/sim.3659"
+    "doi": "10.1002/sim.3659"
   },
   "metadata": {
     "sample_size": 151,
@@ -781,7 +781,7 @@
     "journal": "Statistics in Medicine",
     "year": 2009,
     "PMID": 19598148,
-    "DOI": "10.1002/sim.3659"
+    "doi": "10.1002/sim.3659"
   },
   "metadata": {
   "sample_size": 151,
@@ -841,7 +841,7 @@
     "journal": "Statistics in Medicine",
     "year": 2009,
     "PMID": 19598148,
-    "DOI": "10.1002/sim.3659"
+    "doi": "10.1002/sim.3659"
   },
   "metadata": {
   "sample_size": 24,
@@ -901,7 +901,7 @@
     "journal": "Statistics in Medicine",
     "year": 2009,
     "PMID": 19598148,
-    "DOI": "10.1002/sim.3659"
+    "doi": "10.1002/sim.3659"
   },
   "metadata": {
     "sample_size": 24,
@@ -952,7 +952,7 @@
     "journal": "Journal of Theoretical Biology",
     "year": 2011,
     "PMID": 21168422,
-    "DOI": "10.1016/j.jtbi.2010.12.017"
+    "doi": "10.1016/j.jtbi.2010.12.017"
   },
   "metadata": {
     "sample_size": 72,
@@ -1003,7 +1003,7 @@
     "journal": "Journal of Theoretical Biology",
     "year": 2011,
     "PMID": 21168422,
-    "DOI": "10.1016/j.jtbi.2010.12.017"
+    "doi": "10.1016/j.jtbi.2010.12.017"
   },
   "metadata": {
     "sample_size": 72,
@@ -1100,7 +1100,7 @@
     "journal": "American Journal of Epidemiology",
     "year": 2015,
     "PMID": 26409239,
-    "DOI": "10.1093/aje/kwv115"
+    "doi": "10.1093/aje/kwv115"
   },
   "metadata": {
     "sample_size": 229,
@@ -1197,7 +1197,7 @@
     "journal": "American Journal of Epidemiology",
     "year": 2015,
     "PMID": 26409239,
-    "DOI": "10.1093/aje/kwv115"
+    "doi": "10.1093/aje/kwv115"
   },
   "metadata": {
     "sample_size": 229,
@@ -1291,7 +1291,7 @@
     "journal": "PLoS One",
     "year": 2016,
     "PMID": 26885816,
-    "DOI": "10.1371/journal.pone.0148506"
+    "doi": "10.1371/journal.pone.0148506"
   },
   "metadata": {
     "sample_size": 395,
@@ -1392,7 +1392,7 @@
     "journal": "PLoS One",
     "year": 2016,
     "PMID": 26885816,
-    "DOI": "10.1371/journal.pone.0148506"
+    "doi": "10.1371/journal.pone.0148506"
   },
   "metadata": {
     "sample_size": 173,
@@ -1493,7 +1493,7 @@
     "journal": "PLoS One",
     "year": 2016,
     "PMID": 26885816,
-    "DOI": "10.1371/journal.pone.0148506"
+    "doi": "10.1371/journal.pone.0148506"
   },
   "metadata": {
     "sample_size": 222,
@@ -1576,7 +1576,7 @@
     "journal": "Canadian Medical Association Journal",
     "year": 2010,
     "PMID": 19959592,
-    "DOI": "10.1503/cmaj.091807"
+    "doi": "10.1503/cmaj.091807"
   },
   "metadata": {
     "sample_size": 316,
@@ -1685,7 +1685,7 @@
     "journal": "PLoS Currents",
     "year": 2009,
     "PMID": 20029668,
-    "DOI": "10.1371/currents.RRN1130"
+    "doi": "10.1371/currents.RRN1130"
   },
   "metadata": {
     "sample_size": 16,
@@ -1794,7 +1794,7 @@
     "journal": "PLoS Currents",
     "year": 2009,
     "PMID": 20029668,
-    "DOI": "10.1371/currents.RRN1130"
+    "doi": "10.1371/currents.RRN1130"
   },
   "metadata": {
     "sample_size": 58,
@@ -1850,7 +1850,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2009,
     "PMID": 20042754,
-    "DOI": "10.1056/NEJMoa0906089"
+    "doi": "10.1056/NEJMoa0906089"
   },
   "metadata": {
     "sample_size": 124,
@@ -1909,7 +1909,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2009,
     "PMID": 20042754,
-    "DOI": "10.1056/NEJMoa0906089"
+    "doi": "10.1056/NEJMoa0906089"
   },
   "metadata": {
     "sample_size": 16,
@@ -1950,7 +1950,7 @@
     "journal": "BMC Research Notes",
     "year": 2014,
     "PMID": 25495697,
-    "DOI": "10.1186/1756-0500-7-906"
+    "doi": "10.1186/1756-0500-7-906"
   },
   "metadata": {
     "sample_size": 76,
@@ -1992,7 +1992,7 @@
     "journal": "BMC Research Notes",
     "year": 2014,
     "PMID": 25495697,
-    "DOI": "10.1186/1756-0500-7-906"
+    "doi": "10.1186/1756-0500-7-906"
   },
   "metadata": {
     "sample_size": 18,
@@ -2034,7 +2034,7 @@
     "journal": "BMC Research Notes",
     "year": 2014,
     "PMID": 25495697,
-    "DOI": "10.1186/1756-0500-7-906"
+    "doi": "10.1186/1756-0500-7-906"
   },
   "metadata": {
     "sample_size": 38,
@@ -2136,7 +2136,7 @@
     "journal": "The Journal of Infectious Diseases",
     "year": 2007,
     "PMID": 17940943,
-    "DOI": "10.1086/520543"
+    "doi": "10.1086/520543"
   },
   "metadata": {
     "sample_size": 77,
@@ -2185,7 +2185,7 @@
     "journal": "PLoS One",
     "year": 2012,
     "PMID": 23251407,
-    "DOI": "10.1371/journal.pone.0050948"
+    "doi": "10.1371/journal.pone.0050948"
   },
   "metadata": {
     "sample_size": 374,
@@ -2243,7 +2243,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 57,
@@ -2301,7 +2301,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 33,
@@ -2359,7 +2359,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 32,
@@ -2417,7 +2417,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 25,
@@ -2475,7 +2475,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 25,
@@ -2531,7 +2531,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 47,
@@ -2589,7 +2589,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 147,
@@ -2647,7 +2647,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 74,
@@ -2703,7 +2703,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 20,
@@ -2759,7 +2759,7 @@
     "journal": "Nature",
     "year": 2005,
     "PMID": 16292310,
-    "DOI": "10.1038/nature04153"
+    "doi": "10.1038/nature04153"
   },
   "metadata": {
     "sample_size": 13,
@@ -2807,7 +2807,7 @@
     "journal": "PLoS One",
     "year": 2012,
     "PMID": 23226436,
-    "DOI": "10.1371/journal.pone.0050972"
+    "doi": "10.1371/journal.pone.0050972"
   },
   "metadata": {
     "sample_size": 146,
@@ -2860,7 +2860,7 @@
     "journal": "PLoS One",
     "year": 2012,
     "PMID": 23226436,
-    "DOI": "10.1371/journal.pone.0050972"
+    "doi": "10.1371/journal.pone.0050972"
   },
   "metadata": {
     "sample_size": 146,
@@ -2916,7 +2916,7 @@
     "journal": "PLoS One",
     "year": 2012,
     "PMID": 23226436,
-    "DOI": "10.1371/journal.pone.0050972"
+    "doi": "10.1371/journal.pone.0050972"
   },
   "metadata": {
     "sample_size": 153,
@@ -3001,7 +3001,7 @@
     "journal": "Bulletin of the World Health Organization",
     "year": 2016,
     "PMID": 27821887,
-    "DOI": "10.2471/BLT.16.174540"
+    "doi": "10.2471/BLT.16.174540"
   },
   "metadata": {
     "sample_size": 25,
@@ -3066,7 +3066,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 21,
@@ -3131,7 +3131,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 169,
@@ -3195,7 +3195,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 124,
@@ -3260,7 +3260,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 6,
@@ -3325,7 +3325,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 23,
@@ -3390,7 +3390,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 18,
@@ -3454,7 +3454,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 8,
@@ -3519,7 +3519,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 6,
@@ -3583,7 +3583,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 91,
@@ -3647,7 +3647,7 @@
     "journal": "The American Journal of Tropical Medicine and Hygiene",
     "year": 2014,
     "PMID": 24639305,
-    "DOI": "10.4269/ajtmh.13-0403"
+    "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
     "sample_size": 80,
@@ -3739,7 +3739,7 @@
     "journal": "Eurosurveillance",
     "year": 2022,
     "PMID": 35713026,
-    "DOI": "10.2807/1560-7917.ES.2022.27.24.2200448"
+    "doi": "10.2807/1560-7917.ES.2022.27.24.2200448"
   },
   "metadata": {
     "sample_size": 18,
@@ -3837,7 +3837,7 @@
     "journal": "medRxiv",
     "year": 2022,
     "PMID": null,
-    "DOI": "10.1101/2022.06.22.22276713"
+    "doi": "10.1101/2022.06.22.22276713"
   },
   "metadata": {
     "sample_size": 22,
@@ -3929,7 +3929,7 @@
     "journal": "Emerging Infectious Diseases",
     "year": 2022,
     "PMID": 35994726,
-    "DOI": "10.3201/eid2810.221126"
+    "doi": "10.3201/eid2810.221126"
   },
   "metadata": {
     "sample_size": 255,
@@ -4057,7 +4057,7 @@
     "journal": "medRxiv",
     "year": 2022,
     "PMID": null,
-    "DOI": "10.1101/2022.10.26.22281516"
+    "doi": "10.1101/2022.10.26.22281516"
   },
   "metadata": {
     "sample_size": 35,
@@ -4185,7 +4185,7 @@
     "journal": "medRxiv",
     "year": 2022,
     "PMID": null,
-    "DOI": "10.1101/2022.10.26.22281516"
+    "doi": "10.1101/2022.10.26.22281516"
   },
   "metadata": {
     "sample_size": 36,
@@ -4313,7 +4313,7 @@
     "journal": "medRxiv",
     "year": 2022,
     "PMID": null,
-    "DOI": "10.1101/2022.10.26.22281516"
+    "doi": "10.1101/2022.10.26.22281516"
   },
   "metadata": {
     "sample_size": 57,
@@ -4441,7 +4441,7 @@
     "journal": "medRxiv",
     "year": 2022,
     "PMID": null,
-    "DOI": "10.1101/2022.10.26.22281516"
+    "doi": "10.1101/2022.10.26.22281516"
   },
   "metadata": {
     "sample_size": 40,
@@ -4490,7 +4490,7 @@
     "journal": "Osong Public Health and Research Perspectives",
     "year": 2011,
     "PMID": 24159443,
-    "DOI": "10.1016/j.phrp.2011.04.001"
+    "doi": "10.1016/j.phrp.2011.04.001"
   },
   "metadata": {
     "sample_size": 196,
@@ -4862,7 +4862,7 @@
     "journal": "The Lancet",
     "year": 2018,
     "PMID": 30047375,
-    "DOI": "10.1016/S0140-6736(18)31387-4"
+    "doi": "10.1016/S0140-6736(18)31387-4"
   },
   "metadata": {
     "sample_size": 14,
@@ -5055,7 +5055,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 1798,
@@ -5248,7 +5248,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 49,
@@ -5441,7 +5441,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 957,
@@ -5634,7 +5634,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 792,
@@ -5827,7 +5827,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 305,
@@ -6020,7 +6020,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 37,
@@ -6213,7 +6213,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 147,
@@ -6406,7 +6406,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 112,
@@ -6599,7 +6599,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 1167,
@@ -6792,7 +6792,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 1004,
@@ -6985,7 +6985,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 2536,
@@ -7178,7 +7178,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 1324,
@@ -7371,7 +7371,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 2741,
@@ -7564,7 +7564,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2015,
     "PMID": 25539446,
-    "DOI": "10.1056/NEJMc1414992"
+    "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
     "sample_size": 1335,
@@ -7680,7 +7680,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2013,
     "PMID": 23782161,
-    "DOI": "10.1056/NEJMoa1306742"
+    "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
     "sample_size": 23,
@@ -7796,7 +7796,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2013,
     "PMID": 23782161,
-    "DOI": "10.1056/NEJMoa1306742"
+    "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
     "sample_size": 23,
@@ -7910,7 +7910,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2013,
     "PMID": 23782161,
-    "DOI": "10.1056/NEJMoa1306742"
+    "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
     "sample_size": 23,
@@ -8024,7 +8024,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2013,
     "PMID": 23782161,
-    "DOI": "10.1056/NEJMoa1306742"
+    "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
     "sample_size": 23,
@@ -8138,7 +8138,7 @@
     "journal": "The New England Journal of Medicine",
     "year": 2013,
     "PMID": 23782161,
-    "DOI": "10.1056/NEJMoa1306742"
+    "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
     "sample_size": 23,
@@ -8203,7 +8203,7 @@
     "journal": "BMC Medicine",
     "year": 2015,
     "PMID": 26420593,
-    "DOI": "10.1186/s12916-015-0468-3"
+    "doi": "10.1186/s12916-015-0468-3"
   },
   "metadata": {
     "sample_size": 185,
@@ -8270,7 +8270,7 @@
     "journal": "Eurosurveillance",
     "year": 2015,
     "PMID": 26132767,
-    "DOI": "10.2807/1560-7917.es2015.20.25.21163"
+    "doi": "10.2807/1560-7917.es2015.20.25.21163"
   },
   "metadata": {
     "sample_size": 166,
@@ -8335,7 +8335,7 @@
     "journal": "Eurosurveillance",
     "year": 2015,
     "PMID": 26132767,
-    "DOI": "10.2807/1560-7917.es2015.20.25.21163"
+    "doi": "10.2807/1560-7917.es2015.20.25.21163"
   },
   "metadata": {
     "sample_size": 99,
@@ -8409,7 +8409,7 @@
     "journal": "medRxiv",
     "year": 2020,
     "PMID": null,
-    "DOI": "10.1101/2020.02.24.20027474"
+    "doi": "10.1101/2020.02.24.20027474"
   },
   "metadata": {
     "sample_size": 59,
@@ -8459,7 +8459,7 @@
     "journal": "Zeitschrift fur Gesundheitswissenschaften",
     "year": 2022,
     "PMID": 33643779,
-    "DOI": "10.1007/s10389-021-01478-1"
+    "doi": "10.1007/s10389-021-01478-1"
   },
   "metadata": {
     "sample_size": 6241,
@@ -8521,7 +8521,7 @@
     "journal": "BMC Infectious Diseases",
     "year": 2021,
     "PMID": 33706702,
-    "DOI": "10.1186/s12879-021-05950-x"
+    "doi": "10.1186/s12879-021-05950-x"
   },
   "metadata": {
     "sample_size": 1453,
@@ -8583,7 +8583,7 @@
     "journal": "BMC Infectious Diseases",
     "year": 2021,
     "PMID": 33706702,
-    "DOI": "10.1186/s12879-021-05950-x"
+    "doi": "10.1186/s12879-021-05950-x"
   },
   "metadata": {
     "sample_size": 3924,
@@ -8639,7 +8639,7 @@
     "journal": "International Journal of Infectious Diseases",
     "year": 2020,
     "PMID": 32145466,
-    "DOI": "10.1016/j.ijid.2020.02.060"
+    "doi": "10.1016/j.ijid.2020.02.060"
   },
   "metadata": {
     "sample_size": 28,
@@ -8695,7 +8695,7 @@
     "journal": "International Journal of Infectious Diseases",
     "year": 2020,
     "PMID": 32145466,
-    "DOI": "10.1016/j.ijid.2020.02.060"
+    "doi": "10.1016/j.ijid.2020.02.060"
   },
   "metadata": {
     "sample_size": 18,
@@ -8759,7 +8759,7 @@
     "journal": "Epidemiology and Infection",
     "year": 2020,
     "PMID": 32594928,
-    "DOI": "10.1017/S0950268820001338"
+    "doi": "10.1017/S0950268820001338"
   },
   "metadata": {
     "sample_size": 178,
@@ -8828,7 +8828,7 @@
     "journal": "Epidemiology and Infection",
     "year": 2020,
     "PMID": 32594928,
-    "DOI": "10.1017/S0950268820001338"
+    "doi": "10.1017/S0950268820001338"
   },
   "metadata": {
     "sample_size": 131,
@@ -8886,7 +8886,7 @@
     "journal": "International Journal of Infectious Diseases",
     "year": 2021,
     "PMID": 33548553,
-    "DOI": "10.1016/j.ijid.2021.01.069"
+    "doi": "10.1016/j.ijid.2021.01.069"
   },
   "metadata": {
     "sample_size": 28675,
@@ -8970,7 +8970,7 @@
     "journal": "PLoS One",
     "year": 2020,
     "PMID": 33362233,
-    "DOI": "10.1371/journal.pone.0243889"
+    "doi": "10.1371/journal.pone.0243889"
   },
   "metadata": {
     "sample_size": 19,
@@ -9067,7 +9067,7 @@
     "journal": "BMJ Open",
     "year": 2020,
     "PMID": 32801208,
-    "DOI": "10.1136/bmjopen-2020-039652"
+    "doi": "10.1136/bmjopen-2020-039652"
   },
   "metadata": {
     "sample_size": 1357,
@@ -9173,7 +9173,7 @@
     "journal": "BMJ Open",
     "year": 2020,
     "PMID": 32801208,
-    "DOI": "10.1136/bmjopen-2020-039652"
+    "doi": "10.1136/bmjopen-2020-039652"
   },
   "metadata": {
     "sample_size": 1269,
@@ -9255,7 +9255,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 52,
@@ -9337,7 +9337,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 158,
@@ -9419,7 +9419,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 155,
@@ -9501,7 +9501,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 34,
@@ -9583,7 +9583,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 34,
@@ -9665,7 +9665,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 39,
@@ -9747,7 +9747,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 52,
@@ -9829,7 +9829,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 155,
@@ -9911,7 +9911,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 34,
@@ -9993,7 +9993,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 34,
@@ -10075,7 +10075,7 @@
     "journal": "Journal of Clinical Medicine",
     "year": 2020,
     "PMID": 32079150,
-    "DOI": "10.3390/jcm9020538"
+    "doi": "10.3390/jcm9020538"
   },
   "metadata": {
     "sample_size": 39,
@@ -10156,7 +10156,7 @@
     "journal": "Annals of Internal Medicine",
     "year": 2020,
     "PMID": 32150748,
-    "DOI": "10.7326/M20-0504"
+    "doi": "10.7326/M20-0504"
   },
   "metadata": {
     "sample_size": 181,
@@ -10232,7 +10232,7 @@
     "journal": "Annals of Internal Medicine",
     "year": 2020,
     "PMID": 32150748,
-    "DOI": "10.7326/M20-0504"
+    "doi": "10.7326/M20-0504"
   },
   "metadata": {
     "sample_size": 99,
@@ -10308,7 +10308,7 @@
     "journal": "Annals of Internal Medicine",
     "year": 2020,
     "PMID": 32150748,
-    "DOI": "10.7326/M20-0504"
+    "doi": "10.7326/M20-0504"
   },
   "metadata": {
     "sample_size": 108,
@@ -10384,7 +10384,7 @@
     "journal": "Annals of Internal Medicine",
     "year": 2020,
     "PMID": 32150748,
-    "DOI": "10.7326/M20-0504"
+    "doi": "10.7326/M20-0504"
   },
   "metadata": {
     "sample_size": 73,
@@ -10454,7 +10454,7 @@
     "journal": "Journal of Medical Virology",
     "year": 2022,
     "PMID": 36271480,
-    "DOI": "10.1002/jmv.28248"
+    "doi": "10.1002/jmv.28248"
   },
   "metadata": {
     "sample_size": 42,
@@ -10524,7 +10524,7 @@
     "journal": "Journal of Travel Medicine",
     "year": 2022,
     "PMID": 36130210,
-    "DOI": "10.1093/jtm/taac105"
+    "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
     "sample_size": 16,
@@ -10594,7 +10594,7 @@
     "journal": "Journal of Travel Medicine",
     "year": 2022,
     "PMID": 36130210,
-    "DOI": "10.1093/jtm/taac105"
+    "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
     "sample_size": 34,
@@ -10664,7 +10664,7 @@
     "journal": "Journal of Travel Medicine",
     "year": 2022,
     "PMID": 36130210,
-    "DOI": "10.1093/jtm/taac105"
+    "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
     "sample_size": 16,
@@ -10734,7 +10734,7 @@
     "journal": "Journal of Travel Medicine",
     "year": 2022,
     "PMID": 36130210,
-    "DOI": "10.1093/jtm/taac105"
+    "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
     "sample_size": 27,
@@ -10804,7 +10804,7 @@
     "journal": "Journal of Travel Medicine",
     "year": 2022,
     "PMID": 36130210,
-    "DOI": "10.1093/jtm/taac105"
+    "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
     "sample_size": 114,
@@ -10898,7 +10898,7 @@
     "journal": "Journal of Biosafety and Biosecurity",
     "year": 2022,
     "PMID": 36573222,
-    "DOI": "10.1016/j.jobb.2022.12.001"
+    "doi": "10.1016/j.jobb.2022.12.001"
   },
   "metadata": {
     "sample_size": null,
@@ -10992,7 +10992,7 @@
     "journal": "Journal of Biosafety and Biosecurity",
     "year": 2022,
     "PMID": 36573222,
-    "DOI": "10.1016/j.jobb.2022.12.001"
+    "doi": "10.1016/j.jobb.2022.12.001"
   },
   "metadata": {
     "sample_size": null,
@@ -11088,7 +11088,7 @@
     "journal": "Journal of Biosafety and Biosecurity",
     "year": 2022,
     "PMID": 36573222,
-    "DOI": "10.1016/j.jobb.2022.12.001"
+    "doi": "10.1016/j.jobb.2022.12.001"
   },
   "metadata": {
     "sample_size": null,
