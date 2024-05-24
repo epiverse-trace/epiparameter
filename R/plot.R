@@ -28,7 +28,10 @@
 #' )
 #'
 #' plot(edist, day_range = 0:10)
-
+#'
+#' # plot CDF
+#' plot(edist, day_range = 0:10, cumulative = TRUE)
+#'
 #' # plot discrete epidist
 #' edist <- epidist(
 #'   disease = "ebola",
@@ -39,16 +42,20 @@
 #' )
 #'
 #' plot(edist, day_range = 0:10)
-plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
+plot.epidist <- function(x,
+                         day_range = 0:10,
+                         cumulative = FALSE,
+                         ...,
+                         vb = FALSE,
+                         title = NULL) {
   # check input
   validate_epidist(x)
   checkmate::assert_numeric(day_range, min.len = 2)
+  checkmate::assert_logical(cumulative, any.missing = FALSE, len = 1)
 
   if (isFALSE(vb)) {
     oldpar <- graphics::par(no.readonly = TRUE)
     on.exit(graphics::par(oldpar))
-    # set plotting parameters to plot on a 2x2 grid
-    graphics::par(mfrow = c(1, 2), mar = c(4, 3, 3, 1), oma = c(0, 0, 0, 0))
   }
 
   if (inherits(x$prob_dist, "distcrete")) {
@@ -57,30 +64,32 @@ plot.epidist <- function(x, day_range = 0:10, ..., vb = FALSE, title = NULL) {
     main <- "Probability Density Function"
   }
 
-  # plot either PDF or PMF
-  plot(
-    day_range,
-    stats::density(x, at = day_range),
-    ylab = "",
-    xlab = "Time since infection",
-    type = "b",
-    pch = 16,
-    main = main,
-    ...
-  )
-
-  # plot CDF
-  plot(
-    day_range,
-    distributional::cdf(x, q = day_range),
-    ylab = "",
-    xlab = "Time since infection",
-    type = "b",
-    pch = 16,
-    ylim = c(0, 1),
-    main = "Cumulative Distribution Function",
-    ...
-  )
+  if (cumulative) {
+    # plot CDF
+    plot(
+      day_range,
+      distributional::cdf(x, q = day_range),
+      ylab = "",
+      xlab = "Time since infection",
+      type = "b",
+      pch = 16,
+      ylim = c(0, 1),
+      main = "Cumulative Distribution Function",
+      ...
+    )
+  } else {
+    # plot either PDF or PMF
+    plot(
+      day_range,
+      stats::density(x, at = day_range),
+      ylab = "",
+      xlab = "Time since infection",
+      type = "b",
+      pch = 16,
+      main = main,
+      ...
+    )
+  }
 
   if (!is.null(title)) {
     if (grepl(pattern = "intrinsic", x = title, ignore.case = TRUE)) {
