@@ -4,13 +4,14 @@
 \alias{plot.epidist}
 \title{Plot method for \verb{<epidist>} class}
 \usage{
-\method{plot}{epidist}(x, day_range = 0:10, cumulative = FALSE, ..., vb = FALSE, title = NULL)
+\method{plot}{epidist}(x, day_range = NULL, cumulative = FALSE, ..., vb = FALSE, title = NULL)
 }
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
 
-\item{day_range}{A vector with the sequence of days to be plotted on the
-x-axis of the distribution.}
+\item{day_range}{Either \code{NULL} or a \code{numeric} vector of length 2 with the
+first and last day to plot on the x-axis. If \code{NULL} the distribution is
+plotted between day 0 and the 99th quantile of the distribution.}
 
 \item{...}{further arguments passed to or from other methods.}
 
@@ -24,8 +25,7 @@ string will be printed as a title to the plot.}
 Plot an \verb{<epidist>} object by displaying the either the
 probability mass function (PMF), (in the case of discrete distributions)
 or probability density function (PDF) (in the case of continuous
-distributions) and the cumulative distribution function (CDF). Resulting in
-a 1x2 grid plot.
+distributions), or the cumulative distribution function (CDF).
 }
 \examples{
 # plot continuous epidist
@@ -35,22 +35,17 @@ edist <- epidist(
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 2, scale = 1)
 )
+plot(edist)
 
-plot(edist, day_range = 0:10)
+# plot different day range (x-axis)
+plot(edist, day_range = c(0, 10))
 
 # plot CDF
-plot(edist, day_range = 0:10, cumulative = TRUE)
+plot(edist, cumulative = TRUE)
 
 # plot discrete epidist
-edist <- epidist(
-  disease = "ebola",
-  epi_dist = "incubation_period",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 2, scale = 1),
-  discretise = TRUE
-)
-
-plot(edist, day_range = 0:10)
+edist <- discretise(edist)
+plot(edist)
 }
 \author{
 Joshua W. Lambert
