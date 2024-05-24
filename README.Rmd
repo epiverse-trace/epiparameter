@@ -71,6 +71,12 @@ The `<epidist>` object can be plotted.
 plot(influenza_incubation)
 ```
 
+The CDF can also be plotted by setting `cumulative = TRUE`.
+
+```{r, plot-epidist-cdf}
+plot(influenza_incubation, cumulative = TRUE)
+```
+
 ### Parameter conversion and extraction
 
 The parameters of a distribution can be converted to and from mean and standard deviation. In `{epiparameter}` we implement this for a variety of distributions:
