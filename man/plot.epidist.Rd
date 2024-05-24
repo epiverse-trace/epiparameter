@@ -4,7 +4,7 @@
 \alias{plot.epidist}
 \title{Plot method for \verb{<epidist>} class}
 \usage{
-\method{plot}{epidist}(x, day_range = 0:10, ..., vb = FALSE, title = NULL)
+\method{plot}{epidist}(x, day_range = 0:10, cumulative = FALSE, ..., vb = FALSE, title = NULL)
 }
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
@@ -37,6 +37,10 @@ edist <- epidist(
 )
 
 plot(edist, day_range = 0:10)
+
+# plot CDF
+plot(edist, day_range = 0:10, cumulative = TRUE)
+
 # plot discrete epidist
 edist <- epidist(
   disease = "ebola",
