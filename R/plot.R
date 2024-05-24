@@ -104,17 +104,18 @@ plot.epidist <- function(x,
     if (cumulative) {
       graphics::barplot(
         height = cdf(x, q = unique(round(xlim))),
-        space = 0.2,
+        space = 0,
         names.arg = unique(round(xlim)),
         xlab = xlab,
         ylab = "",
+        ylim = c(0, 1),
         main = "Cumulative Distribution Function",
         ...
       )
     } else {
       graphics::barplot(
         density(x, at = unique(round(xlim))),
-        space = 0.2,
+        space = 0,
         names.arg = unique(round(xlim)),
         xlab = xlab,
         ylab = "",
