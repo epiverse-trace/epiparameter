@@ -271,7 +271,7 @@
             "type": "number",
             "exclusiveMinimum": 0
           },
-          "PMID": {
+          "pmid": {
             "description": "A PubMed unique identifier number assigned to papers to give them a unique identifier within PubMed.",
             "examples": [18183754, 23749571],
             "type": ["number", "null"]
