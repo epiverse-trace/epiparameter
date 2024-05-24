@@ -59,7 +59,10 @@ plot.epidist <- function(x,
     day_range <- seq(day_range[1], day_range[2], length.out = 1000)
   }
 
-  xlab <- paste(tools::toTitleCase(x$epi_dist), "(Days)")
+  xlab <- tools::toTitleCase(x$epi_dist)
+  if (x$epi_dist != "offspring distribution") {
+    xlab <- paste(xlab, "(Days)")
+  }
 
   if (is_continuous(x)) {
     if (cumulative) {
