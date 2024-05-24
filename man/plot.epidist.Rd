@@ -4,14 +4,10 @@
 \alias{plot.epidist}
 \title{Plot method for \verb{<epidist>} class}
 \usage{
-\method{plot}{epidist}(x, day_range = NULL, cumulative = FALSE, ...)
+\method{plot}{epidist}(x, cumulative = FALSE, ...)
 }
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
-
-\item{day_range}{Either \code{NULL} or a \code{numeric} vector of length 2 with the
-first and last day to plot on the x-axis. If \code{NULL} the distribution is
-plotted between day 0 and the 99th quantile of the distribution.}
 
 \item{cumulative}{A boolean \code{logical}, default is \code{FALSE}.
 \code{cumulative = TRUE} plots the cumulative distribution function (CDF).}
@@ -24,6 +20,13 @@ probability mass function (PMF), (in the case of discrete distributions)
 or probability density function (PDF) (in the case of continuous
 distributions), or the cumulative distribution function (CDF).
 }
+\details{
+By default if the \code{xlim} argument is not specified the distribution is
+plotted between day 0 and the 99th quantile of the distribution.
+Alternatively, a \code{numeric} vector of length 2 with the
+first and last day to plot on the x-axis can be supplied to \code{xlim}
+(through \link{...}).
+}
 \examples{
 # plot continuous epidist
 edist <- epidist(
@@ -35,7 +38,7 @@ edist <- epidist(
 plot(edist)
 
 # plot different day range (x-axis)
-plot(edist, day_range = c(0, 10))
+plot(edist, xlim = c(0, 10))
 
 # plot CDF
 plot(edist, cumulative = TRUE)

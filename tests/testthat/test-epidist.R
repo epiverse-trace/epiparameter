@@ -194,7 +194,7 @@ test_that("epidist.plot does not produce an error", {
   )
 })
 
-test_that("epidist.plot works with non-default day_range", {
+test_that("epidist.plot works with non-default x-axis", {
   ebola_dist <- suppressMessages(epidist(
     disease = "ebola",
     epi_dist = "incubation",
@@ -205,14 +205,14 @@ test_that("epidist.plot works with non-default day_range", {
   expect_silent(
     plot(
       ebola_dist,
-      day_range = c(0, 20)
+      xlim = c(0, 20)
     )
   )
 
   f <- function() {
     plot(
       ebola_dist,
-      day_range = c(0, 20)
+      xlim = c(0, 20)
     )
   }
   vdiffr::expect_doppelganger(
