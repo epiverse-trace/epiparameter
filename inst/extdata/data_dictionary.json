@@ -276,13 +276,13 @@
             "examples": [18183754, 23749571],
             "type": ["number", "null"]
           },
-          "DOI": {
+          "doi": {
             "description": "A Digital Object Identifier (DOI) assigned to papers which are unique to each paper.",
             "examples": ["doi:10.1080/02626667.2018.1560449", "https://doi.org/10.1111/hex.12487", "https://dx.doi.org/10.1080/02626667.2018.1560449", "https://doi.org/10.1016/j.jpsychires.2017.11.014"],
             "type": "string"
           }
         },
-        "required": ["author", "title", "journal", "year", "DOI"]
+        "required": ["author", "title", "journal", "year", "doi"]
       },
       "metadata": {
         "type": "object",
