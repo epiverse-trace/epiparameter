@@ -5,10 +5,15 @@
 #' or probability density function (PDF) (in the case of continuous
 #' distributions), or the cumulative distribution function (CDF).
 #'
-#' @param x An `<epidist>` object.
-#' @param day_range Either `NULL` or a `numeric` vector of length 2 with the
-#' first and last day to plot on the x-axis. If `NULL` the distribution is
+#' @details
+#' By default if the `xlim` argument is not specified the distribution is
 #' plotted between day 0 and the 99th quantile of the distribution.
+#' Alternatively, a `numeric` vector of length 2 with the
+#' first and last day to plot on the x-axis can be supplied to `xlim`
+#' (through [...]).
+#'
+#'
+#' @param x An `<epidist>` object.
 #' @param cumulative A boolean `logical`, default is `FALSE`.
 #' `cumulative = TRUE` plots the cumulative distribution function (CDF).
 #' @inheritParams base::print
@@ -27,7 +32,7 @@
 #' plot(edist)
 #'
 #' # plot different day range (x-axis)
-#' plot(edist, day_range = c(0, 10))
+#' plot(edist, xlim = c(0, 10))
 #'
 #' # plot CDF
 #' plot(edist, cumulative = TRUE)
@@ -36,13 +41,14 @@
 #' edist <- discretise(edist)
 #' plot(edist)
 plot.epidist <- function(x,
-                         day_range = NULL,
                          cumulative = FALSE,
                          ...) {
   # check input
   validate_epidist(x)
-  checkmate::assert_numeric(day_range, len = 2, null.ok = TRUE)
   checkmate::assert_logical(cumulative, any.missing = FALSE, len = 1)
+
+  # capture dots
+  dots <- list(...)
 
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(graphics::par(oldpar))
@@ -53,10 +59,11 @@ plot.epidist <- function(x,
     main <- "Probability Mass Function"
   }
 
-  if (is.null(day_range)) {
-    day_range <- seq(0, quantile(x, p = 0.99), length.out = 1000)
+  if (is.null(dots$xlim)) {
+    xlim <- seq(0, quantile(x, p = 0.99), length.out = 1000)
   } else {
-    day_range <- seq(day_range[1], day_range[2], length.out = 1000)
+    checkmate::assert_numeric(dots$xlim, len = 2)
+    xlim <- seq(dots$xlim[1], dots$xlim[2], length.out = 1000)
   }
 
   xlab <- tools::toTitleCase(x$epi_dist)
@@ -68,8 +75,8 @@ plot.epidist <- function(x,
     if (cumulative) {
       # plot CDF
       plot(
-        day_range,
-        cdf(x, q = day_range),
+        x = xlim,
+        y = cdf(x, q = xlim),
         ylab = "",
         xlab = xlab,
         type = "l",
@@ -82,8 +89,8 @@ plot.epidist <- function(x,
     } else {
       # plot either PDF or PMF
       plot(
-        day_range,
-        density(x, at = day_range),
+        x = xlim,
+        y = density(x, at = xlim),
         ylab = "",
         xlab = xlab,
         type = "l",
@@ -96,8 +103,9 @@ plot.epidist <- function(x,
   } else {
     if (cumulative) {
       graphics::barplot(
-        cdf(x, q = unique(round(day_range))),
-        names.arg = unique(round(day_range)),
+        height = cdf(x, q = unique(round(xlim))),
+        space = 0.2,
+        names.arg = unique(round(xlim)),
         xlab = xlab,
         ylab = "",
         main = "Cumulative Distribution Function",
@@ -105,8 +113,9 @@ plot.epidist <- function(x,
       )
     } else {
       graphics::barplot(
-        density(x, at = unique(round(day_range))),
-        names.arg = unique(round(day_range)),
+        density(x, at = unique(round(xlim))),
+        space = 0.2,
+        names.arg = unique(round(xlim)),
         xlab = xlab,
         ylab = "",
         main = main,

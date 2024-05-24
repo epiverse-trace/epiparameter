@@ -31,6 +31,7 @@ Authors:
 Other contributors:
 \itemize{
   \item Hugo Gruson \email{hugo.gruson@data.org} (\href{https://orcid.org/0000-0002-4094-1476}{ORCID}) [contributor, reviewer]
+  \item Sebastian Funk \email{sebastian.funk@lshtm.ac.uk} (\href{https://orcid.org/0000-0002-2842-3406}{ORCID}) [contributor]
   \item Pratik Gupte \email{pratik.gupte@lshtm.ac.uk} (\href{https://orcid.org/0000-0001-5294-7819}{ORCID}) [reviewer]
 }
 
