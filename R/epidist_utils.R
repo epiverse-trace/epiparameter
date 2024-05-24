@@ -342,8 +342,8 @@ create_epidist_summary_stats <- function(mean = NA_real_,
 #' @param journal A `character` string with the name of the journal that
 #' published the article that published the epidemiological parameters.
 #' This can also be a pre-print server, e.g., medRxiv.
-#' @param PMID A `character` string with the PubMed unique identifier number
-#' assigned to papers to give them a unique identifier within PubMed.
+#' @param pmid A `character` string with the PubMed unique identifier number
+#' (PMID) assigned to papers to give them a unique identifier within PubMed.
 #' @param doi A `character` string of the Digital Object Identifier (DOI)
 #' assigned to papers which are unique to each paper.
 #'
@@ -363,7 +363,7 @@ create_epidist_citation <- function(author = utils::person(),
                                     title = NA_character_,
                                     journal = NA_character_,
                                     doi = NA_character_,
-                                    PMID = NA_integer_) {
+                                    pmid = NA_integer_) {
   # if not <person> try and convert author to <person>
   if (!inherits(author, "person"))
     tryCatch(expr = {
@@ -381,7 +381,7 @@ create_epidist_citation <- function(author = utils::person(),
   checkmate::assert_character(title)
   checkmate::assert_character(journal)
   checkmate::assert_character(doi)
-  checkmate::assert_number(PMID, na.ok = TRUE)
+  checkmate::assert_number(pmid, na.ok = TRUE)
 
   if (length(author) == 0 || is.na(year) || is.na(journal) || is.na(title)) {
     message(
@@ -396,9 +396,9 @@ create_epidist_citation <- function(author = utils::person(),
     year = year,
     title = title,
     journal = journal,
-    doi = DOI
+    doi = doi
   )
-  citation$PMID <- PMID
+  citation$pmid <- pmid
 
   message(
     "Using ", format(citation), " \n",

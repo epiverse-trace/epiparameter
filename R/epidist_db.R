@@ -391,7 +391,7 @@ epidist_db <- function(disease = "all",
     function(aut) utils::person(given = aut$given, family = aut$family)
   )
   cit$author <- Reduce(f = c, x = cit$author)
-  cit$PMID <- ifelse(is.null(cit$PMID), yes = NA_real_, no = cit$PMID)
+  cit$pmid <- ifelse(is.null(cit$pmid), yes = NA_real_, no = cit$pmid)
   cit <- suppressMessages(
     create_epidist_citation(
       author = cit$author,
@@ -399,7 +399,7 @@ epidist_db <- function(disease = "all",
       title = cit$title,
       journal = cit$journal,
       doi = cit$doi,
-      PMID = cit$PMID
+      pmid = cit$pmid
     )
   )
 

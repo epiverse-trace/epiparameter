@@ -81,12 +81,12 @@ test_that("create_epidist_citation works with PMID", {
       title = "Incubation period of COVID",
       journal = "Journal of Epi",
       doi = "10.1282718",
-      PMID = 84772544
+      pmid = 84772544
     )
   )
   expect_s3_class(citation, "bibentry")
   expect_s3_class(citation$author, "person")
-  expect_identical(citation$PMID, "84772544")
+  expect_identical(citation$pmid, "84772544")
 })
 
 test_that("clean_epidist_params works as expected for gamma", {
