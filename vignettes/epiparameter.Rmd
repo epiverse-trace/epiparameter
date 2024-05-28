@@ -63,7 +63,7 @@ To see a full list of the diseases and distributions stored in the library use t
 `parameter_tbl()` function. Here we show the first six rows of the output.
 
 ```{r, parameter-tbl}
-head(parameter_tbl(multi_epidist = epi_dist_db))
+parameter_tbl(multi_epidist = epi_dist_db)
 ```
 
 `parameter_tbl()` can also subset the database supplied to the function.
