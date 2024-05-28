@@ -6,20 +6,30 @@
 #'
 #' The class holding the distribution depends on whether it is a discretised
 #' distribution. For continuous and discrete distributions S3 classes from the
-#' `{distributional}` package are used, for discretised continuous
-#' distributions the an S3 class from the `{distcrete}` package is used.
+#' \pkg{distributional} package are used, for discretised continuous
+#' distributions the an S3 class from the \pkg{distcrete} package is used.
 #'
 #' For details on the properties of the distribution classes
 #' from each respective package see their documentation (either
 #' `?distributional` or `?distcrete`)
 #'
 #' @details Truncation is enabled only for continuous distributions as there
-#' is no truncation implemented in `{distcrete}`.
+#' is no truncation implemented in \pkg{distcrete}.
+#'
+#' By default the discretisation of continuous distributions uses a
+#' discretisation interval (`interval`) of 1. If the unit of the distribution
+#' is days, then this will be discretised by day. The endpoint weighting (`w`)
+#' for the discretisation is 1. `w` can be `[0,1]`. For more information please
+#' see [distcrete::distcrete()].
 #'
 #' @inheritParams new_epidist
 #' @param ... [dots] Extra arguments to be passed to
 #' \pkg{distributional} or \pkg{distcrete} functions that construct the S3
-#' distribution objects.
+#' distribution objects. To see which arguments can be adjusted for discretised
+#' distributions see [distcrete::distcrete()], for other distributions see
+#' the `?distributional` documentation and find the specific distribution
+#' constructor function, e.g. for the Gamma distribution see
+#' [distributional::dist_gamma()].
 #'
 #' @return An S3 class containing the probability distribution.
 #' @export
@@ -48,6 +58,15 @@
 #'   discretise = TRUE,
 #'   truncation = NA
 #' )
+#'
+#' # example passing extra arguments to distcrete
+#' create_epidist_prob_dist(
+#'   prob_dist = "gamma",
+#'   prob_dist_params = c(shape = 1, scale = 1),
+#'   discretise = TRUE,
+#'   truncation = NA,
+#'   w = 0.5
+#' )
 create_epidist_prob_dist <- function(prob_dist,
                                      prob_dist_params,
                                      discretise = FALSE,
@@ -74,6 +93,8 @@ create_epidist_prob_dist <- function(prob_dist,
       distcrete_args
     )
   } else {
+    # currently dots not used to construct <distribution>
+    chkDots(...)
     # create non-discretised probability distribution object
     prob_dist <- switch(prob_dist,
       gamma = distributional::dist_gamma(
