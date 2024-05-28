@@ -44,7 +44,6 @@ Truncation is enabled only for continuous distributions as there
 is no truncation implemented in \code{{distcrete}}.
 }
 \examples{
-\donttest{
 # example with continuous distribution without truncation
 epiparameter:::create_epidist_prob_dist(
   prob_dist = "gamma",
@@ -69,5 +68,3 @@ epiparameter:::create_epidist_prob_dist(
   truncation = NA
 )
 }
-}
-\keyword{internal}
