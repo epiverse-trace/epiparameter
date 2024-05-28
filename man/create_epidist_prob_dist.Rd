@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_epidist_prob_dist.R
 \name{create_epidist_prob_dist}
 \alias{create_epidist_prob_dist}
-\title{Create a distribution object from distribution name and parameters}
+\title{Create a distribution object}
 \usage{
 create_epidist_prob_dist(
   prob_dist,
@@ -15,8 +15,8 @@ create_epidist_prob_dist(
 \arguments{
 \item{prob_dist}{A character string specifying the probability
 distribution. This should match the R naming convention of probability
-distributions (e.g. lognormal is lnorm, negative binomial is nbinom, and
-geometric is geom).}
+distributions (e.g. lognormal is \code{lnorm}, negative binomial is \code{nbinom}, and
+geometric is \code{geom}).}
 
 \item{prob_dist_params}{A named vector of probability distribution
 parameters.}

@@ -1,4 +1,4 @@
-#' Create a distribution object from distribution name and parameters
+#' Create a distribution object
 #'
 #' @description Creates an S3 class holding the distribution and parameters
 #' from the probability distribution name, its parameters and distribution
