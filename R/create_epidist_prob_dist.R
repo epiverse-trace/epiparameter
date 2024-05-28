@@ -26,7 +26,7 @@
 #'
 #' @examples
 #' # example with continuous distribution without truncation
-#' epiparameter:::create_epidist_prob_dist(
+#' create_epidist_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
@@ -34,7 +34,7 @@
 #' )
 #'
 #' # example with continuous distribution with truncation
-#' epiparameter:::create_epidist_prob_dist(
+#' create_epidist_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
@@ -42,7 +42,7 @@
 #' )
 #'
 #' # example with discrete distribution
-#' epiparameter:::create_epidist_prob_dist(
+#' create_epidist_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = TRUE,
