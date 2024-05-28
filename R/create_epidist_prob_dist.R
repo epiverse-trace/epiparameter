@@ -19,10 +19,9 @@
 #' @inheritParams new_epidist
 #'
 #' @return An S3 class containing the probability distribution.
-#' @keywords internal
+#' @export
 #'
 #' @examples
-#' \donttest{
 #' # example with continuous distribution without truncation
 #' epiparameter:::create_epidist_prob_dist(
 #'   prob_dist = "gamma",
@@ -46,7 +45,6 @@
 #'   discretise = TRUE,
 #'   truncation = NA
 #' )
-#' }
 create_epidist_prob_dist <- function(prob_dist,
                                      prob_dist_params,
                                      discretise,
