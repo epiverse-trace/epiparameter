@@ -76,10 +76,10 @@
 #' when only one is wanted.
 #'
 #' **Note**: If multiple entries match the arguments supplied and
-#' `single_epidist = TRUE` then the `<epidist>` that is parameterised and
-#' has the largest sample size will be returned (see [is_parameterised()]).
-#' If multiple entries are equal after this sorting the first entry will
-#' be returned.
+#' `single_epidist = TRUE` then the `<epidist>` that is parameterised
+#' (and accounts for truncation if available) and has the largest sample size
+#' will be returned (see [is_parameterised()]). If multiple entries are equal
+#' after this sorting the first entry will be returned.
 #'
 #' @return An `<epidist>` object or list of `<epidist>` objects.
 #' @export
@@ -188,6 +188,15 @@ epidist_db <- function(disease = "all",
     # select parameterised entries
     if (sum(is_param) >= 1) {
       multi_epidist <- multi_epidist[is_param]
+    }
+    # select entries that accounted for truncation
+    idx <- vapply(
+      multi_epidist,
+      function(x) x$method_assess$right_truncated,
+      FUN.VALUE = logical(1)
+    )
+    if (sum(idx) >= 1) {
+      multi_epidist <- multi_epidist[idx]
     }
     # select largest sample size
     idx <- which.max(
