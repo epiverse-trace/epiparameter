@@ -115,55 +115,48 @@ the data, and the functions (and methods) implemented in the package to facilita
 <span><span class="co">#&gt;   Number of offspring distributions: 10</span></span></code></pre></div>
 </details><p>The output is a list of <code>&lt;epidist&gt;</code> objects, where each element in the list corresponds to an entry in the parameter database. <em>Technical note</em>: the reason the object does not look like a regular R list is because it uses a custom print method which will print a summary of the data to the console when there are more than 5 entries to prevent a large list flooding the console. When the number of database entries returned is less than or equal to 5 the print will look like a standard R list.</p>
 <p>To see a full list of the diseases and distributions stored in the library use the
-<code><a href="../reference/list_distributions.html">list_distributions()</a></code> function. Here we show the first six rows of the output.</p>
+<code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> function. Here we show the first six rows of the output.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>multi_epidist <span class="op">=</span> <span class="va">epi_dist_db</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             disease  epi_distribution prob_distribution       author year</span></span>
-<span><span class="co">#&gt; 1        Adenovirus incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 2 Human Coronavirus incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 3              SARS incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 4         Influenza incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 5         Influenza incubation period             lnorm Justin L.... 2009</span></span>
-<span><span class="co">#&gt; 6         Influenza incubation period             lnorm Justin L.... 2009</span></span></code></pre></div>
-</details><p><code><a href="../reference/list_distributions.html">list_distributions()</a></code> can also subset the database supplied to the function.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/parameter_tbl.html">parameter_tbl</a></span><span class="op">(</span>multi_epidist <span class="op">=</span> <span class="va">epi_dist_db</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Parameter table:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A data frame:    122 × 7</span></span></span>
+<span><span class="co">#&gt;    disease  pathogen epi_distribution prob_distribution author  year sample_size</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Adenovi… Adenovi… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          14</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Human C… Human_C… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          13</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> SARS     SARS-Co… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009         157</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Influen… Influen… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009         151</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Influen… Influen… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          90</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Influen… Influen… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          78</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Measles  Measles… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          55</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Parainf… Parainf… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          11</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> RSV      RSV      incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          24</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Rhinovi… Rhinovi… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          28</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 112 more rows</span></span></span></code></pre></div>
+</details><p><code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> can also subset the database supplied to the function.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/list_distributions.html">list_distributions</a></span><span class="op">(</span>multi_epidist <span class="op">=</span> <span class="va">epi_dist_db</span>, disease <span class="op">=</span> <span class="st">"Ebola"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                disease             epi_distribution prob_distribution</span></span>
-<span><span class="co">#&gt; 1  Ebola Virus Disease       offspring distribution            nbinom</span></span>
-<span><span class="co">#&gt; 2  Ebola Virus Disease            incubation period             lnorm</span></span>
-<span><span class="co">#&gt; 3  Ebola Virus Disease               onset to death             gamma</span></span>
-<span><span class="co">#&gt; 4  Ebola Virus Disease            incubation period             gamma</span></span>
-<span><span class="co">#&gt; 5  Ebola Virus Disease            incubation period             gamma</span></span>
-<span><span class="co">#&gt; 6  Ebola Virus Disease            incubation period             gamma</span></span>
-<span><span class="co">#&gt; 7  Ebola Virus Disease            incubation period             gamma</span></span>
-<span><span class="co">#&gt; 8  Ebola Virus Disease              serial interval             gamma</span></span>
-<span><span class="co">#&gt; 9  Ebola Virus Disease              serial interval             gamma</span></span>
-<span><span class="co">#&gt; 10 Ebola Virus Disease              serial interval             gamma</span></span>
-<span><span class="co">#&gt; 11 Ebola Virus Disease              serial interval             gamma</span></span>
-<span><span class="co">#&gt; 12 Ebola Virus Disease     hospitalisation to death             gamma</span></span>
-<span><span class="co">#&gt; 13 Ebola Virus Disease hospitalisation to discharge             gamma</span></span>
-<span><span class="co">#&gt; 14 Ebola Virus Disease        notification to death             gamma</span></span>
-<span><span class="co">#&gt; 15 Ebola Virus Disease    notification to discharge             gamma</span></span>
-<span><span class="co">#&gt; 16 Ebola Virus Disease               onset to death             gamma</span></span>
-<span><span class="co">#&gt; 17 Ebola Virus Disease           onset to discharge             gamma</span></span>
-<span><span class="co">#&gt;          author year</span></span>
-<span><span class="co">#&gt; 1  J. O. Ll.... 2005</span></span>
-<span><span class="co">#&gt; 2  Martin E.... 2011</span></span>
-<span><span class="co">#&gt; 3  The Ebol.... 2018</span></span>
-<span><span class="co">#&gt; 4  WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 5  WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 6  WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 7  WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 8  WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 9  WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 10 WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 11 WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 12 WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 13 WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 14 WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 15 WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 16 WHO Ebol.... 2015</span></span>
-<span><span class="co">#&gt; 17 WHO Ebol.... 2015</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/parameter_tbl.html">parameter_tbl</a></span><span class="op">(</span>multi_epidist <span class="op">=</span> <span class="va">epi_dist_db</span>, disease <span class="op">=</span> <span class="st">"Ebola"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Parameter table:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A data frame:    17 × 7</span></span></span>
+<span><span class="co">#&gt;    disease  pathogen epi_distribution prob_distribution author  year sample_size</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Ebola V… Ebola V… offspring distr… nbinom            Lloyd…  <span style="text-decoration: underline;">2</span>005          13</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Ebola V… Ebola V… incubation peri… lnorm             Eichn…  <span style="text-decoration: underline;">2</span>011         196</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Ebola V… Ebola V… onset to death   gamma             The E…  <span style="text-decoration: underline;">2</span>018          14</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Ebola V… Ebola V… incubation peri… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">1</span>798</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Ebola V… Ebola V… incubation peri… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015          49</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Ebola V… Ebola V… incubation peri… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015         957</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Ebola V… Ebola V… incubation peri… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015         792</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Ebola V… Ebola V… serial interval  gamma             WHO E…  <span style="text-decoration: underline;">2</span>015         305</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Ebola V… Ebola V… serial interval  gamma             WHO E…  <span style="text-decoration: underline;">2</span>015          37</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Ebola V… Ebola V… serial interval  gamma             WHO E…  <span style="text-decoration: underline;">2</span>015         147</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Ebola V… Ebola V… serial interval  gamma             WHO E…  <span style="text-decoration: underline;">2</span>015         112</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Ebola V… Ebola V… hospitalisation… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">1</span>167</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Ebola V… Ebola V… hospitalisation… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">1</span>004</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Ebola V… Ebola V… notification to… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">2</span>536</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Ebola V… Ebola V… notification to… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">1</span>324</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Ebola V… Ebola V… onset to death   gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">2</span>741</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Ebola V… Ebola V… onset to discha… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">1</span>335</span></span></code></pre></div>
 </details><p>More details on the data collation and the library of parameters can be found in
 the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data Collation and Synthesis Protocol vignette</a>.</p>
 </div>
