@@ -50,7 +50,8 @@ new_epidist <- function(disease = character(),
                         method_assess = list(),
                         discretise = logical(),
                         truncation = numeric(),
-                        notes = character()) {
+                        notes = character(),
+                        ...) {
   # check ci has been given for each param and param and uncertainty names match
   stopifnot(
     "uncertainty must be provided for each parameter" =
@@ -93,7 +94,8 @@ new_epidist <- function(disease = character(),
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params,
       discretise = discretise,
-      truncation = truncation
+      truncation = truncation,
+      ...
     )
   }
 
@@ -205,6 +207,12 @@ new_epidist <- function(disease = character(),
 #' distribution was truncated, `NA` if not or unknown.
 #' @param notes A `character` string with any additional information about the
 #' data, inference method or disease.
+#' @param ... [dots] Extra arguments to be passed to internal functions.
+#'
+#' This is most commonly used to pass arguments to [distcrete::distcrete()]
+#' that construct the discretised distribution S3 object. To see which
+#' arguments can be adjusted for discretised distributions see
+#' [distcrete::distcrete()].
 #'
 #' @return An `<epidist>` object.
 #' @export
@@ -272,7 +280,8 @@ epidist <- function(disease,
                     method_assess = create_epidist_method_assess(),
                     discretise = FALSE,
                     truncation = NA_real_,
-                    notes = NULL) {
+                    notes = NULL,
+                    ...) {
   # check input
   checkmate::assert_string(disease)
   checkmate::assert_character(pathogen)
@@ -323,7 +332,8 @@ epidist <- function(disease,
     method_assess = method_assess,
     discretise = discretise,
     truncation = truncation,
-    notes = notes
+    notes = notes,
+    ...
   )
 
   # call epidist validator

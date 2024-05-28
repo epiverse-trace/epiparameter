@@ -18,7 +18,8 @@ epidist(
   method_assess = create_epidist_method_assess(),
   discretise = FALSE,
   truncation = NA_real_,
-  notes = NULL
+  notes = NULL,
+  ...
 )
 }
 \arguments{
@@ -84,6 +85,13 @@ distribution was truncated, \code{NA} if not or unknown.}
 
 \item{notes}{A \code{character} string with any additional information about the
 data, inference method or disease.}
+
+\item{...}{\link{dots} Extra arguments to be passed to internal functions.
+
+This is most commonly used to pass arguments to \code{\link[distcrete:distcrete]{distcrete::distcrete()}}
+that construct the discretised distribution S3 object. To see which
+arguments can be adjusted for discretised distributions see
+\code{\link[distcrete:distcrete]{distcrete::distcrete()}}.}
 }
 \value{
 An \verb{<epidist>} object.
