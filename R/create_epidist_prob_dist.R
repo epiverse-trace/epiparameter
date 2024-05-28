@@ -72,6 +72,16 @@ create_epidist_prob_dist <- function(prob_dist,
                                      discretise = FALSE,
                                      truncation = NA,
                                      ...) {
+  checkmate::assert_character(
+    prob_dist,
+    min.chars = 1,
+    min.len = 1,
+    max.len = 2
+  )
+  checkmate::assert_numeric(prob_dist_params, names = "unique")
+  checkmate::assert_logical(discretise, len = 1)
+  checkmate::assert_number(truncation, na.ok = TRUE)
+
   dots <- list(...)
   if (discretise) {
     prob_dist <- match.arg(
