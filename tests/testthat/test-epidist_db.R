@@ -64,6 +64,20 @@ test_that("epidist_db works as expected with single_epidist as TRUE", {
   expect_length(edist, 10)
 })
 
+test_that("epidist_db chooses truncated with single_epidist as TRUE", {
+  # suppress message about citation
+  edist <- suppressMessages(
+    epidist_db(
+      disease = "COVID-19",
+      epi_dist = "onset to death",
+      single_epidist = TRUE
+    )
+  )
+
+  expect_s3_class(edist, class = "epidist")
+  expect_true(edist$method_assess$right_truncated)
+})
+
 test_that("epidist_db works as expected with subsetting and single_epidist", {
   edist <- suppressMessages(
     epidist_db(
