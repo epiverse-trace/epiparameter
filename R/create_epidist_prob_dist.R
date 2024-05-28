@@ -17,6 +17,9 @@
 #' is no truncation implemented in `{distcrete}`.
 #'
 #' @inheritParams new_epidist
+#' @param ... [dots] Extra arguments to be passed to
+#' \pkg{distributional} or \pkg{distcrete} functions that construct the S3
+#' distribution objects.
 #'
 #' @return An S3 class containing the probability distribution.
 #' @export
@@ -48,21 +51,27 @@
 create_epidist_prob_dist <- function(prob_dist,
                                      prob_dist_params,
                                      discretise,
-                                     truncation) {
+                                     truncation,
+                                     ...) {
+  dots <- list(...)
   if (discretise) {
     prob_dist <- match.arg(
       prob_dist,
       choices = c("gamma", "lnorm", "weibull", "norm")
     )
+    # create default list of args to construct <distcrete>
+    distcrete_args <- c(
+      name = prob_dist,
+      interval = 1,
+      as.list(prob_dist_params),
+      w = 1
+    )
+    # modify <distcrete> args if provided in dots
+    distcrete_args <- utils::modifyList(distcrete_args, dots)
     # create discretised probability distribution object
     prob_dist <- do.call(
       distcrete::distcrete,
-      c(
-        name = prob_dist,
-        interval = 1,
-        as.list(prob_dist_params),
-        w = 1
-      )
+      distcrete_args
     )
   } else {
     # create non-discretised probability distribution object
