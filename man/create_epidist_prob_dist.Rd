@@ -4,7 +4,13 @@
 \alias{create_epidist_prob_dist}
 \title{Create a distribution object from distribution name and parameters}
 \usage{
-create_epidist_prob_dist(prob_dist, prob_dist_params, discretise, truncation)
+create_epidist_prob_dist(
+  prob_dist,
+  prob_dist_params,
+  discretise,
+  truncation,
+  ...
+)
 }
 \arguments{
 \item{prob_dist}{A character string specifying the probability
@@ -21,6 +27,10 @@ Default is FALSE which assumes a continuous probability distribution}
 
 \item{truncation}{A \code{numeric} specifying the truncation point if the inferred
 distribution was truncated, \code{NA} if not or unknown.}
+
+\item{...}{\link{dots} Extra arguments to be passed to
+\pkg{distributional} or \pkg{distcrete} functions that construct the S3
+distribution objects.}
 }
 \value{
 An S3 class containing the probability distribution.
