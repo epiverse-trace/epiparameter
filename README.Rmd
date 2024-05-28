@@ -65,6 +65,16 @@ influenza_incubation <- epidist_db(
 influenza_incubation
 ```
 
+To quickly view the list of epidemiological distributions returned by `epidist_db()` in a table, the `parameter_tbl()` gives a summary of the data, and offers the ability to subset you data by `disease`, `pathogen` and epidemiological distribution (`epi_dist`).
+
+```{r parameter-tbl}
+parameter_tbl(epidists)
+parameter_tbl(
+  epidists,
+  epi_dist = "onset to hospitalisation"
+)
+```
+
 The `<epidist>` object can be plotted.
 
 ```{r plot-epidist}
