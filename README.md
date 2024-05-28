@@ -103,6 +103,46 @@ influenza_incubation
 #>   scale: 3.839
 ```
 
+To quickly view the list of epidemiological distributions returned by
+`epidist_db()` in a table, the `parameter_tbl()` gives a summary of the
+data, and offers the ability to subset you data by `disease`, `pathogen`
+and epidemiological distribution (`epi_dist`).
+
+``` r
+parameter_tbl(epidists)
+#> # Parameter table:
+#> # A data frame:    122 × 7
+#>    disease  pathogen epi_distribution prob_distribution author  year sample_size
+#>    <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
+#>  1 Adenovi… Adenovi… incubation peri… lnorm             Lessl…  2009          14
+#>  2 Human C… Human_C… incubation peri… lnorm             Lessl…  2009          13
+#>  3 SARS     SARS-Co… incubation peri… lnorm             Lessl…  2009         157
+#>  4 Influen… Influen… incubation peri… lnorm             Lessl…  2009         151
+#>  5 Influen… Influen… incubation peri… lnorm             Lessl…  2009          90
+#>  6 Influen… Influen… incubation peri… lnorm             Lessl…  2009          78
+#>  7 Measles  Measles… incubation peri… lnorm             Lessl…  2009          55
+#>  8 Parainf… Parainf… incubation peri… lnorm             Lessl…  2009          11
+#>  9 RSV      RSV      incubation peri… lnorm             Lessl…  2009          24
+#> 10 Rhinovi… Rhinovi… incubation peri… lnorm             Lessl…  2009          28
+#> # ℹ 112 more rows
+```
+
+``` r
+parameter_tbl(
+  epidists,
+  epi_dist = "onset to hospitalisation"
+)
+#> # Parameter table:
+#> # A data frame:    5 × 7
+#>   disease  pathogen  epi_distribution prob_distribution author  year sample_size
+#>   <chr>    <chr>     <chr>            <chr>             <chr>  <dbl>       <dbl>
+#> 1 MERS     MERS-Cov  onset to hospit… <NA>              Assir…  2013          23
+#> 2 COVID-19 SARS-CoV… onset to hospit… gamma             Linto…  2020         155
+#> 3 COVID-19 SARS-CoV… onset to hospit… gamma             Linto…  2020          34
+#> 4 COVID-19 SARS-CoV… onset to hospit… lnorm             Linto…  2020         155
+#> 5 COVID-19 SARS-CoV… onset to hospit… lnorm             Linto…  2020          34
+```
+
 The `<epidist>` object can be plotted.
 
 ``` r
