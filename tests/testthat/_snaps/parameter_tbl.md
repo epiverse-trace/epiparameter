@@ -163,9 +163,9 @@
     Output
       # Parameter table:
       # A data frame:    1 x 7
-        disease   pathogen epi_distribution prob_distribution author  year sample_size
-        <chr>     <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
-      1 Ebola Vi~ Ebola V~ onset to death   gamma             WHO E~  2015        2741
+        disease  pathogen  epi_distribution prob_distribution author  year sample_size
+        <chr>    <chr>     <chr>            <chr>             <chr>  <dbl>       <dbl>
+      1 COVID-19 SARS-CoV~ onset to hospit~ lnorm             Linto~  2020         155
 
 # parameter_tbl works as expected with discretised <epidist>
 
