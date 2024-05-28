@@ -170,6 +170,26 @@ test_that("create_epidist_prob_dist works for truncated continuous", {
   expect_identical(family(res), "truncated")
 })
 
+test_that("create_epidist_prob_dist works passing args via ...", {
+  dist1 <- create_epidist_prob_dist(
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    discretise = TRUE,
+    truncation = NA,
+    w = 1
+  )
+  dist2 <- create_epidist_prob_dist(
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1),
+    discretise = TRUE,
+    truncation = NA,
+    w = 0.5
+  )
+  expect_false(identical(dist1, dist2))
+  expect_identical(dist1$w, 1)
+  expect_identical(dist2$w, 0.5)
+})
+
 test_that("create_epidist_prob_dist fails for unrecognised discretised", {
   expect_error(
     create_epidist_prob_dist(
