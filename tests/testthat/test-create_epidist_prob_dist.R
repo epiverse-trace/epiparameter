@@ -1,5 +1,5 @@
-test_that("create_prob_dist works as expected for continuous gamma", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for continuous gamma", {
+  res <- create_epidist_prob_dist(
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1),
     discretise = FALSE,
@@ -14,8 +14,8 @@ test_that("create_prob_dist works as expected for continuous gamma", {
   )
 })
 
-test_that("create_prob_dist works as expected for continuous lognormal", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for continuous lognormal", {
+  res <- create_epidist_prob_dist(
     prob_dist = "lnorm",
     prob_dist_params = c(meanlog = 1, sdlog = 1),
     discretise = FALSE,
@@ -30,8 +30,8 @@ test_that("create_prob_dist works as expected for continuous lognormal", {
   )
 })
 
-test_that("create_prob_dist works as expected for continuous Weibull", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for continuous Weibull", {
+  res <- create_epidist_prob_dist(
     prob_dist = "weibull",
     prob_dist_params = c(shape = 1, scale = 1),
     discretise = FALSE,
@@ -46,8 +46,8 @@ test_that("create_prob_dist works as expected for continuous Weibull", {
   )
 })
 
-test_that("create_prob_dist works as expected for negative binomial", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for negative binomial", {
+  res <- create_epidist_prob_dist(
     prob_dist = "nbinom",
     prob_dist_params = c(mean = 1, dispersion = 1),
     discretise = FALSE,
@@ -62,8 +62,8 @@ test_that("create_prob_dist works as expected for negative binomial", {
   )
 })
 
-test_that("create_prob_dist works as expected for geometric", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for geometric", {
+  res <- create_epidist_prob_dist(
     prob_dist = "geom",
     prob_dist_params = c(mean = 1),
     discretise = FALSE,
@@ -78,8 +78,8 @@ test_that("create_prob_dist works as expected for geometric", {
   )
 })
 
-test_that("create_prob_dist works as expected for poisson", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for poisson", {
+  res <- create_epidist_prob_dist(
     prob_dist = "pois",
     prob_dist_params = c(mean = 1),
     discretise = FALSE,
@@ -94,8 +94,8 @@ test_that("create_prob_dist works as expected for poisson", {
   )
 })
 
-test_that("create_prob_dist works as expected for discrete gamma", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for discrete gamma", {
+  res <- create_epidist_prob_dist(
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1),
     discretise = TRUE,
@@ -110,8 +110,8 @@ test_that("create_prob_dist works as expected for discrete gamma", {
   )
 })
 
-test_that("create_prob_dist works as expected for discrete lognormal", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for discrete lognormal", {
+  res <- create_epidist_prob_dist(
     prob_dist = "lnorm",
     prob_dist_params = c(meanlog = 1, sdlog = 1),
     discretise = TRUE,
@@ -126,8 +126,8 @@ test_that("create_prob_dist works as expected for discrete lognormal", {
   )
 })
 
-test_that("create_prob_dist works as expected for discrete Weibull", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for discrete Weibull", {
+  res <- create_epidist_prob_dist(
     prob_dist = "weibull",
     prob_dist_params = c(shape = 1, scale = 1),
     discretise = TRUE,
@@ -142,8 +142,8 @@ test_that("create_prob_dist works as expected for discrete Weibull", {
   )
 })
 
-test_that("create_prob_dist works as expected for discrete normal", {
-  res <- create_prob_dist(
+test_that("create_epidisit_prob_dist works for discrete normal", {
+  res <- create_epidist_prob_dist(
     prob_dist = "norm",
     prob_dist_params = c(mean = 1, sd = 1),
     discretise = TRUE,
@@ -158,8 +158,8 @@ test_that("create_prob_dist works as expected for discrete normal", {
   )
 })
 
-test_that("create_prob_dist works as expected for truncated continuous", {
-  res <- create_prob_dist(
+test_that("create_epidist_prob_dist works for truncated continuous", {
+  res <- create_epidist_prob_dist(
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1),
     discretise = FALSE,
@@ -170,9 +170,9 @@ test_that("create_prob_dist works as expected for truncated continuous", {
   expect_identical(family(res), "truncated")
 })
 
-test_that("create_prob_dist fails for unrecognised discretised dist", {
+test_that("create_epidist_prob_dist fails for unrecognised discretised", {
   expect_error(
-    create_prob_dist(
+    create_epidist_prob_dist(
       prob_dist = "distribution",
       prob_dist_params = c(shape = 1, scale = 1),
       discretise = TRUE,
@@ -182,9 +182,9 @@ test_that("create_prob_dist fails for unrecognised discretised dist", {
   )
 })
 
-test_that("create_prob_dist fails for unrecognised non-discretised dist", {
+test_that("create_epidist_prob_dist fails for unrecognised non-discretised", {
   expect_error(
-    create_prob_dist(
+    create_epidist_prob_dist(
       prob_dist = "distribution",
       prob_dist_params = c(shape = 1, scale = 1),
       discretise = FALSE,
@@ -194,9 +194,9 @@ test_that("create_prob_dist fails for unrecognised non-discretised dist", {
   )
 })
 
-test_that("create_prob_dist errors for discrete truncation", {
+test_that("create_epidist_prob_dist errors for discrete truncation", {
   expect_error(
-    create_prob_dist(
+    create_epidist_prob_dist(
       prob_dist = "gamma",
       prob_dist_params = c(shape = 1, scale = 1),
       discretise = TRUE,
