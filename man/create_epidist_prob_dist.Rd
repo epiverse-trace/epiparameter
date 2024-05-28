@@ -7,8 +7,8 @@
 create_epidist_prob_dist(
   prob_dist,
   prob_dist_params,
-  discretise,
-  truncation,
+  discretise = FALSE,
+  truncation = NA,
   ...
 )
 }

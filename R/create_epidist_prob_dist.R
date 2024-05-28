@@ -50,8 +50,8 @@
 #' )
 create_epidist_prob_dist <- function(prob_dist,
                                      prob_dist_params,
-                                     discretise,
-                                     truncation,
+                                     discretise = FALSE,
+                                     truncation = NA,
                                      ...) {
   dots <- list(...)
   if (discretise) {
