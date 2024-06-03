@@ -79,5 +79,9 @@ print.multi_epidist <- function(x, ..., n = NULL) {
       )
     )
   )
+  cli::cli_text(
+    "Explore database online at {.url
+    https://epiverse-trace.github.io/epiparameter/dev/articles/database.html}"
+  )
   invisible(x)
 }
