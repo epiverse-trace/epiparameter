@@ -60,79 +60,12 @@
         meanlog: 0.660
         sdlog: 1.205
       
-      [[4]]
-      Disease: Influenza
-      Pathogen: Influenza-A
-      Epi Distribution: incubation period
-      Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
-      "Incubation periods of acute respiratory viral infections: a systematic
-      review." _The Lancet Infectious Diseases_.
-      doi:10.1016/S1473-3099(09)70069-9
-      <https://doi.org/10.1016/S1473-3099%2809%2970069-9>.
-      Distribution: lnorm
-      Parameters:
-        meanlog: -0.257
-        sdlog: 1.090
-      
-      [[5]]
-      Disease: Influenza
-      Pathogen: Influenza-A
-      Epi Distribution: incubation period
-      Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
-      "Incubation periods of acute respiratory viral infections: a systematic
-      review." _The Lancet Infectious Diseases_.
-      doi:10.1016/S1473-3099(09)70069-10
-      <https://doi.org/10.1016/S1473-3099%2809%2970069-10>.
-      Distribution: lnorm
-      Parameters:
-        meanlog: 0.181
-        sdlog: 0.960
-      
-      [[6]]
-      Disease: Influenza
-      Pathogen: Influenza-B
-      Epi Distribution: incubation period
-      Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
-      "Incubation periods of acute respiratory viral infections: a systematic
-      review." _The Lancet Infectious Diseases_.
-      doi:10.1016/S1473-3099(09)70069-11
-      <https://doi.org/10.1016/S1473-3099%2809%2970069-11>.
-      Distribution: lnorm
-      Parameters:
-        meanlog: -1.105
-        sdlog: 1.090
-      
-      [[7]]
-      Disease: Measles
-      Pathogen: Measles Virus
-      Epi Distribution: incubation period
-      Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
-      "Incubation periods of acute respiratory viral infections: a systematic
-      review." _The Lancet Infectious Diseases_.
-      doi:10.1016/S1473-3099(09)70069-12
-      <https://doi.org/10.1016/S1473-3099%2809%2970069-12>.
-      Distribution: lnorm
-      Parameters:
-        meanlog: 2.065
-        sdlog: 0.960
-      
-      [[8]]
-      Disease: Parainfluenza
-      Pathogen: Parainfluenza Virus
-      Epi Distribution: incubation period
-      Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
-      "Incubation periods of acute respiratory viral infections: a systematic
-      review." _The Lancet Infectious Diseases_.
-      doi:10.1016/S1473-3099(09)70069-13
-      <https://doi.org/10.1016/S1473-3099%2809%2970069-13>.
-      Distribution: lnorm
-      Parameters:
-        meanlog: 0.437
-        sdlog: 1.019
-      
-      # i 114 more elements
+      # i 119 more elements
       # i Use `print(n = ...)` to see more elements.
-      # i Use `parameter_tbl()` to see a summary table of parameters.
+      # i Use `parameter_tbl()` to see a summary table of the parameters.
+    Message
+      Explore database online at
+      <https://epiverse-trace.github.io/epiparameter/dev/articles/database.html>
 
 # epidist_db print method works as expected for <= 5 <epidist>
 
@@ -178,5 +111,8 @@
         mean: 0.940
         dispersion: 0.170
       
-      # i Use `parameter_tbl()` to see a summary table of parameters.
+      # i Use `parameter_tbl()` to see a summary table of the parameters.
+    Message
+      Explore database online at
+      <https://epiverse-trace.github.io/epiparameter/dev/articles/database.html>
 
