@@ -564,62 +564,6 @@ epidist_db <- function(disease = "all",
   }
 }
 
-#' Print method for `<multi_epidist>` class
-#'
-#' @param x A `<multi_epidist>` object.
-#' @inheritParams print.epidist
-#'
-#' @return Invisibly returns a `<multi_epidist>`. Called for side-effects.
-#' @export
-print.multi_epidist <- function(x, ...) {
-  if (length(x) <= 5) {
-    x <- unclass(x)
-    NextMethod()
-  } else {
-    chkDots(...)
-    writeLines(
-      c(
-        sprintf("List of <epidist> objects"),
-        sprintf("  Number of entries in library: %s", length(x)),
-        sprintf(
-          "  Number of studies in library: %s",
-          length(unique(
-            vapply(
-              x, function(y) y$citation$doi,
-              FUN.VALUE = character(1)
-            )
-          ))
-        ),
-        sprintf(
-          "  Number of diseases: %s",
-          length(unique(
-            vapply(x, function(y) y$disease, FUN.VALUE = character(1))
-          ))
-        ),
-        sprintf(
-          "  Number of delay distributions: %s",
-          sum(
-            vapply(
-              x, function(y) y$epi_dist != "offspring distribution",
-              FUN.VALUE = logical(1)
-            )
-          )
-        ),
-        sprintf(
-          "  Number of offspring distributions: %s",
-          sum(
-            vapply(
-              x, function(y) y$epi_dist == "offspring distribution",
-              FUN.VALUE = logical(1)
-            )
-          )
-        )
-      )
-    )
-    invisible(x)
-  }
-}
-
 #' Check whether a package is installed
 #'
 #' @details This functions allows mock testing for when a package is not
