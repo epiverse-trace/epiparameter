@@ -85,6 +85,9 @@ reference:
     contents:
     - epireview_core_cols
 
+  - title: Options
+    contents:
+      - epiparameter_options
 
 articles:
 - title: Get started
