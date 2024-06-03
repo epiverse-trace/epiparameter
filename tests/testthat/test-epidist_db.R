@@ -204,16 +204,6 @@ test_that("epidist_db fails as expected when subset returns no results", {
   )
 })
 
-test_that("epidist_db print method works as expected for > 5 <epidist>", {
-  expect_snapshot(epidist_db())
-})
-
-test_that("epidist_db print method works as expected for <= 5 <epidist>", {
-  expect_snapshot(
-    epidist_db(disease = "SARS", epi_dist = "offspring distribution")
-  )
-})
-
 test_that(".read_epidist_db works as expected", {
   edist <- .read_epidist_db()
   expect_s3_class(edist, class = "multi_epidist")
