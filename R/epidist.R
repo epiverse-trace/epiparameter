@@ -72,7 +72,7 @@ new_epidist <- function(disease = character(),
 
   if (is_epidist_params(prob_dist, prob_dist_params)) {
     # standardise common distribution parameters
-    prob_dist_params <- clean_epidist_params(
+    prob_dist_params <- .clean_epidist_params(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params
     )
@@ -728,7 +728,7 @@ discretise.epidist <- function(x, ...) {
     }
 
     # standardise distribution parameter names
-    prob_dist_params <- clean_epidist_params(
+    prob_dist_params <- .clean_epidist_params(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params
     )

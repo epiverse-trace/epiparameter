@@ -51,7 +51,7 @@ get_parameters.epidist <- function(x, ...) {
     }
 
     # convert to meanlog and sdlog names
-    params <- clean_epidist_params(
+    params <- .clean_epidist_params(
       prob_dist = family(x),
       prob_dist_params = params
     )
