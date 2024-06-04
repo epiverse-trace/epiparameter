@@ -42,13 +42,8 @@ print.multi_epidist <- function(x, ..., n = NULL) {
       c(
         paste("Number of diseases:", length(alpha_unique_diseases)),
         paste(cli::symbol$pointer, alpha_unique_diseases, collapse = " "),
-        "\n",
-        paste(
-          "Number of epi distributions:",
-          length(alpha_unique_epi_dists)
-        ),
-        paste(cli::symbol$pointer, alpha_unique_epi_dists, collapse = " "),
-        "\n"
+        paste("Number of epi distributions:", length(alpha_unique_epi_dists)),
+        paste(cli::symbol$pointer, alpha_unique_epi_dists, collapse = " ")
       )
     )
   )
