@@ -502,8 +502,27 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   any(matches)
 }
 
-clean_epidist_params <- function(prob_dist_params, ...) {
-  UseMethod("clean_epidist_params")
+#' Dispatches to a parameter cleaning function depending on distribution
+#'
+#' @inheritParams new_epidist
+#'
+#' @return Named `numeric` vector of parameters.
+#' @keywords internal
+clean_epidist_params <- function(prob_dist, prob_dist_params) {
+  clean_func <- switch(
+    prob_dist,
+    gamma = clean_epidist_params_gamma,
+    lnorm = clean_epidist_params_lnorm,
+    weibull = clean_epidist_params_weibull,
+    nbinom = clean_epidist_params_nbinom,
+    geom = clean_epidist_params_geom,
+    pois = clean_epidist_params_pois,
+    norm = clean_epidist_params_norm,
+    stop("Probability distribution not recognised", call. = FALSE)
+  )
+  clean_params <- do.call(clean_func, list(prob_dist_params))
+  # return parameters
+  clean_params
 }
 
 #' Standardise parameters for a gamma distribution
@@ -512,7 +531,7 @@ clean_epidist_params <- function(prob_dist_params, ...) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params.gamma <- function(prob_dist_params) {
+clean_epidist_params_gamma <- function(prob_dist_params) {
   # if shape and rate are provided convert to shape and scale
   if (all(c("shape", "rate") %in% names(prob_dist_params))) {
     prob_dist_params[["rate"]] <- 1 / prob_dist_params[["rate"]]
@@ -523,15 +542,9 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
       fixed = TRUE
     )
 
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
-
     # return prob_dist_params
     return(prob_dist_params)
   } else if (all(c("shape", "scale") %in% names(prob_dist_params))) {
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
-
     # no cleaning needed
     return(prob_dist_params)
   } else {
@@ -545,16 +558,13 @@ clean_epidist_params.gamma <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params.lnorm <- function(prob_dist_params) {
+clean_epidist_params_lnorm <- function(prob_dist_params) {
   # if mu and sigma are provided convert to meanlog and sdlog
   if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
     # find index so parameters can be in any order
     mu_index <- which(names(prob_dist_params) == "mu")
     sigma_index <- which(names(prob_dist_params) == "sigma")
     names(prob_dist_params)[c(mu_index, sigma_index)] <- c("meanlog", "sdlog")
-
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
 
     # return prob_dist_params
     return(prob_dist_params)
@@ -563,9 +573,6 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
     # remove extra parameters
     param_idx <- names(prob_dist_params) %in% c("meanlog", "sdlog")
     prob_dist_params <- prob_dist_params[param_idx]
-
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
 
     # no cleaning needed
     return(prob_dist_params)
@@ -583,11 +590,8 @@ clean_epidist_params.lnorm <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params.weibull <- function(prob_dist_params) {
+clean_epidist_params_weibull <- function(prob_dist_params) {
   if (all(c("shape", "scale") %in% names(prob_dist_params))) {
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
-
     # no cleaning needed
     return(prob_dist_params)
   } else {
@@ -604,7 +608,7 @@ clean_epidist_params.weibull <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params.nbinom <- function(prob_dist_params) {
+clean_epidist_params_nbinom <- function(prob_dist_params) {
   if (all(c("n", "p") %in% names(prob_dist_params))) {
     # convert prob to mean
     prob_dist_params[["p"]] <- convert_params_to_summary_stats(
@@ -621,15 +625,10 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
     # rearrange vector
     prob_dist_params <- prob_dist_params[c("mean", "dispersion")]
 
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
-
     # return prob_dist_params
     return(prob_dist_params)
   }
   if (all(c("mean", "dispersion") %in% names(prob_dist_params))) {
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
 
     # no cleaning needed
     return(prob_dist_params)
@@ -647,7 +646,7 @@ clean_epidist_params.nbinom <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params.geom <- function(prob_dist_params) {
+clean_epidist_params_geom <- function(prob_dist_params) {
   # if mean is provided convert to prob
   if ("mean" %in% names(prob_dist_params)) {
     prob_dist_params[["mean"]] <- 1 / prob_dist_params[["mean"]]
@@ -658,9 +657,6 @@ clean_epidist_params.geom <- function(prob_dist_params) {
       fixed = TRUE
     )
 
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
-
     # return prob_dist_params
     return(prob_dist_params)
   } else if ("p" %in% names(prob_dist_params)) {
@@ -670,14 +666,9 @@ clean_epidist_params.geom <- function(prob_dist_params) {
       x = names(prob_dist_params)
     )
 
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
-
     # no cleaning needed
     return(prob_dist_params)
   } else if ("prob" %in% names(prob_dist_params)) {
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
 
     # no cleaning needed
     return(prob_dist_params)
@@ -695,12 +686,9 @@ clean_epidist_params.geom <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params.pois <- function(prob_dist_params) {
+clean_epidist_params_pois <- function(prob_dist_params) {
   if (names(prob_dist_params) %in% c("mean", "l", "lambda")) {
     names(prob_dist_params) <- "mean"
-
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
 
     # return prob_dist_params
     return(prob_dist_params)
@@ -718,7 +706,7 @@ clean_epidist_params.pois <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params.norm <- function(prob_dist_params) {
+clean_epidist_params_norm <- function(prob_dist_params) {
   if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
 
     # find index so parameters can be in any order
@@ -729,15 +717,10 @@ clean_epidist_params.norm <- function(prob_dist_params) {
     # rearrange vector
     prob_dist_params <- prob_dist_params[c("mean", "sd")]
 
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
-
     # return prob_dist_params
     return(prob_dist_params)
   }
   if (all(c("mean", "sd") %in% names(prob_dist_params))) {
-    # remove class attribute from prob_dist_params
-    prob_dist_params <- unclass(prob_dist_params)
 
     # no cleaning needed
     return(prob_dist_params)
@@ -747,23 +730,6 @@ clean_epidist_params.norm <- function(prob_dist_params) {
       call. = FALSE
     )
   }
-}
-
-#' Default method if class of parameters is not recognised
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Named `numeric` vector of parameters.
-#' @keywords internal
-clean_epidist_params.default <- function(prob_dist_params) {
-  # print message that cleaning function not dispatched
-  message("parameters class not recognised")
-
-  # remove class attribute from prob_dist_params
-  prob_dist_params <- unclass(prob_dist_params)
-
-  # return prob_dist_params
-  prob_dist_params
 }
 
 #' Standardise the variables input by users
