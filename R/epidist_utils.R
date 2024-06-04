@@ -485,7 +485,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
     lnorm = list(c("meanlog", "sdlog"), c("mu", "sigma")),
     nbinom = list(c("mean", "dispersion"), c("mean", "k"), c("n", "p")),
     geom = list("mean", "p", "prob"),
-    pois = list("mean", "l"),
+    pois = list("mean", "l", "lambda"),
     norm = list(c("mean", "sd"), c("mu", "sigma"))
   )
   possible_params <- possible_params[[prob_dist]]
