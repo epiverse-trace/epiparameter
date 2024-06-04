@@ -65,13 +65,14 @@ print.multi_epidist <- function(x, ..., n = NULL) {
       paste0(
         footer,
         "# ", cli::symbol$info,
-        " Use `parameter_tbl()` to see a summary table of the parameters."
+        " Use `parameter_tbl()` to see a summary table of the parameters.\n",
+        "# ", cli::symbol$info, " Explore database online at: ",
+        cli::style_hyperlink(
+          text = "https://epiverse-trace.github.io/epiparameter/dev/articles/database.html",
+          url = "https://epiverse-trace.github.io/epiparameter/dev/articles/database.html"
+        )
       )
     )
-  )
-  cli::cli_text(
-    "Explore database online at {.url
-    https://epiverse-trace.github.io/epiparameter/dev/articles/database.html}"
   )
   invisible(x)
 }
