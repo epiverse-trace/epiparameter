@@ -502,13 +502,34 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   any(matches)
 }
 
-#' Dispatches to a parameter cleaning function depending on distribution
+#' Standardise distribution parameters
+#'
+#' @description `.clean_epidist_params()` dispatches to a distribution specific
+#' parameter cleaning function depending on `prob_dist`. For example
+#' `prob_dist = "gamma"` will call `.clean_epidist_params_gamma()`.
+#'
+#' @details
+#' Calling [is_epidist_params()] at the start of `.clean_epidist_params()`
+#' ensures that if the parameterisation is incorrect that it will error early
+#' and dispatch to the distribution specific cleaning functions (e.g.
+#' `.clean_epidist_params_gamma()`). This means that the distribution specific
+#' parameter cleaning functions do not need to check and error for incorrect
+#' parameterisation.
 #'
 #' @inheritParams new_epidist
+#'
+#' @name .clean_epidist_params
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
 .clean_epidist_params <- function(prob_dist, prob_dist_params) {
+  valid_params <- is_epidist_params(
+    prob_dist = prob_dist,
+    prob_dist_params = prob_dist_params
+  )
+  if (!valid_params) {
+    stop("Invalid parameterisation for probability distribution", call. = FALSE)
+  }
   clean_func <- switch(
     prob_dist,
     gamma = .clean_epidist_params_gamma,
@@ -525,12 +546,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   clean_params
 }
 
-#' Standardise parameters for a gamma distribution
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Named `numeric` vector of parameters.
-#' @keywords internal
+#' @name .clean_epidist_params
 .clean_epidist_params_gamma <- function(prob_dist_params) {
   # if shape and rate are provided convert to shape and scale
   if (all(c("shape", "rate") %in% names(prob_dist_params))) {
@@ -552,12 +568,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   }
 }
 
-#' Standardise parameters for a lognormal distribution
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Named `numeric` vector of parameters.
-#' @keywords internal
+#' @name .clean_epidist_params
 .clean_epidist_params_lnorm <- function(prob_dist_params) {
   # if mu and sigma are provided convert to meanlog and sdlog
   if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
@@ -584,12 +595,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   }
 }
 
-#' Standardise parameters for a Weibull distribution
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Named `numeric` vector of parameters.
-#' @keywords internal
+#' @name .clean_epidist_params
 .clean_epidist_params_weibull <- function(prob_dist_params) {
   if (all(c("shape", "scale") %in% names(prob_dist_params))) {
     # no cleaning needed
@@ -602,12 +608,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   }
 }
 
-#' Standardise parameters for a negative binomial distribution
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Named `numeric` vector of parameters.
-#' @keywords internal
+#' @name .clean_epidist_params
 .clean_epidist_params_nbinom <- function(prob_dist_params) {
   if (all(c("n", "p") %in% names(prob_dist_params))) {
     # convert prob to mean
@@ -640,12 +641,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   }
 }
 
-#' Standardise parameters for a geometric distribution
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Named `numeric` vector of parameters.
-#' @keywords internal
+#' @name .clean_epidist_params
 .clean_epidist_params_geom <- function(prob_dist_params) {
   # if mean is provided convert to prob
   if ("mean" %in% names(prob_dist_params)) {
@@ -680,12 +676,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   }
 }
 
-#' Standardise parameters for a poisson distribution
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Named `numeric` vector of parameters.
-#' @keywords internal
+#' @name .clean_epidist_params
 .clean_epidist_params_pois <- function(prob_dist_params) {
   if (names(prob_dist_params) %in% c("mean", "l", "lambda")) {
     names(prob_dist_params) <- "mean"
@@ -700,12 +691,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   }
 }
 
-#' Standardise parameters for a Normal distribution
-#'
-#' @inheritParams new_epidist
-#'
-#' @return Named `numeric` vector of parameters.
-#' @keywords internal
+#' @name .clean_epidist_params
 .clean_epidist_params_norm <- function(prob_dist_params) {
   if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
 
