@@ -528,7 +528,10 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
     prob_dist_params = prob_dist_params
   )
   if (!valid_params) {
-    stop("Invalid parameterisation for probability distribution", call. = FALSE)
+    stop(
+      "Invalid parameterisation for ", prob_dist, " distribution",
+      call. = FALSE
+    )
   }
   clean_func <- switch(
     prob_dist,
