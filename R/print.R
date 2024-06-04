@@ -24,10 +24,10 @@ print.multi_epidist <- function(x, ..., n = NULL) {
   n_entries <- length(x)
   extra_n <- n_entries - n
 
-  diseases <- vapply(x, "[[", FUN.VALUE = character(1), "disease")
+  diseases <- vapply(x, `[[`, FUN.VALUE = character(1), "disease")
   alpha_unique_diseases <- sort(unique(diseases))
   epi_dists <- vapply(
-    x, "[[", FUN.VALUE = character(1), "epi_dist"
+    x, `[[`, FUN.VALUE = character(1), "epi_dist"
   )
   alpha_unique_epi_dists <- sort(unique(epi_dists))
 
