@@ -2,9 +2,30 @@
 % Please edit documentation in R/epidist_utils.R
 \name{.clean_epidist_params}
 \alias{.clean_epidist_params}
-\title{Dispatches to a parameter cleaning function depending on distribution}
+\alias{.clean_epidist_params_gamma}
+\alias{.clean_epidist_params_lnorm}
+\alias{.clean_epidist_params_weibull}
+\alias{.clean_epidist_params_nbinom}
+\alias{.clean_epidist_params_geom}
+\alias{.clean_epidist_params_pois}
+\alias{.clean_epidist_params_norm}
+\title{Standardise distribution parameters}
 \usage{
 .clean_epidist_params(prob_dist, prob_dist_params)
+
+.clean_epidist_params_gamma(prob_dist_params)
+
+.clean_epidist_params_lnorm(prob_dist_params)
+
+.clean_epidist_params_weibull(prob_dist_params)
+
+.clean_epidist_params_nbinom(prob_dist_params)
+
+.clean_epidist_params_geom(prob_dist_params)
+
+.clean_epidist_params_pois(prob_dist_params)
+
+.clean_epidist_params_norm(prob_dist_params)
 }
 \arguments{
 \item{prob_dist}{A character string specifying the probability
@@ -19,6 +40,16 @@ parameters.}
 Named \code{numeric} vector of parameters.
 }
 \description{
-Dispatches to a parameter cleaning function depending on distribution
+\code{.clean_epidist_params()} dispatches to a distribution specific
+parameter cleaning function depending on \code{prob_dist}. For example
+\code{prob_dist = "gamma"} will call \code{.clean_epidist_params_gamma()}.
+}
+\details{
+Calling \code{\link[=is_epidist_params]{is_epidist_params()}} at the start of \code{.clean_epidist_params()}
+ensures that if the parameterisation is incorrect that it will error early
+and dispatch to the distribution specific cleaning functions (e.g.
+\code{.clean_epidist_params_gamma()}). This means that the distribution specific
+parameter cleaning functions do not need to check and error for incorrect
+parameterisation.
 }
 \keyword{internal}
