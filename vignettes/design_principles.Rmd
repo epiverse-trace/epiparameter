@@ -38,6 +38,8 @@ Other functions return the simplest type possible, this may be an atomic vector 
 
 * If there are a large number of entries returned when reading epidemiological parameters from the library using the `epidist_db()` function, it can flood the console, due to the default `list` printing in R. This is the reasoning for the `<multi_epidist>` object which is a minimal class to enable cleaner and more descriptive printing for a large list of `<epidist>` objects. The `print.multi_epidist()` prints a header with metadata on the number of `<epidist>` objects and number of diseases and epidemiological distributions in the list. It also lists all the diseases and epidemiological parameters returned. The footer of the `print()` function states the number of `<epidist>` objects not shown, guides to use `print(n = ...)` and `parameter_tbl()` and a link to the online database vignette (`database.Rmd`). Information in the header and footer considered metadata or advice is prefixed with `#`.
 
+* The package uses S3 classes and S3 dispatch for exported functions, and `switch()` and `do.call()` for dispatching to internal functions. This is because it is easier to develop and debug internal functions that do not use S3 dispatch and avoids having to ensure that S3 methods are registered. Examples of S3 dispatch for exported functions are `get_parameters()` and `convert_summary_stats_to_params()`. Examples of internal dispatch using `switch()` and `do.call()` are `clean_epidist_params()` and `convert_params_to_summary_stats.character()`.
+
 ## Dependencies
 
 The aim is to restrict the number of dependencies to a minimal required set for ease of maintenance. The current hard dependencies are:
