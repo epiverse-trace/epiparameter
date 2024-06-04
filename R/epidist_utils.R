@@ -508,16 +508,16 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params <- function(prob_dist, prob_dist_params) {
+.clean_epidist_params <- function(prob_dist, prob_dist_params) {
   clean_func <- switch(
     prob_dist,
-    gamma = clean_epidist_params_gamma,
-    lnorm = clean_epidist_params_lnorm,
-    weibull = clean_epidist_params_weibull,
-    nbinom = clean_epidist_params_nbinom,
-    geom = clean_epidist_params_geom,
-    pois = clean_epidist_params_pois,
-    norm = clean_epidist_params_norm,
+    gamma = .clean_epidist_params_gamma,
+    lnorm = .clean_epidist_params_lnorm,
+    weibull = .clean_epidist_params_weibull,
+    nbinom = .clean_epidist_params_nbinom,
+    geom = .clean_epidist_params_geom,
+    pois = .clean_epidist_params_pois,
+    norm = .clean_epidist_params_norm,
     stop("Probability distribution not recognised", call. = FALSE)
   )
   clean_params <- do.call(clean_func, list(prob_dist_params))
@@ -531,7 +531,7 @@ clean_epidist_params <- function(prob_dist, prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params_gamma <- function(prob_dist_params) {
+.clean_epidist_params_gamma <- function(prob_dist_params) {
   # if shape and rate are provided convert to shape and scale
   if (all(c("shape", "rate") %in% names(prob_dist_params))) {
     prob_dist_params[["rate"]] <- 1 / prob_dist_params[["rate"]]
@@ -558,7 +558,7 @@ clean_epidist_params_gamma <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params_lnorm <- function(prob_dist_params) {
+.clean_epidist_params_lnorm <- function(prob_dist_params) {
   # if mu and sigma are provided convert to meanlog and sdlog
   if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
     # find index so parameters can be in any order
@@ -590,7 +590,7 @@ clean_epidist_params_lnorm <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params_weibull <- function(prob_dist_params) {
+.clean_epidist_params_weibull <- function(prob_dist_params) {
   if (all(c("shape", "scale") %in% names(prob_dist_params))) {
     # no cleaning needed
     return(prob_dist_params)
@@ -608,7 +608,7 @@ clean_epidist_params_weibull <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params_nbinom <- function(prob_dist_params) {
+.clean_epidist_params_nbinom <- function(prob_dist_params) {
   if (all(c("n", "p") %in% names(prob_dist_params))) {
     # convert prob to mean
     prob_dist_params[["p"]] <- convert_params_to_summary_stats(
@@ -646,7 +646,7 @@ clean_epidist_params_nbinom <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params_geom <- function(prob_dist_params) {
+.clean_epidist_params_geom <- function(prob_dist_params) {
   # if mean is provided convert to prob
   if ("mean" %in% names(prob_dist_params)) {
     prob_dist_params[["mean"]] <- 1 / prob_dist_params[["mean"]]
@@ -686,7 +686,7 @@ clean_epidist_params_geom <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params_pois <- function(prob_dist_params) {
+.clean_epidist_params_pois <- function(prob_dist_params) {
   if (names(prob_dist_params) %in% c("mean", "l", "lambda")) {
     names(prob_dist_params) <- "mean"
 
@@ -706,7 +706,7 @@ clean_epidist_params_pois <- function(prob_dist_params) {
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-clean_epidist_params_norm <- function(prob_dist_params) {
+.clean_epidist_params_norm <- function(prob_dist_params) {
   if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
 
     # find index so parameters can be in any order

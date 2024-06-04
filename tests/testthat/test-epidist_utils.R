@@ -89,23 +89,23 @@ test_that("create_epidist_citation works with PMID", {
   expect_identical(citation$pmid, "84772544")
 })
 
-test_that("clean_epidist_params works as expected for gamma", {
-  params <- clean_epidist_params(
+test_that(".clean_epidist_params works as expected for gamma", {
+  params <- .clean_epidist_params(
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1)
   )
   expect_identical(params, c(shape = 1, scale = 1))
 
-  params <- clean_epidist_params(
+  params <- .clean_epidist_params(
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, rate = 0.5)
   )
   expect_identical(params, c(shape = 1, scale = 2))
 })
 
-test_that("clean_epidist_params fails when gamma parameters are incorrect", {
+test_that(".clean_epidist_params fails when gamma parameters are incorrect", {
   expect_error(
-    clean_epidist_params(
+    .clean_epidist_params(
       prob_dist = "gamma",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
@@ -113,23 +113,23 @@ test_that("clean_epidist_params fails when gamma parameters are incorrect", {
   )
 })
 
-test_that("clean_epidist_params works as expected for lnorm", {
-  params <- clean_epidist_params(
+test_that(".clean_epidist_params works as expected for lnorm", {
+  params <- .clean_epidist_params(
     prob_dist = "lnorm",
     prob_dist_params = c(meanlog = 1, sdlog = 1)
   )
   expect_identical(params, c(meanlog = 1, sdlog = 1))
 
-  params <- clean_epidist_params(
+  params <- .clean_epidist_params(
     prob_dist = "lnorm",
     prob_dist_params = c(mu = 2, sigma = 2)
   )
   expect_identical(params, c(meanlog = 2, sdlog = 2))
 })
 
-test_that("clean_epidist_params fails when lnorm parameters are incorrect", {
+test_that(".clean_epidist_params fails when lnorm parameters are incorrect", {
   expect_error(
-    clean_epidist_params(
+    .clean_epidist_params(
       prob_dist = "lnorm",
       prob_dist_params = c(shape = 1, scale = 1)
     ),
@@ -137,17 +137,17 @@ test_that("clean_epidist_params fails when lnorm parameters are incorrect", {
   )
 })
 
-test_that("clean_epidist_params works as expected for weibull", {
-  params <- clean_epidist_params(
+test_that(".clean_epidist_params works as expected for weibull", {
+  params <- .clean_epidist_params(
     prob_dist = "weibull",
     prob_dist_params = c(shape = 1, scale = 1)
   )
   expect_identical(params, c(shape = 1, scale = 1))
 })
 
-test_that("clean_epidist_params fails when weibull parameters are incorrect", {
+test_that(".clean_epidist_params fails when weibull parameters are incorrect", {
   expect_error(
-    clean_epidist_params(
+    .clean_epidist_params(
       prob_dist = "weibull",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
@@ -155,23 +155,23 @@ test_that("clean_epidist_params fails when weibull parameters are incorrect", {
   )
 })
 
-test_that("clean_epidist_params works as expected for nbinom", {
-  params <- clean_epidist_params(
+test_that(".clean_epidist_params works as expected for nbinom", {
+  params <- .clean_epidist_params(
     prob_dist = "nbinom",
     prob_dist_params = c(n = 2, p = 0.5)
   )
   expect_identical(params, c(mean = 2, dispersion = 2))
 
-  params <- clean_epidist_params(
+  params <- .clean_epidist_params(
     prob_dist = "nbinom",
     prob_dist_params = c(mean = 1, dispersion = 1)
   )
   expect_identical(params, c(mean = 1, dispersion = 1))
 })
 
-test_that("clean_epidist_params fails when nbinom parameters are incorrect", {
+test_that(".clean_epidist_params fails when nbinom parameters are incorrect", {
   expect_error(
-    clean_epidist_params(
+    .clean_epidist_params(
       prob_dist = "nbinom",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
@@ -179,29 +179,29 @@ test_that("clean_epidist_params fails when nbinom parameters are incorrect", {
   )
 })
 
-test_that("clean_epidist_params works as expected for geom", {
-  params <- clean_epidist_params(
+test_that(".clean_epidist_params works as expected for geom", {
+  params <- .clean_epidist_params(
     prob_dist = "geom",
     prob_dist_params = c(prob = 0.5)
   )
   expect_identical(params, c(prob = 0.5))
 
-  params <- clean_epidist_params(
+  params <- .clean_epidist_params(
     prob_dist = "geom",
     prob_dist_params = c(p = 0.5)
   )
   expect_identical(params, c(prob = 0.5))
 
-  params <- clean_epidist_params(
+  params <- .clean_epidist_params(
     prob_dist = "geom",
     prob_dist_params = c(mean = 2)
   )
   expect_identical(params, c(prob = 0.5))
 })
 
-test_that("clean_epidist_params fails when geom parameters are incorrect", {
+test_that(".clean_epidist_params fails when geom parameters are incorrect", {
   expect_error(
-    clean_epidist_params(
+    .clean_epidist_params(
       prob_dist = "geom",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
@@ -209,29 +209,29 @@ test_that("clean_epidist_params fails when geom parameters are incorrect", {
   )
 })
 
-test_that("clean_epidist_params works as expected for pois", {
-  params <- clean_epidist_params(
+test_that(".clean_epidist_params works as expected for pois", {
+  params <- .clean_epidist_params(
     prob_dist = "pois",
     prob_dist_params = c(mean = 0.5)
   )
   expect_identical(params, c(mean = 0.5))
 
-  params <- clean_epidist_params(
+  params <- .clean_epidist_params(
     prob_dist = "pois",
     prob_dist_params = c(l = 0.5)
   )
   expect_identical(params, c(mean = 0.5))
 
-  params <- clean_epidist_params(
+  params <- .clean_epidist_params(
     prob_dist = "pois",
     prob_dist_params = c(lambda = 0.5)
   )
   expect_identical(params, c(mean = 0.5))
 })
 
-test_that("clean_epidist_params fails when pois parameters are incorrect", {
+test_that(".clean_epidist_params fails when pois parameters are incorrect", {
   expect_error(
-    clean_epidist_params(
+    .clean_epidist_params(
       prob_dist = "pois",
       prob_dist_params = c(means = 1)
     ),
@@ -239,9 +239,9 @@ test_that("clean_epidist_params fails when pois parameters are incorrect", {
   )
 })
 
-test_that("clean_epidist_params fails as expected", {
+test_that(".clean_epidist_params fails as expected", {
   expect_error(
-    clean_epidist_params(
+    .clean_epidist_params(
       prob_dist = "distribution",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
