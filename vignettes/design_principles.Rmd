@@ -40,6 +40,8 @@ Other functions return the simplest type possible, this may be an atomic vector 
 
 * The package uses S3 classes and S3 dispatch for exported functions, and `switch()` and `do.call()` for dispatching to internal functions. This is because it is easier to develop and debug internal functions that do not use S3 dispatch and avoids having to ensure that S3 methods are registered. Examples of S3 dispatch for exported functions are `get_parameters()` and `convert_summary_stats_to_params()`. Examples of internal dispatch using `switch()` and `do.call()` are `clean_epidist_params()` and `convert_params_to_summary_stats.character()`.
 
+* The function naming convention is for internal functions to have a dot (.) prefix (e.g. `.convert_params_lnorm()`).
+
 ## Dependencies
 
 The aim is to restrict the number of dependencies to a minimal required set for ease of maintenance. The current hard dependencies are:
