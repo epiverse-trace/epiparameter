@@ -8,6 +8,18 @@
 #'
 #' @return Invisibly returns a `<multi_epidist>`. Called for side-effects.
 #' @export
+#' @examples
+#' # entire database
+#' db <- epidist_db()
+#' db
+#'
+#' # a single disease
+#' db <- epidist_db(disease = "Ebola")
+#' db
+#'
+#' # a single epi parameter
+#' db <- epidist_db(epi_dist = "offspring distribution")
+#' db
 print.multi_epidist <- function(x, ..., n = NULL) {
   chkDots(...)
 
@@ -68,8 +80,8 @@ print.multi_epidist <- function(x, ..., n = NULL) {
         " Use `parameter_tbl()` to see a summary table of the parameters.\n",
         "# ", cli::symbol$info, " Explore database online at: ",
         cli::style_hyperlink(
-          text = "https://epiverse-trace.github.io/epiparameter/dev/articles/database.html",
-          url = "https://epiverse-trace.github.io/epiparameter/dev/articles/database.html"
+          text = "https://epiverse-trace.github.io/epiparameter/dev/articles/database.html", # nolint line_length_linter
+          url = "https://epiverse-trace.github.io/epiparameter/dev/articles/database.html" # nolint line_length_linter
         )
       )
     )
