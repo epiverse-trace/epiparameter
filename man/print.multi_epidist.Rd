@@ -21,3 +21,16 @@ Invisibly returns a \verb{<multi_epidist>}. Called for side-effects.
 \description{
 Print method for \verb{<multi_epidist>} class
 }
+\examples{
+# entire database
+db <- epidist_db()
+db
+
+# a single disease
+db <- epidist_db(disease = "Ebola")
+db
+
+# a single epi parameter
+db <- epidist_db(epi_dist = "offspring distribution")
+db
+}
