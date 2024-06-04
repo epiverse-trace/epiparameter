@@ -109,7 +109,7 @@ test_that(".clean_epidist_params fails when gamma parameters are incorrect", {
       prob_dist = "gamma",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
-    regexp = "Names of gamma distribution parameters are incorrect"
+    regexp = "Invalid parameterisation for gamma distribution"
   )
 })
 
@@ -133,7 +133,7 @@ test_that(".clean_epidist_params fails when lnorm parameters are incorrect", {
       prob_dist = "lnorm",
       prob_dist_params = c(shape = 1, scale = 1)
     ),
-    regexp = "Names of lognormal distribution parameters are incorrect"
+    regexp = "Invalid parameterisation for lnorm distribution"
   )
 })
 
@@ -151,7 +151,7 @@ test_that(".clean_epidist_params fails when weibull parameters are incorrect", {
       prob_dist = "weibull",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
-    regexp = "Names of Weibull distribution parameters are incorrect"
+    regexp = "Invalid parameterisation for weibull distribution"
   )
 })
 
@@ -175,7 +175,7 @@ test_that(".clean_epidist_params fails when nbinom parameters are incorrect", {
       prob_dist = "nbinom",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
-    regexp = "Names of negative binomial distribution parameters are incorrect"
+    regexp = "Invalid parameterisation for nbinom distribution"
   )
 })
 
@@ -205,7 +205,7 @@ test_that(".clean_epidist_params fails when geom parameters are incorrect", {
       prob_dist = "geom",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
-    regexp = "Names of geometric distribution parameters are incorrect"
+    regexp = "Invalid parameterisation for geom distribution"
   )
 })
 
@@ -235,7 +235,7 @@ test_that(".clean_epidist_params fails when pois parameters are incorrect", {
       prob_dist = "pois",
       prob_dist_params = c(means = 1)
     ),
-    regexp = "Name of poisson distribution parameter is incorrect"
+    regexp = "Invalid parameterisation for pois distribution"
   )
 })
 
@@ -245,7 +245,7 @@ test_that(".clean_epidist_params fails as expected", {
       prob_dist = "distribution",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
-    regexp = "Probability distribution not recognised"
+    regexp = "Invalid parameterisation for distribution distribution"
   )
 })
 
