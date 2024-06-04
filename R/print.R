@@ -21,8 +21,8 @@ print.multi_epidist <- function(x, ..., n = NULL) {
     }
   }
 
-  extra_n <- length(x) - n
-  n_entries <- length(x) # nolint object_usage_linter used by cli {} syntax
+  n_entries <- length(x)
+  extra_n <- n_entries - n
 
   diseases <- vapply(x, "[[", FUN.VALUE = character(1), "disease")
   alpha_unique_diseases <- sort(unique(diseases))
