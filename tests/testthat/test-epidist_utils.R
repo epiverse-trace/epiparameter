@@ -90,143 +90,162 @@ test_that("create_epidist_citation works with PMID", {
 })
 
 test_that("clean_epidist_params works as expected for gamma", {
-  gamma_params <- c(shape = 1, scale = 1)
-  class(gamma_params) <- "gamma"
-  params <- clean_epidist_params(prob_dist_params = gamma_params)
+  params <- clean_epidist_params(
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, scale = 1)
+  )
   expect_identical(params, c(shape = 1, scale = 1))
 
-  gamma_params <- c(shape = 1, rate = 0.5)
-  class(gamma_params) <- "gamma"
-  params <- clean_epidist_params(prob_dist_params = gamma_params)
+  params <- clean_epidist_params(
+    prob_dist = "gamma",
+    prob_dist_params = c(shape = 1, rate = 0.5)
+  )
   expect_identical(params, c(shape = 1, scale = 2))
 })
 
 test_that("clean_epidist_params fails when gamma parameters are incorrect", {
-  gamma_params <- c(meanlog = 1, sdlog = 1)
-  class(gamma_params) <- "gamma"
   expect_error(
-    clean_epidist_params(prob_dist_params = gamma_params),
+    clean_epidist_params(
+      prob_dist = "gamma",
+      prob_dist_params = c(meanlog = 1, sdlog = 1)
+    ),
     regexp = "Names of gamma distribution parameters are incorrect"
   )
 })
 
 test_that("clean_epidist_params works as expected for lnorm", {
-  lnorm_params <- c(meanlog = 1, sdlog = 1)
-  class(lnorm_params) <- "lnorm"
-  params <- clean_epidist_params(prob_dist_params = lnorm_params)
+  params <- clean_epidist_params(
+    prob_dist = "lnorm",
+    prob_dist_params = c(meanlog = 1, sdlog = 1)
+  )
   expect_identical(params, c(meanlog = 1, sdlog = 1))
 
-  lnorm_params <- c(mu = 2, sigma = 2)
-  class(lnorm_params) <- "lnorm"
-  params <- clean_epidist_params(prob_dist_params = lnorm_params)
+  params <- clean_epidist_params(
+    prob_dist = "lnorm",
+    prob_dist_params = c(mu = 2, sigma = 2)
+  )
   expect_identical(params, c(meanlog = 2, sdlog = 2))
 })
 
-test_that("clean_epidist_params fails when lognormal parameters are
-          incorrect", {
-  lognormal_params <- c(shape = 1, scale = 1)
-  class(lognormal_params) <- "lnorm"
+test_that("clean_epidist_params fails when lnorm parameters are incorrect", {
   expect_error(
-    clean_epidist_params(prob_dist_params = lognormal_params),
+    clean_epidist_params(
+      prob_dist = "lnorm",
+      prob_dist_params = c(shape = 1, scale = 1)
+    ),
     regexp = "Names of lognormal distribution parameters are incorrect"
   )
 })
 
 test_that("clean_epidist_params works as expected for weibull", {
-  weibull_params <- c(shape = 1, scale = 1)
-  class(weibull_params) <- "weibull"
-  params <- clean_epidist_params(prob_dist_params = weibull_params)
+  params <- clean_epidist_params(
+    prob_dist = "weibull",
+    prob_dist_params = c(shape = 1, scale = 1)
+  )
   expect_identical(params, c(shape = 1, scale = 1))
 })
 
 test_that("clean_epidist_params fails when weibull parameters are incorrect", {
-  weibull_params <- c(meanlog = 1, sdlog = 1)
-  class(weibull_params) <- "weibull"
   expect_error(
-    clean_epidist_params(prob_dist_params = weibull_params),
+    clean_epidist_params(
+      prob_dist = "weibull",
+      prob_dist_params = c(meanlog = 1, sdlog = 1)
+    ),
     regexp = "Names of Weibull distribution parameters are incorrect"
   )
 })
 
 test_that("clean_epidist_params works as expected for nbinom", {
-  nbinom_params <- c(n = 2, p = 0.5)
-  class(nbinom_params) <- "nbinom"
-  params <- clean_epidist_params(prob_dist_params = nbinom_params)
+  params <- clean_epidist_params(
+    prob_dist = "nbinom",
+    prob_dist_params = c(n = 2, p = 0.5)
+  )
   expect_identical(params, c(mean = 2, dispersion = 2))
 
-  nbinom_params <- c(mean = 1, dispersion = 1)
-  class(nbinom_params) <- "nbinom"
-  params <- clean_epidist_params(prob_dist_params = nbinom_params)
+  params <- clean_epidist_params(
+    prob_dist = "nbinom",
+    prob_dist_params = c(mean = 1, dispersion = 1)
+  )
   expect_identical(params, c(mean = 1, dispersion = 1))
 })
 
 test_that("clean_epidist_params fails when nbinom parameters are incorrect", {
-  nbinom_params <- c(meanlog = 1, sdlog = 1)
-  class(nbinom_params) <- "nbinom"
   expect_error(
-    clean_epidist_params(prob_dist_params = nbinom_params),
+    clean_epidist_params(
+      prob_dist = "nbinom",
+      prob_dist_params = c(meanlog = 1, sdlog = 1)
+    ),
     regexp = "Names of negative binomial distribution parameters are incorrect"
   )
 })
 
 test_that("clean_epidist_params works as expected for geom", {
-  geom_params <- c(prob = 0.5)
-  class(geom_params) <- "geom"
-  params <- clean_epidist_params(prob_dist_params = geom_params)
+  params <- clean_epidist_params(
+    prob_dist = "geom",
+    prob_dist_params = c(prob = 0.5)
+  )
   expect_identical(params, c(prob = 0.5))
 
-  geom_params <- c(p = 0.5)
-  class(geom_params) <- "geom"
-  params <- clean_epidist_params(prob_dist_params = geom_params)
+  params <- clean_epidist_params(
+    prob_dist = "geom",
+    prob_dist_params = c(p = 0.5)
+  )
   expect_identical(params, c(prob = 0.5))
 
-  geom_params <- c(mean = 2)
-  class(geom_params) <- "geom"
-  params <- clean_epidist_params(prob_dist_params = geom_params)
+  params <- clean_epidist_params(
+    prob_dist = "geom",
+    prob_dist_params = c(mean = 2)
+  )
   expect_identical(params, c(prob = 0.5))
 })
 
 test_that("clean_epidist_params fails when geom parameters are incorrect", {
-  geom_params <- c(meanlog = 1, sdlog = 1)
-  class(geom_params) <- "geom"
   expect_error(
-    clean_epidist_params(prob_dist_params = geom_params),
+    clean_epidist_params(
+      prob_dist = "geom",
+      prob_dist_params = c(meanlog = 1, sdlog = 1)
+    ),
     regexp = "Names of geometric distribution parameters are incorrect"
   )
 })
 
 test_that("clean_epidist_params works as expected for pois", {
-  pois_params <- c(mean = 0.5)
-  class(pois_params) <- "pois"
-  params <- clean_epidist_params(prob_dist_params = pois_params)
+  params <- clean_epidist_params(
+    prob_dist = "pois",
+    prob_dist_params = c(mean = 0.5)
+  )
   expect_identical(params, c(mean = 0.5))
 
-  pois_params <- c(l = 0.5)
-  class(pois_params) <- "pois"
-  params <- clean_epidist_params(prob_dist_params = pois_params)
+  params <- clean_epidist_params(
+    prob_dist = "pois",
+    prob_dist_params = c(l = 0.5)
+  )
   expect_identical(params, c(mean = 0.5))
 
-  pois_params <- c(lambda = 0.5)
-  class(pois_params) <- "pois"
-  params <- clean_epidist_params(prob_dist_params = pois_params)
+  params <- clean_epidist_params(
+    prob_dist = "pois",
+    prob_dist_params = c(lambda = 0.5)
+  )
   expect_identical(params, c(mean = 0.5))
 })
 
 test_that("clean_epidist_params fails when pois parameters are incorrect", {
-  pois_param <- c(means = 1)
-  class(pois_param) <- "pois"
   expect_error(
-    clean_epidist_params(prob_dist_params = pois_param),
+    clean_epidist_params(
+      prob_dist = "pois",
+      prob_dist_params = c(means = 1)
+    ),
     regexp = "Name of poisson distribution parameter is incorrect"
   )
 })
 
-test_that("clean_epidist_params works for default method", {
-  weibull_params <- c(meanlog = 1, sdlog = 1)
-  class(weibull_params) <- "distribution"
-  expect_message(
-    clean_epidist_params(prob_dist_params = weibull_params),
-    regexp = "parameters class not recognised"
+test_that("clean_epidist_params fails as expected", {
+  expect_error(
+    clean_epidist_params(
+      prob_dist = "distribution",
+      prob_dist_params = c(meanlog = 1, sdlog = 1)
+    ),
+    regexp = "Probability distribution not recognised"
   )
 })
 
