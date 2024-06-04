@@ -31,15 +31,10 @@ print.multi_epidist <- function(x, ..., n = NULL) {
   )
   alpha_unique_epi_dists <- sort(unique(epi_dists))
 
-
   # header
   writeLines(
     pillar::style_subtle(
-      paste0(
-        "# List of <epidist> objects \n",
-        "# A list:  ", cli::pluralize("{n_entries} element{?s}"),
-        "\n"
-      )
+      cli::pluralize("# List of {n_entries} <epidist> object{?s}\n")
     )
   )
   writeLines(
