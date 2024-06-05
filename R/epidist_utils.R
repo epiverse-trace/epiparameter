@@ -533,11 +533,11 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
       call. = FALSE
     )
   }
+  # weibull only has one parameterisation so does not need cleaning
   clean_func <- switch(
     prob_dist,
     gamma = .clean_epidist_params_gamma,
     lnorm = .clean_epidist_params_lnorm,
-    weibull = .clean_epidist_params_weibull,
     nbinom = .clean_epidist_params_nbinom,
     geom = .clean_epidist_params_geom,
     pois = .clean_epidist_params_pois,
@@ -593,19 +593,6 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   } else {
     stop(
       "Names of lognormal distribution parameters are incorrect",
-      call. = FALSE
-    )
-  }
-}
-
-#' @name .clean_epidist_params
-.clean_epidist_params_weibull <- function(prob_dist_params) {
-  if (all(c("shape", "scale") %in% names(prob_dist_params))) {
-    # no cleaning needed
-    return(prob_dist_params)
-  } else {
-    stop(
-      "Names of Weibull distribution parameters are incorrect",
       call. = FALSE
     )
   }

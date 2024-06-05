@@ -4,7 +4,6 @@
 \alias{.clean_epidist_params}
 \alias{.clean_epidist_params_gamma}
 \alias{.clean_epidist_params_lnorm}
-\alias{.clean_epidist_params_weibull}
 \alias{.clean_epidist_params_nbinom}
 \alias{.clean_epidist_params_geom}
 \alias{.clean_epidist_params_pois}
@@ -16,8 +15,6 @@
 .clean_epidist_params_gamma(prob_dist_params)
 
 .clean_epidist_params_lnorm(prob_dist_params)
-
-.clean_epidist_params_weibull(prob_dist_params)
 
 .clean_epidist_params_nbinom(prob_dist_params)
 
