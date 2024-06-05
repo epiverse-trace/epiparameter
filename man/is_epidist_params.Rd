@@ -23,6 +23,10 @@ A boolean \code{logical}.
 Check whether the vector of parameters for the probability distribution
 are in the set of possible parameters used in the epiparameter package
 }
+\details{
+This check for valid parameters is independent of whether the distribution
+is truncated or discretised.
+}
 \examples{
 is_epidist_params(
   prob_dist = "gamma",

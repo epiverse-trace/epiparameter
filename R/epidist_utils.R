@@ -456,6 +456,10 @@ create_epidist_method_assess <- function(censored = NA,
 #' Check whether the vector of parameters for the probability distribution
 #' are in the set of possible parameters used in the epiparameter package
 #'
+#' @details
+#' This check for valid parameters is independent of whether the distribution
+#' is truncated or discretised.
+#'
 #' @inheritParams new_epidist
 #'
 #' @return A boolean `logical`.
@@ -477,6 +481,13 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
     min.len = 1,
     names = "unique"
   )
+
+  # remove truncation parameters if truncated
+  if ("upper" %in% names(prob_dist_params)) {
+    prob_dist_params <- prob_dist_params[
+      names(prob_dist_params) != c("lower", "upper")
+    ]
+  }
 
   # create dictionary of valid parameter combinations
   possible_params <- list(
@@ -533,11 +544,22 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
       call. = FALSE
     )
   }
+  is_trunc <- "upper" %in% names(prob_dist_params)
+  # remove truncation parameters if truncated
+  if (is_trunc) {
+    trunc_params <- prob_dist_params[
+      names(prob_dist_params) == c("lower", "upper")
+    ]
+    prob_dist_params <- prob_dist_params[
+      names(prob_dist_params) != c("lower", "upper")
+    ]
+  }
   # weibull only has one parameterisation so does not need cleaning
   clean_func <- switch(
     prob_dist,
     gamma = .clean_epidist_params_gamma,
     lnorm = .clean_epidist_params_lnorm,
+    weibull = function(x) x,
     nbinom = .clean_epidist_params_nbinom,
     geom = .clean_epidist_params_geom,
     pois = .clean_epidist_params_pois,
@@ -545,6 +567,11 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
     stop("Probability distribution not recognised", call. = FALSE)
   )
   clean_params <- do.call(clean_func, list(prob_dist_params))
+  # reappend truncation parameter if truncated
+  if (is_trunc) {
+    clean_params <- append(clean_params, trunc_params)
+  }
+
   # return parameters
   clean_params
 }
