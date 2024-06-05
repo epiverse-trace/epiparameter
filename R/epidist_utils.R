@@ -493,7 +493,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
   # check whether any combinations are valid
   matches <- vapply(
     possible_params,
-    function(x, y) all(utils::hasName(y, name = x)),
+    function(x, y) all(names(y) %in% x) && identical(length(y), length(x)),
     y = prob_dist_params,
     FUN.VALUE = logical(1)
   )
