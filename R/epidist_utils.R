@@ -551,8 +551,9 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
 
 #' @name .clean_epidist_params
 .clean_epidist_params_gamma <- function(prob_dist_params) {
+  # no cleaning needed for shape and scale parameterisation
   # if shape and rate are provided convert to shape and scale
-  if (all(c("shape", "rate") %in% names(prob_dist_params))) {
+  if (identical(names(prob_dist_params), c("shape", "rate"))) {
     prob_dist_params[["rate"]] <- 1 / prob_dist_params[["rate"]]
     names(prob_dist_params) <- gsub(
       pattern = "rate",
@@ -560,47 +561,29 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
       x = names(prob_dist_params),
       fixed = TRUE
     )
-
-    # return prob_dist_params
-    return(prob_dist_params)
-  } else if (all(c("shape", "scale") %in% names(prob_dist_params))) {
-    # no cleaning needed
-    return(prob_dist_params)
-  } else {
-    stop("Names of gamma distribution parameters are incorrect", call. = FALSE)
   }
+  # return prob_dist_params
+  prob_dist_params
 }
 
 #' @name .clean_epidist_params
 .clean_epidist_params_lnorm <- function(prob_dist_params) {
+  # no cleaning needed for meanlog and sdlog parameterisation
   # if mu and sigma are provided convert to meanlog and sdlog
-  if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
+  if (identical(names(prob_dist_params), c("mu", "sigma"))) {
     # find index so parameters can be in any order
     mu_index <- which(names(prob_dist_params) == "mu")
     sigma_index <- which(names(prob_dist_params) == "sigma")
     names(prob_dist_params)[c(mu_index, sigma_index)] <- c("meanlog", "sdlog")
-
-    # return prob_dist_params
-    return(prob_dist_params)
   }
-  if (all(c("meanlog", "sdlog") %in% names(prob_dist_params))) {
-    # remove extra parameters
-    param_idx <- names(prob_dist_params) %in% c("meanlog", "sdlog")
-    prob_dist_params <- prob_dist_params[param_idx]
-
-    # no cleaning needed
-    return(prob_dist_params)
-  } else {
-    stop(
-      "Names of lognormal distribution parameters are incorrect",
-      call. = FALSE
-    )
-  }
+  # return prob_dist_params
+  prob_dist_params
 }
 
 #' @name .clean_epidist_params
 .clean_epidist_params_nbinom <- function(prob_dist_params) {
-  if (all(c("n", "p") %in% names(prob_dist_params))) {
+  # no cleaning needed for mean and dispersion parameterisation
+  if (identical(names(prob_dist_params), c("n", "p"))) {
     # convert prob to mean
     prob_dist_params[["p"]] <- convert_params_to_summary_stats(
       "nbinom",
@@ -615,26 +598,16 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
 
     # rearrange vector
     prob_dist_params <- prob_dist_params[c("mean", "dispersion")]
-
-    # return prob_dist_params
-    return(prob_dist_params)
   }
-  if (all(c("mean", "dispersion") %in% names(prob_dist_params))) {
-
-    # no cleaning needed
-    return(prob_dist_params)
-  } else {
-    stop(
-      "Names of negative binomial distribution parameters are incorrect",
-      call. = FALSE
-    )
-  }
+  # return prob_dist_params
+  prob_dist_params
 }
 
 #' @name .clean_epidist_params
 .clean_epidist_params_geom <- function(prob_dist_params) {
+  # no cleaning needed for prob parameterisation
   # if mean is provided convert to prob
-  if ("mean" %in% names(prob_dist_params)) {
+  if (identical(names(prob_dist_params), "mean")) {
     prob_dist_params[["mean"]] <- 1 / prob_dist_params[["mean"]]
     names(prob_dist_params) <- gsub(
       pattern = "mean",
@@ -642,48 +615,30 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
       x = names(prob_dist_params),
       fixed = TRUE
     )
-
-    # return prob_dist_params
-    return(prob_dist_params)
-  } else if ("p" %in% names(prob_dist_params)) {
+  } else if (identical(names(prob_dist_params), "p")) {
     names(prob_dist_params) <- gsub(
       pattern = "^p$",
       replacement = "prob",
       x = names(prob_dist_params)
     )
-
-    # no cleaning needed
-    return(prob_dist_params)
-  } else if ("prob" %in% names(prob_dist_params)) {
-
-    # no cleaning needed
-    return(prob_dist_params)
-  } else {
-    stop(
-      "Names of geometric distribution parameters are incorrect",
-      call. = FALSE
-    )
   }
+  # return prob_dist_params
+  prob_dist_params
 }
 
 #' @name .clean_epidist_params
 .clean_epidist_params_pois <- function(prob_dist_params) {
   if (names(prob_dist_params) %in% c("mean", "l", "lambda")) {
     names(prob_dist_params) <- "mean"
-
-    # return prob_dist_params
-    return(prob_dist_params)
-  } else {
-    stop(
-      "Name of poisson distribution parameter is incorrect",
-      call. = FALSE
-    )
   }
+  # return prob_dist_params
+  prob_dist_params
 }
 
 #' @name .clean_epidist_params
 .clean_epidist_params_norm <- function(prob_dist_params) {
-  if (all(c("mu", "sigma") %in% names(prob_dist_params))) {
+  # no cleaning needed for mean and sd parameterisation
+  if (identical(names(prob_dist_params), c("mu", "sigma"))) {
 
     # find index so parameters can be in any order
     mean_index <- which(names(prob_dist_params) == "mu")
@@ -692,20 +647,9 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
 
     # rearrange vector
     prob_dist_params <- prob_dist_params[c("mean", "sd")]
-
-    # return prob_dist_params
-    return(prob_dist_params)
   }
-  if (all(c("mean", "sd") %in% names(prob_dist_params))) {
-
-    # no cleaning needed
-    return(prob_dist_params)
-  } else {
-    stop(
-      "Names of normal distribution parameters are incorrect",
-      call. = FALSE
-    )
-  }
+  # return prob_dist_params
+  prob_dist_params
 }
 
 #' Standardise the variables input by users
