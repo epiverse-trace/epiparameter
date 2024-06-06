@@ -9,10 +9,9 @@ epidemiological parameter data exported by the \pkg{epireview} R package.}
 \subsection{\code{epireview_core_cols}}{
 
 A \code{character} vector with 56 elements
-\describe{
+
 The data is taken as the intersection of the column names of each of the
 disease parameter tables in the \pkg{epireview} R package.
-}
 }
 }
 \source{
