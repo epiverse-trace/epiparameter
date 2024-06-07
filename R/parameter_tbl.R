@@ -78,7 +78,7 @@ parameter_tbl <- function(multi_epidist,
   }, FUN.VALUE = character(1))
 
   year <- vapply(
-    multi_epidist, function(x) as.numeric(x$citation$year), # nolint lambda
+    multi_epidist, function(x) as.numeric(x$citation$year),
     FUN.VALUE = numeric(1)
   )
   sample_size <- vapply(
