@@ -397,9 +397,10 @@ epireview_to_epidist <- function(x, ...) {
 
   # clean parameter type name by removing the parameter class
   epi_dist <- gsub(
-    pattern = paste0(x1$parameter_class, " \\- "), # nolint nonportable_path_linter
+    pattern = paste0(x1$parameter_class, " - "),
     replacement = "",
-    x = x1$parameter_type
+    x = x1$parameter_type,
+    fixed = TRUE
   )
 
   region <- as.vector(
