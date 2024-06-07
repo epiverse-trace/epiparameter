@@ -118,16 +118,18 @@ extract_param <- function(type = c("percentiles", "range"),
   )
 
   # Validate inputs
-  switch(type,
-    percentiles = stopifnot( # nolint consecutive_assertion_linter
+  if (type == "percentiles") {
+    stopifnot(
       "'values' and 'percentiles' need to be a vector of length 2" =
-        type == "percentiles" && length(values) == 2 || length(percentiles) == 2
-    ),
-    range = stopifnot(
-      "'values need to be a vector of length 3" =
-        type == "range" && length(values) == 3
+        length(values) == 2 || length(percentiles) == 2
     )
-  )
+  }
+  if (type == "range") {
+    stopifnot(
+      "'values need to be a vector of length 3" =
+        length(values) == 3
+    )
+  }
 
   # initialise for the loop
   optim_conv <- FALSE
