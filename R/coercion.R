@@ -199,7 +199,7 @@ epidist_df_to_epidist <- function(x, ...) {
   }
 
   # remove <AsIs> from citation
-  class(x$citation) <- class(x$citation)[!class(x$citation) == "AsIs"] # nolint class_equals_linter
+  class(x$citation) <- setdiff(class(x$citation), "AsIs")
 
   # return <epidist> from class constructor
   epidist(
