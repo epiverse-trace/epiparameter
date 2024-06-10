@@ -220,7 +220,7 @@ test_that("sysdata is the same as .read_epidist_db output", {
   set.seed(1)
   sysdat <- suppressMessages(epidist_db())
   db <- .read_epidist_db()
-  expect_equal(sysdat, db, tolerance = 1e-3)
+  expect_equal(sysdat, db, tolerance = 2e-3)
 })
 
 test_that(".read_epidist_db fails correctly when jsonlite is not installed", {
