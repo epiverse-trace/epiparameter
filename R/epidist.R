@@ -811,6 +811,7 @@ family.epidist <- function(object, ...) {
     geometric = "geom",
     poisson = "pois",
     normal = "norm",
+    exponential = "exp",
     prob_dist
   )
 
