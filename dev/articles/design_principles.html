@@ -183,7 +183,17 @@ epidemiological parameters from the library using the
 default <code>list</code> printing in R. This is the reasoning for the
 <code>&lt;multi_epidist&gt;</code> object which is a minimal class to
 enable cleaner and more descriptive printing for a large list of
-<code>&lt;epidist&gt;</code> objects.</p></li>
+<code>&lt;epidist&gt;</code> objects. The
+<code><a href="../reference/print.multi_epidist.html">print.multi_epidist()</a></code> prints a header with metadata on the
+number of <code>&lt;epidist&gt;</code> objects and number of diseases
+and epidemiological distributions in the list. It also lists all the
+diseases and epidemiological parameters returned. The footer of the
+<code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function states the number of
+<code>&lt;epidist&gt;</code> objects not shown, guides to use
+<code>print(n = ...)</code> and <code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> and a link
+to the online database vignette (<code>database.Rmd</code>). Information
+in the header and footer considered metadata or advice is prefixed with
+<code>#</code>.</p></li>
 </ul>
 </div>
 <div class="section level2">

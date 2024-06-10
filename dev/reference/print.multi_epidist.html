@@ -70,7 +70,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Print method for <code>&lt;multi_epidist&gt;</code> class</h1>
-      <small class="dont-index">Source: <a href="https://github.com/epiverse-trace/epiparameter/blob/HEAD/R/epidist_db.R" class="external-link"><code>R/epidist_db.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/epiverse-trace/epiparameter/blob/HEAD/R/print.R" class="external-link"><code>R/print.R</code></a></small>
       <div class="d-none name"><code>print.multi_epidist.Rd</code></div>
     </div>
 
@@ -81,7 +81,7 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for multi_epidist</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, n <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -93,6 +93,12 @@
 <dt>...</dt>
 <dd><p><a href="https://rdrr.io/r/base/dots.html" class="external-link">dots</a> Extra arguments to be passed to the method.</p></dd>
 
+
+<dt>n</dt>
+<dd><p>A <code>numeric</code> specifying how many <code>&lt;epidist&gt;</code> objects to print. This
+argument is passed to <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code> for <code>list</code> printing. Default is <code>NULL</code> and the
+number of elements to print is controlled by package <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -101,6 +107,186 @@
 <p>Invisibly returns a <code>&lt;multi_epidist&gt;</code>. Called for side-effects.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># entire database</span></span></span>
+<span class="r-in"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 122 results that match the criteria (99 are parameterised). </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epidist to return a single entry. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
+<span class="r-in"><span><span class="va">db</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># List of 122 &lt;epidist&gt; objects</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">Number of diseases: 23</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">❯ Adenovirus ❯ COVID-19 ❯ Chikungunya ❯ Dengue ❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Human Coronavirus ❯ Influenza ❯ Japanese Encephalitis ❯ MERS ❯ Marburg Virus Disease ❯ Measles ❯ Mpox ❯ Parainfluenza ❯ Pneumonic Plague ❯ RSV ❯ Rhinovirus ❯ Rift Valley Fever ❯ SARS ❯ Smallpox ❯ West Nile Fever ❯ Yellow Fever ❯ Zika Virus Disease</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">Number of epi distributions: 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">❯ generation time ❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ onset to hospitalisation ❯ onset to ventilation ❯ serial interval</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Adenovirus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Adenovirus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: incubation period</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-6&gt;.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   meanlog: 1.247</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sdlog: 0.975</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Human Coronavirus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Human_Cov</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: incubation period</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-7&gt;.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   meanlog: 0.742</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sdlog: 0.918</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Disease: SARS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: SARS-Cov-1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: incubation period</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> “Incubation periods of acute respiratory viral infections: a systematic</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> review.” _The Lancet Infectious Diseases_.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1016/S1473-3099(09)70069-8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-8&gt;.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   meanlog: 0.660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sdlog: 1.205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 119 more elements</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more elements.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/dev/articles/database.html</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># a single disease</span></span></span>
+<span class="r-in"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"Ebola"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 17 results that match the criteria (17 are parameterised). </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epidist to return a single entry. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
+<span class="r-in"><span><span class="va">db</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># List of 17 &lt;epidist&gt; objects</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">Number of diseases: 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">❯ Ebola Virus Disease</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">Number of epi distributions: 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ serial interval</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Ebola Virus Disease</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Ebola Virus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: offspring distribution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: nbinom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean: 1.500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dispersion: 5.100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Ebola Virus Disease</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Ebola Virus-Zaire Subtype</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: incubation period</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Eichner M, Dowell S, Firese N (2011). “Incubation period of ebola</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hemorrhagic virus subtype zaire.” _Osong Public Health and Research</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Perspectives_. doi:10.1016/j.phrp.2011.04.001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/j.phrp.2011.04.001&gt;.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: lnorm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   meanlog: 2.487</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sdlog: 0.330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Ebola Virus Disease</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Ebola Virus-Zaire Subtype</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: onset to death</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: The Ebola Outbreak Epidemiology Team, Barry A, Ahuka-Mundeke S, Ali</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ahmed Y, Allarangar Y, Anoko J, Archer B, Abedi A, Bagaria J, Belizaire</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M, Bhatia S, Bokenge T, Bruni E, Cori A, Dabire E, Diallo A, Diallo B,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Donnelly C, Dorigatti I, Dorji T, Waeber A, Fall I, Ferguson N,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> FitzJohn R, Tengomo G, Formenty P, Forna A, Fortin A, Garske T,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gaythorpe K, Gurry C, Hamblion E, Djingarey M, Haskew C, Hugonnet S,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Imai N, Impouma B, Kabongo G, Kalenga O, Kibangou E, Lee T, Lukoya C,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ly O, Makiala-Mandanda S, Mamba A, Mbala-Kingebeni P, Mboussou F,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mlanda T, Makuma V, Morgan O, Mulumba A, Kakoni P, Mukadi-Bamuleka D,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Muyembe J, Bathé N, Ndumbi Ngamala P, Ngom R, Ngoy G, Nouvellet P, Nsio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> J, Ousman K, Peron E, Polonsky J, Ryan M, Touré A, Towner R, Tshapenda</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> G, Van De Weerdt R, Van Kerkhove M, Wendland A, Yao N, Yoti Z, Yuma E,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Kalambayi Kabamba G, Mwati J, Mbuy G, Lubula L, Mutombo A, Mavila O,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Lay Y, Kitenge E (2018). “Outbreak of Ebola virus disease in the</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Democratic Republic of the Congo, April–May, 2018: an epidemiological</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> study.” _The Lancet_. doi:10.1016/S0140-6736(18)31387-4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.1016/S0140-6736%2818%2931387-4&gt;.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: gamma</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   shape: 2.400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   scale: 3.333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more elements</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more elements.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/dev/articles/database.html</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># a single epi parameter</span></span></span>
+<span class="r-in"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span>epi_dist <span class="op">=</span> <span class="st">"offspring distribution"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 10 results that match the criteria (10 are parameterised). </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epidist to return a single entry. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
+<span class="r-in"><span><span class="va">db</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># List of 10 &lt;epidist&gt; objects</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">Number of diseases: 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Mpox ❯ Pneumonic Plague ❯ SARS ❯ Smallpox</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">Number of epi distributions: 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">❯ offspring distribution</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Disease: SARS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: SARS-Cov-1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: offspring distribution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: nbinom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean: 1.630</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dispersion: 0.160</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Disease: SARS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: SARS-Cov-1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: offspring distribution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: nbinom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean: 0.940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dispersion: 0.170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Smallpox</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Smallpox-Variola-Major</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: offspring distribution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> the effect of individual variation on disease emergence.” _Nature_.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> doi:10.1038/nature04153 &lt;https://doi.org/10.1038/nature04153&gt;.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Distribution: nbinom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Parameters:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean: 3.190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dispersion: 0.370</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more elements</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more elements.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/dev/articles/database.html</span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

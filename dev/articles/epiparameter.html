@@ -143,12 +143,57 @@ the data, and the functions (and methods) implemented in the package to facilita
 <span><span class="co">#&gt; To retrieve the citation for each use the 'get_citation' function</span></span></code></pre></div>
 </details><details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">epi_dist_db</span></span>
-<span><span class="co">#&gt; List of &lt;epidist&gt; objects</span></span>
-<span><span class="co">#&gt;   Number of entries in library: 122</span></span>
-<span><span class="co">#&gt;   Number of studies in library: 47</span></span>
-<span><span class="co">#&gt;   Number of diseases: 23</span></span>
-<span><span class="co">#&gt;   Number of delay distributions: 112</span></span>
-<span><span class="co">#&gt;   Number of offspring distributions: 10</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># List of 122 &lt;epidist&gt; objects</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">Number of diseases: 23</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">❯ Adenovirus ❯ Chikungunya ❯ COVID-19 ❯ Dengue ❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Human Coronavirus ❯ Influenza ❯ Japanese Encephalitis ❯ Marburg Virus Disease ❯ Measles ❯ MERS ❯ Mpox ❯ Parainfluenza ❯ Pneumonic Plague ❯ Rhinovirus ❯ Rift Valley Fever ❯ RSV ❯ SARS ❯ Smallpox ❯ West Nile Fever ❯ Yellow Fever ❯ Zika Virus Disease</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">Number of epi distributions: 12</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">❯ generation time ❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ onset to hospitalisation ❯ onset to ventilation ❯ serial interval</span></span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; Disease: Adenovirus</span></span>
+<span><span class="co">#&gt; Pathogen: Adenovirus</span></span>
+<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
+<span><span class="co">#&gt; Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span></span>
+<span><span class="co">#&gt; "Incubation periods of acute respiratory viral infections: a systematic</span></span>
+<span><span class="co">#&gt; review." _The Lancet Infectious Diseases_.</span></span>
+<span><span class="co">#&gt; doi:10.1016/S1473-3099(09)70069-6</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-6&gt;.</span></span>
+<span><span class="co">#&gt; Distribution: lnorm</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   meanlog: 1.247</span></span>
+<span><span class="co">#&gt;   sdlog: 0.975</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; Disease: Human Coronavirus</span></span>
+<span><span class="co">#&gt; Pathogen: Human_Cov</span></span>
+<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
+<span><span class="co">#&gt; Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span></span>
+<span><span class="co">#&gt; "Incubation periods of acute respiratory viral infections: a systematic</span></span>
+<span><span class="co">#&gt; review." _The Lancet Infectious Diseases_.</span></span>
+<span><span class="co">#&gt; doi:10.1016/S1473-3099(09)70069-7</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-7&gt;.</span></span>
+<span><span class="co">#&gt; Distribution: lnorm</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   meanlog: 0.742</span></span>
+<span><span class="co">#&gt;   sdlog: 0.918</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt; Disease: SARS</span></span>
+<span><span class="co">#&gt; Pathogen: SARS-Cov-1</span></span>
+<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
+<span><span class="co">#&gt; Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span></span>
+<span><span class="co">#&gt; "Incubation periods of acute respiratory viral infections: a systematic</span></span>
+<span><span class="co">#&gt; review." _The Lancet Infectious Diseases_.</span></span>
+<span><span class="co">#&gt; doi:10.1016/S1473-3099(09)70069-8</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-8&gt;.</span></span>
+<span><span class="co">#&gt; Distribution: lnorm</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   meanlog: 0.660</span></span>
+<span><span class="co">#&gt;   sdlog: 1.205</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more elements</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # ℹ Use `print(n = ...)` to see more elements.</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/dev/articles/database.html</span></span></span></code></pre></div>
 </details><p>The output is a list of <code>&lt;epidist&gt;</code> objects, where each element in the list corresponds to an entry in the parameter database. <em>Technical note</em>: the reason the object does not look like a regular R list is because it uses a custom print method which will print a summary of the data to the console when there are more than 5 entries to prevent a large list flooding the console. When the number of database entries returned is less than or equal to 5 the print will look like a standard R list.</p>
 <p>To see a full list of the diseases and distributions stored in the library use the
 <code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> function. Here we show the first six rows of the output.</p>
@@ -296,6 +341,11 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="co">#&gt; Returning 3 results that match the criteria (3 are parameterised). </span></span>
 <span><span class="co">#&gt; Use subset to filter by entry variables or single_epidist to return a single entry. </span></span>
 <span><span class="co">#&gt; To retrieve the citation for each use the 'get_citation' function</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># List of 3 &lt;epidist&gt; objects</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">Number of diseases: 1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">❯ COVID-19</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">Number of epi distributions: 1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">❯ incubation period</span></span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; Disease: COVID-19</span></span>
 <span><span class="co">#&gt; Pathogen: SARS-CoV-2</span></span>
@@ -339,7 +389,10 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   meanlog: 1.525</span></span>
-<span><span class="co">#&gt;   sdlog: 0.629</span></span></code></pre></div>
+<span><span class="co">#&gt;   sdlog: 0.629</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span></span>
+<span><span class="co"><span style="color: #949494;">#&gt; # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/dev/articles/database.html</span></span></span></code></pre></div>
 </details><p>The results can be further subset using the <code>subset</code> argument, for example <code>subset = sample_size &gt; 100</code> will return entries with a sample size greater than 100. See <code>?epidist_db()</code> for details on how to use this argument to subset which database entries get returned.</p>
 </div>
 <div class="section level2">
