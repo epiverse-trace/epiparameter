@@ -8,6 +8,7 @@
 \alias{.clean_epidist_params_geom}
 \alias{.clean_epidist_params_pois}
 \alias{.clean_epidist_params_norm}
+\alias{.clean_epidist_params_exp}
 \title{Standardise distribution parameters}
 \usage{
 .clean_epidist_params(prob_dist, prob_dist_params)
@@ -23,6 +24,8 @@
 .clean_epidist_params_pois(prob_dist_params)
 
 .clean_epidist_params_norm(prob_dist_params)
+
+.clean_epidist_params_exp(prob_dist_params)
 }
 \arguments{
 \item{prob_dist}{A character string specifying the probability

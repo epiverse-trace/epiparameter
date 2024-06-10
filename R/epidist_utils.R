@@ -565,6 +565,7 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
     geom = .clean_epidist_params_geom,
     pois = .clean_epidist_params_pois,
     norm = .clean_epidist_params_norm,
+    exp = .clean_epidist_params_exp,
     stop("Probability distribution not recognised", call. = FALSE)
   )
   clean_params <- do.call(clean_func, list(prob_dist_params))
@@ -675,6 +676,19 @@ is_epidist_params <- function(prob_dist, prob_dist_params) {
 
     # rearrange vector
     prob_dist_params <- prob_dist_params[c("mean", "sd")]
+  }
+  # return prob_dist_params
+  prob_dist_params
+}
+
+#' @name .clean_epidist_params
+.clean_epidist_params_exp <- function(prob_dist_params) {
+  # no cleaning needed for rate parameterisation
+  if (identical(names(prob_dist_params), "lambda")) {
+    names(prob_dist_params) <- "rate"
+  } else if (identical(names(prob_dist_params), "mean")) {
+    names(prob_dist_params) <- "rate"
+    prob_dist_params[["rate"]] <- 1 / prob_dist_params[["rate"]]
   }
   # return prob_dist_params
   prob_dist_params
