@@ -62,12 +62,11 @@ new_epidist <- function(disease = character(),
         identical(names(prob_dist_params), names(uncertainty))
   )
 
+  # TODO: formalise if statement below or remove
   # include mean in prob_dist_params
-  if (!is.null(summary_stats$mean) && !is.na(summary_stats$mean)) {
-    prob_dist_params <- c(
-      prob_dist_params[!is.na(prob_dist_params)],
-      mean = summary_stats$mean
-    )
+  if (!is.null(summary_stats$mean) && !is.na(summary_stats$mean) &&
+      prob_dist %in% c("nbinom", "geom", "pois", "norm")) {
+    prob_dist_params["mean"] <- summary_stats$mean
   }
 
   if (is_epidist_params(prob_dist, prob_dist_params)) {
