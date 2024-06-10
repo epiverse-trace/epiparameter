@@ -137,6 +137,9 @@ create_epidist_prob_dist <- function(prob_dist,
         mu = prob_dist_params[["mean"]],
         sigma = prob_dist_params[["sd"]]
       ),
+      exp = distributional::dist_exponential(
+        rate = prob_dist_params[["rate"]]
+      ),
       stop("Did not recognise distribution name", call. = FALSE)
     )
   }
