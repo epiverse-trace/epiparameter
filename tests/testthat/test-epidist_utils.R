@@ -239,6 +239,36 @@ test_that(".clean_epidist_params fails when pois parameters are incorrect", {
   )
 })
 
+test_that(".clean_epidist_params works as expected for exp", {
+  params <- .clean_epidist_params(
+    prob_dist = "exp",
+    prob_dist_params = c(rate = 2)
+  )
+  expect_identical(params, c(rate = 2))
+
+  params <- .clean_epidist_params(
+    prob_dist = "exp",
+    prob_dist_params = c(lambda = 2)
+  )
+  expect_identical(params, c(rate = 2))
+
+  params <- .clean_epidist_params(
+    prob_dist = "exp",
+    prob_dist_params = c(mean = 0.5)
+  )
+  expect_identical(params, c(rate = 2))
+})
+
+test_that(".clean_epidist_params fails when exp parameters are incorrect", {
+  expect_error(
+    .clean_epidist_params(
+      prob_dist = "exp",
+      prob_dist_params = c(means = 1)
+    ),
+    regexp = "Invalid parameterisation for exp distribution"
+  )
+})
+
 test_that(".clean_epidist_params fails as expected", {
   expect_error(
     .clean_epidist_params(

@@ -94,6 +94,22 @@ test_that("create_epidist_prob_dist works for poisson", {
   )
 })
 
+test_that("create_epidist_prob_dist works for exponential", {
+  res <- create_epidist_prob_dist(
+    prob_dist = "exp",
+    prob_dist_params = c(rate = 2),
+    discretise = FALSE,
+    truncation = NA
+  )
+
+  expect_s3_class(res, "distribution")
+  expect_identical(family(res), "exponential")
+  expect_identical(
+    distributional::parameters(res),
+    data.frame(rate = 2)
+  )
+})
+
 test_that("create_epidist_prob_dist works for discrete gamma", {
   res <- create_epidist_prob_dist(
     prob_dist = "gamma",
