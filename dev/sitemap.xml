@@ -103,6 +103,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/create_epidist_method_assess.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/create_epidist_prob_dist.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/create_epidist_region.html</loc>
   </url>
   <url>
@@ -110,9 +113,6 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/create_epidist_uncertainty.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/create_prob_dist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/discretise.html</loc>
