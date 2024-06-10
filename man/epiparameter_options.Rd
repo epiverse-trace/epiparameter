@@ -17,5 +17,9 @@ Currently options are only used to modify the printing of the
 }
 \details{
 Options are set with \code{\link[=options]{options()}} and retrieved with \code{\link[=getOption]{getOption()}}.
+
+If options are changed the \pkg{epiparameter} package will need to be
+reloaded for new options to be taken into account. Options can be set in
+the \code{.Rprofile} to persist across R sessions.
 }
 \keyword{datasets}
