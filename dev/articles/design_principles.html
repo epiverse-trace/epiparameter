@@ -194,6 +194,18 @@ diseases and epidemiological parameters returned. The footer of the
 to the online database vignette (<code>database.Rmd</code>). Information
 in the header and footer considered metadata or advice is prefixed with
 <code>#</code>.</p></li>
+<li><p>The package uses S3 classes and S3 dispatch for exported
+functions, and <code><a href="https://rdrr.io/r/base/switch.html" class="external-link">switch()</a></code> and <code><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call()</a></code> for
+dispatching to internal functions. This is because it is easier to
+develop and debug internal functions that do not use S3 dispatch and
+avoids having to ensure that S3 methods are registered. Examples of S3
+dispatch for exported functions are <code><a href="../reference/get_parameters.html">get_parameters()</a></code> and
+<code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>. Examples of internal
+dispatch using <code><a href="https://rdrr.io/r/base/switch.html" class="external-link">switch()</a></code> and <code><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call()</a></code> are
+<code>clean_epidist_params()</code> and
+<code><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats.character()</a></code>.</p></li>
+<li><p>The function naming convention is for internal functions to have
+a dot (.) prefix (e.g. <code><a href="../reference/dot-convert_params_lnorm.html">.convert_params_lnorm()</a></code>).</p></li>
 </ul>
 </div>
 <div class="section level2">

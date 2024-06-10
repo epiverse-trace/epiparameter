@@ -64,30 +64,6 @@
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/check_optim_conv.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/clean_epidist_params.default.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/clean_epidist_params.gamma.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/clean_epidist_params.geom.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/clean_epidist_params.lnorm.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/clean_epidist_params.nbinom.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/clean_epidist_params.norm.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/clean_epidist_params.pois.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/clean_epidist_params.weibull.html</loc>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/convert_params_to_summary_stats.html</loc>
   </url>
   <url>
@@ -116,6 +92,9 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/discretise.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/dot-clean_epidist_params.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/dev/reference/dot-clean_string.html</loc>
