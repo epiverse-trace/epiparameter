@@ -5,6 +5,10 @@
 #' `<multi_epidist>` class.
 #'
 #' Options are set with [options()] and retrieved with [getOption()].
+#'
+#' If options are changed the \pkg{epiparameter} package will need to be
+#' reloaded for new options to be taken into account. Options can be set in
+#' the `.Rprofile` to persist across R sessions.
 epiparameter_options <- list(
   # Maximum number of <epidist> objects to print for <multi_epidist>
   print_max = getOption("epiparameter.print_max", default = 5L),
