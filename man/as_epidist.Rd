@@ -18,3 +18,9 @@ An \verb{<epidist>} object or list of \verb{<epidist>} objects.
 Convert from an \R object to an \verb{<epidist>} object. If conversion is not
 possible the function will error.
 }
+\details{
+To create the full citation the information from the article table from the
+\pkg{epireview} package of the corresponding entry will need to be passed
+to function via the \code{...} argument. The argument should be called \code{article},
+as it will be matched by name by \code{$}.
+}
