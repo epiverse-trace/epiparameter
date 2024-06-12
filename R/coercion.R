@@ -98,6 +98,12 @@ as.data.frame.multi_epidist <- function(x, ...) {
 #' Convert from an \R object to an `<epidist>` object. If conversion is not
 #' possible the function will error.
 #'
+#' @details
+#' To create the full citation the information from the article table from the
+#' \pkg{epireview} package of the corresponding entry will need to be passed
+#' to function via the `...` argument. The argument should be called `article`,
+#' as it will be matched by name by `$`.
+#'
 #' @inheritParams base::print
 #' @param ... [dots] Extra arguments to be passed to the method.
 #'
@@ -221,56 +227,156 @@ epidist_df_to_epidist <- function(x, ...) {
 
 #' Convert `<data.frame>` from \pkg{epireview} to `<epidist>`
 #'
-#' @details
-#' To create the full citation the information from the article table from the
-#' \pkg{epireview} package of the corresponding entry will need to be passed
-#' to function via the `...` argument. The argument should be called `article`,
-#' as it will be matched by name by `$`.
-#'
 #' @param x A `<data.frame>`.
 #' @param ... [dots] Extra arguments to pass to [epidist()].
 #'
 #' @inherit epidist return
 #' @keywords internal
+#' @noRd
 epireview_to_epidist <- function(x, ...) {
+  # capture dots and extract article info if supplied
+  dots <- list(...)
+  article <- dots$article
   # validate multi-row entries
   if (nrow(x) > 1) {
     stopifnot(
       "Multiple entries passed to as_epidist() do not have the same ID" =
-        length(unique(x$id)) == 1L,
-      "Multiple entries passed to as_epidist() do not have the same pathogen" =
-        length(unique(x$pathogen)) == 1L,
-      "Multiple entries passed to as_epidist() do not have the same parameter" =
-        length(unique(x$parameter_type)) == 1L,
-      "Parameter range is not the same across entries" =
-        length(unique(x$parameter_lower_bound)) == 1L &&
-        length(unique(x$parameter_upper_bound))
+        length(unique(x$id)) == 1L
     )
   }
 
-  # if multi-row entries are valid only the first row is required for
-  # constructing the <epidist>
-  x1 <- x[1, ]
-
-
-  # capture dots and extract article info if supplied
-  dots <- list(...)
-  article <- dots$article
-
+  pathogen <- .unique(x$pathogen, var_name = "pathogen")
+  # get disease from pathogen lookup
+  disease <- switch(
+    pathogen,
+    "Marburg virus" = "Marburg Virus Disease",
+    "Lassa mammarenavirus" = "Lassa fever",
+    "Ebola virus" = "Ebola Virus Disease",
+    stop("Pathogen in epireview not recognised", call. = FALSE)
+  )
+  epi_dist <- .unique(x$parameter_type, var_name = "parameter types")
+  prob_dist <- .unique(x$distribution_type, var_name = "distribution types")
+  if (!rlang::is_na(prob_dist)) {
+    prob_dist <- switch(
+      prob_dist,
+      "Gamma" = "gamma",
+      "Negative-Binomial" = "nbinom",
+      "Normal" = "norm",
+      "Exponential" = "exp",
+      "Normal-Log" = NA_character_,
+      "Weibull" = "weibull",
+      stop(
+        "Probability distribution in epireview not recognised",
+        call. = FALSE
+      )
+    )
+    if (rlang::is_chr_na(prob_dist)) {
+      stop(
+        "epireview entry has Normal-log distribution, this is not currently ",
+        "supported in {epiparameter}.\n Cannot convert to <epidist>",
+        call. = FALSE
+      )
+    }
+    prob_dist_params <- list(
+      x$distribution_par1_value,
+      x$distribution_par2_value
+    )
+    prob_dist_params <- prob_dist_params[!is.na(prob_dist_params)]
+    prob_dist_params_names <- c(
+      x$distribution_par1_type,
+      x$distribution_par2_type
+    )
+    prob_dist_params_names <-
+      prob_dist_params_names[!is.na(prob_dist_params_names)]
+    prob_dist_params_names <- gsub(
+      pattern = "Standard deviation",
+      replacement = "sd",
+      x = prob_dist_params_names,
+      fixed = TRUE
+    )
+    prob_dist_params_names <- .clean_string(prob_dist_params_names)
+    names(prob_dist_params) <- prob_dist_params_names
+    if (all(c("mean", "sd") %in% names(prob_dist_params))) {
+      prob_dist_params <- do.call(
+        convert_summary_stats_to_params,
+        c(prob_dist, prob_dist_params)
+      )
+    }
+    prob_dist_params <- unlist(prob_dist_params)
+    uncertainty <- lapply(
+      prob_dist_params,
+      function(x) create_epidist_uncertainty()
+    )
+    names(uncertainty) <- names(prob_dist_params)
+  } else {
+    prob_dist_params <- NA_real_
+    uncertainty <- create_epidist_uncertainty()
+  }
+  # vectorise switch (cannot use vapply due to various return FUN.VALUE)
+  summary_stat_type <- sapply(
+    x$parameter_value_type,
+    switch,
+    "Mean" = "mean",
+    "Standard Deviation" = "sd",
+    "Median" = "median",
+    "Other" = NA_character_,
+    "NA" = NULL,
+    stop("Parameter value type not recognised", call. = FALSE)
+  )
+  is_other <- vapply(
+    summary_stat_type,
+    function(x) rlang::is_chr_na(x),
+    FUN.VALUE = logical(1)
+  )
+  if (any(is_other)) {
+    warning(
+      "Parameter value type specified as 'Other'.\n",
+      "Parameter value will not be input into <epidist>.",
+      call. = FALSE
+    )
+    summary_stat_type <- NULL
+  }
+  summary_stats <- create_epidist_summary_stats()
+  summary_stats[summary_stat_type] <- x$parameter_value
+  uncertainty_type <- .unique(
+    x$parameter_uncertainty_type,
+    var_name = "uncertainty types"
+  )
+  if (grepl(pattern = "Range", x = uncertainty_type, fixed = TRUE)) {
+    summary_stats$range <- c(x$parameter_lower_bound, x$parameter_upper_bound)
+  } else if (grepl(pattern = "CI", x = uncertainty_type, fixed = TRUE)) {
+    summary_stats <- .ss_ci(x, summary_stats, summary_stat_type)
+    inference_method <- "Maximum likelihood"
+  } else if (grepl(pattern = "CrI", x = uncertainty_type, fixed = TRUE)) {
+    summary_stats <- .ss_ci(x, summary_stats, summary_stat_type)
+    inference_method <- "Bayesian"
+  } else {
+    inference_method <- NA
+  }
+  metadata <- create_epidist_metadata()
+  metadata$sample_size <- .unique(x$population_sample_size)
+  metadata$inference_method <- inference_method
+  location <- .unique(x$population_location)
+  country <- .unique(x$population_country)
+  metadata$region <- paste(
+    ifelse(test = rlang::is_na(location), yes = "", no = location),
+    ifelse(test = rlang::is_na(country), yes = "", no = country),
+    sep = ", "
+  )
   if (is.null(article)) {
     citation <- create_epidist_citation(
-      author = x1$first_author_surname,
-      year = x1$year_publication,
+      author = .unique(x$first_author_surname, var_name = "citation authors"),
+      year = .unique(x$year_publication, var_name = "citation years"),
       title = "<title not available>",
       journal = "<journal not available>"
     )
     warning(
       "Cannot create full citation for epidemiological parameters without ",
-      "bibliographic information \n see ?epireview_to_epidist for help.",
+      "bibliographic information \n see ?as_epidist for help.",
       call. = FALSE
     )
   } else {
-    if (!identical(x1$id, article$id)) {
+    if (!identical(x$id, article$id)) {
       stop(
         "ID of epidemiological parameter does not match ID of article info",
         call. = FALSE
@@ -284,143 +390,80 @@ epireview_to_epidist <- function(x, ...) {
       doi = article$doi
     )
   }
-
-  # range is always provided or NA
-  summary_stats <- create_epidist_summary_stats(
-    lower_range = x1$parameter_lower_bound,
-    upper_range = x1$parameter_upper_bound
-  )
-
-  # if a summary statistic is provided check what it is and add it to the list
-  if (!all(is.na(x$parameter_value))) {
-    summary_stat_type <- .clean_string(x$parameter_value_type)
-    # <epidist> uses sd rather than standard deviation for list names
-    summary_stat_type <- gsub(
-      pattern = "standard deviation",
-      replacement = "sd",
-      x = summary_stat_type,
-      fixed = TRUE
-    )
-    if (!all(summary_stat_type %in% names(summary_stats))) {
-      stop(
-        "Summary statistic from {epireview} not compatible with <epidist>",
-        call. = FALSE
-      )
-    }
-    summary_stats[summary_stat_type] <- x$parameter_value
-    # apply uncertainty in summary stats
-    summary_stat_type_uncertainty <- paste0(summary_stat_type, "_ci_limits")
-    summary_stat_uncertainty <- list(
-      x$parameter_uncertainty_lower_value,
-      x$parameter_uncertainty_upper_value
-    )
-    ss_uncertainty <- vector(
-      mode = "list",
-      length = length(summary_stat_type_uncertainty)
-    )
-    for (i in seq_along(ss_uncertainty)) {
-      ss_uncertainty[[i]] <- vapply(
-        summary_stat_uncertainty,
-        "[[",
-        FUN.VALUE = numeric(1),
-        i
-      )
-    }
-    summary_stats[summary_stat_type_uncertainty] <- ss_uncertainty
-    # get the interval
-    interval <- as.numeric(gsub(
-      pattern = "[[:alpha:][:punct:]]",
-      replacement = "",
-      x = x$parameter_uncertainty_type
-    ))
-    summary_stat_interval <- gsub(
-      pattern = "_limits",
-      replacement = "",
-      x = summary_stat_type_uncertainty,
-      fixed = TRUE
-    )
-    summary_stats[summary_stat_interval] <- interval
-  }
-
-  params <- c(x$distribution_par1_value, x$distribution_par2_value)
-  param_names <- .clean_string(
-    c(x$distribution_par1_type, x$distribution_par2_type)
-  )
-  names(params) <- param_names
-  if (all(is.na(params))) {
-    params <- NA_character_
-  }
-
-  if (rlang::is_na(params)) {
-    uncertainty <- create_epidist_uncertainty()
-  } else {
-    param_uncertainty <- list(
-      par1 = x$distribution_par1_uncertainty,
-      par2 = x$distribution_par2_uncertainty
-    )
-    if (!anyNA(params)) {
-      names(param_uncertainty) <- param_names
-    }
-    uncertainty <- lapply(
-      param_uncertainty,
-      function(x) if (x) x else create_epidist_uncertainty()
-    )
-  }
-
-  # epireview database does not have disease name
-  # use lookup from epiparameter db to find disease from pathogen
-  epiparameter_db_pathogen <- vapply(
-    multi_epidist,
-    "[[",
-    FUN.VALUE = character(1),
-    "pathogen"
-  )
-  pathogen_idx <- grep(
-    pattern = x1$pathogen,
-    x = epiparameter_db_pathogen,
-    ignore.case = TRUE
-  )
-  epiparameter_db_disease <- vapply(
-    multi_epidist,
-    "[[",
-    FUN.VALUE = character(1),
-    "disease"
-  )
-  disease <- epiparameter_db_disease[pathogen_idx]
-  # temp solution for the only pathogen in {epireview} not in {epiparameter}
-  if (length(disease) == 0) {
-    disease <- "Lassa fever"
-  }
-  if (length(unique(disease)) > 1) {
-    stop("Disease lookup returned different names", call. = FALSE)
-  }
-
-  # clean parameter type name by removing the parameter class
-  epi_dist <- gsub(
-    pattern = paste0(x1$parameter_class, " - "),
-    replacement = "",
-    x = x1$parameter_type,
-    fixed = TRUE
-  )
-
-  region <- as.vector(
-    stats::na.omit(c(x1$population_location, x1$population_country)),
-    mode = "character"
-  )
-  region <- ifelse(test = length(region) == 0, yes = NA, no = region)
-
+  # <epidist> constructor and return
   epidist(
-    disease = disease[1],
-    pathogen = x1$pathogen,
+    disease = disease,
+    pathogen = pathogen,
     epi_dist = epi_dist,
-    prob_distribution = .clean_string(x1$distribution_type),
-    prob_distribution_params = params,
+    prob_distribution = prob_dist,
+    prob_distribution_params = prob_dist_params,
     uncertainty = uncertainty,
     summary_stats = summary_stats,
     citation = citation,
-    metadata = create_epidist_metadata(
-      sample_size = x1$population_sample_size,
-      region = region
-    )
+    metadata = metadata
   )
+}
+
+#' Check vector has a single unique value if not error
+#'
+#' @param x A vector.
+#' @param var_name A `character` to paste into the error message.
+#'
+#' @return A \R object of length 1.
+#' @keywords internal
+#' @noRd
+.unique <- function(x, var_name) {
+  x <- unique(x)
+  if (length(x) != 1) {
+    stop(
+      "epireview parameters contains multiple different", var_name, "\n",
+      "Cannot convert to <epidist>",
+      call. = FALSE
+    )
+  }
+  x
+}
+
+#' Input summary statistic uncertainty
+#'
+#' @param x A `<data.frame>` from \pkg{epireview}.
+#' @param summary_stats A list returned from [create_epidist_summary_stats()].
+#' @param summary_stat_type A `character` string with the name of the summary
+#' statistic type (e.g., `"mean"`, `"median"`).
+#'
+#' @return A modified summary statistic list.
+#' @keywords internal
+#' @noRd
+.ss_ci <- function(x, summary_stats, summary_stat_type) {
+  summary_stat_type_uncertainty <- paste0(summary_stat_type, "_ci_limits")
+  summary_stat_uncertainty <- list(
+    x$parameter_uncertainty_lower_value,
+    x$parameter_uncertainty_upper_value
+  )
+  ss_uncertainty <- vector(
+    mode = "list",
+    length = length(summary_stat_type_uncertainty)
+  )
+  for (i in seq_along(ss_uncertainty)) {
+    ss_uncertainty[[i]] <- vapply(
+      summary_stat_uncertainty,
+      "[[",
+      FUN.VALUE = numeric(1),
+      i
+    )
+  }
+  summary_stats[summary_stat_type_uncertainty] <- ss_uncertainty
+  interval <- as.numeric(gsub(
+    pattern = "[[:alpha:][:punct:]]",
+    replacement = "",
+    x = x$parameter_uncertainty_type
+  ))
+  summary_stat_interval <- gsub(
+    pattern = "_limits",
+    replacement = "",
+    x = summary_stat_type_uncertainty,
+    fixed = TRUE
+  )
+  summary_stats[summary_stat_interval] <- interval
+  summary_stats
 }
