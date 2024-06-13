@@ -299,7 +299,9 @@ epireview_to_epidist <- function(x, ...) {
     )
     prob_dist_params_names <- .clean_string(prob_dist_params_names)
     names(prob_dist_params) <- prob_dist_params_names
+    sd_ <- NULL
     if (all(c("mean", "sd") %in% names(prob_dist_params))) {
+      sd_ <- prob_dist_params[["sd"]]
       prob_dist_params <- do.call(
         convert_summary_stats_to_params,
         c(prob_dist, prob_dist_params)
@@ -352,6 +354,10 @@ epireview_to_epidist <- function(x, ...) {
     inference_method <- "Bayesian"
   } else {
     inference_method <- NA
+  }
+  # underscore to prevent mix-up with variable and sd()
+  if (!is.null(sd_)) {
+    summary_stats$sd <- sd_
   }
   metadata <- create_epidist_metadata()
   metadata$sample_size <- .unique(x$population_sample_size)
