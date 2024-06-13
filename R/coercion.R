@@ -357,12 +357,15 @@ epireview_to_epidist <- function(x, ...) {
   metadata$sample_size <- .unique(x$population_sample_size)
   metadata$inference_method <- inference_method
   location <- .unique(x$population_location)
+  if (rlang::is_na(location)) location <- NULL
   country <- .unique(x$population_country)
-  metadata$region <- paste(
-    ifelse(test = rlang::is_na(location), yes = "", no = location),
-    ifelse(test = rlang::is_na(country), yes = "", no = country),
-    sep = ", "
-  )
+  if (rlang::is_na(country)) country <- NULL
+  # NULL get removed from vector
+  region <- c(location, country)
+  if (length(region) > 1) {
+    region <- paste(region, collapse = ", ")
+  }
+  metadata$region <- region
   if (is.null(article)) {
     citation <- create_epidist_citation(
       author = .unique(x$first_author_surname, var_name = "citation authors"),
