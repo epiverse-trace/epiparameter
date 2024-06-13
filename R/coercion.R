@@ -256,15 +256,18 @@ epireview_to_epidist <- function(x, ...) {
   )
   epi_dist <- .unique(x$parameter_type, var_name = "parameter types")
   prob_dist <- .unique(x$distribution_type, var_name = "distribution types")
-  if (!rlang::is_na(prob_dist)) {
+  if (rlang::is_na(prob_dist)) {
+    prob_dist_params <- NA_real_
+    uncertainty <- create_epidist_uncertainty()
+  } else {
     prob_dist <- switch(
       prob_dist,
-      "Gamma" = "gamma",
+      Gamma = "gamma",
       "Negative-Binomial" = "nbinom",
-      "Normal" = "norm",
-      "Exponential" = "exp",
+      Normal = "norm",
+      Exponential = "exp",
       "Normal-Log" = NA_character_,
-      "Weibull" = "weibull",
+      Weibull = "weibull",
       stop(
         "Probability distribution in epireview not recognised",
         call. = FALSE
@@ -308,24 +311,21 @@ epireview_to_epidist <- function(x, ...) {
       function(x) create_epidist_uncertainty()
     )
     names(uncertainty) <- names(prob_dist_params)
-  } else {
-    prob_dist_params <- NA_real_
-    uncertainty <- create_epidist_uncertainty()
   }
   # vectorise switch (cannot use vapply due to various return FUN.VALUE)
-  summary_stat_type <- sapply(
+  summary_stat_type <- sapply( # nolint undesirable_function_linter
     x$parameter_value_type,
     switch,
-    "Mean" = "mean",
+    Mean = "mean",
     "Standard Deviation" = "sd",
-    "Median" = "median",
-    "Other" = NA_character_,
+    Median = "median",
+    Other = NA_character_,
     "NA" = NULL,
     stop("Parameter value type not recognised", call. = FALSE)
   )
   is_other <- vapply(
     summary_stat_type,
-    function(x) rlang::is_chr_na(x),
+    rlang::is_chr_na,
     FUN.VALUE = logical(1)
   )
   if (any(is_other)) {
