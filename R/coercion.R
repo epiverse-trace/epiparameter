@@ -315,7 +315,7 @@ epireview_to_epidist <- function(x, ...) {
     names(uncertainty) <- names(prob_dist_params)
   }
   # vectorise switch (cannot use vapply due to various return FUN.VALUE)
-  summary_stat_type <- sapply( # nolint undesirable_function_linter
+  param_type <- sapply( # nolint undesirable_function_linter
     x$parameter_value_type,
     switch,
     Mean = "mean",
@@ -326,7 +326,7 @@ epireview_to_epidist <- function(x, ...) {
     stop("Parameter value type not recognised", call. = FALSE)
   )
   is_other <- vapply(
-    summary_stat_type,
+    param_type,
     rlang::is_chr_na,
     FUN.VALUE = logical(1)
   )
@@ -336,10 +336,10 @@ epireview_to_epidist <- function(x, ...) {
       "Parameter value will not be input into <epidist>.",
       call. = FALSE
     )
-    summary_stat_type <- NULL
+    param_type <- NULL
   }
   summary_stats <- create_epidist_summary_stats()
-  summary_stats[summary_stat_type] <- x$parameter_value
+  summary_stats[param_type] <- x$parameter_value
   uncertainty_type <- .unique(
     x$parameter_uncertainty_type,
     var_name = "uncertainty types"
@@ -347,10 +347,10 @@ epireview_to_epidist <- function(x, ...) {
   if (grepl(pattern = "Range", x = uncertainty_type, fixed = TRUE)) {
     summary_stats$range <- c(x$parameter_lower_bound, x$parameter_upper_bound)
   } else if (grepl(pattern = "CI", x = uncertainty_type, fixed = TRUE)) {
-    summary_stats <- .ss_ci(x, summary_stats, summary_stat_type)
+    summary_stats <- .ss_ci(x, summary_stats, param_type)
     inference_method <- "Maximum likelihood"
   } else if (grepl(pattern = "CrI", x = uncertainty_type, fixed = TRUE)) {
-    summary_stats <- .ss_ci(x, summary_stats, summary_stat_type)
+    summary_stats <- .ss_ci(x, summary_stats, param_type)
     inference_method <- "Bayesian"
   } else {
     inference_method <- NA
@@ -369,7 +369,7 @@ epireview_to_epidist <- function(x, ...) {
   # NULL get removed from vector
   region <- c(location, country)
   if (length(region) > 1) {
-    region <- paste(region, collapse = ", ")
+    region <- toString(region)
   }
   metadata$region <- region
   if (is.null(article)) {
