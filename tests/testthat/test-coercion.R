@@ -59,3 +59,34 @@ test_that("as_epidist works for lassa incubation period (issue #306)", {
   # populate mean and sd summary statistics without uncertainty
   expect_true(all(!is.na(lassa_incub_epidist$summary_stats[c("mean", "sd")])))
 })
+
+test_that("as_epidist works for ebola serial interval (issue #303)", {
+  # {epireview} is not a dependency so only run if already on system
+  skip_if_not_installed("epireview")
+  # suppress warning and message about loading data
+  ebola_data <- suppressWarnings(
+    suppressMessages(
+      epireview::load_epidata("ebola")
+    )
+  )
+  ebola_params <- ebola_data$params
+  ebola_serial <- ebola_params[
+    which(ebola_params$parameter_type == "Human delay - serial interval" &
+            ebola_params$distribution_type == "Gamma" &
+            ebola_params$article_label == "Chan 2020 (1)"),
+  ]
+  # suppress warning and message about citation
+  ebola_serial_epidist <- suppressWarnings(
+    suppressMessages(
+      as_epidist(ebola_serial)
+    )
+  )
+  expect_s3_class(ebola_serial_epidist, class = "epidist")
+  # Chan 2020 has information to parameterise a gamma distribution
+  expect_s3_class(
+    ebola_serial_epidist$prob_dist,
+    class = "distribution"
+  )
+  # populate mean and sd summary statistics without uncertainty
+  expect_true(all(!is.na(ebola_serial_epidist$summary_stats[c("mean", "sd")])))
+})
