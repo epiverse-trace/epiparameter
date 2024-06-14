@@ -208,4 +208,60 @@ plot(ebola_si_epidist)
 generate(ebola_si_epidist, times = 10)
 ```
 
+## Specifying the probability distribution if unknown
+
+There may be instances where a delay distribution is reported, but either a probability distribution is not fit to the data, or it is not reported which probability distribution the parameters correspond to. In these cases, and when a parametric probability distribution is required for a particular epidemiological task then assuming a probability distribution can be useful. 
+
+::: {.alert .alert-danger}
+**Please use this feature with caution**. Assuming an incorrect probability distribution and applying this in an epidemiological method can lead to erroneous results. Additionally, if a probability distribution is specified by the user it will overwrite any probability distribution specified in input data (e.g. {epireview} parameter data) which can lead to an error if the distribution name supplied and parameters input are incompatible See `?as_epidist` details for more information.
+:::
+
+Just as the example above we will load the Ebola parameters using the `epireview::load_epidata()` function and subset to just the parameters (`$params`).
+
+```{r, load-and-subset-ebola}
+ebola_data <- load_epidata("ebola")
+ebola_params <- ebola_data$params
+```
+
+Here we will use the example of the Faye et al. Ebola. 
+
+```{r, subset-ebola-serial-interval}
+ebola_si <- ebola_params[
+  which(
+    grepl(pattern = "Faye", x = ebola_params$article_label, fixed = TRUE) &
+      grepl(pattern = "serial", ebola_params$parameter_type, fixed = TRUE)
+  ),
+]
+```
+
+Looking at the two entries/rows that are returned we can see there is a mean and a standard deviation available, but not a probability distribution specified. 
+
+If we were to supply this data to `as_epidist()` we would get an unparameterised `<epidist>` object because no probability distribution is stated.
+
+```{r, convert-to-epidist-unspecified-prob-dist}
+ebola_si_epidist <- as_epidist(ebola_si)
+ebola_si_epidist
+is_parameterised(ebola_si_epidist)
+```
+
+Given that we can convert the mean and standard deviation into parameters of a probability distribution if we assume a distribution form, we can supply this data to `as_epidist()`.
+
+```{r, convert-to-epidist-assumed-prob-dist}
+ebola_si_epidist <- as_epidist(ebola_si, prob_dist = "gamma")
+ebola_si_epidist
+is_parameterised(ebola_si_epidist)
+```
+
+The Ebola serial interval `<epidist>` can now be used for various probability distribution methods.
+
+```{r, ebola-epidist-dist-methods}
+get_parameters(ebola_si_epidist)
+density(ebola_si_epidist, at = 20)
+plot(ebola_si_epidist)
+cdf(ebola_si_epidist, q = 10)
+plot(ebola_si_epidist, cumulative = TRUE)
+quantile(ebola_si_epidist, p = 0.5)
+generate(ebola_si_epidist, times = 10)
+```
+
 ## Limitations
