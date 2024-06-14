@@ -256,6 +256,7 @@ epireview_to_epidist <- function(x, ...) {
   )
   epi_dist <- .unique(x$parameter_type, var_name = "parameter types")
   prob_dist <- .unique(x$distribution_type, var_name = "distribution types")
+  sd_ <- NULL
   if (rlang::is_na(prob_dist)) {
     prob_dist_params <- NA_real_
     uncertainty <- create_epidist_uncertainty()
@@ -299,7 +300,6 @@ epireview_to_epidist <- function(x, ...) {
     )
     prob_dist_params_names <- .clean_string(prob_dist_params_names)
     names(prob_dist_params) <- prob_dist_params_names
-    sd_ <- NULL
     if (all(c("mean", "sd") %in% names(prob_dist_params))) {
       sd_ <- prob_dist_params[["sd"]]
       prob_dist_params <- do.call(
@@ -325,6 +325,8 @@ epireview_to_epidist <- function(x, ...) {
     "NA" = NULL,
     stop("Parameter value type not recognised", call. = FALSE)
   )
+  # ensure param_type is unnamed vector as it is used for list subsetting
+  param_type <- unlist(unname(param_type))
   is_other <- vapply(
     param_type,
     rlang::is_chr_na,
@@ -346,6 +348,7 @@ epireview_to_epidist <- function(x, ...) {
   )
   if (grepl(pattern = "Range", x = uncertainty_type, fixed = TRUE)) {
     summary_stats$range <- c(x$parameter_lower_bound, x$parameter_upper_bound)
+    inference_method <- NA
   } else if (grepl(pattern = "CI", x = uncertainty_type, fixed = TRUE)) {
     summary_stats <- .ss_ci(x, summary_stats, param_type)
     inference_method <- "Maximum likelihood"
