@@ -104,6 +104,21 @@ as.data.frame.multi_epidist <- function(x, ...) {
 #' to function via the `...` argument. The argument should be called `article`,
 #' as it will be matched by name by `$`.
 #'
+#' To specify a probability distribution pass a `character` string to the
+#' function via the `...` argument. The argument should be called `prob_dist`.
+#' For example, to specify a gamma distribution:
+#' `as_epidist(x, prob_dist = "gamma")`.
+#'
+#' ***Warning***: distributions specified via the `prob_dist` argument will
+#' overwrite the probability distribution specified in the `x` argument. For
+#' example, if the probability distribution is given in an \pkg{epireview}
+#' entry and the `prob_dist` argument is specified then the function may error
+#' or return an unparameterised `<epidist>` if the parameterisation becomes
+#' incompatible.
+#'
+#' Valid probability distributions are: `"gamma"`, `"lnorm"`, `"weibull"`,
+#' `"nbinom"`, `"geom"`, `"pois"`, `"norm"`, `"exp"`.
+#'
 #' @inheritParams base::print
 #' @param ... [dots] Extra arguments to be passed to the method.
 #'
@@ -237,6 +252,7 @@ epireview_to_epidist <- function(x, ...) {
   # capture dots and extract article info if supplied
   dots <- list(...)
   article <- dots$article
+  prob_dist_in <- dots$prob_dist
   # validate multi-row entries
   if (nrow(x) > 1) {
     stopifnot(
@@ -313,6 +329,12 @@ epireview_to_epidist <- function(x, ...) {
       function(x) create_epidist_uncertainty()
     )
     names(uncertainty) <- names(prob_dist_params)
+  }
+  # overwrite prob_dist with user specified if given
+  if (!is.null(prob_dist_in)) {
+    prob_dist <- prob_dist_in
+    # erase uncertainty, new prob_dist will likely have different param names
+    uncertainty <- create_epidist_uncertainty()
   }
   # vectorise switch (cannot use vapply due to various return FUN.VALUE)
   param_type <- sapply( # nolint undesirable_function_linter
