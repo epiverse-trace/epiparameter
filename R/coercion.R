@@ -291,11 +291,11 @@ epireview_to_epidist <- function(x, ...) {
     )
     prob_dist_params_names <-
       prob_dist_params_names[!is.na(prob_dist_params_names)]
+    # {epireview} uses "Standard deviation" or "Mean sd" for sd
     prob_dist_params_names <- gsub(
-      pattern = "Standard deviation",
+      pattern = "Standard deviation|Mean sd",
       replacement = "sd",
-      x = prob_dist_params_names,
-      fixed = TRUE
+      x = prob_dist_params_names
     )
     prob_dist_params_names <- .clean_string(prob_dist_params_names)
     names(prob_dist_params) <- prob_dist_params_names
