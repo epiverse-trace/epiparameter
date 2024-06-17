@@ -665,5 +665,92 @@
 				]
 			]
 		}
+	},
+	{
+		"id": "fayeChainsTransmissionControl2015a",
+		"type": "article-journal",
+		"container-title": "The Lancet Infectious Diseases",
+		"DOI": "10.1016/S1473-3099(14)71075-8",
+		"ISSN": "14733099",
+		"issue": "3",
+		"journalAbbreviation": "The Lancet Infectious Diseases",
+		"language": "en",
+		"page": "320-326",
+		"source": "DOI.org (Crossref)",
+		"title": "Chains of transmission and control of Ebola virus disease in Conakry, Guinea, in 2014: an observational study",
+		"title-short": "Chains of transmission and control of Ebola virus disease in Conakry, Guinea, in 2014",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S1473309914710758",
+		"volume": "15",
+		"author": [
+			{
+				"family": "Faye",
+				"given": "Ousmane"
+			},
+			{
+				"family": "Boëlle",
+				"given": "Pierre-Yves"
+			},
+			{
+				"family": "Heleze",
+				"given": "Emmanuel"
+			},
+			{
+				"family": "Faye",
+				"given": "Oumar"
+			},
+			{
+				"family": "Loucoubar",
+				"given": "Cheikh"
+			},
+			{
+				"family": "Magassouba",
+				"given": "N'Faly"
+			},
+			{
+				"family": "Soropogui",
+				"given": "Barré"
+			},
+			{
+				"family": "Keita",
+				"given": "Sakoba"
+			},
+			{
+				"family": "Gakou",
+				"given": "Tata"
+			},
+			{
+				"family": "Bah",
+				"given": "El Hadji Ibrahima"
+			},
+			{
+				"family": "Koivogui",
+				"given": "Lamine"
+			},
+			{
+				"family": "Sall",
+				"given": "Amadou Alpha"
+			},
+			{
+				"family": "Cauchemez",
+				"given": "Simon"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2024",
+					6,
+					17
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2015",
+					3
+				]
+			]
+		}
 	}
 ]
