@@ -248,7 +248,7 @@ epidist_df_to_epidist <- function(x, ...) {
 #' @inherit epidist return
 #' @keywords internal
 #' @noRd
-epireview_to_epidist <- function(x, ...) {
+epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
   # capture dots and extract article info if supplied
   dots <- list(...)
   article <- dots$article
