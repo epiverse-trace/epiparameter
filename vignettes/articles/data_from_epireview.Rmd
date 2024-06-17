@@ -1,5 +1,6 @@
 ---
 title: "Using {epireview} with {epiparameter}"
+bibliography: ../references.json
 ---
 
 ```{r, include = FALSE}
@@ -223,7 +224,7 @@ ebola_data <- load_epidata("ebola")
 ebola_params <- ebola_data$params
 ```
 
-Here we will use the example of the Faye et al. Ebola. 
+Here we will use the serial interval for Ebola reported by @fayeChainsTransmissionControl2015a. This is stored, over two rows of the parameter table, as the mean and standard deviation, but there is no probability distribution specified.
 
 ```{r, subset-ebola-serial-interval}
 ebola_si <- ebola_params[
@@ -233,8 +234,6 @@ ebola_si <- ebola_params[
   ),
 ]
 ```
-
-Looking at the two entries/rows that are returned we can see there is a mean and a standard deviation available, but not a probability distribution specified. 
 
 If we were to supply this data to `as_epidist()` we would get an unparameterised `<epidist>` object because no probability distribution is stated.
 
@@ -265,3 +264,5 @@ generate(ebola_si_epidist, times = 10)
 ```
 
 ## Limitations
+
+## References
