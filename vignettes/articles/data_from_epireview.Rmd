@@ -224,7 +224,9 @@ ebola_data <- load_epidata("ebola")
 ebola_params <- ebola_data$params
 ```
 
-Here we will use the serial interval for Ebola reported by @fayeChainsTransmissionControl2015a. This is stored, over two rows of the parameter table, as the mean and standard deviation, but there is no probability distribution specified.
+Here we will use the serial interval for Ebola reported by @fayeChainsTransmissionControl2015a. This is stored, over two rows of the parameter table, as the mean and standard deviation, but there is no probability distribution specified. 
+
+The code chunk below subsets the Ebola parameter table to just return the serial interval from @fayeChainsTransmissionControl2015a.
 
 ```{r, subset-ebola-serial-interval}
 ebola_si <- ebola_params[
