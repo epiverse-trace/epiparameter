@@ -591,8 +591,140 @@ numbers sampling from the distribution.</p>
 <span><span class="co">#&gt;  [8] 11.451308  5.219772  4.697018</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="specifying-the-probability-distribution-if-unknown">Specifying the probability distribution if unknown<a class="anchor" aria-label="anchor" href="#specifying-the-probability-distribution-if-unknown"></a>
+</h2>
+<p>There may be instances where a delay distribution is reported, but
+either a probability distribution is not fit to the data, or it is not
+reported which probability distribution the parameters correspond to. In
+these cases, and when a parametric probability distribution is required
+for a particular epidemiological task then assuming a probability
+distribution can be useful.</p>
+<div class="alert alert-danger">
+<p><strong>Please use this feature with caution</strong>. Assuming an
+incorrect probability distribution and applying this in an
+epidemiological method can lead to erroneous results. Additionally, if a
+probability distribution is specified by the user it will overwrite any
+probability distribution specified in input data (e.g. {epireview}
+parameter data) which can lead to an error if the distribution name
+supplied and parameters input are incompatible See
+<code><a href="../reference/as_epidist.html">?as_epidist</a></code> details for more information.</p>
+</div>
+<p>Just as the example above we will load the Ebola parameters using the
+<code><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">epireview::load_epidata()</a></code> function and subset to just the
+parameters (<code>$params</code>).</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">load_epidata</a></span><span class="op">(</span><span class="st">"ebola"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: One or more parsing issues, call `problems()` on your data frame for details,</span></span>
+<span><span class="co">#&gt; e.g.:</span></span>
+<span><span class="co">#&gt;   dat &lt;- vroom(...)</span></span>
+<span><span class="co">#&gt;   problems(dat)</span></span>
+<span><span class="co">#&gt; Warning in load_epidata_raw(pathogen, "outbreak"): No data found for ebola</span></span>
+<span><span class="co">#&gt; Warning: One or more parsing issues, call `problems()` on your data frame for details,</span></span>
+<span><span class="co">#&gt; e.g.:</span></span>
+<span><span class="co">#&gt;   dat &lt;- vroom(...)</span></span>
+<span><span class="co">#&gt;   problems(dat)</span></span>
+<span><span class="co">#&gt; Warning in load_epidata("ebola"): No outbreaks information found for ebola</span></span>
+<span><span class="co">#&gt; Data loaded for ebola</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_params</span> <span class="op">&lt;-</span> <span class="va">ebola_data</span><span class="op">$</span><span class="va">params</span></span></code></pre></div>
+<p>Here we will use the serial interval for Ebola reported by <span class="citation">Faye et al. (2015)</span>. This is stored, over two
+rows of the parameter table, as the mean and standard deviation, but
+there is no probability distribution specified.</p>
+<p>The code chunk below subsets the Ebola parameter table to just return
+the serial interval from <span class="citation">Faye et al.
+(2015)</span>.</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_si</span> <span class="op">&lt;-</span> <span class="va">ebola_params</span><span class="op">[</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"Faye"</span>, x <span class="op">=</span> <span class="va">ebola_params</span><span class="op">$</span><span class="va">article_label</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"serial"</span>, <span class="va">ebola_params</span><span class="op">$</span><span class="va">parameter_type</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span><span class="op">]</span></span></code></pre></div>
+<p>If we were to supply this data to <code><a href="../reference/as_epidist.html">as_epidist()</a></code> we would
+get an unparameterised <code>&lt;epidist&gt;</code> object because no
+probability distribution is stated.</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_si_epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">ebola_si</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using Faye (2015). "&lt;title not available&gt;." _&lt;journal not available&gt;_. </span></span>
+<span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
+<span><span class="co">#&gt; Warning: Cannot create full citation for epidemiological parameters without bibliographic information </span></span>
+<span><span class="co">#&gt;  see ?as_epidist for help.</span></span>
+<span><span class="co">#&gt; No adequate summary statistics available to calculate the parameters of the NA distribution</span></span>
+<span><span class="co">#&gt; Unparameterised &lt;epidist&gt; object</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_si_epidist</span></span>
+<span><span class="co">#&gt; Disease: Ebola Virus Disease</span></span>
+<span><span class="co">#&gt; Pathogen: Ebola virus</span></span>
+<span><span class="co">#&gt; Epi Distribution: human delay   serial interval</span></span>
+<span><span class="co">#&gt; Study: Faye (2015). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
+<span><span class="co">#&gt; Distribution: NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/is_parameterised.html">is_parameterised</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
+<p>Given that we can convert the mean and standard deviation into
+parameters of a probability distribution if we assume a distribution
+form, we can supply this data to <code><a href="../reference/as_epidist.html">as_epidist()</a></code>.</p>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_si_epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epidist.html">as_epidist</a></span><span class="op">(</span><span class="va">ebola_si</span>, prob_dist <span class="op">=</span> <span class="st">"gamma"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using Faye (2015). "&lt;title not available&gt;." _&lt;journal not available&gt;_. </span></span>
+<span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
+<span><span class="co">#&gt; Warning: Cannot create full citation for epidemiological parameters without bibliographic information </span></span>
+<span><span class="co">#&gt;  see ?as_epidist for help.</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ebola_si_epidist</span></span>
+<span><span class="co">#&gt; Disease: Ebola Virus Disease</span></span>
+<span><span class="co">#&gt; Pathogen: Ebola virus</span></span>
+<span><span class="co">#&gt; Epi Distribution: human delay   serial interval</span></span>
+<span><span class="co">#&gt; Study: Faye (2015). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
+<span><span class="co">#&gt; Distribution: gamma</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   shape: 4.000</span></span>
+<span><span class="co">#&gt;   scale: 3.550</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/is_parameterised.html">is_parameterised</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<p>The Ebola serial interval <code>&lt;epidist&gt;</code> can now be
+used for various probability distribution methods.</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_parameters.html">get_parameters</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span><span class="op">)</span></span>
+<span><span class="co">#&gt; shape scale </span></span>
+<span><span class="co">#&gt;  4.00  3.55</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/density.html" class="external-link">density</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span>, at <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.03001206</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span><span class="op">)</span></span></code></pre></div>
+<p><img src="data_from_epireview_files/figure-html/ebola-epidist-dist-methods-1.png" width="768"></p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pkg.mitchelloharawild.com/distributional/reference/cdf.html" class="external-link">cdf</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span>, q <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.3118251</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span>, cumulative <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="data_from_epireview_files/figure-html/ebola-epidist-dist-methods-2.png" width="768"></p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 13.03582</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_si_epidist</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] 21.222588  3.271134  7.384133 10.618359 15.691544  7.389448  3.953741</span></span>
+<span><span class="co">#&gt;  [8] 15.905629  7.924347 12.078103</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="limitations">Limitations<a class="anchor" aria-label="anchor" href="#limitations"></a>
 </h2>
+</div>
+<div class="section level2 unnumbered">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-fayeChainsTransmissionControl2015a" class="csl-entry">
+Faye, Ousmane, Pierre-Yves Boëlle, Emmanuel Heleze, Oumar Faye, Cheikh
+Loucoubar, N’Faly Magassouba, Barré Soropogui, et al. 2015.
+<span>“Chains of Transmission and Control of Ebola Virus Disease in
+Conakry, Guinea, in 2014: An Observational Study.”</span> <em>The Lancet
+Infectious Diseases</em> 15 (3): 320–26. <a href="https://doi.org/10.1016/S1473-3099(14)71075-8" class="external-link">https://doi.org/10.1016/S1473-3099(14)71075-8</a>.
+</div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
