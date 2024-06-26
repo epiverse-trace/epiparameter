@@ -10,7 +10,13 @@
     <loc>https://epiverse-trace.github.io/epiparameter/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/articles/data_from_epireview.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/articles/database.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/articles/design_principles.html</loc>
@@ -37,7 +43,19 @@
     <loc>https://epiverse-trace.github.io/epiparameter/news/index.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/as.data.frame.epidist.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/as.data.frame.multi_epidist.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/as.function.epidist.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/as_epidist.data.frame.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/as_epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/calc_disc_dist_quantile.html</loc>
@@ -47,30 +65,6 @@
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/check_optim_conv.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.default.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.gamma.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.geom.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.lnorm.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.nbinom.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.norm.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.pois.html</loc>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/clean_epidist_params.weibull.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/convert_params_to_summary_stats.html</loc>
@@ -88,6 +82,9 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/create_epidist_method_assess.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/create_epidist_prob_dist.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/create_epidist_region.html</loc>
   </url>
   <url>
@@ -97,10 +94,10 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/create_epidist_uncertainty.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/create_prob_dist.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/discretise.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/discretise.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-clean_epidist_params.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/dot-clean_string.html</loc>
@@ -145,10 +142,19 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/epidist_db.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/epidist_df_to_epidist.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/epidist_distribution_functions.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/epiparameter-package.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/epiparameter_options.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/epireview_core_cols.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/extract_param.html</loc>
@@ -190,10 +196,19 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/is_continuous.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/is_epidist.html</loc>
   </url>
   <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/is_epidist_df.html</loc>
+  </url>
+  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/is_epidist_params.html</loc>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/is_epireview.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/is_parameterised.html</loc>
@@ -205,9 +220,6 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/is_vb_epidist.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/list_distributions.html</loc>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/mean.epidist.html</loc>
   </url>
   <url>
@@ -217,10 +229,10 @@
     <loc>https://epiverse-trace.github.io/epiparameter/reference/new_vb_epidist.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/plot.epidist.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/parameter_tbl.html</loc>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/epiparameter/reference/plot.vb_epidist.html</loc>
+    <loc>https://epiverse-trace.github.io/epiparameter/reference/plot.epidist.html</loc>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/epiparameter/reference/print.epidist.html</loc>

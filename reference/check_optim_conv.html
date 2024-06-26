@@ -17,11 +17,10 @@ consistently finding parameter values to within a set tolerance."><meta property
     
 
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark" data-bs-theme="dark"><div class="container">
-    
-    <a href="https://epiverse-trace.github.io/" class="external-link"><img src="../logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
+    <a href="https://epiverse-trace.github.io/" class="external-link"><img src="https://epiverse-trace.github.io/blueprints/logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
     <a class="navbar-brand me-2" href="../index.html">epiparameter</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +42,10 @@ consistently finding parameter values to within a set tolerance."><meta property
     <div class="dropdown-divider"></div>
     <h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6>
     <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+    <a class="dropdown-item" href="../articles/database.html">Current database</a>
+    <div class="dropdown-divider"></div>
+    <h6 class="dropdown-header" data-toc-skip>Handling data from other packages</h6>
+    <a class="dropdown-item" href="../articles/data_from_epireview.html">Using {epireview} with {epiparameter}</a>
     <div class="dropdown-divider"></div>
     <h6 class="dropdown-header" data-toc-skip>Auxiliary</h6>
     <a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a>
@@ -54,9 +57,10 @@ consistently finding parameter values to within a set tolerance."><meta property
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
-      </ul><ul class="navbar-nav"><li><form class="form-inline" role="search">
-<input type="search" class="form-control" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json"></form></li>
-<li class="nav-item">
+      </ul><form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
+
+      <ul class="navbar-nav"><li class="nav-item">
   <a class="external-link nav-link" href="https://github.com/epiverse-trace/epiparameter/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -87,16 +91,16 @@ consistently finding parameter values to within a set tolerance.</p>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg-optim-params-list">optim_params_list<a class="anchor" aria-label="anchor" href="#arg-optim-params-list"></a></dt>
+    <dl><dt>optim_params_list</dt>
 <dd><p>A list, where each element is the output of
 <code><a href="https://rdrr.io/r/stats/optim.html" class="external-link">stats::optim()</a></code>. See <code><a href="https://rdrr.io/r/stats/optim.html" class="external-link">?optim</a></code> for more details.</p></dd>
 
 
-<dt id="arg-optim-params">optim_params<a class="anchor" aria-label="anchor" href="#arg-optim-params"></a></dt>
+<dt>optim_params</dt>
 <dd><p>A list given by the output of <code><a href="https://rdrr.io/r/stats/optim.html" class="external-link">stats::optim()</a></code>.</p></dd>
 
 
-<dt id="arg-tolerance">tolerance<a class="anchor" aria-label="anchor" href="#arg-tolerance"></a></dt>
+<dt>tolerance</dt>
 <dd><p>A <code>numeric</code> specifying within which disparity convergence
 of parameter estimates and function minimisation is accepted.</p></dd>
 
@@ -117,7 +121,7 @@ of parameter estimates and function minimisation is accepted.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
     </footer></div>

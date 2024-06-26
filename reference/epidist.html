@@ -43,11 +43,10 @@ each field for which information is known.
     
 
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark" data-bs-theme="dark"><div class="container">
-    
-    <a href="https://epiverse-trace.github.io/" class="external-link"><img src="../logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
+    <a href="https://epiverse-trace.github.io/" class="external-link"><img src="https://epiverse-trace.github.io/blueprints/logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
     <a class="navbar-brand me-2" href="../index.html">epiparameter</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,6 +68,10 @@ each field for which information is known.
     <div class="dropdown-divider"></div>
     <h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6>
     <a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a>
+    <a class="dropdown-item" href="../articles/database.html">Current database</a>
+    <div class="dropdown-divider"></div>
+    <h6 class="dropdown-header" data-toc-skip>Handling data from other packages</h6>
+    <a class="dropdown-item" href="../articles/data_from_epireview.html">Using {epireview} with {epiparameter}</a>
     <div class="dropdown-divider"></div>
     <h6 class="dropdown-header" data-toc-skip>Auxiliary</h6>
     <a class="dropdown-item" href="../articles/extract-bias.html">{epiparameter} Extraction Bias Analysis</a>
@@ -80,9 +83,10 @@ each field for which information is known.
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
-      </ul><ul class="navbar-nav"><li><form class="form-inline" role="search">
-<input type="search" class="form-control" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json"></form></li>
-<li class="nav-item">
+      </ul><form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
+
+      <ul class="navbar-nav"><li class="nav-item">
   <a class="external-link nav-link" href="https://github.com/epiverse-trace/epiparameter/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
@@ -132,39 +136,40 @@ each field for which information is known.</p></li>
 <span>  method_assess <span class="op">=</span> <span class="fu"><a href="create_epidist_method_assess.html">create_epidist_method_assess</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  discretise <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  truncation <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
-<span>  notes <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  notes <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg-disease">disease<a class="anchor" aria-label="anchor" href="#arg-disease"></a></dt>
+    <dl><dt>disease</dt>
 <dd><p>A <code>character</code> string with name of the infectious disease.</p></dd>
 
 
-<dt id="arg-pathogen">pathogen<a class="anchor" aria-label="anchor" href="#arg-pathogen"></a></dt>
+<dt>pathogen</dt>
 <dd><p>A <code>character</code> string with the name of the causative agent of
 disease, or <code>NA</code> if not known.</p></dd>
 
 
-<dt id="arg-epi-dist">epi_dist<a class="anchor" aria-label="anchor" href="#arg-epi-dist"></a></dt>
+<dt>epi_dist</dt>
 <dd><p>A <code>character</code> string with the name of the
 epidemiological distribution type.</p></dd>
 
 
-<dt id="arg-prob-distribution">prob_distribution<a class="anchor" aria-label="anchor" href="#arg-prob-distribution"></a></dt>
+<dt>prob_distribution</dt>
 <dd><p>A <code>character</code> string specifying the probability
 distribution. This should match the <span style="R">R</span> naming convention of probability
 distributions (e.g. lognormal is <code>lnorm</code>, negative binomial is <code>nbinom</code>, and
 geometric is <code>geom</code>).</p></dd>
 
 
-<dt id="arg-prob-distribution-params">prob_distribution_params<a class="anchor" aria-label="anchor" href="#arg-prob-distribution-params"></a></dt>
+<dt>prob_distribution_params</dt>
 <dd><p>A named vector of probability distribution
 parameters.</p></dd>
 
 
-<dt id="arg-uncertainty">uncertainty<a class="anchor" aria-label="anchor" href="#arg-uncertainty"></a></dt>
+<dt>uncertainty</dt>
 <dd><p>A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
 estimates is unknown use <code><a href="create_epidist_uncertainty.html">create_epidist_uncertainty()</a></code> (which is the
@@ -172,7 +177,7 @@ argument default) to create a list with the correct names with missing
 values.</p></dd>
 
 
-<dt id="arg-summary-stats">summary_stats<a class="anchor" aria-label="anchor" href="#arg-summary-stats"></a></dt>
+<dt>summary_stats</dt>
 <dd><p>A list of summary statistics, use
 <code><a href="create_epidist_summary_stats.html">create_epidist_summary_stats()</a></code> to create list. This list can include
 summary statistics about the inferred distribution such as it's mean and
@@ -182,7 +187,7 @@ statistics can also include uncertainty around metrics such as confidence
 interval around mean and standard deviation.</p></dd>
 
 
-<dt id="arg-auto-calc-params">auto_calc_params<a class="anchor" aria-label="anchor" href="#arg-auto-calc-params"></a></dt>
+<dt>auto_calc_params</dt>
 <dd><p>A boolean <code>logical</code> determining whether to try and
 calculate the probability distribution parameters from summary statistics if
 distribution parameters are not provided. Default is <code>TRUE</code>. In the case when
@@ -191,13 +196,13 @@ distribution are not, the <code><a href="calc_dist_params.html">calc_dist_params
 calculate the parameters and add them to the <code>epidist</code> object created.</p></dd>
 
 
-<dt id="arg-citation">citation<a class="anchor" aria-label="anchor" href="#arg-citation"></a></dt>
+<dt>citation</dt>
 <dd><p>A <code>character</code> string with the citation of the source of the
 data or the paper that inferred the distribution parameters, use
 <code><a href="create_epidist_citation.html">create_epidist_citation()</a></code> to create citation.</p></dd>
 
 
-<dt id="arg-metadata">metadata<a class="anchor" aria-label="anchor" href="#arg-metadata"></a></dt>
+<dt>metadata</dt>
 <dd><p>A list of metadata, this can include: sample size, the
 transmission mode of the disease (e.g. is it vector-borne or directly
 transmitted), etc. It is assumed that the disease is not
@@ -207,26 +212,34 @@ delay distribution such as extrinsic incubation period) unless
 <code><a href="create_epidist_metadata.html">create_epidist_metadata()</a></code> to create metadata.</p></dd>
 
 
-<dt id="arg-method-assess">method_assess<a class="anchor" aria-label="anchor" href="#arg-method-assess"></a></dt>
+<dt>method_assess</dt>
 <dd><p>A list of methodological aspects used when fitting
 the distribution, use <code><a href="create_epidist_method_assess.html">create_epidist_method_assess()</a></code> to create method
 assessment.</p></dd>
 
 
-<dt id="arg-discretise">discretise<a class="anchor" aria-label="anchor" href="#arg-discretise"></a></dt>
+<dt>discretise</dt>
 <dd><p>A boolean <code>logical</code> whether the distribution is
 discretised.
 Default is FALSE which assumes a continuous probability distribution</p></dd>
 
 
-<dt id="arg-truncation">truncation<a class="anchor" aria-label="anchor" href="#arg-truncation"></a></dt>
+<dt>truncation</dt>
 <dd><p>A <code>numeric</code> specifying the truncation point if the inferred
 distribution was truncated, <code>NA</code> if not or unknown.</p></dd>
 
 
-<dt id="arg-notes">notes<a class="anchor" aria-label="anchor" href="#arg-notes"></a></dt>
+<dt>notes</dt>
 <dd><p>A <code>character</code> string with any additional information about the
 data, inference method or disease.</p></dd>
+
+
+<dt>...</dt>
+<dd><p><a href="https://rdrr.io/r/base/dots.html" class="external-link">dots</a> Extra arguments to be passed to internal functions.</p>
+<p>This is most commonly used to pass arguments to <code><a href="https://rdrr.io/pkg/distcrete/man/distcrete.html" class="external-link">distcrete::distcrete()</a></code>
+that construct the discretised distribution S3 object. To see which
+arguments can be adjusted for discretised distributions see
+<code><a href="https://rdrr.io/pkg/distcrete/man/distcrete.html" class="external-link">distcrete::distcrete()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -283,7 +296,7 @@ data, inference method or disease.</p></dd>
 <span class="r-in"><span>    year <span class="op">=</span> <span class="fl">2002</span>,</span></span>
 <span class="r-in"><span>    title <span class="op">=</span> <span class="st">"COVID-19 incubation period"</span>,</span></span>
 <span class="r-in"><span>    journal <span class="op">=</span> <span class="st">"Epi Journal"</span>,</span></span>
-<span class="r-in"><span>    DOI <span class="op">=</span> <span class="st">"10.19832/j.1366-9516.2012.09147.x"</span></span></span>
+<span class="r-in"><span>    doi <span class="op">=</span> <span class="st">"10.19832/j.1366-9516.2012.09147.x"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  metadata <span class="op">=</span> <span class="fu"><a href="create_epidist_metadata.html">create_epidist_metadata</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    sample_size <span class="op">=</span> <span class="fl">10</span>,</span></span>
@@ -313,7 +326,7 @@ data, inference method or disease.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
     </footer></div>
