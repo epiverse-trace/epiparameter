@@ -1,6 +1,6 @@
 YEAR: 2024
 COPYRIGHT HOLDER: epiparameter authors
-
-All data included in the epiparameter R package is licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt). This includes the parameter database (extdata/parameters.json) and data in the data/ folder.
-
-Please cite the individual parameter entries in the database when used.
+DATA LICENSE: All data included in the epiparameter R package is licensed under CC0
+            (https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt). This includes the parameter
+            database (extdata/parameters.json) and data in the data/ folder. Please cite the individual
+            parameter entries in the database when used.
