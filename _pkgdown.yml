@@ -5,7 +5,7 @@ template:
     font_weight_base : 300
 
 development:
-  mode: auto
+  mode: unreleased
 
 reference:
   - title: epiparameter classes
