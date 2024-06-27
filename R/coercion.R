@@ -139,9 +139,6 @@ as_epidist <- function(x, ...) {
 #'
 #' @inherit epidist_db return
 #' @export
-#'
-#' @examples
-#' # stub
 as_epidist.data.frame <- function(x, ...) {
   if (is_epidist_df(x)) {
     epidist <- epidist_df_to_epidist(x, ...)

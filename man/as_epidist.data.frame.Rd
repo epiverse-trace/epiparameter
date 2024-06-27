@@ -19,6 +19,3 @@ Convert the tabular information in \verb{<data.frame>} to an \verb{<epidist>}. I
 information in the \verb{<data.frame>} cannot be converted into an \verb{<epidist>} the
 function will error.
 }
-\examples{
-# stub
-}
