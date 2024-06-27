@@ -19,24 +19,6 @@
 #'
 #' @inherit epidist return
 #' @keywords internal
-#'
-#' @examples
-#' epiparameter:::new_epidist(
-#'   disease = "ebola",
-#'   pathogen = "ebola_virus",
-#'   epi_dist = "incubation_period",
-#'   prob_dist = "gamma",
-#'   prob_dist_params = c(shape = 1, scale = 1),
-#'   uncertainty = create_epidist_uncertainty(),
-#'   summary_stats = create_epidist_summary_stats(),
-#'   auto_calc_params = TRUE,
-#'   citation = create_epidist_citation(),
-#'   metadata = create_epidist_metadata(),
-#'   method_assess = create_epidist_method_assess(),
-#'   discretise = FALSE,
-#'   truncation = NA,
-#'   notes = "No notes"
-#' )
 new_epidist <- function(disease = character(),
                         pathogen = character(),
                         epi_dist = character(),
