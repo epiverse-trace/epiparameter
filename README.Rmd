@@ -39,6 +39,12 @@ if(!require("pak")) install.packages("pak")
 pak::pak("epiverse-trace/epiparameter")
 ```
 
+Alternatively, install pre-compiled binaries from [the Epiverse TRACE R-universe](https://epiverse-trace.r-universe.dev/epiparameter)
+
+```r
+install.packages("epiparameter", repos = c("https://epiverse-trace.r-universe.dev", "https://cloud.r-project.org"))
+```
+
 ## Quick start
 
 ```{r load-epiparameter}
