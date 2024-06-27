@@ -52,6 +52,12 @@ jobs:
 
             message("Dependencies have changed! Analyzing...")
 
+            if (nrow(deps_added) > 0) {
+              nudge <- "Reach out on slack (`#code-review` or `#help` channels) to double check if there are base R alternatives to the new dependencies.\n"
+            } else {
+              nudge <- ""
+            }
+
             msg <- glue::glue(
               .sep = "\n",
               "This pull request:",
@@ -60,7 +66,8 @@ jobs:
               "- Removes {nrow(deps_removed)} existing dependencies (direct and indirect)",
               "- Removes {length(unique(deps_removed$sysreqs))} existing system dependencies",
               "",
-              "(Note that results may be inacurrate if you branched from an outdated version of the target branch.)"
+              nudge,
+              "(Note that results may be inaccurate if you branched from an outdated version of the target branch.)"
             )
 
             message("Posting results as a pull request comment.")
