@@ -6,7 +6,7 @@ release_bullets <- function() { # nocov start
     "Review [WORDLIST](https://docs.cran.dev/spelling#wordlist)",
     "Check if `# nolint` comments are still needed with recent lintr releases",
     "All contributors to this release are acknowledged in some way",
-    "Run data-raw script to update sysdata",
+    "Run data-raw/parameters.R script to update sysdata",
     "Run precompile.R script to regenerate extract-bias.Rmd vignette"
   )
 
