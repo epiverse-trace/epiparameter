@@ -1,0 +1,137 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "75%",
+  fig.align = "center"
+)
+```
+
+# epiparameter <img src="man/figures/logo.png" align="right" width="120" />
+
+<!-- badges: start -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![R-CMD-check](https://github.com/epiverse-trace/epiparameter/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/epiverse-trace/epiparameter/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/epiverse-trace/epiparameter/branch/main/graph/badge.svg)](https://app.codecov.io/gh/epiverse-trace/epiparameter?branch=main)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11110881.svg)](https://doi.org/10.5281/zenodo.11110881)
+<!-- badges: end -->
+
+`{epiparameter}` is an `R` package that contains a library of epidemiological parameters for infectious diseases and a set classes and helper functions to be able to work with the data. It also includes functions to extract and convert parameters from reported summary statistics.
+
+`{epiparameter}` is developed at the [Centre for the Mathematical Modelling of Infectious Diseases](https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases) at the [London School of Hygiene and Tropical Medicine](https://www.lshtm.ac.uk/) as part of [Epiverse-TRACE](https://data.org/initiatives/epiverse/).
+
+
+## Installation
+
+The easiest way to install the development version of `{epiparameter}` is to use the `{pak}` package:
+
+``` r
+# check whether {pak} is installed
+if(!require("pak")) install.packages("pak")
+pak::pak("epiverse-trace/epiparameter")
+```
+
+Alternatively, install pre-compiled binaries from [the Epiverse TRACE R-universe](https://epiverse-trace.r-universe.dev/epiparameter)
+
+```r
+install.packages("epiparameter", repos = c("https://epiverse-trace.r-universe.dev", "https://cloud.r-project.org"))
+```
+
+## Quick start
+
+```{r load-epiparameter}
+library(epiparameter)
+```
+
+To load the library of epidemiological parameters into `R`:
+
+```{r load-data}
+epidists <- epidist_db()
+epidists
+```
+
+This results a list of database entries. Each entry of the library is an `<epidist>` object.
+
+The results can be filtered by disease and epidemiological distribution. Here we set `single_epidist = TRUE` as we only want a single database entry returned, and by default (`single_epidist = FALSE`) it will return all database entries that match the disease (`disease`) and epidemiological distribution (`epi_dist`).
+
+```{r load-single-epidist}
+influenza_incubation <- epidist_db(
+  disease = "influenza",
+  epi_dist = "incubation period",
+  single_epidist = TRUE
+)
+influenza_incubation
+```
+
+To quickly view the list of epidemiological distributions returned by `epidist_db()` in a table, the `parameter_tbl()` gives a summary of the data, and offers the ability to subset you data by `disease`, `pathogen` and epidemiological distribution (`epi_dist`).
+
+```{r parameter-tbl}
+parameter_tbl(epidists)
+parameter_tbl(
+  epidists,
+  epi_dist = "onset to hospitalisation"
+)
+```
+
+The `<epidist>` object can be plotted.
+
+```{r plot-epidist}
+plot(influenza_incubation)
+```
+
+The CDF can also be plotted by setting `cumulative = TRUE`.
+
+```{r, plot-epidist-cdf}
+plot(influenza_incubation, cumulative = TRUE)
+```
+
+### Parameter conversion and extraction
+
+The parameters of a distribution can be converted to and from mean and standard deviation. In `{epiparameter}` we implement this for a variety of distributions:
+
+- gamma
+- lognormal
+- Weibull
+- negative binomial
+- geometric
+
+The parameters of a probability distribution can also be extracted from other summary statistics, for example, percentiles of the distribution, or the median and range of the data. This can be done for:
+
+- gamma
+- lognormal
+- Weibull
+- normal
+
+## Contributing to library of epidemiological parameters
+
+If you would like to contribute to the different epidemiological parameters stored in the `{epiparameter}` package, you can add data to a public [google sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing). This spreadsheet contains two example entries as a guide to what fields can accept. We are monitoring this sheet for new entries that will subsequently be included in the package.
+
+Alternatively, parameters can be added to the [JSON file holding the data](https://github.com/epiverse-trace/epiparameter/blob/main/inst/extdata/parameters.json) base directly via a Pull Request.
+
+You can find explanation of accepted entries for each column in the [data dictionary](https://github.com/epiverse-trace/epiparameter/blob/main/inst/extdata/data_dictionary.json).
+
+## Help 
+
+To report a bug please open an [issue](https://github.com/epiverse-trace/epiparameter/issues/new/choose)
+
+## Contribute 
+
+Contributions to `{epiparameter}` are welcomed. [package contributing guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md).
+
+## Code of Conduct
+
+Please note that the `{epiparameter}` project is released with a [Contributor Code of Conduct](https://github.com/epiverse-trace/.github/blob/main/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+
+## Citing this package
+
+```{r message=FALSE, warning=FALSE}
+citation("epiparameter")
+```

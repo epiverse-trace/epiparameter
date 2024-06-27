@@ -1,0 +1,37 @@
+name: Update copyright year(s) in license file
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 1 1 *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: FantasticFiasco/action-update-license-year@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: |
+            LICENSE.md
+          prBody: >
+           This PR updates the copyright license for this new year! If you're reading this while you're celebrating, enjoy! Don't worry about this one :blush:
+
+           ![Happy new year!](https://media.giphy.com/media/HyDfNCZlTn5iU/giphy.gif?cid=ecf05e4777yl7dbo1xfha6bx1z5lrl13uq7biv6rs9dqsyoh&ep=v1_gifs_search&rid=giphy.gif&ct=g)
+      - uses: FantasticFiasco/action-update-license-year@v3
+        with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            path: |
+              LICENSE
+            prBody: >
+             This PR updates the copyright license for this new year! If you're reading this while you're celebrating, enjoy! Don't worry about this one :blush:
+
+             ![Happy new year!](https://media.giphy.com/media/HyDfNCZlTn5iU/giphy.gif?cid=ecf05e4777yl7dbo1xfha6bx1z5lrl13uq7biv6rs9dqsyoh&ep=v1_gifs_search&rid=giphy.gif&ct=g)
+            transform: (?<=YEAR:\s)(?<from>\d{4})?-?(\d{4})?
