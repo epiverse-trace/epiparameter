@@ -1,5 +1,43 @@
 # epiparameter (development version)
 
+The second release of the {epiparameter} R package focuses on interoperability with the [{epireview} R package](https://mrc-ide.github.io/epireview/). Several functions have been refactored and enhanced.
+
+## New features
+
+* The `as_epidist()` S3 generic has been added to the package for the coercion of other R objects into `<epidist>` objects. The `as_epidist.data.frame()` method is added, as well as the internal functions `is_epireview()` which determines if a `<data.frame>` is from {epireview}, and `epireview_to_epidist()` performs the conversion  (#298, #334 & #335)
+
+* The `epireview_core_cols.rda` data is added to the package. This is used to determine whether the input to `as_epidist.data.frame()` is a parameter table from {epireview} as these objects do not have a recognisable class attribute (#298).
+
+* A new website only vignette (i.e. [article](https://r-pkgs.org/vignettes.html#sec-vignettes-article)) `data_from_epireview.Rmd` is added that explains how to use `as_epidist()` with data from {epireview} (#298 & #335).
+
+* A new vignette `database.Rmd` is added to the package to provide a web interface to the {epiparameter} library of epidemiological parameters. Contributed by @sbfnk (#311).
+
+* The plotting method for `<epidist>` objects (`plot.epidist()`) has been improved to better differentiate continuous from discrete or discretised distributions (#315). 
+
+* `epidist_db(..., single_epidist = TRUE)` now prioritises parameter entries that account for right truncation (#323).
+
+* `create_epidist_prob_dist()` (previously named `create_prob_dist()`) is now exported and enables more control of discretisation settings by allowing arguments to be passed to `distcrete::distcrete()` via `...` (#324).
+
+* The `<multi_epidist>` print method (`print.multi_epidist()`) has been improved to provides object information in the print header, the first few elements of the list or all elements if list is short, and some extra links and advice in the print footer. The design of the print method follows the design pattern of [{pillar}](https://pillar.r-lib.org/index.html) (#326).
+
+* `<epidist>` objects and functions that work with `<epidist>` objects now work with exponential distributions (#333).
+
+* The package now has an explicit data license: [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt) in the `LICENSE` file.
+
+## Breaking changes
+
+* `list_distributions()` has been replaced by `parameter_tbl()` which enhances the printing by leveraging {pillar} (#321).
+
+* The `<vb_epidist>` plotting method (`plot.vb_epidist()`) has been removed from the package. This provided minimal functionality and was unnecessarily complicating the function signature of `plot.epidist()` (#315).
+
+## Bug fixes
+
+* DOI and PMID are lowercase throughout the package to resolve issues with older versions of R (see issue #301) (#317).
+
+## Deprecated and defunct
+
+* None
+
 # epiparameter 0.1.0
 
 Initial release of the {epiparameter} R package. {epiparameter} provides:
