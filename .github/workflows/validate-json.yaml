@@ -3,8 +3,18 @@ name: Validate JSONs
 on:
   push:
     branches: [main, master]
+    paths:
+      - 'R/sysdata.rda'
+      - 'inst/extdata/**'
+      - 'data-raw/parameters.R'
+      - '.github/workflows/validate-json.yaml'
+  merge_group:
   pull_request:
-    branches: [main, master]
+    paths:
+      - 'R/sysdata.rda'
+      - 'inst/extdata/**'
+      - 'data-raw/parameters.R'
+      - '.github/workflows/validate-json.yaml'
 
 jobs:
   validate-json:
