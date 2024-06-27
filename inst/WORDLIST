@@ -18,12 +18,9 @@ Epiverse
 estimat
 etc
 EVD
-extdata
 facetted
-Faye
 jsonlite
 Lifecycle
-lnorm
 Marburg
 md
 meanlog
@@ -31,7 +28,6 @@ medRxiv
 MERS
 monkeypox
 mpox
-nbinom
 ORCID
 parameterisations
 parameterised
@@ -53,5 +49,4 @@ th
 un
 unparameterised
 vb
-yaml
 zenodo
