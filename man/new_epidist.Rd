@@ -106,22 +106,4 @@ probability distribution (\code{prob_dist}) and its parameters
 \code{{distributional}} when \code{discretise = FALSE}, or a \code{distcrete} object from
 \code{{distcrete}} when \code{discretise = TRUE}.
 }
-\examples{
-epiparameter:::new_epidist(
-  disease = "ebola",
-  pathogen = "ebola_virus",
-  epi_dist = "incubation_period",
-  prob_dist = "gamma",
-  prob_dist_params = c(shape = 1, scale = 1),
-  uncertainty = create_epidist_uncertainty(),
-  summary_stats = create_epidist_summary_stats(),
-  auto_calc_params = TRUE,
-  citation = create_epidist_citation(),
-  metadata = create_epidist_metadata(),
-  method_assess = create_epidist_method_assess(),
-  discretise = FALSE,
-  truncation = NA,
-  notes = "No notes"
-)
-}
 \keyword{internal}
