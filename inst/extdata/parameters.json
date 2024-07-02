@@ -3861,7 +3861,14 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
-    "parameters": { }
+    "parameters": {
+       "shape": 2.42,
+      "shape_ci_limits": [1.26, 3.62],
+      "shape_ci": 95,
+      "scale": 3.75 ,
+      "scale_ci_limits": [2.17, 7.13],
+      "scale_ci": 95
+    }
   },
   "summary_statistics": {
     "mean": 9.1,
@@ -3932,9 +3939,9 @@
     "doi": "10.3201/eid2810.221126"
   },
   "metadata": {
-    "sample_size": 255,
+    "sample_size": 30,
     "region": "Italy",
-    "transmission_mode": "natural_natural_human_to_human",
+    "transmission_mode": "natural_human_to_human",
     "extrinsic": false,
     "inference_method": "bayesian"
   },
