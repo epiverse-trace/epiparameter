@@ -16,7 +16,7 @@ library("epiparameter")
 
 db <- epidist_db()
 # Shorten citation info to first author family name et al. (year)
-make_short_citation <- function(x){
+make_short_citation <- function(x) {
   first_author_family_name <- x$citation$author[1]$family
   paper_year <- x$citation$year
   paste0(first_author_family_name, " et al. (", paper_year, ")")
@@ -29,7 +29,7 @@ tbl <- lapply(db, function(x) {
     epi_dist = x$epi_dist,
     citation_info = paste0(
       make_short_citation(x),
-      ", DOI: ", 
+      ", DOI: ",
       "<a href=\"https://doi.org/", x$citation$doi, "\">",
       x$citation$doi, "</a>"
     )
