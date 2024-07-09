@@ -55,3 +55,6 @@ epidist <- epidist_db(
 )
 convert_params_to_summary_stats(epidist[[2]], shape = 1, scale = 1)
 }
+\seealso{
+\code{\link[=convert_summary_stats_to_params]{convert_summary_stats_to_params()}}
+}

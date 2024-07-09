@@ -67,3 +67,6 @@ convert_summary_stats_to_params(epidist)
 epidist$summary_stats <- list()
 convert_summary_stats_to_params(epidist, mean = 10, sd = 2)
 }
+\seealso{
+\code{\link[=convert_params_to_summary_stats]{convert_params_to_summary_stats()}}
+}
