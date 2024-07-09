@@ -58,8 +58,7 @@ as.data.frame.epidist <- function(x, ...) {
   # check object as could be invalidated by user
   validate_epidist(x)
 
-  # make data frame
-  df <- data.frame(
+  data.frame(
     disease = x$disease,
     pathogen = x$pathogen,
     epi_distribution = x$epi_dist,
@@ -69,12 +68,9 @@ as.data.frame.epidist <- function(x, ...) {
     citation = I(x$citation),
     metadata = I(list(metadata = x$metadata)),
     method_assess = I(list(method_assess = x$method_assess)),
-    notes = x$notes
+    notes = x$notes,
+    row.names = NULL
   )
-  row.names(df) <- NULL
-
-  # return data frame
-  df
 }
 
 #' [as.data.frame()] method for `<multi_epidist>` class
