@@ -55,7 +55,7 @@ There are two conversion functions in {epiparameter}: `convert_params_to_summary
 
 ### Conversion functions
 
-The conversion functions are generic functions. That means that different types of data can be supplied to the first argument and the correct operation (method) will be executed. Currently {epiparameter} provides conversion methods for `character` and `<epidist>`. If this is unclear, see the examples below for how the conversion functions can work when you supply either a `character` string or an `<epidist>`.
+The conversion functions can take two types of inputs as the first argument: a `character` string of the distribution or an `<epidist>` object.
 
 The conversion functions have two arguments. The first (`x`) defines which distribution you want to use and the second (`...`) lets you put as many named parameters or summary statistics as required. The arguments passed into `...` are matched by name, and therefore need to match exactly to the names expected. See the function documentation (`?convert_params_to_summary_stats` and `?convert_summary_stats_to_params` for names). In the case that an `<epidist>` object is supplied, if it has the parameters or summary statistics required for conversion then nothing needs to be given as extra arguments (i.e. `...`). 
 
