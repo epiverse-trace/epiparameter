@@ -49,7 +49,7 @@ library(epiparameter)
 
 ### Library of epidemiological parameters
 
-First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The library is stored in the package as a JSON file and can be read into R using the `epidist_db()` function. By default all entries in the library are supplied.
+First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The library is stored internally and can be read into R using the `epidist_db()` function. By default all entries in the library are returned.
 
 ```{r read-in-library}
 epi_dist_db <- epidist_db()
