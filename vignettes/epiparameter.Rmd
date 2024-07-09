@@ -154,7 +154,7 @@ new_db <- append(epi_dist_db, list(covid_incubation))
 tail(new_db, n = 3)
 ```
 
-Note that this only adds the parameters to the library in the environment, and does not save to the database file in the package. 
+Note that this only adds the parameters to the library in the environment, and does not save to the database file in the package. Hence, if you restart your R session, you will lose the changes. 
 
 The library of epidemiological parameters is a living database, as new studies are published we hope to incorporate these. Due to the large time requirement of searching for and recording parameters in the database we welcome others to add parameters by either making a pull request to the package or adding information to the contributing spreadsheet. These will be incorporated into the database by the package maintainers. See the [Data Collation and Synthesis Protocol](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html) vignette on information about contributing to the library of epidemiological parameters.
 
