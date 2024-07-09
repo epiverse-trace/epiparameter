@@ -18,14 +18,14 @@ library(epireview)
 The article describes how to use the {epireview} R package with {epiparameter}. {epireview} provides epidemiological parameters for a range of pathogens extracted from the literature by the Pathogen Epidemiology Review Group (PERG) in systematic reviews. The {epiparameter} R package can use these epidemiological parameters and can convert them into `<epidist>` objects.
 
 ::: {.alert .alert-warning}
-This feature of interoperability of {epireview} and {epiparameter} is still under development. Currently only delay distributions (in {epireview} termed Human delay) are compatible with this feature. Attempting to convert other epidemiological parameters from {epireview} to {epiparameter} `<epidist>` objects will likely error with an uninformative error message.
+This feature of interoperability of {epireview} and {epiparameter} is still under development. Currently only delay distributions (termed _Human delay_ in the "parameter_type" column in {epireview}'s database) are compatible with this feature. Attempting to convert other epidemiological parameters from {epireview} to {epiparameter} `<epidist>` objects will likely error with an uninformative error message.
 :::
 
 ## Converting from {epireview} entries into an `<epidist>` object
 
-The {epireview} package nicely provides epidemiological parameter data from systematically reviewing the literature, and {epiparameter} provides custom data structures for working with epidemiological data in R. Therefore, reading in data from the {epireview} R package and converting it to an `<epidist>` object will hopefully provide the greatest utility when applied in outbreak analytics. 
+The {epireview} package nicely provides epidemiological parameter data from systematically reviewing the literature, and {epiparameter} provides custom data structures for working with epidemiological data in R. Therefore, reading in data from the {epireview} R package and converting it to an `<epidist>` object will provide the greatest utility when applied in outbreak analytics. 
 
-Here we start we a simple example of reading in the Marburg data from {epireview} and converting to an `<epidist>` object using `as_epidist()` function from the {epiparameter} package.
+Here we start with a simple example of reading in the Marburg data from {epireview} and converting to an `<epidist>` object using `as_epidist()` function from the {epiparameter} package.
 
 ```{r, load-marburg}
 marburg_data <- load_epidata("marburg")
@@ -130,7 +130,7 @@ The `as_epidist()` function is an S3 generic. If you are not familiar with S3 ob
 
 The way the {epireview} data is stored means that some epidemiological parameter entries require multiple rows. This can be, for example, because they contain two summary statistics (e.g. mean and standard deviation) that are kept on separate rows. In order to create `<epidist>` objects that contains the full information for each entry multiple rows of the epidemiological parameters table from {epireview} can be given to `as_epidist()` to create a single `<epidist>` object.
 
-We can search in the data which entries have multiple rows by checking if there are duplicated parameter types and IDs. Remembering that we are using only the delay distributions (i.e. Human delay) from the epidemiological parameters, that we subset above. 
+We can search which entries in the data have multiple rows by checking if there are duplicated parameter types and IDs. Remember that it is only possible to convert delay distributions into epidist objects (i.e. known as _Human delay_ parameter types in {epireview}), which we previously subset in this vignette. 
 
 ```{r, check-multi-row-entries}
 multi_row_entries <- duplicated(marburg_params$parameter_type) &
@@ -177,7 +177,7 @@ delay_dist_rows <- grepl(
   x = ebola_params$parameter_type,
   fixed = TRUE
 )
-ebola_params <- ebola_params[delay_dist_rows, ]
+ebola_delays <- ebola_params[delay_dist_rows, ]
 ebola_params
 ```
 
@@ -224,7 +224,7 @@ ebola_data <- load_epidata("ebola")
 ebola_params <- ebola_data$params
 ```
 
-Here we will use the serial interval for Ebola reported by @fayeChainsTransmissionControl2015a. This is stored, over two rows of the parameter table, as the mean and standard deviation, but there is no probability distribution specified. 
+Here we will use the serial interval for Ebola reported by @fayeChainsTransmissionControl2015a. This is stored, over two rows of the {epireview} parameter table, as the mean and standard deviation, but there is no probability distribution specified. 
 
 The code chunk below subsets the Ebola parameter table to just return the serial interval from @fayeChainsTransmissionControl2015a.
 
