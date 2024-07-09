@@ -217,7 +217,7 @@ generate(ebola_si_epidist, times = 10)
 
 ## Specifying the probability distribution if unknown
 
-There may be instances where a delay distribution is reported, but either a probability distribution is not fit to the data, or it is not reported which probability distribution the parameters correspond to. In these cases, and when a parametric probability distribution is required for a particular epidemiological task then assuming a probability distribution can be useful. 
+There may be instances where a delay distribution is reported in the literature, but either a probability distribution is not fit to the data, or it is not reported which probability distribution the parameters correspond to. Therefore, there will not be a probability distribution specified in the {epireview} data. In these cases, and when a parametric probability distribution is required for a particular epidemiological task then assuming a probability distribution can be useful.  
 
 ::: {.alert .alert-danger}
 **Please use this feature with caution**. Assuming an incorrect probability distribution and applying this in an epidemiological method can lead to erroneous results. Additionally, if a probability distribution is specified by the user it will overwrite any probability distribution specified in input data (e.g. {epireview} parameter data) which can lead to an error if the distribution name supplied and parameters input are incompatible See `?as_epidist` details for more information.
