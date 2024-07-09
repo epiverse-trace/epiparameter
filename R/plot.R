@@ -43,6 +43,7 @@
 plot.epidist <- function(x,
                          cumulative = FALSE,
                          ...) {
+  browser()
   # check input
   validate_epidist(x)
   checkmate::assert_logical(cumulative, any.missing = FALSE, len = 1)
@@ -86,6 +87,7 @@ plot.epidist <- function(x,
         main = "Cumulative Distribution Function",
         ...
       )
+      .plot_ribbon(x, cumulative = cumulative, xlim = xlim)
     } else {
       # plot either PDF or PMF
       plot(
@@ -99,6 +101,7 @@ plot.epidist <- function(x,
         main = main,
         ...
       )
+      .plot_ribbon(x, cumulative = cumulative, xlim = xlim)
     }
   } else {
     if (cumulative) {
@@ -124,4 +127,41 @@ plot.epidist <- function(x,
       )
     }
   }
+}
+
+.plot_ribbon <- function(x, cumulative, xlim) {
+browser()
+  ci_params <- lapply(x$uncertainty, "[[", "ci_limits")
+  # return early if no uncertainty is supplied
+  if (all(is.na(ci_limits))) {
+    invisible()
+  }
+  params <- get_parameters(x)
+
+  # get distribution name
+  dist_name <- family(x)
+  # create either density or cdf function
+  dist_func <- paste0(ifelse(test = cumulative, yes = "p", no = "d"), dist_name)
+
+  # Calculate the density for the main parameters
+  density_main <- do.call(dist_func, c(list(xlim), params))
+
+  # Calculate the density for the confidence intervals
+  ci_densities <- lapply(1:length(params), function(i) {
+    lower_params <- params
+    upper_params <- params
+    lower_params[[i]] <- ci_params[[i]][1]
+    upper_params[[i]] <- ci_params[[i]][2]
+    list(
+      lower = do.call(dist_func, c(list(xlim), lower_params)),
+      upper = do.call(dist_func, c(list(xlim), upper_params))
+    )
+  })
+
+  # Combine the extreme densities to form the uncertainty ribbon
+  density_lower <- apply(sapply(ci_densities, function(d) d$lower), 1, min)
+  density_upper <- apply(sapply(ci_densities, function(d) d$upper), 1, max)
+
+  # Add the ribbon of uncertainty using polygon
+  polygon(c(xlim, rev(xlim)), c(density_lower, rev(density_upper)), col = rgb(0.1, 0.2, 0.8, 0.3), border = NA)
 }
