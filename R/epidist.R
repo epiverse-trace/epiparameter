@@ -438,7 +438,7 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
     )
     writeLines(sprintf(dist_string, family(x)))
   } else {
-    writeLines(sprintf("Parameters: <no parameters>"))
+    writeLines("Parameters: <no parameters>")
   }
 
   if (is.object(x$prob_dist)) {
