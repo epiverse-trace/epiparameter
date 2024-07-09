@@ -16,10 +16,9 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 `{epiparameter}` is an `R` package that contains a library of
-epidemiological parameters for infectious diseases and a set classes and
-helper functions to be able to work with the data. It also includes
-functions to extract and convert parameters from reported summary
-statistics.
+epidemiological parameters for infectious diseases and a set of classes
+and helper functions to work with the data. It also includes functions
+to extract and convert parameters from reported summary statistics.
 
 `{epiparameter}` is developed at the [Centre for the Mathematical
 Modelling of Infectious
@@ -59,9 +58,6 @@ epidists <- epidist_db()
 #> Returning 122 results that match the criteria (99 are parameterised). 
 #> Use subset to filter by entry variables or single_epidist to return a single entry. 
 #> To retrieve the citation for each use the 'get_citation' function
-```
-
-``` r
 epidists
 #> # List of 122 <epidist> objects
 #> Number of diseases: 23
@@ -113,7 +109,7 @@ epidists
 #> # ℹ 119 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
-#> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/dev/articles/database.html
+#> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 ```
 
 This results a list of database entries. Each entry of the library is an
@@ -137,9 +133,6 @@ influenza_incubation <- epidist_db(
 #> Virus Infections." _American Journal of Epidemiology_.
 #> doi:10.1093/aje/kwv115 <https://doi.org/10.1093/aje/kwv115>.. 
 #> To retrieve the citation use the 'get_citation' function
-```
-
-``` r
 influenza_incubation
 #> Disease: Influenza
 #> Pathogen: Influenza-A-H7N9
@@ -177,9 +170,6 @@ parameter_tbl(epidists)
 #>  9 RSV      RSV      incubation peri… lnorm             Lessl…  2009          24
 #> 10 Rhinovi… Rhinovi… incubation peri… lnorm             Lessl…  2009          28
 #> # ℹ 112 more rows
-```
-
-``` r
 parameter_tbl(
   epidists,
   epi_dist = "onset to hospitalisation"
@@ -277,7 +267,7 @@ citation("epiparameter")
 #>   Epidemiological Parameters with Helper Functions and Classes_.
 #>   doi:10.5281/zenodo.11110881
 #>   <https://doi.org/10.5281/zenodo.11110881>,
-#>   <https://github.com/epiverse-trace/epiparameter/,https://epiverse-trace.github.io/epiparameter/>.
+#>   <https://epiverse-trace.github.io/epiparameter>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -286,7 +276,6 @@ citation("epiparameter")
 #>     author = {Joshua W. Lambert and Adam Kucharski and Carmen Tamayo},
 #>     year = {2024},
 #>     doi = {10.5281/zenodo.11110881},
-#>     url = {https://github.com/epiverse-trace/epiparameter/,
-#> https://epiverse-trace.github.io/epiparameter/},
+#>     url = {https://epiverse-trace.github.io/epiparameter},
 #>   }
 ```
