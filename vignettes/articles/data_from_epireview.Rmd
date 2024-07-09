@@ -251,7 +251,7 @@ ebola_si_epidist
 is_parameterised(ebola_si_epidist)
 ```
 
-Given that we can convert the mean and standard deviation into parameters of a probability distribution if we assume a distribution form, we can supply this data to `as_epidist()`.
+Given that we can convert the mean and standard deviation into parameters of a probability distribution if we assume a distribution form, we can supply this data to `as_epidist()`. This uses the parameter conversion functions in {epiparameter} (see `vignette("extract_convert", package = "epiparameter")`).
 
 ```{r, convert-to-epidist-assumed-prob-dist}
 ebola_si_epidist <- as_epidist(ebola_si, prob_dist = "gamma")
