@@ -40,13 +40,6 @@ the data, and the functions (and methods) implemented in the package to facilita
 library(epiparameter)
 ```
 
-## Working with {epiparameter} data
-
-{epiparameter} introduces two new classes for working with epidemiological parameters in R:
-
-- `<epidist>`: Contains the name of the disease, the name of the epidemiological distribution, parameters (if available) and citation information of parameter source, as well as other information.
-- `<vb_epidist>`: A list of two `<epidist>` objects for a vector-borne disease. One for the human (intrinsic) distribution, and one for the vector (extrinsic).
-
 ### Library of epidemiological parameters
 
 First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The library is stored internally and can be read into R using the `epidist_db()` function. By default all entries in the library are returned.
@@ -75,14 +68,13 @@ the [Data Collation and Synthesis Protocol vignette](https://epiverse-trace.gith
 
 ### Single set of epidemiological parameters
 
-The core data structure introduced in the {epiparameter} package is the `<epidist>` class. This holds a single set of epidemiological parameters. 
+{epiparameter} introduces a new class for working with epidemiological parameters in R: `<epidist>`, contains the name of the disease, the name of the epidemiological distribution, parameters (if available) and citation information of parameter source, as well as other information. This is the core data structure in the {epiparameter} package and holds a single set of epidemiological parameters. 
 
 An `<epidist>` object can be:
 
 1. Pulled from database (`epidist_db()`)
-2. Created manually (using the class constructor function: `epidist()`)
 
-```{r convert-epiparam-epidist}
+```{r epidist-db}
 # <epidist> from database
 
 # fetch <epidist> for COVID-19 incubation period from database
@@ -93,7 +85,11 @@ covid_incubation <- epidist_db(
   single_epidist = TRUE
 )
 covid_incubation
+```
 
+2. Created manually (using the class constructor function: `epidist()`)
+
+```{r epidist-constructor}
 # <epidist> using constructor function
 covid_incubation <- epidist(
   disease = "COVID-19",
@@ -144,19 +140,11 @@ epidist_db(
 
 The results can be further subset using the `subset` argument, for example `subset = sample_size > 100` will return entries with a sample size greater than 100. See `?epidist_db()` for details on how to use this argument to subset which database entries get returned.
 
-## Adding library entries and contributing to {epiparameter}
+If a single `<epidist>` is required then the `single_epidist` argument can be set to `TRUE` and this will return a single set of epidemiological parameters (i.e. one delay distribution), if available. If multiple entries in the parameter library match the search criteria (e.g. disease type) then the entries that are parameterised (i.e. distribution parameters are known), account for right truncation when inferred, and were estimated from the largest sample size are preferentially selected (in that order).
 
-If a set of epidemiological parameter has been inferred and is known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.
-
-```{r add-to-library}
-# wrap <epidist> in list to append to database
-new_db <- append(epi_dist_db, list(covid_incubation))
-tail(new_db, n = 3)
+```{r epidist-db-single-epidist}
+epidist_db(disease = "SARS", single_epidist = TRUE)
 ```
-
-Note that this only adds the parameters to the library in the environment, and does not save to the database file in the package. Hence, if you restart your R session, you will lose the changes. 
-
-The library of epidemiological parameters is a living database, so as new studies are published we hope to incorporate these. Searching for and recording parameters in the database is extremely time-consuming, so we welcome contributions of new parameters by either making a pull request to the package or adding information to the contributing spreadsheet. These will be incorporated into the database by the package maintainers and your contributions will be acknowledged. See the [Data Collation and Synthesis Protocol](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html) vignette on information about contributing to the library of epidemiological parameters.
 
 ## Distribution functions
 
@@ -191,6 +179,15 @@ plot(ebola_incubation, xlim = c(1, 25))
 
 This plotting function can be useful for visually comparing epidemiological distributions from different publications on the same disease. In addition, plotting the distribution after manually creating an `<epidist>` help to check that the parameters are sensible and produce the expected distribution. 
 
+### Accessors
+
+The `<epidist>` class also has accessor functions that can help access elements from the object in a standardised format.
+
+```{r epidist-accessors}
+get_parameters(ebola_incubation)
+get_citation(ebola_incubation)
+```
+
 ## Parameter conversion and extraction
 
 ### Conversion
@@ -200,3 +197,17 @@ Parameters are often reported in the literature as mean and standard deviation (
 ### Extraction
 
 The functions `extract_param()` handles all the extraction of parameter estimates from summary statistics. The two extractions currently supported in {epiparameter} are from percentiles and from median and range.
+
+## Adding library entries and contributing to {epiparameter}
+
+If a set of epidemiological parameter has been inferred and is known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.
+
+```{r add-to-library}
+# wrap <epidist> in list to append to database
+new_db <- append(epi_dist_db, list(covid_incubation))
+tail(new_db, n = 3)
+```
+
+Note that this only adds the parameters to the library in the environment, and does not save to the database file in the package. Hence, if you restart your R session, you will lose the changes. 
+
+The library of epidemiological parameters is a living database, so as new studies are published we hope to incorporate these. Searching for and recording parameters in the database is extremely time-consuming, so we welcome contributions of new parameters by either making a pull request to the package or adding information to the contributing spreadsheet. These will be incorporated into the database by the package maintainers and your contributions will be acknowledged. See the [Data Collation and Synthesis Protocol](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html) vignette on information about contributing to the library of epidemiological parameters.
