@@ -29,6 +29,8 @@
 #' statistics used to convert to parameter(s). An example is the `mean`
 #' and `sd` summary statistics for the lognormal (`lnorm`) distribution.
 #'
+#' @seealso [convert_params_to_summary_stats()]
+#'
 #' @return A list of either one or two elements (depending on how many
 #' parameters the distribution has).
 #' @export
@@ -153,6 +155,8 @@ convert_summary_stats_to_params.epidist <- function(x, ...) {
 #' @param ... <[`dynamic-dots`][rlang::dyn-dots]> `Numeric` named parameter(s)
 #' used to convert to summary statistics. An example is the `meanlog` and
 #' `sdlog` parameters of the lognormal (`lnorm`) distribution.
+#'
+#' @seealso [convert_summary_stats_to_params()]
 #'
 #' @return A list of eight elements including: mean, median, mode,
 #' variance (`var`), standard deviation (`sd`), coefficient of variation (`cv`),
