@@ -115,6 +115,11 @@ epidists
 This results a list of database entries. Each entry of the library is an
 `<epidist>` object.
 
+Alternatively, the library of epiparameters can be viewed as a vignette
+locally (`vignette("database", package = "epiparameter")`) or on the
+[{epiparameter}
+website](https://epiverse-trace.github.io/epiparameter/articles/database.html).
+
 The results can be filtered by disease and epidemiological distribution.
 Here we set `single_epidist = TRUE` as we only want a single database
 entry returned, and by default (`single_epidist = FALSE`) it will return
@@ -227,7 +232,7 @@ or the median and range of the data. This can be done for:
 If you would like to contribute to the different epidemiological
 parameters stored in the `{epiparameter}` package, you can add data to a
 public [google
-sheet](https://docs.google.com/spreadsheets/d/1zVpaaKkQ7aeMdRN2r0p-W4d2TtccL5HcIOp_w-lfkEQ/edit?usp=sharing).
+sheet](https://docs.google.com/spreadsheets/d/1eCL3n_woseg5Npu7XD7TcuNoLUIhMBu8ZoLCkVdATUE/edit?usp=sharing).
 This spreadsheet contains two example entries as a guide to what fields
 can accept. We are monitoring this sheet for new entries that will
 subsequently be included in the package.
