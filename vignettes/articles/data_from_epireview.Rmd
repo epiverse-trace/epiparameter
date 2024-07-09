@@ -271,6 +271,4 @@ quantile(ebola_si_epidist, p = 0.5)
 generate(ebola_si_epidist, times = 10)
 ```
 
-## Limitations
-
 ## References
