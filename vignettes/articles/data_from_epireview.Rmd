@@ -143,7 +143,13 @@ multi_row_marburg_params <-
   marburg_params[marburg_params$id %in% multi_row_ids, ]
 ```
 
-This step should be verified manually to ensure that the entries that have been selected are indeed multiple rows for the same reported epidemiological parameter. We use the first two rows of this subset table, which are the mean and standard deviation for the generation time of Marburg disease. 
+In this case there are two studies for Marburg with more than one entry (row) in the {epireview} database. Out of these studies, we select the first two rows, which contain the mean and standard deviation.
+
+```{r, check-multi-row-param-value-type}
+multi_row_marburg_params$parameter_value_type
+```
+
+We use the first two rows of this subset table, which are the mean and standard deviation for the generation time of Marburg disease. This step should be verified manually to ensure that the entries that have been selected are indeed multiple rows for the same reported epidemiological parameter.
 
 ```{r, subset-multi-row-marburg-entry}
 marburg_gt <- multi_row_marburg_params[1:2, ]
