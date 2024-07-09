@@ -29,15 +29,13 @@ as.function.epidist <- function(x,
     )
   }
   epidist <- x
-  x <- switch(func_type,
+  # return distribution function
+  switch(func_type,
     density = function(x) density(x = epidist, at = x),
     cdf = function(x) epiparameter::cdf(x = epidist, q = x),
     generate = function(x) epiparameter::generate(x = epidist, times = x),
     quantile = function(x) quantile(x = epidist, p = x)
   )
-
-  # return distribution function
-  x
 }
 
 
