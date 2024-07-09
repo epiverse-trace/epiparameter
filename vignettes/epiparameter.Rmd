@@ -151,6 +151,7 @@ If a set of epidemiological parameter has been inferred and is known to the user
 ```{r add-to-library}
 # wrap <epidist> in list to append to database
 new_db <- append(epi_dist_db, list(covid_incubation))
+tail(new_db, n = 3)
 ```
 
 Note that this only adds the parameters to the library in the environment, and does not save to the database file in the package. 
