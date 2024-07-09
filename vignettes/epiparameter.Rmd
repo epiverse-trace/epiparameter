@@ -56,8 +56,7 @@ epi_dist_db <- epidist_db()
 epi_dist_db
 ```
 
-The output is a list of `<epidist>` objects, where each element in the list corresponds to an entry in the parameter database. *Technical note*: the reason the object does not look like a regular R list is because it uses a custom print method which will print a summary of the data to the console when there are more than 5 entries to prevent a large list flooding the console. When the number of database entries returned is less than or equal to 5 the print will look like a standard R list.
-
+The output is a list of `<epidist>` objects, where each element in the list corresponds to an entry in the parameter database. 
 To see a full list of the diseases and distributions stored in the library use the 
 `parameter_tbl()` function. Here we show the first six rows of the output.
 
