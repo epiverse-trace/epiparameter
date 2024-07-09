@@ -178,13 +178,13 @@ delay_dist_rows <- grepl(
   fixed = TRUE
 )
 ebola_delays <- ebola_params[delay_dist_rows, ]
-ebola_params
+ebola_delays
 ```
 
 We will select the 358th entry, which is a serial interval, as this entry has estimated and reported a Weibull distribution:
 
 ```{r, select-ebola-entry}
-ebola_si <- ebola_params[358, ]
+ebola_si <- ebola_delays[358, ]
 ebola_si
 ```
 
