@@ -57,7 +57,7 @@
       # i 119 more elements
       # i Use `print(n = ...)` to see more elements.
       # i Use `parameter_tbl()` to see a summary table of the parameters.
-      # i Explore database online at: https://epiverse-trace.github.io/epiparameter/dev/articles/database.html
+      # i Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 
 # epidist_db print method works as expected for <= 5 <epidist>
 
@@ -98,5 +98,5 @@
         dispersion: 0.170
       
       # i Use `parameter_tbl()` to see a summary table of the parameters.
-      # i Explore database online at: https://epiverse-trace.github.io/epiparameter/dev/articles/database.html
+      # i Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 
