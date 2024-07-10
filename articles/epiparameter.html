@@ -33,7 +33,7 @@
     <a href="https://epiverse-trace.github.io/" class="external-link"><img src="https://epiverse-trace.github.io/blueprints/logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
     <a class="navbar-brand me-2" href="../index.html">epiparameter</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,6 +88,8 @@
 </nav><div class="container template-article">
 
 
+
+
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Getting Started with {epiparameter}</h1>
@@ -99,23 +101,45 @@
 
     
     
-<p>It is often the case that in an infectious disease outbreak epidemiological parameters are required in order to characterise and model the dynamics of disease transmission and evaluate control strategies. In those scenarios, epidemiological parameters are commonly retrieved from the literature, and there is currently no library of parameters in order to contrast and compare different reported parameters for a range of infectious diseases and pathogens, from different published studies over time, of which some may be meta-analyses.</p>
-<p>The {epiparameter} R package is a library of epidemiological parameters, with classes to handle this data and a set of functions to manipulate and use epidemiological parameters and distributions. The package also contains functionality for converting and extracting distribution parameters from summary statistics.</p>
+<p>It is often the case that in an infectious disease outbreak
+epidemiological parameters are required in order to characterise and
+model the dynamics of disease transmission and evaluate control
+strategies. In those scenarios, epidemiological parameters are commonly
+retrieved from the literature, and there is currently no library of
+parameters in order to contrast and compare different reported
+parameters for a range of infectious diseases and pathogens, from
+different published studies over time, of which some may be
+meta-analyses.</p>
+<p>The {epiparameter} R package is a library of epidemiological
+parameters, with classes to handle this data and a set of functions to
+manipulate and use epidemiological parameters and distributions. The
+package also contains functionality for converting and extracting
+distribution parameters from summary statistics.</p>
 <div class="section level3 alert alert-primary">
 <h3 id="use-case">Use case<a class="anchor" aria-label="anchor" href="#use-case"></a>
 </h3>
-<p>An outbreak of a known or potentially novel pathogen is detected and key parameters such as delay distributions (e.g. incubation period or serial interval) are required to interpret early data.</p>
-<p>{epiparameter} can provide these distributions from a selection of published sources, such as past analysis of the same or similar pathogen, in order to provide relevant epidemiological parameters for new analysis.</p>
+<p>An outbreak of a known or potentially novel pathogen is detected and
+key parameters such as delay distributions (e.g. incubation period or
+serial interval) are required to interpret early data.</p>
+<p>{epiparameter} can provide these distributions from a selection of
+published sources, such as past analysis of the same or similar
+pathogen, in order to provide relevant epidemiological parameters for
+new analysis.</p>
 </div>
-<p>This vignette will provide a introduction to the data stored within {epiparameter}, how to read it into R, manipulate
-the data, and the functions (and methods) implemented in the package to facilitate easy application of parameters into epidemiological pipelines.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<p>This vignette will provide a introduction to the data stored within
+{epiparameter}, how to read it into R, manipulate the data, and the
+functions (and methods) implemented in the package to facilitate easy
+application of parameters into epidemiological pipelines.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a></span><span class="op">)</span></span></code></pre></div>
-</details><div class="section level3">
+<div class="section level3">
 <h3 id="library-of-epidemiological-parameters">Library of epidemiological parameters<a class="anchor" aria-label="anchor" href="#library-of-epidemiological-parameters"></a>
 </h3>
-<p>First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The library is stored internally and can be read into R using the <code><a href="../reference/epidist_db.html">epidist_db()</a></code> function. By default all entries in the library are returned.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<p>First, we will introduce the library, or database, of epidemiological
+parameters available from {epiparameter}. The library is stored
+internally and can be read into R using the <code><a href="../reference/epidist_db.html">epidist_db()</a></code>
+function. By default all entries in the library are returned.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">epi_dist_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Returning 122 results that match the criteria (99 are parameterised). </span></span>
 <span><span class="co">#&gt; Use subset to filter by entry variables or single_epidist to return a single entry. </span></span>
@@ -172,10 +196,12 @@ the data, and the functions (and methods) implemented in the package to facilita
 <span><span class="co"><span style="color: #949494;">#&gt; # ℹ Use `print(n = ...)` to see more elements.</span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html</span></span></span></code></pre></div>
-</details><p>The output is a list of <code>&lt;epidist&gt;</code> objects, where each element in the list corresponds to an entry in the parameter database.
-To see a full list of the diseases and distributions stored in the library use the
-<code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> function. Here we show the first six rows of the output.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>The output is a list of <code>&lt;epidist&gt;</code> objects, where
+each element in the list corresponds to an entry in the parameter
+database. To see a full list of the diseases and distributions stored in
+the library use the <code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> function. Here we show
+the first six rows of the output.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/parameter_tbl.html">parameter_tbl</a></span><span class="op">(</span>multi_epidist <span class="op">=</span> <span class="va">epi_dist_db</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Parameter table:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A data frame:    122 × 7</span></span></span>
@@ -192,8 +218,9 @@ To see a full list of the diseases and distributions stored in the library use t
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> RSV      RSV      incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          24</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Rhinovi… Rhinovi… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          28</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 112 more rows</span></span></span></code></pre></div>
-</details><p><code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> can also subset the database supplied to the function.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p><code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> can also subset the database supplied to
+the function.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/parameter_tbl.html">parameter_tbl</a></span><span class="op">(</span>multi_epidist <span class="op">=</span> <span class="va">epi_dist_db</span>, disease <span class="op">=</span> <span class="st">"Ebola"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Parameter table:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A data frame:    17 × 7</span></span></span>
@@ -216,18 +243,25 @@ To see a full list of the diseases and distributions stored in the library use t
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Ebola V… Ebola V… notification to… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">1</span>324</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Ebola V… Ebola V… onset to death   gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">2</span>741</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Ebola V… Ebola V… onset to discha… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">1</span>335</span></span></code></pre></div>
-</details><p>More details on the data collation and the library of parameters can be found in
-the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data Collation and Synthesis Protocol vignette</a>.</p>
+<p>More details on the data collation and the library of parameters can
+be found in the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data
+Collation and Synthesis Protocol vignette</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="single-set-of-epidemiological-parameters">Single set of epidemiological parameters<a class="anchor" aria-label="anchor" href="#single-set-of-epidemiological-parameters"></a>
 </h3>
-<p>{epiparameter} introduces a new class for working with epidemiological parameters in R: <code>&lt;epidist&gt;</code>, contains the name of the disease, the name of the epidemiological distribution, parameters (if available) and citation information of parameter source, as well as other information. This is the core data structure in the {epiparameter} package and holds a single set of epidemiological parameters.</p>
+<p>{epiparameter} introduces a new class for working with
+epidemiological parameters in R: <code>&lt;epidist&gt;</code>, contains
+the name of the disease, the name of the epidemiological distribution,
+parameters (if available) and citation information of parameter source,
+as well as other information. This is the core data structure in the
+{epiparameter} package and holds a single set of epidemiological
+parameters.</p>
 <p>An <code>&lt;epidist&gt;</code> object can be:</p>
 <ol style="list-style-type: decimal">
 <li>Pulled from database (<code><a href="../reference/epidist_db.html">epidist_db()</a></code>)</li>
 </ol>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># &lt;epidist&gt; from database</span></span>
 <span></span>
 <span><span class="co"># fetch &lt;epidist&gt; for COVID-19 incubation period from database</span></span>
@@ -258,10 +292,11 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   meanlog: 1.525</span></span>
 <span><span class="co">#&gt;   sdlog: 0.629</span></span></code></pre></div>
-</details><ol start="2" style="list-style-type: decimal">
-<li>Created manually (using the class constructor function: <code><a href="../reference/epidist.html">epidist()</a></code>)</li>
+<ol start="2" style="list-style-type: decimal">
+<li>Created manually (using the class constructor function:
+<code><a href="../reference/epidist.html">epidist()</a></code>)</li>
 </ol>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># &lt;epidist&gt; using constructor function</span></span>
 <span><span class="va">covid_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist.html">epidist</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span>
@@ -294,21 +329,50 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   shape: 2.000</span></span>
 <span><span class="co">#&gt;   scale: 1.000</span></span></code></pre></div>
-</details><p>Not all arguments are specified in the example using the class constructor (<code><a href="../reference/epidist.html">epidist()</a></code>) above, for example the <code>metadata</code> or parameter uncertainty (<code>uncertainty</code>) is not provided. See the help documentation for the <code><a href="../reference/epidist.html">epidist()</a></code> function using <code><a href="../reference/epidist.html">?epidist</a></code> to see each argument. Also see documentation for <code>&lt;epidist&gt;</code> helper functions, e.g., <code>?create_epidist_citation()</code>.</p>
-<p>Manually creating <code>&lt;epidist&gt;</code> objects can be especially useful if new parameter estimates become available but are not yet incorporated into the {epiparameter} library.</p>
-<p>As seen in the examples in this vignette, the <code>&lt;epidist&gt;</code> class has a custom printing method which shows the disease, pathogen (if known), the epidemiological distribution, a citation of the study the parameters are from and the probability distribution and parameter of that distribution (if available).</p>
+<p>Not all arguments are specified in the example using the class
+constructor (<code><a href="../reference/epidist.html">epidist()</a></code>) above, for example the
+<code>metadata</code> or parameter uncertainty
+(<code>uncertainty</code>) is not provided. See the help documentation
+for the <code><a href="../reference/epidist.html">epidist()</a></code> function using <code><a href="../reference/epidist.html">?epidist</a></code> to
+see each argument. Also see documentation for
+<code>&lt;epidist&gt;</code> helper functions, e.g.,
+<code>?create_epidist_citation()</code>.</p>
+<p>Manually creating <code>&lt;epidist&gt;</code> objects can be
+especially useful if new parameter estimates become available but are
+not yet incorporated into the {epiparameter} library.</p>
+<p>As seen in the examples in this vignette, the
+<code>&lt;epidist&gt;</code> class has a custom printing method which
+shows the disease, pathogen (if known), the epidemiological
+distribution, a citation of the study the parameters are from and the
+probability distribution and parameter of that distribution (if
+available).</p>
 </div>
 <div class="section level3 alert alert-success">
 <h3 id="benefit-of-epidist">Benefit of <code>&lt;epidist&gt;</code><a class="anchor" aria-label="anchor" href="#benefit-of-epidist"></a>
 </h3>
-<p>By providing a consistent and robust object to store epidemiological parameters, <code>&lt;epidist&gt;</code> objects can be applied in epidemiological pipelines, for example <a href="https://github.com/epiverse-trace/episoap" class="external-link">{episoap}</a>. The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will continue to operate because the class is unchanged.</p>
+<p>By providing a consistent and robust object to store epidemiological
+parameters, <code>&lt;epidist&gt;</code> objects can be applied in
+epidemiological pipelines, for example <a href="https://github.com/epiverse-trace/episoap" class="external-link">{episoap}</a>. The data
+contained within the object (e.g. parameter values, pathogen type, etc.)
+can be modified but the pipeline will continue to operate because the
+class is unchanged.</p>
 </div>
-<p>The probability distribution (<code>prob_distribution</code>) argument requires the distribution specified in the standard R naming. In some cases these are the same as the distribution’s name, e.g., <code>gamma</code> and <code>weibull</code>. Examples of where the distribution name and R name differ are lognormal and <code>lnorm</code>, negative binomial and <code>nbinom</code>, geometric and <code>geom</code>, and poisson and <code>pois</code>.</p>
+<p>The probability distribution (<code>prob_distribution</code>)
+argument requires the distribution specified in the standard R naming.
+In some cases these are the same as the distribution’s name, e.g.,
+<code>gamma</code> and <code>weibull</code>. Examples of where the
+distribution name and R name differ are lognormal and
+<code>lnorm</code>, negative binomial and <code>nbinom</code>, geometric
+and <code>geom</code>, and poisson and <code>pois</code>.</p>
 <div class="section level2">
 <h2 id="subsetting-database">Subsetting database<a class="anchor" aria-label="anchor" href="#subsetting-database"></a>
 </h2>
-<p>The database can be subset directly by <code><a href="../reference/epidist_db.html">epidist_db()</a></code>. Here the results can be subset by author. It is recommended to use the family name of the first author instead of the full name. Only the first author will be matched when the entry is from a source with multiple authors.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p>The database can be subset directly by <code><a href="../reference/epidist_db.html">epidist_db()</a></code>.
+Here the results can be subset by author. It is recommended to use the
+family name of the first author instead of the full name. Only the first
+author will be matched when the entry is from a source with multiple
+authors.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
@@ -369,9 +433,20 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html</span></span></span></code></pre></div>
-</details><p>The results can be further subset using the <code>subset</code> argument, for example <code>subset = sample_size &gt; 100</code> will return entries with a sample size greater than 100. See <code>?epidist_db()</code> for details on how to use this argument to subset which database entries get returned.</p>
-<p>If a single <code>&lt;epidist&gt;</code> is required then the <code>single_epidist</code> argument can be set to <code>TRUE</code> and this will return a single set of epidemiological parameters (i.e. one delay distribution), if available. If multiple entries in the parameter library match the search criteria (e.g. disease type) then the entries that are parameterised (i.e. distribution parameters are known), account for right truncation when inferred, and were estimated from the largest sample size are preferentially selected (in that order).</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p>The results can be further subset using the <code>subset</code>
+argument, for example <code>subset = sample_size &gt; 100</code> will
+return entries with a sample size greater than 100. See
+<code>?epidist_db()</code> for details on how to use this argument to
+subset which database entries get returned.</p>
+<p>If a single <code>&lt;epidist&gt;</code> is required then the
+<code>single_epidist</code> argument can be set to <code>TRUE</code> and
+this will return a single set of epidemiological parameters (i.e. one
+delay distribution), if available. If multiple entries in the parameter
+library match the search criteria (e.g. disease type) then the entries
+that are parameterised (i.e. distribution parameters are known), account
+for right truncation when inferred, and were estimated from the largest
+sample size are preferentially selected (in that order).</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"SARS"</span>, single_epidist <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).</span></span>
 <span><span class="co">#&gt; "Incubation periods of acute respiratory viral infections: a systematic</span></span>
@@ -391,13 +466,18 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   meanlog: 0.660</span></span>
 <span><span class="co">#&gt;   sdlog: 1.205</span></span></code></pre></div>
-</details>
 </div>
 <div class="section level2">
 <h2 id="distribution-functions">Distribution functions<a class="anchor" aria-label="anchor" href="#distribution-functions"></a>
 </h2>
-<p><code>&lt;epidist&gt;</code> objects store distributions, and mathematical functions of these distribution can easily be extracted directly from them. It is often useful to access the probability density function, cumulative distribution function, quantiles of the distribution, or generate random numbers from the distribution in the <code>&lt;epidist&gt;</code> object. The distribution functions in {epiparameter} allow users to easily use these.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<p><code>&lt;epidist&gt;</code> objects store distributions, and
+mathematical functions of these distribution can easily be extracted
+directly from them. It is often useful to access the probability density
+function, cumulative distribution function, quantiles of the
+distribution, or generate random numbers from the distribution in the
+<code>&lt;epidist&gt;</code> object. The distribution functions in
+{epiparameter} allow users to easily use these.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ebola_incubation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epidist_db.html">epidist_db</a></span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"Ebola"</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
@@ -424,25 +504,34 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1]  0.7464232  1.8696650  6.9982148 13.0108742  2.1266018  5.4595597</span></span>
 <span><span class="co">#&gt;  [7]  0.4965333  3.7836991  2.4298127  0.3236717</span></span></code></pre></div>
-</details>
 </div>
 <div class="section level2">
 <h2 id="plotting-epidemiological-distributions">Plotting epidemiological distributions<a class="anchor" aria-label="anchor" href="#plotting-epidemiological-distributions"></a>
 </h2>
-<p><code>&lt;epidist&gt;</code> objects can easily be plotted to see the PDF and CDF of distribution.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<p><code>&lt;epidist&gt;</code> objects can easily be plotted to see the
+PDF and CDF of distribution.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_incubation</span><span class="op">)</span></span></code></pre></div>
-</details><p><img src="epiparameter_files/figure-html/plot-epidist-1.png"><!-- --></p>
-<p>The default plotting range for time since infection is from zero to the 99th quantile of the distribution. This can be altered by specifying the <code>xlim</code> argument when plotting an <code>&lt;epidist&gt;</code> object.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<p><img src="epiparameter_files/figure-html/plot-epidist-1.png" width="768"></p>
+<p>The default plotting range for time since infection is from zero to
+the 99th quantile of the distribution. This can be altered by specifying
+the <code>xlim</code> argument when plotting an
+<code>&lt;epidist&gt;</code> object.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_incubation</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">25</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-</details><p><img src="epiparameter_files/figure-html/plot-epidist-dayrange-1.png"><!-- --></p>
-<p>This plotting function can be useful for visually comparing epidemiological distributions from different publications on the same disease. In addition, plotting the distribution after manually creating an <code>&lt;epidist&gt;</code> help to check that the parameters are sensible and produce the expected distribution.</p>
+<p><img src="epiparameter_files/figure-html/plot-epidist-dayrange-1.png" width="768"></p>
+<p>This plotting function can be useful for visually comparing
+epidemiological distributions from different publications on the same
+disease. In addition, plotting the distribution after manually creating
+an <code>&lt;epidist&gt;</code> help to check that the parameters are
+sensible and produce the expected distribution.</p>
 <div class="section level3">
 <h3 id="accessors">Accessors<a class="anchor" aria-label="anchor" href="#accessors"></a>
 </h3>
-<p>The <code>&lt;epidist&gt;</code> class also has accessor functions that can help access elements from the object in a standardised format.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<p>The <code>&lt;epidist&gt;</code> class also has accessor functions
+that can help access elements from the object in a standardised
+format.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_parameters.html">get_parameters</a></span><span class="op">(</span><span class="va">ebola_incubation</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    shape    scale </span></span>
 <span><span class="co">#&gt; 1.577781 6.528155</span></span>
@@ -457,7 +546,6 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="co">#&gt; Epidemic after One Year — Slowing but Not Yet under Control." _The New</span></span>
 <span><span class="co">#&gt; England Journal of Medicine_. doi:10.1056/NEJMc1414992</span></span>
 <span><span class="co">#&gt; &lt;https://doi.org/10.1056/NEJMc1414992&gt;.</span></span></code></pre></div>
-</details>
 </div>
 </div>
 <div class="section level2">
@@ -466,19 +554,30 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <div class="section level3">
 <h3 id="conversion">Conversion<a class="anchor" aria-label="anchor" href="#conversion"></a>
 </h3>
-<p>Parameters are often reported in the literature as mean and standard deviation (or variance). These summary statistics can often be (analytically) converted to the parameters of the distribution using the conversion function in the package (<code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>). We also provide conversion functions in the opposite direction, parameters to summary statistics (<code><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats()</a></code>).</p>
+<p>Parameters are often reported in the literature as mean and standard
+deviation (or variance). These summary statistics can often be
+(analytically) converted to the parameters of the distribution using the
+conversion function in the package
+(<code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>). We also provide
+conversion functions in the opposite direction, parameters to summary
+statistics (<code><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats()</a></code>).</p>
 </div>
 <div class="section level3">
 <h3 id="extraction">Extraction<a class="anchor" aria-label="anchor" href="#extraction"></a>
 </h3>
-<p>The functions <code><a href="../reference/extract_param.html">extract_param()</a></code> handles all the extraction of parameter estimates from summary statistics. The two extractions currently supported in {epiparameter} are from percentiles and from median and range.</p>
+<p>The functions <code><a href="../reference/extract_param.html">extract_param()</a></code> handles all the extraction
+of parameter estimates from summary statistics. The two extractions
+currently supported in {epiparameter} are from percentiles and from
+median and range.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="adding-library-entries-and-contributing-to-epiparameter">Adding library entries and contributing to {epiparameter}<a class="anchor" aria-label="anchor" href="#adding-library-entries-and-contributing-to-epiparameter"></a>
 </h2>
-<p>If a set of epidemiological parameter has been inferred and is known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.</p>
-<details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<p>If a set of epidemiological parameter has been inferred and is known
+to the user but has not yet been incorporated into the {epiparameter}
+database, these parameters can be manually added to the library.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># wrap &lt;epidist&gt; in list to append to database</span></span>
 <span><span class="va">new_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/append.html" class="external-link">append</a></span><span class="op">(</span><span class="va">epi_dist_db</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">covid_incubation</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">new_db</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
@@ -514,8 +613,18 @@ the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protoco
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   shape: 2.000</span></span>
 <span><span class="co">#&gt;   scale: 1.000</span></span></code></pre></div>
-</details><p>Note that this only adds the parameters to the library in the environment, and does not save to the database file in the package. Hence, if you restart your R session, you will lose the changes.</p>
-<p>The library of epidemiological parameters is a living database, so as new studies are published we hope to incorporate these. Searching for and recording parameters in the database is extremely time-consuming, so we welcome contributions of new parameters by either making a pull request to the package or adding information to the contributing spreadsheet. These will be incorporated into the database by the package maintainers and your contributions will be acknowledged. See the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data Collation and Synthesis Protocol</a> vignette on information about contributing to the library of epidemiological parameters.</p>
+<p>Note that this only adds the parameters to the library in the
+environment, and does not save to the database file in the package.
+Hence, if you restart your R session, you will lose the changes.</p>
+<p>The library of epidemiological parameters is a living database, so as
+new studies are published we hope to incorporate these. Searching for
+and recording parameters in the database is extremely time-consuming, so
+we welcome contributions of new parameters by either making a pull
+request to the package or adding information to the contributing
+spreadsheet. These will be incorporated into the database by the package
+maintainers and your contributions will be acknowledged. See the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data
+Collation and Synthesis Protocol</a> vignette on information about
+contributing to the library of epidemiological parameters.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

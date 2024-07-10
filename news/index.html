@@ -13,7 +13,7 @@
     <a href="https://epiverse-trace.github.io/" class="external-link"><img src="https://epiverse-trace.github.io/blueprints/logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
     <a class="navbar-brand me-2" href="../index.html">epiparameter</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.1.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,11 +64,11 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="epiparameter-development-version">epiparameter (development version)<a class="anchor" aria-label="anchor" href="#epiparameter-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.2.0" id="epiparameter-020">epiparameter 0.2.0<a class="anchor" aria-label="anchor" href="#epiparameter-020"></a></h2>
 <p>The second release of the {epiparameter} R package focuses on interoperability with the <a href="https://mrc-ide.github.io/epireview/" class="external-link">{epireview} R package</a>. Several functions have been refactored and enhanced.</p>
 <p>This release benefited from feedback from the participants of an <a href="https://who-collaboratory.github.io/collaboratory-epiparameter-community/#/pages/news" class="external-link">EpiParameter Community workshop hosted by the World Health Organisation</a>.</p>
 <div class="section level3">
-<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<h3 id="new-features-0-2-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-2-0"></a></h3>
 <ul><li><p>The <code><a href="../reference/as_epidist.html">as_epidist()</a></code> S3 generic has been added to the package for the coercion of other R objects into <code>&lt;epidist&gt;</code> objects. The <code><a href="../reference/as_epidist.data.frame.html">as_epidist.data.frame()</a></code> method is added, as well as the internal functions <code><a href="../reference/is_epireview.html">is_epireview()</a></code> which determines if a <code>&lt;data.frame&gt;</code> is from {epireview}, and <code>epireview_to_epidist()</code> performs the conversion (<a href="https://github.com/epiverse-trace/epiparameter/issues/298" class="external-link">#298</a>, <a href="https://github.com/epiverse-trace/epiparameter/issues/334" class="external-link">#334</a> &amp; <a href="https://github.com/epiverse-trace/epiparameter/issues/335" class="external-link">#335</a>)</p></li>
 <li><p>The <code>epireview_core_cols.rda</code> data is added to the package. This is used to determine whether the input to <code><a href="../reference/as_epidist.data.frame.html">as_epidist.data.frame()</a></code> is a parameter table from {epireview} as these objects do not have a recognisable class attribute (<a href="https://github.com/epiverse-trace/epiparameter/issues/298" class="external-link">#298</a>).</p></li>
 <li><p>A new website only vignette (i.e. <a href="https://r-pkgs.org/vignettes.html#sec-vignettes-article" class="external-link">article</a>) <code>data_from_epireview.Rmd</code> is added that explains how to use <code><a href="../reference/as_epidist.html">as_epidist()</a></code> with data from {epireview} (<a href="https://github.com/epiverse-trace/epiparameter/issues/298" class="external-link">#298</a> &amp; <a href="https://github.com/epiverse-trace/epiparameter/issues/335" class="external-link">#335</a>).</p></li>
@@ -81,16 +81,16 @@
 <li><p>The package now has an explicit data license: <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt" class="external-link">CC0</a> in the <code>LICENSE</code> file.</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="breaking-changes-development-version">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<h3 id="breaking-changes-0-2-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-2-0"></a></h3>
 <ul><li><p><code>list_distributions()</code> has been replaced by <code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> which enhances the printing by leveraging {pillar} (<a href="https://github.com/epiverse-trace/epiparameter/issues/321" class="external-link">#321</a>).</p></li>
 <li><p>The <code>&lt;vb_epidist&gt;</code> plotting method (<code>plot.vb_epidist()</code>) has been removed from the package. This provided minimal functionality and was unnecessarily complicating the function signature of <code><a href="../reference/plot.epidist.html">plot.epidist()</a></code> (<a href="https://github.com/epiverse-trace/epiparameter/issues/315" class="external-link">#315</a>).</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="bug-fixes-development-version">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
+<h3 id="bug-fixes-0-2-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-0"></a></h3>
 <ul><li>DOI and PMID are lowercase throughout the package to resolve issues with older versions of R (see issue <a href="https://github.com/epiverse-trace/epiparameter/issues/301" class="external-link">#301</a>) (<a href="https://github.com/epiverse-trace/epiparameter/issues/317" class="external-link">#317</a>).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="deprecated-and-defunct-development-version">Deprecated and defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-development-version"></a></h3>
+<h3 id="deprecated-and-defunct-0-2-0">Deprecated and defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-0-2-0"></a></h3>
 <ul><li>None</li>
 </ul></div>
 </div>
