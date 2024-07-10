@@ -1,11 +1,9 @@
 ---
 title: "{epiparameter} Extraction Bias Analysis"
-output: 
+output:
   bookdown::html_vignette2:
     fig_caption: yes
     code_folding: show
-pkgdown:
-  as_is: true
 vignette: >
   %\VignetteIndexEntry{{epiparameter} Extraction Bias Analysis}
   %\VignetteEngine{knitr::rmarkdown}
@@ -15,26 +13,26 @@ vignette: >
 
 
 ::: {.alert .alert-info}
-If you are unfamiliar with the parameter extraction functionality in {epiparameter} 
+If you are unfamiliar with the parameter extraction functionality in {epiparameter}
 the [Conversion and Extraction vignette](extract_convert.html) is a great place to start.
 :::
 
 The {epiparameter} R package contains a set of functions to extract parameters
 of probability distributions given a set of summary statistics. These summary statistics can
 be the values at given percentiles of a distribution, or the median and range of
-a data set to which a distribution can be fit. Using these and specifying the distribution 
-(e.g. gamma, lognormal, etc.) the parameters of the distribution can be extracted by 
+a data set to which a distribution can be fit. Using these and specifying the distribution
+(e.g. gamma, lognormal, etc.) the parameters of the distribution can be extracted by
 optimisation using least-squares.
 
 The precision and bias of this approach needs to be explored across the parameter space
 of the different distributions to understand potential erroneous inferences. This
-vignette aims to explore this inference bias for three distributions currently 
+vignette aims to explore this inference bias for three distributions currently
 supported in {epiparameter} for parameter extraction: gamma, lognormal and Weibull. Extraction
 of parameters from a normal distribution is also supported in {epiparameter} but we
 do not test that in this vignette.
 
 ::: {.alert .alert-warning}
-This is not an in depth analysis of the estimation methods implemented in {epiparameter}, 
+This is not an in depth analysis of the estimation methods implemented in {epiparameter},
 but rather a supplementary article exploring the bias and precision of the functions.
 It is specific to the case of {epiparameter} and should not be taken as a generalisable result.
 :::
@@ -151,10 +149,10 @@ results <- cbind(
 ```
 
 The `extract_param()` function re-runs the optimisation
-until convergence to a set tolerance is achieved (or a maximum number of 
-iterations is reached) to more reliably return the global 
-optimum. In theory, this should help to minimise bias and instability in the 
-parameter estimation. See the function documentation (`?extract_param()`) or 
+until convergence to a set tolerance is achieved (or a maximum number of
+iterations is reached) to more reliably return the global
+optimum. In theory, this should help to minimise bias and instability in the
+parameter estimation. See the function documentation (`?extract_param()`) or
 the [Conversion and Extraction vignette](extract_convert.html) for more details.
 
 The extraction bias can be explored:
@@ -317,13 +315,13 @@ ggplot(data = results) +
 ### Extraction by percentiles
 
 The two analyses above used a single extraction (replicate), however, it may be that
-the estimation of the parameters is unstable for a given set of percentiles or median 
-range. Therefore, we finish with a test of whether repeated extraction of parameters 
+the estimation of the parameters is unstable for a given set of percentiles or median
+range. Therefore, we finish with a test of whether repeated extraction of parameters
 from a single percentile has large variance which would indicate the parameter extraction
 is unstable, imprecise, and potentially untrustworthy.
 
-We use the same parameter space for percentiles as defined above 
-(`parameters_perc`). Now we can run the extraction for a set of replicates to 
+We use the same parameter space for percentiles as defined above
+(`parameters_perc`). Now we can run the extraction for a set of replicates to
 compute the variance of parameter estimates over those replicates.
 
 
@@ -511,14 +509,14 @@ ggplot(data = results) +
 
 ::: {.alert .alert-primary}
 From the plots in this vignette, the bias is low and precision is high
-when extracting parameters from the gamma, lognormal and Weibull distributions 
+when extracting parameters from the gamma, lognormal and Weibull distributions
 from both percentiles of the distribution and from median and range of a data
 set.
 
-The asymmetry of percentiles and sample size of the data does not noticeably 
+The asymmetry of percentiles and sample size of the data does not noticeably
 influence the bias in parameter extraction.
 
-However, this does not ensure reliable extract for all use cases of the 
+However, this does not ensure reliable extract for all use cases of the
 `extract_param()` function and we recommend checking the output for spurious
 results.
 :::
