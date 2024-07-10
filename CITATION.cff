@@ -9,7 +9,7 @@ type: software
 license: MIT
 title: 'epiparameter: Library of Epidemiological Parameters with Helper Functions
   and Classes'
-version: 0.1.0.9000
+version: 0.2.0
 doi: 10.5281/zenodo.11110881
 abstract: Library of epidemiological parameters for infectious diseases and a set
   of classes and helper functions.
