@@ -2,6 +2,8 @@
 
 The second release of the {epiparameter} R package focuses on interoperability with the [{epireview} R package](https://mrc-ide.github.io/epireview/). Several functions have been refactored and enhanced.
 
+This release benefited from feedback from the participants of an [EpiParameter Community workshop hosted by the World Health Organisation](https://who-collaboratory.github.io/collaboratory-epiparameter-community/#/pages/news).
+
 ## New features
 
 * The `as_epidist()` S3 generic has been added to the package for the coercion of other R objects into `<epidist>` objects. The `as_epidist.data.frame()` method is added, as well as the internal functions `is_epireview()` which determines if a `<data.frame>` is from {epireview}, and `epireview_to_epidist()` performs the conversion  (#298, #334 & #335)
