@@ -1,3 +1,5 @@
+# epiparameter (development version)
+
 # epiparameter 0.2.0
 
 The second release of the {epiparameter} R package focuses on interoperability with the [{epireview} R package](https://mrc-ide.github.io/epireview/). Several functions have been refactored and enhanced.
