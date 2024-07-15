@@ -16,7 +16,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 `{epiparameter}` is an `R` package that contains a library of
-epidemiological parameters for infectious diseases and a set of classes
+epidemiological parameters for infectious diseases as well as classes
 and helper functions to work with the data. It also includes functions
 to extract and convert parameters from reported summary statistics.
 
@@ -112,8 +112,8 @@ epidists
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 ```
 
-This results a list of database entries. Each entry of the library is an
-`<epidist>` object.
+This results in a list of database entries. Each entry of the library is
+an `<epidist>` object.
 
 Alternatively, the library of epiparameters can be viewed as a vignette
 locally (`vignette("database", package = "epiparameter")`) or on the
