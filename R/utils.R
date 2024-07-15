@@ -36,3 +36,35 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
   names(quantiles) <- as.character(quantile)
   quantiles
 }
+
+#' Format short citation from `<bibentry>` object
+#'
+#' @description
+#' Output is equivalent to the `\citet{}` function in the \pkg{natbib} LaTeX
+#' package.
+#'
+#' @param x A `<bibentry>` object, see [bibentry()].
+#'
+#' @return A `character` string with the short citation.
+#' @keywords internal
+.citet <- function(x) {
+  stopifnot(inherits(x, "bibentry"))
+  num_author <- length(x$author)
+  # check if first author is an organisation
+  is_org_author <- is.null(x$author[1]$family)
+  # this covers single author entries
+  if (is_org_author) {
+    # organisation name stored in $given
+    cit <- x$author[1]$given
+  } else {
+    cit <- x$author[1]$family
+  }
+  # append second author or et al for multi-author entries
+  if (num_author == 2) {
+    cit <- paste(cit, "&", x$author[2]$family)
+  } else if (num_author > 2) {
+    cit <- paste(cit, "et al.")
+  }
+  cit <- paste0(cit, " (", x$year, ")")
+  cit
+}
