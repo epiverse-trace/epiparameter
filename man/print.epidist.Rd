@@ -4,18 +4,10 @@
 \alias{print.epidist}
 \title{Print method for \verb{<epidist>} class}
 \usage{
-\method{print}{epidist}(x, header = TRUE, vb = NULL, ...)
+\method{print}{epidist}(x, ...)
 }
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
-
-\item{header}{Boolean \code{logical} determining whether the header (first part)
-of the print method is printed. This is used internally for plotting the
-\verb{<vb_epidist>} class.}
-
-\item{vb}{A \code{character} string containing whether it is the intrinsic
-(\code{"Intrinsic"}) or extrinsic (\code{"Extrinsic"}) distribution for vector-borne
-diseases.}
 
 \item{...}{\link{dots} Extra arguments to be passed to the method.}
 }

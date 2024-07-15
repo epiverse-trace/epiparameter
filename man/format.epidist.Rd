@@ -4,17 +4,10 @@
 \alias{format.epidist}
 \title{Format method for \verb{<epidist>} class}
 \usage{
-\method{format}{epidist}(x, header = TRUE, vb = NULL, ...)
+\method{format}{epidist}(x, ...)
 }
 \arguments{
 \item{x}{An \verb{<epidist>} object.}
-
-\item{header}{Boolean logical determining whether the header (first part) of
-the print method is printed. This is used internally for plotting the
-vb_epidist class}
-
-\item{vb}{Either NULL (default) or a character string of either "Intrinsic"
-or "Extrinsic" which is used internally for plotting the vb_epidist class}
 
 \item{...}{\link{dots} Extra arguments to be passed to the method.}
 }

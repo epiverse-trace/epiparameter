@@ -371,12 +371,6 @@ validate_epidist <- function(epidist) {
 #' Print method for `<epidist>` class
 #'
 #' @param x An `<epidist>` object.
-#' @param header Boolean `logical` determining whether the header (first part)
-#' of the print method is printed. This is used internally for plotting the
-#' `<vb_epidist>` class.
-#' @param vb A `character` string containing whether it is the intrinsic
-#' (`"Intrinsic"`) or extrinsic (`"Extrinsic"`) distribution for vector-borne
-#' diseases.
 #' @param ... [dots] Extra arguments to be passed to the method.
 #'
 #' @return Invisibly returns an `<epidist>`. Called for side-effects.
@@ -390,18 +384,13 @@ validate_epidist <- function(epidist) {
 #'   prob_distribution_params = c(shape = 1, scale = 1)
 #' )
 #' epidist
-print.epidist <- function(x, header = TRUE, vb = NULL, ...) {
-  format(x, header = header, vb = vb, ...)
+print.epidist <- function(x, ...) {
+  format(x, ...)
 }
 
 #' Format method for `<epidist>` class
 #'
 #' @inheritParams print.epidist
-#' @param header Boolean logical determining whether the header (first part) of
-#' the print method is printed. This is used internally for plotting the
-#' vb_epidist class
-#' @param vb Either NULL (default) or a character string of either "Intrinsic"
-#' or "Extrinsic" which is used internally for plotting the vb_epidist class
 #'
 #' @return Invisibly returns an `<epidist>`. Called for printing side-effects.
 #' @export
@@ -414,8 +403,7 @@ print.epidist <- function(x, header = TRUE, vb = NULL, ...) {
 #'   prob_distribution_params = c(shape = 1, scale = 1)
 #' )
 #' format(epidist)
-format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
-  if (header) {
+format.epidist <- function(x, ...) {
     writeLines(
       c(
         sprintf("Disease: %s", x$disease),
@@ -424,11 +412,6 @@ format.epidist <- function(x, header = TRUE, vb = NULL, ...) {
         sprintf("Study: %s", format(x$citation))
       )
     )
-  }
-
-  if (!is.null(vb)) {
-    writeLines(sprintf(vb))
-  }
 
   if (is.object(x$prob_dist) || is.character(x$prob_dist)) {
     dist_string <- ifelse(
@@ -496,8 +479,7 @@ is_epidist <- function(x) {
   inherits(x, "epidist")
 }
 
-#' PDF, CDF, PMF, quantiles and random number generation for `<epidist>` and
-#' `<vb_epidist>` objects
+#' PDF, CDF, PMF, quantiles and random number generation for `<epidist>` objects
 #'
 #' @description The `<epidist>` object holds a probability distribution which
 #' can either be a continuous or discrete distribution. These are the density,
@@ -505,7 +487,7 @@ is_epidist <- function(x) {
 #' These operate on any distribution that can be included in an `<epidist>`
 #' object.
 #'
-#' @param x An `<epidist>` or `<vb_epidist>` object.
+#' @param x An `<epidist>` object.
 #' @param at The quantiles to evaluate at.
 #' @param q The quantiles to evaluate at.
 #' @param p The probabilities to evaluate at.
@@ -513,9 +495,7 @@ is_epidist <- function(x) {
 #' @inheritParams print.epidist
 #' @inheritParams distributional::cdf
 #'
-#' @return If an `<epidist>` object is given a numeric vector is returned, if an
-#' `<vb_epidist>` object is given a list of two elements each with a numeric
-#' vector is returned.
+#' @return `numeric` vector.
 #'
 #' @name epidist_distribution_functions
 #' @keywords epidist_distribution_functions
@@ -533,32 +513,6 @@ is_epidist <- function(x) {
 #' distributional::cdf(edist, q = 1)
 #' stats::quantile(edist, p = 0.2)
 #' distributional::generate(edist, times = 10)
-#'
-#' vb_edist <- vb_epidist(
-#'   intrinsic_epidist = epidist(
-#'     disease = "dengue",
-#'     epi_dist = "incubation_period",
-#'     prob_distribution = "gamma",
-#'     prob_distribution_params = c(shape = 1, scale = 1),
-#'     metadata = create_epidist_metadata(transmission_mode = "vector_borne")
-#'   ),
-#'   extrinsic_epidist = epidist(
-#'     disease = "dengue",
-#'     epi_dist = "incubation_period",
-#'     prob_distribution = "gamma",
-#'     prob_distribution_params = c(shape = 1, scale = 1),
-#'     metadata = create_epidist_metadata(
-#'       transmission_mode = "vector_borne",
-#'       extrinsic = TRUE
-#'     )
-#'   )
-#' )
-#'
-#' # example of each distribution method for an `vb_epidist` object
-#' stats::density(vb_edist, at = 1)
-#' distributional::cdf(vb_edist, q = 1)
-#' stats::quantile(vb_edist, p = 0.2)
-#' distributional::generate(vb_edist, times = 10)
 NULL
 
 #' @rdname epidist_distribution_functions
