@@ -97,7 +97,7 @@
 </div>
 <!-- badges: start -->
 
-<p><a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a> is an <code>R</code> package that contains a library of epidemiological parameters for infectious diseases and a set of classes and helper functions to work with the data. It also includes functions to extract and convert parameters from reported summary statistics.</p>
+<p><a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a> is an <code>R</code> package that contains a library of epidemiological parameters for infectious diseases as well as classes and helper functions to work with the data. It also includes functions to extract and convert parameters from reported summary statistics.</p>
 <p><a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a> is developed at the <a href="https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases" class="external-link">Centre for the Mathematical Modelling of Infectious Diseases</a> at the <a href="https://www.lshtm.ac.uk/" class="external-link">London School of Hygiene and Tropical Medicine</a> as part of <a href="https://data.org/initiatives/epiverse/" class="external-link">Epiverse-TRACE</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -174,7 +174,7 @@
 <span><span class="co">#&gt; # ℹ Use `print(n = ...)` to see more elements.</span></span>
 <span><span class="co">#&gt; # ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span>
 <span><span class="co">#&gt; # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html</span></span></code></pre></div>
-<p>This results a list of database entries. Each entry of the library is an <code>&lt;epidist&gt;</code> object.</p>
+<p>This results in a list of database entries. Each entry of the library is an <code>&lt;epidist&gt;</code> object.</p>
 <p>Alternatively, the library of epiparameters can be viewed as a vignette locally (<code><a href="articles/database.html">vignette("database", package = "epiparameter")</a></code>) or on the <a href="https://epiverse-trace.github.io/epiparameter/articles/database.html">{epiparameter} website</a>.</p>
 <p>The results can be filtered by disease and epidemiological distribution. Here we set <code>single_epidist = TRUE</code> as we only want a single database entry returned, and by default (<code>single_epidist = FALSE</code>) it will return all database entries that match the disease (<code>disease</code>) and epidemiological distribution (<code>epi_dist</code>).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">

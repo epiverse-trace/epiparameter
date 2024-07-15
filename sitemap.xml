@@ -56,7 +56,6 @@
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/extraction_functions.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/family.epidist.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/format.epidist.html</loc></url>
-<url><loc>https://epiverse-trace.github.io/epiparameter/reference/format.vb_epidist.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/get_citation.epidist.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/get_citation.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/get_citation.multi_epidist.html</loc></url>
@@ -72,18 +71,13 @@
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/is_epireview.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/is_parameterised.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/is_truncated.html</loc></url>
-<url><loc>https://epiverse-trace.github.io/epiparameter/reference/is_vb_epidist.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/mean.epidist.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/new_epidist.html</loc></url>
-<url><loc>https://epiverse-trace.github.io/epiparameter/reference/new_vb_epidist.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/parameter_tbl.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/plot.epidist.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/print.epidist.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/print.multi_epidist.html</loc></url>
-<url><loc>https://epiverse-trace.github.io/epiparameter/reference/print.vb_epidist.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/reexports.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/validate_epidist.html</loc></url>
-<url><loc>https://epiverse-trace.github.io/epiparameter/reference/validate_vb_epidist.html</loc></url>
-<url><loc>https://epiverse-trace.github.io/epiparameter/reference/vb_epidist.html</loc></url>
 </urlset>
 
