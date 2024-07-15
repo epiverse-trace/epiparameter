@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11110881.svg)](https://doi.org/10.5281/zenodo.11110881)
 <!-- badges: end -->
 
-`{epiparameter}` is an `R` package that contains a library of epidemiological parameters for infectious diseases and a set of classes and helper functions to work with the data. It also includes functions to extract and convert parameters from reported summary statistics.
+`{epiparameter}` is an `R` package that contains a library of epidemiological parameters for infectious diseases as well as classes and helper functions to work with the data. It also includes functions to extract and convert parameters from reported summary statistics.
 
 `{epiparameter}` is developed at the [Centre for the Mathematical Modelling of Infectious Diseases](https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases) at the [London School of Hygiene and Tropical Medicine](https://www.lshtm.ac.uk/) as part of [Epiverse-TRACE](https://data.org/initiatives/epiverse/).
 
@@ -58,7 +58,7 @@ epidists <- epidist_db()
 epidists
 ```
 
-This results a list of database entries. Each entry of the library is an `<epidist>` object.
+This results in a list of database entries. Each entry of the library is an `<epidist>` object.
 
 Alternatively, the library of epiparameters can be viewed as a vignette locally (`vignette("database", package = "epiparameter")`) or on the [{epiparameter} website](https://epiverse-trace.github.io/epiparameter/articles/database.html).
 
