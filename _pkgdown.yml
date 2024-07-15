@@ -21,14 +21,6 @@ reference:
     - validate_epidist
     - ends_with("\\.multi_epidist")
 
-  - subtitle: vb_epdist object
-    desc: Class constructor, validator, and methods
-    contents:
-    - vb_epidist
-    - ends_with("\\.vb_epidist")
-    - -has_keyword("epidist_distribution_functions")
-    - validate_vb_epidist
-
   - title: Accessors
     desc: Get data from epi classes
     contents:
@@ -57,7 +49,7 @@ reference:
     - parameter_tbl
 
   - title: Distribution functions
-    desc: Functions for operating on `<epidist>` and `<vb_epidist>` distributions
+    desc: Functions for operating on `<epidist>` distributions
     contents:
     - cdf.epidist
 
