@@ -54,12 +54,12 @@ library(epiparameter)
 To load the library of epidemiological parameters into `R`:
 
 ``` r
-epidists <- epidist_db()
+epiparameters <- epiparameter_db()
 #> Returning 122 results that match the criteria (99 are parameterised). 
-#> Use subset to filter by entry variables or single_epidist to return a single entry. 
+#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
 #> To retrieve the citation for each use the 'get_citation' function
-epidists
-#> # List of 122 <epidist> objects
+epiparameters
+#> # List of 122 <epiparameter> objects
 #> Number of diseases: 23
 #> ❯ Adenovirus ❯ Chikungunya ❯ COVID-19 ❯ Dengue ❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Human Coronavirus ❯ Influenza ❯ Japanese Encephalitis ❯ Marburg Virus Disease ❯ Measles ❯ MERS ❯ Mpox ❯ Parainfluenza ❯ Pneumonic Plague ❯ Rhinovirus ❯ Rift Valley Fever ❯ RSV ❯ SARS ❯ Smallpox ❯ West Nile Fever ❯ Yellow Fever ❯ Zika Virus Disease
 #> Number of epi distributions: 12
@@ -113,7 +113,7 @@ epidists
 ```
 
 This results in a list of database entries. Each entry of the library is
-an `<epidist>` object.
+an `<epiparameter>` object.
 
 Alternatively, the library of epiparameters can be viewed as a vignette
 locally (`vignette("database", package = "epiparameter")`) or on the
@@ -121,16 +121,16 @@ locally (`vignette("database", package = "epiparameter")`) or on the
 website](https://epiverse-trace.github.io/epiparameter/articles/database.html).
 
 The results can be filtered by disease and epidemiological distribution.
-Here we set `single_epidist = TRUE` as we only want a single database
-entry returned, and by default (`single_epidist = FALSE`) it will return
-all database entries that match the disease (`disease`) and
-epidemiological distribution (`epi_dist`).
+Here we set `single_epiparameter = TRUE` as we only want a single
+database entry returned, and by default (`single_epiparameter = FALSE`)
+it will return all database entries that match the disease (`disease`)
+and epidemiological distribution (`epi_dist`).
 
 ``` r
-influenza_incubation <- epidist_db(
+influenza_incubation <- epiparameter_db(
   disease = "influenza",
   epi_dist = "incubation period",
-  single_epidist = TRUE
+  single_epiparameter = TRUE
 )
 #> Using Virlogeux V, Li M, Tsang T, Feng L, Fang V, Jiang H, Wu P, Zheng J, Lau
 #> E, Cao Y, Qin Y, Liao Q, Yu H, Cowling B (2015). "Estimating the
@@ -154,12 +154,12 @@ influenza_incubation
 ```
 
 To quickly view the list of epidemiological distributions returned by
-`epidist_db()` in a table, the `parameter_tbl()` gives a summary of the
-data, and offers the ability to subset you data by `disease`, `pathogen`
-and epidemiological distribution (`epi_dist`).
+`epiparameter_db()` in a table, the `parameter_tbl()` gives a summary of
+the data, and offers the ability to subset you data by `disease`,
+`pathogen` and epidemiological distribution (`epi_dist`).
 
 ``` r
-parameter_tbl(epidists)
+parameter_tbl(epiparameters)
 #> # Parameter table:
 #> # A data frame:    122 × 7
 #>    disease  pathogen epi_distribution prob_distribution author  year sample_size
@@ -176,7 +176,7 @@ parameter_tbl(epidists)
 #> 10 Rhinovi… Rhinovi… incubation peri… lnorm             Lessl…  2009          28
 #> # ℹ 112 more rows
 parameter_tbl(
-  epidists,
+  epiparameters,
   epi_dist = "onset to hospitalisation"
 )
 #> # Parameter table:
@@ -190,13 +190,13 @@ parameter_tbl(
 #> 5 COVID-19 SARS-CoV… onset to hospit… lnorm             Linto…  2020          34
 ```
 
-The `<epidist>` object can be plotted.
+The `<epiparameter>` object can be plotted.
 
 ``` r
 plot(influenza_incubation)
 ```
 
-<img src="man/figures/README-plot-epidist-1.png" width="75%" style="display: block; margin: auto;" />
+<img src="man/figures/README-plot-epiparameter-1.png" width="75%" style="display: block; margin: auto;" />
 
 The CDF can also be plotted by setting `cumulative = TRUE`.
 
@@ -204,7 +204,7 @@ The CDF can also be plotted by setting `cumulative = TRUE`.
 plot(influenza_incubation, cumulative = TRUE)
 ```
 
-<img src="man/figures/README-plot-epidist-cdf-1.png" width="75%" style="display: block; margin: auto;" />
+<img src="man/figures/README-plot-epiparameter-cdf-1.png" width="75%" style="display: block; margin: auto;" />
 
 ### Parameter conversion and extraction
 
