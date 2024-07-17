@@ -1,29 +1,29 @@
-#' Print method for `<multi_epidist>` class
+#' Print method for `<multi_epiparameter>` class
 #'
-#' @param x A `<multi_epidist>` object.
-#' @param n A `numeric` specifying how many `<epidist>` objects to print. This
-#' argument is passed to [head()] for `list` printing. Default is `NULL` and the
-#' number of elements to print is controlled by package [options()].
-#' @inheritParams print.epidist
+#' @param x A `<multi_epiparameter>` object.
+#' @param n A `numeric` specifying how many `<epiparameter>` objects to print.
+#' This argument is passed to [head()] for `list` printing. Default is `NULL`
+#' and the number of elements to print is controlled by package [options()].
+#' @inheritParams print.epiparameter
 #'
-#' @return Invisibly returns a `<multi_epidist>`. Called for side-effects.
+#' @return Invisibly returns a `<multi_epiparameter>`. Called for side-effects.
 #' @export
 #' @examples
 #' # entire database
-#' db <- epidist_db()
+#' db <- epiparameter_db()
 #' db
 #'
 #' # a single disease
-#' db <- epidist_db(disease = "Ebola")
+#' db <- epiparameter_db(disease = "Ebola")
 #' db
 #'
 #' # a single epi parameter
-#' db <- epidist_db(epi_dist = "offspring distribution")
+#' db <- epiparameter_db(epi_dist = "offspring distribution")
 #' db
-print.multi_epidist <- function(x, ..., n = NULL) {
+print.multi_epiparameter <- function(x, ..., n = NULL) {
   chkDots(...)
 
-  # determine how many <epidist> to print
+  # determine how many <epiparameter> to print
   if (is.null(n)) {
     n <- getOption("epiparameter")$print_max
     if (length(x) > n) {
@@ -46,7 +46,7 @@ print.multi_epidist <- function(x, ..., n = NULL) {
   # header
   writeLines(
     pillar::style_subtle(
-      cli::pluralize("# List of {n_entries} <epidist> object{?s}\n")
+      cli::pluralize("# List of {n_entries} <epiparameter> object{?s}\n")
     )
   )
   writeLines(

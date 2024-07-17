@@ -156,7 +156,7 @@
       10 COVID-19 SARS-Co~ incubation peri~ weibull           Bui e~  2020          19
       # i 17 more rows
 
-# parameter_tbl works as expected supplied with <epidist>
+# parameter_tbl works as expected supplied with <epiparameter>
 
     Code
       dist_tbl
@@ -167,7 +167,7 @@
         <chr>    <chr>     <chr>            <chr>             <chr>  <dbl>       <dbl>
       1 COVID-19 SARS-CoV~ onset to hospit~ lnorm             Linto~  2020         155
 
-# parameter_tbl works as expected with discretised <epidist>
+# parameter_tbl works as expected with discretised <epiparameter>
 
     Code
       dist_tbl

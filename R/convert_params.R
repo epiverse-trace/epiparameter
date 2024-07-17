@@ -41,13 +41,13 @@
 #' convert_summary_stats_to_params("weibull", mean = 2, var = 2)
 #' convert_summary_stats_to_params("geom", mean = 2)
 #'
-#' # examples using <epidist>
-#' epidist <- epidist_db(single_epidist = TRUE)
-#' convert_summary_stats_to_params(epidist)
+#' # examples using <epiparameter>
+#' epiparameter <- epiparameter_db(single_epiparameter = TRUE)
+#' convert_summary_stats_to_params(epiparameter)
 #'
-#' # example using <epidist> and specifying summary stats
-#' epidist$summary_stats <- list()
-#' convert_summary_stats_to_params(epidist, mean = 10, sd = 2)
+#' # example using <epiparameter> and specifying summary stats
+#' epiparameter$summary_stats <- list()
+#' convert_summary_stats_to_params(epiparameter, mean = 10, sd = 2)
 convert_summary_stats_to_params <- function(x, ...) { # nolint object_length_linter
   UseMethod("convert_summary_stats_to_params")
 }
@@ -88,9 +88,9 @@ convert_summary_stats_to_params.character <- function(x = c("lnorm", "gamma",
 
 #' @rdname convert_summary_stats_to_params
 #' @export
-convert_summary_stats_to_params.epidist <- function(x, ...) {
+convert_summary_stats_to_params.epiparameter <- function(x, ...) {
   # check input
-  x <- validate_epidist(x)
+  x <- validate_epiparameter(x)
   # capture dynamic dots
   dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -98,14 +98,14 @@ convert_summary_stats_to_params.epidist <- function(x, ...) {
   # warn for modification
   if (any(names(dots) %in% numeric_ss)) {
     warning(
-      "One or more summary statistics in <epidist> are being overwritten by ",
-      "those supplied through `...`",
+      "One or more summary statistics in <epiparameter> are being overwritten ",
+      "by those supplied through `...`",
       call. = FALSE
     )
   }
   summary_stats <- utils::modifyList(x$summary_stats, dots)
 
-  # remove <epidist> summary stats not accepted by internal conversion
+  # remove <epiparameter> summary stats not accepted by internal conversion
   summary_stats_set <- names(summary_stats) %in%
     c("mean", "median", "mode", "var", "sd", "cv",
       "skewness", "ex_kurtosis", "dispersion")
@@ -114,7 +114,7 @@ convert_summary_stats_to_params.epidist <- function(x, ...) {
   if (!checkmate::test_list(summary_stats, min.len = 1, names = "unique")) {
     stop(
       "Summary statistics need to be named and supplied to the function ",
-      "or in <epidist>",
+      "or in <epiparameter>",
       call. = FALSE
     )
   }
@@ -169,17 +169,17 @@ convert_summary_stats_to_params.epidist <- function(x, ...) {
 #' convert_params_to_summary_stats("gamma", shape = 1, scale = 1)
 #' convert_params_to_summary_stats("nbinom", prob = 0.5, dispersion = 2)
 #'
-#' # example using <epidist>
-#' epidist <- epidist_db(single_epidist = TRUE)
-#' convert_params_to_summary_stats(epidist)
+#' # example using <epiparameter>
+#' epiparameter <- epiparameter_db(single_epiparameter = TRUE)
+#' convert_params_to_summary_stats(epiparameter)
 #'
-#' # example using <epidist> and specifying parameters
-#' epidist <- epidist_db(
+#' # example using <epiparameter> and specifying parameters
+#' epiparameter <- epiparameter_db(
 #'   disease = "Influenza",
 #'   author = "Virlogeux",
 #'   subset = prob_dist == "weibull"
 #' )
-#' convert_params_to_summary_stats(epidist[[2]], shape = 1, scale = 1)
+#' convert_params_to_summary_stats(epiparameter[[2]], shape = 1, scale = 1)
 convert_params_to_summary_stats <- function(x, ...) { # nolint object_length_linter
   UseMethod("convert_params_to_summary_stats")
 }
@@ -220,9 +220,9 @@ convert_params_to_summary_stats.character <- function(x = c("lnorm", "gamma",
 
 #' @rdname convert_params_to_summary_stats
 #' @export
-convert_params_to_summary_stats.epidist <- function(x, ...) {
+convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   # check input
-  x <- validate_epidist(x)
+  x <- validate_epiparameter(x)
   # capture dynamic dots
   dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -234,7 +234,8 @@ convert_params_to_summary_stats.epidist <- function(x, ...) {
     }
     # unparameterised with no parameters supplied through `...`
     stop(
-      "<epidist> supplied has no parameters and none are suppled through `...`",
+      "<epiparameter> supplied has no parameters and none are suppled ",
+      "through `...`",
       call. = FALSE
     )
   }
@@ -244,7 +245,7 @@ convert_params_to_summary_stats.epidist <- function(x, ...) {
   # warn for modification
   if (any(names(dots) %in% names(parameters))) {
     warning(
-      "One or more parameters in <epidist> are being overwritten by ",
+      "One or more parameters in <epiparameter> are being overwritten by ",
       "those supplied through `...`",
       call. = FALSE
     )

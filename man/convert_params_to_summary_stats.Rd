@@ -3,7 +3,7 @@
 \name{convert_params_to_summary_stats}
 \alias{convert_params_to_summary_stats}
 \alias{convert_params_to_summary_stats.character}
-\alias{convert_params_to_summary_stats.epidist}
+\alias{convert_params_to_summary_stats.epiparameter}
 \title{Convert the parameter(s) of a distribution to summary statistics}
 \usage{
 convert_params_to_summary_stats(x, ...)
@@ -13,7 +13,7 @@ convert_params_to_summary_stats(x, ...)
   ...
 )
 
-\method{convert_params_to_summary_stats}{epidist}(x, ...)
+\method{convert_params_to_summary_stats}{epiparameter}(x, ...)
 }
 \arguments{
 \item{x}{An \R object.}
@@ -43,17 +43,17 @@ convert_params_to_summary_stats("lnorm", meanlog = 1, sdlog = 2)
 convert_params_to_summary_stats("gamma", shape = 1, scale = 1)
 convert_params_to_summary_stats("nbinom", prob = 0.5, dispersion = 2)
 
-# example using <epidist>
-epidist <- epidist_db(single_epidist = TRUE)
-convert_params_to_summary_stats(epidist)
+# example using <epiparameter>
+epiparameter <- epiparameter_db(single_epiparameter = TRUE)
+convert_params_to_summary_stats(epiparameter)
 
-# example using <epidist> and specifying parameters
-epidist <- epidist_db(
+# example using <epiparameter> and specifying parameters
+epiparameter <- epiparameter_db(
   disease = "Influenza",
   author = "Virlogeux",
   subset = prob_dist == "weibull"
 )
-convert_params_to_summary_stats(epidist[[2]], shape = 1, scale = 1)
+convert_params_to_summary_stats(epiparameter[[2]], shape = 1, scale = 1)
 }
 \seealso{
 \code{\link[=convert_summary_stats_to_params]{convert_summary_stats_to_params()}}

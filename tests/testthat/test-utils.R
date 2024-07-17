@@ -59,47 +59,47 @@ test_that("calc_disc_dist_quantile fails as expected", {
 
 test_that(".citet works as expected for multi-author", {
   suppressMessages(
-    epidist <- epidist_db(
+    epiparameter <- epiparameter_db(
       author = "Lessler",
       disease = "RSV",
-      single_epidist = TRUE
+      single_epiparameter = TRUE
     )
   )
-  expect_identical(.citet(epidist$citation), "Lessler et al. (2009)")
+  expect_identical(.citet(epiparameter$citation), "Lessler et al. (2009)")
 })
 
 test_that(".citet works as expected for single author", {
   suppressMessages(
-    epidist <- epidist_db(
+    epiparameter <- epiparameter_db(
       author = "Pavlin",
       disease = "Marburg",
-      single_epidist = TRUE
+      single_epiparameter = TRUE
     )
   )
-  expect_identical(.citet(epidist$citation), "Pavlin (2014)")
+  expect_identical(.citet(epiparameter$citation), "Pavlin (2014)")
 })
 
 test_that(".citet works as expected for two authors", {
   suppressMessages(
-    epidist <- epidist_db(
+    epiparameter <- epiparameter_db(
       author = "Nishiura",
       disease = "Influenza",
-      single_epidist = TRUE
+      single_epiparameter = TRUE
     )
   )
-  expect_identical(.citet(epidist$citation), "Nishiura & Inaba (2011)")
+  expect_identical(.citet(epiparameter$citation), "Nishiura & Inaba (2011)")
 })
 
 test_that(".citet works as expected for organisation author", {
   suppressMessages(
-    epidist <- epidist_db(
+    epiparameter <- epiparameter_db(
       author = "WHO",
       disease = "Ebola",
-      single_epidist = TRUE
+      single_epiparameter = TRUE
     )
   )
   expect_identical(
-    .citet(epidist$citation),
+    .citet(epiparameter$citation),
     "WHO Ebola Response Team et al. (2015)"
   )
 })

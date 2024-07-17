@@ -1,13 +1,13 @@
-# epidist_db print method works as expected for > 5 <epidist>
+# epiparameter_db print method works as expected for > 5 <epiparameter>
 
     Code
-      epidist_db()
+      epiparameter_db()
     Message
       Returning 122 results that match the criteria (99 are parameterised). 
-      Use subset to filter by entry variables or single_epidist to return a single entry. 
+      Use subset to filter by entry variables or single_epiparameter to return a single entry. 
       To retrieve the citation for each use the 'get_citation' function
     Output
-      # List of 122 <epidist> objects
+      # List of 122 <epiparameter> objects
       Number of diseases: 23
       > Adenovirus > COVID-19 > Chikungunya > Dengue > Ebola Virus Disease > Hantavirus Pulmonary Syndrome > Human Coronavirus > Influenza > Japanese Encephalitis > MERS > Marburg Virus Disease > Measles > Mpox > Parainfluenza > Pneumonic Plague > RSV > Rhinovirus > Rift Valley Fever > SARS > Smallpox > West Nile Fever > Yellow Fever > Zika Virus Disease
       Number of epi distributions: 12
@@ -59,16 +59,16 @@
       # i Use `parameter_tbl()` to see a summary table of the parameters.
       # i Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 
-# epidist_db print method works as expected for <= 5 <epidist>
+# epiparameter_db print method works as expected for <= 5 <epiparameter>
 
     Code
-      epidist_db(disease = "SARS", epi_dist = "offspring distribution")
+      epiparameter_db(disease = "SARS", epi_dist = "offspring distribution")
     Message
       Returning 2 results that match the criteria (2 are parameterised). 
-      Use subset to filter by entry variables or single_epidist to return a single entry. 
+      Use subset to filter by entry variables or single_epiparameter to return a single entry. 
       To retrieve the citation for each use the 'get_citation' function
     Output
-      # List of 2 <epidist> objects
+      # List of 2 <epiparameter> objects
       Number of diseases: 1
       > SARS
       Number of epi distributions: 1

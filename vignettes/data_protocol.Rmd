@@ -46,7 +46,7 @@ To contribute to the `{epiparameter}` library of epidemiological parameter infor
 The `{epiparameter}` package spans a range of infectious diseases, including several distributions for each disease when available. The pathogens and diseases that are currently systematically searched for and included in the package library are:
 
 ```{r show-diseases, echo=FALSE}
-db <- epidist_db()
+db <- epiparameter_db()
 disease <- vapply(db, "[[", FUN.VALUE = character(1), "disease")
 pathogen <- vapply(db, "[[", FUN.VALUE = character(1), "pathogen")
 knitr::kable(
@@ -60,8 +60,8 @@ knitr::kable(
 
 The distributions currently included in the literature search for each pathogen/disease are:
 
-```{r, show-epidists, echo=FALSE}
-db <- epidist_db()
+```{r, show-epiparameters, echo=FALSE}
+db <- epiparameter_db()
 epi_dist <- epiparameter:::.clean_string(unique( # nolint undesirable_operator_linter
   vapply(db, "[[", FUN.VALUE = character(1), "epi_dist")
 ))

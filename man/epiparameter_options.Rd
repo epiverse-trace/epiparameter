@@ -13,7 +13,7 @@ epiparameter_options
 \description{
 Options to modify the printing of \pkg{epiparameter} objects.
 Currently options are only used to modify the printing of the
-\verb{<multi_epidist>} class.
+\verb{<multi_epiparameter>} class.
 }
 \details{
 Options are set with \code{\link[=options]{options()}} and retrieved with \code{\link[=getOption]{getOption()}}.

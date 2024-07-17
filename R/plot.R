@@ -1,6 +1,6 @@
-#' Plot method for `<epidist>` class
+#' Plot method for `<epiparameter>` class
 #'
-#' @description Plot an `<epidist>` object by displaying the either the
+#' @description Plot an `<epiparameter>` object by displaying the either the
 #' probability mass function (PMF), (in the case of discrete distributions)
 #' or probability density function (PDF) (in the case of continuous
 #' distributions), or the cumulative distribution function (CDF).
@@ -13,7 +13,7 @@
 #' (through [...]).
 #'
 #'
-#' @param x An `<epidist>` object.
+#' @param x An `<epiparameter>` object.
 #' @param cumulative A boolean `logical`, default is `FALSE`.
 #' `cumulative = TRUE` plots the cumulative distribution function (CDF).
 #' @inheritParams base::print
@@ -22,8 +22,8 @@
 #' @export
 #'
 #' @examples
-#' # plot continuous epidist
-#' edist <- epidist(
+#' # plot continuous epiparameter
+#' edist <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
 #'   prob_distribution = "gamma",
@@ -37,14 +37,14 @@
 #' # plot CDF
 #' plot(edist, cumulative = TRUE)
 #'
-#' # plot discrete epidist
+#' # plot discrete epiparameter
 #' edist <- discretise(edist)
 #' plot(edist)
-plot.epidist <- function(x,
-                         cumulative = FALSE,
-                         ...) {
+plot.epiparameter <- function(x,
+                              cumulative = FALSE,
+                              ...) {
   # check input
-  validate_epidist(x)
+  validate_epiparameter(x)
   checkmate::assert_logical(cumulative, any.missing = FALSE, len = 1)
 
   # capture dots

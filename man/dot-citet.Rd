@@ -10,7 +10,7 @@
 \item{x}{A \verb{<bibentry>} object, see \code{\link[=bibentry]{bibentry()}}.}
 }
 \value{
-A \code{character} string with the short citation
+A \code{character} string with the short citation.
 }
 \description{
 Output is equivalent to the \verb{\\citet\{\}} function in the \pkg{natbib} LaTeX
