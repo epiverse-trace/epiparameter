@@ -1,6 +1,6 @@
-test_that("create_epiparameter_metadata fails when vector is given for non-vb", {
+test_that("create_metadata fails when vector is given for non-vb", {
   expect_error(
-    create_epiparameter_metadata(
+    create_metadata(
       transmission_mode = "natural_human_to_human",
       vector = "mosquito"
     ),
@@ -8,8 +8,8 @@ test_that("create_epiparameter_metadata fails when vector is given for non-vb", 
   )
 })
 
-test_that("create_epiparameter_citation works with different author inputs", {
-  cit <- suppressMessages(create_epiparameter_citation(
+test_that("create_citation works with different author inputs", {
+  cit <- suppressMessages(create_citation(
     author = person(given = "John", family = "Smith"),
     year = 2002,
     title = "COVID-19 incubation period",
@@ -21,7 +21,7 @@ test_that("create_epiparameter_citation works with different author inputs", {
   expect_identical(cit$author$given, "John")
   expect_identical(cit$author$family, "Smith")
 
-  cit <- suppressMessages(create_epiparameter_citation(
+  cit <- suppressMessages(create_citation(
     author = person(
       given = list("John", "Amy"), family = list("Smith", "Jones")
     ),
@@ -35,7 +35,7 @@ test_that("create_epiparameter_citation works with different author inputs", {
   expect_identical(cit$author$given, list("John", "Amy"))
   expect_identical(cit$author$family, list("Smith", "Jones"))
 
-  cit <- suppressMessages(create_epiparameter_citation(
+  cit <- suppressMessages(create_citation(
     author = "John Smith",
     year = 2002,
     title = "COVID-19 incubation period",
@@ -47,7 +47,7 @@ test_that("create_epiparameter_citation works with different author inputs", {
   expect_identical(cit$author$given, "John")
   expect_identical(cit$author$family, "Smith")
 
-  cit <- suppressMessages(create_epiparameter_citation(
+  cit <- suppressMessages(create_citation(
     author = c("John Smith", "Amy Jones", "WHO Team"),
     year = 2002,
     title = "COVID-19 incubation period",
@@ -59,7 +59,7 @@ test_that("create_epiparameter_citation works with different author inputs", {
   expect_identical(cit$author$given, list("John", "Amy", "WHO"))
   expect_identical(cit$author$family, list("Smith", "Jones", "Team"))
 
-  cit <- suppressMessages(create_epiparameter_citation(
+  cit <- suppressMessages(create_citation(
     author = list("John Smith", "Amy Jones", "WHO Team"),
     year = 2002,
     title = "COVID-19 incubation period",
@@ -72,10 +72,10 @@ test_that("create_epiparameter_citation works with different author inputs", {
   expect_identical(cit$author$family, list("Smith", "Jones", "Team"))
 })
 
-test_that("create_epiparameter_citation works with PMID", {
+test_that("create_citation works with PMID", {
   # suppress message about citation
   citation <- suppressMessages(
-    create_epiparameter_citation(
+    create_citation(
       author = person(given = "John", family = "Smith"),
       year = 2002,
       title = "Incubation period of COVID",
@@ -89,23 +89,23 @@ test_that("create_epiparameter_citation works with PMID", {
   expect_identical(citation$pmid, "84772544")
 })
 
-test_that(".clean_epiparameter_params works as expected for gamma", {
-  params <- .clean_epiparameter_params(
+test_that(".clean_params works as expected for gamma", {
+  params <- .clean_params(
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1)
   )
   expect_identical(params, c(shape = 1, scale = 1))
 
-  params <- .clean_epiparameter_params(
+  params <- .clean_params(
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, rate = 0.5)
   )
   expect_identical(params, c(shape = 1, scale = 2))
 })
 
-test_that(".clean_epiparameter_params fails when gamma parameters are incorrect", {
+test_that(".clean_params fails when gamma parameters are incorrect", {
   expect_error(
-    .clean_epiparameter_params(
+    .clean_params(
       prob_dist = "gamma",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
@@ -113,23 +113,23 @@ test_that(".clean_epiparameter_params fails when gamma parameters are incorrect"
   )
 })
 
-test_that(".clean_epiparameter_params works as expected for lnorm", {
-  params <- .clean_epiparameter_params(
+test_that(".clean_params works as expected for lnorm", {
+  params <- .clean_params(
     prob_dist = "lnorm",
     prob_dist_params = c(meanlog = 1, sdlog = 1)
   )
   expect_identical(params, c(meanlog = 1, sdlog = 1))
 
-  params <- .clean_epiparameter_params(
+  params <- .clean_params(
     prob_dist = "lnorm",
     prob_dist_params = c(mu = 2, sigma = 2)
   )
   expect_identical(params, c(meanlog = 2, sdlog = 2))
 })
 
-test_that(".clean_epiparameter_params fails when lnorm parameters are incorrect", {
+test_that(".clean_params fails when lnorm parameters are incorrect", {
   expect_error(
-    .clean_epiparameter_params(
+    .clean_params(
       prob_dist = "lnorm",
       prob_dist_params = c(shape = 1, scale = 1)
     ),
@@ -137,17 +137,17 @@ test_that(".clean_epiparameter_params fails when lnorm parameters are incorrect"
   )
 })
 
-test_that(".clean_epiparameter_params works as expected for weibull", {
-  params <- .clean_epiparameter_params(
+test_that(".clean_params works as expected for weibull", {
+  params <- .clean_params(
     prob_dist = "weibull",
     prob_dist_params = c(shape = 1, scale = 1)
   )
   expect_identical(params, c(shape = 1, scale = 1))
 })
 
-test_that(".clean_epiparameter_params fails when weibull parameters are incorrect", {
+test_that(".clean_params fails when weibull parameters are incorrect", {
   expect_error(
-    .clean_epiparameter_params(
+    .clean_params(
       prob_dist = "weibull",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
@@ -155,23 +155,23 @@ test_that(".clean_epiparameter_params fails when weibull parameters are incorrec
   )
 })
 
-test_that(".clean_epiparameter_params works as expected for nbinom", {
-  params <- .clean_epiparameter_params(
+test_that(".clean_params works as expected for nbinom", {
+  params <- .clean_params(
     prob_dist = "nbinom",
     prob_dist_params = c(n = 2, p = 0.5)
   )
   expect_identical(params, c(mean = 2, dispersion = 2))
 
-  params <- .clean_epiparameter_params(
+  params <- .clean_params(
     prob_dist = "nbinom",
     prob_dist_params = c(mean = 1, dispersion = 1)
   )
   expect_identical(params, c(mean = 1, dispersion = 1))
 })
 
-test_that(".clean_epiparameter_params fails when nbinom parameters are incorrect", {
+test_that(".clean_params fails when nbinom parameters are incorrect", {
   expect_error(
-    .clean_epiparameter_params(
+    .clean_params(
       prob_dist = "nbinom",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
@@ -179,29 +179,29 @@ test_that(".clean_epiparameter_params fails when nbinom parameters are incorrect
   )
 })
 
-test_that(".clean_epiparameter_params works as expected for geom", {
-  params <- .clean_epiparameter_params(
+test_that(".clean_params works as expected for geom", {
+  params <- .clean_params(
     prob_dist = "geom",
     prob_dist_params = c(prob = 0.5)
   )
   expect_identical(params, c(prob = 0.5))
 
-  params <- .clean_epiparameter_params(
+  params <- .clean_params(
     prob_dist = "geom",
     prob_dist_params = c(p = 0.5)
   )
   expect_identical(params, c(prob = 0.5))
 
-  params <- .clean_epiparameter_params(
+  params <- .clean_params(
     prob_dist = "geom",
     prob_dist_params = c(mean = 2)
   )
   expect_identical(params, c(prob = 0.5))
 })
 
-test_that(".clean_epiparameter_params fails when geom parameters are incorrect", {
+test_that(".clean_params fails when geom parameters are incorrect", {
   expect_error(
-    .clean_epiparameter_params(
+    .clean_params(
       prob_dist = "geom",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
@@ -209,29 +209,29 @@ test_that(".clean_epiparameter_params fails when geom parameters are incorrect",
   )
 })
 
-test_that(".clean_epiparameter_params works as expected for pois", {
-  params <- .clean_epiparameter_params(
+test_that(".clean_params works as expected for pois", {
+  params <- .clean_params(
     prob_dist = "pois",
     prob_dist_params = c(mean = 0.5)
   )
   expect_identical(params, c(mean = 0.5))
 
-  params <- .clean_epiparameter_params(
+  params <- .clean_params(
     prob_dist = "pois",
     prob_dist_params = c(l = 0.5)
   )
   expect_identical(params, c(mean = 0.5))
 
-  params <- .clean_epiparameter_params(
+  params <- .clean_params(
     prob_dist = "pois",
     prob_dist_params = c(lambda = 0.5)
   )
   expect_identical(params, c(mean = 0.5))
 })
 
-test_that(".clean_epiparameter_params fails when pois parameters are incorrect", {
+test_that(".clean_params fails when pois parameters are incorrect", {
   expect_error(
-    .clean_epiparameter_params(
+    .clean_params(
       prob_dist = "pois",
       prob_dist_params = c(means = 1)
     ),
@@ -239,29 +239,29 @@ test_that(".clean_epiparameter_params fails when pois parameters are incorrect",
   )
 })
 
-test_that(".clean_epiparameter_params works as expected for exp", {
-  params <- .clean_epiparameter_params(
+test_that(".clean_params works as expected for exp", {
+  params <- .clean_params(
     prob_dist = "exp",
     prob_dist_params = c(rate = 2)
   )
   expect_identical(params, c(rate = 2))
 
-  params <- .clean_epiparameter_params(
+  params <- .clean_params(
     prob_dist = "exp",
     prob_dist_params = c(lambda = 2)
   )
   expect_identical(params, c(rate = 2))
 
-  params <- .clean_epiparameter_params(
+  params <- .clean_params(
     prob_dist = "exp",
     prob_dist_params = c(mean = 0.5)
   )
   expect_identical(params, c(rate = 2))
 })
 
-test_that(".clean_epiparameter_params fails when exp parameters are incorrect", {
+test_that(".clean_params fails when exp parameters are incorrect", {
   expect_error(
-    .clean_epiparameter_params(
+    .clean_params(
       prob_dist = "exp",
       prob_dist_params = c(means = 1)
     ),
@@ -269,9 +269,9 @@ test_that(".clean_epiparameter_params fails when exp parameters are incorrect", 
   )
 })
 
-test_that(".clean_epiparameter_params fails as expected", {
+test_that(".clean_params fails as expected", {
   expect_error(
-    .clean_epiparameter_params(
+    .clean_params(
       prob_dist = "distribution",
       prob_dist_params = c(meanlog = 1, sdlog = 1)
     ),
@@ -279,8 +279,8 @@ test_that(".clean_epiparameter_params fails as expected", {
   )
 })
 
-test_that("create_epiparameter_region works as expected", {
-  region <- create_epiparameter_region(
+test_that("create_region works as expected", {
+  region <- create_region(
     continent = "Europe",
     country = "UK",
     region = "Cambridgeshire",
@@ -296,7 +296,7 @@ test_that("create_epiparameter_region works as expected", {
     )
   )
 
-  region <- create_epiparameter_region(
+  region <- create_region(
     continent = NA,
     country = "UK",
     region = NA,

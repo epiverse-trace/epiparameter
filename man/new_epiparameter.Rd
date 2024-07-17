@@ -41,12 +41,12 @@ parameters.}
 
 \item{uncertainty}{A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
-estimates is unknown use \code{\link[=create_epiparameter_uncertainty]{create_epiparameter_uncertainty()}} (which is the
+estimates is unknown use \code{\link[=create_uncertainty]{create_uncertainty()}} (which is the
 argument default) to create a list with the correct names with missing
 values.}
 
 \item{summary_stats}{A list of summary statistics, use
-\code{\link[=create_epiparameter_summary_stats]{create_epiparameter_summary_stats()}} to create list. This list can include
+\code{\link[=create_summary_stats]{create_summary_stats()}} to create list. This list can include
 summary statistics about the inferred distribution such as it's mean and
 standard deviation, quantiles of the distribution, or information about the
 data used to fit the distribution such as lower and upper range. The summary
@@ -60,9 +60,9 @@ sufficient summary statistics are provided and the parameter(s) of the
 distribution are not, the \code{\link[=calc_dist_params]{calc_dist_params()}} function is called to
 calculate the parameters and add them to the \code{epiparameter} object created.}
 
-\item{citation}{A \code{character} string with the citation of the source of the
+\item{citation}{A \verb{<bibentry>} with the citation of the source of the
 data or the paper that inferred the distribution parameters, use
-\code{create_epiparameter_citation()} to create citation.}
+\code{\link[=create_citation]{create_citation()}} to create citation.}
 
 \item{metadata}{A list of metadata, this can include: sample size, the
 transmission mode of the disease (e.g. is it vector-borne or directly
@@ -70,10 +70,10 @@ transmitted), etc. It is assumed that the disease is not
 vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 delay distribution such as extrinsic incubation period) unless
 \code{transmission_mode = "vector_borne"} is contained in the metadata. Use
-\code{create_epiparameter_metadata()} to create metadata.}
+\code{\link[=create_metadata]{create_metadata()}} to create metadata.}
 
 \item{method_assess}{A list of methodological aspects used when fitting
-the distribution, use \code{create_epiparameter_method_assess()} to create method
+the distribution, use \code{\link[=create_method_assess]{create_method_assess()}} to create method
 assessment.}
 
 \item{discretise}{A boolean \code{logical} whether the distribution is

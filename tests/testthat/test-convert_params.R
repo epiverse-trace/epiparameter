@@ -4,7 +4,7 @@ edist <- suppressMessages(
     epi_dist = "incubation period",
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 1, sdlog = 1),
-    summary_stats = create_epiparameter_summary_stats(mean = 1, sd = 1)
+    summary_stats = create_summary_stats(mean = 1, sd = 1)
   )
 )
 

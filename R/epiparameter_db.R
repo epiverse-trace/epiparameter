@@ -416,7 +416,7 @@ epiparameter_db <- function(disease = "all",
   cit$author <- Reduce(f = c, x = cit$author)
   cit$pmid <- ifelse(is.null(cit$pmid), yes = NA_real_, no = cit$pmid)
   cit <- suppressMessages(
-    create_epiparameter_citation(
+    create_citation(
       author = cit$author,
       year = cit$year,
       title = cit$title,
@@ -427,11 +427,11 @@ epiparameter_db <- function(disease = "all",
   )
 
   # format metadata
-  meta <- create_epiparameter_metadata()
+  meta <- create_metadata()
   meta[names(x$metadata)] <- x$metadata
 
   # format method assessment
-  method <- create_epiparameter_method_assess()
+  method <- create_method_assess()
   truncation <- ifelse(
     is.null(x$method_assessment$truncation),
     yes = NA_real_,
@@ -475,7 +475,7 @@ epiparameter_db <- function(disease = "all",
     return(
       list(
         params = NA_real_,
-        uncertainty = create_epiparameter_uncertainty()
+        uncertainty = create_uncertainty()
       )
     )
   }
@@ -484,7 +484,7 @@ epiparameter_db <- function(disease = "all",
   if (!any(grepl(pattern = "ci", x = names(params), fixed = TRUE))) {
     uncertainty <- lapply(
       vector(mode = "list", length = length(params)),
-      function(x) x <- create_epiparameter_uncertainty()
+      function(x) x <- create_uncertainty()
     )
     names(uncertainty) <- names(params)
     return(
@@ -528,7 +528,7 @@ epiparameter_db <- function(disease = "all",
   # default uncertainty for each parameters
   uncertainty <- lapply(
     vector(mode = "list", length = length(params)),
-    function(x) x <- create_epiparameter_uncertainty()
+    function(x) x <- create_uncertainty()
   )
 
   for (i in seq_along(ci_limits)) {

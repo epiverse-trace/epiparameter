@@ -23,7 +23,7 @@
 #'
 #' @examples
 #' # example with uncertainty for a single parameter
-#' create_epiparameter_uncertainty(
+#' create_uncertainty(
 #'   ci_limits = c(1, 3),
 #'   ci = 95,
 #'   ci_type = "confidence interval"
@@ -32,12 +32,12 @@
 #' # example for multiple parameters
 #' # lengh of list should match number of parameters
 #' list(
-#'   shape = create_epiparameter_uncertainty(
+#'   shape = create_uncertainty(
 #'     ci_limits = c(1, 3),
 #'     ci = 95,
 #'     ci_type = "confidence interval"
 #'   ),
-#'   scale = create_epiparameter_uncertainty(
+#'   scale = create_uncertainty(
 #'     ci_limits = c(2, 4),
 #'     ci = 95,
 #'     ci_type = "confidence interval"
@@ -46,10 +46,10 @@
 #'
 #' # example with unknown uncertainty
 #' # the function can be called without arguments
-#' create_epiparameter_uncertainty()
+#' create_uncertainty()
 #' # or give NA as the first argument
-#' create_epiparameter_uncertainty(NA)
-create_epiparameter_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
+#' create_uncertainty(NA)
+create_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
   # when no uncertainty is given
   if (anyNA(ci_limits)) {
     return(list(
@@ -131,10 +131,10 @@ create_epiparameter_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #'
 #' @examples
 #' # it will automatically populate the fields with defaults if left empty
-#' create_epiparameter_metadata()
+#' create_metadata()
 #'
 #' # supplying each field
-#' create_epiparameter_metadata(
+#' create_metadata(
 #'   sample_size = 10,
 #'   region = "UK",
 #'   transmission_mode = "vector_borne",
@@ -142,12 +142,12 @@ create_epiparameter_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #'   extrinsic = FALSE,
 #'   inference_method = "MLE"
 #' )
-create_epiparameter_metadata <- function(sample_size = NA_integer_,
-                                         region = NA_character_,
-                                         transmission_mode = NA_character_,
-                                         vector = NA_character_,
-                                         extrinsic = FALSE,
-                                         inference_method = NA_character_) {
+create_metadata <- function(sample_size = NA_integer_,
+                            region = NA_character_,
+                            transmission_mode = NA_character_,
+                            vector = NA_character_,
+                            extrinsic = FALSE,
+                            inference_method = NA_character_) {
   # check input
   checkmate::assert_number(
     sample_size,
@@ -195,11 +195,11 @@ create_epiparameter_metadata <- function(sample_size = NA_integer_,
 #' @export
 #'
 #' @examples
-#' create_epiparameter_region(country = "UK")
-create_epiparameter_region <- function(continent = NA_character_,
-                                       country = NA_character_,
-                                       region = NA_character_,
-                                       city = NA_character_) {
+#' create_region(country = "UK")
+create_region <- function(continent = NA_character_,
+                          country = NA_character_,
+                          region = NA_character_,
+                          city = NA_character_) {
   checkmate::assert_string(continent, na.ok = TRUE)
   checkmate::assert_string(country, na.ok = TRUE)
   checkmate::assert_string(region, na.ok = TRUE)
@@ -255,10 +255,10 @@ create_epiparameter_region <- function(continent = NA_character_,
 #'
 #' @examples
 #' # mean and standard deviation
-#' create_epiparameter_summary_stats(mean = 5, sd = 2)
+#' create_summary_stats(mean = 5, sd = 2)
 #'
 #' # mean and standard deviation with uncertainty
-#' create_epiparameter_summary_stats(
+#' create_summary_stats(
 #'   mean = 4,
 #'   mean_ci_limits = c(2.1, 5.7),
 #'   mean_ci = 95,
@@ -268,26 +268,26 @@ create_epiparameter_region <- function(continent = NA_character_,
 #' )
 #'
 #' # median and range
-#' create_epiparameter_summary_stats(
+#' create_summary_stats(
 #'   median = 5,
 #'   lower_range = 1,
 #'   upper_range = 13
 #' )
-create_epiparameter_summary_stats <- function(mean = NA_real_,
-                                              mean_ci_limits = c(NA_real_, NA_real_),
-                                              mean_ci = NA_real_,
-                                              sd = NA_real_,
-                                              sd_ci_limits = c(NA_real_, NA_real_),
-                                              sd_ci = NA_real_,
-                                              median = NA_real_,
-                                              median_ci_limits = c(
-                                                NA_real_,
-                                                NA_real_
-                                              ),
-                                              median_ci = NA_real_,
-                                              lower_range = NA_real_,
-                                              upper_range = NA_real_,
-                                              quantiles = NA_real_) {
+create_summary_stats <- function(mean = NA_real_,
+                                 mean_ci_limits = c(NA_real_, NA_real_),
+                                 mean_ci = NA_real_,
+                                 sd = NA_real_,
+                                 sd_ci_limits = c(NA_real_, NA_real_),
+                                 sd_ci = NA_real_,
+                                 median = NA_real_,
+                                 median_ci_limits = c(
+                                   NA_real_,
+                                   NA_real_
+                                 ),
+                                 median_ci = NA_real_,
+                                 lower_range = NA_real_,
+                                 upper_range = NA_real_,
+                                 quantiles = NA_real_) {
   # check input
   checkmate::assert_number(mean, na.ok = TRUE)
   checkmate::assert_numeric(mean_ci_limits, len = 2, any.missing = TRUE)
@@ -351,19 +351,19 @@ create_epiparameter_summary_stats <- function(mean = NA_real_,
 #' @export
 #'
 #' @examples
-#' create_epiparameter_citation(
+#' create_citation(
 #'   author = person(given = "John", family = "Smith"),
 #'   year = 2002,
 #'   title = "COVID-19 incubation period",
 #'   journal = "Epi Journal",
 #'   doi = "10.19832/j.1366-9516.2012.09147.x"
 #' )
-create_epiparameter_citation <- function(author = utils::person(),
-                                         year = NA_integer_,
-                                         title = NA_character_,
-                                         journal = NA_character_,
-                                         doi = NA_character_,
-                                         pmid = NA_integer_) {
+create_citation <- function(author = utils::person(),
+                            year = NA_integer_,
+                            title = NA_character_,
+                            journal = NA_character_,
+                            doi = NA_character_,
+                            pmid = NA_integer_) {
   # if not <person> try and convert author to <person>
   if (!inherits(author, "person"))
     tryCatch(expr = {
@@ -432,14 +432,14 @@ create_epiparameter_citation <- function(author = utils::person(),
 #' @export
 #'
 #' @examples
-#' create_epiparameter_method_assess(
+#' create_method_assess(
 #'   censored = FALSE,
 #'   right_truncated = FALSE,
 #'   phase_bias_adjusted = FALSE
 #' )
-create_epiparameter_method_assess <- function(censored = NA,
-                                              right_truncated = NA,
-                                              phase_bias_adjusted = NA) {
+create_method_assess <- function(censored = NA,
+                                 right_truncated = NA,
+                                 phase_bias_adjusted = NA) {
   # check input
   checkmate::assert_logical(censored, len = 1)
   checkmate::assert_logical(right_truncated, len = 1)
@@ -516,25 +516,25 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
 
 #' Standardise distribution parameters
 #'
-#' @description `.clean_epiparameter_params()` dispatches to a distribution
+#' @description `.clean_params()` dispatches to a distribution
 #' specific parameter cleaning function depending on `prob_dist`. For example
-#' `prob_dist = "gamma"` will call `.clean_epiparameter_params_gamma()`.
+#' `prob_dist = "gamma"` will call `.clean_params_gamma()`.
 #'
 #' @details
 #' Calling [is_epiparameter_params()] at the start of
-#' `.clean_epiparameter_params()` ensures that if the parameterisation is
+#' `.clean_params()` ensures that if the parameterisation is
 #' incorrect that it will error early and dispatch to the distribution
-#' specific cleaning functions (e.g. `.clean_epiparameter_params_gamma()`).
+#' specific cleaning functions (e.g. `.clean_params_gamma()`).
 #' This means that the distribution specific parameter cleaning functions do
 #' not need to check and error for incorrect parameterisation.
 #'
 #' @inheritParams new_epiparameter
 #'
-#' @name .clean_epiparameter_params
+#' @name .clean_params
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-.clean_epiparameter_params <- function(prob_dist, prob_dist_params) {
+.clean_params <- function(prob_dist, prob_dist_params) {
   valid_params <- is_epiparameter_params(
     prob_dist = prob_dist,
     prob_dist_params = prob_dist_params
@@ -558,14 +558,14 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
   # weibull only has one parameterisation so does not need cleaning
   clean_func <- switch(
     prob_dist,
-    gamma = .clean_epiparameter_params_gamma,
-    lnorm = .clean_epiparameter_params_lnorm,
+    gamma = .clean_params_gamma,
+    lnorm = .clean_params_lnorm,
     weibull = function(x) x,
-    nbinom = .clean_epiparameter_params_nbinom,
-    geom = .clean_epiparameter_params_geom,
-    pois = .clean_epiparameter_params_pois,
-    norm = .clean_epiparameter_params_norm,
-    exp = .clean_epiparameter_params_exp,
+    nbinom = .clean_params_nbinom,
+    geom = .clean_params_geom,
+    pois = .clean_params_pois,
+    norm = .clean_params_norm,
+    exp = .clean_params_exp,
     stop("Probability distribution not recognised", call. = FALSE)
   )
   clean_params <- do.call(clean_func, list(prob_dist_params))
@@ -578,8 +578,8 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
   clean_params
 }
 
-#' @name .clean_epiparameter_params
-.clean_epiparameter_params_gamma <- function(prob_dist_params) {
+#' @name .clean_params
+.clean_params_gamma <- function(prob_dist_params) {
   # no cleaning needed for shape and scale parameterisation
   # if shape and rate are provided convert to shape and scale
   if (identical(names(prob_dist_params), c("shape", "rate"))) {
@@ -595,8 +595,8 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
   prob_dist_params
 }
 
-#' @name .clean_epiparameter_params
-.clean_epiparameter_params_lnorm <- function(prob_dist_params) {
+#' @name .clean_params
+.clean_params_lnorm <- function(prob_dist_params) {
   # no cleaning needed for meanlog and sdlog parameterisation
   # if mu and sigma are provided convert to meanlog and sdlog
   if (identical(names(prob_dist_params), c("mu", "sigma"))) {
@@ -609,8 +609,8 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
   prob_dist_params
 }
 
-#' @name .clean_epiparameter_params
-.clean_epiparameter_params_nbinom <- function(prob_dist_params) {
+#' @name .clean_params
+.clean_params_nbinom <- function(prob_dist_params) {
   # no cleaning needed for mean and dispersion parameterisation
   if (identical(names(prob_dist_params), c("n", "p"))) {
     # convert prob to mean
@@ -632,8 +632,8 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
   prob_dist_params
 }
 
-#' @name .clean_epiparameter_params
-.clean_epiparameter_params_geom <- function(prob_dist_params) {
+#' @name .clean_params
+.clean_params_geom <- function(prob_dist_params) {
   # no cleaning needed for prob parameterisation
   # if mean is provided convert to prob
   if (identical(names(prob_dist_params), "mean")) {
@@ -655,8 +655,8 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
   prob_dist_params
 }
 
-#' @name .clean_epiparameter_params
-.clean_epiparameter_params_pois <- function(prob_dist_params) {
+#' @name .clean_params
+.clean_params_pois <- function(prob_dist_params) {
   if (names(prob_dist_params) %in% c("mean", "l", "lambda")) {
     names(prob_dist_params) <- "mean"
   }
@@ -664,8 +664,8 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
   prob_dist_params
 }
 
-#' @name .clean_epiparameter_params
-.clean_epiparameter_params_norm <- function(prob_dist_params) {
+#' @name .clean_params
+.clean_params_norm <- function(prob_dist_params) {
   # no cleaning needed for mean and sd parameterisation
   if (identical(names(prob_dist_params), c("mu", "sigma"))) {
 
@@ -681,8 +681,8 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
   prob_dist_params
 }
 
-#' @name .clean_epiparameter_params
-.clean_epiparameter_params_exp <- function(prob_dist_params) {
+#' @name .clean_params
+.clean_params_exp <- function(prob_dist_params) {
   # no cleaning needed for rate parameterisation
   if (identical(names(prob_dist_params), "lambda")) {
     names(prob_dist_params) <- "rate"
