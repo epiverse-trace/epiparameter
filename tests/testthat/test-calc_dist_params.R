@@ -2,7 +2,7 @@ test_that("calc_dist_params works as expected converting from mean and sd", {
   params <- calc_dist_params(
     prob_dist = "gamma",
     prob_dist_params = NA,
-    summary_stats = create_epidist_summary_stats(mean = 5, sd = 2),
+    summary_stats = create_epiparameter_summary_stats(mean = 5, sd = 2),
     sample_size = NA
   )
 
@@ -14,7 +14,7 @@ test_that("calc_dist_params works as expected converting for different dist", {
   params <- calc_dist_params(
     prob_dist = "lnorm",
     prob_dist_params = NA,
-    summary_stats = create_epidist_summary_stats(mean = 5, sd = 2),
+    summary_stats = create_epiparameter_summary_stats(mean = 5, sd = 2),
     sample_size = NA
   )
 
@@ -27,7 +27,7 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
   params <- suppressMessages(calc_dist_params(
     prob_dist = "gamma",
     prob_dist_params = NA,
-    summary_stats = create_epidist_summary_stats(
+    summary_stats = create_epiparameter_summary_stats(
       quantiles = c("25" = 10, "75" = 20)
     ),
     sample_size = NA
@@ -40,7 +40,7 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
   params <- suppressMessages(calc_dist_params(
     prob_dist = "lnorm",
     prob_dist_params = NA,
-    summary_stats = create_epidist_summary_stats(
+    summary_stats = create_epiparameter_summary_stats(
       quantiles = c("25" = 10, "75" = 20)
     ),
     sample_size = NA
@@ -55,7 +55,7 @@ test_that("calc_dist_params works as expected extracting from median & range", {
   params <- suppressMessages(calc_dist_params(
     prob_dist = "gamma",
     prob_dist_params = NA,
-    summary_stats = create_epidist_summary_stats(
+    summary_stats = create_epiparameter_summary_stats(
       median = 10,
       lower_range = 5,
       upper_range = 15
@@ -72,7 +72,7 @@ test_that("calc_dist_params fails as expected extracting without sample size", {
     params <- calc_dist_params(
       prob_dist = "gamma",
       prob_dist_params = NA,
-      summary_stats = create_epidist_summary_stats(
+      summary_stats = create_epiparameter_summary_stats(
         median = 10,
         lower_range = 5,
         upper_range = 15
@@ -90,7 +90,7 @@ test_that("calc_dist_params messages as expected without summary stats", {
     params <- calc_dist_params(
       prob_dist = "gamma",
       prob_dist_params = NA,
-      summary_stats = create_epidist_summary_stats(mean = 5, median = 5),
+      summary_stats = create_epiparameter_summary_stats(mean = 5, median = 5),
       sample_size = NA
     ),
     regexp = "(No adequate summary statistics available)"

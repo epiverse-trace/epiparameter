@@ -40,25 +40,25 @@ library(epiparameter)
 
 ### Library of epidemiological parameters
 
-First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The library is stored internally and can be read into R using the `epidist_db()` function. By default all entries in the library are returned.
+First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The library is stored internally and can be read into R using the `epiparameter_db()` function. By default all entries in the library are returned.
 
 ```{r read-in-library}
-epi_dist_db <- epidist_db()
+epi_dist_db <- epiparameter_db()
 epi_dist_db
 ```
 
-The output is a list of `<epidist>` objects, where each element in the list corresponds to an entry in the parameter database. 
+The output is a list of `<epiparameter>` objects, where each element in the list corresponds to an entry in the parameter database. 
 To see a full list of the diseases and distributions stored in the library use the 
 `parameter_tbl()` function. Here we show the first six rows of the output.
 
 ```{r, parameter-tbl}
-parameter_tbl(multi_epidist = epi_dist_db)
+parameter_tbl(multi_epiparameter = epi_dist_db)
 ```
 
 `parameter_tbl()` can also subset the database supplied to the function.
 
 ```{r, parameter-tbl-subset}
-parameter_tbl(multi_epidist = epi_dist_db, disease = "Ebola")
+parameter_tbl(multi_epiparameter = epi_dist_db, disease = "Ebola")
 ```
 
 More details on the data collation and the library of parameters can be found in
@@ -66,37 +66,37 @@ the [Data Collation and Synthesis Protocol vignette](https://epiverse-trace.gith
 
 ### Single set of epidemiological parameters
 
-{epiparameter} introduces a new class for working with epidemiological parameters in R: `<epidist>`, contains the name of the disease, the name of the epidemiological distribution, parameters (if available) and citation information of parameter source, as well as other information. This is the core data structure in the {epiparameter} package and holds a single set of epidemiological parameters. 
+{epiparameter} introduces a new class for working with epidemiological parameters in R: `<epiparameter>`, contains the name of the disease, the name of the epidemiological distribution, parameters (if available) and citation information of parameter source, as well as other information. This is the core data structure in the {epiparameter} package and holds a single set of epidemiological parameters. 
 
-An `<epidist>` object can be:
+An `<epiparameter>` object can be:
 
-1. Pulled from database (`epidist_db()`)
+1. Pulled from database (`epiparameter_db()`)
 
-```{r epidist-db}
-# <epidist> from database
+```{r epiparameter-db}
+# <epiparameter> from database
 
-# fetch <epidist> for COVID-19 incubation period from database
-# return only a single <epidist>
-covid_incubation <- epidist_db(
+# fetch <epiparameter> for COVID-19 incubation period from database
+# return only a single <epiparameter>
+covid_incubation <- epiparameter_db(
   disease = "COVID-19",
   epi_dist = "incubation period",
-  single_epidist = TRUE
+  single_epiparameter = TRUE
 )
 covid_incubation
 ```
 
-2. Created manually (using the class constructor function: `epidist()`)
+2. Created manually (using the class constructor function: `epiparameter()`)
 
-```{r epidist-constructor}
-# <epidist> using constructor function
-covid_incubation <- epidist(
+```{r epiparameter-constructor}
+# <epiparameter> using constructor function
+covid_incubation <- epiparameter(
   disease = "COVID-19",
   pathogen = "SARS-CoV-2",
   epi_dist = "incubation period",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 2, scale = 1),
-  summary_stats = create_epidist_summary_stats(mean = 2),
-  citation = create_epidist_citation(
+  summary_stats = create_epiparameter_summary_stats(mean = 2),
+  citation = create_epiparameter_citation(
     author = person(
       given = list("John", "Amy"),
       family = list("Smith", "Jones")
@@ -110,49 +110,49 @@ covid_incubation <- epidist(
 covid_incubation
 ```
 
-Not all arguments are specified in the example using the class constructor (`epidist()`) above, for example the `metadata` or parameter uncertainty (`uncertainty`) is not provided. See the help documentation for the `epidist()` function using `?epidist` to see each argument. Also see documentation for `<epidist>` helper functions, e.g., `?create_epidist_citation()`.
+Not all arguments are specified in the example using the class constructor (`epiparameter()`) above, for example the `metadata` or parameter uncertainty (`uncertainty`) is not provided. See the help documentation for the `epiparameter()` function using `?epiparameter` to see each argument. Also see documentation for `<epiparameter>` helper functions, e.g., `?create_epiparameter_citation()`.
 
-Manually creating `<epidist>` objects can be especially useful if new parameter estimates become available but are not yet incorporated into the {epiparameter} library.
+Manually creating `<epiparameter>` objects can be especially useful if new parameter estimates become available but are not yet incorporated into the {epiparameter} library.
 
-As seen in the examples in this vignette, the `<epidist>` class has a custom printing method which shows the disease, pathogen (if known), the epidemiological distribution, a citation of the study the parameters are from and the probability distribution and parameter of that distribution (if available).
+As seen in the examples in this vignette, the `<epiparameter>` class has a custom printing method which shows the disease, pathogen (if known), the epidemiological distribution, a citation of the study the parameters are from and the probability distribution and parameter of that distribution (if available).
 
 ::: {.alert .alert-success}
-### Benefit of `<epidist>`
+### Benefit of `<epiparameter>`
 
-By providing a consistent and robust object to store epidemiological parameters, `<epidist>` objects can be applied in epidemiological pipelines, for example [{episoap}](https://github.com/epiverse-trace/episoap). The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will continue to operate because the class is unchanged.
+By providing a consistent and robust object to store epidemiological parameters, `<epiparameter>` objects can be applied in epidemiological pipelines, for example [{episoap}](https://github.com/epiverse-trace/episoap). The data contained within the object (e.g. parameter values, pathogen type, etc.) can be modified but the pipeline will continue to operate because the class is unchanged.
 :::
 
 The probability distribution (`prob_distribution`) argument requires the distribution specified in the standard R naming. In some cases these are the same as the distribution's name, e.g., `gamma` and `weibull`. Examples of where the distribution name and R name differ are lognormal and `lnorm`, negative binomial and `nbinom`, geometric and `geom`, and poisson and `pois`.
 
 ## Subsetting database
 
-The database can be subset directly by `epidist_db()`. Here the results can be subset by author. It is recommended to use the family name of the first author instead of the full name. Only the first author will be matched when the entry is from a source with multiple authors.
+The database can be subset directly by `epiparameter_db()`. Here the results can be subset by author. It is recommended to use the family name of the first author instead of the full name. Only the first author will be matched when the entry is from a source with multiple authors.
 
-```{r epidist-db-subset-author}
-epidist_db(
+```{r epiparameter-db-subset-author}
+epiparameter_db(
   disease = "COVID-19",
   epi_dist = "incubation period",
   author = "Linton"
 )
 ```
 
-The results can be further subset using the `subset` argument, for example `subset = sample_size > 100` will return entries with a sample size greater than 100. See `?epidist_db()` for details on how to use this argument to subset which database entries get returned.
+The results can be further subset using the `subset` argument, for example `subset = sample_size > 100` will return entries with a sample size greater than 100. See `?epiparameter_db()` for details on how to use this argument to subset which database entries get returned.
 
-If a single `<epidist>` is required then the `single_epidist` argument can be set to `TRUE` and this will return a single set of epidemiological parameters (i.e. one delay distribution), if available. If multiple entries in the parameter library match the search criteria (e.g. disease type) then the entries that are parameterised (i.e. distribution parameters are known), account for right truncation when inferred, and were estimated from the largest sample size are preferentially selected (in that order).
+If a single `<epiparameter>` is required then the `single_epiparameter` argument can be set to `TRUE` and this will return a single set of epidemiological parameters (i.e. one delay distribution), if available. If multiple entries in the parameter library match the search criteria (e.g. disease type) then the entries that are parameterised (i.e. distribution parameters are known), account for right truncation when inferred, and were estimated from the largest sample size are preferentially selected (in that order).
 
-```{r epidist-db-single-epidist}
-epidist_db(disease = "SARS", single_epidist = TRUE)
+```{r epiparameter-db-single-epiparameter}
+epiparameter_db(disease = "SARS", single_epiparameter = TRUE)
 ```
 
 ## Distribution functions
 
-`<epidist>` objects store distributions, and mathematical functions of these distribution can easily be extracted directly from them. It is often useful to access the probability density function, cumulative distribution function, quantiles of the distribution, or generate random numbers from the distribution in the `<epidist>` object. The distribution functions in {epiparameter} allow users to easily use these.
+`<epiparameter>` objects store distributions, and mathematical functions of these distribution can easily be extracted directly from them. It is often useful to access the probability density function, cumulative distribution function, quantiles of the distribution, or generate random numbers from the distribution in the `<epiparameter>` object. The distribution functions in {epiparameter} allow users to easily use these.
 
-```{r epidist-dist-methods}
-ebola_incubation <- epidist_db(
+```{r epiparameter-dist-methods}
+ebola_incubation <- epiparameter_db(
   disease = "Ebola",
   epi_dist = "incubation period",
-  single_epidist = TRUE
+  single_epiparameter = TRUE
 )
 
 density(ebola_incubation, at = 0.5)
@@ -163,25 +163,25 @@ generate(ebola_incubation, times = 10)
 
 ## Plotting epidemiological distributions
 
-`<epidist>` objects can easily be plotted to see the PDF and CDF of distribution.
+`<epiparameter>` objects can easily be plotted to see the PDF and CDF of distribution.
 
-```{r plot-epidist}
+```{r plot-epiparameter}
 plot(ebola_incubation)
 ```
 
-The default plotting range for time since infection is from zero to the 99th quantile of the distribution. This can be altered by specifying the `xlim` argument when plotting an `<epidist>` object.
+The default plotting range for time since infection is from zero to the 99th quantile of the distribution. This can be altered by specifying the `xlim` argument when plotting an `<epiparameter>` object.
 
-```{r plot-epidist-dayrange}
+```{r plot-epiparameter-dayrange}
 plot(ebola_incubation, xlim = c(1, 25))
 ```
 
-This plotting function can be useful for visually comparing epidemiological distributions from different publications on the same disease. In addition, plotting the distribution after manually creating an `<epidist>` help to check that the parameters are sensible and produce the expected distribution. 
+This plotting function can be useful for visually comparing epidemiological distributions from different publications on the same disease. In addition, plotting the distribution after manually creating an `<epiparameter>` help to check that the parameters are sensible and produce the expected distribution. 
 
 ### Accessors
 
-The `<epidist>` class also has accessor functions that can help access elements from the object in a standardised format.
+The `<epiparameter>` class also has accessor functions that can help access elements from the object in a standardised format.
 
-```{r epidist-accessors}
+```{r epiparameter-accessors}
 get_parameters(ebola_incubation)
 get_citation(ebola_incubation)
 ```
@@ -201,7 +201,7 @@ The functions `extract_param()` handles all the extraction of parameter estimate
 If a set of epidemiological parameter has been inferred and is known to the user but has not yet been incorporated into the {epiparameter} database, these parameters can be manually added to the library.
 
 ```{r add-to-library}
-# wrap <epidist> in list to append to database
+# wrap <epiparameter> in list to append to database
 new_db <- append(epi_dist_db, list(covid_incubation))
 tail(new_db, n = 3)
 ```

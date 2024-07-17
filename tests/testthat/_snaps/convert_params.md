@@ -143,7 +143,7 @@
       ]
     }
 
-# convert_summary_stats_to_params.epidist works as expected
+# convert_summary_stats_to_params.epiparameter works as expected
 
     {
       "type": "list",
@@ -443,7 +443,7 @@
       ]
     }
 
-# convert_params_to_summary_stats.epidist works as expected
+# convert_params_to_summary_stats.epiparameter works as expected
 
     {
       "type": "list",

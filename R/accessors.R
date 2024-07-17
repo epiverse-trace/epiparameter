@@ -10,29 +10,30 @@ get_parameters <- function(x, ...) {
   UseMethod("get_parameters")
 }
 
-#' Get parameters from an `<epidist>` object
+#' Get parameters from an `<epiparameter>` object
 #'
-#' Extract the parameters of the distribution stored in an `<epidist>` object.
+#' Extract the parameters of the distribution stored in an `<epiparameter>`
+#' object.
 #'
-#' @details The `<epidist>` object can be unparameterised in which it lacks
+#' @details The `<epiparameter>` object can be unparameterised in which it lacks
 #' a probability distribution or parameters of a probability distribution,
-#' in this case the `get_parameters.epidist()` method will return `NA`.
+#' in this case the `get_parameters.epiparameter()` method will return `NA`.
 #'
-#' @inheritParams print.epidist
+#' @inheritParams print.epiparameter
 #' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
-#' @return A named vector of parameters or `NA` when the `<epidist>` object is
-#' unparameterised.
+#' @return A named vector of parameters or `NA` when the `<epiparameter>`
+#' object is unparameterised.
 #' @export
 #'
 #' @examples
-#' edist <- epidist_db(
+#' edist <- epiparameter_db(
 #'   disease = "COVID-19",
 #'   epi_dist = "serial interval",
-#'   single_epidist = TRUE
+#'   single_epiparameter = TRUE
 #' )
 #' get_parameters(edist)
-get_parameters.epidist <- function(x, ...) {
+get_parameters.epiparameter <- function(x, ...) {
   chkDots(...)
   # extract parameters depending on prob distribution class
   if (inherits(x$prob_dist, "distcrete")) {
@@ -51,7 +52,7 @@ get_parameters.epidist <- function(x, ...) {
     }
 
     # convert to meanlog and sdlog names
-    params <- .clean_epidist_params(
+    params <- .clean_epiparameter_params(
       prob_dist = family(x),
       prob_dist_params = params
     )
@@ -75,26 +76,26 @@ get_citation <- function(x, ...) {
   UseMethod("get_citation")
 }
 
-#' Get citation from an `<epidist>` object
+#' Get citation from an `<epiparameter>` object
 #'
-#' Extract the citation stored in an `<epidist>` object.
+#' Extract the citation stored in an `<epiparameter>` object.
 #'
-#' @inheritParams print.epidist
+#' @inheritParams print.epiparameter
 #' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
 #' @return A `<bibentry>` object.
 #' @export
 #'
 #' @examples
-#' # example with <epidist>
-#' edist <- epidist_db(single_epidist = TRUE)
+#' # example with <epiparameter>
+#' edist <- epiparameter_db(single_epiparameter = TRUE)
 #' get_citation(edist)
 #'
 #' # example returning bibtex format
-#' edist <- epidist_db(disease = "COVID-19", single_epidist = TRUE)
+#' edist <- epiparameter_db(disease = "COVID-19", single_epiparameter = TRUE)
 #' cit <- get_citation(edist)
 #' format(cit, style = "bibtex")
-get_citation.epidist <- function(x, ...) {
+get_citation.epiparameter <- function(x, ...) {
   chkDots(...)
   if (!inherits(x$citation, "bibentry")) {
     stop("Citation should be a <bibentry>", call. = FALSE)
@@ -104,25 +105,25 @@ get_citation.epidist <- function(x, ...) {
   x$citation
 }
 
-#' Get citation from a list of `<epidist>` objects
+#' Get citation from a list of `<epiparameter>` objects
 #'
-#' Extract the citation stored in a list of `<epidist>` objects.
+#' Extract the citation stored in a list of `<epiparameter>` objects.
 #'
-#' @inheritParams print.epidist
+#' @inheritParams print.epiparameter
 #' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
 #' @return A `<bibentry>` object containing multiple references. The length of
-#' output `<bibentry>` is equal to the length of the list of `<epidist>`
+#' output `<bibentry>` is equal to the length of the list of `<epiparameter>`
 #' objects supplied.
 #' @export
 #'
 #' @examples
-#' # example with list of <epidist>
-#' edist <- epidist_db()
+#' # example with list of <epiparameter>
+#' edist <- epiparameter_db()
 #' get_citation(edist)
-get_citation.multi_epidist <- function(x, ...) {
+get_citation.multi_epiparameter <- function(x, ...) {
   chkDots(...)
-  # dispatches to get_citation.epidist method
+  # dispatches to get_citation.epiparameter method
   citation_list <- lapply(x, get_citation)
   # dispatches to c.bibentry method
   multi_bibentry <- Reduce(f = c, x = citation_list)

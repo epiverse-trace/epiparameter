@@ -15,17 +15,17 @@ library(epiparameter)
 library(epireview)
 ```
 
-The article describes how to use the {epireview} R package with {epiparameter}. {epireview} provides epidemiological parameters for a range of pathogens extracted from the literature by the Pathogen Epidemiology Review Group (PERG) in systematic reviews. The {epiparameter} R package can use these epidemiological parameters and can convert them into `<epidist>` objects.
+The article describes how to use the {epireview} R package with {epiparameter}. {epireview} provides epidemiological parameters for a range of pathogens extracted from the literature by the Pathogen Epidemiology Review Group (PERG) in systematic reviews. The {epiparameter} R package can use these epidemiological parameters and can convert them into `<epiparameter>` objects.
 
 ::: {.alert .alert-warning}
-This feature of interoperability of {epireview} and {epiparameter} is still under development. Currently only delay distributions (termed _Human delay_ in the "parameter_type" column in {epireview}'s database) are compatible with this feature. Attempting to convert other epidemiological parameters from {epireview} to {epiparameter} `<epidist>` objects will likely error with an uninformative error message.
+This feature of interoperability of {epireview} and {epiparameter} is still under development. Currently only delay distributions (termed _Human delay_ in the "parameter_type" column in {epireview}'s database) are compatible with this feature. Attempting to convert other epidemiological parameters from {epireview} to {epiparameter} `<epiparameter>` objects will likely error with an uninformative error message.
 :::
 
-## Converting from {epireview} entries into an `<epidist>` object
+## Converting from {epireview} entries into an `<epiparameter>` object
 
-The {epireview} package nicely provides epidemiological parameter data from systematically reviewing the literature, and {epiparameter} provides custom data structures for working with epidemiological data in R. Therefore, reading in data from the {epireview} R package and converting it to an `<epidist>` object will provide the greatest utility when applied in outbreak analytics. 
+The {epireview} package nicely provides epidemiological parameter data from systematically reviewing the literature, and {epiparameter} provides custom data structures for working with epidemiological data in R. Therefore, reading in data from the {epireview} R package and converting it to an `<epiparameter>` object will provide the greatest utility when applied in outbreak analytics. 
 
-Here we start with a simple example of reading in the Marburg data from {epireview} and converting to an `<epidist>` object using `as_epidist()` function from the {epiparameter} package.
+Here we start with a simple example of reading in the Marburg data from {epireview} and converting to an `<epiparameter>` object using `as_epiparameter()` function from the {epiparameter} package.
 
 ```{r, load-marburg}
 marburg_data <- load_epidata("marburg")
@@ -37,7 +37,7 @@ This loads a list with four tables, specifically `tibbles`, that contain the bib
 names(marburg_data)
 ```
 
-We will start by just using the epidemiological parameter table to convert information into an `<epidist>`.
+We will start by just using the epidemiological parameter table to convert information into an `<epiparameter>`.
 
 ```{r, marburg-params}
 marburg_params <- marburg_data$params
@@ -62,29 +62,29 @@ marburg_incub <- marburg_params[2, ]
 marburg_incub
 ```
 
-Then we can simply pass our epidemiological parameter set to `as_epidist()` to do the conversion.
+Then we can simply pass our epidemiological parameter set to `as_epiparameter()` to do the conversion.
 
-```{r, convert-to-epidist-single-entry}
-marburg_incub_epidist <- as_epidist(marburg_incub)
-marburg_incub_epidist
+```{r, convert-to-epiparameter-single-entry}
+marburg_incub_epiparameter <- as_epiparameter(marburg_incub)
+marburg_incub_epiparameter
 ```
 
-The resulting `<epidist>` does not contain a parameterised probability distribution, instead it contains a range for the incubation period (in `$summary_stats`), and the `$metadata` shows that this is a single case from South Africa.
+The resulting `<epiparameter>` does not contain a parameterised probability distribution, instead it contains a range for the incubation period (in `$summary_stats`), and the `$metadata` shows that this is a single case from South Africa.
 
-```{r, show-epidist-single-entry-data}
-marburg_incub_epidist$summary_stats
-marburg_incub_epidist$metadata
+```{r, show-epiparameter-single-entry-data}
+marburg_incub_epiparameter$summary_stats
+marburg_incub_epiparameter$metadata
 ```
 
-## Creating an `<epidist>` with full citation
+## Creating an `<epiparameter>` with full citation
 
 The last example showed how to convert the epidemiological parameter information, however, you may have noticed that the citation that was created did not contain the information for a full citation.
 
 ```{r, show-incomplete-citation}
-marburg_incub_epidist$citation
+marburg_incub_epiparameter$citation
 ```
 
-In order to provide a complete citation to the `<epidist>` object, which is highly recommended so that you know the provenance of the parameters and can correctly attribute the original authors, we will need to also provide the bibliographic information from {epireview} as well as the epidemiological parameters.
+In order to provide a complete citation to the `<epiparameter>` object, which is highly recommended so that you know the provenance of the parameters and can correctly attribute the original authors, we will need to also provide the bibliographic information from {epireview} as well as the epidemiological parameters.
 
 The article data needs to be loaded from {epireview} using `epireview::load_epidata_raw()` rather than `epireview::load_data()` because `load_data()` subsets the bibliographic information to only provide: `"id"`, `"first_author_surname"`, `"year_publication"`, and `"article_label"` columns.
 
@@ -108,29 +108,29 @@ marburg_incub_article <- marburg_articles[article_row, ]
 marburg_incub_article
 ```
 
-Now we can repeat the example of converting to `<epidist>` as shown above, but this time pass the bibliographic information as well as the epidemiological parameter information to create a full citation. The bibliographic information needs to be passed with the `articles` argument. 
+Now we can repeat the example of converting to `<epiparameter>` as shown above, but this time pass the bibliographic information as well as the epidemiological parameter information to create a full citation. The bibliographic information needs to be passed with the `articles` argument. 
 
-```{r, convert-to-epidist-full-citation}
-marburg_incub_epidist <- as_epidist(
+```{r, convert-to-epiparameter-full-citation}
+marburg_incub_epiparameter <- as_epiparameter(
   marburg_incub,
   articles = marburg_incub_article
 )
-marburg_incub_epidist
+marburg_incub_epiparameter
 ```
 
 ```{r, show-full-citation}
-marburg_incub_epidist$citation
+marburg_incub_epiparameter$citation
 ```
 
 ::: {.alert .alert-info}
-The `as_epidist()` function is an S3 generic. If you are not familiar with S3 object-oriented programming in R, then this detail is not important, however, it does mean that the `articles` argument is not explicitly in the function definition of `as_epidist()` (i.e. it will not show up on autocomplete when typing out the function and will not be shown if you read the function help page `?as_epidist()`). Instead, the argument is specified as part of the `...` argument. This is because the `articles` argument is only required when converting data from {epireview} into `<epidist>`, and other data that can be converted to `<epidist>` objects do not require this argument.
+The `as_epiparameter()` function is an S3 generic. If you are not familiar with S3 object-oriented programming in R, then this detail is not important, however, it does mean that the `articles` argument is not explicitly in the function definition of `as_epiparameter()` (i.e. it will not show up on autocomplete when typing out the function and will not be shown if you read the function help page `?as_epiparameter()`). Instead, the argument is specified as part of the `...` argument. This is because the `articles` argument is only required when converting data from {epireview} into `<epiparameter>`, and other data that can be converted to `<epiparameter>` objects do not require this argument.
 :::
 
 ## Multi-row {epireview} entries
 
-The way the {epireview} data is stored means that some epidemiological parameter entries require multiple rows. This can be, for example, because they contain two summary statistics (e.g. mean and standard deviation) that are kept on separate rows. In order to create `<epidist>` objects that contains the full information for each entry multiple rows of the epidemiological parameters table from {epireview} can be given to `as_epidist()` to create a single `<epidist>` object.
+The way the {epireview} data is stored means that some epidemiological parameter entries require multiple rows. This can be, for example, because they contain two summary statistics (e.g. mean and standard deviation) that are kept on separate rows. In order to create `<epiparameter>` objects that contains the full information for each entry multiple rows of the epidemiological parameters table from {epireview} can be given to `as_epiparameter()` to create a single `<epiparameter>` object.
 
-We can search which entries in the data have multiple rows by checking if there are duplicated parameter types and IDs. Remember that it is only possible to convert delay distributions into epidist objects (i.e. known as _Human delay_ parameter types in {epireview}), which we previously subset in this vignette. 
+We can search which entries in the data have multiple rows by checking if there are duplicated parameter types and IDs. Remember that it is only possible to convert delay distributions into epiparameter objects (i.e. known as _Human delay_ parameter types in {epireview}), which we previously subset in this vignette. 
 
 ```{r, check-multi-row-entries}
 multi_row_entries <- duplicated(marburg_params$parameter_type) &
@@ -155,12 +155,12 @@ We use the first two rows of this subset table, which are the mean and standard 
 marburg_gt <- multi_row_marburg_params[1:2, ]
 ```
 
-We can now convert this to an `<epidist>`.
+We can now convert this to an `<epiparameter>`.
 
-```{r, convert-multi-row-entry-to-epidist}
-marburg_gt_epidist <- as_epidist(marburg_gt)
-marburg_gt_epidist
-marburg_gt_epidist$summary_stats
+```{r, convert-multi-row-entry-to-epiparameter}
+marburg_gt_epiparameter <- as_epiparameter(marburg_gt)
+marburg_gt_epiparameter
+marburg_gt_epiparameter$summary_stats
 ```
 
 ## Entries with probability distributions
@@ -194,25 +194,25 @@ ebola_si <- ebola_delays[358, ]
 ebola_si
 ```
 
-We can now convert this to an `<epidist>` object.
+We can now convert this to an `<epiparameter>` object.
 
-```{r, convert-to-prob-dist-epidist-single-entry}
-ebola_si_epidist <- as_epidist(ebola_si)
-ebola_si_epidist
+```{r, convert-to-prob-dist-epiparameter-single-entry}
+ebola_si_epiparameter <- as_epiparameter(ebola_si)
+ebola_si_epiparameter
 ```
 
-With the probability distribution for the serial interval we can utilise some of the `<epidist>` methods. Here we illustrate this by checking that the `<epidist>` is parameterised, plotting the PDF and CDF, and generating 10 random numbers sampling from the distribution.
+With the probability distribution for the serial interval we can utilise some of the `<epiparameter>` methods. Here we illustrate this by checking that the `<epiparameter>` is parameterised, plotting the PDF and CDF, and generating 10 random numbers sampling from the distribution.
 
-```{r, is-epidist-parameterised}
-is_parameterised(ebola_si_epidist)
+```{r, is-epiparameter-parameterised}
+is_parameterised(ebola_si_epiparameter)
 ```
 
-```{r, plot-epidist}
-plot(ebola_si_epidist)
+```{r, plot-epiparameter}
+plot(ebola_si_epiparameter)
 ```
 
-```{r, generate-epidist}
-generate(ebola_si_epidist, times = 10)
+```{r, generate-epiparameter}
+generate(ebola_si_epiparameter, times = 10)
 ```
 
 ## Specifying the probability distribution if unknown
@@ -220,7 +220,7 @@ generate(ebola_si_epidist, times = 10)
 There may be instances where a delay distribution is reported in the literature, but either a probability distribution is not fit to the data, or it is not reported which probability distribution the parameters correspond to. Therefore, there will not be a probability distribution specified in the {epireview} data. In these cases, and when a parametric probability distribution is required for a particular epidemiological task then assuming a probability distribution can be useful.  
 
 ::: {.alert .alert-danger}
-**Please use this feature with caution**. Assuming an incorrect probability distribution and applying this in an epidemiological method can lead to erroneous results. Additionally, if a probability distribution is specified by the user it will overwrite any probability distribution specified in input data (e.g. {epireview} parameter data) which can lead to an error if the distribution name supplied and parameters input are incompatible See `?as_epidist` details for more information.
+**Please use this feature with caution**. Assuming an incorrect probability distribution and applying this in an epidemiological method can lead to erroneous results. Additionally, if a probability distribution is specified by the user it will overwrite any probability distribution specified in input data (e.g. {epireview} parameter data) which can lead to an error if the distribution name supplied and parameters input are incompatible See `?as_epiparameter` details for more information.
 :::
 
 Just as the example above we will load the Ebola parameters using the `epireview::load_epidata()` function and subset to just the parameters (`$params`).
@@ -243,32 +243,32 @@ ebola_si <- ebola_params[
 ]
 ```
 
-If we were to supply this data to `as_epidist()` we would get an unparameterised `<epidist>` object because no probability distribution is stated.
+If we were to supply this data to `as_epiparameter()` we would get an unparameterised `<epiparameter>` object because no probability distribution is stated.
 
-```{r, convert-to-epidist-unspecified-prob-dist}
-ebola_si_epidist <- as_epidist(ebola_si)
-ebola_si_epidist
-is_parameterised(ebola_si_epidist)
+```{r, convert-to-epiparameter-unspecified-prob-dist}
+ebola_si_epiparameter <- as_epiparameter(ebola_si)
+ebola_si_epiparameter
+is_parameterised(ebola_si_epiparameter)
 ```
 
-Given that we can convert the mean and standard deviation into parameters of a probability distribution if we assume a distribution form, we can supply this data to `as_epidist()`. This uses the parameter conversion functions in {epiparameter} (see `vignette("extract_convert", package = "epiparameter")`).
+Given that we can convert the mean and standard deviation into parameters of a probability distribution if we assume a distribution form, we can supply this data to `as_epiparameter()`. This uses the parameter conversion functions in {epiparameter} (see `vignette("extract_convert", package = "epiparameter")`).
 
-```{r, convert-to-epidist-assumed-prob-dist}
-ebola_si_epidist <- as_epidist(ebola_si, prob_dist = "gamma")
-ebola_si_epidist
-is_parameterised(ebola_si_epidist)
+```{r, convert-to-epiparameter-assumed-prob-dist}
+ebola_si_epiparameter <- as_epiparameter(ebola_si, prob_dist = "gamma")
+ebola_si_epiparameter
+is_parameterised(ebola_si_epiparameter)
 ```
 
-The Ebola serial interval `<epidist>` can now be used for various probability distribution methods.
+The Ebola serial interval `<epiparameter>` can now be used for various probability distribution methods.
 
-```{r, ebola-epidist-dist-methods}
-get_parameters(ebola_si_epidist)
-density(ebola_si_epidist, at = 20)
-plot(ebola_si_epidist)
-cdf(ebola_si_epidist, q = 10)
-plot(ebola_si_epidist, cumulative = TRUE)
-quantile(ebola_si_epidist, p = 0.5)
-generate(ebola_si_epidist, times = 10)
+```{r, ebola-epiparameter-dist-methods}
+get_parameters(ebola_si_epiparameter)
+density(ebola_si_epiparameter, at = 20)
+plot(ebola_si_epiparameter)
+cdf(ebola_si_epiparameter, q = 10)
+plot(ebola_si_epiparameter, cumulative = TRUE)
+quantile(ebola_si_epiparameter, p = 0.5)
+generate(ebola_si_epiparameter, times = 10)
 ```
 
 ## References

@@ -1,8 +1,8 @@
 # Data to be reused by multiple testing blocks
-edist <- suppressMessages(epidist_db())
+edist <- suppressMessages(epiparameter_db())
 
 test_that("parameter_tbl works as expected supplied with db", {
-  dist_tbl <- parameter_tbl(multi_epidist = edist)
+  dist_tbl <- parameter_tbl(multi_epiparameter = edist)
   expect_s3_class(dist_tbl, "data.frame")
   expect_identical(dim(dist_tbl), c(122L, 7L))
   expect_named(
@@ -15,7 +15,7 @@ test_that("parameter_tbl works as expected supplied with db", {
 
 test_that("parameter_tbl works for incubation period with db", {
   incub_tbl <- parameter_tbl(
-    multi_epidist = edist,
+    multi_epiparameter = edist,
     epi_dist = "incubation period"
   )
   expect_s3_class(incub_tbl, "data.frame")
@@ -30,7 +30,7 @@ test_that("parameter_tbl works for incubation period with db", {
 
 test_that("parameter_tbl works for different distribution with db", {
   serial_tbl <- parameter_tbl(
-    multi_epidist = edist,
+    multi_epiparameter = edist,
     epi_dist = "serial interval"
   )
   expect_s3_class(serial_tbl, "data.frame")
@@ -45,7 +45,7 @@ test_that("parameter_tbl works for different distribution with db", {
 
 test_that("parameter_tbl works for COVID-19 db", {
   incub_tbl <- parameter_tbl(
-    multi_epidist = edist,
+    multi_epiparameter = edist,
     disease = "COVID-19"
   )
   expect_s3_class(incub_tbl, "data.frame")
@@ -60,7 +60,7 @@ test_that("parameter_tbl works for COVID-19 db", {
 
 test_that("parameter_tbl works for SARS-CoV-2 db", {
   incub_tbl <- parameter_tbl(
-    multi_epidist = edist,
+    multi_epiparameter = edist,
     pathogen = "SARS-CoV-2"
   )
   expect_s3_class(incub_tbl, "data.frame")
@@ -75,7 +75,7 @@ test_that("parameter_tbl works for SARS-CoV-2 db", {
 
 test_that("parameter_tbl works for disease & epi_dist subset with db", {
   incub_tbl <- parameter_tbl(
-    multi_epidist = edist,
+    multi_epiparameter = edist,
     disease = "COVID-19",
     epi_dist = "incubation period"
   )
@@ -90,8 +90,8 @@ test_that("parameter_tbl works for disease & epi_dist subset with db", {
 })
 
 test_that("parameter_tbl works when supplied a subset db", {
-  edist <- suppressMessages(epidist_db(disease = "COVID-19"))
-  covid_tbl <- parameter_tbl(multi_epidist = edist, disease = "COVID-19")
+  edist <- suppressMessages(epiparameter_db(disease = "COVID-19"))
+  covid_tbl <- parameter_tbl(multi_epiparameter = edist, disease = "COVID-19")
   expect_s3_class(covid_tbl, "data.frame")
   expect_identical(dim(covid_tbl), c(27L, 7L))
   expect_named(
@@ -102,9 +102,9 @@ test_that("parameter_tbl works when supplied a subset db", {
   expect_snapshot(covid_tbl)
 })
 
-test_that("parameter_tbl works as expected supplied with <epidist>", {
-  edist <- suppressMessages(epidist_db(single_epidist = TRUE))
-  dist_tbl <- parameter_tbl(multi_epidist = edist)
+test_that("parameter_tbl works as expected supplied with <epiparameter>", {
+  edist <- suppressMessages(epiparameter_db(single_epiparameter = TRUE))
+  dist_tbl <- parameter_tbl(multi_epiparameter = edist)
   expect_s3_class(dist_tbl, "data.frame")
   expect_identical(dim(dist_tbl), c(1L, 7L))
   expect_named(
@@ -115,14 +115,14 @@ test_that("parameter_tbl works as expected supplied with <epidist>", {
   expect_snapshot(dist_tbl)
 })
 
-test_that("parameter_tbl works as expected with discretised <epidist>", {
+test_that("parameter_tbl works as expected with discretised <epiparameter>", {
   edist <- suppressMessages(
-    epidist(
+    epiparameter(
       disease = "Ebola",
       epi_dist = "serial interval",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      citation = create_epidist_citation(
+      citation = create_epiparameter_citation(
         author = person(given = "John", family = "Smith"),
         year = 2022,
         title = "A title",
@@ -132,7 +132,7 @@ test_that("parameter_tbl works as expected with discretised <epidist>", {
       discretise = TRUE
     )
   )
-  dist_tbl <- parameter_tbl(multi_epidist = edist)
+  dist_tbl <- parameter_tbl(multi_epiparameter = edist)
   expect_s3_class(dist_tbl, "data.frame")
   expect_identical(dim(dist_tbl), c(1L, 7L))
   expect_named(
@@ -144,9 +144,9 @@ test_that("parameter_tbl works as expected with discretised <epidist>", {
 })
 
 test_that("parameter_tbl fails correctly when subsetting a subset db", {
-  edist <- suppressMessages(epidist_db(disease = "Ebola"))
+  edist <- suppressMessages(epiparameter_db(disease = "Ebola"))
   expect_error(
-    parameter_tbl(multi_epidist = edist, disease = "COVID-19"),
+    parameter_tbl(multi_epiparameter = edist, disease = "COVID-19"),
     regexp = "(distribution not available for COVID-19)"
   )
 })
@@ -155,20 +155,20 @@ test_that("parameter_tbl fails correctly", {
   # check for incorrect input
   expect_error(
     parameter_tbl(
-      multi_epidist = list(),
+      multi_epiparameter = list(),
       epi_dist = "incubation_period"
     ),
-    regexp = "List of <epidist> objects should be supplied to multi_epidist"
+    regexp = "List of <epiparameter> objects should be supplied to multi_epiparameter"
   )
 
   expect_error(
-    parameter_tbl(multi_epidist = edist, epi_dist = "random"),
+    parameter_tbl(multi_epiparameter = edist, epi_dist = "random"),
     regexp = "random distribution not available"
   )
 
   # check for multiple match input
   expect_error(
-    parameter_tbl(multi_epidist = edist, epi_dist = "onset"),
+    parameter_tbl(multi_epiparameter = edist, epi_dist = "onset"),
     regexp = "onset distribution not available"
   )
 })

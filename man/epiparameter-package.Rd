@@ -2,7 +2,6 @@
 % Please edit documentation in R/epiparameter-package.R
 \docType{package}
 \name{epiparameter-package}
-\alias{epiparameter}
 \alias{epiparameter-package}
 \title{epiparameter: Library of Epidemiological Parameters with Helper Functions and Classes}
 \description{
