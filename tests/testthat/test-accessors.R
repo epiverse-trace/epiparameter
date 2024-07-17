@@ -1,14 +1,14 @@
-test_that("get_parameters works as expected for epidist from db", {
+test_that("get_parameters works as expected for epiparameter from db", {
   # suppress message about return
-  edist <- suppressMessages(epidist_db(disease = "SARS", single_epidist = TRUE))
+  edist <- suppressMessages(epiparameter_db(disease = "SARS", single_epiparameter = TRUE))
   params <- get_parameters(edist)
   expect_vector(params, ptype = numeric(1), size = 2)
   expect_named(params, c("meanlog", "sdlog"))
 })
 
-test_that("get_parameters works as expected for unparameterised epidist", {
+test_that("get_parameters works as expected for unparameterised epiparameter", {
   edist <- suppressMessages(
-    epidist(
+    epiparameter(
       disease = "Ebola",
       epi_dist = "incubation period",
       prob_distribution = "gamma"
@@ -17,9 +17,9 @@ test_that("get_parameters works as expected for unparameterised epidist", {
   expect_true(is.na(get_parameters(edist)))
 })
 
-test_that("get_parameters works as expected for continuous epidist", {
+test_that("get_parameters works as expected for continuous epiparameter", {
   edist <- suppressMessages(
-    epidist(
+    epiparameter(
       disease = "Ebola",
       epi_dist = "incubation period",
       prob_distribution = "gamma",
@@ -31,9 +31,9 @@ test_that("get_parameters works as expected for continuous epidist", {
   expect_named(params, c("shape", "scale"))
 })
 
-test_that("get_parameters works as expected for discretised epidist", {
+test_that("get_parameters works as expected for discretised epiparameter", {
   edist <- suppressMessages(
-    epidist(
+    epiparameter(
       disease = "Ebola",
       epi_dist = "incubation period",
       prob_distribution = "gamma",
@@ -46,29 +46,29 @@ test_that("get_parameters works as expected for discretised epidist", {
   expect_named(params, c("shape", "scale"))
 })
 
-test_that("get_citation works as expected for epidist from db", {
+test_that("get_citation works as expected for epiparameter from db", {
   # suppress message about return
-  edist <- suppressMessages(epidist_db())
+  edist <- suppressMessages(epiparameter_db())
   citation <- get_citation(edist)
   expect_type(citation, "list")
   expect_length(citation, length(edist))
 })
 
 test_that("get_citation works as expected for one entry from db", {
-  edist <- suppressMessages(epidist_db(single_epidist = TRUE))
+  edist <- suppressMessages(epiparameter_db(single_epiparameter = TRUE))
   citation <- get_citation(edist)
   expect_s3_class(citation, "bibentry")
 })
 
-test_that("get_citation works as expected for manual epidist", {
+test_that("get_citation works as expected for manual epiparameter", {
   # suppress message about citation
   edist <- suppressMessages(
-    epidist(
+    epiparameter(
       disease = "ebola",
       epi_dist = "incubation_period",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      citation = create_epidist_citation(
+      citation = create_epiparameter_citation(
         author = person(given = "John F.", family = "Smith"),
         year = 2000,
         title = "Incubation period of COVID",
@@ -80,10 +80,10 @@ test_that("get_citation works as expected for manual epidist", {
   expect_s3_class(get_citation(edist), "bibentry")
 })
 
-test_that("get_citation works as expected for epidist missing citation", {
+test_that("get_citation works as expected for epiparameter missing citation", {
   # suppress message about citation
   edist <- suppressMessages(
-    epidist(
+    epiparameter(
       disease = "ebola",
       epi_dist = "incubation_period",
       prob_distribution = "gamma",
@@ -99,7 +99,7 @@ test_that("get_citation works as expected for epidist missing citation", {
 test_that("get_citation works as expected for non-bibentry citation", {
   # suppress message about citation
   edist <- suppressMessages(
-    epidist_db(single_epidist = TRUE)
+    epiparameter_db(single_epiparameter = TRUE)
   )
   edist$citation <- "WHO-Ebola-Response-Team (2015) NEJM"
   expect_error(get_citation(edist), regexp = "Citation should be a <bibentry>")
@@ -108,7 +108,7 @@ test_that("get_citation works as expected for non-bibentry citation", {
 test_that("get_citation produces warnings with extra arguments", {
   # suppress message about citation
   edist <- suppressMessages(
-    epidist_db(single_epidist = TRUE)
+    epiparameter_db(single_epiparameter = TRUE)
   )
   expect_warning(
     get_citation(edist, extra_arg = "args"),

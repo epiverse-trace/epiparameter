@@ -3,7 +3,7 @@
 \name{convert_summary_stats_to_params}
 \alias{convert_summary_stats_to_params}
 \alias{convert_summary_stats_to_params.character}
-\alias{convert_summary_stats_to_params.epidist}
+\alias{convert_summary_stats_to_params.epiparameter}
 \title{Convert the summary statistics of a distribution to parameters}
 \usage{
 convert_summary_stats_to_params(x, ...)
@@ -13,7 +13,7 @@ convert_summary_stats_to_params(x, ...)
   ...
 )
 
-\method{convert_summary_stats_to_params}{epidist}(x, ...)
+\method{convert_summary_stats_to_params}{epiparameter}(x, ...)
 }
 \arguments{
 \item{x}{An \R object.}
@@ -59,13 +59,13 @@ convert_summary_stats_to_params("lnorm", mean = 1, sd = 1)
 convert_summary_stats_to_params("weibull", mean = 2, var = 2)
 convert_summary_stats_to_params("geom", mean = 2)
 
-# examples using <epidist>
-epidist <- epidist_db(single_epidist = TRUE)
-convert_summary_stats_to_params(epidist)
+# examples using <epiparameter>
+epiparameter <- epiparameter_db(single_epiparameter = TRUE)
+convert_summary_stats_to_params(epiparameter)
 
-# example using <epidist> and specifying summary stats
-epidist$summary_stats <- list()
-convert_summary_stats_to_params(epidist, mean = 10, sd = 2)
+# example using <epiparameter> and specifying summary stats
+epiparameter$summary_stats <- list()
+convert_summary_stats_to_params(epiparameter, mean = 10, sd = 2)
 }
 \seealso{
 \code{\link[=convert_params_to_summary_stats]{convert_params_to_summary_stats()}}

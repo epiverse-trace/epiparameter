@@ -10,16 +10,16 @@ development:
 reference:
   - title: epiparameter classes
 
-  - subtitle: epidist object
+  - subtitle: epiparameter object
     desc: Class constructor, validator, and methods
     contents:
-    - epidist
+    - epiparameter
     - discretise
-    - ends_with("\\.epidist")
-    - -has_keyword("epidist_distribution_functions")
+    - ends_with("\\.epiparameter")
+    - -has_keyword("epiparameter_distribution_functions")
     - -starts_with("convert_")
-    - validate_epidist
-    - ends_with("\\.multi_epidist")
+    - validate_epiparameter
+    - ends_with("\\.multi_epiparameter")
 
   - title: Accessors
     desc: Get data from epi classes
@@ -27,21 +27,21 @@ reference:
     - get_citation
     - get_parameters
 
-  - title: epidist helper functions
-    desc: Functions to help construct `<epidist>` objects
+  - title: epiparameter helper functions
+    desc: Functions to help construct `<epiparameter>` objects
     contents:
-    - starts_with("create_epidist")
+    - starts_with("create_epiparameter")
 
-  - title: epidist from {epiparameter} library
-    desc: Retrieve `<epidist>` object directly from database
+  - title: epiparameter from {epiparameter} library
+    desc: Retrieve `<epiparameter>` object directly from database
     contents:
-    - epidist_db
+    - epiparameter_db
 
   - title: Coercion
-    desc: Convert data from and to `<epidist>`
+    desc: Convert data from and to `<epiparameter>`
     contents:
-    - as_epidist
-    - as_epidist.data.frame
+    - as_epiparameter
+    - as_epiparameter.data.frame
 
   - title: Explore epiparameters
     desc: Table of epi parameters
@@ -49,9 +49,9 @@ reference:
     - parameter_tbl
 
   - title: Distribution functions
-    desc: Functions for operating on `<epidist>` distributions
+    desc: Functions for operating on `<epiparameter>` distributions
     contents:
-    - cdf.epidist
+    - cdf.epiparameter
 
   - title: Parameter extraction
     desc: Extract distribution parameters from summary statistics

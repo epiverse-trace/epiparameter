@@ -54,44 +54,44 @@ library(epiparameter)
 To load the library of epidemiological parameters into `R`:
 
 ```{r load-data}
-epidists <- epidist_db()
-epidists
+epiparameters <- epiparameter_db()
+epiparameters
 ```
 
-This results in a list of database entries. Each entry of the library is an `<epidist>` object.
+This results in a list of database entries. Each entry of the library is an `<epiparameter>` object.
 
 Alternatively, the library of epiparameters can be viewed as a vignette locally (`vignette("database", package = "epiparameter")`) or on the [{epiparameter} website](https://epiverse-trace.github.io/epiparameter/articles/database.html).
 
-The results can be filtered by disease and epidemiological distribution. Here we set `single_epidist = TRUE` as we only want a single database entry returned, and by default (`single_epidist = FALSE`) it will return all database entries that match the disease (`disease`) and epidemiological distribution (`epi_dist`).
+The results can be filtered by disease and epidemiological distribution. Here we set `single_epiparameter = TRUE` as we only want a single database entry returned, and by default (`single_epiparameter = FALSE`) it will return all database entries that match the disease (`disease`) and epidemiological distribution (`epi_dist`).
 
-```{r load-single-epidist}
-influenza_incubation <- epidist_db(
+```{r load-single-epiparameter}
+influenza_incubation <- epiparameter_db(
   disease = "influenza",
   epi_dist = "incubation period",
-  single_epidist = TRUE
+  single_epiparameter = TRUE
 )
 influenza_incubation
 ```
 
-To quickly view the list of epidemiological distributions returned by `epidist_db()` in a table, the `parameter_tbl()` gives a summary of the data, and offers the ability to subset you data by `disease`, `pathogen` and epidemiological distribution (`epi_dist`).
+To quickly view the list of epidemiological distributions returned by `epiparameter_db()` in a table, the `parameter_tbl()` gives a summary of the data, and offers the ability to subset you data by `disease`, `pathogen` and epidemiological distribution (`epi_dist`).
 
 ```{r parameter-tbl}
-parameter_tbl(epidists)
+parameter_tbl(epiparameters)
 parameter_tbl(
-  epidists,
+  epiparameters,
   epi_dist = "onset to hospitalisation"
 )
 ```
 
-The `<epidist>` object can be plotted.
+The `<epiparameter>` object can be plotted.
 
-```{r plot-epidist}
+```{r plot-epiparameter}
 plot(influenza_incubation)
 ```
 
 The CDF can also be plotted by setting `cumulative = TRUE`.
 
-```{r, plot-epidist-cdf}
+```{r, plot-epiparameter-cdf}
 plot(influenza_incubation, cumulative = TRUE)
 ```
 

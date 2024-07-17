@@ -14,7 +14,7 @@ vignette: >
 library("DT")
 library("epiparameter")
 
-db <- epidist_db()
+db <- epiparameter_db()
 tbl <- lapply(db, function(x) {
   data.frame(
     disease = x$disease,

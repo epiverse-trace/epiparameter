@@ -22,8 +22,8 @@
 #' provided the lowest value is used for the calculation.
 #' 3. The last method is the extraction using a median and range of the data.
 #'
-#' @inheritParams new_epidist
-#' @inheritParams epidist
+#' @inheritParams new_epiparameter
+#' @inheritParams epiparameter
 #' @param sample_size The sample size of the data. Only needed when falling back
 #' on using the median-range extraction calculation.
 #'

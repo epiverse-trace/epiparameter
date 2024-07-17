@@ -5,15 +5,15 @@
 \title{Table of epidemiological distributions}
 \usage{
 parameter_tbl(
-  multi_epidist,
+  multi_epiparameter,
   disease = "all",
   pathogen = "all",
   epi_dist = "all"
 )
 }
 \arguments{
-\item{multi_epidist}{Either an \verb{<epidist>} object or a list of \verb{<epidist>}
-objects.}
+\item{multi_epiparameter}{Either an \verb{<epiparameter>} object or a list of
+\verb{<epiparameter>} objects.}
 
 \item{disease}{A \code{character} string with name of the infectious disease.}
 
@@ -31,13 +31,13 @@ distribution, probability distribution, author of the study, and the year
 of publication.
 }
 \examples{
-epidist_list <- epidist_db(disease = "COVID-19")
-parameter_tbl(multi_epidist = epidist_list)
+epiparameter_list <- epiparameter_db(disease = "COVID-19")
+parameter_tbl(multi_epiparameter = epiparameter_list)
 
 # example filtering an existing list to incubation periods
-epidist_list <- epidist_db(disease = "COVID-19")
+epiparameter_list <- epiparameter_db(disease = "COVID-19")
 parameter_tbl(
-  multi_epidist = epidist_list,
+  multi_epiparameter = epiparameter_list,
   epi_dist = "incubation period"
 )
 }

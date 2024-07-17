@@ -1,45 +1,45 @@
-#' [as.function()] method for `<epidist>` class
+#' [as.function()] method for `<epiparameter>` class
 #'
-#' @description Converts an `<epidist>` object to a distribution function
-#' (see [epidist_distribution_functions]), either probability density/mass
+#' @description Converts an `<epiparameter>` object to a distribution function
+#' (see [epiparameter_distribution_functions]), either probability density/mass
 #' function, (`density`), cumulative distribution function (`cdf`), random
 #' number generator (`generate`), or quantile (`quantile`).
 #'
 #' @details The function returned takes a single required argument `x`.
 #'
-#' @inheritParams print.epidist
+#' @inheritParams print.epiparameter
 #' @inheritParams base::as.function
 #' @param func_type A single `character` string specifying which distribution to
-#' convert `<epidist>` object into. Default is `"density"`. Other options are
-#' `"cdf"`, `"generate"`, or `"quantile"`.
+#' convert `<epiparameter>` object into. Default is `"density"`. Other options
+#' are `"cdf"`, `"generate"`, or `"quantile"`.
 #'
 #' @return A [function] object.
 #' @export
-as.function.epidist <- function(x,
-                                func_type = c(
-                                  "density", "cdf", "generate", "quantile"
-                                ),
-                                ...) {
+as.function.epiparameter <- function(x,
+                                     func_type = c(
+                                       "density", "cdf", "generate", "quantile"
+                                     ),
+                                     ...) {
   chkDots(...)
   func_type <- match.arg(func_type)
   if (!is_parameterised(x)) {
     stop(
-      "Cannot convert unparameterised <epidist> to distribution function",
+      "Cannot convert unparameterised <epiparameter> to distribution function",
       call. = FALSE
     )
   }
-  epidist <- x
+  epiparameter <- x
   # return distribution function
   switch(func_type,
-    density = function(x) density(x = epidist, at = x),
-    cdf = function(x) epiparameter::cdf(x = epidist, q = x),
-    generate = function(x) epiparameter::generate(x = epidist, times = x),
-    quantile = function(x) quantile(x = epidist, p = x)
+    density = function(x) density(x = epiparameter, at = x),
+    cdf = function(x) epiparameter::cdf(x = epiparameter, q = x),
+    generate = function(x) epiparameter::generate(x = epiparameter, times = x),
+    quantile = function(x) quantile(x = epiparameter, p = x)
   )
 }
 
 
-#' [as.data.frame()] method for `<epidist>` class
+#' [as.data.frame()] method for `<epiparameter>` class
 #'
 #' @details
 #' The `<data.frame>` returned will contain some atomic columns (i.e. one
@@ -48,15 +48,15 @@ as.function.epidist <- function(x,
 #' object in the `citation` column).
 #'
 #'
-#' @inheritParams print.epidist
+#' @inheritParams print.epiparameter
 #' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
 #' @return A `<data.frame>` with a single row.
 #' @export
-as.data.frame.epidist <- function(x, ...) {
+as.data.frame.epiparameter <- function(x, ...) {
   chkDots(...)
   # check object as could be invalidated by user
-  validate_epidist(x)
+  validate_epiparameter(x)
 
   data.frame(
     disease = x$disease,
@@ -73,23 +73,23 @@ as.data.frame.epidist <- function(x, ...) {
   )
 }
 
-#' [as.data.frame()] method for `<multi_epidist>` class
+#' [as.data.frame()] method for `<multi_epiparameter>` class
 #'
-#' @inherit as.data.frame.epidist details
+#' @inherit as.data.frame.epiparameter details
 #'
-#' @inheritParams print.multi_epidist
+#' @inheritParams print.multi_epiparameter
 #' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
 #' @return A `<data.frame>` with as many rows as length of input list.
 #' @export
-as.data.frame.multi_epidist <- function(x, ...) {
+as.data.frame.multi_epiparameter <- function(x, ...) {
   chkDots(...)
   do.call(rbind, lapply(x, as.data.frame))
 }
 
-#' Convert to an `<epidist>` object
+#' Convert to an `<epiparameter>` object
 #'
-#' Convert from an \R object to an `<epidist>` object. If conversion is not
+#' Convert from an \R object to an `<epiparameter>` object. If conversion is not
 #' possible the function will error.
 #'
 #' @details
@@ -101,13 +101,13 @@ as.data.frame.multi_epidist <- function(x, ...) {
 #' To specify a probability distribution pass a `character` string to the
 #' function via the `...` argument. The argument should be called `prob_dist`.
 #' For example, to specify a gamma distribution:
-#' `as_epidist(x, prob_dist = "gamma")`.
+#' `as_epiparameter(x, prob_dist = "gamma")`.
 #'
 #' ***Warning***: distributions specified via the `prob_dist` argument will
 #' overwrite the probability distribution specified in the `x` argument. For
 #' example, if the probability distribution is given in an \pkg{epireview}
 #' entry and the `prob_dist` argument is specified then the function may error
-#' or return an unparameterised `<epidist>` if the parameterisation becomes
+#' or return an unparameterised `<epiparameter>` if the parameterisation becomes
 #' incompatible.
 #'
 #' Valid probability distributions are: `"gamma"`, `"lnorm"`, `"weibull"`,
@@ -116,45 +116,46 @@ as.data.frame.multi_epidist <- function(x, ...) {
 #' @inheritParams base::print
 #' @param ... [dots] Extra arguments to be passed to the method.
 #'
-#' @inherit epidist_db return
+#' @inherit epiparameter_db return
 #' @export
-as_epidist <- function(x, ...) {
-  UseMethod("as_epidist")
+as_epiparameter <- function(x, ...) {
+  UseMethod("as_epiparameter")
 }
 
-#' Convert `<data.frame>` to an `<epidist>` object
+#' Convert `<data.frame>` to an `<epiparameter>` object
 #'
-#' Convert the tabular information in `<data.frame>` to an `<epidist>`. If the
-#' information in the `<data.frame>` cannot be converted into an `<epidist>` the
-#' function will error.
+#' Convert the tabular information in `<data.frame>` to an `<epiparameter>`.
+#' If the information in the `<data.frame>` cannot be converted into an
+#' `<epiparameter>` the function will error.
 #'
 #' @param x A `<data.frame>`.
 #' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
-#' @inherit epidist_db return
+#' @inherit epiparameter_db return
 #' @export
-as_epidist.data.frame <- function(x, ...) {
-  if (is_epidist_df(x)) {
-    epidist <- epidist_df_to_epidist(x, ...)
+as_epiparameter.data.frame <- function(x, ...) {
+  if (is_epiparameter_df(x)) {
+    epiparameter <- epiparameter_df_to_epiparameter(x, ...)
   } else if (is_epireview(x)) {
-    epidist <- epireview_to_epidist(x, ...)
+    epiparameter <- epireview_to_epiparameter(x, ...)
   } else {
     stop(
-      "<data.frame> input into as_epidist() cannot be converted to <epidist>",
+      "<data.frame> input into as_epiparameter() cannot be converted to ",
+      "<epiparameter>",
       call. = FALSE
     )
   }
-  # return <epidist>
-  epidist
+  # return <epiparameter>
+  epiparameter
 }
 
-#' Check if `<data.frame>` input is from [as.data.frame.epidist()]
+#' Check if `<data.frame>` input is from [as.data.frame.epiparameter()]
 #'
 #' @param x A `<data.frame>`.
 #'
 #' @return A single `logical` boolean.
 #' @keywords internal
-is_epidist_df <- function(x) {
+is_epiparameter_df <- function(x) {
   valid_colnames <- identical(
     colnames(x),
     c(
@@ -179,14 +180,15 @@ is_epireview <- function(x) {
   valid_colnames
 }
 
-#' Convert `<data.frame>` from [as.data.frame.epidist()] to `<epidist>`
+#' Convert `<data.frame>` from [as.data.frame.epiparameter()] to
+#' `<epiparameter>`
 #'
 #' @param x A `<data.frame>`.
-#' @param ... [dots] Extra arguments to pass to [epidist()].
+#' @param ... [dots] Extra arguments to pass to [epiparameter()].
 #'
-#' @inherit epidist return
+#' @inherit epiparameter return
 #' @keywords internal
-epidist_df_to_epidist <- function(x, ...) {
+epiparameter_df_to_epiparameter <- function(x, ...) {
   # extract probability distribution from list and extract parameters
   # and truncation if available
   prob_dist <- x$prob_distribution[[1]]
@@ -206,15 +208,15 @@ epidist_df_to_epidist <- function(x, ...) {
   } else {
     uncertainty <- lapply(
       prob_distribution_params,
-      function(x) create_epidist_uncertainty()
+      function(x) create_epiparameter_uncertainty()
     )
   }
 
   # remove <AsIs> from citation
   class(x$citation) <- setdiff(class(x$citation), "AsIs")
 
-  # return <epidist> from class constructor
-  epidist(
+  # return <epiparameter> from class constructor
+  epiparameter(
     disease = x$disease,
     pathogen = x$pathogen,
     epi_dist = x$epi_distribution,
@@ -231,15 +233,15 @@ epidist_df_to_epidist <- function(x, ...) {
   )
 }
 
-#' Convert `<data.frame>` from \pkg{epireview} to `<epidist>`
+#' Convert `<data.frame>` from \pkg{epireview} to `<epiparameter>`
 #'
 #' @param x A `<data.frame>`.
-#' @param ... [dots] Extra arguments to pass to [epidist()].
+#' @param ... [dots] Extra arguments to pass to [epiparameter()].
 #'
-#' @inherit epidist return
+#' @inherit epiparameter return
 #' @keywords internal
 #' @noRd
-epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
+epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
   # capture dots and extract article info if supplied
   dots <- list(...)
   article <- dots$article
@@ -247,7 +249,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
   # validate multi-row entries
   if (nrow(x) > 1) {
     stopifnot(
-      "Multiple entries passed to as_epidist() do not have the same ID" =
+      "Multiple entries passed to as_epiparameter() do not have the same ID" =
         length(unique(x$id)) == 1L
     )
   }
@@ -266,7 +268,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
   sd_ <- NULL
   if (rlang::is_na(prob_dist)) {
     prob_dist_params <- NA_real_
-    uncertainty <- create_epidist_uncertainty()
+    uncertainty <- create_epiparameter_uncertainty()
   } else {
     prob_dist <- switch(
       prob_dist,
@@ -284,7 +286,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
     if (rlang::is_chr_na(prob_dist)) {
       stop(
         "epireview entry has Normal-log distribution, this is not currently ",
-        "supported in {epiparameter}.\n Cannot convert to <epidist>",
+        "supported in {epiparameter}.\n Cannot convert to <epiparameter>",
         call. = FALSE
       )
     }
@@ -317,7 +319,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
     prob_dist_params <- unlist(prob_dist_params)
     uncertainty <- lapply(
       prob_dist_params,
-      function(x) create_epidist_uncertainty()
+      function(x) create_epiparameter_uncertainty()
     )
     names(uncertainty) <- names(prob_dist_params)
   }
@@ -325,7 +327,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
   if (!is.null(prob_dist_in)) {
     prob_dist <- prob_dist_in
     # erase uncertainty, new prob_dist will likely have different param names
-    uncertainty <- create_epidist_uncertainty()
+    uncertainty <- create_epiparameter_uncertainty()
   }
   # vectorise switch (cannot use vapply due to various return FUN.VALUE)
   param_type <- sapply( # nolint undesirable_function_linter
@@ -348,12 +350,12 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
   if (any(is_other)) {
     warning(
       "Parameter value type specified as 'Other'.\n",
-      "Parameter value will not be input into <epidist>.",
+      "Parameter value will not be input into <epiparameter>.",
       call. = FALSE
     )
     param_type <- NULL
   }
-  summary_stats <- create_epidist_summary_stats()
+  summary_stats <- create_epiparameter_summary_stats()
   summary_stats[param_type] <- x$parameter_value
   uncertainty_type <- .unique(
     x$parameter_uncertainty_type,
@@ -375,7 +377,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
   if (!is.null(sd_)) {
     summary_stats$sd <- sd_
   }
-  metadata <- create_epidist_metadata()
+  metadata <- create_epiparameter_metadata()
   metadata$sample_size <- .unique(x$population_sample_size)
   metadata$inference_method <- inference_method
   location <- .unique(x$population_location)
@@ -389,7 +391,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
   }
   metadata$region <- region
   if (is.null(article)) {
-    citation <- create_epidist_citation(
+    citation <- create_epiparameter_citation(
       author = .unique(x$first_author_surname, var_name = "citation authors"),
       year = .unique(x$year_publication, var_name = "citation years"),
       title = "<title not available>",
@@ -397,7 +399,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
     )
     warning(
       "Cannot create full citation for epidemiological parameters without ",
-      "bibliographic information \n see ?as_epidist for help.",
+      "bibliographic information \n see ?as_epiparameter for help.",
       call. = FALSE
     )
   } else {
@@ -407,7 +409,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
         call. = FALSE
       )
     }
-    citation <- create_epidist_citation(
+    citation <- create_epiparameter_citation(
       author = article$first_author_surname,
       year = article$year_publication,
       title = article$article_title,
@@ -415,8 +417,8 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
       doi = article$doi
     )
   }
-  # <epidist> constructor and return
-  epidist(
+  # <epiparameter> constructor and return
+  epiparameter(
     disease = disease,
     pathogen = pathogen,
     epi_dist = epi_dist,
@@ -442,7 +444,7 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
   if (length(x) != 1) {
     stop(
       "epireview parameters contains multiple different", var_name, "\n",
-      "Cannot convert to <epidist>",
+      "Cannot convert to <epiparameter>",
       call. = FALSE
     )
   }
@@ -452,7 +454,8 @@ epireview_to_epidist <- function(x, ...) { # nolint cyclocomp_linter
 #' Input summary statistic uncertainty
 #'
 #' @param x A `<data.frame>` from \pkg{epireview}.
-#' @param summary_stats A list returned from [create_epidist_summary_stats()].
+#' @param summary_stats A list returned from
+#' [create_epiparameter_summary_stats()].
 #' @param summary_stat_type A `character` string with the name of the summary
 #' statistic type (e.g., `"mean"`, `"median"`).
 #'

@@ -3,31 +3,32 @@
 \name{is_parameterised}
 \alias{is_parameterised}
 \alias{is_parameterized}
-\title{Check if \verb{<epidist>} or list of \verb{<epidist>} objects contains a distribution
-and distribution parameters}
+\title{Check if \verb{<epiparameter>} or list of \verb{<epiparameter>} objects contains a
+distribution and distribution parameters}
 \usage{
 is_parameterised(x, ...)
 
 is_parameterized(x, ...)
 }
 \arguments{
-\item{x}{An \verb{<epidist>} or list of \verb{<epidist>} objects.}
+\item{x}{An \verb{<epiparameter>} or list of \verb{<epiparameter>} objects.}
 
 \item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
 \value{
-A single boolean \code{logical} for \verb{<epidist>} or vector of \code{logical}s
-equal in length to the list of \verb{<epidist>} objects input. If the \verb{<epidist>}
-object is missing either a probability distribution or parameters for
-the probability distribution returns \code{FALSE}, otherwise it returns \code{TRUE}.
+A single boolean \code{logical} for \verb{<epiparameter>} or vector of
+\code{logical}s equal in length to the list of \verb{<epiparameter>} objects input.
+If the \verb{<epiparameter>} object is missing either a probability distribution
+or parameters for the probability distribution returns \code{FALSE}, otherwise it
+returns \code{TRUE}.
 }
 \description{
-Check if \verb{<epidist>} or list of \verb{<epidist>} objects contains a distribution
-and distribution parameters
+Check if \verb{<epiparameter>} or list of \verb{<epiparameter>} objects contains a
+distribution and distribution parameters
 }
 \examples{
-# parameterised <epidist>
-edist <- epidist(
+# parameterised <epiparameter>
+edist <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation",
   prob_distribution = "gamma",
@@ -35,14 +36,14 @@ edist <- epidist(
 )
 is_parameterised(edist)
 
-# unparameterised <epidist>
-edist <- epidist(
+# unparameterised <epiparameter>
+edist <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation"
 )
 is_parameterised(edist)
 
-# list of <epidist>
-edist <- epidist_db()
+# list of <epiparameter>
+edist <- epiparameter_db()
 is_parameterised(edist)
 }

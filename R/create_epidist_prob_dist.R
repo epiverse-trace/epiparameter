@@ -22,7 +22,7 @@
 #' for the discretisation is 1. `w` can be `[0,1]`. For more information please
 #' see [distcrete::distcrete()].
 #'
-#' @inheritParams new_epidist
+#' @inheritParams new_epiparameter
 #' @param ... [dots] Extra arguments to be passed to
 #' \pkg{distributional} or \pkg{distcrete} functions that construct the S3
 #' distribution objects. To see which arguments can be adjusted for discretised
@@ -36,7 +36,7 @@
 #'
 #' @examples
 #' # example with continuous distribution without truncation
-#' create_epidist_prob_dist(
+#' create_epiparameter_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
@@ -44,7 +44,7 @@
 #' )
 #'
 #' # example with continuous distribution with truncation
-#' create_epidist_prob_dist(
+#' create_epiparameter_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
@@ -52,7 +52,7 @@
 #' )
 #'
 #' # example with discrete distribution
-#' create_epidist_prob_dist(
+#' create_epiparameter_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = TRUE,
@@ -60,18 +60,18 @@
 #' )
 #'
 #' # example passing extra arguments to distcrete
-#' create_epidist_prob_dist(
+#' create_epiparameter_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = TRUE,
 #'   truncation = NA,
 #'   w = 0.5
 #' )
-create_epidist_prob_dist <- function(prob_dist,
-                                     prob_dist_params,
-                                     discretise = FALSE,
-                                     truncation = NA,
-                                     ...) {
+create_epiparameter_prob_dist <- function(prob_dist,
+                                          prob_dist_params,
+                                          discretise = FALSE,
+                                          truncation = NA,
+                                          ...) {
   checkmate::assert_character(
     prob_dist,
     min.chars = 1,

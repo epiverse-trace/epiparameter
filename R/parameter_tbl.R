@@ -6,53 +6,58 @@
 #' distribution, probability distribution, author of the study, and the year
 #' of publication.
 #'
-#' @inheritParams epidist
-#' @param multi_epidist Either an `<epidist>` object or a list of `<epidist>`
-#' objects.
+#' @inheritParams epiparameter
+#' @param multi_epiparameter Either an `<epiparameter>` object or a list of
+#' `<epiparameter>` objects.
 #'
 #' @author Joshua W. Lambert, Adam Kucharski
 #' @export
 #' @examples
-#' epidist_list <- epidist_db(disease = "COVID-19")
-#' parameter_tbl(multi_epidist = epidist_list)
+#' epiparameter_list <- epiparameter_db(disease = "COVID-19")
+#' parameter_tbl(multi_epiparameter = epiparameter_list)
 #'
 #' # example filtering an existing list to incubation periods
-#' epidist_list <- epidist_db(disease = "COVID-19")
+#' epiparameter_list <- epiparameter_db(disease = "COVID-19")
 #' parameter_tbl(
-#'   multi_epidist = epidist_list,
+#'   multi_epiparameter = epiparameter_list,
 #'   epi_dist = "incubation period"
 #' )
-parameter_tbl <- function(multi_epidist,
+parameter_tbl <- function(multi_epiparameter,
                           disease = "all",
                           pathogen = "all",
                           epi_dist = "all") {
-  # wrap <epidist> in list for apply functions
-  if (is_epidist(multi_epidist)) {
-    multi_epidist <- list(multi_epidist)
+  # wrap <epiparameter> in list for apply functions
+  if (is_epiparameter(multi_epiparameter)) {
+    multi_epiparameter <- list(multi_epiparameter)
   }
 
   # check data
   stopifnot(
-    "List of <epidist> objects should be supplied to multi_epidist" =
-      all(vapply(multi_epidist, is_epidist, FUN.VALUE = logical(1))) &&
-        length(multi_epidist) != 0
+    "List of <epiparameter> objects should be supplied to multi_epiparameter" =
+      all(
+        vapply(multi_epiparameter, is_epiparameter, FUN.VALUE = logical(1))
+      ) && length(multi_epiparameter) != 0
   )
 
-  multi_epidist <- .filter_epidist_db(
-    multi_epidist = multi_epidist,
+  multi_epiparameter <- .filter_epiparameter_db(
+    multi_epiparameter = multi_epiparameter,
     disease = disease,
     pathogen = pathogen,
     epi_dist = epi_dist
   )
 
-  disease <- vapply(multi_epidist, "[[", "disease", FUN.VALUE = character(1))
-  pathogen <- vapply(multi_epidist, "[[", "pathogen", FUN.VALUE = character(1))
+  disease <- vapply(
+    multi_epiparameter, "[[", "disease", FUN.VALUE = character(1)
+  )
+  pathogen <- vapply(
+    multi_epiparameter, "[[", "pathogen", FUN.VALUE = character(1)
+  )
   epi_dist <- vapply(
-    multi_epidist, "[[", "epi_dist",
+    multi_epiparameter, "[[", "epi_dist",
     FUN.VALUE = character(1)
   )
   prob_dist <- vapply(
-    multi_epidist, function(x) {
+    multi_epiparameter, function(x) {
       switch(class(x$prob_dist)[1],
         distcrete = family(x),
         distribution = family(x),
@@ -63,7 +68,7 @@ parameter_tbl <- function(multi_epidist,
     FUN.VALUE = character(1)
   )
 
-  short_author <- vapply(multi_epidist, function(x) {
+  short_author <- vapply(multi_epiparameter, function(x) {
     x <- x$citation$author
     first_author <- x[1]$family
     # organisation first author
@@ -78,11 +83,11 @@ parameter_tbl <- function(multi_epidist,
   }, FUN.VALUE = character(1))
 
   year <- vapply(
-    multi_epidist, function(x) as.numeric(x$citation$year),
+    multi_epiparameter, function(x) as.numeric(x$citation$year),
     FUN.VALUE = numeric(1)
   )
   sample_size <- vapply(
-    multi_epidist,
+    multi_epiparameter,
     function(x) x$metadata$sample_size,
     FUN.VALUE = numeric(1)
   )

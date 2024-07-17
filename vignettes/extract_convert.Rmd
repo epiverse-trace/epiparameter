@@ -53,9 +53,9 @@ There are two conversion functions in {epiparameter}: `convert_params_to_summary
 
 ### Conversion functions
 
-The conversion functions can take two types of inputs as the first argument: a `character` string of the distribution or an `<epidist>` object.
+The conversion functions can take two types of inputs as the first argument: a `character` string of the distribution or an `<epiparameter>` object.
 
-The conversion functions have two arguments. The first (`x`) defines which distribution you want to use and the second (`...`) lets you put as many named parameters or summary statistics as required. The arguments passed into `...` are matched by name, and therefore need to match exactly to the names expected. See the function documentation (`?convert_params_to_summary_stats` and `?convert_summary_stats_to_params` for names). In the case that an `<epidist>` object is supplied, if it has the parameters or summary statistics required for conversion then nothing needs to be given as extra arguments (i.e. `...`). 
+The conversion functions have two arguments. The first (`x`) defines which distribution you want to use and the second (`...`) lets you put as many named parameters or summary statistics as required. The arguments passed into `...` are matched by name, and therefore need to match exactly to the names expected. See the function documentation (`?convert_params_to_summary_stats` and `?convert_summary_stats_to_params` for names). In the case that an `<epiparameter>` object is supplied, if it has the parameters or summary statistics required for conversion then nothing needs to be given as extra arguments (i.e. `...`). 
 
 All currently supported summary statistic conversions in {epiparameter} are given below for each distribution.
 
@@ -73,12 +73,12 @@ convert_summary_stats_to_params("gamma", mean = 2, var = 2)
 convert_summary_stats_to_params("gamma", mean = 2, cv = 2)
 ```
 
-#### Using an `<epidist>`
+#### Using an `<epiparameter>`
 
-An example with parameters provided by `<epidist>`
+An example with parameters provided by `<epiparameter>`
 
 ```{r}
-edist <- epidist(
+edist <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
@@ -88,10 +88,10 @@ edist <- epidist(
 convert_params_to_summary_stats(edist)
 ```
 
-An example with `<epidist>` missing parameters and supplied through `...`
+An example with `<epiparameter>` missing parameters and supplied through `...`
 
 ```{r}
-edist <- epidist(
+edist <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
@@ -100,23 +100,23 @@ edist <- epidist(
 convert_params_to_summary_stats(edist, shape = 2.5, scale = 1.5)
 ```
 
-An example with summary statistics provided by `<epidist>`
+An example with summary statistics provided by `<epiparameter>`
 
 ```{r}
-edist <- epidist(
+edist <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
   prob_distribution = "gamma",
-  summary_stats = create_epidist_summary_stats(mean = 3.75, sd = 2.37)
+  summary_stats = create_epiparameter_summary_stats(mean = 3.75, sd = 2.37)
 )
 convert_summary_stats_to_params(edist)
 ```
 
-An example with `<epidist>` missing summary statistics and supplied through `...`
+An example with `<epiparameter>` missing summary statistics and supplied through `...`
 
 ```{r}
-edist <- epidist(
+edist <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
@@ -125,7 +125,7 @@ edist <- epidist(
 convert_summary_stats_to_params(edist, mean = 3.75, sd = 2.37)
 ```
 
-The usage of `<epidist>` is not repeated for every distribution conversion available in {epiparameter}. The conversions shown below for each distribution are also available when using an `<epidist>` object, by either having the parameters or summary statistics stored in the `<epidist>` or supplied via named arguments.  
+The usage of `<epiparameter>` is not repeated for every distribution conversion available in {epiparameter}. The conversions shown below for each distribution are also available when using an `<epiparameter>` object, by either having the parameters or summary statistics stored in the `<epiparameter>` or supplied via named arguments.  
 
 #### Lognormal distribution
 
