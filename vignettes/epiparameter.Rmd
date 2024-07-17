@@ -95,8 +95,8 @@ covid_incubation <- epiparameter(
   epi_dist = "incubation period",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 2, scale = 1),
-  summary_stats = create_epiparameter_summary_stats(mean = 2),
-  citation = create_epiparameter_citation(
+  summary_stats = create_summary_stats(mean = 2),
+  citation = create_citation(
     author = person(
       given = list("John", "Amy"),
       family = list("Smith", "Jones")
@@ -110,7 +110,7 @@ covid_incubation <- epiparameter(
 covid_incubation
 ```
 
-Not all arguments are specified in the example using the class constructor (`epiparameter()`) above, for example the `metadata` or parameter uncertainty (`uncertainty`) is not provided. See the help documentation for the `epiparameter()` function using `?epiparameter` to see each argument. Also see documentation for `<epiparameter>` helper functions, e.g., `?create_epiparameter_citation()`.
+Not all arguments are specified in the example using the class constructor (`epiparameter()`) above, for example the `metadata` or parameter uncertainty (`uncertainty`) is not provided. See the help documentation for the `epiparameter()` function using `?epiparameter` to see each argument. Also see documentation for `<epiparameter>` helper functions, e.g., `?create_citation()`.
 
 Manually creating `<epiparameter>` objects can be especially useful if new parameter estimates become available but are not yet incorporated into the {epiparameter} library.
 

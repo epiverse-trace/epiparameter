@@ -108,7 +108,7 @@ edist <- epiparameter(
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
   prob_distribution = "gamma",
-  summary_stats = create_epiparameter_summary_stats(mean = 3.75, sd = 2.37)
+  summary_stats = create_summary_stats(mean = 3.75, sd = 2.37)
 )
 convert_summary_stats_to_params(edist)
 ```

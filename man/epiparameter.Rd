@@ -10,12 +10,12 @@ epiparameter(
   epi_dist,
   prob_distribution = NA_character_,
   prob_distribution_params = NA_real_,
-  uncertainty = create_epiparameter_uncertainty(),
-  summary_stats = create_epiparameter_summary_stats(),
+  uncertainty = create_uncertainty(),
+  summary_stats = create_summary_stats(),
   auto_calc_params = TRUE,
-  citation = create_epiparameter_citation(),
-  metadata = create_epiparameter_metadata(),
-  method_assess = create_epiparameter_method_assess(),
+  citation = create_citation(),
+  metadata = create_metadata(),
+  method_assess = create_method_assess(),
   discretise = FALSE,
   truncation = NA_real_,
   notes = NULL,
@@ -41,12 +41,12 @@ parameters.}
 
 \item{uncertainty}{A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
-estimates is unknown use \code{\link[=create_epiparameter_uncertainty]{create_epiparameter_uncertainty()}} (which is the
+estimates is unknown use \code{\link[=create_uncertainty]{create_uncertainty()}} (which is the
 argument default) to create a list with the correct names with missing
 values.}
 
 \item{summary_stats}{A list of summary statistics, use
-\code{\link[=create_epiparameter_summary_stats]{create_epiparameter_summary_stats()}} to create list. This list can include
+\code{\link[=create_summary_stats]{create_summary_stats()}} to create list. This list can include
 summary statistics about the inferred distribution such as it's mean and
 standard deviation, quantiles of the distribution, or information about the
 data used to fit the distribution such as lower and upper range. The summary
@@ -60,9 +60,9 @@ sufficient summary statistics are provided and the parameter(s) of the
 distribution are not, the \code{\link[=calc_dist_params]{calc_dist_params()}} function is called to
 calculate the parameters and add them to the \code{epiparameter} object created.}
 
-\item{citation}{A \code{character} string with the citation of the source of the
+\item{citation}{A \verb{<bibentry>} with the citation of the source of the
 data or the paper that inferred the distribution parameters, use
-\code{create_epiparameter_citation()} to create citation.}
+\code{\link[=create_citation]{create_citation()}} to create citation.}
 
 \item{metadata}{A list of metadata, this can include: sample size, the
 transmission mode of the disease (e.g. is it vector-borne or directly
@@ -70,10 +70,10 @@ transmitted), etc. It is assumed that the disease is not
 vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 delay distribution such as extrinsic incubation period) unless
 \code{transmission_mode = "vector_borne"} is contained in the metadata. Use
-\code{create_epiparameter_metadata()} to create metadata.}
+\code{\link[=create_metadata]{create_metadata()}} to create metadata.}
 
 \item{method_assess}{A list of methodological aspects used when fitting
-the distribution, use \code{create_epiparameter_method_assess()} to create method
+the distribution, use \code{\link[=create_method_assess]{create_method_assess()}} to create method
 assessment.}
 
 \item{discretise}{A boolean \code{logical} whether the distribution is
@@ -151,25 +151,22 @@ ebola_incubation <- epiparameter(
   epi_dist = "incubation",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1),
-  uncertainty = create_epiparameter_uncertainty(),
-  summary_stats = create_epiparameter_summary_stats(
-    mean = 2,
-    sd = 1
-  ),
-  citation = create_epiparameter_citation(
+  uncertainty = create_uncertainty(),
+  summary_stats = create_summary_stats(mean = 2, sd = 1),
+  citation = create_citation(
     author = person(given = "John", family = "Smith"),
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
     doi = "10.19832/j.1366-9516.2012.09147.x"
   ),
-  metadata = create_epiparameter_metadata(
+  metadata = create_metadata(
     sample_size = 10,
     region = "UK",
     transmission_mode = "natural_human_to_human",
     inference_method = "MLE"
   ),
-  method_assess = create_epiparameter_method_assess(
+  method_assess = create_method_assess(
     censored = TRUE
   ),
   discretise = FALSE,

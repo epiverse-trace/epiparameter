@@ -17,7 +17,7 @@ geometric is \code{geom}).}
 parameters.}
 
 \item{summary_stats}{A list of summary statistics, use
-\code{\link[=create_epiparameter_summary_stats]{create_epiparameter_summary_stats()}} to create list. This list can include
+\code{\link[=create_summary_stats]{create_summary_stats()}} to create list. This list can include
 summary statistics about the inferred distribution such as it's mean and
 standard deviation, quantiles of the distribution, or information about the
 data used to fit the distribution such as lower and upper range. The summary

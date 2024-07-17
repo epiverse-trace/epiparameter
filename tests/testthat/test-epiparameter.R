@@ -21,18 +21,18 @@ test_that("epiparameter works with all arguments set", {
       prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 2, sdlog = 1),
       uncertainty = list(
-        meanlog = create_epiparameter_uncertainty(
+        meanlog = create_uncertainty(
           ci_limits = c(1, 3),
           ci = 95,
           ci_type = "confidence interval"
         ),
-        sdlog = create_epiparameter_uncertainty(
+        sdlog = create_uncertainty(
           ci_limits = c(0.1, 1.9),
           ci = 95,
           ci_type = "confidence interval"
         )
       ),
-      summary_stats = create_epiparameter_summary_stats(
+      summary_stats = create_summary_stats(
         mean = 1,
         mean_ci_limits = c(0.8, 1.2),
         mean_ci = 95,
@@ -48,7 +48,7 @@ test_that("epiparameter works with all arguments set", {
           "2.5" = 0.2, "5" = 0.3, "25" = 0.5, "75" = 0.7, "87.5" = 1.1,
           "95" = 1.2, "97.5" = 1.5
         )
-      ), citation = create_epiparameter_citation(
+      ), citation = create_citation(
         author = person(given = "John", family = "Smith"),
         year = 2002,
         title = "A title",
@@ -56,7 +56,7 @@ test_that("epiparameter works with all arguments set", {
         doi = "10.23271/176237.x",
         pmid = 28372882
       ),
-      metadata = create_epiparameter_metadata(
+      metadata = create_metadata(
         sample_size = 100,
         region = "UK",
         transmission_mode = "vector_borne",
@@ -64,7 +64,7 @@ test_that("epiparameter works with all arguments set", {
         extrinsic = FALSE,
         inference_method = "MLE"
       ),
-      method_assess = create_epiparameter_method_assess(
+      method_assess = create_method_assess(
         censored = TRUE,
         right_truncated = FALSE,
         phase_bias_adjusted = FALSE
@@ -86,11 +86,11 @@ test_that("epiparameter works with default helper functions", {
     epi_dist = "onset_to_death",
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 2, sdlog = 1),
-    uncertainty = create_epiparameter_uncertainty(),
-    summary_stats = create_epiparameter_summary_stats(),
-    citation = create_epiparameter_citation(),
-    metadata = create_epiparameter_metadata(),
-    method_assess = create_epiparameter_method_assess(),
+    uncertainty = create_uncertainty(),
+    summary_stats = create_summary_stats(),
+    citation = create_citation(),
+    metadata = create_metadata(),
+    method_assess = create_method_assess(),
     discretise = FALSE,
     truncation = NA,
     notes = "No notes"
@@ -230,18 +230,18 @@ test_that("new_epiparameter works with minimal viable input", {
       prob_dist = "gamma",
       prob_dist_params = c(shape = 1, scale = 1),
       uncertainty = list(
-        shape = create_epiparameter_uncertainty(
+        shape = create_uncertainty(
           ci_limits = c(0, 2),
           ci = 95,
           ci_type = "confidence interval"
         ),
-        scale = create_epiparameter_uncertainty(
+        scale = create_uncertainty(
           ci_limits = c(0, 2),
           ci = 95,
           ci_type = "confidence interval"
         )
       ),
-      citation = create_epiparameter_citation(
+      citation = create_citation(
         author = person(given = "John", family = "Smith"),
         year = 2002,
         title = "Ebola incubation",
@@ -267,18 +267,18 @@ test_that("validate_epiparameter passes when expected", {
       prob_dist = "gamma",
       prob_dist_params = c(shape = 1, scale = 1),
       uncertainty = list(
-        shape = create_epiparameter_uncertainty(
+        shape = create_uncertainty(
           ci_limits = c(0, 2),
           ci = 95,
           ci_type = "confidence interval"
         ),
-        scale = create_epiparameter_uncertainty(
+        scale = create_uncertainty(
           ci_limits = c(0, 2),
           ci = 95,
           ci_type = "confidence interval"
         )
       ),
-      citation = create_epiparameter_citation(
+      citation = create_citation(
         author = person(given = "John", family = "Smith"),
         year = 2000,
         title = "Ebola incubation",
@@ -302,12 +302,12 @@ test_that("validate_epiparameter catches class faults when expected", {
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1),
     uncertainty = list(
-      shape = create_epiparameter_uncertainty(
+      shape = create_uncertainty(
         ci_limits = c(0, 2),
         ci = 95,
         ci_type = "confidence interval"
       ),
-      scale = create_epiparameter_uncertainty(
+      scale = create_uncertainty(
         ci_limits = c(0, 2),
         ci = 95,
         ci_type = "confidence interval"
@@ -332,12 +332,12 @@ test_that("validate_epiparameter catches class faults when expected", {
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1),
     uncertainty = list(
-      shape = create_epiparameter_uncertainty(
+      shape = create_uncertainty(
         ci_limits = c(0, 2),
         ci = 95,
         ci_type = "confidence interval"
       ),
-      scale = create_epiparameter_uncertainty(
+      scale = create_uncertainty(
         ci_limits = c(0, 2),
         ci = 95,
         ci_type = "confidence interval"
@@ -362,12 +362,12 @@ test_that("validate_epiparameter catches class faults when expected", {
     prob_dist = "gamma",
     prob_dist_params = c(shape = 1, scale = 1),
     uncertainty = list(
-      shape = create_epiparameter_uncertainty(
+      shape = create_uncertainty(
         ci_limits = c(0, 2),
         ci = 95,
         ci_type = "confidence interval"
       ),
-      scale = create_epiparameter_uncertainty(
+      scale = create_uncertainty(
         ci_limits = c(0, 2),
         ci = 95,
         ci_type = "confidence interval"
@@ -1059,7 +1059,7 @@ test_that("mean works as expected when mean is supplied", {
       disease = "Ebola",
       epi_dist = "incubation_period",
       prob_distribution = "gamma",
-      summary_stats = create_epiparameter_summary_stats(mean = 5)
+      summary_stats = create_summary_stats(mean = 5)
     )
   )
   expect_identical(mean(edist), 5)

@@ -30,7 +30,7 @@ reference:
   - title: epiparameter helper functions
     desc: Functions to help construct `<epiparameter>` objects
     contents:
-    - starts_with("create_epiparameter")
+    - starts_with("create_")
 
   - title: epiparameter from {epiparameter} library
     desc: Retrieve `<epiparameter>` object directly from database

@@ -208,7 +208,7 @@ epiparameter_df_to_epiparameter <- function(x, ...) {
   } else {
     uncertainty <- lapply(
       prob_distribution_params,
-      function(x) create_epiparameter_uncertainty()
+      function(x) create_uncertainty()
     )
   }
 
@@ -268,7 +268,7 @@ epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
   sd_ <- NULL
   if (rlang::is_na(prob_dist)) {
     prob_dist_params <- NA_real_
-    uncertainty <- create_epiparameter_uncertainty()
+    uncertainty <- create_uncertainty()
   } else {
     prob_dist <- switch(
       prob_dist,
@@ -319,7 +319,7 @@ epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
     prob_dist_params <- unlist(prob_dist_params)
     uncertainty <- lapply(
       prob_dist_params,
-      function(x) create_epiparameter_uncertainty()
+      function(x) create_uncertainty()
     )
     names(uncertainty) <- names(prob_dist_params)
   }
@@ -327,7 +327,7 @@ epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
   if (!is.null(prob_dist_in)) {
     prob_dist <- prob_dist_in
     # erase uncertainty, new prob_dist will likely have different param names
-    uncertainty <- create_epiparameter_uncertainty()
+    uncertainty <- create_uncertainty()
   }
   # vectorise switch (cannot use vapply due to various return FUN.VALUE)
   param_type <- sapply( # nolint undesirable_function_linter
@@ -355,7 +355,7 @@ epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
     )
     param_type <- NULL
   }
-  summary_stats <- create_epiparameter_summary_stats()
+  summary_stats <- create_summary_stats()
   summary_stats[param_type] <- x$parameter_value
   uncertainty_type <- .unique(
     x$parameter_uncertainty_type,
@@ -377,7 +377,7 @@ epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
   if (!is.null(sd_)) {
     summary_stats$sd <- sd_
   }
-  metadata <- create_epiparameter_metadata()
+  metadata <- create_metadata()
   metadata$sample_size <- .unique(x$population_sample_size)
   metadata$inference_method <- inference_method
   location <- .unique(x$population_location)
@@ -391,7 +391,7 @@ epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
   }
   metadata$region <- region
   if (is.null(article)) {
-    citation <- create_epiparameter_citation(
+    citation <- create_citation(
       author = .unique(x$first_author_surname, var_name = "citation authors"),
       year = .unique(x$year_publication, var_name = "citation years"),
       title = "<title not available>",
@@ -409,7 +409,7 @@ epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
         call. = FALSE
       )
     }
-    citation <- create_epiparameter_citation(
+    citation <- create_citation(
       author = article$first_author_surname,
       year = article$year_publication,
       title = article$article_title,
@@ -454,8 +454,7 @@ epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
 #' Input summary statistic uncertainty
 #'
 #' @param x A `<data.frame>` from \pkg{epireview}.
-#' @param summary_stats A list returned from
-#' [create_epiparameter_summary_stats()].
+#' @param summary_stats A list returned from [create_summary_stats()].
 #' @param summary_stat_type A `character` string with the name of the summary
 #' statistic type (e.g., `"mean"`, `"median"`).
 #'

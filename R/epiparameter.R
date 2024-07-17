@@ -53,7 +53,7 @@ new_epiparameter <- function(disease = character(),
 
   if (is_epiparameter_params(prob_dist, prob_dist_params)) {
     # standardise common distribution parameters
-    prob_dist_params <- .clean_epiparameter_params(
+    prob_dist_params <- .clean_params(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params
     )
@@ -71,7 +71,7 @@ new_epiparameter <- function(disease = character(),
     message("Unparameterised <epiparameter> object")
   } else {
     # create a S3 object holding the probability distribution
-    prob_dist <- create_epiparameter_prob_dist(
+    prob_dist <- create_prob_dist(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params,
       discretise = discretise,
@@ -153,11 +153,11 @@ new_epiparameter <- function(disease = character(),
 #' parameters.
 #' @param uncertainty A list of named vectors with the uncertainty around
 #' the probability distribution parameters. If uncertainty around the parameter
-#' estimates is unknown use [create_epiparameter_uncertainty()] (which is the
+#' estimates is unknown use [create_uncertainty()] (which is the
 #' argument default) to create a list with the correct names with missing
 #' values.
 #' @param summary_stats A list of summary statistics, use
-#' [create_epiparameter_summary_stats()] to create list. This list can include
+#' [create_summary_stats()] to create list. This list can include
 #' summary statistics about the inferred distribution such as it's mean and
 #' standard deviation, quantiles of the distribution, or information about the
 #' data used to fit the distribution such as lower and upper range. The summary
@@ -169,18 +169,18 @@ new_epiparameter <- function(disease = character(),
 #' sufficient summary statistics are provided and the parameter(s) of the
 #' distribution are not, the [calc_dist_params()] function is called to
 #' calculate the parameters and add them to the `epiparameter` object created.
-#' @param citation A `character` string with the citation of the source of the
+#' @param citation A `<bibentry>` with the citation of the source of the
 #' data or the paper that inferred the distribution parameters, use
-#' `create_epiparameter_citation()` to create citation.
+#' [create_citation()] to create citation.
 #' @param metadata A list of metadata, this can include: sample size, the
 #' transmission mode of the disease (e.g. is it vector-borne or directly
 #' transmitted), etc. It is assumed that the disease is not
 #' vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 #' delay distribution such as extrinsic incubation period) unless
 #' `transmission_mode = "vector_borne"` is contained in the metadata. Use
-#' `create_epiparameter_metadata()` to create metadata.
+#' [create_metadata()] to create metadata.
 #' @param method_assess A list of methodological aspects used when fitting
-#' the distribution, use `create_epiparameter_method_assess()` to create method
+#' the distribution, use [create_method_assess()] to create method
 #' assessment.
 #' @param discretise A boolean `logical` whether the distribution is
 #' discretised.
@@ -224,25 +224,22 @@ new_epiparameter <- function(disease = character(),
 #'   epi_dist = "incubation",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1),
-#'   uncertainty = create_epiparameter_uncertainty(),
-#'   summary_stats = create_epiparameter_summary_stats(
-#'     mean = 2,
-#'     sd = 1
-#'   ),
-#'   citation = create_epiparameter_citation(
+#'   uncertainty = create_uncertainty(),
+#'   summary_stats = create_summary_stats(mean = 2, sd = 1),
+#'   citation = create_citation(
 #'     author = person(given = "John", family = "Smith"),
 #'     year = 2002,
 #'     title = "COVID-19 incubation period",
 #'     journal = "Epi Journal",
 #'     doi = "10.19832/j.1366-9516.2012.09147.x"
 #'   ),
-#'   metadata = create_epiparameter_metadata(
+#'   metadata = create_metadata(
 #'     sample_size = 10,
 #'     region = "UK",
 #'     transmission_mode = "natural_human_to_human",
 #'     inference_method = "MLE"
 #'   ),
-#'   method_assess = create_epiparameter_method_assess(
+#'   method_assess = create_method_assess(
 #'     censored = TRUE
 #'   ),
 #'   discretise = FALSE,
@@ -254,12 +251,12 @@ epiparameter <- function(disease,
                          epi_dist,
                          prob_distribution = NA_character_,
                          prob_distribution_params = NA_real_,
-                         uncertainty = create_epiparameter_uncertainty(),
-                         summary_stats = create_epiparameter_summary_stats(),
+                         uncertainty = create_uncertainty(),
+                         summary_stats = create_summary_stats(),
                          auto_calc_params = TRUE,
-                         citation = create_epiparameter_citation(),
-                         metadata = create_epiparameter_metadata(),
-                         method_assess = create_epiparameter_method_assess(),
+                         citation = create_citation(),
+                         metadata = create_metadata(),
+                         method_assess = create_method_assess(),
                          discretise = FALSE,
                          truncation = NA_real_,
                          notes = NULL,
@@ -666,13 +663,13 @@ discretise.epiparameter <- function(x, ...) {
     }
 
     # standardise distribution parameter names
-    prob_dist_params <- .clean_epiparameter_params(
+    prob_dist_params <- .clean_params(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params
     )
 
     # create a new discretised probability distribution
-    x$prob_dist <- create_epiparameter_prob_dist(
+    x$prob_dist <- create_prob_dist(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params,
       discretise = TRUE,

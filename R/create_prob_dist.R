@@ -36,7 +36,7 @@
 #'
 #' @examples
 #' # example with continuous distribution without truncation
-#' create_epiparameter_prob_dist(
+#' create_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
@@ -44,7 +44,7 @@
 #' )
 #'
 #' # example with continuous distribution with truncation
-#' create_epiparameter_prob_dist(
+#' create_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
@@ -52,7 +52,7 @@
 #' )
 #'
 #' # example with discrete distribution
-#' create_epiparameter_prob_dist(
+#' create_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = TRUE,
@@ -60,14 +60,14 @@
 #' )
 #'
 #' # example passing extra arguments to distcrete
-#' create_epiparameter_prob_dist(
+#' create_prob_dist(
 #'   prob_dist = "gamma",
 #'   prob_dist_params = c(shape = 1, scale = 1),
 #'   discretise = TRUE,
 #'   truncation = NA,
 #'   w = 0.5
 #' )
-create_epiparameter_prob_dist <- function(prob_dist,
+create_prob_dist <- function(prob_dist,
                                           prob_dist_params,
                                           discretise = FALSE,
                                           truncation = NA,

@@ -68,7 +68,7 @@ test_that("get_citation works as expected for manual epiparameter", {
       epi_dist = "incubation_period",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      citation = create_epiparameter_citation(
+      citation = create_citation(
         author = person(given = "John F.", family = "Smith"),
         year = 2000,
         title = "Incubation period of COVID",

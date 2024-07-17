@@ -122,7 +122,7 @@ test_that("parameter_tbl works as expected with discretised <epiparameter>", {
       epi_dist = "serial interval",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
-      citation = create_epiparameter_citation(
+      citation = create_citation(
         author = person(given = "John", family = "Smith"),
         year = 2022,
         title = "A title",
