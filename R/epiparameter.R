@@ -347,7 +347,7 @@ validate_epiparameter <- function(epiparameter) {
     checkmate::test_string(epiparameter$disease),
     "epiparameter must contain an epidemiological distribution" =
       checkmate::test_string(epiparameter$epi_dist),
-    "epiparameter must contain a <distribution> or <distcrete> distribution or NA" =
+    "epiparameter must contain a <distribution> or <distcrete> or NA" =
     checkmate::test_multi_class(
       epiparameter$prob_dist, classes = c("distribution", "distcrete")
     ) || checkmate::test_string(epiparameter$prob_dist, na.ok = TRUE),
