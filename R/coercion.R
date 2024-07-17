@@ -188,7 +188,7 @@ is_epireview <- function(x) {
 #'
 #' @inherit epiparameter return
 #' @keywords internal
-epiparameter_df_to_epiparameter <- function(x, ...) {
+epiparameter_df_to_epiparameter <- function(x, ...) { # nolint object_length_linter
   # extract probability distribution from list and extract parameters
   # and truncation if available
   prob_dist <- x$prob_distribution[[1]]
