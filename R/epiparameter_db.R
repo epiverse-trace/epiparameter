@@ -108,11 +108,169 @@
 #'   single_epiparameter = TRUE
 #' )
 epiparameter_db <- function(disease = "all",
+                            pathogen = "all",
+                            epi_dist = "all",
+                            author = NULL,
+                            subset = NULL,
+                            single_epiparameter = FALSE) {
+  # check input
+  checkmate::assert_string(disease)
+  checkmate::assert_string(pathogen)
+  checkmate::assert_string(epi_dist)
+  checkmate::assert_logical(single_epiparameter, len = 1)
+
+  # capture expression from subset and check type
+  expr <- substitute(subset)
+  if (is.character(expr)) {
+    stop(
+      "Subsetting is done with expressions that return logical values.\n",
+      "Remove quotation marks.",
+      call. = FALSE
+    )
+  }
+
+  # <multi_epiparameter> is sysdata
+  attrib <- attributes(multi_epiparameter)
+
+  multi_epiparameter <- .filter_epiparameter_db(
+    multi_epiparameter = multi_epiparameter,
+    disease = disease,
+    pathogen = pathogen,
+    epi_dist = epi_dist
+  )
+
+  # extract study by author if given
+  if (!is.null(author)) {
+    first_author <- lapply(multi_epiparameter, function(x) {
+      x$citation$author[1]
+    })
+    author_set <- grepl(pattern = author, x = first_author, ignore.case = TRUE)
+
+    if (!any(author_set)) {
+      disease_str <- ifelse(
+        test = disease == "all", yes = "", no = paste(" for", disease)
+      )
+      stop(
+        "Parameters by ", author, " are not available", disease_str,
+        call. = FALSE
+      )
+    }
+
+    # subset by authors
+    multi_epiparameter <- multi_epiparameter[author_set]
+  }
+
+  # subset by subset conditions
+  if (is.call(expr)) {
+    nse_subject <- as.character(expr)[2]
+    cond_list <- lapply(
+      multi_epiparameter,
+      .is_cond_epiparameter,
+      expr,
+      nse_subject
+    )
+    set <- vapply(cond_list, function(x) any(unlist(x)), FUN.VALUE = logical(1))
+    set[is.na(set)] <- FALSE
+    multi_epiparameter <- multi_epiparameter[set]
+  } else if (is.function(subset)) {
+    set <- vapply(multi_epiparameter, subset, FUN.VALUE = logical(1))
+    multi_epiparameter <- multi_epiparameter[set]
+  }
+
+  attributes(multi_epiparameter) <- attrib
+
+  if (length(multi_epiparameter) == 0) {
+    stop(
+      "No entries in the database meet the search criteria.",
+      call. = FALSE
+    )
+  }
+
+  lapply(multi_epiparameter, validate_epiparameter)
+  is_param <- vapply(
+    multi_epiparameter,
+    is_parameterised,
+    FUN.VALUE = logical(1)
+  )
+
+  if (single_epiparameter) {
+    # select parameterised entries
+    if (sum(is_param) >= 1) {
+      multi_epiparameter <- multi_epiparameter[is_param]
+    }
+    # select entries that accounted for truncation
+    idx <- vapply(
+      multi_epiparameter,
+      function(x) x$method_assess$right_truncated,
+      FUN.VALUE = logical(1)
+    )
+    if (sum(idx) >= 1) {
+      multi_epiparameter <- multi_epiparameter[idx]
+    }
+    # select largest sample size
+    idx <- which.max(
+      vapply(
+        multi_epiparameter,
+        function(x) x$metadata$sample_size,
+        FUN.VALUE = numeric(1)
+      )
+    )
+    single_epiparameter <- multi_epiparameter[[idx]]
+
+    message(
+      "Using ", format(get_citation(single_epiparameter)), ". \n",
+      "To retrieve the citation use the 'get_citation' function"
+    )
+
+    return(single_epiparameter)
+  }
+
+  message(
+    "Returning ", length(multi_epiparameter), " results that match the ",
+    "criteria (", sum(is_param), " are parameterised). \n",
+    "Use subset to filter by entry variables or ",
+    "single_epiparameter to return a single entry. \n",
+    "To retrieve the citation for each use the ",
+    "'get_citation' function"
+  )
+
+  if (length(multi_epiparameter) == 1) {
+    multi_epiparameter <- multi_epiparameter[[1]]
+  }
+
+  # return epiparameter
+  multi_epiparameter
+}
+
+#' @inherit epiparameter_db title
+#'
+#' @description
+#' `r lifecycle::badge('deprecated')`
+#'
+#' `epidist_db()` has been renamed [epiparameter_db()]. Please use
+#' `epiparameter_db()` instead as the `epidist_db()` alias will be removed from
+#' the package in the future.
+#'
+#' @inheritParams epiparameter_db
+#'
+#' @inherit epiparameter_db return
+#' @export
+#' @keywords internal
+epidist_db <- function(disease = "all",
                        pathogen = "all",
                        epi_dist = "all",
                        author = NULL,
                        subset = NULL,
                        single_epiparameter = FALSE) {
+  lifecycle::deprecate_warn(
+    when = "0.3.0",
+    what = "epidist_db()",
+    with = "epiparameter_db()"
+  )
+
+  # DUE TO NON-STANDARD EVALUATION epidist_db() CANNOT CALL epiparameter_db()
+  # SO THE FUNCTION CODE NEEDS TO BE COPIED
+
   # check input
   checkmate::assert_string(disease)
   checkmate::assert_string(pathogen)
