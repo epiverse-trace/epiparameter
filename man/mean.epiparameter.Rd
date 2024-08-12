@@ -18,10 +18,10 @@ A \code{numeric} mean of a distribution or \code{NA}.
 Mean method for \verb{<epiparameter>} class
 }
 \examples{
-edist <- epiparameter_db(
+ep <- epiparameter_db(
   disease = "COVID-19",
   epi_dist = "incubation period",
   single_epiparameter = TRUE
 )
-mean(edist)
+mean(ep)
 }

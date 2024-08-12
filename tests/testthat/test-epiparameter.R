@@ -761,60 +761,60 @@ test_that("generate fails as expected on discrete epiparameter object with vecto
 
 test_that("is_epiparameter returns TRUE when expected", {
   # suppress message about citation
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "serial_interval",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
 
-  expect_true(is_epiparameter(edist))
+  expect_true(is_epiparameter(ep))
 })
 
 test_that("is_epiparameter returns FALSE when expected", {
-  false_edist <- list(
+  false_ep <- list(
     disease = "ebola",
     epi_dist = "serial_interval",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   )
 
-  expect_false(is_epiparameter(false_edist))
+  expect_false(is_epiparameter(false_ep))
 })
 
 test_that("discretise works as expected on continuous gamma", {
   # suppress message about citation
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  edist <- discretise(edist)
+  ep <- discretise(ep)
 
-  expect_s3_class(edist$prob_dist, "distcrete")
-  expect_identical(edist$prob_dist$parameters, list(shape = 1, scale = 1))
-  expect_identical(edist$prob_dist$name, "gamma")
+  expect_s3_class(ep$prob_dist, "distcrete")
+  expect_identical(ep$prob_dist$parameters, list(shape = 1, scale = 1))
+  expect_identical(ep$prob_dist$name, "gamma")
 })
 
 test_that("discretise works as expected on continuous lognormal", {
   # suppress message about citation
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 1, sdlog = 1)
   ))
-  edist <- discretise(edist)
+  ep <- discretise(ep)
 
-  expect_s3_class(edist$prob_dist, "distcrete")
-  expect_identical(edist$prob_dist$parameters, list(meanlog = 1, sdlog = 1))
-  expect_identical(edist$prob_dist$name, "lnorm")
+  expect_s3_class(ep$prob_dist, "distcrete")
+  expect_identical(ep$prob_dist$parameters, list(meanlog = 1, sdlog = 1))
+  expect_identical(ep$prob_dist$name, "lnorm")
 })
 
 test_that("discretise works as expected on discretised dist", {
   # suppress message about citation
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
@@ -822,18 +822,18 @@ test_that("discretise works as expected on discretised dist", {
     discretise = TRUE
   ))
   expect_message(
-    discretise(edist),
+    discretise(ep),
     regexp = "Distribution in `epiparameter` is already discretised"
   )
 
-  expect_s3_class(edist$prob_dist, "distcrete")
-  expect_identical(edist$prob_dist$parameters, list(shape = 1, scale = 1))
-  expect_identical(edist$prob_dist$name, "gamma")
+  expect_s3_class(ep$prob_dist, "distcrete")
+  expect_identical(ep$prob_dist$parameters, list(shape = 1, scale = 1))
+  expect_identical(ep$prob_dist$name, "gamma")
 })
 
 test_that("discretise works as expected on truncated dist", {
   # suppress message about citation
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
@@ -842,18 +842,18 @@ test_that("discretise works as expected on truncated dist", {
   ))
 
   expect_warning(
-    discretise(edist),
+    discretise(ep),
     regexp = paste(
       "Discretising a truncated continuous distribution,",
       "returning non-truncated discretised distribution"
     )
   )
 
-  edist <- suppressWarnings(discretise(edist))
+  ep <- suppressWarnings(discretise(ep))
 
-  expect_s3_class(edist$prob_dist, "distcrete")
-  expect_identical(edist$prob_dist$parameters, list(shape = 1, scale = 1))
-  expect_identical(edist$prob_dist$name, "gamma")
+  expect_s3_class(ep$prob_dist, "distcrete")
+  expect_identical(ep$prob_dist$parameters, list(shape = 1, scale = 1))
+  expect_identical(ep$prob_dist$name, "gamma")
 })
 
 test_that("discretise fails as expected on non-epiparameter object", {
@@ -870,13 +870,13 @@ test_that("discretise fails as expected on non-epiparameter object", {
 
 test_that("parameters works as expected on continuous gamma", {
   # suppress message about citation
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  params <- get_parameters(edist)
+  params <- get_parameters(ep)
 
   expect_vector(params, ptype = numeric(), size = 2)
   expect_named(params, expected = c("shape", "scale"))
@@ -884,13 +884,13 @@ test_that("parameters works as expected on continuous gamma", {
 
 test_that("parameters works as expected on continuous lognormal", {
   # suppress message about citation
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 1, sdlog = 1)
   ))
-  params <- get_parameters(edist)
+  params <- get_parameters(ep)
 
   expect_vector(params, ptype = numeric(), size = 2)
   expect_named(params, expected = c("meanlog", "sdlog"))
@@ -898,14 +898,14 @@ test_that("parameters works as expected on continuous lognormal", {
 
 test_that("parameters works as expected on discretised dist", {
   # suppress message about citation
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     discretise = TRUE
   ))
-  params <- get_parameters(edist)
+  params <- get_parameters(ep)
 
   expect_vector(params, ptype = numeric(), size = 2)
   expect_named(params, expected = c("shape", "scale"))
@@ -913,14 +913,14 @@ test_that("parameters works as expected on discretised dist", {
 
 test_that("parameters works as expected on truncated dist", {
   # suppress message about citation
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     truncation = 10
   ))
-  params <- get_parameters(edist)
+  params <- get_parameters(ep)
 
   expect_vector(params, ptype = numeric(), size = 4)
   expect_named(params, expected = c("shape", "scale", "lower", "upper"))
@@ -946,115 +946,115 @@ test_that("parameters fails as expected on non-epiparameter object", {
 
 test_that("family works as expected for distributional", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation_period",
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 1, sdlog = 1)
   ))
-  expect_identical(family(edist), "lnorm")
+  expect_identical(family(ep), "lnorm")
 })
 
 test_that("family works as expected for distcrete", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     discretise = TRUE
   ))
-  expect_identical(family(edist), "gamma")
+  expect_identical(family(ep), "gamma")
 })
 
 test_that("family works as expected for distributional truncated", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation_period",
     prob_distribution = "weibull",
     prob_distribution_params = c(shape = 1, scale = 1),
     truncation = 10
   ))
-  expect_identical(family(edist), "weibull")
+  expect_identical(family(ep), "weibull")
 })
 
 test_that("is_truncated works as expected for continuous distributions", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  expect_false(is_truncated(edist))
+  expect_false(is_truncated(ep))
 })
 
 test_that("is_truncated works as expected for discretised distributions", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     discretise = TRUE
   ))
-  expect_false(is_truncated(edist))
+  expect_false(is_truncated(ep))
 })
 
 test_that("is_truncated works as expected for truncated distributions", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation_period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     truncation = 10
   ))
-  expect_true(is_truncated(edist))
+  expect_true(is_truncated(ep))
 })
 
 test_that("is_continuous works as expected for continuous distributions", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation period",
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 1, sdlog = 1)
   ))
-  expect_true(is_continuous(edist))
+  expect_true(is_continuous(ep))
 
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  expect_true(is_continuous(edist))
+  expect_true(is_continuous(ep))
 })
 
 test_that("is_continuous works as expected for discrete distributions", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "offspring distribution",
     prob_distribution = "nbinom",
     prob_distribution_params = c(mean = 2, dispersion = 0.5)
   ))
-  expect_false(is_continuous(edist))
+  expect_false(is_continuous(ep))
 
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation period",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
     discretise = TRUE
   ))
-  expect_false(is_continuous(edist))
+  expect_false(is_continuous(ep))
 })
 
 test_that("mean works as expected when mean is supplied", {
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
       epi_dist = "incubation_period",
@@ -1062,11 +1062,11 @@ test_that("mean works as expected when mean is supplied", {
       summary_stats = create_summary_stats(mean = 5)
     )
   )
-  expect_identical(mean(edist), 5)
+  expect_identical(mean(ep), 5)
 })
 
 test_that("mean works as expected with params and no mean", {
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
       epi_dist = "incubation_period",
@@ -1074,118 +1074,118 @@ test_that("mean works as expected with params and no mean", {
       prob_distribution_params = c(shape = 1, scale = 1)
     )
   )
-  expect_identical(mean(edist), 1)
+  expect_identical(mean(ep), 1)
 })
 
 test_that("mean works as expected with no params and no mean", {
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
       epi_dist = "incubation_period",
       prob_distribution = "gamma"
     )
   )
-  expect_true(is.na(mean(edist)))
+  expect_true(is.na(mean(ep)))
 })
 
 test_that("mean works for corrupted epiparameter", {
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
       epi_dist = "incubation_period",
       prob_distribution = "gamma"
     )
   )
-  edist$summary_stats <- list()
-  expect_true(is.na(mean(edist)))
+  ep$summary_stats <- list()
+  expect_true(is.na(mean(ep)))
 })
 
 test_that("as.function works as expected for density", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  edist_func <- as.function(edist, func_type = "density")
-  expect_type(edist_func, type = "closure")
-  expect_length(formals(edist_func), 1)
+  ep_func <- as.function(ep, func_type = "density")
+  expect_type(ep_func, type = "closure")
+  expect_length(formals(ep_func), 1)
 })
 
 test_that("as.function works as expected for cdf", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  edist_func <- as.function(edist, func_type = "cdf")
-  expect_type(edist_func, type = "closure")
-  expect_length(formals(edist_func), 1)
+  ep_func <- as.function(ep, func_type = "cdf")
+  expect_type(ep_func, type = "closure")
+  expect_length(formals(ep_func), 1)
 })
 
 test_that("as.function works as expected for generate", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  edist_func <- as.function(edist, func_type = "generate")
-  expect_type(edist_func, type = "closure")
-  expect_length(formals(edist_func), 1)
+  ep_func <- as.function(ep, func_type = "generate")
+  expect_type(ep_func, type = "closure")
+  expect_length(formals(ep_func), 1)
 })
 
 test_that("as.function works as expected for quantile", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  edist_func <- as.function(edist, func_type = "quantile")
-  expect_type(edist_func, type = "closure")
-  expect_length(formals(edist_func), 1)
+  ep_func <- as.function(ep, func_type = "quantile")
+  expect_type(ep_func, type = "closure")
+  expect_length(formals(ep_func), 1)
 })
 
 test_that("as.function fails as expected", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
   expect_error(
-    as.function(edist, func_type = "random"),
+    as.function(ep, func_type = "random"),
     regexp = "(arg)*(should be one of)*(density)*(cdf)*(generate)*(quantile)"
   )
 
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma"
   ))
   expect_error(
-    as.function(edist),
+    as.function(ep),
     regexp = "Cannot convert unparameterised <epiparameter> to distribution function"
   )
 })
 
 test_that("as.data.frame works for <epiparameter>", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter(
+  ep <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_dist = "incubation",
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
   ))
-  df <- as.data.frame(edist)
+  df <- as.data.frame(ep)
   expect_s3_class(df, class = "data.frame")
   expect_identical(dim(df), c(1L, 10L))
   expect_identical(
@@ -1198,8 +1198,8 @@ test_that("as.data.frame works for <epiparameter>", {
 
 test_that("as.data.frame works for <epiparameter> from db", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter_db(single_epiparameter = TRUE))
-  df <- as.data.frame(edist)
+  ep <- suppressMessages(epiparameter_db(single_epiparameter = TRUE))
+  df <- as.data.frame(ep)
   expect_s3_class(df, class = "data.frame")
   expect_identical(dim(df), c(1L, 10L))
   expect_identical(

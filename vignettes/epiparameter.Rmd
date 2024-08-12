@@ -43,8 +43,8 @@ library(epiparameter)
 First, we will introduce the library, or database, of epidemiological parameters available from {epiparameter}. The library is stored internally and can be read into R using the `epiparameter_db()` function. By default all entries in the library are returned.
 
 ```{r read-in-library}
-epi_dist_db <- epiparameter_db()
-epi_dist_db
+db <- epiparameter_db()
+db
 ```
 
 The output is a list of `<epiparameter>` objects, where each element in the list corresponds to an entry in the parameter database. 
@@ -52,13 +52,13 @@ To see a full list of the diseases and distributions stored in the library use t
 `parameter_tbl()` function. Here we show the first six rows of the output.
 
 ```{r, parameter-tbl}
-parameter_tbl(multi_epiparameter = epi_dist_db)
+parameter_tbl(multi_epiparameter = db)
 ```
 
 `parameter_tbl()` can also subset the database supplied to the function.
 
 ```{r, parameter-tbl-subset}
-parameter_tbl(multi_epiparameter = epi_dist_db, disease = "Ebola")
+parameter_tbl(multi_epiparameter = db, disease = "Ebola")
 ```
 
 More details on the data collation and the library of parameters can be found in
@@ -202,7 +202,7 @@ If a set of epidemiological parameter has been inferred and is known to the user
 
 ```{r add-to-library}
 # wrap <epiparameter> in list to append to database
-new_db <- append(epi_dist_db, list(covid_incubation))
+new_db <- append(db, list(covid_incubation))
 tail(new_db, n = 3)
 ```
 

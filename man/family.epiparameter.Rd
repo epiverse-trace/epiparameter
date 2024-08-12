@@ -23,21 +23,21 @@ output irrespective of the internal distribution class.
 }
 \examples{
 # example with continuous distribution
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1)
 )
-family(edist)
+family(ep)
 
 # example with discretised distribution
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
   prob_distribution = "lnorm",
   prob_distribution_params = c(meanlog = 1, sdlog = 1),
   discretise = TRUE
 )
-family(edist)
+family(ep)
 }

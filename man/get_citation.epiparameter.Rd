@@ -19,11 +19,11 @@ Extract the citation stored in an \verb{<epiparameter>} object.
 }
 \examples{
 # example with <epiparameter>
-edist <- epiparameter_db(single_epiparameter = TRUE)
-get_citation(edist)
+ep <- epiparameter_db(single_epiparameter = TRUE)
+get_citation(ep)
 
 # example returning bibtex format
-edist <- epiparameter_db(disease = "COVID-19", single_epiparameter = TRUE)
-cit <- get_citation(edist)
+ep <- epiparameter_db(disease = "COVID-19", single_epiparameter = TRUE)
+cit <- get_citation(ep)
 format(cit, style = "bibtex")
 }

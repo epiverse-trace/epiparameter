@@ -23,23 +23,23 @@
 #'
 #' @examples
 #' # plot continuous epiparameter
-#' edist <- epiparameter(
+#' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 2, scale = 1)
 #' )
-#' plot(edist)
+#' plot(ep)
 #'
 #' # plot different day range (x-axis)
-#' plot(edist, xlim = c(0, 10))
+#' plot(ep, xlim = c(0, 10))
 #'
 #' # plot CDF
-#' plot(edist, cumulative = TRUE)
+#' plot(ep, cumulative = TRUE)
 #'
 #' # plot discrete epiparameter
-#' edist <- discretise(edist)
-#' plot(edist)
+#' ep <- discretise(ep)
+#' plot(ep)
 plot.epiparameter <- function(x,
                               cumulative = FALSE,
                               ...) {

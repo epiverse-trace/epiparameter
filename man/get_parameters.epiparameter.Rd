@@ -25,10 +25,10 @@ a probability distribution or parameters of a probability distribution,
 in this case the \code{get_parameters.epiparameter()} method will return \code{NA}.
 }
 \examples{
-edist <- epiparameter_db(
+ep <- epiparameter_db(
   disease = "COVID-19",
   epi_dist = "serial interval",
   single_epiparameter = TRUE
 )
-get_parameters(edist)
+get_parameters(ep)
 }

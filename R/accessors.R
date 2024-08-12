@@ -27,12 +27,12 @@ get_parameters <- function(x, ...) {
 #' @export
 #'
 #' @examples
-#' edist <- epiparameter_db(
+#' ep <- epiparameter_db(
 #'   disease = "COVID-19",
 #'   epi_dist = "serial interval",
 #'   single_epiparameter = TRUE
 #' )
-#' get_parameters(edist)
+#' get_parameters(ep)
 get_parameters.epiparameter <- function(x, ...) {
   chkDots(...)
   # extract parameters depending on prob distribution class
@@ -88,12 +88,12 @@ get_citation <- function(x, ...) {
 #'
 #' @examples
 #' # example with <epiparameter>
-#' edist <- epiparameter_db(single_epiparameter = TRUE)
-#' get_citation(edist)
+#' ep <- epiparameter_db(single_epiparameter = TRUE)
+#' get_citation(ep)
 #'
 #' # example returning bibtex format
-#' edist <- epiparameter_db(disease = "COVID-19", single_epiparameter = TRUE)
-#' cit <- get_citation(edist)
+#' ep <- epiparameter_db(disease = "COVID-19", single_epiparameter = TRUE)
+#' cit <- get_citation(ep)
 #' format(cit, style = "bibtex")
 get_citation.epiparameter <- function(x, ...) {
   chkDots(...)
@@ -119,8 +119,8 @@ get_citation.epiparameter <- function(x, ...) {
 #'
 #' @examples
 #' # example with list of <epiparameter>
-#' edist <- epiparameter_db()
-#' get_citation(edist)
+#' db <- epiparameter_db()
+#' get_citation(db)
 get_citation.multi_epiparameter <- function(x, ...) {
   chkDots(...)
   # dispatches to get_citation.epiparameter method

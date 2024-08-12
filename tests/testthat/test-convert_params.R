@@ -1,4 +1,4 @@
-edist <- suppressMessages(
+ep <- suppressMessages(
   epiparameter(
     disease = "Ebola",
     epi_dist = "incubation period",
@@ -46,14 +46,14 @@ test_that("convert_summary_stats_to_params.character works with dyn-dots", {
 
 test_that("convert_summary_stats_to_params.epiparameter works as expected", {
   expect_snapshot_value(
-    convert_summary_stats_to_params(edist),
+    convert_summary_stats_to_params(ep),
     style = "json2"
   )
 })
 
 test_that("convert_summary_stats_to_params.epiparameter warns as expected", {
   expect_warning(
-    convert_summary_stats_to_params(edist, mean = 1, sd = 1),
+    convert_summary_stats_to_params(ep, mean = 1, sd = 1),
     regexp = "One or more summary statistics in <epiparameter> are being overwritten"
   )
 })
@@ -98,9 +98,9 @@ test_that("convert_summary_stats_to_params.character fails as expected", {
 })
 
 test_that("convert_summary_stats_to_params.epiparameter fails as expected", {
-  edist$summary_stats <- list()
+  ep$summary_stats <- list()
   expect_error(
-    convert_summary_stats_to_params(edist),
+    convert_summary_stats_to_params(ep),
     regexp = "Summary statistics need to be named and supplied to the function"
   )
 })
@@ -137,19 +137,19 @@ test_that("convert_params_to_summary_stats.character works with dyn-dots", {
 
 test_that("convert_params_to_summary_stats.epiparameter works as expected", {
   expect_snapshot_value(
-    convert_params_to_summary_stats(edist),
+    convert_params_to_summary_stats(ep),
     style = "json2"
   )
-  edist <- "lnorm"
+  ep <- "lnorm"
   expect_snapshot_value(
-    convert_params_to_summary_stats(edist, meanlog = 1, sdlog = 1),
+    convert_params_to_summary_stats(ep, meanlog = 1, sdlog = 1),
     style = "json2"
   )
 })
 
 test_that("convert_params_to_summary_stats.epiparameter warns as expected", {
   expect_warning(
-    convert_params_to_summary_stats(edist, meanlog = 1, sdlog = 1),
+    convert_params_to_summary_stats(ep, meanlog = 1, sdlog = 1),
     regexp = "One or more parameters in <epiparameter> are being overwritten"
   )
 })
@@ -192,9 +192,9 @@ test_that("convert_params_to_summary_stats.character fails as expected", {
 })
 
 test_that("convert_params_to_summary_stats.epiparameter fails as expected", {
-  edist$prob_dist <- "lnorm"
+  ep$prob_dist <- "lnorm"
   expect_error(
-    convert_params_to_summary_stats(edist),
+    convert_params_to_summary_stats(ep),
     regexp = "<epiparameter> supplied has no parameters and none are suppled"
   )
 })

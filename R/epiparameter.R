@@ -457,23 +457,23 @@ format.epiparameter <- function(x, ...) {
 #' @export
 #'
 #' @examples
-#' edist <- epiparameter(
+#' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "serial_interval",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1)
 #' )
 #'
-#' is_epiparameter(edist)
+#' is_epiparameter(ep)
 #'
-#' false_edist <- list(
+#' false_ep <- list(
 #'   disease = "ebola",
 #'   epi_dist = "serial_interval",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1)
 #' )
 #'
-#' is_epiparameter(false_edist)
+#' is_epiparameter(false_ep)
 is_epiparameter <- function(x) {
   inherits(x, "epiparameter")
 }
@@ -501,7 +501,7 @@ is_epiparameter <- function(x) {
 #' @keywords epiparameter_distribution_functions
 #'
 #' @examples
-#' edist <- epiparameter(
+#' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
 #'   prob_distribution = "gamma",
@@ -509,10 +509,10 @@ is_epiparameter <- function(x) {
 #' )
 #'
 #' # example of each distribution method for an `epiparameter` object
-#' stats::density(edist, at = 1)
-#' distributional::cdf(edist, q = 1)
-#' stats::quantile(edist, p = 0.2)
-#' distributional::generate(edist, times = 10)
+#' stats::density(ep, at = 1)
+#' distributional::cdf(ep, q = 1)
+#' stats::quantile(ep, p = 0.2)
+#' distributional::generate(ep, times = 10)
 NULL
 
 #' @rdname epiparameter_distribution_functions
@@ -704,23 +704,23 @@ discretise.default <- function(x, ...) {
 #'
 #' @examples
 #' # example with continuous distribution
-#' edist <- epiparameter(
+#' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1)
 #' )
-#' family(edist)
+#' family(ep)
 #'
 #' # example with discretised distribution
-#' edist <- epiparameter(
+#' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
 #'   prob_distribution = "lnorm",
 #'   prob_distribution_params = c(meanlog = 1, sdlog = 1),
 #'   discretise = TRUE
 #' )
-#' family(edist)
+#' family(ep)
 family.epiparameter <- function(object, ...) {
   if (inherits(object$prob_dist, "distcrete")) {
     prob_dist <- object$prob_dist$name
@@ -769,22 +769,22 @@ family.epiparameter <- function(object, ...) {
 #' @export
 #'
 #' @examples
-#' edist <- epiparameter(
+#' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
 #'   prob_distribution = "lnorm",
 #'   prob_distribution_params = c(meanlog = 1, sdlog = 1)
 #' )
-#' is_truncated(edist)
+#' is_truncated(ep)
 #'
-#' edist <- epiparameter(
+#' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
 #'   prob_distribution = "lnorm",
 #'   prob_distribution_params = c(meanlog = 1, sdlog = 1),
 #'   truncation = 10
 #' )
-#' is_truncated(edist)
+#' is_truncated(ep)
 is_truncated <- function(x) {
   stopifnot(
     "is_truncated only works for `<epiparameter> objects`" =
@@ -824,22 +824,22 @@ is_truncated <- function(x) {
 #' @export
 #'
 #' @examples
-#' edist <- epiparameter(
+#' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
 #'   prob_distribution = "lnorm",
 #'   prob_distribution_params = c(meanlog = 1, sdlog = 1)
 #' )
-#' is_continuous(edist)
-#' is_continuous(discretise(edist))
+#' is_continuous(ep)
+#' is_continuous(discretise(ep))
 #'
-#' edist <- epiparameter(
+#' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "offspring distribution",
 #'   prob_distribution = "nbinom",
 #'   prob_distribution_params = c(mean = 2, dispersion = 0.5)
 #' )
-#' is_continuous(edist)
+#' is_continuous(ep)
 is_continuous <- function(x) {
   stopifnot(
     "is_truncated only works for `<epiparameter> objects`" =
@@ -858,12 +858,12 @@ is_continuous <- function(x) {
 #' @export
 #'
 #' @examples
-#' edist <- epiparameter_db(
+#' ep <- epiparameter_db(
 #'   disease = "COVID-19",
 #'   epi_dist = "incubation period",
 #'   single_epiparameter = TRUE
 #' )
-#' mean(edist)
+#' mean(ep)
 mean.epiparameter <- function(x, ...) {
   chkDots(...)
   # extract mean if given
