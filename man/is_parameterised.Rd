@@ -28,22 +28,22 @@ distribution and distribution parameters
 }
 \examples{
 # parameterised <epiparameter>
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1)
 )
-is_parameterised(edist)
+is_parameterised(ep)
 
 # unparameterised <epiparameter>
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation"
 )
-is_parameterised(edist)
+is_parameterised(ep)
 
 # list of <epiparameter>
-edist <- epiparameter_db()
-is_parameterised(edist)
+db <- epiparameter_db()
+is_parameterised(db)
 }

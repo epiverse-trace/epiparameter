@@ -23,20 +23,20 @@ If a \verb{<epiparameter>} object has a \verb{<distcrete>} object \code{is_trunc
 return \code{FALSE} by default.
 }
 \examples{
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
   prob_distribution = "lnorm",
   prob_distribution_params = c(meanlog = 1, sdlog = 1)
 )
-is_truncated(edist)
+is_truncated(ep)
 
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
   prob_distribution = "lnorm",
   prob_distribution_params = c(meanlog = 1, sdlog = 1),
   truncation = 10
 )
-is_truncated(edist)
+is_truncated(ep)
 }

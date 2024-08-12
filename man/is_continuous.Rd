@@ -23,20 +23,20 @@ objects can be continuous or discrete distributions (e.g. gamma or negative
 binomial), and all \verb{<distcrete>} objects are discrete.
 }
 \examples{
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
   prob_distribution = "lnorm",
   prob_distribution_params = c(meanlog = 1, sdlog = 1)
 )
-is_continuous(edist)
-is_continuous(discretise(edist))
+is_continuous(ep)
+is_continuous(discretise(ep))
 
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "offspring distribution",
   prob_distribution = "nbinom",
   prob_distribution_params = c(mean = 2, dispersion = 0.5)
 )
-is_continuous(edist)
+is_continuous(ep)
 }

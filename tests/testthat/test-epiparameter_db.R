@@ -1,16 +1,16 @@
 test_that("epiparameter_db works as expected", {
   # suppress message about citation
-  edist <- suppressMessages(
+  db <- suppressMessages(
     epiparameter_db(disease = "influenza", epi_dist = "serial interval")
   )
 
-  expect_s3_class(edist, class = "epiparameter")
-  expect_length(edist, 10)
+  expect_s3_class(db, class = "epiparameter")
+  expect_length(db, 10)
 })
 
 test_that("epiparameter_db works as expected with author specified", {
   # suppress message about citation
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter_db(
       disease = "influenza",
       epi_dist = "incubation period",
@@ -18,13 +18,13 @@ test_that("epiparameter_db works as expected with author specified", {
     )
   )
 
-  expect_s3_class(edist, class = "epiparameter")
-  expect_length(edist, 10)
+  expect_s3_class(ep, class = "epiparameter")
+  expect_length(ep, 10)
 })
 
 test_that("epiparameter_db works as expected with subsetting", {
   # suppress message about citation
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter_db(
       disease = "influenza",
       epi_dist = "incubation period",
@@ -32,12 +32,12 @@ test_that("epiparameter_db works as expected with subsetting", {
     )
   )
 
-  expect_s3_class(edist, class = "multi_epiparameter")
-  expect_length(edist, 10)
+  expect_s3_class(ep, class = "multi_epiparameter")
+  expect_length(ep, 10)
 })
 
 test_that("epiparameter_db works as expected with functional subsetting", {
-  edist <- suppressMessages(
+  db <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
       epi_dist = "incubation period",
@@ -45,14 +45,14 @@ test_that("epiparameter_db works as expected with functional subsetting", {
     )
   )
 
-  expect_type(edist, "list")
-  expect_s3_class(edist, "multi_epiparameter")
-  expect_length(edist, 11)
+  expect_type(db, "list")
+  expect_s3_class(db, "multi_epiparameter")
+  expect_length(db, 11)
 })
 
 test_that("epiparameter_db works as expected with single_epiparameter as TRUE", {
   # suppress message about citation
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter_db(
       disease = "influenza",
       epi_dist = "incubation period",
@@ -60,13 +60,13 @@ test_that("epiparameter_db works as expected with single_epiparameter as TRUE", 
     )
   )
 
-  expect_s3_class(edist, class = "epiparameter")
-  expect_length(edist, 10)
+  expect_s3_class(ep, class = "epiparameter")
+  expect_length(ep, 10)
 })
 
 test_that("epiparameter_db chooses truncated with single_epiparameter as TRUE", {
   # suppress message about citation
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
       epi_dist = "onset to death",
@@ -74,12 +74,12 @@ test_that("epiparameter_db chooses truncated with single_epiparameter as TRUE", 
     )
   )
 
-  expect_s3_class(edist, class = "epiparameter")
-  expect_true(edist$method_assess$right_truncated)
+  expect_s3_class(ep, class = "epiparameter")
+  expect_true(ep$method_assess$right_truncated)
 })
 
 test_that("epiparameter_db works as expected with subsetting and single_epiparameter", {
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
       epi_dist = "incubation period",
@@ -88,12 +88,12 @@ test_that("epiparameter_db works as expected with subsetting and single_epiparam
     )
   )
 
-  expect_s3_class(edist, class = "epiparameter")
-  expect_length(edist, 10)
+  expect_s3_class(ep, class = "epiparameter")
+  expect_length(ep, 10)
 })
 
 test_that("epiparameter_db works as expected with subsetting and author", {
-  edist <- suppressMessages(
+  db <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
       epi_dist = "incubation period",
@@ -102,12 +102,12 @@ test_that("epiparameter_db works as expected with subsetting and author", {
     )
   )
 
-  expect_s3_class(edist, class = "multi_epiparameter")
-  expect_length(edist, 2)
+  expect_s3_class(db, class = "multi_epiparameter")
+  expect_length(db, 2)
 })
 
 test_that("epiparameter_db works as expected with subsetting by prod_dist", {
-  edist <- suppressMessages(
+  ep <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
       epi_dist = "serial interval",
@@ -116,21 +116,21 @@ test_that("epiparameter_db works as expected with subsetting by prod_dist", {
     )
   )
 
-  expect_s3_class(edist, class = "epiparameter")
-  expect_length(edist, 10)
+  expect_s3_class(ep, class = "epiparameter")
+  expect_length(ep, 10)
 })
 
 test_that("epiparameter_db works as expected with subsetting by pathogen", {
   # suppress message about citation
-  edist <- suppressMessages(
+  db <- suppressMessages(
     epiparameter_db(
       pathogen = "SARS-CoV-2",
       epi_dist = "incubation period"
     )
   )
 
-  expect_s3_class(edist, class = "multi_epiparameter")
-  expect_length(edist, 15)
+  expect_s3_class(db, class = "multi_epiparameter")
+  expect_length(db, 15)
 })
 
 test_that("epiparameter_db fails as expected when author not recognised", {
@@ -205,11 +205,11 @@ test_that("epiparameter_db fails as expected when subset returns no results", {
 })
 
 test_that(".read_epiparameter_db works as expected", {
-  edist <- .read_epiparameter_db()
-  expect_s3_class(edist, class = "multi_epiparameter")
-  expect_type(edist, type = "list")
-  expect_length(edist, 122)
-  expect_true(all(vapply(edist, is_epiparameter, FUN.VALUE = logical(1))))
+  db <- .read_epiparameter_db()
+  expect_s3_class(db, class = "multi_epiparameter")
+  expect_type(db, type = "list")
+  expect_length(db, 122)
+  expect_true(all(vapply(db, is_epiparameter, FUN.VALUE = logical(1))))
 })
 
 test_that("sysdata is the same as .read_epiparameter_db output", {
@@ -241,8 +241,8 @@ test_that(".is_pkg_installed works as expected", {
 
 test_that("as.data.frame works for <multi_epiparameter>", {
   # message about missing citation suppressed
-  edist <- suppressMessages(epiparameter_db())
-  df <- as.data.frame(edist)
+  db <- suppressMessages(epiparameter_db())
+  df <- as.data.frame(db)
   expect_s3_class(df, class = "data.frame")
   expect_identical(dim(df), c(122L, 10L))
   expect_identical(

@@ -17,21 +17,21 @@ and \code{FALSE} if not.
 Check object is an \verb{<epiparameter>}
 }
 \examples{
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "serial_interval",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1)
 )
 
-is_epiparameter(edist)
+is_epiparameter(ep)
 
-false_edist <- list(
+false_ep <- list(
   disease = "ebola",
   epi_dist = "serial_interval",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1)
 )
 
-is_epiparameter(false_edist)
+is_epiparameter(false_ep)
 }

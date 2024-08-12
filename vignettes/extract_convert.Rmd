@@ -78,51 +78,51 @@ convert_summary_stats_to_params("gamma", mean = 2, cv = 2)
 An example with parameters provided by `<epiparameter>`
 
 ```{r}
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 2.5, scale = 1.5)
 )
-convert_params_to_summary_stats(edist)
+convert_params_to_summary_stats(ep)
 ```
 
 An example with `<epiparameter>` missing parameters and supplied through `...`
 
 ```{r}
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
   prob_distribution = "gamma"
 )
-convert_params_to_summary_stats(edist, shape = 2.5, scale = 1.5)
+convert_params_to_summary_stats(ep, shape = 2.5, scale = 1.5)
 ```
 
 An example with summary statistics provided by `<epiparameter>`
 
 ```{r}
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
   prob_distribution = "gamma",
   summary_stats = create_summary_stats(mean = 3.75, sd = 2.37)
 )
-convert_summary_stats_to_params(edist)
+convert_summary_stats_to_params(ep)
 ```
 
 An example with `<epiparameter>` missing summary statistics and supplied through `...`
 
 ```{r}
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
   prob_distribution = "gamma"
 )
-convert_summary_stats_to_params(edist, mean = 3.75, sd = 2.37)
+convert_summary_stats_to_params(ep, mean = 3.75, sd = 2.37)
 ```
 
 The usage of `<epiparameter>` is not repeated for every distribution conversion available in {epiparameter}. The conversions shown below for each distribution are also available when using an `<epiparameter>` object, by either having the parameters or summary statistics stored in the `<epiparameter>` or supplied via named arguments.  

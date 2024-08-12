@@ -43,7 +43,7 @@ functions. These operate on any distribution that can be included in an
 \verb{<epiparameter>} object.
 }
 \examples{
-edist <- epiparameter(
+ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
   prob_distribution = "gamma",
@@ -51,9 +51,9 @@ edist <- epiparameter(
 )
 
 # example of each distribution method for an `epiparameter` object
-stats::density(edist, at = 1)
-distributional::cdf(edist, q = 1)
-stats::quantile(edist, p = 0.2)
-distributional::generate(edist, times = 10)
+stats::density(ep, at = 1)
+distributional::cdf(ep, q = 1)
+stats::quantile(ep, p = 0.2)
+distributional::generate(ep, times = 10)
 }
 \keyword{epiparameter_distribution_functions}

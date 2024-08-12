@@ -21,6 +21,6 @@ Extract the citation stored in a list of \verb{<epiparameter>} objects.
 }
 \examples{
 # example with list of <epiparameter>
-edist <- epiparameter_db()
-get_citation(edist)
+db <- epiparameter_db()
+get_citation(db)
 }
