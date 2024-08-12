@@ -186,7 +186,7 @@ epiparameter_db <- function(disease = "all",
     )
   }
 
-  lapply(multi_epiparameter, validate_epiparameter)
+  lapply(multi_epiparameter, assert_epiparameter)
   is_param <- vapply(
     multi_epiparameter,
     is_parameterised,
@@ -344,7 +344,7 @@ epidist_db <- function(disease = "all",
     )
   }
 
-  lapply(multi_epiparameter, validate_epiparameter)
+  lapply(multi_epiparameter, assert_epiparameter)
   is_param <- vapply(
     multi_epiparameter,
     is_parameterised,

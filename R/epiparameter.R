@@ -316,22 +316,22 @@ epiparameter <- function(disease,
   )
 
   # call epiparameter validator
-  validate_epiparameter(epiparameter = epiparameter)
+  assert_epiparameter(epiparameter)
 
   # return epiparameter object
   epiparameter
 }
 
-#' Validator for `<epiparameter>` class
+#' Assert an object is a valid `<epiparameter>` object
 #'
-#' @param epiparameter An `<epiparameter>` object
+#' @param x An \R object.
 #'
 #' @return Invisibly returns an `<epiparameter>`. Called for side-effects
 #' (errors when invalid `<epiparameter>` object is provided).
 #'
 #' @export
-validate_epiparameter <- function(epiparameter) {
-  if (!is_epiparameter(epiparameter)) {
+assert_epiparameter <- function(x) {
+  if (!is_epiparameter(x)) {
     stop("Object should be of class epiparameter", call. = FALSE)
   }
 
@@ -342,28 +342,26 @@ validate_epiparameter <- function(epiparameter) {
         "disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
         "citation", "metadata", "method_assess", "notes"
       ) %in%
-        attributes(epiparameter)$names,
+        attributes(x)$names,
     "epiparameter must contain a disease (single character string)" =
-    checkmate::test_string(epiparameter$disease),
+    checkmate::test_string(x$disease),
     "epiparameter must contain an epidemiological distribution" =
-      checkmate::test_string(epiparameter$epi_dist),
+      checkmate::test_string(x$epi_dist),
     "epiparameter must contain a <distribution> or <distcrete> or NA" =
     checkmate::test_multi_class(
-      epiparameter$prob_dist, classes = c("distribution", "distcrete")
-    ) || checkmate::test_string(epiparameter$prob_dist, na.ok = TRUE),
+      x$prob_dist, classes = c("distribution", "distcrete")
+    ) || checkmate::test_string(x$prob_dist, na.ok = TRUE),
     "epidisit must contain uncertainty, summary stats and metadata" =
       all(
-        is.list(epiparameter$uncertainty),
-        is.list(epiparameter$summary_stats),
-        is.list(epiparameter$metadata)
+        is.list(x$uncertainty), is.list(x$summary_stats), is.list(x$metadata)
       ),
     "epiparameter must contain a citation" =
-      inherits(epiparameter$citation, "bibentry"),
+      inherits(x$citation, "bibentry"),
     "epiparameter notes must be a character string" =
-      checkmate::test_string(epiparameter$notes)
+      checkmate::test_string(x$notes)
   )
 
-  invisible(epiparameter)
+  invisible(x)
 }
 
 #' Print method for `<epiparameter>` class

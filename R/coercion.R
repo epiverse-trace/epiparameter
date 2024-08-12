@@ -56,7 +56,7 @@ as.function.epiparameter <- function(x,
 as.data.frame.epiparameter <- function(x, ...) {
   chkDots(...)
   # check object as could be invalidated by user
-  validate_epiparameter(x)
+  assert_epiparameter(x)
 
   data.frame(
     disease = x$disease,
