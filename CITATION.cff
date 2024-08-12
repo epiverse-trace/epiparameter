@@ -11,6 +11,9 @@ title: 'epiparameter: Library of Epidemiological Parameters with Helper Function
   and Classes'
 version: 0.2.0.9000
 doi: 10.5281/zenodo.11110881
+identifiers:
+- type: url
+  value: https://epiverse-trace.github.io/epiparameter/
 abstract: Library of epidemiological parameters for infectious diseases and a set
   of classes and helper functions.
 authors:
@@ -85,6 +88,7 @@ references:
     email: michellang@gmail.com
     orcid: https://orcid.org/0000-0001-9754-0393
   year: '2024'
+  doi: 10.32614/CRAN.package.checkmate
 - type: software
   title: cli
   abstract: 'cli: Helpers for Developing Command Line Interfaces'
@@ -96,6 +100,7 @@ references:
     given-names: Gábor
     email: csardi.gabor@gmail.com
   year: '2024'
+  doi: 10.32614/CRAN.package.cli
 - type: software
   title: distcrete
   abstract: 'distcrete: Discrete Distribution Approximations'
@@ -111,6 +116,7 @@ references:
   - family-names: Jombart
     given-names: Thibaut
   year: '2024'
+  doi: 10.32614/CRAN.package.distcrete
 - type: software
   title: distributional
   abstract: 'distributional: Vectorised Probability Distributions'
@@ -129,6 +135,7 @@ references:
     given-names: Alex
     orcid: https://orcid.org/0000-0002-4985-5160
   year: '2024'
+  doi: 10.32614/CRAN.package.distributional
 - type: software
   title: graphics
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -139,6 +146,23 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
+  doi: 10.32614/CRAN.package.graphics
+- type: software
+  title: lifecycle
+  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
+  notes: Imports
+  url: https://lifecycle.r-lib.org/
+  repository: https://CRAN.R-project.org/package=lifecycle
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+    orcid: https://orcid.org/0000-0003-4757-117X
+  year: '2024'
+  doi: 10.32614/CRAN.package.lifecycle
 - type: software
   title: pillar
   abstract: 'pillar: Coloured Formatting for Columns'
@@ -153,6 +177,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
   year: '2024'
+  doi: 10.32614/CRAN.package.pillar
 - type: software
   title: rlang
   abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
@@ -167,6 +192,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
   year: '2024'
+  doi: 10.32614/CRAN.package.rlang
 - type: software
   title: stats
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -177,6 +203,7 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
+  doi: 10.32614/CRAN.package.stats
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -187,6 +214,7 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
+  doi: 10.32614/CRAN.package.utils
 - type: software
   title: bookdown
   abstract: 'bookdown: Authoring Books and Technical Documents with R Markdown'
@@ -199,6 +227,7 @@ references:
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2024'
+  doi: 10.32614/CRAN.package.bookdown
 - type: software
   title: DT
   abstract: 'DT: A Wrapper of the JavaScript Library ''DataTables'''
@@ -214,6 +243,7 @@ references:
   - family-names: Tan
     given-names: Xianying
   year: '2024'
+  doi: 10.32614/CRAN.package.DT
 - type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
@@ -253,6 +283,7 @@ references:
     name-particle: van den
     orcid: https://orcid.org/0000-0002-9335-7468
   year: '2024'
+  doi: 10.32614/CRAN.package.ggplot2
 - type: software
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
@@ -265,6 +296,7 @@ references:
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2024'
+  doi: 10.32614/CRAN.package.jsonlite
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -277,6 +309,7 @@ references:
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2024'
+  doi: 10.32614/CRAN.package.knitr
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -320,6 +353,7 @@ references:
     email: rich@posit.co
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2024'
+  doi: 10.32614/CRAN.package.rmarkdown
 - type: software
   title: spelling
   abstract: 'spelling: Tools for Spell Checking in R'
@@ -335,6 +369,7 @@ references:
     given-names: Jim
     email: james.hester@rstudio.com
   year: '2024'
+  doi: 10.32614/CRAN.package.spelling
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
@@ -346,6 +381,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
   year: '2024'
+  doi: 10.32614/CRAN.package.testthat
   version: '>= 3.0.0'
 - type: software
   title: vdiffr
@@ -371,8 +407,6 @@ references:
     given-names: Vaudor
     email: lise.vaudor@ens-lyon.fr
   year: '2024'
+  doi: 10.32614/CRAN.package.vdiffr
   version: '>= 1.0.7'
-identifiers:
-- type: url
-  value: https://epiverse-trace.github.io/epiparameter/
 
