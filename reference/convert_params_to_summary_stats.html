@@ -84,7 +84,7 @@ analytically given the parameters.</p>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S3 method for class 'epidist'</span></span>
+<span><span class="co"># S3 method for class 'epiparameter'</span></span>
 <span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -198,8 +198,8 @@ and its parameters are <code>meanlog</code> and <code>sdlog</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># example using &lt;epidist&gt;</span></span></span>
-<span class="r-in"><span><span class="va">epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span>single_epidist <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># example using &lt;epiparameter&gt;</span></span></span>
+<span class="r-in"><span><span class="va">epiparameter</span> <span class="op">&lt;-</span> <span class="fu"><a href="epiparameter_db.html">epiparameter_db</a></span><span class="op">(</span>single_epiparameter <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using Linton N, Kobayashi T, Yang Y, Hayashi K, Akhmetzhanov A, Jung S, Yuan</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> B, Kinoshita R, Nishiura H (2020). “Incubation Period and Other</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Epidemiological Characteristics of 2019 Novel Coronavirus Infections</span>
@@ -207,7 +207,7 @@ and its parameters are <code>meanlog</code> and <code>sdlog</code>.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> &lt;https://doi.org/10.3390/jcm9020538&gt;.. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation use the 'get_citation' function</span>
-<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="va">epidist</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="va">epiparameter</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mean</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9.7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -233,16 +233,16 @@ and its parameters are <code>meanlog</code> and <code>sdlog</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 46586.04</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># example using &lt;epidist&gt; and specifying parameters</span></span></span>
-<span class="r-in"><span><span class="va">epidist</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="co"># example using &lt;epiparameter&gt; and specifying parameters</span></span></span>
+<span class="r-in"><span><span class="va">epiparameter</span> <span class="op">&lt;-</span> <span class="fu"><a href="epiparameter_db.html">epiparameter_db</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  disease <span class="op">=</span> <span class="st">"Influenza"</span>,</span></span>
 <span class="r-in"><span>  author <span class="op">=</span> <span class="st">"Virlogeux"</span>,</span></span>
 <span class="r-in"><span>  subset <span class="op">=</span> <span class="va">prob_dist</span> <span class="op">==</span> <span class="st">"weibull"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 4 results that match the criteria (3 are parameterised). </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epidist to return a single entry. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epiparameter to return a single entry. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
-<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="va">epidist</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">convert_params_to_summary_stats</span><span class="op">(</span><span class="va">epiparameter</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mean</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>

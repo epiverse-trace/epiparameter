@@ -113,17 +113,17 @@ contributors.</p>
 <p>The {epiparameter} R package is a library of epidemiological
 parameters, and provides a class (i.e. data structure) and helper
 functions for working with epidemiological parameters and distributions.
-The <code>&lt;epidist&gt;</code> class is the main functional object for
-working with epidemiological parameters and can hold information on
-delay distributions (e.g. incubation period, serial interval,
-onset-to-death distribution) and offspring distributions. The class has
-a number of methods, including allowing the user to easily calculate the
-PDF, CDF, and quantile, generate random numbers, calculate the
-distribution mean, and plot the distribution. An
-<code>&lt;epidist&gt;</code> object can be created with the constructor
-function <code><a href="../reference/epidist.html">epidist()</a></code>, and if uncertain whether an object is
-an <code>&lt;epidist&gt;</code>, it can be validated with
-<code><a href="../reference/validate_epidist.html">validate_epidist()</a></code>.</p>
+The <code>&lt;epiparameter&gt;</code> class is the main functional
+object for working with epidemiological parameters and can hold
+information on delay distributions (e.g. incubation period, serial
+interval, onset-to-death distribution) and offspring distributions. The
+class has a number of methods, including allowing the user to easily
+calculate the PDF, CDF, and quantile, generate random numbers, calculate
+the distribution mean, and plot the distribution. An
+<code>&lt;epiparameter&gt;</code> object can be created with the
+constructor function <code><a href="../reference/epiparameter.html">epiparameter()</a></code>, and if uncertain
+whether an object is an <code>&lt;epiparameter&gt;</code>, it can be
+validated with <code><a href="../reference/validate_epiparameter.html">validate_epiparameter()</a></code>.</p>
 <p>The package also converts distribution parameters to summary
 statistics, and vice versa. This is achieved either by conversion or
 extraction and both of these methods and the functions used are
@@ -133,17 +133,17 @@ conversion in {epiparameter} vignette</a>.</p>
 <div class="section level2">
 <h2 id="output">Output<a class="anchor" aria-label="anchor" href="#output"></a>
 </h2>
-<p>The output of the <code><a href="../reference/epidist.html">epidist()</a></code> constructor function is an
-<code>&lt;epidist&gt;</code> object. This is a list of nine elements,
-where each element is either a single type
+<p>The output of the <code><a href="../reference/epiparameter.html">epiparameter()</a></code> constructor function is
+an <code>&lt;epiparameter&gt;</code> object. This is a list of nine
+elements, where each element is either a single type
 (e.g. <code>character</code>), a non-nested <code>list</code> or another
-class. Classes as <code>&lt;epidist&gt;</code> elements are used when
-there is existing well developed infrastructure for handling certain
-data types. The <code>$prod_dist</code> element uses a distribution
-class – if there is a parameterised distribution available – using
-either the <code>&lt;distribution&gt;</code> class from {distributional}
-or the <code>&lt;distcrete&gt;</code> class from {distcrete}. The
-<code>$citation</code> is handled using the
+class. Classes as <code>&lt;epiparameter&gt;</code> elements are used
+when there is existing well developed infrastructure for handling
+certain data types. The <code>$prod_dist</code> element uses a
+distribution class – if there is a parameterised distribution available
+– using either the <code>&lt;distribution&gt;</code> class from
+{distributional} or the <code>&lt;distcrete&gt;</code> class from
+{distcrete}. The <code>$citation</code> is handled using the
 <code>&lt;bibentry&gt;</code> class from the {utils} package (included
 as part of the base R recommended packages).</p>
 <p>Other functions return the simplest type possible, this may be an
@@ -156,7 +156,7 @@ lists.</p>
 <ul>
 <li><p>The conversion functions (<code>convert_*</code>) are S3 generic
 functions with methods provided by {epiparameter} for
-<code>character</code> and <code>&lt;epidist&gt;</code> input. This
+<code>character</code> and <code>&lt;epiparameter&gt;</code> input. This
 follows the design pattern of other packages, such as <a href="https://dplyr.tidyverse.org/" class="external-link">{dplyr}</a>, which export their key
 data transformation functions as S3 generics to allow other developers
 to extend the conversions to other data objects.</p></li>
@@ -169,17 +169,17 @@ package namespace compared to exporting a conversion function for every
 distribution.</p></li>
 <li><p>If there are a large number of entries returned when reading
 epidemiological parameters from the library using the
-<code><a href="../reference/epidist_db.html">epidist_db()</a></code> function, it can flood the console, due to the
-default <code>list</code> printing in R. This is the reasoning for the
-<code>&lt;multi_epidist&gt;</code> object which is a minimal class to
-enable cleaner and more descriptive printing for a large list of
-<code>&lt;epidist&gt;</code> objects. The
-<code><a href="../reference/print.multi_epidist.html">print.multi_epidist()</a></code> prints a header with metadata on the
-number of <code>&lt;epidist&gt;</code> objects and number of diseases
-and epidemiological distributions in the list. It also lists all the
-diseases and epidemiological parameters returned. The footer of the
-<code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function states the number of
-<code>&lt;epidist&gt;</code> objects not shown, guides to use
+<code><a href="../reference/epiparameter_db.html">epiparameter_db()</a></code> function, it can flood the console, due
+to the default <code>list</code> printing in R. This is the reasoning
+for the <code>&lt;multi_epiparameter&gt;</code> object which is a
+minimal class to enable cleaner and more descriptive printing for a
+large list of <code>&lt;epiparameter&gt;</code> objects. The
+<code><a href="../reference/print.multi_epiparameter.html">print.multi_epiparameter()</a></code> prints a header with metadata on
+the number of <code>&lt;epiparameter&gt;</code> objects and number of
+diseases and epidemiological distributions in the list. It also lists
+all the diseases and epidemiological parameters returned. The footer of
+the <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> function states the number of
+<code>&lt;epiparameter&gt;</code> objects not shown, guides to use
 <code>print(n = ...)</code> and <code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> and a link
 to the online database vignette (<code>database.Rmd</code>). Information
 in the header and footer considered metadata or advice is prefixed with
@@ -192,7 +192,7 @@ avoids having to ensure that S3 methods are registered. Examples of S3
 dispatch for exported functions are <code><a href="../reference/get_parameters.html">get_parameters()</a></code> and
 <code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>. Examples of internal
 dispatch using <code><a href="https://rdrr.io/r/base/switch.html" class="external-link">switch()</a></code> and <code><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call()</a></code> are
-<code>clean_epidist_params()</code> and
+<code>clean_params()</code> and
 <code><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats.character()</a></code>.</p></li>
 <li><p>The function naming convention is for internal functions to have
 a dot (.) prefix (e.g. <code><a href="../reference/dot-convert_params_lnorm.html">.convert_params_lnorm()</a></code>).</p></li>

@@ -83,7 +83,7 @@ of publication.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">parameter_tbl</span><span class="op">(</span></span>
-<span>  <span class="va">multi_epidist</span>,</span>
+<span>  <span class="va">multi_epiparameter</span>,</span>
 <span>  disease <span class="op">=</span> <span class="st">"all"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"all"</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="st">"all"</span></span>
@@ -94,9 +94,9 @@ of publication.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-multi-epidist">multi_epidist<a class="anchor" aria-label="anchor" href="#arg-multi-epidist"></a></dt>
-<dd><p>Either an <code>&lt;epidist&gt;</code> object or a list of <code>&lt;epidist&gt;</code>
-objects.</p></dd>
+<dl><dt id="arg-multi-epiparameter">multi_epiparameter<a class="anchor" aria-label="anchor" href="#arg-multi-epiparameter"></a></dt>
+<dd><p>Either an <code>&lt;epiparameter&gt;</code> object or a list of
+<code>&lt;epiparameter&gt;</code> objects.</p></dd>
 
 
 <dt id="arg-disease">disease<a class="anchor" aria-label="anchor" href="#arg-disease"></a></dt>
@@ -120,11 +120,11 @@ epidemiological distribution type.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">epidist_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"COVID-19"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">epiparameter_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="epiparameter_db.html">epiparameter_db</a></span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"COVID-19"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 27 results that match the criteria (22 are parameterised). </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epidist to return a single entry. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epiparameter to return a single entry. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
-<span class="r-in"><span><span class="fu">parameter_tbl</span><span class="op">(</span>multi_epidist <span class="op">=</span> <span class="va">epidist_list</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">parameter_tbl</span><span class="op">(</span>multi_epiparameter <span class="op">=</span> <span class="va">epiparameter_list</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Parameter table:</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A data frame:    27 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    disease  pathogen epi_distribution prob_distribution author  year sample_size</span>
@@ -142,12 +142,12 @@ epidemiological distribution type.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 17 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># example filtering an existing list to incubation periods</span></span></span>
-<span class="r-in"><span><span class="va">epidist_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidist_db.html">epidist_db</a></span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"COVID-19"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">epiparameter_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="epiparameter_db.html">epiparameter_db</a></span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"COVID-19"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 27 results that match the criteria (22 are parameterised). </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epidist to return a single entry. </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epiparameter to return a single entry. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
 <span class="r-in"><span><span class="fu">parameter_tbl</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  multi_epidist <span class="op">=</span> <span class="va">epidist_list</span>,</span></span>
+<span class="r-in"><span>  multi_epiparameter <span class="op">=</span> <span class="va">epiparameter_list</span>,</span></span>
 <span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Parameter table:</span></span>
