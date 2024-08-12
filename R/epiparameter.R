@@ -335,14 +335,19 @@ assert_epiparameter <- function(x) {
     stop("Object should be of class epiparameter", call. = FALSE)
   }
 
+  list_names <- c(
+    "disease", "pathogen", "epi_dist", "prob_dist", "uncertainty",
+    "summary_stats", "citation", "metadata", "method_assess", "notes"
+  )
+  missing_list_names <- list_names[!list_names %in% attributes(x)$names]
+  if (length(missing_list_names > 0)) {
+    stop(
+      "Object is missing ", toString(missing_list_names), call. = FALSE
+    )
+  }
+
   # check for class invariants
   stopifnot(
-    "epiparameter object does not contain the correct attributes" =
-      c(
-        "disease", "epi_dist", "prob_dist", "uncertainty", "summary_stats",
-        "citation", "metadata", "method_assess", "notes"
-      ) %in%
-        attributes(x)$names,
     "epiparameter must contain a disease (single character string)" =
     checkmate::test_string(x$disease),
     "epiparameter must contain an epidemiological distribution" =

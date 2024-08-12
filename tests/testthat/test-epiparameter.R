@@ -322,7 +322,7 @@ test_that("assert_epiparameter catches class faults when expected", {
 
   expect_error(
     assert_epiparameter(epiparameter_obj),
-    regexp = "epiparameter object does not contain the correct attributes"
+    regexp = "Object is missing disease"
   )
 
   epiparameter_obj <- new_epiparameter(
