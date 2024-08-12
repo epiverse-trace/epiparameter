@@ -393,6 +393,29 @@ test_that("assert_epiparameter fails as expected with input class", {
   )
 })
 
+test_that("test_epiparameter returns TRUE as expected", {
+  suppressMessages(
+    ep <- epiparameter_db(single_epiparameter = TRUE)
+  )
+  expect_true(test_epiparameter(ep))
+})
+
+test_that("test_epiparameter returns FALSE as expected", {
+  expect_false(test_epiparameter(1))
+  suppressMessages(
+    ep <- epiparameter_db(single_epiparameter = TRUE)
+  )
+  ep1 <- ep
+  ep1$disease <- NULL
+  expect_false(test_epiparameter(ep1))
+  ep2 <- ep
+  ep2$disease <- 1
+  expect_false(test_epiparameter(ep2))
+  ep3 <- ep
+  ep3$citation <- "reference"
+  expect_false(test_epiparameter(ep3))
+})
+
 test_that("density works as expected on continuous epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
