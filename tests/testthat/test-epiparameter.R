@@ -255,10 +255,10 @@ test_that("new_epiparameter works with minimal viable input", {
 
   expect_s3_class(epiparameter_obj, class = "epiparameter")
   expect_length(epiparameter_obj, 10)
-  expect_s3_class(validate_epiparameter(epiparameter_obj), class = "epiparameter")
+  expect_s3_class(assert_epiparameter(epiparameter_obj), class = "epiparameter")
 })
 
-test_that("validate_epiparameter passes when expected", {
+test_that("assert_epiparameter passes when expected", {
   epiparameter_obj <- suppressMessages(
     new_epiparameter(
       disease = "ebola",
@@ -291,10 +291,10 @@ test_that("validate_epiparameter passes when expected", {
     )
   )
 
-  expect_silent(validate_epiparameter(epiparameter = epiparameter_obj))
+  expect_silent(assert_epiparameter(epiparameter_obj))
 })
 
-test_that("validate_epiparameter catches class faults when expected", {
+test_that("assert_epiparameter catches class faults when expected", {
   epiparameter_obj <- new_epiparameter(
     disease = "ebola",
     pathogen = "ebola_virus",
@@ -321,7 +321,7 @@ test_that("validate_epiparameter catches class faults when expected", {
   epiparameter_obj$disease <- NULL
 
   expect_error(
-    validate_epiparameter(epiparameter = epiparameter_obj),
+    assert_epiparameter(epiparameter_obj),
     regexp = "epiparameter object does not contain the correct attributes"
   )
 
@@ -351,7 +351,7 @@ test_that("validate_epiparameter catches class faults when expected", {
   epiparameter_obj$disease <- factor("disease")
 
   expect_error(
-    validate_epiparameter(epiparameter = epiparameter_obj),
+    assert_epiparameter(epiparameter_obj),
     regexp = "(epiparameter must contain a disease)"
   )
 
@@ -381,14 +381,14 @@ test_that("validate_epiparameter catches class faults when expected", {
   epiparameter_obj$epi_dist <- c("incubation", "period")
 
   expect_error(
-    validate_epiparameter(epiparameter = epiparameter_obj),
+    assert_epiparameter(epiparameter_obj),
     regexp = "epiparameter must contain an epidemiological distribution"
   )
 })
 
-test_that("validate_epiparameter fails as expected with input class", {
+test_that("assert_epiparameter fails as expected with input class", {
   expect_error(
-    validate_epiparameter(epiparameter = 1),
+    assert_epiparameter(1),
     regexp = "Object should be of class epiparameter"
   )
 })

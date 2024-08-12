@@ -90,7 +90,7 @@ convert_summary_stats_to_params.character <- function(x = c("lnorm", "gamma",
 #' @export
 convert_summary_stats_to_params.epiparameter <- function(x, ...) {
   # check input
-  x <- validate_epiparameter(x)
+  x <- assert_epiparameter(x)
   # capture dynamic dots
   dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
@@ -222,7 +222,7 @@ convert_params_to_summary_stats.character <- function(x = c("lnorm", "gamma",
 #' @export
 convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   # check input
-  x <- validate_epiparameter(x)
+  x <- assert_epiparameter(x)
   # capture dynamic dots
   dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 

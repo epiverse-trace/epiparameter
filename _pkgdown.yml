@@ -18,7 +18,7 @@ reference:
     - ends_with("\\.epiparameter")
     - -has_keyword("epiparameter_distribution_functions")
     - -starts_with("convert_")
-    - validate_epiparameter
+    - assert_epiparameter
     - ends_with("\\.multi_epiparameter")
 
   - title: Accessors

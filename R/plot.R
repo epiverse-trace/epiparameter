@@ -44,7 +44,7 @@ plot.epiparameter <- function(x,
                               cumulative = FALSE,
                               ...) {
   # check input
-  validate_epiparameter(x)
+  assert_epiparameter(x)
   checkmate::assert_logical(cumulative, any.missing = FALSE, len = 1)
 
   # capture dots
