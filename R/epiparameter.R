@@ -340,7 +340,7 @@ assert_epiparameter <- function(x) {
     "summary_stats", "citation", "metadata", "method_assess", "notes"
   )
   missing_list_names <- list_names[!list_names %in% attributes(x)$names]
-  if (length(missing_list_names > 0)) {
+  if (length(missing_list_names) != 0) {
     stop(
       "Object is missing ", toString(missing_list_names), call. = FALSE
     )
@@ -367,6 +367,38 @@ assert_epiparameter <- function(x) {
   )
 
   invisible(x)
+}
+
+#' Test whether an object is a valid `<epiparameter>` object
+#'
+#' @param x An \R object.
+#'
+#' @return A boolean `logical` whether the object is a valid `<epiparameter>`
+#' object.
+#' @export
+test_epiparameter <- function(x) { # nolint cyclocomp_linter
+  if (!is_epiparameter(x)) return(FALSE)
+
+  list_names <- c(
+    "disease", "pathogen", "epi_dist", "prob_dist", "uncertainty",
+    "summary_stats", "citation", "metadata", "method_assess", "notes"
+  )
+  missing_list_names <- list_names[!list_names %in% attributes(x)$names]
+  if (length(missing_list_names) != 0) return(FALSE)
+
+  valid_elements <- checkmate::test_string(x$disease) &&
+    checkmate::test_string(x$epi_dist) &&
+    (checkmate::test_multi_class(
+      x$prob_dist, classes = c("distribution", "distcrete")
+    ) || checkmate::test_string(x$prob_dist, na.ok = TRUE)) &&
+    all(
+      is.list(x$uncertainty), is.list(x$summary_stats), is.list(x$metadata)
+    ) &&
+    inherits(x$citation, "bibentry") &&
+    checkmate::test_string(x$notes)
+
+  if (!valid_elements) return(FALSE)
+  return(TRUE)
 }
 
 #' Print method for `<epiparameter>` class
