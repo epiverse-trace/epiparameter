@@ -18,6 +18,7 @@
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/as.function.epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/as_epiparameter.data.frame.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/as_epiparameter.html</loc></url>
+<url><loc>https://epiverse-trace.github.io/epiparameter/reference/assert_epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/calc_disc_dist_quantile.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/calc_dist_params.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/check_optim_conv.html</loc></url>
@@ -79,6 +80,6 @@
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/print.epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/print.multi_epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/reexports.html</loc></url>
-<url><loc>https://epiverse-trace.github.io/epiparameter/reference/validate_epiparameter.html</loc></url>
+<url><loc>https://epiverse-trace.github.io/epiparameter/reference/test_epiparameter.html</loc></url>
 </urlset>
 
