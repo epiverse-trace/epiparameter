@@ -920,3 +920,62 @@ mean.epiparameter <- function(x, ...) {
   # return mean or NA
   mean
 }
+
+#' [c()] method for `<epiparameter>` class
+#'
+#' @param ... [dots] Objects to be concatenated.
+#'
+#' @return An `<epiparameter>` or list of `<epiparameter>` objects.
+#' @export
+#'
+#' @examples
+#' db <- epiparameter_db()
+#'
+#' # combine two <epiparameter> objects into a list
+#' c(db[[1]], db[[2]])
+#'
+#' # combine a list of <epiparameter> objects and a single <epiparameter> object
+#' c(db, db[[1]])
+c.epiparameter <- function(...) {
+  x <- list(...)
+  if (!all(vapply(x, FUN = inherits, FUN.VALUE = logical(1),
+                  what = c("epiparameter", "multi_epiparameter")))) {
+    stop(
+      "Can only combine <epiparameter> or <multi_epiparameter> objects",
+      call. = FALSE
+    )
+  }
+
+  # if <multi_epiparameter> are in `...` build the new unnested list of
+  # <epiparameter> objects iteratively in order to preserve input order
+  if (any(vapply(x, FUN = inherits, FUN.VALUE = logical(1),
+                 what = "multi_epiparameter"))) {
+    # list is not pre-allocated as it's easier to append arbitrary length
+    # <multi_epiparameter> objects
+    ep_list <- list()
+    for (i in seq_along(x)) {
+      if (is_epiparameter(x[[i]])) {
+        ep_list <- c(ep_list, list(x[[i]]))
+      } else {
+        # unclass to prevent recursive dispatch
+        ep_list <- c(ep_list, unclass(x[[i]]))
+      }
+    }
+  } else {
+    ep_list <- x
+  }
+
+  # for when `...` is a single <epiparameter>
+  if (length(ep_list) == 1) {
+    ep_list <- ep_list[[1]]
+  } else {
+    # will always be triggered if called from c.multi_epiparameter
+    class(ep_list) <- "multi_epiparameter"
+  }
+  ep_list
+}
+
+#' @export
+c.multi_epiparameter <- function(...) {
+  c.epiparameter(...)
+}
