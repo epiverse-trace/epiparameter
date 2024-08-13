@@ -46,15 +46,15 @@ print.multi_epiparameter <- function(x, ..., n = NULL) {
   # header
   writeLines(
     pillar::style_subtle(
-      cli::pluralize("# List of {n_entries} <epiparameter> object{?s}\n")
+      cli::pluralize(tr_("# List of {n_entries} <epiparameter> object{?s}\n"))
     )
   )
   writeLines(
     pillar::style_subtle(
       c(
-        paste("Number of diseases:", length(alpha_unique_diseases)),
+        tr_("Number of diseases: ", length(alpha_unique_diseases)),
         paste(cli::symbol$pointer, alpha_unique_diseases, collapse = " "),
-        paste("Number of epi distributions:", length(alpha_unique_epi_dists)),
+        tr_("Number of epi distributions: ", length(alpha_unique_epi_dists)),
         paste(cli::symbol$pointer, alpha_unique_epi_dists, collapse = " ")
       )
     )
@@ -66,10 +66,11 @@ print.multi_epiparameter <- function(x, ..., n = NULL) {
   # footer
   footer <- ""
   if (extra_n >= 1) {
-    footer <- paste0(
-      "# ", cli::symbol$info, " ", extra_n, " more elements\n",
-      "# ", cli::symbol$info, " Use `print(n = ...)` to see more elements.\n"
+    footer <- c(
+      sprintf(tr_("%s more elements"), extra_n),
+      tr_("Use `print(n = ...)` to see more elements.\n")
     )
+    footer <- paste("#", cli::symbol$info, footer, collapse = "\n")
   }
 
   writeLines(

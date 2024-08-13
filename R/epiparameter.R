@@ -440,22 +440,22 @@ print.epiparameter <- function(x, ...) {
 format.epiparameter <- function(x, ...) {
     writeLines(
       c(
-        sprintf("Disease: %s", x$disease),
-        sprintf("Pathogen: %s", x$pathogen),
-        sprintf("Epi Distribution: %s", .clean_string(x$epi_dist)),
-        sprintf("Study: %s", format(x$citation))
+        sprintf(tr_("Disease: %s"), x$disease),
+        sprintf(tr_("Pathogen: %s"), x$pathogen),
+        sprintf(tr_("Epi Distribution: %s"), .clean_string(x$epi_dist)),
+        sprintf(tr_("Study: %s"), format(x$citation))
       )
     )
 
   if (is.object(x$prob_dist) || is.character(x$prob_dist)) {
     dist_string <- ifelse(
       test = inherits(x$prob_dist, "distcrete"),
-      yes = "Distribution: discrete %s",
-      no = "Distribution: %s"
+      yes = tr_("Distribution: discrete %s"),
+      no = tr_("Distribution: %s")
     )
     writeLines(sprintf(dist_string, family(x)))
   } else {
-    writeLines("Parameters: <no parameters>")
+    writeLines(tr_("Parameters: <no parameters>"))
   }
 
   if (is.object(x$prob_dist)) {
@@ -470,7 +470,7 @@ format.epiparameter <- function(x, ...) {
 
     writeLines(
       c(
-        sprintf("Parameters:"),
+        sprintf(tr_("Parameters:")),
         sprintf(
           "  %s: %s",
           names(params),
