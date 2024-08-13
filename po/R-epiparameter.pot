@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: epiparameter 0.2.0.9000\n"
-"POT-Creation-Date: 2024-08-13 13:27+0200\n"
+"POT-Creation-Date: 2024-08-13 13:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,22 +42,22 @@ msgstr ""
 msgid "Parameters:"
 msgstr ""
 
-#: print.R:49
-msgid "# List of {n_entries} <epiparameter> object{?s}"
-msgstr ""
-
-#: print.R:55
-msgid "Number of diseases:"
+#: print.R:50
+msgid "List of {n_entries} <epiparameter> object{?s}"
 msgstr ""
 
 #: print.R:57
+msgid "Number of diseases:"
+msgstr ""
+
+#: print.R:59
 msgid "Number of epi distributions:"
 msgstr ""
 
-#: print.R:70
+#: print.R:72
 msgid "%s more elements"
 msgstr ""
 
-#: print.R:71
+#: print.R:73
 msgid "Use `print(n = ...)` to see more elements."
 msgstr ""
