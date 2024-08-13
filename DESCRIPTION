@@ -50,6 +50,7 @@ VignetteBuilder:
 Config/Needs/check: mrc-ide/epireview
 Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview
 Config/testthat/edition: 3
+Config/potools/style: explicit
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
