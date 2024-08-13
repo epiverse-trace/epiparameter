@@ -1232,3 +1232,65 @@ test_that("as.data.frame works for <epiparameter> from db", {
       "notes")
   )
 })
+
+{
+  suppressMessages(
+    db <- epiparameter_db()
+  )
+  ep <- db[[1]]
+}
+
+test_that("c.epiparameter works as expected with two <epiparameter>s", {
+  res <- c(ep, ep)
+  expect_s3_class(res, class = "multi_epiparameter")
+  expect_length(res, 2)
+  expect_s3_class(res[[1]], class = "epiparameter")
+})
+
+test_that("c.epiparameter works as expected with one <epiparameter>", {
+  res <- c(ep)
+  expect_s3_class(res, class = "epiparameter")
+  expect_true(test_epiparameter(res))
+})
+
+test_that("c.epiparameter works with <epiparameter> & <multi_epiparameter>", {
+  res <- c(ep, db)
+  expect_s3_class(res, class = "multi_epiparameter")
+  expect_length(res, length(db) + 1)
+  expect_s3_class(res[[1]], class = "epiparameter")
+})
+
+test_that("c.multi_epiparameter works with two <multi_epiparameter>s", {
+  res <- c(db, db)
+  expect_s3_class(res, class = "multi_epiparameter")
+  expect_length(res, 244)
+  expect_s3_class(res[[1]], class = "epiparameter")
+})
+
+test_that("c.multi_epiparameter works with one <multi_epiparameter>", {
+  res <- c(db)
+  expect_s3_class(res, class = "multi_epiparameter")
+  expect_length(res, length(db))
+})
+
+test_that("c.multi_epiparameter works <multi_epiparameter> & <epiparameter>", {
+  res <- c(db, ep)
+  expect_s3_class(res, class = "multi_epiparameter")
+  expect_length(res, length(db) + 1)
+  expect_s3_class(res[[1]], class = "epiparameter")
+})
+
+test_that("c.epiparameter preserves input order", {
+  res <- c(ep, db, ep)
+  expect_s3_class(res, class = "multi_epiparameter")
+  expect_length(res, length(db) + 2)
+  expect_true(identical(res[[1]], res[[2]]))
+  expect_true(identical(res[[1]], res[[length(res)]]))
+})
+
+test_that("c.epiparameter fails as expected", {
+  expect_error(
+    c(ep, 1),
+    regexp = "Can only combine <epiparameter> or <multi_epiparameter> objects"
+  )
+})
