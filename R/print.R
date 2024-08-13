@@ -46,7 +46,9 @@ print.multi_epiparameter <- function(x, ..., n = NULL) {
   # header
   writeLines(
     pillar::style_subtle(
-      cli::pluralize(tr_("# List of {n_entries} <epiparameter> object{?s}\n"))
+      cli::pluralize(
+        "# ", tr_("List of {n_entries} <epiparameter> object{?s}\n")
+      )
     )
   )
   writeLines(
