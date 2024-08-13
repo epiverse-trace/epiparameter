@@ -11,3 +11,8 @@ release_bullets <- function() { # nocov start
   )
 
 } # nocov end
+
+# Copied from potools
+tr_ <- function(...) {
+  enc2utf8(gettext(paste0(...), domain = "R-{mypackage}"))
+}
