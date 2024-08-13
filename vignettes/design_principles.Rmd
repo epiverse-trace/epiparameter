@@ -32,6 +32,14 @@ Other functions return the simplest type possible, this may be an atomic vector 
 
 ## Design decisions
 
+* The `<epiparameter>` class is designed to be a core unit for working with epidemiological parameters. It is designed in parallel to other epidemiological data structures such as a the `<contactmatrix>` class from the [{contactmatrix} R package](https://socialcontactdata.github.io/contactmatrix/index.html). The design principles of the `<epiparameter>` class are aligned with the [`<contactmatrix>` design principles](https://socialcontactdata.github.io/contactmatrix/articles/design-principles.html). These include:
+    - A `new_*<class>()` constructor
+    - Two validation functions
+        - `assert_<class>()`
+        - `test_<class>()`
+    - An `is_<class>()` checker to determine if an object is of a given class (without checking the validity of class)
+    - Coercion generic `as_<class>()`.
+
 * The conversion functions (`convert_*`) are S3 generic functions with methods provided by {epiparameter} for `character` and `<epiparameter>` input. This follows the design pattern of other packages, such as [{dplyr}](https://dplyr.tidyverse.org/), which export their key data transformation functions as S3 generics to allow other developers to extend the conversions to other data objects.
 
 * The conversion functions are designed to have a single function exported to the user for summary statistics to parameters, and another function exported for parameters to summary statistics. These functions use a `switch()` to dispatch to the internal conversion functions. This provides a minimal number of conversion functions in the package namespace compared to exporting a conversion function for every distribution.
