@@ -581,7 +581,7 @@ to the user but has not yet been incorporated into the {epiparameter}
 database, these parameters can be manually added to the library.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># wrap &lt;epiparameter&gt; in list to append to database</span></span>
-<span><span class="va">new_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/append.html" class="external-link">append</a></span><span class="op">(</span><span class="va">db</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">covid_incubation</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">new_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/append.html" class="external-link">append</a></span><span class="op">(</span><span class="va">db</span>, <span class="va">covid_incubation</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">new_db</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; Disease: Mpox</span></span>
