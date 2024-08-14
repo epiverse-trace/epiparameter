@@ -216,7 +216,11 @@ dispatch using <code><a href="https://rdrr.io/r/base/switch.html" class="externa
 <code>clean_params()</code> and
 <code><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats.character()</a></code>.</p></li>
 <li><p>The function naming convention is for internal functions to have
-a dot (.) prefix (e.g. <code><a href="../reference/dot-convert_params_lnorm.html">.convert_params_lnorm()</a></code>).</p></li>
+a dot (.) prefix (e.g. <code><a href="../reference/dot-convert_params_lnorm.html">.convert_params_lnorm()</a></code>). The only
+function that breaks with this convention is
+<code><a href="../reference/new_epiparameter.html">new_epiparameter()</a></code> as advanced users of the package may
+want to call in the internal low-level constructor, and adding a dot
+prefix to this function may make it harder for users to find.</p></li>
 </ul>
 </div>
 <div class="section level2">
