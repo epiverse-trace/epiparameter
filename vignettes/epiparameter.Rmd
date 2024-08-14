@@ -202,7 +202,7 @@ If a set of epidemiological parameter has been inferred and is known to the user
 
 ```{r add-to-library}
 # wrap <epiparameter> in list to append to database
-new_db <- append(db, list(covid_incubation))
+new_db <- append(db, covid_incubation)
 tail(new_db, n = 3)
 ```
 
