@@ -68,10 +68,10 @@
 #'   w = 0.5
 #' )
 create_prob_dist <- function(prob_dist,
-                                          prob_dist_params,
-                                          discretise = FALSE,
-                                          truncation = NA,
-                                          ...) {
+                             prob_dist_params,
+                             discretise = FALSE,
+                             truncation = NA,
+                             ...) {
   checkmate::assert_character(
     prob_dist,
     min.chars = 1,

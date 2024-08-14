@@ -281,7 +281,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
 #' @return A list of summary statistics
 #' @keywords internal
 #' @noRd
-get_sd <- function(x) {
+.get_sd <- function(x) {
   if ("sd" %in% names(x)) {
     return(x)
   }
@@ -301,7 +301,7 @@ get_sd <- function(x) {
 #' @return Invisibly returns a list of summary statistics
 #' @keywords internal
 #' @noRd
-chk_ss <- function(x) {
+.chk_ss <- function(x) {
   checkmate::assert_list(
     x = x,
     types = "numeric",
@@ -387,10 +387,10 @@ chk_ss <- function(x) {
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input
-  chk_ss(x)
+  .chk_ss(x)
 
   # convert var or cv into sd if available
-  x <- get_sd(x)
+  x <- .get_sd(x)
 
   if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     # mean and sd to params
@@ -482,10 +482,10 @@ chk_ss <- function(x) {
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input
-  chk_ss(x)
+  .chk_ss(x)
 
   # convert var or cv into sd if available
-  x <- get_sd(x)
+  x <- .get_sd(x)
 
   if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     # mean and sd to params
@@ -571,10 +571,10 @@ chk_ss <- function(x) {
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input
-  chk_ss(x)
+  .chk_ss(x)
 
   # convert var or cv into sd if available
-  x <- get_sd(x)
+  x <- .get_sd(x)
 
   if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
     # mean and sd to params
@@ -676,10 +676,10 @@ chk_ss <- function(x) {
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input
-  chk_ss(x)
+  .chk_ss(x)
 
   # convert var or cv into sd if available
-  x <- get_sd(x)
+  x <- .get_sd(x)
 
   if (checkmate::test_number(x$mean) && checkmate::test_number(x$dispersion)) {
     prob <- 1 / (1 + x$mean / x$dispersion)
@@ -799,7 +799,7 @@ chk_ss <- function(x) {
   )
 
   # convert var or cv into sd if available
-  x <- get_sd(x)
+  x <- .get_sd(x)
 
   # calculate mean
   if (checkmate::test_number(x$mean)) {

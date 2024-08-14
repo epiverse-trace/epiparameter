@@ -199,44 +199,44 @@ test_that("convert_params_to_summary_stats.epiparameter fails as expected", {
   )
 })
 
-test_that("get_sd works as expected", {
+test_that(".get_sd works as expected", {
   x <- list(mean = 1, sd = 1)
-  x <- get_sd(x)
+  x <- .get_sd(x)
   expect_identical(x, list(mean = 1, sd = 1))
   x <- list(mean = 1, var = 1)
-  x <- get_sd(x)
+  x <- .get_sd(x)
   expect_identical(x, list(mean = 1, var = 1, sd = 1))
   x <- list(mean = 1, cv = 1)
-  x <- get_sd(x)
+  x <- .get_sd(x)
   expect_identical(x, list(mean = 1, cv = 1, sd = 1))
 })
 
-test_that("chk_ss is working as expected", {
+test_that(".chk_ss is working as expected", {
   x <- list(mean = 1, sd = 1)
-  expect_no_error(chk_ss(x))
+  expect_no_error(.chk_ss(x))
   x <- c(mean = 1, sd = 1)
   expect_error(
-    chk_ss(x),
+    .chk_ss(x),
     regexp = "(Assertion)*(failed: Must be of type)*(list)*(double)"
   )
   x <- list(mean = 1)
   expect_error(
-    chk_ss(x),
+    .chk_ss(x),
     regexp = "(Assertion)*(failed: Must have length)*(2)*(1)"
   )
   x <- list(mean = 1, 1)
   expect_error(
-    chk_ss(x),
+    .chk_ss(x),
     regexp = "(Assertion)*(failed: Must have names)*(empty)"
   )
   x <- list(mean = 1, sd = "1")
   expect_error(
-    chk_ss(x),
+    .chk_ss(x),
     regexp = "(Assertion)*(failed: May only contain)*(numeric)*(character)"
   )
   x <- list(mean = 1, ss = 1)
   expect_error(
-    chk_ss(x),
+    .chk_ss(x),
     regexp = "(Assertion)*(failed: Must be a subset)*(has additional elements)"
   )
 })

@@ -57,7 +57,7 @@ interval around mean and standard deviation.}
 calculate the probability distribution parameters from summary statistics if
 distribution parameters are not provided. Default is \code{TRUE}. In the case when
 sufficient summary statistics are provided and the parameter(s) of the
-distribution are not, the \code{\link[=calc_dist_params]{calc_dist_params()}} function is called to
+distribution are not, the \code{\link[=.calc_dist_params]{.calc_dist_params()}} function is called to
 calculate the parameters and add them to the \code{epiparameter} object created.}
 
 \item{citation}{A \verb{<bibentry>} with the citation of the source of the

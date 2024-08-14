@@ -29,10 +29,10 @@
 #'
 #' @return A named `numeric` vector with parameters.
 #' @keywords internal
-calc_dist_params <- function(prob_dist, # nolint cyclocomp
-                             prob_dist_params,
-                             summary_stats,
-                             sample_size) {
+.calc_dist_params <- function(prob_dist, # nolint cyclocomp
+                              prob_dist_params,
+                              summary_stats,
+                              sample_size) {
   if (is.na(prob_dist)) {
     message(
       "No adequate summary statistics available to calculate the parameters ",
@@ -49,7 +49,7 @@ calc_dist_params <- function(prob_dist, # nolint cyclocomp
   )
   if (is_percentiles) {
     # convert percentile names to numbers
-    percentiles <- get_percentiles(summary_stats$quantiles)
+    percentiles <- .get_percentiles(summary_stats$quantiles)
   } else {
     percentiles <- NA
   }

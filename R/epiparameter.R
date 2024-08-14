@@ -59,7 +59,7 @@ new_epiparameter <- function(disease = character(),
     )
   } else if (auto_calc_params) {
     # calculate parameters if not provided
-    prob_dist_params <- calc_dist_params(
+    prob_dist_params <- .calc_dist_params(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params,
       summary_stats = summary_stats,
@@ -167,7 +167,7 @@ new_epiparameter <- function(disease = character(),
 #' calculate the probability distribution parameters from summary statistics if
 #' distribution parameters are not provided. Default is `TRUE`. In the case when
 #' sufficient summary statistics are provided and the parameter(s) of the
-#' distribution are not, the [calc_dist_params()] function is called to
+#' distribution are not, the [.calc_dist_params()] function is called to
 #' calculate the parameters and add them to the `epiparameter` object created.
 #' @param citation A `<bibentry>` with the citation of the source of the
 #' data or the paper that inferred the distribution parameters, use

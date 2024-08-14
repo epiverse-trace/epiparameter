@@ -3,7 +3,7 @@
 #'
 #' @description Parameters of a probability distribution can be extracted using
 #' the values given at percentiles of the distribution and the percentiles using
-#' [extract_param()]. [get_percentiles()] takes a named vector of percentiles
+#' [extract_param()]. [.get_percentiles()] takes a named vector of percentiles
 #' (names) and values at those percentiles (elements in the vector) and selects
 #' two values as lower and upper percentiles to be used in extraction. If a
 #' lower and upper percentile are not available `NA` is returned.
@@ -16,13 +16,13 @@
 #' example the 5th and 95th percentile can be given as
 #'
 #' ```r
-#' get_percentiles(c("5" = 1, "95" = 10))
+#' .get_percentiles(c("5" = 1, "95" = 10))
 #' ```
 #'
 #' or the 2.5th and 97.5th percentile can be given as
 #'
 #' ```r
-#' get_percentiles(c("2.5" = 1, "97.5" = 10))
+#' .get_percentiles(c("2.5" = 1, "97.5" = 10))
 #' ```
 #'
 #' @param percentiles A named vector of values at percentiles with the names the
@@ -30,7 +30,7 @@
 #'
 #' @return A named `numeric` vector of percentiles.
 #' @keywords internal
-get_percentiles <- function(percentiles) {
+.get_percentiles <- function(percentiles) {
   # check input
   checkmate::assert_numeric(percentiles, names = "unique")
   checkmate::assert_numeric(
@@ -40,7 +40,7 @@ get_percentiles <- function(percentiles) {
   )
 
   # extract a lower and an upper percentile
-  percentiles <- get_sym_percentiles(percentiles)
+  percentiles <- .get_sym_percentiles(percentiles)
 
   # return percentiles
   percentiles
@@ -55,7 +55,7 @@ get_percentiles <- function(percentiles) {
 #' @return A named `numeric` vector of two elements with the lower
 #' (first element) and upper (second element) percentiles.
 #' @keywords internal
-get_sym_percentiles <- function(percentiles) {
+.get_sym_percentiles <- function(percentiles) {
   # make a copy of percentiles
   percentiles_ <- percentiles
 

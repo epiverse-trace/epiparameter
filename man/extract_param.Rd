@@ -36,7 +36,7 @@ element \verb{$max_iter} is a \code{numeric} specifying the maximum number of ti
 the parameter extraction will run optimisation before returning result early.
 This prevents overly long optimisation loops if optimisation is unstable and
 does not converge over multiple iterations. Default is 1000 iterations. List
-element \verb{$tolerance} is passed to \code{\link[=check_optim_conv]{check_optim_conv()}} for tolerance on
+element \verb{$tolerance} is passed to \code{\link[=.check_optim_conv]{.check_optim_conv()}} for tolerance on
 parameter convergence over iterations of optimisation. Elements of in the
 control list are not passed to \code{\link[=optim]{optim()}}.}
 }
