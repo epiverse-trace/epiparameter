@@ -33,7 +33,7 @@
 #' the parameter extraction will run optimisation before returning result early.
 #' This prevents overly long optimisation loops if optimisation is unstable and
 #' does not converge over multiple iterations. Default is 1000 iterations. List
-#' element `$tolerance` is passed to [check_optim_conv()] for tolerance on
+#' element `$tolerance` is passed to [.check_optim_conv()] for tolerance on
 #' parameter convergence over iterations of optimisation. Elements of in the
 #' control list are not passed to [optim()].
 #'
@@ -150,7 +150,7 @@ extract_param <- function(type = c("percentiles", "range"),
     optim_params_list[[i + 1]] <- optim_params
     i <- i + 1
 
-    optim_conv <- check_optim_conv(
+    optim_conv <- .check_optim_conv(
       optim_params_list = optim_params_list,
       optim_params = optim_params,
       tolerance = ctrl$tolerance
@@ -204,11 +204,11 @@ extract_param <- function(type = c("percentiles", "range"),
   if (!missing(percentiles)) {
     names(values) <- c("lower", "upper")
     values_in <- c(values, q1 = percentiles[1], q2 = percentiles[2])
-    fit_func <- fit_percentiles
+    fit_func <- .fit_percentiles
   } else if (!missing(samples)) {
     names(values) <- c("median", "lower", "upper")
     values_in <- c(values, n = samples)
-    fit_func <- fit_range
+    fit_func <- .fit_range
   } else {
     stop("percentiles or samples arguments must be specified", call. = FALSE)
   }
@@ -257,7 +257,7 @@ extract_param <- function(type = c("percentiles", "range"),
 #'
 #' @return Boolean
 #' @keywords internal
-check_optim_conv <- function(optim_params_list,
+.check_optim_conv <- function(optim_params_list,
                              optim_params,
                              tolerance) {
   optim_conv <- FALSE
@@ -302,9 +302,9 @@ check_optim_conv <- function(optim_params_list,
 #' @keywords internal
 #' @author Adam Kucharski, Joshua W. Lambert
 #' @name extraction_functions
-fit_range <- function(param,
-                      val,
-                      dist = c("lnorm", "gamma", "weibull", "norm")) {
+.fit_range <- function(param,
+                       val,
+                       dist = c("lnorm", "gamma", "weibull", "norm")) {
   # check input
   dist <- match.arg(dist)
 
@@ -360,9 +360,9 @@ fit_range <- function(param,
 }
 
 #' @rdname extraction_functions
-fit_percentiles <- function(param,
-                            val,
-                            dist = c("lnorm", "gamma", "weibull", "norm")) {
+.fit_percentiles <- function(param,
+                             val,
+                             dist = c("lnorm", "gamma", "weibull", "norm")) {
   # check input
   dist <- match.arg(dist)
 

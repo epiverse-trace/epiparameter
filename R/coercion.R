@@ -135,9 +135,9 @@ as_epiparameter <- function(x, ...) {
 #' @export
 as_epiparameter.data.frame <- function(x, ...) {
   if (is_epiparameter_df(x)) {
-    epiparameter <- epiparameter_df_to_epiparameter(x, ...)
-  } else if (is_epireview(x)) {
-    epiparameter <- epireview_to_epiparameter(x, ...)
+    epiparameter <- .epiparameter_df_to_epiparameter(x, ...)
+  } else if (.is_epireview(x)) {
+    epiparameter <- .epireview_to_epiparameter(x, ...)
   } else {
     stop(
       "<data.frame> input into as_epiparameter() cannot be converted to ",
@@ -174,7 +174,7 @@ is_epiparameter_df <- function(x) {
 #'
 #' @return A single `logical` boolean.
 #' @keywords internal
-is_epireview <- function(x) {
+.is_epireview <- function(x) {
   valid_colnames <- all(epiparameter::epireview_core_cols %in% colnames(x))
   # return logical
   valid_colnames
@@ -188,7 +188,7 @@ is_epireview <- function(x) {
 #'
 #' @inherit epiparameter return
 #' @keywords internal
-epiparameter_df_to_epiparameter <- function(x, ...) { # nolint object_length_linter
+.epiparameter_df_to_epiparameter <- function(x, ...) { # nolint object_length_linter
   # extract probability distribution from list and extract parameters
   # and truncation if available
   prob_dist <- x$prob_distribution[[1]]
@@ -241,7 +241,7 @@ epiparameter_df_to_epiparameter <- function(x, ...) { # nolint object_length_lin
 #' @inherit epiparameter return
 #' @keywords internal
 #' @noRd
-epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
+.epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
   # capture dots and extract article info if supplied
   dots <- list(...)
   article <- dots$article

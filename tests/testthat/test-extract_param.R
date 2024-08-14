@@ -386,8 +386,8 @@ test_that(".extract_param fails as expected", {
   )
 })
 
-test_that("fit_range works for lnorm for valid input", {
-  lnorm_range <- fit_range(
+test_that(".fit_range works for lnorm for valid input", {
+  lnorm_range <- .fit_range(
     param = c(meanlog = 2.0, sdlog = 0.5),
     val = c(median = 8, lower = 4, upper = 13, n = 20),
     dist = "lnorm"
@@ -396,8 +396,8 @@ test_that("fit_range works for lnorm for valid input", {
   expect_equal(lnorm_range, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_range works for gamma for valid input", {
-  gamma_range <- fit_range(
+test_that(".fit_range works for gamma for valid input", {
+  gamma_range <- .fit_range(
     param = c(shape = 2.0, scale = 0.5),
     val = c(median = 8, lower = 4, upper = 13, n = 20),
     dist = "gamma"
@@ -406,8 +406,8 @@ test_that("fit_range works for gamma for valid input", {
   expect_equal(gamma_range, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_range works for weibull for valid input", {
-  weibull_range <- fit_range(
+test_that(".fit_range works for weibull for valid input", {
+  weibull_range <- .fit_range(
     param = c(shape = 2.0, scale = 0.5),
     val = c(median = 8, lower = 4, upper = 13, n = 20),
     dist = "weibull"
@@ -416,8 +416,8 @@ test_that("fit_range works for weibull for valid input", {
   expect_equal(weibull_range, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_range works for norm for valid input", {
-  norm_range <- fit_range(
+test_that(".fit_range works for norm for valid input", {
+  norm_range <- .fit_range(
     param = c(mean = 2.0, sd = 0.5),
     val = c(median = 8, lower = 4, upper = 13, n = 20),
     dist = "norm"
@@ -426,8 +426,8 @@ test_that("fit_range works for norm for valid input", {
   expect_equal(norm_range, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_percentiles works for lnorm for valud input", {
-  lnorm <- fit_percentiles(
+test_that(".fit_percentiles works for lnorm for valud input", {
+  lnorm <- .fit_percentiles(
     param = c(meanlog = 2.0, sdlog = 0.5),
     val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875),
     dist = "lnorm"
@@ -436,8 +436,8 @@ test_that("fit_percentiles works for lnorm for valud input", {
   expect_equal(lnorm, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_percentiles works for gamma for valid input", {
-  gamma <- fit_percentiles(
+test_that(".fit_percentiles works for gamma for valid input", {
+  gamma <- .fit_percentiles(
     param = c(shape = 2.0, scale = 0.5),
     val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875),
     dist = "gamma"
@@ -446,8 +446,8 @@ test_that("fit_percentiles works for gamma for valid input", {
   expect_equal(gamma, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_percentiles works for weibull for valid input", {
-  weibull <- fit_percentiles(
+test_that(".fit_percentiles works for weibull for valid input", {
+  weibull <- .fit_percentiles(
     param = c(shape = 2.0, scale = 0.5),
     val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875),
     dist = "weibull"
@@ -456,8 +456,8 @@ test_that("fit_percentiles works for weibull for valid input", {
   expect_equal(weibull, reference, tolerance = testthat_tolerance())
 })
 
-test_that("fit_percentiles works for norm for valud input", {
-  norm <- fit_percentiles(
+test_that(".fit_percentiles works for norm for valud input", {
+  norm <- .fit_percentiles(
     param = c(mean = 2.0, sd = 0.5),
     val = c(lower = 6.0, upper = 13.0, q1 = 0.125, q2 = 0.875),
     dist = "norm"

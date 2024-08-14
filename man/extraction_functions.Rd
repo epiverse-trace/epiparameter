@@ -2,13 +2,13 @@
 % Please edit documentation in R/extract_param.R
 \name{extraction_functions}
 \alias{extraction_functions}
-\alias{fit_range}
-\alias{fit_percentiles}
+\alias{.fit_range}
+\alias{.fit_percentiles}
 \title{Function for extracting distribution parameters}
 \usage{
-fit_range(param, val, dist = c("lnorm", "gamma", "weibull", "norm"))
+.fit_range(param, val, dist = c("lnorm", "gamma", "weibull", "norm"))
 
-fit_percentiles(param, val, dist = c("lnorm", "gamma", "weibull", "norm"))
+.fit_percentiles(param, val, dist = c("lnorm", "gamma", "weibull", "norm"))
 }
 \arguments{
 \item{param}{Named \code{numeric} vector of the distribution parameters to be

@@ -1,5 +1,5 @@
-test_that("calc_dist_params works as expected converting from mean and sd", {
-  params <- calc_dist_params(
+test_that(".calc_dist_params works as expected converting from mean and sd", {
+  params <- .calc_dist_params(
     prob_dist = "gamma",
     prob_dist_params = NA,
     summary_stats = create_summary_stats(mean = 5, sd = 2),
@@ -10,8 +10,8 @@ test_that("calc_dist_params works as expected converting from mean and sd", {
   expect_named(params, expected = c("shape", "scale"))
 })
 
-test_that("calc_dist_params works as expected converting for different dist", {
-  params <- calc_dist_params(
+test_that(".calc_dist_params works as expected converting for different dist", {
+  params <- .calc_dist_params(
     prob_dist = "lnorm",
     prob_dist_params = NA,
     summary_stats = create_summary_stats(mean = 5, sd = 2),
@@ -22,9 +22,9 @@ test_that("calc_dist_params works as expected converting for different dist", {
   expect_named(params, expected = c("meanlog", "sdlog"))
 })
 
-test_that("calc_dist_params works as expected extracting from percentiles", {
+test_that(".calc_dist_params works as expected extracting from percentiles", {
   # messages for numerical optimisation suppressed
-  params <- suppressMessages(calc_dist_params(
+  params <- suppressMessages(.calc_dist_params(
     prob_dist = "gamma",
     prob_dist_params = NA,
     summary_stats = create_summary_stats(
@@ -37,7 +37,7 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
   expect_named(params, expected = c("shape", "scale"))
 
   # messages for numerical optimisation suppressed
-  params <- suppressMessages(calc_dist_params(
+  params <- suppressMessages(.calc_dist_params(
     prob_dist = "lnorm",
     prob_dist_params = NA,
     summary_stats = create_summary_stats(
@@ -50,9 +50,9 @@ test_that("calc_dist_params works as expected extracting from percentiles", {
   expect_named(params, expected = c("meanlog", "sdlog"))
 })
 
-test_that("calc_dist_params works as expected extracting from median & range", {
+test_that(".calc_dist_params works as expected extracting from median & range", {
   # messages for numerical optimisation suppressed
-  params <- suppressMessages(calc_dist_params(
+  params <- suppressMessages(.calc_dist_params(
     prob_dist = "gamma",
     prob_dist_params = NA,
     summary_stats = create_summary_stats(
@@ -67,9 +67,9 @@ test_that("calc_dist_params works as expected extracting from median & range", {
   expect_named(params, expected = c("shape", "scale"))
 })
 
-test_that("calc_dist_params fails as expected extracting without sample size", {
+test_that(".calc_dist_params fails as expected extracting without sample size", {
   expect_message(
-    params <- calc_dist_params(
+    params <- .calc_dist_params(
       prob_dist = "gamma",
       prob_dist_params = NA,
       summary_stats = create_summary_stats(
@@ -85,9 +85,9 @@ test_that("calc_dist_params fails as expected extracting without sample size", {
   expect_true(is.na(params))
 })
 
-test_that("calc_dist_params messages as expected without summary stats", {
+test_that(".calc_dist_params messages as expected without summary stats", {
   expect_message(
-    params <- calc_dist_params(
+    params <- .calc_dist_params(
       prob_dist = "gamma",
       prob_dist_params = NA,
       summary_stats = create_summary_stats(mean = 5, median = 5),
