@@ -1,4 +1,4 @@
-if (!requireNamespace("epireview", quietly = TRUE)) {
+if (requireNamespace("epireview", quietly = TRUE)) {
   # suppress message about loading data
   ebola_data <- suppressMessages(
     epireview::load_epidata("ebola")
