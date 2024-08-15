@@ -41,7 +41,8 @@ test_that("as_epiparameter works for lassa incubation period (issue #306)", {
   )
   lassa_params <- lassa_data$params
   lassa_incub <- lassa_params[
-    which(lassa_params$article_label == "Akhmetzhanov 2019" &
+    # TODO: temp use id until epireview #122 is fixed
+    which(lassa_params$id == "62332f18a631d2cdaafc5c5a500caea5" &
             lassa_params$parameter_type == "Human delay - incubation period"),
   ]
   # suppress warning and message about citation
@@ -134,7 +135,8 @@ test_that("as_epiparameter works for lassa incubation overwritten prob_dist", {
   )
   lassa_params <- lassa_data$params
   lassa_incub <- lassa_params[
-    which(lassa_params$article_label == "Akhmetzhanov 2019" &
+    # TODO: temp use id until epireview #122 is fixed
+    which(lassa_params$id == "62332f18a631d2cdaafc5c5a500caea5" &
             lassa_params$parameter_type == "Human delay - incubation period"),
   ]
   # suppress warning and message about citation
