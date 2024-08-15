@@ -16,21 +16,27 @@
 #' epiparameter_db(epi_dist = "serial interval", disease = "ebola")
 #'
 #' @export
-aggregate.multi_epiparameter <- function(
-    x,
-    synthesis_method = c("meta_analysis", "naive"),
-    weights = c("sample_size", "unweighted"),
-    allowed_pairs = list(c("mean", "sd"), c("median", "sd"), c("median", "IQR")),
-    ...
-  ) {
+aggregate.multi_epiparameter <- function(x,
+                                         synthesis_method = c("meta_analysis",
+                                                              "naive"),
+                                         weights = c("sample_size",
+                                                     "unweighted"),
+                                         allowed_pairs = list(
+                                           c("mean", "sd"),
+                                           c("median", "sd"),
+                                           c("median", "IQR")
+                                         ),
+                                         ...) {
 
   chkDots(...)
 
   # Control that the multi_epiparameter object contains only the same type of
   # epi_dist, on the same pathogen
   stopifnot(
-    "All epidists in x must refer to the same pathogen" = length(unique(vapply(e, `[[`, "pathogen", character(1)))) == 1,
-    "All epidists in x must refer to the same type of epi_dist" = length(unique(vapply(e, `[[`, "epi_dist", character(1)))) == 1
+    "All <epiparameter>s in x must refer to the same pathogen" =
+      length(unique(vapply(x, `[[`, "pathogen", character(1)))) == 1,
+    "All epidists in x must refer to the same type of epi_dist" =
+      length(unique(vapply(x, `[[`, "epi_dist", character(1)))) == 1
   )
 
   synthesis_method <- match.arg(synthesis_method)
@@ -59,18 +65,18 @@ aggregate.multi_epiparameter <- function(
     warning(
       "Some estimates have been dropped because they don't report a central estimate and population level variability estimate as specified in `allowed_pairs`"
     )
-    synthetized_central_estimate
+    synthesised_central_estimate
   }
 
   if (synthesis_method == "naive") {
-    synthetized_central_estimate
+    synthesised_central_estimate
   }
 
   # This kind of methods loses population-level variability information.
   # We can now only get the central estimate and uncertainty around this central estimate
-  epidist(
+  epiparameter(
     summary_stats = list(
-      mean = synthetized_estimate
+      mean = synthesised_estimate,
       mean_ci_limits = c(lower_bound, upper_bound),
       mean_ci = c(value1, value2)
     )
