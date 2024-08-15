@@ -2,10 +2,8 @@ test_that("as_epiparameter works for ebola infectious period (issue #327 & #306)
   # {epireview} is not a dependency so only run if already on system
   skip_if_not_installed("epireview")
   # suppress warning and message about loading data
-  ebola <- suppressWarnings(
-    suppressMessages(
-      epireview::load_epidata("ebola")
-    )
+  ebola <- suppressMessages(
+    epireview::load_epidata("ebola")
   )
   ebola_params <- ebola$params
   ebola_infectiousness <- ebola_params[
@@ -34,10 +32,8 @@ test_that("as_epiparameter works for lassa incubation period (issue #306)", {
   # {epireview} is not a dependency so only run if already on system
   skip_if_not_installed("epireview")
   # suppress warning and message about loading data
-  lassa_data <- suppressWarnings(
-    suppressMessages(
-      epireview::load_epidata("lassa")
-    )
+  lassa_data <- suppressMessages(
+    epireview::load_epidata("lassa")
   )
   lassa_params <- lassa_data$params
   lassa_incub <- lassa_params[
@@ -65,10 +61,8 @@ test_that("as_epiparameter works for ebola serial interval (issue #303)", {
   # {epireview} is not a dependency so only run if already on system
   skip_if_not_installed("epireview")
   # suppress warning and message about loading data
-  ebola_data <- suppressWarnings(
-    suppressMessages(
-      epireview::load_epidata("ebola")
-    )
+  ebola_data <- suppressMessages(
+    epireview::load_epidata("ebola")
   )
   ebola_params <- ebola_data$params
   ebola_serial <- ebola_params[
@@ -96,10 +90,8 @@ test_that("as_epiparameter works for ebola SI assumed prob_dist (issue #310)", {
   # {epireview} is not a dependency so only run if already on system
   skip_if_not_installed("epireview")
   # suppress warning and message about loading data
-  ebola_data <- suppressWarnings(
-    suppressMessages(
-      epireview::load_epidata("ebola")
-    )
+  ebola_data <- suppressMessages(
+    epireview::load_epidata("ebola")
   )
   ebola_params <- ebola_data$params
   ebola_serial <- ebola_params[
@@ -128,10 +120,8 @@ test_that("as_epiparameter works for lassa incubation overwritten prob_dist", {
   # {epireview} is not a dependency so only run if already on system
   skip_if_not_installed("epireview")
   # suppress warning and message about loading data
-  lassa_data <- suppressWarnings(
-    suppressMessages(
-      epireview::load_epidata("lassa")
-    )
+  lassa_data <- suppressMessages(
+    epireview::load_epidata("lassa")
   )
   lassa_params <- lassa_data$params
   lassa_incub <- lassa_params[
@@ -161,11 +151,10 @@ test_that("as_epiparameter works for overwritten prob_dist with same parameters"
   # {epireview} is not a dependency so only run if already on system
   skip_if_not_installed("epireview")
   # suppress warning and message about loading data
-  ebola_data <- suppressWarnings(
-    suppressMessages(
-      epireview::load_epidata("ebola")
-    )
+  ebola_data <- suppressMessages(
+    epireview::load_epidata("ebola")
   )
+
   ebola_params <- ebola_data$params
   ebola_si <- ebola_params[
     which(
@@ -196,10 +185,8 @@ test_that("as_epiparameter fails as expected with overwritten prob_dist", {
   # {epireview} is not a dependency so only run if already on system
   skip_if_not_installed("epireview")
   # suppress warning and message about loading data
-  ebola_data <- suppressWarnings(
-    suppressMessages(
-      epireview::load_epidata("ebola")
-    )
+  ebola_data <- suppressMessages(
+    epireview::load_epidata("ebola")
   )
   ebola_params <- ebola_data$params
   ebola_si <- ebola_params[
