@@ -64,6 +64,13 @@ get_parameters.epiparameter <- function(x, ...) {
   params
 }
 
+#' @export
+get_parameters.multi_epiparameter <- function(x, ...) {
+  params <- lapply(x, get_parameters)
+  # return list of parameters
+  params
+}
+
 #' Get citation from an object
 #'
 #' Extract the citation stored in an \R object.
