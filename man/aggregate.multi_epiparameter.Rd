@@ -2,38 +2,101 @@
 % Please edit documentation in R/aggregate.R
 \name{aggregate.multi_epiparameter}
 \alias{aggregate.multi_epiparameter}
-\title{Convert a \verb{<multi_epiparameter>} object to a single \verb{<epiparameter>}}
+\title{Aggregate a \verb{<multi_epiparameter>} object to a single \verb{<epiparameter>}}
 \usage{
 \method{aggregate}{multi_epiparameter}(
   x,
-  synthesis_method = c("meta_analysis", "naive"),
-  weights = c("sample_size", "unweighted"),
-  allowed_pairs = list(c("mean", "sd"), c("median", "sd"), c("median", "IQR")),
-  ...
+  method = c("linear-OP", "log-OP", "sampling", "mean_params", "mean_summary_stats"),
+  weights = c("unweighted", "sample_size"),
+  ...,
+  allowed_pairs = list(c("mean", "sd")),
+  domain = seq(-1e+05, 1e+05, length.out = 1000),
+  n_samples = 1000
 )
 }
 \arguments{
 \item{x}{A \verb{<multi_epiparameter>} object.}
 
-\item{synthesis_method}{The method used to aggregate the estimates. Can be
-either \code{"meta_analysis"} (default) or \code{"naive"}.}
+\item{method}{The method used to aggregate the estimates. Can be
+either \code{"linear-OP"} (default), \code{"log-OP"}, \code{"sampling"}, \code{"mean_params"},
+or \code{"mean_summary_stats"}. See details for more information.}
 
 \item{weights}{The method used to weight the estimates. Can be either
-\code{"sample_size"} (default) or \code{"unweighted"}.}
-
-\item{allowed_pairs}{A list of pairs of population-level summary statistics.
-to}
+\code{"unweighted"} (default), or \code{"sample_size"}, or a \code{numeric} vector of
+weights with equal length to the number of \verb{<epiparameter>} objects supplied
+to \code{x}.}
 
 \item{...}{\link{dots} Not used, extra arguments supplied will cause a warning.}
+
+\item{allowed_pairs}{A list of pairs of population-level summary statistics.
+Currently this is only mean and standard deviation (\code{c("mean", "sd")}). The
+\code{allowed_pairs} argument is only applicable when
+\code{method = "mean_summary_stats"}. More combinations of summary statistics
+will be added in the future.}
+
+\item{domain}{A \code{numeric} vector over which to evaluate continuous probability
+distributions when aggregating. Only applicable when \code{method} is
+\code{"linear-OP"} or \code{"log-OP"}.}
+
+\item{n_samples}{A single \code{numeric} for the number of times to sample each
+probability distribution when \code{method = "sampling"}. For weighted aggregation
+the number of samples for each probability distribution is weighted given
+\code{weights}. The total number of samples is always equal to
+\code{n_samples * length(x)}.}
 }
 \value{
-An \verb{<epiparameter>} object with synthetised central estimate value
-and uncertainty
+An \verb{<epiparameter>} object with either synthesised parameters or
+summary statistics, or a density vector.
 }
 \description{
-Convert a \verb{<multi_epiparameter>} object to a single \verb{<epiparameter>}
+Aggregrate multiple epidemiological parameter sets into a single consensus
+set. Multiple methods for aggregation are available see Details.
+}
+\details{
+The \code{"linear-OP"} method is linear opinion pool, which is the combination of
+distributions by
+
+\deqn{p(\theta) = \sum_{i=1}^{n} w_i p_i(\theta)}
+
+where \eqn{w_i} are the weights and \eqn{p_i} are the probability
+distributions. The weights must sum to one so if the weights given to the
+\code{weights} argument do not them will be normalised.
+
+One potential downside of linear opinion pooling is that it does not preserve
+the parametric probability distribution of it's input distributions. The
+output \verb{<epiparameter>} contains a \code{numeric} vector for the aggregated
+probability density.
+
+The \code{"log-OP"} method is logarithmic opinion pool, which is the combination
+of distributions by
+
+\deqn{p(\theta) = k \prod_{i=1}^{n} p_i(\theta)^{w_i}}
+
+The \code{"sampling"} method generates a random sample from each input
+\verb{<epiparameter>} and outputs a \code{numeric} vector fo the density (calculated
+using \code{\link[=density]{density()}}).
+
+The \code{"mean_params"} method calculates the arithmetic mean of the each
+parameter for each \verb{<epiparameter>}. This method requires that all
+\verb{<epiparameter>} objects have the same parameterised probability
+distribution \code{\link[=see family.epiparameter]{see family.epiparameter()}}, otherwise it will error.
+
+The \code{"mean_summary_stats"} method calculates the arithmetic mean of the
+summary statistics for each \verb{<epiparameter>} object. Currently only the mean
+and standard deviation are accepted summary statistics (see \code{allowed_pairs}
+argument). This method requires that all \verb{<epiparameter>} objects contain a
+mean and standard deviation in \verb{$summary_stats}.
 }
 \examples{
-epiparameter_db(epi_dist = "serial interval", disease = "ebola")
+ebola_si <- epiparameter_db(epi_dist = "serial interval", disease = "ebola")
 
+aggregate(ebola_si)
+
+aggregate(ebola_si, method = "sampling")
+
+aggregate(ebola_si, method = "mean_params")
+}
+\references{
+Clemen, R.T. and Winkler R.L. (2012) Aggregating Probability Distributions.
+Advances in Decision Analysis.
 }
