@@ -186,10 +186,11 @@ ebola_si_rows <- ebola_params[
 ebola_si_rows
 ```
 
-We will select the 358th entry, which is a serial interval, as this entry has estimated and reported a Weibull distribution:
+We will select the 17th entry, as this entry has estimated and reported a Weibull distribution:
 
 ```{r, select-ebola-entry}
-ebola_si <- ebola_delays[358, ]
+ebola_si <-  ebola_si_rows[
+  ebola_si_rows$parameter_data_id=="0c3e02f80addfccc1017fa619fba76c5",]
 ebola_si
 ```
 
