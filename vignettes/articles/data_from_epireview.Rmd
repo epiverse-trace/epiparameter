@@ -137,6 +137,7 @@ multi_row_ids <- marburg_params$id[multi_row_entries]
 ```{r, subset-multi-row-entries}
 multi_row_marburg_params <-
   marburg_params[marburg_params$id %in% multi_row_ids, ]
+multi_row_marburg_params
 ```
 
 In this case there are two studies for Marburg with more than one entry (row) in the {epireview} database. Out of these studies, we select the first two rows, which contain the mean and standard deviation.
