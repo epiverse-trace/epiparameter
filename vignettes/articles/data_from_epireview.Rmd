@@ -152,7 +152,10 @@ In this case, we know that the mean and standard deviation from the chosen rows 
 * For future {epireview} pathogens (excluding SARS) mean and standard deviation estimates that match will form one row in the params database. Current software development at {epireview} is working on ensuring compatibility between these formats.
 
 ```{r, subset-multi-row-marburg-entry}
-marburg_gt <- multi_row_marburg_params[1:2, ]
+marburg_gt <- multi_row_marburg_params[
+  multi_row_marburg_params$parameter_data_id %in%
+    c("056a8d6b5f9aee3622d3bd8b715d4296" , "ce3976e2e15df3f6fb92f6deb2db2a29"),]
+marburg_gt
 ```
 
 We can now convert this to an `<epiparameter>`.
