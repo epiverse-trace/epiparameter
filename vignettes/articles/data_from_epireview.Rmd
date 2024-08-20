@@ -51,10 +51,10 @@ marburg_incubation_period <- marburg_params[
 marburg_incubation_period
 ```
 
-We will select the second entry, which is an incubation period, to use as the first example:
+We will select the second entry to use as the first example:
 
 ```{r, select-marburg-entry}
-marburg_incub <- marburg_params[2, ]
+marburg_incub <- marburg_incubation_period[2, ]
 marburg_incub
 ```
 
