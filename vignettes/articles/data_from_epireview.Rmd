@@ -43,16 +43,12 @@ We will start by just using the epidemiological parameter table to convert infor
 marburg_params <- marburg_data$params
 ```
 
-Given that currently only delay distributions are supported for the conversion (this feature is still under active development) we will filter to only include these.
+Out of these parameters, subset the data to only keep those rows that contain incubation periods for Marburg.
 
 ```{r, subset-marburg-params}
-delay_dist_rows <- grepl(
-  pattern = "Human delay",
-  x = marburg_params$parameter_type,
-  fixed = TRUE
-)
-marburg_params <- marburg_params[delay_dist_rows, ]
-marburg_params
+marburg_incubation_period <- marburg_params[
+  marburg_params$parameter_type_short=="incubation_period",]
+marburg_incubation_period
 ```
 
 We will select the second entry, which is an incubation period, to use as the first example:
