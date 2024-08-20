@@ -174,20 +174,16 @@ For this example we will load the Ebola epidemiological parameters from the {epi
 ebola_data <- load_epidata("ebola")
 ```
 
-We will again subset the data to just use the epidemiological parameter table, and subset that table to just the delay distributions.
+We will again subset the data to just use the epidemiological parameter table, and select those rows containing a serial interval.
 
 ```{r, ebola-params}
 ebola_params <- ebola_data$params
 ```
 
 ```{r, subset-ebola-params}
-delay_dist_rows <- grepl(
-  pattern = "Human delay",
-  x = ebola_params$parameter_type,
-  fixed = TRUE
-)
-ebola_delays <- ebola_params[delay_dist_rows, ]
-ebola_delays
+ebola_si_rows <- ebola_params[
+  ebola_params$parameter_type_short=="serial_interval",]
+ebola_si_rows
 ```
 
 We will select the 358th entry, which is a serial interval, as this entry has estimated and reported a Weibull distribution:
