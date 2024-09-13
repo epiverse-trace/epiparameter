@@ -44,6 +44,13 @@ new_epiparameter <- function(disease = character(),
       identical(names(prob_dist_params), names(uncertainty))
   )
 
+  # set string to lowercase for downstream case sensitive matching of prob_dist
+  prob_dist <- ifelse(
+    test = is.character(prob_dist),
+    yes = .clean_string(prob_dist),
+    no = prob_dist
+  )
+
   # TODO: formalise if statement below or remove
   # include mean in prob_dist_params
   if (!is.null(summary_stats$mean) && !is.na(summary_stats$mean) &&
