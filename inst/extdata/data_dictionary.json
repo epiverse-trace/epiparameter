@@ -20,7 +20,7 @@
         "description": "The name of the epidemiological distribution type. Names should be whitespace separated within each string.",
         "examples": ["incubation period", "serial interval", "offspring distribution"],
         "type": "string",
-        "enum": ["incubation period", "onset to hospitalisation", "onset to death", "serial interval", "generation time", "offspring distribution", "hospitalisation to death", "hospitalisation to discharge", "notification to death", "notification to discharge", "onset to discharge", "onset to ventilation"]
+        "enum": ["incubation period", "onset to hospitalisation", "onset to death", "serial interval", "generation time", "offspring distribution", "hospitalisation to death", "hospitalisation to discharge", "notification to death", "notification to discharge", "onset to discharge", "onset to ventilation", "case fatality risk"]
       },
       "probability_distribution": {
         "description": "An object containing the name of the probability distribution and its porameters if available.",
