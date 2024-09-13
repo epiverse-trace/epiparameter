@@ -4,7 +4,7 @@ db <- suppressMessages(epiparameter_db())
 test_that("parameter_tbl works as expected supplied with db", {
   dist_tbl <- parameter_tbl(multi_epiparameter = db)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(122L, 7L))
+  expect_identical(dim(dist_tbl), c(125L, 7L))
   expect_named(
     dist_tbl,
     c("disease", "pathogen", "epi_distribution", "prob_distribution",

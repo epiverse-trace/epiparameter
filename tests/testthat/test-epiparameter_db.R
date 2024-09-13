@@ -208,7 +208,7 @@ test_that(".read_epiparameter_db works as expected", {
   db <- .read_epiparameter_db()
   expect_s3_class(db, class = "multi_epiparameter")
   expect_type(db, type = "list")
-  expect_length(db, 122)
+  expect_length(db, 125)
   expect_true(all(vapply(db, is_epiparameter, FUN.VALUE = logical(1))))
 })
 
@@ -244,7 +244,7 @@ test_that("as.data.frame works for <multi_epiparameter>", {
   db <- suppressMessages(epiparameter_db())
   df <- as.data.frame(db)
   expect_s3_class(df, class = "data.frame")
-  expect_identical(dim(df), c(122L, 10L))
+  expect_identical(dim(df), c(125L, 10L))
   expect_identical(
     colnames(df),
     c("disease", "pathogen", "epi_distribution", "prob_distribution",

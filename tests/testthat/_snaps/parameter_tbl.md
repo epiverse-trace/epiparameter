@@ -4,7 +4,7 @@
       dist_tbl
     Output
       # Parameter table:
-      # A data frame:    122 x 7
+      # A data frame:    125 x 7
          disease  pathogen epi_distribution prob_distribution author  year sample_size
          <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
        1 Adenovi~ Adenovi~ incubation peri~ lnorm             Lessl~  2009          14
@@ -17,7 +17,7 @@
        8 Parainf~ Parainf~ incubation peri~ lnorm             Lessl~  2009          11
        9 RSV      RSV      incubation peri~ lnorm             Lessl~  2009          24
       10 Rhinovi~ Rhinovi~ incubation peri~ lnorm             Lessl~  2009          28
-      # i 112 more rows
+      # i 115 more rows
 
 # parameter_tbl works for incubation period with db
 
