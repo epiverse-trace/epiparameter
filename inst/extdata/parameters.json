@@ -11224,7 +11224,7 @@
   "notes": "Database entry per communication K. Charniga, Z. Cucunubá & Laura Gomez Bermeo."
 },
 {
-    "disease": "Chikungunya",
+  "disease": "Chikungunya",
   "pathogen": "Chikungunya Virus",
   "epi_distribution": "generation time",
   "probability_distribution": {
@@ -11460,5 +11460,375 @@
     "phase_bias_adjusted": false
   },
   "notes": "Case fatality risk is given in deaths per 1,000 cases. It was calculated as a cumulative case fatality ratio. CFR is a population-wide estimate. Odds of chikungunya-related death were not significantly different between males and females. Odds of chikungunya-related death were significantly higher for 55-74 years old, and >75 years old compared to <18."
+},
+{
+  "disease": "Mpox",
+  "pathogen": "Mpox Virus",
+  "epi_distribution": "serial interval",
+  "probability_distribution": {
+    "prob_distribution": "Weibull",
+    "parameters": {
+      "shape": 1.63,
+      "shape_ci_limits": [1.20, 2.12],
+      "shape_ci": 95,
+      "scale": 18.29,
+      "scale_ci_limits": [14.35, 22.76],
+      "scale_ci": 95
+    },
+    "offset": 1
+  },
+  "summary_statistics": {
+    "mean": 17.5,
+    "mean_ci_limits": [14.1, 21.5],
+    "mean_ci": 95,
+    "sd": 10.5,
+    "sd_ci_limits": [7.8, 15.1],
+    "sd_ci": 95,
+    "quantile_names": ["2.5", "25", "50", "75", "97.5"],
+    "quantile_values": [3.0, 9.5, 15.6, 23.4, 42.6]
+  },
+  "citation": {
+    "author": [
+      {
+        "given": "Valentina",
+        "family": "Marziano"
+      },
+      {
+        "given": "Giorgio",
+        "family": "Guzzetta"
+      },
+      {
+        "given": "Ira",
+        "family": "Longini"
+      },
+      {
+        "given": "Stefano",
+        "family": "Merler"
+      }
+    ],
+    "title": "Epidemiologic Quantities for Monkeypox Virus Clade I from Historical Data with Implications for Current Outbreaks, Democratic Republic of the Congo",
+    "journal": "Emerging Infectious Diseases",
+    "year": 2024,
+    "pmid": 39255234,
+    "doi": "10.3201/eid3010.240665"
+  },
+  "metadata": {
+    "sample_size": 32,
+    "region": "Sudan and Central African Republic",
+    "transmission_mode": null,
+    "extrinsic": false,
+    "inference_method": "bayesian"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": false,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "These estimates use dataset 1 which is 32 infector-infectee pairs pooled from two datasets from Sudan (n = 13) and Central African Republic (n = 19)."
+},
+{
+  "disease": "Mpox",
+  "pathogen": "Mpox Virus",
+  "epi_distribution": "serial interval",
+  "probability_distribution": {
+    "prob_distribution": "Weibull",
+    "parameters": {
+      "shape": 2.17,
+      "shape_ci_limits": [1.29, 3.19],
+      "shape_ci": 95,
+      "scale": 6.10,
+      "scale_ci_limits": [4.38, 8.38],
+      "scale_ci": 95
+    },
+    "offset": 6
+  },
+  "summary_statistics": {
+    "mean": 11.4,
+    "mean_ci_limits": [9.9, 13.5],
+    "mean_ci": 95,
+    "sd": 2.8,
+    "sd_ci_limits": [1.8, 4.8],
+    "sd_ci": 95,
+    "quantile_names": ["2.5", "25", "50", "75", "97.5"],
+    "quantile_values": [7.1, 9.4, 11.1, 13.2, 17.6]
+  },
+  "citation": {
+    "author": [
+      {
+        "given": "Valentina",
+        "family": "Marziano"
+      },
+      {
+        "given": "Giorgio",
+        "family": "Guzzetta"
+      },
+      {
+        "given": "Ira",
+        "family": "Longini"
+      },
+      {
+        "given": "Stefano",
+        "family": "Merler"
+      }
+    ],
+    "title": "Epidemiologic Quantities for Monkeypox Virus Clade I from Historical Data with Implications for Current Outbreaks, Democratic Republic of the Congo",
+    "journal": "Emerging Infectious Diseases",
+    "year": 2024,
+    "pmid": 39255234,
+    "doi": "10.3201/eid3010.240665"
+  },
+  "metadata": {
+    "sample_size": 11,
+    "region": "Republic of Congo",
+    "transmission_mode": null,
+    "extrinsic": false,
+    "inference_method": "bayesian"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": false,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "These estimates use dataset 2 which is 11 pairs from a hospital-associated outbreak in the Republic of Congo. When comparing model fit between Weibull, gamma and lognormal for dataset 2 the best fit model was the lognormal, however, the authors report the parameters of the Weibull for consistency with other best-fit distributions in the paper, therefore this entry is a Weibull distribution."
+},
+{
+  "disease": "Mpox",
+  "pathogen": "Mpox Virus",
+  "epi_distribution": "incubation period",
+  "probability_distribution": {
+    "prob_distribution": "Weibull",
+    "parameters": {
+      "shape": 2.22,
+      "shape_ci_limits": [1.38, 3.22],
+      "shape_ci": 95,
+      "scale":  6.56,
+      "scale_ci_limits": [5.01, 8.44],
+      "scale_ci": 95
+    },
+    "offset": 4
+  },
+  "summary_statistics": {
+    "mean": 9.8,
+    "mean_ci_limits": [8.5, 11.5],
+    "mean_ci": 95,
+    "sd": 2.9,
+    "sd_ci_limits": [2.0, 4.6],
+    "sd_ci": 95,
+    "quantile_values": [5.2, 7.7, 9.5, 11.7, 16.2],
+    "quantile_names": ["2.5", "25", "50", "75", "97.5"]
+  },
+  "citation": {
+    "author": [
+      {
+        "given": "Valentina",
+        "family": "Marziano"
+      },
+      {
+        "given": "Giorgio",
+        "family": "Guzzetta"
+      },
+      {
+        "given": "Ira",
+        "family": "Longini"
+      },
+      {
+        "given": "Stefano",
+        "family": "Merler"
+      }
+    ],
+    "title": "Epidemiologic Quantities for Monkeypox Virus Clade I from Historical Data with Implications for Current Outbreaks, Democratic Republic of the Congo",
+    "journal": "Emerging Infectious Diseases",
+    "year": 2024,
+    "pmid": 39255234,
+    "doi": "10.3201/eid3010.240665"
+  },
+  "metadata": {
+    "sample_size": null,
+    "region": null,
+    "transmission_mode": null,
+    "extrinsic": false,
+    "inference_method": "bayesian"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": false,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "These are the results presented in the main text of the paper. They do not drastically differ from the estimates that accounted for interval censoring, which are also included in the {epiparameter} database."
+},
+{
+  "disease": "Mpox",
+  "pathogen": "Mpox Virus",
+  "epi_distribution": "incubation period",
+  "probability_distribution": {
+    "prob_distribution": "Weibull",
+    "parameters": {
+      "shape": 2.08,
+      "shape_ci_limits": [1.31, 3.18],
+      "shape_ci": 95,
+      "scale": 6.24,
+      "scale_ci_limits": [4.63, 7.92],
+      "scale_ci": 95
+    },
+    "offset": 4
+  },
+  "summary_statistics": {
+    "quantile_values": [4.1, 7.4, 9.2, 11.2, 15.8],
+    "quantile_names": ["2.5", "25", "50", "75", "97.5"]
+  },
+  "citation": {
+    "author": [
+      {
+        "given": "Valentina",
+        "family": "Marziano"
+      },
+      {
+        "given": "Giorgio",
+        "family": "Guzzetta"
+      },
+      {
+        "given": "Ira",
+        "family": "Longini"
+      },
+      {
+        "given": "Stefano",
+        "family": "Merler"
+      }
+    ],
+    "title": "Epidemiologic Quantities for Monkeypox Virus Clade I from Historical Data with Implications for Current Outbreaks, Democratic Republic of the Congo",
+    "journal": "Emerging Infectious Diseases",
+    "year": 2024,
+    "pmid": 39255234,
+    "doi": "10.3201/eid3010.240665"
+  },
+  "metadata": {
+    "sample_size": null,
+    "region": null,
+    "transmission_mode": null,
+    "extrinsic": false,
+    "inference_method": "bayesian"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": true,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "These are the results presented in the supplementary material of the paper. They do not drastically differ from the estimates that did not account for interval censoring, which are also included in the {epiparameter} database."
+},
+{
+  "disease": "Mpox",
+  "pathogen": "Mpox Virus",
+  "epi_distribution": "generation time",
+  "probability_distribution": {
+    "prob_distribution": null,
+    "parameters": { }
+  },
+  "summary_statistics": {
+    "mean": 17.2,
+    "mean_ci_limits": [14.1, 20.9],
+    "mean_ci": 95
+  },
+  "citation": {
+    "author": [
+      {
+        "given": "Valentina",
+        "family": "Marziano"
+      },
+      {
+        "given": "Giorgio",
+        "family": "Guzzetta"
+      },
+      {
+        "given": "Ira",
+        "family": "Longini"
+      },
+      {
+        "given": "Stefano",
+        "family": "Merler"
+      }
+    ],
+    "title": "Epidemiologic Quantities for Monkeypox Virus Clade I from Historical Data with Implications for Current Outbreaks, Democratic Republic of the Congo",
+    "journal": "Emerging Infectious Diseases",
+    "year": 2024,
+    "pmid": 39255234,
+    "doi": "10.3201/eid3010.240665"
+  },
+  "metadata": {
+    "sample_size": null,
+    "region": null,
+    "transmission_mode": null,
+    "extrinsic": false,
+    "inference_method": "bayesian"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": false,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "Dataset 1..."
+},
+{
+  "disease": "Mpox",
+  "pathogen": "Mpox Virus",
+  "epi_distribution": "generation time",
+  "probability_distribution": {
+    "prob_distribution": null,
+    "parameters": { }
+  },
+  "summary_statistics": {
+    "mean": 11.3,
+    "mean_ci_limits": [9.4, 14.0],
+    "mean_ci": 95
+  },
+  "citation": {
+    "author": [
+      {
+        "given": "Valentina",
+        "family": "Marziano"
+      },
+      {
+        "given": "Giorgio",
+        "family": "Guzzetta"
+      },
+      {
+        "given": "Ira",
+        "family": "Longini"
+      },
+      {
+        "given": "Stefano",
+        "family": "Merler"
+      }
+    ],
+    "title": "Epidemiologic Quantities for Monkeypox Virus Clade I from Historical Data with Implications for Current Outbreaks, Democratic Republic of the Congo",
+    "journal": "Emerging Infectious Diseases",
+    "year": 2024,
+    "pmid": 39255234,
+    "doi": "10.3201/eid3010.240665"
+  },
+  "metadata": {
+    "sample_size": null,
+    "region": null,
+    "transmission_mode": null,
+    "extrinsic": false,
+    "inference_method": "bayesian"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": false,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "Dataset 2..."
 }
 ]
