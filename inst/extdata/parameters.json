@@ -11112,5 +11112,353 @@
     "phase_bias_adjusted": false
   },
   "notes": "SEIR model from 10.1016/j.mbs.2008.06.005 where the IP is assumed to follow a gamma distribution"
+},
+{
+  "disease": "Chikungunya",
+  "pathogen": "Chikungunya Virus",
+  "epi_distribution": "generation time",
+  "probability_distribution": {
+    "prob_distribution": null,
+    "parameters": { }
+  },
+  "summary_statistics": {
+    "mean": 14,
+    "sd": 6.2
+  },
+  "citation": {
+    "author": [
+      {
+        "given": "Henrik",
+        "family": "Salje"
+      },
+      {
+        "given": "Simon",
+        "family": "Cauchemez"
+      },
+      {
+        "given": "Maria Theresa",
+        "family": "Alera"
+      },
+      {
+        "given": "Isabel",
+        "family": "Rodriguez-Barraquer"
+      },
+      {
+        "given": "Butsaya",
+        "family": "Thaisomboonsuk"
+      },
+      {
+        "given": "Anon",
+        "family": "Srikiatkhachorn"
+      },
+      {
+        "given": "Catherine B.",
+        "family": "Lago"
+      },
+      {
+        "given": "Daisy",
+        "family": "Villa"
+      },
+      {
+        "given": "Chonticha",
+        "family": "Klungthong"
+      },
+      {
+        "given": "Ilya A.",
+        "family": "Tac-An"
+      },
+      {
+        "given": "Stefan",
+        "family": "Fernandez"
+      },
+      {
+        "given": "John Mark",
+        "family": "Velasco"
+      },
+      {
+        "given": "Vito G.",
+        "family": "Roque Jr"
+      },
+      {
+        "given": "Ananda",
+        "family": "Nisalak"
+      },
+      {
+        "given": "Louis R.",
+        "family": "Macareo"
+      },
+      {
+        "given": "Jens W.",
+        "family": "Levy"
+      },
+      {
+        "given": "Derek",
+        "family": "Cummings"
+      },
+      {
+        "given": "In-Kyu",
+        "family": "Yoon"
+      }
+    ],
+     "title": "Reconstruction of 60 Years of Chikungunya Epidemiology in the Philippines Demonstrates Episodic and Focal Transmission",
+    "journal": "The Journal of Infectious Diseases",
+    "year": 2015,
+    "pmid": 26410592,
+    "doi": "10.1093/infdis/jiv470"
+  },
+  "metadata": {
+    "sample_size": null,
+    "region": "Philippines",
+    "transmission_mode": "vector_borne",
+    "vector": "mosquito",
+    "extrinsic": false,
+    "inference_method": null
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": false,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "Database entry per communication K. Charniga, Z. Cucunubá & Laura Gomez Bermeo."
+},
+{
+    "disease": "Chikungunya",
+  "pathogen": "Chikungunya Virus",
+  "epi_distribution": "generation time",
+  "probability_distribution": {
+    "prob_distribution": "gamma",
+    "parameters": { }
+  },
+  "summary_statistics": {
+    "mean": 12.4,
+    "mean_ci_limits": [11.7, 13.3],
+    "mean_ci": 95,
+    "quantile_values": [5.6, 22.1],
+    "quantile_names": ["2.5", "97.5"]
+  },
+  "citation": {
+    "author": [
+      {
+        "given": "Giorgio",
+        "family": "Guzzetta"
+      },
+      {
+        "given": "Francesco",
+        "family": "Vairo"
+      },
+      {
+        "given": "Alessia",
+        "family": "Mammone"
+      },
+      {
+        "given": "Simone",
+        "family": "Lanini"
+      },
+      {
+        "given": "Piero",
+        "family": "Poletti"
+      },
+      {
+        "given": "Mattia",
+        "family": "Manica"
+      },
+      {
+        "given": "Roberto",
+        "family": "Rosa"
+      },
+      {
+        "given": "Beniamino",
+        "family": "Caputo"
+      },
+      {
+        "given": "Angelo",
+        "family": "Solimini"
+      },
+      {
+        "given": "Alessandra",
+        "family": "della Torre"
+      },
+      {
+        "given": "Paola",
+        "family": "Scognamiglio"
+      },
+      {
+        "given": "Alimuddin",
+        "family": "Zumla"
+      },
+      {
+        "given": "Giuseppe",
+        "family": "Ippolito"
+      },
+      {
+        "given": "Stefano",
+        "family": "Merler"
+      }
+    ],
+     "title": "Spatial modes for transmission of chikungunya virus during a large chikungunya outbreak in Italy: a modeling analysis",
+    "journal": "BMC Medicine",
+    "year": 2020,
+    "pmid": 32762750,
+    "doi": "10.1186/s12916-020-01674-y"
+  },
+  "metadata": {
+    "sample_size": 412,
+    "region": "Italy",
+    "transmission_mode": "vector_borne",
+    "vector": "Aedes albopictus",
+    "extrinsic": false,
+    "inference_method": "bayesian"
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": false,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "No additional notes."
+},
+{
+  "disease": "Chikungunya",
+  "pathogen": "Chikungunya Virus",
+  "epi_distribution": "case fatality risk",
+  "probability_distribution": {
+    "prob_distribution": null,
+    "parameters": { }
+  },
+  "summary_statistics": {
+    "mean": 1.3
+  },
+  "citation": {
+    "author": [
+      {
+        "given": "William M",
+        "family": "de Souza"
+      },
+      {
+        "given": "Shirlene T. S.",
+        "family": "de Lima"
+      },
+      {
+        "given": "Leda M Simões",
+        "family": "Mello"
+      },
+      {
+        "given": "Darlan S.",
+        "family": "Candido"
+      },
+      {
+        "given": "Lewis",
+        "family": "Buss"
+      },
+      {
+        "given": "Charles",
+        "family": "Whittaker"
+      },
+      {
+        "given": "Ingra M",
+        "family": "Claro"
+      },
+      {
+        "given": "Nilani",
+        "family": "Chandradeva"
+      },
+      {
+        "given": "Fabiana",
+        "family": "Granja"
+      },
+      {
+        "given": "Ronaldo",
+        "family": "de Jesus"
+      },
+      {
+        "given": "Poliana S.",
+        "family": "Lemos"
+      },
+      {
+        "given": "Daniel A.",
+        "family": "Toledo-Teixeira"
+      },
+      {
+        "given": "Priscilla P.",
+        "family": "Barbosa"
+      },
+      {
+        "given": "Antonio Carlos L.",
+        "family": "Firmino"
+      },
+      {
+        "given": "Mariene R.",
+        "family": "Amorim"
+      },
+      {
+        "given": "Larissa M. F.",
+        "family": "Duarte"
+      },
+      {
+        "given": "Ivan B.",
+        "family": "Pessoa Jr"
+      },
+      {
+        "given": "Julia",
+        "family": "Forato"
+      },
+      {
+        "given": "Irihane L.",
+        "family": "Vasconcelos"
+      },
+      {
+        "given": "Ana Carolina B. M.",
+        "family": "Maximo"
+      },
+      {
+        "given": "Emerson L. L.",
+        "family": "Araújo"
+      },
+      {
+        "given": "Liana Perdigão",
+        "family": "Mello"
+      },
+      {
+        "given": "Ester C.",
+        "family": "Sabino"
+      },
+      {
+        "given": "José Luiz",
+        "family": "Proença-Módena"
+      },
+      {
+        "given": "Nuno R.",
+        "family": "Faria"
+      },
+      {
+        "given": "Scott C.",
+        "family": "Weaver"
+      }
+    ],
+    "title": "Spatiotemporal dynamics and recurrence of chikungunya virus in Brazil: an epidemiological study",
+    "journal": "The Lancet Microbe",
+    "year": 2023,
+    "pmid": 37031687,
+    "doi": "10.1016/S2666-5247(23)00033-2"
+  },
+  "metadata": {
+    "sample_size": 253545,
+    "region": "Brazil",
+    "transmission_mode": "vector_borne",
+    "vector": "Aedes aegypti and Aedes albopictus",
+    "extrinsic": false,
+    "inference_method": null
+  },
+  "method_assessment": {
+    "truncation": null,
+    "discretised": false,
+    "censored": true,
+    "right_truncated": false,
+    "phase_bias_adjusted": false
+  },
+  "notes": "Case fatality risk is given in deaths per 1,000 cases. It was calculated as a cumulative case fatality ratio. CFR is a population-wide estimate. Odds of chikungunya-related death were not significantly different between males and females. Odds of chikungunya-related death were significantly higher for 55-74 years old, and >75 years old compared to <18."
 }
 ]
