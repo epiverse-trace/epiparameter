@@ -23,6 +23,11 @@
 #' see [distcrete::distcrete()].
 #'
 #' @inheritParams new_epiparameter
+#' @param discretise A boolean `logical` whether the distribution is
+#' discretised.
+#' Default is FALSE which assumes a continuous probability distribution
+#' @param truncation A `numeric` specifying the truncation point if the inferred
+#' distribution was truncated, `NA` if not or unknown.
 #' @param ... [dots] Extra arguments to be passed to
 #' \pkg{distributional} or \pkg{distcrete} functions that construct the S3
 #' distribution objects. To see which arguments can be adjusted for discretised
@@ -31,7 +36,8 @@
 #' constructor function, e.g. for the Gamma distribution see
 #' [distributional::dist_gamma()].
 #'
-#' @return An S3 class containing the probability distribution.
+#' @return An S3 class containing the probability distribution or a `character`
+#' string if the parameters of the probability distribution are unknown.
 #' @export
 #'
 #' @examples
@@ -78,6 +84,10 @@ create_prob_distribution <- function(prob_dist,
     min.len = 1,
     max.len = 2
   )
+
+  # when only the type of probability distribution is known return string
+  if (missing(prob_dist_params)) return(prob_dist)
+
   checkmate::assert_numeric(prob_dist_params, names = "unique")
   checkmate::assert_logical(discretise, len = 1)
   checkmate::assert_number(truncation, na.ok = TRUE)
