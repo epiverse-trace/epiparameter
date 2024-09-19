@@ -1,7 +1,7 @@
 test_that("create_prob_distribution works for continuous gamma", {
   res <- create_prob_distribution(
-    prob_dist = "gamma",
-    prob_dist_params = c(shape = 1, scale = 1),
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
     discretise = FALSE,
     truncation = NA
   )
@@ -16,8 +16,8 @@ test_that("create_prob_distribution works for continuous gamma", {
 
 test_that("create_prob_distribution works for continuous lognormal", {
   res <- create_prob_distribution(
-    prob_dist = "lnorm",
-    prob_dist_params = c(meanlog = 1, sdlog = 1),
+    prob_distribution = "lnorm",
+    prob_distribution_params = c(meanlog = 1, sdlog = 1),
     discretise = FALSE,
     truncation = NA
   )
@@ -32,8 +32,8 @@ test_that("create_prob_distribution works for continuous lognormal", {
 
 test_that("create_prob_distribution works for continuous Weibull", {
   res <- create_prob_distribution(
-    prob_dist = "weibull",
-    prob_dist_params = c(shape = 1, scale = 1),
+    prob_distribution = "weibull",
+    prob_distribution_params = c(shape = 1, scale = 1),
     discretise = FALSE,
     truncation = NA
   )
@@ -48,8 +48,8 @@ test_that("create_prob_distribution works for continuous Weibull", {
 
 test_that("create_prob_distribution works for negative binomial", {
   res <- create_prob_distribution(
-    prob_dist = "nbinom",
-    prob_dist_params = c(mean = 1, dispersion = 1),
+    prob_distribution = "nbinom",
+    prob_distribution_params = c(mean = 1, dispersion = 1),
     discretise = FALSE,
     truncation = NA
   )
@@ -64,8 +64,8 @@ test_that("create_prob_distribution works for negative binomial", {
 
 test_that("create_prob_distribution works for geometric", {
   res <- create_prob_distribution(
-    prob_dist = "geom",
-    prob_dist_params = c(mean = 1),
+    prob_distribution = "geom",
+    prob_distribution_params = c(mean = 1),
     discretise = FALSE,
     truncation = NA
   )
@@ -80,8 +80,8 @@ test_that("create_prob_distribution works for geometric", {
 
 test_that("create_prob_distribution works for poisson", {
   res <- create_prob_distribution(
-    prob_dist = "pois",
-    prob_dist_params = c(mean = 1),
+    prob_distribution = "pois",
+    prob_distribution_params = c(mean = 1),
     discretise = FALSE,
     truncation = NA
   )
@@ -96,8 +96,8 @@ test_that("create_prob_distribution works for poisson", {
 
 test_that("create_prob_distribution works for exponential", {
   res <- create_prob_distribution(
-    prob_dist = "exp",
-    prob_dist_params = c(rate = 2),
+    prob_distribution = "exp",
+    prob_distribution_params = c(rate = 2),
     discretise = FALSE,
     truncation = NA
   )
@@ -112,8 +112,8 @@ test_that("create_prob_distribution works for exponential", {
 
 test_that("create_prob_distribution works for discrete gamma", {
   res <- create_prob_distribution(
-    prob_dist = "gamma",
-    prob_dist_params = c(shape = 1, scale = 1),
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
     discretise = TRUE,
     truncation = NA
   )
@@ -128,8 +128,8 @@ test_that("create_prob_distribution works for discrete gamma", {
 
 test_that("create_prob_distribution works for discrete lognormal", {
   res <- create_prob_distribution(
-    prob_dist = "lnorm",
-    prob_dist_params = c(meanlog = 1, sdlog = 1),
+    prob_distribution = "lnorm",
+    prob_distribution_params = c(meanlog = 1, sdlog = 1),
     discretise = TRUE,
     truncation = NA
   )
@@ -144,8 +144,8 @@ test_that("create_prob_distribution works for discrete lognormal", {
 
 test_that("create_prob_distribution works for discrete Weibull", {
   res <- create_prob_distribution(
-    prob_dist = "weibull",
-    prob_dist_params = c(shape = 1, scale = 1),
+    prob_distribution = "weibull",
+    prob_distribution_params = c(shape = 1, scale = 1),
     discretise = TRUE,
     truncation = NA
   )
@@ -160,8 +160,8 @@ test_that("create_prob_distribution works for discrete Weibull", {
 
 test_that("create_prob_distribution works for discrete normal", {
   res <- create_prob_distribution(
-    prob_dist = "norm",
-    prob_dist_params = c(mean = 1, sd = 1),
+    prob_distribution = "norm",
+    prob_distribution_params = c(mean = 1, sd = 1),
     discretise = TRUE,
     truncation = NA
   )
@@ -176,8 +176,8 @@ test_that("create_prob_distribution works for discrete normal", {
 
 test_that("create_prob_distribution works for truncated continuous", {
   res <- create_prob_distribution(
-    prob_dist = "gamma",
-    prob_dist_params = c(shape = 1, scale = 1),
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
     discretise = FALSE,
     truncation = 10
   )
@@ -188,15 +188,15 @@ test_that("create_prob_distribution works for truncated continuous", {
 
 test_that("create_prob_distribution works passing args via ...", {
   dist1 <- create_prob_distribution(
-    prob_dist = "gamma",
-    prob_dist_params = c(shape = 1, scale = 1),
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
     discretise = TRUE,
     truncation = NA,
     w = 1
   )
   dist2 <- create_prob_distribution(
-    prob_dist = "gamma",
-    prob_dist_params = c(shape = 1, scale = 1),
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
     discretise = TRUE,
     truncation = NA,
     w = 0.5
@@ -209,8 +209,8 @@ test_that("create_prob_distribution works passing args via ...", {
 test_that("create_prob_distribution fails for unrecognised discretised", {
   expect_error(
     create_prob_distribution(
-      prob_dist = "distribution",
-      prob_dist_params = c(shape = 1, scale = 1),
+      prob_distribution = "distribution",
+      prob_distribution_params = c(shape = 1, scale = 1),
       discretise = TRUE,
       truncation = NA
     ),
@@ -221,8 +221,8 @@ test_that("create_prob_distribution fails for unrecognised discretised", {
 test_that("create_prob_distribution fails for unrecognised non-discretised", {
   expect_error(
     create_prob_distribution(
-      prob_dist = "distribution",
-      prob_dist_params = c(shape = 1, scale = 1),
+      prob_distribution = "distribution",
+      prob_distribution_params = c(shape = 1, scale = 1),
       discretise = FALSE,
       truncation = NA
     ),
@@ -233,8 +233,8 @@ test_that("create_prob_distribution fails for unrecognised non-discretised", {
 test_that("create_prob_distribution errors for discrete truncation", {
   expect_error(
     create_prob_distribution(
-      prob_dist = "gamma",
-      prob_dist_params = c(shape = 1, scale = 1),
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
       discretise = TRUE,
       truncation = 10
     ),
