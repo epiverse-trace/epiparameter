@@ -53,8 +53,8 @@ get_parameters.epiparameter <- function(x, ...) {
 
     # convert to meanlog and sdlog names
     params <- .clean_params(
-      prob_dist = family(x),
-      prob_dist_params = params
+      prob_distribution = family(x),
+      prob_distribution_params = params
     )
   } else {
     return(NA)

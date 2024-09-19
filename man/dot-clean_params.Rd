@@ -11,7 +11,7 @@
 \alias{.clean_params_exp}
 \title{Standardise distribution parameters}
 \usage{
-.clean_params(prob_dist, prob_dist_params)
+.clean_params(prob_distribution, prob_distribution_params)
 
 .clean_params_gamma(prob_dist_params)
 
@@ -28,11 +28,6 @@
 .clean_params_exp(prob_dist_params)
 }
 \arguments{
-\item{prob_dist}{A character string specifying the probability
-distribution. This should match the R naming convention of probability
-distributions (e.g. lognormal is \code{lnorm}, negative binomial is \code{nbinom}, and
-geometric is \code{geom}).}
-
 \item{prob_dist_params}{A named vector of probability distribution
 parameters.}
 }
