@@ -78,7 +78,7 @@ new_epiparameter <- function(disease = character(),
     message("Unparameterised <epiparameter> object")
   } else {
     # create a S3 object holding the probability distribution
-    prob_dist <- create_prob_dist(
+    prob_dist <- create_prob_distribution(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params,
       discretise = discretise,
@@ -711,7 +711,7 @@ discretise.epiparameter <- function(x, ...) {
     )
 
     # create a new discretised probability distribution
-    x$prob_dist <- create_prob_dist(
+    x$prob_dist <- create_prob_distribution(
       prob_dist = prob_dist,
       prob_dist_params = prob_dist_params,
       discretise = TRUE,
