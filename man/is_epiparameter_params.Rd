@@ -5,15 +5,15 @@
 \title{Check whether the vector of parameters for the probability distribution
 are in the set of possible parameters used in the epiparameter package}
 \usage{
-is_epiparameter_params(prob_dist, prob_dist_params)
+is_epiparameter_params(prob_distribution, prob_distribution_params)
 }
 \arguments{
-\item{prob_dist}{A character string specifying the probability
-distribution. This should match the R naming convention of probability
+\item{prob_distribution}{A \code{character} string specifying the probability
+distribution. This should match the \R naming convention of probability
 distributions (e.g. lognormal is \code{lnorm}, negative binomial is \code{nbinom}, and
 geometric is \code{geom}).}
 
-\item{prob_dist_params}{A named vector of probability distribution
+\item{prob_distribution_params}{A named vector of probability distribution
 parameters.}
 }
 \value{
@@ -29,7 +29,7 @@ is truncated or discretised.
 }
 \examples{
 is_epiparameter_params(
-  prob_dist = "gamma",
-  prob_dist_params = c(shape = 2, scale = 1)
+  prob_distribution = "gamma",
+  prob_distribution_params = c(shape = 2, scale = 1)
 )
 }

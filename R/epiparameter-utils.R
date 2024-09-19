@@ -484,32 +484,33 @@ create_method_assess <- function(censored = NA,
 #' This check for valid parameters is independent of whether the distribution
 #' is truncated or discretised.
 #'
-#' @inheritParams new_epiparameter
+#' @inheritParams epiparameter
 #'
 #' @return A boolean `logical`.
 #' @export
 #'
 #' @examples
 #' is_epiparameter_params(
-#'   prob_dist = "gamma",
-#'   prob_dist_params = c(shape = 2, scale = 1)
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 2, scale = 1)
 #' )
-is_epiparameter_params <- function(prob_dist, prob_dist_params) {
-  if (is.na(prob_dist) || anyNA(prob_dist_params)) {
+is_epiparameter_params <- function(prob_distribution,
+                                   prob_distribution_params) {
+  if (is.na(prob_distribution) || anyNA(prob_distribution_params)) {
     return(FALSE)
   }
 
   # check input
   checkmate::assert_numeric(
-    prob_dist_params,
+    prob_distribution_params,
     min.len = 1,
     names = "unique"
   )
 
   # remove truncation parameters if truncated
-  if ("upper" %in% names(prob_dist_params)) {
-    prob_dist_params <- prob_dist_params[
-      names(prob_dist_params) != c("lower", "upper")
+  if ("upper" %in% names(prob_distribution_params)) {
+    prob_distribution_params <- prob_distribution_params[
+      names(prob_distribution_params) != c("lower", "upper")
     ]
   }
 
@@ -524,13 +525,13 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
     norm = list(c("mean", "sd"), c("mu", "sigma")),
     exp = list("rate", "lambda", "mean")
   )
-  possible_params <- possible_params[[prob_dist]]
+  possible_params <- possible_params[[prob_distribution]]
 
   # check whether any combinations are valid
   matches <- vapply(
     possible_params,
     function(x, y) all(names(y) %in% x) && identical(length(y), length(x)),
-    y = prob_dist_params,
+    y = prob_distribution_params,
     FUN.VALUE = logical(1)
   )
 
@@ -560,8 +561,8 @@ is_epiparameter_params <- function(prob_dist, prob_dist_params) {
 #' @keywords internal
 .clean_params <- function(prob_dist, prob_dist_params) {
   valid_params <- is_epiparameter_params(
-    prob_dist = prob_dist,
-    prob_dist_params = prob_dist_params
+    prob_distribution = prob_dist,
+    prob_distribution_params = prob_dist_params
   )
   if (!valid_params) {
     stop(
