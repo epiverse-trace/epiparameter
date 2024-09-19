@@ -92,6 +92,9 @@ create_prob_distribution <- function(prob_distribution,
   checkmate::assert_logical(discretise, len = 1)
   checkmate::assert_number(truncation, na.ok = TRUE)
 
+  # set prob_distribution to lowercase for downstream case sensitive matching
+  prob_distribution <- .clean_string(prob_distribution)
+
   dots <- list(...)
   if (discretise) {
     prob_distribution <- match.arg(
