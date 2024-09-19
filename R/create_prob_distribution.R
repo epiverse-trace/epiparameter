@@ -22,7 +22,7 @@
 #' for the discretisation is 1. `w` can be `[0,1]`. For more information please
 #' see [distcrete::distcrete()].
 #'
-#' @inheritParams new_epiparameter
+#' @inheritParams epiparameter
 #' @param discretise A boolean `logical` whether the distribution is
 #' discretised.
 #' Default is FALSE which assumes a continuous probability distribution
@@ -43,72 +43,72 @@
 #' @examples
 #' # example with continuous distribution without truncation
 #' create_prob_distribution(
-#'   prob_dist = "gamma",
-#'   prob_dist_params = c(shape = 1, scale = 1),
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
 #'   truncation = NA
 #' )
 #'
 #' # example with continuous distribution with truncation
 #' create_prob_distribution(
-#'   prob_dist = "gamma",
-#'   prob_dist_params = c(shape = 1, scale = 1),
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1),
 #'   discretise = FALSE,
 #'   truncation = 10
 #' )
 #'
 #' # example with discrete distribution
 #' create_prob_distribution(
-#'   prob_dist = "gamma",
-#'   prob_dist_params = c(shape = 1, scale = 1),
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1),
 #'   discretise = TRUE,
 #'   truncation = NA
 #' )
 #'
 #' # example passing extra arguments to distcrete
 #' create_prob_distribution(
-#'   prob_dist = "gamma",
-#'   prob_dist_params = c(shape = 1, scale = 1),
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1),
 #'   discretise = TRUE,
 #'   truncation = NA,
 #'   w = 0.5
 #' )
-create_prob_distribution <- function(prob_dist,
-                                     prob_dist_params,
+create_prob_distribution <- function(prob_distribution,
+                                     prob_distribution_params,
                                      discretise = FALSE,
                                      truncation = NA,
                                      ...) {
   checkmate::assert_character(
-    prob_dist,
+    prob_distribution,
     min.chars = 1,
     min.len = 1,
     max.len = 2
   )
 
   # when only the type of probability distribution is known return string
-  if (missing(prob_dist_params)) return(prob_dist)
+  if (missing(prob_distribution_params)) return(prob_distribution)
 
-  checkmate::assert_numeric(prob_dist_params, names = "unique")
+  checkmate::assert_numeric(prob_distribution_params, names = "unique")
   checkmate::assert_logical(discretise, len = 1)
   checkmate::assert_number(truncation, na.ok = TRUE)
 
   dots <- list(...)
   if (discretise) {
-    prob_dist <- match.arg(
-      prob_dist,
+    prob_distribution <- match.arg(
+      prob_distribution,
       choices = c("gamma", "lnorm", "weibull", "norm")
     )
     # create default list of args to construct <distcrete>
     distcrete_args <- c(
-      name = prob_dist,
+      name = prob_distribution,
       interval = 1,
-      as.list(prob_dist_params),
+      as.list(prob_distribution_params),
       w = 1
     )
     # modify <distcrete> args if provided in dots
     distcrete_args <- utils::modifyList(distcrete_args, dots)
     # create discretised probability distribution object
-    prob_dist <- do.call(
+    prob_distribution <- do.call(
       distcrete::distcrete,
       distcrete_args
     )
@@ -116,39 +116,39 @@ create_prob_distribution <- function(prob_dist,
     # currently dots not used to construct <distribution>
     chkDots(...)
     # create non-discretised probability distribution object
-    prob_dist <- switch(prob_dist,
+    prob_distribution <- switch(prob_distribution,
       gamma = distributional::dist_gamma(
-        shape = prob_dist_params[["shape"]],
-        rate = 1 / prob_dist_params[["scale"]]
+        shape = prob_distribution_params[["shape"]],
+        rate = 1 / prob_distribution_params[["scale"]]
       ),
       lnorm = distributional::dist_lognormal(
-        mu = prob_dist_params[["meanlog"]],
-        sigma = prob_dist_params[["sdlog"]]
+        mu = prob_distribution_params[["meanlog"]],
+        sigma = prob_distribution_params[["sdlog"]]
       ),
       weibull = distributional::dist_weibull(
-        shape = prob_dist_params[["shape"]],
-        scale = prob_dist_params[["scale"]]
+        shape = prob_distribution_params[["shape"]],
+        scale = prob_distribution_params[["scale"]]
       ),
       nbinom = distributional::dist_negative_binomial(
-        size = prob_dist_params[["dispersion"]],
+        size = prob_distribution_params[["dispersion"]],
         prob = convert_summary_stats_to_params(
           "nbinom",
-          mean = prob_dist_params[["mean"]],
-          dispersion = prob_dist_params[["dispersion"]]
+          mean = prob_distribution_params[["mean"]],
+          dispersion = prob_distribution_params[["dispersion"]]
         )$prob
       ),
       geom = distributional::dist_geometric(
-        prob = unname(prob_dist_params)
+        prob = unname(prob_distribution_params)
       ),
       pois = distributional::dist_poisson(
-        lambda = unname(prob_dist_params)
+        lambda = unname(prob_distribution_params)
       ),
       norm = distributional::dist_normal(
-        mu = prob_dist_params[["mean"]],
-        sigma = prob_dist_params[["sd"]]
+        mu = prob_distribution_params[["mean"]],
+        sigma = prob_distribution_params[["sd"]]
       ),
       exp = distributional::dist_exponential(
-        rate = prob_dist_params[["rate"]]
+        rate = prob_distribution_params[["rate"]]
       ),
       stop("Did not recognise distribution name", call. = FALSE)
     )
@@ -162,13 +162,13 @@ create_prob_distribution <- function(prob_dist,
         call. = FALSE
       )
     } else {
-      prob_dist <- distributional::dist_truncated(
-        prob_dist,
+      prob_distribution <- distributional::dist_truncated(
+        prob_distribution,
         upper = truncation
       )
     }
   }
 
-  # return prob_dist object
-  prob_dist
+  # return prob_distribution object
+  prob_distribution
 }
