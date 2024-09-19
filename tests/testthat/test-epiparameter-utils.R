@@ -91,14 +91,14 @@ test_that("create_citation works with PMID", {
 
 test_that(".clean_params works as expected for gamma", {
   params <- .clean_params(
-    prob_dist = "gamma",
-    prob_dist_params = c(shape = 1, scale = 1)
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
   )
   expect_identical(params, c(shape = 1, scale = 1))
 
   params <- .clean_params(
-    prob_dist = "gamma",
-    prob_dist_params = c(shape = 1, rate = 0.5)
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, rate = 0.5)
   )
   expect_identical(params, c(shape = 1, scale = 2))
 })
@@ -106,8 +106,8 @@ test_that(".clean_params works as expected for gamma", {
 test_that(".clean_params fails when gamma parameters are incorrect", {
   expect_error(
     .clean_params(
-      prob_dist = "gamma",
-      prob_dist_params = c(meanlog = 1, sdlog = 1)
+      prob_distribution = "gamma",
+      prob_distribution_params = c(meanlog = 1, sdlog = 1)
     ),
     regexp = "Invalid parameterisation for gamma distribution"
   )
@@ -115,14 +115,14 @@ test_that(".clean_params fails when gamma parameters are incorrect", {
 
 test_that(".clean_params works as expected for lnorm", {
   params <- .clean_params(
-    prob_dist = "lnorm",
-    prob_dist_params = c(meanlog = 1, sdlog = 1)
+    prob_distribution = "lnorm",
+    prob_distribution_params = c(meanlog = 1, sdlog = 1)
   )
   expect_identical(params, c(meanlog = 1, sdlog = 1))
 
   params <- .clean_params(
-    prob_dist = "lnorm",
-    prob_dist_params = c(mu = 2, sigma = 2)
+    prob_distribution = "lnorm",
+    prob_distribution_params = c(mu = 2, sigma = 2)
   )
   expect_identical(params, c(meanlog = 2, sdlog = 2))
 })
@@ -130,8 +130,8 @@ test_that(".clean_params works as expected for lnorm", {
 test_that(".clean_params fails when lnorm parameters are incorrect", {
   expect_error(
     .clean_params(
-      prob_dist = "lnorm",
-      prob_dist_params = c(shape = 1, scale = 1)
+      prob_distribution = "lnorm",
+      prob_distribution_params = c(shape = 1, scale = 1)
     ),
     regexp = "Invalid parameterisation for lnorm distribution"
   )
@@ -139,8 +139,8 @@ test_that(".clean_params fails when lnorm parameters are incorrect", {
 
 test_that(".clean_params works as expected for weibull", {
   params <- .clean_params(
-    prob_dist = "weibull",
-    prob_dist_params = c(shape = 1, scale = 1)
+    prob_distribution = "weibull",
+    prob_distribution_params = c(shape = 1, scale = 1)
   )
   expect_identical(params, c(shape = 1, scale = 1))
 })
@@ -148,8 +148,8 @@ test_that(".clean_params works as expected for weibull", {
 test_that(".clean_params fails when weibull parameters are incorrect", {
   expect_error(
     .clean_params(
-      prob_dist = "weibull",
-      prob_dist_params = c(meanlog = 1, sdlog = 1)
+      prob_distribution = "weibull",
+      prob_distribution_params = c(meanlog = 1, sdlog = 1)
     ),
     regexp = "Invalid parameterisation for weibull distribution"
   )
@@ -157,14 +157,14 @@ test_that(".clean_params fails when weibull parameters are incorrect", {
 
 test_that(".clean_params works as expected for nbinom", {
   params <- .clean_params(
-    prob_dist = "nbinom",
-    prob_dist_params = c(n = 2, p = 0.5)
+    prob_distribution = "nbinom",
+    prob_distribution_params = c(n = 2, p = 0.5)
   )
   expect_identical(params, c(mean = 2, dispersion = 2))
 
   params <- .clean_params(
-    prob_dist = "nbinom",
-    prob_dist_params = c(mean = 1, dispersion = 1)
+    prob_distribution = "nbinom",
+    prob_distribution_params = c(mean = 1, dispersion = 1)
   )
   expect_identical(params, c(mean = 1, dispersion = 1))
 })
@@ -172,8 +172,8 @@ test_that(".clean_params works as expected for nbinom", {
 test_that(".clean_params fails when nbinom parameters are incorrect", {
   expect_error(
     .clean_params(
-      prob_dist = "nbinom",
-      prob_dist_params = c(meanlog = 1, sdlog = 1)
+      prob_distribution = "nbinom",
+      prob_distribution_params = c(meanlog = 1, sdlog = 1)
     ),
     regexp = "Invalid parameterisation for nbinom distribution"
   )
@@ -181,20 +181,20 @@ test_that(".clean_params fails when nbinom parameters are incorrect", {
 
 test_that(".clean_params works as expected for geom", {
   params <- .clean_params(
-    prob_dist = "geom",
-    prob_dist_params = c(prob = 0.5)
+    prob_distribution = "geom",
+    prob_distribution_params = c(prob = 0.5)
   )
   expect_identical(params, c(prob = 0.5))
 
   params <- .clean_params(
-    prob_dist = "geom",
-    prob_dist_params = c(p = 0.5)
+    prob_distribution = "geom",
+    prob_distribution_params = c(p = 0.5)
   )
   expect_identical(params, c(prob = 0.5))
 
   params <- .clean_params(
-    prob_dist = "geom",
-    prob_dist_params = c(mean = 2)
+    prob_distribution = "geom",
+    prob_distribution_params = c(mean = 2)
   )
   expect_identical(params, c(prob = 0.5))
 })
@@ -202,8 +202,8 @@ test_that(".clean_params works as expected for geom", {
 test_that(".clean_params fails when geom parameters are incorrect", {
   expect_error(
     .clean_params(
-      prob_dist = "geom",
-      prob_dist_params = c(meanlog = 1, sdlog = 1)
+      prob_distribution = "geom",
+      prob_distribution_params = c(meanlog = 1, sdlog = 1)
     ),
     regexp = "Invalid parameterisation for geom distribution"
   )
@@ -211,20 +211,20 @@ test_that(".clean_params fails when geom parameters are incorrect", {
 
 test_that(".clean_params works as expected for pois", {
   params <- .clean_params(
-    prob_dist = "pois",
-    prob_dist_params = c(mean = 0.5)
+    prob_distribution = "pois",
+    prob_distribution_params = c(mean = 0.5)
   )
   expect_identical(params, c(mean = 0.5))
 
   params <- .clean_params(
-    prob_dist = "pois",
-    prob_dist_params = c(l = 0.5)
+    prob_distribution = "pois",
+    prob_distribution_params = c(l = 0.5)
   )
   expect_identical(params, c(mean = 0.5))
 
   params <- .clean_params(
-    prob_dist = "pois",
-    prob_dist_params = c(lambda = 0.5)
+    prob_distribution = "pois",
+    prob_distribution_params = c(lambda = 0.5)
   )
   expect_identical(params, c(mean = 0.5))
 })
@@ -232,8 +232,8 @@ test_that(".clean_params works as expected for pois", {
 test_that(".clean_params fails when pois parameters are incorrect", {
   expect_error(
     .clean_params(
-      prob_dist = "pois",
-      prob_dist_params = c(means = 1)
+      prob_distribution = "pois",
+      prob_distribution_params = c(means = 1)
     ),
     regexp = "Invalid parameterisation for pois distribution"
   )
@@ -241,20 +241,20 @@ test_that(".clean_params fails when pois parameters are incorrect", {
 
 test_that(".clean_params works as expected for exp", {
   params <- .clean_params(
-    prob_dist = "exp",
-    prob_dist_params = c(rate = 2)
+    prob_distribution = "exp",
+    prob_distribution_params = c(rate = 2)
   )
   expect_identical(params, c(rate = 2))
 
   params <- .clean_params(
-    prob_dist = "exp",
-    prob_dist_params = c(lambda = 2)
+    prob_distribution = "exp",
+    prob_distribution_params = c(lambda = 2)
   )
   expect_identical(params, c(rate = 2))
 
   params <- .clean_params(
-    prob_dist = "exp",
-    prob_dist_params = c(mean = 0.5)
+    prob_distribution = "exp",
+    prob_distribution_params = c(mean = 0.5)
   )
   expect_identical(params, c(rate = 2))
 })
@@ -262,8 +262,8 @@ test_that(".clean_params works as expected for exp", {
 test_that(".clean_params fails when exp parameters are incorrect", {
   expect_error(
     .clean_params(
-      prob_dist = "exp",
-      prob_dist_params = c(means = 1)
+      prob_distribution = "exp",
+      prob_distribution_params = c(means = 1)
     ),
     regexp = "Invalid parameterisation for exp distribution"
   )
@@ -272,8 +272,8 @@ test_that(".clean_params fails when exp parameters are incorrect", {
 test_that(".clean_params fails as expected", {
   expect_error(
     .clean_params(
-      prob_dist = "distribution",
-      prob_dist_params = c(meanlog = 1, sdlog = 1)
+      prob_distribution = "distribution",
+      prob_distribution_params = c(meanlog = 1, sdlog = 1)
     ),
     regexp = "Invalid parameterisation for distribution distribution"
   )

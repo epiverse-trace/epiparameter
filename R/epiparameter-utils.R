@@ -559,30 +559,30 @@ is_epiparameter_params <- function(prob_distribution,
 #'
 #' @return Named `numeric` vector of parameters.
 #' @keywords internal
-.clean_params <- function(prob_dist, prob_dist_params) {
+.clean_params <- function(prob_distribution, prob_distribution_params) {
   valid_params <- is_epiparameter_params(
-    prob_distribution = prob_dist,
-    prob_distribution_params = prob_dist_params
+    prob_distribution = prob_distribution,
+    prob_distribution_params = prob_distribution_params
   )
   if (!valid_params) {
     stop(
-      "Invalid parameterisation for ", prob_dist, " distribution",
+      "Invalid parameterisation for ", prob_distribution, " distribution",
       call. = FALSE
     )
   }
-  is_trunc <- "upper" %in% names(prob_dist_params)
+  is_trunc <- "upper" %in% names(prob_distribution_params)
   # remove truncation parameters if truncated
   if (is_trunc) {
-    trunc_params <- prob_dist_params[
-      names(prob_dist_params) == c("lower", "upper")
+    trunc_params <- prob_distribution_params[
+      names(prob_distribution_params) == c("lower", "upper")
     ]
-    prob_dist_params <- prob_dist_params[
-      names(prob_dist_params) != c("lower", "upper")
+    prob_distribution_params <- prob_distribution_params[
+      names(prob_distribution_params) != c("lower", "upper")
     ]
   }
   # weibull only has one parameterisation so does not need cleaning
   clean_func <- switch(
-    prob_dist,
+    prob_distribution,
     gamma = .clean_params_gamma,
     lnorm = .clean_params_lnorm,
     weibull = function(x) x,
@@ -593,7 +593,7 @@ is_epiparameter_params <- function(prob_distribution,
     exp = .clean_params_exp,
     stop("Probability distribution not recognised", call. = FALSE)
   )
-  clean_params <- do.call(clean_func, list(prob_dist_params))
+  clean_params <- do.call(clean_func, list(prob_distribution_params))
   # reappend truncation parameter if truncated
   if (is_trunc) {
     clean_params <- append(clean_params, trunc_params)

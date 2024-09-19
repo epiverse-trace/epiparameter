@@ -61,8 +61,8 @@ new_epiparameter <- function(disease = character(),
   if (is_epiparameter_params(prob_dist, prob_dist_params)) {
     # standardise common distribution parameters
     prob_dist_params <- .clean_params(
-      prob_dist = prob_dist,
-      prob_dist_params = prob_dist_params
+      prob_distribution = prob_dist,
+      prob_distribution_params = prob_dist_params
     )
   } else if (auto_calc_params) {
     # calculate parameters if not provided
@@ -706,8 +706,8 @@ discretise.epiparameter <- function(x, ...) {
 
     # standardise distribution parameter names
     prob_dist_params <- .clean_params(
-      prob_dist = prob_dist,
-      prob_dist_params = prob_dist_params
+      prob_distribution = prob_dist,
+      prob_distribution_params = prob_dist_params
     )
 
     # create a new discretised probability distribution
