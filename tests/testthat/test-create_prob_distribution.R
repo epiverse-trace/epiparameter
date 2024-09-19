@@ -214,7 +214,7 @@ test_that("create_prob_distribution fails for unrecognised discretised", {
       discretise = TRUE,
       truncation = NA
     ),
-    regexp = "(arg)*(should be one of)*(gamma)*(lnorm)*(weibull)"
+    regexp = "Incorrect parameters provided for probability distribution."
   )
 })
 
@@ -226,7 +226,7 @@ test_that("create_prob_distribution fails for unrecognised non-discretised", {
       discretise = FALSE,
       truncation = NA
     ),
-    regexp = "Did not recognise distribution name"
+    regexp = "Incorrect parameters provided for probability distribution."
   )
 })
 
