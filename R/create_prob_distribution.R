@@ -95,6 +95,19 @@ create_prob_distribution <- function(prob_distribution,
   # set prob_distribution to lowercase for downstream case sensitive matching
   prob_distribution <- .clean_string(prob_distribution)
 
+  if (is_epiparameter_params(prob_distribution, prob_distribution_params)) {
+    # standardise common distribution parameters
+    prob_distribution_params <- .clean_params(
+      prob_distribution = prob_distribution,
+      prob_distribution_params = prob_distribution_params
+    )
+  } else {
+    stop(
+      "Incorrect parameters provided for probability distribution.",
+      call. = FALSE
+    )
+  }
+
   dots <- list(...)
   if (discretise) {
     prob_distribution <- match.arg(
