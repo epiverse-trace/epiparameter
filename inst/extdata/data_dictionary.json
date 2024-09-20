@@ -150,6 +150,9 @@
       },
       "summary_statistics": {
         "type": "object",
+         "propertyNames": {
+           "enum": ["mean", "mean_ci_limits", "mean_ci", "sd", "sd_ci_limits", "sd_ci", "median", "median_ci_limits", "median_ci", "dispersion", "dispersion_ci_limits", "dispersion_ci", "quantile_values", "quantile_names", "lower_range", "upper_range"]
+         },
         "properties": {
           "mean": {
             "description": "The mean value (expectation) of the distribution. If the mean is not reported put NA.",
