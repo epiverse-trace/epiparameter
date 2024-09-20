@@ -401,6 +401,16 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
     return(list(meanlog = meanlog, sdlog = sdlog))
   }
 
+  if (checkmate::test_number(x$median) &&
+      checkmate::test_number(x$dispersion)) {
+    # median and dispersion to params
+    checkmate::assert_number(x$median, lower = 0)
+    checkmate::assert_number(x$dispersion, lower = 0)
+    meanlog <- log(x$median)
+    sdlog <- log(x$dispersion)
+    return(list(meanlog = meanlog, sdlog = sdlog))
+  }
+
   if (!(checkmate::test_number(x$median) && checkmate::test_number(x$sd))) {
     stop("Cannot calculate lognormal parameters from given input")
   }
