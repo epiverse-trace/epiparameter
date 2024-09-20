@@ -5,18 +5,17 @@
     "epi_distribution": "incubation period",
     "probability_distribution": {
         "prob_distribution": "lnorm",
-        "parameters": {
-          "dispersion": 1.26,
-          "dispersion_ci_limits": [1.13, 1.38],
-          "dispersion_ci": 95
-        }
+        "parameters": { }
     },
     "summary_statistics": {
       "quantile_values": [4.8, 6.5],
       "quantile_names": ["25", "75"],
       "median": 5.6,
       "median_ci_limits": [4.8, 6.3],
-      "median_ci": 95
+      "median_ci": 95,
+      "dispersion": 1.26,
+      "dispersion_ci_limits": [1.13, 1.38],
+      "dispersion_ci": 95
     },
     "citation": {
       "author": [
@@ -73,18 +72,17 @@
     "epi_distribution": "incubation period",
     "probability_distribution": {
       "prob_distribution": "lnorm",
-      "parameters": {
-        "dispersion": 1.15,
-        "dispersion_ci_limits": [1.07, 1.34],
-        "dispersion_ci": 95
-      }
+      "parameters": { }
     },
     "summary_statistics": {
       "quantile_values": [2.9, 3.5],
       "quantile_names": ["25", "75"],
       "median": 3.2,
       "median_ci_limits": [2.8, 3.7],
-      "median_ci": 95
+      "median_ci": 95,
+      "dispersion": 1.15,
+      "dispersion_ci_limits": [1.07, 1.34],
+      "dispersion_ci": 95
     },
     "citation": {
       "author": [
@@ -141,18 +139,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.81,
-      "dispersion_ci_limits": [1.67, 1.95],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [1.5, 2.7, 5.9, 10.6],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 4,
     "median_ci_limits": [3.6, 4.4],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.81,
+    "dispersion_ci_limits": [1.67, 1.95],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -209,18 +206,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.51,
-      "dispersion_ci_limits": [1.43, 1.6],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [0.7, 1.1, 1.9, 2.8],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 1.4,
     "median_ci_limits": [1.3, 1.5],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.51,
+    "dispersion_ci_limits": [1.43, 1.6],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -277,18 +273,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.23,
-      "dispersion_ci_limits": [1.17, 1.29],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [1.4, 1.7, 2.2, 2.7],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 1.9,
     "median_ci_limits": [1.8, 2],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.23,
+    "dispersion_ci_limits": [1.17, 1.29],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -345,18 +340,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.51,
-      "dispersion_ci_limits": [1.37, 1.64],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [0.3, 0.4, 0.7, 1.1],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 0.6,
     "median_ci_limits": [0.5, 0.6],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.51,
+    "dispersion_ci_limits": [1.37, 1.64],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -413,18 +407,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.23,
-      "dispersion_ci_limits": [1.18, 1.28],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [8.9, 10.9, 14.4, 17.7],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 12.5,
     "median_ci_limits": [11.8, 13.3],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.23,
+    "dispersion_ci_limits": [1.18, 1.28],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -481,18 +474,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.35,
-      "dispersion_ci_limits": [1.16, 1.55],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [2.1, 3.2],
     "quantile_names": ["25", "75"],
     "median": 2.6,
     "median_ci_limits": [2.1, 3.1],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.35,
+    "dispersion_ci_limits": [1.16, 1.55],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -549,18 +541,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
       "prob_distribution": "lnorm",
-      "parameters": {
-        "dispersion": 1.24,
-        "dispersion_ci_limits": [1.13, 1.35],
-        "dispersion_ci": 95
-      }
+      "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [3.1, 3.8, 5.1, 6.3],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 4.4,
     "median_ci_limits": [3.9, 4.9],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.24,
+    "dispersion_ci_limits": [1.13, 1.35],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -617,18 +608,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.68,
-      "dispersion_ci_limits": [1.36, 2.01],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [0.8, 1.3, 2.7, 4.5],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 1.9,
     "median_ci_limits": [1.4, 2.4],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.68,
+    "dispersion_ci_limits": [1.36, 2.01],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -685,18 +675,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.53,
-      "dispersion_ci_limits": [1.44, 1.61],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [0.73, 2.94],
     "quantile_names": ["5", "95"],
     "median": 1.46,
     "median_ci_limits": [1.35, 1.57],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.53,
+    "dispersion_ci_limits": [1.44, 1.61],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -745,18 +734,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.51,
-      "dispersion_ci_limits": [1.43, 1.6],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [0.73, 2.83],
     "quantile_names": ["5", "95"],
     "median": 1.43,
     "median_ci_limits": [1.33, 1.54],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.51,
+    "dispersion_ci_limits": [1.43, 1.6],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -805,18 +793,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.25,
-      "dispersion_ci_limits": [1.14, 1.36],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [3.05, 6.39],
     "quantile_names": ["5", "95"],
     "median": 4.41,
     "median_ci_limits": [3.9, 4.92],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.25,
+    "dispersion_ci_limits": [1.14, 1.36],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -865,18 +852,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.24,
-      "dispersion_ci_limits": [1.12, 1.35],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [3.11, 6.26],
     "quantile_names": ["5", "95"],
     "median": 4.41,
     "median_ci_limits": [3.89, 4.94],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.24,
+    "dispersion_ci_limits": [1.12, 1.35],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -2941,18 +2927,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.5,
-      "dispersion_ci_limits": [1.2, 1.9],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [3.2, 4.6, 7.6, 11.2],
     "quantile_names": ["5" ,"25", "75", "95"],
     "median": 5.9,
     "median_ci_limits": [4.4, 7.6],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.5,
+    "dispersion_ci_limits": [1.2, 1.9],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3026,18 +3011,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.04,
-      "dispersion_ci_limits": [1.04, 1.08],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [2.9, 3],
     "quantile_names": ["25", "75"],
     "median": 3,
     "median_ci_limits": [0.5, 3.1],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.04,
+    "dispersion_ci_limits": [1.04, 1.08],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3091,18 +3075,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.41,
-      "dispersion_ci_limits": [1.34, 1.5],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [4.5, 7.1],
     "quantile_names": ["25", "75"],
     "median": 5.6,
     "median_ci_limits": [5.3, 6],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.41,
+    "dispersion_ci_limits": [1.34, 1.5],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3155,18 +3138,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.37,
-      "dispersion_ci_limits": [1.27, 1.52],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [4.3, 6.6],
     "quantile_names": ["25", "75"],
     "median": 5.3,
     "median_ci_limits": [5, 5.7],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.37,
+    "dispersion_ci_limits": [1.27, 1.52],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3220,18 +3202,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.04,
-      "dispersion_ci_limits": [1.04, 1.05],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [8.1, 8.6],
     "quantile_names": ["25", "75"],
     "median": 8.4,
     "median_ci_limits": [5.1, 9.4],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.04,
+    "dispersion_ci_limits": [1.04, 1.05],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3285,18 +3266,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.5,
-      "dispersion_ci_limits": [1.22, 1.82],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [3.1, 5.3],
     "quantile_names": ["25", "75"],
     "median": 4,
     "median_ci_limits": [3.4, 4.9],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.5,
+    "dispersion_ci_limits": [1.22, 1.82],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3350,18 +3330,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.82,
-      "dispersion_ci_limits": [1.27, 2.67],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [1, 1.7, 3.8, 7],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 2.6,
     "median_ci_limits": [1.6, 3.5],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.82,
+    "dispersion_ci_limits": [1.27, 2.67],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3414,18 +3393,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.04,
-      "dispersion_ci_limits": [1.04, 1.29],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [2.8, 3],
     "quantile_names": ["25", "75"],
     "median": 2.9,
     "median_ci_limits": [0.5, 3.1],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.04,
+    "dispersion_ci_limits": [1.04, 1.29],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3479,18 +3457,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.35,
-      "dispersion_ci_limits": [1.12, 1.47],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [8.7, 13.3],
     "quantile_names": ["25", "75"],
     "median": 10.8,
     "median_ci_limits": [8.4, 14.2],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.35,
+    "dispersion_ci_limits": [1.12, 1.47],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3543,18 +3520,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.66,
-      "dispersion_ci_limits": [1.48, 1.82],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [1.9, 3.2, 6.3, 10.3],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 4.4,
     "median_ci_limits": [4, 5],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.66,
+    "dispersion_ci_limits": [1.48, 1.82],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -3607,18 +3583,17 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.67,
-      "dispersion_ci_limits": [1.47, 1.84],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "quantile_values": [1.9, 3.1, 6.2, 10.3],
     "quantile_names": ["5", "25", "75", "95"],
     "median": 4.4,
     "median_ci_limits": [3.9, 5],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.67,
+    "dispersion_ci_limits": [1.47, 1.84],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
@@ -10106,11 +10081,7 @@
   "epi_distribution": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
-    "parameters": {
-      "dispersion": 1.52,
-      "dispersion_ci_limits": [1.32, 1.72],
-      "dispersion_ci": 95
-    }
+    "parameters": { }
   },
   "summary_statistics": {
     "mean": 5.5,
@@ -10118,7 +10089,10 @@
     "quantile_names": ["2.5", "97.5"],
     "median": 5.1,
     "median_ci_limits": [4.5, 5.8],
-    "median_ci": 95
+    "median_ci": 95,
+    "dispersion": 1.52,
+    "dispersion_ci_limits": [1.32, 1.72],
+    "dispersion_ci": 95
   },
   "citation": {
     "author": [
