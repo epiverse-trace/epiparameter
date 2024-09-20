@@ -81,6 +81,31 @@
         "names": {
           "type": "character",
           "attributes": {},
+          "value": ["meanlog", "sdlog"]
+        }
+      },
+      "value": [
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [1.60943791]
+        },
+        {
+          "type": "double",
+          "attributes": {},
+          "value": [0.69314718]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
           "value": ["prob", "dispersion"]
         }
       },
