@@ -24,6 +24,10 @@ test_that("convert_summary_stats_to_params.character works as expected", {
     style = "json2"
   )
   expect_snapshot_value(
+    convert_summary_stats_to_params("lnorm", median = 5, dispersion = 2),
+    style = "json2"
+  )
+  expect_snapshot_value(
     convert_summary_stats_to_params("nbinom", mean = 1, dispersion = 1),
     style = "json2"
   )
