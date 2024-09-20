@@ -226,18 +226,31 @@ create_region <- function(continent = NA_character_,
 #' @param mean_ci_limits A `numeric` vector of length two of the confidence
 #' interval around the mean.
 #' @param mean_ci A `numeric` specifying the confidence interval width,
-#' e.g. 95 would be the 95% CI
+#' e.g. `95` would be the 95% CI
 #' @param sd A `numeric` of the standard deviation of the probability
 #' distribution.
 #' @param sd_ci_limits A `numeric` vector of length 2 of the confidence interval
 #' around the standard deviation.
 #' @param sd_ci A `numeric` specifying the confidence interval width,
-#' e.g. 95 would be 95% confidence interval.
+#' e.g. `95` would be 95% confidence interval.
 #' @param median A `numeric` of the median of the probability distribution.
 #' @param median_ci_limits A `numeric` vector of length two of the confidence
 #' interval around the median.
 #' @param median_ci A `numeric` specifying the confidence interval width
 #' of the median.
+#' @param dispersion A `numeric` of the dispersion of the probability
+#' distribution. **Important** this is the dispersion for probability
+#' distributions that are not usually parameterised by a dispersion parameter,
+#' for example a lognormal distribution. If a probability distribution is
+#' usually parameterised with a dispersion parameter, e.g. negative binomial
+#' distribution, then this should be considered a parameter and not a summary
+#' statistic and should go in the `prob_distribution` argument when
+#' constructing an `<epiparameter>` object with [epiparameter()]
+#' (see [create_prob_distribution()]).
+#' @param dispersion_ci_limits A `numeric` vector of length 2 of the confidence
+#' interval around the dispersion.
+#' @param dispersion_ci A `numeric` specifying the confidence interval width,
+#' e.g. `95` would be 95% confidence interval.
 #' @param lower_range The lower range of the data, used to infer the parameters
 #' of the distribution when not provided.
 #' @param upper_range The upper range of the data, used to infer the parameters
@@ -285,6 +298,9 @@ create_summary_stats <- function(mean = NA_real_,
                                    NA_real_
                                  ),
                                  median_ci = NA_real_,
+                                 dispersion = NA_real_,
+                                 dispersion_ci_limits = c(NA_real_, NA_real_),
+                                 dispersion_ci = NA_real_,
                                  lower_range = NA_real_,
                                  upper_range = NA_real_,
                                  quantiles = NA_real_) {
@@ -298,6 +314,9 @@ create_summary_stats <- function(mean = NA_real_,
   checkmate::assert_number(median, na.ok = TRUE)
   checkmate::assert_numeric(median_ci_limits, len = 2, any.missing = TRUE)
   checkmate::assert_number(median_ci, na.ok = TRUE)
+  checkmate::assert_number(dispersion, na.ok = TRUE)
+  checkmate::assert_numeric(dispersion_ci_limits, len = 2, any.missing = TRUE)
+  checkmate::assert_number(dispersion_ci, na.ok = TRUE)
   checkmate::assert_number(lower_range, na.ok = TRUE)
   checkmate::assert_number(upper_range, na.ok = TRUE)
   checkmate::assert_numeric(quantiles)
@@ -316,6 +335,9 @@ create_summary_stats <- function(mean = NA_real_,
     median = median,
     median_ci_limits = median_ci_limits,
     median_ci = median_ci,
+    dispersion = dispersion,
+    dispersion_ci_limits = dispersion_ci_limits,
+    dispersion_ci = dispersion_ci,
     quantiles = quantiles,
     range = c(lower_range, upper_range)
   )
