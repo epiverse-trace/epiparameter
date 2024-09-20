@@ -29,14 +29,14 @@
 #'
 #' @return A named `numeric` vector with parameters.
 #' @keywords internal
-.calc_dist_params <- function(prob_dist, # nolint cyclocomp
-                              prob_dist_params,
+.calc_dist_params <- function(prob_distribution, # nolint cyclocomp
+                              prob_distribution_params,
                               summary_stats,
                               sample_size) {
-  if (is.na(prob_dist)) {
+  if (is.na(prob_distribution)) {
     message(
       "No adequate summary statistics available to calculate the parameters ",
-      "of the ", prob_dist, " distribution"
+      "of the ", prob_distribution, " distribution"
     )
     return(NA)
   }
@@ -61,7 +61,9 @@
   )
 
   # extract dispersion
-  disp <- unname(prob_dist_params[names(prob_dist_params) == "dispersion"])
+  disp <- unname(
+    prob_distribution_params[names(prob_distribution_params) == "dispersion"]
+  )
   median_disp <- c(median = summary_stats$median, dispersion = disp)
 
   # extract mean and sd
@@ -93,8 +95,11 @@
     )
     summary_stats_ <- summary_stats_[idx]
     # create flat list structure to be passed to ... in conversion
-    args <- unlist(list(prob_dist, as.list(summary_stats_)), recursive = FALSE)
-    prob_dist_params <- unlist(do.call(
+    args <- unlist(
+      list(prob_distribution, as.list(summary_stats_)),
+      recursive = FALSE
+    )
+    prob_distribution_params <- unlist(do.call(
       convert_summary_stats_to_params,
       args = args
     ))
@@ -102,31 +107,31 @@
     med <- summary_stats$median
     meanlog <- log(med / sqrt(1 + disp^2))
     sdlog <- sqrt(log(1 + disp^2))
-    prob_dist_params <- c(meanlog = meanlog, sdlog = sdlog)
+    prob_distribution_params <- c(meanlog = meanlog, sdlog = sdlog)
   } else if (!anyNA(percentiles)) {
     # calculate the parameters from the percentiles
     # percentiles required to be [0, 1] so divide by 100
-    prob_dist_params <- extract_param(
+    prob_distribution_params <- extract_param(
       type = "percentile",
       values = percentiles,
-      distribution = prob_dist,
+      distribution = prob_distribution,
       percentiles = as.numeric(names(percentiles)) / 100
     )
   } else if (is_median_range) {
-    prob_dist_params <- extract_param(
+    prob_distribution_params <- extract_param(
       type = "range",
       values = median_range,
-      distribution = prob_dist,
+      distribution = prob_distribution,
       samples = sample_size
     )
   } else {
     message(
       "No adequate summary statistics available to calculate the parameters ",
-      "of the ", prob_dist, " distribution"
+      "of the ", prob_distribution, " distribution"
     )
     return(NA)
   }
 
   # return params
-  prob_dist_params
+  prob_distribution_params
 }
