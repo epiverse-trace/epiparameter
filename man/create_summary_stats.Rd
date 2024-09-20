@@ -14,6 +14,9 @@ create_summary_stats(
   median = NA_real_,
   median_ci_limits = c(NA_real_, NA_real_),
   median_ci = NA_real_,
+  dispersion = NA_real_,
+  dispersion_ci_limits = c(NA_real_, NA_real_),
+  dispersion_ci = NA_real_,
   lower_range = NA_real_,
   upper_range = NA_real_,
   quantiles = NA_real_
@@ -27,7 +30,7 @@ distribution.}
 interval around the mean.}
 
 \item{mean_ci}{A \code{numeric} specifying the confidence interval width,
-e.g. 95 would be the 95\% CI}
+e.g. \code{95} would be the 95\% CI}
 
 \item{sd}{A \code{numeric} of the standard deviation of the probability
 distribution.}
@@ -36,7 +39,7 @@ distribution.}
 around the standard deviation.}
 
 \item{sd_ci}{A \code{numeric} specifying the confidence interval width,
-e.g. 95 would be 95\% confidence interval.}
+e.g. \code{95} would be 95\% confidence interval.}
 
 \item{median}{A \code{numeric} of the median of the probability distribution.}
 
@@ -45,6 +48,22 @@ interval around the median.}
 
 \item{median_ci}{A \code{numeric} specifying the confidence interval width
 of the median.}
+
+\item{dispersion}{A \code{numeric} of the dispersion of the probability
+distribution. \strong{Important} this is the dispersion for probability
+distributions that are not usually parameterised by a dispersion parameter,
+for example a lognormal distribution. If a probability distribution is
+usually parameterised with a dispersion parameter, e.g. negative binomial
+distribution, then this should be considered a parameter and not a summary
+statistic and should go in the \code{prob_distribution} argument when
+constructing an \verb{<epiparameter>} object with \code{\link[=epiparameter]{epiparameter()}}
+(see \code{\link[=create_prob_distribution]{create_prob_distribution()}}).}
+
+\item{dispersion_ci_limits}{A \code{numeric} vector of length 2 of the confidence
+interval around the dispersion.}
+
+\item{dispersion_ci}{A \code{numeric} specifying the confidence interval width,
+e.g. \code{95} would be 95\% confidence interval.}
 
 \item{lower_range}{The lower range of the data, used to infer the parameters
 of the distribution when not provided.}
