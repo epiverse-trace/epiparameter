@@ -76,12 +76,24 @@ If quantiles are not provided a default empty vector with the 2.5th, 5th,
 25th, 75th, 95th, 97.5th quantiles are supplied.}
 }
 \value{
-A nested list of summary statistics. The highest level are
-\itemize{
-\item \verb{$centre_spread}
-\item \verb{$quantiles}
-\item \verb{$range}
-\item \verb{$dispersion}
+A list of summary statistics. The output list has element names
+equal to the function arguments:
+\preformatted{
+$mean
+$mean_ci_limits
+$mean_ci
+$sd
+$sd_ci_limits
+$sd_ci
+$median
+$median_ci_limits
+$median_ci
+$dispersion
+$dispersion_ci_limits
+$dispersion_ci
+$lower_range
+$upper_range
+$quantiles
 }
 }
 \description{
