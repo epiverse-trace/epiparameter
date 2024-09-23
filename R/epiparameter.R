@@ -120,12 +120,7 @@ new_epiparameter <- function(disease = character(),
 #' disease, or `NA` if not known.
 #' @param epi_dist A `character` string with the name of the
 #' epidemiological distribution type.
-#' @param prob_distribution A `character` string specifying the probability
-#' distribution. This should match the \R naming convention of probability
-#' distributions (e.g. lognormal is `lnorm`, negative binomial is `nbinom`, and
-#' geometric is `geom`).
-#' @param prob_distribution_params A named vector of probability distribution
-#' parameters.
+
 #' @param uncertainty A list of named vectors with the uncertainty around
 #' the probability distribution parameters. If uncertainty around the parameter
 #' estimates is unknown use [create_uncertainty()] (which is the
