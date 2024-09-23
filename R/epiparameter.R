@@ -152,9 +152,6 @@ new_epiparameter <- function(disease = character(),
 #' @param method_assess A list of methodological aspects used when fitting
 #' the distribution, use [create_method_assess()] to create method
 #' assessment.
-#' @param discretise A boolean `logical` whether the distribution is
-#' discretised.
-#' Default is FALSE which assumes a continuous probability distribution
 #' @param truncation A `numeric` specifying the truncation point if the inferred
 #' distribution was truncated, `NA` if not or unknown.
 #' @param notes A `character` string with any additional information about the
@@ -228,7 +225,6 @@ epiparameter <- function(disease,
                          citation = create_citation(),
                          metadata = create_metadata(),
                          method_assess = create_method_assess(),
-                         discretise = FALSE,
                          truncation = NA_real_,
                          notes = NULL,
                          ...) {
@@ -252,7 +248,6 @@ epiparameter <- function(disease,
   checkmate::assert_list(metadata)
   checkmate::assert_list(method_assess)
   checkmate::assert_number(truncation, na.ok = TRUE)
-  checkmate::assert_logical(discretise, len = 1)
   checkmate::assert_character(notes, null.ok = TRUE)
 
   # call epiparameter constructor
@@ -267,7 +262,6 @@ epiparameter <- function(disease,
     citation = citation,
     metadata = metadata,
     method_assess = method_assess,
-    discretise = discretise,
     truncation = truncation,
     notes = notes,
     ...
