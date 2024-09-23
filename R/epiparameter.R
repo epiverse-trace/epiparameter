@@ -42,13 +42,6 @@ new_epiparameter <- function(disease = character(),
       identical(names(prob_dist_params), names(uncertainty))
   )
 
-  # set string to lowercase for downstream case sensitive matching of prob_dist
-  prob_dist <- ifelse(
-    test = is.character(prob_dist),
-    yes = .clean_string(prob_dist),
-    no = prob_dist
-  )
-
   if (is_epiparameter_params(prob_dist, prob_dist_params)) {
     # standardise common distribution parameters
     prob_dist_params <- .clean_params(
