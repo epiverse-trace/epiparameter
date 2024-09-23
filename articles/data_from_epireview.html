@@ -142,6 +142,13 @@ object using <code><a href="../reference/as_epiparameter.html">as_epiparameter()
 <span><span class="co">#&gt; Warning: There is 1 article with missing first author surname and first author first</span></span>
 <span><span class="co">#&gt; name.</span></span>
 <span><span class="co">#&gt; Warning: There is 1 article with missing year of publication.</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">107</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ";"</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): parameter_type_short, parameter_type_full</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span><span class="co">#&gt; Warning: Unknown or uninitialised column: `other_delay_start`.</span></span>
 <span><span class="co">#&gt; Warning: Unknown or uninitialised column: `other_delay_end`.</span></span>
 <span><span class="co">#&gt; Note: the params dataframe does not have a covidence_id column</span></span>
@@ -259,6 +266,15 @@ Africa.</p>
 <span><span class="co">#&gt; [1] NA NA</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $median_ci</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $dispersion</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $dispersion_ci_limits</span></span>
+<span><span class="co">#&gt; [1] NA NA</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $dispersion_ci</span></span>
 <span><span class="co">#&gt; [1] NA</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $quantiles</span></span>
@@ -483,6 +499,15 @@ epidemiological parameter.</p>
 <span><span class="co">#&gt; $median_ci</span></span>
 <span><span class="co">#&gt; [1] NA</span></span>
 <span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $dispersion</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $dispersion_ci_limits</span></span>
+<span><span class="co">#&gt; [1] NA NA</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $dispersion_ci</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $quantiles</span></span>
 <span><span class="co">#&gt; [1] NA</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -499,6 +524,13 @@ have parametric distributions).</p>
 <code class="sourceCode R"><span><span class="va">ebola_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">load_epidata</a></span><span class="op">(</span><span class="st">"ebola"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> ebola does not have any extracted outbreaks </span></span>
 <span><span class="co">#&gt; information. Outbreaks will be set to NULL.</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">107</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ";"</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): parameter_type_short, parameter_type_full</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Data loaded for ebola</span></span></code></pre></div>
 <p>We will again subset the data to just use the epidemiological
 parameter table, and subset that table to just the delay
@@ -513,7 +545,7 @@ distributions.</p>
 <span><span class="op">)</span></span>
 <span><span class="va">ebola_delays</span> <span class="op">&lt;-</span> <span class="va">ebola_params</span><span class="op">[</span><span class="va">delay_dist_rows</span>, <span class="op">]</span></span>
 <span><span class="va">ebola_delays</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 395 × 78</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 394 × 78</span></span></span>
 <span><span class="co">#&gt;    id     parameter_data_id covidence_id pathogen parameter_type parameter_value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> b6168… 6f5cb18602d0dfec…           30 Ebola v… Human delay -…            <span style="color: #BB0000;">NA</span>  </span></span>
@@ -526,7 +558,7 @@ distributions.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 99d84… 4316d44cbd32d365…           57 Ebola v… Human delay -…            14.4</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 99d84… 7dfc17eab39f9aa0…           57 Ebola v… Human delay -…             8.6</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 99d84… c9c3fc483d332934…           57 Ebola v… Human delay -…            10.6</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 385 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 384 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 72 more variables: exponent &lt;dbl&gt;, parameter_unit &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_lower_bound &lt;dbl&gt;, parameter_upper_bound &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_value_type &lt;chr&gt;, parameter_uncertainty_single_value &lt;dbl&gt;,</span></span></span>
@@ -541,7 +573,7 @@ entry has estimated and reported a Weibull distribution:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 78</span></span></span>
 <span><span class="co">#&gt;   id      parameter_data_id covidence_id pathogen parameter_type parameter_value</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> b76dcc… 0c3e02f80addfccc…        <span style="text-decoration: underline;">17</span>730 Ebola v… Human delay -…              12</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> b76dcc… c2e0739d6bc652e9…        <span style="text-decoration: underline;">17</span>730 Ebola v… Human delay -…            11.7</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 72 more variables: exponent &lt;dbl&gt;, parameter_unit &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_lower_bound &lt;dbl&gt;, parameter_upper_bound &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_value_type &lt;chr&gt;, parameter_uncertainty_single_value &lt;dbl&gt;,</span></span></span>
@@ -564,8 +596,8 @@ object.</p>
 <span><span class="co">#&gt; Study: Marziano (2023). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
 <span><span class="co">#&gt; Distribution: weibull</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   shape: 1.760</span></span>
-<span><span class="co">#&gt;   scale: 10.140</span></span></code></pre></div>
+<span><span class="co">#&gt;   shape: 1.630</span></span>
+<span><span class="co">#&gt;   scale: 11.970</span></span></code></pre></div>
 <p>With the probability distribution for the serial interval we can
 utilise some of the <code>&lt;epiparameter&gt;</code> methods. Here we
 illustrate this by checking that the <code>&lt;epiparameter&gt;</code>
@@ -579,8 +611,8 @@ numbers sampling from the distribution.</p>
 <p><img src="data_from_epireview_files/figure-html/plot-epiparameter-1.png" width="768"></p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] 17.129838  3.840887  6.913068 14.383495 25.033088  8.693642  8.263781</span></span>
-<span><span class="co">#&gt;  [8] 11.451308  5.219772  4.697018</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] 21.084863  4.196263  7.915138 17.459407 31.759410 10.137421  9.597278</span></span>
+<span><span class="co">#&gt;  [8] 13.649719  5.843965  5.214626</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="specifying-the-probability-distribution-if-unknown">Specifying the probability distribution if unknown<a class="anchor" aria-label="anchor" href="#specifying-the-probability-distribution-if-unknown"></a>
@@ -610,6 +642,13 @@ parameters (<code>$params</code>).</p>
 <code class="sourceCode R"><span><span class="va">ebola_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">load_epidata</a></span><span class="op">(</span><span class="st">"ebola"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> ebola does not have any extracted outbreaks </span></span>
 <span><span class="co">#&gt; information. Outbreaks will be set to NULL.</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">107</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ";"</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): parameter_type_short, parameter_type_full</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Data loaded for ebola</span></span>
 <span><span class="va">ebola_params</span> <span class="op">&lt;-</span> <span class="va">ebola_data</span><span class="op">$</span><span class="va">params</span></span></code></pre></div>
 <p>Here we will use the serial interval for Ebola reported by <span class="citation">Faye et al. (2015)</span>. This is stored, over two
@@ -712,7 +751,7 @@ Infectious Diseases</em> 15 (3): 320–26. <a href="https://doi.org/10.1016/S147
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>

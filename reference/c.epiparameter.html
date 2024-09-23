@@ -90,7 +90,7 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="epiparameter_db.html">epiparameter_db</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 122 results that match the criteria (99 are parameterised). </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 125 results that match the criteria (100 are parameterised). </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epiparameter to return a single entry. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
 <span class="r-in"><span></span></span>
@@ -134,11 +134,11 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># combine a list of &lt;epiparameter&gt; objects and a single &lt;epiparameter&gt; object</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">db</span>, <span class="va">db</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># List of 123 &lt;epiparameter&gt; objects</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># List of 126 &lt;epiparameter&gt; objects</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">Number of diseases: 23</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">❯ Adenovirus ❯ COVID-19 ❯ Chikungunya ❯ Dengue ❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Human Coronavirus ❯ Influenza ❯ Japanese Encephalitis ❯ MERS ❯ Marburg Virus Disease ❯ Measles ❯ Mpox ❯ Parainfluenza ❯ Pneumonic Plague ❯ RSV ❯ Rhinovirus ❯ Rift Valley Fever ❯ SARS ❯ Smallpox ❯ West Nile Fever ❯ Yellow Fever ❯ Zika Virus Disease</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">Number of epi distributions: 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">❯ generation time ❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ onset to hospitalisation ❯ onset to ventilation ❯ serial interval</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">Number of epi distributions: 13</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">❯ case fatality risk ❯ generation time ❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ onset to hospitalisation ❯ onset to ventilation ❯ serial interval</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Adenovirus</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Adenovirus</span>
@@ -181,7 +181,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   meanlog: 0.660</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   sdlog: 1.205</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 120 more elements</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 123 more elements</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more elements.</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html</span></span>
@@ -196,7 +196,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

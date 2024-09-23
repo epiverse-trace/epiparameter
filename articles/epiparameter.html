@@ -142,15 +142,15 @@ internally and can be read into R using the
 library are returned.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epiparameter_db.html">epiparameter_db</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Returning 122 results that match the criteria (99 are parameterised). </span></span>
+<span><span class="co">#&gt; Returning 125 results that match the criteria (100 are parameterised). </span></span>
 <span><span class="co">#&gt; Use subset to filter by entry variables or single_epiparameter to return a single entry. </span></span>
 <span><span class="co">#&gt; To retrieve the citation for each use the 'get_citation' function</span></span>
 <span><span class="va">db</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># List of 122 &lt;epiparameter&gt; objects</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># List of 125 &lt;epiparameter&gt; objects</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">Number of diseases: 23</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">❯ Adenovirus ❯ Chikungunya ❯ COVID-19 ❯ Dengue ❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Human Coronavirus ❯ Influenza ❯ Japanese Encephalitis ❯ Marburg Virus Disease ❯ Measles ❯ MERS ❯ Mpox ❯ Parainfluenza ❯ Pneumonic Plague ❯ Rhinovirus ❯ Rift Valley Fever ❯ RSV ❯ SARS ❯ Smallpox ❯ West Nile Fever ❯ Yellow Fever ❯ Zika Virus Disease</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">Number of epi distributions: 12</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">❯ generation time ❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ onset to hospitalisation ❯ onset to ventilation ❯ serial interval</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">Number of epi distributions: 13</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">❯ case fatality risk ❯ generation time ❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ onset to hospitalisation ❯ onset to ventilation ❯ serial interval</span></span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; Disease: Adenovirus</span></span>
 <span><span class="co">#&gt; Pathogen: Adenovirus</span></span>
@@ -193,7 +193,7 @@ library are returned.</p>
 <span><span class="co">#&gt;   meanlog: 0.660</span></span>
 <span><span class="co">#&gt;   sdlog: 1.205</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more elements</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 122 more elements</span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # ℹ Use `print(n = ...)` to see more elements.</span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # ℹ Use `parameter_tbl()` to see a summary table of the parameters.</span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html</span></span></span></code></pre></div>
@@ -205,7 +205,7 @@ the first six rows of the output.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/parameter_tbl.html">parameter_tbl</a></span><span class="op">(</span>multi_epiparameter <span class="op">=</span> <span class="va">db</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Parameter table:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A data frame:    122 × 7</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A data frame:    125 × 7</span></span></span>
 <span><span class="co">#&gt;    disease  pathogen epi_distribution prob_distribution author  year sample_size</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Adenovi… Adenovi… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          14</span></span>
@@ -218,7 +218,7 @@ the first six rows of the output.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Parainf… Parainf… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          11</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> RSV      RSV      incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          24</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Rhinovi… Rhinovi… incubation peri… lnorm             Lessl…  <span style="text-decoration: underline;">2</span>009          28</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 112 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 115 more rows</span></span></span></code></pre></div>
 <p><code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code> can also subset the database supplied to
 the function.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -584,25 +584,32 @@ database, these parameters can be manually added to the library.</p>
 <span><span class="va">new_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/append.html" class="external-link">append</a></span><span class="op">(</span><span class="va">db</span>, <span class="va">covid_incubation</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">new_db</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; Disease: Mpox</span></span>
-<span><span class="co">#&gt; Pathogen: Mpox Virus</span></span>
-<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
-<span><span class="co">#&gt; Study: Wei F, Peng Z, Jin Z, Wang J, Xu X, Zhang X, Xu J, Ren Z, Bai Y, Wang</span></span>
-<span><span class="co">#&gt; X, Lu B, Wang Z, Xu J, Huang S (2022). "Study and prediction of the</span></span>
-<span><span class="co">#&gt; 2022 global monkeypox epidemic." _Journal of Biosafety and</span></span>
-<span><span class="co">#&gt; Biosecurity_. doi:10.1016/j.jobb.2022.12.001</span></span>
-<span><span class="co">#&gt; &lt;https://doi.org/10.1016/j.jobb.2022.12.001&gt;.</span></span>
-<span><span class="co">#&gt; Parameters: &lt;no parameters&gt;</span></span>
+<span><span class="co">#&gt; Disease: Chikungunya</span></span>
+<span><span class="co">#&gt; Pathogen: Chikungunya Virus</span></span>
+<span><span class="co">#&gt; Epi Distribution: generation time</span></span>
+<span><span class="co">#&gt; Study: Guzzetta G, Vairo F, Mammone A, Lanini S, Poletti P, Manica M, Rosa R,</span></span>
+<span><span class="co">#&gt; Caputo B, Solimini A, della Torre A, Scognamiglio P, Zumla A, Ippolito</span></span>
+<span><span class="co">#&gt; G, Merler S (2020). "Spatial modes for transmission of chikungunya</span></span>
+<span><span class="co">#&gt; virus during a large chikungunya outbreak in Italy: a modeling</span></span>
+<span><span class="co">#&gt; analysis." _BMC Medicine_. doi:10.1186/s12916-020-01674-y</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1186/s12916-020-01674-y&gt;.</span></span>
+<span><span class="co">#&gt; Distribution: gamma</span></span>
+<span><span class="co">#&gt; Parameters:</span></span>
+<span><span class="co">#&gt;   shape: 8.633</span></span>
+<span><span class="co">#&gt;   scale: 1.447</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; Disease: Mpox</span></span>
-<span><span class="co">#&gt; Pathogen: Mpox Virus</span></span>
-<span><span class="co">#&gt; Epi Distribution: incubation period</span></span>
-<span><span class="co">#&gt; Study: Wei F, Peng Z, Jin Z, Wang J, Xu X, Zhang X, Xu J, Ren Z, Bai Y, Wang</span></span>
-<span><span class="co">#&gt; X, Lu B, Wang Z, Xu J, Huang S (2022). "Study and prediction of the</span></span>
-<span><span class="co">#&gt; 2022 global monkeypox epidemic." _Journal of Biosafety and</span></span>
-<span><span class="co">#&gt; Biosecurity_. doi:10.1016/j.jobb.2022.12.001</span></span>
-<span><span class="co">#&gt; &lt;https://doi.org/10.1016/j.jobb.2022.12.001&gt;.</span></span>
+<span><span class="co">#&gt; Disease: Chikungunya</span></span>
+<span><span class="co">#&gt; Pathogen: Chikungunya Virus</span></span>
+<span><span class="co">#&gt; Epi Distribution: case fatality risk</span></span>
+<span><span class="co">#&gt; Study: de Souza W, de Lima S, Mello L, Candido D, Buss L, Whittaker C, Claro</span></span>
+<span><span class="co">#&gt; I, Chandradeva N, Granja F, de Jesus R, Lemos P, Toledo-Teixeira D,</span></span>
+<span><span class="co">#&gt; Barbosa P, Firmino A, Amorim M, Duarte L, Pessoa Jr I, Forato J,</span></span>
+<span><span class="co">#&gt; Vasconcelos I, Maximo A, Araújo E, Mello L, Sabino E, Proença-Módena J,</span></span>
+<span><span class="co">#&gt; Faria N, Weaver S (2023). "Spatiotemporal dynamics and recurrence of</span></span>
+<span><span class="co">#&gt; chikungunya virus in Brazil: an epidemiological study." _The Lancet</span></span>
+<span><span class="co">#&gt; Microbe_. doi:10.1016/S2666-5247(23)00033-2</span></span>
+<span><span class="co">#&gt; &lt;https://doi.org/10.1016/S2666-5247%2823%2900033-2&gt;.</span></span>
 <span><span class="co">#&gt; Parameters: &lt;no parameters&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
@@ -639,7 +646,7 @@ contributing to the library of epidemiological parameters.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
