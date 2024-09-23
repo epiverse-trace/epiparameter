@@ -31,31 +31,28 @@ new_epiparameter <- function(disease = character(),
                              method_assess = list(),
                              notes = character(),
                              ...) {
-  if (is_epiparameter_params(prob_dist, prob_dist_params)) {
-    # standardise common distribution parameters
-    prob_dist_params <- .clean_params(
-      prob_distribution = prob_dist,
-      prob_distribution_params = prob_dist_params
-    )
-  } else if (auto_calc_params) {
+  if (auto_calc_params && is.character(prob_distribution)) {
     # calculate parameters if not provided
-    prob_dist_params <- .calc_dist_params(
-      prob_dist = prob_dist,
-      prob_dist_params = prob_dist_params,
+    prob_distribution_params <- .calc_dist_params(
+      prob_distribution = prob_distribution,
       summary_stats = summary_stats,
       sample_size = metadata$sample_size
     )
-  }
-
-  if (anyNA(prob_dist_params)) {
-    message("Unparameterised <epiparameter> object")
-  } else {
-    # create a S3 object holding the probability distribution
-    prob_dist <- create_prob_distribution(
-      prob_distribution = prob_dist,
-      prob_distribution_params = prob_dist_params,
-      ...
-    )
+    if (!anyNA(prob_distribution_params)) {
+      prob_distribution <- create_prob_distribution(
+        prob_distribution = prob_distribution,
+        prob_distribution_params = prob_distribution_params,
+        ...
+      )
+      message(
+        "Parameterising the probability distribution with the summary ",
+        "statistics.\n Probability distribution is assumed not to be ",
+        "discretised or truncated."
+      )
+    }
+    if (!inherits(prob_distribution, c("distribution", "distcrete"))) {
+      message("Unparameterised <epiparameter> object")
+    }
   }
 
   if (epi_dist == "offspring_distribution") {
@@ -75,7 +72,7 @@ new_epiparameter <- function(disease = character(),
       disease = disease,
       pathogen = pathogen,
       epi_dist = epi_dist,
-      prob_dist = prob_dist,
+      prob_distribution = prob_distribution,
       uncertainty = uncertainty,
       summary_stats = summary_stats,
       citation = citation,
