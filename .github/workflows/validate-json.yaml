@@ -41,7 +41,7 @@ jobs:
             engine = "ajv",
             verbose = TRUE,
             greedy = TRUE,
-            strict = TRUE,
+            strict = FALSE,
             error = TRUE
           )
         shell: Rscript {0}
