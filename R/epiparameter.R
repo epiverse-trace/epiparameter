@@ -224,8 +224,9 @@ new_epiparameter <- function(disease = character(),
 epiparameter <- function(disease,
                          pathogen = NA_character_,
                          epi_dist,
-                         prob_distribution = NA_character_,
-                         prob_distribution_params = NA_real_,
+                         prob_distribution = create_prob_distribution(
+                           prob_distribution = NA_character_
+                         ),
                          uncertainty = create_uncertainty(),
                          summary_stats = create_summary_stats(),
                          auto_calc_params = TRUE,
