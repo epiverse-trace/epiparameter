@@ -152,8 +152,6 @@ new_epiparameter <- function(disease = character(),
 #' @param method_assess A list of methodological aspects used when fitting
 #' the distribution, use [create_method_assess()] to create method
 #' assessment.
-#' @param truncation A `numeric` specifying the truncation point if the inferred
-#' distribution was truncated, `NA` if not or unknown.
 #' @param notes A `character` string with any additional information about the
 #' data, inference method or disease.
 #' @param ... [dots] Extra arguments to be passed to internal functions.
@@ -225,7 +223,6 @@ epiparameter <- function(disease,
                          citation = create_citation(),
                          metadata = create_metadata(),
                          method_assess = create_method_assess(),
-                         truncation = NA_real_,
                          notes = NULL,
                          ...) {
   # check input
@@ -247,7 +244,6 @@ epiparameter <- function(disease,
   checkmate::assert_class(citation, classes = "bibentry")
   checkmate::assert_list(metadata)
   checkmate::assert_list(method_assess)
-  checkmate::assert_number(truncation, na.ok = TRUE)
   checkmate::assert_character(notes, null.ok = TRUE)
 
   # call epiparameter constructor
@@ -262,7 +258,6 @@ epiparameter <- function(disease,
     citation = citation,
     metadata = metadata,
     method_assess = method_assess,
-    truncation = truncation,
     notes = notes,
     ...
   )
