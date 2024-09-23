@@ -260,17 +260,6 @@ epiparameter <- function(disease,
   checkmate::assert_logical(discretise, len = 1)
   checkmate::assert_character(notes, null.ok = TRUE)
 
-  # check whether ci has been provided for each parameter
-  # check whether probability params are named or na
-  stopifnot(
-    "uncertainty must be provided for each parameter" =
-      anyNA(uncertainty, recursive = TRUE) ||
-        length(prob_distribution_params) == length(uncertainty),
-    "probability distribution params must be a named vector or NA" =
-      anyNA(prob_distribution_params, recursive = TRUE) ||
-        !is.null(names(prob_distribution_params))
-  )
-
   # call epiparameter constructor
   epiparameter <- new_epiparameter(
     disease = disease,
@@ -289,6 +278,24 @@ epiparameter <- function(disease,
     notes = notes,
     ...
   )
+
+  # uncertainty is checked after new_epiparameter to use <epiparameter> methods
+  param_names <- names(get_parameters(epiparameter))
+  if (missing(uncertainty)) {
+    # create uncertainty for each parameter if not provided
+    uncertainty <- lapply(
+      param_names,
+      function(x) create_uncertainty()
+    )
+    names(uncertainty) <- param_names
+  } else {
+    stopifnot(
+      "uncertainty must be provided for each parameter" =
+        length(param_names) == length(uncertainty),
+      "parameters and uncertainty must be named and match" =
+        identical(param_names, names(uncertainty))
+    )
+  }
 
   # call epiparameter validator
   assert_epiparameter(epiparameter)
