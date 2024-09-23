@@ -34,7 +34,10 @@
           },
           "parameters": {
             "type": "object",
-            "properties": {
+            "propertyNames": {
+           "enum": ["shape", "shape_ci_limits", "shape_ci", "scale", "scale_ci_limits", "scale_ci", "meanlog", "meanlog_ci_limits", "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci", "dispersion", "dispersion_ci_limits", "dispersion_ci", "precision", "precision_ci_limits", "precision_ci", "mean", "mean_ci_limits", "mean_ci", "sd", "sd_ci_limits", "sd_ci"]
+         },
+         "properties": {
               "shape": {
                 "description": "The shape parameter of either the gamma or Weibull distribution.",
                 "examples": [2.0, 4.5],
@@ -108,7 +111,7 @@
                 "type": ["number", "null"]
               },
               "dispersion": {
-                "description": "The dispersion factor of the lognormal distribution. This can be used with the median to calculate the bounds that contain approximately two-thirds of The data.",
+                "description": "The dispersion parameter of the distribution. This is often used for negative binomial distributions and is often represented as k. This is distinct from the dispersion for a lognormal distribution, which is considered a summary statistic.",
                 "examples": [1.2, 1.4],
                 "type": "number"
               },
@@ -142,11 +145,95 @@
                 "description": "The interval of the uncertainty around the precision parameter, for example 95% confidence interval would be 95.",
                 "examples": [95, 90, 80],
                 "type": ["number", "null"]
+              },
+              "mean": {
+                "description": "The mean of the distribution. Only applies to normal and negative binomial distributions (checked by schema below), for other probability distributions the mean should be included in the summary statistics.",
+                "examples": [1.0, 2.5],
+                "type": ["number", "null"]
+              },
+              "mean_ci_limits": {
+                "description": "The confidence interval of the distribution's mean, specified by two numbers in an array.",
+                "examples": [[0.3, 0.8], [1.4, 1.45]],
+                "type": ["array", "null"],
+                "items": {
+                  "type": "number"
+                }
+              },
+              "mean_ci": {
+                "description": "The interval of the uncertainty around the mean, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": ["number", "null"]
+              },
+              "sd": {
+                "description": "The standard deviation of the distribution. Only applies to normal distributions (checked by schema below), for other probability distributions the standard deviation should be included in the summary statistics.",
+                "examples": [1.0, 2.5],
+                "type": ["number", "null"]
+              },
+              "sd_ci_limits": {
+                "description": "The confidence interval of the distribution's standard deviation, specified by two numbers in an array.",
+                "examples": [[0.3, 0.8], [1.4, 1.45]],
+                "type": ["array", "null"],
+                "items": {
+                  "type": "number"
+                }
+              },
+              "sd_ci": {
+                "description": "The interval of the uncertainty around the standard deviation, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": ["number", "null"]
               }
             }
           }
         },
-        "required": ["prob_distribution"]
+        "required": ["prob_distribution"],
+        "if": {
+          "properties": {
+            "prob_distribution": { "const": "norm" }
+          }
+        },
+        "then": {
+          "properties": {
+            "parameters": {
+              "type": "object",
+              "anyOf": [
+                { "required": ["mean"] },
+                { "required": ["sd"] }
+                ]
+            }
+          }
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "prob_distribution": { "const": "nbinom" }
+            }
+          },
+          "then": {
+            "properties": {
+              "parameters": {
+                "type": "object",
+                "anyOf": [
+                  { "required": ["mean"] },
+                  { "required": ["dispersion"] }
+                  ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "parameters": {
+                "type": "object",
+                "not": {
+                  "anyOf": [
+                    { "required": ["mean"] },
+                    { "required": ["sd"] },
+                    { "required": ["dispersion"] }
+                    ]
+                }
+              }
+            }
+          }
+        }
       },
       "summary_statistics": {
         "type": "object",
