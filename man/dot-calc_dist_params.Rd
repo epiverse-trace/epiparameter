@@ -5,16 +5,13 @@
 \title{Calculate the parameters of a probability distribution from a list of
 summary statistics}
 \usage{
-.calc_dist_params(prob_dist, prob_dist_params, summary_stats, sample_size)
+.calc_dist_params(prob_distribution, summary_stats, sample_size)
 }
 \arguments{
-\item{prob_dist}{A character string specifying the probability
-distribution. This should match the R naming convention of probability
+\item{prob_distribution}{A \code{character} string specifying the probability
+distribution. This should match the \R naming convention of probability
 distributions (e.g. lognormal is \code{lnorm}, negative binomial is \code{nbinom}, and
 geometric is \code{geom}).}
-
-\item{prob_dist_params}{A named vector of probability distribution
-parameters.}
 
 \item{summary_stats}{A list of summary statistics, use
 \code{\link[=create_summary_stats]{create_summary_stats()}} to create list. This list can include

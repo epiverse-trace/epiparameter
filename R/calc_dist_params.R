@@ -30,7 +30,6 @@
 #' @return A named `numeric` vector with parameters.
 #' @keywords internal
 .calc_dist_params <- function(prob_distribution, # nolint cyclocomp
-                              prob_distribution_params,
                               summary_stats,
                               sample_size) {
   if (is.na(prob_distribution)) {
@@ -60,21 +59,21 @@
     unlist(summary_stats$range)
   )
 
-  # extract dispersion
-  disp <- unname(
-    prob_distribution_params[names(prob_distribution_params) == "dispersion"]
-  )
-  median_disp <- c(median = summary_stats$median, dispersion = disp)
-
   # extract mean and sd
   mean_sd <- c(summary_stats$mean, summary_stats$sd)
 
   is_mean_sd <- checkmate::test_numeric(
     mean_sd, any.missing = FALSE, len = 2, finite = TRUE
   )
-  is_median_disp <- checkmate::test_numeric(
-    median_disp, len = 2, finite = TRUE
+
+  is_median_disp <- checkmate::test_number(
+    summary_stats$median,
+    finite = TRUE
+  ) && checkmate::test_number(
+    summary_stats$dispersion,
+    finite = TRUE
   )
+
   is_median_range <- checkmate::test_numeric(
     median_range, len = 3, finite = TRUE
   ) && checkmate::test_count(sample_size, positive = TRUE)
@@ -104,10 +103,16 @@
       args = args
     ))
   } else if (is_median_disp) {
-    med <- summary_stats$median
-    meanlog <- log(med / sqrt(1 + disp^2))
-    sdlog <- sqrt(log(1 + disp^2))
-    prob_distribution_params <- c(meanlog = meanlog, sdlog = sdlog)
+    args <- list(
+      x = prob_distribution,
+      median = summary_stats$median,
+      dispersion = summary_stats$dispersion
+    )
+    prob_distribution_params <- do.call(
+      convert_summary_stats_to_params,
+      args = args
+    )
+    prob_distribution_params <- unlist(prob_distribution_params)
   } else if (!anyNA(percentiles)) {
     # calculate the parameters from the percentiles
     # percentiles required to be [0, 1] so divide by 100
