@@ -25,11 +25,11 @@ new_epiparameter <- function(disease = character(),
                              prob_distribution = list(),
                              uncertainty = list(),
                              summary_stats = list(),
-                             auto_calc_params = logical(),
                              citation = character(),
                              metadata = list(),
                              method_assess = list(),
                              notes = character(),
+                             auto_calc_params = logical(),
                              ...) {
   if (auto_calc_params && is.character(prob_distribution)) {
     # calculate parameters if not provided
@@ -219,11 +219,11 @@ epiparameter <- function(disease,
                          ),
                          uncertainty = create_uncertainty(),
                          summary_stats = create_summary_stats(),
-                         auto_calc_params = TRUE,
                          citation = create_citation(),
                          metadata = create_metadata(),
                          method_assess = create_method_assess(),
                          notes = NULL,
+                         auto_calc_params = TRUE,
                          ...) {
   # check input
   checkmate::assert_string(disease)
