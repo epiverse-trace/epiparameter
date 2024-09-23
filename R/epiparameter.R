@@ -120,7 +120,11 @@ new_epiparameter <- function(disease = character(),
 #' disease, or `NA` if not known.
 #' @param epi_dist A `character` string with the name of the
 #' epidemiological distribution type.
-
+#' @param prob_distribution An S3 class containing the probability
+#' distribution or a character string if the parameters of the probability
+#' distribution are unknown but the name of the distribution is known, or `NA`
+#' if the distribution name and parameters are unknown. Use
+#' [create_prob_distribution()] to create `prob_distribution`.
 #' @param uncertainty A list of named vectors with the uncertainty around
 #' the probability distribution parameters. If uncertainty around the parameter
 #' estimates is unknown use [create_uncertainty()] (which is the
