@@ -2196,16 +2196,15 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 1.63,
+      "mean_ci_limits": [0.54, 2.65],
+      "mean_ci": 90,
       "dispersion": 0.16,
       "dispersion_ci_limits": [0.11, 0.64],
       "dispersion_ci": 90
     }
   },
-  "summary_statistics": {
-    "mean": 1.63,
-    "mean_ci_limits": [0.54, 2.65],
-    "mean_ci": 90
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
@@ -2254,16 +2253,15 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 0.94,
+      "mean_ci_limits": [0.27, 1.51],
+      "mean_ci": 90,
       "dispersion": 0.17,
       "dispersion_ci_limits": [0.1, 0.64],
       "dispersion_ci": 90
     }
   },
-  "summary_statistics": {
-    "mean": 0.94,
-    "mean_ci_limits": [0.27, 1.51],
-    "mean_ci": 90
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
@@ -2312,16 +2310,15 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 3.19,
+      "mean_ci_limits": [1.66, 4.62],
+      "mean_ci": 90,
       "dispersion": 0.37,
       "dispersion_ci_limits": [0.26, 0.69],
       "dispersion_ci": 90
     }
   },
-  "summary_statistics": {
-    "mean": 3.19,
-    "mean_ci_limits": [1.66, 4.62],
-    "mean_ci": 90
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
@@ -2370,16 +2367,15 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 0.8,
+      "mean_ci_limits": [0.32, 1.2],
+      "mean_ci": 90,
       "dispersion": 0.32,
       "dispersion_ci_limits": [0.16, 1.76],
       "dispersion_ci": 90
     }
   },
-  "summary_statistics": {
-    "mean": 0.8,
-    "mean_ci_limits": [0.32, 1.2],
-    "mean_ci": 90
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
@@ -2428,16 +2424,15 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 1.6,
+      "mean_ci_limits": [0.88, 2.16],
+      "mean_ci": 90,
       "dispersion": 0.65,
       "dispersion_ci_limits": [0.34, 2.32],
       "dispersion_ci": 90
     }
   },
-  "summary_statistics": {
-    "mean": 1.6,
-    "mean_ci_limits": [0.88, 2.16],
-    "mean_ci": 90
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
@@ -2486,14 +2481,13 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 1.49,
       "dispersion": 0.72,
       "dispersion_ci_limits": [0.44, 2.05],
       "dispersion_ci": 90
     }
   },
-  "summary_statistics": {
-    "mean": 1.49
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
@@ -2542,16 +2536,15 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 0.32,
+      "mean_ci_limits": [0.22, 0.40],
+      "mean_ci": 90,
       "dispersion": 0.58,
       "dispersion_ci_limits": [0.32, 3.57],
       "dispersion_ci": 90
     }
   },
-  "summary_statistics": {
-    "mean": 0.32,
-    "mean_ci_limits": [0.22, 0.40],
-    "mean_ci": 90
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
@@ -2600,16 +2593,15 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 1.32,
+      "mean_ci_limits": [1.01, 1.61],
+      "mean_ci": 90,
       "dispersion": 1.37,
       "dispersion_ci_limits": [0.88, 3.53],
       "dispersion_ci": 90
     }
   },
-  "summary_statistics": {
-    "mean": 1.32,
-    "mean_ci_limits": [1.01, 1.61],
-    "mean_ci": 90
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
@@ -2658,14 +2650,13 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 0.7,
+      "mean_ci_limits": [0.20, 1.05],
+      "mean_ci": 90,
       "dispersion": 1.66
     }
   },
-  "summary_statistics": {
-    "mean": 0.7,
-    "mean_ci_limits": [0.20, 1.05],
-    "mean_ci": 90
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
@@ -2714,14 +2705,13 @@
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
+      "mean": 1.5,
+      "mean_ci_limits": [0.85, 2.08],
+      "mean_ci": 90,
       "dispersion": 5.10
     }
   },
-  "summary_statistics": {
-    "mean": 1.5,
-    "mean_ci_limits": [0.85, 2.08],
-    "mean_ci": 90
-  },
+  "summary_statistics": { },
   "citation": {
     "author": [
       {
