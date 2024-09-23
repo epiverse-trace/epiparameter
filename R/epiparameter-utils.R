@@ -553,7 +553,7 @@ is_epiparameter_params <- function(prob_distribution,
 #' This means that the distribution specific parameter cleaning functions do
 #' not need to check and error for incorrect parameterisation.
 #'
-#' @inheritParams new_epiparameter
+#' @inheritParams create_prob_distribution
 #'
 #' @name .clean_params
 #'
