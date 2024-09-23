@@ -32,16 +32,6 @@ new_epiparameter <- function(disease = character(),
                              method_assess = list(),
                              notes = character(),
                              ...) {
-  # check ci has been given for each param and param and uncertainty names match
-  stopifnot(
-    "uncertainty must be provided for each parameter" =
-      anyNA(uncertainty) ||
-      length(prob_dist_params) == length(uncertainty),
-    "parameters and uncertainty must be named and match" =
-      anyNA(uncertainty) ||
-      identical(names(prob_dist_params), names(uncertainty))
-  )
-
   if (is_epiparameter_params(prob_dist, prob_dist_params)) {
     # standardise common distribution parameters
     prob_dist_params <- .clean_params(
