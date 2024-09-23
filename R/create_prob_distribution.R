@@ -22,7 +22,12 @@
 #' for the discretisation is 1. `w` can be `[0,1]`. For more information please
 #' see [distcrete::distcrete()].
 #'
-#' @inheritParams epiparameter
+#' @param prob_distribution A `character` string specifying the probability
+#' distribution. This should match the \R naming convention of probability
+#' distributions (e.g. lognormal is `lnorm`, negative binomial is `nbinom`, and
+#' geometric is `geom`).
+#' @param prob_distribution_params A named vector of probability distribution
+#' parameters.
 #' @param discretise A boolean `logical` whether the distribution is
 #' discretised.
 #' Default is FALSE which assumes a continuous probability distribution
