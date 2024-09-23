@@ -30,7 +30,6 @@ new_epiparameter <- function(disease = character(),
                              citation = character(),
                              metadata = list(),
                              method_assess = list(),
-                             discretise = logical(),
                              notes = character(),
                              ...) {
   # check ci has been given for each param and param and uncertainty names match
@@ -80,7 +79,6 @@ new_epiparameter <- function(disease = character(),
     prob_dist <- create_prob_distribution(
       prob_distribution = prob_dist,
       prob_distribution_params = prob_dist_params,
-      discretise = discretise,
       ...
     )
   }
