@@ -241,11 +241,10 @@ epiparameter <- function(disease,
   checkmate::assert_string(disease)
   checkmate::assert_character(pathogen)
   checkmate::assert_string(epi_dist)
-  checkmate::assert_character(
-    prob_distribution,
-    min.chars = 1,
-    min.len = 1,
-    max.len = 2
+  stopifnot(
+    "Probability distribution must be a distribution object or a character" =
+      !inherits(prob_distribution, c("distribution", "distcrete")) ||
+      !is.character(prob_distribution)
   )
   checkmate::assert_list(uncertainty, names = "unique")
   checkmate::assert_list(
