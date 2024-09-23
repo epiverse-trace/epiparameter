@@ -49,13 +49,6 @@ new_epiparameter <- function(disease = character(),
     no = prob_dist
   )
 
-  # TODO: formalise if statement below or remove
-  # include mean in prob_dist_params
-  if (!is.null(summary_stats$mean) && !is.na(summary_stats$mean) &&
-      prob_dist %in% c("nbinom", "geom", "pois", "norm")) {
-    prob_dist_params["mean"] <- summary_stats$mean
-  }
-
   if (is_epiparameter_params(prob_dist, prob_dist_params)) {
     # standardise common distribution parameters
     prob_dist_params <- .clean_params(
