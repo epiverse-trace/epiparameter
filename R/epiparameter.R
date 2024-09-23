@@ -317,7 +317,7 @@ assert_epiparameter <- function(x) {
   }
 
   list_names <- c(
-    "disease", "pathogen", "epi_dist", "prob_dist", "uncertainty",
+    "disease", "pathogen", "epi_dist", "prob_distribution", "uncertainty",
     "summary_stats", "citation", "metadata", "method_assess", "notes"
   )
   missing_list_names <- list_names[!list_names %in% attributes(x)$names]
@@ -335,8 +335,8 @@ assert_epiparameter <- function(x) {
       checkmate::test_string(x$epi_dist),
     "epiparameter must contain a <distribution> or <distcrete> or NA" =
     checkmate::test_multi_class(
-      x$prob_dist, classes = c("distribution", "distcrete")
-    ) || checkmate::test_string(x$prob_dist, na.ok = TRUE),
+      x$prob_distribution, classes = c("distribution", "distcrete")
+    ) || checkmate::test_string(x$prob_distribution, na.ok = TRUE),
     "epidisit must contain uncertainty, summary stats and metadata" =
       all(
         is.list(x$uncertainty), is.list(x$summary_stats), is.list(x$metadata)
@@ -361,7 +361,7 @@ test_epiparameter <- function(x) { # nolint cyclocomp_linter
   if (!is_epiparameter(x)) return(FALSE)
 
   list_names <- c(
-    "disease", "pathogen", "epi_dist", "prob_dist", "uncertainty",
+    "disease", "pathogen", "epi_dist", "prob_distribution", "uncertainty",
     "summary_stats", "citation", "metadata", "method_assess", "notes"
   )
   missing_list_names <- list_names[!list_names %in% attributes(x)$names]
@@ -370,8 +370,8 @@ test_epiparameter <- function(x) { # nolint cyclocomp_linter
   valid_elements <- checkmate::test_string(x$disease) &&
     checkmate::test_string(x$epi_dist) &&
     (checkmate::test_multi_class(
-      x$prob_dist, classes = c("distribution", "distcrete")
-    ) || checkmate::test_string(x$prob_dist, na.ok = TRUE)) &&
+      x$prob_distribution, classes = c("distribution", "distcrete")
+    ) || checkmate::test_string(x$prob_distribution, na.ok = TRUE)) &&
     all(
       is.list(x$uncertainty), is.list(x$summary_stats), is.list(x$metadata)
     ) &&
