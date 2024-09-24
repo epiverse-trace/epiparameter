@@ -230,7 +230,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   if (!is_parameterised(x)) {
     if (length(dots) > 0) {
       # unparameterised with parameters supplied through `...`
-      return(convert_params_to_summary_stats(x$prob_dist, ...))
+      return(convert_params_to_summary_stats(x$prob_distribution, ...))
     }
     # unparameterised with no parameters supplied through `...`
     stop(

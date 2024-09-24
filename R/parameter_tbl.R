@@ -58,10 +58,10 @@ parameter_tbl <- function(multi_epiparameter,
   )
   prob_dist <- vapply(
     multi_epiparameter, function(x) {
-      switch(class(x$prob_dist)[1],
+      switch(class(x$prob_distribution)[1],
         distcrete = family(x),
         distribution = family(x),
-        character = x$prob_dist,
+        character = x$prob_distribution,
         logical = NA_character_
       )
     },

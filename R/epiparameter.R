@@ -416,9 +416,9 @@ format.epiparameter <- function(x, ...) {
       )
     )
 
-  if (is.object(x$prob_dist) || is.character(x$prob_dist)) {
+  if (is.object(x$prob_distribution) || is.character(x$prob_distribution)) {
     dist_string <- ifelse(
-      test = inherits(x$prob_dist, "distcrete"),
+      test = inherits(x$prob_distribution, "distcrete"),
       yes = tr_("Distribution: discrete %s"),
       no = tr_("Distribution: %s")
     )
@@ -427,7 +427,7 @@ format.epiparameter <- function(x, ...) {
     writeLines(tr_("Parameters: <no parameters>"))
   }
 
-  if (is.object(x$prob_dist)) {
+  if (is.object(x$prob_distribution)) {
     params <- get_parameters(x)
 
     # decide on parameter format from magnitude of number
@@ -526,11 +526,11 @@ density.epiparameter <- function(x, at, ...) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
-  unlist <- length(x$prob_dist) == 1
-  if (inherits(x$prob_dist, "distcrete")) {
-    out <- x$prob_dist$d(at)
+  unlist <- length(x$prob_distribution) == 1
+  if (inherits(x$prob_distribution, "distcrete")) {
+    out <- x$prob_distribution$d(at)
   } else {
-    out <- stats::density(x$prob_dist, at = at)
+    out <- stats::density(x$prob_distribution, at = at)
   }
   out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
@@ -547,12 +547,12 @@ cdf.epiparameter <- function(x, q, ..., log = FALSE) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
-  unlist <- length(x$prob_dist) == 1
-  if (inherits(x$prob_dist, "distcrete")) {
+  unlist <- length(x$prob_distribution) == 1
+  if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_dist$p(q)
     if (log) out <- log(out)
   } else {
-    out <- distributional::cdf(x$prob_dist, q = q, ..., log = log)
+    out <- distributional::cdf(x$prob_distribution, q = q, ..., log = log)
   }
   out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
@@ -565,11 +565,11 @@ quantile.epiparameter <- function(x, p, ...) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
-  unlist <- length(x$prob_dist) == 1
-  if (inherits(x$prob_dist, "distcrete")) {
-    out <- x$prob_dist$q(p)
+  unlist <- length(x$prob_distribution) == 1
+  if (inherits(x$prob_distribution, "distcrete")) {
+    out <- x$prob_distribution$q(p)
   } else {
-    out <- stats::quantile(x$prob_dist, p = p)
+    out <- stats::quantile(x$prob_distribution, p = p)
   }
   out <- if (unlist) unlist(out, recursive = FALSE) else out
   out
@@ -588,13 +588,13 @@ generate.epiparameter <- function(x, times, ...) {
   }
   # check times is a single number for consistent behaviour
   checkmate::assert_number(times)
-  if (inherits(x$prob_dist, "distcrete")) {
-    unlist <- length(x$prob_dist) == 1
-    out <- x$prob_dist$r(n = times)
+  if (inherits(x$prob_distribution, "distcrete")) {
+    unlist <- length(x$prob_distribution) == 1
+    out <- x$prob_distribution$r(n = times)
     out <- if (unlist) unlist(out, recursive = FALSE) else out
   } else {
-    recursive <- length(x$prob_dist) == 1
-    out <- distributional::generate(x$prob_dist, times = times)
+    recursive <- length(x$prob_distribution) == 1
+    out <- distributional::generate(x$prob_distribution, times = times)
     out <- unlist(out, recursive = recursive)
   }
   out
@@ -632,7 +632,7 @@ discretize <- discretise
 #' @export
 discretise.epiparameter <- function(x, ...) {
   # check if distribution is already discretised if so return early
-  if (inherits(x$prob_dist, "distcrete")) {
+  if (inherits(x$prob_distribution, "distcrete")) {
     message("Distribution in `epiparameter` is already discretised")
     return(x)
   } else {
@@ -657,7 +657,7 @@ discretise.epiparameter <- function(x, ...) {
 
       # trunc dist family is truncated so get prob dist by unclassing dist and
       # extracting name
-      list_dist <- unclass(x$prob_dist)
+      list_dist <- unclass(x$prob_distribution)
       prob_dist <- gsub(
         pattern = "dist_",
         replacement = "",
@@ -726,21 +726,21 @@ discretise.default <- function(x, ...) {
 #' )
 #' family(ep)
 family.epiparameter <- function(object, ...) {
-  if (inherits(object$prob_dist, "distcrete")) {
-    prob_dist <- object$prob_dist$name
-  } else if (inherits(object$prob_dist, "distribution")) {
+  if (inherits(object$prob_distribution, "distcrete")) {
+    prob_dist <- object$prob_distribution$name
+  } else if (inherits(object$prob_distribution, "distribution")) {
     if (is_truncated(object)) {
       prob_dist <- gsub(
         pattern = "dist_",
         replacement = "",
-        x = class(unclass(unclass(object$prob_dist)[[1]])[[1]])[1],
+        x = class(unclass(unclass(object$prob_distribution)[[1]])[[1]])[1],
         fixed = TRUE
       )
     } else {
-      prob_dist <- stats::family(object$prob_dist)
+      prob_dist <- stats::family(object$prob_distribution)
     }
-  } else if (is.character(object$prob_dist)) {
-    prob_dist <- object$prob_dist
+  } else if (is.character(object$prob_distribution)) {
+    prob_dist <- object$prob_distribution
   } else {
     return(NA)
   }
@@ -796,18 +796,18 @@ is_truncated <- function(x) {
   )
 
   # distcrete distributions cannot be truncated
-  if (inherits(x$prob_dist, "distcrete")) {
+  if (inherits(x$prob_distribution, "distcrete")) {
     return(FALSE)
   }
 
   # unparameterised objects cannot be truncated
   # dont use is_parameterised due to infinite recursion
-  if (is.na(x$prob_dist) || is.character(x$prob_dist)) {
+  if (is.na(x$prob_distribution) || is.character(x$prob_distribution)) {
     return(FALSE)
   }
 
   # use stats::family instead of epiparameter::family to check truncated
-  if (identical(stats::family(x$prob_dist), "truncated")) {
+  if (identical(stats::family(x$prob_distribution), "truncated")) {
     return(TRUE)
   } else {
     return(FALSE)
@@ -850,7 +850,7 @@ is_continuous <- function(x) {
       is_epiparameter(x)
   )
   family(x) %in% c("gamma", "lnorm", "weibull", "normal") &&
-    !inherits(x$prob_dist, "distcrete")
+    !inherits(x$prob_distribution, "distcrete")
 }
 
 #' Mean method for `<epiparameter>` class
