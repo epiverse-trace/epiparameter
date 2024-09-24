@@ -68,3 +68,5 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
   cit <- paste0(cit, " (", x$year, ")")
   cit
 }
+
+`%||%` <- function(x, y) if (is.null(x)) y else x
