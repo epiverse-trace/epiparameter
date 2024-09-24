@@ -91,27 +91,31 @@ create_prob_distribution <- function(prob_distribution,
   )
 
   # when only the type of probability distribution is known return string
-  if (missing(prob_distribution_params)) return(prob_distribution)
+  if (missing(prob_distribution_params) || anyNA(prob_distribution_params)) {
+    return(prob_distribution)
+  }
 
-  checkmate::assert_numeric(prob_distribution_params, names = "unique")
+  # NA parameters will be caught by if above so only need to check numeric
+  stopifnot(
+    "`prob_distribution_params` must be a named vector of numerics or NA" =
+      checkmate::test_numeric(prob_distribution_params, names = "unique")
+  )
   checkmate::assert_logical(discretise, len = 1)
   checkmate::assert_number(truncation, na.ok = TRUE)
 
   # set prob_distribution to lowercase for downstream case sensitive matching
   prob_distribution <- .clean_string(prob_distribution)
 
-  if (is_epiparameter_params(prob_distribution, prob_distribution_params)) {
-    # standardise common distribution parameters
-    prob_distribution_params <- .clean_params(
-      prob_distribution = prob_distribution,
-      prob_distribution_params = prob_distribution_params
-    )
-  } else {
-    stop(
-      "Incorrect parameters provided for probability distribution.",
-      call. = FALSE
-    )
-  }
+  stopifnot(
+    "Incorrect parameters provided for probability distribution." =
+      is_epiparameter_params(prob_distribution, prob_distribution_params)
+  )
+
+  # standardise common distribution parameters
+  prob_distribution_params <- .clean_params(
+    prob_distribution = prob_distribution,
+    prob_distribution_params = prob_distribution_params
+  )
 
   dots <- list(...)
   if (discretise) {
