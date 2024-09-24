@@ -62,7 +62,7 @@ as.data.frame.epiparameter <- function(x, ...) {
     disease = x$disease,
     pathogen = x$pathogen,
     epi_distribution = x$epi_dist,
-    prob_distribution = I(list(prob_dist = x$prob_dist)),
+    prob_distribution = I(list(prob_dist = x$prob_distribution)),
     uncertainty = I(list(uncertainty = x$uncertainty)),
     summary_stats = I(list(summary_stats = x$summary_stats)),
     citation = I(x$citation),
@@ -220,15 +220,17 @@ is_epiparameter_df <- function(x) {
     disease = x$disease,
     pathogen = x$pathogen,
     epi_dist = x$epi_distribution,
-    prob_distribution = family(x$prob_distribution[[1]]),
-    prob_distribution_params = prob_distribution_params,
+    prob_distribution = create_prob_distribution(
+      prob_distribution = family(x$prob_distribution[[1]]),
+        prob_distribution_params = prob_distribution_params,
+      discretise = inherits(x$prob_distribution[[1]], "distcrete"),
+      truncation = truncation
+    ),
     uncertainty = uncertainty,
     summary_stats = x$summary_stats$summary_stats,
     citation = x$citation,
     metadata = x$metadata,
     method_assess = x$method_assess,
-    discretise = inherits(x$prob_distribution[[1]], "distcrete"),
-    truncation = truncation,
     notes = x$notes
   )
 }
@@ -422,8 +424,9 @@ is_epiparameter_df <- function(x) {
     disease = disease,
     pathogen = pathogen,
     epi_dist = epi_dist,
-    prob_distribution = prob_dist,
-    prob_distribution_params = prob_dist_params,
+    prob_distribution = create_prob_distribution(
+      prob_distribution = prob_dist,
+      prob_distribution_params = prob_dist_params),
     uncertainty = uncertainty,
     summary_stats = summary_stats,
     citation = citation,

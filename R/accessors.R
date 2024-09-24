@@ -36,10 +36,10 @@ get_parameters <- function(x, ...) {
 get_parameters.epiparameter <- function(x, ...) {
   chkDots(...)
   # extract parameters depending on prob distribution class
-  if (inherits(x$prob_dist, "distcrete")) {
-    params <- unlist(x$prob_dist$parameters)
-  } else if (inherits(x$prob_dist, "distribution")) {
-    params <- unlist(distributional::parameters(x$prob_dist))
+  if (inherits(x$prob_distribution, "distcrete")) {
+    params <- unlist(x$prob_distribution$parameters)
+  } else if (inherits(x$prob_distribution, "distribution")) {
+    params <- unlist(distributional::parameters(x$prob_distribution))
 
     # if dist is truncated clean names
     if (is_truncated(x)) {

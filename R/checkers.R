@@ -43,7 +43,7 @@ is_parameterized <- is_parameterised
 is_parameterised.epiparameter <- function(x, ...) {
   chkDots(...)
   # probability distribution object
-  return(is.object(x$prob_dist))
+  return(is.object(x$prob_distribution))
 }
 
 #' @export

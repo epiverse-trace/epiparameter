@@ -604,16 +604,18 @@ epidist_db <- function(disease = "all",
     disease = x$disease,
     pathogen = x$pathogen,
     epi_dist = x$epi_distribution,
-    prob_distribution = x$probability_distribution$prob_distribution,
-    prob_distribution_params = params,
+    prob_distribution = create_prob_distribution(
+      prob_distribution = x$probability_distribution$prob_distribution,
+      prob_distribution_params = params,
+      discretise = discretised,
+      truncation = truncation
+    ),
     uncertainty = uncertainty,
     summary_stats = ss,
     auto_calc_params = TRUE,
     citation = cit,
     metadata = meta,
     method_assess = method,
-    discretise = discretised,
-    truncation = truncation,
     notes = x$notes
   )
 }
@@ -717,7 +719,8 @@ epidist_db <- function(disease = "all",
   stopifnot(is_epiparameter(lst))
   if (nse_subject == "prob_dist") {
     # special case to subset by dist as name is extracted first
-    if (is.object(lst$prob_dist) || is.character(lst$prob_dist)) {
+    if (is.object(lst$prob_distribution) ||
+        is.character(lst$prob_distribution)) {
       prob_dist <- family(lst) # nolint prob_dist used in eval
       eval(expr = condition)
     } else {
