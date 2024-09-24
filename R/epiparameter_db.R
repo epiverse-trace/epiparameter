@@ -559,6 +559,17 @@ epidist_db <- function(disease = "all",
   params <- params_uncertainty$params
   uncertainty <- params_uncertainty$uncertainty
 
+  # TODO: remove this and move precision from parameter to summary statistic
+  if ("precision" %in% names(params)) {
+    if (length(params) == 1) {
+      params <- NA_real_
+      uncertainty <- list(uncertainty = create_uncertainty())
+    } else {
+      params <- params[-which(names(params) == "precision")]
+      uncertainty <- uncertainty[-which(names(uncertainty) == "precision")]
+    }
+  }
+
   # format summary statistics
   ss <- lapply(x$summary_statistics, unlist)
   names(ss$quantile_values) <- ss$quantile_names
@@ -635,7 +646,7 @@ epidist_db <- function(disease = "all",
     return(
       list(
         params = NA_real_,
-        uncertainty = create_uncertainty()
+        uncertainty = list(uncertainty = create_uncertainty())
       )
     )
   }
