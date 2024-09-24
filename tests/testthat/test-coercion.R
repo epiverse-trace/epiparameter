@@ -27,7 +27,7 @@ test_that("as_epiparameter works for ebola infectious period (issue #327 & #306)
   expect_s3_class(ebola_infectiousness_epiparameter, class = "epiparameter")
   # Lau 2017 has information to parameterise an exponential distribution
   expect_s3_class(
-    ebola_infectiousness_epiparameter$prob_dist,
+    ebola_infectiousness_epiparameter$prob_distribution,
     class = "distribution"
   )
   # populate mean summary statistics
@@ -52,7 +52,7 @@ test_that("as_epiparameter works for lassa incubation period (issue #306)", {
   expect_s3_class(lassa_incub_epiparameter, class = "epiparameter")
   # Akhmetzhanov 2019 has information to parameterise a gamma distribution
   expect_s3_class(
-    lassa_incub_epiparameter$prob_dist,
+    lassa_incub_epiparameter$prob_distribution,
     class = "distribution"
   )
   # populate mean and sd summary statistics without uncertainty
@@ -77,7 +77,7 @@ test_that("as_epiparameter works for ebola serial interval (issue #303)", {
   expect_s3_class(ebola_serial_epiparameter, class = "epiparameter")
   # Chan 2020 has information to parameterise a gamma distribution
   expect_s3_class(
-    ebola_serial_epiparameter$prob_dist,
+    ebola_serial_epiparameter$prob_distribution,
     class = "distribution"
   )
   # populate mean and sd summary statistics without uncertainty
@@ -103,7 +103,7 @@ test_that("as_epiparameter works for ebola SI assumed prob_dist (issue #310)", {
   expect_s3_class(ebola_serial_epiparameter, class = "epiparameter")
   # Faye 2015 parameterise an assumed gamma distribution
   expect_s3_class(
-    ebola_serial_epiparameter$prob_dist,
+    ebola_serial_epiparameter$prob_distribution,
     class = "distribution"
   )
   # populate mean and sd summary statistics without uncertainty
@@ -128,7 +128,7 @@ test_that("as_epiparameter works for lassa incubation overwritten prob_dist", {
   expect_s3_class(lassa_incub_epiparameter, class = "epiparameter")
   # Akhmetzhanov 2019 has information to parameterise a gamma distribution
   expect_s3_class(
-    lassa_incub_epiparameter$prob_dist,
+    lassa_incub_epiparameter$prob_distribution,
     class = "distribution"
   )
   expect_identical(family(lassa_incub_epiparameter), "lnorm")

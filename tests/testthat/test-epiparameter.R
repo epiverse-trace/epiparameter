@@ -815,9 +815,9 @@ test_that("discretise works as expected on continuous gamma", {
   ))
   ep <- discretise(ep)
 
-  expect_s3_class(ep$prob_dist, "distcrete")
-  expect_identical(ep$prob_dist$parameters, list(shape = 1, scale = 1))
-  expect_identical(ep$prob_dist$name, "gamma")
+  expect_s3_class(ep$prob_distribution, "distcrete")
+  expect_identical(ep$prob_distribution$parameters, list(shape = 1, scale = 1))
+  expect_identical(ep$prob_distribution$name, "gamma")
 })
 
 test_that("discretise works as expected on continuous lognormal", {
@@ -830,9 +830,9 @@ test_that("discretise works as expected on continuous lognormal", {
   ))
   ep <- discretise(ep)
 
-  expect_s3_class(ep$prob_dist, "distcrete")
-  expect_identical(ep$prob_dist$parameters, list(meanlog = 1, sdlog = 1))
-  expect_identical(ep$prob_dist$name, "lnorm")
+  expect_s3_class(ep$prob_distribution, "distcrete")
+  expect_identical(ep$prob_distribution$parameters, list(meanlog = 1, sdlog = 1))
+  expect_identical(ep$prob_distribution$name, "lnorm")
 })
 
 test_that("discretise works as expected on discretised dist", {
@@ -849,9 +849,9 @@ test_that("discretise works as expected on discretised dist", {
     regexp = "Distribution in `epiparameter` is already discretised"
   )
 
-  expect_s3_class(ep$prob_dist, "distcrete")
-  expect_identical(ep$prob_dist$parameters, list(shape = 1, scale = 1))
-  expect_identical(ep$prob_dist$name, "gamma")
+  expect_s3_class(ep$prob_distribution, "distcrete")
+  expect_identical(ep$prob_distribution$parameters, list(shape = 1, scale = 1))
+  expect_identical(ep$prob_distribution$name, "gamma")
 })
 
 test_that("discretise works as expected on truncated dist", {
@@ -874,9 +874,9 @@ test_that("discretise works as expected on truncated dist", {
 
   ep <- suppressWarnings(discretise(ep))
 
-  expect_s3_class(ep$prob_dist, "distcrete")
-  expect_identical(ep$prob_dist$parameters, list(shape = 1, scale = 1))
-  expect_identical(ep$prob_dist$name, "gamma")
+  expect_s3_class(ep$prob_distribution, "distcrete")
+  expect_identical(ep$prob_distribution$parameters, list(shape = 1, scale = 1))
+  expect_identical(ep$prob_distribution$name, "gamma")
 })
 
 test_that("discretise fails as expected on non-epiparameter object", {
