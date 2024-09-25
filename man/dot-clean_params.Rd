@@ -28,7 +28,12 @@
 .clean_params_exp(prob_dist_params)
 }
 \arguments{
-\item{prob_dist_params}{A named vector of probability distribution
+\item{prob_distribution}{A \code{character} string specifying the probability
+distribution. This should match the \R naming convention of probability
+distributions (e.g. lognormal is \code{lnorm}, negative binomial is \code{nbinom}, and
+geometric is \code{geom}).}
+
+\item{prob_distribution_params}{A named vector of probability distribution
 parameters.}
 }
 \value{

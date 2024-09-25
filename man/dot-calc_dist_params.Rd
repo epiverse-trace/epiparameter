@@ -8,10 +8,11 @@ summary statistics}
 .calc_dist_params(prob_distribution, summary_stats, sample_size)
 }
 \arguments{
-\item{prob_distribution}{A \code{character} string specifying the probability
-distribution. This should match the \R naming convention of probability
-distributions (e.g. lognormal is \code{lnorm}, negative binomial is \code{nbinom}, and
-geometric is \code{geom}).}
+\item{prob_distribution}{An S3 class containing the probability
+distribution or a character string if the parameters of the probability
+distribution are unknown but the name of the distribution is known, or \code{NA}
+if the distribution name and parameters are unknown. Use
+\code{\link[=create_prob_distribution]{create_prob_distribution()}} to create \code{prob_distribution}.}
 
 \item{summary_stats}{A list of summary statistics, use
 \code{\link[=create_summary_stats]{create_summary_stats()}} to create list. This list can include

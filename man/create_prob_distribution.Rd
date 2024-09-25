@@ -22,8 +22,8 @@ geometric is \code{geom}).}
 parameters.}
 
 \item{discretise}{A boolean \code{logical} whether the distribution is
-discretised.
-Default is FALSE which assumes a continuous probability distribution}
+discretised. Default is \code{FALSE} which assumes a continuous probability
+distribution.}
 
 \item{truncation}{A \code{numeric} specifying the truncation point if the inferred
 distribution was truncated, \code{NA} if not or unknown.}
