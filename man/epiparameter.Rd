@@ -147,7 +147,10 @@ ebola_incubation <- epiparameter(
     discretise = FALSE,
     truncation = NA
   ),
-  uncertainty = create_uncertainty(),
+  uncertainty = list(
+    shape = create_uncertainty(),
+    scale = create_uncertainty()
+  ),
   summary_stats = create_summary_stats(mean = 2, sd = 1),
   citation = create_citation(
     author = person(given = "John", family = "Smith"),
