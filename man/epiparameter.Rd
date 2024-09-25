@@ -119,17 +119,21 @@ Accepted \verb{<epiparameter>} distribution parameterisations are:
 ebola_incubation <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 1, scale = 1)
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  )
 )
 
 # minimal input required for discrete `epiparameter`
 ebola_incubation <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 1, scale = 1),
-  discretise = TRUE
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    discretise = TRUE
+  )
 )
 
 # example with more fields filled in
@@ -137,8 +141,12 @@ ebola_incubation <- epiparameter(
   disease = "ebola",
   pathogen = "ebola_virus",
   epi_dist = "incubation",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 1, scale = 1),
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    discretise = FALSE,
+    truncation = NA
+  ),
   uncertainty = create_uncertainty(),
   summary_stats = create_summary_stats(mean = 2, sd = 1),
   citation = create_citation(
@@ -157,8 +165,6 @@ ebola_incubation <- epiparameter(
   method_assess = create_method_assess(
     censored = TRUE
   ),
-  discretise = FALSE,
-  truncation = NA,
   notes = "No notes"
 )
 }

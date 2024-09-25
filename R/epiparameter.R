@@ -173,17 +173,21 @@ new_epiparameter <- function(disease = character(),
 #' ebola_incubation <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "gamma",
-#'   prob_distribution_params = c(shape = 1, scale = 1)
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1)
+#'   )
 #' )
 #'
 #' # minimal input required for discrete `epiparameter`
 #' ebola_incubation <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "gamma",
-#'   prob_distribution_params = c(shape = 1, scale = 1),
-#'   discretise = TRUE
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1),
+#'     discretise = TRUE
+#'   )
 #' )
 #'
 #' # example with more fields filled in
@@ -191,8 +195,12 @@ new_epiparameter <- function(disease = character(),
 #'   disease = "ebola",
 #'   pathogen = "ebola_virus",
 #'   epi_dist = "incubation",
-#'   prob_distribution = "gamma",
-#'   prob_distribution_params = c(shape = 1, scale = 1),
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1),
+#'     discretise = FALSE,
+#'     truncation = NA
+#'   ),
 #'   uncertainty = create_uncertainty(),
 #'   summary_stats = create_summary_stats(mean = 2, sd = 1),
 #'   citation = create_citation(
@@ -211,8 +219,6 @@ new_epiparameter <- function(disease = character(),
 #'   method_assess = create_method_assess(
 #'     censored = TRUE
 #'   ),
-#'   discretise = FALSE,
-#'   truncation = NA,
 #'   notes = "No notes"
 #' )
 epiparameter <- function(disease,
@@ -381,8 +387,10 @@ test_epiparameter <- function(x) { # nolint cyclocomp_linter
 #' epiparameter <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "gamma",
-#'   prob_distribution_params = c(shape = 1, scale = 1)
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1)
+#'   )
 #' )
 #' epiparameter
 print.epiparameter <- function(x, ...) {
@@ -401,8 +409,10 @@ print.epiparameter <- function(x, ...) {
 #' epiparameter <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "gamma",
-#'   prob_distribution_params = c(shape = 1, scale = 1)
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1)
+#'   )
 #' )
 #' format(epiparameter)
 format.epiparameter <- function(x, ...) {
@@ -463,8 +473,10 @@ format.epiparameter <- function(x, ...) {
 #' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "serial_interval",
-#'   prob_distribution = "gamma",
-#'   prob_distribution_params = c(shape = 1, scale = 1)
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1)
+#'   )
 #' )
 #'
 #' is_epiparameter(ep)
@@ -615,8 +627,10 @@ generate.epiparameter <- function(x, times, ...) {
 #' ebola_incubation <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "gamma",
-#'   prob_distribution_params = c(shape = 1, scale = 1)
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1)
+#'   )
 #' )
 #' discretise(ebola_incubation)
 discretise <- function(x, ...) {
@@ -710,8 +724,10 @@ discretise.default <- function(x, ...) {
 #' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "gamma",
-#'   prob_distribution_params = c(shape = 1, scale = 1)
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1)
+#'   )
 #' )
 #' family(ep)
 #'
@@ -719,9 +735,11 @@ discretise.default <- function(x, ...) {
 #' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "lnorm",
-#'   prob_distribution_params = c(meanlog = 1, sdlog = 1),
-#'   discretise = TRUE
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "lnorm",
+#'     prob_distribution_params = c(meanlog = 1, sdlog = 1),
+#'     discretise = TRUE
+#'   )
 #' )
 #' family(ep)
 family.epiparameter <- function(object, ...) {
@@ -775,17 +793,21 @@ family.epiparameter <- function(object, ...) {
 #' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "lnorm",
-#'   prob_distribution_params = c(meanlog = 1, sdlog = 1)
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "lnorm",
+#'     prob_distribution_params = c(meanlog = 1, sdlog = 1)
+#'   )
 #' )
 #' is_truncated(ep)
 #'
 #' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "lnorm",
-#'   prob_distribution_params = c(meanlog = 1, sdlog = 1),
-#'   truncation = 10
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "lnorm",
+#'     prob_distribution_params = c(meanlog = 1, sdlog = 1),
+#'     truncation = 10
+#'   )
 #' )
 #' is_truncated(ep)
 is_truncated <- function(x) {
@@ -830,8 +852,10 @@ is_truncated <- function(x) {
 #' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "incubation_period",
-#'   prob_distribution = "lnorm",
-#'   prob_distribution_params = c(meanlog = 1, sdlog = 1)
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "lnorm",
+#'     prob_distribution_params = c(meanlog = 1, sdlog = 1)
+#'   )
 #' )
 #' is_continuous(ep)
 #' is_continuous(discretise(ep))
@@ -839,8 +863,10 @@ is_truncated <- function(x) {
 #' ep <- epiparameter(
 #'   disease = "ebola",
 #'   epi_dist = "offspring distribution",
-#'   prob_distribution = "nbinom",
-#'   prob_distribution_params = c(mean = 2, dispersion = 0.5)
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "nbinom",
+#'     prob_distribution_params = c(mean = 2, dispersion = 0.5)
+#'   )
 #' )
 #' is_continuous(ep)
 is_continuous <- function(x) {
