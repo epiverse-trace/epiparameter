@@ -9,12 +9,6 @@
 #' `{distributional}` when `discretise = FALSE`, or a `distcrete` object from
 #' `{distcrete}` when `discretise = TRUE`.
 #'
-#' @param prob_dist A character string specifying the probability
-#' distribution. This should match the R naming convention of probability
-#' distributions (e.g. lognormal is `lnorm`, negative binomial is `nbinom`, and
-#' geometric is `geom`).
-#' @param prob_dist_params A named vector of probability distribution
-#' parameters.
 #' @inheritParams epiparameter
 #'
 #' @inherit epiparameter return

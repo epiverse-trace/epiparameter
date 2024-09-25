@@ -80,14 +80,6 @@ This is most commonly used to pass arguments to \code{\link[distcrete:distcrete]
 that construct the discretised distribution S3 object. To see which
 arguments can be adjusted for discretised distributions see
 \code{\link[distcrete:distcrete]{distcrete::distcrete()}}.}
-
-\item{prob_dist}{A character string specifying the probability
-distribution. This should match the R naming convention of probability
-distributions (e.g. lognormal is \code{lnorm}, negative binomial is \code{nbinom}, and
-geometric is \code{geom}).}
-
-\item{prob_dist_params}{A named vector of probability distribution
-parameters.}
 }
 \value{
 An \verb{<epiparameter>} object.
