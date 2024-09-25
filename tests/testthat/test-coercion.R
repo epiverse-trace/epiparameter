@@ -176,13 +176,12 @@ test_that("as_epiparameter fails as expected with overwritten prob_dist", {
         ebola_params$article_label == "Fallah 2015 (1)"
     ),
   ]
-  # suppress warning and message about citation
-  ebola_si_lnorm <- suppressWarnings(
-    suppressMessages(
-      as_epiparameter(ebola_si, prob_dist = "lnorm")
-    )
+  expect_error(
+    suppressWarnings(
+      suppressMessages(
+         as_epiparameter(ebola_si, prob_dist = "lnorm")
+      )
+    ),
+    regexp = "Incorrect parameters provided for probability distribution."
   )
-  expect_s3_class(ebola_si_lnorm, class = "epiparameter")
-  expect_false(is_parameterised(ebola_si_lnorm))
-  expect_identical(family(ebola_si_lnorm), "lnorm")
 })
