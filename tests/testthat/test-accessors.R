@@ -11,7 +11,7 @@ test_that("get_parameters works as expected for unparameterised epiparameter", {
     epiparameter(
       disease = "Ebola",
       epi_dist = "incubation period",
-      prob_distribution = "gamma"
+      prob_distribution = create_prob_distribution(prob_distribution = "gamma")
     )
   )
   expect_true(is.na(get_parameters(ep)))
@@ -22,8 +22,10 @@ test_that("get_parameters works as expected for continuous epiparameter", {
     epiparameter(
       disease = "Ebola",
       epi_dist = "incubation period",
-      prob_distribution = "gamma",
-      prob_distribution_params = c(shape = 1, scale = 1)
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1)
+      )
     )
   )
   params <- get_parameters(ep)
@@ -36,9 +38,11 @@ test_that("get_parameters works as expected for discretised epiparameter", {
     epiparameter(
       disease = "Ebola",
       epi_dist = "incubation period",
-      prob_distribution = "gamma",
-      prob_distribution_params = c(shape = 1, scale = 1),
-      discretise = TRUE
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1),
+        discretise = TRUE
+      )
     )
   )
   params <- get_parameters(ep)
@@ -66,8 +70,10 @@ test_that("get_citation works as expected for manual epiparameter", {
     epiparameter(
       disease = "ebola",
       epi_dist = "incubation_period",
-      prob_distribution = "gamma",
-      prob_distribution_params = c(shape = 1, scale = 1),
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1)
+      ),
       citation = create_citation(
         author = person(given = "John F.", family = "Smith"),
         year = 2000,
@@ -86,8 +92,10 @@ test_that("get_citation works as expected for epiparameter missing citation", {
     epiparameter(
       disease = "ebola",
       epi_dist = "incubation_period",
-      prob_distribution = "gamma",
-      prob_distribution_params = c(shape = 1, scale = 1)
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1)
+      )
     )
   )
   citation <- get_citation(ep)

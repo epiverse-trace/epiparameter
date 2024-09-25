@@ -2,8 +2,10 @@ ep <- suppressMessages(
   epiparameter(
     disease = "Ebola",
     epi_dist = "incubation period",
-    prob_distribution = "lnorm",
-    prob_distribution_params = c(meanlog = 1, sdlog = 1),
+    prob_distribution = create_prob_distribution(
+      prob_distribution = "lnorm",
+      prob_distribution_params = c(meanlog = 1, sdlog = 1)
+    ),
     summary_stats = create_summary_stats(mean = 1, sd = 1)
   )
 )
@@ -196,7 +198,7 @@ test_that("convert_params_to_summary_stats.character fails as expected", {
 })
 
 test_that("convert_params_to_summary_stats.epiparameter fails as expected", {
-  ep$prob_dist <- "lnorm"
+  ep$prob_distribution <- "lnorm"
   expect_error(
     convert_params_to_summary_stats(ep),
     regexp = "<epiparameter> supplied has no parameters and none are suppled"

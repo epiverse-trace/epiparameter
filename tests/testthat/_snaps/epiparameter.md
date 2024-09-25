@@ -1,8 +1,8 @@
 # epiparameter.print works as expected
 
     Code
-      epiparameter(disease = "ebola", epi_dist = "incubation", prob_distribution = "gamma",
-        prob_distribution_params = c(shape = 1, scale = 1))
+      epiparameter(disease = "ebola", epi_dist = "incubation", prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma", prob_distribution_params = c(shape = 1, scale = 1)))
     Message
       Citation cannot be created as author, year, journal or title is missing
     Output
@@ -18,8 +18,9 @@
 ---
 
     Code
-      epiparameter(disease = "ebola", epi_dist = "incubation", prob_distribution = "gamma",
-        prob_distribution_params = c(shape = 1, scale = 1), discretise = TRUE)
+      epiparameter(disease = "ebola", epi_dist = "incubation", prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma", prob_distribution_params = c(shape = 1, scale = 1),
+        discretise = TRUE))
     Message
       Citation cannot be created as author, year, journal or title is missing
     Output
