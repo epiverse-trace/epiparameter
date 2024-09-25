@@ -46,8 +46,10 @@ functions. These operate on any distribution that can be included in an
 ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 1, scale = 1)
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  )
 )
 
 # example of each distribution method for an `epiparameter` object
