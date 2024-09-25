@@ -26,8 +26,10 @@ binomial), and all \verb{<distcrete>} objects are discrete.
 ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
-  prob_distribution = "lnorm",
-  prob_distribution_params = c(meanlog = 1, sdlog = 1)
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "lnorm",
+    prob_distribution_params = c(meanlog = 1, sdlog = 1)
+  )
 )
 is_continuous(ep)
 is_continuous(discretise(ep))
@@ -35,8 +37,10 @@ is_continuous(discretise(ep))
 ep <- epiparameter(
   disease = "ebola",
   epi_dist = "offspring distribution",
-  prob_distribution = "nbinom",
-  prob_distribution_params = c(mean = 2, dispersion = 0.5)
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "nbinom",
+    prob_distribution_params = c(mean = 2, dispersion = 0.5)
+  )
 )
 is_continuous(ep)
 }

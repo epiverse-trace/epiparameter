@@ -32,8 +32,10 @@ first and last day to plot on the x-axis can be supplied to \code{xlim}
 ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 2, scale = 1)
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 2, scale = 1)
+  )
 )
 plot(ep)
 

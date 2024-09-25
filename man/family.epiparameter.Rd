@@ -26,8 +26,10 @@ output irrespective of the internal distribution class.
 ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 1, scale = 1)
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  )
 )
 family(ep)
 
@@ -35,9 +37,11 @@ family(ep)
 ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation_period",
-  prob_distribution = "lnorm",
-  prob_distribution_params = c(meanlog = 1, sdlog = 1),
-  discretise = TRUE
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "lnorm",
+    prob_distribution_params = c(meanlog = 1, sdlog = 1),
+    discretise = TRUE
+  )
 )
 family(ep)
 }

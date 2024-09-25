@@ -31,8 +31,10 @@ distribution and distribution parameters
 ep <- epiparameter(
   disease = "ebola",
   epi_dist = "incubation",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 1, scale = 1)
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1)
+  )
 )
 is_parameterised(ep)
 
