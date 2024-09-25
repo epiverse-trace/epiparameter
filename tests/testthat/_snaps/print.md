@@ -23,8 +23,8 @@
       <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
       Distribution: lnorm
       Parameters:
-        meanlog: 1.247
-        sdlog: 0.975
+        meanlog: 1.723
+        sdlog: 0.231
       
       [[2]]
       Disease: Human Coronavirus
@@ -37,8 +37,8 @@
       <https://doi.org/10.1016/S1473-3099%2809%2970069-7>.
       Distribution: lnorm
       Parameters:
-        meanlog: 0.742
-        sdlog: 0.918
+        meanlog: 1.163
+        sdlog: 0.140
       
       [[3]]
       Disease: SARS
@@ -51,8 +51,8 @@
       <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.
       Distribution: lnorm
       Parameters:
-        meanlog: 0.660
-        sdlog: 1.205
+        meanlog: 1.386
+        sdlog: 0.593
       
       # i 122 more elements
       # i Use `print(n = ...)` to see more elements.
