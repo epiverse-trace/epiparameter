@@ -93,8 +93,10 @@ covid_incubation <- epiparameter(
   disease = "COVID-19",
   pathogen = "SARS-CoV-2",
   epi_dist = "incubation period",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 2, scale = 1),
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 2, scale = 1)
+  ),
   summary_stats = create_summary_stats(mean = 2),
   citation = create_citation(
     author = person(
