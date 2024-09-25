@@ -484,7 +484,7 @@ create_method_assess <- function(censored = NA,
 #' This check for valid parameters is independent of whether the distribution
 #' is truncated or discretised.
 #'
-#' @inheritParams epiparameter
+#' @inheritParams create_prob_distribution
 #'
 #' @return A boolean `logical`.
 #' @export

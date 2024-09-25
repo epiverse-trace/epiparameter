@@ -8,17 +8,14 @@ epiparameter(
   disease,
   pathogen = NA_character_,
   epi_dist,
-  prob_distribution = NA_character_,
-  prob_distribution_params = NA_real_,
+  prob_distribution = create_prob_distribution(prob_distribution = NA_character_),
   uncertainty = create_uncertainty(),
   summary_stats = create_summary_stats(),
-  auto_calc_params = TRUE,
   citation = create_citation(),
   metadata = create_metadata(),
   method_assess = create_method_assess(),
-  discretise = FALSE,
-  truncation = NA_real_,
   notes = NULL,
+  auto_calc_params = TRUE,
   ...
 )
 }
@@ -31,13 +28,11 @@ disease, or \code{NA} if not known.}
 \item{epi_dist}{A \code{character} string with the name of the
 epidemiological distribution type.}
 
-\item{prob_distribution}{A \code{character} string specifying the probability
-distribution. This should match the \R naming convention of probability
-distributions (e.g. lognormal is \code{lnorm}, negative binomial is \code{nbinom}, and
-geometric is \code{geom}).}
-
-\item{prob_distribution_params}{A named vector of probability distribution
-parameters.}
+\item{prob_distribution}{An S3 class containing the probability
+distribution or a character string if the parameters of the probability
+distribution are unknown but the name of the distribution is known, or \code{NA}
+if the distribution name and parameters are unknown. Use
+\code{\link[=create_prob_distribution]{create_prob_distribution()}} to create \code{prob_distribution}.}
 
 \item{uncertainty}{A list of named vectors with the uncertainty around
 the probability distribution parameters. If uncertainty around the parameter
@@ -52,13 +47,6 @@ standard deviation, quantiles of the distribution, or information about the
 data used to fit the distribution such as lower and upper range. The summary
 statistics can also include uncertainty around metrics such as confidence
 interval around mean and standard deviation.}
-
-\item{auto_calc_params}{A boolean \code{logical} determining whether to try and
-calculate the probability distribution parameters from summary statistics if
-distribution parameters are not provided. Default is \code{TRUE}. In the case when
-sufficient summary statistics are provided and the parameter(s) of the
-distribution are not, the \code{\link[=.calc_dist_params]{.calc_dist_params()}} function is called to
-calculate the parameters and add them to the \code{epiparameter} object created.}
 
 \item{citation}{A \verb{<bibentry>} with the citation of the source of the
 data or the paper that inferred the distribution parameters, use
@@ -76,15 +64,15 @@ delay distribution such as extrinsic incubation period) unless
 the distribution, use \code{\link[=create_method_assess]{create_method_assess()}} to create method
 assessment.}
 
-\item{discretise}{A boolean \code{logical} whether the distribution is
-discretised.
-Default is FALSE which assumes a continuous probability distribution}
-
-\item{truncation}{A \code{numeric} specifying the truncation point if the inferred
-distribution was truncated, \code{NA} if not or unknown.}
-
 \item{notes}{A \code{character} string with any additional information about the
 data, inference method or disease.}
+
+\item{auto_calc_params}{A boolean \code{logical} determining whether to try and
+calculate the probability distribution parameters from summary statistics if
+distribution parameters are not provided. Default is \code{TRUE}. In the case when
+sufficient summary statistics are provided and the parameter(s) of the
+distribution are not, the \code{\link[=.calc_dist_params]{.calc_dist_params()}} function is called to
+calculate the parameters and add them to the \code{epiparameter} object created.}
 
 \item{...}{\link{dots} Extra arguments to be passed to internal functions.
 
