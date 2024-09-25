@@ -552,7 +552,7 @@ cdf.epiparameter <- function(x, q, ..., log = FALSE) {
   }
   unlist <- length(x$prob_distribution) == 1
   if (inherits(x$prob_distribution, "distcrete")) {
-    out <- x$prob_dist$p(q)
+    out <- x$prob_distribution$p(q)
     if (log) out <- log(out)
   } else {
     out <- distributional::cdf(x$prob_distribution, q = q, ..., log = log)
@@ -676,7 +676,7 @@ discretise.epiparameter <- function(x, ...) {
     )
 
     # create a new discretised probability distribution
-    x$prob_dist <- create_prob_distribution(
+    x$prob_distribution <- create_prob_distribution(
       prob_distribution = prob_dist,
       prob_distribution_params = prob_dist_params,
       discretise = TRUE,
