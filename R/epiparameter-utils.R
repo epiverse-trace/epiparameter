@@ -737,3 +737,52 @@ is_epiparameter_params <- function(prob_distribution,
   checkmate::assert_character(x)
   gsub(pattern = "_|-", replacement = " ", x = trimws(tolower(x)))
 }
+
+#' Standardise distribution parameter uncertainty
+#'
+#' @param x An `<epiparameter>` object.
+#' @inheritParams epiparameter
+#' @param uncertainty_missing A boolean `logical` as to whether `uncertainty`
+#' is missing (see [missing()]) from the parent function.
+#'
+#' @return An uncertainty list for an `<epiparameter>` object.
+#' @keywords internal
+.clean_uncertainty <- function(x, prob_distribution, uncertainty_missing) {
+  param_names <- names(get_parameters(x))
+  param_names <- param_names %||% NA_character_
+  if (uncertainty_missing ||
+      !identical(prob_distribution, x$prob_distribution)) {
+    # create uncertainty for each parameter if not provided or auto calculated
+    x$uncertainty <- lapply(
+      param_names,
+      function(xx) list(uncertainty = create_uncertainty())
+    )
+    if (!anyNA(param_names)) names(x$uncertainty) <- param_names
+  } else {
+    ci_limits_ <- lapply(x$uncertainty, `[[`, 1)
+    # if uncertainty is unspecified then it only needs renaming
+    if (anyNA(ci_limits_, recursive = TRUE)) {
+      if (!anyNA(param_names)) names(x$uncertainty) <- param_names
+    } else {
+      # standardise parameter uncertainty in to match parameters
+      dist <- family(x)
+      params_ <- vector(mode = "list", length = length(x$uncertainty))
+      names(params_) <- param_names
+      for (i in seq_along(ci_limits_)) {
+        params <- vapply(ci_limits_, `[[`, FUN.VALUE = numeric(1), i)
+        temp <-  as.list(.clean_params(
+          prob_distribution = dist,
+          prob_distribution_params = params
+        ))
+        params_ <- Map(c, params_, temp)
+      }
+      ci_limits_ <- lapply(params_, function(x) sort(unname(x)))
+      for (i in seq_along(x$uncertainty)) {
+        x$uncertainty[[i]]$ci_limits <- ci_limits_[[i]]
+      }
+      names(x$uncertainty) <- param_names
+    }
+  }
+  # return <epiparameter> uncertainty
+  x$uncertainty
+}
