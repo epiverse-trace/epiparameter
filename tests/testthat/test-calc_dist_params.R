@@ -1,7 +1,6 @@
 test_that(".calc_dist_params works as expected converting from mean and sd", {
   params <- .calc_dist_params(
     prob_distribution = "gamma",
-    prob_distribution_params = NA,
     summary_stats = create_summary_stats(mean = 5, sd = 2),
     sample_size = NA
   )
@@ -13,7 +12,6 @@ test_that(".calc_dist_params works as expected converting from mean and sd", {
 test_that(".calc_dist_params works as expected converting for different dist", {
   params <- .calc_dist_params(
     prob_distribution = "lnorm",
-    prob_distribution_params = NA,
     summary_stats = create_summary_stats(mean = 5, sd = 2),
     sample_size = NA
   )
@@ -26,7 +24,6 @@ test_that(".calc_dist_params works as expected extracting from percentiles", {
   # messages for numerical optimisation suppressed
   params <- suppressMessages(.calc_dist_params(
     prob_distribution = "gamma",
-    prob_distribution_params = NA,
     summary_stats = create_summary_stats(
       quantiles = c("25" = 10, "75" = 20)
     ),
@@ -39,7 +36,6 @@ test_that(".calc_dist_params works as expected extracting from percentiles", {
   # messages for numerical optimisation suppressed
   params <- suppressMessages(.calc_dist_params(
     prob_distribution = "lnorm",
-    prob_distribution_params = NA,
     summary_stats = create_summary_stats(
       quantiles = c("25" = 10, "75" = 20)
     ),
@@ -54,7 +50,6 @@ test_that(".calc_dist_params works as expected extracting from median & range", 
   # messages for numerical optimisation suppressed
   params <- suppressMessages(.calc_dist_params(
     prob_distribution = "gamma",
-    prob_distribution_params = NA,
     summary_stats = create_summary_stats(
       median = 10,
       lower_range = 5,
@@ -71,7 +66,6 @@ test_that(".calc_dist_params fails as expected extracting without sample size", 
   expect_message(
     params <- .calc_dist_params(
       prob_distribution = "gamma",
-      prob_distribution_params = NA,
       summary_stats = create_summary_stats(
         median = 10,
         lower_range = 5,
@@ -89,7 +83,6 @@ test_that(".calc_dist_params messages as expected without summary stats", {
   expect_message(
     params <- .calc_dist_params(
       prob_distribution = "gamma",
-      prob_distribution_params = NA,
       summary_stats = create_summary_stats(mean = 5, median = 5),
       sample_size = NA
     ),
