@@ -267,25 +267,21 @@ epiparameter <- function(disease,
   )
 
   # uncertainty is checked after new_epiparameter to use <epiparameter> methods
-  param_names <- names(get_parameters(epiparameter))
-  param_names <- param_names %||% NA_character_
-  if (missing(uncertainty) ||
-      !identical(prob_distribution, epiparameter$prob_distribution)) {
-    # create uncertainty for each parameter if not provided or auto calculated
-    epiparameter$uncertainty <- lapply(
-      param_names,
-      function(x) create_uncertainty()
-    )
-    names(epiparameter$uncertainty) <- param_names
-  } else {
-    stopifnot(
-      "uncertainty must be provided for each parameter" =
-        length(param_names) == length(epiparameter$uncertainty),
-      "parameters and uncertainty must be named and match" =
-        identical(param_names, names(epiparameter$uncertainty)) ||
-        is.na(param_names)
-    )
-  }
+  epiparameter$uncertainty <- .clean_uncertainty(
+    epiparameter,
+    prob_distribution = prob_distribution,
+    uncertainty_missing = missing(uncertainty)
+  )
+
+  param_names <- names(get_parameters(epiparameter)) %||% NA_character_
+
+  stopifnot(
+    "uncertainty must be provided for each parameter" =
+      length(param_names) == length(epiparameter$uncertainty),
+    "parameters and uncertainty must be named and match" =
+      identical(param_names, names(epiparameter$uncertainty)) ||
+      is.na(param_names)
+  )
 
   # call epiparameter validator
   assert_epiparameter(epiparameter)
