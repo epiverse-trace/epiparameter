@@ -82,8 +82,10 @@ ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
   epi_dist = "<Epidemilogical Distribution name>",
-  prob_distribution = "gamma",
-  prob_distribution_params = c(shape = 2.5, scale = 1.5)
+  prob_distribution = create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 2.5, scale = 1.5)
+  )
 )
 convert_params_to_summary_stats(ep)
 ```
