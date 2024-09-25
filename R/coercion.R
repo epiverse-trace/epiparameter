@@ -270,7 +270,7 @@ is_epiparameter_df <- function(x) {
   sd_ <- NULL
   if (rlang::is_na(prob_dist)) {
     prob_dist_params <- NA_real_
-    uncertainty <- create_uncertainty()
+    uncertainty <- list(uncertainty = create_uncertainty())
   } else {
     prob_dist <- switch(
       prob_dist,
@@ -311,6 +311,14 @@ is_epiparameter_df <- function(x) {
     )
     prob_dist_params_names <- .clean_string(prob_dist_params_names)
     names(prob_dist_params) <- prob_dist_params_names
+
+    # overwrite prob_dist with user specified if given to make use of conversion
+    if (!is.null(prob_dist_in)) {
+      prob_dist <- prob_dist_in
+      # remove user specified to not trigger overwriting prob_dist below
+      prob_dist_in <- NULL
+    }
+
     if (all(c("mean", "sd") %in% names(prob_dist_params))) {
       sd_ <- prob_dist_params[["sd"]]
       prob_dist_params <- do.call(
@@ -426,7 +434,8 @@ is_epiparameter_df <- function(x) {
     epi_dist = epi_dist,
     prob_distribution = create_prob_distribution(
       prob_distribution = prob_dist,
-      prob_distribution_params = prob_dist_params),
+      prob_distribution_params = prob_dist_params
+    ),
     uncertainty = uncertainty,
     summary_stats = summary_stats,
     citation = citation,
