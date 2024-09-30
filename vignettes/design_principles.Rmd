@@ -118,7 +118,6 @@ if (!all(epiparameter_class_methods %in% groups$functions)) {
 
 # {visNetwork} is not a package dependency so wrapped in requireNamespace()
 if (requireNamespace("visNetwork", quietly = TRUE)) {
-  library(visNetwork)
   visNetwork(nodes, edges) |>
     visNodes(font = list(size = 18)) |>
     visGroups(groupname = "<epiparameter>", color = colours[1]) |>
