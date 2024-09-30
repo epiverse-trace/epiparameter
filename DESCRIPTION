@@ -39,6 +39,7 @@ Suggests:
     bookdown,
     DT,
     ggplot2,
+    RColorBrewer,
     jsonlite,
     knitr,
     rmarkdown,
@@ -48,9 +49,10 @@ Suggests:
 VignetteBuilder: 
     knitr
 Config/Needs/check: mrc-ide/epireview
-Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview
-Config/testthat/edition: 3
+Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview,
+    visNetwork
 Config/potools/style: explicit
+Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
