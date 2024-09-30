@@ -118,16 +118,19 @@ if (!all(epiparameter_class_methods %in% groups$functions)) {
 
 # {visNetwork} is not a package dependency so wrapped in requireNamespace()
 if (requireNamespace("visNetwork", quietly = TRUE)) {
-  visNetwork(nodes, edges) |>
-    visNodes(font = list(size = 18)) |>
-    visGroups(groupname = "<epiparameter>", color = colours[1]) |>
-    visGroups(groupname = "Getters", color = colours[2]) |>
-    visGroups(groupname = "Modifiers", color = colours[3]) |>
-    visGroups(groupname = "Distribution functions", color = colours[4]) |>
-    visGroups(groupname = "Utilities", color = colours[5]) |>
-    visGroups(groupname = "Checkers", color = colours[6]) |>
-    visGroups(groupname = "Conversions", color = colours[7]) |>
-    visGroups(groupname = "Coercion", color = colours[8])
+  visNetwork::visNetwork(nodes, edges) |>
+    visNetwork::visNodes(font = list(size = 18)) |>
+    visNetwork::visGroups(groupname = "<epiparameter>", color = colours[1]) |>
+    visNetwork::visGroups(groupname = "Getters", color = colours[2]) |>
+    visNetwork::visGroups(groupname = "Modifiers", color = colours[3]) |>
+    visNetwork::visGroups(
+      groupname = "Distribution functions", 
+      color = colours[4]
+    ) |>
+    visNetwork::visGroups(groupname = "Utilities", color = colours[5]) |>
+    visNetwork::visGroups(groupname = "Checkers", color = colours[6]) |>
+    visNetwork::visGroups(groupname = "Conversions", color = colours[7]) |>
+    visNetwork::visGroups(groupname = "Coercion", color = colours[8])
 } else {
   message(
     "The {visNetwork} R package is not installed so the architecture diagram ",
