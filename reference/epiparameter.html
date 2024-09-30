@@ -116,17 +116,14 @@ out each field for which information is known.</p></li>
 <span>  <span class="va">disease</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
 <span>  <span class="va">epi_dist</span>,</span>
-<span>  prob_distribution <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
-<span>  prob_distribution_params <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
+<span>  prob_distribution <span class="op">=</span> <span class="fu"><a href="create_prob_distribution.html">create_prob_distribution</a></span><span class="op">(</span>prob_distribution <span class="op">=</span> <span class="cn">NA_character_</span><span class="op">)</span>,</span>
 <span>  uncertainty <span class="op">=</span> <span class="fu"><a href="create_uncertainty.html">create_uncertainty</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  summary_stats <span class="op">=</span> <span class="fu"><a href="create_summary_stats.html">create_summary_stats</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  auto_calc_params <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  citation <span class="op">=</span> <span class="fu"><a href="create_citation.html">create_citation</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  metadata <span class="op">=</span> <span class="fu"><a href="create_metadata.html">create_metadata</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  method_assess <span class="op">=</span> <span class="fu"><a href="create_method_assess.html">create_method_assess</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  discretise <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  truncation <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
 <span>  notes <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  auto_calc_params <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -150,15 +147,11 @@ epidemiological distribution type.</p></dd>
 
 
 <dt id="arg-prob-distribution">prob_distribution<a class="anchor" aria-label="anchor" href="#arg-prob-distribution"></a></dt>
-<dd><p>A <code>character</code> string specifying the probability
-distribution. This should match the <span style="R">R</span> naming convention of probability
-distributions (e.g. lognormal is <code>lnorm</code>, negative binomial is <code>nbinom</code>, and
-geometric is <code>geom</code>).</p></dd>
-
-
-<dt id="arg-prob-distribution-params">prob_distribution_params<a class="anchor" aria-label="anchor" href="#arg-prob-distribution-params"></a></dt>
-<dd><p>A named vector of probability distribution
-parameters.</p></dd>
+<dd><p>An S3 class containing the probability
+distribution or a character string if the parameters of the probability
+distribution are unknown but the name of the distribution is known, or <code>NA</code>
+if the distribution name and parameters are unknown. Use
+<code><a href="create_prob_distribution.html">create_prob_distribution()</a></code> to create <code>prob_distribution</code>.</p></dd>
 
 
 <dt id="arg-uncertainty">uncertainty<a class="anchor" aria-label="anchor" href="#arg-uncertainty"></a></dt>
@@ -177,15 +170,6 @@ standard deviation, quantiles of the distribution, or information about the
 data used to fit the distribution such as lower and upper range. The summary
 statistics can also include uncertainty around metrics such as confidence
 interval around mean and standard deviation.</p></dd>
-
-
-<dt id="arg-auto-calc-params">auto_calc_params<a class="anchor" aria-label="anchor" href="#arg-auto-calc-params"></a></dt>
-<dd><p>A boolean <code>logical</code> determining whether to try and
-calculate the probability distribution parameters from summary statistics if
-distribution parameters are not provided. Default is <code>TRUE</code>. In the case when
-sufficient summary statistics are provided and the parameter(s) of the
-distribution are not, the <code><a href="dot-calc_dist_params.html">.calc_dist_params()</a></code> function is called to
-calculate the parameters and add them to the <code>epiparameter</code> object created.</p></dd>
 
 
 <dt id="arg-citation">citation<a class="anchor" aria-label="anchor" href="#arg-citation"></a></dt>
@@ -210,20 +194,18 @@ the distribution, use <code><a href="create_method_assess.html">create_method_as
 assessment.</p></dd>
 
 
-<dt id="arg-discretise">discretise<a class="anchor" aria-label="anchor" href="#arg-discretise"></a></dt>
-<dd><p>A boolean <code>logical</code> whether the distribution is
-discretised.
-Default is FALSE which assumes a continuous probability distribution</p></dd>
-
-
-<dt id="arg-truncation">truncation<a class="anchor" aria-label="anchor" href="#arg-truncation"></a></dt>
-<dd><p>A <code>numeric</code> specifying the truncation point if the inferred
-distribution was truncated, <code>NA</code> if not or unknown.</p></dd>
-
-
 <dt id="arg-notes">notes<a class="anchor" aria-label="anchor" href="#arg-notes"></a></dt>
 <dd><p>A <code>character</code> string with any additional information about the
 data, inference method or disease.</p></dd>
+
+
+<dt id="arg-auto-calc-params">auto_calc_params<a class="anchor" aria-label="anchor" href="#arg-auto-calc-params"></a></dt>
+<dd><p>A boolean <code>logical</code> determining whether to try and
+calculate the probability distribution parameters from summary statistics if
+distribution parameters are not provided. Default is <code>TRUE</code>. In the case when
+sufficient summary statistics are provided and the parameter(s) of the
+distribution are not, the <code><a href="dot-calc_dist_params.html">.calc_dist_params()</a></code> function is called to
+calculate the parameters and add them to the <code>epiparameter</code> object created.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -254,8 +236,10 @@ arguments can be adjusted for discretised distributions see
 <span class="r-in"><span><span class="va">ebola_incubation</span> <span class="op">&lt;-</span> <span class="fu">epiparameter</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  disease <span class="op">=</span> <span class="st">"ebola"</span>,</span></span>
 <span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span>,</span></span>
-<span class="r-in"><span>  prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
-<span class="r-in"><span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  prob_distribution <span class="op">=</span> <span class="fu"><a href="create_prob_distribution.html">create_prob_distribution</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
+<span class="r-in"><span>    prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as author, year, journal or title is missing</span>
 <span class="r-in"><span></span></span>
@@ -263,9 +247,11 @@ arguments can be adjusted for discretised distributions see
 <span class="r-in"><span><span class="va">ebola_incubation</span> <span class="op">&lt;-</span> <span class="fu">epiparameter</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  disease <span class="op">=</span> <span class="st">"ebola"</span>,</span></span>
 <span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span>,</span></span>
-<span class="r-in"><span>  prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
-<span class="r-in"><span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  discretise <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>  prob_distribution <span class="op">=</span> <span class="fu"><a href="create_prob_distribution.html">create_prob_distribution</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
+<span class="r-in"><span>    prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    discretise <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Citation cannot be created as author, year, journal or title is missing</span>
 <span class="r-in"><span></span></span>
@@ -274,9 +260,16 @@ arguments can be adjusted for discretised distributions see
 <span class="r-in"><span>  disease <span class="op">=</span> <span class="st">"ebola"</span>,</span></span>
 <span class="r-in"><span>  pathogen <span class="op">=</span> <span class="st">"ebola_virus"</span>,</span></span>
 <span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"incubation"</span>,</span></span>
-<span class="r-in"><span>  prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
-<span class="r-in"><span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  uncertainty <span class="op">=</span> <span class="fu"><a href="create_uncertainty.html">create_uncertainty</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  prob_distribution <span class="op">=</span> <span class="fu"><a href="create_prob_distribution.html">create_prob_distribution</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span></span>
+<span class="r-in"><span>    prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    discretise <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>    truncation <span class="op">=</span> <span class="cn">NA</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  uncertainty <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    shape <span class="op">=</span> <span class="fu"><a href="create_uncertainty.html">create_uncertainty</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    scale <span class="op">=</span> <span class="fu"><a href="create_uncertainty.html">create_uncertainty</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  summary_stats <span class="op">=</span> <span class="fu"><a href="create_summary_stats.html">create_summary_stats</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">2</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  citation <span class="op">=</span> <span class="fu"><a href="create_citation.html">create_citation</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    author <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/person.html" class="external-link">person</a></span><span class="op">(</span>given <span class="op">=</span> <span class="st">"John"</span>, family <span class="op">=</span> <span class="st">"Smith"</span><span class="op">)</span>,</span></span>
@@ -294,8 +287,6 @@ arguments can be adjusted for discretised distributions see
 <span class="r-in"><span>  method_assess <span class="op">=</span> <span class="fu"><a href="create_method_assess.html">create_method_assess</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    censored <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
-<span class="r-in"><span>  discretise <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>  truncation <span class="op">=</span> <span class="cn">NA</span>,</span></span>
 <span class="r-in"><span>  notes <span class="op">=</span> <span class="st">"No notes"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using Smith J (2002). “COVID-19 incubation period.” _Epi Journal_.</span>

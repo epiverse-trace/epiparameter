@@ -95,17 +95,14 @@ probability distribution (<code>prob_dist</code>) and its parameters
 <span>  disease <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  prob_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  prob_dist_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  prob_distribution <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  uncertainty <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  summary_stats <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  auto_calc_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  citation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  metadata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  method_assess <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  discretise <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  truncation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  auto_calc_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -128,16 +125,12 @@ disease, or <code>NA</code> if not known.</p></dd>
 epidemiological distribution type.</p></dd>
 
 
-<dt id="arg-prob-dist">prob_dist<a class="anchor" aria-label="anchor" href="#arg-prob-dist"></a></dt>
-<dd><p>A character string specifying the probability
-distribution. This should match the R naming convention of probability
-distributions (e.g. lognormal is <code>lnorm</code>, negative binomial is <code>nbinom</code>, and
-geometric is <code>geom</code>).</p></dd>
-
-
-<dt id="arg-prob-dist-params">prob_dist_params<a class="anchor" aria-label="anchor" href="#arg-prob-dist-params"></a></dt>
-<dd><p>A named vector of probability distribution
-parameters.</p></dd>
+<dt id="arg-prob-distribution">prob_distribution<a class="anchor" aria-label="anchor" href="#arg-prob-distribution"></a></dt>
+<dd><p>An S3 class containing the probability
+distribution or a character string if the parameters of the probability
+distribution are unknown but the name of the distribution is known, or <code>NA</code>
+if the distribution name and parameters are unknown. Use
+<code><a href="create_prob_distribution.html">create_prob_distribution()</a></code> to create <code>prob_distribution</code>.</p></dd>
 
 
 <dt id="arg-uncertainty">uncertainty<a class="anchor" aria-label="anchor" href="#arg-uncertainty"></a></dt>
@@ -156,15 +149,6 @@ standard deviation, quantiles of the distribution, or information about the
 data used to fit the distribution such as lower and upper range. The summary
 statistics can also include uncertainty around metrics such as confidence
 interval around mean and standard deviation.</p></dd>
-
-
-<dt id="arg-auto-calc-params">auto_calc_params<a class="anchor" aria-label="anchor" href="#arg-auto-calc-params"></a></dt>
-<dd><p>A boolean <code>logical</code> determining whether to try and
-calculate the probability distribution parameters from summary statistics if
-distribution parameters are not provided. Default is <code>TRUE</code>. In the case when
-sufficient summary statistics are provided and the parameter(s) of the
-distribution are not, the <code><a href="dot-calc_dist_params.html">.calc_dist_params()</a></code> function is called to
-calculate the parameters and add them to the <code>epiparameter</code> object created.</p></dd>
 
 
 <dt id="arg-citation">citation<a class="anchor" aria-label="anchor" href="#arg-citation"></a></dt>
@@ -189,20 +173,18 @@ the distribution, use <code><a href="create_method_assess.html">create_method_as
 assessment.</p></dd>
 
 
-<dt id="arg-discretise">discretise<a class="anchor" aria-label="anchor" href="#arg-discretise"></a></dt>
-<dd><p>A boolean <code>logical</code> whether the distribution is
-discretised.
-Default is FALSE which assumes a continuous probability distribution</p></dd>
-
-
-<dt id="arg-truncation">truncation<a class="anchor" aria-label="anchor" href="#arg-truncation"></a></dt>
-<dd><p>A <code>numeric</code> specifying the truncation point if the inferred
-distribution was truncated, <code>NA</code> if not or unknown.</p></dd>
-
-
 <dt id="arg-notes">notes<a class="anchor" aria-label="anchor" href="#arg-notes"></a></dt>
 <dd><p>A <code>character</code> string with any additional information about the
 data, inference method or disease.</p></dd>
+
+
+<dt id="arg-auto-calc-params">auto_calc_params<a class="anchor" aria-label="anchor" href="#arg-auto-calc-params"></a></dt>
+<dd><p>A boolean <code>logical</code> determining whether to try and
+calculate the probability distribution parameters from summary statistics if
+distribution parameters are not provided. Default is <code>TRUE</code>. In the case when
+sufficient summary statistics are provided and the parameter(s) of the
+distribution are not, the <code><a href="dot-calc_dist_params.html">.calc_dist_params()</a></code> function is called to
+calculate the parameters and add them to the <code>epiparameter</code> object created.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>

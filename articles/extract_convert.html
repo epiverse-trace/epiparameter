@@ -219,8 +219,10 @@ nothing needs to be given as extra arguments
 <span>  disease <span class="op">=</span> <span class="st">"&lt;Disease name&gt;"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"&lt;Pathogen name&gt;"</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="st">"&lt;Epidemilogical Distribution name&gt;"</span>,</span>
-<span>  prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span>
-<span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">2.5</span>, scale <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
+<span>  prob_distribution <span class="op">=</span> <span class="fu"><a href="../reference/create_prob_distribution.html">create_prob_distribution</a></span><span class="op">(</span></span>
+<span>    prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span>
+<span>    prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">2.5</span>, scale <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Citation cannot be created as author, year, journal or title is missing</span></span>
 <span><span class="fu"><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats</a></span><span class="op">(</span><span class="va">ep</span><span class="op">)</span></span>
@@ -294,6 +296,8 @@ and supplied through <code>...</code></p>
 <span>  summary_stats <span class="op">=</span> <span class="fu"><a href="../reference/create_summary_stats.html">create_summary_stats</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">3.75</span>, sd <span class="op">=</span> <span class="fl">2.37</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Citation cannot be created as author, year, journal or title is missing</span></span>
+<span><span class="co">#&gt; Parameterising the probability distribution with the summary statistics.</span></span>
+<span><span class="co">#&gt;  Probability distribution is assumed not to be discretised or truncated.</span></span>
 <span><span class="fu"><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params</a></span><span class="op">(</span><span class="va">ep</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $shape</span></span>
 <span><span class="co">#&gt; [1] 2.503605</span></span>

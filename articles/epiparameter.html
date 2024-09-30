@@ -162,8 +162,8 @@ library are returned.</p>
 <span><span class="co">#&gt; &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-6&gt;.</span></span>
 <span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   meanlog: 1.247</span></span>
-<span><span class="co">#&gt;   sdlog: 0.975</span></span>
+<span><span class="co">#&gt;   meanlog: 1.723</span></span>
+<span><span class="co">#&gt;   sdlog: 0.231</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
 <span><span class="co">#&gt; Disease: Human Coronavirus</span></span>
@@ -176,8 +176,8 @@ library are returned.</p>
 <span><span class="co">#&gt; &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-7&gt;.</span></span>
 <span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   meanlog: 0.742</span></span>
-<span><span class="co">#&gt;   sdlog: 0.918</span></span>
+<span><span class="co">#&gt;   meanlog: 1.163</span></span>
+<span><span class="co">#&gt;   sdlog: 0.140</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; Disease: SARS</span></span>
@@ -190,8 +190,8 @@ library are returned.</p>
 <span><span class="co">#&gt; &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-8&gt;.</span></span>
 <span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   meanlog: 0.660</span></span>
-<span><span class="co">#&gt;   sdlog: 1.205</span></span>
+<span><span class="co">#&gt;   meanlog: 1.386</span></span>
+<span><span class="co">#&gt;   sdlog: 0.593</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 122 more elements</span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # ℹ Use `print(n = ...)` to see more elements.</span></span></span>
@@ -303,8 +303,10 @@ epidemiological parameters.</p>
 <span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"SARS-CoV-2"</span>,</span>
 <span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span>,</span>
-<span>  prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span>
-<span>  prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">2</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  prob_distribution <span class="op">=</span> <span class="fu"><a href="../reference/create_prob_distribution.html">create_prob_distribution</a></span><span class="op">(</span></span>
+<span>    prob_distribution <span class="op">=</span> <span class="st">"gamma"</span>,</span>
+<span>    prob_distribution_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">2</span>, scale <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
 <span>  summary_stats <span class="op">=</span> <span class="fu"><a href="../reference/create_summary_stats.html">create_summary_stats</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
 <span>  citation <span class="op">=</span> <span class="fu"><a href="../reference/create_citation.html">create_citation</a></span><span class="op">(</span></span>
 <span>    author <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/person.html" class="external-link">person</a></span><span class="op">(</span></span>
@@ -466,8 +468,8 @@ were estimated from the largest sample size are preferentially selected
 <span><span class="co">#&gt; &lt;https://doi.org/10.1016/S1473-3099%2809%2970069-8&gt;.</span></span>
 <span><span class="co">#&gt; Distribution: lnorm</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   meanlog: 0.660</span></span>
-<span><span class="co">#&gt;   sdlog: 1.205</span></span></code></pre></div>
+<span><span class="co">#&gt;   meanlog: 1.386</span></span>
+<span><span class="co">#&gt;   sdlog: 0.593</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="distribution-functions">Distribution functions<a class="anchor" aria-label="anchor" href="#distribution-functions"></a>

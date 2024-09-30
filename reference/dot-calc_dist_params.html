@@ -91,23 +91,19 @@ calculate the parameters of a distribution.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.calc_dist_params</span><span class="op">(</span><span class="va">prob_dist</span>, <span class="va">prob_dist_params</span>, <span class="va">summary_stats</span>, <span class="va">sample_size</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.calc_dist_params</span><span class="op">(</span><span class="va">prob_distribution</span>, <span class="va">summary_stats</span>, <span class="va">sample_size</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-prob-dist">prob_dist<a class="anchor" aria-label="anchor" href="#arg-prob-dist"></a></dt>
-<dd><p>A character string specifying the probability
-distribution. This should match the R naming convention of probability
-distributions (e.g. lognormal is <code>lnorm</code>, negative binomial is <code>nbinom</code>, and
-geometric is <code>geom</code>).</p></dd>
-
-
-<dt id="arg-prob-dist-params">prob_dist_params<a class="anchor" aria-label="anchor" href="#arg-prob-dist-params"></a></dt>
-<dd><p>A named vector of probability distribution
-parameters.</p></dd>
+<dl><dt id="arg-prob-distribution">prob_distribution<a class="anchor" aria-label="anchor" href="#arg-prob-distribution"></a></dt>
+<dd><p>An S3 class containing the probability
+distribution or a character string if the parameters of the probability
+distribution are unknown but the name of the distribution is known, or <code>NA</code>
+if the distribution name and parameters are unknown. Use
+<code><a href="create_prob_distribution.html">create_prob_distribution()</a></code> to create <code>prob_distribution</code>.</p></dd>
 
 
 <dt id="arg-summary-stats">summary_stats<a class="anchor" aria-label="anchor" href="#arg-summary-stats"></a></dt>
