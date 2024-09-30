@@ -64,6 +64,8 @@ The aim is to restrict the number of dependencies to a minimal required set for 
 
 [{jsonlite}](https://CRAN.R-project.org/package=jsonlite) is a suggested dependency because it is used to read the parameter library which is stored as a JSON file. However, it is only read by an internal function and instead the data is available to the user via `sysdata.rda`, so {jsonlite} is not required as an imported dependency.
 
+Currently {epiparameter} deviates from the [Epiverse policy on the number of previous R versions it supports](https://epiverse-trace.github.io/blueprints/dependencies.html#base-r-support-schedule). The {epiparameter} package requires R version >= 4.1.0 which only includes the current version and the last three minor R versions rather than the policy of four minor versions, as of September 2024. The reasons for this change is to enable usage of the base R pipe (`|>`).
+
 ## Contribute
 
 In addition to the [package contributing guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md), please refer to the [{epiparameter} specific contributing guidelines for adding epidemiological parameter to the package library](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html#contributing-to-the-package).
