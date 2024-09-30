@@ -66,7 +66,7 @@ test_that("as_epiparameter works for ebola serial interval (issue #303)", {
   ebola_serial <- ebola_params[
     which(ebola_params$parameter_type == "Human delay - serial interval" &
             ebola_params$distribution_type == "Gamma" &
-            ebola_params$article_label == "Chan 2020 (1)"),
+            ebola_params$article_label == "Chan 2020"),
   ]
   # suppress warning and message about citation
   ebola_serial_epiparameter <- suppressWarnings(
