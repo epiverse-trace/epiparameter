@@ -48,7 +48,7 @@ Suggests:
     vdiffr (>= 1.0.7)
 VignetteBuilder: 
     knitr
-Config/Needs/check: mrc-ide/epireview
+Config/Needs/check: mrc-ide/epireview, visNetwork
 Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview,
     visNetwork
 Config/potools/style: explicit
