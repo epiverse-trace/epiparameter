@@ -123,3 +123,26 @@ test_that("get_citation produces warnings with extra arguments", {
     regexp = "(extra argument)*(will be disregarded)"
   )
 })
+
+test_that(".get_mixture_family works as expected", {
+  ebola_si <- epiparameter_db(disease = "Ebola", epi_dist = "serial interval")
+  ep <- aggregate(ebola_si)
+  expect_identical(
+    .get_mixture_family(ep),
+    rep("gamma", times = length(ebola_si))
+  )
+  incub <- epiparameter_db(
+    epi_dist = "incubation period",
+    subset = is_parameterised
+  )
+  incub <- epiparameter_db(
+    disease = "Mpox",
+    epi_dist = "incubation period",
+    subset = is_parameterised
+  )
+  ep <- aggregate(incub)
+  expect_identical(
+    .get_mixture_family(ep),
+    c(rep("lnorm", 2), "gamma", rep("lnorm", 2))
+  )
+})
