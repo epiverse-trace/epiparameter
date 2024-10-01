@@ -500,12 +500,14 @@ is_epiparameter_params <- function(prob_distribution,
     return(FALSE)
   }
 
-  # check input
-  checkmate::assert_numeric(
-    prob_distribution_params,
-    min.len = 1,
-    names = "unique"
-  )
+  # mixture distributions can multiple of the same parameters
+  if (prob_distribution != "mixture") {
+    checkmate::assert_numeric(
+      prob_distribution_params,
+      min.len = 1,
+      names = "unique"
+    )
+  }
 
   # remove truncation parameters if truncated
   if ("upper" %in% names(prob_distribution_params)) {
@@ -525,7 +527,11 @@ is_epiparameter_params <- function(prob_distribution,
     norm = list(c("mean", "sd"), c("mu", "sigma")),
     exp = list("rate", "lambda", "mean")
   )
-  possible_params <- possible_params[[prob_distribution]]
+  if (prob_distribution != "mixture") {
+    possible_params <- possible_params[[prob_distribution]]
+  } else {
+    possible_params <- list(names(prob_distribution_params))
+  }
 
   # check whether any combinations are valid
   matches <- vapply(
@@ -581,6 +587,7 @@ is_epiparameter_params <- function(prob_distribution,
     ]
   }
   # weibull only has one parameterisation so does not need cleaning
+  # mixture can have many parameterisations so is not cleaned
   clean_func <- switch(
     prob_distribution,
     gamma = .clean_params_gamma,
@@ -591,6 +598,7 @@ is_epiparameter_params <- function(prob_distribution,
     pois = .clean_params_pois,
     norm = .clean_params_norm,
     exp = .clean_params_exp,
+    mixture = function(x) x,
     stop("Probability distribution not recognised", call. = FALSE)
   )
   clean_params <- do.call(clean_func, list(prob_distribution_params))
