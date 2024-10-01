@@ -75,7 +75,7 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-  version: '>= 3.6.0'
+  version: '>= 4.1.0'
 - type: software
   title: checkmate
   abstract: 'checkmate: Fast and Versatile Argument Checks'
@@ -134,6 +134,9 @@ references:
   - family-names: Hayes
     given-names: Alex
     orcid: https://orcid.org/0000-0002-4985-5160
+  - family-names: Hyndman
+    given-names: Rob
+    orcid: https://orcid.org/0000-0002-2140-5352
   year: '2024'
   doi: 10.32614/CRAN.package.distributional
 - type: software
@@ -146,7 +149,6 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-  doi: 10.32614/CRAN.package.graphics
 - type: software
   title: lifecycle
   abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
@@ -203,7 +205,6 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-  doi: 10.32614/CRAN.package.stats
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -214,7 +215,6 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-  doi: 10.32614/CRAN.package.utils
 - type: software
   title: bookdown
   abstract: 'bookdown: Authoring Books and Technical Documents with R Markdown'
@@ -293,7 +293,7 @@ references:
   authors:
   - family-names: Ooms
     given-names: Jeroen
-    email: jeroen@berkeley.edu
+    email: jeroenooms@gmail.com
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2024'
   doi: 10.32614/CRAN.package.jsonlite
