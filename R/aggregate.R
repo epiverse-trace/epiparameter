@@ -80,8 +80,8 @@ aggregate.multi_epiparameter <- function(x,
   if (weighting == "custom") {
     if (missing(weights)) {
       stop(
-        "The weight of each distribution needs to be supplied to `weights` ",
-        "when `weighting = custom`.",
+        "`weights` are required for each distribution when ",
+        "`weighting = custom`.",
         call. = FALSE
       )
     }
@@ -98,17 +98,22 @@ aggregate.multi_epiparameter <- function(x,
     weights <- vapply(
       lapply(x, `[[`, "metadata"), `[[`, FUN.VALUE = numeric(1), "sample_size"
     )
-    weights <- weights / sum(weights)
+    weights <- weights / sum(weights, na.rm = TRUE)
     if (anyNA(weights)) {
+      cit <- get_citation(x)
+      cit <- unique(.citet(cit[is.na(weights)]))
       warning(
-        "Input distributions ", toString(which(is.na(weights))),
-        " have been dropped because they don't report sample size.",
+        cli::pluralize(
+          "Input distribution{?s} {cit} {?has/have} been dropped ",
+          "because they don't report sample size."
+        ),
         call. = FALSE
       )
       x <- x[!is.na(weights)]
       if (length(x) == 0) {
         stop("No input distributions have sample sizes.", call. = FALSE)
       }
+      weights <- weights[!is.na(weights)]
     }
   }
 
