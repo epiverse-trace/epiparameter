@@ -650,6 +650,14 @@ discretise.epiparameter <- function(x, ...) {
   } else {
     # extract prob dist and prob dist parameters from epiparameter
     prob_dist <- family(x)
+    if (prob_dist == "mixture") {
+      warning(
+        "<epiparameter> object with mixture distributions cannot be ",
+        "discretised.\n Returning undiscretised <epiparameter>.",
+        call. = FALSE
+      )
+      return(x)
+    }
     prob_dist_params <- get_parameters(x)
 
     # if distribution is truncated take only parameters
@@ -873,7 +881,18 @@ is_continuous <- function(x) {
     "is_truncated only works for `<epiparameter> objects`" =
       is_epiparameter(x)
   )
-  family(x) %in% c("gamma", "lnorm", "weibull", "normal") &&
+  # get individual distributions out of mixture to check if continuous
+  if (family(x) == "mixture") {
+    fam <- vapply(
+      unclass(unclass(x$prob_distribution)[[1]])[[1]],
+      family,
+      FUN.VALUE = character(1)
+    )
+  } else {
+    fam <- family(x)
+  }
+
+  all(fam %in% c("gamma", "lnorm", "weibull", "normal")) &&
     !inherits(x$prob_distribution, "distcrete")
 }
 
