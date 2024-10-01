@@ -249,6 +249,13 @@ library which is stored as a JSON file. However, it is only read by an
 internal function and instead the data is available to the user via
 <code>sysdata.rda</code>, so {jsonlite} is not required as an imported
 dependency.</p>
+<p>Currently {epiparameter} deviates from the <a href="https://epiverse-trace.github.io/blueprints/dependencies.html#base-r-support-schedule" class="external-link">Epiverse
+policy on the number of previous R versions it supports</a>. The
+{epiparameter} package requires R version &gt;= 4.1.0 which only
+includes the current version and the last three minor R versions rather
+than the policy of four minor versions, as of September 2024. The
+reasons for this change is to enable usage of the base R pipe
+(<code>|&gt;</code>).</p>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
