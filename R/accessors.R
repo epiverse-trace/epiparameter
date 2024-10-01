@@ -137,3 +137,35 @@ get_citation.multi_epiparameter <- function(x, ...) {
   # return <bibentry>
   multi_bibentry
 }
+
+#' Gets the distributions names from a mixture distribution
+#' [distributional::dist_mixture()]
+#'
+#' @param x An `<epiparameter>` object.
+#'
+#' @return A `character` vector.
+#' @keywords internal
+#' @noRd
+.get_mixture_family <- function(x) {
+  assert_epiparameter(x)
+  fam <- vapply(
+    unclass(unclass(x$prob_distribution)[[1]])[[1]],
+    family,
+    FUN.VALUE = character(1)
+  )
+  fam <- vapply(
+    fam, function(x) {
+      switch(x,
+        lognormal = "lnorm",
+        negbin = "nbinom",
+        geometric = "geom",
+        poisson = "pois",
+        normal = "norm",
+        exponential = "exp",
+        x
+      )
+    },
+    FUN.VALUE = character(1)
+  )
+  return(unname(fam))
+}
