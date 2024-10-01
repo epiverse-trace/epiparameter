@@ -413,14 +413,15 @@ print.epiparameter <- function(x, ...) {
 #' )
 #' format(epiparameter)
 format.epiparameter <- function(x, ...) {
-    writeLines(
-      c(
-        sprintf(tr_("Disease: %s"), x$disease),
-        sprintf(tr_("Pathogen: %s"), x$pathogen),
-        sprintf(tr_("Epi Distribution: %s"), .clean_string(x$epi_dist)),
-        sprintf(tr_("Study: %s"), format(x$citation))
-      )
+  writeLines(
+    c(
+      sprintf(tr_("Disease: %s"), x$disease),
+      sprintf(tr_("Pathogen: %s"), x$pathogen),
+      sprintf(tr_("Epi Distribution: %s"), .clean_string(x$epi_dist)),
+      # aggregated <epiparameter> with repeated cits only are to be printed once
+      sprintf(tr_("Study: %s"), format(unique(x$citation)))
     )
+  )
 
   if (is.object(x$prob_distribution) || is.character(x$prob_distribution)) {
     dist_string <- ifelse(
@@ -428,7 +429,15 @@ format.epiparameter <- function(x, ...) {
       yes = tr_("Distribution: discrete %s"),
       no = tr_("Distribution: %s")
     )
-    writeLines(sprintf(dist_string, family(x)))
+    fam <- family(x)
+    if (fam == "mixture") {
+      fam <- paste(
+        fam,
+        paste(.get_mixture_family(x), collapse = ", "),
+        sep = ": "
+      )
+    }
+    writeLines(sprintf(dist_string, fam))
   } else {
     writeLines(tr_("Parameters: <no parameters>"))
   }
@@ -883,11 +892,7 @@ is_continuous <- function(x) {
   )
   # get individual distributions out of mixture to check if continuous
   if (family(x) == "mixture") {
-    fam <- vapply(
-      unclass(unclass(x$prob_distribution)[[1]])[[1]],
-      family,
-      FUN.VALUE = character(1)
-    )
+    fam <- .get_mixture_family(x)
   } else {
     fam <- family(x)
   }
