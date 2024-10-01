@@ -121,17 +121,35 @@ aggregate.multi_epiparameter <- function(x,
   ss <- create_summary_stats()
   ss_empty <- vector(mode = "list", length = length(ss))
   names(ss_empty) <- names(ss)
+  metadata <- create_metadata()
+  metadata_empty <- vector(mode = "list", length = length(metadata))
+  names(metadata_empty) <- names(metadata)
+  method_assess <- create_method_assess()
+  method_assess_empty <- vector(mode = "list", length = length(method_assess))
+  names(method_assess_empty) <- names(method_assess)
   for (i in seq_along(x)) {
-    # add summary stats not in <epiparameter> to keep consistent struct
+    # add list elements not in <epiparameter> to keep consistent struct
     ss_ <- c(
       x[[i]]$summary_stats,
       ss[!names(ss) %in% names(x[[i]]$summary_stats)]
     )
+    metadata_ <- c(
+      x[[i]]$metadata,
+      metadata[!names(metadata) %in% names(x[[i]]$metadata)]
+    )
+    method_assess_ <- c(
+      x[[i]]$method_assess,
+      method_assess[!names(method_assess) %in% names(x[[i]]$method_assess)]
+    )
     # bind empty summary status in first iteration to avoid extra NAs
     if (i == 1) {
       aggr_ss <- Map(f = c, ss_empty, ss_)
+      aggr_metadata <- Map(f = c, metadata_empty, metadata_)
+      aggr_method_assess <- Map(f = c, method_assess_empty, method_assess_)
     } else {
       aggr_ss <- Map(f = c, aggr_ss, ss_)
+      aggr_metadata <- Map(f = c, aggr_metadata, metadata_)
+      aggr_method_assess <- Map(f = c, aggr_method_assess, method_assess_)
     }
   }
 
@@ -149,6 +167,8 @@ aggregate.multi_epiparameter <- function(x,
     prob_distribution = prob_dist,
     citation = Reduce(f = c, x = citations),
     summary_stats = aggr_ss,
+    metadata = aggr_metadata,
+    method_assess = aggr_method_assess,
     notes = notes
   )
 }
