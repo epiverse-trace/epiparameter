@@ -141,10 +141,12 @@ test_that("epiparameter fails as expected", {
   )
 
   expect_error(
-    epiparameter(
-      disease = "ebola",
-      epi_dist = "incubation",
-      prob_distribution = 1
+    suppressMessages(
+      epiparameter(
+        disease = "ebola",
+        epi_dist = "incubation",
+        prob_distribution = 1
+      )
     ),
     regexp = paste0(
       "epiparameter must contain a <distribution> or <distcrete> or NA"

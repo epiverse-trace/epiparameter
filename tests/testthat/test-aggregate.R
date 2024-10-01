@@ -30,10 +30,12 @@ test_that("aggregate works as expected with custom weights", {
 })
 
 test_that("aggregate works as expected for different distributions", {
-  incub <- epiparameter_db(
-    disease = "Mpox",
-    epi_dist = "incubation period",
-    subset = is_parameterised
+  incub <- suppressMessages(
+    epiparameter_db(
+      disease = "Mpox",
+      epi_dist = "incubation period",
+      subset = is_parameterised
+    )
   )
   ep <- aggregate(incub)
   expect_s3_class(ep, class = "epiparameter")
@@ -74,7 +76,9 @@ test_that("aggregate fails as expected for multiple epi_dists", {
 })
 
 test_that("aggregate fails as expected with unparameterised <epiparameter>", {
-  incub <- epiparameter_db(disease = "MERS", epi_dist = "incubation period")
+  incub <- suppressMessages(
+    epiparameter_db(disease = "MERS", epi_dist = "incubation period")
+  )
   expect_error(
     aggregate(incub),
     regexp = "(aggregate() requires all <epiparameter> objects)*(parameterised)"
