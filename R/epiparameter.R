@@ -431,11 +431,7 @@ format.epiparameter <- function(x, ...) {
     )
     fam <- family(x)
     if (fam == "mixture") {
-      fam <- paste(
-        fam,
-        paste(.get_mixture_family(x), collapse = ", "),
-        sep = ": "
-      )
+      fam <- paste(fam, toString(.get_mixture_family(x)), sep = ": ")
     }
     writeLines(sprintf(dist_string, fam))
   } else {
