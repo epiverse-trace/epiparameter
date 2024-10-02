@@ -49,24 +49,30 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
 #' @keywords internal
 .citet <- function(x) {
   stopifnot(inherits(x, "bibentry"))
-  num_author <- length(x$author)
-  # check if first author is an organisation
-  is_org_author <- is.null(x$author[1]$family)
-  # this covers single author entries
-  if (is_org_author) {
-    # organisation name stored in $given
-    cit <- x$author[1]$given
-  } else {
-    cit <- x$author[1]$family
-  }
-  # append second author or et al for multi-author entries
-  if (num_author == 2) {
-    cit <- paste(cit, "&", x$author[2]$family)
-  } else if (num_author > 2) {
-    cit <- paste(cit, "et al.")
-  }
-  cit <- paste0(cit, " (", x$year, ")")
-  cit
+  cite <- vapply(
+    x,
+    function(y) {
+      num_author <- length(y$author)
+      # check if first author is an organisation
+      is_org_author <- is.null(y$author[1]$family)
+      # this covers single author entries
+      if (is_org_author) {
+        # organisation name stored in $given
+        cit <- y$author[1]$given
+      } else {
+        cit <- y$author[1]$family
+      }
+      # append second author or et al for multi-author entries
+      if (num_author == 2) {
+        cit <- paste(cit, "&", y$author[2]$family)
+      } else if (num_author > 2) {
+        cit <- paste(cit, "et al.")
+      }
+      cit <- paste0(cit, " (", y$year, ")")
+    },
+    FUN.VALUE = character(1)
+  )
+  cite
 }
 
 `%||%` <- function(x, y) if (is.null(x)) y else x
