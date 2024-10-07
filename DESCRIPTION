@@ -49,7 +49,7 @@ Suggests:
     visNetwork
 VignetteBuilder: 
     knitr
-Config/Needs/check: mrc-ide/epireview, 
+Config/Needs/check: mrc-ide/epireview
 Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview
 Config/potools/style: explicit
 Config/testthat/edition: 3
