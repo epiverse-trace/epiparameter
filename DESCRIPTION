@@ -39,18 +39,20 @@ Suggests:
     bookdown,
     DT,
     ggplot2,
+    RColorBrewer,
     jsonlite,
     knitr,
     rmarkdown,
     spelling,
     testthat (>= 3.0.0),
-    vdiffr (>= 1.0.7)
+    vdiffr (>= 1.0.7),
+    visNetwork
 VignetteBuilder: 
     knitr
 Config/Needs/check: mrc-ide/epireview
 Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview
-Config/testthat/edition: 3
 Config/potools/style: explicit
+Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
