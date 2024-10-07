@@ -430,7 +430,8 @@ format.epiparameter <- function(x, ...) {
       no = tr_("Distribution: %s")
     )
     fam <- family(x)
-    if (fam == "mixture") {
+    # isTRUE to control for family returning NA for unparameterised
+    if (isTRUE(fam == "mixture")) {
       fam <- paste(fam, toString(.get_mixture_family(x)), sep = ": ")
     }
     writeLines(sprintf(dist_string, fam))
