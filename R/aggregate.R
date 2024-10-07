@@ -105,7 +105,8 @@ aggregate.multi_epiparameter <- function(x,
       warning(
         cli::pluralize(
           "Input distribution{?s} {cit} {?has/have} been dropped ",
-          "because they don't report sample size and `weighing = "sample_size"`."
+          "because they don't report sample size and ",
+          "`weighing = 'sample_size'`."
         ),
         call. = FALSE
       )
