@@ -55,15 +55,15 @@ To load the library of epidemiological parameters into `R`:
 
 ``` r
 epiparameters <- epiparameter_db()
-#> Returning 122 results that match the criteria (99 are parameterised). 
+#> Returning 125 results that match the criteria (100 are parameterised). 
 #> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
 #> To retrieve the citation for each use the 'get_citation' function
 epiparameters
-#> # List of 122 <epiparameter> objects
+#> # List of 125 <epiparameter> objects
 #> Number of diseases: 23
 #> ❯ Adenovirus ❯ Chikungunya ❯ COVID-19 ❯ Dengue ❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Human Coronavirus ❯ Influenza ❯ Japanese Encephalitis ❯ Marburg Virus Disease ❯ Measles ❯ MERS ❯ Mpox ❯ Parainfluenza ❯ Pneumonic Plague ❯ Rhinovirus ❯ Rift Valley Fever ❯ RSV ❯ SARS ❯ Smallpox ❯ West Nile Fever ❯ Yellow Fever ❯ Zika Virus Disease
-#> Number of epi distributions: 12
-#> ❯ generation time ❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ onset to hospitalisation ❯ onset to ventilation ❯ serial interval
+#> Number of epi distributions: 13
+#> ❯ case fatality risk ❯ generation time ❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ onset to hospitalisation ❯ onset to ventilation ❯ serial interval
 #> [[1]]
 #> Disease: Adenovirus
 #> Pathogen: Adenovirus
@@ -75,8 +75,8 @@ epiparameters
 #> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> Distribution: lnorm
 #> Parameters:
-#>   meanlog: 1.247
-#>   sdlog: 0.975
+#>   meanlog: 1.723
+#>   sdlog: 0.231
 #> 
 #> [[2]]
 #> Disease: Human Coronavirus
@@ -89,8 +89,8 @@ epiparameters
 #> <https://doi.org/10.1016/S1473-3099%2809%2970069-7>.
 #> Distribution: lnorm
 #> Parameters:
-#>   meanlog: 0.742
-#>   sdlog: 0.918
+#>   meanlog: 1.163
+#>   sdlog: 0.140
 #> 
 #> [[3]]
 #> Disease: SARS
@@ -103,10 +103,10 @@ epiparameters
 #> <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.
 #> Distribution: lnorm
 #> Parameters:
-#>   meanlog: 0.660
-#>   sdlog: 1.205
+#>   meanlog: 1.386
+#>   sdlog: 0.593
 #> 
-#> # ℹ 119 more elements
+#> # ℹ 122 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
@@ -161,7 +161,7 @@ the data, and offers the ability to subset you data by `disease`,
 ``` r
 parameter_tbl(epiparameters)
 #> # Parameter table:
-#> # A data frame:    122 × 7
+#> # A data frame:    125 × 7
 #>    disease  pathogen epi_distribution prob_distribution author  year sample_size
 #>    <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
 #>  1 Adenovi… Adenovi… incubation peri… lnorm             Lessl…  2009          14
@@ -174,7 +174,7 @@ parameter_tbl(epiparameters)
 #>  8 Parainf… Parainf… incubation peri… lnorm             Lessl…  2009          11
 #>  9 RSV      RSV      incubation peri… lnorm             Lessl…  2009          24
 #> 10 Rhinovi… Rhinovi… incubation peri… lnorm             Lessl…  2009          28
-#> # ℹ 112 more rows
+#> # ℹ 115 more rows
 parameter_tbl(
   epiparameters,
   epi_dist = "onset to hospitalisation"
