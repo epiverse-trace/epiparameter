@@ -113,7 +113,7 @@ Now we can repeat the example of converting to `<epiparameter>` as shown above, 
 ```{r, convert-to-epiparameter-full-citation}
 marburg_incub_epiparameter <- as_epiparameter(
   marburg_incub,
-  articles = marburg_incub_article
+  article = marburg_incub_article
 )
 marburg_incub_epiparameter
 ```
