@@ -25,9 +25,9 @@ to function via the \code{...} argument. The argument should be called \code{art
 as it will be matched by name by \code{$}.
 
 To specify a probability distribution pass a \code{character} string to the
-function via the \code{...} argument. The argument should be called \code{prob_dist}.
-For example, to specify a gamma distribution:
-\code{as_epiparameter(x, prob_dist = "gamma")}.
+function via the \code{...} argument. The argument should be called
+\code{prob_distribution}. For example, to specify a gamma distribution:
+\code{as_epiparameter(x, prob_distribution = "gamma")}.
 
 \emph{\strong{Warning}}: distributions specified via the \code{prob_dist} argument will
 overwrite the probability distribution specified in the \code{x} argument. For

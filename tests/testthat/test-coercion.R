@@ -97,7 +97,7 @@ test_that("as_epiparameter works for ebola SI assumed prob_dist (issue #310)", {
   # suppress warning and message about citation
   ebola_serial_epiparameter <- suppressWarnings(
     suppressMessages(
-      as_epiparameter(ebola_serial, prob_dist = "gamma")
+      as_epiparameter(ebola_serial, prob_distribution = "gamma")
     )
   )
   expect_s3_class(ebola_serial_epiparameter, class = "epiparameter")
@@ -122,7 +122,7 @@ test_that("as_epiparameter works for lassa incubation overwritten prob_dist", {
   # suppress warning and message about citation
   lassa_incub_epiparameter <- suppressWarnings(
     suppressMessages(
-      as_epiparameter(lassa_incub, prob_dist = "lnorm")
+      as_epiparameter(lassa_incub, prob_distribution = "lnorm")
     )
   )
   expect_s3_class(lassa_incub_epiparameter, class = "epiparameter")
@@ -155,7 +155,7 @@ test_that("as_epiparameter works for overwritten prob_dist with same parameters"
   )
   ebola_si_weibull <- suppressWarnings(
     suppressMessages(
-      as_epiparameter(ebola_si, prob_dist = "weibull")
+      as_epiparameter(ebola_si, prob_distribution = "weibull")
     )
   )
   expect_s3_class(ebola_si_gamma, class = "epiparameter")
@@ -179,7 +179,7 @@ test_that("as_epiparameter fails as expected with overwritten prob_dist", {
   expect_error(
     suppressWarnings(
       suppressMessages(
-         as_epiparameter(ebola_si, prob_dist = "lnorm")
+         as_epiparameter(ebola_si, prob_distribution = "lnorm")
       )
     ),
     regexp = "Incorrect parameters provided for probability distribution."
