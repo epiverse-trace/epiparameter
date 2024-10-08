@@ -167,34 +167,18 @@ and outbreak information (<code>$outbreaks</code>).</p>
 convert information into an <code>&lt;epiparameter&gt;</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_params</span> <span class="op">&lt;-</span> <span class="va">marburg_data</span><span class="op">$</span><span class="va">params</span></span></code></pre></div>
-<p>Given that currently only delay distributions are supported for the
-conversion (this feature is still under active development) we will
-filter to only include these.</p>
+<p>Out of these parameters, subset the data to only keep those rows that
+contain incubation periods for Marburg.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">delay_dist_rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span></span>
-<span>  pattern <span class="op">=</span> <span class="st">"Human delay"</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">marburg_params</span><span class="op">$</span><span class="va">parameter_type</span>,</span>
-<span>  fixed <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">marburg_params</span> <span class="op">&lt;-</span> <span class="va">marburg_params</span><span class="op">[</span><span class="va">delay_dist_rows</span>, <span class="op">]</span></span>
-<span><span class="va">marburg_params</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 14 × 61</span></span></span>
-<span><span class="co">#&gt;    parameter_data_id    article_id parameter_type parameter_value parameter_unit</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ace3e3fc6f40bef6da4…          6 Human delay -…             4   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> c2a35e68034b7258065…          6 Human delay -…            <span style="color: #BB0000;">NA</span>   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> cef9471d52ca35358d7…          6 Human delay -…             9   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 0106582cf5ed3c52d5e…         20 Human delay -…            <span style="color: #BB0000;">NA</span>   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 056a8d6b5f9aee3622d…         27 Human delay -…             9   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ce3976e2e15df3f6fb9…         27 Human delay -…             5.4 Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 3bf73665fa67a6ba7f7…         27 Human delay -…             7   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ba019f18acac9c5b0b7…         27 Human delay -…             9.3 Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 71798b4154011dcd008…         27 Human delay -…             9   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> b91f018b5ca72c9293d…         42 Human delay -…             9   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> e95844c29c00b70dee0…         42 Human delay -…             4   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 415a27bceff2afce958…         42 Human delay -…            22   Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> 7ce1ea4e35a494de06a…         42 Human delay -…            14.3 Days          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> 0eb36537ee9159b12d2…         57 Human delay -…             4.5 Days          </span></span>
+<code class="sourceCode R"><span><span class="va">marburg_incubation_period</span> <span class="op">&lt;-</span> <span class="va">marburg_params</span><span class="op">[</span></span>
+<span>  <span class="va">marburg_params</span><span class="op">$</span><span class="va">parameter_type_short</span> <span class="op">==</span> <span class="st">"incubation_period"</span>,</span>
+<span><span class="op">]</span></span>
+<span><span class="va">marburg_incubation_period</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 61</span></span></span>
+<span><span class="co">#&gt;   parameter_data_id     article_id parameter_type parameter_value parameter_unit</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> c2a35e68034b72580654…          6 Human delay -…              <span style="color: #BB0000;">NA</span> Days          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 0106582cf5ed3c52d5e9…         20 Human delay -…              <span style="color: #BB0000;">NA</span> Days          </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 56 more variables: parameter_lower_bound &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_upper_bound &lt;dbl&gt;, parameter_value_type &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_single_value &lt;dbl&gt;,</span></span></span>
@@ -202,10 +186,9 @@ filter to only include these.</p>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_lower_value &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_upper_value &lt;dbl&gt;, parameter_uncertainty_type &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   cfr_ifr_numerator &lt;int&gt;, cfr_ifr_denominator &lt;int&gt;, …</span></span></span></code></pre></div>
-<p>We will select the second entry, which is an incubation period, to
-use as the first example:</p>
+<p>We will select the first entry to use as the first example:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">marburg_incub</span> <span class="op">&lt;-</span> <span class="va">marburg_params</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span>
+<code class="sourceCode R"><span><span class="va">marburg_incub</span> <span class="op">&lt;-</span> <span class="va">marburg_incubation_period</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></span>
 <span><span class="va">marburg_incub</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 61</span></span></span>
 <span><span class="co">#&gt;   parameter_data_id     article_id parameter_type parameter_value parameter_unit</span></span>
@@ -376,7 +359,7 @@ link entries.</p>
 <code>&lt;epiparameter&gt;</code> as shown above, but this time pass the
 bibliographic information as well as the epidemiological parameter
 information to create a full citation. The bibliographic information
-needs to be passed with the <code>articles</code> argument.</p>
+needs to be passed with the <code>article</code> argument.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_incub_epiparameter</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epiparameter.html">as_epiparameter</a></span><span class="op">(</span></span>
 <span>  <span class="va">marburg_incub</span>,</span>
@@ -405,12 +388,12 @@ needs to be passed with the <code>articles</code> argument.</p>
 <p>The <code><a href="../reference/as_epiparameter.html">as_epiparameter()</a></code> function is an S3 generic. If you
 are not familiar with S3 object-oriented programming in R, then this
 detail is not important, however, it does mean that the
-<code>articles</code> argument is not explicitly in the function
+<code>article</code> argument is not explicitly in the function
 definition of <code><a href="../reference/as_epiparameter.html">as_epiparameter()</a></code> (i.e. it will not show up
 on autocomplete when typing out the function and will not be shown if
 you read the function help page <code>?as_epiparameter()</code>).
 Instead, the argument is specified as part of the <code>...</code>
-argument. This is because the <code>articles</code> argument is only
+argument. This is because the <code>article</code> argument is only
 required when converting data from {epireview} into
 <code>&lt;epiparameter&gt;</code>, and other data that can be converted
 to <code>&lt;epiparameter&gt;</code> objects do not require this
@@ -433,29 +416,90 @@ parameters table from {epireview} can be given to
 checking if there are duplicated parameter types and IDs. Remember that
 it is only possible to convert delay distributions into epiparameter
 objects (i.e. known as <em>Human delay</em> parameter types in
-{epireview}), which we previously subset in this vignette.</p>
+{epireview}).</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">multi_row_entries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">duplicated</a></span><span class="op">(</span><span class="va">marburg_params</span><span class="op">$</span><span class="va">parameter_type</span><span class="op">)</span> <span class="op">&amp;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">duplicated</a></span><span class="op">(</span><span class="va">marburg_params</span><span class="op">$</span><span class="va">id</span><span class="op">)</span></span>
 <span><span class="va">multi_row_ids</span> <span class="op">&lt;-</span> <span class="va">marburg_params</span><span class="op">$</span><span class="va">id</span><span class="op">[</span><span class="va">multi_row_entries</span><span class="op">]</span></span></code></pre></div>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">multi_row_marburg_params</span> <span class="op">&lt;-</span></span>
-<span>  <span class="va">marburg_params</span><span class="op">[</span><span class="va">marburg_params</span><span class="op">$</span><span class="va">id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">multi_row_ids</span>, <span class="op">]</span></span></code></pre></div>
+<span>  <span class="va">marburg_params</span><span class="op">[</span><span class="va">marburg_params</span><span class="op">$</span><span class="va">id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">multi_row_ids</span>, <span class="op">]</span></span>
+<span><span class="va">multi_row_marburg_params</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 42 × 61</span></span></span>
+<span><span class="co">#&gt;    parameter_data_id    article_id parameter_type parameter_value parameter_unit</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 0106582cf5ed3c52d5e…         20 Human delay -…            <span style="color: #BB0000;">NA</span>   Days          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ce78f707a585d8bb23a…         22 Seroprevalenc…             0   Percentage (%)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ca720828fd6ccb18844…         22 Seroprevalenc…             0   <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 61fbb9dfc021abf5bd1…         22 Seroprevalenc…             0   Percentage (%)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 29c8ca74306713a990c…         20 Severity - ca…            <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 056a8d6b5f9aee3622d…         27 Human delay -…             9   Days          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ce3976e2e15df3f6fb9…         27 Human delay -…             5.4 Days          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 3bf73665fa67a6ba7f7…         27 Human delay -…             7   Days          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ba019f18acac9c5b0b7…         27 Human delay -…             9.3 Days          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 71798b4154011dcd008…         27 Human delay -…             9   Days          </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 32 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 56 more variables: parameter_lower_bound &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_upper_bound &lt;dbl&gt;, parameter_value_type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_single_value &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_singe_type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_lower_value &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_upper_value &lt;dbl&gt;, …</span></span></span></code></pre></div>
 <p>In this case there are two studies for Marburg with more than one
-entry (row) in the {epireview} database. Out of these studies, we select
-the first two rows, which contain the mean and standard deviation.</p>
+entry (row) in the {epireview} database. Out of these studies we select
+the mean and standard deviation.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">multi_row_marburg_params</span><span class="op">$</span><span class="va">parameter_value_type</span></span>
-<span><span class="co">#&gt; [1] "Mean"               "Standard Deviation" "Median"            </span></span>
-<span><span class="co">#&gt; [4] "Mean"               "Median"             "Mean"              </span></span>
-<span><span class="co">#&gt; [7] "Mean"               "Mean"               "Mean"</span></span></code></pre></div>
-<p>We use the first two rows of this subset table, which are the mean
-and standard deviation for the generation time of Marburg disease. This
-step should be verified manually to ensure that the entries that have
-been selected are indeed multiple rows for the same reported
-epidemiological parameter.</p>
+<span><span class="co">#&gt;  [1] NA                   NA                   NA                  </span></span>
+<span><span class="co">#&gt;  [4] NA                   NA                   "Mean"              </span></span>
+<span><span class="co">#&gt;  [7] "Standard Deviation" "Median"             "Mean"              </span></span>
+<span><span class="co">#&gt; [10] "Median"             "Mean"               "Mean"              </span></span>
+<span><span class="co">#&gt; [13] "Mean"               "Mean"               "Mean"              </span></span>
+<span><span class="co">#&gt; [16] NA                   NA                   NA                  </span></span>
+<span><span class="co">#&gt; [19] NA                   "Mean"               "Mean"              </span></span>
+<span><span class="co">#&gt; [22] "Mean"               "Mean"               NA                  </span></span>
+<span><span class="co">#&gt; [25] NA                   "Median"             NA                  </span></span>
+<span><span class="co">#&gt; [28] NA                   NA                   NA                  </span></span>
+<span><span class="co">#&gt; [31] "Other"              NA                   NA                  </span></span>
+<span><span class="co">#&gt; [34] NA                   "Other"              "Other"             </span></span>
+<span><span class="co">#&gt; [37] "Other"              "Other"              "Other"             </span></span>
+<span><span class="co">#&gt; [40] "Other"              "Mean"               "Other"</span></span></code></pre></div>
+<p>In this case, we know that the mean and standard deviation from the
+chosen rows correspond to the same estimation process by having read the
+corresponding article. However, there is currently no identifiers on the
+{epireview} <code>params</code> database for Marburg, Ebola or Lassa to
+directly identify which of the two rows with mean values correspond to
+the standard deviation. The {epireview} team are currently working on
+rectifying this issue.</p>
+<p><strong><em>Therefore, we encourage readers to manually verify their
+data subsets, to ensure that the entries that have been selected are
+indeed multiple rows for the same reported epidemiological
+parameter.</em></strong></p>
+<ul>
+<li>For future {epireview} pathogens (excluding SARS) mean and standard
+deviation estimates that match will form one row in the
+<code>$params</code> database. Current software development at
+{epireview} is working on ensuring compatibility between these
+formats.</li>
+</ul>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">marburg_gt</span> <span class="op">&lt;-</span> <span class="va">multi_row_marburg_params</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">marburg_gt</span> <span class="op">&lt;-</span> <span class="va">multi_row_marburg_params</span><span class="op">[</span></span>
+<span>  <span class="va">multi_row_marburg_params</span><span class="op">$</span><span class="va">parameter_data_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"056a8d6b5f9aee3622d3bd8b715d4296"</span>, <span class="st">"ce3976e2e15df3f6fb92f6deb2db2a29"</span><span class="op">)</span>,</span>
+<span><span class="op">]</span></span>
+<span><span class="va">marburg_gt</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 61</span></span></span>
+<span><span class="co">#&gt;   parameter_data_id     article_id parameter_type parameter_value parameter_unit</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 056a8d6b5f9aee3622d3…         27 Human delay -…             9   Days          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ce3976e2e15df3f6fb92…         27 Human delay -…             5.4 Days          </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 56 more variables: parameter_lower_bound &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_upper_bound &lt;dbl&gt;, parameter_value_type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_single_value &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_singe_type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_lower_value &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_upper_value &lt;dbl&gt;, parameter_uncertainty_type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   cfr_ifr_numerator &lt;int&gt;, cfr_ifr_denominator &lt;int&gt;, …</span></span></span></code></pre></div>
 <p>We can now convert this to an <code>&lt;epiparameter&gt;</code>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_gt_epiparameter</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epiparameter.html">as_epiparameter</a></span><span class="op">(</span><span class="va">marburg_gt</span><span class="op">)</span></span>
@@ -533,47 +577,54 @@ have parametric distributions).</p>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Data loaded for ebola</span></span></code></pre></div>
 <p>We will again subset the data to just use the epidemiological
-parameter table, and subset that table to just the delay
-distributions.</p>
+parameter table, and select those rows containing a serial interval.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ebola_params</span> <span class="op">&lt;-</span> <span class="va">ebola_data</span><span class="op">$</span><span class="va">params</span></span></code></pre></div>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">delay_dist_rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span></span>
-<span>  pattern <span class="op">=</span> <span class="st">"Human delay"</span>,</span>
-<span>  x <span class="op">=</span> <span class="va">ebola_params</span><span class="op">$</span><span class="va">parameter_type</span>,</span>
-<span>  fixed <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">ebola_delays</span> <span class="op">&lt;-</span> <span class="va">ebola_params</span><span class="op">[</span><span class="va">delay_dist_rows</span>, <span class="op">]</span></span>
-<span><span class="va">ebola_delays</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 394 × 78</span></span></span>
+<code class="sourceCode R"><span><span class="va">ebola_si_rows</span> <span class="op">&lt;-</span> <span class="va">ebola_params</span><span class="op">[</span></span>
+<span>  <span class="va">ebola_params</span><span class="op">$</span><span class="va">parameter_type_short</span> <span class="op">==</span> <span class="st">"serial_interval"</span>,</span>
+<span><span class="op">]</span></span>
+<span><span class="va">ebola_si_rows</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 19 × 78</span></span></span>
 <span><span class="co">#&gt;    id     parameter_data_id covidence_id pathogen parameter_type parameter_value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> b6168… 6f5cb18602d0dfec…           30 Ebola v… Human delay -…            <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> b6168… 55766cedfbf75a9c…           30 Ebola v… Human delay -…            <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 0a142… 3ae1f6b55d0f1cc5…           41 Ebola v… Human delay -…             9.2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 0a142… f0a0191af0663265…           41 Ebola v… Human delay -…             5.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 0a142… a83683d0b55750df…           41 Ebola v… Human delay -…            10.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 99d84… f4aaae2be84dee6c…           57 Ebola v… Human delay -…             8.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 99d84… 1ea610e2489a3257…           57 Ebola v… Human delay -…             4.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 99d84… 4316d44cbd32d365…           57 Ebola v… Human delay -…            14.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 99d84… 7dfc17eab39f9aa0…           57 Ebola v… Human delay -…             8.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 99d84… c9c3fc483d332934…           57 Ebola v… Human delay -…            10.6</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 384 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> f49a9… 466f684ff8286fbd…          506 Ebola v… Human delay -…            12  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> c1e68… cb37cc4599953d47…         <span style="text-decoration: underline;">1</span>471 Ebola v… Human delay -…            19.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 08e06… 20eb9e7d7714183c…         <span style="text-decoration: underline;">1</span>876 Ebola v… Human delay -…            11  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 5a250… 115c169147af31f7…         <span style="text-decoration: underline;">1</span>891 Ebola v… Human delay -…            11.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 54159… 6fca288e3bca7dc0…         <span style="text-decoration: underline;">3</span>138 Ebola v… Human delay -…            16.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> f044b… 89e334ec3622ed27…         <span style="text-decoration: underline;">3</span>776 Ebola v… Human delay -…            14  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> df908… e62da97ac8648211…         <span style="text-decoration: underline;">4</span>966 Ebola v… Human delay -…            14.2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> df908… d46ff8b0c2ff67b7…         <span style="text-decoration: underline;">4</span>966 Ebola v… Human delay -…             7.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1b9d9… abb8b6aabf43ac86…         <span style="text-decoration: underline;">5</span>924 Ebola v… Human delay -…            13.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 39354… 2b270d400af4fcce…         <span style="text-decoration: underline;">5</span>939 Ebola v… Human delay -…            <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 39354… 8a18cde4823cf9f7…         <span style="text-decoration: underline;">5</span>939 Ebola v… Human delay -…            <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 39354… 10f3384f1550a778…         <span style="text-decoration: underline;">5</span>939 Ebola v… Human delay -…            <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> 50dea… 631ec65830a82fbe…         <span style="text-decoration: underline;">6</span>346 Ebola v… Human delay -…            15.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> 86e39… 5c8d68c39d1c3b98…        <span style="text-decoration: underline;">15</span>896 Ebola v… Human delay -…            15.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> 40a29… 7f4ab651c48511df…        <span style="text-decoration: underline;">17</span>077 Ebola v… Human delay -…            15.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> b76dc… 0c3e02f80addfccc…        <span style="text-decoration: underline;">17</span>730 Ebola v… Human delay -…            12  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> b76dc… c2e0739d6bc652e9…        <span style="text-decoration: underline;">17</span>730 Ebola v… Human delay -…            11.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> 74b62… e2a59f5aa40ddbdf…        <span style="text-decoration: underline;">18</span>536 Ebola v… Human delay -…            12.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> 66e1b… 4da557e3c2c22a10…        <span style="text-decoration: underline;">19</span>083 Ebola v… Human delay -…            <span style="color: #BB0000;">NA</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 72 more variables: exponent &lt;dbl&gt;, parameter_unit &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_lower_bound &lt;dbl&gt;, parameter_upper_bound &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_value_type &lt;chr&gt;, parameter_uncertainty_single_value &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_singe_type &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_lower_value &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_upper_value &lt;dbl&gt;, …</span></span></span></code></pre></div>
-<p>We will select the 358th entry, which is a serial interval, as this
-entry has estimated and reported a Weibull distribution:</p>
+<span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_upper_value &lt;dbl&gt;, parameter_uncertainty_type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   cfr_ifr_numerator &lt;int&gt;, cfr_ifr_denominator &lt;int&gt;, …</span></span></span></code></pre></div>
+<p>We will select an entry that has estimated and reported a Weibull
+distribution:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ebola_si</span> <span class="op">&lt;-</span> <span class="va">ebola_delays</span><span class="op">[</span><span class="fl">358</span>, <span class="op">]</span></span>
+<code class="sourceCode R"><span><span class="va">ebola_si</span> <span class="op">&lt;-</span>  <span class="va">ebola_si_rows</span><span class="op">[</span></span>
+<span>  <span class="va">ebola_si_rows</span><span class="op">$</span><span class="va">parameter_data_id</span> <span class="op">==</span> <span class="st">"0c3e02f80addfccc1017fa619fba76c5"</span>,</span>
+<span><span class="op">]</span></span>
 <span><span class="va">ebola_si</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 78</span></span></span>
 <span><span class="co">#&gt;   id      parameter_data_id covidence_id pathogen parameter_type parameter_value</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> b76dcc… c2e0739d6bc652e9…        <span style="text-decoration: underline;">17</span>730 Ebola v… Human delay -…            11.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> b76dcc… 0c3e02f80addfccc…        <span style="text-decoration: underline;">17</span>730 Ebola v… Human delay -…              12</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 72 more variables: exponent &lt;dbl&gt;, parameter_unit &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_lower_bound &lt;dbl&gt;, parameter_upper_bound &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_value_type &lt;chr&gt;, parameter_uncertainty_single_value &lt;dbl&gt;,</span></span></span>
@@ -596,8 +647,8 @@ object.</p>
 <span><span class="co">#&gt; Study: Marziano (2023). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
 <span><span class="co">#&gt; Distribution: weibull</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
-<span><span class="co">#&gt;   shape: 1.630</span></span>
-<span><span class="co">#&gt;   scale: 11.970</span></span></code></pre></div>
+<span><span class="co">#&gt;   shape: 1.760</span></span>
+<span><span class="co">#&gt;   scale: 10.140</span></span></code></pre></div>
 <p>With the probability distribution for the serial interval we can
 utilise some of the <code>&lt;epiparameter&gt;</code> methods. Here we
 illustrate this by checking that the <code>&lt;epiparameter&gt;</code>
@@ -611,8 +662,8 @@ numbers sampling from the distribution.</p>
 <p><img src="data_from_epireview_files/figure-html/plot-epiparameter-1.png" width="768"></p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] 21.084863  4.196263  7.915138 17.459407 31.759410 10.137421  9.597278</span></span>
-<span><span class="co">#&gt;  [8] 13.649719  5.843965  5.214626</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] 17.129838  3.840887  6.913068 14.383495 25.033088  8.693642  8.263781</span></span>
+<span><span class="co">#&gt;  [8] 11.451308  5.219772  4.697018</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="specifying-the-probability-distribution-if-unknown">Specifying the probability distribution if unknown<a class="anchor" aria-label="anchor" href="#specifying-the-probability-distribution-if-unknown"></a>
@@ -689,7 +740,7 @@ form, we can supply this data to <code><a href="../reference/as_epiparameter.htm
 uses the parameter conversion functions in {epiparameter} (see
 <code><a href="../articles/extract_convert.html">vignette("extract_convert", package = "epiparameter")</a></code>).</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ebola_si_epiparameter</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epiparameter.html">as_epiparameter</a></span><span class="op">(</span><span class="va">ebola_si</span>, prob_dist <span class="op">=</span> <span class="st">"gamma"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">ebola_si_epiparameter</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_epiparameter.html">as_epiparameter</a></span><span class="op">(</span><span class="va">ebola_si</span>, prob_distribution <span class="op">=</span> <span class="st">"gamma"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using Faye (2015). "&lt;title not available&gt;." _&lt;journal not available&gt;_. </span></span>
 <span><span class="co">#&gt; To retrieve the citation use the 'get_citation' function</span></span>
 <span><span class="co">#&gt; Warning: Cannot create full citation for epidemiological parameters without bibliographic information </span></span>

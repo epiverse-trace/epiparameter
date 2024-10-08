@@ -99,9 +99,9 @@ possible the function will error.</p>
 to function via the <code>...</code> argument. The argument should be called <code>article</code>,
 as it will be matched by name by <code>$</code>.</p>
 <p>To specify a probability distribution pass a <code>character</code> string to the
-function via the <code>...</code> argument. The argument should be called <code>prob_dist</code>.
-For example, to specify a gamma distribution:
-<code>as_epiparameter(x, prob_dist = "gamma")</code>.</p>
+function via the <code>...</code> argument. The argument should be called
+<code>prob_distribution</code>. For example, to specify a gamma distribution:
+<code>as_epiparameter(x, prob_distribution = "gamma")</code>.</p>
 <p><em><strong>Warning</strong></em>: distributions specified via the <code>prob_dist</code> argument will
 overwrite the probability distribution specified in the <code>x</code> argument. For
 example, if the probability distribution is given in an <span class="pkg">epireview</span>
