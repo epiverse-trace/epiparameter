@@ -132,7 +132,6 @@ The way the {epireview} data is stored means that some epidemiological parameter
 We can search which entries in the data have multiple rows by checking if there are duplicated parameter types and IDs. Remember that it is only possible to convert delay distributions into epiparameter objects (i.e. known as _Human delay_ parameter types in {epireview}). 
 
 ```{r, check-multi-row-entries}
-marburg_params <-  epireview::get_parameter( marburg_data$params, "Human delay - generation time")
 multi_row_entries <- duplicated(marburg_params$parameter_type) &
   duplicated(marburg_params$id)
 multi_row_ids <- marburg_params$id[multi_row_entries]
