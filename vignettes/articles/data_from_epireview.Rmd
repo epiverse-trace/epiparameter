@@ -47,14 +47,15 @@ Out of these parameters, subset the data to only keep those rows that contain in
 
 ```{r, subset-marburg-params}
 marburg_incubation_period <- marburg_params[
-  marburg_params$parameter_type_short=="incubation_period",]
+  marburg_params$parameter_type_short == "incubation_period",
+]
 marburg_incubation_period
 ```
 
-We will select the second entry to use as the first example:
+We will select the first entry to use as the first example:
 
 ```{r, select-marburg-entry}
-marburg_incub <- marburg_incubation_period[2, ]
+marburg_incub <- marburg_incubation_period[1, ]
 marburg_incub
 ```
 
@@ -104,7 +105,7 @@ marburg_incub_article <- marburg_articles[article_row, ]
 marburg_incub_article
 ```
 
-Now we can repeat the example of converting to `<epiparameter>` as shown above, but this time pass the bibliographic information as well as the epidemiological parameter information to create a full citation. The bibliographic information needs to be passed with the `articles` argument. 
+Now we can repeat the example of converting to `<epiparameter>` as shown above, but this time pass the bibliographic information as well as the epidemiological parameter information to create a full citation. The bibliographic information needs to be passed with the `article` argument. 
 
 ```{r, convert-to-epiparameter-full-citation}
 marburg_incub_epiparameter <- as_epiparameter(
@@ -119,14 +120,14 @@ marburg_incub_epiparameter$citation
 ```
 
 ::: {.alert .alert-info}
-The `as_epiparameter()` function is an S3 generic. If you are not familiar with S3 object-oriented programming in R, then this detail is not important, however, it does mean that the `articles` argument is not explicitly in the function definition of `as_epiparameter()` (i.e. it will not show up on autocomplete when typing out the function and will not be shown if you read the function help page `?as_epiparameter()`). Instead, the argument is specified as part of the `...` argument. This is because the `articles` argument is only required when converting data from {epireview} into `<epiparameter>`, and other data that can be converted to `<epiparameter>` objects do not require this argument.
+The `as_epiparameter()` function is an S3 generic. If you are not familiar with S3 object-oriented programming in R, then this detail is not important, however, it does mean that the `article` argument is not explicitly in the function definition of `as_epiparameter()` (i.e. it will not show up on autocomplete when typing out the function and will not be shown if you read the function help page `?as_epiparameter()`). Instead, the argument is specified as part of the `...` argument. This is because the `article` argument is only required when converting data from {epireview} into `<epiparameter>`, and other data that can be converted to `<epiparameter>` objects do not require this argument.
 :::
 
 ## Multi-row {epireview} entries
 
 The way the {epireview} data is stored means that some epidemiological parameter entries require multiple rows. This can be, for example, because they contain two summary statistics (e.g. mean and standard deviation) that are kept on separate rows. In order to create `<epiparameter>` objects that contains the full information for each entry multiple rows of the epidemiological parameters table from {epireview} can be given to `as_epiparameter()` to create a single `<epiparameter>` object.
 
-We can search which entries in the data have multiple rows by checking if there are duplicated parameter types and IDs. Remember that it is only possible to convert delay distributions into epiparameter objects (i.e. known as _Human delay_ parameter types in {epireview}), which we previously subset in this vignette. 
+We can search which entries in the data have multiple rows by checking if there are duplicated parameter types and IDs. Remember that it is only possible to convert delay distributions into epiparameter objects (i.e. known as _Human delay_ parameter types in {epireview}). 
 
 ```{r, check-multi-row-entries}
 multi_row_entries <- duplicated(marburg_params$parameter_type) &
@@ -140,21 +141,23 @@ multi_row_marburg_params <-
 multi_row_marburg_params
 ```
 
-In this case there are two studies for Marburg with more than one entry (row) in the {epireview} database. Out of these studies, we select the first two rows, which contain the mean and standard deviation.
+In this case there are two studies for Marburg with more than one entry (row) in the {epireview} database. Out of these studies we select the mean and standard deviation.
 
 ```{r, check-multi-row-param-value-type}
 multi_row_marburg_params$parameter_value_type
 ```
 
-We select the first two rows of this subset table, which are the mean and standard deviation for the generation time of Marburg disease. This step should be verified manually to ensure that the entries that have been selected are indeed multiple rows for the same reported epidemiological parameter.
+In this case, we know that the mean and standard deviation from the chosen rows correspond to the same estimation process by having read the corresponding article. However, there is currently no identifiers on the {epireview} `params` database for Marburg, Ebola or Lassa to directly identify which of the two rows with mean values correspond to the standard deviation. The {epireview} team are currently working on rectifying this issue. 
 
-In this case, we know that the mean and standard deviation from the chosen rows correspond to the same estimation process by having read the corresponding article. However, there is currently no identifiers on the {epireview} `params` database for Marburg, Ebola or Lassa to directly identify which of the two rows with mean values correspond to the standard deviation. The {epireview} team are currently working on rectifying this issue. **Therefore, we encourage readers to manually verify their data subsets, to ensure that the entries that have been selected are indeed multiple rows for the same reported epidemiological parameter.** 
-* For future {epireview} pathogens (excluding SARS) mean and standard deviation estimates that match will form one row in the params database. Current software development at {epireview} is working on ensuring compatibility between these formats.
+***Therefore, we encourage readers to manually verify their data subsets, to ensure that the entries that have been selected are indeed multiple rows for the same reported epidemiological parameter.***
+
+* For future {epireview} pathogens (excluding SARS) mean and standard deviation estimates that match will form one row in the `$params` database. Current software development at {epireview} is working on ensuring compatibility between these formats.
 
 ```{r, subset-multi-row-marburg-entry}
 marburg_gt <- multi_row_marburg_params[
   multi_row_marburg_params$parameter_data_id %in%
-    c("056a8d6b5f9aee3622d3bd8b715d4296" , "ce3976e2e15df3f6fb92f6deb2db2a29"),]
+    c("056a8d6b5f9aee3622d3bd8b715d4296", "ce3976e2e15df3f6fb92f6deb2db2a29"),
+]
 marburg_gt
 ```
 
@@ -182,15 +185,17 @@ ebola_params <- ebola_data$params
 
 ```{r, subset-ebola-params}
 ebola_si_rows <- ebola_params[
-  ebola_params$parameter_type_short=="serial_interval",]
+  ebola_params$parameter_type_short == "serial_interval",
+]
 ebola_si_rows
 ```
 
-We will select the 17th entry, as this entry has estimated and reported a Weibull distribution:
+We will select an entry that has estimated and reported a Weibull distribution:
 
 ```{r, select-ebola-entry}
 ebola_si <-  ebola_si_rows[
-  ebola_si_rows$parameter_data_id=="0c3e02f80addfccc1017fa619fba76c5",]
+  ebola_si_rows$parameter_data_id == "0c3e02f80addfccc1017fa619fba76c5",
+]
 ebola_si
 ```
 
@@ -254,7 +259,7 @@ is_parameterised(ebola_si_epiparameter)
 Given that we can convert the mean and standard deviation into parameters of a probability distribution if we assume a distribution form, we can supply this data to `as_epiparameter()`. This uses the parameter conversion functions in {epiparameter} (see `vignette("extract_convert", package = "epiparameter")`).
 
 ```{r, convert-to-epiparameter-assumed-prob-dist}
-ebola_si_epiparameter <- as_epiparameter(ebola_si, prob_dist = "gamma")
+ebola_si_epiparameter <- as_epiparameter(ebola_si, prob_distribution = "gamma")
 ebola_si_epiparameter
 is_parameterised(ebola_si_epiparameter)
 ```
