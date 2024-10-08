@@ -99,9 +99,9 @@ as.data.frame.multi_epiparameter <- function(x, ...) {
 #' as it will be matched by name by `$`.
 #'
 #' To specify a probability distribution pass a `character` string to the
-#' function via the `...` argument. The argument should be called `prob_dist`.
-#' For example, to specify a gamma distribution:
-#' `as_epiparameter(x, prob_dist = "gamma")`.
+#' function via the `...` argument. The argument should be called
+#' `prob_distribution`. For example, to specify a gamma distribution:
+#' `as_epiparameter(x, prob_distribution = "gamma")`.
 #'
 #' ***Warning***: distributions specified via the `prob_dist` argument will
 #' overwrite the probability distribution specified in the `x` argument. For
@@ -247,7 +247,7 @@ is_epiparameter_df <- function(x) {
   # capture dots and extract article info if supplied
   dots <- list(...)
   article <- dots$article
-  prob_dist_in <- dots$prob_dist
+  prob_dist_in <- dots$prob_distribution
   # validate multi-row entries
   if (nrow(x) > 1) {
     stopifnot(
