@@ -69,8 +69,11 @@ plot.epiparameter <- function(x,
   }
 
   xlab <- tools::toTitleCase(x$epi_name)
-  if (x$epi_name != "offspring distribution") {
-    xlab <- paste(xlab, "(Days)")
+  units <- x$metadata$units
+  no_units <- grepl(pattern = "(no)*(units)", x = units, ignore.case = TRUE) ||
+    anyNA(units)
+  if (!no_units) {
+    xlab <- paste0(xlab, " ", "(", tools::toTitleCase(units), ")")
   }
 
   if (is_continuous(x)) {
