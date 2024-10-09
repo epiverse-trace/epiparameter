@@ -12,6 +12,7 @@ Discretises
 distcrete
 dplyr
 ebola
+epidist
 EpiParameter
 epiparameters
 epireview
@@ -21,6 +22,7 @@ estimat
 etc
 EVD
 facetted
+Guzzetta
 jsonlite
 Lassa
 Lifecycle
