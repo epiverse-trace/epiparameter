@@ -51,6 +51,7 @@
       "doi": "10.1016/S1473-3099(09)70069-6"
     },
     "metadata": {
+      "units": "days",
       "sample_size": 14,
       "region": "USA",
       "transmission_mode": "experimental",
@@ -118,6 +119,7 @@
       "doi": "10.1016/S1473-3099(09)70069-7"
     },
     "metadata": {
+      "units": "days",
       "sample_size": 13,
       "region": "UK",
       "transmission_mode": "experimental",
@@ -185,6 +187,7 @@
     "doi": "10.1016/S1473-3099(09)70069-8"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 157,
     "region": "Mixed",
     "transmission_mode": "natural_unknown",
@@ -252,6 +255,7 @@
     "doi": "10.1016/S1473-3099(09)70069-9"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 151,
     "region": "Mixed",
     "transmission_mode": "mixed",
@@ -319,6 +323,7 @@
     "doi": "10.1016/S1473-3099(09)70069-10"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 90,
     "region": "Mixed",
     "transmission_mode": "mixed",
@@ -386,11 +391,12 @@
     "doi": "10.1016/S1473-3099(09)70069-11"
   },
   "metadata": {
-  "sample_size": 78,
-  "region": "USA",
-  "transmission_mode": "experimental",
-  "extrinsic": false,
-  "inference_method": "mle"
+    "units": "days",
+    "sample_size": 78,
+    "region": "USA",
+    "transmission_mode": "experimental",
+    "extrinsic": false,
+    "inference_method": "mle"
   },
   "method_assessment": {
     "truncation": null,
@@ -453,6 +459,7 @@
     "doi": "10.1016/S1473-3099(09)70069-12"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 55,
     "region": "Mixed",
     "transmission_mode": "natural_unknown",
@@ -520,6 +527,7 @@
     "doi": "10.1016/S1473-3099(09)70069-13"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 11,
     "region": "Mixed",
     "transmission_mode": "experimental",
@@ -587,6 +595,7 @@
     "doi": "10.1016/S1473-3099(09)70069-14"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 24,
     "region": "Mixed",
     "transmission_mode": "mixed",
@@ -654,6 +663,7 @@
     "doi": "10.1016/S1473-3099(09)70069-15"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 28,
     "region": "USA",
     "transmission_mode": "experimental",
@@ -713,6 +723,7 @@
     "doi": "10.1002/sim.3659"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 151,
     "region": "Mixed",
     "transmission_mode": "unknown",
@@ -772,11 +783,12 @@
     "doi": "10.1002/sim.3659"
   },
   "metadata": {
-  "sample_size": 151,
-  "region": "Mixed",
-  "transmission_mode": "unknown",
-  "extrinsic": false,
-  "inference_method": "mle"
+    "units": "days",
+    "sample_size": 151,
+    "region": "Mixed",
+    "transmission_mode": "unknown",
+    "extrinsic": false,
+    "inference_method": "mle"
   },
   "method_assessment": {
     "truncation": null,
@@ -831,11 +843,12 @@
     "doi": "10.1002/sim.3659"
   },
   "metadata": {
-  "sample_size": 24,
-  "region": "Mixed",
-  "transmission_mode": "unknown",
-  "extrinsic": false,
-  "inference_method": "mle"
+    "units": "days",
+    "sample_size": 24,
+    "region": "Mixed",
+    "transmission_mode": "unknown",
+    "extrinsic": false,
+    "inference_method": "mle"
   },
   "method_assessment": {
   "truncation": null,
@@ -890,6 +903,7 @@
     "doi": "10.1002/sim.3659"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 24,
     "region": "Mixed",
     "transmission_mode": "unknown",
@@ -941,6 +955,7 @@
     "doi": "10.1016/j.jtbi.2010.12.017"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 72,
     "region": "Japan",
     "transmission_mode": "natural_unknown",
@@ -992,6 +1007,7 @@
     "doi": "10.1016/j.jtbi.2010.12.017"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 72,
     "region": "Japan",
     "transmission_mode": "natural_unknown",
@@ -1089,6 +1105,7 @@
     "doi": "10.1093/aje/kwv115"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 229,
     "region": "China",
     "transmission_mode": "natural_unknown",
@@ -1186,6 +1203,7 @@
     "doi": "10.1093/aje/kwv115"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 229,
     "region": "China",
     "transmission_mode": "natural_unknown",
@@ -1280,6 +1298,7 @@
     "doi": "10.1371/journal.pone.0148506"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 395,
     "region": "China",
     "transmission_mode": "natural_unknown",
@@ -1381,6 +1400,7 @@
     "doi": "10.1371/journal.pone.0148506"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 173,
     "region": "China",
     "transmission_mode": "natural_unknown",
@@ -1482,6 +1502,7 @@
     "doi": "10.1371/journal.pone.0148506"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 222,
     "region": "China",
     "transmission_mode": "natural_unknown",
@@ -1565,6 +1586,7 @@
     "doi": "10.1503/cmaj.091807"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 316,
     "region": "Canada",
     "transmission_mode": "natural_unknown",
@@ -1674,6 +1696,7 @@
     "doi": "10.1371/currents.RRN1130"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 16,
     "region": "UK",
     "transmission_mode": "natural_unknown",
@@ -1783,6 +1806,7 @@
     "doi": "10.1371/currents.RRN1130"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 58,
     "region": "UK",
     "transmission_mode": "natural_unknown",
@@ -1839,6 +1863,7 @@
     "doi": "10.1056/NEJMoa0906089"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 124,
     "region": "New York, USA",
     "transmission_mode": "natural_unknown",
@@ -1898,6 +1923,7 @@
     "doi": "10.1056/NEJMoa0906089"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 16,
     "region": "New York, USA",
     "transmission_mode": "natural_unknown",
@@ -1939,6 +1965,7 @@
     "doi": "10.1186/1756-0500-7-906"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 76,
     "region": "Mixed",
     "transmission_mode": "mixed",
@@ -1981,6 +2008,7 @@
     "doi": "10.1186/1756-0500-7-906"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 18,
     "region": "Mixed",
     "transmission_mode": "mixed",
@@ -2023,6 +2051,7 @@
     "doi": "10.1186/1756-0500-7-906"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 38,
     "region": "Mixed",
     "transmission_mode": "mixed",
@@ -2125,6 +2154,7 @@
     "doi": "10.1086/520543"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 77,
     "region": "DR Congo",
     "transmission_mode": "natural_unknown",
@@ -2174,6 +2204,7 @@
     "doi": "10.1371/journal.pone.0050948"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 374,
     "region": "Angola",
     "transmission_mode": "natural_unknown",
@@ -2231,6 +2262,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 57,
     "region": "Singapore",
     "transmission_mode": "natural_unknown",
@@ -2288,6 +2320,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 33,
     "region": "Beijing",
     "transmission_mode": "natural_unknown",
@@ -2345,6 +2378,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 32,
     "region": "Europe",
     "transmission_mode": "natural_unknown",
@@ -2402,6 +2436,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 25,
     "region": "Benin",
     "transmission_mode": "natural_unknown",
@@ -2459,6 +2494,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 25,
     "region": "England",
     "transmission_mode": "natural_unknown",
@@ -2514,6 +2550,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 47,
     "region": "Pakistan",
     "transmission_mode": "natural_unknown",
@@ -2571,6 +2608,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 147,
     "region": "Zaire",
     "transmission_mode": "natural_unknown",
@@ -2628,6 +2666,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 74,
     "region": "Mixed",
     "transmission_mode": "natural_unknown",
@@ -2683,6 +2722,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 20,
     "region": "Argentina",
     "transmission_mode": "natural_unknown",
@@ -2738,6 +2778,7 @@
     "doi": "10.1038/nature04153"
   },
   "metadata": {
+    "units": "No units",
     "sample_size": 13,
     "region": "Uganda",
     "transmission_mode": "natural_unknown",
@@ -2786,6 +2827,7 @@
     "doi": "10.1371/journal.pone.0050972"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 146,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -2839,6 +2881,7 @@
     "doi": "10.1371/journal.pone.0050972"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 146,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -2895,6 +2938,7 @@
     "doi": "10.1371/journal.pone.0050972"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 153,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -2979,6 +3023,7 @@
     "doi": "10.2471/BLT.16.174540"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 25,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -3043,6 +3088,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 21,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -3107,6 +3153,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 169,
     "region": "Mixed",
     "transmission_mode": "multiple",
@@ -3170,6 +3217,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 124,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -3234,6 +3282,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 6,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -3298,6 +3347,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 23,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -3362,6 +3412,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 18,
     "region": "Mixed",
     "transmission_mode": "multiple",
@@ -3425,6 +3476,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 8,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -3489,6 +3541,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 6,
     "region": "Mixed",
     "transmission_mode": "organ_transplant",
@@ -3552,6 +3605,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 91,
     "region": "Mixed",
     "transmission_mode": "multiple",
@@ -3615,6 +3669,7 @@
     "doi": "10.4269/ajtmh.13-0403"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 80,
     "region": "Mixed",
     "transmission_mode": "vector_borne",
@@ -3707,6 +3762,7 @@
     "doi": "10.2807/1560-7917.ES.2022.27.24.2200448"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 18,
     "region": "Netherlands",
     "transmission_mode": "natural_natural_human_to_human",
@@ -3805,6 +3861,7 @@
     "doi": "10.1101/2022.06.22.22276713"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 22,
     "region": "USA",
     "transmission_mode": "natural_natural_human_to_human",
@@ -3904,6 +3961,7 @@
     "doi": "10.3201/eid2810.221126"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 30,
     "region": "Italy",
     "transmission_mode": "natural_human_to_human",
@@ -4032,6 +4090,7 @@
     "doi": "10.1101/2022.10.26.22281516"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 35,
     "region": "USA",
     "transmission_mode": "natural_natural_human_to_human",
@@ -4160,6 +4219,7 @@
     "doi": "10.1101/2022.10.26.22281516"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 36,
     "region": "USA",
     "transmission_mode": "natural_natural_human_to_human",
@@ -4288,6 +4348,7 @@
     "doi": "10.1101/2022.10.26.22281516"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 57,
     "region": "USA",
     "transmission_mode": "natural_natural_human_to_human",
@@ -4416,6 +4477,7 @@
     "doi": "10.1101/2022.10.26.22281516"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 40,
     "region": "USA",
     "transmission_mode": "natural_natural_human_to_human",
@@ -4465,6 +4527,7 @@
     "doi": "10.1016/j.phrp.2011.04.001"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 196,
     "region": "Kikwit, Democratic Republic of Congo",
     "transmission_mode": "natural_natural_human_to_human",
@@ -4837,6 +4900,7 @@
     "doi": "10.1016/S0140-6736(18)31387-4"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 14,
     "region": "DR Congo",
     "transmission_mode": "natural_natural_human_to_human",
@@ -5030,6 +5094,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 1798,
     "region": "West Africa",
     "transmission_mode": "natural_natural_human_to_human",
@@ -5223,6 +5288,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 49,
     "region": "Guinea",
     "transmission_mode": "natural_natural_human_to_human",
@@ -5416,6 +5482,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 957,
     "region": "Liberia",
     "transmission_mode": "natural_natural_human_to_human",
@@ -5609,6 +5676,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 792,
     "region": "Sierra Leone",
     "transmission_mode": "natural_natural_human_to_human",
@@ -5802,6 +5870,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 305,
     "region": "West Africa",
     "transmission_mode": "natural_natural_human_to_human",
@@ -5995,6 +6064,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 37,
     "region": "Guinea",
     "transmission_mode": "natural_natural_human_to_human",
@@ -6188,6 +6258,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 147,
     "region": "Liberia",
     "transmission_mode": "natural_natural_human_to_human",
@@ -6381,6 +6452,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 112,
     "region": "Sierra Leone",
     "transmission_mode": "natural_natural_human_to_human",
@@ -6574,6 +6646,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 1167,
     "region": "West Africa",
     "transmission_mode": "natural_natural_human_to_human",
@@ -6767,6 +6840,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 1004,
     "region": "West Africa",
     "transmission_mode": "natural_natural_human_to_human",
@@ -6960,6 +7034,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 2536,
     "region": "West Africa",
     "transmission_mode": "natural_natural_human_to_human",
@@ -7153,6 +7228,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 1324,
     "region": "West Africa",
     "transmission_mode": "natural_natural_human_to_human",
@@ -7346,6 +7422,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 2741,
     "region": "West Africa",
     "transmission_mode": "natural_natural_human_to_human",
@@ -7539,6 +7616,7 @@
     "doi": "10.1056/NEJMc1414992"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 1335,
     "region": "West Africa",
     "transmission_mode": "natural_natural_human_to_human",
@@ -7655,6 +7733,7 @@
     "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 23,
     "region": "Saudi Arabia",
     "transmission_mode": "natural_natural_human_to_human",
@@ -7771,6 +7850,7 @@
     "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 23,
     "region": "Saudi Arabia",
     "transmission_mode": "natural_natural_human_to_human",
@@ -7885,6 +7965,7 @@
     "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 23,
     "region": "Saudi Arabia",
     "transmission_mode": "natural_natural_human_to_human",
@@ -7999,6 +8080,7 @@
     "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 23,
     "region": "Saudi Arabia",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8113,6 +8195,7 @@
     "doi": "10.1056/NEJMoa1306742"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 23,
     "region": "Saudi Arabia",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8178,6 +8261,7 @@
     "doi": "10.1186/s12916-015-0468-3"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 185,
     "region": "South Korea",
     "transmission_mode": "natural_unknown",
@@ -8245,6 +8329,7 @@
     "doi": "10.2807/1560-7917.es2015.20.25.21163"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 166,
     "region": "South Korea",
     "transmission_mode": "natural_unknown",
@@ -8310,6 +8395,7 @@
     "doi": "10.2807/1560-7917.es2015.20.25.21163"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 99,
     "region": "South Korea",
     "transmission_mode": "natural_unknown",
@@ -8384,6 +8470,7 @@
     "doi": "10.1101/2020.02.24.20027474"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 59,
     "region": "China",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8434,6 +8521,7 @@
     "doi": "10.1007/s10389-021-01478-1"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 6241,
     "region": "Mixed",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8496,6 +8584,7 @@
     "doi": "10.1186/s12879-021-05950-x"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 1453,
     "region": "Mixed",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8558,6 +8647,7 @@
     "doi": "10.1186/s12879-021-05950-x"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 3924,
     "region": "Mixed",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8614,6 +8704,7 @@
     "doi": "10.1016/j.ijid.2020.02.060"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 28,
     "region": "Mixed",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8670,6 +8761,7 @@
     "doi": "10.1016/j.ijid.2020.02.060"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 18,
     "region": "Mixed",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8734,6 +8826,7 @@
     "doi": "10.1017/S0950268820001338"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 178,
     "region": "Hubei province, China",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8803,6 +8896,7 @@
     "doi": "10.1017/S0950268820001338"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 131,
     "region": "Hubei province, China",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8861,6 +8955,7 @@
     "doi": "10.1016/j.ijid.2021.01.069"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 28675,
     "region": "Mixed",
     "transmission_mode": "natural_natural_human_to_human",
@@ -8945,6 +9040,7 @@
     "doi": "10.1371/journal.pone.0243889"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 19,
     "region": "Vietnam",
     "transmission_mode": "natural_natural_human_to_human",
@@ -9042,6 +9138,7 @@
     "doi": "10.1136/bmjopen-2020-039652"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 1357,
     "region": "Mixed",
     "transmission_mode": "natural_natural_human_to_human",
@@ -9148,6 +9245,7 @@
     "doi": "10.1136/bmjopen-2020-039652"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 1269,
     "region": "Mixed",
     "transmission_mode": "natural_natural_human_to_human",
@@ -9230,6 +9328,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 52,
     "region": "China",
     "transmission_mode": "natural_natural_human_to_human",
@@ -9312,6 +9411,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 158,
     "region": "China",
     "transmission_mode": "natural_natural_human_to_human",
@@ -9394,6 +9494,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 155,
     "region": "China",
     "transmission_mode": "natural_natural_human_to_human",
@@ -9476,6 +9577,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 34,
     "region": "China",
     "transmission_mode": "natural_natural_human_to_human",
@@ -9558,6 +9660,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 34,
     "region": "China",
     "transmission_mode": "natural_natural_human_to_human",
@@ -9640,6 +9743,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 39,
     "region": "China",
     "transmission_mode": "natural_human_to_human",
@@ -9722,6 +9826,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 52,
     "region": "China",
     "transmission_mode": "natural_human_to_human",
@@ -9804,6 +9909,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 155,
     "region": "China",
     "transmission_mode": "natural_human_to_human",
@@ -9886,6 +9992,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 34,
     "region": "China",
     "transmission_mode": "natural_human_to_human",
@@ -9968,6 +10075,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 34,
     "region": "China",
     "transmission_mode": "natural_human_to_human",
@@ -10050,6 +10158,7 @@
     "doi": "10.3390/jcm9020538"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 39,
     "region": "China",
     "transmission_mode": "natural_human_to_human",
@@ -10130,6 +10239,7 @@
     "doi": "10.7326/M20-0504"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 181,
     "region": "Mixed",
     "transmission_mode": "natural_human_to_human",
@@ -10206,6 +10316,7 @@
     "doi": "10.7326/M20-0504"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 99,
     "region": "Mixed",
     "transmission_mode": "natural_human_to_human",
@@ -10282,6 +10393,7 @@
     "doi": "10.7326/M20-0504"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 108,
     "region": "Mixed",
     "transmission_mode": "natural_human_to_human",
@@ -10358,6 +10470,7 @@
     "doi": "10.7326/M20-0504"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 73,
     "region": "China",
     "transmission_mode": "natural_human_to_human",
@@ -10428,6 +10541,7 @@
     "doi": "10.1002/jmv.28248"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 42,
     "region": "Mixed",
     "transmission_mode": "mixed",
@@ -10498,6 +10612,7 @@
     "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 16,
     "region": "Congo",
     "transmission_mode": "natural_unknown",
@@ -10568,6 +10683,7 @@
     "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 34,
     "region": "Mixed",
     "transmission_mode": "natural_unknown",
@@ -10638,6 +10754,7 @@
     "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 16,
     "region": "Congo",
     "transmission_mode": "natural_unknown",
@@ -10708,6 +10825,7 @@
     "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 27,
     "region": "USA",
     "transmission_mode": "natural_unknown",
@@ -10778,6 +10896,7 @@
     "doi": "10.1093/jtm/taac105"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 114,
     "region": "mixed",
     "transmission_mode": "natural_unknown",
@@ -10872,6 +10991,7 @@
     "doi": "10.1016/j.jobb.2022.12.001"
   },
   "metadata": {
+    "units": "days",
     "sample_size": null,
     "region": "USA",
     "transmission_mode": "natural_unknown",
@@ -10966,6 +11086,7 @@
     "doi": "10.1016/j.jobb.2022.12.001"
   },
   "metadata": {
+    "units": "days",
     "sample_size": null,
     "region": "Europe",
     "transmission_mode": "natural_unknown",
@@ -11062,6 +11183,7 @@
     "doi": "10.1016/j.jobb.2022.12.001"
   },
   "metadata": {
+    "units": "days",
     "sample_size": null,
     "region": "Global",
     "transmission_mode": "natural_unknown",
@@ -11171,6 +11293,7 @@
     "doi": "10.1093/infdis/jiv470"
   },
   "metadata": {
+    "units": "days",
     "sample_size": null,
     "region": "Philippines",
     "transmission_mode": "vector_borne",
@@ -11268,6 +11391,7 @@
     "doi": "10.1186/s12916-020-01674-y"
   },
   "metadata": {
+    "units": "days",
     "sample_size": 412,
     "region": "Italy",
     "transmission_mode": "vector_borne",
@@ -11409,6 +11533,7 @@
     "doi": "10.1016/S2666-5247(23)00033-2"
   },
   "metadata": {
+    "units": "deaths per 1000 cases",
     "sample_size": 253545,
     "region": "Brazil",
     "transmission_mode": "vector_borne",
