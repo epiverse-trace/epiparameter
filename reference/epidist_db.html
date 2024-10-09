@@ -82,7 +82,7 @@ the package in the future.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">epidist_db</span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"all"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"all"</span>,</span>
-<span>  epi_dist <span class="op">=</span> <span class="st">"all"</span>,</span>
+<span>  epi_name <span class="op">=</span> <span class="st">"all"</span>,</span>
 <span>  author <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  subset <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  single_epiparameter <span class="op">=</span> <span class="cn">FALSE</span></span>
@@ -101,9 +101,9 @@ the package in the future.</p>
 <dd><p>A <code>character</code> string specifying the pathogen.</p></dd>
 
 
-<dt id="arg-epi-dist">epi_dist<a class="anchor" aria-label="anchor" href="#arg-epi-dist"></a></dt>
+<dt id="arg-epi-name">epi_name<a class="anchor" aria-label="anchor" href="#arg-epi-name"></a></dt>
 <dd><p>A <code>character</code> string specifying the epidemiological
-distribution. See details for full list of epidemiological distributions.</p></dd>
+parameter. See details for full list of epidemiological distributions.</p></dd>
 
 
 <dt id="arg-author">author<a class="anchor" aria-label="anchor" href="#arg-author"></a></dt>
@@ -118,7 +118,7 @@ initialised.</p></dd>
 logicals to subset the list of <code>&lt;epiparameter&gt;</code>, or a function that can be
 applied over a list of <code>&lt;epiparameter&gt;</code> objects.</p>
 <p>Subsetting (using <code>subset</code>) can be combined with the subsetting done with
-the <code>disease</code> and <code>epi_dist</code> arguments (and <code>author</code> if specified). If left
+the <code>disease</code> and <code>epi_name</code> arguments (and <code>author</code> if specified). If left
 as <code>NULL</code> (default) no subsetting is carried out.</p>
 <p>The <code>subset</code> argument is similar to subsetting a <code>&lt;data.frame&gt;</code>, but the
 difference is that fixed comparisons and not vectorised comparisons are
@@ -139,7 +139,7 @@ by the <code>dplyr</code> package.</p></dd>
 <dt id="arg-single-epiparameter">single_epiparameter<a class="anchor" aria-label="anchor" href="#arg-single-epiparameter"></a></dt>
 <dd><p>A boolean <code>logical</code> determining whether a single
 <code>&lt;epiparameter&gt;</code> or multiple entries from the library can be returned if
-matched by the other arguments (<code>disease</code>, <code>epi_dist</code>, <code>author</code>). This
+matched by the other arguments (<code>disease</code>, <code>epi_name</code>, <code>author</code>). This
 argument is used to prevent multiple sets of parameters being returned
 when only one is wanted.</p>
 <p><strong>Note</strong>: If multiple entries match the arguments supplied and

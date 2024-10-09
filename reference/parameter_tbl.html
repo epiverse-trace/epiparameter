@@ -86,7 +86,7 @@ of publication.</p>
 <span>  <span class="va">multi_epiparameter</span>,</span>
 <span>  disease <span class="op">=</span> <span class="st">"all"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"all"</span>,</span>
-<span>  epi_dist <span class="op">=</span> <span class="st">"all"</span></span>
+<span>  epi_name <span class="op">=</span> <span class="st">"all"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -108,9 +108,9 @@ of publication.</p>
 disease, or <code>NA</code> if not known.</p></dd>
 
 
-<dt id="arg-epi-dist">epi_dist<a class="anchor" aria-label="anchor" href="#arg-epi-dist"></a></dt>
+<dt id="arg-epi-name">epi_name<a class="anchor" aria-label="anchor" href="#arg-epi-name"></a></dt>
 <dd><p>A <code>character</code> string with the name of the
-epidemiological distribution type.</p></dd>
+epidemiological parameter type.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -127,18 +127,18 @@ epidemiological distribution type.</p></dd>
 <span class="r-in"><span><span class="fu">parameter_tbl</span><span class="op">(</span>multi_epiparameter <span class="op">=</span> <span class="va">epiparameter_list</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Parameter table:</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A data frame:    27 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    disease  pathogen epi_distribution prob_distribution author  year sample_size</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> COVID-19 SARS-Co… incubation peri… <span style="color: #BB0000;">NA</span>                Men e…  <span style="text-decoration: underline;">2</span>020          59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> COVID-19 SARS-Co… incubation peri… <span style="color: #BB0000;">NA</span>                Rai e…  <span style="text-decoration: underline;">2</span>022        <span style="text-decoration: underline;">6</span>241</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> COVID-19 SARS-Co… incubation peri… <span style="color: #BB0000;">NA</span>                Alene…  <span style="text-decoration: underline;">2</span>021        <span style="text-decoration: underline;">1</span>453</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> COVID-19 SARS-Co… serial interval  <span style="color: #BB0000;">NA</span>                Alene…  <span style="text-decoration: underline;">2</span>021        <span style="text-decoration: underline;">3</span>924</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> COVID-19 SARS-Co… serial interval  lnorm             Nishi…  <span style="text-decoration: underline;">2</span>020          28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> COVID-19 SARS-Co… serial interval  weibull           Nishi…  <span style="text-decoration: underline;">2</span>020          18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> COVID-19 SARS-Co… incubation peri… weibull           Yang …  <span style="text-decoration: underline;">2</span>020         178</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> COVID-19 SARS-Co… serial interval  norm              Yang …  <span style="text-decoration: underline;">2</span>020         131</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> COVID-19 SARS-Co… incubation peri… <span style="color: #BB0000;">NA</span>                Elias…  <span style="text-decoration: underline;">2</span>021       <span style="text-decoration: underline;">28</span>675</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> COVID-19 SARS-Co… incubation peri… weibull           Bui e…  <span style="text-decoration: underline;">2</span>020          19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    disease  pathogen   epi_name       prob_distribution author  year sample_size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> COVID-19 SARS-CoV-2 incubation pe… <span style="color: #BB0000;">NA</span>                Men e…  <span style="text-decoration: underline;">2</span>020          59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> COVID-19 SARS-CoV-2 incubation pe… <span style="color: #BB0000;">NA</span>                Rai e…  <span style="text-decoration: underline;">2</span>022        <span style="text-decoration: underline;">6</span>241</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> COVID-19 SARS-CoV-2 incubation pe… <span style="color: #BB0000;">NA</span>                Alene…  <span style="text-decoration: underline;">2</span>021        <span style="text-decoration: underline;">1</span>453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> COVID-19 SARS-CoV-2 serial interv… <span style="color: #BB0000;">NA</span>                Alene…  <span style="text-decoration: underline;">2</span>021        <span style="text-decoration: underline;">3</span>924</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> COVID-19 SARS-CoV-2 serial interv… lnorm             Nishi…  <span style="text-decoration: underline;">2</span>020          28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> COVID-19 SARS-CoV-2 serial interv… weibull           Nishi…  <span style="text-decoration: underline;">2</span>020          18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> COVID-19 SARS-CoV-2 incubation pe… weibull           Yang …  <span style="text-decoration: underline;">2</span>020         178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> COVID-19 SARS-CoV-2 serial interv… norm              Yang …  <span style="text-decoration: underline;">2</span>020         131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> COVID-19 SARS-CoV-2 incubation pe… <span style="color: #BB0000;">NA</span>                Elias…  <span style="text-decoration: underline;">2</span>021       <span style="text-decoration: underline;">28</span>675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> COVID-19 SARS-CoV-2 incubation pe… weibull           Bui e…  <span style="text-decoration: underline;">2</span>020          19</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 17 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># example filtering an existing list to incubation periods</span></span></span>
@@ -148,27 +148,27 @@ epidemiological distribution type.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
 <span class="r-in"><span><span class="fu">parameter_tbl</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  multi_epiparameter <span class="op">=</span> <span class="va">epiparameter_list</span>,</span></span>
-<span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"incubation period"</span></span></span>
+<span class="r-in"><span>  epi_name <span class="op">=</span> <span class="st">"incubation period"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Parameter table:</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A data frame:    15 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    disease  pathogen epi_distribution prob_distribution author  year sample_size</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> COVID-19 SARS-Co… incubation peri… <span style="color: #BB0000;">NA</span>                Men e…  <span style="text-decoration: underline;">2</span>020          59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> COVID-19 SARS-Co… incubation peri… <span style="color: #BB0000;">NA</span>                Rai e…  <span style="text-decoration: underline;">2</span>022        <span style="text-decoration: underline;">6</span>241</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> COVID-19 SARS-Co… incubation peri… <span style="color: #BB0000;">NA</span>                Alene…  <span style="text-decoration: underline;">2</span>021        <span style="text-decoration: underline;">1</span>453</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> COVID-19 SARS-Co… incubation peri… weibull           Yang …  <span style="text-decoration: underline;">2</span>020         178</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> COVID-19 SARS-Co… incubation peri… <span style="color: #BB0000;">NA</span>                Elias…  <span style="text-decoration: underline;">2</span>021       <span style="text-decoration: underline;">28</span>675</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> COVID-19 SARS-Co… incubation peri… weibull           Bui e…  <span style="text-decoration: underline;">2</span>020          19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> COVID-19 SARS-Co… incubation peri… lnorm             McAlo…  <span style="text-decoration: underline;">2</span>020        <span style="text-decoration: underline;">1</span>357</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> COVID-19 SARS-Co… incubation peri… lnorm             McAlo…  <span style="text-decoration: underline;">2</span>020        <span style="text-decoration: underline;">1</span>269</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> COVID-19 SARS-Co… incubation peri… lnorm             Linto…  <span style="text-decoration: underline;">2</span>020          52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> COVID-19 SARS-Co… incubation peri… lnorm             Linto…  <span style="text-decoration: underline;">2</span>020         158</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> COVID-19 SARS-Co… incubation peri… lnorm             Linto…  <span style="text-decoration: underline;">2</span>020          52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> COVID-19 SARS-Co… incubation peri… lnorm             Lauer…  <span style="text-decoration: underline;">2</span>020         181</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> COVID-19 SARS-Co… incubation peri… lnorm             Lauer…  <span style="text-decoration: underline;">2</span>020          99</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> COVID-19 SARS-Co… incubation peri… lnorm             Lauer…  <span style="text-decoration: underline;">2</span>020         108</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> COVID-19 SARS-Co… incubation peri… lnorm             Lauer…  <span style="text-decoration: underline;">2</span>020          73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    disease  pathogen   epi_name       prob_distribution author  year sample_size</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> COVID-19 SARS-CoV-2 incubation pe… <span style="color: #BB0000;">NA</span>                Men e…  <span style="text-decoration: underline;">2</span>020          59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> COVID-19 SARS-CoV-2 incubation pe… <span style="color: #BB0000;">NA</span>                Rai e…  <span style="text-decoration: underline;">2</span>022        <span style="text-decoration: underline;">6</span>241</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> COVID-19 SARS-CoV-2 incubation pe… <span style="color: #BB0000;">NA</span>                Alene…  <span style="text-decoration: underline;">2</span>021        <span style="text-decoration: underline;">1</span>453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> COVID-19 SARS-CoV-2 incubation pe… weibull           Yang …  <span style="text-decoration: underline;">2</span>020         178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> COVID-19 SARS-CoV-2 incubation pe… <span style="color: #BB0000;">NA</span>                Elias…  <span style="text-decoration: underline;">2</span>021       <span style="text-decoration: underline;">28</span>675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> COVID-19 SARS-CoV-2 incubation pe… weibull           Bui e…  <span style="text-decoration: underline;">2</span>020          19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> COVID-19 SARS-CoV-2 incubation pe… lnorm             McAlo…  <span style="text-decoration: underline;">2</span>020        <span style="text-decoration: underline;">1</span>357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> COVID-19 SARS-CoV-2 incubation pe… lnorm             McAlo…  <span style="text-decoration: underline;">2</span>020        <span style="text-decoration: underline;">1</span>269</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> COVID-19 SARS-CoV-2 incubation pe… lnorm             Linto…  <span style="text-decoration: underline;">2</span>020          52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> COVID-19 SARS-CoV-2 incubation pe… lnorm             Linto…  <span style="text-decoration: underline;">2</span>020         158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> COVID-19 SARS-CoV-2 incubation pe… lnorm             Linto…  <span style="text-decoration: underline;">2</span>020          52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> COVID-19 SARS-CoV-2 incubation pe… lnorm             Lauer…  <span style="text-decoration: underline;">2</span>020         181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> COVID-19 SARS-CoV-2 incubation pe… lnorm             Lauer…  <span style="text-decoration: underline;">2</span>020          99</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> COVID-19 SARS-CoV-2 incubation pe… lnorm             Lauer…  <span style="text-decoration: underline;">2</span>020         108</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> COVID-19 SARS-CoV-2 incubation pe… lnorm             Lauer…  <span style="text-decoration: underline;">2</span>020          73</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

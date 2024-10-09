@@ -103,7 +103,7 @@ single <code>&lt;epiparameter&gt;</code> to be returned.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">epiparameter_db</span><span class="op">(</span></span>
 <span>  disease <span class="op">=</span> <span class="st">"all"</span>,</span>
 <span>  pathogen <span class="op">=</span> <span class="st">"all"</span>,</span>
-<span>  epi_dist <span class="op">=</span> <span class="st">"all"</span>,</span>
+<span>  epi_name <span class="op">=</span> <span class="st">"all"</span>,</span>
 <span>  author <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  subset <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  single_epiparameter <span class="op">=</span> <span class="cn">FALSE</span></span>
@@ -122,9 +122,9 @@ single <code>&lt;epiparameter&gt;</code> to be returned.</p>
 <dd><p>A <code>character</code> string specifying the pathogen.</p></dd>
 
 
-<dt id="arg-epi-dist">epi_dist<a class="anchor" aria-label="anchor" href="#arg-epi-dist"></a></dt>
+<dt id="arg-epi-name">epi_name<a class="anchor" aria-label="anchor" href="#arg-epi-name"></a></dt>
 <dd><p>A <code>character</code> string specifying the epidemiological
-distribution. See details for full list of epidemiological distributions.</p></dd>
+parameter. See details for full list of epidemiological distributions.</p></dd>
 
 
 <dt id="arg-author">author<a class="anchor" aria-label="anchor" href="#arg-author"></a></dt>
@@ -139,7 +139,7 @@ initialised.</p></dd>
 logicals to subset the list of <code>&lt;epiparameter&gt;</code>, or a function that can be
 applied over a list of <code>&lt;epiparameter&gt;</code> objects.</p>
 <p>Subsetting (using <code>subset</code>) can be combined with the subsetting done with
-the <code>disease</code> and <code>epi_dist</code> arguments (and <code>author</code> if specified). If left
+the <code>disease</code> and <code>epi_name</code> arguments (and <code>author</code> if specified). If left
 as <code>NULL</code> (default) no subsetting is carried out.</p>
 <p>The <code>subset</code> argument is similar to subsetting a <code>&lt;data.frame&gt;</code>, but the
 difference is that fixed comparisons and not vectorised comparisons are
@@ -160,7 +160,7 @@ by the <code>dplyr</code> package.</p></dd>
 <dt id="arg-single-epiparameter">single_epiparameter<a class="anchor" aria-label="anchor" href="#arg-single-epiparameter"></a></dt>
 <dd><p>A boolean <code>logical</code> determining whether a single
 <code>&lt;epiparameter&gt;</code> or multiple entries from the library can be returned if
-matched by the other arguments (<code>disease</code>, <code>epi_dist</code>, <code>author</code>). This
+matched by the other arguments (<code>disease</code>, <code>epi_name</code>, <code>author</code>). This
 argument is used to prevent multiple sets of parameters being returned
 when only one is wanted.</p>
 <p><strong>Note</strong>: If multiple entries match the arguments supplied and
@@ -176,12 +176,12 @@ after this sorting the first entry will be returned.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>disease</code>, <code>epi_dist</code> and <code>author</code> are given as individual arguments
+    <p><code>disease</code>, <code>epi_name</code> and <code>author</code> are given as individual arguments
 as these are the most common variables to subset the parameter library by.
 The <code>subset</code> argument facilitates all other subsetting of rows to select the
 <code>&lt;epiparameter&gt;</code> object(s) desired. To subset based on multiple variables
 separate each expression with <code>&amp;</code>.</p>
-<p>List of epidemiological distributions:</p><ul><li><p>"all" (default, returns all entries in library)</p></li>
+<p>List of epidemiological parameters:</p><ul><li><p>"all" (default, returns all entries in library)</p></li>
 <li><p>"incubation period"</p></li>
 <li><p>"onset to hospitalisation"</p></li>
 <li><p>"onset to death"</p></li>
@@ -198,13 +198,13 @@ separate each expression with <code>&amp;</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">epiparameter_db</span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"influenza"</span>, epi_dist <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">epiparameter_db</span><span class="op">(</span>disease <span class="op">=</span> <span class="st">"influenza"</span>, epi_name <span class="op">=</span> <span class="st">"serial_interval"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 1 results that match the criteria (1 are parameterised). </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Use subset to filter by entry variables or single_epiparameter to return a single entry. </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To retrieve the citation for each use the 'get_citation' function</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Disease: Influenza</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pathogen: Influenza-A-H1N1Pdm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Distribution: serial interval</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Epi Parameter: serial interval</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study: Ghani A, Baguelin M, Griffin J, Flasche S, van Hoek A, Cauchemez S,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Donnelly C, Robertson C, White M, Truscott J, Fraser C, Garske T, White</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> P, Leach S, Hall I, Jenkins H, Ferguson N, Cooper B (2009). “The Early</span>
@@ -219,7 +219,7 @@ separate each expression with <code>&amp;</code>.</p>
 <span class="r-in"><span><span class="co"># example using custom subsetting</span></span></span>
 <span class="r-in"><span><span class="va">eparam</span> <span class="op">&lt;-</span> <span class="fu">epiparameter_db</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  disease <span class="op">=</span> <span class="st">"SARS"</span>,</span></span>
-<span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"offspring_distribution"</span>,</span></span>
+<span class="r-in"><span>  epi_name <span class="op">=</span> <span class="st">"offspring_distribution"</span>,</span></span>
 <span class="r-in"><span>  subset <span class="op">=</span> <span class="va">sample_size</span> <span class="op">&gt;</span> <span class="fl">40</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 1 results that match the criteria (1 are parameterised). </span>
@@ -229,7 +229,7 @@ separate each expression with <code>&amp;</code>.</p>
 <span class="r-in"><span><span class="co"># example using functional subsetting</span></span></span>
 <span class="r-in"><span><span class="va">eparam</span> <span class="op">&lt;-</span> <span class="fu">epiparameter_db</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  disease <span class="op">=</span> <span class="st">"COVID-19"</span>,</span></span>
-<span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"incubation_period"</span>,</span></span>
+<span class="r-in"><span>  epi_name <span class="op">=</span> <span class="st">"incubation_period"</span>,</span></span>
 <span class="r-in"><span>  subset <span class="op">=</span> <span class="va">is_parameterised</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning 11 results that match the criteria (11 are parameterised). </span>
@@ -239,7 +239,7 @@ separate each expression with <code>&amp;</code>.</p>
 <span class="r-in"><span><span class="co"># example forcing a single &lt;epiparameter&gt; to be returned</span></span></span>
 <span class="r-in"><span><span class="va">eparam</span> <span class="op">&lt;-</span> <span class="fu">epiparameter_db</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  disease <span class="op">=</span> <span class="st">"SARS"</span>,</span></span>
-<span class="r-in"><span>  epi_dist <span class="op">=</span> <span class="st">"offspring_distribution"</span>,</span></span>
+<span class="r-in"><span>  epi_name <span class="op">=</span> <span class="st">"offspring_distribution"</span>,</span></span>
 <span class="r-in"><span>  single_epiparameter <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and</span>
