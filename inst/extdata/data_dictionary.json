@@ -377,6 +377,11 @@
       "metadata": {
         "type": "object",
         "properties": {
+          "units": {
+            "description": "The units of the epidemiological parameter.",
+            "examples": ["days", "No units", "percentage"],
+            "type": ["string"]
+          },
           "sample_size": {
             "description": "The sample of the data used to fit the delay distribution. This is usually the number of people with data on a primary and possibly secondary event of interest. In cases where the sample size is not stated NA can be used.",
             "examples": [25, 150],
