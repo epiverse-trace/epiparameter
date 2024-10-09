@@ -2,7 +2,7 @@
   {
     "disease": "Adenovirus",
     "pathogen": "Adenovirus",
-    "epi_distribution": "incubation period",
+    "epi_name": "incubation period",
     "probability_distribution": {
         "prob_distribution": "lnorm",
         "parameters": { }
@@ -69,7 +69,7 @@
   {
     "disease": "Human Coronavirus",
     "pathogen": "Human_Cov",
-    "epi_distribution": "incubation period",
+    "epi_name": "incubation period",
     "probability_distribution": {
       "prob_distribution": "lnorm",
       "parameters": { }
@@ -136,7 +136,7 @@
   {
   "disease": "SARS",
   "pathogen": "SARS-Cov-1",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -203,7 +203,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -270,7 +270,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -337,7 +337,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-B",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -404,7 +404,7 @@
 {
   "disease": "Measles",
   "pathogen": "Measles Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -471,7 +471,7 @@
 {
   "disease": "Parainfluenza",
   "pathogen": "Parainfluenza Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -538,7 +538,7 @@
 {
   "disease": "RSV",
   "pathogen": "RSV",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
       "prob_distribution": "lnorm",
       "parameters": { }
@@ -605,7 +605,7 @@
 {
   "disease": "Rhinovirus",
   "pathogen": "Rhinovirus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -672,7 +672,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -731,7 +731,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -790,7 +790,7 @@
 {
   "disease": "RSV",
   "pathogen": "RSV",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -849,7 +849,7 @@
 {
   "disease": "RSV",
   "pathogen": "RSV",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -908,7 +908,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H1N1",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": {
@@ -959,7 +959,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H1N1",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "weibull",
     "parameters": {
@@ -1010,7 +1010,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H7N9",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "weibull",
     "parameters": { }
@@ -1107,7 +1107,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H7N9",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -1204,7 +1204,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H7N9",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "weibull",
     "parameters": { }
@@ -1298,7 +1298,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H7N9",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "weibull",
     "parameters": {
@@ -1399,7 +1399,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H7N9",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "weibull",
     "parameters": {
@@ -1500,7 +1500,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H1N1",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -1583,7 +1583,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H1N1Pdm",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -1692,7 +1692,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H1N1Pdm",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -1801,7 +1801,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H1N1",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -1857,7 +1857,7 @@
 {
   "disease": "Influenza",
   "pathogen": "Influenza-A-H1N1",
-  "epi_distribution": "generation time",
+  "epi_name": "generation time",
   "probability_distribution": {
       "prob_distribution": "weibull",
       "parameters": {
@@ -1916,7 +1916,7 @@
 {
   "disease": "Marburg Virus Disease",
   "pathogen": "Marburg Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -1957,7 +1957,7 @@
 {
   "disease": "Marburg Virus Disease",
   "pathogen": "Marburg Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -1999,7 +1999,7 @@
 {
   "disease": "Marburg Virus Disease",
   "pathogen": "Marburg Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -2041,7 +2041,7 @@
 {
   "disease": "Marburg Virus Disease",
   "pathogen": "Marburg Virus",
-  "epi_distribution": "onset to death",
+  "epi_name": "onset to death",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -2143,7 +2143,7 @@
 {
   "disease": "Marburg Virus Disease",
   "pathogen": "Marburg Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -2192,7 +2192,7 @@
 {
   "disease": "SARS",
   "pathogen": "SARS-Cov-1",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2249,7 +2249,7 @@
 {
   "disease": "SARS",
   "pathogen": "SARS-Cov-1",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2306,7 +2306,7 @@
 {
   "disease": "Smallpox",
   "pathogen": "Smallpox-Variola-Major",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2363,7 +2363,7 @@
 {
   "disease": "Smallpox",
   "pathogen": "Smallpox-Variola-Major",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2420,7 +2420,7 @@
 {
   "disease": "Smallpox",
   "pathogen": "Smallpox-Variola-Minor",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2477,7 +2477,7 @@
 {
   "disease": "Smallpox",
   "pathogen": "Smallpox-Variola-Minor",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2532,7 +2532,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Monkeypox Virus",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2589,7 +2589,7 @@
 {
   "disease": "Pneumonic Plague",
   "pathogen": "Yersinia Pestis",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2646,7 +2646,7 @@
 {
   "disease": "Hantavirus Pulmonary Syndrome",
   "pathogen": "Hantavirus (Andes Virus)",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2701,7 +2701,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "offspring distribution",
+  "epi_name": "offspring distribution",
   "probability_distribution": {
     "prob_distribution": "nbinom",
     "parameters": {
@@ -2756,7 +2756,7 @@
 {
   "disease": "Dengue",
   "pathogen": "Dengue Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -2805,7 +2805,7 @@
 {
   "disease": "Dengue",
   "pathogen": "Dengue Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": {
@@ -2858,7 +2858,7 @@
 {
   "disease": "Dengue",
   "pathogen": "Dengue Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": {
@@ -2914,7 +2914,7 @@
 {
   "disease": "Zika Virus Disease",
   "pathogen": "Zika Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -2998,7 +2998,7 @@
 {
   "disease": "Chikungunya",
   "pathogen": "Chikungunya Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3062,7 +3062,7 @@
 {
   "disease": "Dengue",
   "pathogen": "Dengue Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3125,7 +3125,7 @@
 {
   "disease": "Dengue",
   "pathogen": "Dengue Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3189,7 +3189,7 @@
 {
   "disease": "Japanese Encephalitis",
   "pathogen": "Japanese Encephalitis Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3253,7 +3253,7 @@
 {
   "disease": "Rift Valley Fever",
   "pathogen": "Rift Valley Fever Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3317,7 +3317,7 @@
 {
   "disease": "West Nile Fever",
   "pathogen": "West Nile Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3380,7 +3380,7 @@
 {
   "disease": "West Nile Fever",
   "pathogen": "West Nile Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3444,7 +3444,7 @@
 {
   "disease": "West Nile Fever",
   "pathogen": "West Nile Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3507,7 +3507,7 @@
 {
   "disease": "Yellow Fever",
   "pathogen": "Yellow Fever Viruses",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3570,7 +3570,7 @@
 {
   "disease": "Yellow Fever",
   "pathogen": "Yellow Fever Viruses",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3634,7 +3634,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3725,7 +3725,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -3823,7 +3823,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": {
@@ -3922,7 +3922,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": {
@@ -4050,7 +4050,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": {
@@ -4178,7 +4178,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": {
@@ -4306,7 +4306,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": {
@@ -4434,7 +4434,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus-Zaire Subtype",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -4483,7 +4483,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus-Zaire Subtype",
-  "epi_distribution": "onset to death",
+  "epi_name": "onset to death",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": {
@@ -4855,7 +4855,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -5048,7 +5048,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -5241,7 +5241,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -5434,7 +5434,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -5627,7 +5627,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -5820,7 +5820,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -6013,7 +6013,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -6206,7 +6206,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -6399,7 +6399,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "hospitalisation to death",
+  "epi_name": "hospitalisation to death",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -6592,7 +6592,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "hospitalisation to discharge",
+  "epi_name": "hospitalisation to discharge",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -6785,7 +6785,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "notification to death",
+  "epi_name": "notification to death",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -6978,7 +6978,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "notification to discharge",
+  "epi_name": "notification to discharge",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -7171,7 +7171,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "onset to death",
+  "epi_name": "onset to death",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -7364,7 +7364,7 @@
 {
   "disease": "Ebola Virus Disease",
   "pathogen": "Ebola Virus",
-  "epi_distribution": "onset to discharge",
+  "epi_name": "onset to discharge",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -7557,7 +7557,7 @@
 {
   "disease": "MERS",
   "pathogen": "MERS-Cov",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -7673,7 +7673,7 @@
 {
   "disease": "MERS",
   "pathogen": "MERS-Cov",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -7789,7 +7789,7 @@
 {
   "disease": "MERS",
   "pathogen": "MERS-Cov",
-  "epi_distribution": "onset to hospitalisation",
+  "epi_name": "onset to hospitalisation",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -7903,7 +7903,7 @@
 {
   "disease": "MERS",
   "pathogen": "MERS-Cov",
-  "epi_distribution": "onset to death",
+  "epi_name": "onset to death",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -8017,7 +8017,7 @@
 {
   "disease": "MERS",
   "pathogen": "MERS-Cov",
-  "epi_distribution": "onset to ventilation",
+  "epi_name": "onset to ventilation",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -8131,7 +8131,7 @@
 {
   "disease": "MERS",
   "pathogen": "MERS-Cov",
-  "epi_distribution": "onset to death",
+  "epi_name": "onset to death",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -8196,7 +8196,7 @@
 {
   "disease": "MERS",
   "pathogen": "MERS-Cov",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -8263,7 +8263,7 @@
 {
   "disease": "MERS",
   "pathogen": "MERS-Cov",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -8328,7 +8328,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -8402,7 +8402,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -8452,7 +8452,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -8514,7 +8514,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -8576,7 +8576,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -8632,7 +8632,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "weibull",
     "parameters": { }
@@ -8688,7 +8688,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "weibull",
     "parameters": { }
@@ -8752,7 +8752,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "norm",
     "parameters": {
@@ -8821,7 +8821,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -8879,7 +8879,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "weibull",
     "parameters": { }
@@ -8963,7 +8963,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": {
@@ -9060,7 +9060,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": {
@@ -9166,7 +9166,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -9248,7 +9248,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -9330,7 +9330,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "onset to hospitalisation",
+  "epi_name": "onset to hospitalisation",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -9412,7 +9412,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "onset to hospitalisation",
+  "epi_name": "onset to hospitalisation",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -9494,7 +9494,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "onset to death",
+  "epi_name": "onset to death",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -9576,7 +9576,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "hospitalisation to death",
+  "epi_name": "hospitalisation to death",
   "probability_distribution": {
     "prob_distribution": "weibull",
     "parameters": { }
@@ -9658,7 +9658,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -9740,7 +9740,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "onset to hospitalisation",
+  "epi_name": "onset to hospitalisation",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -9822,7 +9822,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "onset to hospitalisation",
+  "epi_name": "onset to hospitalisation",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -9904,7 +9904,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "onset to death",
+  "epi_name": "onset to death",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -9986,7 +9986,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "hospitalisation to death",
+  "epi_name": "hospitalisation to death",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -10068,7 +10068,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -10148,7 +10148,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -10224,7 +10224,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -10300,7 +10300,7 @@
 {
   "disease": "COVID-19",
   "pathogen": "SARS-CoV-2",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": "lnorm",
     "parameters": { }
@@ -10376,7 +10376,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -10446,7 +10446,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus Clade I",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -10516,7 +10516,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "serial interval",
+  "epi_name": "serial interval",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -10586,7 +10586,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus Clade I",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -10656,7 +10656,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus Clade IIa",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -10726,7 +10726,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus Clade IIb",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -10796,7 +10796,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -10890,7 +10890,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -10984,7 +10984,7 @@
 {
   "disease": "Mpox",
   "pathogen": "Mpox Virus",
-  "epi_distribution": "incubation period",
+  "epi_name": "incubation period",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -11080,7 +11080,7 @@
 {
   "disease": "Chikungunya",
   "pathogen": "Chikungunya Virus",
-  "epi_distribution": "generation time",
+  "epi_name": "generation time",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
@@ -11190,7 +11190,7 @@
 {
     "disease": "Chikungunya",
   "pathogen": "Chikungunya Virus",
-  "epi_distribution": "generation time",
+  "epi_name": "generation time",
   "probability_distribution": {
     "prob_distribution": "gamma",
     "parameters": { }
@@ -11287,7 +11287,7 @@
 {
   "disease": "Chikungunya",
   "pathogen": "Chikungunya Virus",
-  "epi_distribution": "case fatality risk",
+  "epi_name": "case fatality risk",
   "probability_distribution": {
     "prob_distribution": null,
     "parameters": { }
