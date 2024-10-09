@@ -1,0 +1,457 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "epiparameter data",
+  "description": "The database of epidemiological distributions for a variety of infectious diseases and pathogens. Last modified 11/05/2023.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "disease": {
+        "description": "The infectious disease specified in the study.",
+        "examples": ["ebola", "measles"],
+        "type": "string"
+      },
+      "pathogen": {
+        "description": "Causative agent of disease specified in study. NA if not specified in study.",
+        "examples": ["SARS-CoV-2", "monkeypox virus"],
+        "type": ["string", "null"]
+      },
+      "epi_name": {
+        "description": "The name of the epidemiological parameter type. Names should be whitespace separated within each string.",
+        "examples": ["incubation period", "serial interval", "offspring distribution"],
+        "type": "string",
+        "enum": ["incubation period", "onset to hospitalisation", "onset to death", "serial interval", "generation time", "offspring distribution", "hospitalisation to death", "hospitalisation to discharge", "notification to death", "notification to discharge", "onset to discharge", "onset to ventilation", "case fatality risk"]
+      },
+      "probability_distribution": {
+        "description": "An object containing the name of the probability distribution and its porameters if available.",
+        "type": "object",
+        "properties": {
+          "prob_distribution": {
+            "description": "The name of the probability distribution, following R language distribution naming. A probability distribution can be null in cases when summary statistics are reported by a distribution is not given.",
+            "examples": ["lnorm", "gamma"],
+            "type": ["string", "null"],
+            "enum": ["lnorm", "gamma", "weibull", "nbinom", "geom", "pois", "norm", null]
+          },
+          "parameters": {
+            "type": "object",
+            "propertyNames": {
+           "enum": ["shape", "shape_ci_limits", "shape_ci", "scale", "scale_ci_limits", "scale_ci", "meanlog", "meanlog_ci_limits", "meanlog_ci", "sdlog", "sdlog_ci_limits", "sdlog_ci", "dispersion", "dispersion_ci_limits", "dispersion_ci", "precision", "precision_ci_limits", "precision_ci", "mean", "mean_ci_limits", "mean_ci", "sd", "sd_ci_limits", "sd_ci"]
+         },
+         "properties": {
+              "shape": {
+                "description": "The shape parameter of either the gamma or Weibull distribution.",
+                "examples": [2.0, 4.5],
+                "type": "number"
+              },
+              "shape_ci_limits": {
+                "description": "The confidence interval of the distribution's shape parameter, specified by two numbers in an array.",
+                "examples": [[0.3, 3.2],[0.5, 0.7]],
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "shape_ci": {
+                "description": "The interval of the uncertainty around the shape parameter of the distribution, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": "number"
+              },
+              "scale": {
+                "description": "The scale parameter of either the gamma or Weibull distribution.",
+                "examples": [0.9, 1.1],
+                "type": "number"
+              },
+              "scale_ci_limits": {
+                "description": "The confidence interval of the distribution's scale parameter, specified by two numbers in an array.",
+                "examples": [[0.2, 0.5], [1.1, 1.7]],
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "scale_ci": {
+                "description": "The interval of the uncertainty around the scale parameter of the distribution, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": "number"
+              },
+              "meanlog": {
+                "description": "The meanlog parameter of the lognormal distribution.",
+                "examples": [4.3, 7],
+                "type": "number"
+              },
+              "meanlog_ci_limits": {
+                "description": "The confidence interval of the distribution's meanlog parameter, specified by two numbers in an array.",
+                "examples": [[0.4, 0.9], [1.5, 3.2]],
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "meanlog_ci": {
+                "description": "The interval of the uncertainty around the meanlog parameter of the distribution, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": "number"
+              },
+              "sdlog": {
+                "description": "The sdlog parameter of the lognormal distribution.",
+                "examples": [1.2, 1.4],
+                "type": "number"
+              },
+              "sdlog_ci_limits": {
+                "description": "The confidence interval of the distribution's sdlog parameter, specified by two numbers in an array.",
+                "examples": [[0.3, 0.8], [1.4, 1.45]],
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "sdlog_ci": {
+                "description": "The interval of the uncertainty around the sdlog parameter of the distribution, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": ["number", "null"]
+              },
+              "dispersion": {
+                "description": "The dispersion parameter of the distribution. This is often used for negative binomial distributions and is often represented as k. This is distinct from the dispersion for a lognormal distribution, which is considered a summary statistic.",
+                "examples": [1.2, 1.4],
+                "type": "number"
+              },
+              "dispersion_ci_limits": {
+                "description": "The confidence interval of the distribution's dispersion, specified by two numbers in an array.",
+                "examples": [[0.3, 0.8], [1.4, 1.45]],
+                "type": ["array", "null"],
+                "items": {
+                  "type": "number"
+                }
+              },
+              "dispersion_ci": {
+                "description": "The interval of the uncertainty around the dispersion of the distribution, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": "number"
+              },
+              "precision": {
+                "description": "The precision parameter of a distribution. It is common to parameterise a distribution using the precision parameter in Bayesian inference.",
+                "examples": [1.2, 1.4],
+                "type": ["number", "null"]
+              },
+              "precision_ci_limits": {
+                "description": "The confidence interval of the distribution's precision parameter, specified by two numbers in an array.",
+                "examples": [[0.3, 0.8], [1.4, 1.45]],
+                "type": ["array", "null"],
+                "items": {
+                  "type": "number"
+                }
+              },
+              "precision_ci": {
+                "description": "The interval of the uncertainty around the precision parameter, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": ["number", "null"]
+              },
+              "mean": {
+                "description": "The mean of the distribution. Only applies to normal and negative binomial distributions (checked by schema below), for other probability distributions the mean should be included in the summary statistics.",
+                "examples": [1.0, 2.5],
+                "type": ["number", "null"]
+              },
+              "mean_ci_limits": {
+                "description": "The confidence interval of the distribution's mean, specified by two numbers in an array.",
+                "examples": [[0.3, 0.8], [1.4, 1.45]],
+                "type": ["array", "null"],
+                "items": {
+                  "type": "number"
+                }
+              },
+              "mean_ci": {
+                "description": "The interval of the uncertainty around the mean, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": ["number", "null"]
+              },
+              "sd": {
+                "description": "The standard deviation of the distribution. Only applies to normal distributions (checked by schema below), for other probability distributions the standard deviation should be included in the summary statistics.",
+                "examples": [1.0, 2.5],
+                "type": ["number", "null"]
+              },
+              "sd_ci_limits": {
+                "description": "The confidence interval of the distribution's standard deviation, specified by two numbers in an array.",
+                "examples": [[0.3, 0.8], [1.4, 1.45]],
+                "type": ["array", "null"],
+                "items": {
+                  "type": "number"
+                }
+              },
+              "sd_ci": {
+                "description": "The interval of the uncertainty around the standard deviation, for example 95% confidence interval would be 95.",
+                "examples": [95, 90, 80],
+                "type": ["number", "null"]
+              }
+            }
+          }
+        },
+        "required": ["prob_distribution"],
+        "if": {
+          "properties": {
+            "prob_distribution": { "const": "norm" }
+          }
+        },
+        "then": {
+          "properties": {
+            "parameters": {
+              "type": "object",
+              "anyOf": [
+                { "required": ["mean"] },
+                { "required": ["sd"] }
+                ]
+            }
+          }
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "prob_distribution": { "const": "nbinom" }
+            }
+          },
+          "then": {
+            "properties": {
+              "parameters": {
+                "type": "object",
+                "anyOf": [
+                  { "required": ["mean"] },
+                  { "required": ["dispersion"] }
+                  ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "parameters": {
+                "type": "object",
+                "not": {
+                  "anyOf": [
+                    { "required": ["mean"] },
+                    { "required": ["sd"] },
+                    { "required": ["dispersion"] }
+                    ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "summary_statistics": {
+        "type": "object",
+         "propertyNames": {
+           "enum": ["mean", "mean_ci_limits", "mean_ci", "sd", "sd_ci_limits", "sd_ci", "median", "median_ci_limits", "median_ci", "dispersion", "dispersion_ci_limits", "dispersion_ci", "quantile_values", "quantile_names", "lower_range", "upper_range"]
+         },
+        "properties": {
+          "mean": {
+            "description": "The mean value (expectation) of the distribution. If the mean is not reported put NA.",
+            "examples": [5, 3.2],
+            "type": "number"
+          },
+          "mean_ci_limits": {
+            "description": "The confidence interval of the distribution mean specified by two numbers in an array.",
+            "examples": [[3.1, 5.5], [2, 4.2]],
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "mean_ci": {
+            "description": "The interval of the uncertainty around the mean of the distribution, for example 95% confidence interval would be 95.",
+            "examples": [95, 90, 80],
+            "type": ["number", "null"]
+          },
+          "sd": {
+            "description": "The standard deviation of the distribution.",
+            "examples": [2.3, 0.5],
+            "type": "number"
+          },
+          "sd_ci_limits": {
+            "description": "The confidence interval of the distribution standard deviation specified by two numbers in an array.",
+            "examples": [[0.2, 0.9], [0.8, 1.2]],
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "sd_ci": {
+            "description": "The interval of the uncertainty around the standard deviation of the distribution, for example 95% confidence interval would be 95.",
+            "examples": [95, 90, 80],
+            "type": "number"
+          },
+          "median": {
+            "description": "The 50th quantile (or median) of the distribution.",
+            "examples": [1.7, 2.5],
+            "type": ["number", "null"]
+          },
+          "median_ci_limits": {
+            "description": "The confidence interval of the distribution median specified by two numbers in an array.",
+            "examples": [[2.1, 2.2], [4.5, 5.1]],
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "median_ci": {
+            "description": "The interval of the uncertainty around the median of the distribution, for example 95% confidence interval would be 95.",
+            "examples": [95, 90, 80],
+            "type": ["number", "null"]
+          },
+          "quantile_values": {
+            "description": "The values at the quantiles of the distribution.",
+            "examples": [[2.1, 5.5], [4.3, 9.2]],
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "quantile_names": {
+            "description": "The names of the quantiles of the distribution, for example 50 is the median and 95 is the 95th quantile of the distribution. These names need to correspond to the quantile values. The first element in quantile_values is named by the first element in quantile_names, etc.",
+            "examples": [["2.5", "97.5"], ["25", "75"]],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "lower_range": {
+            "description": "The lower bound of the range of the data which is used to infer the parameters of the distribution when they are not specified.",
+            "examples": [0.2, 0.4],
+            "type": "number"
+          },
+          "upper_range": {
+            "description": "The upper bound of the range of the data which is used to infer the parameters of the distribution when they are not specified.",
+            "examples": [4.5, 6.7],
+            "type": "number"
+          }
+        }
+      },
+      "citation": {
+        "type": "object",
+        "properties": {
+          "author": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "given": {
+                 "description": "A character string with the given name(s) of the author. Middle name, initialised or not, should be included in the given name, not the family name. This is combined with the family name field to create the full name. Give all authors of the publication as separate authors. Following R's person class, give teams, institutes and companies in the given name and not in the family name.",
+                "examples": ["John", "Amy", "WHO Team"],
+                "type": "string"
+                },
+                "family": {
+                  "description": "A character string with the family name(s) of the author. Middle name, initialised or not, should be included in the given name, not the family name. This is combined with the given name field to create the full name. When organisations or teams are supplied as a given name, the family name is null.",
+                 "examples": ["Smith", "Jones"],
+                 "type": ["string", "null"]
+                }
+              },
+              "required": ["given", "family"]
+            }
+          },
+          "title": {
+            "description": "The title of the article that published the epidemiological parameters.",
+            "examples": ["Incubation period of COVID-19", "Serial interval of Ebola"],
+            "type": "string"
+          },
+          "journal": {
+            "description": "The name of the journal that published the article that published the epidemiological parameters. This can also be a pre-print server, e.g., medRxiv.",
+            "examples": ["The Lancet", "PLoS One", "medRxiv"],
+            "type": "string"
+          },
+          "year": {
+            "description": "The year the paper or report was published.",
+            "examples": ["2019", "2020"],
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "pmid": {
+            "description": "A PubMed unique identifier number assigned to papers to give them a unique identifier within PubMed.",
+            "examples": [18183754, 23749571],
+            "type": ["number", "null"]
+          },
+          "doi": {
+            "description": "A Digital Object Identifier (DOI) assigned to papers which are unique to each paper.",
+            "examples": ["doi:10.1080/02626667.2018.1560449", "https://doi.org/10.1111/hex.12487", "https://dx.doi.org/10.1080/02626667.2018.1560449", "https://doi.org/10.1016/j.jpsychires.2017.11.014"],
+            "type": "string"
+          }
+        },
+        "required": ["author", "title", "journal", "year", "doi"]
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "units": {
+            "description": "The units of the epidemiological parameter.",
+            "examples": ["days", "No units", "percentage"],
+            "type": ["string"]
+          },
+          "sample_size": {
+            "description": "The sample of the data used to fit the delay distribution. This is usually the number of people with data on a primary and possibly secondary event of interest. In cases where the sample size is not stated NA can be used.",
+            "examples": [25, 150],
+            "type": ["number", "null"]
+          },
+          "region": {
+            "description": "The geographical location the data was collected. This can either be given at sub-national, national, continental. Multiple nested regions can be given and are comma separated. When the region is not specified NA can be given.",
+            "examples": ["England", "Wuhan, China"],
+            "type": ["string", "null"]
+          },
+          "transmission_mode": {
+            "description": "A character string defining the mode of transmission of the infectious agent, specific to the data used in the study. The defines whether a pathogen is vector-borne (i.e. is transmitted between humans through a intermediate vector), is transmitted from human-to-human ( natural_human_to_human) or other. If multiple modes of transmission are recorded then mixed can be given. In cases where no mode of transmission if known or given in the study unknown can be stated.",
+            "examples": ["vector_borne", "natural_human_to_human", "unknown"],
+            "type": "string"
+          },
+          "vector": {
+            "description": "The name of the vector transmitting the vector-borne disease. This can be a common name, or a latin binomial name of a specific vector species (see examples). Both the common name and taxonomic name can be given with one given in parentheses. When a disease is not vector-borne NA should be given.",
+            "examples": ["mosquito", "Aedes aegypti", "mosquito (Aedes aegypti)", "Aedes aegypti (mosquito)"],
+            "type": "string"
+          },
+          "extrinsic": {
+            "description": "A boolean value defining whether the data entry is an extrinsic delay distribution, such as the extrinsic incubation period. This field is required because intrinsic and extrinsic delay distributions are stored as separate entries in the database and can be linked. When the disease is not vector-borne FALSE should be given.",
+            "examples": [true, false],
+            "type": "boolean"
+          },
+          "inference_method": {
+            "description": "The type of inference used to fit the delay distribution to the data. Abbreviations of model fitting techniques can be specified as long as they are non-ambiguous. This field is only used to determine whether the uncertainty intervals possibly specified in the other fields are: confidence intervals (in the case of maximum likelihood), or credible intervals (in the case of bayesian inference). Uncertainty bounds for another types of inference methods, or if the inference method is unstated are assumed to be confidence intervals. When the inference method is unknown or a disease does not have a probability distribution NA can be given.",
+            "examples": ["bayesian", "maximum likelihood", "mle"],
+            "type": ["string", "null"],
+            "enum": ["mle", "bayesian", null]
+          }
+        }
+      },
+      "method_assessment": {
+        "type": "object",
+        "properties": {
+          "truncation": {
+            "description": "The truncation point for the distribution when right-truncation is used to account for the bias in survival data when fitting the distribution.",
+            "examples": [10, 15.5],
+            "type": ["number", "null"]
+          },
+          "discretised": {
+            "description": "A boolean indicating whether the distribution fit to the data was discretised. If discretisation is not mentioned in the paper it is assumed the distribution fit to the data was continuous.",
+            "examples": [true, false],
+            "type": "boolean"
+          },
+          "censored": {
+            "description": "A boolean indicating whether the distribution fit to the data correctly handled censored data. This is where the timing of events is either not known with precision or is known by recorded to a coarse level.",
+            "examples": [true, false],
+            "type": ["boolean", "null"]
+          },
+          "right_truncated": {
+            "description": "A boolean indicating whether the distribution fit to the data correctly handled right-truncation to account for the fact that people in the cohort that experienced a primary event did not experience a secondary event and so shorter delay times are over-represented in the data.",
+            "examples": [true, false],
+            "type": ["boolean", "null"]
+          },
+          "phase_bias_adjusted": {
+            "description": "A boolean indicating whether the distribution fit took into account whether the outbreak was in a stage of growth or decline which can bias the results.",
+            "examples": [true, false],
+            "type": ["boolean", "null"]
+          }
+        }
+      },
+      "notes": {
+        "description": "A notes field to add extra information that can be used to inform the user of the data but could not be recorded in one of the previous fields. When no notes are given use NA.",
+        "examples": ["No additional notes", "Pooled data from many papers was used to fit distribution"],
+        "type": ["string", "null"]
+      }
+    },
+    "required": ["disease", "epi_name", "summary_statistics", "citation", "metadata", "method_assessment", "notes"],
+    "additionalProperties": false
+  }
+}

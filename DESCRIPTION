@@ -1,0 +1,60 @@
+Package: epiparameter
+Title: Library of Epidemiological Parameters with Helper Functions and
+    Classes
+Version: 0.2.0.9000
+Authors@R: c(
+    person("Joshua W.", "Lambert", , "joshua.lambert@lshtm.ac.uk", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-5218-3046")),
+    person("Adam", "Kucharski", , "adam.kucharski@lshtm.ac.uk", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0001-8814-9421")),
+    person("Carmen", "Tamayo", , "carmen.tamayo-cuartero@lshtm.ac.uk", role = "aut",
+           comment = c(ORCID = "0000-0003-4184-2864")),
+    person("Hugo", "Gruson", , "hugo.gruson@data.org", role = c("ctb", "rev"),
+           comment = c(ORCID = "0000-0002-4094-1476")),
+    person("Sebastian", "Funk", , "sebastian.funk@lshtm.ac.uk", role = "ctb",
+           comment = c(ORCID = "0000-0002-2842-3406")),
+    person("Pratik", "Gupte", , "pratik.gupte@lshtm.ac.uk", role = "rev",
+           comment = c(ORCID = "0000-0001-5294-7819"))
+  )
+Description: Library of epidemiological parameters for infectious diseases
+    and a set of classes and helper functions.
+License: MIT + file LICENSE
+URL: https://github.com/epiverse-trace/epiparameter/,
+    https://epiverse-trace.github.io/epiparameter/
+BugReports: https://github.com/epiverse-trace/epiparameter/issues
+Depends: 
+    R (>= 4.1.0)
+Imports:
+    checkmate,
+    cli,
+    distcrete,
+    distributional,
+    graphics,
+    lifecycle,
+    pillar,
+    rlang,
+    stats,
+    utils
+Suggests: 
+    bookdown,
+    DT,
+    ggplot2,
+    RColorBrewer,
+    jsonlite,
+    knitr,
+    rmarkdown,
+    spelling,
+    testthat (>= 3.0.0),
+    vdiffr (>= 1.0.7),
+    visNetwork
+VignetteBuilder: 
+    knitr
+Config/Needs/check: mrc-ide/epireview
+Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview
+Config/potools/style: explicit
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-GB
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2

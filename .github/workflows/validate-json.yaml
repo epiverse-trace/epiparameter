@@ -1,0 +1,47 @@
+name: Validate JSONs
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'R/sysdata.rda'
+      - 'inst/extdata/**'
+      - 'data-raw/parameters.R'
+      - '.github/workflows/validate-json.yaml'
+  merge_group:
+  pull_request:
+    paths:
+      - 'R/sysdata.rda'
+      - 'inst/extdata/**'
+      - 'data-raw/parameters.R'
+      - '.github/workflows/validate-json.yaml'
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages:
+            any::jsonvalidate
+
+      - name: Validate JSON
+        run: |
+          jsonvalidate::json_validate(
+            json = file.path("inst", "extdata", "parameters.json"),
+            schema = file.path("inst", "extdata", "data_dictionary.json"),
+            engine = "ajv",
+            verbose = TRUE,
+            greedy = TRUE,
+            strict = FALSE,
+            error = TRUE
+          )
+        shell: Rscript {0}

@@ -1,0 +1,288 @@
+---
+title: "Using {epireview} with {epiparameter}"
+bibliography: ../references.json
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(epiparameter)
+library(epireview)
+```
+
+The article describes how to use the {epireview} R package with {epiparameter}. {epireview} provides epidemiological parameters for a range of pathogens extracted from the literature by the Pathogen Epidemiology Review Group (PERG) in systematic reviews. The {epiparameter} R package can use these epidemiological parameters and can convert them into `<epiparameter>` objects.
+
+::: {.alert .alert-warning}
+This feature of interoperability of {epireview} and {epiparameter} is still under development. Currently only delay distributions (termed _Human delay_ in the "parameter_type" column in {epireview}'s database) are compatible with this feature. Attempting to convert other epidemiological parameters from {epireview} to {epiparameter} `<epiparameter>` objects will likely error with an uninformative error message.
+:::
+
+## Converting from {epireview} entries into an `<epiparameter>` object
+
+The {epireview} package nicely provides epidemiological parameter data from systematically reviewing the literature, and {epiparameter} provides custom data structures for working with epidemiological data in R. Therefore, reading in data from the {epireview} R package and converting it to an `<epiparameter>` object will provide the greatest utility when applied in outbreak analytics. 
+
+Here we start with a simple example of reading in the Marburg data from {epireview} and converting to an `<epiparameter>` object using `as_epiparameter()` function from the {epiparameter} package.
+
+```{r, load-marburg}
+marburg_data <- load_epidata("marburg")
+```
+
+This loads a list with four tables, specifically `tibbles`, that contain the bibliographic information (`$articles`), epidemiological parameters (`$params`), epidemiological models (`$models`), and outbreak information (`$outbreaks`).
+
+```{r, marburg-list-names}
+names(marburg_data)
+```
+
+We will start by just using the epidemiological parameter table to convert information into an `<epiparameter>`.
+
+```{r, marburg-params}
+marburg_params <- marburg_data$params
+```
+
+Out of these parameters, subset the data to only keep those rows that contain incubation periods for Marburg.
+
+```{r, subset-marburg-params}
+marburg_incubation_period <- marburg_params[
+  marburg_params$parameter_type_short == "incubation_period",
+]
+marburg_incubation_period
+```
+
+We will select the first entry to use as the first example:
+
+```{r, select-marburg-entry}
+marburg_incub <- marburg_incubation_period[1, ]
+marburg_incub
+```
+
+Then we can simply pass our epidemiological parameter set to `as_epiparameter()` to do the conversion.
+
+```{r, convert-to-epiparameter-single-entry}
+marburg_incub_epiparameter <- as_epiparameter(marburg_incub)
+marburg_incub_epiparameter
+```
+
+The resulting `<epiparameter>` does not contain a parameterised probability distribution, instead it contains a range for the incubation period (in `$summary_stats`), and the `$metadata` shows that this is a single case from South Africa.
+
+```{r, show-epiparameter-single-entry-data}
+marburg_incub_epiparameter$summary_stats
+marburg_incub_epiparameter$metadata
+```
+
+## Creating an `<epiparameter>` with full citation
+
+The last example showed how to convert the epidemiological parameter information, however, you may have noticed that the citation that was created did not contain the information for a full citation.
+
+```{r, show-incomplete-citation}
+marburg_incub_epiparameter$citation
+```
+
+In order to provide a complete citation to the `<epiparameter>` object, which is highly recommended so that you know the provenance of the parameters and can correctly attribute the original authors, we will need to also provide the bibliographic information from {epireview} as well as the epidemiological parameters.
+
+The article data needs to be loaded from {epireview} using `epireview::load_epidata_raw()` rather than `epireview::load_data()` because `load_data()` subsets the bibliographic information to only provide: `"id"`, `"first_author_surname"`, `"year_publication"`, and `"article_label"` columns.
+
+```{r, load-epreview-articles}
+marburg_articles <- load_epidata_raw(
+  pathogen = "marburg",
+  table = "article"
+)
+marburg_articles
+```
+
+We need to match the entry in the epidemiological parameter table with the citation information in the article table to ensure we are using the correct citation for the parameter set. Thankfully, this can easily be achieved as {epireview} provides unique IDs to each table to link entries.
+
+```{r, match-parameter-to-article}
+article_row <- match(marburg_incub$id, marburg_articles$id)
+article_row
+```
+
+```{r, subset-articles}
+marburg_incub_article <- marburg_articles[article_row, ]
+marburg_incub_article
+```
+
+Now we can repeat the example of converting to `<epiparameter>` as shown above, but this time pass the bibliographic information as well as the epidemiological parameter information to create a full citation. The bibliographic information needs to be passed with the `article` argument. 
+
+```{r, convert-to-epiparameter-full-citation}
+marburg_incub_epiparameter <- as_epiparameter(
+  marburg_incub,
+  article = marburg_incub_article
+)
+marburg_incub_epiparameter
+```
+
+```{r, show-full-citation}
+marburg_incub_epiparameter$citation
+```
+
+::: {.alert .alert-info}
+The `as_epiparameter()` function is an S3 generic. If you are not familiar with S3 object-oriented programming in R, then this detail is not important, however, it does mean that the `article` argument is not explicitly in the function definition of `as_epiparameter()` (i.e. it will not show up on autocomplete when typing out the function and will not be shown if you read the function help page `?as_epiparameter()`). Instead, the argument is specified as part of the `...` argument. This is because the `article` argument is only required when converting data from {epireview} into `<epiparameter>`, and other data that can be converted to `<epiparameter>` objects do not require this argument.
+:::
+
+## Multi-row {epireview} entries
+
+In general, all required values for a parameter are represented as a _single_ entry in epireview. In some of cases, e.g. for Marburg Virus Disease and Ebola Virus Disease (as the first pathogens the PERG team extracted), values captured for a parameter are on multiple rows. We are trying to avoid this as _linking_ these entries is very challenging, but there are still some cases in which there are linked parameters on different rows. We provide further information in the limitations section below.
+
+The way the {epireview} data is stored means that some epidemiological parameter entries require multiple rows. This can be, for example, because they contain two summary statistics (e.g. mean and standard deviation) that are kept on separate rows. In order to create `<epiparameter>` objects that contains the full information for each entry multiple rows of the epidemiological parameters table from {epireview} can be given to `as_epiparameter()` to create a single `<epiparameter>` object.
+
+We can search which entries in the data have multiple rows by checking if there are duplicated parameter types and IDs. Remember that it is only possible to convert delay distributions into epiparameter objects (i.e. known as _Human delay_ parameter types in {epireview}). 
+
+```{r, check-multi-row-entries}
+multi_row_entries <- duplicated(marburg_params$parameter_type) &
+  duplicated(marburg_params$id)
+multi_row_ids <- marburg_params$id[multi_row_entries]
+```
+
+```{r, subset-multi-row-entries}
+multi_row_marburg_params <-
+  marburg_params[marburg_params$id %in% multi_row_ids, ]
+multi_row_marburg_params
+```
+
+In this case there are two studies for Marburg with more than one entry (row) in the {epireview} database. Out of these studies we select the mean and standard deviation.
+
+```{r, check-multi-row-param-value-type}
+multi_row_marburg_params$parameter_value_type
+```
+
+In this case, we know that the mean and standard deviation from the chosen rows correspond to the same estimation process by having read the corresponding article. However, there is currently no identifiers on the {epireview} `params` database for Marburg, Ebola or Lassa to directly identify which of the two rows with mean values correspond to the standard deviation. The {epireview} team are currently working on rectifying this issue. 
+
+***Therefore, we encourage readers to manually verify their data subsets, to ensure that the entries that have been selected are indeed multiple rows for the same reported epidemiological parameter.***
+
+* For future {epireview} pathogens (excluding SARS) mean and standard deviation estimates that match will form one row in the `$params` database. Current software development at {epireview} is working on ensuring compatibility between these formats.
+
+```{r, subset-multi-row-marburg-entry}
+marburg_gt <- multi_row_marburg_params[
+  multi_row_marburg_params$parameter_data_id %in%
+    c("056a8d6b5f9aee3622d3bd8b715d4296", "ce3976e2e15df3f6fb92f6deb2db2a29"),
+]
+marburg_gt
+```
+
+We can now convert this to an `<epiparameter>`.
+
+```{r, convert-multi-row-entry-to-epiparameter}
+marburg_gt_epiparameter <- as_epiparameter(marburg_gt)
+marburg_gt_epiparameter
+marburg_gt_epiparameter$summary_stats
+```
+
+## Entries with probability distributions
+
+For this example we will load the Ebola epidemiological parameters from the {epireview} package (as there are no entries for Marburg that have parametric distributions).
+
+```{r, load-ebola}
+ebola_data <- load_epidata("ebola")
+```
+
+We will again subset the data to just use the epidemiological parameter table, and select those rows containing a serial interval.
+
+```{r, ebola-params}
+ebola_params <- ebola_data$params
+```
+
+```{r, subset-ebola-params}
+ebola_si_rows <- ebola_params[
+  ebola_params$parameter_type_short == "serial_interval",
+]
+ebola_si_rows
+```
+
+We will select an entry that has estimated and reported a Weibull distribution:
+
+```{r, select-ebola-entry}
+ebola_si <-  ebola_si_rows[
+  ebola_si_rows$parameter_data_id == "0c3e02f80addfccc1017fa619fba76c5",
+]
+ebola_si
+```
+
+We can now convert this to an `<epiparameter>` object.
+
+```{r, convert-to-prob-dist-epiparameter-single-entry}
+ebola_si_epiparameter <- as_epiparameter(ebola_si)
+ebola_si_epiparameter
+```
+
+With the probability distribution for the serial interval we can utilise some of the `<epiparameter>` methods. Here we illustrate this by checking that the `<epiparameter>` is parameterised, plotting the PDF and CDF, and generating 10 random numbers sampling from the distribution.
+
+```{r, is-epiparameter-parameterised}
+is_parameterised(ebola_si_epiparameter)
+```
+
+```{r, plot-epiparameter}
+plot(ebola_si_epiparameter)
+```
+
+```{r, generate-epiparameter}
+generate(ebola_si_epiparameter, times = 10)
+```
+
+## Specifying the probability distribution if unknown
+
+There may be instances where a delay distribution is reported in the literature, but either a probability distribution is not fit to the data, or it is not reported which probability distribution the parameters correspond to. Therefore, there will not be a probability distribution specified in the {epireview} data. In these cases, and when a parametric probability distribution is required for a particular epidemiological task then assuming a probability distribution can be useful.  
+
+::: {.alert .alert-danger}
+**Please use this feature with caution**. Assuming an incorrect probability distribution and applying this in an epidemiological method can lead to erroneous results. Additionally, if a probability distribution is specified by the user it will overwrite any probability distribution specified in input data (e.g. {epireview} parameter data) which can lead to an error if the distribution name supplied and parameters input are incompatible See `?as_epiparameter` details for more information.
+:::
+
+Just as the example above we will load the Ebola parameters using the `epireview::load_epidata()` function and subset to just the parameters (`$params`).
+
+```{r, load-and-subset-ebola}
+ebola_data <- load_epidata("ebola")
+ebola_params <- ebola_data$params
+```
+
+Here we will use the serial interval for Ebola reported by @fayeChainsTransmissionControl2015a. This is stored, over two rows of the {epireview} parameter table, as the mean and standard deviation, but there is no probability distribution specified. 
+
+The code chunk below subsets the Ebola parameter table to just return the serial interval from @fayeChainsTransmissionControl2015a.
+
+```{r, subset-ebola-serial-interval}
+ebola_si <- ebola_params[
+  which(
+    grepl(pattern = "Faye", x = ebola_params$article_label, fixed = TRUE) &
+      grepl(pattern = "serial", ebola_params$parameter_type, fixed = TRUE)
+  ),
+]
+```
+
+If we were to supply this data to `as_epiparameter()` we would get an unparameterised `<epiparameter>` object because no probability distribution is stated.
+
+```{r, convert-to-epiparameter-unspecified-prob-dist}
+ebola_si_epiparameter <- as_epiparameter(ebola_si)
+ebola_si_epiparameter
+is_parameterised(ebola_si_epiparameter)
+```
+
+Given that we can convert the mean and standard deviation into parameters of a probability distribution if we assume a distribution form, we can supply this data to `as_epiparameter()`. This uses the parameter conversion functions in {epiparameter} (see `vignette("extract_convert", package = "epiparameter")`).
+
+```{r, convert-to-epiparameter-assumed-prob-dist}
+ebola_si_epiparameter <- as_epiparameter(ebola_si, prob_distribution = "gamma")
+ebola_si_epiparameter
+is_parameterised(ebola_si_epiparameter)
+```
+
+The Ebola serial interval `<epiparameter>` can now be used for various probability distribution methods.
+
+```{r, ebola-epiparameter-dist-methods}
+get_parameters(ebola_si_epiparameter)
+density(ebola_si_epiparameter, at = 20)
+plot(ebola_si_epiparameter)
+cdf(ebola_si_epiparameter, q = 10)
+plot(ebola_si_epiparameter, cumulative = TRUE)
+quantile(ebola_si_epiparameter, p = 0.5)
+generate(ebola_si_epiparameter, times = 10)
+```
+
+## Limitations
+
+* The _database schema_ of {epireview} has evolved over time as the Imperial PERG team has extracted more pathogens.
+* A list of [parameter types](https://mrc-ide.github.io/epireview/articles/pathogen_database_field_options.html) is available in the {epireview} package
+* It is important to differentiate between variability of the sample (e.g. sample standard deviation) and uncertainty of the estimate (e.g. 95% confidence interval or credible interval). From the database version of {epireview} of Zika, the PERG team will explicitly expose this to remove any ambiguity of the extracted data. Please note that in the Marburg, Lassa, and Ebola datasets, there may be some ambiguity between variability and uncertainty.
+* This is functionality in {epiparameter} and {epireview} which will be developed and improved over the coming months.
+
+## References
