@@ -25,7 +25,7 @@
 #' # plot continuous epiparameter
 #' ep <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 2, scale = 1)
@@ -68,8 +68,8 @@ plot.epiparameter <- function(x,
     xlim <- seq(dots$xlim[1], dots$xlim[2], length.out = 1000)
   }
 
-  xlab <- tools::toTitleCase(x$epi_dist)
-  if (x$epi_dist != "offspring distribution") {
+  xlab <- tools::toTitleCase(x$epi_name)
+  if (x$epi_name != "offspring distribution") {
     xlab <- paste(xlab, "(Days)")
   }
 

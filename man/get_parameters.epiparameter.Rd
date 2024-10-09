@@ -27,7 +27,7 @@ in this case the \code{get_parameters.epiparameter()} method will return \code{N
 \examples{
 ep <- epiparameter_db(
   disease = "COVID-19",
-  epi_dist = "serial interval",
+  epi_name = "serial interval",
   single_epiparameter = TRUE
 )
 get_parameters(ep)

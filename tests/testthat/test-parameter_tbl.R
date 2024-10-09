@@ -7,7 +7,7 @@ test_that("parameter_tbl works as expected supplied with db", {
   expect_identical(dim(dist_tbl), c(125L, 7L))
   expect_named(
     dist_tbl,
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "author", "year", "sample_size")
   )
   expect_snapshot(dist_tbl)
@@ -16,13 +16,13 @@ test_that("parameter_tbl works as expected supplied with db", {
 test_that("parameter_tbl works for incubation period with db", {
   incub_tbl <- parameter_tbl(
     multi_epiparameter = db,
-    epi_dist = "incubation period"
+    epi_name = "incubation period"
   )
   expect_s3_class(incub_tbl, "data.frame")
   expect_identical(dim(incub_tbl), c(73L, 7L))
   expect_named(
     incub_tbl,
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "author", "year", "sample_size")
   )
   expect_snapshot(incub_tbl)
@@ -31,13 +31,13 @@ test_that("parameter_tbl works for incubation period with db", {
 test_that("parameter_tbl works for different distribution with db", {
   serial_tbl <- parameter_tbl(
     multi_epiparameter = db,
-    epi_dist = "serial interval"
+    epi_name = "serial interval"
   )
   expect_s3_class(serial_tbl, "data.frame")
   expect_identical(dim(serial_tbl), c(18L, 7L))
   expect_named(
     serial_tbl,
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "author", "year", "sample_size")
   )
   expect_snapshot(serial_tbl)
@@ -52,7 +52,7 @@ test_that("parameter_tbl works for COVID-19 db", {
   expect_identical(dim(incub_tbl), c(27L, 7L))
   expect_named(
     incub_tbl,
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "author", "year", "sample_size")
   )
   expect_snapshot(incub_tbl)
@@ -67,23 +67,23 @@ test_that("parameter_tbl works for SARS-CoV-2 db", {
   expect_identical(dim(incub_tbl), c(27L, 7L))
   expect_named(
     incub_tbl,
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "author", "year", "sample_size")
   )
   expect_snapshot(incub_tbl)
 })
 
-test_that("parameter_tbl works for disease & epi_dist subset with db", {
+test_that("parameter_tbl works for disease & epi_name subset with db", {
   incub_tbl <- parameter_tbl(
     multi_epiparameter = db,
     disease = "COVID-19",
-    epi_dist = "incubation period"
+    epi_name = "incubation period"
   )
   expect_s3_class(incub_tbl, "data.frame")
   expect_identical(dim(incub_tbl), c(15L, 7L))
   expect_named(
     incub_tbl,
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "author", "year", "sample_size")
   )
   expect_snapshot(incub_tbl)
@@ -96,7 +96,7 @@ test_that("parameter_tbl works when supplied a subset db", {
   expect_identical(dim(covid_tbl), c(27L, 7L))
   expect_named(
     covid_tbl,
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "author", "year", "sample_size")
   )
   expect_snapshot(covid_tbl)
@@ -109,7 +109,7 @@ test_that("parameter_tbl works as expected supplied with <epiparameter>", {
   expect_identical(dim(dist_tbl), c(1L, 7L))
   expect_named(
     dist_tbl,
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "author", "year", "sample_size")
   )
   expect_snapshot(dist_tbl)
@@ -119,7 +119,7 @@ test_that("parameter_tbl works as expected with discretised <epiparameter>", {
   ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
-      epi_dist = "serial interval",
+      epi_name = "serial interval",
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
       citation = create_citation(
@@ -137,7 +137,7 @@ test_that("parameter_tbl works as expected with discretised <epiparameter>", {
   expect_identical(dim(dist_tbl), c(1L, 7L))
   expect_named(
     dist_tbl,
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "author", "year", "sample_size")
   )
   expect_snapshot(dist_tbl)
@@ -156,19 +156,19 @@ test_that("parameter_tbl fails correctly", {
   expect_error(
     parameter_tbl(
       multi_epiparameter = list(),
-      epi_dist = "incubation_period"
+      epi_name = "incubation_period"
     ),
     regexp = "List of <epiparameter> objects should be supplied to multi_epiparameter"
   )
 
   expect_error(
-    parameter_tbl(multi_epiparameter = db, epi_dist = "random"),
+    parameter_tbl(multi_epiparameter = db, epi_name = "random"),
     regexp = "random distribution not available"
   )
 
   # check for multiple match input
   expect_error(
-    parameter_tbl(multi_epiparameter = db, epi_dist = "onset"),
+    parameter_tbl(multi_epiparameter = db, epi_name = "onset"),
     regexp = "onset distribution not available"
   )
 })

@@ -7,7 +7,7 @@
 epiparameter(
   disease,
   pathogen = NA_character_,
-  epi_dist,
+  epi_name,
   prob_distribution = create_prob_distribution(prob_distribution = NA_character_),
   uncertainty = create_uncertainty(),
   summary_stats = create_summary_stats(),
@@ -25,8 +25,8 @@ epiparameter(
 \item{pathogen}{A \code{character} string with the name of the causative agent of
 disease, or \code{NA} if not known.}
 
-\item{epi_dist}{A \code{character} string with the name of the
-epidemiological distribution type.}
+\item{epi_name}{A \code{character} string with the name of the
+epidemiological parameter type.}
 
 \item{prob_distribution}{An S3 class containing the probability
 distribution or a character string if the parameters of the probability
@@ -118,7 +118,7 @@ Accepted \verb{<epiparameter>} distribution parameterisations are:
 # minimal input required for `epiparameter`
 ebola_incubation <- epiparameter(
   disease = "ebola",
-  epi_dist = "incubation_period",
+  epi_name = "incubation_period",
   prob_distribution = create_prob_distribution(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
@@ -128,7 +128,7 @@ ebola_incubation <- epiparameter(
 # minimal input required for discrete `epiparameter`
 ebola_incubation <- epiparameter(
   disease = "ebola",
-  epi_dist = "incubation_period",
+  epi_name = "incubation_period",
   prob_distribution = create_prob_distribution(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),
@@ -140,7 +140,7 @@ ebola_incubation <- epiparameter(
 ebola_incubation <- epiparameter(
   disease = "ebola",
   pathogen = "ebola_virus",
-  epi_dist = "incubation",
+  epi_name = "incubation",
   prob_distribution = create_prob_distribution(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1),

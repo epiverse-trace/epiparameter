@@ -1,6 +1,6 @@
 {
   suppressMessages(
-    ebola_si <- epiparameter_db(epi_dist = "serial interval", disease = "ebola")
+    ebola_si <- epiparameter_db(epi_name = "serial interval", disease = "ebola")
   )
 }
 
@@ -33,7 +33,7 @@ test_that("aggregate works as expected for different distributions", {
   incub <- suppressMessages(
     epiparameter_db(
       disease = "Mpox",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       subset = is_parameterised
     )
   )
@@ -67,17 +67,17 @@ test_that("aggregate fails as expected for multiple pathogens", {
   )
 })
 
-test_that("aggregate fails as expected for multiple epi_dists", {
-  ebola_si[[1]]$epi_dist <- "generation time"
+test_that("aggregate fails as expected for multiple epi_names", {
+  ebola_si[[1]]$epi_name <- "generation time"
   expect_error(
     aggregate(ebola_si),
-    regexp = "All <epiparameter>s in x must contain the same type of epi_dist"
+    regexp = "All <epiparameter>s in x must contain the same type of epi_name"
   )
 })
 
 test_that("aggregate fails as expected with unparameterised <epiparameter>", {
   incub <- suppressMessages(
-    epiparameter_db(disease = "MERS", epi_dist = "incubation period")
+    epiparameter_db(disease = "MERS", epi_name = "incubation period")
   )
   expect_error(
     aggregate(incub),

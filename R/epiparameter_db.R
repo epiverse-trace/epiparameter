@@ -15,13 +15,13 @@
 #' arguments to subset entries and use `single_epiparameter = TRUE` to force a
 #' single `<epiparameter>` to be returned.
 #'
-#' @details `disease`, `epi_dist` and `author` are given as individual arguments
+#' @details `disease`, `epi_name` and `author` are given as individual arguments
 #' as these are the most common variables to subset the parameter library by.
 #' The `subset` argument facilitates all other subsetting of rows to select the
 #' `<epiparameter>` object(s) desired. To subset based on multiple variables
 #' separate each expression with `&`.
 #'
-#' List of epidemiological distributions:
+#' List of epidemiological parameters:
 #'
 #' * "all" (default, returns all entries in library)
 #' * "incubation period"
@@ -39,8 +39,8 @@
 #'
 #' @param disease A `character` string specifying the disease.
 #' @param pathogen A `character` string specifying the pathogen.
-#' @param epi_dist A `character` string specifying the epidemiological
-#' distribution. See details for full list of epidemiological distributions.
+#' @param epi_name A `character` string specifying the epidemiological
+#' parameter. See details for full list of epidemiological distributions.
 #' @param author A `character` string specifying the author of the study
 #' reporting the distribution. Only the first author will be matched. It is
 #' recommended to use the family name as first names may or may not be
@@ -50,7 +50,7 @@
 #' applied over a list of `<epiparameter>` objects.
 #'
 #' Subsetting (using `subset`) can be combined with the subsetting done with
-#' the `disease` and `epi_dist` arguments (and `author` if specified). If left
+#' the `disease` and `epi_name` arguments (and `author` if specified). If left
 #' as `NULL` (default) no subsetting is carried out.
 #'
 #' The `subset` argument is similar to subsetting a `<data.frame>`, but the
@@ -71,7 +71,7 @@
 #'
 #' @param single_epiparameter A boolean `logical` determining whether a single
 #' `<epiparameter>` or multiple entries from the library can be returned if
-#' matched by the other arguments (`disease`, `epi_dist`, `author`). This
+#' matched by the other arguments (`disease`, `epi_name`, `author`). This
 #' argument is used to prevent multiple sets of parameters being returned
 #' when only one is wanted.
 #'
@@ -85,38 +85,38 @@
 #' @export
 #'
 #' @examples
-#' epiparameter_db(disease = "influenza", epi_dist = "serial_interval")
+#' epiparameter_db(disease = "influenza", epi_name = "serial_interval")
 #'
 #' # example using custom subsetting
 #' eparam <- epiparameter_db(
 #'   disease = "SARS",
-#'   epi_dist = "offspring_distribution",
+#'   epi_name = "offspring_distribution",
 #'   subset = sample_size > 40
 #' )
 #'
 #' # example using functional subsetting
 #' eparam <- epiparameter_db(
 #'   disease = "COVID-19",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   subset = is_parameterised
 #' )
 #'
 #' # example forcing a single <epiparameter> to be returned
 #' eparam <- epiparameter_db(
 #'   disease = "SARS",
-#'   epi_dist = "offspring_distribution",
+#'   epi_name = "offspring_distribution",
 #'   single_epiparameter = TRUE
 #' )
 epiparameter_db <- function(disease = "all",
                             pathogen = "all",
-                            epi_dist = "all",
+                            epi_name = "all",
                             author = NULL,
                             subset = NULL,
                             single_epiparameter = FALSE) {
   # check input
   checkmate::assert_string(disease)
   checkmate::assert_string(pathogen)
-  checkmate::assert_string(epi_dist)
+  checkmate::assert_string(epi_name)
   checkmate::assert_logical(single_epiparameter, len = 1)
 
   # capture expression from subset and check type
@@ -136,7 +136,7 @@ epiparameter_db <- function(disease = "all",
     multi_epiparameter = multi_epiparameter,
     disease = disease,
     pathogen = pathogen,
-    epi_dist = epi_dist
+    epi_name = epi_name
   )
 
   # extract study by author if given
@@ -258,7 +258,7 @@ epiparameter_db <- function(disease = "all",
 #' @keywords internal
 epidist_db <- function(disease = "all",
                        pathogen = "all",
-                       epi_dist = "all",
+                       epi_name = "all",
                        author = NULL,
                        subset = NULL,
                        single_epiparameter = FALSE) {
@@ -274,7 +274,7 @@ epidist_db <- function(disease = "all",
   # check input
   checkmate::assert_string(disease)
   checkmate::assert_string(pathogen)
-  checkmate::assert_string(epi_dist)
+  checkmate::assert_string(epi_name)
   checkmate::assert_logical(single_epiparameter, len = 1)
 
   # capture expression from subset and check type
@@ -294,7 +294,7 @@ epidist_db <- function(disease = "all",
     multi_epiparameter = multi_epiparameter,
     disease = disease,
     pathogen = pathogen,
-    epi_dist = epi_dist
+    epi_name = epi_name
   )
 
   # extract study by author if given
@@ -449,16 +449,16 @@ epidist_db <- function(disease = "all",
 .filter_epiparameter_db <- function(multi_epiparameter,
                                     disease,
                                     pathogen,
-                                    epi_dist) {
+                                    epi_name) {
   # copy of user input
   disease_ <- disease
   pathogen_ <- pathogen
-  epi_dist_ <- epi_dist
+  epi_name_ <- epi_name
 
   # clean input strings
   disease <- .clean_string(disease)
   pathogen <- .clean_string(pathogen)
-  epi_dist <- .clean_string(epi_dist)
+  epi_name <- .clean_string(epi_name)
 
   # get valid options from db
   disease_db <- vapply(
@@ -469,13 +469,13 @@ epidist_db <- function(disease = "all",
     multi_epiparameter, function(x) x$pathogen,
     FUN.VALUE = character(1)
   )
-  epi_dist_db <- vapply(
-    multi_epiparameter, function(x) x$epi_dist,
+  epi_name_db <- vapply(
+    multi_epiparameter, function(x) x$epi_name,
     FUN.VALUE = character(1)
   )
   disease_db <- c("all", .clean_string(unique(disease_db)))
   pathogen_db <- c("all", .clean_string(unique(pathogen_db)))
-  epi_dist_db <- c("all", .clean_string(unique(epi_dist_db)))
+  epi_name_db <- c("all", .clean_string(unique(epi_name_db)))
 
   # partial matching and custom error msg
   tryCatch(
@@ -490,9 +490,9 @@ epidist_db <- function(disease = "all",
         choices = pathogen_db,
         several.ok = FALSE
       )
-      epi_dist <- match.arg(
-        arg = epi_dist,
-        choices = epi_dist_db,
+      epi_name <- match.arg(
+        arg = epi_name,
+        choices = epi_name_db,
         several.ok = FALSE
       )
     },
@@ -503,9 +503,9 @@ epidist_db <- function(disease = "all",
       pathogen_str <- ifelse(
         test = pathogen == "all", yes = "", no = paste(" for", pathogen_)
       )
-      epi_dist_str <- ifelse(test = epi_dist == "all", yes = "", no = epi_dist_)
+      epi_name_str <- ifelse(test = epi_name == "all", yes = "", no = epi_name_)
       stop(
-        epi_dist_str, " distribution not available", disease_str, pathogen_str,
+        epi_name_str, " distribution not available", disease_str, pathogen_str,
         call. = FALSE
       )
     }
@@ -528,9 +528,9 @@ epidist_db <- function(disease = "all",
   }
 
   # filter by epi dist
-  if (epi_dist != "all") {
+  if (epi_name != "all") {
     multi_epiparameter <- Filter(
-      f = function(x) .clean_string(x$epi_dist) == epi_dist,
+      f = function(x) .clean_string(x$epi_name) == epi_name,
       x = multi_epiparameter
     )
   }
@@ -614,7 +614,7 @@ epidist_db <- function(disease = "all",
   epiparameter(
     disease = x$disease,
     pathogen = x$pathogen,
-    epi_dist = x$epi_distribution,
+    epi_name = x$epi_name,
     prob_distribution = create_prob_distribution(
       prob_distribution = x$probability_distribution$prob_distribution,
       prob_distribution_params = params,

@@ -25,7 +25,7 @@ return \code{FALSE} by default.
 \examples{
 ep <- epiparameter(
   disease = "ebola",
-  epi_dist = "incubation_period",
+  epi_name = "incubation_period",
   prob_distribution = create_prob_distribution(
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 1, sdlog = 1)
@@ -35,7 +35,7 @@ is_truncated(ep)
 
 ep <- epiparameter(
   disease = "ebola",
-  epi_dist = "incubation_period",
+  epi_name = "incubation_period",
   prob_distribution = create_prob_distribution(
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 1, sdlog = 1),

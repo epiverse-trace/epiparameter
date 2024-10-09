@@ -79,7 +79,7 @@ An `<epiparameter>` object can be:
 # return only a single <epiparameter>
 covid_incubation <- epiparameter_db(
   disease = "COVID-19",
-  epi_dist = "incubation period",
+  epi_name = "incubation period",
   single_epiparameter = TRUE
 )
 covid_incubation
@@ -92,7 +92,7 @@ covid_incubation
 covid_incubation <- epiparameter(
   disease = "COVID-19",
   pathogen = "SARS-CoV-2",
-  epi_dist = "incubation period",
+  epi_name = "incubation period",
   prob_distribution = create_prob_distribution(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 2, scale = 1)
@@ -133,7 +133,7 @@ The database can be subset directly by `epiparameter_db()`. Here the results can
 ```{r epiparameter-db-subset-author}
 epiparameter_db(
   disease = "COVID-19",
-  epi_dist = "incubation period",
+  epi_name = "incubation period",
   author = "Linton"
 )
 ```
@@ -153,7 +153,7 @@ epiparameter_db(disease = "SARS", single_epiparameter = TRUE)
 ```{r epiparameter-dist-methods}
 ebola_incubation <- epiparameter_db(
   disease = "Ebola",
-  epi_dist = "incubation period",
+  epi_name = "incubation period",
   single_epiparameter = TRUE
 )
 

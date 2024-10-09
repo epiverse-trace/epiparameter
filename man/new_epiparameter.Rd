@@ -7,7 +7,7 @@
 new_epiparameter(
   disease = character(),
   pathogen = character(),
-  epi_dist = character(),
+  epi_name = character(),
   prob_distribution = list(),
   uncertainty = list(),
   summary_stats = list(),
@@ -25,8 +25,8 @@ new_epiparameter(
 \item{pathogen}{A \code{character} string with the name of the causative agent of
 disease, or \code{NA} if not known.}
 
-\item{epi_dist}{A \code{character} string with the name of the
-epidemiological distribution type.}
+\item{epi_name}{A \code{character} string with the name of the
+epidemiological parameter type.}
 
 \item{prob_distribution}{An S3 class containing the probability
 distribution or a character string if the parameters of the probability

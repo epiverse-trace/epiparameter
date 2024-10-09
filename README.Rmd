@@ -62,24 +62,24 @@ This results in a list of database entries. Each entry of the library is an `<ep
 
 Alternatively, the library of epiparameters can be viewed as a vignette locally (`vignette("database", package = "epiparameter")`) or on the [{epiparameter} website](https://epiverse-trace.github.io/epiparameter/articles/database.html).
 
-The results can be filtered by disease and epidemiological distribution. Here we set `single_epiparameter = TRUE` as we only want a single database entry returned, and by default (`single_epiparameter = FALSE`) it will return all database entries that match the disease (`disease`) and epidemiological distribution (`epi_dist`).
+The results can be filtered by disease and epidemiological distribution. Here we set `single_epiparameter = TRUE` as we only want a single database entry returned, and by default (`single_epiparameter = FALSE`) it will return all database entries that match the disease (`disease`) and epidemiological parameter (`epi_name`).
 
 ```{r load-single-epiparameter}
 influenza_incubation <- epiparameter_db(
   disease = "influenza",
-  epi_dist = "incubation period",
+  epi_name = "incubation period",
   single_epiparameter = TRUE
 )
 influenza_incubation
 ```
 
-To quickly view the list of epidemiological distributions returned by `epiparameter_db()` in a table, the `parameter_tbl()` gives a summary of the data, and offers the ability to subset you data by `disease`, `pathogen` and epidemiological distribution (`epi_dist`).
+To quickly view the list of epidemiological distributions returned by `epiparameter_db()` in a table, the `parameter_tbl()` gives a summary of the data, and offers the ability to subset you data by `disease`, `pathogen` and epidemiological parameter (`epi_name`).
 
 ```{r parameter-tbl}
 parameter_tbl(epiparameters)
 parameter_tbl(
   epiparameters,
-  epi_dist = "onset to hospitalisation"
+  epi_name = "onset to hospitalisation"
 )
 ```
 

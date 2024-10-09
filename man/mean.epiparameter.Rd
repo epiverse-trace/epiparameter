@@ -20,7 +20,7 @@ Mean method for \verb{<epiparameter>} class
 \examples{
 ep <- epiparameter_db(
   disease = "COVID-19",
-  epi_dist = "incubation period",
+  epi_name = "incubation period",
   single_epiparameter = TRUE
 )
 mean(ep)

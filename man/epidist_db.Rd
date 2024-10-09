@@ -8,7 +8,7 @@
 epidist_db(
   disease = "all",
   pathogen = "all",
-  epi_dist = "all",
+  epi_name = "all",
   author = NULL,
   subset = NULL,
   single_epiparameter = FALSE
@@ -19,8 +19,8 @@ epidist_db(
 
 \item{pathogen}{A \code{character} string specifying the pathogen.}
 
-\item{epi_dist}{A \code{character} string specifying the epidemiological
-distribution. See details for full list of epidemiological distributions.}
+\item{epi_name}{A \code{character} string specifying the epidemiological
+parameter. See details for full list of epidemiological distributions.}
 
 \item{author}{A \code{character} string specifying the author of the study
 reporting the distribution. Only the first author will be matched. It is
@@ -32,7 +32,7 @@ logicals to subset the list of \verb{<epiparameter>}, or a function that can be
 applied over a list of \verb{<epiparameter>} objects.
 
 Subsetting (using \code{subset}) can be combined with the subsetting done with
-the \code{disease} and \code{epi_dist} arguments (and \code{author} if specified). If left
+the \code{disease} and \code{epi_name} arguments (and \code{author} if specified). If left
 as \code{NULL} (default) no subsetting is carried out.
 
 The \code{subset} argument is similar to subsetting a \verb{<data.frame>}, but the
@@ -53,7 +53,7 @@ by the \code{dplyr} package.}
 
 \item{single_epiparameter}{A boolean \code{logical} determining whether a single
 \verb{<epiparameter>} or multiple entries from the library can be returned if
-matched by the other arguments (\code{disease}, \code{epi_dist}, \code{author}). This
+matched by the other arguments (\code{disease}, \code{epi_name}, \code{author}). This
 argument is used to prevent multiple sets of parameters being returned
 when only one is wanted.
 
