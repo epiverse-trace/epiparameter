@@ -388,7 +388,7 @@ is_epiparameter_df <- function(x) {
     summary_stats$sd <- sd_
   }
   metadata <- create_metadata()
-  metadata$units <- x$parameter_unit
+  metadata$units <- .unique(x$parameter_unit, var_name = "units")
   metadata$sample_size <- .unique(x$population_sample_size)
   metadata$inference_method <- inference_method
   location <- .unique(x$population_location)
@@ -456,7 +456,7 @@ is_epiparameter_df <- function(x) {
   x <- unique(x)
   if (length(x) != 1) {
     stop(
-      "epireview parameters contains multiple different", var_name, "\n",
+      "epireview parameters contains multiple different ", var_name, "\n",
       "Cannot convert to <epiparameter>",
       call. = FALSE
     )
