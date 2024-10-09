@@ -62,12 +62,12 @@ epiparameters
 #> # List of 125 <epiparameter> objects
 #> Number of diseases: 23
 #> ❯ Adenovirus ❯ Chikungunya ❯ COVID-19 ❯ Dengue ❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Human Coronavirus ❯ Influenza ❯ Japanese Encephalitis ❯ Marburg Virus Disease ❯ Measles ❯ MERS ❯ Mpox ❯ Parainfluenza ❯ Pneumonic Plague ❯ Rhinovirus ❯ Rift Valley Fever ❯ RSV ❯ SARS ❯ Smallpox ❯ West Nile Fever ❯ Yellow Fever ❯ Zika Virus Disease
-#> Number of epi distributions: 13
+#> Number of epi parameters: 13
 #> ❯ case fatality risk ❯ generation time ❯ hospitalisation to death ❯ hospitalisation to discharge ❯ incubation period ❯ notification to death ❯ notification to discharge ❯ offspring distribution ❯ onset to death ❯ onset to discharge ❯ onset to hospitalisation ❯ onset to ventilation ❯ serial interval
 #> [[1]]
 #> Disease: Adenovirus
 #> Pathogen: Adenovirus
-#> Epi Distribution: incubation period
+#> Epi Parameter: incubation period
 #> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
 #> review." _The Lancet Infectious Diseases_.
@@ -81,7 +81,7 @@ epiparameters
 #> [[2]]
 #> Disease: Human Coronavirus
 #> Pathogen: Human_Cov
-#> Epi Distribution: incubation period
+#> Epi Parameter: incubation period
 #> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
 #> review." _The Lancet Infectious Diseases_.
@@ -95,7 +95,7 @@ epiparameters
 #> [[3]]
 #> Disease: SARS
 #> Pathogen: SARS-Cov-1
-#> Epi Distribution: incubation period
+#> Epi Parameter: incubation period
 #> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
 #> review." _The Lancet Infectious Diseases_.
@@ -124,12 +124,12 @@ The results can be filtered by disease and epidemiological distribution.
 Here we set `single_epiparameter = TRUE` as we only want a single
 database entry returned, and by default (`single_epiparameter = FALSE`)
 it will return all database entries that match the disease (`disease`)
-and epidemiological distribution (`epi_dist`).
+and epidemiological parameter (`epi_name`).
 
 ``` r
 influenza_incubation <- epiparameter_db(
   disease = "influenza",
-  epi_dist = "incubation period",
+  epi_name = "incubation period",
   single_epiparameter = TRUE
 )
 #> Using Virlogeux V, Li M, Tsang T, Feng L, Fang V, Jiang H, Wu P, Zheng J, Lau
@@ -141,7 +141,7 @@ influenza_incubation <- epiparameter_db(
 influenza_incubation
 #> Disease: Influenza
 #> Pathogen: Influenza-A-H7N9
-#> Epi Distribution: incubation period
+#> Epi Parameter: incubation period
 #> Study: Virlogeux V, Li M, Tsang T, Feng L, Fang V, Jiang H, Wu P, Zheng J, Lau
 #> E, Cao Y, Qin Y, Liao Q, Yu H, Cowling B (2015). "Estimating the
 #> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)
@@ -156,38 +156,38 @@ influenza_incubation
 To quickly view the list of epidemiological distributions returned by
 `epiparameter_db()` in a table, the `parameter_tbl()` gives a summary of
 the data, and offers the ability to subset you data by `disease`,
-`pathogen` and epidemiological distribution (`epi_dist`).
+`pathogen` and epidemiological parameter (`epi_name`).
 
 ``` r
 parameter_tbl(epiparameters)
 #> # Parameter table:
 #> # A data frame:    125 × 7
-#>    disease  pathogen epi_distribution prob_distribution author  year sample_size
-#>    <chr>    <chr>    <chr>            <chr>             <chr>  <dbl>       <dbl>
-#>  1 Adenovi… Adenovi… incubation peri… lnorm             Lessl…  2009          14
-#>  2 Human C… Human_C… incubation peri… lnorm             Lessl…  2009          13
-#>  3 SARS     SARS-Co… incubation peri… lnorm             Lessl…  2009         157
-#>  4 Influen… Influen… incubation peri… lnorm             Lessl…  2009         151
-#>  5 Influen… Influen… incubation peri… lnorm             Lessl…  2009          90
-#>  6 Influen… Influen… incubation peri… lnorm             Lessl…  2009          78
-#>  7 Measles  Measles… incubation peri… lnorm             Lessl…  2009          55
-#>  8 Parainf… Parainf… incubation peri… lnorm             Lessl…  2009          11
-#>  9 RSV      RSV      incubation peri… lnorm             Lessl…  2009          24
-#> 10 Rhinovi… Rhinovi… incubation peri… lnorm             Lessl…  2009          28
+#>    disease          pathogen epi_name prob_distribution author  year sample_size
+#>    <chr>            <chr>    <chr>    <chr>             <chr>  <dbl>       <dbl>
+#>  1 Adenovirus       Adenovi… incubat… lnorm             Lessl…  2009          14
+#>  2 Human Coronavir… Human_C… incubat… lnorm             Lessl…  2009          13
+#>  3 SARS             SARS-Co… incubat… lnorm             Lessl…  2009         157
+#>  4 Influenza        Influen… incubat… lnorm             Lessl…  2009         151
+#>  5 Influenza        Influen… incubat… lnorm             Lessl…  2009          90
+#>  6 Influenza        Influen… incubat… lnorm             Lessl…  2009          78
+#>  7 Measles          Measles… incubat… lnorm             Lessl…  2009          55
+#>  8 Parainfluenza    Parainf… incubat… lnorm             Lessl…  2009          11
+#>  9 RSV              RSV      incubat… lnorm             Lessl…  2009          24
+#> 10 Rhinovirus       Rhinovi… incubat… lnorm             Lessl…  2009          28
 #> # ℹ 115 more rows
 parameter_tbl(
   epiparameters,
-  epi_dist = "onset to hospitalisation"
+  epi_name = "onset to hospitalisation"
 )
 #> # Parameter table:
 #> # A data frame:    5 × 7
-#>   disease  pathogen  epi_distribution prob_distribution author  year sample_size
-#>   <chr>    <chr>     <chr>            <chr>             <chr>  <dbl>       <dbl>
-#> 1 MERS     MERS-Cov  onset to hospit… <NA>              Assir…  2013          23
-#> 2 COVID-19 SARS-CoV… onset to hospit… gamma             Linto…  2020         155
-#> 3 COVID-19 SARS-CoV… onset to hospit… gamma             Linto…  2020          34
-#> 4 COVID-19 SARS-CoV… onset to hospit… lnorm             Linto…  2020         155
-#> 5 COVID-19 SARS-CoV… onset to hospit… lnorm             Linto…  2020          34
+#>   disease  pathogen   epi_name        prob_distribution author  year sample_size
+#>   <chr>    <chr>      <chr>           <chr>             <chr>  <dbl>       <dbl>
+#> 1 MERS     MERS-Cov   onset to hospi… <NA>              Assir…  2013          23
+#> 2 COVID-19 SARS-CoV-2 onset to hospi… gamma             Linto…  2020         155
+#> 3 COVID-19 SARS-CoV-2 onset to hospi… gamma             Linto…  2020          34
+#> 4 COVID-19 SARS-CoV-2 onset to hospi… lnorm             Linto…  2020         155
+#> 5 COVID-19 SARS-CoV-2 onset to hospi… lnorm             Linto…  2020          34
 ```
 
 The `<epiparameter>` object can be plotted.
