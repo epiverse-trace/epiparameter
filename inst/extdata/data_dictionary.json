@@ -16,8 +16,8 @@
         "examples": ["SARS-CoV-2", "monkeypox virus"],
         "type": ["string", "null"]
       },
-      "epi_distribution": {
-        "description": "The name of the epidemiological distribution type. Names should be whitespace separated within each string.",
+      "epi_name": {
+        "description": "The name of the epidemiological parameter type. Names should be whitespace separated within each string.",
         "examples": ["incubation period", "serial interval", "offspring distribution"],
         "type": "string",
         "enum": ["incubation period", "onset to hospitalisation", "onset to death", "serial interval", "generation time", "offspring distribution", "hospitalisation to death", "hospitalisation to discharge", "notification to death", "notification to discharge", "onset to discharge", "onset to ventilation", "case fatality risk"]
@@ -446,7 +446,7 @@
         "type": ["string", "null"]
       }
     },
-    "required": ["disease", "epi_distribution", "summary_statistics", "citation", "metadata", "method_assessment", "notes"],
+    "required": ["disease", "epi_name", "summary_statistics", "citation", "metadata", "method_assessment", "notes"],
     "additionalProperties": false
   }
 }
