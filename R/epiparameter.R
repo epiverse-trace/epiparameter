@@ -140,8 +140,8 @@ new_epiparameter <- function(disease = character(),
 #' @param citation A `<bibentry>` with the citation of the source of the
 #' data or the paper that inferred the distribution parameters, use
 #' [create_citation()] to create citation.
-#' @param metadata A list of metadata, this can include: sample size, the
-#' transmission mode of the disease (e.g. is it vector-borne or directly
+#' @param metadata A list of metadata, this can include: units, sample size,
+#' the transmission mode of the disease (e.g. is it vector-borne or directly
 #' transmitted), etc. It is assumed that the disease is not
 #' vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 #' delay distribution such as extrinsic incubation period) unless
@@ -208,6 +208,7 @@ new_epiparameter <- function(disease = character(),
 #'     doi = "10.19832/j.1366-9516.2012.09147.x"
 #'   ),
 #'   metadata = create_metadata(
+#'     units = "days",
 #'     sample_size = 10,
 #'     region = "UK",
 #'     transmission_mode = "natural_human_to_human",

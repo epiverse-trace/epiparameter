@@ -52,8 +52,8 @@ interval around mean and standard deviation.}
 data or the paper that inferred the distribution parameters, use
 \code{\link[=create_citation]{create_citation()}} to create citation.}
 
-\item{metadata}{A list of metadata, this can include: sample size, the
-transmission mode of the disease (e.g. is it vector-borne or directly
+\item{metadata}{A list of metadata, this can include: units, sample size,
+the transmission mode of the disease (e.g. is it vector-borne or directly
 transmitted), etc. It is assumed that the disease is not
 vector-borne and that the distribution is intrinsic (e.g. not an extrinsic
 delay distribution such as extrinsic incubation period) unless

@@ -5,6 +5,7 @@
 \title{Specify metadata associated with data set}
 \usage{
 create_metadata(
+  units = NA_character_,
   sample_size = NA_integer_,
   region = NA_character_,
   transmission_mode = NA_character_,
@@ -14,6 +15,8 @@ create_metadata(
 )
 }
 \arguments{
+\item{units}{A \code{character} for the units of the epidemiological parameter.}
+
 \item{sample_size}{The sample of the data used to fit the delay distribution.
 This is usually the number of people with data on a primary and possibly
 secondary event of interest. In cases where the sample size is not stated
@@ -77,6 +80,7 @@ create_metadata()
 
 # supplying each field
 create_metadata(
+  units = "days",
   sample_size = 10,
   region = "UK",
   transmission_mode = "vector_borne",

@@ -89,6 +89,7 @@ create_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #' Therefore, the extrinsic delay, in which the vector has been infected by is
 #' not yet infectious can have a role in the spread of a disease.
 #'
+#' @param units A `character` for the units of the epidemiological parameter.
 #' @param sample_size The sample of the data used to fit the delay distribution.
 #' This is usually the number of people with data on a primary and possibly
 #' secondary event of interest. In cases where the sample size is not stated
@@ -135,6 +136,7 @@ create_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #'
 #' # supplying each field
 #' create_metadata(
+#'   units = "days",
 #'   sample_size = 10,
 #'   region = "UK",
 #'   transmission_mode = "vector_borne",
@@ -142,13 +144,15 @@ create_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
 #'   extrinsic = FALSE,
 #'   inference_method = "MLE"
 #' )
-create_metadata <- function(sample_size = NA_integer_,
+create_metadata <- function(units = NA_character_,
+                            sample_size = NA_integer_,
                             region = NA_character_,
                             transmission_mode = NA_character_,
                             vector = NA_character_,
                             extrinsic = FALSE,
                             inference_method = NA_character_) {
   # check input
+  checkmate::assert_character(units)
   checkmate::assert_number(
     sample_size,
     na.ok = TRUE,
@@ -171,6 +175,7 @@ create_metadata <- function(sample_size = NA_integer_,
 
   # return list of metadata
   list(
+    units = units,
     sample_size = sample_size,
     region = region,
     transmission_mode = transmission_mode,
