@@ -61,6 +61,7 @@ test_that("epiparameter works with all arguments set", {
         pmid = 28372882
       ),
       metadata = create_metadata(
+        units = "days",
         sample_size = 100,
         region = "UK",
         transmission_mode = "vector_borne",
@@ -209,6 +210,27 @@ test_that("epiparameter.plot does not produce an error", {
   f <- function() plot(ebola_dist)
   vdiffr::expect_doppelganger(
     title = "epiparameter.plot",
+    fig = f
+  )
+})
+
+test_that("epiparameter.plot prints units in x-axis", {
+  ebola_dist <- suppressMessages(epiparameter(
+    disease = "ebola",
+    epi_name = "incubation",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    ),
+    metadata = create_metadata(units = "days")
+  ))
+
+
+  expect_silent(plot(ebola_dist))
+
+  f <- function() plot(ebola_dist)
+  vdiffr::expect_doppelganger(
+    title = "epiparameter.plot units",
     fig = f
   )
 })
