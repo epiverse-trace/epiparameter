@@ -388,6 +388,7 @@ is_epiparameter_df <- function(x) {
     summary_stats$sd <- sd_
   }
   metadata <- create_metadata()
+  metadata$units <- x$parameter_unit
   metadata$sample_size <- .unique(x$population_sample_size)
   metadata$inference_method <- inference_method
   location <- .unique(x$population_location)
