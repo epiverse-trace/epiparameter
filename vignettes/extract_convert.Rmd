@@ -81,7 +81,7 @@ An example with parameters provided by `<epiparameter>`
 ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
-  epi_dist = "<Epidemilogical Distribution name>",
+  epi_name = "<Epidemilogical Distribution name>",
   prob_distribution = create_prob_distribution(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 2.5, scale = 1.5)
@@ -96,7 +96,7 @@ An example with `<epiparameter>` missing parameters and supplied through `...`
 ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
-  epi_dist = "<Epidemilogical Distribution name>",
+  epi_name = "<Epidemilogical Distribution name>",
   prob_distribution = "gamma"
 )
 convert_params_to_summary_stats(ep, shape = 2.5, scale = 1.5)
@@ -108,7 +108,7 @@ An example with summary statistics provided by `<epiparameter>`
 ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
-  epi_dist = "<Epidemilogical Distribution name>",
+  epi_name = "<Epidemilogical Distribution name>",
   prob_distribution = "gamma",
   summary_stats = create_summary_stats(mean = 3.75, sd = 2.37)
 )
@@ -121,7 +121,7 @@ An example with `<epiparameter>` missing summary statistics and supplied through
 ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
-  epi_dist = "<Epidemilogical Distribution name>",
+  epi_name = "<Epidemilogical Distribution name>",
   prob_distribution = "gamma"
 )
 convert_summary_stats_to_params(ep, mean = 3.75, sd = 2.37)

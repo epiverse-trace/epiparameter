@@ -34,7 +34,7 @@
 #' @export
 #'
 #' @examples
-#' ebola_si <- epiparameter_db(epi_dist = "serial interval", disease = "ebola")
+#' ebola_si <- epiparameter_db(epi_name = "serial interval", disease = "ebola")
 #' aggregate(ebola_si)
 aggregate.multi_epiparameter <- function(x,
                                          weighting = c(
@@ -44,17 +44,17 @@ aggregate.multi_epiparameter <- function(x,
   chkDots(...)
   weighting <- match.arg(weighting)
 
-  # ensure <multi_epiparameter> contains the same pathogen and epi_dist
+  # ensure <multi_epiparameter> contains the same pathogen and epi_name
   disease <- unique(vapply(x, `[[`, FUN.VALUE = character(1), "disease"))
   pathogen <- unique(vapply(x, `[[`, FUN.VALUE = character(1), "pathogen"))
-  epi_dist <- unique(vapply(x, `[[`, FUN.VALUE = character(1), "epi_dist"))
+  epi_name <- unique(vapply(x, `[[`, FUN.VALUE = character(1), "epi_name"))
   stopifnot(
     "All <epiparameter>s in x must contain the same disease" =
       length(disease) == 1,
     "All <epiparameter>s in x must contain the same pathogen" =
       length(pathogen) == 1,
-    "All <epiparameter>s in x must contain the same type of epi_dist" =
-      length(epi_dist) == 1
+    "All <epiparameter>s in x must contain the same type of epi_name" =
+      length(epi_name) == 1
   )
 
   if (!all(vapply(x, is_parameterised, FUN.VALUE = logical(1)))) {
@@ -169,7 +169,7 @@ aggregate.multi_epiparameter <- function(x,
   epiparameter(
     disease = disease,
     pathogen = pathogen,
-    epi_dist = epi_dist,
+    epi_name = epi_name,
     prob_distribution = prob_dist,
     citation = Reduce(f = c, x = citations),
     summary_stats = aggr_ss,

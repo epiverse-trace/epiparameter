@@ -18,7 +18,7 @@
 #' db
 #'
 #' # a single epi parameter
-#' db <- epiparameter_db(epi_dist = "offspring distribution")
+#' db <- epiparameter_db(epi_name = "offspring distribution")
 #' db
 print.multi_epiparameter <- function(x, ..., n = NULL) {
   chkDots(...)
@@ -38,10 +38,10 @@ print.multi_epiparameter <- function(x, ..., n = NULL) {
 
   diseases <- vapply(x, `[[`, FUN.VALUE = character(1), "disease")
   alpha_unique_diseases <- sort(unique(diseases))
-  epi_dists <- vapply(
-    x, `[[`, FUN.VALUE = character(1), "epi_dist"
+  epi_names <- vapply(
+    x, `[[`, FUN.VALUE = character(1), "epi_name"
   )
-  alpha_unique_epi_dists <- sort(unique(epi_dists))
+  alpha_unique_epi_names <- sort(unique(epi_names))
 
   # header
   writeLines(
@@ -56,8 +56,8 @@ print.multi_epiparameter <- function(x, ..., n = NULL) {
       c(
         tr_("Number of diseases: ", length(alpha_unique_diseases)),
         paste(cli::symbol$pointer, alpha_unique_diseases, collapse = " "),
-        tr_("Number of epi distributions: ", length(alpha_unique_epi_dists)),
-        paste(cli::symbol$pointer, alpha_unique_epi_dists, collapse = " ")
+        tr_("Number of epi parameters: ", length(alpha_unique_epi_names)),
+        paste(cli::symbol$pointer, alpha_unique_epi_names, collapse = " ")
       )
     )
   )

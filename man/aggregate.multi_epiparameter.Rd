@@ -43,6 +43,6 @@ discretised (see \code{\link[=discretise]{discretise()}}) distributions cannot b
 function will error.
 }
 \examples{
-ebola_si <- epiparameter_db(epi_dist = "serial interval", disease = "ebola")
+ebola_si <- epiparameter_db(epi_name = "serial interval", disease = "ebola")
 aggregate(ebola_si)
 }

@@ -8,7 +8,7 @@ parameter_tbl(
   multi_epiparameter,
   disease = "all",
   pathogen = "all",
-  epi_dist = "all"
+  epi_name = "all"
 )
 }
 \arguments{
@@ -20,8 +20,8 @@ parameter_tbl(
 \item{pathogen}{A \code{character} string with the name of the causative agent of
 disease, or \code{NA} if not known.}
 
-\item{epi_dist}{A \code{character} string with the name of the
-epidemiological distribution type.}
+\item{epi_name}{A \code{character} string with the name of the
+epidemiological parameter type.}
 }
 \description{
 This function subsets the epidemiological parameter library to
@@ -38,7 +38,7 @@ parameter_tbl(multi_epiparameter = epiparameter_list)
 epiparameter_list <- epiparameter_db(disease = "COVID-19")
 parameter_tbl(
   multi_epiparameter = epiparameter_list,
-  epi_dist = "incubation period"
+  epi_name = "incubation period"
 )
 }
 \author{

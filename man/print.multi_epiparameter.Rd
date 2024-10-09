@@ -31,6 +31,6 @@ db <- epiparameter_db(disease = "Ebola")
 db
 
 # a single epi parameter
-db <- epiparameter_db(epi_dist = "offspring distribution")
+db <- epiparameter_db(epi_name = "offspring distribution")
 db
 }

@@ -20,7 +20,7 @@ Print method for \verb{<epiparameter>} class
 \examples{
 epiparameter <- epiparameter(
   disease = "ebola",
-  epi_dist = "incubation_period",
+  epi_name = "incubation_period",
   prob_distribution = create_prob_distribution(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)

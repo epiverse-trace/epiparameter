@@ -15,7 +15,7 @@
 #' @keywords internal
 new_epiparameter <- function(disease = character(),
                              pathogen = character(),
-                             epi_dist = character(),
+                             epi_name = character(),
                              prob_distribution = list(),
                              uncertainty = list(),
                              summary_stats = list(),
@@ -49,7 +49,7 @@ new_epiparameter <- function(disease = character(),
     }
   }
 
-  if (epi_dist == "offspring_distribution") {
+  if (epi_name == "offspring_distribution") {
     method_assess <- paste(
       "There is currently no method assessment for offspring distributions",
       "stored in epiparameter"
@@ -65,7 +65,7 @@ new_epiparameter <- function(disease = character(),
     list(
       disease = disease,
       pathogen = pathogen,
-      epi_dist = epi_dist,
+      epi_name = epi_name,
       prob_distribution = prob_distribution,
       uncertainty = uncertainty,
       summary_stats = summary_stats,
@@ -112,8 +112,8 @@ new_epiparameter <- function(disease = character(),
 #' @param disease A `character` string with name of the infectious disease.
 #' @param pathogen A `character` string with the name of the causative agent of
 #' disease, or `NA` if not known.
-#' @param epi_dist A `character` string with the name of the
-#' epidemiological distribution type.
+#' @param epi_name A `character` string with the name of the
+#' epidemiological parameter type.
 #' @param prob_distribution An S3 class containing the probability
 #' distribution or a character string if the parameters of the probability
 #' distribution are unknown but the name of the distribution is known, or `NA`
@@ -166,7 +166,7 @@ new_epiparameter <- function(disease = character(),
 #' # minimal input required for `epiparameter`
 #' ebola_incubation <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1)
@@ -176,7 +176,7 @@ new_epiparameter <- function(disease = character(),
 #' # minimal input required for discrete `epiparameter`
 #' ebola_incubation <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
@@ -188,7 +188,7 @@ new_epiparameter <- function(disease = character(),
 #' ebola_incubation <- epiparameter(
 #'   disease = "ebola",
 #'   pathogen = "ebola_virus",
-#'   epi_dist = "incubation",
+#'   epi_name = "incubation",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1),
@@ -220,7 +220,7 @@ new_epiparameter <- function(disease = character(),
 #' )
 epiparameter <- function(disease,
                          pathogen = NA_character_,
-                         epi_dist,
+                         epi_name,
                          prob_distribution = create_prob_distribution(
                            prob_distribution = NA_character_
                          ),
@@ -235,7 +235,7 @@ epiparameter <- function(disease,
   # check input
   checkmate::assert_string(disease)
   checkmate::assert_character(pathogen)
-  checkmate::assert_string(epi_dist)
+  checkmate::assert_string(epi_name)
   stopifnot(
     "Probability distribution must be a distribution object or a character" =
       !inherits(prob_distribution, c("distribution", "distcrete")) ||
@@ -257,7 +257,7 @@ epiparameter <- function(disease,
   epiparameter <- new_epiparameter(
     disease = disease,
     pathogen = pathogen,
-    epi_dist = epi_dist,
+    epi_name = epi_name,
     prob_distribution = prob_distribution,
     uncertainty = uncertainty,
     summary_stats = summary_stats,
@@ -307,7 +307,7 @@ assert_epiparameter <- function(x) {
   }
 
   list_names <- c(
-    "disease", "pathogen", "epi_dist", "prob_distribution", "uncertainty",
+    "disease", "pathogen", "epi_name", "prob_distribution", "uncertainty",
     "summary_stats", "citation", "metadata", "method_assess", "notes"
   )
   missing_list_names <- list_names[!list_names %in% attributes(x)$names]
@@ -322,7 +322,7 @@ assert_epiparameter <- function(x) {
     "epiparameter must contain a disease (single character string)" =
     checkmate::test_string(x$disease),
     "epiparameter must contain an epidemiological distribution" =
-      checkmate::test_string(x$epi_dist),
+      checkmate::test_string(x$epi_name),
     "epiparameter must contain a <distribution> or <distcrete> or NA" =
     checkmate::test_multi_class(
       x$prob_distribution, classes = c("distribution", "distcrete")
@@ -351,14 +351,14 @@ test_epiparameter <- function(x) { # nolint cyclocomp_linter
   if (!is_epiparameter(x)) return(FALSE)
 
   list_names <- c(
-    "disease", "pathogen", "epi_dist", "prob_distribution", "uncertainty",
+    "disease", "pathogen", "epi_name", "prob_distribution", "uncertainty",
     "summary_stats", "citation", "metadata", "method_assess", "notes"
   )
   missing_list_names <- list_names[!list_names %in% attributes(x)$names]
   if (length(missing_list_names) != 0) return(FALSE)
 
   valid_elements <- checkmate::test_string(x$disease) &&
-    checkmate::test_string(x$epi_dist) &&
+    checkmate::test_string(x$epi_name) &&
     (checkmate::test_multi_class(
       x$prob_distribution, classes = c("distribution", "distcrete")
     ) || checkmate::test_string(x$prob_distribution, na.ok = TRUE)) &&
@@ -383,7 +383,7 @@ test_epiparameter <- function(x) { # nolint cyclocomp_linter
 #' @examples
 #' epiparameter <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1)
@@ -405,7 +405,7 @@ print.epiparameter <- function(x, ...) {
 #' @examples
 #' epiparameter <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1)
@@ -417,7 +417,7 @@ format.epiparameter <- function(x, ...) {
     c(
       sprintf(tr_("Disease: %s"), x$disease),
       sprintf(tr_("Pathogen: %s"), x$pathogen),
-      sprintf(tr_("Epi Distribution: %s"), .clean_string(x$epi_dist)),
+      sprintf(tr_("Epi Parameter: %s"), .clean_string(x$epi_name)),
       # aggregated <epiparameter> with repeated cits only are to be printed once
       sprintf(tr_("Study: %s"), format(unique(x$citation)))
     )
@@ -475,7 +475,7 @@ format.epiparameter <- function(x, ...) {
 #' @examples
 #' ep <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "serial_interval",
+#'   epi_name = "serial_interval",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1)
@@ -486,7 +486,7 @@ format.epiparameter <- function(x, ...) {
 #'
 #' false_ep <- list(
 #'   disease = "ebola",
-#'   epi_dist = "serial_interval",
+#'   epi_name = "serial_interval",
 #'   prob_distribution = "gamma",
 #'   prob_distribution_params = c(shape = 1, scale = 1)
 #' )
@@ -521,7 +521,7 @@ is_epiparameter <- function(x) {
 #' @examples
 #' ep <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1)
@@ -631,7 +631,7 @@ generate.epiparameter <- function(x, times, ...) {
 #' @examples
 #' ebola_incubation <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1)
@@ -736,7 +736,7 @@ discretise.default <- function(x, ...) {
 #' # example with continuous distribution
 #' ep <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "gamma",
 #'     prob_distribution_params = c(shape = 1, scale = 1)
@@ -747,7 +747,7 @@ discretise.default <- function(x, ...) {
 #' # example with discretised distribution
 #' ep <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "lnorm",
 #'     prob_distribution_params = c(meanlog = 1, sdlog = 1),
@@ -805,7 +805,7 @@ family.epiparameter <- function(object, ...) {
 #' @examples
 #' ep <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "lnorm",
 #'     prob_distribution_params = c(meanlog = 1, sdlog = 1)
@@ -815,7 +815,7 @@ family.epiparameter <- function(object, ...) {
 #'
 #' ep <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "lnorm",
 #'     prob_distribution_params = c(meanlog = 1, sdlog = 1),
@@ -864,7 +864,7 @@ is_truncated <- function(x) {
 #' @examples
 #' ep <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "incubation_period",
+#'   epi_name = "incubation_period",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "lnorm",
 #'     prob_distribution_params = c(meanlog = 1, sdlog = 1)
@@ -875,7 +875,7 @@ is_truncated <- function(x) {
 #'
 #' ep <- epiparameter(
 #'   disease = "ebola",
-#'   epi_dist = "offspring distribution",
+#'   epi_name = "offspring distribution",
 #'   prob_distribution = create_prob_distribution(
 #'     prob_distribution = "nbinom",
 #'     prob_distribution_params = c(mean = 2, dispersion = 0.5)
@@ -909,7 +909,7 @@ is_continuous <- function(x) {
 #' @examples
 #' ep <- epiparameter_db(
 #'   disease = "COVID-19",
-#'   epi_dist = "incubation period",
+#'   epi_name = "incubation period",
 #'   single_epiparameter = TRUE
 #' )
 #' mean(ep)

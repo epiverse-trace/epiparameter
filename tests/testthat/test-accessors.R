@@ -10,7 +10,7 @@ test_that("get_parameters works as expected for unparameterised epiparameter", {
   ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       prob_distribution = create_prob_distribution(prob_distribution = "gamma")
     )
   )
@@ -21,7 +21,7 @@ test_that("get_parameters works as expected for continuous epiparameter", {
   ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -37,7 +37,7 @@ test_that("get_parameters works as expected for discretised epiparameter", {
   ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
@@ -69,7 +69,7 @@ test_that("get_citation works as expected for manual epiparameter", {
   ep <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -91,7 +91,7 @@ test_that("get_citation works as expected for epiparameter missing citation", {
   ep <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -126,7 +126,7 @@ test_that("get_citation produces warnings with extra arguments", {
 
 test_that(".get_mixture_family works as expected", {
   ebola_si <- suppressMessages(
-    epiparameter_db(disease = "Ebola", epi_dist = "serial interval")
+    epiparameter_db(disease = "Ebola", epi_name = "serial interval")
   )
   ep <- aggregate(ebola_si)
   expect_identical(
@@ -135,14 +135,14 @@ test_that(".get_mixture_family works as expected", {
   )
   incub <- suppressMessages(
     epiparameter_db(
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       subset = is_parameterised
     )
   )
   incub <- suppressMessages(
     epiparameter_db(
       disease = "Mpox",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       subset = is_parameterised
     )
   )

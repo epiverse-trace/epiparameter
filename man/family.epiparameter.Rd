@@ -25,7 +25,7 @@ output irrespective of the internal distribution class.
 # example with continuous distribution
 ep <- epiparameter(
   disease = "ebola",
-  epi_dist = "incubation_period",
+  epi_name = "incubation_period",
   prob_distribution = create_prob_distribution(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
@@ -36,7 +36,7 @@ family(ep)
 # example with discretised distribution
 ep <- epiparameter(
   disease = "ebola",
-  epi_dist = "incubation_period",
+  epi_name = "incubation_period",
   prob_distribution = create_prob_distribution(
     prob_distribution = "lnorm",
     prob_distribution_params = c(meanlog = 1, sdlog = 1),

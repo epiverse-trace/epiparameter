@@ -2,7 +2,7 @@ test_that("is_parameterised works as expected with epiparameter parameters", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation_period",
+    epi_name = "incubation_period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -15,7 +15,7 @@ test_that("is_parameterised works as expected without epiparameter parameters", 
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation_period"
+    epi_name = "incubation_period"
   ))
   expect_false(is_parameterised(ep))
 })
@@ -29,7 +29,7 @@ test_that("is_parameterised works as expected for multi_epiparameter", {
 test_that("is_parameterised works as expected with multi_epiparameter parameters", {
   ep <- suppressMessages(
     epiparameter_db(
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       author = "McAloon",
       single_epiparameter = TRUE
     )
@@ -39,7 +39,7 @@ test_that("is_parameterised works as expected with multi_epiparameter parameters
 
 test_that("is_parameterised works as expected without parameters", {
   ep <- suppressMessages(
-    epiparameter_db(epi_dist = "incubation period", author = "Alene")
+    epiparameter_db(epi_name = "incubation period", author = "Alene")
   )
   expect_false(is_parameterised(ep))
 })

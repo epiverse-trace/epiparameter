@@ -10,12 +10,12 @@
       # List of 125 <epiparameter> objects
       Number of diseases: 23
       > Adenovirus > COVID-19 > Chikungunya > Dengue > Ebola Virus Disease > Hantavirus Pulmonary Syndrome > Human Coronavirus > Influenza > Japanese Encephalitis > MERS > Marburg Virus Disease > Measles > Mpox > Parainfluenza > Pneumonic Plague > RSV > Rhinovirus > Rift Valley Fever > SARS > Smallpox > West Nile Fever > Yellow Fever > Zika Virus Disease
-      Number of epi distributions: 13
+      Number of epi parameters: 13
       > case fatality risk > generation time > hospitalisation to death > hospitalisation to discharge > incubation period > notification to death > notification to discharge > offspring distribution > onset to death > onset to discharge > onset to hospitalisation > onset to ventilation > serial interval
       [[1]]
       Disease: Adenovirus
       Pathogen: Adenovirus
-      Epi Distribution: incubation period
+      Epi Parameter: incubation period
       Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
       "Incubation periods of acute respiratory viral infections: a systematic
       review." _The Lancet Infectious Diseases_.
@@ -29,7 +29,7 @@
       [[2]]
       Disease: Human Coronavirus
       Pathogen: Human_Cov
-      Epi Distribution: incubation period
+      Epi Parameter: incubation period
       Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
       "Incubation periods of acute respiratory viral infections: a systematic
       review." _The Lancet Infectious Diseases_.
@@ -43,7 +43,7 @@
       [[3]]
       Disease: SARS
       Pathogen: SARS-Cov-1
-      Epi Distribution: incubation period
+      Epi Parameter: incubation period
       Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
       "Incubation periods of acute respiratory viral infections: a systematic
       review." _The Lancet Infectious Diseases_.
@@ -62,7 +62,7 @@
 # epiparameter_db print method works as expected for <= 5 <epiparameter>
 
     Code
-      epiparameter_db(disease = "SARS", epi_dist = "offspring distribution")
+      epiparameter_db(disease = "SARS", epi_name = "offspring distribution")
     Message
       Returning 2 results that match the criteria (2 are parameterised). 
       Use subset to filter by entry variables or single_epiparameter to return a single entry. 
@@ -71,12 +71,12 @@
       # List of 2 <epiparameter> objects
       Number of diseases: 1
       > SARS
-      Number of epi distributions: 1
+      Number of epi parameters: 1
       > offspring distribution
       [[1]]
       Disease: SARS
       Pathogen: SARS-Cov-1
-      Epi Distribution: offspring distribution
+      Epi Parameter: offspring distribution
       Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). "Superspreading and
       the effect of individual variation on disease emergence." _Nature_.
       doi:10.1038/nature04153 <https://doi.org/10.1038/nature04153>.
@@ -88,7 +88,7 @@
       [[2]]
       Disease: SARS
       Pathogen: SARS-Cov-1
-      Epi Distribution: offspring distribution
+      Epi Parameter: offspring distribution
       Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). "Superspreading and
       the effect of individual variation on disease emergence." _Nature_.
       doi:10.1038/nature04153 <https://doi.org/10.1038/nature04153>.

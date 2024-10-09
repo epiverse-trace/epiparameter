@@ -1,7 +1,7 @@
 ep <- suppressMessages(
   epiparameter(
     disease = "Ebola",
-    epi_dist = "incubation period",
+    epi_name = "incubation period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 1, sdlog = 1)

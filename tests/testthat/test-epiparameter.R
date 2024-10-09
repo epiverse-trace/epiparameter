@@ -2,7 +2,7 @@ test_that("epiparameter works with minimal viable input", {
   # message about missing citation suppressed
   ebola_dist <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -19,7 +19,7 @@ test_that("epiparameter works with all arguments set", {
     epiparameter(
       disease = "MERS",
       pathogen = "MERS_CoV",
-      epi_dist = "serial_interval",
+      epi_name = "serial_interval",
       prob_distribution = create_prob_distribution(
         prob_distribution = "lnorm",
         prob_distribution_params = c(meanlog = 2, sdlog = 1)
@@ -87,7 +87,7 @@ test_that("epiparameter works with default helper functions", {
   sars_dist <- suppressMessages(epiparameter(
     disease = "SARS",
     pathogen = "SARS_CoV",
-    epi_dist = "onset_to_death",
+    epi_name = "onset_to_death",
     prob_distribution = create_prob_distribution(
       prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 2, sdlog = 1),
@@ -113,7 +113,7 @@ test_that("epiparameter fails as expected", {
   expect_error(
     epiparameter(
       disease = 1,
-      epi_dist = "incubation",
+      epi_name = "incubation",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -128,14 +128,14 @@ test_that("epiparameter fails as expected", {
   expect_error(
     epiparameter(
       disease = "ebola",
-      epi_dist = 1,
+      epi_name = 1,
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
       )
     ),
     regexp = paste0(
-      "Assertion on 'epi_dist' failed: Must be of type ",
+      "Assertion on 'epi_name' failed: Must be of type ",
       "'string', not 'double'."
     )
   )
@@ -144,7 +144,7 @@ test_that("epiparameter fails as expected", {
     suppressMessages(
       epiparameter(
         disease = "ebola",
-        epi_dist = "incubation",
+        epi_name = "incubation",
         prob_distribution = 1
       )
     ),
@@ -158,7 +158,7 @@ test_that("epiparameter fails as expected", {
     suppressMessages(
       epiparameter(
         disease = "ebola",
-        epi_dist = "incubation",
+        epi_name = "incubation",
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = "NA", scale = 1)
       ),
@@ -173,7 +173,7 @@ test_that("epiparameter fails as expected", {
 test_that("epiparameter.print works as expected", {
   expect_snapshot(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -184,7 +184,7 @@ test_that("epiparameter.print works as expected", {
 test_that("epiparameter.print works as expected", {
   expect_snapshot(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -196,7 +196,7 @@ test_that("epiparameter.print works as expected", {
 test_that("epiparameter.plot does not produce an error", {
   ebola_dist <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -216,7 +216,7 @@ test_that("epiparameter.plot does not produce an error", {
 test_that("epiparameter.plot works with non-default x-axis", {
   ebola_dist <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -247,7 +247,7 @@ test_that("new_epiparameter works with minimal viable input", {
     new_epiparameter(
       disease = "ebola",
       pathogen = "ebola virus",
-      epi_dist = "incubation",
+      epi_name = "incubation",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -284,7 +284,7 @@ test_that("assert_epiparameter passes when expected", {
     new_epiparameter(
       disease = "ebola",
       pathogen = "ebola_virus",
-      epi_dist = "incubation",
+      epi_name = "incubation",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distributions_params = c(shape = 1, scale = 1),
@@ -322,7 +322,7 @@ test_that("assert_epiparameter catches class faults when expected", {
   epiparameter_obj <- new_epiparameter(
     disease = "ebola",
     pathogen = "ebola_virus",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_dist_params = c(shape = 1, scale = 1),
@@ -355,7 +355,7 @@ test_that("assert_epiparameter catches class faults when expected", {
   epiparameter_obj <- new_epiparameter(
     disease = "ebola",
     pathogen = "ebola_virus",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution =  "gamma",
       prob_dist_params = c(shape = 1, scale = 1),
@@ -388,7 +388,7 @@ test_that("assert_epiparameter catches class faults when expected", {
   epiparameter_obj <- new_epiparameter(
     disease = "ebola",
     pathogen = "ebola_virus",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_dist_params = c(shape = 1, scale = 1),
@@ -411,7 +411,7 @@ test_that("assert_epiparameter catches class faults when expected", {
     auto_calc_params = FALSE
   )
 
-  epiparameter_obj$epi_dist <- c("incubation", "period")
+  epiparameter_obj$epi_name <- c("incubation", "period")
 
   expect_error(
     assert_epiparameter(epiparameter_obj),
@@ -453,7 +453,7 @@ test_that("density works as expected on continuous epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution =  "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -486,7 +486,7 @@ test_that("density works as expected on discrete epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
@@ -521,7 +521,7 @@ test_that("density works as expected on continuous epiparameter object with vect
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -540,7 +540,7 @@ test_that("density works as expected on discrete epiparameter object with vector
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
@@ -559,7 +559,7 @@ test_that("cdf works as expected on continuous epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -596,7 +596,7 @@ test_that("cdf works as expected on discrete epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
@@ -635,7 +635,7 @@ test_that("cdf works as expected on continuous epiparameter object with vector
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -655,7 +655,7 @@ test_that("cdf works as expected on discrete epiparameter object with vector
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
@@ -675,7 +675,7 @@ test_that("quantile works as expected on continuous epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -703,7 +703,7 @@ test_that("quantile works as expected on discrete epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
@@ -733,7 +733,7 @@ test_that("quantile works as expected on continuous epiparameter object with vec
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -752,7 +752,7 @@ test_that("quantile works as expected on discrete epiparameter object with vecto
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
@@ -771,7 +771,7 @@ test_that("generate works as expected on continuous epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -794,7 +794,7 @@ test_that("generate works as expected on discrete epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
@@ -819,7 +819,7 @@ test_that("generate fails as expected on continuous epiparameter object with vec
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -835,7 +835,7 @@ test_that("generate fails as expected on discrete epiparameter object with vecto
   ebola_dist <- suppressMessages(
     epiparameter(
       disease = "ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1),
@@ -851,7 +851,7 @@ test_that("is_epiparameter returns TRUE when expected", {
   # suppress message about citation
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "serial_interval",
+    epi_name = "serial_interval",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -864,7 +864,7 @@ test_that("is_epiparameter returns TRUE when expected", {
 test_that("is_epiparameter returns FALSE when expected", {
   false_ep <- list(
     disease = "ebola",
-    epi_dist = "serial_interval",
+    epi_name = "serial_interval",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -878,7 +878,7 @@ test_that("discretise works as expected on continuous gamma", {
   # suppress message about citation
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -895,7 +895,7 @@ test_that("discretise works as expected on continuous lognormal", {
   # suppress message about citation
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 1, sdlog = 1)
@@ -912,7 +912,7 @@ test_that("discretise works as expected on discretised dist", {
   # suppress message about citation
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -933,7 +933,7 @@ test_that("discretise works as expected on truncated dist", {
   # suppress message about citation
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -972,7 +972,7 @@ test_that("parameters works as expected on continuous gamma", {
   # suppress message about citation
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -988,7 +988,7 @@ test_that("parameters works as expected on continuous lognormal", {
   # suppress message about citation
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 1, sdlog = 1)
@@ -1004,7 +1004,7 @@ test_that("parameters works as expected on discretised dist", {
   # suppress message about citation
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -1021,7 +1021,7 @@ test_that("parameters works as expected on truncated dist", {
   # suppress message about citation
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -1056,7 +1056,7 @@ test_that("family works as expected for distributional", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation_period",
+    epi_name = "incubation_period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 1, sdlog = 1)
@@ -1069,7 +1069,7 @@ test_that("family works as expected for distcrete", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation_period",
+    epi_name = "incubation_period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -1083,7 +1083,7 @@ test_that("family works as expected for distributional truncated", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation_period",
+    epi_name = "incubation_period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "weibull",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -1097,7 +1097,7 @@ test_that("is_truncated works as expected for continuous distributions", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation_period",
+    epi_name = "incubation_period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -1110,7 +1110,7 @@ test_that("is_truncated works as expected for discretised distributions", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation_period",
+    epi_name = "incubation_period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -1124,7 +1124,7 @@ test_that("is_truncated works as expected for truncated distributions", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation_period",
+    epi_name = "incubation_period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -1138,7 +1138,7 @@ test_that("is_continuous works as expected for continuous distributions", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation period",
+    epi_name = "incubation period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "lnorm",
       prob_distribution_params = c(meanlog = 1, sdlog = 1)
@@ -1148,7 +1148,7 @@ test_that("is_continuous works as expected for continuous distributions", {
 
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation period",
+    epi_name = "incubation period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -1161,7 +1161,7 @@ test_that("is_continuous works as expected for discrete distributions", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "offspring distribution",
+    epi_name = "offspring distribution",
     prob_distribution = create_prob_distribution(
       prob_distribution = "nbinom",
       prob_distribution_params = c(mean = 2, dispersion = 0.5)
@@ -1171,7 +1171,7 @@ test_that("is_continuous works as expected for discrete distributions", {
 
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation period",
+    epi_name = "incubation period",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1),
@@ -1185,7 +1185,7 @@ test_that("mean works as expected when mean is supplied", {
   ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = "gamma",
       summary_stats = create_summary_stats(mean = 5)
     )
@@ -1197,7 +1197,7 @@ test_that("mean works as expected with params and no mean", {
   ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = create_prob_distribution(
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = 1, scale = 1)
@@ -1211,7 +1211,7 @@ test_that("mean works as expected with no params and no mean", {
   ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = "gamma"
     )
   )
@@ -1222,7 +1222,7 @@ test_that("mean works for corrupted epiparameter", {
   ep <- suppressMessages(
     epiparameter(
       disease = "Ebola",
-      epi_dist = "incubation_period",
+      epi_name = "incubation_period",
       prob_distribution = "gamma"
     )
   )
@@ -1234,7 +1234,7 @@ test_that("as.function works as expected for density", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -1249,7 +1249,7 @@ test_that("as.function works as expected for cdf", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -1264,7 +1264,7 @@ test_that("as.function works as expected for generate", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -1279,7 +1279,7 @@ test_that("as.function works as expected for quantile", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -1294,7 +1294,7 @@ test_that("as.function fails as expected", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -1308,7 +1308,7 @@ test_that("as.function fails as expected", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = "gamma"
   ))
   expect_error(
@@ -1321,7 +1321,7 @@ test_that("as.data.frame works for <epiparameter>", {
   # message about missing citation suppressed
   ep <- suppressMessages(epiparameter(
     disease = "ebola",
-    epi_dist = "incubation",
+    epi_name = "incubation",
     prob_distribution = create_prob_distribution(
       prob_distribution = "gamma",
       prob_distribution_params = c(shape = 1, scale = 1)
@@ -1332,7 +1332,7 @@ test_that("as.data.frame works for <epiparameter>", {
   expect_identical(dim(df), c(1L, 10L))
   expect_identical(
     colnames(df),
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "uncertainty", "summary_stats", "citation", "metadata", "method_assess",
       "notes")
   )
@@ -1346,7 +1346,7 @@ test_that("as.data.frame works for <epiparameter> from db", {
   expect_identical(dim(df), c(1L, 10L))
   expect_identical(
     colnames(df),
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "uncertainty", "summary_stats", "citation", "metadata", "method_assess",
       "notes")
   )

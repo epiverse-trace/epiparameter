@@ -34,7 +34,7 @@ discretised distribution (using an object from the \code{{distcrete}} package).
 \examples{
 ebola_incubation <- epiparameter(
   disease = "ebola",
-  epi_dist = "incubation_period",
+  epi_name = "incubation_period",
   prob_distribution = create_prob_distribution(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)

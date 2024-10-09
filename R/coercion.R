@@ -61,7 +61,7 @@ as.data.frame.epiparameter <- function(x, ...) {
   data.frame(
     disease = x$disease,
     pathogen = x$pathogen,
-    epi_distribution = x$epi_dist,
+    epi_name = x$epi_name,
     prob_distribution = I(list(prob_distribution = x$prob_distribution)),
     uncertainty = I(list(uncertainty = x$uncertainty)),
     summary_stats = I(list(summary_stats = x$summary_stats)),
@@ -159,7 +159,7 @@ is_epiparameter_df <- function(x) {
   valid_colnames <- identical(
     colnames(x),
     c(
-      "disease", "pathogen", "epi_distribution", "prob_distribution",
+      "disease", "pathogen", "epi_name", "prob_distribution",
       "uncertainty", "summary_stats", "citation", "metadata", "method_assess",
       "notes"
     )
@@ -219,7 +219,7 @@ is_epiparameter_df <- function(x) {
   epiparameter(
     disease = x$disease,
     pathogen = x$pathogen,
-    epi_dist = x$epi_distribution,
+    epi_name = x$epi_name,
     prob_distribution = create_prob_distribution(
       prob_distribution = family(x$prob_distribution[[1]]),
         prob_distribution_params = prob_distribution_params,
@@ -265,7 +265,7 @@ is_epiparameter_df <- function(x) {
     "Ebola virus" = "Ebola Virus Disease",
     stop("Pathogen in epireview not recognised", call. = FALSE)
   )
-  epi_dist <- .unique(x$parameter_type, var_name = "parameter types")
+  epi_name <- .unique(x$parameter_type, var_name = "parameter types")
   prob_dist <- .unique(x$distribution_type, var_name = "distribution types")
   sd_ <- NULL
   if (rlang::is_na(prob_dist)) {
@@ -431,7 +431,7 @@ is_epiparameter_df <- function(x) {
   epiparameter(
     disease = disease,
     pathogen = pathogen,
-    epi_dist = epi_dist,
+    epi_name = epi_name,
     prob_distribution = create_prob_distribution(
       prob_distribution = prob_dist,
       prob_distribution_params = prob_dist_params

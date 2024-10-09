@@ -20,12 +20,12 @@
 #' epiparameter_list <- epiparameter_db(disease = "COVID-19")
 #' parameter_tbl(
 #'   multi_epiparameter = epiparameter_list,
-#'   epi_dist = "incubation period"
+#'   epi_name = "incubation period"
 #' )
 parameter_tbl <- function(multi_epiparameter,
                           disease = "all",
                           pathogen = "all",
-                          epi_dist = "all") {
+                          epi_name = "all") {
   # wrap <epiparameter> in list for apply functions
   if (is_epiparameter(multi_epiparameter)) {
     multi_epiparameter <- list(multi_epiparameter)
@@ -43,7 +43,7 @@ parameter_tbl <- function(multi_epiparameter,
     multi_epiparameter = multi_epiparameter,
     disease = disease,
     pathogen = pathogen,
-    epi_dist = epi_dist
+    epi_name = epi_name
   )
 
   disease <- vapply(
@@ -52,8 +52,8 @@ parameter_tbl <- function(multi_epiparameter,
   pathogen <- vapply(
     multi_epiparameter, "[[", "pathogen", FUN.VALUE = character(1)
   )
-  epi_dist <- vapply(
-    multi_epiparameter, "[[", "epi_dist",
+  epi_name <- vapply(
+    multi_epiparameter, "[[", "epi_name",
     FUN.VALUE = character(1)
   )
   prob_dist <- vapply(
@@ -96,7 +96,7 @@ parameter_tbl <- function(multi_epiparameter,
   df <- data.frame(
     disease = disease,
     pathogen = pathogen,
-    epi_distribution = epi_dist,
+    epi_name = epi_name,
     prob_distribution = prob_dist,
     author = short_author,
     year = year,

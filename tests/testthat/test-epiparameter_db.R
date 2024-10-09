@@ -1,7 +1,7 @@
 test_that("epiparameter_db works as expected", {
   # suppress message about citation
   db <- suppressMessages(
-    epiparameter_db(disease = "influenza", epi_dist = "serial interval")
+    epiparameter_db(disease = "influenza", epi_name = "serial interval")
   )
 
   expect_s3_class(db, class = "epiparameter")
@@ -13,7 +13,7 @@ test_that("epiparameter_db works as expected with author specified", {
   ep <- suppressMessages(
     epiparameter_db(
       disease = "influenza",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       author = "Ghani"
     )
   )
@@ -27,7 +27,7 @@ test_that("epiparameter_db works as expected with subsetting", {
   ep <- suppressMessages(
     epiparameter_db(
       disease = "influenza",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       subset = sample_size > 100
     )
   )
@@ -40,7 +40,7 @@ test_that("epiparameter_db works as expected with functional subsetting", {
   db <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       subset = is_parameterised
     )
   )
@@ -55,7 +55,7 @@ test_that("epiparameter_db works as expected with single_epiparameter as TRUE", 
   ep <- suppressMessages(
     epiparameter_db(
       disease = "influenza",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       single_epiparameter = TRUE
     )
   )
@@ -69,7 +69,7 @@ test_that("epiparameter_db chooses truncated with single_epiparameter as TRUE", 
   ep <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
-      epi_dist = "onset to death",
+      epi_name = "onset to death",
       single_epiparameter = TRUE
     )
   )
@@ -82,7 +82,7 @@ test_that("epiparameter_db works as expected with subsetting and single_epiparam
   ep <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       subset = sample_size > 50,
       single_epiparameter = TRUE
     )
@@ -96,7 +96,7 @@ test_that("epiparameter_db works as expected with subsetting and author", {
   db <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       author = "McAloon",
       subset = sample_size > 10
     )
@@ -110,7 +110,7 @@ test_that("epiparameter_db works as expected with subsetting by prod_dist", {
   ep <- suppressMessages(
     epiparameter_db(
       disease = "COVID-19",
-      epi_dist = "serial interval",
+      epi_name = "serial interval",
       author = "Nishiura",
       subset = prob_dist == "weibull"
     )
@@ -125,7 +125,7 @@ test_that("epiparameter_db works as expected with subsetting by pathogen", {
   db <- suppressMessages(
     epiparameter_db(
       pathogen = "SARS-CoV-2",
-      epi_dist = "incubation period"
+      epi_name = "incubation period"
     )
   )
 
@@ -137,7 +137,7 @@ test_that("epiparameter_db fails as expected when author not recognised", {
   expect_error(
     epiparameter_db(
       disease = "influenza",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       author = "Lessler_et_al"
     ),
     regexp = "Parameters by Lessler_et_al are not available for influenza"
@@ -146,16 +146,16 @@ test_that("epiparameter_db fails as expected when author not recognised", {
 
 test_that("epiparameter_db fails as expected when disease not recognised", {
   expect_error(
-    epiparameter_db(disease = "COVI-19", epi_dist = "incubation period"),
+    epiparameter_db(disease = "COVI-19", epi_name = "incubation period"),
     regexp = "incubation period distribution not available for COVI-19"
   )
 })
 
-test_that("epiparameter_db fails as expected when epi_dist not recognised", {
+test_that("epiparameter_db fails as expected when epi_name not recognised", {
   expect_error(
     epiparameter_db(
       disease = "influenza",
-      epi_dist = "delay dist"
+      epi_name = "delay dist"
     ),
     regexp = "delay dist distribution not available for influenza"
   )
@@ -165,7 +165,7 @@ test_that("epiparameter_db fails as expected with no entry in the database", {
   expect_error(
     epiparameter_db(
       disease = "RSV",
-      epi_dist = "serial interval"
+      epi_name = "serial interval"
     ),
     regexp = "No entries in the database meet the search criteria."
   )
@@ -175,7 +175,7 @@ test_that("epiparameter_db gives message as expected with multiple entries", {
   expect_message(
     epiparameter_db(
       disease = "influenza",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       author = "Reich"
     ),
     regexp = "(Returning)*(results that match the criteria)"
@@ -186,7 +186,7 @@ test_that("epiparameter_db fails as expected when subset given as string", {
   expect_error(
     epiparameter_db(
       disease = "influenza",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       subset = "author == 'Lessler_et_al'"
     ),
     regexp = "(Subsetting is done with expressions)"
@@ -197,7 +197,7 @@ test_that("epiparameter_db fails as expected when subset returns no results", {
   expect_error(
     epiparameter_db(
       disease = "covid-19",
-      epi_dist = "incubation period",
+      epi_name = "incubation period",
       subset = year == 2018
     ),
     regexp = "No entries in the database meet the search criteria."
@@ -247,7 +247,7 @@ test_that("as.data.frame works for <multi_epiparameter>", {
   expect_identical(dim(df), c(125L, 10L))
   expect_identical(
     colnames(df),
-    c("disease", "pathogen", "epi_distribution", "prob_distribution",
+    c("disease", "pathogen", "epi_name", "prob_distribution",
       "uncertainty", "summary_stats", "citation", "metadata", "method_assess",
       "notes")
   )

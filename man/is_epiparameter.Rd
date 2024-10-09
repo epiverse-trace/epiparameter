@@ -19,7 +19,7 @@ Check object is an \verb{<epiparameter>}
 \examples{
 ep <- epiparameter(
   disease = "ebola",
-  epi_dist = "serial_interval",
+  epi_name = "serial_interval",
   prob_distribution = create_prob_distribution(
     prob_distribution = "gamma",
     prob_distribution_params = c(shape = 1, scale = 1)
@@ -30,7 +30,7 @@ is_epiparameter(ep)
 
 false_ep <- list(
   disease = "ebola",
-  epi_dist = "serial_interval",
+  epi_name = "serial_interval",
   prob_distribution = "gamma",
   prob_distribution_params = c(shape = 1, scale = 1)
 )

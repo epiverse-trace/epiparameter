@@ -19,7 +19,7 @@ tbl <- lapply(db, function(x) {
   data.frame(
     disease = x$disease,
     pathogen = x$pathogen,
-    epi_dist = x$epi_dist,
+    epi_name = x$epi_name,
     citation_info = paste0(
       epiparameter:::.citet(x$citation), # nolint undesirable_operator_linter
       ", DOI: ",

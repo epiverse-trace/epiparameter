@@ -29,7 +29,7 @@ get_parameters <- function(x, ...) {
 #' @examples
 #' ep <- epiparameter_db(
 #'   disease = "COVID-19",
-#'   epi_dist = "serial interval",
+#'   epi_name = "serial interval",
 #'   single_epiparameter = TRUE
 #' )
 #' get_parameters(ep)
