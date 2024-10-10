@@ -889,7 +889,8 @@ is_continuous <- function(x) {
       is_epiparameter(x)
   )
   # get individual distributions out of mixture to check if continuous
-  if (family(x) == "mixture") {
+  # isTRUE to control for family returning NA for unparameterised
+  if (isTRUE(family(x) == "mixture")) {
     fam <- .get_mixture_family(x)
   } else {
     fam <- family(x)
