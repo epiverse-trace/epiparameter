@@ -285,17 +285,6 @@ references:
   year: '2024'
   doi: 10.32614/CRAN.package.ggplot2
 - type: software
-  title: RColorBrewer
-  abstract: 'RColorBrewer: ColorBrewer Palettes'
-  notes: Suggests
-  repository: https://CRAN.R-project.org/package=RColorBrewer
-  authors:
-  - family-names: Neuwirth
-    given-names: Erich
-    email: erich.neuwirth@univie.ac.at
-  year: '2024'
-  doi: 10.32614/CRAN.package.RColorBrewer
-- type: software
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
   notes: Suggests
@@ -321,6 +310,17 @@ references:
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2024'
   doi: 10.32614/CRAN.package.knitr
+- type: software
+  title: RColorBrewer
+  abstract: 'RColorBrewer: ColorBrewer Palettes'
+  notes: Suggests
+  repository: https://CRAN.R-project.org/package=RColorBrewer
+  authors:
+  - family-names: Neuwirth
+    given-names: Erich
+    email: erich.neuwirth@univie.ac.at
+  year: '2024'
+  doi: 10.32614/CRAN.package.RColorBrewer
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
