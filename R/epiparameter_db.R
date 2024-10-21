@@ -263,9 +263,10 @@ epidist_db <- function(disease = "all",
                        subset = NULL,
                        single_epiparameter = FALSE) {
   lifecycle::deprecate_warn(
-    when = "0.3.0",
+    when = "v0.3.0",
     what = "epidist_db()",
-    with = "epiparameter_db()"
+    with = "epiparameter_db()",
+    details = "Function will be removed in v0.5.0."
   )
 
   # DUE TO NON-STANDARD EVALUATION epidist_db() CANNOT CALL epiparameter_db()
