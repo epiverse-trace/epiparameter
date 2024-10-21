@@ -124,13 +124,24 @@ test_that("get_citation produces warnings with extra arguments", {
   )
 })
 
-test_that(".get_mixture_family works as expected", {
+test_that(".distributional_family works as expected for untransformed", {
+  ep <- suppressMessages(
+    epiparameter_db(
+      disease = "Ebola",
+      epi_name = "serial interval",
+      single_epiparameter = TRUE
+    )
+  )
+  expect_identical(.distributional_family(ep$prob_distribution), "gamma")
+})
+
+test_that(".distributional_family works as expected for transformed", {
   ebola_si <- suppressMessages(
     epiparameter_db(disease = "Ebola", epi_name = "serial interval")
   )
   ep <- aggregate(ebola_si)
   expect_identical(
-    .get_mixture_family(ep),
+    .distributional_family(ep$prob_distribution),
     rep("gamma", times = length(ebola_si))
   )
   incub <- suppressMessages(
@@ -148,7 +159,22 @@ test_that(".get_mixture_family works as expected", {
   )
   ep <- aggregate(incub)
   expect_identical(
-    .get_mixture_family(ep),
+    .distributional_family(ep$prob_distribution),
     c(rep("lnorm", 2), "gamma", rep("lnorm", 2))
+  )
+
+  ep <- epiparameter(
+    disease = "Ebola",
+    epi_name = "SI",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = "lnorm",
+      prob_distribution_params = c(meanlog = 2, sdlog = 2),
+      truncation = 10
+    )
+  )
+  expect_identical(.distributional_family(ep$prob_distribution), "lnorm")
+  expect_identical(
+    .distributional_family(ep$prob_distribution, base_dist = FALSE),
+    "truncated"
   )
 })
