@@ -149,9 +149,7 @@ test_that("epiparameter fails as expected", {
         prob_distribution = 1
       )
     ),
-    regexp = paste0(
-      "epiparameter must contain a <distribution> or <distcrete> or NA"
-    )
+    regexp = "(<epiparameter> $prob_distribution must contain)*(<distribution>)"
   )
 
   expect_error(
@@ -371,7 +369,7 @@ test_that("assert_epiparameter catches class faults when expected", {
 
   expect_error(
     assert_epiparameter(epiparameter_obj),
-    regexp = "Object is missing disease"
+    regexp = "(<epiparameter> must contain $disease)*($citation)*(<bibentry>)"
   )
 
   epiparameter_obj <- new_epiparameter(
@@ -404,7 +402,7 @@ test_that("assert_epiparameter catches class faults when expected", {
 
   expect_error(
     assert_epiparameter(epiparameter_obj),
-    regexp = "(epiparameter must contain a disease)"
+    regexp = "(<epiparameter> must contain one disease)"
   )
 
   epiparameter_obj <- new_epiparameter(
@@ -437,14 +435,14 @@ test_that("assert_epiparameter catches class faults when expected", {
 
   expect_error(
     assert_epiparameter(epiparameter_obj),
-    regexp = "epiparameter must contain an epidemiological distribution"
+    regexp = "(<epiparameter> must contain one epidemiological parameter)"
   )
 })
 
 test_that("assert_epiparameter fails as expected with input class", {
   expect_error(
     assert_epiparameter(1),
-    regexp = "Object should be of class epiparameter"
+    regexp = "(Object should be of class <epiparameter>)"
   )
 })
 
@@ -456,19 +454,21 @@ test_that("test_epiparameter returns TRUE as expected", {
 })
 
 test_that("test_epiparameter returns FALSE as expected", {
-  expect_false(test_epiparameter(1))
-  suppressMessages(
-    ep <- epiparameter_db(single_epiparameter = TRUE)
-  )
-  ep1 <- ep
-  ep1$disease <- NULL
-  expect_false(test_epiparameter(ep1))
-  ep2 <- ep
-  ep2$disease <- 1
-  expect_false(test_epiparameter(ep2))
-  ep3 <- ep
-  ep3$citation <- "reference"
-  expect_false(test_epiparameter(ep3))
+  suppressMessages({
+    expect_false(test_epiparameter(1))
+    suppressMessages(
+      ep <- epiparameter_db(single_epiparameter = TRUE)
+    )
+    ep1 <- ep
+    ep1$disease <- NULL
+    expect_false(test_epiparameter(ep1))
+    ep2 <- ep
+    ep2$disease <- 1
+    expect_false(test_epiparameter(ep2))
+    ep3 <- ep
+    ep3$citation <- "reference"
+    expect_false(test_epiparameter(ep3))
+  })
 })
 
 test_that("density works as expected on continuous epiparameter object", {
