@@ -198,10 +198,17 @@ epiparameter_db <- function(disease = "all",
     if (sum(is_param) >= 1) {
       multi_epiparameter <- multi_epiparameter[is_param]
     }
-    # select entries that accounted for truncation
+    # select delay distribution entries that accounted for truncation
     idx <- vapply(
       multi_epiparameter,
-      function(x) x$method_assess$right_truncated,
+      function(x) {
+        # only delay distributions have $right_truncated
+        ifelse(
+          test = "right_truncated" %in% names(x$method_assess),
+          yes = x$method_assess$right_truncated,
+          no = FALSE
+        )
+      },
       FUN.VALUE = logical(1)
     )
     if (sum(idx) >= 1) {
@@ -357,10 +364,17 @@ epidist_db <- function(disease = "all",
     if (sum(is_param) >= 1) {
       multi_epiparameter <- multi_epiparameter[is_param]
     }
-    # select entries that accounted for truncation
+    # select delay distribution entries that accounted for truncation
     idx <- vapply(
       multi_epiparameter,
-      function(x) x$method_assess$right_truncated,
+      function(x) {
+        # only delay distributions have $right_truncated
+        ifelse(
+          test = "right_truncated" %in% names(x$method_assess),
+          yes = x$method_assess$right_truncated,
+          no = FALSE
+        )
+      },
       FUN.VALUE = logical(1)
     )
     if (sum(idx) >= 1) {
