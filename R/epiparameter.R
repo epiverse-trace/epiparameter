@@ -727,6 +727,10 @@ discretise.default <- function(x, ...) {
 #'
 #' @param object An `<epiparameter>` object.
 #' @inheritParams stats::family
+#' @param base_dist A boolean `logical` for whether to return the name of a
+#' transformed distribution (e.g. `"mixture"` or `"truncated"`) or the
+#' underlying distribution type (e.g. `"gamma"` or `"lnorm"`). Default is
+#' `FALSE`.
 #'
 #' @return A character string with the name of the distribution, or `NA` when
 #' the `<epiparameter>` object is unparameterised.
@@ -756,38 +760,19 @@ discretise.default <- function(x, ...) {
 #'   )
 #' )
 #' family(ep)
-family.epiparameter <- function(object, ...) {
-  if (inherits(object$prob_distribution, "distcrete")) {
-    prob_dist <- object$prob_distribution$name
-  } else if (inherits(object$prob_distribution, "distribution")) {
-    if (is_truncated(object)) {
-      prob_dist <- gsub(
-        pattern = "dist_",
-        replacement = "",
-        x = class(unclass(unclass(object$prob_distribution)[[1]])[[1]])[1],
-        fixed = TRUE
-      )
-    } else {
-      prob_dist <- stats::family(object$prob_distribution)
-    }
-  } else if (is.character(object$prob_distribution)) {
-    prob_dist <- object$prob_distribution
-  } else {
-    return(NA)
-  }
+family.epiparameter <- function(object, ..., base_dist = FALSE) {
+  checkmate::assert_logical(base_dist, any.missing = FALSE, len = 1)
+  if (inherits(object$prob_distribution, "distcrete"))
+    return(object$prob_distribution$name)
 
-  prob_dist <- switch(prob_dist,
-    lognormal = "lnorm",
-    negbin = "nbinom",
-    geometric = "geom",
-    poisson = "pois",
-    normal = "norm",
-    exponential = "exp",
-    prob_dist
-  )
+  if (inherits(object$prob_distribution, "distribution"))
+    return(.distributional_family(object$prob_distribution, base_dist))
 
-  # return prob dist
-  prob_dist
+  if (is.character(object$prob_distribution))
+    return(object$prob_distribution)
+
+  # return NA when not <distcrete>, <distribution> or character
+  return(NA)
 }
 
 #' Check if distribution in `<epiparameter>` is truncated
