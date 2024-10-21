@@ -1112,7 +1112,21 @@ test_that("family works as expected for distributional truncated", {
       truncation = 10
     )
   ))
-  expect_identical(family(ep), "weibull")
+  expect_identical(family(ep), "truncated")
+})
+
+test_that("family works for distributional truncated with base_dist = TRUE", {
+  # message about missing citation suppressed
+  ep <- suppressMessages(epiparameter(
+    disease = "ebola",
+    epi_name = "incubation_period",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = "weibull",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      truncation = 10
+    )
+  ))
+  expect_identical(family(ep, base_dist = TRUE), "weibull")
 })
 
 test_that("is_truncated works as expected for continuous distributions", {
