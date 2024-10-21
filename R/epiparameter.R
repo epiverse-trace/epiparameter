@@ -303,41 +303,13 @@ epiparameter <- function(disease,
 #'
 #' @export
 assert_epiparameter <- function(x) {
-  if (!is_epiparameter(x)) {
-    stop("Object should be of class epiparameter", call. = FALSE)
-  }
-
-  list_names <- c(
-    "disease", "pathogen", "epi_name", "prob_distribution", "uncertainty",
-    "summary_stats", "citation", "metadata", "method_assess", "notes"
-  )
-  missing_list_names <- list_names[!list_names %in% attributes(x)$names]
-  if (length(missing_list_names) != 0) {
+  msg <- .validate_epiparameter(x)
+  if (length(msg) > 0) {
     stop(
-      "Object is missing ", toString(missing_list_names), call. = FALSE
+      "<epiparameter> is invalid due to:\n", sprintf("  - %s\n", msg),
+      call. = FALSE
     )
   }
-
-  # check for class invariants
-  stopifnot(
-    "epiparameter must contain a disease (single character string)" =
-    checkmate::test_string(x$disease),
-    "epiparameter must contain an epidemiological distribution" =
-      checkmate::test_string(x$epi_name),
-    "epiparameter must contain a <distribution> or <distcrete> or NA" =
-    checkmate::test_multi_class(
-      x$prob_distribution, classes = c("distribution", "distcrete")
-    ) || checkmate::test_string(x$prob_distribution, na.ok = TRUE),
-    "epidisit must contain uncertainty, summary stats and metadata" =
-      all(
-        is.list(x$uncertainty), is.list(x$summary_stats), is.list(x$metadata)
-      ),
-    "epiparameter must contain a citation" =
-      inherits(x$citation, "bibentry"),
-    "epiparameter notes must be a character string" =
-      checkmate::test_string(x$notes)
-  )
-
   invisible(x)
 }
 
@@ -346,31 +318,87 @@ assert_epiparameter <- function(x) {
 #' @param x An \R object.
 #'
 #' @return A boolean `logical` whether the object is a valid `<epiparameter>`
-#' object.
+#' object (prints message when invalid `<epiparameter>` object is provided).
 #' @export
-test_epiparameter <- function(x) { # nolint cyclocomp_linter
-  if (!is_epiparameter(x)) return(FALSE)
+test_epiparameter <- function(x) {
+  msg <- .validate_epiparameter(x)
+  if (length(msg) > 0) {
+    message("<epiparameter> is invalid due to:\n", sprintf("  - %s\n", msg))
+    return(FALSE)
+  }
+  return(TRUE)
+}
 
+#' Check if `<epiparameter>` is valid and return messages for each invalidation.
+#' Called by either [test_epiparameter()] or [assert_epiparameter()].
+#'
+#' @param x An `<epiparameter>` object.
+#'
+#' @return A `character` string.
+#' @keywords internal
+#' @noRd
+.validate_epiparameter <- function(x) {
+  msg <- character(0)
+  if (!is_epiparameter(x)) {
+    msg <- c(msg, "Object should be of class <epiparameter>.")
+  }
   list_names <- c(
     "disease", "pathogen", "epi_name", "prob_distribution", "uncertainty",
     "summary_stats", "citation", "metadata", "method_assess", "notes"
   )
   missing_list_names <- list_names[!list_names %in% attributes(x)$names]
-  if (length(missing_list_names) != 0) return(FALSE)
-
-  valid_elements <- checkmate::test_string(x$disease) &&
-    checkmate::test_string(x$epi_name) &&
-    (checkmate::test_multi_class(
+  if (length(missing_list_names) > 0) {
+    msg <- c(
+      msg,
+      paste0(
+        "<epiparameter> must contain ",
+        toString(paste0("$", missing_list_names)), "."
+      )
+    )
+  }
+  # $ operator will error if x is not a list so following checks are conditional
+  if (is.list(x)) {
+    if (!checkmate::test_string(x$disease)) {
+      msg <- c(
+        msg,
+        "<epiparameter> must contain one disease."
+      )
+    }
+    if (!checkmate::test_string(x$epi_name)) {
+      msg <- c(
+        msg, "<epiparameter> must contain one epidemiological parameter."
+      )
+    }
+    if (!(checkmate::test_multi_class(
       x$prob_distribution, classes = c("distribution", "distcrete")
-    ) || checkmate::test_string(x$prob_distribution, na.ok = TRUE)) &&
-    all(
+    ) || checkmate::test_string(x$prob_distribution, na.ok = TRUE))) {
+      msg <- c(
+        msg,
+        paste(
+          "<epiparameter> $prob_distribution must contain a <distribution>",
+          "or <distcrete> or character or NA."
+        )
+      )
+    }
+    if (!all(
       is.list(x$uncertainty), is.list(x$summary_stats), is.list(x$metadata)
-    ) &&
-    inherits(x$citation, "bibentry") &&
-    checkmate::test_string(x$notes)
-
-  if (!valid_elements) return(FALSE)
-  return(TRUE)
+    )) {
+      msg <- c(
+        msg,
+        paste(
+          "<epiparameter> must contain $uncertainty, $summary_stats and ",
+          "$metadata elements."
+        )
+      )
+    }
+    if (!inherits(x$citation, "bibentry")) {
+      msg <- c(msg, "<epiparameter> $citation must be a <bibentry> object.")
+    }
+    if (!checkmate::test_string(x$notes)) {
+      msg <- c(msg, "<epiparameter> $notes must be a character string.")
+    }
+  }
+  return(msg)
 }
 
 #' Print method for `<epiparameter>` class

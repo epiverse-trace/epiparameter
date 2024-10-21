@@ -11,7 +11,7 @@ test_epiparameter(x)
 }
 \value{
 A boolean \code{logical} whether the object is a valid \verb{<epiparameter>}
-object.
+object (prints message when invalid \verb{<epiparameter>} object is provided).
 }
 \description{
 Test whether an object is a valid \verb{<epiparameter>} object
