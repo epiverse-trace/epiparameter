@@ -197,7 +197,7 @@ is_epiparameter_df <- function(x) {
       distributional::parameters(x$prob_distribution[[1]])
     )
   }
-  if (identical(stats::family(prob_dist), "truncated")) {
+  if (identical(family(prob_dist), "truncated")) {
     truncation <- distributional::parameters(x$prob_distribution)$upper
   } else {
     truncation <- NA_real_
