@@ -814,24 +814,7 @@ is_truncated <- function(x) {
     "is_truncated only works for `<epiparameter> objects`" =
       is_epiparameter(x)
   )
-
-  # distcrete distributions cannot be truncated
-  if (inherits(x$prob_distribution, "distcrete")) {
-    return(FALSE)
-  }
-
-  # unparameterised objects cannot be truncated
-  # dont use is_parameterised due to infinite recursion
-  if (is.na(x$prob_distribution) || is.character(x$prob_distribution)) {
-    return(FALSE)
-  }
-
-  # use stats::family instead of epiparameter::family to check truncated
-  if (identical(stats::family(x$prob_distribution), "truncated")) {
-    return(TRUE)
-  } else {
-    return(FALSE)
-  }
+  return(identical(family(x), "truncated"))
 }
 
 #' Check if distribution in `<epiparameter>` is continuous
