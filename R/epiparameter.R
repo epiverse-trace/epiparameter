@@ -49,10 +49,10 @@ new_epiparameter <- function(disease = character(),
     }
   }
 
-  if (epi_name == "offspring_distribution") {
+  if (grepl(pattern = "offspring|risk", x = epi_name)) {
     method_assess <- paste(
-      "There is currently no method assessment for offspring distributions",
-      "stored in epiparameter"
+      "There is currently no method assessment for", epi_name,
+      "in {epiparameter}."
     )
   }
 
