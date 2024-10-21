@@ -4,12 +4,17 @@
 \alias{family.epiparameter}
 \title{Family method for the \verb{<epiparameter>} class}
 \usage{
-\method{family}{epiparameter}(object, ...)
+\method{family}{epiparameter}(object, ..., base_dist = FALSE)
 }
 \arguments{
 \item{object}{An \verb{<epiparameter>} object.}
 
 \item{...}{further arguments passed to methods.}
+
+\item{base_dist}{A boolean \code{logical} for whether to return the name of a
+transformed distribution (e.g. \code{"mixture"} or \code{"truncated"}) or the
+underlying distribution type (e.g. \code{"gamma"} or \code{"lnorm"}). Default is
+\code{FALSE}.}
 }
 \value{
 A character string with the name of the distribution, or \code{NA} when
