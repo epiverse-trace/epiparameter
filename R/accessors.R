@@ -138,21 +138,37 @@ get_citation.multi_epiparameter <- function(x, ...) {
   multi_bibentry
 }
 
-#' Gets the distributions names from a mixture distribution
-#' [distributional::dist_mixture()]
+#' Get the underlying distributions names from a `<distribution>` object from
+#' the \pkg{distributional} package in \R distribution naming convention.
 #'
-#' @param x An `<epiparameter>` object.
+#' @details Get and standardise distribution name. For untransformed
+#' distributions (e.g. [distributional::dist_gamma()]) it will return the
+#' distribution name. For transformed distributions (e.g.
+#' [distributional::dist_mixture()]) it will get the name of the underlying
+#' distribution(s) by default (`base_dist = TRUE`). Distribution names are
+#' returned in the \R naming style (e.g. lognormal is `"lnorm"`). When
+#' `base_dist = FALSE` transformed distributions return the name of the
+#' transformation (e.g. `"mixture"`).
+#'
+#' @param x An `<distribution>` object.
+#' @param base_dist A boolean `logical` for whether to return the name of a
+#' transformed distribution (e.g. `"mixture"` or `"truncated"`) or the
+#' underlying distribution type (e.g. `"gamma"` or `"lnorm"`). Default is
+#' `TRUE`.
 #'
 #' @return A `character` vector.
 #' @keywords internal
-#' @noRd
-.get_mixture_family <- function(x) {
-  assert_epiparameter(x)
-  fam <- vapply(
-    unclass(unclass(x$prob_distribution)[[1]])[[1]],
-    family,
-    FUN.VALUE = character(1)
-  )
+.distributional_family <- function(x, base_dist = TRUE) {
+  if (family(x) %in% c("mixture", "truncated") && base_dist) {
+    fam <- vapply(
+      distributional::parameters(x)$dist[[1]],
+      family,
+      FUN.VALUE = character(1),
+      USE.NAMES = FALSE
+    )
+  } else {
+    fam <- family(x)
+  }
   fam <- vapply(
     fam, function(x) {
       switch(x,
