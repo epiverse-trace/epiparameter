@@ -686,15 +686,8 @@ discretise.epiparameter <- function(x, ...) {
       )
       prob_dist_params <- prob_dist_params[-idx]
 
-      # trunc dist family is truncated so get prob dist by unclassing dist and
-      # extracting name
-      list_dist <- unclass(x$prob_distribution)
-      prob_dist <- gsub(
-        pattern = "dist_",
-        replacement = "",
-        x = class(list_dist[[1]][[1]])[1],
-        fixed = TRUE
-      )
+      # get underlying distribution family that's truncated
+      prob_dist <- .distributional_family(x$prob_distribution)
     }
 
     # standardise distribution parameter names
