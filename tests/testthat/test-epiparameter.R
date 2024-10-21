@@ -1,3 +1,7 @@
+suppressMessages({
+  ep <- epiparameter_db(single_epiparameter = TRUE)
+})
+
 test_that("epiparameter works with minimal viable input", {
   # message about missing citation suppressed
   ebola_dist <- suppressMessages(epiparameter(
@@ -299,176 +303,50 @@ test_that("new_epiparameter works with minimal viable input", {
   expect_s3_class(assert_epiparameter(epiparameter_obj), class = "epiparameter")
 })
 
-test_that("assert_epiparameter passes when expected", {
-  epiparameter_obj <- suppressMessages(
-    new_epiparameter(
-      disease = "ebola",
-      pathogen = "ebola_virus",
-      epi_name = "incubation",
-      prob_distribution = create_prob_distribution(
-        prob_distribution = "gamma",
-        prob_distributions_params = c(shape = 1, scale = 1),
-        discretise = FALSE,
-        truncation = NA
-      ),
-      uncertainty = list(
-        shape = create_uncertainty(
-          ci_limits = c(0, 2),
-          ci = 95,
-          ci_type = "confidence interval"
-        ),
-        scale = create_uncertainty(
-          ci_limits = c(0, 2),
-          ci = 95,
-          ci_type = "confidence interval"
-        )
-      ),
-      citation = create_citation(
-        author = person(given = "John", family = "Smith"),
-        year = 2000,
-        title = "Ebola incubation",
-        journal = "Journal of Epi",
-        doi = "10.1872372hc"
-      ),
-      notes = "No notes",
-      auto_calc_params = FALSE
-    )
-  )
-
-  expect_silent(assert_epiparameter(epiparameter_obj))
+test_that("assert_epiparameter & test_epiparameter passes when expected", {
+  expect_silent(assert_epiparameter(ep))
+  expect_invisible(assert_epiparameter(ep))
+  expect_silent(test_epiparameter(ep))
+  expect_true(test_epiparameter(ep))
 })
 
-test_that("assert_epiparameter catches class faults when expected", {
-  epiparameter_obj <- new_epiparameter(
-    disease = "ebola",
-    pathogen = "ebola_virus",
-    epi_name = "incubation",
-    prob_distribution = create_prob_distribution(
-      prob_distribution = "gamma",
-      prob_dist_params = c(shape = 1, scale = 1),
-      discretise = FALSE,
-      truncation = NA
-    ),
-    uncertainty = list(
-      shape = create_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
-      ),
-      scale = create_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
-      )
-    ),
-    citation = "Smith (2002) <10.128372837>",
-    auto_calc_params = FALSE
-  )
-
-  epiparameter_obj$disease <- NULL
-
+test_that("assert_epiparameter & test_epiparameter fails when expected", {
+  ep_ <- ep
+  ep_$disease <- NULL
   expect_error(
-    assert_epiparameter(epiparameter_obj),
-    regexp = "(<epiparameter> must contain $disease)*($citation)*(<bibentry>)"
-  )
-
-  epiparameter_obj <- new_epiparameter(
-    disease = "ebola",
-    pathogen = "ebola_virus",
-    epi_name = "incubation",
-    prob_distribution = create_prob_distribution(
-      prob_distribution =  "gamma",
-      prob_dist_params = c(shape = 1, scale = 1),
-      discretise = FALSE,
-      truncation = NA
-    ),
-    uncertainty = list(
-      shape = create_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
-      ),
-      scale = create_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
-      )
-    ),
-    citation = "Smith (2002) <10.128372837>",
-    auto_calc_params = FALSE
-  )
-
-  epiparameter_obj$disease <- factor("disease")
-
-  expect_error(
-    assert_epiparameter(epiparameter_obj),
+    assert_epiparameter(ep_),
     regexp = "(<epiparameter> must contain one disease)"
   )
+  expect_false(suppressMessages(test_epiparameter(ep_)))
 
-  epiparameter_obj <- new_epiparameter(
-    disease = "ebola",
-    pathogen = "ebola_virus",
-    epi_name = "incubation",
-    prob_distribution = create_prob_distribution(
-      prob_distribution = "gamma",
-      prob_dist_params = c(shape = 1, scale = 1),
-      discretise = FALSE,
-      truncation = NA
-    ),
-    uncertainty = list(
-      shape = create_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
-      ),
-      scale = create_uncertainty(
-        ci_limits = c(0, 2),
-        ci = 95,
-        ci_type = "confidence interval"
-      )
-    ),
-    citation = "Smith (2002) <10.128372837>",
-    auto_calc_params = FALSE
-  )
-
-  epiparameter_obj$epi_name <- c("incubation", "period")
-
+  ep_$disease <- factor("disease")
   expect_error(
-    assert_epiparameter(epiparameter_obj),
+    assert_epiparameter(ep_),
+    regexp = "(<epiparameter> must contain one disease)"
+  )
+  expect_false(suppressMessages(test_epiparameter(ep_)))
+
+  ep_ <- ep
+  ep_$epi_name <- c("incubation", "period")
+  expect_error(
+    assert_epiparameter(ep_),
     regexp = "(<epiparameter> must contain one epidemiological parameter)"
   )
-})
+  expect_false(suppressMessages(test_epiparameter(ep_)))
 
-test_that("assert_epiparameter fails as expected with input class", {
+  ep_ <- ep
+  ep_$citation <- "reference"
+  expect_error(
+    assert_epiparameter(ep_),
+    regexp = "(<epiparameter> \\$citation must be a <bibentry>)"
+  )
+  expect_false(suppressMessages(test_epiparameter(ep_)))
+
   expect_error(
     assert_epiparameter(1),
     regexp = "(Object should be of class <epiparameter>)"
   )
-})
-
-test_that("test_epiparameter returns TRUE as expected", {
-  suppressMessages(
-    ep <- epiparameter_db(single_epiparameter = TRUE)
-  )
-  expect_true(test_epiparameter(ep))
-})
-
-test_that("test_epiparameter returns FALSE as expected", {
-  suppressMessages({
-    expect_false(test_epiparameter(1))
-    suppressMessages(
-      ep <- epiparameter_db(single_epiparameter = TRUE)
-    )
-    ep1 <- ep
-    ep1$disease <- NULL
-    expect_false(test_epiparameter(ep1))
-    ep2 <- ep
-    ep2$disease <- 1
-    expect_false(test_epiparameter(ep2))
-    ep3 <- ep
-    ep3$citation <- "reference"
-    expect_false(test_epiparameter(ep3))
-  })
+  expect_false(suppressMessages(test_epiparameter(1)))
 })
 
 test_that("density works as expected on continuous epiparameter object", {
