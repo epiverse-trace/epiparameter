@@ -856,7 +856,7 @@ is_continuous <- function(x) {
   # get individual distributions out of mixture to check if continuous
   # isTRUE to control for family returning NA for unparameterised
   if (isTRUE(family(x) == "mixture")) {
-    fam <- .get_mixture_family(x)
+    fam <- .distributional_family(x$prob_distribution)
   } else {
     fam <- family(x)
   }
