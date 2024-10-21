@@ -80,7 +80,7 @@ output irrespective of the internal distribution class.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for class 'epiparameter'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">family</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">family</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span>, base_dist <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -93,6 +93,13 @@ output irrespective of the internal distribution class.</p>
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>further arguments passed to methods.</p></dd>
+
+
+<dt id="arg-base-dist">base_dist<a class="anchor" aria-label="anchor" href="#arg-base-dist"></a></dt>
+<dd><p>A boolean <code>logical</code> for whether to return the name of a
+transformed distribution (e.g. <code>"mixture"</code> or <code>"truncated"</code>) or the
+underlying distribution type (e.g. <code>"gamma"</code> or <code>"lnorm"</code>). Default is
+<code>FALSE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
