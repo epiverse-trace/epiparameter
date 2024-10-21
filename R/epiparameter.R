@@ -850,7 +850,7 @@ is_truncated <- function(x) {
 #' is_continuous(ep)
 is_continuous <- function(x) {
   stopifnot(
-    "is_truncated only works for `<epiparameter> objects`" =
+    "is_continuous only works for `<epiparameter> objects`" =
       is_epiparameter(x)
   )
   # get individual distributions out of mixture to check if continuous
