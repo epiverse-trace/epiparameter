@@ -51,9 +51,9 @@ get_parameters.epiparameter <- function(x, ...) {
       )
     }
 
-    # convert to meanlog and sdlog names
+    # if truncated get underlying distribution type
     params <- .clean_params(
-      prob_distribution = family(x),
+      prob_distribution = family(x, base_dist = is_truncated(x)),
       prob_distribution_params = params
     )
   } else {
