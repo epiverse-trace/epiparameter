@@ -29,7 +29,7 @@ The are a large number of ***breaking changes*** in this release, primarily func
 
 ## Minor changes
 
-* The minimum version of R required by the package (3.6.0) is now explicitly tested on the R-CMD-check GitHub actions workflow (PR #404).
+* The minimum version of R required by the package is now 4.0.0 and is now explicitly tested on the R-CMD-check GitHub actions workflow (PR #384 & #404).
 
 ## Bug fixes
 
