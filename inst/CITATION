@@ -20,5 +20,5 @@ bibentry(
   author  = author,
   year    = date,
   doi     = "10.5281/zenodo.11110881",
-  url     = "https://epiverse-trace.github.io/epiparameter"
+  url     = "https://epiverse-trace.github.io/epiparameter/"
 )
