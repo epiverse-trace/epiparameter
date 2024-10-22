@@ -575,14 +575,15 @@ density.epiparameter <- function(x, at, ...) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
-  unlist <- length(x$prob_distribution) == 1
   if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_distribution$d(at)
   } else {
     out <- stats::density(x$prob_distribution, at = at)
   }
-  out <- if (unlist) unlist(out, recursive = FALSE) else out
-  out
+  if (is.atomic(out)) {
+    return(out)
+  }
+  return(unlist(out, recursive = FALSE))
 }
 
 #' @importFrom distributional cdf
@@ -596,15 +597,16 @@ cdf.epiparameter <- function(x, q, ..., log = FALSE) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
-  unlist <- length(x$prob_distribution) == 1
   if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_distribution$p(q)
     if (log) out <- log(out)
   } else {
     out <- distributional::cdf(x$prob_distribution, q = q, ..., log = log)
   }
-  out <- if (unlist) unlist(out, recursive = FALSE) else out
-  out
+  if (is.atomic(out)) {
+    return(out)
+  }
+  return(unlist(out, recursive = FALSE))
 }
 
 #' @rdname epiparameter_distribution_functions
@@ -614,14 +616,15 @@ quantile.epiparameter <- function(x, p, ...) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
-  unlist <- length(x$prob_distribution) == 1
   if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_distribution$q(p)
   } else {
     out <- stats::quantile(x$prob_distribution, p = p)
   }
-  out <- if (unlist) unlist(out, recursive = FALSE) else out
-  out
+  if (is.atomic(out)) {
+    return(out)
+  }
+  return(unlist(out, recursive = FALSE))
 }
 
 #' @importFrom distributional generate
