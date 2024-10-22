@@ -7,7 +7,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Library of epidemiological parameters for infectious diseases and a set of classes and helper functions.
+Library of epidemiological parameters for infectious diseases extracted from the literature, and a set of classes and helper functions for working with parameters.
 }
 \seealso{
 Useful links:
