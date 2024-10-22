@@ -189,18 +189,11 @@ is_epiparameter_df <- function(x) {
 #' @inherit epiparameter return
 #' @keywords internal
 .epiparameter_df_to_epiparameter <- function(x, ...) { # nolint object_length_linter
-  # extract probability distribution from list and extract parameters
-  # and truncation if available
   prob_dist <- x$prob_distribution[[1]]
   if (inherits(prob_dist, "distribution")) {
     prob_distribution_params <- unlist(
       distributional::parameters(x$prob_distribution[[1]])
     )
-  }
-  if (identical(family(prob_dist), "truncated")) {
-    truncation <- distributional::parameters(x$prob_distribution)$upper
-  } else {
-    truncation <- NA_real_
   }
   # create uncertainty list of parameters if not provided
   if (all(unlist(lapply(x$uncertainty$uncertainty, is.na)))) {
@@ -212,23 +205,15 @@ is_epiparameter_df <- function(x) {
     )
   }
 
-  # remove <AsIs> from citation
-  class(x$citation) <- setdiff(class(x$citation), "AsIs")
-
   # return <epiparameter> from class constructor
   epiparameter(
     disease = x$disease,
     pathogen = x$pathogen,
     epi_name = x$epi_name,
-    prob_distribution = create_prob_distribution(
-      prob_distribution = family(x$prob_distribution[[1]]),
-        prob_distribution_params = prob_distribution_params,
-      discretise = inherits(x$prob_distribution[[1]], "distcrete"),
-      truncation = truncation
-    ),
+    prob_distribution = prob_dist,
     uncertainty = uncertainty,
     summary_stats = x$summary_stats$summary_stats,
-    citation = x$citation,
+    citation = x$citation[[1]],
     metadata = x$metadata,
     method_assess = x$method_assess,
     notes = x$notes
