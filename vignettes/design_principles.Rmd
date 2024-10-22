@@ -117,18 +117,18 @@ if (!all(epiparameter_class_methods %in% groups$functions)) {
 }
 
 library(visNetwork)
-visNetwork(nodes, edges) |>
-  visNodes(font = list(size = 18)) |>
-  visGroups(groupname = "<epiparameter>", color = colours[1]) |>
-  visGroups(groupname = "Getters", color = colours[2]) |>
-  visGroups(groupname = "Modifiers", color = colours[3]) |>
+visNetwork(nodes, edges) %>%
+  visNodes(font = list(size = 18)) %>%
+  visGroups(groupname = "<epiparameter>", color = colours[1]) %>%
+  visGroups(groupname = "Getters", color = colours[2]) %>%
+  visGroups(groupname = "Modifiers", color = colours[3]) %>%
   visGroups(
     groupname = "Distribution functions",
     color = colours[4]
-  ) |>
-  visGroups(groupname = "Utilities", color = colours[5]) |>
-  visGroups(groupname = "Checkers", color = colours[6]) |>
-  visGroups(groupname = "Conversions", color = colours[7]) |>
+  ) %>%
+  visGroups(groupname = "Utilities", color = colours[5]) %>%
+  visGroups(groupname = "Checkers", color = colours[6]) %>%
+  visGroups(groupname = "Conversions", color = colours[7]) %>%
   visGroups(groupname = "Coercion", color = colours[8])
 ```
 
@@ -165,8 +165,6 @@ The aim is to restrict the number of dependencies to a minimal required set for 
 {stats} and {utils} are distributed with the R language so are viewed as a lightweight dependencies, that should already be installed on a user's machine if they have R. {checkmate} is an input checking package widely used across Epiverse-TRACE packages. {distributional} and {distcrete} are used to import S3 classes for handling and working with distributions. Both are required as only {distcrete} can handle discretised distributions.
 
 [{jsonlite}](https://CRAN.R-project.org/package=jsonlite) is a suggested dependency because it is used to read the parameter library which is stored as a JSON file. However, it is only read by an internal function and instead the data is available to the user via `sysdata.rda`, so {jsonlite} is not required as an imported dependency.
-
-Currently {epiparameter} deviates from the [Epiverse policy on the number of previous R versions it supports](https://epiverse-trace.github.io/blueprints/dependencies.html#base-r-support-schedule). The {epiparameter} package requires R version >= 4.1.0 which only includes the current version and the last three minor R versions rather than the policy of four minor versions, as of September 2024. The reasons for this change is to enable usage of the base R pipe (`|>`).
 
 ## Contribute
 

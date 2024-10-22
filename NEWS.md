@@ -26,7 +26,10 @@ The are a large number of ***breaking changes*** in this release, primarily func
 * The `<vb_epidist>` class and it's methods have been removed from the package. It was not being used and was increasing the complexity and maintenance load of the package (PR #359).
 * `create_prob_dist()` has been renamed to `create_prob_distribution()` (PR #381).
 * `validate_epiparameter()` (previously `validate_epidist()`) has been renamed `assert_epiparameter()`, and `test_epiparameter()` has been added, with the aim to harmonise design with [{contactmatrix}](https://github.com/socialcontactdata/contactmatrix) (PR #366).
-* The minimum version of R required by the package is now 4.1.0 due to the use of the base R pipe (`|>`) in dependencies (PR #384).
+
+## Minor changes
+
+* The minimum version of R required by the package (3.6.0) is now explicitly tested on the R-CMD-check GitHub actions workflow (PR #404).
 
 ## Bug fixes
 
