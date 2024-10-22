@@ -23,7 +23,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-8587-7113"))
   )
 Description: Library of epidemiological parameters for infectious diseases
-    and a set of classes and helper functions.
+    extracted from the literature, and a set of classes and helper functions
+    for working with parameters.
 License: MIT + file LICENSE
 URL: https://github.com/epiverse-trace/epiparameter/,
     https://epiverse-trace.github.io/epiparameter/
