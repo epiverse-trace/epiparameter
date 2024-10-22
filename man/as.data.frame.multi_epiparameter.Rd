@@ -23,3 +23,7 @@ object per row), and other columns that are lists (i.e. multiple objects per
 row). The list columns can contain lists or S3 objects (e.g. \verb{<bibentry>}
 object in the \code{citation} column).
 }
+\examples{
+db <- epiparameter_db()
+as.data.frame(db)
+}

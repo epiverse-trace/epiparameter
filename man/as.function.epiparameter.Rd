@@ -27,3 +27,13 @@ number generator (\code{generate}), or quantile (\code{quantile}).
 \details{
 The function returned takes a single required argument \code{x}.
 }
+\examples{
+ep <- epiparameter_db(single_epiparameter = TRUE)
+# by default it will convert to a density function
+f <- as.function(ep)
+# use function
+f(10)
+
+f <- as.function(ep, func_type = "cdf")
+f(10)
+}

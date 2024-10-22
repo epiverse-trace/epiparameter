@@ -16,3 +16,11 @@ Invisibly returns an \verb{<epiparameter>}. Called for side-effects
 \description{
 Assert an object is a valid \verb{<epiparameter>} object
 }
+\examples{
+ep <- epiparameter_db(single_epiparameter = TRUE)
+assert_epiparameter(ep)
+
+# example with invalid <epiparameter>
+ep$disease <- NULL
+try(assert_epiparameter(ep))
+}

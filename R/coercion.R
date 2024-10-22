@@ -15,6 +15,16 @@
 #'
 #' @return A [function] object.
 #' @export
+#'
+#' @examples
+#' ep <- epiparameter_db(single_epiparameter = TRUE)
+#' # by default it will convert to a density function
+#' f <- as.function(ep)
+#' # use function
+#' f(10)
+#'
+#' f <- as.function(ep, func_type = "cdf")
+#' f(10)
 as.function.epiparameter <- function(x,
                                      func_type = c(
                                        "density", "cdf", "generate", "quantile"
@@ -53,6 +63,10 @@ as.function.epiparameter <- function(x,
 #'
 #' @return A `<data.frame>` with a single row.
 #' @export
+#'
+#' @examples
+#' ep <- epiparameter_db(single_epiparameter = TRUE)
+#' as.data.frame(ep)
 as.data.frame.epiparameter <- function(x, ...) {
   chkDots(...)
   # check object as could be invalidated by user
@@ -82,6 +96,10 @@ as.data.frame.epiparameter <- function(x, ...) {
 #'
 #' @return A `<data.frame>` with as many rows as length of input list.
 #' @export
+#'
+#' @examples
+#' db <- epiparameter_db()
+#' as.data.frame(db)
 as.data.frame.multi_epiparameter <- function(x, ...) {
   chkDots(...)
   do.call(rbind, lapply(x, as.data.frame))
@@ -133,6 +151,11 @@ as_epiparameter <- function(x, ...) {
 #'
 #' @inherit epiparameter_db return
 #' @export
+#'
+#' @examples
+#' ep <- epiparameter_db(single_epiparameter = TRUE)
+#' df <- as.data.frame(ep)
+#' ep <- as_epiparameter(df)
 as_epiparameter.data.frame <- function(x, ...) {
   if (is_epiparameter_df(x)) {
     epiparameter <- .epiparameter_df_to_epiparameter(x, ...)

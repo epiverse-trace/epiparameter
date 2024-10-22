@@ -3,12 +3,18 @@
 \name{is_parameterised}
 \alias{is_parameterised}
 \alias{is_parameterized}
+\alias{is_parameterised.epiparameter}
+\alias{is_parameterised.multi_epiparameter}
 \title{Check if \verb{<epiparameter>} or list of \verb{<epiparameter>} objects contains a
 distribution and distribution parameters}
 \usage{
 is_parameterised(x, ...)
 
 is_parameterized(x, ...)
+
+\method{is_parameterised}{epiparameter}(x, ...)
+
+\method{is_parameterised}{multi_epiparameter}(x, ...)
 }
 \arguments{
 \item{x}{An \verb{<epiparameter>} or list of \verb{<epiparameter>} objects.}
