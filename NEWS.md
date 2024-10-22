@@ -10,7 +10,7 @@ This is the first version of {epiparameter} to be released on CRAN.
 
 * The library of epidemiological parameters has been updated to include 3 new Chikungunya parameter entries. The Mpox parameters previously missing from the Guzzetta et al. entry have been added (#346 & #374).
 * A `c()` method has been added for `<epiparameter>` and `<multi_epiparameter>` objects (#368).
-* An `aggregate()` method has been added for `<multi_epiparameter>` to enable consensus distributions to be built utilising the mixture distribution class from [{distributional}](https://cran.r-project.org/web/packages/distributional/index.html) (#388).
+* An `aggregate()` method has been added for `<multi_epiparameter>` to enable consensus distributions to be built utilising the mixture distribution class from [{distributional}](https://CRAN.R-project.org/package=distributional) (#388).
 * Infrastructure has been added to the package to allow translations of messages/warnings/errors printed to the console. (@Bisaloo, #367).
 * `convert_summary_stats_to_params()` can now convert from median and dispersion for a lognormal distribution (#378).
 * The `data_dictionary.json` has been enhanced to improve validation of the library of epidemiological parameters (`parameters.json`) (#379).
