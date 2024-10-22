@@ -273,6 +273,7 @@ By contributing to this project, you agree to abide by its terms.
 
 ``` r
 citation("epiparameter")
+#> 
 #> To cite package 'epiparameter' in publications use:
 #> 
 #>   Lambert J, Kucharski A, Tamayo C (2024). _epiparameter: Library of
