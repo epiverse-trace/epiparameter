@@ -10,8 +10,10 @@
 #' @param multi_epiparameter Either an `<epiparameter>` object or a list of
 #' `<epiparameter>` objects.
 #'
-#' @author Joshua W. Lambert, Adam Kucharski
+#' @return A `<parameter_tbl>` object which is a subclass of `<data.frame>`.
 #' @export
+#' @author Joshua W. Lambert, Adam Kucharski
+#'
 #' @examples
 #' epiparameter_list <- epiparameter_db(disease = "COVID-19")
 #' parameter_tbl(multi_epiparameter = epiparameter_list)

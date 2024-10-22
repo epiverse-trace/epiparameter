@@ -41,6 +41,7 @@ is_parameterised <- function(x, ...) {
 #' @export
 is_parameterized <- is_parameterised
 
+#' @rdname is_parameterised
 #' @export
 is_parameterised.epiparameter <- function(x, ...) {
   chkDots(...)
@@ -48,6 +49,7 @@ is_parameterised.epiparameter <- function(x, ...) {
   return(is.object(x$prob_distribution))
 }
 
+#' @rdname is_parameterised
 #' @export
 is_parameterised.multi_epiparameter <- function(x, ...) {
   chkDots(...)

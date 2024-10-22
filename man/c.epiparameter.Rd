@@ -2,9 +2,12 @@
 % Please edit documentation in R/epiparameter.R
 \name{c.epiparameter}
 \alias{c.epiparameter}
+\alias{c.multi_epiparameter}
 \title{\code{\link[=c]{c()}} method for \verb{<epiparameter>} class}
 \usage{
 \method{c}{epiparameter}(...)
+
+\method{c}{multi_epiparameter}(...)
 }
 \arguments{
 \item{...}{\link{dots} Objects to be concatenated.}

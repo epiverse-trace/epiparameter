@@ -64,6 +64,7 @@ get_parameters.epiparameter <- function(x, ...) {
   params
 }
 
+#' @rdname get_parameters.epiparameter
 #' @export
 get_parameters.multi_epiparameter <- function(x, ...) {
   params <- lapply(x, get_parameters)

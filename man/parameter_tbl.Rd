@@ -23,6 +23,9 @@ disease, or \code{NA} if not known.}
 \item{epi_name}{A \code{character} string with the name of the
 epidemiological parameter type.}
 }
+\value{
+A \verb{<parameter_tbl>} object which is a subclass of \verb{<data.frame>}.
+}
 \description{
 This function subsets the epidemiological parameter library to
 return only the chosen epidemiological distribution. The results are

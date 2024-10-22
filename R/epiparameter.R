@@ -302,6 +302,14 @@ epiparameter <- function(disease,
 #' (errors when invalid `<epiparameter>` object is provided).
 #'
 #' @export
+#'
+#' @examples
+#' ep <- epiparameter_db(single_epiparameter = TRUE)
+#' assert_epiparameter(ep)
+#'
+#' # example with invalid <epiparameter>
+#' ep$disease <- NULL
+#' try(assert_epiparameter(ep))
 assert_epiparameter <- function(x) {
   msg <- .validate_epiparameter(x)
   if (length(msg) > 0) {
@@ -320,6 +328,14 @@ assert_epiparameter <- function(x) {
 #' @return A boolean `logical` whether the object is a valid `<epiparameter>`
 #' object (prints message when invalid `<epiparameter>` object is provided).
 #' @export
+#'
+#' @examples
+#' ep <- epiparameter_db(single_epiparameter = TRUE)
+#' test_epiparameter(ep)
+#'
+#' # example with invalid <epiparameter>
+#' ep$disease <- NULL
+#' test_epiparameter(ep)
 test_epiparameter <- function(x) {
   msg <- .validate_epiparameter(x)
   if (length(msg) > 0) {
@@ -987,6 +1003,7 @@ c.epiparameter <- function(...) {
   ep_list
 }
 
+#' @rdname c.epiparameter
 #' @export
 c.multi_epiparameter <- function(...) {
   c.epiparameter(...)

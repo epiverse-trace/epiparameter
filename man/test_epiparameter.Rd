@@ -16,3 +16,11 @@ object (prints message when invalid \verb{<epiparameter>} object is provided).
 \description{
 Test whether an object is a valid \verb{<epiparameter>} object
 }
+\examples{
+ep <- epiparameter_db(single_epiparameter = TRUE)
+test_epiparameter(ep)
+
+# example with invalid <epiparameter>
+ep$disease <- NULL
+test_epiparameter(ep)
+}
