@@ -2,9 +2,12 @@
 % Please edit documentation in R/accessors.R
 \name{get_parameters.epiparameter}
 \alias{get_parameters.epiparameter}
+\alias{get_parameters.multi_epiparameter}
 \title{Get parameters from an \verb{<epiparameter>} object}
 \usage{
 \method{get_parameters}{epiparameter}(x, ...)
+
+\method{get_parameters}{multi_epiparameter}(x, ...)
 }
 \arguments{
 \item{x}{An \verb{<epiparameter>} object.}

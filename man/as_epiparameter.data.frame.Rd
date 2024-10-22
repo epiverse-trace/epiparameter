@@ -19,3 +19,8 @@ Convert the tabular information in \verb{<data.frame>} to an \verb{<epiparameter
 If the information in the \verb{<data.frame>} cannot be converted into an
 \verb{<epiparameter>} the function will error.
 }
+\examples{
+ep <- epiparameter_db(single_epiparameter = TRUE)
+df <- as.data.frame(ep)
+ep <- as_epiparameter(df)
+}
