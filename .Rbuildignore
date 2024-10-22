@@ -17,3 +17,4 @@
 ^vignettes/*.orig$
 ^vignettes/figure$
 ^vignettes/articles$
+^cran-comments\.md$
