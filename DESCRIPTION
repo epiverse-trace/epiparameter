@@ -16,7 +16,11 @@ Authors@R: c(
     person("Pratik", "Gupte", , "pratik.gupte@lshtm.ac.uk", role = "rev",
            comment = c(ORCID = "0000-0001-5294-7819")),
     person("James M.", "Azam", , "james.azam@lshtm.ac.uk", role = "rev",
-           comment = c(ORCID = "0000-0001-5782-7330"))
+           comment = c(ORCID = "0000-0001-5782-7330")),
+    person("Chris", "Hartgerink", , "chris@data.org", role = "rev",
+           comment = c(ORCID = "0000-0003-1050-6809")),
+    person("Tim", "Taylor", , "tim.taylor@hiddenelephants.co.uk", role = "rev",
+           comment = c(ORCID = "0000-0002-8587-7113"))
   )
 Description: Library of epidemiological parameters for infectious diseases
     and a set of classes and helper functions.
