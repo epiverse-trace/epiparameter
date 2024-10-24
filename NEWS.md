@@ -4,37 +4,41 @@ The third minor release of the {epiparameter} R package contains a range of upda
 
 The are a large number of ***breaking changes*** in this release, primarily functions and function arguments being renamed or restructured, see the _Breaking changes_ section for an overview.
 
+This is the first version of {epiparameter} to be released on CRAN.
+
 ## New features
 
-* The library of epidemiological parameters has been updated to include 3 new Chikungunya parameter entries. The Mpox parameters previously missing from the Guzzetta et al. entry have been added (PR #346 & #374).
-* A `c()` method has been added for `<epiparameter>` and `<multi_epiparameter>` objects.
-* An `aggregate()` method has been added for `<multi_epiparameter>` to enable consensus distributions to be built utilising the mixture distribution class from [{distributional}](https://cran.r-project.org/web/packages/distributional/index.html) (PR #388).
-* Infrastructure has been added to the package to allow translations of messages/warnings/errors printed to the console. (@Bisaloo, PR #367).
-* `convert_summary_stats_to_params()` can now convert from median and dispersion for a lognormal distribution (PR #378).
-* The `data_dictionary.json` has been enhanced to improve validation of the library of epidemiological parameters (`parameters.json`) (PR #379).
-* An interactive network showing all of the `<epiparameter>` S3 methods has been added to the `design_principles.Rmd` vignette (PR #383).
-* The `data_from_epireview.Rmd` article has been improved and updated with new changes from {epireview} (@CarmenTamayo & @cm401 & @kellymccain28, PR #305 & #373).
-* Parameter units have been added to every entry in the {epiparameter} library (`parameters.json`) and to the `$metadata` element in `<epiparameter>` objects. The `create_metadata()` function now has a `units` argument to construct metadata lists (PR #391).
-* Improved `database.Rmd` vignette by adding a short citation to the reference column (@jamesmbaazam, PR #348).
+* The library of epidemiological parameters has been updated to include 3 new Chikungunya parameter entries. The Mpox parameters previously missing from the Guzzetta et al. entry have been added (#346 & #374).
+* A `c()` method has been added for `<epiparameter>` and `<multi_epiparameter>` objects (#368).
+* An `aggregate()` method has been added for `<multi_epiparameter>` to enable consensus distributions to be built utilising the mixture distribution class from [{distributional}](https://cran.r-project.org/web/packages/distributional/index.html) (#388).
+* Infrastructure has been added to the package to allow translations of messages/warnings/errors printed to the console. (@Bisaloo, #367).
+* `convert_summary_stats_to_params()` can now convert from median and dispersion for a lognormal distribution (#378).
+* The `data_dictionary.json` has been enhanced to improve validation of the library of epidemiological parameters (`parameters.json`) (#379).
+* An interactive network showing all of the `<epiparameter>` S3 methods has been added to the `design_principles.Rmd` vignette (#383).
+* The `data_from_epireview.Rmd` article has been improved and updated with new changes from {epireview} (@CarmenTamayo & @cm401 & @kellymccain28, #305 & #373).
+* Parameter units have been added to every entry in the {epiparameter} library (`parameters.json`) and to the `$metadata` element in `<epiparameter>` objects. The `create_metadata()` function now has a `units` argument to construct metadata lists (#391).
+* Improved `database.Rmd` vignette by adding a short citation to the reference column (@jamesmbaazam, #348).
+* The `family()` method for `<epiparameter>` has been improved to allow access to distribution names for transformed (e.g. `mixture` and `truncated` distributions) and untransformed (e.g. `gamma` and `lognormal`) distributions with a new argument `base_dist` and a new internal function `.distributional_family()` (#398).
+* `as_epiparameter()` can now work with the SARS parameters from {epireview} (#407).
 
 ## Breaking changes
 
-* The `<epidist>` class has been renamed `<epiparameter>` to avoid confusion with the similar R package [{epidist}](https://github.com/epinowcast/epidist) (PR #360).
-* Many functions that used `epidist` in their names have been renamed to use `epiparameter` due to the renaming of the class (PR #360).
-* The function signatures of `epiparameter()` and `new_epiparameter()` functions (previously `epidist()` and `new_epidist()`) have been updated to collapse the `prob_dist`, `prob_dist_params`, `discretise` and `truncation` arguments into `prob_distribution`, which accepts the output of `create_prob_distribution()` (PR #381).
-* The `epi_dist` argument has been renamed `epi_name`. This is to clarify that {epiparameter} can work with epidemiological parameters that take a variety of forms (e.g. point estimates, ranges, probability distributions, etc.) (PR #390).
-* The `<vb_epidist>` class and it's methods have been removed from the package. It was not being used and was increasing the complexity and maintenance load of the package (PR #359).
-* `create_prob_dist()` has been renamed to `create_prob_distribution()` (PR #381).
-* `validate_epiparameter()` (previously `validate_epidist()`) has been renamed `assert_epiparameter()`, and `test_epiparameter()` has been added, with the aim to harmonise design with [{contactmatrix}](https://github.com/socialcontactdata/contactmatrix) (PR #366).
-* The minimum version of R required by the package is now 4.1.0 due to the use of the base R pipe (`|>`) in dependencies (PR #384).
+* The `<epidist>` class has been renamed `<epiparameter>` to avoid confusion with the similar R package [{epidist}](https://github.com/epinowcast/epidist) (#360).
+* Many functions that used `epidist` in their names have been renamed to use `epiparameter` due to the renaming of the class (#360).
+* The function signatures of `epiparameter()` and `new_epiparameter()` functions (previously `epidist()` and `new_epidist()`) have been updated to collapse the `prob_dist`, `prob_dist_params`, `discretise` and `truncation` arguments into `prob_distribution`, which accepts the output of `create_prob_distribution()` (#381).
+* The `epi_dist` argument has been renamed `epi_name`. This is to clarify that {epiparameter} can work with epidemiological parameters that take a variety of forms (e.g. point estimates, ranges, probability distributions, etc.) (#390).
+* The `<vb_epidist>` class and it's methods have been removed from the package. It was not being used and was increasing the complexity and maintenance load of the package (#359).
+* `create_prob_dist()` has been renamed to `create_prob_distribution()` (#381).
+* `validate_epiparameter()` (previously `validate_epidist()`) has been renamed `assert_epiparameter()`, and `test_epiparameter()` has been added, with the aim to harmonise design with [{contactmatrix}](https://github.com/socialcontactdata/contactmatrix) and the messages and errors have been improved (#366 & #402).
+* The minimum version of R required by the package is now 4.1.0 due to the use of the base R pipe (`|>`) in dependencies, and the R-CMD-check workflow on GitHub actions now explicitly runs on the minimum version of R stated in the `DESCRIPTION` (#384 & #405). 
 
 ## Bug fixes
 
-* Epidemiological parameter entries in the library stored with lognormal distributions, parameterised as median and dispersion are now converted to meanlog and sdlog correctly when creating an `<epiparameter>` (when `auto_calc_params = TRUE`) (PR #381).
+* Epidemiological parameter entries in the library stored with lognormal distributions, parameterised as median and dispersion are now converted to meanlog and sdlog correctly when creating an `<epiparameter>` (when `auto_calc_params = TRUE`) (#381).
 
 ## Deprecated and defunct
 
-* `epidist_db()` has been deprecated. It is replaced by `epiparameter_db()`.
+* `epidist_db()` has been deprecated. It is replaced by `epiparameter_db()` (#360 & #399).
 
 # epiparameter 0.2.0
 
