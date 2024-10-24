@@ -258,12 +258,12 @@ is_epiparameter_df <- function(x) {
 
   pathogen <- .unique(x$pathogen, var_name = "pathogen")
   # get disease from pathogen lookup
-  disease <- switch(
-    pathogen,
+  disease <- switch(pathogen,
     "Marburg virus" = "Marburg Virus Disease",
     "Lassa mammarenavirus" = "Lassa fever",
     "Ebola virus" = "Ebola Virus Disease",
-    stop("Pathogen in epireview not recognised", call. = FALSE)
+    "SARS-CoV" = "Severe Acute Respiratory Syndrome (SARS)",
+    stop("Pathogen in {epireview} not recognised", call. = FALSE)
   )
   epi_name <- .unique(x$parameter_type, var_name = "parameter types")
   prob_dist <- .unique(x$distribution_type, var_name = "distribution types")
