@@ -8,7 +8,8 @@ epidemiological parameter data exported by the \pkg{epireview} R package.}
 \format{
 \subsection{\code{epireview_core_cols}}{
 
-A \code{character} vector with 56 elements
+A \code{character} vector with 58
+elements.
 
 The data is taken as the intersection of the column names of each of the
 disease parameter tables in the \pkg{epireview} R package.
@@ -21,7 +22,7 @@ disease parameter tables in the \pkg{epireview} R package.
 epireview_core_cols
 }
 \description{
-A subset of data from the World Health Organization Global Tuberculosis
-Report ...
+A vector of \code{character} strings with the core column names of the
+epidemiological parameter data exported by the \pkg{epireview} R package.
 }
 \keyword{datasets}

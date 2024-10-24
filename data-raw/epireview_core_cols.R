@@ -6,14 +6,19 @@ if (requireNamespace("epireview", quietly = TRUE)) {
   epireview_marburg <- epireview::load_epidata("marburg")
   epireview_ebola <- epireview::load_epidata("ebola")
   epireview_lassa <- epireview::load_epidata("lassa")
+  epireview_sars <- epireview::load_epidata("sars")
 
-  intersect_marburg_ebola <- intersect(
+  epireview_core_cols <- intersect(
     colnames(epireview_marburg$params),
     colnames(epireview_ebola$params)
   )
   epireview_core_cols <- intersect(
-    intersect_marburg_ebola,
+    epireview_core_cols,
     colnames(epireview_lassa$params)
+  )
+  epireview_core_cols <- intersect(
+    epireview_core_cols,
+    colnames(epireview_sars$params)
   )
   usethis::use_data(
     epireview_core_cols,
@@ -21,5 +26,3 @@ if (requireNamespace("epireview", quietly = TRUE)) {
     version = 3
   )
 }
-
-
