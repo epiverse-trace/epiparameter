@@ -1,4 +1,4 @@
-# epiparameter (development version)
+# epiparameter 0.3.0
 
 The third minor release of the {epiparameter} R package contains a range of updates and improvements to the package. The principal aim of this release is to simplify, clarify and enhance the classes and class methods when working with epidemiological parameters in R. 
 
