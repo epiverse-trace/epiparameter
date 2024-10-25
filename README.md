@@ -273,14 +273,13 @@ By contributing to this project, you agree to abide by its terms.
 
 ``` r
 citation("epiparameter")
-#> 
 #> To cite package 'epiparameter' in publications use:
 #> 
 #>   Lambert J, Kucharski A, Tamayo C (2024). _epiparameter: Library of
 #>   Epidemiological Parameters with Helper Functions and Classes_.
 #>   doi:10.5281/zenodo.11110881
 #>   <https://doi.org/10.5281/zenodo.11110881>,
-#>   <https://epiverse-trace.github.io/epiparameter>.
+#>   <https://epiverse-trace.github.io/epiparameter/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -289,6 +288,6 @@ citation("epiparameter")
 #>     author = {Joshua W. Lambert and Adam Kucharski and Carmen Tamayo},
 #>     year = {2024},
 #>     doi = {10.5281/zenodo.11110881},
-#>     url = {https://epiverse-trace.github.io/epiparameter},
+#>     url = {https://epiverse-trace.github.io/epiparameter/},
 #>   }
 ```
