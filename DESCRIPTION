@@ -1,7 +1,7 @@
 Package: epiparameter
 Title: Library of Epidemiological Parameters with Helper Functions and
     Classes
-Version: 0.2.0.9000
+Version: 0.3.0
 Authors@R: c(
     person("Joshua W.", "Lambert", , "joshua.lambert@lshtm.ac.uk", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-5218-3046")),
