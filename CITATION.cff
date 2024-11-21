@@ -9,13 +9,14 @@ type: software
 license: MIT
 title: 'epiparameter: Library of Epidemiological Parameters with Helper Functions
   and Classes'
-version: 0.2.0.9000
+version: 0.3.0
 doi: 10.5281/zenodo.11110881
 identifiers:
 - type: url
   value: https://epiverse-trace.github.io/epiparameter/
-abstract: Library of epidemiological parameters for infectious diseases and a set
-  of classes and helper functions.
+abstract: Library of epidemiological parameters for infectious diseases extracted
+  from the literature, and a set of classes and helper functions for working with
+  parameters.
 authors:
 - family-names: Lambert
   given-names: Joshua W.
@@ -48,7 +49,7 @@ preferred-citation:
     orcid: https://orcid.org/0000-0003-4184-2864
   year: '2024'
   doi: 10.5281/zenodo.11110881
-  url: https://epiverse-trace.github.io/epiparameter
+  url: https://epiverse-trace.github.io/epiparameter/
 repository-code: https://github.com/epiverse-trace/epiparameter
 url: https://github.com/epiverse-trace/epiparameter/
 contact:
