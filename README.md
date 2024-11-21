@@ -29,12 +29,6 @@ Medicine](https://www.lshtm.ac.uk/) as part of
 
 ## Installation
 
-The package can be installed from CRAN using:
-
-``` r
-install.packages("epiparameter")
-```
-
 The development version of `{epiparameter}` can be installed from
 [GitHub](https://github.com/epiverse-trace/epiparameter) using the
 `{pak}` package:
