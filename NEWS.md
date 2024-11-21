@@ -4,8 +4,6 @@ The third minor release of the {epiparameter} R package contains a range of upda
 
 The are a large number of ***breaking changes*** in this release, primarily functions and function arguments being renamed or restructured, see the _Breaking changes_ section for an overview.
 
-This is the first version of {epiparameter} to be released on CRAN.
-
 ## New features
 
 * The library of epidemiological parameters has been updated to include 3 new Chikungunya parameter entries. The Mpox parameters previously missing from the Guzzetta et al. entry have been added (#346 & #374).
