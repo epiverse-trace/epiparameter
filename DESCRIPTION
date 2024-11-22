@@ -32,6 +32,7 @@ BugReports: https://github.com/epiverse-trace/epiparameter/issues
 Depends: 
     R (>= 4.1.0)
 Imports:
+    cachem,
     checkmate,
     cli,
     distcrete,
