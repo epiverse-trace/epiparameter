@@ -748,17 +748,3 @@ epidist_db <- function(disease = "all",
     })
   }
 }
-
-#' Check whether a package is installed
-#'
-#' @details This functions allows mock testing for when a package is not
-#' installed on a users system (i.e. not a dependency of {epiparameter}).
-#'
-#' @inheritParams base::requireNamespace
-#'
-#' @return Invisibly returns a boolean `logical`.
-#' @noRd
-#' @keywords internal
-.is_pkg_installed <- function(package) {
-  requireNamespace(package, quietly = TRUE)
-}
