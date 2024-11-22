@@ -1,5 +1,8 @@
 # epiparameter (development version)
 
+* The library of epidemiological parameters (`parameters.json`) has been removed from the {epiparameter} package and moved to the {epiparameterDB} R package which is taken on a dependency. The {epiparameter} package is licensed solely as MIT with dual licensing with CC0 removed (#415). 
+* The data dictionary (`data_dictionary.json`) and JSON validation workflow (`validate-json.yaml`) have been removed from the package (#415).
+
 # epiparameter 0.3.0
 
 The third minor release of the {epiparameter} R package contains a range of updates and improvements to the package. The principal aim of this release is to simplify, clarify and enhance the classes and class methods when working with epidemiological parameters in R. 
