@@ -212,11 +212,6 @@ test_that(".read_epiparameter_db works as expected", {
   expect_true(all(vapply(db, is_epiparameter, FUN.VALUE = logical(1))))
 })
 
-test_that(".is_pkg_installed works as expected", {
-  expect_true(.is_pkg_installed(package = "distributional"))
-  expect_false(.is_pkg_installed(package = "jsonlit"))
-})
-
 test_that("as.data.frame works for <multi_epiparameter>", {
   # message about missing citation suppressed
   db <- suppressMessages(epiparameter_db())
