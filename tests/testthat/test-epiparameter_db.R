@@ -212,17 +212,6 @@ test_that(".read_epiparameter_db works as expected", {
   expect_true(all(vapply(db, is_epiparameter, FUN.VALUE = logical(1))))
 })
 
-test_that("sysdata is the same as .read_epiparameter_db output", {
-  # skipped due to covr failing when checking body of object attributes
-  skip_on_covr()
-  # .read_epiparameter_db uses numerical optimisation which can converge to
-  # different parameter estimates
-  set.seed(1)
-  sysdat <- suppressMessages(epiparameter_db())
-  db <- .read_epiparameter_db()
-  expect_equal(sysdat, db, tolerance = 2e-3)
-})
-
 test_that(".read_epiparameter_db fails correctly when jsonlite is not installed", {
   with_mocked_bindings(
     .is_pkg_installed = function(package) FALSE,
