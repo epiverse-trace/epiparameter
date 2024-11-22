@@ -47,7 +47,6 @@ Suggests:
     bookdown,
     DT,
     ggplot2,
-    jsonlite,
     knitr,
     RColorBrewer,
     rmarkdown,
