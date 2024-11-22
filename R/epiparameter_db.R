@@ -425,25 +425,9 @@ epidist_db <- function(disease = "all",
 #' @noRd
 .read_epiparameter_db <- function() {
 
-  if (!.is_pkg_installed("jsonlite")) {
-    stop(
-      "Cannot use this internal function without {jsonlite} installed",
-      call. = FALSE
-    )
-  }
-
-  params_json <- jsonlite::read_json(
-    path = system.file(
-      "extdata",
-      "parameters.json",
-      package = "epiparameter",
-      mustWork = TRUE
-    )
-  )
-
   # suppress individual <epiparameter> constructor messages
   multi_epiparameter <- suppressMessages(
-    lapply(params_json, .format_epiparameter)
+    lapply(epiparameterDB::epiparameterDB, .format_epiparameter)
   )
 
   # create and return <multi_epiparameter> class
