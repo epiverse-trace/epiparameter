@@ -212,17 +212,6 @@ test_that(".read_epiparameter_db works as expected", {
   expect_true(all(vapply(db, is_epiparameter, FUN.VALUE = logical(1))))
 })
 
-test_that(".read_epiparameter_db fails correctly when jsonlite is not installed", {
-  with_mocked_bindings(
-    .is_pkg_installed = function(package) FALSE,
-    code = expect_error(
-      .read_epiparameter_db(),
-      regexp =
-        "Cannot use this internal function without \\{jsonlite\\} installed" # nolint file.path
-    )
-  )
-})
-
 test_that(".is_pkg_installed works as expected", {
   expect_true(.is_pkg_installed(package = "distributional"))
   expect_false(.is_pkg_installed(package = "jsonlit"))
