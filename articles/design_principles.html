@@ -254,12 +254,6 @@ widely used across Epiverse-TRACE packages. {distributional} and
 {distcrete} are used to import S3 classes for handling and working with
 distributions. Both are required as only {distcrete} can handle
 discretised distributions.</p>
-<p><a href="https://CRAN.R-project.org/package=jsonlite" class="external-link">{jsonlite}</a>
-is a suggested dependency because it is used to read the parameter
-library which is stored as a JSON file. However, it is only read by an
-internal function and instead the data is available to the user via
-<code>sysdata.rda</code>, so {jsonlite} is not required as an imported
-dependency.</p>
 <p>Currently {epiparameter} deviates from the <a href="https://epiverse-trace.github.io/blueprints/dependencies.html#base-r-support-schedule" class="external-link">Epiverse
 policy on the number of previous R versions it supports</a>. The
 {epiparameter} package requires R version &gt;= 4.1.0 which only
