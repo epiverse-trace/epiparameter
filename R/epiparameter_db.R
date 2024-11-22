@@ -129,7 +129,13 @@ epiparameter_db <- function(disease = "all",
     )
   }
 
-  multi_epiparameter <- .read_epiparameter_db()
+  cache_db <- cache_env$cache$get("multi_epiparameter")
+  if (inherits(cache_db, "multi_epiparameter")) {
+    multi_epiparameter <- cache_env$cache$get("multi_epiparameter")
+  } else {
+    multi_epiparameter <- .read_epiparameter_db()
+  }
+
   attrib <- attributes(multi_epiparameter)
 
   multi_epiparameter <- .filter_epiparameter_db(
