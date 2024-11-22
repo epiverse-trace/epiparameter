@@ -129,7 +129,7 @@ epiparameter_db <- function(disease = "all",
     )
   }
 
-  # <multi_epiparameter> is sysdata
+  multi_epiparameter <- .read_epiparameter_db()
   attrib <- attributes(multi_epiparameter)
 
   multi_epiparameter <- .filter_epiparameter_db(
@@ -295,7 +295,7 @@ epidist_db <- function(disease = "all",
     )
   }
 
-  # <multi_epiparameter> is sysdata
+  multi_epiparameter <- .read_epiparameter_db()
   attrib <- attributes(multi_epiparameter)
 
   multi_epiparameter <- .filter_epiparameter_db(
