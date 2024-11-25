@@ -30,8 +30,8 @@ format.epiparameter <- function(x, ...) {
   if (is.object(x$prob_distribution)) {
     dist_string <- ifelse(
       test = inherits(x$prob_distribution, "distcrete"),
-      yes = tr_("Distribution: discrete %s"),
-      no = tr_("Distribution: %s")
+      yes = tr_("Distribution: discrete %s (%s)"),
+      no = tr_("Distribution: %s (%s)")
     )
     fam <- family(x)
     # isTRUE to control for family returning NA for unparameterised
@@ -42,7 +42,7 @@ format.epiparameter <- function(x, ...) {
         sep = ": "
       )
     }
-    writeLines(sprintf(dist_string, fam))
+    writeLines(sprintf(dist_string, fam, x$metadata$units))
   } else if (is.character(x$prob_distribution)) {
     writeLines(sprintf("Distribution: %s", family(x)))
   } else {
@@ -102,6 +102,7 @@ format.epiparameter <- function(x, ...) {
         fmt_ss, " [", ss[[ci]], "% CI: ", toString(ss[[ci_limits]]), "]"
       )
     }
+    fmt_ss <- paste0(fmt_ss, " (", x$metadata$units, ")")
     writeLines(fmt_ss)
   }
   invisible(x)
