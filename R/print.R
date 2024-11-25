@@ -91,3 +91,25 @@ print.multi_epiparameter <- function(x, ..., n = NULL) {
   )
   invisible(x)
 }
+
+#' Print method for `<epiparameter>` class
+#'
+#' @param x An `<epiparameter>` object.
+#' @param ... [dots] Extra arguments to be passed to the method.
+#'
+#' @return Invisibly returns an `<epiparameter>`. Called for side-effects.
+#' @export
+#'
+#' @examples
+#' epiparameter <- epiparameter(
+#'   disease = "ebola",
+#'   epi_name = "incubation_period",
+#'   prob_distribution = create_prob_distribution(
+#'     prob_distribution = "gamma",
+#'     prob_distribution_params = c(shape = 1, scale = 1)
+#'   )
+#' )
+#' epiparameter
+print.epiparameter <- function(x, ...) {
+  format(x, ...)
+}
