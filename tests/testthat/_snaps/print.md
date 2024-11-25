@@ -21,7 +21,7 @@
       review." _The Lancet Infectious Diseases_.
       doi:10.1016/S1473-3099(09)70069-6
       <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
-      Distribution: lnorm
+      Distribution: lnorm (days)
       Parameters:
         meanlog: 1.723
         sdlog: 0.231
@@ -35,7 +35,7 @@
       review." _The Lancet Infectious Diseases_.
       doi:10.1016/S1473-3099(09)70069-7
       <https://doi.org/10.1016/S1473-3099%2809%2970069-7>.
-      Distribution: lnorm
+      Distribution: lnorm (days)
       Parameters:
         meanlog: 1.163
         sdlog: 0.140
@@ -49,7 +49,7 @@
       review." _The Lancet Infectious Diseases_.
       doi:10.1016/S1473-3099(09)70069-8
       <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.
-      Distribution: lnorm
+      Distribution: lnorm (days)
       Parameters:
         meanlog: 1.386
         sdlog: 0.593
@@ -80,7 +80,7 @@
       Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). "Superspreading and
       the effect of individual variation on disease emergence." _Nature_.
       doi:10.1038/nature04153 <https://doi.org/10.1038/nature04153>.
-      Distribution: nbinom
+      Distribution: nbinom (No units)
       Parameters:
         mean: 1.630
         dispersion: 0.160
@@ -92,7 +92,7 @@
       Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). "Superspreading and
       the effect of individual variation on disease emergence." _Nature_.
       doi:10.1038/nature04153 <https://doi.org/10.1038/nature04153>.
-      Distribution: nbinom
+      Distribution: nbinom (No units)
       Parameters:
         mean: 0.940
         dispersion: 0.170
@@ -112,7 +112,7 @@
       Pathogen: NA
       Epi Parameter: incubation
       Study: (????). "No citation."
-      Distribution: gamma
+      Distribution: gamma (NA)
       Parameters:
         shape: 1.000
         scale: 1.000
@@ -130,7 +130,7 @@
       Pathogen: NA
       Epi Parameter: incubation
       Study: (????). "No citation."
-      Distribution: discrete gamma
+      Distribution: discrete gamma (NA)
       Parameters:
         shape: 1.000
         scale: 1.000
