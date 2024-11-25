@@ -173,29 +173,6 @@ test_that("epiparameter fails as expected", {
   )
 })
 
-test_that("epiparameter.print works as expected", {
-  expect_snapshot(epiparameter(
-    disease = "ebola",
-    epi_name = "incubation",
-    prob_distribution = create_prob_distribution(
-      prob_distribution = "gamma",
-      prob_distribution_params = c(shape = 1, scale = 1)
-    )
-  ))
-})
-
-test_that("epiparameter.print works as expected", {
-  expect_snapshot(epiparameter(
-    disease = "ebola",
-    epi_name = "incubation",
-    prob_distribution = create_prob_distribution(
-      prob_distribution = "gamma",
-      prob_distribution_params = c(shape = 1, scale = 1),
-      discretise = TRUE
-    )
-  ))
-})
-
 test_that("epiparameter.plot does not produce an error", {
   ebola_dist <- suppressMessages(epiparameter(
     disease = "ebola",

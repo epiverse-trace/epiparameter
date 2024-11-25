@@ -12,3 +12,26 @@ test_that("epiparameter_db print method works as expected for <= 5 <epiparameter
     epiparameter_db(disease = "SARS", epi_name = "offspring distribution")
   )
 })
+
+test_that("epiparameter.print works as expected", {
+  expect_snapshot(epiparameter(
+    disease = "ebola",
+    epi_name = "incubation",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    )
+  ))
+})
+
+test_that("epiparameter.print works as expected", {
+  expect_snapshot(epiparameter(
+    disease = "ebola",
+    epi_name = "incubation",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      discretise = TRUE
+    )
+  ))
+})
