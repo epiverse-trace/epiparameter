@@ -468,7 +468,7 @@ format.epiparameter <- function(x, ...) {
     )
   )
 
-  if (is.object(x$prob_distribution) || is.character(x$prob_distribution)) {
+  if (is.object(x$prob_distribution)) {
     dist_string <- ifelse(
       test = inherits(x$prob_distribution, "distcrete"),
       yes = tr_("Distribution: discrete %s"),
@@ -484,8 +484,17 @@ format.epiparameter <- function(x, ...) {
       )
     }
     writeLines(sprintf(dist_string, fam))
+  } else if (is.character(x$prob_distribution)) {
+    writeLines(sprintf("Distribution: %s", family(x)))
   } else {
     writeLines(tr_("Parameters: <no parameters>"))
+  }
+
+  # print summary stats if unparameterised and available
+  if (!is_parameterised(x) && length(x$summary_stats) > 0) {
+    .format_ss(x, pattern = "mean")
+    .format_ss(x, pattern = "median")
+    .format_ss(x, pattern = "range")
   }
 
   if (is.object(x$prob_distribution)) {
@@ -510,6 +519,32 @@ format.epiparameter <- function(x, ...) {
     )
   }
 
+  invisible(x)
+}
+
+.format_ss <- function(x, pattern) {
+  # ensure character string is lowercase to match list names
+  pattern <- tolower(pattern)
+  idx <- grep(pattern = pattern, x = names(x$summary_stats), fixed = TRUE)
+  if (length(idx) > 0) {
+    ss <- x$summary_stats[idx]
+    if (pattern == "range") {
+      fmt_ss <- paste0(
+        tools::toTitleCase(pattern), ": ", paste0("[", toString(ss), "]")
+      )
+    } else {
+      fmt_ss <- paste0(tools::toTitleCase(pattern), ": ", ss[[pattern]])
+    }
+    has_ci <- any(grepl(pattern = "_ci", x = names(ss), fixed = TRUE))
+    if (has_ci) {
+      ci <- paste0(pattern, "_ci")
+      ci_limits <- paste0(ci, "_limits")
+      fmt_ss <- paste0(
+        fmt_ss, " [", ss[[ci]], "% CI: ", toString(ss[[ci_limits]]), "]"
+      )
+    }
+    writeLines(fmt_ss)
+  }
   invisible(x)
 }
 
