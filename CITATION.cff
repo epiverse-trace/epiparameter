@@ -78,6 +78,18 @@ references:
   year: '2024'
   version: '>= 4.1.0'
 - type: software
+  title: cachem
+  abstract: 'cachem: Cache R Objects with Automatic Pruning'
+  notes: Imports
+  url: https://cachem.r-lib.org/
+  repository: https://CRAN.R-project.org/package=cachem
+  authors:
+  - family-names: Chang
+    given-names: Winston
+    email: winston@posit.co
+  year: '2024'
+  doi: 10.32614/CRAN.package.cachem
+- type: software
   title: checkmate
   abstract: 'checkmate: Fast and Versatile Argument Checks'
   notes: Imports
