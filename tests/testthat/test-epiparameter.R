@@ -174,6 +174,8 @@ test_that("epiparameter fails as expected", {
 })
 
 test_that("epiparameter.plot does not produce an error", {
+  # plotting changes global state of graphics pars so they are restored
+  op <- par(no.readonly = TRUE)
   ebola_dist <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_name = "incubation",
@@ -182,18 +184,19 @@ test_that("epiparameter.plot does not produce an error", {
       prob_distribution_params = c(shape = 1, scale = 1)
     )
   ))
-
-
   expect_silent(plot(ebola_dist))
-
   f <- function() plot(ebola_dist)
   vdiffr::expect_doppelganger(
     title = "epiparameter.plot",
     fig = f
   )
+  # restore graphics pars
+  par(op)
 })
 
 test_that("epiparameter.plot prints units in x-axis", {
+  # plotting changes global state of graphics pars so they are restored
+  op <- par(no.readonly = TRUE)
   ebola_dist <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_name = "incubation",
@@ -203,18 +206,19 @@ test_that("epiparameter.plot prints units in x-axis", {
     ),
     metadata = create_metadata(units = "days")
   ))
-
-
   expect_silent(plot(ebola_dist))
-
   f <- function() plot(ebola_dist)
   vdiffr::expect_doppelganger(
     title = "epiparameter.plot units",
     fig = f
   )
+  # restore graphics pars
+  par(op)
 })
 
 test_that("epiparameter.plot works with non-default x-axis", {
+  # plotting changes global state of graphics pars so they are restored
+  op <- par(no.readonly = TRUE)
   ebola_dist <- suppressMessages(epiparameter(
     disease = "ebola",
     epi_name = "incubation",
@@ -223,14 +227,12 @@ test_that("epiparameter.plot works with non-default x-axis", {
       prob_distribution_params = c(shape = 1, scale = 1)
     )
   ))
-
   expect_silent(
     plot(
       ebola_dist,
       xlim = c(0, 20)
     )
   )
-
   f <- function() {
     plot(
       ebola_dist,
@@ -241,6 +243,8 @@ test_that("epiparameter.plot works with non-default x-axis", {
     title = "epiparameter.plot non-default range",
     fig = f
   )
+  # restore graphics pars
+  par(op)
 })
 
 test_that("new_epiparameter works with minimal viable input", {
