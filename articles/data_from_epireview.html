@@ -216,7 +216,10 @@ contain incubation periods for Marburg.</p>
 <span><span class="co">#&gt; Pathogen: Marburg virus</span></span>
 <span><span class="co">#&gt; Epi Parameter: human delay   incubation period</span></span>
 <span><span class="co">#&gt; Study: Gear (1975). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
-<span><span class="co">#&gt; Distribution: NA</span></span></code></pre></div>
+<span><span class="co">#&gt; Distribution: NA</span></span>
+<span><span class="co">#&gt; Mean: NA [NA% CI: NA, NA] (Days)</span></span>
+<span><span class="co">#&gt; Median: NA [NA% CI: NA, NA] (Days)</span></span>
+<span><span class="co">#&gt; Range: [c(7, 8)] (Days)</span></span></code></pre></div>
 <p>The resulting <code>&lt;epiparameter&gt;</code> does not contain a
 parameterised probability distribution, instead it contains a range for
 the incubation period (in <code>$summary_stats</code>), and the
@@ -381,7 +384,10 @@ needs to be passed with the <code>article</code> argument.</p>
 <span><span class="co">#&gt; Study: Gear (1975). "Outbreak of Marburg virus disease in Johannesburg." _The</span></span>
 <span><span class="co">#&gt; British Medical Journal_. doi:10.1136/bmj.4.5995.489</span></span>
 <span><span class="co">#&gt; &lt;https://doi.org/10.1136/bmj.4.5995.489&gt;.</span></span>
-<span><span class="co">#&gt; Distribution: NA</span></span></code></pre></div>
+<span><span class="co">#&gt; Distribution: NA</span></span>
+<span><span class="co">#&gt; Mean: NA [NA% CI: NA, NA] (Days)</span></span>
+<span><span class="co">#&gt; Median: NA [NA% CI: NA, NA] (Days)</span></span>
+<span><span class="co">#&gt; Range: [c(7, 8)] (Days)</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">marburg_incub_epiparameter</span><span class="op">$</span><span class="va">citation</span></span>
 <span><span class="co">#&gt; Gear (1975). "Outbreak of Marburg virus disease in Johannesburg." _The</span></span>
@@ -526,6 +532,9 @@ formats.</li>
 <span><span class="co">#&gt; Epi Parameter: human delay   generation time</span></span>
 <span><span class="co">#&gt; Study: Ajelli (2012). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
 <span><span class="co">#&gt; Distribution: NA</span></span>
+<span><span class="co">#&gt; Mean: 9 [95% CI: 8.2, 10] (Days)</span></span>
+<span><span class="co">#&gt; Median: NA [NA% CI: NA, NA] (Days)</span></span>
+<span><span class="co">#&gt; Range: [c(NA, NA)] (Days)</span></span>
 <span><span class="va">marburg_gt_epiparameter</span><span class="op">$</span><span class="va">summary_stats</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt; [1] 9</span></span>
@@ -656,7 +665,7 @@ object.</p>
 <span><span class="co">#&gt; Pathogen: Ebola virus</span></span>
 <span><span class="co">#&gt; Epi Parameter: human delay   serial interval</span></span>
 <span><span class="co">#&gt; Study: Marziano (2023). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
-<span><span class="co">#&gt; Distribution: weibull</span></span>
+<span><span class="co">#&gt; Distribution: weibull (Days)</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   shape: 1.760</span></span>
 <span><span class="co">#&gt;   scale: 10.140</span></span></code></pre></div>
@@ -743,6 +752,9 @@ because no probability distribution is stated.</p>
 <span><span class="co">#&gt; Epi Parameter: human delay   serial interval</span></span>
 <span><span class="co">#&gt; Study: Faye (2015). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
 <span><span class="co">#&gt; Distribution: NA</span></span>
+<span><span class="co">#&gt; Mean: 14.2 [95% CI: 13.1, 15.5] (Days)</span></span>
+<span><span class="co">#&gt; Median: NA [NA% CI: NA, NA] (Days)</span></span>
+<span><span class="co">#&gt; Range: [c(NA, NA)] (Days)</span></span>
 <span><span class="fu"><a href="../reference/is_parameterised.html">is_parameterised</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 <p>Given that we can convert the mean and standard deviation into
@@ -763,7 +775,7 @@ uses the parameter conversion functions in {epiparameter} (see
 <span><span class="co">#&gt; Pathogen: Ebola virus</span></span>
 <span><span class="co">#&gt; Epi Parameter: human delay   serial interval</span></span>
 <span><span class="co">#&gt; Study: Faye (2015). "&lt;title not available&gt;." _&lt;journal not available&gt;_.</span></span>
-<span><span class="co">#&gt; Distribution: gamma</span></span>
+<span><span class="co">#&gt; Distribution: gamma (Days)</span></span>
 <span><span class="co">#&gt; Parameters:</span></span>
 <span><span class="co">#&gt;   shape: 4.000</span></span>
 <span><span class="co">#&gt;   scale: 3.550</span></span>
