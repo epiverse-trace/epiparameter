@@ -52,9 +52,6 @@ plot.epiparameter <- function(x,
   # capture dots
   dots <- list(...)
 
-  oldpar <- graphics::par(no.readonly = TRUE)
-  on.exit(graphics::par(oldpar))
-
   if (is_continuous(x)) {
     main <- "Probability Density Function"
   } else {
