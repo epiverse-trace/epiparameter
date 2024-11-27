@@ -127,3 +127,58 @@ plot.epiparameter <- function(x,
     }
   }
 }
+
+#' [lines()] method for `<epiparameter>` class
+#'
+#' @inheritParams plot.epiparameter
+#' @inheritParams base::plot
+#'
+#' @importFrom graphics lines
+#' @export
+#'
+#' @examples
+#' ebola_si <- epiparameter_db(disease = "Ebola", epi_name = "serial")
+#' plot(ebola_si[[1]])
+#' lines(ebola_si[[2]])
+lines.epiparameter <- function(x, cumulative = FALSE, ...) {
+  # check input
+  assert_epiparameter(x)
+  checkmate::assert_logical(cumulative, any.missing = FALSE, len = 1)
+
+  # capture dots
+  dots <- list(...)
+
+  if (is.null(dots$xlim)) {
+    xlim <- seq(0, quantile(x, p = 0.99), length.out = 1000)
+  } else {
+    checkmate::assert_numeric(dots$xlim, len = 2)
+    xlim <- seq(dots$xlim[1], dots$xlim[2], length.out = 1000)
+  }
+
+  if (!is_continuous(x)) {
+    stop(
+      "Can only plot a line for a parameterised <epiparameter> object ",
+      "with a continuous distribution.",
+      call. = FALSE)
+  }
+
+  if (cumulative) {
+    # plot CDF
+    lines(
+      x = xlim,
+      y = cdf(x, q = xlim),
+      lwd = 2,
+      pch = 16,
+      ...
+    )
+  } else {
+    # plot either PDF or PMF
+    lines(
+      x = xlim,
+      y = density(x, at = xlim),
+      lwd = 2,
+      pch = 16,
+      ...
+    )
+  }
+}
