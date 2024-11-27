@@ -812,7 +812,7 @@ is_continuous <- function(x) {
     fam <- family(x)
   }
 
-  all(fam %in% c("gamma", "lnorm", "weibull", "normal")) &&
+  all(fam %in% c("gamma", "lnorm", "weibull", "norm")) &&
     !inherits(x$prob_distribution, "distcrete")
 }
 
