@@ -182,3 +182,67 @@ lines.epiparameter <- function(x, cumulative = FALSE, ...) {
     )
   }
 }
+
+#' [plot()] method for `<multi_epiparameter>` class
+#'
+#' @description Plots a list of `<epiparameter>` objects by overlaying their
+#' distributions.
+#'
+#' @details
+#' Unparameterised `<epiparameter>` objects (see [is_parameterised()]) are not
+#' plotted.
+#'
+#' @param x A `<multi_epiparameter>` object.
+#' @inheritParams plot.epiparameter
+#' @inheritParams base::print
+#'
+#' @author Joshua W. Lambert
+#' @export
+#'
+#' @examples
+#' ebola_si <- epiparameter_db(disease = "Ebola", epi_name = "serial")
+#' plot(ebola_si)
+plot.multi_epiparameter <- function(x,
+                                    cumulative = FALSE,
+                                    ...) {
+  # check input
+  vapply(x, assert_epiparameter, FUN.VALUE = x[[1]])
+  checkmate::assert_logical(cumulative, any.missing = FALSE, len = 1)
+
+  # capture dots
+  dots <- list(...)
+
+  # find the maximum x and y coordinates for all distributions are visible
+  if (is.null(dots$xlim)) {
+    max_xlim <- max(vapply(x, quantile, FUN.VALUE = numeric(1), p = 0.99))
+    xlim <- c(0, max_xlim) # TODO: what about negative values e.g. norm
+    dist_eval <- seq(0, max_xlim, length.out = 1000)
+  } else {
+    checkmate::assert_numeric(dots$xlim, len = 2)
+    dist_eval <- seq(dots$xlim[1], dots$xlim[2], length.out = 1000)
+  }
+
+  if (is.null(dots$ylim)) {
+    if (cumulative) {
+      ylim <- c(0, 1)
+    } else {
+      max_ylim <- max(
+        vapply(
+          x,
+          density,
+          FUN.VALUE = numeric(length(dist_eval)),
+          at = dist_eval
+        )
+      )
+      ylim <- c(0, max_ylim)
+    }
+  } else {
+    checkmate::assert_numeric(dots$ylim, len = 2)
+  }
+
+  # create graphics device
+  plot(x[[1]], xlim = xlim, ylim = ylim, ...)
+  # layer curves onto existing graphics device
+  lapply(x, lines)
+  invisible()
+}
