@@ -114,11 +114,13 @@ The parameters of a probability distribution can also be extracted from other su
 
 ## Contributing to library of epidemiological parameters
 
-If you would like to contribute to the different epidemiological parameters stored in the `{epiparameter}` package, you can add data to a public [google sheet](https://docs.google.com/spreadsheets/d/1eCL3n_woseg5Npu7XD7TcuNoLUIhMBu8ZoLCkVdATUE/edit?usp=sharing). This spreadsheet contains two example entries as a guide to what fields can accept. We are monitoring this sheet for new entries that will subsequently be included in the package.
+The library of epidemiological parameters that can be loaded by `{epiparameter}` using the `epiparameter_db()` function is stored in the [`{epiparameterDB}` R package](https://github.com/epiverse-trace/epiparameterDB). If you would like to contribute to the library of epiparameters you can either: 
 
-Alternatively, parameters can be added to the [JSON file holding the data](https://github.com/epiverse-trace/epiparameter/blob/main/inst/extdata/parameters.json) base directly via a Pull Request.
+1. Add data to a public [google sheet](https://docs.google.com/spreadsheets/d/1eCL3n_woseg5Npu7XD7TcuNoLUIhMBu8ZoLCkVdATUE/edit?usp=sharing). This spreadsheet contains two example entries as a guide to what fields are accepted. We are monitoring this sheet for new entries that will subsequently be included in the package.
 
-You can find explanation of accepted entries for each column in the [data dictionary](https://github.com/epiverse-trace/epiparameter/blob/main/inst/extdata/data_dictionary.json).
+2. Add to the [JSON file holding the database](https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/parameters.json) directly via a Pull Request. See the [contributing guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md) for instructions.
+
+You can find a description of the epidemiological parameter data structure and contents in the [data dictionary](https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/data_dictionary.json). This documents the valid format and data types to ensure consistency and accuracy. All entries in the parameter library are automatically validated against the data dictionary using an GitHub action workflow.
 
 ## Help 
 
