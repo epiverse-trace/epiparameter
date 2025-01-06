@@ -261,14 +261,15 @@ plot.multi_epiparameter <- function(x,
     if (cumulative) {
       ylim <- c(0, 1)
     } else {
-      max_ylim <- max(
-        vapply(
-          x,
-          density,
-          FUN.VALUE = numeric(length(dist_eval)),
-          at = dist_eval
-        )
+      ylims <- vapply(
+        x,
+        density,
+        FUN.VALUE = numeric(length(dist_eval)),
+        at = dist_eval
       )
+      # max of finite values as cannot plot Inf (e.g. exp dist that go to Inf)
+      max_ylim <- max(ylims[is.finite(ylims)])
+
       ylim <- c(0, max_ylim)
     }
   } else {
