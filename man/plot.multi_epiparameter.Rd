@@ -19,8 +19,8 @@ Plots a list of \verb{<epiparameter>} objects by overlaying their
 distributions.
 }
 \details{
-Unparameterised \verb{<epiparameter>} objects (see \code{\link[=is_parameterised]{is_parameterised()}}) are not
-plotted.
+Unparameterised and discrete \verb{<epiparameter>} objects
+are not plotted (see \code{\link[=is_parameterised]{is_parameterised()}} and \code{\link[=is_continuous]{is_continuous()}}).
 }
 \examples{
 ebola_si <- epiparameter_db(disease = "Ebola", epi_name = "serial")
