@@ -77,10 +77,12 @@
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/is_epiparameter_params.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/is_parameterised.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/is_truncated.html</loc></url>
+<url><loc>https://epiverse-trace.github.io/epiparameter/reference/lines.epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/mean.epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/new_epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/parameter_tbl.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/plot.epiparameter.html</loc></url>
+<url><loc>https://epiverse-trace.github.io/epiparameter/reference/plot.multi_epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/print.epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/print.multi_epiparameter.html</loc></url>
 <url><loc>https://epiverse-trace.github.io/epiparameter/reference/reexports.html</loc></url>

@@ -103,6 +103,8 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
+<span><span class="co">#&gt;   object 'type_sum.accel' not found</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mrc-ide.github.io/epireview/" class="external-link">epireview</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: epitrix</span></span>
 <span><span class="co">#&gt; Loading required package: ggplot2</span></span>
@@ -142,13 +144,6 @@ object using <code><a href="../reference/as_epiparameter.html">as_epiparameter()
 <span><span class="co">#&gt; Warning: There is 1 article with missing first author surname and first author first</span></span>
 <span><span class="co">#&gt; name.</span></span>
 <span><span class="co">#&gt; Warning: There is 1 article with missing year of publication.</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">107</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ";"</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): parameter_type_short, parameter_type_full</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span><span class="co">#&gt; Warning: Unknown or uninitialised column: `other_delay_start`.</span></span>
 <span><span class="co">#&gt; Warning: Unknown or uninitialised column: `other_delay_end`.</span></span>
 <span><span class="co">#&gt; Note: the params dataframe does not have a covidence_id column</span></span>
@@ -586,15 +581,8 @@ from the {epireview} package (as there are no entries for Marburg that
 have parametric distributions).</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ebola_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">load_epidata</a></span><span class="op">(</span><span class="st">"ebola"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> ebola does not have any extracted outbreaks </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> ebola does not have any extracted outbreaks</span></span>
 <span><span class="co">#&gt; information. Outbreaks will be set to NULL.</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">107</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ";"</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): parameter_type_short, parameter_type_full</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Data loaded for ebola</span></span></code></pre></div>
 <p>We will again subset the data to just use the epidemiological
 parameter table, and select those rows containing a serial interval.</p>
@@ -711,15 +699,8 @@ supplied and parameters input are incompatible See
 parameters (<code>$params</code>).</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ebola_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mrc-ide.github.io/epireview/reference/load_epidata.html" class="external-link">load_epidata</a></span><span class="op">(</span><span class="st">"ebola"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> ebola does not have any extracted outbreaks </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> ebola does not have any extracted outbreaks</span></span>
 <span><span class="co">#&gt; information. Outbreaks will be set to NULL.</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">107</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ";"</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (2): parameter_type_short, parameter_type_full</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Data loaded for ebola</span></span>
 <span><span class="va">ebola_params</span> <span class="op">&lt;-</span> <span class="va">ebola_data</span><span class="op">$</span><span class="va">params</span></span></code></pre></div>
 <p>Here we will use the serial interval for Ebola reported by <span class="citation">Faye et al. (2015)</span>. This is stored, over two
