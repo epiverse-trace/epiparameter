@@ -29,6 +29,12 @@ Medicine](https://www.lshtm.ac.uk/) as part of
 
 ## Installation
 
+The package can be installed from CRAN using
+
+``` r
+install.packages("epiparameter")
+```
+
 The development version of `{epiparameter}` can be installed from
 [GitHub](https://github.com/epiverse-trace/epiparameter) using the
 `{pak}` package:
@@ -278,8 +284,8 @@ By contributing to this project, you agree to abide by its terms.
 citation("epiparameter")
 #> To cite package 'epiparameter' in publications use:
 #> 
-#>   Lambert J, Kucharski A, Tamayo C (2025). _epiparameter: Library of
-#>   Epidemiological Parameters with Helper Functions and Classes_.
+#>   Lambert J, Kucharski A, Tamayo C (2025). _epiparameter: Classes and
+#>   Helper Functions for Working with Epidemiological Parameters_.
 #>   doi:10.5281/zenodo.11110881
 #>   <https://doi.org/10.5281/zenodo.11110881>,
 #>   <https://epiverse-trace.github.io/epiparameter/>.
@@ -287,7 +293,7 @@ citation("epiparameter")
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {epiparameter: Library of Epidemiological Parameters with Helper Functions and Classes},
+#>     title = {epiparameter: Classes and Helper Functions for Working with Epidemiological Parameters},
 #>     author = {Joshua W. Lambert and Adam Kucharski and Carmen Tamayo},
 #>     year = {2025},
 #>     doi = {10.5281/zenodo.11110881},
