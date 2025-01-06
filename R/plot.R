@@ -189,8 +189,8 @@ lines.epiparameter <- function(x, cumulative = FALSE, ...) {
 #' distributions.
 #'
 #' @details
-#' Unparameterised `<epiparameter>` objects (see [is_parameterised()]) are not
-#' plotted.
+#' Unparameterised and discrete `<epiparameter>` objects
+#' are not plotted (see [is_parameterised()] and [is_continuous()]).
 #'
 #' @param x A `<multi_epiparameter>` object.
 #' @inheritParams plot.epiparameter
