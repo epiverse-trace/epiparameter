@@ -43,6 +43,7 @@ Imports:
     pillar,
     rlang,
     stats,
+    tools,
     utils
 Suggests: 
     bookdown,
