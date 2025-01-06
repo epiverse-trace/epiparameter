@@ -74,7 +74,7 @@ epiparameters
 #> review." _The Lancet Infectious Diseases_.
 #> doi:10.1016/S1473-3099(09)70069-6
 #> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
-#> Distribution: lnorm
+#> Distribution: lnorm (days)
 #> Parameters:
 #>   meanlog: 1.723
 #>   sdlog: 0.231
@@ -88,7 +88,7 @@ epiparameters
 #> review." _The Lancet Infectious Diseases_.
 #> doi:10.1016/S1473-3099(09)70069-7
 #> <https://doi.org/10.1016/S1473-3099%2809%2970069-7>.
-#> Distribution: lnorm
+#> Distribution: lnorm (days)
 #> Parameters:
 #>   meanlog: 1.163
 #>   sdlog: 0.140
@@ -102,7 +102,7 @@ epiparameters
 #> review." _The Lancet Infectious Diseases_.
 #> doi:10.1016/S1473-3099(09)70069-8
 #> <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.
-#> Distribution: lnorm
+#> Distribution: lnorm (days)
 #> Parameters:
 #>   meanlog: 1.386
 #>   sdlog: 0.593
@@ -148,7 +148,7 @@ influenza_incubation
 #> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)
 #> Virus Infections." _American Journal of Epidemiology_.
 #> doi:10.1093/aje/kwv115 <https://doi.org/10.1093/aje/kwv115>.
-#> Distribution: weibull
+#> Distribution: weibull (days)
 #> Parameters:
 #>   shape: 2.101
 #>   scale: 3.839
@@ -230,21 +230,30 @@ or the median and range of the data. This can be done for:
 
 ## Contributing to library of epidemiological parameters
 
-If you would like to contribute to the different epidemiological
-parameters stored in the `{epiparameter}` package, you can add data to a
-public [google
-sheet](https://docs.google.com/spreadsheets/d/1eCL3n_woseg5Npu7XD7TcuNoLUIhMBu8ZoLCkVdATUE/edit?usp=sharing).
-This spreadsheet contains two example entries as a guide to what fields
-can accept. We are monitoring this sheet for new entries that will
-subsequently be included in the package.
+The library of epidemiological parameters that can be loaded by
+`{epiparameter}` using the `epiparameter_db()` function is stored in the
+[`{epiparameterDB}` R
+package](https://github.com/epiverse-trace/epiparameterDB). If you would
+like to contribute to the library of epiparameters you can either:
 
-Alternatively, parameters can be added to the [JSON file holding the
-data](https://github.com/epiverse-trace/epiparameter/blob/main/inst/extdata/parameters.json)
-base directly via a Pull Request.
+1.  Add data to a public [google
+    sheet](https://docs.google.com/spreadsheets/d/1eCL3n_woseg5Npu7XD7TcuNoLUIhMBu8ZoLCkVdATUE/edit?usp=sharing).
+    This spreadsheet contains two example entries as a guide to what
+    fields are accepted. We are monitoring this sheet for new entries
+    that will subsequently be included in the package.
 
-You can find explanation of accepted entries for each column in the
-[data
-dictionary](https://github.com/epiverse-trace/epiparameter/blob/main/inst/extdata/data_dictionary.json).
+2.  Add to the [JSON file holding the
+    database](https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/parameters.json)
+    directly via a Pull Request. See the [contributing
+    guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md)
+    for instructions.
+
+You can find a description of the epidemiological parameter data
+structure and contents in the [data
+dictionary](https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/data_dictionary.json).
+This documents the valid format and data types to ensure consistency and
+accuracy. All entries in the parameter library are automatically
+validated against the data dictionary using an GitHub action workflow.
 
 ## Help
 
@@ -269,7 +278,7 @@ By contributing to this project, you agree to abide by its terms.
 citation("epiparameter")
 #> To cite package 'epiparameter' in publications use:
 #> 
-#>   Lambert J, Kucharski A, Tamayo C (2024). _epiparameter: Library of
+#>   Lambert J, Kucharski A, Tamayo C (2025). _epiparameter: Library of
 #>   Epidemiological Parameters with Helper Functions and Classes_.
 #>   doi:10.5281/zenodo.11110881
 #>   <https://doi.org/10.5281/zenodo.11110881>,
@@ -280,7 +289,7 @@ citation("epiparameter")
 #>   @Manual{,
 #>     title = {epiparameter: Library of Epidemiological Parameters with Helper Functions and Classes},
 #>     author = {Joshua W. Lambert and Adam Kucharski and Carmen Tamayo},
-#>     year = {2024},
+#>     year = {2025},
 #>     doi = {10.5281/zenodo.11110881},
 #>     url = {https://epiverse-trace.github.io/epiparameter/},
 #>   }
