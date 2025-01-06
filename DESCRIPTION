@@ -56,8 +56,6 @@ Suggests:
     testthat (>= 3.0.0),
     vdiffr (>= 1.0.7),
     visNetwork
-Remotes:
-    epiverse-trace/epiparameterDB
 VignetteBuilder: 
     knitr
 Config/Needs/check: mrc-ide/epireview
