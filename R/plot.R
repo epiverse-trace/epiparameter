@@ -212,6 +212,41 @@ plot.multi_epiparameter <- function(x,
   # capture dots
   dots <- list(...)
 
+  is_discrete <- !vapply(x, is_continuous, FUN.VALUE = logical(1))
+  is_unparam <- !is_parameterised(x)
+
+  # error if all <epiparameter> are discrete or unparameterised
+  if (all(is_discrete)) {
+    stop(
+      "Plotting a list of <epiparameter> objects (<multi_epiparameter>) ",
+      "currently does not support plotting discrete distributions.",
+      call. = FALSE
+    )
+  }
+  if (all(is_unparam)) {
+    stop(
+      "All <epiparameter> objects in the list are unparameterised ",
+      "and thus cannot be plotted. See `?is_parameterised()`.",
+      call. = FALSE
+    )
+  }
+
+  # discard and warn if any <epiparameter> are discrete or unparameterised
+  if (any(is_discrete) || any(is_unparam)) {
+    rm_idx <- is_discrete | is_unparam
+    x <- x[!rm_idx]
+    # reclass <multi_epiparameter> as subsetting unclasses
+    class(x) <- "multi_epiparameter"
+    rm_idx <- as.character(which(rm_idx))
+    warning(
+      cli::pluralize(
+        "<epiparameter> object{?s} {rm_idx} in the list {?is/are} discrete ",
+        "or unparameterised so cannot be plotted."
+      ),
+      call. = FALSE
+    )
+  }
+
   # find the maximum x and y coordinates for all distributions are visible
   if (is.null(dots$xlim)) {
     max_xlim <- max(vapply(x, quantile, FUN.VALUE = numeric(1), p = 0.99))
