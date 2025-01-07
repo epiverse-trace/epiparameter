@@ -418,53 +418,6 @@
 		}
 	},
 	{
-		"id": "higginsCochraneHandbookSystematic2022",
-		"type": "book",
-		"call-number": "R723.7 .C63 2008",
-		"collection-title": "Cochrane book series",
-		"edition": "6.3",
-		"event-place": "Chichester, England ; Hoboken, NJ",
-		"ISBN": "978-0-470-69951-5",
-		"note": "OCLC: ocn154798512",
-		"number-of-pages": "649",
-		"publisher": "Wiley-Blackwell",
-		"publisher-place": "Chichester, England ; Hoboken, NJ",
-		"source": "Library of Congress ISBN",
-		"title": "Cochrane Handbook for Systematic Reviews of Interventions",
-		"URL": "www.training.cochrane.org/handbook",
-		"editor": [
-			{
-				"family": "Higgins",
-				"given": "Julian P. T."
-			},
-			{
-				"literal": "Thomas, J"
-			},
-			{
-				"literal": "Chandler, J"
-			},
-			{
-				"literal": "Cumpston, M"
-			},
-			{
-				"literal": "Li, T"
-			},
-			{
-				"literal": "Page, MJ"
-			},
-			{
-				"literal": "Welch, VA"
-			}
-		],
-		"issued": {
-			"date-parts": [
-				[
-					"2022"
-				]
-			]
-		}
-	},
-	{
 		"id": "pagePRISMA2020Statement2021",
 		"type": "article-journal",
 		"container-title": "BMJ",
@@ -749,6 +702,58 @@
 				[
 					"2015",
 					3
+				]
+			]
+		}
+	},
+	{
+		"id": "higginsCochraneHandbookSystematic2019",
+		"type": "book",
+		"abstract": "\"Systematic reviews summarise primary research. They are central to the evidence- based medicine movement and are widely acknowledged as the best form of evidence on which to base healthcare decisions. The Cochrane Collaboration exists to produce systematic reviews of healthcare treatments. To be reliable, systematic reviews should be conducted to the highest level of scientific rigour. This book enables Cochrane and other systematic review authors to do this and to ensure their review is of the highest quality and avoid methodological pitfalls\"--",
+		"collection-title": "Wiley Cochrane",
+		"edition": "2nd ed",
+		"event-place": "Newark",
+		"ISBN": "978-1-119-53662-8",
+		"language": "eng",
+		"number-of-pages": "1",
+		"publisher": "John Wiley & Sons, Incorporated",
+		"publisher-place": "Newark",
+		"source": "K10plus ISBN",
+		"title": "Cochrane Handbook for Systematic Reviews of Interventions",
+		"author": [
+			{
+				"family": "Higgins",
+				"given": "Julian"
+			},
+			{
+				"family": "Thomas",
+				"given": "James"
+			},
+			{
+				"family": "Chandler",
+				"given": "Jacqueline"
+			},
+			{
+				"family": "Cumpston",
+				"given": "Miranda"
+			},
+			{
+				"family": "Li",
+				"given": "Tianjing"
+			},
+			{
+				"family": "Page",
+				"given": "Matthew J."
+			},
+			{
+				"family": "Welch",
+				"given": "Vivian Andrea"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2019"
 				]
 			]
 		}
