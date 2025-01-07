@@ -11,6 +11,9 @@ get_citation(x, ...)
 
 \item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
+\value{
+A \verb{<bibentry>} object or list of \verb{<bibentry>} objects.
+}
 \description{
 Extract the citation stored in an \R object.
 }

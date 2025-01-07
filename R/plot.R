@@ -19,6 +19,7 @@
 #' @inheritParams base::print
 #'
 #' @author Joshua W. Lambert
+#' @inherit graphics::plot.formula return
 #' @export
 #'
 #' @examples
@@ -133,6 +134,7 @@ plot.epiparameter <- function(x,
 #' @inheritParams plot.epiparameter
 #' @inheritParams base::plot
 #'
+#' @inherit graphics::plot.formula return
 #' @importFrom graphics lines
 #' @export
 #'
@@ -197,6 +199,7 @@ lines.epiparameter <- function(x, cumulative = FALSE, ...) {
 #' @inheritParams base::print
 #'
 #' @author Joshua W. Lambert
+#' @inherit graphics::plot.formula return
 #' @export
 #'
 #' @examples

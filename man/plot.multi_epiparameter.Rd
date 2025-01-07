@@ -14,6 +14,10 @@
 
 \item{...}{further arguments passed to or from other methods.}
 }
+\value{
+These functions are invoked for their side effect of drawing
+  on the active graphics device.
+}
 \description{
 Plots a list of \verb{<epiparameter>} objects by overlaying their
 distributions.
