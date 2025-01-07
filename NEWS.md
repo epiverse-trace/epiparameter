@@ -1,4 +1,4 @@
-# epiparameter (development version)
+# epiparameter 0.4.0
 
 The fourth minor release of the {epiparameter} focuses on splitting the code and data, with the data being moved into a separate R package: [{epiparameterDB}](https://CRAN.R-project.org/package=epiparameterDB). There are also some minor additional improvements focusing on printing and plotting.
 
