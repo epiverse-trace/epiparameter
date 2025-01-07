@@ -5,6 +5,9 @@
 #' @inheritParams base::print
 #' @param ... [dots] Extra arguments to be passed to the method.
 #'
+#' @return A named vector of parameters or `NA` when the `<epiparameter>`
+#' object is unparameterised, or a list where each element is a named vectors
+#' or `NA`.
 #' @export
 get_parameters <- function(x, ...) {
   UseMethod("get_parameters")
@@ -79,6 +82,7 @@ get_parameters.multi_epiparameter <- function(x, ...) {
 #' @inheritParams base::print
 #' @param ... [dots] Extra arguments to be passed to the method.
 #'
+#' @return A `<bibentry>` object or list of `<bibentry>` objects.
 #' @export
 get_citation <- function(x, ...) {
   UseMethod("get_citation")

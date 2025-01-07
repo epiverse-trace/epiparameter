@@ -11,6 +11,11 @@ get_parameters(x, ...)
 
 \item{...}{\link{dots} Extra arguments to be passed to the method.}
 }
+\value{
+A named vector of parameters or \code{NA} when the \verb{<epiparameter>}
+object is unparameterised, or a list where each element is a named vectors
+or \code{NA}.
+}
 \description{
 Extract the parameters stored in an \R object.
 }
