@@ -3,11 +3,11 @@
 \docType{package}
 \name{epiparameter-package}
 \alias{epiparameter-package}
-\title{epiparameter: Library of Epidemiological Parameters with Helper Functions and Classes}
+\title{epiparameter: Classes and Helper Functions for Working with Epidemiological Parameters}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Library of epidemiological parameters for infectious diseases extracted from the literature, and a set of classes and helper functions for working with parameters.
+Classes and helper functions for loading, extracting, converting, manipulating, plotting and aggregating epidemiological parameters for infectious diseases. Epidemiological parameters extracted from the literature are loaded from the 'epiparameterDB' R package.
 }
 \seealso{
 Useful links:
