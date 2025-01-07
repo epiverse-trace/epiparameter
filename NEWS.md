@@ -1,7 +1,28 @@
 # epiparameter (development version)
 
-* The library of epidemiological parameters (`parameters.json`) has been removed from the {epiparameter} package and moved to the {epiparameterDB} R package which is taken on a dependency. The {epiparameter} package is licensed solely as MIT with dual licensing with CC0 removed (#415). 
+The fourth minor release of the {epiparameter} focuses on splitting the code and data, with the data being moved into a separate R package: [{epiparameterDB}](https://CRAN.R-project.org/package=epiparameterDB). There are also some minor additional improvements focusing on printing and plotting.
+
+## New features
+
+* The library of epidemiological parameters (`parameters.json`) has been removed from the {epiparameter} package and moved to the {epiparameterDB} R package which is taken on as a dependency. The {epiparameter} package is licensed solely as MIT with dual licensing with CC0 removed (#415). 
 * The data dictionary (`data_dictionary.json`) and JSON validation workflow (`validate-json.yaml`) have been removed from the package (#415).
+* The library of epidemiological parameters is cached (using [{cachem}](https://CRAN.R-project.org/package=cachem)) on loading the package to reduce the runtime of `epiparameter_db()` (#417).
+* The `print()` and `format()` methods for the `<epiparameter>` class have been improved to show the units of parameter estimates, as well as summary statistics, if available, for unparameterised `<epiparameter>` objects (#419).
+* `on.exit()` is no longer called in plotting functions to allow user-specified graphical parameters to not be overwritten (#420).
+* A `plot()` method for the `<multi_epiparameter>` class is added. This enables a list of `<epiparameter>` objects with continuous distributions to be compared on a single plot (#425).
+* A `lines()` method for the `<epiparameter>` class is added (#425).
+
+## Breaking changes
+
+* None
+
+## Bug fixes
+
+* A bug in `is_continuous()` causing it to incorrectly returning `FALSE` for `<epiparameter>` objects with normal distributions is fixed (#422).
+
+## Deprecated and defunct
+
+* None
 
 # epiparameter 0.3.0
 
