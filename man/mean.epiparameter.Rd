@@ -17,6 +17,20 @@ A \code{numeric} mean of a distribution or \code{NA}.
 \description{
 Mean method for \verb{<epiparameter>} class
 }
+\details{
+The mean can be accessed using two methods, these
+are in order of precedence:
+\enumerate{
+\item The mean is reported in the literature and thus is available in the
+database directly. This can either be as a summary statistic or as a
+parameter of a probability distribution, such as a normal or negative
+binomial distribution.
+\item The mean is not reported in the literature but there is a parameterised
+probability distribution and from this we try and calculate the mean.
+}
+
+If the mean is not accessible using these two methods then \code{NA} is returned.
+}
 \examples{
 ep <- epiparameter_db(
   disease = "COVID-19",

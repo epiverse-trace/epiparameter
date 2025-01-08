@@ -818,6 +818,20 @@ is_continuous <- function(x) {
 
 #' Mean method for `<epiparameter>` class
 #'
+#' @details
+#' The mean can be accessed using two methods, these
+#' are in order of precedence:
+#'
+#' 1. The mean is reported in the literature and thus is available in the
+#' database directly. This can either be as a summary statistic or as a
+#' parameter of a probability distribution, such as a normal or negative
+#' binomial distribution.
+#' 2. The mean is not reported in the literature but there is a parameterised
+#' probability distribution and from this we try and calculate the mean.
+#'
+#' If the mean is not accessible using these two methods then `NA` is returned.
+#'
+#'
 #' @inheritParams print.epiparameter
 #' @param ... [dots] Not used, extra arguments supplied will cause a warning.
 #'
@@ -833,11 +847,17 @@ is_continuous <- function(x) {
 #' mean(ep)
 mean.epiparameter <- function(x, ...) {
   chkDots(...)
-  # extract mean if given
   if (utils::hasName(x$summary_stats, "mean")) {
+    # the mean is never imputed when constructing an <epiparameter> so if it
+    # is in the object then it has been reported in the literature
     mean <- x$summary_stats$mean
+  } else if ("mean" %in% names(get_parameters(x))) {
+    mean <- get_parameters(x)[["mean"]]
+  } else if (inherits(x$prob_distribution, "distribution")) {
+    # use distributional::mean.distribution()
+    mean <- mean(x$prob_distribution)
   } else {
-    return(NA_real_)
+    mean <- NA_real_
   }
 
   # if mean is not given try and convert from parameters
@@ -848,6 +868,9 @@ mean.epiparameter <- function(x, ...) {
     summary_stats <- do.call(convert_params_to_summary_stats, args = args)
     mean <- summary_stats$mean
   }
+
+  ## potentially write a warning if the mean in summary stats differs with the
+  ## mean in prob distribution by more that a certain amount (relative amount?)
 
   # return mean or NA
   mean
