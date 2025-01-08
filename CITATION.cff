@@ -7,16 +7,19 @@ cff-version: 1.2.0
 message: 'To cite package "epiparameter" in publications use:'
 type: software
 license: MIT
-title: 'epiparameter: Library of Epidemiological Parameters with Helper Functions
-  and Classes'
-version: 0.3.0.9000
+title: 'epiparameter: Classes and Helper Functions for Working with Epidemiological
+  Parameters'
+version: 0.4.0
 doi: 10.5281/zenodo.11110881
 identifiers:
+- type: doi
+  value: 10.32614/CRAN.package.epiparameter
 - type: url
   value: https://epiverse-trace.github.io/epiparameter/
-abstract: Library of epidemiological parameters for infectious diseases extracted
-  from the literature, and a set of classes and helper functions for working with
-  parameters.
+abstract: Classes and helper functions for loading, extracting, converting, manipulating,
+  plotting and aggregating epidemiological parameters for infectious diseases. Epidemiological
+  parameters extracted from the literature are loaded from the 'epiparameterDB' R
+  package.
 authors:
 - family-names: Lambert
   given-names: Joshua W.
@@ -32,8 +35,8 @@ authors:
   orcid: https://orcid.org/0000-0003-4184-2864
 preferred-citation:
   type: manual
-  title: 'epiparameter: Library of Epidemiological Parameters with Helper Functions
-    and Classes'
+  title: 'epiparameter: Classes and Helper Functions for Working with Epidemiological
+    Parameters'
   authors:
   - family-names: Lambert
     given-names: Joshua W.
@@ -50,6 +53,7 @@ preferred-citation:
   year: '2025'
   doi: 10.5281/zenodo.11110881
   url: https://epiverse-trace.github.io/epiparameter/
+repository: https://CRAN.R-project.org/package=epiparameter
 repository-code: https://github.com/epiverse-trace/epiparameter
 url: https://github.com/epiverse-trace/epiparameter/
 contact:
