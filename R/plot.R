@@ -45,10 +45,23 @@
 #' plot(ep)
 plot.epiparameter <- function(x,
                               cumulative = FALSE,
+                              uncertainty = FALSE,
+                              uncertainty_type = c("lines", "ribbon"),
                               ...) {
   # check input
   assert_epiparameter(x)
   checkmate::assert_logical(cumulative, any.missing = FALSE, len = 1)
+  uncertainty_type <- match.arg(uncertainty_type)
+
+  stopifnot("<epiparameter> is unparameterised." = is_parameterised(x))
+
+  if (!is_continuous(x) && uncertainty) {
+    stop(
+      "Plotting uncertainty is currently not supported for ",
+      "discrete distributions.\n Set `uncertainty = FALSE`.",
+      call. = FALSE
+    )
+  }
 
   # capture dots
   dots <- list(...)
@@ -57,6 +70,16 @@ plot.epiparameter <- function(x,
     main <- "Probability Density Function"
   } else {
     main <- "Probability Mass Function"
+  }
+
+  # check if distribution parameters have uncertainty
+  if (uncertainty && anyNA(unlist(x$uncertainty))) {
+    uncertainty <- FALSE
+    warning(
+      "`uncertainty = TRUE` but the <epiparameter> does not include ",
+      "parameter uncertainty",
+      call. = FALSE
+    )
   }
 
   if (is.null(dots$xlim)) {
@@ -103,6 +126,23 @@ plot.epiparameter <- function(x,
         ...
       )
     }
+    if (uncertainty) {
+      # extract n_sample rather than supplying dots to prevent multiple arg
+      # matches with xlim
+      n_samples <- ifelse(
+        test = is.null(dots$n_samples),
+        yes = 100,
+        no = dots$n_samples
+      )
+
+      .plot_uncertainty(
+        x = x,
+        cumulative = cumulative,
+        xlim = xlim,
+        uncertainty_type = uncertainty_type,
+        n_samples = n_samples
+      )
+    }
   } else {
     if (cumulative) {
       graphics::barplot(
@@ -126,6 +166,56 @@ plot.epiparameter <- function(x,
         ...
       )
     }
+  }
+}
+
+.plot_uncertainty <- function(x,
+                              cumulative,
+                              xlim,
+                              uncertainty_type,
+                              n_samples) {
+  # calculate the density for the confidence intervals
+  par1 <- stats::runif(
+    n = n_samples,
+    min = min(x$uncertainty[[1]]$ci_limits),
+    max = max(x$uncertainty[[1]]$ci_limits)
+  )
+  par2 <- stats::runif(
+    n = n_samples,
+    min = min(x$uncertainty[[2]]$ci_limits),
+    max = max(x$uncertainty[[2]]$ci_limits)
+  )
+
+  # create either density or cdf function
+  dist_func <- paste0(ifelse(test = cumulative, yes = "p", no = "d"), family(x))
+
+  if (uncertainty_type == "lines") {
+    for (i in seq_len(n_samples)) {
+      ylim <- do.call(dist_func, list(xlim, par1[i], par2[i]))
+      lines(
+        x = xlim,
+        y = ylim,
+        col = grDevices::rgb(red = 0.1, green = 0.1, blue = 0.1, alpha = 0.25)
+      )
+    }
+  } else {
+    # compute PDFs for all parameter samples
+    pdf_matrix <- sapply(seq_len(n_samples), function(i) {
+      do.call(dist_func, list(xlim, par1[i], par2[i]))
+    })
+    # compute the 95% credible interval for the densities
+    lower_bound <- apply(pdf_matrix, 1, min)
+    upper_bound <- apply(pdf_matrix, 1, max)
+    # TODO: check whether this should be min/max or upper/lower quantile
+    #lower_bound <- apply(pdf_matrix, 1, quantile, probs = 0.025)
+    #upper_bound <- apply(pdf_matrix, 1, quantile, probs = 0.975)
+    # plot ribbon
+    polygon(
+      c(xlim, rev(xlim)),
+      c(upper_bound, rev(lower_bound)),
+      col = grDevices::rgb(0, 0, 1, 0.2),
+      border = NA
+    )
   }
 }
 
