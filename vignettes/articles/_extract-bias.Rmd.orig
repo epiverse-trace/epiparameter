@@ -6,7 +6,8 @@ title: "{epiparameter} Extraction Bias Analysis"
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 8
+  fig.width = 8,
+  fig.path = ""
 )
 ```
 

@@ -170,7 +170,7 @@ ggplot(data = results) +
   )
 ```
 
-![Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](figure/plot-results-percentiles-1.png)
+![Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](plot-results-percentiles-1.png)
 
 ### Extraction by median and range
 
@@ -297,7 +297,7 @@ ggplot(data = results) +
   )
 ```
 
-![Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](figure/plot-results-med-range-1.png)
+![Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](plot-results-med-range-1.png)
 
 ## Extraction precision
 
@@ -385,7 +385,7 @@ ggplot(data = results) +
   )
 ```
 
-![Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](figure/plot-results-1.png)
+![Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](plot-results-1.png)
 
 ### Extraction by median and range
 
@@ -493,7 +493,7 @@ ggplot(data = results) +
   )
 ```
 
-![Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](figure/plot-estim-var-range-1.png)
+![Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution.](plot-estim-var-range-1.png)
 
 ::: {.alert .alert-primary}
 From the plots in this vignette, the bias is low and precision is high
