@@ -1,13 +1,5 @@
 ---
 title: "{epiparameter} Extraction Bias Analysis"
-output:
-  bookdown::html_vignette2:
-    fig_caption: yes
-    code_folding: show
-vignette: >
-  %\VignetteIndexEntry{{epiparameter} Extraction Bias Analysis}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}

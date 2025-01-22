@@ -1,13 +1,5 @@
 ---
 title: "{epiparameter} Extraction Bias Analysis"
-output:
-  bookdown::html_vignette2:
-    fig_caption: yes
-    code_folding: show
-vignette: >
-  %\VignetteIndexEntry{{epiparameter} Extraction Bias Analysis}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 
@@ -264,9 +256,6 @@ for (params_idx in seq_len(nrow(parameters_range))) {
 }
 #> Warning: Maximum optimisation iterations reached, returning result early. 
 #> Result may not be reliable.
-```
-
-``` r
 
 # combine results
 results <- cbind(parameters_range, do.call(rbind, estim_params))
@@ -472,9 +461,8 @@ for (params_idx in seq_len(nrow(parameters_range))) {
 }
 #> Warning: Maximum optimisation iterations reached, returning result early. 
 #> Result may not be reliable.
-```
-
-``` r
+#> Warning: Maximum optimisation iterations reached, returning result early. 
+#> Result may not be reliable.
 
 # combine results
 results <- cbind(parameters_range, do.call(rbind, estim_param_var))
