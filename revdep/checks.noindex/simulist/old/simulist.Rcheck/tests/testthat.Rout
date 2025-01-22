@@ -1,0 +1,50 @@
+
+R version 4.4.2 (2024-10-31) -- "Pile of Leaves"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # This file is part of the standard setup for testthat.
+> # It is recommended that you do not modify it.
+> #
+> # Where should you do additional test configuration?
+> # Learn more about the roles of various files in:
+> # * https://r-pkgs.org/testing-design.html#sec-tests-files-overview
+> # * https://testthat.r-lib.org/articles/special-files.html
+> 
+> library(testthat)
+> library(simulist)
+> 
+> test_check("simulist", stop_on_warning = FALSE)
+[ FAIL 0 | WARN 1 | SKIP 23 | PASS 174 ]
+
+══ Skipped tests (23) ══════════════════════════════════════════════════════════
+• On CRAN (23): 'test-sim_contacts.R:3:3', 'test-sim_contacts.R:28:3',
+  'test-sim_contacts.R:39:3', 'test-sim_contacts.R:54:3',
+  'test-sim_contacts.R:99:3', 'test-sim_linelist.R:3:3',
+  'test-sim_linelist.R:43:3', 'test-sim_linelist.R:68:3',
+  'test-sim_linelist.R:84:3', 'test-sim_linelist.R:103:3',
+  'test-sim_linelist.R:126:3', 'test-sim_linelist.R:177:3',
+  'test-sim_linelist.R:194:3', 'test-sim_linelist.R:452:3',
+  'test-sim_linelist.R:472:3', 'test-sim_network_bp.R:29:3',
+  'test-sim_network_bp.R:54:3', 'test-sim_network_bp.R:67:3',
+  'test-sim_outbreak.R:3:3', 'test-sim_outbreak.R:42:3',
+  'test-sim_outbreak.R:55:3', 'test-sim_outbreak.R:81:3',
+  'test-sim_outbreak.R:102:3'
+
+[ FAIL 0 | WARN 1 | SKIP 23 | PASS 174 ]
+> 
+> proc.time()
+   user  system elapsed 
+  9.299   1.296  11.722 

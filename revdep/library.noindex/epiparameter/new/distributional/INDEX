@@ -1,0 +1,81 @@
+cdf                     The cumulative distribution function
+covariance              Covariance
+covariance.distribution
+                        Covariance of a probability distribution
+density.distribution    The probability density/mass function
+dist_bernoulli          The Bernoulli distribution
+dist_beta               The Beta distribution
+dist_binomial           The Binomial distribution
+dist_burr               The Burr distribution
+dist_categorical        The Categorical distribution
+dist_cauchy             The Cauchy distribution
+dist_chisq              The (non-central) Chi-Squared Distribution
+dist_degenerate         The degenerate distribution
+dist_exponential        The Exponential Distribution
+dist_f                  The F Distribution
+dist_gamma              The Gamma distribution
+dist_geometric          The Geometric Distribution
+dist_gev                The Generalized Extreme Value Distribution
+dist_gh                 The generalised g-and-h Distribution
+dist_gk                 The g-and-k Distribution
+dist_gpd                The Generalized Pareto Distribution
+dist_gumbel             The Gumbel distribution
+dist_hypergeometric     The Hypergeometric distribution
+dist_inflated           Inflate a value of a probability distribution
+dist_inverse_exponential
+                        The Inverse Exponential distribution
+dist_inverse_gamma      The Inverse Gamma distribution
+dist_inverse_gaussian   The Inverse Gaussian distribution
+dist_logarithmic        The Logarithmic distribution
+dist_logistic           The Logistic distribution
+dist_lognormal          The log-normal distribution
+dist_missing            Missing distribution
+dist_mixture            Create a mixture of distributions
+dist_multinomial        The Multinomial distribution
+dist_multivariate_normal
+                        The multivariate normal distribution
+dist_negative_binomial
+                        The Negative Binomial distribution
+dist_normal             The Normal distribution
+dist_pareto             The Pareto distribution
+dist_percentile         Percentile distribution
+dist_poisson            The Poisson Distribution
+dist_poisson_inverse_gaussian
+                        The Poisson-Inverse Gaussian distribution
+dist_sample             Sampling distribution
+dist_student_t          The (non-central) location-scale Student t
+                        Distribution
+dist_studentized_range
+                        The Studentized Range distribution
+dist_transformed        Modify a distribution with a transformation
+dist_truncated          Truncate a distribution
+dist_uniform            The Uniform distribution
+dist_weibull            The Weibull distribution
+dist_wrap               Create a distribution from p/d/q/r style
+                        functions
+family.distribution     Extract the name of the distribution family
+generate.distribution   Randomly sample values from a distribution
+hdr                     Compute highest density regions
+hdr.distribution        Highest density regions of probability
+                        distributions
+hilo                    Compute intervals
+hilo.distribution       Probability intervals of a probability
+                        distribution
+is_distribution         Test if the object is a distribution
+is_hdr                  Is the object a hdr
+is_hilo                 Is the object a hilo
+kurtosis                Kurtosis of a probability distribution
+likelihood              The (log) likelihood of a sample matching a
+                        distribution
+mean.distribution       Mean of a probability distribution
+median.distribution     Median of a probability distribution
+new_dist                Create a new distribution
+new_hdr                 Construct hdr intervals
+new_hilo                Construct hilo intervals
+new_support_region      Create a new support region vector
+parameters              Extract the parameters of a distribution
+quantile.distribution   Distribution Quantiles
+skewness                Skewness of a probability distribution
+support                 Region of support of a distribution
+variance                Variance
+variance.distribution   Variance of a probability distribution

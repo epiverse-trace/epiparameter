@@ -1,0 +1,63 @@
+Package: epiparameter
+Title: Classes and Helper Functions for Working with Epidemiological
+        Parameters
+Version: 0.4.0
+Authors@R: c(
+    person("Joshua W.", "Lambert", , "joshua.lambert@lshtm.ac.uk", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-5218-3046")),
+    person("Adam", "Kucharski", , "adam.kucharski@lshtm.ac.uk", role = c("aut", "cph"),
+           comment = c(ORCID = "0000-0001-8814-9421")),
+    person("Carmen", "Tamayo", , "carmen.tamayo-cuartero@lshtm.ac.uk", role = "aut",
+           comment = c(ORCID = "0000-0003-4184-2864")),
+    person("Hugo", "Gruson", , "hugo.gruson@data.org", role = c("ctb", "rev"),
+           comment = c(ORCID = "0000-0002-4094-1476")),
+    person("Sebastian", "Funk", , "sebastian.funk@lshtm.ac.uk", role = "ctb",
+           comment = c(ORCID = "0000-0002-2842-3406")),
+    person("Pratik", "Gupte", , "pratik.gupte@lshtm.ac.uk", role = "rev",
+           comment = c(ORCID = "0000-0001-5294-7819")),
+    person("James M.", "Azam", , "james.azam@lshtm.ac.uk", role = "rev",
+           comment = c(ORCID = "0000-0001-5782-7330")),
+    person("Chris", "Hartgerink", , "chris@data.org", role = "rev",
+           comment = c(ORCID = "0000-0003-1050-6809")),
+    person("Tim", "Taylor", , "tim.taylor@hiddenelephants.co.uk", role = "rev",
+           comment = c(ORCID = "0000-0002-8587-7113"))
+  )
+Description: Classes and helper functions for loading, extracting, converting, 
+    manipulating, plotting and aggregating epidemiological parameters for infectious diseases. 
+    Epidemiological parameters extracted from the literature are loaded from the 'epiparameterDB'
+    R package.
+License: MIT + file LICENSE
+URL: https://github.com/epiverse-trace/epiparameter/,
+        https://epiverse-trace.github.io/epiparameter/
+BugReports: https://github.com/epiverse-trace/epiparameter/issues
+Depends: R (>= 4.1.0)
+Imports: cachem, checkmate, cli, distcrete, distributional,
+        epiparameterDB, graphics, lifecycle, pillar, rlang, stats,
+        tools, utils
+Suggests: bookdown, DT, ggplot2, knitr, RColorBrewer, rmarkdown,
+        spelling, testthat (>= 3.0.0), vdiffr (>= 1.0.7), visNetwork
+VignetteBuilder: knitr
+Config/Needs/check: mrc-ide/epireview
+Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview
+Config/potools/style: explicit
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-GB
+LazyData: true
+RoxygenNote: 7.3.2
+NeedsCompilation: no
+Packaged: 2025-01-07 16:58:31 UTC; lshjl15
+Author: Joshua W. Lambert [aut, cre, cph]
+    (<https://orcid.org/0000-0001-5218-3046>),
+  Adam Kucharski [aut, cph] (<https://orcid.org/0000-0001-8814-9421>),
+  Carmen Tamayo [aut] (<https://orcid.org/0000-0003-4184-2864>),
+  Hugo Gruson [ctb, rev] (<https://orcid.org/0000-0002-4094-1476>),
+  Sebastian Funk [ctb] (<https://orcid.org/0000-0002-2842-3406>),
+  Pratik Gupte [rev] (<https://orcid.org/0000-0001-5294-7819>),
+  James M. Azam [rev] (<https://orcid.org/0000-0001-5782-7330>),
+  Chris Hartgerink [rev] (<https://orcid.org/0000-0003-1050-6809>),
+  Tim Taylor [rev] (<https://orcid.org/0000-0002-8587-7113>)
+Maintainer: Joshua W. Lambert <joshua.lambert@lshtm.ac.uk>
+Repository: CRAN
+Date/Publication: 2025-01-08 14:50:09 UTC
+Built: R 4.4.2; ; 2025-01-22 11:34:53 UTC; unix

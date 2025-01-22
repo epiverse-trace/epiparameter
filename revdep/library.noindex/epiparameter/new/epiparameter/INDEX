@@ -1,0 +1,88 @@
+aggregate.multi_epiparameter
+                        Aggregate multiple <epiparameter> objects into
+                        a single <epiparameter> object.
+as.data.frame.epiparameter
+                        'as.data.frame()' method for <epiparameter>
+                        class
+as.data.frame.multi_epiparameter
+                        'as.data.frame()' method for
+                        <multi_epiparameter> class
+as.function.epiparameter
+                        'as.function()' method for <epiparameter> class
+as_epiparameter         Convert to an <epiparameter> object
+as_epiparameter.data.frame
+                        Convert <data.frame> to an <epiparameter>
+                        object
+assert_epiparameter     Assert an object is a valid <epiparameter>
+                        object
+c.epiparameter          'c()' method for <epiparameter> class
+calc_disc_dist_quantile
+                        Calculate the quantiles of a probability
+                        distribution based on the vector of
+                        probabilities and time data (e.g. time since
+                        infection)
+convert_params_to_summary_stats
+                        Convert the parameter(s) of a distribution to
+                        summary statistics
+convert_summary_stats_to_params
+                        Convert the summary statistics of a
+                        distribution to parameters
+create_citation         Create a citation for an <epiparameter> object
+create_metadata         Specify metadata associated with data set
+create_method_assess    Specify methodological aspects of distribution
+                        fitting
+create_prob_distribution
+                        Create a distribution object
+create_region           Specify the geography of the data entry
+create_summary_stats    Specify reported summary statistics
+create_uncertainty      Specify distribution parameter uncertainty
+discretise              Discretises a continuous distribution in an
+                        <epiparameter> object
+epiparameter            Create an <epiparameter> object
+epiparameter_db         Create <epiparameter> object(s) directly from
+                        the epiparameter library (database)
+epiparameter_distribution_functions
+                        PDF, CDF, PMF, quantiles and random number
+                        generation for <epiparameter> objects
+epiparameter_options    Package options
+epireview_core_cols     A vector of 'character' strings with the core
+                        column names of the epidemiological parameter
+                        data exported by the 'epireview' R package.
+extract_param           Calculate the parameters of a parametric
+                        probability distribution from reported values
+                        of percentiles, or median and range
+family.epiparameter     Family method for the <epiparameter> class
+format.epiparameter     Format method for <epiparameter> class
+get_citation            Get citation from an object
+get_citation.epiparameter
+                        Get citation from an <epiparameter> object
+get_citation.multi_epiparameter
+                        Get citation from a list of <epiparameter>
+                        objects
+get_parameters          Get parameters from an object
+get_parameters.epiparameter
+                        Get parameters from an <epiparameter> object
+is_continuous           Check if distribution in <epiparameter> is
+                        continuous
+is_epiparameter         Check object is an <epiparameter>
+is_epiparameter_params
+                        Check whether the vector of parameters for the
+                        probability distribution are in the set of
+                        possible parameters used in the epiparameter
+                        package
+is_parameterised        Check if <epiparameter> or list of
+                        <epiparameter> objects contains a distribution
+                        and distribution parameters
+is_truncated            Check if distribution in <epiparameter> is
+                        truncated
+lines.epiparameter      'lines()' method for <epiparameter> class
+mean.epiparameter       Mean method for <epiparameter> class
+parameter_tbl           Table of epidemiological distributions
+plot.epiparameter       Plot method for <epiparameter> class
+plot.multi_epiparameter
+                        'plot()' method for <multi_epiparameter> class
+print.epiparameter      Print method for <epiparameter> class
+print.multi_epiparameter
+                        Print method for <multi_epiparameter> class
+test_epiparameter       Test whether an object is a valid
+                        <epiparameter> object
