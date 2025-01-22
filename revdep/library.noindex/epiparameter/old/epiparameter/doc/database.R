@@ -1,0 +1,29 @@
+## ----echo = FALSE-------------------------------------------------------------
+library("DT")
+library("epiparameter")
+
+db <- epiparameter_db()
+tbl <- lapply(db, function(x) {
+  data.frame(
+    disease = x$disease,
+    pathogen = x$pathogen,
+    epi_name = x$epi_name,
+    citation_info = paste0(
+      epiparameter:::.citet(x$citation), # nolint undesirable_operator_linter
+      ", DOI: ",
+      "<a href=\"https://doi.org/", x$citation$doi, "\">",
+      x$citation$doi, "</a>"
+    )
+  )
+})
+tb <- do.call(rbind, tbl)
+## sort by disease then pathogen
+tb <- tb[order(tb$disease, tb$pathogen), ]
+datatable(
+  tb,
+  rownames = FALSE,
+  colnames = c("Disease", "Pathogen", "Distribution", "Reference"),
+  escape = FALSE,
+  options = list(pageLength = 50)
+)
+

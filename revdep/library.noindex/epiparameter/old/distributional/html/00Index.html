@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head><title>R: Vectorised Probability Distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+<h1> Vectorised Probability Distributions
+<img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;distributional&rsquo; version 0.5.0</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+<li><a href="../NEWS">Package NEWS</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<table style="width: 100%;">
+<tr><td style="width: 25%;"><a href="cdf.html">cdf</a></td>
+<td>The cumulative distribution function</td></tr>
+<tr><td style="width: 25%;"><a href="cdf.html">cdf.distribution</a></td>
+<td>The cumulative distribution function</td></tr>
+<tr><td style="width: 25%;"><a href="covariance.html">covariance</a></td>
+<td>Covariance</td></tr>
+<tr><td style="width: 25%;"><a href="covariance.distribution.html">covariance.distribution</a></td>
+<td>Covariance of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="variance.html">covariance.numeric</a></td>
+<td>Variance</td></tr>
+<tr><td style="width: 25%;"><a href="density.distribution.html">density.distribution</a></td>
+<td>The probability density/mass function</td></tr>
+<tr><td style="width: 25%;"><a href="dist_bernoulli.html">dist_bernoulli</a></td>
+<td>The Bernoulli distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_beta.html">dist_beta</a></td>
+<td>The Beta distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_binomial.html">dist_binomial</a></td>
+<td>The Binomial distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_burr.html">dist_burr</a></td>
+<td>The Burr distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_categorical.html">dist_categorical</a></td>
+<td>The Categorical distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_cauchy.html">dist_cauchy</a></td>
+<td>The Cauchy distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_chisq.html">dist_chisq</a></td>
+<td>The (non-central) Chi-Squared Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_degenerate.html">dist_degenerate</a></td>
+<td>The degenerate distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_exponential.html">dist_exponential</a></td>
+<td>The Exponential Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_f.html">dist_f</a></td>
+<td>The F Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_gamma.html">dist_gamma</a></td>
+<td>The Gamma distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_geometric.html">dist_geometric</a></td>
+<td>The Geometric Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_gev.html">dist_gev</a></td>
+<td>The Generalized Extreme Value Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_gh.html">dist_gh</a></td>
+<td>The generalised g-and-h Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_gk.html">dist_gk</a></td>
+<td>The g-and-k Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_gpd.html">dist_gpd</a></td>
+<td>The Generalized Pareto Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_gumbel.html">dist_gumbel</a></td>
+<td>The Gumbel distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_hypergeometric.html">dist_hypergeometric</a></td>
+<td>The Hypergeometric distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_inflated.html">dist_inflated</a></td>
+<td>Inflate a value of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_inverse_exponential.html">dist_inverse_exponential</a></td>
+<td>The Inverse Exponential distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_inverse_gamma.html">dist_inverse_gamma</a></td>
+<td>The Inverse Gamma distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_inverse_gaussian.html">dist_inverse_gaussian</a></td>
+<td>The Inverse Gaussian distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_logarithmic.html">dist_logarithmic</a></td>
+<td>The Logarithmic distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_logistic.html">dist_logistic</a></td>
+<td>The Logistic distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_lognormal.html">dist_lognormal</a></td>
+<td>The log-normal distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_missing.html">dist_missing</a></td>
+<td>Missing distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_mixture.html">dist_mixture</a></td>
+<td>Create a mixture of distributions</td></tr>
+<tr><td style="width: 25%;"><a href="dist_multinomial.html">dist_multinomial</a></td>
+<td>The Multinomial distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_multivariate_normal.html">dist_multivariate_normal</a></td>
+<td>The multivariate normal distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_negative_binomial.html">dist_negative_binomial</a></td>
+<td>The Negative Binomial distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_normal.html">dist_normal</a></td>
+<td>The Normal distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_pareto.html">dist_pareto</a></td>
+<td>The Pareto distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_percentile.html">dist_percentile</a></td>
+<td>Percentile distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_poisson.html">dist_poisson</a></td>
+<td>The Poisson Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_poisson_inverse_gaussian.html">dist_poisson_inverse_gaussian</a></td>
+<td>The Poisson-Inverse Gaussian distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_sample.html">dist_sample</a></td>
+<td>Sampling distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_studentized_range.html">dist_studentized_range</a></td>
+<td>The Studentized Range distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_student_t.html">dist_student_t</a></td>
+<td>The (non-central) location-scale Student t Distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_transformed.html">dist_transformed</a></td>
+<td>Modify a distribution with a transformation</td></tr>
+<tr><td style="width: 25%;"><a href="dist_truncated.html">dist_truncated</a></td>
+<td>Truncate a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_uniform.html">dist_uniform</a></td>
+<td>The Uniform distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_weibull.html">dist_weibull</a></td>
+<td>The Weibull distribution</td></tr>
+<tr><td style="width: 25%;"><a href="dist_wrap.html">dist_wrap</a></td>
+<td>Create a distribution from p/d/q/r style functions</td></tr>
+<tr><td style="width: 25%;"><a href="family.distribution.html">family.distribution</a></td>
+<td>Extract the name of the distribution family</td></tr>
+<tr><td style="width: 25%;"><a href="generate.distribution.html">generate.distribution</a></td>
+<td>Randomly sample values from a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="hdr.html">hdr</a></td>
+<td>Compute highest density regions</td></tr>
+<tr><td style="width: 25%;"><a href="hdr.distribution.html">hdr.distribution</a></td>
+<td>Highest density regions of probability distributions</td></tr>
+<tr><td style="width: 25%;"><a href="hilo.html">hilo</a></td>
+<td>Compute intervals</td></tr>
+<tr><td style="width: 25%;"><a href="hilo.distribution.html">hilo.distribution</a></td>
+<td>Probability intervals of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="is-distribution.html">is_distribution</a></td>
+<td>Test if the object is a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="is_hdr.html">is_hdr</a></td>
+<td>Is the object a hdr</td></tr>
+<tr><td style="width: 25%;"><a href="is_hilo.html">is_hilo</a></td>
+<td>Is the object a hilo</td></tr>
+<tr><td style="width: 25%;"><a href="kurtosis.html">kurtosis</a></td>
+<td>Kurtosis of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="kurtosis.html">kurtosis.distribution</a></td>
+<td>Kurtosis of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="likelihood.html">likelihood</a></td>
+<td>The (log) likelihood of a sample matching a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="likelihood.html">likelihood.distribution</a></td>
+<td>The (log) likelihood of a sample matching a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="likelihood.html">log_likelihood</a></td>
+<td>The (log) likelihood of a sample matching a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="mean.distribution.html">mean.distribution</a></td>
+<td>Mean of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="median.distribution.html">median.distribution</a></td>
+<td>Median of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="new_dist.html">new_dist</a></td>
+<td>Create a new distribution</td></tr>
+<tr><td style="width: 25%;"><a href="new_hdr.html">new_hdr</a></td>
+<td>Construct hdr intervals</td></tr>
+<tr><td style="width: 25%;"><a href="new_hilo.html">new_hilo</a></td>
+<td>Construct hilo intervals</td></tr>
+<tr><td style="width: 25%;"><a href="new_support_region.html">new_support_region</a></td>
+<td>Create a new support region vector</td></tr>
+<tr><td style="width: 25%;"><a href="parameters.html">parameters</a></td>
+<td>Extract the parameters of a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="parameters.html">parameters.distribution</a></td>
+<td>Extract the parameters of a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="quantile.distribution.html">quantile.distribution</a></td>
+<td>Distribution Quantiles</td></tr>
+<tr><td style="width: 25%;"><a href="skewness.html">skewness</a></td>
+<td>Skewness of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="skewness.html">skewness.distribution</a></td>
+<td>Skewness of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="support.html">support</a></td>
+<td>Region of support of a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="support.html">support.distribution</a></td>
+<td>Region of support of a distribution</td></tr>
+<tr><td style="width: 25%;"><a href="variance.html">variance</a></td>
+<td>Variance</td></tr>
+<tr><td style="width: 25%;"><a href="variance.distribution.html">variance.distribution</a></td>
+<td>Variance of a probability distribution</td></tr>
+<tr><td style="width: 25%;"><a href="variance.html">variance.matrix</a></td>
+<td>Variance</td></tr>
+<tr><td style="width: 25%;"><a href="variance.html">variance.numeric</a></td>
+<td>Variance</td></tr>
+</table>
+</div></body></html>
