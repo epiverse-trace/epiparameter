@@ -1,5 +1,27 @@
 # epiparameter 0.4.1
 
+A patch release resolving issues flagged by CRAN checks. 
+
+## New features
+
+* None
+
+## Breaking changes
+
+* The `extract-bias.Rmd` vignette is converted to an [article](https://r-pkgs.org/vignettes.html#sec-vignettes-article), and therefore, it is no longer available on CRAN and can be read on the [package website](https://epiverse-trace.github.io/epiparameter/articles/extract-bias.html) (#436).
+
+## Minor changes
+
+* The `extract_param()` unit tests for the Weibull distribution are skipped on CRAN due to failing the `M1 Mac` CRAN check. These tests pass locally and on GitHub actions, so unchanged but skipped on CRAN (#436). 
+
+## Bug fixes
+
+* None
+
+## Deprecated and defunct
+
+* None
+
 # epiparameter 0.4.0
 
 The fourth minor release of the {epiparameter} focuses on splitting the code and data, with the data being moved into a separate R package: [{epiparameterDB}](https://CRAN.R-project.org/package=epiparameterDB). There are also some minor additional improvements focusing on printing and plotting.
