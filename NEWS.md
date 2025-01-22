@@ -8,11 +8,11 @@ A patch release resolving issues flagged by CRAN checks.
 
 ## Breaking changes
 
-* The `extract-bias.Rmd` vignette is converted to an [article](https://r-pkgs.org/vignettes.html#sec-vignettes-article), and therefore, it is no longer available on CRAN and can be read on the [package website](https://epiverse-trace.github.io/epiparameter/articles/extract-bias.html) (#436).
+* The `extract-bias.Rmd` vignette is converted to an [article](https://r-pkgs.org/vignettes.html#sec-vignettes-article), and therefore, it is no longer available on CRAN and can be read on the [package website](https://epiverse-trace.github.io/epiparameter/articles/extract-bias.html) (#437).
 
 ## Minor changes
 
-* The `extract_param()` unit tests for the Weibull distribution are skipped on CRAN due to failing the `M1 Mac` CRAN check. These tests pass locally and on GitHub actions, so unchanged but skipped on CRAN (#436). 
+* The `extract_param()` unit tests for the Weibull distribution are skipped on CRAN due to failing the `M1 Mac` CRAN check. These tests pass locally and on GitHub actions, so unchanged but skipped on CRAN (#437). 
 
 ## Bug fixes
 
