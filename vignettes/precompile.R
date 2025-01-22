@@ -7,17 +7,14 @@ knitr::knit(
 )
 
 # run from package root directory
-figures <- file.path(list.files(path = "figure", pattern = "^plot-.*\\.png$"))
-if (!dir.exists(file.path("vignettes", "figure"))) {
-  dir.create(file.path("vignettes", "figure"))
-}
+figures <- file.path(list.files(path = ".", pattern = "^plot-.*\\.png$"))
 cp <- file.copy(
-  from = file.path("figure", figures),
-  to = file.path("vignettes", "figure"),
+  from = file.path(".", figures),
+  to = file.path("vignettes", "articles"),
   overwrite = TRUE
 )
 if (all(cp)) {
-  unlink(file.path("figure"), recursive = TRUE)
+  unlink(figures)
 } else {
   print("Article figures did not copy, please inspect manually.")
 }
