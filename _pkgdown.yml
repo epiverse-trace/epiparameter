@@ -103,7 +103,7 @@ articles:
 - title: Auxiliary
   navbar: Auxiliary
   contents:
-  - extract-bias
+  - articles/extract-bias
 
 - title: Developer Documentation
   navbar: Developer Documentation
