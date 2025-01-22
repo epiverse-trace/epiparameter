@@ -1,4 +1,4 @@
-# epiparameter (development version)
+# epiparameter 0.4.1
 
 # epiparameter 0.4.0
 
