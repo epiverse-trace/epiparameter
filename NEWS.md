@@ -1,3 +1,5 @@
+# epiparameter (development version)
+
 # epiparameter 0.4.1
 
 A patch release resolving issues flagged by CRAN checks. 
