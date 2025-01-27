@@ -33,7 +33,7 @@
     <a href="https://epiverse-trace.github.io/" class="external-link"><img src="https://epiverse-trace.github.io/blueprints/logo_white.svg" id="logo" alt="Epiverse-TRACE"></a>
     <a class="navbar-brand me-2" href="../index.html">epiparameter</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.4.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,7 +95,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>{epiparameter} Extraction Bias Analysis</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/epiverse-trace/epiparameter/blob/main/vignettes/extract-bias.Rmd" class="external-link"><code>vignettes/extract-bias.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/epiverse-trace/epiparameter/blob/main/vignettes/articles/extract-bias.Rmd" class="external-link"><code>vignettes/articles/extract-bias.Rmd</code></a></small>
       <div class="d-none name"><code>extract-bias.Rmd</code></div>
     </div>
 
@@ -253,7 +253,7 @@ more details.</p>
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">30</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="figure%2Fplot-results-percentiles-1.png" alt="Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."><div class="figcaption">Parameter estimation bias facetted by
+<img src="plot-results-percentiles-1.png" alt="Parameter estimation bias facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."><div class="figcaption">Parameter estimation bias facetted by
 distribution. Parameter 1 is either the shape parameter, for gamma and
 Weibull distributions, or meanlog for the lognormal distribution.
 Parameter 2 is either the scale parameter for gamma and Weibull
@@ -339,9 +339,8 @@ by the data.</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="co">#&gt; Warning: Maximum optimisation iterations reached, returning result early. </span></span>
-<span><span class="co">#&gt; Result may not be reliable.</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Result may not be reliable.</span></span>
+<span></span>
 <span><span class="co"># combine results</span></span>
 <span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">parameters_range</span>, <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">estim_params</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -356,7 +355,7 @@ by the data.</p>
 <span>  diff_param_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">param_2</span> <span class="op">-</span> <span class="va">results</span><span class="op">$</span><span class="va">estim_param_2</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Plot results:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># plot differences by distribution</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">results</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span></span>
@@ -377,7 +376,7 @@ by the data.</p>
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">30</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="figure%2Fplot-results-med-range-1.png" alt="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."><div class="figcaption">Parameter extraction bias. Parameter 1 is either
+<img src="plot-results-med-range-1.png" alt="Parameter extraction bias. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."><div class="figcaption">Parameter extraction bias. Parameter 1 is either
 the shape parameter, for gamma and Weibull distributions, or meanlog for
 the lognormal distribution. Parameter 2 is either the scale parameter
 for gamma and Weibull distributions, or sdlog for the lognormal
@@ -401,7 +400,7 @@ unstable, imprecise, and potentially untrustworthy.</p>
 (<code>parameters_perc</code>). Now we can run the extraction for a set
 of replicates to compute the variance of parameter estimates over those
 replicates.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estim_param_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># Loop through parameter space estimating parameters</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">params_idx</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_perc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -450,7 +449,7 @@ replicates.</p>
 <span>  <span class="st">"dist"</span>, <span class="st">"param_1"</span>, <span class="st">"param_2"</span>, <span class="st">"lower"</span>, <span class="st">"upper"</span>,</span>
 <span>  <span class="st">"deg_asym"</span>, <span class="st">"estim_param_1_var"</span>, <span class="st">"estim_param_2_var"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">results</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="va">estim_param_1_var</span>,</span>
@@ -468,7 +467,7 @@ replicates.</p>
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">30</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="figure%2Fplot-results-1.png" alt="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."><div class="figcaption">Parameter extraction precision, facetted by
+<img src="plot-results-1.png" alt="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."><div class="figcaption">Parameter extraction precision, facetted by
 distribution. Parameter 1 is either the shape parameter, for gamma and
 Weibull distributions, or meanlog for the lognormal distribution.
 Parameter 2 is either the scale parameter for gamma and Weibull
@@ -480,7 +479,7 @@ distributions, or sdlog for the lognormal distribution.</div>
 </h3>
 <p>The same test of estimation precision can be performed for the
 extraction from median and range.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estim_param_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_range</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># Loop through parameter space estimating parameters</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">params_idx</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">parameters_range</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -547,9 +546,10 @@ extraction from median and range.</p>
 <span>  <span class="va">estim_param_var</span><span class="op">[[</span><span class="va">params_idx</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">estim</span>, MARGIN <span class="op">=</span> <span class="fl">1</span>, FUN <span class="op">=</span> <span class="va">var</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="co">#&gt; Warning: Maximum optimisation iterations reached, returning result early. </span></span>
-<span><span class="co">#&gt; Result may not be reliable.</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; Result may not be reliable.</span></span>
+<span><span class="co">#&gt; Warning: Maximum optimisation iterations reached, returning result early. </span></span>
+<span><span class="co">#&gt; Result may not be reliable.</span></span>
+<span></span>
 <span><span class="co"># combine results</span></span>
 <span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">parameters_range</span>, <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">estim_param_var</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -557,7 +557,7 @@ extraction from median and range.</p>
 <span>  <span class="st">"dist"</span>, <span class="st">"param_1"</span>, <span class="st">"param_2"</span>, <span class="st">"n_samples"</span>, <span class="st">"estim_param_1_var"</span>,</span>
 <span>  <span class="st">"estim_param_2_var"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">results</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="va">estim_param_1_var</span>,</span>
@@ -575,7 +575,7 @@ extraction from median and range.</p>
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">30</span>, vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="figure%2Fplot-estim-var-range-1.png" alt="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."><div class="figcaption">Parameter extraction precision, facetted by
+<img src="plot-estim-var-range-1.png" alt="Parameter extraction precision, facetted by distribution. Parameter 1 is either the shape parameter, for gamma and Weibull distributions, or meanlog for the lognormal distribution. Parameter 2 is either the scale parameter for gamma and Weibull distributions, or sdlog for the lognormal distribution."><div class="figcaption">Parameter extraction precision, facetted by
 distribution. Parameter 1 is either the shape parameter, for gamma and
 Weibull distributions, or meanlog for the lognormal distribution.
 Parameter 2 is either the scale parameter for gamma and Weibull
