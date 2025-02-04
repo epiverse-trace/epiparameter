@@ -624,7 +624,8 @@ epidist_db <- function(disease = "all",
       prob_distribution = x$probability_distribution$prob_distribution,
       prob_distribution_params = params,
       discretise = discretised,
-      truncation = truncation
+      truncation = truncation,
+      offset = x$probability_distribution$offset
     ),
     uncertainty = uncertainty,
     summary_stats = ss,
