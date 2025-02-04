@@ -495,6 +495,7 @@ density.epiparameter <- function(x, at, ...) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
+  at <- at - attr(x$prob_distribution, "offset")
   if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_distribution$d(at)
   } else {
@@ -517,6 +518,7 @@ cdf.epiparameter <- function(x, q, ..., log = FALSE) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
+  q <- q - attr(x$prob_distribution, "offset")
   if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_distribution$p(q)
     if (log) out <- log(out)
@@ -541,10 +543,11 @@ quantile.epiparameter <- function(x, p, ...) {
   } else {
     out <- stats::quantile(x$prob_distribution, p = p)
   }
+  offset <- attr(x$prob_distribution, "offset")
   if (is.atomic(out)) {
-    return(out)
+    return(out + offset)
   }
-  return(unlist(out, recursive = FALSE))
+  return(unlist(out, recursive = FALSE) + offset)
 }
 
 #' @importFrom distributional generate
@@ -569,6 +572,7 @@ generate.epiparameter <- function(x, times, ...) {
     out <- distributional::generate(x$prob_distribution, times = times)
     out <- unlist(out, recursive = recursive)
   }
+  out <- out + attr(x$prob_distribution, "offset")
   out
 }
 
