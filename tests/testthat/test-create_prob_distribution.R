@@ -194,7 +194,7 @@ test_that("create_prob_distribution works for offset", {
   )
 
   expect_s3_class(res, "distribution")
-  expect_identical(attr(x$prob_distribution, "offset"), 10)
+  expect_identical(attr(res, "offset"), 10)
 })
 
 test_that("create_prob_distribution works passing args via ...", {

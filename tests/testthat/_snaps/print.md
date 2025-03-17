@@ -3,11 +3,11 @@
     Code
       epiparameter_db()
     Message
-      Returning 125 results that match the criteria (100 are parameterised). 
+      Returning 133 results that match the criteria (108 are parameterised). 
       Use subset to filter by entry variables or single_epiparameter to return a single entry. 
       To retrieve the citation for each use the 'get_citation' function
     Output
-      # List of 125 <epiparameter> objects
+      # List of 133 <epiparameter> objects
       Number of diseases: 23
       > Adenovirus > COVID-19 > Chikungunya > Dengue > Ebola Virus Disease > Hantavirus Pulmonary Syndrome > Human Coronavirus > Influenza > Japanese Encephalitis > MERS > Marburg Virus Disease > Measles > Mpox > Parainfluenza > Pneumonic Plague > RSV > Rhinovirus > Rift Valley Fever > SARS > Smallpox > West Nile Fever > Yellow Fever > Zika Virus Disease
       Number of epi parameters: 13
@@ -54,7 +54,7 @@
         meanlog: 1.386
         sdlog: 0.593
       
-      # i 122 more elements
+      # i 130 more elements
       # i Use `print(n = ...)` to see more elements.
       # i Use `parameter_tbl()` to see a summary table of the parameters.
       # i Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
