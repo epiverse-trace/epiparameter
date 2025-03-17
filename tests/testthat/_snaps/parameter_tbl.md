@@ -4,7 +4,7 @@
       dist_tbl
     Output
       # Parameter table:
-      # A data frame:    125 x 7
+      # A data frame:    133 x 7
          disease          pathogen epi_name prob_distribution author  year sample_size
          <chr>            <chr>    <chr>    <chr>             <chr>  <dbl>       <dbl>
        1 Adenovirus       Adenovi~ incubat~ lnorm             Lessl~  2009          14
@@ -17,7 +17,7 @@
        8 Parainfluenza    Parainf~ incubat~ lnorm             Lessl~  2009          11
        9 RSV              RSV      incubat~ lnorm             Lessl~  2009          24
       10 Rhinovirus       Rhinovi~ incubat~ lnorm             Lessl~  2009          28
-      # i 115 more rows
+      # i 123 more rows
 
 # parameter_tbl works for incubation period with db
 
@@ -25,7 +25,7 @@
       incub_tbl
     Output
       # Parameter table:
-      # A data frame:    73 x 7
+      # A data frame:    75 x 7
          disease          pathogen epi_name prob_distribution author  year sample_size
          <chr>            <chr>    <chr>    <chr>             <chr>  <dbl>       <dbl>
        1 Adenovirus       Adenovi~ incubat~ lnorm             Lessl~  2009          14
@@ -38,7 +38,7 @@
        8 Parainfluenza    Parainf~ incubat~ lnorm             Lessl~  2009          11
        9 RSV              RSV      incubat~ lnorm             Lessl~  2009          24
       10 Rhinovirus       Rhinovi~ incubat~ lnorm             Lessl~  2009          28
-      # i 63 more rows
+      # i 65 more rows
 
 # parameter_tbl works for different distribution with db
 
@@ -46,7 +46,7 @@
       serial_tbl
     Output
       # Parameter table:
-      # A data frame:    18 x 7
+      # A data frame:    22 x 7
          disease          pathogen epi_name prob_distribution author  year sample_size
          <chr>            <chr>    <chr>    <chr>             <chr>  <dbl>       <dbl>
        1 Influenza        Influen~ serial ~ gamma             Ghani~  2009          58
@@ -59,14 +59,7 @@
        8 Ebola Virus Dis~ Ebola V~ serial ~ gamma             WHO E~  2015         147
        9 Ebola Virus Dis~ Ebola V~ serial ~ gamma             WHO E~  2015         112
       10 MERS             MERS-Cov serial ~ lnorm             Assir~  2013          23
-      11 MERS             MERS-Cov serial ~ gamma             Cowli~  2015          99
-      12 COVID-19         SARS-Co~ serial ~ <NA>              Alene~  2021        3924
-      13 COVID-19         SARS-Co~ serial ~ lnorm             Nishi~  2020          28
-      14 COVID-19         SARS-Co~ serial ~ weibull           Nishi~  2020          18
-      15 COVID-19         SARS-Co~ serial ~ norm              Yang ~  2020         131
-      16 Mpox             Mpox Vi~ serial ~ gamma             Guo e~  2022          42
-      17 Mpox             Mpox Vi~ serial ~ <NA>              Wang ~  2022          16
-      18 Mpox             Mpox Vi~ serial ~ <NA>              Wang ~  2022          34
+      # i 12 more rows
 
 # parameter_tbl works for COVID-19 db
 

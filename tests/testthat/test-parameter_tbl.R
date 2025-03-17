@@ -4,7 +4,7 @@ db <- suppressMessages(epiparameter_db())
 test_that("parameter_tbl works as expected supplied with db", {
   dist_tbl <- parameter_tbl(multi_epiparameter = db)
   expect_s3_class(dist_tbl, "data.frame")
-  expect_identical(dim(dist_tbl), c(125L, 7L))
+  expect_identical(dim(dist_tbl), c(133L, 7L))
   expect_named(
     dist_tbl,
     c("disease", "pathogen", "epi_name", "prob_distribution",
@@ -19,7 +19,7 @@ test_that("parameter_tbl works for incubation period with db", {
     epi_name = "incubation period"
   )
   expect_s3_class(incub_tbl, "data.frame")
-  expect_identical(dim(incub_tbl), c(73L, 7L))
+  expect_identical(dim(incub_tbl), c(75L, 7L))
   expect_named(
     incub_tbl,
     c("disease", "pathogen", "epi_name", "prob_distribution",
@@ -34,7 +34,7 @@ test_that("parameter_tbl works for different distribution with db", {
     epi_name = "serial interval"
   )
   expect_s3_class(serial_tbl, "data.frame")
-  expect_identical(dim(serial_tbl), c(18L, 7L))
+  expect_identical(dim(serial_tbl), c(22L, 7L))
   expect_named(
     serial_tbl,
     c("disease", "pathogen", "epi_name", "prob_distribution",
