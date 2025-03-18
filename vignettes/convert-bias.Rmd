@@ -1,0 +1,271 @@
+---
+title: "{epiparameter} Conversion Bias Analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{{epiparameter} Conversion Bias Analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  fig.width = 8, 
+  fig.height = 5
+)
+```
+
+Parametric probability distributions have one, or several parameterisations. For example the gamma distribution can be parameterised as shape ($\alpha$) and scale ($\theta$), or shape and rate ($\lambda$), with conversions between these parameterisations possible. Alternatively, they can be characterised by _summary statistics_, such as the mean and variance, which for many probability distributions can be converted into distribution parameter parameters. For several probability distributions the conversion between summary statistics and parameters is analytical (closed-form), and if summary statistics, such as mean and standard deviation are available, these are _sufficient_ to calculate the parameters.
+
+Given the varied reporting of parameters for estimated epidemiological parameters we provide _conversion_ functions in the {epiparameter} R package (`convert_params_to_summary_stats()` and `convert_summary_stats_to_params()`). 
+
+However, using parameters conversions to obtain the probability distribution parameters cannot be universally applied, due to them being non-linear functions, and the method of inference and correlation need to be considered. In this vignette we outline some scenarios in which the parameter to summary statistic conversion, or vice versa, can be applied correctly, with use of {epiparameter} functions, and other times when the conversions if applied naively, will leave to biased parameters. 
+
+The issues introducing bias discussed are:
+
+1. Small sample-size
+2. Correlated estimates
+
+```{r setup}
+library(epiparameter)
+library(fitdistrplus)
+library(ggplot2)
+library(MASS)
+```
+
+## 1. Sample size
+
+First we generate random samples from a gamma distribution. In this example, we will assume we know the true distribution parameter values to showcase the possible bias. 
+
+```{r sample-gamma}
+set.seed(123)
+n_samples <- 50
+true_shape <- 2
+true_rate <- 0.5
+gamma_samples <- rgamma(n = n_samples, shape = true_shape, rate = true_rate)
+```
+
+Then we will fit the gamma distribution to this data to estimate the parameters using maximum likelihood estimatation (MLE) with the {fitdistrplus} package.
+
+```{r fit-gamma}
+fit <- fitdistrplus::fitdist(data = gamma_samples, distr = "gamma", method = "mle")
+fit
+```
+
+We can calculate the mean and standard deviation directly from the sample:
+
+```{r summary-stats-sample}
+sample_mean <- mean(gamma_samples)
+sample_mean
+sample_sd <- sd(gamma_samples)
+sample_sd
+```
+
+We can also calculate the mean and standard deivation from the estimated gamma distribution parameters from the MLE fit.
+
+```{r summary-stats-fit}
+fit_mean <- fit$estimate[["shape"]] / fit$estimate[["rate"]]
+fit_mean
+fit_sd <- fit$estimate[["shape"]] / fit$estimate[["rate"]]^2
+fit_sd
+```
+
+Let's plot the samples from the gamma distribution and plot the true mean and mean from converting to summary statistics.
+
+```{r plot-gamma-sample-fit}
+ggplot(data = data.frame(gamma_samples)) +
+  geom_histogram(
+    mapping = ggplot2::aes(x = gamma_samples), 
+    binwidth = 1
+  ) +
+  geom_vline(
+    mapping = ggplot2::aes(xintercept = sample_mean), 
+    col = "rosybrown"
+  ) + 
+  ggplot2::geom_vline(
+    mapping = ggplot2::aes(xintercept = fit_mean),
+    col = "navyblue"
+  ) +
+  scale_x_continuous(name = "Value") +
+  scale_y_continuous(name = "Count") +
+  theme_bw()
+```
+
+We can show that this is an issue of sample size but increasing the number of sample in the generated data and re-running. This works as the asymptotic theory of MLE states that if the estimator is _consistent_, the estimate will converge on the true estimates as the sample size goes to infinity. 
+
+```{r sample-gamma-large-ss}
+n_samples <- 1e5
+gamma_samples <- rgamma(n = n_samples, shape = true_shape, rate = true_rate)
+# mle fit the gamma distribution 
+fit <- fitdistrplus::fitdist(data = gamma_samples, distr = "gamma", method = "mle")
+sample_mean <- mean(gamma_samples)
+sample_sd <- sd(gamma_samples)
+fit_mean <- fit$estimate[["shape"]] / fit$estimate[["rate"]]
+fit_sd <- sqrt(fit$estimate[["shape"]]) * fit$estimate[["rate"]]
+ggplot(data = data.frame(gamma_samples)) +
+  geom_histogram(
+    mapping = ggplot2::aes(x = gamma_samples), 
+    binwidth = 1
+  ) +
+  geom_vline(
+    mapping = aes(xintercept = sample_mean),
+    col = "rosybrown"
+  ) + 
+  geom_vline(
+    mapping = aes(xintercept = fit_mean), 
+    col = "navyblue"
+  ) + 
+  scale_x_continuous(name = "Value") +
+  scale_y_continuous(name = "Count") +
+  theme_bw()
+```
+
+## 2. Correlated estimates
+
+When marginal estimates are reported for the distribution parameters then it is not always safe to assume that the summary statistics can be accurately calculated by transforming the distribution parameters. In other words the transformation of the central estimates does not necessarily equal the central estimates of the tranformationed parameters.
+
+$$
+\mathbb{E} [\alpha \times \theta] \neq \mathbb{E}[\alpha] \times \mathbb{E}[\theta]
+$$
+Where the mean using the shape ($\alpha$) and scale ($\theta$) parameterisation is calculated by: $\alpha \times \theta$. 
+
+```{r marginal-estimate-bias}
+true_alpha <- 2
+true_beta <- 3
+
+# Simulate correlated posterior samples of alpha and beta
+# SD_alpha = 0.5, SD_beta = 0.8, correlation = -0.7
+cov_matrix <- matrix(
+  c(0.5^2, -0.7 * 0.5 * 0.8,
+    -0.7 * 0.5 * 0.8, 0.8^2), 
+  nrow = 2
+)
+
+samples <- mvrnorm(n_samples, mu = c(true_alpha, true_beta), Sigma = cov_matrix)
+alpha_post <- pmax(samples[,1], 0.01)
+beta_post <- pmax(samples[,2], 0.01)
+
+# Calculate plug-in estimate: mean(alpha) * mean(beta)
+E_alpha <- mean(alpha_post)
+E_beta <- mean(beta_post)
+transform_mean <- E_alpha * E_beta
+
+# Calculate transformed posterior: mean(alpha * beta)
+true_mean_post <- mean(alpha_post * beta_post)
+
+# Print results
+cat("E[alpha] = ", round(E_alpha, 3), "\n")
+cat("E[beta] = ", round(E_beta, 3), "\n")
+cat("Transform estimate E[alpha]*E[beta] = ", round(transform_mean, 3), "\n")
+cat("Transformed posterior mean E[alpha * beta] = ", round(true_mean_post, 3), "\n")
+cat("Bias = ", round(transform_mean - true_mean_post, 3), "\n")
+```
+
+```{r plot-marginal-bias}
+# Assuming alpha_post and beta_post are already simulated as before
+# Compute alpha * beta for each posterior sample
+mean_samples <- alpha_post * beta_post
+
+# Compute summary statistics
+posterior_mean <- mean(mean_samples)
+transform_estimate <- mean(alpha_post) * mean(beta_post)
+
+# Create data frame for ggplot
+df <- data.frame(gamma_mean = mean_samples)
+
+# Plot histogram and vertical lines
+ggplot(data = df) +
+  geom_histogram(
+    aes(x = gamma_mean),
+    bins = 60, 
+    fill = "lightblue", 
+    col = "white"
+  ) +
+  geom_vline(
+    xintercept = posterior_mean, 
+    color = "darkgreen", 
+    size = 1.2
+  ) +
+  geom_vline(
+    xintercept = transform_estimate, 
+    color = "coral", 
+    linetype = "dashed", 
+    size = 1.2
+  ) +
+  scale_x_continuous(name = "Value") +
+  scale_y_continuous(name = "Count") +
+  labs(
+    title = "Bias in Estimated Gamma Mean (α × β)",
+    subtitle = "Green solid line = posterior mean   |   Orange dashed line = Transformed estimate"
+  ) +
+  theme_bw()
+```
+
+The unbiased mean of the posterior distribution is the mean of the product of the shape and scale parameters ($\mathbb{E}[\mu] = \mathbb{E}[\alpha \times \theta]$, shown by the solid green line in the plot). The transformed mean, given by the produce of the two means ($\mathbb{E}[\alpha] \times \mathbb{E}[\theta]$), ignores the correlation (covariance) between the shape and scale parameters and therefore the resulting mean is biased when the parameters are correlated.
+
+## Converting uncertainty between summary statistics and parameters
+
+Using the MLE fit above on the gamma-distributed data we can calculate the confidence interval (CI) using the parametric bootstrap method. 
+
+```{r}
+n_samples <- 50
+gamma_samples <- rgamma(n = n_samples, shape = true_shape, rate = true_rate)
+fit <- fitdistrplus::fitdist(data = gamma_samples, distr = "gamma", method = "mle")
+boot <- bootdist(fit)
+boot$CI
+```
+
+We can calculate the 95% confidence interval of the mean and standard deviation.
+
+```{r}
+# Calculate standard error of the mean
+se_mean <- sample_sd / sqrt(n_samples)
+# Calculate standard error of the standard deviation (approximate)
+se_sd <- sample_sd / sqrt(2 * (n_samples - 1))
+# Choose confidence level (e.g., 95%)
+confidence_level <- 0.95
+# Calculate margin of error (using t-distribution for small samples)
+alpha <- 1 - confidence_level
+t_critical <- qt(1 - alpha / 2, df = n_samples - 1) # t-distribution critical value
+margin_of_error_mean <- t_critical * se_mean
+margin_of_error_sd <- t_critical * se_sd
+# Calculate confidence intervals
+mean_ci <- c(sample_mean - margin_of_error_mean, sample_mean + margin_of_error_mean)
+mean_ci
+sd_ci <- c(sample_sd - margin_of_error_sd, sample_sd + margin_of_error_sd)
+sd_ci
+```
+
+We can use these confidence intervals around the mean and standard deviation to _incorrectly_ convert to the confidence intervals of the parameters.
+
+```{r}
+lower_ci <- convert_summary_stats_to_params("gamma", mean = mean_ci[1], sd = sd_ci[1])
+upper_ci <- convert_summary_stats_to_params("gamma", mean = mean_ci[2], sd = sd_ci[2])
+# convert scale to rate
+lower_ci_rate <- 1 / lower_ci$scale
+upper_ci_rate <- 1 / upper_ci$scale
+```
+
+```{r compare-ci}
+# correct gamma distribution 95% CI
+boot$CI
+
+# incorrect gamma distribution 95% CI
+incorrect_ci <- matrix(
+  data = c(
+    sort(c(lower_ci$shape, upper_ci$shape)),
+    sort(c(lower_ci_rate, upper_ci_rate))
+  ), 
+  ncol = 2,
+  byrow = TRUE
+)
+colnames(incorrect_ci) <- c("2.5%", "97.5%")
+row.names(incorrect_ci) <- c("shape", "rate")
+incorrect_ci
+```
+
+The comparison of the valid confidence interval from parameteric bootstrapping with the invalid confidence interval by converting confidence interval of summary statistics to parameters shows some clear inaccuracies and spurious results. 
+
+First, given we know the true shape parameters ($\alpha$) for the gamma distribution is `r true_shape`, the incorrect confidence interval does not contain the true value (`r incorrect_ci["shape", ]`). The secondary issue is the width of the confidence interval around the shape parameter is very narrow, suggesting we have high confidence in the estimated value, however, the valid bootstrap CI shows that the 95% confidence interval is much wider. The same issues are present for the CI of the rate parameter ($\lambda$), but this time the true value is within the CI bounds and the confidence interval is not as narrow as the shape parameter, but is still more narrow that the valid CI.
+
