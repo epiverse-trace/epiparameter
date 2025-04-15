@@ -37,6 +37,7 @@ get_parameters <- function(x, ...) {
 #' )
 #' get_parameters(ep)
 get_parameters.epiparameter <- function(x, ...) {
+
   chkDots(...)
   # extract parameters depending on prob distribution class
   if (inherits(x$prob_distribution, "distcrete")) {
