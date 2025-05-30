@@ -219,7 +219,6 @@ create_region <- function(continent = NA_character_,
   )
 }
 
-# nolint start: line_length_linter
 #' Specify reported summary statistics
 #'
 #' @description A helper function when creating an `<epiparameter>` object to
@@ -268,7 +267,7 @@ create_region <- function(continent = NA_character_,
 #' @return A list of summary statistics. The output list has element names
 #' equal to the function arguments:
 #' \preformatted{
-#' `r paste("$", names(formals(create_summary_stats)), sep = "", collapse = "\n")`
+#' `r paste0("$", names(formals(create_summary_stats)), collapse = "\n")`
 #' }
 #' @export
 #'
@@ -292,7 +291,6 @@ create_region <- function(continent = NA_character_,
 #'   lower_range = 1,
 #'   upper_range = 13
 #' )
-# nolint end: line_length_linter
 create_summary_stats <- function(mean = NA_real_,
                                  mean_ci_limits = c(NA_real_, NA_real_),
                                  mean_ci = NA_real_,
