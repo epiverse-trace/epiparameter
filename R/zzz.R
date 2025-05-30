@@ -2,7 +2,7 @@
 cache_env <- new.env(parent = emptyenv())
 
 .onLoad <- function(libname, pkgname) {
-  options(epiparameter = epiparameter_options) # nolint undersirable_function_linter
+  options(epiparameter = epiparameter_options) # nolint undesirable_function_linter.
 
   # create an in-memory cache
   cache_env$cache <- cachem::cache_mem()
