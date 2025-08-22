@@ -19,7 +19,9 @@ Authors@R: c(
     person("Chris", "Hartgerink", , "chris@data.org", role = "rev",
            comment = c(ORCID = "0000-0003-1050-6809")),
     person("Tim", "Taylor", , "tim.taylor@hiddenelephants.co.uk", role = "rev",
-           comment = c(ORCID = "0000-0002-8587-7113"))
+           comment = c(ORCID = "0000-0002-8587-7113")),
+    person("London School of Hygiene and Tropical Medicine, LSHTM", role = "cph",
+           comment = c(ROR = "00a0jsq62"))
   )
 Description: Classes and helper functions for loading, extracting, converting, 
     manipulating, plotting and aggregating epidemiological parameters for infectious diseases. 
