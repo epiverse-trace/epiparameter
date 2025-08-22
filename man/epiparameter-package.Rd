@@ -24,7 +24,7 @@ Useful links:
 Authors:
 \itemize{
   \item Adam Kucharski \email{adam.kucharski@lshtm.ac.uk} (\href{https://orcid.org/0000-0001-8814-9421}{ORCID}) [copyright holder]
-  \item Carmen Tamayo \email{carmen.tamayo-cuartero@lshtm.ac.uk} (\href{https://orcid.org/0000-0003-4184-2864}{ORCID})
+  \item Carmen Tamayo Cuartero \email{carmen.tamayo-cuartero@lshtm.ac.uk} (\href{https://orcid.org/0000-0003-4184-2864}{ORCID})
 }
 
 Other contributors:
