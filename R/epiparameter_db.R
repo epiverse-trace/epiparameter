@@ -737,8 +737,7 @@ epidist_db <- function(disease = "all",
     # special case to subset by dist as name is extracted first
     if (is.object(lst$prob_distribution) ||
         is.character(lst$prob_distribution)) {
-      prob_dist <- family(lst) # nolint prob_dist used in eval
-      eval(expr = condition)
+      eval(expr = condition, envir = list(prob_dist = family(lst)))
     } else {
       FALSE
     }
