@@ -33,6 +33,9 @@
 #' distribution.
 #' @param truncation A `numeric` specifying the truncation point if the inferred
 #' distribution was truncated, `NA` if not or unknown.
+#' @param offset A `numeric` specifying the shift of a probability distribution
+#' left or right on the x-axis (i.e. decreasing or increasing all values by a
+#' constant).
 #' @param ... [dots] Extra arguments to be passed to
 #' \pkg{distributional} or \pkg{distcrete} functions that construct the S3
 #' distribution objects. To see which arguments can be adjusted for discretised
@@ -78,10 +81,17 @@
 #'   truncation = NA,
 #'   w = 0.5
 #' )
+#' # example using an offset
+#' create_prob_distribution(
+#'   prob_distribution = "gamma",
+#'   prob_distribution_params = c(shape = 1, scale = 1),
+#'   offset = 5
+#' )
 create_prob_distribution <- function(prob_distribution,
                                      prob_distribution_params,
                                      discretise = FALSE,
                                      truncation = NA,
+                                     offset = 0,
                                      ...) {
   checkmate::assert_character(
     prob_distribution,
@@ -102,6 +112,7 @@ create_prob_distribution <- function(prob_distribution,
   )
   checkmate::assert_logical(discretise, len = 1)
   checkmate::assert_number(truncation, na.ok = TRUE)
+  checkmate::assert_number(offset)
 
   # set prob_distribution to lowercase for downstream case sensitive matching
   prob_distribution <- .clean_string(prob_distribution)
@@ -193,6 +204,8 @@ create_prob_distribution <- function(prob_distribution,
       )
     }
   }
+
+  attr(prob_distribution, "offset") <- offset
 
   # return prob_distribution object
   prob_distribution

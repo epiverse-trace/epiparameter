@@ -186,6 +186,17 @@ test_that("create_prob_distribution works for truncated continuous", {
   expect_identical(family(res), "truncated")
 })
 
+test_that("create_prob_distribution works for offset", {
+  res <- create_prob_distribution(
+    prob_distribution = "gamma",
+    prob_distribution_params = c(shape = 1, scale = 1),
+    offset = 10
+  )
+
+  expect_s3_class(res, "distribution")
+  expect_identical(attr(res, "offset"), 10)
+})
+
 test_that("create_prob_distribution works passing args via ...", {
   dist1 <- create_prob_distribution(
     prob_distribution = "gamma",
@@ -239,5 +250,16 @@ test_that("create_prob_distribution errors for discrete truncation", {
       truncation = 10
     ),
     regexp = "Truncation is not yet implemented for discrete distributions"
+  )
+})
+
+test_that("create_prob_distribution errors for incorrect offset", {
+  expect_error(
+    create_prob_distribution(
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      offset = NA
+    ),
+    regexp = "(Assertion on)*(offset)*(failed)"
   )
 })

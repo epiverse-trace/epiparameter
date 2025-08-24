@@ -1277,7 +1277,7 @@ test_that("c.epiparameter works with <epiparameter> & <multi_epiparameter>", {
 test_that("c.multi_epiparameter works with two <multi_epiparameter>s", {
   res <- c(db, db)
   expect_s3_class(res, class = "multi_epiparameter")
-  expect_length(res, 250)
+  expect_length(res, 266)
   expect_s3_class(res[[1]], class = "epiparameter")
 })
 

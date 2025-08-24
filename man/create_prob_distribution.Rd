@@ -9,6 +9,7 @@ create_prob_distribution(
   prob_distribution_params,
   discretise = FALSE,
   truncation = NA,
+  offset = 0,
   ...
 )
 }
@@ -27,6 +28,10 @@ distribution.}
 
 \item{truncation}{A \code{numeric} specifying the truncation point if the inferred
 distribution was truncated, \code{NA} if not or unknown.}
+
+\item{offset}{A \code{numeric} specifying the shift of a probability distribution
+left or right on the x-axis (i.e. decreasing or increasing all values by a
+constant).}
 
 \item{...}{\link{dots} Extra arguments to be passed to
 \pkg{distributional} or \pkg{distcrete} functions that construct the S3
@@ -96,5 +101,11 @@ create_prob_distribution(
   discretise = TRUE,
   truncation = NA,
   w = 0.5
+)
+# example using an offset
+create_prob_distribution(
+  prob_distribution = "gamma",
+  prob_distribution_params = c(shape = 1, scale = 1),
+  offset = 5
 )
 }
