@@ -502,15 +502,17 @@ epidist_db <- function(disease = "all",
       )
     },
     error = function(cnd) {
-      disease_str <- ifelse(
-        test = disease == "all", yes = "", no = paste(" for", disease_)
-      )
-      pathogen_str <- ifelse(
-        test = pathogen == "all", yes = "", no = paste(" for", pathogen_)
-      )
+      disease_str <- ifelse(test = disease == "all", yes = "", no = disease_)
+      pathogen_str <- ifelse(test = pathogen == "all", yes = "", no = pathogen_)
       epi_name_str <- ifelse(test = epi_name == "all", yes = "", no = epi_name_)
+      if (disease_str != "" && pathogen_str != "") {
+        disease_str <- paste0(disease_str, " & ")
+      }
       stop(
-        epi_name_str, " distribution not available", disease_str, pathogen_str,
+        cli::style_bold(epi_name_str), " distribution not available for ",
+        cli::style_bold(disease_str), cli::style_bold(pathogen_str),
+        " in the database.\n Please check spelling of disease/pathogen and ",
+        "epiparameter name.",
         call. = FALSE
       )
     }
