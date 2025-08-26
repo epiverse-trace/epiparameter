@@ -29,7 +29,7 @@ authors:
   given-names: Adam
   email: adam.kucharski@lshtm.ac.uk
   orcid: https://orcid.org/0000-0001-8814-9421
-- family-names: Tamayo
+- family-names: Tamayo Cuartero
   given-names: Carmen
   email: carmen.tamayo-cuartero@lshtm.ac.uk
   orcid: https://orcid.org/0000-0003-4184-2864
@@ -46,7 +46,7 @@ preferred-citation:
     given-names: Adam
     email: adam.kucharski@lshtm.ac.uk
     orcid: https://orcid.org/0000-0001-8814-9421
-  - family-names: Tamayo
+  - family-names: Tamayo Cuartero
     given-names: Carmen
     email: carmen.tamayo-cuartero@lshtm.ac.uk
     orcid: https://orcid.org/0000-0003-4184-2864
@@ -115,7 +115,7 @@ references:
   authors:
   - family-names: Csárdi
     given-names: Gábor
-    email: csardi.gabor@gmail.com
+    email: gabor@posit.co
   year: '2025'
   doi: 10.32614/CRAN.package.cli
 - type: software
