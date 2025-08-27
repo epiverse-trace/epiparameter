@@ -164,11 +164,11 @@ test_that("epiparameter fails as expected", {
         epi_name = "incubation",
         prob_distribution = "gamma",
         prob_distribution_params = c(shape = "NA", scale = 1)
-      ),
-      regexp = paste0(
-        "(Assertion on 'prob_distribution_params' failed)*(Must be of type)*",
-        "(numeric)*(NULL)*(character)."
       )
+    ),
+    regexp = paste0(
+      "(Assertion on 'prob_distribution_params' failed)*(Must be of type)*",
+      "(numeric)*(NULL)*(character)."
     )
   )
 })
