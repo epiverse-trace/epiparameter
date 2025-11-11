@@ -288,9 +288,9 @@ By contributing to this project, you agree to abide by its terms.
 citation("epiparameter")
 #> To cite package 'epiparameter' in publications use:
 #> 
-#>   Lambert J, Kucharski A, Tamayo C (2025). _epiparameter: Classes and
-#>   Helper Functions for Working with Epidemiological Parameters_.
-#>   doi:10.5281/zenodo.11110881
+#>   Lambert J, Kucharski A, Tamayo Cuartero C (2025). _epiparameter:
+#>   Classes and Helper Functions for Working with Epidemiological
+#>   Parameters_. doi:10.5281/zenodo.11110881
 #>   <https://doi.org/10.5281/zenodo.11110881>,
 #>   <https://epiverse-trace.github.io/epiparameter/>.
 #> 
@@ -298,7 +298,7 @@ citation("epiparameter")
 #> 
 #>   @Manual{,
 #>     title = {epiparameter: Classes and Helper Functions for Working with Epidemiological Parameters},
-#>     author = {Joshua W. Lambert and Adam Kucharski and Carmen Tamayo},
+#>     author = {Joshua W. Lambert and Adam Kucharski and Carmen {Tamayo Cuartero}},
 #>     year = {2025},
 #>     doi = {10.5281/zenodo.11110881},
 #>     url = {https://epiverse-trace.github.io/epiparameter/},
