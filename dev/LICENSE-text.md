@@ -1,0 +1,4 @@
+# License
+
+    YEAR: 2022-2025
+    COPYRIGHT HOLDER: epiparameter authors
