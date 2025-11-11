@@ -78,7 +78,7 @@ jobs:
 
       - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'merge_group' && github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4.6.1
+        uses: JamesIves/github-pages-deploy-action@v4.7.4
         with:
           # We clean on releases because we want to remove old vignettes,
           # figures, etc. that have been deleted from the `main` branch.
