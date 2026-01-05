@@ -231,27 +231,33 @@ marburg_articles <- load_epidata_raw(
   pathogen = "marburg",
   table = "article"
 )
+#> Warning: The following columns were not specified in col_types: article_id,
+#> double_extracted, score
+#> Warning: These columns will be read in as character vectors.
+#> Warning: Data contributors: please carefully check that this does not lead to loss of
+#> information. If it does, please update the column types in the epireview
+#> package and submit a PR.
 marburg_articles
 #> # A tibble: 58 × 25
 #>    article_id pathogen   covidence_id first_author_first_n…¹ article_title doi  
-#>         <dbl> <chr>             <int> <chr>                  <chr>         <chr>
-#>  1          1 Marburg v…         2059 G A                    Haemorrhagic… NA   
-#>  2          2 Marburg v…         2042 Christian              Antibodies t… NA   
-#>  3          3 Marburg v…         1649 Y                      The origin a… 10.1…
-#>  4          4 Marburg v…         1692 D.H.                   Marburg-Viru… NA   
-#>  5          5 Marburg v…         2597 E. D.                  Filovirus ac… NA   
-#>  6          6 Marburg v…         3795 JS                     Outbreak of … 10.1…
-#>  7          7 Marburg v…         2596 E.D.                   Haemorrhagic… NA   
-#>  8          8 Marburg v…         1615 O                      Viral hemorr… 10.4…
-#>  9          9 Marburg v…         1693 Smiley                 Suspected Ex… 10.1…
-#> 10         10 Marburg v…         1692 D                      Marburg-viru… NA   
+#>    <chr>      <chr>             <int> <chr>                  <chr>         <chr>
+#>  1 1          Marburg v…         2059 G A                    Haemorrhagic… NA   
+#>  2 2          Marburg v…         2042 Christian              Antibodies t… NA   
+#>  3 3          Marburg v…         1649 Y                      The origin a… 10.1…
+#>  4 4          Marburg v…         1692 D.H.                   Marburg-Viru… NA   
+#>  5 5          Marburg v…         2597 E. D.                  Filovirus ac… NA   
+#>  6 6          Marburg v…         3795 JS                     Outbreak of … 10.1…
+#>  7 7          Marburg v…         2596 E.D.                   Haemorrhagic… NA   
+#>  8 8          Marburg v…         1615 O                      Viral hemorr… 10.4…
+#>  9 9          Marburg v…         1693 Smiley                 Suspected Ex… 10.1…
+#> 10 10         Marburg v…         1692 D                      Marburg-viru… NA   
 #> # ℹ 48 more rows
 #> # ℹ abbreviated name: ¹​first_author_first_name
 #> # ℹ 19 more variables: journal <chr>, year_publication <int>, volume <int>,
 #> #   issue <int>, page_first <int>, page_last <int>, paper_copy_only <lgl>,
-#> #   notes <chr>, first_author_surname <chr>, double_extracted <dbl>,
+#> #   notes <chr>, first_author_surname <chr>, double_extracted <chr>,
 #> #   qa_m1 <chr>, qa_m2 <chr>, qa_a3 <chr>, qa_a4 <chr>, qa_d5 <chr>,
-#> #   qa_d6 <chr>, qa_d7 <chr>, score <dbl>, id <chr>
+#> #   qa_d6 <chr>, qa_d7 <chr>, score <chr>, id <chr>
 ```
 
 We need to match the entry in the epidemiological parameter table with
@@ -271,14 +277,14 @@ marburg_incub_article <- marburg_articles[article_row, ]
 marburg_incub_article
 #> # A tibble: 1 × 25
 #>   article_id pathogen    covidence_id first_author_first_n…¹ article_title doi  
-#>        <dbl> <chr>              <int> <chr>                  <chr>         <chr>
-#> 1          6 Marburg vi…         3795 JS                     Outbreak of … 10.1…
+#>   <chr>      <chr>              <int> <chr>                  <chr>         <chr>
+#> 1 6          Marburg vi…         3795 JS                     Outbreak of … 10.1…
 #> # ℹ abbreviated name: ¹​first_author_first_name
 #> # ℹ 19 more variables: journal <chr>, year_publication <int>, volume <int>,
 #> #   issue <int>, page_first <int>, page_last <int>, paper_copy_only <lgl>,
-#> #   notes <chr>, first_author_surname <chr>, double_extracted <dbl>,
+#> #   notes <chr>, first_author_surname <chr>, double_extracted <chr>,
 #> #   qa_m1 <chr>, qa_m2 <chr>, qa_a3 <chr>, qa_a4 <chr>, qa_d5 <chr>,
-#> #   qa_d6 <chr>, qa_d7 <chr>, score <dbl>, id <chr>
+#> #   qa_d6 <chr>, qa_d7 <chr>, score <chr>, id <chr>
 ```
 
 Now we can repeat the example of converting to `<epiparameter>` as shown
@@ -560,7 +566,7 @@ ebola_si_rows
 #> 17 b76dc… c2e0739d6bc652e9…        17730 Ebola v… Human delay -…            11.7
 #> 18 74b62… e2a59f5aa40ddbdf…        18536 Ebola v… Human delay -…            12.3
 #> 19 66e1b… 4da557e3c2c22a10…        19083 Ebola v… Human delay -…            NA  
-#> # ℹ 72 more variables: exponent <dbl>, parameter_unit <chr>,
+#> # ℹ 72 more variables: exponent <int>, parameter_unit <chr>,
 #> #   parameter_lower_bound <dbl>, parameter_upper_bound <dbl>,
 #> #   parameter_value_type <chr>, parameter_uncertainty_single_value <dbl>,
 #> #   parameter_uncertainty_singe_type <chr>,
@@ -581,7 +587,7 @@ ebola_si
 #>   id      parameter_data_id covidence_id pathogen parameter_type parameter_value
 #>   <chr>   <chr>                    <int> <chr>    <chr>                    <dbl>
 #> 1 b76dcc… 0c3e02f80addfccc…        17730 Ebola v… Human delay -…              12
-#> # ℹ 72 more variables: exponent <dbl>, parameter_unit <chr>,
+#> # ℹ 72 more variables: exponent <int>, parameter_unit <chr>,
 #> #   parameter_lower_bound <dbl>, parameter_upper_bound <dbl>,
 #> #   parameter_value_type <chr>, parameter_uncertainty_single_value <dbl>,
 #> #   parameter_uncertainty_singe_type <chr>,

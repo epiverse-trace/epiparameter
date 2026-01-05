@@ -311,27 +311,33 @@ columns.</p>
 <span>  pathogen <span class="op">=</span> <span class="st">"marburg"</span>,</span>
 <span>  table <span class="op">=</span> <span class="st">"article"</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: The following columns were not specified in col_types: article_id,</span></span>
+<span><span class="co">#&gt; double_extracted, score</span></span>
+<span><span class="co">#&gt; Warning: These columns will be read in as character vectors.</span></span>
+<span><span class="co">#&gt; Warning: Data contributors: please carefully check that this does not lead to loss of</span></span>
+<span><span class="co">#&gt; information. If it does, please update the column types in the epireview</span></span>
+<span><span class="co">#&gt; package and submit a PR.</span></span>
 <span><span class="va">marburg_articles</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 58 × 25</span></span></span>
 <span><span class="co">#&gt;    article_id pathogen   covidence_id first_author_first_n…¹ article_title doi  </span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Marburg v…         <span style="text-decoration: underline;">2</span>059 G A                    Haemorrhagic… <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          2 Marburg v…         <span style="text-decoration: underline;">2</span>042 Christian              Antibodies t… <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          3 Marburg v…         <span style="text-decoration: underline;">1</span>649 Y                      The origin a… 10.1…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          4 Marburg v…         <span style="text-decoration: underline;">1</span>692 D.H.                   Marburg-Viru… <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          5 Marburg v…         <span style="text-decoration: underline;">2</span>597 E. D.                  Filovirus ac… <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          6 Marburg v…         <span style="text-decoration: underline;">3</span>795 JS                     Outbreak of … 10.1…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          7 Marburg v…         <span style="text-decoration: underline;">2</span>596 E.D.                   Haemorrhagic… <span style="color: #BB0000;">NA</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          8 Marburg v…         <span style="text-decoration: underline;">1</span>615 O                      Viral hemorr… 10.4…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          9 Marburg v…         <span style="text-decoration: underline;">1</span>693 Smiley                 Suspected Ex… 10.1…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>         10 Marburg v…         <span style="text-decoration: underline;">1</span>692 D                      Marburg-viru… <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1          Marburg v…         <span style="text-decoration: underline;">2</span>059 G A                    Haemorrhagic… <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2          Marburg v…         <span style="text-decoration: underline;">2</span>042 Christian              Antibodies t… <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 3          Marburg v…         <span style="text-decoration: underline;">1</span>649 Y                      The origin a… 10.1…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 4          Marburg v…         <span style="text-decoration: underline;">1</span>692 D.H.                   Marburg-Viru… <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 5          Marburg v…         <span style="text-decoration: underline;">2</span>597 E. D.                  Filovirus ac… <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 6          Marburg v…         <span style="text-decoration: underline;">3</span>795 JS                     Outbreak of … 10.1…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 7          Marburg v…         <span style="text-decoration: underline;">2</span>596 E.D.                   Haemorrhagic… <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 8          Marburg v…         <span style="text-decoration: underline;">1</span>615 O                      Viral hemorr… 10.4…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 9          Marburg v…         <span style="text-decoration: underline;">1</span>693 Smiley                 Suspected Ex… 10.1…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 10         Marburg v…         <span style="text-decoration: underline;">1</span>692 D                      Marburg-viru… <span style="color: #BB0000;">NA</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 48 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​first_author_first_name</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 19 more variables: journal &lt;chr&gt;, year_publication &lt;int&gt;, volume &lt;int&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   issue &lt;int&gt;, page_first &lt;int&gt;, page_last &lt;int&gt;, paper_copy_only &lt;lgl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   notes &lt;chr&gt;, first_author_surname &lt;chr&gt;, double_extracted &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   notes &lt;chr&gt;, first_author_surname &lt;chr&gt;, double_extracted &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   qa_m1 &lt;chr&gt;, qa_m2 &lt;chr&gt;, qa_a3 &lt;chr&gt;, qa_a4 &lt;chr&gt;, qa_d5 &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   qa_d6 &lt;chr&gt;, qa_d7 &lt;chr&gt;, score &lt;dbl&gt;, id &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;">#   qa_d6 &lt;chr&gt;, qa_d7 &lt;chr&gt;, score &lt;chr&gt;, id &lt;chr&gt;</span></span></span></code></pre></div>
 <p>We need to match the entry in the epidemiological parameter table
 with the citation information in the article table to ensure we are
 using the correct citation for the parameter set. Thankfully, this can
@@ -346,14 +352,14 @@ link entries.</p>
 <span><span class="va">marburg_incub_article</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 25</span></span></span>
 <span><span class="co">#&gt;   article_id pathogen    covidence_id first_author_first_n…¹ article_title doi  </span></span>
-<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>          6 Marburg vi…         <span style="text-decoration: underline;">3</span>795 JS                     Outbreak of … 10.1…</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 6          Marburg vi…         <span style="text-decoration: underline;">3</span>795 JS                     Outbreak of … 10.1…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​first_author_first_name</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 19 more variables: journal &lt;chr&gt;, year_publication &lt;int&gt;, volume &lt;int&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   issue &lt;int&gt;, page_first &lt;int&gt;, page_last &lt;int&gt;, paper_copy_only &lt;lgl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   notes &lt;chr&gt;, first_author_surname &lt;chr&gt;, double_extracted &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   notes &lt;chr&gt;, first_author_surname &lt;chr&gt;, double_extracted &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   qa_m1 &lt;chr&gt;, qa_m2 &lt;chr&gt;, qa_a3 &lt;chr&gt;, qa_a4 &lt;chr&gt;, qa_d5 &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   qa_d6 &lt;chr&gt;, qa_d7 &lt;chr&gt;, score &lt;dbl&gt;, id &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;">#   qa_d6 &lt;chr&gt;, qa_d7 &lt;chr&gt;, score &lt;chr&gt;, id &lt;chr&gt;</span></span></span></code></pre></div>
 <p>Now we can repeat the example of converting to
 <code>&lt;epiparameter&gt;</code> as shown above, but this time pass the
 bibliographic information as well as the epidemiological parameter
@@ -613,7 +619,7 @@ parameter table, and select those rows containing a serial interval.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> b76dc… c2e0739d6bc652e9…        <span style="text-decoration: underline;">17</span>730 Ebola v… Human delay -…            11.7</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> 74b62… e2a59f5aa40ddbdf…        <span style="text-decoration: underline;">18</span>536 Ebola v… Human delay -…            12.3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> 66e1b… 4da557e3c2c22a10…        <span style="text-decoration: underline;">19</span>083 Ebola v… Human delay -…            <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 72 more variables: exponent &lt;dbl&gt;, parameter_unit &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 72 more variables: exponent &lt;int&gt;, parameter_unit &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_lower_bound &lt;dbl&gt;, parameter_upper_bound &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_value_type &lt;chr&gt;, parameter_uncertainty_single_value &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_singe_type &lt;chr&gt;,</span></span></span>
@@ -631,7 +637,7 @@ distribution:</p>
 <span><span class="co">#&gt;   id      parameter_data_id covidence_id pathogen parameter_type parameter_value</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> b76dcc… 0c3e02f80addfccc…        <span style="text-decoration: underline;">17</span>730 Ebola v… Human delay -…              12</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 72 more variables: exponent &lt;dbl&gt;, parameter_unit &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 72 more variables: exponent &lt;int&gt;, parameter_unit &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_lower_bound &lt;dbl&gt;, parameter_upper_bound &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_value_type &lt;chr&gt;, parameter_uncertainty_single_value &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   parameter_uncertainty_singe_type &lt;chr&gt;,</span></span></span>
@@ -665,7 +671,7 @@ numbers sampling from the distribution.</p>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span><span class="op">)</span></span></code></pre></div>
-<p><img src="data_from_epireview_files/figure-html/plot-epiparameter-1.png" class="r-plt" width="768"></p>
+<p><img src="data_from_epireview_files/figure-html/plot-epiparameter-1.png" class="r-plt" alt="" width="768"></p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/generate.html" class="external-link">generate</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1]  8.1913357 17.4324678  1.4003823  6.3030243  0.9521153  7.7520633</span></span>
@@ -769,12 +775,12 @@ be used for various probability distribution methods.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/density.html" class="external-link">density</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span>, at <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.03001206</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span><span class="op">)</span></span></code></pre></div>
-<p><img src="data_from_epireview_files/figure-html/ebola-epiparameter-dist-methods-1.png" class="r-plt" width="768"></p>
+<p><img src="data_from_epireview_files/figure-html/ebola-epiparameter-dist-methods-1.png" class="r-plt" alt="" width="768"></p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pkg.mitchelloharawild.com/distributional/reference/cdf.html" class="external-link">cdf</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span>, q <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.3118251</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span>, cumulative <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="data_from_epireview_files/figure-html/ebola-epiparameter-dist-methods-2.png" class="r-plt" width="768"></p>
+<p><img src="data_from_epireview_files/figure-html/ebola-epiparameter-dist-methods-2.png" class="r-plt" alt="" width="768"></p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ebola_si_epiparameter</span>, p <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 13.03582</span></span>
