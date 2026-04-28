@@ -77,9 +77,10 @@ references:
   authors:
   - name: R Core Team
   institution:
-    name: R Foundation for Statistical Computing
+    name: 'R Foundation for Statistical Computing (ROR: <https://ror.org/05qewa988>)'
     address: Vienna, Austria
   year: '2026'
+  doi: 10.32614/R.manuals
   version: '>= 4.1.0'
 - type: software
   title: cachem
@@ -184,9 +185,10 @@ references:
   authors:
   - name: R Core Team
   institution:
-    name: R Foundation for Statistical Computing
+    name: 'R Foundation for Statistical Computing (ROR: <https://ror.org/05qewa988>)'
     address: Vienna, Austria
   year: '2026'
+  doi: 10.32614/R.manuals
 - type: software
   title: lifecycle
   abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
@@ -240,9 +242,10 @@ references:
   authors:
   - name: R Core Team
   institution:
-    name: R Foundation for Statistical Computing
+    name: 'R Foundation for Statistical Computing (ROR: <https://ror.org/05qewa988>)'
     address: Vienna, Austria
   year: '2026'
+  doi: 10.32614/R.manuals
 - type: software
   title: tools
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -250,9 +253,10 @@ references:
   authors:
   - name: R Core Team
   institution:
-    name: R Foundation for Statistical Computing
+    name: 'R Foundation for Statistical Computing (ROR: <https://ror.org/05qewa988>)'
     address: Vienna, Austria
   year: '2026'
+  doi: 10.32614/R.manuals
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
@@ -260,9 +264,10 @@ references:
   authors:
   - name: R Core Team
   institution:
-    name: R Foundation for Statistical Computing
+    name: 'R Foundation for Statistical Computing (ROR: <https://ror.org/05qewa988>)'
     address: Vienna, Austria
   year: '2026'
+  doi: 10.32614/R.manuals
 - type: software
   title: bookdown
   abstract: 'bookdown: Authoring Books and Technical Documents with R Markdown'
@@ -467,7 +472,6 @@ references:
   repository: https://CRAN.R-project.org/package=visNetwork
   authors:
   - name: Almende B.V. and Contributors
-    website: https://visjs.org/
   - family-names: Thieurmel
     given-names: Benoit
     email: bthieurmel@gmail.com
