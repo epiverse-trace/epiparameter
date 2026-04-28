@@ -37,7 +37,7 @@ Source:
 
 Lambert J, Kucharski A, Tamayo Cuartero C (2026). *epiparameter: Classes
 and Helper Functions for Working with Epidemiological Parameters*.
-[doi:10.5281/zenodo.11110881](https://doi.org/10.5281/zenodo.11110881),
+[doi:10.5281/zenodo.11110881](https://doi.org/10.5281/zenodo.11110881).
 <https://epiverse-trace.github.io/epiparameter/>.
 
     @Manual{,
