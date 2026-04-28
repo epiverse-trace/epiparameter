@@ -162,14 +162,14 @@ test_that("epiparameter fails as expected", {
       epiparameter(
         disease = "ebola",
         epi_name = "incubation",
-        prob_distribution = "gamma",
-        prob_distribution_params = c(shape = "NA", scale = 1)
+        prob_distribution = create_prob_distribution(
+          prob_distribution = "gamma",
+          prob_distribution_params = c(shape = "NA", scale = 1)
+        )
       )
     ),
-    regexp = paste0(
-      "(Assertion on 'prob_distribution_params' failed)*(Must be of type)*",
-      "(numeric)*(NULL)*(character)."
-    )
+    regexp =
+      "`prob_distribution_params` must be a named vector of numerics or NA"
   )
 })
 
