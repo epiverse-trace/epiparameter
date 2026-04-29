@@ -511,7 +511,7 @@ epidist_db <- function(disease = "all",
         stop(
           cli::style_bold(epi_name_), " distribution not available for ",
           msg_str, " in the database. \n Please check the spelling of ",
-          "the disease/pathogen and epiparameter name.",
+          "the disease/pathogen and epiparameter name.", # nolint
           call. = FALSE
         )
       } else if (epi_name != "all") {
@@ -524,7 +524,7 @@ epidist_db <- function(disease = "all",
       } else {
         stop(
           msg_str, " not found as a disease/pathogen in the database. \n ",
-          "Please check the spelling of the disease/pathogen name.",
+          "Please check the spelling of the disease/pathogen name.", # nolint
           call. = FALSE
         )
       }
