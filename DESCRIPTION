@@ -41,6 +41,7 @@ Imports:
     distributional,
     epiparameterDB,
     graphics,
+    httr2,
     lifecycle,
     pillar,
     rlang,
