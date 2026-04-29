@@ -147,7 +147,7 @@ test_that("parameter_tbl fails correctly when subsetting a subset db", {
   ep <- suppressMessages(epiparameter_db(disease = "Ebola"))
   expect_error(
     parameter_tbl(multi_epiparameter = ep, disease = "COVID-19"),
-    regexp = "(distribution not available for COVID-19)"
+    regexp = "(COVID-19 not found as a distribution)*(in the database)"
   )
 })
 
