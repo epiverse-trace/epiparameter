@@ -606,7 +606,7 @@ discretize <- discretise
 #' @export
 discretise.epiparameter <- function(x, ...) {
   # check if distribution is already discretised if so return early
-  if (inherits(x$prob_distribution, "distcrete")) {
+  if (inherits(x$prob_distribution, "distcrete")) { # nolint
     message("Distribution in `epiparameter` is already discretised")
     return(x)
   } else {
