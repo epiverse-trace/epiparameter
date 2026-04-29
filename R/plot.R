@@ -104,7 +104,7 @@ plot.epiparameter <- function(x,
       )
     }
   } else {
-    if (cumulative) {
+    if (cumulative) { # nolint
       graphics::barplot(
         height = cdf(x, q = unique(round(xlim))),
         space = 0,
