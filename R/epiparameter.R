@@ -663,7 +663,7 @@ discretise.epiparameter <- function(x, ...) {
 #' @rdname discretise
 #' @export
 discretise.default <- function(x, ...) {
-  stop("No discretise method defined for class ", class(x))
+  stop("No discretise method defined for class ", class(x), call. = FALSE)
 }
 
 #' Family method for the `<epiparameter>` class
