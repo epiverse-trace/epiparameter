@@ -77,7 +77,7 @@ aggregate.multi_epiparameter <- function(x,
     )
   }
 
-  if (weighting == "custom") {
+  if (weighting == "custom") { # nolint: if_switch_linter
     if (missing(weights)) {
       stop(
         "`weights` are required for each distribution when ",
