@@ -834,11 +834,10 @@ is_continuous <- function(x) {
 mean.epiparameter <- function(x, ...) {
   chkDots(...)
   # extract mean if given
-  if (utils::hasName(x$summary_stats, "mean")) {
-    mean <- x$summary_stats$mean
-  } else {
+  if (!utils::hasName(x$summary_stats, "mean")) {
     return(NA_real_)
   }
+  mean <- x$summary_stats$mean
 
   # if mean is not given try and convert from parameters
   if (is.na(mean) && is_parameterised(x)) {

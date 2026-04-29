@@ -338,12 +338,11 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
-  if (all(c("meanlog", "sdlog") %in% names(x))) {
-    meanlog <- x[["meanlog"]]
-    sdlog <- x[["sdlog"]]
-  } else {
+  if (!all(c("meanlog", "sdlog") %in% names(x))) {
     stop("lnorm parameters must be named 'meanlog' and 'sdlog'", call. = FALSE)
   }
+  meanlog <- x[["meanlog"]]
+  sdlog <- x[["sdlog"]]
 
   # check input
   checkmate::assert_number(meanlog)
@@ -447,12 +446,11 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
-  if (all(c("shape", "scale") %in% names(x))) {
-    shape <- x[["shape"]]
-    scale <- x[["scale"]]
-  } else {
+  if (!all(c("shape", "scale") %in% names(x))) {
     stop("gamma parameters must be named 'shape' and 'scale'", call. = FALSE)
   }
+  shape <- x[["shape"]]
+  scale <- x[["scale"]]
 
   # check input
   checkmate::assert_number(shape, lower = 0)
@@ -533,12 +531,11 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
-  if (all(c("shape", "scale") %in% names(x))) {
-    shape <- x[["shape"]]
-    scale <- x[["scale"]]
-  } else {
+  if (!all(c("shape", "scale") %in% names(x))) {
     stop("weibull parameters must be named 'shape' and 'scale'", call. = FALSE)
   }
+  shape <- x[["shape"]]
+  scale <- x[["scale"]]
 
   # check input
   checkmate::assert_number(shape, lower = 0)
@@ -639,15 +636,14 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
-  if (all(c("prob", "dispersion") %in% names(x))) {
-    prob <- x[["prob"]]
-    dispersion <- x[["dispersion"]]
-  } else {
+  if (!all(c("prob", "dispersion") %in% names(x))) {
     stop(
       "nbinom parameters must be named 'prob' and 'dispersion'",
       call. = FALSE
     )
   }
+  prob <- x[["prob"]]
+  dispersion <- x[["dispersion"]]
 
   # check input
   checkmate::assert_number(prob, lower = 0, upper = 1)
@@ -751,11 +747,10 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
 
   # check input params
-  if (all("prob" %in% names(x))) {
-    prob <- x[["prob"]]
-  } else {
+  if (!all("prob" %in% names(x))) {
     stop("geom parameter must be named 'prob'", call. = FALSE)
   }
+  prob <- x[["prob"]]
 
   # check input
   checkmate::assert_number(prob, lower = 0, upper = 1)
