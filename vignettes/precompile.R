@@ -16,5 +16,5 @@ cp <- file.copy(
 if (all(cp)) {
   unlink(figures)
 } else {
-  print("Article figures did not copy, please inspect manually.")
+  cat("Article figures did not copy, please inspect manually.")
 }
