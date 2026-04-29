@@ -207,7 +207,7 @@ The `<epiparameter>` object can be plotted.
 plot(influenza_incubation)
 ```
 
-<img src="man/figures/README-plot-epiparameter-1.png" width="75%" style="display: block; margin: auto;" />
+<img src="man/figures/README-plot-epiparameter-1.png" alt="" width="75%" style="display: block; margin: auto;" />
 
 The CDF can also be plotted by setting `cumulative = TRUE`.
 
@@ -215,7 +215,7 @@ The CDF can also be plotted by setting `cumulative = TRUE`.
 plot(influenza_incubation, cumulative = TRUE)
 ```
 
-<img src="man/figures/README-plot-epiparameter-cdf-1.png" width="75%" style="display: block; margin: auto;" />
+<img src="man/figures/README-plot-epiparameter-cdf-1.png" alt="" width="75%" style="display: block; margin: auto;" />
 
 ### Parameter conversion and extraction
 
@@ -288,10 +288,10 @@ By contributing to this project, you agree to abide by its terms.
 citation("epiparameter")
 #> To cite package 'epiparameter' in publications use:
 #> 
-#>   Lambert J, Kucharski A, Tamayo Cuartero C (2025). _epiparameter:
+#>   Lambert J, Kucharski A, Tamayo Cuartero C (2026). _epiparameter:
 #>   Classes and Helper Functions for Working with Epidemiological
 #>   Parameters_. doi:10.5281/zenodo.11110881
-#>   <https://doi.org/10.5281/zenodo.11110881>,
+#>   <https://doi.org/10.5281/zenodo.11110881>.
 #>   <https://epiverse-trace.github.io/epiparameter/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -299,7 +299,7 @@ citation("epiparameter")
 #>   @Manual{,
 #>     title = {epiparameter: Classes and Helper Functions for Working with Epidemiological Parameters},
 #>     author = {Joshua W. Lambert and Adam Kucharski and Carmen {Tamayo Cuartero}},
-#>     year = {2025},
+#>     year = {2026},
 #>     doi = {10.5281/zenodo.11110881},
 #>     url = {https://epiverse-trace.github.io/epiparameter/},
 #>   }
