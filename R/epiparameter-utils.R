@@ -65,7 +65,7 @@ create_uncertainty <- function(ci_limits = NA_real_, ci, ci_type) {
   checkmate::assert_character(ci_type)
   stopifnot(
     "ci_type must be either 'confidence interval or credible interval" =
-      all(ci_type %in% c("confidence interval", "credible interval"))
+      ci_type %in% c("confidence interval", "credible interval")
   )
 
   # return list of parameter uncertainty
