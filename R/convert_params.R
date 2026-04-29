@@ -412,7 +412,10 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   }
 
   if (!(checkmate::test_number(x$median) && checkmate::test_number(x$sd))) {
-    stop("Cannot calculate lognormal parameters from given input")
+    stop(
+      "Cannot calculate lognormal parameters from given input",
+      call. = FALSE
+    )
   }
 
   # median and sd to params
@@ -509,7 +512,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   }
 
   # if either parameter hasn't been calculated, error
-  stop("Cannot calculate gamma parameters from given input")
+  stop("Cannot calculate gamma parameters from given input", call. = FALSE)
 }
 
 #' Convert parameters of the Weibull distribution to summary statistics
@@ -607,7 +610,10 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   }
 
   # if either parameter hasn't been calculated, error
-  stop("Cannot calculate Weibull parameters from given input")
+  stop(
+    "Cannot calculate Weibull parameters from given input",
+    call. = FALSE
+  )
 }
 
 #' Convert parameters of the negative binomial distribution to summary
@@ -701,7 +707,8 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
     # if either parameter hasn't been calculated error
     stop(
       "Cannot calculate negative binomial distribution ",
-      "parameters from given input"
+      "parameters from given input",
+      call. = FALSE
     )
   }
 
@@ -709,7 +716,8 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   if (prob > 1 || dispersion < 0) {
     stop(
       "Negative binomial has a variance-to-mean ratio of greater ",
-      "than one, check input"
+      "than one, check input",
+      call. = FALSE
     )
   }
 
@@ -819,5 +827,8 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   }
 
   # if either parameter hasn't been calculated error
-  stop("Cannot calculate geometric distribution parameter from given input")
+  stop(
+    "Cannot calculate geometric distribution parameter from given input",
+    call. = FALSE
+  )
 }
