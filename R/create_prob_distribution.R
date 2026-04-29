@@ -186,12 +186,11 @@ create_prob_distribution <- function(prob_distribution,
         "Truncation is not yet implemented for discrete distributions.",
         call. = FALSE
       )
-    } else {
-      prob_distribution <- distributional::dist_truncated(
-        prob_distribution,
-        upper = truncation
-      )
     }
+    prob_distribution <- distributional::dist_truncated(
+      prob_distribution,
+      upper = truncation
+    )
   }
 
   # return prob_distribution object
