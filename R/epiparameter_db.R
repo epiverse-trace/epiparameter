@@ -502,19 +502,32 @@ epidist_db <- function(disease = "all",
       )
     },
     error = function(cnd) {
-      disease_str <- ifelse(test = disease == "all", yes = "", no = disease_)
-      pathogen_str <- ifelse(test = pathogen == "all", yes = "", no = pathogen_)
-      epi_name_str <- ifelse(test = epi_name == "all", yes = "", no = epi_name_)
-      if (disease_str != "" && pathogen_str != "") {
-        disease_str <- paste0(disease_str, " & ")
+      msg <- character(0)
+      if (disease  != "all") msg <- c(msg, cli::style_bold(disease_))
+      if (pathogen != "all") msg <- c(msg, cli::style_bold(pathogen_))
+      msg_str <- paste(msg, collapse = " & ")
+
+      if (epi_name != "all" && length(msg) > 0L) {
+        stop(
+          cli::style_bold(epi_name_), " distribution not available for ",
+          msg_str, " in the database. \n Please check the spelling of ",
+          "the disease/pathogen and epiparameter name.",
+          call. = FALSE
+        )
+      } else if (epi_name != "all") {
+        stop(
+          cli::style_bold(epi_name_),
+          " distribution not available in the database. \n Please check the ",
+          "spelling of the epiparameter name.",
+          call. = FALSE
+        )
+      } else {
+        stop(
+          msg_str, " not found as a disease/pathogen in the database. \n ",
+          "Please check the spelling of the disease/pathogen name.",
+          call. = FALSE
+        )
       }
-      stop(
-        cli::style_bold(epi_name_str), " distribution not available for ",
-        cli::style_bold(disease_str), cli::style_bold(pathogen_str),
-        " in the database.\n Please check spelling of disease/pathogen and ",
-        "epiparameter name.",
-        call. = FALSE
-      )
     }
   )
 
