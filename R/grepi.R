@@ -167,16 +167,13 @@
   dist_lookup <- c(Weibull = "weibull", Gamma = "gamma",
                    "Log-normal" = "lnorm")
   dist_raw <- x$epiParameter_Distribution_Type
-  if (!is.null(dist_raw) && !is.na(dist_raw) &&
-      dist_raw %in% names(dist_lookup)) {
-    if (!isTRUE(x$epiParameter_Distribution_Parameter1_IsValueAvailable) ||
-        !isTRUE(x$epiParameter_Distribution_Parameter2_IsValueAvailable)) {
-      warning("Skipping grEPI record ", x$grEPI_ID, ": ", dist_raw,
-              " distribution declared but parameter values not available",
-              call. = FALSE)
-      return(NULL)
-    }
-    dist <- unname(dist_lookup[[dist_raw]])
+  has_dist <- !is.null(dist_raw) && !is.na(dist_raw) &&
+              dist_raw %in% names(dist_lookup)
+  dist <- if (has_dist) unname(dist_lookup[[dist_raw]]) else NA_character_
+  params_available <-
+    isTRUE(x$epiParameter_Distribution_Parameter1_IsValueAvailable) &&
+    isTRUE(x$epiParameter_Distribution_Parameter2_IsValueAvailable)
+  if (has_dist && params_available) {
     prob_distribution_params <- setNames(
       c(x$epiParameter_Distribution_Parameter1_Value,
         x$epiParameter_Distribution_Parameter2_Value),
@@ -193,23 +190,42 @@
         var = prob_distribution_params[["variance"]]
       ))
     }
-    prob_distribution <- create_prob_distribution(
-      prob_distribution = dist,
-      prob_distribution_params = prob_distribution_params,
-      discretise = isTRUE(x$epi_Parameter_Method_Inference_DataIsDiscretised)
-    )
-    uncertainty <- setNames(
-      lapply(seq_along(prob_distribution_params),
-             function(.) create_uncertainty()),
-      names(prob_distribution_params)
-    )
-    summary_stats <- create_summary_stats()
+    # Some entries (e.g. Lassa Gamma) declare a parametric family but report
+    # the values as summary statistics (mean + SD) rather than the
+    # distribution's canonical parameters. Carry the values forward as
+    # summary stats and keep `prob_distribution` as the family name only.
+    sd_alias <- c("sd", "standard deviation (sd)")
+    pp_names <- names(prob_distribution_params)
+    is_mean_sd <- length(pp_names) == 2L &&
+      "mean" %in% pp_names &&
+      any(sd_alias %in% pp_names)
+    if (is_mean_sd) {
+      mean_val <- unname(prob_distribution_params[["mean"]])
+      sd_val <- unname(
+        prob_distribution_params[pp_names %in% sd_alias][[1]]
+      )
+      prob_distribution <- create_prob_distribution(prob_distribution = dist)
+      uncertainty <- list(uncertainty = create_uncertainty())
+      summary_stats <- create_summary_stats(mean = mean_val, sd = sd_val)
+    } else {
+      prob_distribution <- create_prob_distribution(
+        prob_distribution = dist,
+        prob_distribution_params = prob_distribution_params,
+        discretise = isTRUE(x$epi_Parameter_Method_Inference_DataIsDiscretised)
+      )
+      uncertainty <- setNames(
+        lapply(seq_along(prob_distribution_params),
+               function(.) create_uncertainty()),
+        names(prob_distribution_params)
+      )
+      summary_stats <- create_summary_stats()
+    }
   } else if (x$epiParameter_Estimate_IsPoint) {
-    # Unparameterised entry: encode the typed point value as a summary stat
-    # rather than fabricating a degenerate distribution.
-    prob_distribution <- create_prob_distribution(
-      prob_distribution = NA_character_
-    )
+    # Entry without canonical distribution parameters: encode the typed point
+    # value as a summary stat rather than fabricating a degenerate distribution.
+    # If the family was declared (e.g. Mpox Log-normal with no shape/scale)
+    # carry its name forward so the prob_distribution slot still records it.
+    prob_distribution <- create_prob_distribution(prob_distribution = dist)
     uncertainty <- list(uncertainty = create_uncertainty())
     pv <- x$epiParameter_Estimate_Point_Value
     is_ci <- isTRUE(grepl("Confidence|Credible",
@@ -298,9 +314,9 @@
     ),
     notes = paste0(
       "Loaded from the ", x$epi_Parameter_DataSource_Name, " (",
-      x$epi_Parameter_DataSource_Location, ").",
+      x$epi_Parameter_DataSource_Location, "). ",
       "The data was extracted by",
-      x$epi_Parameter_Data_ExtractedBy_OrganizationGroup_Name, ".",
+      x$epi_Parameter_Data_ExtractedBy_OrganizationGroup_Name, ". ",
       x$epi_Parameter_DataSource_Primary_Import_Comment, ": ",
       x$epi_Parameter_DataSource_Primary_ImportedFrom_Project
     ),
