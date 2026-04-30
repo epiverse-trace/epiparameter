@@ -6,9 +6,9 @@
 #' nicer printing)
 #' @keywords internal
 #' @noRd
-.read_grepi <- function(disease = "all",
-                        pathogen = "all",
-                        epi_name = "all",
+.read_grepi <- function(disease,
+                        pathogen,
+                        epi_name,
                         author,
                         subset,
                         single_epiparameter) {
