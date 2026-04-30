@@ -1,3 +1,4 @@
+# nolint start: line_length_linter
 #' Create `<epiparameter>` object(s) directly from the epiparameter library
 #' (database)
 #'
@@ -113,7 +114,8 @@
 #'   epi_name = "offspring_distribution",
 #'   single_epiparameter = TRUE
 #' )
-epiparameter_db <- function(disease = "all",
+#' # nolint end: line_length_linter
+epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter
                             pathogen = "all",
                             epi_name = "all",
                             author = NULL,
