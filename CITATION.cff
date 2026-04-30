@@ -190,6 +190,18 @@ references:
   year: '2026'
   doi: 10.32614/R.manuals
 - type: software
+  title: httr2
+  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
+  notes: Imports
+  url: https://httr2.r-lib.org
+  repository: https://CRAN.R-project.org/package=httr2
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.httr2
+- type: software
   title: lifecycle
   abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
   notes: Imports
