@@ -81,6 +81,12 @@
 #' will be returned (see [is_parameterised()]). If multiple entries are equal
 #' after this sorting the first entry will be returned.
 #'
+#' @param db A `character` string specifying which database to load
+#' epidemiological parameter from. Default is `"epiparameterDB"`, which loads
+#' from the \pkg{epiparameterDB} R package. The other option is `"grEPI"`,
+#' which loads from the
+#' [WHO Global Repository of Epidemiological Parameters](https://who-collaboratory.github.io/collaboratory-grepi-web/).
+#'
 #' @return An `<epiparameter>` object or list of `<epiparameter>` objects.
 #' @export
 #'
@@ -112,12 +118,29 @@ epiparameter_db <- function(disease = "all",
                             epi_name = "all",
                             author = NULL,
                             subset = NULL,
-                            single_epiparameter = FALSE) {
+                            single_epiparameter = FALSE,
+                            db = c("epiparameterDB", "grEPI")) {
   # check input
   checkmate::assert_string(disease)
   checkmate::assert_string(pathogen)
   checkmate::assert_string(epi_name)
   checkmate::assert_logical(single_epiparameter, len = 1)
+  db <- match.arg(db)
+
+  if (db == "grEPI") {
+    multi_epiparameter <- .read_grepi(
+      disease = disease,
+      pathogen = pathogen,
+      epi_name = epi_name,
+      author = author,
+      subset = subset,
+      single_epiparameter = single_epiparameter
+    )
+    if (length(multi_epiparameter) == 1) {
+      multi_epiparameter <- multi_epiparameter[[1]]
+    }
+    return(multi_epiparameter)
+  }
 
   # capture expression from subset and check type
   expr <- substitute(subset)
