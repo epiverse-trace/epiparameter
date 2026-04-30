@@ -1,4 +1,5 @@
-#' Reads in parameter library from ***grEPI*** and formats data to <epiparameter>
+#' Reads in parameter library from ***grEPI*** and formats data to
+#' <epiparameter>
 #'
 #' @inheritParams epiparameter_db
 #'
@@ -6,7 +7,7 @@
 #' nicer printing)
 #' @keywords internal
 #' @noRd
-.read_grepi <- function(disease,
+.read_grepi <- function(disease, # nolint: cyclocomp_linter
                         pathogen,
                         epi_name,
                         author,
@@ -16,7 +17,7 @@
   if (!is.null(author)) {
     warning(
       "Subsetting the grEPI database by `author` is not yet implemented. \n",
-      "Returning all studies that match disease/pathogen and epidemiological ",
+      "Returning all studies that match disease/pathogen and epidemiological ", # nolint
       "parameter",
       call. = FALSE
     )
@@ -24,7 +25,7 @@
   if (!is.null(subset)) {
     warning(
       "Subsetting the grEPI database using `subset` is not yet implemented. \n",
-      "Returning all studies that match disease/pathogen and epidemiological ",
+      "Returning all studies that match disease/pathogen and epidemiological ", # nolint
       "parameter",
       call. = FALSE
     )
@@ -32,7 +33,7 @@
   if (single_epiparameter) {
     warning(
       "`single_epiparameter` is not yet implemented for the grEPI database. \n",
-      "Returning all studies that match disease/pathogen and epidemiological ",
+      "Returning all studies that match disease/pathogen and epidemiological ", # nolint
       "parameter",
       call. = FALSE
     )
@@ -120,7 +121,7 @@
           )
         } else {
           stop(
-            msg_str, " not found as a disease/pathogen in the grEPI database. ",
+            msg_str, " not found as a disease/pathogen in the grEPI database. ", # nolint
             "\n Please check the spelling of the disease/pathogen name.", # nolint
             call. = FALSE
           )
@@ -160,7 +161,7 @@
 #' @inherit epiparameter return
 #' @keywords internal
 #' @noRd
-.grepi_to_epiparameter <- function(x, ...) {
+.grepi_to_epiparameter <- function(x, ...) { # nolint: cyclocomp_linter
 
   # parameterised-distribution support for 2-parameter families. To add a new
   # family, extend dist_lookup; the rest of the branch is family-agnostic.
@@ -174,7 +175,7 @@
     isTRUE(x$epiParameter_Distribution_Parameter1_IsValueAvailable) &&
     isTRUE(x$epiParameter_Distribution_Parameter2_IsValueAvailable)
   if (has_dist && params_available) {
-    prob_distribution_params <- setNames(
+    prob_distribution_params <- stats::setNames(
       c(x$epiParameter_Distribution_Parameter1_Value,
         x$epiParameter_Distribution_Parameter2_Value),
       tolower(c(x$epiParameter_Distribution_Parameter1_Value_Type,
@@ -213,7 +214,7 @@
         prob_distribution_params = prob_distribution_params,
         discretise = isTRUE(x$epi_Parameter_Method_Inference_DataIsDiscretised)
       )
-      uncertainty <- setNames(
+      uncertainty <- stats::setNames(
         lapply(seq_along(prob_distribution_params),
                function(.) create_uncertainty()),
         names(prob_distribution_params)
@@ -243,10 +244,10 @@
            x$epiParameter_Estimate_Range_Upper_Bound_Value %||% NA_real_)
     summary_stats <- switch(
       as.character(x$epiParameter_Estimate_Value_Type),
-      "Mean" = create_summary_stats(
+      Mean = create_summary_stats(
         mean = pv, mean_ci_limits = ci, mean_ci = ci_level
       ),
-      "Median" = create_summary_stats(
+      Median = create_summary_stats(
         median = pv, median_ci_limits = ci, median_ci = ci_level
       ),
       "Standard deviation (SD)" = create_summary_stats(
@@ -269,7 +270,7 @@
   # format citation
   citation <- suppressMessages(
     create_citation(
-      author = as.person(x$article_Authors[[1]]),
+      author = utils::as.person(x$article_Authors[[1]]),
       year = x$article_Publication_Year,
       title = x$article_Title,
       journal = x$literature_Source_Name,
@@ -305,7 +306,7 @@
       units = x$epiParameter_Estimate_Unit,
       sample_size = x$epi_Parameter_Population_Sample_Size,
       inference_method = x$epi_Parameter_Method_Inference,
-      region = region,
+      region = region
     ),
     method_assess = create_method_assess(
       censored = x$epi_Parameter_Method_Inference_DataIsCensored,
