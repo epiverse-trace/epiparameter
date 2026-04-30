@@ -11,7 +11,8 @@ epiparameter_db(
   epi_name = "all",
   author = NULL,
   subset = NULL,
-  single_epiparameter = FALSE
+  single_epiparameter = FALSE,
+  db = c("epiparameterDB", "grEPI")
 )
 }
 \arguments{
@@ -62,6 +63,12 @@ when only one is wanted.
 (and accounts for truncation if available) and has the largest sample size
 will be returned (see \code{\link[=is_parameterised]{is_parameterised()}}). If multiple entries are equal
 after this sorting the first entry will be returned.}
+
+\item{db}{A \code{character} string specifying which database to load
+epidemiological parameter from. Default is \code{"epiparameterDB"}, which loads
+from the \pkg{epiparameterDB} R package. The other option is \code{"grEPI"},
+which loads from the
+\href{https://who-collaboratory.github.io/collaboratory-grepi-web/}{WHO Global Repository of Epidemiological Parameters}.}
 }
 \value{
 An \verb{<epiparameter>} object or list of \verb{<epiparameter>} objects.
