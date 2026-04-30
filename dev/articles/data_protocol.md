@@ -10,7 +10,7 @@ events in epidemiology, for example incubation period, serial interval
 and onset-to-death; while the offspring distributions describe the
 number of secondary infections from a primary infection in disease
 transmission. The library is compiled by a process of collecting,
-reviewing and extracting data from peer-reviewed literature[¹](#fn1),
+reviewing and extracting data from peer-reviewed literature[^1],
 including research articles, systematic reviews and meta-analyses.
 
 The [epiparameter](https://github.com/epiverse-trace/epiparameter/)
@@ -30,8 +30,8 @@ searches, results and appraisal steps.
 
 There is a large body of work on the methods to best conduct literature
 searches and data collection as part of systematic reviews and
-meta-analyses[²](#fn2), which we use as the basis for our protocol.
-These sources are:
+meta-analyses[^2], which we use as the basis for our protocol. These
+sources are:
 
 - [Cochrane Handbook](https://training.cochrane.org/handbook/current/)
   ([Higgins et al. 2019](#ref-higginsCochraneHandbookSystematic2019))
@@ -335,7 +335,7 @@ This should refine the results to a more suitable set of literature.
     when the primary source is unavailable or does not report the
     distribution. The inference of the delay distribution does not have
     to be a primary subject of the research article, for example if it
-    was inferred to be used in estimation of $R_{0}$ it can still be
+    was inferred to be used in estimation of $`R_0`$ it can still be
     included in the database. Additionally, distribution parameters
     based on illustrative values for use in simulations - rather than
     inferred from data - are considered unsuitable and should be
@@ -476,29 +476,24 @@ information:
 
 ## References
 
-Elliott, Julian H., Tari Turner, Ornella Clavisi, James Thomas, Julian
-P. T. Higgins, Chris Mavergames, and Russell L. Gruen. 2014. “Living
+Elliott, Julian H., Tari Turner, Ornella Clavisi, et al. 2014. “Living
 Systematic Reviews: An Emerging Opportunity to Narrow the
 Evidence-Practice Gap.” *PLoS Medicine* 11 (2): e1001603.
 <https://doi.org/10.1371/journal.pmed.1001603>.
 
-Higgins, Julian, James Thomas, Jacqueline Chandler, Miranda Cumpston,
-Tianjing Li, Matthew J. Page, and Vivian Andrea Welch. 2019. *Cochrane
-Handbook for Systematic Reviews of Interventions*. 2nd ed. Wiley
-Cochrane. Newark: John Wiley & Sons, Incorporated.
+Higgins, Julian, James Thomas, Jacqueline Chandler, et al. 2019.
+*Cochrane Handbook for Systematic Reviews of Interventions*. 2nd ed.
+Wiley Cochrane. John Wiley & Sons, Incorporated.
 
-Page, Matthew J, Joanne E McKenzie, Patrick M Bossuyt, Isabelle Boutron,
-Tammy C Hoffmann, Cynthia D Mulrow, Larissa Shamseer, et al. 2021. “The
+Page, Matthew J, Joanne E McKenzie, Patrick M Bossuyt, et al. 2021. “The
 PRISMA 2020 Statement: An Updated Guideline for Reporting Systematic
-Reviews.” *BMJ*, March, n71. <https://doi.org/10.1136/bmj.n71>.
+Reviews.” *BMJ*, March 29, n71. <https://doi.org/10.1136/bmj.n71>.
 
-------------------------------------------------------------------------
-
-1.  We also include distribution parameters that are published on
+[^1]: We also include distribution parameters that are published on
     pre-print servers such as arxiv, bioRxiv and medRxiv. But will
     update the citation reference once the paper is accepted and
     published by a journal.
 
-2.  [epiparameter](https://github.com/epiverse-trace/epiparameter/) is
+[^2]: [epiparameter](https://github.com/epiverse-trace/epiparameter/) is
     itself not a meta-analytic tool, but the references stored within
     may be useful as part of a meta-analysis.

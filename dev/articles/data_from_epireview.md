@@ -1,6 +1,7 @@
 # Using {epireview} with {epiparameter}
 
 ``` r
+
 library(epiparameter)
 library(epireview)
 #> Loading required package: epitrix
@@ -38,6 +39,7 @@ Here we start with a simple example of reading in the Marburg data from
 function from the {epiparameter} package.
 
 ``` r
+
 marburg_data <- load_epidata("marburg")
 #> Warning: There is 1 article with missing first author surname.
 #> Warning: There is 1 article with missing first author surname and first author first
@@ -57,6 +59,7 @@ the bibliographic information (`$articles`), epidemiological parameters
 information (`$outbreaks`).
 
 ``` r
+
 names(marburg_data)
 #> [1] "articles"  "params"    "models"    "outbreaks"
 ```
@@ -65,6 +68,7 @@ We will start by just using the epidemiological parameter table to
 convert information into an `<epiparameter>`.
 
 ``` r
+
 marburg_params <- marburg_data$params
 ```
 
@@ -72,6 +76,7 @@ Out of these parameters, subset the data to only keep those rows that
 contain incubation periods for Marburg.
 
 ``` r
+
 marburg_incubation_period <- marburg_params[
   marburg_params$parameter_type_short == "incubation_period",
 ]
@@ -93,6 +98,7 @@ marburg_incubation_period
 We will select the first entry to use as the first example:
 
 ``` r
+
 marburg_incub <- marburg_incubation_period[1, ]
 marburg_incub
 #> # A tibble: 1 × 61
@@ -113,6 +119,7 @@ Then we can simply pass our epidemiological parameter set to
 to do the conversion.
 
 ``` r
+
 marburg_incub_epiparameter <- as_epiparameter(marburg_incub)
 #> Using Gear (1975). "<title not available>." _<journal not available>_. 
 #> To retrieve the citation use the 'get_citation' function
@@ -137,6 +144,7 @@ period (in `$summary_stats`), and the `$metadata` shows that this is a
 single case from South Africa.
 
 ``` r
+
 marburg_incub_epiparameter$summary_stats
 #> $mean
 #> [1] NA
@@ -209,6 +217,7 @@ information, however, you may have noticed that the citation that was
 created did not contain the information for a full citation.
 
 ``` r
+
 marburg_incub_epiparameter$citation
 #> Gear (1975). "<title not available>." _<journal not available>_.
 ```
@@ -227,6 +236,7 @@ bibliographic information to only provide: `"id"`,
 columns.
 
 ``` r
+
 marburg_articles <- load_epidata_raw(
   pathogen = "marburg",
   table = "article"
@@ -267,12 +277,14 @@ achieved as {epireview} provides unique IDs to each table to link
 entries.
 
 ``` r
+
 article_row <- match(marburg_incub$id, marburg_articles$id)
 article_row
 #> [1] 6
 ```
 
 ``` r
+
 marburg_incub_article <- marburg_articles[article_row, ]
 marburg_incub_article
 #> # A tibble: 1 × 25
@@ -294,6 +306,7 @@ bibliographic information needs to be passed with the `article`
 argument.
 
 ``` r
+
 marburg_incub_epiparameter <- as_epiparameter(
   marburg_incub,
   article = marburg_incub_article
@@ -318,6 +331,7 @@ marburg_incub_epiparameter
 ```
 
 ``` r
+
 marburg_incub_epiparameter$citation
 #> Gear (1975). "Outbreak of Marburg virus disease in Johannesburg." _The
 #> British Medical Journal_. doi:10.1136/bmj.4.5995.489
@@ -366,12 +380,14 @@ only possible to convert delay distributions into epiparameter objects
 (i.e. known as *Human delay* parameter types in {epireview}).
 
 ``` r
+
 multi_row_entries <- duplicated(marburg_params$parameter_type) &
   duplicated(marburg_params$id)
 multi_row_ids <- marburg_params$id[multi_row_entries]
 ```
 
 ``` r
+
 multi_row_marburg_params <-
   marburg_params[marburg_params$id %in% multi_row_ids, ]
 multi_row_marburg_params
@@ -402,6 +418,7 @@ In this case there are two studies for Marburg with more than one entry
 mean and standard deviation.
 
 ``` r
+
 multi_row_marburg_params$parameter_value_type
 #>  [1] NA                   NA                   NA                  
 #>  [4] NA                   NA                   "Mean"              
@@ -437,6 +454,7 @@ multiple rows for the same reported epidemiological parameter.***
   ensuring compatibility between these formats.
 
 ``` r
+
 marburg_gt <- multi_row_marburg_params[
   multi_row_marburg_params$parameter_data_id %in%
     c("056a8d6b5f9aee3622d3bd8b715d4296", "ce3976e2e15df3f6fb92f6deb2db2a29"),
@@ -459,6 +477,7 @@ marburg_gt
 We can now convert this to an `<epiparameter>`.
 
 ``` r
+
 marburg_gt_epiparameter <- as_epiparameter(marburg_gt)
 #> Using Ajelli (2012). "<title not available>." _<journal not available>_. 
 #> To retrieve the citation use the 'get_citation' function
@@ -526,6 +545,7 @@ the {epireview} package (as there are no entries for Marburg that have
 parametric distributions).
 
 ``` r
+
 ebola_data <- load_epidata("ebola")
 #> ℹ ebola does not have any extracted outbreaks
 #> information. Outbreaks will be set to NULL.
@@ -536,10 +556,12 @@ We will again subset the data to just use the epidemiological parameter
 table, and select those rows containing a serial interval.
 
 ``` r
+
 ebola_params <- ebola_data$params
 ```
 
 ``` r
+
 ebola_si_rows <- ebola_params[
   ebola_params$parameter_type_short == "serial_interval",
 ]
@@ -579,6 +601,7 @@ We will select an entry that has estimated and reported a Weibull
 distribution:
 
 ``` r
+
 ebola_si <-  ebola_si_rows[
   ebola_si_rows$parameter_data_id == "0c3e02f80addfccc1017fa619fba76c5",
 ]
@@ -599,6 +622,7 @@ ebola_si
 We can now convert this to an `<epiparameter>` object.
 
 ``` r
+
 ebola_si_epiparameter <- as_epiparameter(ebola_si)
 #> Using Marziano (2023). "<title not available>." _<journal not available>_. 
 #> To retrieve the citation use the 'get_citation' function
@@ -622,17 +646,20 @@ and CDF, and generating 10 random numbers sampling from the
 distribution.
 
 ``` r
+
 is_parameterised(ebola_si_epiparameter)
 #> [1] TRUE
 ```
 
 ``` r
+
 plot(ebola_si_epiparameter)
 ```
 
 ![](data_from_epireview_files/figure-html/plot-epiparameter-1.png)
 
 ``` r
+
 generate(ebola_si_epiparameter, times = 10)
 #>  [1]  8.1913357 17.4324678  1.4003823  6.3030243  0.9521153  7.7520633
 #>  [7]  4.8497066  7.3824799  4.6173973  6.4234107
@@ -664,6 +691,7 @@ Just as the example above we will load the Ebola parameters using the
 function and subset to just the parameters (`$params`).
 
 ``` r
+
 ebola_data <- load_epidata("ebola")
 #> ℹ ebola does not have any extracted outbreaks
 #> information. Outbreaks will be set to NULL.
@@ -680,6 +708,7 @@ The code chunk below subsets the Ebola parameter table to just return
 the serial interval from Faye et al. (2015).
 
 ``` r
+
 ebola_si <- ebola_params[
   which(
     grepl(pattern = "Faye", x = ebola_params$article_label, fixed = TRUE) &
@@ -694,6 +723,7 @@ we would get an unparameterised `<epiparameter>` object because no
 probability distribution is stated.
 
 ``` r
+
 ebola_si_epiparameter <- as_epiparameter(ebola_si)
 #> Using Faye (2015). "<title not available>." _<journal not available>_. 
 #> To retrieve the citation use the 'get_citation' function
@@ -722,6 +752,7 @@ This uses the parameter conversion functions in {epiparameter} (see
 [`vignette("extract_convert", package = "epiparameter")`](https://epiverse-trace.github.io/epiparameter/dev/articles/extract_convert.md)).
 
 ``` r
+
 ebola_si_epiparameter <- as_epiparameter(ebola_si, prob_distribution = "gamma")
 #> Using Faye (2015). "<title not available>." _<journal not available>_. 
 #> To retrieve the citation use the 'get_citation' function
@@ -746,6 +777,7 @@ The Ebola serial interval `<epiparameter>` can now be used for various
 probability distribution methods.
 
 ``` r
+
 get_parameters(ebola_si_epiparameter)
 #> shape scale 
 #>  4.00  3.55
@@ -757,6 +789,7 @@ plot(ebola_si_epiparameter)
 ![](data_from_epireview_files/figure-html/ebola-epiparameter-dist-methods-1.png)
 
 ``` r
+
 cdf(ebola_si_epiparameter, q = 10)
 #> [1] 0.3118251
 plot(ebola_si_epiparameter, cumulative = TRUE)
@@ -765,6 +798,7 @@ plot(ebola_si_epiparameter, cumulative = TRUE)
 ![](data_from_epireview_files/figure-html/ebola-epiparameter-dist-methods-2.png)
 
 ``` r
+
 quantile(ebola_si_epiparameter, p = 0.5)
 #> [1] 13.03582
 generate(ebola_si_epiparameter, times = 10)
@@ -791,8 +825,7 @@ generate(ebola_si_epiparameter, times = 10)
 
 ## References
 
-Faye, Ousmane, Pierre-Yves Boëlle, Emmanuel Heleze, Oumar Faye, Cheikh
-Loucoubar, N’Faly Magassouba, Barré Soropogui, et al. 2015. “Chains of
-Transmission and Control of Ebola Virus Disease in Conakry, Guinea, in
-2014: An Observational Study.” *The Lancet Infectious Diseases* 15 (3):
-320–26. <https://doi.org/10.1016/S1473-3099(14)71075-8>.
+Faye, Ousmane, Pierre-Yves Boëlle, Emmanuel Heleze, et al. 2015. “Chains
+of Transmission and Control of Ebola Virus Disease in Conakry, Guinea,
+in 2014: An Observational Study.” *The Lancet Infectious Diseases* 15
+(3): 320–26. <https://doi.org/10.1016/S1473-3099(14)71075-8>.

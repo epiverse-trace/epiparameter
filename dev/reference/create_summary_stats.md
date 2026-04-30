@@ -115,6 +115,7 @@ create_summary_stats(
 A list of summary statistics. The output list has element names equal to
 the function arguments:
 
+
     $mean
     $mean_ci_limits
     $mean_ci

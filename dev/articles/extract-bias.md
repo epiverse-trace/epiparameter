@@ -27,6 +27,7 @@ and precision of the functions. It is specific to the case of
 {epiparameter} and should not be taken as a generalisable result.
 
 ``` r
+
 library(epiparameter)
 library(ggplot2)
 ```
@@ -46,6 +47,7 @@ for all distributions.
 We set up the parameter space to explore:
 
 ``` r
+
 distributions <- c("gamma", "lnorm", "weibull")
 dist_parameters <- seq(0.5, 2, 0.5)
 lower_percentiles <- c(2.5, 5, 25, 40)
@@ -78,10 +80,12 @@ however changing or removing the seed should not drastically change the
 results or interpretation.
 
 ``` r
+
 set.seed(1)
 ```
 
 ``` r
+
 estim_params <- vector("list", nrow(parameters_perc))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
@@ -149,6 +153,7 @@ for more details.
 The extraction bias can be explored:
 
 ``` r
+
 # plot differences by distribution
 ggplot(data = results) +
   geom_point(mapping = aes(
@@ -191,6 +196,7 @@ by the data.
 Set up the parameter space:
 
 ``` r
+
 n_samples <- c(10, 50, 100)
 parameters_range <- expand.grid(
   dist = distributions, # same as above
@@ -201,6 +207,7 @@ parameters_range <- expand.grid(
 ```
 
 ``` r
+
 estim_params <- vector("list", nrow(parameters_range))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_range))) {
@@ -282,6 +289,7 @@ results <- cbind(
 Plot results:
 
 ``` r
+
 # plot differences by distribution
 ggplot(data = results) +
   geom_point(
@@ -331,6 +339,7 @@ replicates to compute the variance of parameter estimates over those
 replicates.
 
 ``` r
+
 estim_param_var <- vector("list", nrow(parameters_perc))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_perc))) {
@@ -382,6 +391,7 @@ colnames(results) <- c(
 ```
 
 ``` r
+
 ggplot(data = results) +
   geom_point(mapping = aes(
     x = estim_param_1_var,
@@ -418,6 +428,7 @@ The same test of estimation precision can be performed for the
 extraction from median and range.
 
 ``` r
+
 estim_param_var <- vector("list", nrow(parameters_range))
 # Loop through parameter space estimating parameters
 for (params_idx in seq_len(nrow(parameters_range))) {
@@ -498,6 +509,7 @@ colnames(results) <- c(
 ```
 
 ``` r
+
 ggplot(data = results) +
   geom_point(mapping = aes(
     x = estim_param_1_var,

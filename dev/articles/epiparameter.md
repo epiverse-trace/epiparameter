@@ -33,6 +33,7 @@ functions (and methods) implemented in the package to facilitate easy
 application of parameters into epidemiological pipelines.
 
 ``` r
+
 library(epiparameter)
 ```
 
@@ -45,6 +46,7 @@ internally and can be read into R using the
 function. By default all entries in the library are returned.
 
 ``` r
+
 db <- epiparameter_db()
 #> Returning 125 results that match the criteria (100 are parameterised). 
 #> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
@@ -111,6 +113,7 @@ the
 function. Here we show the first six rows of the output.
 
 ``` r
+
 parameter_tbl(multi_epiparameter = db)
 #> # Parameter table:
 #> # A data frame:    125 × 7
@@ -133,6 +136,7 @@ parameter_tbl(multi_epiparameter = db)
 can also subset the database supplied to the function.
 
 ``` r
+
 parameter_tbl(multi_epiparameter = db, disease = "Ebola")
 #> # Parameter table:
 #> # A data frame:    17 × 7
@@ -176,6 +180,7 @@ An `<epiparameter>` object can be:
     ([`epiparameter_db()`](https://epiverse-trace.github.io/epiparameter/dev/reference/epiparameter_db.md))
 
 ``` r
+
 # <epiparameter> from database
 
 # fetch <epiparameter> for COVID-19 incubation period from database
@@ -212,6 +217,7 @@ covid_incubation
     [`epiparameter()`](https://epiverse-trace.github.io/epiparameter/dev/reference/epiparameter.md))
 
 ``` r
+
 # <epiparameter> using constructor function
 covid_incubation <- epiparameter(
   disease = "COVID-19",
@@ -296,6 +302,7 @@ author will be matched when the entry is from a source with multiple
 authors.
 
 ``` r
+
 epiparameter_db(
   disease = "COVID-19",
   epi_name = "incubation period",
@@ -373,6 +380,7 @@ when inferred, and were estimated from the largest sample size are
 preferentially selected (in that order).
 
 ``` r
+
 epiparameter_db(disease = "SARS", single_epiparameter = TRUE)
 #> Using Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
@@ -405,6 +413,7 @@ distribution functions in {epiparameter} allow users to easily use
 these.
 
 ``` r
+
 ebola_incubation <- epiparameter_db(
   disease = "Ebola",
   epi_name = "incubation period",
@@ -439,6 +448,7 @@ generate(ebola_incubation, times = 10)
 distribution.
 
 ``` r
+
 plot(ebola_incubation)
 ```
 
@@ -449,6 +459,7 @@ The default plotting range for time since infection is from zero to the
 `xlim` argument when plotting an `<epiparameter>` object.
 
 ``` r
+
 plot(ebola_incubation, xlim = c(1, 25))
 ```
 
@@ -466,6 +477,7 @@ The `<epiparameter>` class also has accessor functions that can help
 access elements from the object in a standardised format.
 
 ``` r
+
 get_parameters(ebola_incubation)
 #>    shape    scale 
 #> 1.577781 6.528155
@@ -510,6 +522,7 @@ the user but has not yet been incorporated into the {epiparameter}
 database, these parameters can be manually added to the library.
 
 ``` r
+
 # wrap <epiparameter> in list to append to database
 new_db <- append(db, covid_incubation)
 tail(new_db, n = 3)

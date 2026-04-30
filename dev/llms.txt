@@ -18,6 +18,7 @@ Medicine](https://www.lshtm.ac.uk/) as part of
 The package can be installed from CRAN using
 
 ``` r
+
 install.packages("epiparameter")
 ```
 
@@ -27,6 +28,7 @@ installed from [GitHub](https://github.com/epiverse-trace/epiparameter)
 using the [pak](https://pak.r-lib.org/) package:
 
 ``` r
+
 # check whether {pak} is installed
 if(!require("pak")) install.packages("pak")
 pak::pak("epiverse-trace/epiparameter")
@@ -36,18 +38,21 @@ Alternatively, install pre-compiled binaries from [the Epiverse TRACE
 R-universe](https://epiverse-trace.r-universe.dev/epiparameter)
 
 ``` r
+
 install.packages("epiparameter", repos = c("https://epiverse-trace.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
 ## Quick start
 
 ``` r
+
 library(epiparameter)
 ```
 
 To load the library of epidemiological parameters into `R`:
 
 ``` r
+
 epiparameters <- epiparameter_db()
 #> Returning 125 results that match the criteria (100 are parameterised). 
 #> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
@@ -122,6 +127,7 @@ it will return all database entries that match the disease (`disease`)
 and epidemiological parameter (`epi_name`).
 
 ``` r
+
 influenza_incubation <- epiparameter_db(
   disease = "influenza",
   epi_name = "incubation period",
@@ -156,6 +162,7 @@ gives a summary of the data, and offers the ability to subset you data
 by `disease`, `pathogen` and epidemiological parameter (`epi_name`).
 
 ``` r
+
 parameter_tbl(epiparameters)
 #> # Parameter table:
 #> # A data frame:    125 × 7
@@ -190,6 +197,7 @@ parameter_tbl(
 The `<epiparameter>` object can be plotted.
 
 ``` r
+
 plot(influenza_incubation)
 ```
 
@@ -198,6 +206,7 @@ plot(influenza_incubation)
 The CDF can also be plotted by setting `cumulative = TRUE`.
 
 ``` r
+
 plot(influenza_incubation, cumulative = TRUE)
 ```
 
@@ -277,6 +286,7 @@ By contributing to this project, you agree to abide by its terms.
 ## Citing this package
 
 ``` r
+
 citation("epiparameter")
 #> To cite package 'epiparameter' in publications use:
 #> 

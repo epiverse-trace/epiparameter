@@ -106,7 +106,8 @@ single <code>&lt;epiparameter&gt;</code> to be returned.</p>
 <span>  epi_name <span class="op">=</span> <span class="st">"all"</span>,</span>
 <span>  author <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  subset <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  single_epiparameter <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  single_epiparameter <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  db <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epiparameterDB"</span>, <span class="st">"grEPI"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -168,6 +169,14 @@ when only one is wanted.</p>
 (and accounts for truncation if available) and has the largest sample size
 will be returned (see <code><a href="is_parameterised.html">is_parameterised()</a></code>). If multiple entries are equal
 after this sorting the first entry will be returned.</p></dd>
+
+
+<dt id="arg-db">db<a class="anchor" aria-label="anchor" href="#arg-db"></a></dt>
+<dd><p>A <code>character</code> string specifying which database to load
+epidemiological parameter from. Default is <code>"epiparameterDB"</code>, which loads
+from the <span class="pkg">epiparameterDB</span> R package. The other option is <code>"grEPI"</code>,
+which loads from the
+<a href="https://who-collaboratory.github.io/collaboratory-grepi-web/" class="external-link">WHO Global Repository of Epidemiological Parameters</a>.</p></dd>
 
 </dl></div>
     <div class="section level2">

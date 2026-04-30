@@ -29,6 +29,7 @@ extraction function
 [`extract_param()`](https://epiverse-trace.github.io/epiparameter/dev/reference/extract_param.md).
 
 ``` r
+
 library(epiparameter)
 ```
 
@@ -70,6 +71,7 @@ are given below for each distribution.
 #### Using a `character` string to name distribution
 
 ``` r
+
 convert_params_to_summary_stats("gamma", shape = 2.5, scale = 1.5)
 #> $mean
 #> [1] 3.75
@@ -97,6 +99,7 @@ convert_params_to_summary_stats("gamma", shape = 2.5, scale = 1.5)
 ```
 
 ``` r
+
 convert_summary_stats_to_params("gamma", mean = 2, sd = 2)
 #> $shape
 #> [1] 1
@@ -122,6 +125,7 @@ convert_summary_stats_to_params("gamma", mean = 2, cv = 2)
 An example with parameters provided by `<epiparameter>`
 
 ``` r
+
 ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
@@ -162,6 +166,7 @@ An example with `<epiparameter>` missing parameters and supplied through
 `...`
 
 ``` r
+
 ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
@@ -200,6 +205,7 @@ convert_params_to_summary_stats(ep, shape = 2.5, scale = 1.5)
 An example with summary statistics provided by `<epiparameter>`
 
 ``` r
+
 ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
@@ -222,6 +228,7 @@ An example with `<epiparameter>` missing summary statistics and supplied
 through `...`
 
 ``` r
+
 ep <- epiparameter(
   disease = "<Disease name>",
   pathogen = "<Pathogen name>",
@@ -248,6 +255,7 @@ the `<epiparameter>` or supplied via named arguments.
 #### Lognormal distribution
 
 ``` r
+
 convert_params_to_summary_stats("lnorm", meanlog = 2.5, sdlog = 1.5)
 #> $mean
 #> [1] 37.52472
@@ -275,6 +283,7 @@ convert_params_to_summary_stats("lnorm", meanlog = 2.5, sdlog = 1.5)
 ```
 
 ``` r
+
 convert_summary_stats_to_params("lnorm", mean = 2, sd = 2)
 #> $meanlog
 #> [1] 0.3465736
@@ -310,6 +319,7 @@ convert_summary_stats_to_params("lnorm", median = 2, var = 2)
 #### Weibull distribution
 
 ``` r
+
 convert_params_to_summary_stats("weibull", shape = 2.5, scale = 1.5)
 #> $mean
 #> [1] 1.330896
@@ -337,6 +347,7 @@ convert_params_to_summary_stats("weibull", shape = 2.5, scale = 1.5)
 ```
 
 ``` r
+
 convert_summary_stats_to_params("weibull", mean = 2, sd = 2)
 #> Numerical approximation used, results may be unreliable.
 #> $shape
@@ -363,6 +374,7 @@ convert_summary_stats_to_params("weibull", mean = 2, cv = 2)
 #### Negative binomial distribution
 
 ``` r
+
 convert_params_to_summary_stats("nbinom", prob = 0.5, dispersion = 0.5)
 #> $mean
 #> [1] 0.5
@@ -390,6 +402,7 @@ convert_params_to_summary_stats("nbinom", prob = 0.5, dispersion = 0.5)
 ```
 
 ``` r
+
 convert_summary_stats_to_params("nbinom", mean = 1, sd = 1)
 #> $prob
 #> [1] 1
@@ -413,6 +426,7 @@ convert_summary_stats_to_params("nbinom", mean = 1, cv = 1)
 #### Geometric distribution
 
 ``` r
+
 convert_params_to_summary_stats("geom", prob = 0.5)
 #> $mean
 #> [1] 1
@@ -440,6 +454,7 @@ convert_params_to_summary_stats("geom", prob = 0.5)
 ```
 
 ``` r
+
 convert_summary_stats_to_params("geom", mean = 1)
 #> $prob
 #> [1] 0.5
@@ -461,6 +476,7 @@ are specified as a vector in `percentiles`. The example below uses
 values 1 and 10 at the 2.5th and 97.5th percentile, respectively.
 
 ``` r
+
 extract_param(
   type = "percentiles",
   values = c(1, 10),
@@ -495,6 +511,7 @@ the `percentiles` argument. When using `type = "percentiles"` the
 `percentiles` argument is ignored.
 
 ``` r
+
 extract_param(
   type = "range",
   values = c(10, 5, 15),
@@ -521,6 +538,7 @@ iterations is reached, the calculation terminates returning the most
 recent optimisation result to the user along with a warning message.
 
 ``` r
+
 # set seed to ensure warning is produced
 set.seed(1)
 
@@ -559,6 +577,7 @@ al. ([2016](#ref-nolenExtendedHumantoHumanTransmission2016)) for the
 incubation period for mpox (monkeypox).
 
 ``` r
+
 # Mpox lnorm from 75th percentiles in WHO data
 extract_param(
   type = "percentiles",
@@ -577,6 +596,7 @@ The median and range are provided by Thornhill et al.
 want to calculate the parameters of a lognormal distribution.
 
 ``` r
+
 # Mpox lnorm from median and range in 2022:
 extract_param(
   type = "range",
@@ -615,6 +635,7 @@ conversion function
 ([`convert_summary_stats_to_params()`](https://epiverse-trace.github.io/epiparameter/dev/reference/convert_summary_stats_to_params.md)).
 
 ``` r
+
 # SARS gamma mean and var to shape and scale
 convert_summary_stats_to_params("gamma", mean = 6.37, var = 16.7)
 #> $shape
@@ -626,20 +647,17 @@ convert_summary_stats_to_params("gamma", mean = 6.37, var = 16.7)
 
 ## References
 
-Donnelly, Christl A, Azra C Ghani, Gabriel M Leung, Anthony J Hedley,
-Christophe Fraser, Steven Riley, Laith J Abu-Raddad, et al. 2003.
+Donnelly, Christl A, Azra C Ghani, Gabriel M Leung, et al. 2003.
 “Epidemiological Determinants of Spread of Causal Agent of Severe Acute
 Respiratory Syndrome in Hong Kong.” *The Lancet* 361 (9371): 1761–66.
 <https://doi.org/10.1016/S0140-6736(03)13410-1>.
 
-Nolen, Leisha Diane, Lynda Osadebe, Jacques Katomba, Jacques Likofata,
-Daniel Mukadi, Benjamin Monroe, Jeffrey Doty, et al. 2016. “Extended
-Human-to-Human Transmission During a Monkeypox Outbreak in the
+Nolen, Leisha Diane, Lynda Osadebe, Jacques Katomba, et al. 2016.
+“Extended Human-to-Human Transmission During a Monkeypox Outbreak in the
 Democratic Republic of the Congo.” *Emerging Infectious Diseases* 22
 (6): 1014–21. <https://doi.org/10.3201/eid2206.150579>.
 
-Thornhill, John P., Sapha Barkati, Sharon Walmsley, Juergen Rockstroh,
-Andrea Antinori, Luke B. Harrison, Romain Palich, et al. 2022.
+Thornhill, John P., Sapha Barkati, Sharon Walmsley, et al. 2022.
 “Monkeypox Virus Infection in Humans Across 16 Countries — April–June
 2022.” *New England Journal of Medicine* 387 (8): 679–91.
 <https://doi.org/10.1056/NEJMoa2207323>.

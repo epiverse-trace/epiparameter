@@ -23,7 +23,8 @@ epiparameter_db(
   epi_name = "all",
   author = NULL,
   subset = NULL,
-  single_epiparameter = FALSE
+  single_epiparameter = FALSE,
+  db = c("epiparameterDB", "grEPI")
 )
 ```
 
@@ -89,6 +90,14 @@ epiparameter_db(
   [`is_parameterised()`](https://epiverse-trace.github.io/epiparameter/dev/reference/is_parameterised.md)).
   If multiple entries are equal after this sorting the first entry will
   be returned.
+
+- db:
+
+  A `character` string specifying which database to load epidemiological
+  parameter from. Default is `"epiparameterDB"`, which loads from the
+  epiparameterDB R package. The other option is `"grEPI"`, which loads
+  from the [WHO Global Repository of Epidemiological
+  Parameters](https://who-collaboratory.github.io/collaboratory-grepi-web/).
 
 ## Value
 
