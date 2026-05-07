@@ -5,7 +5,7 @@ cache_env <- new.env(parent = emptyenv())
   # Merge user-supplied options(epiparameter = ...) with package defaults so
   # that values set before the package is loaded (e.g. in .Rprofile) are not
   # overwritten. See ?epiparameter_default_options.
-  set_epiparameter_options()
+  .set_epiparameter_options()
 
   # create an in-memory cache
   cache_env$cache <- cachem::cache_mem()

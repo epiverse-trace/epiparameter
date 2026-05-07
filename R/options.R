@@ -36,7 +36,7 @@ epiparameter_default_options <- list(
 #' @return Invisible `list`, called for [options()] side-effect
 #' @keywords internal
 #' @noRd
-set_epiparameter_options <- function() {
+.set_epiparameter_options <- function() {
   user_opts <- getOption("epiparameter", default = list())
   if (!is.list(user_opts)) {
     user_opts <- list()
