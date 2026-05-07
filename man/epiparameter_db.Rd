@@ -12,7 +12,8 @@ epiparameter_db(
   author = NULL,
   subset = NULL,
   single_epiparameter = FALSE,
-  db = c("epiparameterDB", "grEPI")
+  db = c("epiparameterDB", "grEPI"),
+  verbose = getOption("epiparameter")$verbose
 )
 }
 \arguments{
@@ -69,6 +70,14 @@ epidemiological parameter from. Default is \code{"epiparameterDB"}, which loads
 from the \pkg{epiparameterDB} R package. The other option is \code{"grEPI"},
 which loads from the
 \href{https://who-collaboratory.github.io/collaboratory-grepi-web/}{WHO Global Repository of Epidemiological Parameters}.}
+
+\item{verbose}{A \code{logical} controlling whether informational messages
+(number of results returned, citation of the selected entry, grEPI loading
+notice) are printed. Warnings and errors are not affected. Defaults to
+the \code{verbose} field of \code{getOption("epiparameter")} (\code{TRUE} unless the
+user has set otherwise via
+\code{options(epiparameter = list(verbose = FALSE))}), so behaviour is
+unchanged from previous versions.}
 }
 \value{
 An \verb{<epiparameter>} object or list of \verb{<epiparameter>} objects.
@@ -135,4 +144,5 @@ eparam <- epiparameter_db(
   epi_name = "offspring_distribution",
   single_epiparameter = TRUE
 )
+# nolint end: line_length_linter
 }
