@@ -212,6 +212,57 @@ test_that(".read_epiparameter_db works as expected", {
   expect_true(all(vapply(db, is_epiparameter, FUN.VALUE = logical(1))))
 })
 
+test_that("epiparameter_db is silent when verbose = FALSE", {
+  expect_no_message(
+    epiparameter_db(
+      disease = "influenza",
+      epi_name = "serial interval",
+      verbose = FALSE
+    )
+  )
+})
+
+test_that("epiparameter_db is silent when verbose = FALSE with single_epiparameter", {
+  expect_no_message(
+    epiparameter_db(
+      disease = "influenza",
+      epi_name = "incubation period",
+      single_epiparameter = TRUE,
+      verbose = FALSE
+    )
+  )
+})
+
+test_that("epiparameter_db verbose default is read from options(epiparameter)", {
+  old <- options(epiparameter = utils::modifyList(
+    getOption("epiparameter"),
+    list(verbose = FALSE)
+  ))
+  on.exit(options(old), add = TRUE)
+
+  expect_no_message(
+    epiparameter_db(disease = "influenza", epi_name = "serial interval")
+  )
+})
+
+test_that("epiparameter_db emits messages by default (verbose = TRUE)", {
+  expect_message(
+    epiparameter_db(disease = "influenza", epi_name = "serial interval"),
+    regexp = "Returning"
+  )
+})
+
+test_that("epiparameter_db rejects non-logical verbose values", {
+  expect_error(
+    epiparameter_db(verbose = "yes"),
+    regexp = "verbose"
+  )
+  expect_error(
+    epiparameter_db(verbose = NA),
+    regexp = "verbose"
+  )
+})
+
 test_that("as.data.frame works for <multi_epiparameter>", {
   # message about missing citation suppressed
   db <- suppressMessages(epiparameter_db())
