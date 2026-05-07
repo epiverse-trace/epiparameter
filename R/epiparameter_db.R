@@ -120,7 +120,7 @@
 #'   epi_name = "offspring_distribution",
 #'   single_epiparameter = TRUE
 #' )
-#' # nolint end: line_length_linter
+# nolint end: line_length_linter
 epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter
                             pathogen = "all",
                             epi_name = "all",
