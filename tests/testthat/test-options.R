@@ -8,7 +8,11 @@ test_that("set_epiparameter_options uses defaults when no user option is set", {
 })
 
 test_that("set_epiparameter_options preserves a fully user-set option", {
-  user_opts <- list(print_max = 10L, print_min = 5L)
+  user_opts <- list(
+    print_max = 10L,
+    print_min = 5L,
+    verbose = FALSE
+  )
   old <- options(epiparameter = user_opts)
   on.exit(options(old), add = TRUE)
 
