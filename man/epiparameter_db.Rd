@@ -142,5 +142,4 @@ eparam <- epiparameter_db(
   epi_name = "offspring_distribution",
   single_epiparameter = TRUE
 )
-# nolint end: line_length_linter
 }
