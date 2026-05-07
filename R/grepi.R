@@ -12,7 +12,8 @@
                         epi_name,
                         author,
                         subset,
-                        single_epiparameter) {
+                        single_epiparameter,
+                        verbose) {
 
   if (!is.null(author)) {
     warning(
@@ -49,7 +50,9 @@
     req <- httr2::req_url_query(req, pathogen_Species_Name_Preferred = pathogen)
   }
 
-  message("Loading epidemiological parameters from grEPI...")
+  if (verbose) {
+    message("Loading epidemiological parameters from grEPI...")
+  }
   resp <- tryCatch(
     httr2::req_perform(req),
     error = function(cnd) {
