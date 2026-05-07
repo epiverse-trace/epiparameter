@@ -80,7 +80,7 @@ reference:
 
   - title: Options
     contents:
-      - epiparameter_options
+      - epiparameter_default_options
 
 articles:
 - title: Get started
