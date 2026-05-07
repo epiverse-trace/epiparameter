@@ -269,5 +269,5 @@ Data stored in the package
 
 ## Options
 
-- [`epiparameter_options`](https://epiverse-trace.github.io/epiparameter/dev/reference/epiparameter_options.md)
+- [`epiparameter_default_options`](https://epiverse-trace.github.io/epiparameter/dev/reference/epiparameter_default_options.md)
   : Package options

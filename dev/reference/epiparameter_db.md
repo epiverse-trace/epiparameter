@@ -24,7 +24,8 @@ epiparameter_db(
   author = NULL,
   subset = NULL,
   single_epiparameter = FALSE,
-  db = c("epiparameterDB", "grEPI")
+  db = c("epiparameterDB", "grEPI"),
+  verbose = getOption("epiparameter")$verbose
 )
 ```
 
@@ -98,6 +99,15 @@ epiparameter_db(
   epiparameterDB R package. The other option is `"grEPI"`, which loads
   from the [WHO Global Repository of Epidemiological
   Parameters](https://who-collaboratory.github.io/collaboratory-grepi-web/).
+
+- verbose:
+
+  A `logical` controlling whether
+  [`message()`](https://rdrr.io/r/base/message.html)s are printed when
+  loading `<epiparameter>`s. Warnings and errors are not affected.
+  Defaults to the `verbose` field of `getOption("epiparameter")` (`TRUE`
+  unless the user has set otherwise via
+  `options(epiparameter = list(verbose = FALSE))`).
 
 ## Value
 

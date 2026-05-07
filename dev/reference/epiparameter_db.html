@@ -107,7 +107,8 @@ single <code>&lt;epiparameter&gt;</code> to be returned.</p>
 <span>  author <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  subset <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  single_epiparameter <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  db <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epiparameterDB"</span>, <span class="st">"grEPI"</span><span class="op">)</span></span>
+<span>  db <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epiparameterDB"</span>, <span class="st">"grEPI"</span><span class="op">)</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"epiparameter"</span><span class="op">)</span><span class="op">$</span><span class="va">verbose</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -177,6 +178,14 @@ epidemiological parameter from. Default is <code>"epiparameterDB"</code>, which 
 from the <span class="pkg">epiparameterDB</span> R package. The other option is <code>"grEPI"</code>,
 which loads from the
 <a href="https://who-collaboratory.github.io/collaboratory-grepi-web/" class="external-link">WHO Global Repository of Epidemiological Parameters</a>.</p></dd>
+
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>A <code>logical</code> controlling whether <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code>s are printed
+when loading <code>&lt;epiparameter&gt;</code>s. Warnings and errors are not affected.
+Defaults to the <code>verbose</code> field of <code>getOption("epiparameter")</code> (<code>TRUE</code>
+unless the user has set otherwise via
+<code>options(epiparameter = list(verbose = FALSE))</code>).</p></dd>
 
 </dl></div>
     <div class="section level2">
