@@ -88,6 +88,12 @@
 #' which loads from the
 #' [WHO Global Repository of Epidemiological Parameters](https://who-collaboratory.github.io/collaboratory-grepi-web/).
 #'
+#' @param verbose A `logical` controlling whether [message()]s are printed
+#' when loading `<epiparameter>`s. Warnings and errors are not affected.
+#' Defaults to the `verbose` field of `getOption("epiparameter")` (`TRUE`
+#' unless the user has set otherwise via
+#' `options(epiparameter = list(verbose = FALSE))`).
+#'
 #' @return An `<epiparameter>` object or list of `<epiparameter>` objects.
 #' @export
 #'
@@ -121,12 +127,14 @@ epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter
                             author = NULL,
                             subset = NULL,
                             single_epiparameter = FALSE,
-                            db = c("epiparameterDB", "grEPI")) {
+                            db = c("epiparameterDB", "grEPI"),
+                            verbose = getOption("epiparameter")$verbose) {
   # check input
   checkmate::assert_string(disease)
   checkmate::assert_string(pathogen)
   checkmate::assert_string(epi_name)
   checkmate::assert_logical(single_epiparameter, len = 1)
+  checkmate::assert_logical(verbose, len = 1, any.missing = FALSE)
   db <- match.arg(db)
 
   if (db == "grEPI") {
@@ -136,7 +144,8 @@ epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter
       epi_name = epi_name,
       author = author,
       subset = subset,
-      single_epiparameter = single_epiparameter
+      single_epiparameter = single_epiparameter,
+      verbose = verbose
     )
     if (length(multi_epiparameter) == 1) {
       multi_epiparameter <- multi_epiparameter[[1]]
@@ -255,22 +264,26 @@ epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter
     )
     single_epiparameter <- multi_epiparameter[[idx]]
 
-    message(
-      "Using ", format(get_citation(single_epiparameter)), ". \n",
-      "To retrieve the citation use the 'get_citation' function"
-    )
+    if (verbose) {
+      message(
+        "Using ", format(get_citation(single_epiparameter)), ". \n",
+        "To retrieve the citation use the 'get_citation' function"
+      )
+    }
 
     return(single_epiparameter)
   }
 
-  message(
-    "Returning ", length(multi_epiparameter), " results that match the ",
-    "criteria (", sum(is_param), " are parameterised). \n",
-    "Use subset to filter by entry variables or ",
-    "single_epiparameter to return a single entry. \n",
-    "To retrieve the citation for each use the ",
-    "'get_citation' function"
-  )
+  if (verbose) {
+    message(
+      "Returning ", length(multi_epiparameter), " results that match the ",
+      "criteria (", sum(is_param), " are parameterised). \n",
+      "Use subset to filter by entry variables or ",
+      "single_epiparameter to return a single entry. \n",
+      "To retrieve the citation for each use the ",
+      "'get_citation' function"
+    )
+  }
 
   if (length(multi_epiparameter) == 1) {
     multi_epiparameter <- multi_epiparameter[[1]]
