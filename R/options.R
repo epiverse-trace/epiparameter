@@ -22,7 +22,10 @@ epiparameter_default_options <- list(
   print_max = 5L,
   # Number of <epiparameter> objects to print if <multi_epiparameter> has more
   # than `print_max`
-  print_min = 3L
+  print_min = 3L,
+  # Whether informational messages from `epiparameter_db()` are printed.
+  # Used as the default for the `verbose` argument of that function.
+  verbose = TRUE
 )
 
 #' Merge any user-supplied `options(epiparameter = ...)` with the package
