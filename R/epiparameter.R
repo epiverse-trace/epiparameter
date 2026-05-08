@@ -24,13 +24,15 @@ new_epiparameter <- function(disease = character(),
                              method_assess = list(),
                              notes = character(),
                              auto_calc_params = logical(),
+                             verbose = TRUE,
                              ...) {
   if (auto_calc_params && is.character(prob_distribution)) {
     # calculate parameters if not provided
     prob_distribution_params <- .calc_dist_params(
       prob_distribution = prob_distribution,
       summary_stats = summary_stats,
-      sample_size = metadata$sample_size
+      sample_size = metadata$sample_size,
+      verbose = verbose
     )
     if (!anyNA(prob_distribution_params)) {
       prob_distribution <- create_prob_distribution(
@@ -38,13 +40,16 @@ new_epiparameter <- function(disease = character(),
         prob_distribution_params = prob_distribution_params,
         ...
       )
-      message(
-        "Parameterising the probability distribution with the summary ",
-        "statistics.\n Probability distribution is assumed not to be ",
-        "discretised or truncated."
-      )
+      if (verbose) {
+        message(
+          "Parameterising the probability distribution with the summary ",
+          "statistics.\n Probability distribution is assumed not to be ",
+          "discretised or truncated."
+        )
+      }
     }
-    if (!inherits(prob_distribution, c("distribution", "distcrete"))) {
+    if (!inherits(prob_distribution, c("distribution", "distcrete")) &&
+        verbose) {
       message("Unparameterised <epiparameter> object")
     }
   }
@@ -152,6 +157,7 @@ new_epiparameter <- function(disease = character(),
 #' assessment.
 #' @param notes A `character` string with any additional information about the
 #' data, inference method or disease.
+#' @inheritParams epiparameter_db
 #' @param ... [dots] Extra arguments to be passed to internal functions.
 #'
 #' This is most commonly used to pass arguments to [distcrete::distcrete()]
@@ -227,11 +233,12 @@ epiparameter <- function(disease,
                          ),
                          uncertainty = create_uncertainty(),
                          summary_stats = create_summary_stats(),
-                         citation = create_citation(),
+                         citation = create_citation(verbose = verbose),
                          metadata = create_metadata(),
                          method_assess = create_method_assess(),
                          notes = NULL,
                          auto_calc_params = TRUE,
+                         verbose = getOption("epiparameter")$verbose,
                          ...) {
   # check input
   checkmate::assert_string(disease)
@@ -249,6 +256,7 @@ epiparameter <- function(disease,
     names = "unique",
     null.ok = TRUE
   )
+  checkmate::assert_logical(verbose, len = 1, any.missing = FALSE)
   checkmate::assert_class(citation, classes = "bibentry")
   checkmate::assert_list(metadata)
   checkmate::assert_list(method_assess)
@@ -267,6 +275,7 @@ epiparameter <- function(disease,
     metadata = metadata,
     method_assess = method_assess,
     notes = notes,
+    verbose = verbose,
     ...
   )
 
