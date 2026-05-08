@@ -71,11 +71,10 @@ from the \pkg{epiparameterDB} R package. The other option is \code{"grEPI"},
 which loads from the
 \href{https://who-collaboratory.github.io/collaboratory-grepi-web/}{WHO Global Repository of Epidemiological Parameters}.}
 
-\item{verbose}{A \code{logical} controlling whether \code{\link[=message]{message()}}s are printed
-when loading \verb{<epiparameter>}s. Warnings and errors are not affected.
-Defaults to the \code{verbose} field of \code{getOption("epiparameter")} (\code{TRUE}
-unless the user has set otherwise via
-\code{options(epiparameter = list(verbose = FALSE))}).}
+\item{verbose}{A \code{logical} controlling whether informational \code{\link[=message]{message()}}s
+are printed. Warnings and errors are not affected. Defaults to the
+\code{verbose} field of \code{getOption("epiparameter")} (\code{TRUE} unless the user has
+set otherwise via \code{options(epiparameter = list(verbose = FALSE))}).}
 }
 \value{
 An \verb{<epiparameter>} object or list of \verb{<epiparameter>} objects.

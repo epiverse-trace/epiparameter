@@ -5,7 +5,12 @@
 \title{Calculate the parameters of a probability distribution from a list of
 summary statistics}
 \usage{
-.calc_dist_params(prob_distribution, summary_stats, sample_size)
+.calc_dist_params(
+  prob_distribution,
+  summary_stats,
+  sample_size,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{prob_distribution}{An S3 class containing the probability
@@ -24,6 +29,11 @@ interval around mean and standard deviation.}
 
 \item{sample_size}{The sample size of the data. Only needed when falling back
 on using the median-range extraction calculation.}
+
+\item{verbose}{A \code{logical} controlling whether informational \code{\link[=message]{message()}}s
+are printed. Warnings and errors are not affected. Defaults to the
+\code{verbose} field of \code{getOption("epiparameter")} (\code{TRUE} unless the user has
+set otherwise via \code{options(epiparameter = list(verbose = FALSE))}).}
 }
 \value{
 A named \code{numeric} vector with parameters.

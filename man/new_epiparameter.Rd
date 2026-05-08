@@ -16,6 +16,7 @@ new_epiparameter(
   method_assess = list(),
   notes = character(),
   auto_calc_params = logical(),
+  verbose = TRUE,
   ...
 )
 }
@@ -73,6 +74,11 @@ distribution parameters are not provided. Default is \code{TRUE}. In the case wh
 sufficient summary statistics are provided and the parameter(s) of the
 distribution are not, the \code{\link[=.calc_dist_params]{.calc_dist_params()}} function is called to
 calculate the parameters and add them to the \code{epiparameter} object created.}
+
+\item{verbose}{A \code{logical} controlling whether informational \code{\link[=message]{message()}}s
+are printed. Warnings and errors are not affected. Defaults to the
+\code{verbose} field of \code{getOption("epiparameter")} (\code{TRUE} unless the user has
+set otherwise via \code{options(epiparameter = list(verbose = FALSE))}).}
 
 \item{...}{\link{dots} Extra arguments to be passed to internal functions.
 

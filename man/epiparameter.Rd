@@ -11,11 +11,12 @@ epiparameter(
   prob_distribution = create_prob_distribution(prob_distribution = NA_character_),
   uncertainty = create_uncertainty(),
   summary_stats = create_summary_stats(),
-  citation = create_citation(),
+  citation = create_citation(verbose = verbose),
   metadata = create_metadata(),
   method_assess = create_method_assess(),
   notes = NULL,
   auto_calc_params = TRUE,
+  verbose = getOption("epiparameter")$verbose,
   ...
 )
 }
@@ -73,6 +74,11 @@ distribution parameters are not provided. Default is \code{TRUE}. In the case wh
 sufficient summary statistics are provided and the parameter(s) of the
 distribution are not, the \code{\link[=.calc_dist_params]{.calc_dist_params()}} function is called to
 calculate the parameters and add them to the \code{epiparameter} object created.}
+
+\item{verbose}{A \code{logical} controlling whether informational \code{\link[=message]{message()}}s
+are printed. Warnings and errors are not affected. Defaults to the
+\code{verbose} field of \code{getOption("epiparameter")} (\code{TRUE} unless the user has
+set otherwise via \code{options(epiparameter = list(verbose = FALSE))}).}
 
 \item{...}{\link{dots} Extra arguments to be passed to internal functions.
 
