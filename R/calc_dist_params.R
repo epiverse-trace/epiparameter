@@ -31,12 +31,15 @@
 #' @keywords internal
 .calc_dist_params <- function(prob_distribution, # nolint cyclocomp
                               summary_stats,
-                              sample_size) {
+                              sample_size,
+                              verbose = TRUE) {
   if (is.na(prob_distribution)) {
-    message(
-      "No adequate summary statistics available to calculate the parameters ",
-      "of the ", prob_distribution, " distribution"
-    )
+    if (verbose) {
+      message(
+        "No adequate summary statistics available to calculate the parameters ",
+        "of the ", prob_distribution, " distribution"
+      )
+    }
     return(NA)
   }
 
@@ -130,10 +133,12 @@
       samples = sample_size
     )
   } else {
-    message(
-      "No adequate summary statistics available to calculate the parameters ",
-      "of the ", prob_distribution, " distribution"
-    )
+    if (verbose) {
+      message(
+        "No adequate summary statistics available to calculate the parameters ",
+        "of the ", prob_distribution, " distribution"
+      )
+    }
     return(NA)
   }
 
