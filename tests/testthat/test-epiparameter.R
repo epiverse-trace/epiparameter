@@ -1308,3 +1308,90 @@ test_that("c.epiparameter fails as expected", {
     regexp = "Can only combine <epiparameter> or <multi_epiparameter> objects"
   )
 })
+
+test_that("epiparameter is verbose by default", {
+  expect_message(
+    epiparameter(
+      disease = "ebola",
+      epi_name = "incubation",
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1)
+      )
+    ),
+    regexp = "Citation cannot be created"
+  )
+})
+
+test_that("epiparameter(verbose = FALSE) suppresses informational messages", {
+  expect_no_message(
+    ebola_dist <- epiparameter(
+      disease = "ebola",
+      epi_name = "incubation",
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1)
+      ),
+      verbose = FALSE
+    )
+  )
+  expect_s3_class(ebola_dist, class = "epiparameter")
+})
+
+test_that("epiparameter respects options(epiparameter = list(verbose = FALSE))", { # nolint line_length_linter
+  old <- options(epiparameter = list(verbose = FALSE))
+  on.exit(options(old), add = TRUE)
+  .set_epiparameter_options()
+
+  expect_no_message(
+    ebola_dist <- epiparameter(
+      disease = "ebola",
+      epi_name = "incubation",
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1)
+      )
+    )
+  )
+  expect_s3_class(ebola_dist, class = "epiparameter")
+})
+
+test_that("epiparameter(verbose = FALSE) suppresses parameterisation message", {
+  expect_no_message(
+    ebola_dist <- epiparameter(
+      disease = "ebola",
+      epi_name = "incubation",
+      prob_distribution = "gamma",
+      summary_stats = create_summary_stats(mean = 2, sd = 1),
+      verbose = FALSE
+    )
+  )
+  expect_s3_class(ebola_dist, class = "epiparameter")
+})
+
+test_that("epiparameter(verbose = FALSE) suppresses unparameterised message", {
+  expect_no_message(
+    ebola_dist <- epiparameter(
+      disease = "ebola",
+      epi_name = "incubation",
+      prob_distribution = "gamma",
+      verbose = FALSE
+    )
+  )
+  expect_s3_class(ebola_dist, class = "epiparameter")
+})
+
+test_that("epiparameter(verbose) input is validated", {
+  expect_error(
+    epiparameter(
+      disease = "ebola",
+      epi_name = "incubation",
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1)
+      ),
+      verbose = "yes"
+    ),
+    regexp = "verbose"
+  )
+})

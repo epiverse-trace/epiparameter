@@ -72,6 +72,54 @@ test_that("create_citation works with different author inputs", {
   expect_identical(cit$author$family, list("Smith", "Jones", "Team"))
 })
 
+test_that("create_citation is verbose by default", {
+  expect_message(
+    create_citation(),
+    regexp = "Citation cannot be created"
+  )
+  expect_message(
+    create_citation(
+      author = person(given = "John", family = "Smith"),
+      year = 2002,
+      title = "COVID-19 incubation period",
+      journal = "Epi Journal",
+      doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    ),
+    regexp = "Using"
+  )
+})
+
+test_that("create_citation(verbose = FALSE) suppresses messages", {
+  expect_no_message(
+    create_citation(verbose = FALSE)
+  )
+  expect_no_message(
+    create_citation(
+      author = person(given = "John", family = "Smith"),
+      year = 2002,
+      title = "COVID-19 incubation period",
+      journal = "Epi Journal",
+      doi = "10.19832/j.1366-9516.2012.09147.x", # nolint file.path
+      verbose = FALSE
+    )
+  )
+})
+
+test_that("create_citation respects options(epiparameter = list(verbose = FALSE))", { # nolint line_length_linter
+  old <- options(epiparameter = list(verbose = FALSE))
+  on.exit(options(old), add = TRUE)
+  .set_epiparameter_options()
+
+  expect_no_message(create_citation())
+})
+
+test_that("create_citation(verbose) input is validated", {
+  expect_error(
+    create_citation(verbose = "yes"),
+    regexp = "verbose"
+  )
+})
+
 test_that("create_citation works with PMID", {
   # suppress message about citation
   citation <- suppressMessages(
