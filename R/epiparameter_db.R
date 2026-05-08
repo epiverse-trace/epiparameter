@@ -88,11 +88,10 @@
 #' which loads from the
 #' [WHO Global Repository of Epidemiological Parameters](https://who-collaboratory.github.io/collaboratory-grepi-web/).
 #'
-#' @param verbose A `logical` controlling whether [message()]s are printed
-#' when loading `<epiparameter>`s. Warnings and errors are not affected.
-#' Defaults to the `verbose` field of `getOption("epiparameter")` (`TRUE`
-#' unless the user has set otherwise via
-#' `options(epiparameter = list(verbose = FALSE))`).
+#' @param verbose A `logical` controlling whether informational [message()]s
+#' are printed. Warnings and errors are not affected. Defaults to the
+#' `verbose` field of `getOption("epiparameter")` (`TRUE` unless the user has
+#' set otherwise via `options(epiparameter = list(verbose = FALSE))`).
 #'
 #' @return An `<epiparameter>` object or list of `<epiparameter>` objects.
 #' @export
