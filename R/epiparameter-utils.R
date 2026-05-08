@@ -373,6 +373,7 @@ create_summary_stats <- function(mean = NA_real_,
 #' (PMID) assigned to papers to give them a unique identifier within PubMed.
 #' @param doi A `character` string of the Digital Object Identifier (DOI)
 #' assigned to papers which are unique to each paper.
+#' @inheritParams epiparameter_db
 #'
 #' @return A `<bibentry>` object of the citation
 #' @export
@@ -390,7 +391,8 @@ create_citation <- function(author = utils::person(),
                             title = NA_character_,
                             journal = NA_character_,
                             doi = NA_character_,
-                            pmid = NA_integer_) {
+                            pmid = NA_integer_,
+                            verbose = getOption("epiparameter")$verbose) {
   # if not <person> try and convert author to <person>
   if (!inherits(author, "person"))
     tryCatch(expr = {
@@ -409,11 +411,15 @@ create_citation <- function(author = utils::person(),
   checkmate::assert_character(journal)
   checkmate::assert_character(doi)
   checkmate::assert_number(pmid, na.ok = TRUE)
+  checkmate::assert_logical(verbose, len = 1, any.missing = FALSE)
 
   if (length(author) == 0 || is.na(year) || is.na(journal) || is.na(title)) {
-    message(
-      "Citation cannot be created as author, year, journal or title is missing"
-    )
+    if (verbose) {
+      message(
+        "Citation cannot be created as author, year, journal or ",
+        "title is missing"
+      )
+    }
     return(utils::bibentry(bibtype = "Misc", title = "No citation"))
   }
 
@@ -427,10 +433,12 @@ create_citation <- function(author = utils::person(),
   )
   citation$pmid <- pmid
 
-  message(
-    "Using ", format(citation), " \n",
-    "To retrieve the citation use the 'get_citation' function"
-  )
+  if (verbose) {
+    message(
+      "Using ", format(citation), " \n",
+      "To retrieve the citation use the 'get_citation' function"
+    )
+  }
 
   citation
 }
