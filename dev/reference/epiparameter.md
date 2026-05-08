@@ -29,11 +29,12 @@ epiparameter(
   prob_distribution = create_prob_distribution(prob_distribution = NA_character_),
   uncertainty = create_uncertainty(),
   summary_stats = create_summary_stats(),
-  citation = create_citation(),
+  citation = create_citation(verbose = verbose),
   metadata = create_metadata(),
   method_assess = create_method_assess(),
   notes = NULL,
   auto_calc_params = TRUE,
+  verbose = getOption("epiparameter")$verbose,
   ...
 )
 ```
@@ -123,6 +124,14 @@ epiparameter(
   [`.calc_dist_params()`](https://epiverse-trace.github.io/epiparameter/dev/reference/dot-calc_dist_params.md)
   function is called to calculate the parameters and add them to the
   `epiparameter` object created.
+
+- verbose:
+
+  A `logical` controlling whether informational
+  [`message()`](https://rdrr.io/r/base/message.html)s are printed.
+  Warnings and errors are not affected. Defaults to the `verbose` field
+  of `getOption("epiparameter")` (`TRUE` unless the user has set
+  otherwise via `options(epiparameter = list(verbose = FALSE))`).
 
 - ...:
 

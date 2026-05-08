@@ -82,7 +82,8 @@ to help remember which citation information is accepted in the list.</p>
 <span>  title <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
 <span>  journal <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
 <span>  doi <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
-<span>  pmid <span class="op">=</span> <span class="cn">NA_integer_</span></span>
+<span>  pmid <span class="op">=</span> <span class="cn">NA_integer_</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"epiparameter"</span><span class="op">)</span><span class="op">$</span><span class="va">verbose</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -122,6 +123,13 @@ assigned to papers which are unique to each paper.</p></dd>
 <dt id="arg-pmid">pmid<a class="anchor" aria-label="anchor" href="#arg-pmid"></a></dt>
 <dd><p>A <code>character</code> string with the PubMed unique identifier number
 (PMID) assigned to papers to give them a unique identifier within PubMed.</p></dd>
+
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>A <code>logical</code> controlling whether informational <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code>s
+are printed. Warnings and errors are not affected. Defaults to the
+<code>verbose</code> field of <code>getOption("epiparameter")</code> (<code>TRUE</code> unless the user has
+set otherwise via <code>options(epiparameter = list(verbose = FALSE))</code>).</p></dd>
 
 </dl></div>
     <div class="section level2">

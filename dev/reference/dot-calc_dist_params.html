@@ -91,7 +91,12 @@ calculate the parameters of a distribution.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.calc_dist_params</span><span class="op">(</span><span class="va">prob_distribution</span>, <span class="va">summary_stats</span>, <span class="va">sample_size</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.calc_dist_params</span><span class="op">(</span></span>
+<span>  <span class="va">prob_distribution</span>,</span>
+<span>  <span class="va">summary_stats</span>,</span>
+<span>  <span class="va">sample_size</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -119,6 +124,13 @@ interval around mean and standard deviation.</p></dd>
 <dt id="arg-sample-size">sample_size<a class="anchor" aria-label="anchor" href="#arg-sample-size"></a></dt>
 <dd><p>The sample size of the data. Only needed when falling back
 on using the median-range extraction calculation.</p></dd>
+
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>A <code>logical</code> controlling whether informational <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code>s
+are printed. Warnings and errors are not affected. Defaults to the
+<code>verbose</code> field of <code>getOption("epiparameter")</code> (<code>TRUE</code> unless the user has
+set otherwise via <code>options(epiparameter = list(verbose = FALSE))</code>).</p></dd>
 
 </dl></div>
     <div class="section level2">

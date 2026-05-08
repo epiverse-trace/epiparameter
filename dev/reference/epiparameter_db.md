@@ -102,12 +102,11 @@ epiparameter_db(
 
 - verbose:
 
-  A `logical` controlling whether
-  [`message()`](https://rdrr.io/r/base/message.html)s are printed when
-  loading `<epiparameter>`s. Warnings and errors are not affected.
-  Defaults to the `verbose` field of `getOption("epiparameter")` (`TRUE`
-  unless the user has set otherwise via
-  `options(epiparameter = list(verbose = FALSE))`).
+  A `logical` controlling whether informational
+  [`message()`](https://rdrr.io/r/base/message.html)s are printed.
+  Warnings and errors are not affected. Defaults to the `verbose` field
+  of `getOption("epiparameter")` (`TRUE` unless the user has set
+  otherwise via `options(epiparameter = list(verbose = FALSE))`).
 
 ## Value
 

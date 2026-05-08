@@ -13,7 +13,8 @@ create_citation(
   title = NA_character_,
   journal = NA_character_,
   doi = NA_character_,
-  pmid = NA_integer_
+  pmid = NA_integer_,
+  verbose = getOption("epiparameter")$verbose
 )
 ```
 
@@ -53,6 +54,14 @@ create_citation(
 
   A `character` string with the PubMed unique identifier number (PMID)
   assigned to papers to give them a unique identifier within PubMed.
+
+- verbose:
+
+  A `logical` controlling whether informational
+  [`message()`](https://rdrr.io/r/base/message.html)s are printed.
+  Warnings and errors are not affected. Defaults to the `verbose` field
+  of `getOption("epiparameter")` (`TRUE` unless the user has set
+  otherwise via `options(epiparameter = list(verbose = FALSE))`).
 
 ## Value
 

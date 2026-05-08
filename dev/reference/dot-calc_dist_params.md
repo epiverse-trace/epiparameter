@@ -15,7 +15,12 @@ the parameters of a distribution.
 ## Usage
 
 ``` r
-.calc_dist_params(prob_distribution, summary_stats, sample_size)
+.calc_dist_params(
+  prob_distribution,
+  summary_stats,
+  sample_size,
+  verbose = TRUE
+)
 ```
 
 ## Arguments
@@ -44,6 +49,14 @@ the parameters of a distribution.
 
   The sample size of the data. Only needed when falling back on using
   the median-range extraction calculation.
+
+- verbose:
+
+  A `logical` controlling whether informational
+  [`message()`](https://rdrr.io/r/base/message.html)s are printed.
+  Warnings and errors are not affected. Defaults to the `verbose` field
+  of `getOption("epiparameter")` (`TRUE` unless the user has set
+  otherwise via `options(epiparameter = list(verbose = FALSE))`).
 
 ## Value
 

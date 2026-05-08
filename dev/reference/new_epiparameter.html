@@ -103,6 +103,7 @@ probability distribution (<code>prob_dist</code>) and its parameters
 <span>  method_assess <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  notes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  auto_calc_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -185,6 +186,13 @@ distribution parameters are not provided. Default is <code>TRUE</code>. In the c
 sufficient summary statistics are provided and the parameter(s) of the
 distribution are not, the <code><a href="dot-calc_dist_params.html">.calc_dist_params()</a></code> function is called to
 calculate the parameters and add them to the <code>epiparameter</code> object created.</p></dd>
+
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>A <code>logical</code> controlling whether informational <code><a href="https://rdrr.io/r/base/message.html" class="external-link">message()</a></code>s
+are printed. Warnings and errors are not affected. Defaults to the
+<code>verbose</code> field of <code>getOption("epiparameter")</code> (<code>TRUE</code> unless the user has
+set otherwise via <code>options(epiparameter = list(verbose = FALSE))</code>).</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
