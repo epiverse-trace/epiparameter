@@ -10,7 +10,8 @@ create_citation(
   title = NA_character_,
   journal = NA_character_,
   doi = NA_character_,
-  pmid = NA_integer_
+  pmid = NA_integer_,
+  verbose = getOption("epiparameter")$verbose
 )
 }
 \arguments{
@@ -35,6 +36,11 @@ assigned to papers which are unique to each paper.}
 
 \item{pmid}{A \code{character} string with the PubMed unique identifier number
 (PMID) assigned to papers to give them a unique identifier within PubMed.}
+
+\item{verbose}{A \code{logical} controlling whether informational \code{\link[=message]{message()}}s
+are printed. Warnings and errors are not affected. Defaults to the
+\code{verbose} field of \code{getOption("epiparameter")} (\code{TRUE} unless the user has
+set otherwise via \code{options(epiparameter = list(verbose = FALSE))}).}
 }
 \value{
 A \verb{<bibentry>} object of the citation
