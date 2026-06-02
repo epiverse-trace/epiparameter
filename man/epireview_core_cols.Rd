@@ -8,11 +8,14 @@ epidemiological parameter data exported by the \pkg{epireview} R package.}
 \format{
 \subsection{\code{epireview_core_cols}}{
 
-A \code{character} vector with 58
+A \code{character} vector with 21
 elements.
 
-The data is taken as the intersection of the column names of each of the
-disease parameter tables in the \pkg{epireview} R package.
+These are the columns of the \pkg{epireview} epidemiological parameter table
+(\verb{load_epidata(<pathogen>)$params}) that are required to convert an
+\pkg{epireview} entry into an \verb{<epiparameter>} object with
+\code{\link[=as_epiparameter]{as_epiparameter()}}. They are used to identify an \pkg{epireview} parameter
+table and to check that the columns needed for conversion are present.
 }
 }
 \source{
