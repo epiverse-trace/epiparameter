@@ -8,7 +8,7 @@
          disease          pathogen epi_name prob_distribution author  year sample_size
          <chr>            <chr>    <chr>    <chr>             <chr>  <dbl>       <dbl>
        1 Adenovirus       Adenovi~ incubat~ lnorm             Lessl~  2009          14
-       2 Human Coronavir~ Human_C~ incubat~ lnorm             Lessl~  2009          13
+       2 Human Coronavir~ Human C~ incubat~ lnorm             Lessl~  2009          13
        3 SARS             SARS-Co~ incubat~ lnorm             Lessl~  2009         157
        4 Influenza        Influen~ incubat~ lnorm             Lessl~  2009         151
        5 Influenza        Influen~ incubat~ lnorm             Lessl~  2009          90
@@ -29,7 +29,7 @@
          disease          pathogen epi_name prob_distribution author  year sample_size
          <chr>            <chr>    <chr>    <chr>             <chr>  <dbl>       <dbl>
        1 Adenovirus       Adenovi~ incubat~ lnorm             Lessl~  2009          14
-       2 Human Coronavir~ Human_C~ incubat~ lnorm             Lessl~  2009          13
+       2 Human Coronavir~ Human C~ incubat~ lnorm             Lessl~  2009          13
        3 SARS             SARS-Co~ incubat~ lnorm             Lessl~  2009         157
        4 Influenza        Influen~ incubat~ lnorm             Lessl~  2009         151
        5 Influenza        Influen~ incubat~ lnorm             Lessl~  2009          90
@@ -52,13 +52,13 @@
        1 Influenza        Influen~ serial ~ gamma             Ghani~  2009          58
        2 Marburg Virus D~ Marburg~ serial ~ <NA>              Pavlin  2014          38
        3 Marburg Virus D~ Marburg~ serial ~ gamma             Ajell~  2012         374
-       4 Mpox             Mpox Vi~ serial ~ gamma             Madew~  2022          57
-       5 Mpox             Mpox Vi~ serial ~ gamma             Madew~  2022          40
+       4 Mpox             Monkeyp~ serial ~ gamma             Madew~  2022          57
+       5 Mpox             Monkeyp~ serial ~ gamma             Madew~  2022          40
        6 Ebola Virus Dis~ Ebola V~ serial ~ gamma             WHO E~  2015         305
        7 Ebola Virus Dis~ Ebola V~ serial ~ gamma             WHO E~  2015          37
        8 Ebola Virus Dis~ Ebola V~ serial ~ gamma             WHO E~  2015         147
        9 Ebola Virus Dis~ Ebola V~ serial ~ gamma             WHO E~  2015         112
-      10 MERS             MERS-Cov serial ~ lnorm             Assir~  2013          23
+      10 MERS             MERS-CoV serial ~ lnorm             Assir~  2013          23
       # i 12 more rows
 
 # parameter_tbl works for COVID-19 db

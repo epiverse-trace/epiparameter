@@ -28,13 +28,13 @@
       
       [[2]]
       Disease: Human Coronavirus
-      Pathogen: Human_Cov
+      Pathogen: Human Coronavirus
       Epi Parameter: incubation period
       Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
       "Incubation periods of acute respiratory viral infections: a systematic
       review." _The Lancet Infectious Diseases_.
-      doi:10.1016/S1473-3099(09)70069-7
-      <https://doi.org/10.1016/S1473-3099%2809%2970069-7>.
+      doi:10.1016/S1473-3099(09)70069-6
+      <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
       Distribution: lnorm (days)
       Parameters:
         meanlog: 1.163
@@ -42,13 +42,13 @@
       
       [[3]]
       Disease: SARS
-      Pathogen: SARS-Cov-1
+      Pathogen: SARS-CoV-1
       Epi Parameter: incubation period
       Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
       "Incubation periods of acute respiratory viral infections: a systematic
       review." _The Lancet Infectious Diseases_.
-      doi:10.1016/S1473-3099(09)70069-8
-      <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.
+      doi:10.1016/S1473-3099(09)70069-6
+      <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
       Distribution: lnorm (days)
       Parameters:
         meanlog: 1.386
@@ -75,7 +75,7 @@
       > offspring distribution
       [[1]]
       Disease: SARS
-      Pathogen: SARS-Cov-1
+      Pathogen: SARS-CoV-1
       Epi Parameter: offspring distribution
       Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). "Superspreading and
       the effect of individual variation on disease emergence." _Nature_.
@@ -87,7 +87,7 @@
       
       [[2]]
       Disease: SARS
-      Pathogen: SARS-Cov-1
+      Pathogen: SARS-CoV-1
       Epi Parameter: offspring distribution
       Study: Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). "Superspreading and
       the effect of individual variation on disease emergence." _Nature_.
