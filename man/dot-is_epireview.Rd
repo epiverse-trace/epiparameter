@@ -15,4 +15,11 @@ A single \code{logical} boolean.
 \description{
 Check if \verb{<data.frame>} input is from \pkg{epireview}
 }
+\details{
+Identifies an \pkg{epireview} parameter table by checking that it contains
+all of the columns required to convert an entry into an \verb{<epiparameter>}
+(see \link{epireview_core_cols}). This intentionally checks only the columns the
+converter uses, so detection is robust to \pkg{epireview} adding, removing or
+renaming columns that are not needed for conversion.
+}
 \keyword{internal}

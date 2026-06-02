@@ -121,15 +121,20 @@ as.data.frame.multi_epiparameter <- function(x, ...) {
 #' `prob_distribution`. For example, to specify a gamma distribution:
 #' `as_epiparameter(x, prob_distribution = "gamma")`.
 #'
-#' ***Warning***: distributions specified via the `prob_dist` argument will
-#' overwrite the probability distribution specified in the `x` argument. For
+#' ***Warning***: distributions specified via the `prob_distribution` argument
+#' will overwrite the probability distribution specified in the `x` argument. For
 #' example, if the probability distribution is given in an \pkg{epireview}
-#' entry and the `prob_dist` argument is specified then the function may error
-#' or return an unparameterised `<epiparameter>` if the parameterisation becomes
-#' incompatible.
+#' entry and the `prob_distribution` argument is specified then the function may
+#' error or return an unparameterised `<epiparameter>` if the parameterisation
+#' becomes incompatible.
 #'
 #' Valid probability distributions are: `"gamma"`, `"lnorm"`, `"weibull"`,
 #' `"nbinom"`, `"geom"`, `"pois"`, `"norm"`, `"exp"`.
+#'
+#' Conversion from \pkg{epireview} data is currently supported for the
+#' following pathogens: Ebola virus, Marburg virus, Lassa mammarenavirus and
+#' SARS-CoV. Other pathogens in \pkg{epireview} (e.g. Nipah virus and Zika
+#' virus) are not yet supported.
 #'
 #' @inheritParams base::print
 #' @param ... [dots] Extra arguments to be passed to the method.
@@ -192,6 +197,13 @@ is_epiparameter_df <- function(x) {
 }
 
 #' Check if `<data.frame>` input is from \pkg{epireview}
+#'
+#' @details
+#' Identifies an \pkg{epireview} parameter table by checking that it contains
+#' all of the columns required to convert an entry into an `<epiparameter>`
+#' (see [epireview_core_cols]). This intentionally checks only the columns the
+#' converter uses, so detection is robust to \pkg{epireview} adding, removing or
+#' renaming columns that are not needed for conversion.
 #'
 #' @param x A `<data.frame>`.
 #'
