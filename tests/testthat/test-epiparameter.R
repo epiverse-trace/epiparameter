@@ -363,6 +363,36 @@ test_that("density works as expected on continuous epiparameter object", {
   expect_gte(res, 0)
 })
 
+test_that("distribution functions handle a missing offset attribute", {
+  # objects created before the offset feature (or distributions not built by
+  # create_prob_distribution()) lack an "offset" attribute; a missing offset
+  # is treated as zero rather than corrupting or erroring the result
+  ebola_dist <- suppressMessages(
+    epiparameter(
+      disease = "ebola",
+      epi_name = "incubation_period",
+      prob_distribution = create_prob_distribution(
+        prob_distribution =  "gamma",
+        prob_distribution_params = c(shape = 1, scale = 1)
+      )
+    )
+  )
+  attr(ebola_dist$prob_distribution, "offset") <- NULL
+
+  expect_identical(
+    stats::density(ebola_dist, at = 0.5),
+    stats::density(ebola_dist$prob_distribution, at = 0.5)[[1]]
+  )
+  expect_identical(
+    distributional::cdf(ebola_dist, q = 0.5),
+    distributional::cdf(ebola_dist$prob_distribution, q = 0.5)[[1]]
+  )
+  expect_length(quantile(ebola_dist, p = 0.5), 1)
+  expect_length(distributional::generate(ebola_dist, times = 5), 5)
+  # print method must not error on a missing offset
+  expect_output(print(ebola_dist), "Distribution: gamma")
+})
+
 test_that("density works as expected on discrete epiparameter object", {
   ebola_dist <- suppressMessages(
     epiparameter(
@@ -770,6 +800,25 @@ test_that("discretise works as expected on continuous gamma", {
   expect_s3_class(ep$prob_distribution, "distcrete")
   expect_identical(ep$prob_distribution$parameters, list(shape = 1, scale = 1))
   expect_identical(ep$prob_distribution$name, "gamma")
+})
+
+test_that("discretise preserves the offset", {
+  # suppress message about citation
+  ep <- suppressMessages(epiparameter(
+    disease = "ebola",
+    epi_name = "incubation",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1),
+      offset = 5
+    )
+  ))
+  ep <- discretise(ep)
+
+  expect_s3_class(ep$prob_distribution, "distcrete")
+  expect_identical(attr(ep$prob_distribution, "offset"), 5)
+  # offset shifts the discretised distribution along the x-axis
+  expect_identical(cdf(ep, q = 4), 0)
 })
 
 test_that("discretise works as expected on continuous lognormal", {
