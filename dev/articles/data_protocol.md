@@ -74,15 +74,15 @@ distributions for each disease when available. The pathogens and
 diseases that are currently systematically searched for and included in
 the package library are:
 
-    #> Returning 125 results that match the criteria (100 are parameterised). 
+    #> Returning 133 results that match the criteria (108 are parameterised). 
     #> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
     #> To retrieve the citation for each use the 'get_citation' function
 
 |            Disease            |          Pathogen           |
 |:-----------------------------:|:---------------------------:|
 |          Adenovirus           |         Adenovirus          |
-|       Human Coronavirus       |          Human_Cov          |
-|             SARS              |         SARS-Cov-1          |
+|       Human Coronavirus       |      Human Coronavirus      |
+|             SARS              |         SARS-CoV-1          |
 |           Influenza           |         Influenza-A         |
 |           Influenza           |         Influenza-A         |
 |           Influenza           |         Influenza-B         |
@@ -111,8 +111,8 @@ the package library are:
 |     Marburg Virus Disease     |        Marburg Virus        |
 |     Marburg Virus Disease     |        Marburg Virus        |
 |     Marburg Virus Disease     |        Marburg Virus        |
-|             SARS              |         SARS-Cov-1          |
-|             SARS              |         SARS-Cov-1          |
+|             SARS              |         SARS-CoV-1          |
+|             SARS              |         SARS-CoV-1          |
 |           Smallpox            |   Smallpox-Variola-Major    |
 |           Smallpox            |   Smallpox-Variola-Major    |
 |           Smallpox            |   Smallpox-Variola-Minor    |
@@ -133,15 +133,15 @@ the package library are:
 |        West Nile Fever        |       West Nile Virus       |
 |        West Nile Fever        |       West Nile Virus       |
 |        West Nile Fever        |       West Nile Virus       |
-|         Yellow Fever          |    Yellow Fever Viruses     |
-|         Yellow Fever          |    Yellow Fever Viruses     |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |         Mpox Virus          |
+|         Yellow Fever          |     Yellow Fever Virus      |
+|         Yellow Fever          |     Yellow Fever Virus      |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
 |      Ebola Virus Disease      |  Ebola Virus-Zaire Subtype  |
 |      Ebola Virus Disease      |  Ebola Virus-Zaire Subtype  |
 |      Ebola Virus Disease      |         Ebola Virus         |
@@ -158,14 +158,14 @@ the package library are:
 |      Ebola Virus Disease      |         Ebola Virus         |
 |      Ebola Virus Disease      |         Ebola Virus         |
 |      Ebola Virus Disease      |         Ebola Virus         |
-|             MERS              |          MERS-Cov           |
-|             MERS              |          MERS-Cov           |
-|             MERS              |          MERS-Cov           |
-|             MERS              |          MERS-Cov           |
-|             MERS              |          MERS-Cov           |
-|             MERS              |          MERS-Cov           |
-|             MERS              |          MERS-Cov           |
-|             MERS              |          MERS-Cov           |
+|             MERS              |          MERS-CoV           |
+|             MERS              |          MERS-CoV           |
+|             MERS              |          MERS-CoV           |
+|             MERS              |          MERS-CoV           |
+|             MERS              |          MERS-CoV           |
+|             MERS              |          MERS-CoV           |
+|             MERS              |          MERS-CoV           |
+|             MERS              |          MERS-CoV           |
 |           COVID-19            |         SARS-CoV-2          |
 |           COVID-19            |         SARS-CoV-2          |
 |           COVID-19            |         SARS-CoV-2          |
@@ -193,23 +193,31 @@ the package library are:
 |           COVID-19            |         SARS-CoV-2          |
 |           COVID-19            |         SARS-CoV-2          |
 |           COVID-19            |         SARS-CoV-2          |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |     Mpox Virus Clade I      |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |     Mpox Virus Clade I      |
-|             Mpox              |    Mpox Virus Clade IIa     |
-|             Mpox              |    Mpox Virus Clade IIb     |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |         Mpox Virus          |
-|             Mpox              |         Mpox Virus          |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |   Monkeypox Virus Clade I   |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |   Monkeypox Virus Clade I   |
+|             Mpox              |  Monkeypox Virus Clade IIa  |
+|             Mpox              |  Monkeypox Virus Clade IIb  |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
 |          Chikungunya          |      Chikungunya Virus      |
 |          Chikungunya          |      Chikungunya Virus      |
 |          Chikungunya          |      Chikungunya Virus      |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
+|             Mpox              |       Monkeypox Virus       |
 
 The distributions currently included in the literature search for each
 pathogen/disease are:
 
-    #> Returning 125 results that match the criteria (100 are parameterised). 
+    #> Returning 133 results that match the criteria (108 are parameterised). 
     #> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
     #> To retrieve the citation for each use the 'get_citation' function
 

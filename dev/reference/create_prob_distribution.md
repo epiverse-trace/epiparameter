@@ -22,6 +22,7 @@ create_prob_distribution(
   prob_distribution_params,
   discretise = FALSE,
   truncation = NA,
+  offset = 0,
   ...
 )
 ```
@@ -48,6 +49,12 @@ create_prob_distribution(
 
   A `numeric` specifying the truncation point if the inferred
   distribution was truncated, `NA` if not or unknown.
+
+- offset:
+
+  A `numeric` specifying the shift of a probability distribution left or
+  right on the x-axis (i.e. decreasing or increasing all values by a
+  constant).
 
 - ...:
 
@@ -127,4 +134,12 @@ create_prob_distribution(
 #>   parameters:
 #>     shape: 1
 #>     scale: 1
+# example using an offset
+create_prob_distribution(
+  prob_distribution = "gamma",
+  prob_distribution_params = c(shape = 1, scale = 1),
+  offset = 5
+)
+#> <distribution[1]>
+#> [1] Γ(1, 1)
 ```

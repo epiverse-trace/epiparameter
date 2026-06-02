@@ -31,7 +31,7 @@ output `<bibentry>` is equal to the length of the list of
 ``` r
 # example with list of <epiparameter>
 db <- epiparameter_db()
-#> Returning 125 results that match the criteria (100 are parameterised). 
+#> Returning 133 results that match the criteria (108 are parameterised). 
 #> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
 #> To retrieve the citation for each use the 'get_citation' function
 get_citation(db)
@@ -44,56 +44,56 @@ get_citation(db)
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic
 #> review.” _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-7
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-7>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> 
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic
 #> review.” _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-8
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> 
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic
 #> review.” _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-9
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-9>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> 
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic
 #> review.” _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-10
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-10>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> 
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic
 #> review.” _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-11
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-11>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> 
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic
 #> review.” _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-12
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-12>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> 
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic
 #> review.” _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-13
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-13>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> 
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic
 #> review.” _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-14
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-14>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> 
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic
 #> review.” _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-15
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-15>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> 
 #> Reich N, Lessler J, Cummings D, Brookmeyer R (2009). “Estimating
 #> incubation period distributions with coarse data.” _Statistics in
@@ -348,7 +348,7 @@ get_citation(db)
 #> Berns A, Perez T, Gateley E, Spicknall I, Nakazawa Y, Gift T, 2022
 #> Monkeypox Outbreak Response Team (2022). “Serial interval and
 #> incubation period estimates of monkeypox virus infection in 12 U.S.
-#> jurisdictions, May – August 2022.” _medRxiv_.
+#> jurisdictions, May–August 2022.” _medRxiv_.
 #> doi:10.1101/2022.10.26.22281516
 #> <https://doi.org/10.1101/2022.10.26.22281516>.
 #> 
@@ -357,7 +357,7 @@ get_citation(db)
 #> Berns A, Perez T, Gateley E, Spicknall I, Nakazawa Y, Gift T, 2022
 #> Monkeypox Outbreak Response Team (2022). “Serial interval and
 #> incubation period estimates of monkeypox virus infection in 12 U.S.
-#> jurisdictions, May – August 2023.” _medRxiv_.
+#> jurisdictions, May–August 2022.” _medRxiv_.
 #> doi:10.1101/2022.10.26.22281516
 #> <https://doi.org/10.1101/2022.10.26.22281516>.
 #> 
@@ -366,7 +366,7 @@ get_citation(db)
 #> Berns A, Perez T, Gateley E, Spicknall I, Nakazawa Y, Gift T, 2022
 #> Monkeypox Outbreak Response Team (2022). “Serial interval and
 #> incubation period estimates of monkeypox virus infection in 12 U.S.
-#> jurisdictions, May – August 2024.” _medRxiv_.
+#> jurisdictions, May–August 2022.” _medRxiv_.
 #> doi:10.1101/2022.10.26.22281516
 #> <https://doi.org/10.1101/2022.10.26.22281516>.
 #> 
@@ -375,7 +375,7 @@ get_citation(db)
 #> Berns A, Perez T, Gateley E, Spicknall I, Nakazawa Y, Gift T, 2022
 #> Monkeypox Outbreak Response Team (2022). “Serial interval and
 #> incubation period estimates of monkeypox virus infection in 12 U.S.
-#> jurisdictions, May – August 2025.” _medRxiv_.
+#> jurisdictions, May–August 2022.” _medRxiv_.
 #> doi:10.1101/2022.10.26.22281516
 #> <https://doi.org/10.1101/2022.10.26.22281516>.
 #> 
@@ -610,7 +610,7 @@ get_citation(db)
 #> 
 #> Cowling B, Park M, Fang V, Wu P, Leung G, Wu J (2015). “Preliminary
 #> epidemiological assessment of MERS-CoV outbreak in South Korea, May to
-#> June 2016.” _Eurosurveillance_.
+#> June 2015.” _Eurosurveillance_.
 #> doi:10.2807/1560-7917.es2015.20.25.21163
 #> <https://doi.org/10.2807/1560-7917.es2015.20.25.21163>.
 #> 
@@ -854,4 +854,52 @@ get_citation(db)
 #> chikungunya virus in Brazil: an epidemiological study.” _The Lancet
 #> Microbe_. doi:10.1016/S2666-5247(23)00033-2
 #> <https://doi.org/10.1016/S2666-5247%2823%2900033-2>.
+#> 
+#> Marziano V, Guzzetta G, Longini I, Merler1 S (2024). “Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo.”
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
+#> 
+#> Marziano V, Guzzetta G, Longini I, Merler1 S (2024). “Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo.”
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
+#> 
+#> Marziano V, Guzzetta G, Longini I, Merler1 S (2024). “Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo.”
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
+#> 
+#> Marziano V, Guzzetta G, Longini I, Merler1 S (2024). “Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo.”
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
+#> 
+#> Marziano V, Guzzetta G, Longini I, Merler1 S (2024). “Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo.”
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
+#> 
+#> Marziano V, Guzzetta G, Longini I, Merler1 S (2024). “Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo.”
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
+#> 
+#> Marziano V, Guzzetta G, Longini I, Merler1 S (2024). “Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo.”
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
+#> 
+#> Marziano V, Guzzetta G, Longini I, Merler1 S (2024). “Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo.”
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
 ```

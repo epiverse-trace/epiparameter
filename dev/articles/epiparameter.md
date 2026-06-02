@@ -48,11 +48,11 @@ function. By default all entries in the library are returned.
 ``` r
 
 db <- epiparameter_db()
-#> Returning 125 results that match the criteria (100 are parameterised). 
+#> Returning 133 results that match the criteria (108 are parameterised). 
 #> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
 #> To retrieve the citation for each use the 'get_citation' function
 db
-#> # List of 125 <epiparameter> objects
+#> # List of 133 <epiparameter> objects
 #> Number of diseases: 23
 #> ❯ Adenovirus ❯ Chikungunya ❯ COVID-19 ❯ Dengue ❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Human Coronavirus ❯ Influenza ❯ Japanese Encephalitis ❯ Marburg Virus Disease ❯ Measles ❯ MERS ❯ Mpox ❯ Parainfluenza ❯ Pneumonic Plague ❯ Rhinovirus ❯ Rift Valley Fever ❯ RSV ❯ SARS ❯ Smallpox ❯ West Nile Fever ❯ Yellow Fever ❯ Zika Virus Disease
 #> Number of epi parameters: 13
@@ -73,13 +73,13 @@ db
 #> 
 #> [[2]]
 #> Disease: Human Coronavirus
-#> Pathogen: Human_Cov
+#> Pathogen: Human Coronavirus
 #> Epi Parameter: incubation period
 #> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
 #> review." _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-7
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-7>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> Distribution: lnorm (days)
 #> Parameters:
 #>   meanlog: 1.163
@@ -87,19 +87,19 @@ db
 #> 
 #> [[3]]
 #> Disease: SARS
-#> Pathogen: SARS-Cov-1
+#> Pathogen: SARS-CoV-1
 #> Epi Parameter: incubation period
 #> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
 #> review." _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-8
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> Distribution: lnorm (days)
 #> Parameters:
 #>   meanlog: 1.386
 #>   sdlog: 0.593
 #> 
-#> # ℹ 122 more elements
+#> # ℹ 130 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
@@ -116,11 +116,11 @@ function. Here we show the first six rows of the output.
 
 parameter_tbl(multi_epiparameter = db)
 #> # Parameter table:
-#> # A data frame:    125 × 7
+#> # A data frame:    133 × 7
 #>    disease          pathogen epi_name prob_distribution author  year sample_size
 #>    <chr>            <chr>    <chr>    <chr>             <chr>  <dbl>       <dbl>
 #>  1 Adenovirus       Adenovi… incubat… lnorm             Lessl…  2009          14
-#>  2 Human Coronavir… Human_C… incubat… lnorm             Lessl…  2009          13
+#>  2 Human Coronavir… Human C… incubat… lnorm             Lessl…  2009          13
 #>  3 SARS             SARS-Co… incubat… lnorm             Lessl…  2009         157
 #>  4 Influenza        Influen… incubat… lnorm             Lessl…  2009         151
 #>  5 Influenza        Influen… incubat… lnorm             Lessl…  2009          90
@@ -129,7 +129,7 @@ parameter_tbl(multi_epiparameter = db)
 #>  8 Parainfluenza    Parainf… incubat… lnorm             Lessl…  2009          11
 #>  9 RSV              RSV      incubat… lnorm             Lessl…  2009          24
 #> 10 Rhinovirus       Rhinovi… incubat… lnorm             Lessl…  2009          28
-#> # ℹ 115 more rows
+#> # ℹ 123 more rows
 ```
 
 [`parameter_tbl()`](https://epiverse-trace.github.io/epiparameter/dev/reference/parameter_tbl.md)
@@ -385,17 +385,17 @@ epiparameter_db(disease = "SARS", single_epiparameter = TRUE)
 #> Using Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
 #> review." _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-8
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.. 
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.. 
 #> To retrieve the citation use the 'get_citation' function
 #> Disease: SARS
-#> Pathogen: SARS-Cov-1
+#> Pathogen: SARS-CoV-1
 #> Epi Parameter: incubation period
 #> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
 #> review." _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-8
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> Distribution: lnorm (days)
 #> Parameters:
 #>   meanlog: 1.386
@@ -527,34 +527,34 @@ database, these parameters can be manually added to the library.
 new_db <- append(db, covid_incubation)
 tail(new_db, n = 3)
 #> [[1]]
-#> Disease: Chikungunya
-#> Pathogen: Chikungunya Virus
+#> Disease: Mpox
+#> Pathogen: Monkeypox Virus
 #> Epi Parameter: generation time
-#> Study: Guzzetta G, Vairo F, Mammone A, Lanini S, Poletti P, Manica M, Rosa R,
-#> Caputo B, Solimini A, della Torre A, Scognamiglio P, Zumla A, Ippolito
-#> G, Merler S (2020). "Spatial modes for transmission of chikungunya
-#> virus during a large chikungunya outbreak in Italy: a modeling
-#> analysis." _BMC Medicine_. doi:10.1186/s12916-020-01674-y
-#> <https://doi.org/10.1186/s12916-020-01674-y>.
+#> Study: Marziano V, Guzzetta G, Longini I, Merler1 S (2024). "Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo."
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
 #> Distribution: gamma (days)
 #> Parameters:
-#>   shape: 8.633
-#>   scale: 1.447
+#>   shape: 3.420
+#>   scale: 5.250
+#> Offset: 1
 #> 
 #> [[2]]
-#> Disease: Chikungunya
-#> Pathogen: Chikungunya Virus
-#> Epi Parameter: case fatality risk
-#> Study: de Souza W, de Lima S, Mello L, Candido D, Buss L, Whittaker C, Claro
-#> I, Chandradeva N, Granja F, de Jesus R, Lemos P, Toledo-Teixeira D,
-#> Barbosa P, Firmino A, Amorim M, Duarte L, Pessoa Jr I, Forato J,
-#> Vasconcelos I, Maximo A, Araújo E, Mello L, Sabino E, Proença-Módena J,
-#> Faria N, Weaver S (2023). "Spatiotemporal dynamics and recurrence of
-#> chikungunya virus in Brazil: an epidemiological study." _The Lancet
-#> Microbe_. doi:10.1016/S2666-5247(23)00033-2
-#> <https://doi.org/10.1016/S2666-5247%2823%2900033-2>.
-#> Parameters: <no parameters>
-#> Mean: 1.3 (deaths per 1000 cases)
+#> Disease: Mpox
+#> Pathogen: Monkeypox Virus
+#> Epi Parameter: generation time
+#> Study: Marziano V, Guzzetta G, Longini I, Merler1 S (2024). "Epidemiologic
+#> Quantities for Monkeypox Virus Clade I from Historical Data with
+#> Implications for Current Outbreaks, Democratic Republic of the Congo."
+#> _Emerging Infectious Diseases_. doi:10.3201/eid3010.240665
+#> <https://doi.org/10.3201/eid3010.240665>.
+#> Distribution: gamma (days)
+#> Parameters:
+#>   shape: 28.740
+#>   scale: 1.010
+#> Offset: 1
 #> 
 #> [[3]]
 #> Disease: COVID-19
