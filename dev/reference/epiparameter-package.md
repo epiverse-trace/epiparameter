@@ -49,5 +49,5 @@ Other contributors:
 - Tim Taylor <tim.taylor@hiddenelephants.co.uk>
   ([ORCID](https://orcid.org/0000-0002-8587-7113)) \[reviewer\]
 
-- London School of Hygiene and Tropical Medicine, LSHTM (00a0jsq62)
-  \[copyright holder\]
+- London School of Hygiene and Tropical Medicine, LSHTM
+  ([ROR](https://ror.org/00a0jsq62)) \[copyright holder\]

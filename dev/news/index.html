@@ -158,7 +158,7 @@
 <div class="section level3">
 <h3 id="deprecated-and-defunct-0-3-0">Deprecated and defunct<a class="anchor" aria-label="anchor" href="#deprecated-and-defunct-0-3-0"></a></h3>
 <ul><li>
-<code><a href="../reference/epidist_db.html">epidist_db()</a></code> has been deprecated. It is replaced by <code><a href="../reference/epiparameter_db.html">epiparameter_db()</a></code> (<a href="https://github.com/epiverse-trace/epiparameter/issues/360" class="external-link">#360</a> &amp; <a href="https://github.com/epiverse-trace/epiparameter/issues/399" class="external-link">#399</a>).</li>
+<code>epidist_db()</code> has been deprecated. It is replaced by <code><a href="../reference/epiparameter_db.html">epiparameter_db()</a></code> (<a href="https://github.com/epiverse-trace/epiparameter/issues/360" class="external-link">#360</a> &amp; <a href="https://github.com/epiverse-trace/epiparameter/issues/399" class="external-link">#399</a>).</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -200,7 +200,7 @@
 </ol><div class="section level3">
 <h3 id="new-features-0-1-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-1-0"></a></h3>
 <ul><li>A library of 122 epidemiological parameter set from the epidemiological literature. This is accessible from the package as system data (<code>sysdata.rda</code>, as <code>epiparameter::multi_epidist</code>) or as internal data (<code>inst/extdata/parameters.json</code>).</li>
-<li>The <code><a href="../reference/epidist_db.html">epidist_db()</a></code> function loads epidemiological parameters from the library.</li>
+<li>The <code>epidist_db()</code> function loads epidemiological parameters from the library.</li>
 <li>Distribution parameter conversion and extraction functions (<code><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats()</a></code> &amp; <code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>, and <code><a href="../reference/extract_param.html">extract_param()</a></code>).</li>
 <li>An S3 class to work with epidemiological parameters <code>&lt;epidist&gt;</code>. This class has S3 methods to aid users easily work with these data structures. These include printing, plotting, and distribution functions for PDF/PMF, CDF, random number generation and distribution quantiles. The <code>&lt;epidist&gt;</code> class has a constructor function, a validator function, accessors (<code>get_*()</code>), checkers (<code>is_*()</code>). There is also a <code>&lt;vb_epidist&gt;</code> S3 class for vector-borne parameters, and an internal <code>&lt;multi_epidist&gt;</code> class for improved printing of lists of <code>&lt;epidist&gt;</code> objects.</li>
 <li>The package contains a few utility functions. <code>list_distributions()</code> is a helper function to provide information from a list of <code>&lt;epidist&gt;</code> objects in tabular form. <code><a href="../reference/calc_disc_dist_quantile.html">calc_disc_dist_quantile()</a></code> calculates the quantiles of a probability distribution based on the vector of probabilities and time data.</li>

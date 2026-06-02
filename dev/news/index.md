@@ -225,8 +225,7 @@ restructured, see the *Breaking changes* section for an overview.
 
 ### Deprecated and defunct
 
-- [`epidist_db()`](https://epiverse-trace.github.io/epiparameter/dev/reference/epidist_db.md)
-  has been deprecated. It is replaced by
+- `epidist_db()` has been deprecated. It is replaced by
   [`epiparameter_db()`](https://epiverse-trace.github.io/epiparameter/dev/reference/epiparameter_db.md)
   ([\#360](https://github.com/epiverse-trace/epiparameter/issues/360) &
   [\#399](https://github.com/epiverse-trace/epiparameter/issues/399)).
@@ -343,9 +342,8 @@ provides:
   epidemiological literature. This is accessible from the package as
   system data (`sysdata.rda`, as `epiparameter::multi_epidist`) or as
   internal data (`inst/extdata/parameters.json`).
-- The
-  [`epidist_db()`](https://epiverse-trace.github.io/epiparameter/dev/reference/epidist_db.md)
-  function loads epidemiological parameters from the library.
+- The `epidist_db()` function loads epidemiological parameters from the
+  library.
 - Distribution parameter conversion and extraction functions
   ([`convert_params_to_summary_stats()`](https://epiverse-trace.github.io/epiparameter/dev/reference/convert_params_to_summary_stats.md)
   &
