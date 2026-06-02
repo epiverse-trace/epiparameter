@@ -495,7 +495,7 @@ density.epiparameter <- function(x, at, ...) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
-  at <- at - attr(x$prob_distribution, "offset")
+  at <- at - (attr(x$prob_distribution, "offset") %||% 0)
   if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_distribution$d(at)
   } else {
@@ -518,7 +518,7 @@ cdf.epiparameter <- function(x, q, ..., log = FALSE) {
   if (isFALSE(is_parameterised(x))) {
     stop("<epiparameter> is unparameterised", call. = FALSE)
   }
-  q <- q - attr(x$prob_distribution, "offset")
+  q <- q - (attr(x$prob_distribution, "offset") %||% 0)
   if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_distribution$p(q)
     if (log) out <- log(out)
@@ -543,7 +543,7 @@ quantile.epiparameter <- function(x, p, ...) {
   } else {
     out <- stats::quantile(x$prob_distribution, p = p)
   }
-  offset <- attr(x$prob_distribution, "offset")
+  offset <- attr(x$prob_distribution, "offset") %||% 0
   if (is.atomic(out)) {
     return(out + offset)
   }
@@ -572,7 +572,7 @@ generate.epiparameter <- function(x, times, ...) {
     out <- distributional::generate(x$prob_distribution, times = times)
     out <- unlist(out, recursive = recursive)
   }
-  out <- out + attr(x$prob_distribution, "offset")
+  out <- out + (attr(x$prob_distribution, "offset") %||% 0)
   out
 }
 
@@ -626,6 +626,9 @@ discretise.epiparameter <- function(x, ...) {
     }
     prob_dist_params <- get_parameters(x)
 
+    # preserve any offset applied to the continuous distribution
+    offset <- attr(x$prob_distribution, "offset") %||% 0
+
     # if distribution is truncated take only parameters
     if (is_truncated(x)) {
       warning(
@@ -656,7 +659,8 @@ discretise.epiparameter <- function(x, ...) {
       prob_distribution = prob_dist,
       prob_distribution_params = prob_dist_params,
       discretise = TRUE,
-      truncation = NA
+      truncation = NA,
+      offset = offset
     )
   }
 
