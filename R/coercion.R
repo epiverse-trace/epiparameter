@@ -392,7 +392,12 @@ is_epiparameter_df <- function(x) {
     var_name = "uncertainty types"
   )
   if (grepl(pattern = "Range", x = uncertainty_type, fixed = TRUE)) {
-    summary_stats$range <- c(x$parameter_lower_bound, x$parameter_upper_bound)
+    # {epireview} stores the range in the parameter_uncertainty_*_value columns
+    # with the interval type given by parameter_uncertainty_type
+    summary_stats$range <- c(
+      x$parameter_uncertainty_lower_value,
+      x$parameter_uncertainty_upper_value
+    )
     inference_method <- NA
   } else if (grepl(pattern = "CI", x = uncertainty_type, fixed = TRUE)) {
     summary_stats <- .ss_ci(x, summary_stats, param_type)
