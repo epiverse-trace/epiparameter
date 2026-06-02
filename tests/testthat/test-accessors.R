@@ -160,7 +160,7 @@ test_that(".distributional_family works as expected for transformed", {
   ep <- aggregate(incub)
   expect_identical(
     .distributional_family(ep$prob_distribution),
-    c(rep("lnorm", 2), "gamma", rep("lnorm", 2))
+    c(rep("lnorm", 2), "gamma", rep("lnorm", 2), rep("weibull", 2))
   )
 
   ep <- epiparameter(
