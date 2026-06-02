@@ -174,12 +174,13 @@ references:
     given-names: Adam
     email: adam.kucharski@lshtm.ac.uk
     orcid: https://orcid.org/0000-0001-8814-9421
-  - family-names: Tamayo
+  - family-names: Tamayo Cuartero
     given-names: Carmen
     email: carmen.tamayo-cuartero@lshtm.ac.uk
     orcid: https://orcid.org/0000-0003-4184-2864
   year: '2026'
   doi: 10.32614/CRAN.package.epiparameterDB
+  version: '>= 0.1.0.9000'
 - type: software
   title: graphics
   abstract: 'R: A Language and Environment for Statistical Computing'
