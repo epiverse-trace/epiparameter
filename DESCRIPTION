@@ -37,7 +37,7 @@ Imports:
     cli,
     distcrete,
     distributional,
-    epiparameterDB,
+    epiparameterDB (>= 0.1.0.9000),
     graphics,
     lifecycle,
     pillar,
@@ -57,7 +57,7 @@ Suggests:
     vdiffr (>= 1.0.7),
     visNetwork
 Remotes:
-    epiverse-trace/epiparameterDB@offset
+    epiverse-trace/epiparameterDB
 VignetteBuilder: 
     knitr
 Config/Needs/check: mrc-ide/epireview
