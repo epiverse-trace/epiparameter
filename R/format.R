@@ -76,8 +76,9 @@ format.epiparameter <- function(x, ...) {
         )
       )
     )
-    if (attr(x$prob_distribution, "offset") != 0) {
-      writeLines(sprintf("Offset: %s", attr(x$prob_distribution, "offset")))
+    offset <- attr(x$prob_distribution, "offset") %||% 0
+    if (offset != 0) {
+      writeLines(sprintf("Offset: %s", offset))
     }
   }
 
