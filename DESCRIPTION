@@ -42,7 +42,6 @@ Imports:
     epiparameterDB (>= 0.1.0.9000),
     graphics,
     httr2,
-    lifecycle,
     pillar,
     rlang,
     stats,
