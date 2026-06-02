@@ -207,22 +207,6 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.httr2
 - type: software
-  title: lifecycle
-  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
-  notes: Imports
-  url: https://lifecycle.r-lib.org/
-  repository: https://CRAN.R-project.org/package=lifecycle
-  authors:
-  - family-names: Henry
-    given-names: Lionel
-    email: lionel@posit.co
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-    orcid: https://orcid.org/0000-0003-4757-117X
-  year: '2026'
-  doi: 10.32614/CRAN.package.lifecycle
-- type: software
   title: pillar
   abstract: 'pillar: Coloured Formatting for Columns'
   notes: Imports
