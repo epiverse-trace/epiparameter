@@ -19,7 +19,8 @@ create_summary_stats(
   dispersion_ci = NA_real_,
   lower_range = NA_real_,
   upper_range = NA_real_,
-  quantiles = NA_real_
+  quantiles = NA_real_,
+  reported_interval = c(NA_real_, NA_real_)
 )
 }
 \arguments{
@@ -74,6 +75,13 @@ of the distribution when not provided.}
 \item{quantiles}{A \code{numeric} vector of the quantiles for the distribution.
 If quantiles are not provided a default empty vector with the 2.5th, 5th,
 25th, 75th, 95th, 97.5th quantiles are supplied.}
+
+\item{reported_interval}{A \code{numeric} vector of length two giving an interval
+reported for the parameter when no point estimate (e.g. mean or median) is
+available, for example a parameter reported only as \code{"6 - 12 days"}. Unlike
+\code{lower_range}/\code{upper_range}, which describe the range of the data and are
+used to infer distribution parameters (see \code{\link[=.calc_dist_params]{.calc_dist_params()}}), the
+reported interval is stored as data only and is not used for inference.}
 }
 \value{
 A list of summary statistics. The output list has element names
@@ -94,6 +102,7 @@ $dispersion_ci
 $lower_range
 $upper_range
 $quantiles
+$reported_interval
 }
 }
 \description{
@@ -122,4 +131,7 @@ create_summary_stats(
   lower_range = 1,
   upper_range = 13
 )
+
+# parameter reported only as an interval (no point estimate)
+create_summary_stats(reported_interval = c(6, 12))
 }
