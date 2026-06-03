@@ -34,6 +34,49 @@ test_that("as_epiparameter works for ebola infectious period (issue #327 & #306)
   expect_true(all(!is.na(ebola_infectiousness_epiparameter$summary_stats[1:3])))
 })
 
+test_that("as_epiparameter captures reported intervals (issue #488)", {
+  # {epireview} is not a dependency so only run if already on system
+  skip_if_not_installed("epireview")
+  ebola_params <- ebola_data$params
+  # an entry reported as an interval (parameter_*_bound) rather than a point
+  # estimate
+  interval_row <- ebola_params[
+    is.na(ebola_params$parameter_value) &
+      !is.na(ebola_params$parameter_lower_bound) &
+      !is.na(ebola_params$parameter_upper_bound),
+  ][1, , drop = FALSE]
+  # suppress warning and message about citation
+  ep <- suppressWarnings(
+    suppressMessages(
+      as_epiparameter(interval_row)
+    )
+  )
+  expect_s3_class(ep, class = "epiparameter")
+  expect_identical(
+    ep$summary_stats$reported_interval,
+    c(interval_row$parameter_lower_bound, interval_row$parameter_upper_bound)
+  )
+})
+
+test_that("as_epiparameter has no reported interval when bounds are absent", {
+  # {epireview} is not a dependency so only run if already on system
+  skip_if_not_installed("epireview")
+  lassa_params <- lassa_data$params
+  lassa_incub <- lassa_params[
+    which(lassa_params$article_label == "Akhmetzhanov 2019" &
+            lassa_params$parameter_type == "Human delay - incubation period"),
+  ]
+  ep <- suppressWarnings(
+    suppressMessages(
+      as_epiparameter(lassa_incub)
+    )
+  )
+  expect_identical(
+    ep$summary_stats$reported_interval,
+    c(NA_real_, NA_real_)
+  )
+})
+
 test_that("as_epiparameter works for lassa incubation period (issue #306)", {
   # {epireview} is not a dependency so only run if already on system
   skip_if_not_installed("epireview")
