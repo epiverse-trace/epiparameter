@@ -8,6 +8,23 @@ test_that("create_metadata fails when vector is given for non-vb", {
   )
 })
 
+test_that("create_summary_stats stores a reported interval", {
+  ss <- create_summary_stats(reported_interval = c(6, 12))
+  expect_identical(ss$reported_interval, c(6, 12))
+  # default is a length-two vector of NAs
+  expect_identical(
+    create_summary_stats()$reported_interval,
+    c(NA_real_, NA_real_)
+  )
+})
+
+test_that("create_summary_stats validates the reported interval", {
+  expect_error(
+    create_summary_stats(reported_interval = 6),
+    regexp = "Must have length 2"
+  )
+})
+
 test_that("create_citation works with different author inputs", {
   cit <- suppressMessages(create_citation(
     author = person(given = "John", family = "Smith"),
