@@ -13,10 +13,14 @@ epireview_core_cols
 
 ### `epireview_core_cols`
 
-A `character` vector with 58 elements.
+A `character` vector with 21 elements.
 
-The data is taken as the intersection of the column names of each of the
-disease parameter tables in the epireview R package.
+These are the columns of the epireview epidemiological parameter table
+(`load_epidata(<pathogen>)$params`) that are required to convert an
+epireview entry into an `<epiparameter>` object with
+[`as_epiparameter()`](https://epiverse-trace.github.io/epiparameter/dev/reference/as_epiparameter.md).
+They are used to identify an epireview parameter table and to check that
+the columns needed for conversion are present.
 
 ## Source
 

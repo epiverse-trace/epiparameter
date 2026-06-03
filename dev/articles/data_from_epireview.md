@@ -136,6 +136,7 @@ marburg_incub_epiparameter
 #> Mean: NA [NA% CI: NA, NA] (Days)
 #> Median: NA [NA% CI: NA, NA] (Days)
 #> Range: [c(7, 8)] (Days)
+#> Reported Interval: [7, 8] (Days)
 ```
 
 The resulting `<epiparameter>` does not contain a parameterised
@@ -186,6 +187,9 @@ marburg_incub_epiparameter$summary_stats
 #> [1] NA
 #> 
 #> $range
+#> [1] 7 8
+#> 
+#> $reported_interval
 #> [1] 7 8
 marburg_incub_epiparameter$metadata
 #> $units
@@ -328,6 +332,7 @@ marburg_incub_epiparameter
 #> Mean: NA [NA% CI: NA, NA] (Days)
 #> Median: NA [NA% CI: NA, NA] (Days)
 #> Range: [c(7, 8)] (Days)
+#> Reported Interval: [7, 8] (Days)
 ```
 
 ``` r
@@ -535,6 +540,9 @@ marburg_gt_epiparameter$summary_stats
 #> [1] NA
 #> 
 #> $range
+#> [1] NA NA
+#> 
+#> $reported_interval
 #> [1] NA NA
 ```
 

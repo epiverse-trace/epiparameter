@@ -36,12 +36,17 @@ function via the `...` argument. The argument should be called
 `prob_distribution`. For example, to specify a gamma distribution:
 `as_epiparameter(x, prob_distribution = "gamma")`.
 
-***Warning***: distributions specified via the `prob_dist` argument will
-overwrite the probability distribution specified in the `x` argument.
-For example, if the probability distribution is given in an epireview
-entry and the `prob_dist` argument is specified then the function may
-error or return an unparameterised `<epiparameter>` if the
-parameterisation becomes incompatible.
+***Warning***: distributions specified via the `prob_distribution`
+argument will overwrite the probability distribution specified in the
+`x` argument. For example, if the probability distribution is given in
+an epireview entry and the `prob_distribution` argument is specified
+then the function may error or return an unparameterised
+`<epiparameter>` if the parameterisation becomes incompatible.
 
 Valid probability distributions are: `"gamma"`, `"lnorm"`, `"weibull"`,
 `"nbinom"`, `"geom"`, `"pois"`, `"norm"`, `"exp"`.
+
+Conversion from epireview data is currently supported for the following
+pathogens: Ebola virus, Marburg virus, Lassa fever and SARS-CoV. Other
+pathogens in epireview (e.g. Nipah virus and Zika virus) are not yet
+supported.

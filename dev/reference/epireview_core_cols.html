@@ -83,10 +83,13 @@ epidemiological parameter data exported by the <span class="pkg">epireview</span
 <h3 id="epireview-core-cols"><code>epireview_core_cols</code><a class="anchor" aria-label="anchor" href="#epireview-core-cols"></a></h3>
 
 
-<p>A <code>character</code> vector with 58
+<p>A <code>character</code> vector with 21
 elements.</p>
-<p>The data is taken as the intersection of the column names of each of the
-disease parameter tables in the <span class="pkg">epireview</span> R package.</p>
+<p>These are the columns of the <span class="pkg">epireview</span> epidemiological parameter table
+(<code>load_epidata(&lt;pathogen&gt;)$params</code>) that are required to convert an
+<span class="pkg">epireview</span> entry into an <code>&lt;epiparameter&gt;</code> object with
+<code><a href="as_epiparameter.html">as_epiparameter()</a></code>. They are used to identify an <span class="pkg">epireview</span> parameter
+table and to check that the columns needed for conversion are present.</p>
 </div>
 
     </div>

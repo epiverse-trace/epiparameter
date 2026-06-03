@@ -102,14 +102,18 @@ as it will be matched by name by <code>$</code>.</p>
 function via the <code>...</code> argument. The argument should be called
 <code>prob_distribution</code>. For example, to specify a gamma distribution:
 <code>as_epiparameter(x, prob_distribution = "gamma")</code>.</p>
-<p><em><strong>Warning</strong></em>: distributions specified via the <code>prob_dist</code> argument will
-overwrite the probability distribution specified in the <code>x</code> argument. For
-example, if the probability distribution is given in an <span class="pkg">epireview</span>
-entry and the <code>prob_dist</code> argument is specified then the function may error
-or return an unparameterised <code>&lt;epiparameter&gt;</code> if the parameterisation becomes
-incompatible.</p>
+<p><em><strong>Warning</strong></em>: distributions specified via the <code>prob_distribution</code> argument
+will overwrite the probability distribution specified in the <code>x</code> argument.
+For example, if the probability distribution is given in an <span class="pkg">epireview</span>
+entry and the <code>prob_distribution</code> argument is specified then the function may
+error or return an unparameterised <code>&lt;epiparameter&gt;</code> if the parameterisation
+becomes incompatible.</p>
 <p>Valid probability distributions are: <code>"gamma"</code>, <code>"lnorm"</code>, <code>"weibull"</code>,
 <code>"nbinom"</code>, <code>"geom"</code>, <code>"pois"</code>, <code>"norm"</code>, <code>"exp"</code>.</p>
+<p>Conversion from <span class="pkg">epireview</span> data is currently supported for the
+following pathogens: Ebola virus, Marburg virus, Lassa fever and
+SARS-CoV. Other pathogens in <span class="pkg">epireview</span> (e.g. Nipah virus and Zika
+virus) are not yet supported.</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

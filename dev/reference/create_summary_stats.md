@@ -23,7 +23,8 @@ create_summary_stats(
   dispersion_ci = NA_real_,
   lower_range = NA_real_,
   upper_range = NA_real_,
-  quantiles = NA_real_
+  quantiles = NA_real_,
+  reported_interval = c(NA_real_, NA_real_)
 )
 ```
 
@@ -110,6 +111,17 @@ create_summary_stats(
   are not provided a default empty vector with the 2.5th, 5th, 25th,
   75th, 95th, 97.5th quantiles are supplied.
 
+- reported_interval:
+
+  A `numeric` vector of length two giving an interval reported for the
+  parameter when no point estimate (e.g. mean or median) is available,
+  for example a parameter reported only as `"6 - 12 days"`. Unlike
+  `lower_range`/`upper_range`, which describe the range of the data and
+  are used to infer distribution parameters (see
+  [`.calc_dist_params()`](https://epiverse-trace.github.io/epiparameter/dev/reference/dot-calc_dist_params.md)),
+  the reported interval is stored as data only and is not used for
+  inference.
+
 ## Value
 
 A list of summary statistics. The output list has element names equal to
@@ -131,6 +143,7 @@ the function arguments:
     $lower_range
     $upper_range
     $quantiles
+    $reported_interval
 
 ## Examples
 
@@ -177,6 +190,9 @@ create_summary_stats(mean = 5, sd = 2)
 #> [1] NA
 #> 
 #> $range
+#> [1] NA NA
+#> 
+#> $reported_interval
 #> [1] NA NA
 #> 
 
@@ -231,6 +247,9 @@ create_summary_stats(
 #> $range
 #> [1] NA NA
 #> 
+#> $reported_interval
+#> [1] NA NA
+#> 
 
 # median and range
 create_summary_stats(
@@ -279,5 +298,56 @@ create_summary_stats(
 #> 
 #> $range
 #> [1]  1 13
+#> 
+#> $reported_interval
+#> [1] NA NA
+#> 
+
+# parameter reported only as an interval (no point estimate)
+create_summary_stats(reported_interval = c(6, 12))
+#> $mean
+#> [1] NA
+#> 
+#> $mean_ci_limits
+#> [1] NA NA
+#> 
+#> $mean_ci
+#> [1] NA
+#> 
+#> $sd
+#> [1] NA
+#> 
+#> $sd_ci_limits
+#> [1] NA NA
+#> 
+#> $sd_ci
+#> [1] NA
+#> 
+#> $median
+#> [1] NA
+#> 
+#> $median_ci_limits
+#> [1] NA NA
+#> 
+#> $median_ci
+#> [1] NA
+#> 
+#> $dispersion
+#> [1] NA
+#> 
+#> $dispersion_ci_limits
+#> [1] NA NA
+#> 
+#> $dispersion_ci
+#> [1] NA
+#> 
+#> $quantiles
+#> [1] NA
+#> 
+#> $range
+#> [1] NA NA
+#> 
+#> $reported_interval
+#> [1]  6 12
 #> 
 ```

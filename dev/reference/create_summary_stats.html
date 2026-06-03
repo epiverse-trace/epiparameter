@@ -94,7 +94,8 @@ the list.</p>
 <span>  dispersion_ci <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
 <span>  lower_range <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
 <span>  upper_range <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
-<span>  quantiles <span class="op">=</span> <span class="cn">NA_real_</span></span>
+<span>  quantiles <span class="op">=</span> <span class="cn">NA_real_</span>,</span>
+<span>  reported_interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="cn">NA_real_</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -183,6 +184,15 @@ of the distribution when not provided.</p></dd>
 If quantiles are not provided a default empty vector with the 2.5th, 5th,
 25th, 75th, 95th, 97.5th quantiles are supplied.</p></dd>
 
+
+<dt id="arg-reported-interval">reported_interval<a class="anchor" aria-label="anchor" href="#arg-reported-interval"></a></dt>
+<dd><p>A <code>numeric</code> vector of length two giving an interval
+reported for the parameter when no point estimate (e.g. mean or median) is
+available, for example a parameter reported only as <code>"6 - 12 days"</code>. Unlike
+<code>lower_range</code>/<code>upper_range</code>, which describe the range of the data and are
+used to infer distribution parameters (see <code><a href="dot-calc_dist_params.html">.calc_dist_params()</a></code>), the
+reported interval is stored as data only and is not used for inference.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -203,6 +213,7 @@ $dispersion_ci
 $lower_range
 $upper_range
 $quantiles
+$reported_interval
 </code></pre></div>
 
     </div>
@@ -251,6 +262,9 @@ $quantiles
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $range</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $reported_interval</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -305,6 +319,9 @@ $quantiles
 <span class="r-out co"><span class="r-pr">#&gt;</span> $range</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $reported_interval</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># median and range</span></span></span>
 <span class="r-in"><span><span class="fu">create_summary_stats</span><span class="op">(</span></span></span>
@@ -353,6 +370,57 @@ $quantiles
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $range</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  1 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $reported_interval</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># parameter reported only as an interval (no point estimate)</span></span></span>
+<span class="r-in"><span><span class="fu">create_summary_stats</span><span class="op">(</span>reported_interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $mean</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $mean_ci_limits</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $mean_ci</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sd_ci_limits</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sd_ci</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $median</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $median_ci_limits</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $median_ci</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $dispersion</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $dispersion_ci_limits</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $dispersion_ci</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $quantiles</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $range</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] NA NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $reported_interval</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6 12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
