@@ -35,3 +35,30 @@ test_that("epiparameter.print works as expected", {
     )
   ))
 })
+
+test_that("print method shows a reported interval when present", {
+  ep <- suppressMessages(epiparameter(
+    disease = "ebola",
+    epi_name = "incubation",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = NA_character_
+    ),
+    summary_stats = create_summary_stats(reported_interval = c(6, 12)),
+    metadata = create_metadata(units = "days")
+  ))
+  expect_output(print(ep), "Reported Interval: \\[6, 12\\]")
+})
+
+test_that("print method omits the reported interval when absent", {
+  ep <- suppressMessages(epiparameter(
+    disease = "ebola",
+    epi_name = "incubation",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = NA_character_
+    ),
+    summary_stats = create_summary_stats(median = 5),
+    metadata = create_metadata(units = "days")
+  ))
+  out <- utils::capture.output(print(ep))
+  expect_false(any(grepl("Reported Interval", out)))
+})
