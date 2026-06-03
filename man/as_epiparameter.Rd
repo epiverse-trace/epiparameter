@@ -30,8 +30,8 @@ function via the \code{...} argument. The argument should be called
 \code{as_epiparameter(x, prob_distribution = "gamma")}.
 
 \emph{\strong{Warning}}: distributions specified via the \code{prob_distribution} argument
-will overwrite the probability distribution specified in the \code{x} argument. For
-example, if the probability distribution is given in an \pkg{epireview}
+will overwrite the probability distribution specified in the \code{x} argument.
+For example, if the probability distribution is given in an \pkg{epireview}
 entry and the \code{prob_distribution} argument is specified then the function may
 error or return an unparameterised \verb{<epiparameter>} if the parameterisation
 becomes incompatible.
@@ -40,7 +40,7 @@ Valid probability distributions are: \code{"gamma"}, \code{"lnorm"}, \code{"weib
 \code{"nbinom"}, \code{"geom"}, \code{"pois"}, \code{"norm"}, \code{"exp"}.
 
 Conversion from \pkg{epireview} data is currently supported for the
-following pathogens: Ebola virus, Marburg virus, Lassa mammarenavirus and
+following pathogens: Ebola virus, Marburg virus, Lassa fever and
 SARS-CoV. Other pathogens in \pkg{epireview} (e.g. Nipah virus and Zika
 virus) are not yet supported.
 }

@@ -122,8 +122,8 @@ as.data.frame.multi_epiparameter <- function(x, ...) {
 #' `as_epiparameter(x, prob_distribution = "gamma")`.
 #'
 #' ***Warning***: distributions specified via the `prob_distribution` argument
-#' will overwrite the probability distribution specified in the `x` argument. For
-#' example, if the probability distribution is given in an \pkg{epireview}
+#' will overwrite the probability distribution specified in the `x` argument.
+#' For example, if the probability distribution is given in an \pkg{epireview}
 #' entry and the `prob_distribution` argument is specified then the function may
 #' error or return an unparameterised `<epiparameter>` if the parameterisation
 #' becomes incompatible.
@@ -132,7 +132,7 @@ as.data.frame.multi_epiparameter <- function(x, ...) {
 #' `"nbinom"`, `"geom"`, `"pois"`, `"norm"`, `"exp"`.
 #'
 #' Conversion from \pkg{epireview} data is currently supported for the
-#' following pathogens: Ebola virus, Marburg virus, Lassa mammarenavirus and
+#' following pathogens: Ebola virus, Marburg virus, Lassa fever and
 #' SARS-CoV. Other pathogens in \pkg{epireview} (e.g. Nipah virus and Zika
 #' virus) are not yet supported.
 #'
@@ -387,6 +387,12 @@ is_epiparameter_df <- function(x) {
   }
   summary_stats <- create_summary_stats()
   summary_stats[param_type] <- x$parameter_value
+  # {epireview} reports some parameters as an interval rather than a point
+  # estimate, storing the interval bounds in the parameter_*_bound columns
+  reported_interval <- c(x$parameter_lower_bound, x$parameter_upper_bound)
+  if (!all(is.na(reported_interval))) {
+    summary_stats$reported_interval <- reported_interval
+  }
   uncertainty_type <- .unique(
     x$parameter_uncertainty_type,
     var_name = "uncertainty types"
