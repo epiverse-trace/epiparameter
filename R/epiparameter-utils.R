@@ -263,6 +263,12 @@ create_region <- function(continent = NA_character_,
 #' @param quantiles A `numeric` vector of the quantiles for the distribution.
 #' If quantiles are not provided a default empty vector with the 2.5th, 5th,
 #' 25th, 75th, 95th, 97.5th quantiles are supplied.
+#' @param reported_interval A `numeric` vector of length two giving an interval
+#' reported for the parameter when no point estimate (e.g. mean or median) is
+#' available, for example a parameter reported only as `"6 - 12 days"`. Unlike
+#' `lower_range`/`upper_range`, which describe the range of the data and are
+#' used to infer distribution parameters (see [.calc_dist_params()]), the
+#' reported interval is stored as data only and is not used for inference.
 #'
 #' @return A list of summary statistics. The output list has element names
 #' equal to the function arguments:
@@ -291,6 +297,9 @@ create_region <- function(continent = NA_character_,
 #'   lower_range = 1,
 #'   upper_range = 13
 #' )
+#'
+#' # parameter reported only as an interval (no point estimate)
+#' create_summary_stats(reported_interval = c(6, 12))
 create_summary_stats <- function(mean = NA_real_,
                                  mean_ci_limits = c(NA_real_, NA_real_),
                                  mean_ci = NA_real_,
@@ -308,7 +317,11 @@ create_summary_stats <- function(mean = NA_real_,
                                  dispersion_ci = NA_real_,
                                  lower_range = NA_real_,
                                  upper_range = NA_real_,
-                                 quantiles = NA_real_) {
+                                 quantiles = NA_real_,
+                                 reported_interval = c(
+                                   NA_real_,
+                                   NA_real_
+                                 )) {
   # check input
   checkmate::assert_number(mean, na.ok = TRUE)
   checkmate::assert_numeric(mean_ci_limits, len = 2, any.missing = TRUE)
@@ -325,6 +338,7 @@ create_summary_stats <- function(mean = NA_real_,
   checkmate::assert_number(lower_range, na.ok = TRUE)
   checkmate::assert_number(upper_range, na.ok = TRUE)
   checkmate::assert_numeric(quantiles)
+  checkmate::assert_numeric(reported_interval, len = 2, any.missing = TRUE)
   if (!all(is.na(quantiles))) {
     checkmate::assert_named(quantiles)
   }
@@ -344,7 +358,8 @@ create_summary_stats <- function(mean = NA_real_,
     dispersion_ci_limits = dispersion_ci_limits,
     dispersion_ci = dispersion_ci,
     quantiles = quantiles,
-    range = c(lower_range, upper_range)
+    range = c(lower_range, upper_range),
+    reported_interval = reported_interval
   )
 }
 
