@@ -54,6 +54,9 @@ format.epiparameter <- function(x, ...) {
     .format_ss(x, pattern = "mean")
     .format_ss(x, pattern = "median")
     .format_ss(x, pattern = "range")
+    if (!all(is.na(x$summary_stats$reported_interval))) {
+      .format_ss(x, pattern = "reported_interval")
+    }
   }
 
   if (is.object(x$prob_distribution)) {
@@ -91,12 +94,17 @@ format.epiparameter <- function(x, ...) {
   idx <- grep(pattern = pattern, x = names(x$summary_stats), fixed = TRUE)
   if (length(idx) > 0) {
     ss <- x$summary_stats[idx]
+    label <- tools::toTitleCase(gsub("_", " ", pattern, fixed = TRUE))
     if (pattern == "range") {
       fmt_ss <- paste0(
-        tools::toTitleCase(pattern), ": ", paste0("[", toString(ss), "]")
+        label, ": ", paste0("[", toString(ss), "]")
+      )
+    } else if (pattern == "reported_interval") {
+      fmt_ss <- paste0(
+        label, ": ", paste0("[", toString(ss[[pattern]]), "]")
       )
     } else {
-      fmt_ss <- paste0(tools::toTitleCase(pattern), ": ", ss[[pattern]])
+      fmt_ss <- paste0(label, ": ", ss[[pattern]])
     }
     has_ci <- any(grepl(pattern = "_ci", x = names(ss), fixed = TRUE))
     if (has_ci) {
