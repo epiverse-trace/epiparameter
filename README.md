@@ -66,11 +66,11 @@ To load the library of epidemiological parameters into `R`:
 
 ``` r
 epiparameters <- epiparameter_db()
-#> Returning 125 results that match the criteria (100 are parameterised). 
+#> Returning 133 results that match the criteria (108 are parameterised). 
 #> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
 #> To retrieve the citation for each use the 'get_citation' function
 epiparameters
-#> # List of 125 <epiparameter> objects
+#> # List of 133 <epiparameter> objects
 #> Number of diseases: 23
 #> ❯ Adenovirus ❯ Chikungunya ❯ COVID-19 ❯ Dengue ❯ Ebola Virus Disease ❯ Hantavirus Pulmonary Syndrome ❯ Human Coronavirus ❯ Influenza ❯ Japanese Encephalitis ❯ Marburg Virus Disease ❯ Measles ❯ MERS ❯ Mpox ❯ Parainfluenza ❯ Pneumonic Plague ❯ Rhinovirus ❯ Rift Valley Fever ❯ RSV ❯ SARS ❯ Smallpox ❯ West Nile Fever ❯ Yellow Fever ❯ Zika Virus Disease
 #> Number of epi parameters: 13
@@ -91,13 +91,13 @@ epiparameters
 #> 
 #> [[2]]
 #> Disease: Human Coronavirus
-#> Pathogen: Human_Cov
+#> Pathogen: Human Coronavirus
 #> Epi Parameter: incubation period
 #> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
 #> review." _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-7
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-7>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> Distribution: lnorm (days)
 #> Parameters:
 #>   meanlog: 1.163
@@ -105,19 +105,19 @@ epiparameters
 #> 
 #> [[3]]
 #> Disease: SARS
-#> Pathogen: SARS-Cov-1
+#> Pathogen: SARS-CoV-1
 #> Epi Parameter: incubation period
 #> Study: Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> "Incubation periods of acute respiratory viral infections: a systematic
 #> review." _The Lancet Infectious Diseases_.
-#> doi:10.1016/S1473-3099(09)70069-8
-#> <https://doi.org/10.1016/S1473-3099%2809%2970069-8>.
+#> doi:10.1016/S1473-3099(09)70069-6
+#> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.
 #> Distribution: lnorm (days)
 #> Parameters:
 #>   meanlog: 1.386
 #>   sdlog: 0.593
 #> 
-#> # ℹ 122 more elements
+#> # ℹ 130 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
@@ -172,11 +172,11 @@ the data, and offers the ability to subset you data by `disease`,
 ``` r
 parameter_tbl(epiparameters)
 #> # Parameter table:
-#> # A data frame:    125 × 7
+#> # A data frame:    133 × 7
 #>    disease          pathogen epi_name prob_distribution author  year sample_size
 #>    <chr>            <chr>    <chr>    <chr>             <chr>  <dbl>       <dbl>
 #>  1 Adenovirus       Adenovi… incubat… lnorm             Lessl…  2009          14
-#>  2 Human Coronavir… Human_C… incubat… lnorm             Lessl…  2009          13
+#>  2 Human Coronavir… Human C… incubat… lnorm             Lessl…  2009          13
 #>  3 SARS             SARS-Co… incubat… lnorm             Lessl…  2009         157
 #>  4 Influenza        Influen… incubat… lnorm             Lessl…  2009         151
 #>  5 Influenza        Influen… incubat… lnorm             Lessl…  2009          90
@@ -185,7 +185,7 @@ parameter_tbl(epiparameters)
 #>  8 Parainfluenza    Parainf… incubat… lnorm             Lessl…  2009          11
 #>  9 RSV              RSV      incubat… lnorm             Lessl…  2009          24
 #> 10 Rhinovirus       Rhinovi… incubat… lnorm             Lessl…  2009          28
-#> # ℹ 115 more rows
+#> # ℹ 123 more rows
 parameter_tbl(
   epiparameters,
   epi_name = "onset to hospitalisation"
@@ -194,7 +194,7 @@ parameter_tbl(
 #> # A data frame:    5 × 7
 #>   disease  pathogen   epi_name        prob_distribution author  year sample_size
 #>   <chr>    <chr>      <chr>           <chr>             <chr>  <dbl>       <dbl>
-#> 1 MERS     MERS-Cov   onset to hospi… <NA>              Assir…  2013          23
+#> 1 MERS     MERS-CoV   onset to hospi… <NA>              Assir…  2013          23
 #> 2 COVID-19 SARS-CoV-2 onset to hospi… gamma             Linto…  2020         155
 #> 3 COVID-19 SARS-CoV-2 onset to hospi… gamma             Linto…  2020          34
 #> 4 COVID-19 SARS-CoV-2 onset to hospi… lnorm             Linto…  2020         155
