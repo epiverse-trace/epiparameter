@@ -13,7 +13,8 @@
                         author,
                         subset,
                         single_epiparameter,
-                        verbose) {
+                        verbose,
+                        base_url = "https://collaboratory.who.int/grepi/api/EpiParameterEstimates") { # nolint
 
   if (!is.null(author)) {
     warning(
@@ -40,9 +41,7 @@
     )
   }
 
-  req <- httr2::request(
-    "https://collaboratory.who.int/grepi/api/EpiParameterEstimates"
-  )
+  req <- httr2::request(base_url)
   if (!identical(disease, "all")) {
     req <- httr2::req_url_query(req, Disease_Name_Preferred = disease)
   }
@@ -277,7 +276,12 @@
       year = x$article_Publication_Year,
       title = x$article_Title,
       journal = x$literature_Source_Name,
-      doi = x$article_DOI
+      doi = if (identical(x$article_Unique_Identifier_Type,
+                          "Digital Object Identifier (DOI)")) {
+        x$article_Unique_Identifier
+      } else {
+        NA_character_
+      }
     )
   )
 
@@ -312,9 +316,9 @@
       region = region
     ),
     method_assess = create_method_assess(
-      censored = x$epi_Parameter_Method_Inference_DataIsCensored,
-      right_truncated = x$epi_Parameter_Method_Inference_DataIsTruncated,
-      phase_bias_adjusted = x$epi_Parameter_Method_Inference_DataIsBiasAdjusted
+      censored = x$epi_Parameter_Method_Inference_DataIsCensored %||% NA,
+      right_truncated = x$epi_Parameter_Method_Inference_DataIsTruncated %||% NA, # nolint
+      phase_bias_adjusted = x$epi_Parameter_Method_Inference_DataIsBiasAdjusted %||% NA # nolint
     ),
     notes = paste0(
       "Loaded from the ", x$epi_Parameter_DataSource_Name, " (",
