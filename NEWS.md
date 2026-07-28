@@ -1,5 +1,10 @@
 # epiparameter (development version)
 
+* Update `.read_grepi()` and `.grepi_to_epiparameter()` for the grEPI v3.0.4
+  property renames on the `EpiParameterEstimates` endpoint
+  (`disease_Name_Preferred` -> `disease`,
+  `pathogen_Species_Name_preferred` -> `pathogen_species`) (#495).
+
 # epiparameter 0.4.1
 
 A patch release resolving issues flagged by CRAN checks. 
