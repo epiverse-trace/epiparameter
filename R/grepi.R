@@ -78,15 +78,15 @@
   }
 
   # epi_name is filtered locally: the grEPI API ignores the
-  # epiParameter_Estimate_Type query parameter
+  # parameter_type query parameter
   # matched case-insensitively against either the
   # broad Estimate_Type category (e.g. "Human Delay") or the specific Subtype
   # (e.g. "Incubation period").
   if (!identical(epi_name, "all")) {
     en <- .clean_string(epi_name)
     grepi_types <- c(
-      tolower(grepi_params$epiParameter_Estimate_Type),
-      tolower(grepi_params$epiParameter_Estimate_Subtype)
+      tolower(grepi_params$parameter_type),
+      tolower(grepi_params$parameter_subtype)
     )
     tryCatch(
       {
@@ -131,8 +131,8 @@
         }
       }
     )
-    keep <- tolower(grepi_params$epiParameter_Estimate_Type) == en |
-            tolower(grepi_params$epiParameter_Estimate_Subtype) == en
+    keep <- tolower(grepi_params$parameter_type) == en |
+            tolower(grepi_params$parameter_subtype) == en
     keep[is.na(keep)] <- FALSE
     grepi_params <- grepi_params[keep, , drop = FALSE]
     if (nrow(grepi_params) == 0L) {
@@ -170,7 +170,7 @@
   # family, extend dist_lookup; the rest of the branch is family-agnostic.
   dist_lookup <- c(Weibull = "weibull", Gamma = "gamma",
                    "Log-normal" = "lnorm")
-  dist_raw <- x$epiParameter_Distribution_Type
+  dist_raw <- x$distribution_type
   has_dist <- !is.null(dist_raw) && !is.na(dist_raw) &&
               dist_raw %in% names(dist_lookup)
   dist <- if (has_dist) unname(dist_lookup[[dist_raw]]) else NA_character_
@@ -282,12 +282,12 @@
   )
 
   # format epi_name
-  subtype <- x$epiParameter_Estimate_Subtype
+  subtype <- x$parameter_subtype
   subtype[is.na(subtype)] <- ""
   if (subtype == "Other") {
-    subtype <- paste(x$epiParameter_EventFrom, "to", x$epiParameter_EventTo)
+    subtype <- paste(x$delay_event_start, "to", x$delay_event_end)
   }
-  epi_name <- trimws(paste(subtype, x$epiParameter_Estimate_Type))
+  epi_name <- trimws(paste(subtype, x$parameter_type))
 
   # handle entries missing Country info
   if (is.null(x$epi_Parameter_Population_Country_list[[1]]$country_Name)) {
@@ -306,9 +306,9 @@
     summary_stats = summary_stats,
     citation = citation,
     metadata = create_metadata(
-      units = x$epiParameter_Estimate_Unit,
+      units = x$estimate_unit,
       sample_size = x$epi_Parameter_Population_Sample_Size,
-      inference_method = x$epi_Parameter_Method_Inference,
+      inference_method = x$inference_method,
       region = region
     ),
     method_assess = create_method_assess(

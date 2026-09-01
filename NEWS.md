@@ -1,5 +1,15 @@
 # epiparameter (development version)
 
+* Update `.read_grepi()` and `.grepi_to_epiparameter()` for the grEPI v3.0.6
+  property renames on the `EpiParameterEstimates` endpoint
+  (`epiParameter_Estimate_Type` -> `parameter_type`,
+  `epiParameter_Estimate_Subtype` -> `parameter_subtype`,
+  `epiParameter_EventFrom` -> `delay_event_start`,
+  `epiParameter_EventTo` -> `delay_event_end`,
+  `epiParameter_Estimate_Unit` -> `estimate_unit`,
+  `epiParameter_Distribution_Type` -> `distribution_type`,
+  `epi_Parameter_Method_Inference` -> `inference_method`) (#498).
+
 # epiparameter 0.4.1
 
 A patch release resolving issues flagged by CRAN checks. 
