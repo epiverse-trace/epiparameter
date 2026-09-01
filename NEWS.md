@@ -1,5 +1,32 @@
 # epiparameter (development version)
 
+* Update `.read_grepi()` and `.grepi_to_epiparameter()` for the grEPI v3.0.6
+  property renames on the `EpiParameterEstimates` endpoint
+  (`epiParameter_Estimate_Type` -> `parameter_type`,
+  `epiParameter_Estimate_Subtype` -> `parameter_subtype`,
+  `epiParameter_EventFrom` -> `delay_event_start`,
+  `epiParameter_EventTo` -> `delay_event_end`,
+  `epiParameter_Estimate_Unit` -> `estimate_unit`,
+  `epiParameter_Distribution_Type` -> `distribution_type`,
+  `epi_Parameter_Method_Inference` -> `inference_method`) (#498).
+
+* Fix two further `.grepi_to_epiparameter()` parsing failures found while
+  testing the above against grEPI UAT. Neither is caused by v3.0.6; both
+  are pre-existing API behaviour that predates it and were only surfaced
+  by this round of testing:
+  - `epi_Parameter_Population_Sample_Size` sometimes returns the sentinel
+    string `"Unspecified"` instead of a number, which coerces the whole
+    response column to character on ingestion and broke parsing for the
+    majority of records, not just the ones carrying the sentinel. The
+    value is now coerced to numeric, with non-numeric text treated as
+    unspecified (`NA`).
+  - `epi_Parameter_Method_Inference_DataIsCensored`/`DataIsTruncated` have
+    been split into `_Left`/`_Right`/`_Interval` fields, so the old
+    (removed) field names always read as `NULL`. `censored` is now `TRUE`
+    if any of the three censoring flags is `TRUE`; `right_truncated` now
+    reads `..._DataIsTruncated_Right` directly (left-truncation has no
+    equivalent slot in `create_method_assess()`).
+
 # epiparameter 0.4.1
 
 A patch release resolving issues flagged by CRAN checks. 
