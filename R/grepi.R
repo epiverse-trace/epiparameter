@@ -296,6 +296,31 @@
     region <- x$epi_Parameter_Population_Country_list[[1]]$country_Name
   }
 
+  # grEPI mixes numeric sample sizes with the sentinel string "Unspecified"
+  # in this field, which coerces the whole API response column to character
+  # on ingestion. Recover the numeric value here, treating non-numeric text
+  # (e.g. "Unspecified") as unspecified (NA) rather than failing to parse.
+  sample_size <- if (is.null(x$epi_Parameter_Population_Sample_Size)) {
+    NULL
+  } else {
+    suppressWarnings(as.numeric(x$epi_Parameter_Population_Sample_Size))
+  }
+
+  # grEPI now reports censoring/truncation as separate Left/Right/Interval
+  # flags rather than a single boolean. epiparameter only tracks whether
+  # data was censored at all (any of the three), and truncation on the
+  # right specifically, so left-truncation has no home in method_assess.
+  censored_flags <- c(
+    x$epi_Parameter_Method_Inference_DataIsCensored_Left %||% NA,
+    x$epi_Parameter_Method_Inference_DataIsCensored_Right %||% NA,
+    x$epi_Parameter_Method_Inference_DataIsCensored_Interval %||% NA
+  )
+  censored <- if (all(is.na(censored_flags))) {
+    NA
+  } else {
+    any(censored_flags, na.rm = TRUE)
+  }
+
   # return <epiparameter>
   epiparameter(
     disease = x$disease_Name_Preferred,
@@ -307,13 +332,13 @@
     citation = citation,
     metadata = create_metadata(
       units = x$estimate_unit,
-      sample_size = x$epi_Parameter_Population_Sample_Size,
+      sample_size = sample_size,
       inference_method = x$inference_method,
       region = region
     ),
     method_assess = create_method_assess(
-      censored = x$epi_Parameter_Method_Inference_DataIsCensored,
-      right_truncated = x$epi_Parameter_Method_Inference_DataIsTruncated,
+      censored = censored,
+      right_truncated = x$epi_Parameter_Method_Inference_DataIsTruncated_Right %||% NA, # nolint
       phase_bias_adjusted = x$epi_Parameter_Method_Inference_DataIsBiasAdjusted
     ),
     notes = paste0(
