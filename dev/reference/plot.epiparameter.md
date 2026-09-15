@@ -38,7 +38,7 @@ By default if the `xlim` argument is not specified the distribution is
 plotted between day 0 and the 99th quantile of the distribution.
 Alternatively, a `numeric` vector of length 2 with the first and last
 day to plot on the x-axis can be supplied to `xlim` (through
-[...](https://rdrr.io/r/base/dots.html)).
+[dots](https://rdrr.io/r/base/dots.html)).
 
 ## Author
 

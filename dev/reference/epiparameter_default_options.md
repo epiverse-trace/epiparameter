@@ -10,10 +10,6 @@ options are only used to modify the printing of the
 epiparameter_default_options
 ```
 
-## Format
-
-An object of class `list` of length 3.
-
 ## Details
 
 Options are set with [`options()`](https://rdrr.io/r/base/options.html)

@@ -5,5 +5,5 @@ to see their documentation.
 
 - distributional:
 
-  [`cdf`](https://pkg.mitchelloharawild.com/distributional/reference/cdf.html),
-  [`generate`](https://pkg.mitchelloharawild.com/distributional/reference/reexports.html)
+  [`cdf()`](https://pkg.mitchelloharawild.com/distributional/reference/cdf.html),
+  [`generate`](https://generics.r-lib.org/reference/generate.html)

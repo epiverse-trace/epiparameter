@@ -22,6 +22,9 @@ Useful links:
 
 Authors:
 
+- Joshua W. Lambert <joshua.lambert@lshtm.ac.uk>
+  ([ORCID](https://orcid.org/0000-0001-5218-3046)) \[copyright holder\]
+
 - Adam Kucharski <adam.kucharski@lshtm.ac.uk>
   ([ORCID](https://orcid.org/0000-0001-8814-9421)) \[copyright holder\]
 

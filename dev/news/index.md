@@ -2,6 +2,21 @@
 
 ## epiparameter (development version)
 
+### Bug fixes
+
+- `.grepi_to_epiparameter()` now reads the article DOI from
+  `article_Unique_Identifier` (gated on
+  `article_Unique_Identifier_Type`) instead of the removed `article_DOI`
+  field, to match the grEPI v3.0.1 API restructure
+  ([\#490](https://github.com/epiverse-trace/epiparameter/issues/490)).
+
+### Minor changes
+
+- `.read_grepi()` gains a `base_url` argument (defaulting to the
+  production grEPI endpoint) so tests and manual checks can target the
+  grEPI UAT environment
+  ([\#490](https://github.com/epiverse-trace/epiparameter/issues/490)).
+
 ## epiparameter 0.4.1
 
 CRAN release: 2025-01-24

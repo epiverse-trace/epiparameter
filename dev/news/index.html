@@ -65,6 +65,16 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="epiparameter-development-version">epiparameter (development version)<a class="anchor" aria-label="anchor" href="#epiparameter-development-version"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-development-version">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
+<ul><li>
+<code>.grepi_to_epiparameter()</code> now reads the article DOI from <code>article_Unique_Identifier</code> (gated on <code>article_Unique_Identifier_Type</code>) instead of the removed <code>article_DOI</code> field, to match the grEPI v3.0.1 API restructure (<a href="https://github.com/epiverse-trace/epiparameter/issues/490" class="external-link">#490</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-development-version">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-development-version"></a></h3>
+<ul><li>
+<code>.read_grepi()</code> gains a <code>base_url</code> argument (defaulting to the production grEPI endpoint) so tests and manual checks can target the grEPI UAT environment (<a href="https://github.com/epiverse-trace/epiparameter/issues/490" class="external-link">#490</a>).</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.1" id="epiparameter-041">epiparameter 0.4.1<a class="anchor" aria-label="anchor" href="#epiparameter-041"></a></h2><p class="text-muted">CRAN release: 2025-01-24</p>
