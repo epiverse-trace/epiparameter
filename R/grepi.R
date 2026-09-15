@@ -13,7 +13,8 @@
                         author,
                         subset,
                         single_epiparameter,
-                        verbose) {
+                        verbose,
+                        base_url = "https://collaboratory.who.int/grepi/api/EpiParameterEstimates") { # nolint
 
   if (!is.null(author)) {
     warning(
@@ -40,14 +41,12 @@
     )
   }
 
-  req <- httr2::request(
-    "https://collaboratory.who.int/grepi/api/EpiParameterEstimates"
-  )
+  req <- httr2::request(base_url)
   if (!identical(disease, "all")) {
-    req <- httr2::req_url_query(req, Disease_Name_Preferred = disease)
+    req <- httr2::req_url_query(req, disease = disease)
   }
   if (!identical(pathogen, "all")) {
-    req <- httr2::req_url_query(req, pathogen_Species_Name_Preferred = pathogen)
+    req <- httr2::req_url_query(req, pathogen_species = pathogen)
   }
 
   if (verbose) {
@@ -277,7 +276,12 @@
       year = x$article_Publication_Year,
       title = x$article_Title,
       journal = x$literature_Source_Name,
-      doi = x$article_DOI
+      doi = if (identical(x$article_Unique_Identifier_Type,
+                          "Digital Object Identifier (DOI)")) {
+        x$article_Unique_Identifier
+      } else {
+        NA_character_
+      }
     )
   )
 
@@ -323,8 +327,8 @@
 
   # return <epiparameter>
   epiparameter(
-    disease = x$disease_Name_Preferred,
-    pathogen = x$pathogen_Species_Name_Preferred,
+    disease = x$disease,
+    pathogen = x$pathogen_species,
     epi_name = epi_name,
     prob_distribution = prob_distribution,
     uncertainty = uncertainty,

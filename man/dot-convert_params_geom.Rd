@@ -20,7 +20,7 @@ skewness, and excess kurtosis (\code{ex_kurtosis}).
 Convert the probability (\code{prob}) of the geometric distribution
 to a number of summary statistics which can be calculated analytically given
 the geometric parameter. One exception is the median which is calculated
-using \code{\link[stats:Geometric]{stats::qgeom()}} as the analytical form is not always unique.
+using \code{\link[stats:qgeom]{stats::qgeom()}} as the analytical form is not always unique.
 }
 \details{
 This conversion function assumes that distribution represents the
