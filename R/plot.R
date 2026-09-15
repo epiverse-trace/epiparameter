@@ -10,7 +10,7 @@
 #' plotted between day 0 and the 99th quantile of the distribution.
 #' Alternatively, a `numeric` vector of length 2 with the
 #' first and last day to plot on the x-axis can be supplied to `xlim`
-#' (through [...]).
+#' (through [dots]).
 #'
 #'
 #' @param x An `<epiparameter>` object.
