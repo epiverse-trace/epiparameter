@@ -5,8 +5,8 @@
 grepi_record <- function(unique_id_type = "Digital Object Identifier (DOI)",
                          unique_id = "10.1234/example.doi") {
   list(
-    disease_Name_Preferred = "Test Disease",
-    pathogen_Species_Name_Preferred = "Test Pathogen",
+    disease = "Test Disease",
+    pathogen_species = "Test Pathogen",
     epiParameter_Estimate_Subtype = NA_character_,
     epiParameter_Estimate_Type = "Serial interval",
     epiParameter_Distribution_Type = NA_character_,

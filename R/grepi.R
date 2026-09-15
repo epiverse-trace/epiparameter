@@ -43,10 +43,10 @@
 
   req <- httr2::request(base_url)
   if (!identical(disease, "all")) {
-    req <- httr2::req_url_query(req, Disease_Name_Preferred = disease)
+    req <- httr2::req_url_query(req, disease = disease)
   }
   if (!identical(pathogen, "all")) {
-    req <- httr2::req_url_query(req, pathogen_Species_Name_Preferred = pathogen)
+    req <- httr2::req_url_query(req, pathogen_species = pathogen)
   }
 
   if (verbose) {
@@ -302,8 +302,8 @@
 
   # return <epiparameter>
   epiparameter(
-    disease = x$disease_Name_Preferred,
-    pathogen = x$pathogen_Species_Name_Preferred,
+    disease = x$disease,
+    pathogen = x$pathogen_species,
     epi_name = epi_name,
     prob_distribution = prob_distribution,
     uncertainty = uncertainty,
