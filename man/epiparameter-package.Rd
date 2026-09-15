@@ -23,6 +23,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Joshua W. Lambert \email{joshua.lambert@lshtm.ac.uk} (\href{https://orcid.org/0000-0001-5218-3046}{ORCID}) [copyright holder]
   \item Adam Kucharski \email{adam.kucharski@lshtm.ac.uk} (\href{https://orcid.org/0000-0001-8814-9421}{ORCID}) [copyright holder]
   \item Carmen Tamayo Cuartero \email{carmen.tamayo-cuartero@lshtm.ac.uk} (\href{https://orcid.org/0000-0003-4184-2864}{ORCID})
 }
