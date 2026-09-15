@@ -106,7 +106,7 @@ create_prob_distribution(
   truncation = 10
 )
 #> <distribution[1]>
-#> [1] Γ(1, 1)[-Inf,10]
+#> [1] Γ(1, 1)(-Inf,10]
 
 # example with discrete distribution
 create_prob_distribution(
