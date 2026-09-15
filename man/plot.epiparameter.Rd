@@ -29,7 +29,7 @@ By default if the \code{xlim} argument is not specified the distribution is
 plotted between day 0 and the 99th quantile of the distribution.
 Alternatively, a \code{numeric} vector of length 2 with the
 first and last day to plot on the x-axis can be supplied to \code{xlim}
-(through \link{...}).
+(through \link{dots}).
 }
 \examples{
 # plot continuous epiparameter
