@@ -12,6 +12,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{distributional}{\code{\link[distributional]{cdf}}, \code{\link[distributional:reexports]{generate}}}
+  \item{distributional}{\code{\link[distributional:cdf]{cdf()}}, \code{\link[distributional:generate]{generate}}}
 }}
 
