@@ -627,7 +627,7 @@ is_epiparameter_params <- function(prob_distribution,
     exp = .clean_params_exp,
     mixture = function(x) x,
     stop("Probability distribution not recognised", call. = FALSE)
-  )
+  ) # nolint: unreachable_code_linter. false positive, r-lib/lintr#3084
   clean_params <- do.call(clean_func, list(prob_distribution_params))
   # reappend truncation parameter if truncated
   if (is_trunc) {
