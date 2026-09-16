@@ -62,3 +62,38 @@ test_that("print method omits the reported interval when absent", {
   out <- utils::capture.output(print(ep))
   expect_false(any(grepl("Reported Interval", out)))
 })
+
+test_that("print method shows extrinsic when the parameter is extrinsic", {
+  ep <- suppressMessages(epiparameter(
+    disease = "Dengue",
+    epi_name = "incubation period",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = NA_character_
+    ),
+    metadata = create_metadata(
+      units = "days",
+      transmission_mode = "vector_borne",
+      vector = "Aedes aegypti",
+      extrinsic = TRUE
+    )
+  ))
+  expect_output(print(ep), "Extrinsic: TRUE")
+})
+
+test_that("print method omits extrinsic when the parameter is intrinsic", {
+  ep <- suppressMessages(epiparameter(
+    disease = "Dengue",
+    epi_name = "incubation period",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = NA_character_
+    ),
+    metadata = create_metadata(
+      units = "days",
+      transmission_mode = "vector_borne",
+      vector = "Aedes aegypti",
+      extrinsic = FALSE
+    )
+  ))
+  out <- utils::capture.output(print(ep))
+  expect_false(any(grepl("Extrinsic", out)))
+})
