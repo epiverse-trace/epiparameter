@@ -5,6 +5,7 @@ cachem
 ci
 CMD
 Codecov
+Collaboratory
 contactmatrix
 CoV
 Cuartero
@@ -15,6 +16,7 @@ distcrete
 dplyr
 ebola
 epidist
+EpiNow
 EpiParameter
 epiparameterDB
 epiparameters
@@ -48,6 +50,7 @@ pkgdown
 PMF
 poisson
 Poisson
+primarycensored
 PRISMA
 prob
 PubMed
