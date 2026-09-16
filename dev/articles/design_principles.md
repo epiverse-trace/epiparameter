@@ -32,6 +32,22 @@ both of these methods and the functions used are explained in the
 [Parameter extraction and conversion in {epiparameter}
 vignette](https://epiverse-trace.github.io/epiparameter/dev/articles/extract_convert.md).
 
+The package does not estimate epidemiological parameters from data.
+Fitting a distribution to individual-level data – for example observed
+delays in a line list – requires accounting for interval censoring,
+right truncation and epidemic phase bias, and is the domain of
+specialist packages such as
+[{primarycensored}](https://primarycensored.epinowcast.org/),
+[{epidist}](https://epidist.epinowcast.org/) and
+[{EpiNow2}](https://epiforecasts.io/EpiNow2/). This boundary is worth
+drawing carefully, because
+[`extract_param()`](https://epiverse-trace.github.io/epiparameter/dev/reference/extract_param.md)
+does perform an optimisation: it recovers distribution parameters from
+*reported summary statistics*, such as percentiles or a range, and not
+from observed data. Parameters estimated elsewhere can be brought into
+the package by constructing an `<epiparameter>` object with
+[`epiparameter()`](https://epiverse-trace.github.io/epiparameter/dev/reference/epiparameter.md).
+
 ## Output
 
 The output of the

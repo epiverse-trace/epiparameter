@@ -130,6 +130,18 @@ statistics, and vice versa. This is achieved either by conversion or
 extraction and both of these methods and the functions used are
 explained in the <a href="extract_convert.html">Parameter extraction and
 conversion in {epiparameter} vignette</a>.</p>
+<p>The package does not estimate epidemiological parameters from data.
+Fitting a distribution to individual-level data – for example observed
+delays in a line list – requires accounting for interval censoring,
+right truncation and epidemic phase bias, and is the domain of
+specialist packages such as <a href="https://primarycensored.epinowcast.org/" class="external-link">{primarycensored}</a>, <a href="https://epidist.epinowcast.org/" class="external-link">{epidist}</a> and <a href="https://epiforecasts.io/EpiNow2/" class="external-link">{EpiNow2}</a>. This boundary is
+worth drawing carefully, because <code><a href="../reference/extract_param.html">extract_param()</a></code> does
+perform an optimisation: it recovers distribution parameters from
+<em>reported summary statistics</em>, such as percentiles or a range,
+and not from observed data. Parameters estimated elsewhere can be
+brought into the package by constructing an
+<code>&lt;epiparameter&gt;</code> object with
+<code><a href="../reference/epiparameter.html">epiparameter()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="output">Output<a class="anchor" aria-label="anchor" href="#output"></a>
