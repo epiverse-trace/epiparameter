@@ -1,5 +1,18 @@
 # epiparameter (development version)
 
+## Minor changes
+
+* The `<epiparameter>` `format()` and `print()` methods now show
+  `Extrinsic: TRUE` for extrinsic parameters, such as the extrinsic incubation
+  period of a vector-borne disease. It is not shown for intrinsic parameters,
+  so output is unchanged for all other entries (#363).
+
+* The documentation of the `extrinsic` argument in `create_metadata()` is
+  updated to describe it as a descriptor of whether the parameter is for the
+  vector or the host. The previous wording referred to linking intrinsic and
+  extrinsic entries, which described the `<vb_epidist>` class removed in
+  v0.3.0 (#363).
+
 * Update `.read_grepi()` and `.grepi_to_epiparameter()` for the grEPI v3.0.6
   property renames on the `EpiParameterEstimates` endpoint
   (`epiParameter_Estimate_Type` -> `parameter_type`,
