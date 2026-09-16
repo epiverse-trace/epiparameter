@@ -27,6 +27,12 @@ format.epiparameter <- function(x, ...) {
     )
   )
 
+  # only shown for extrinsic parameters (e.g. the extrinsic incubation period
+  # of a vector-borne disease) as this is not relevant for most entries
+  if (isTRUE(x$metadata$extrinsic)) {
+    writeLines(tr_("Extrinsic: TRUE"))
+  }
+
   if (is.object(x$prob_distribution)) {
     dist_string <- ifelse(
       test = inherits(x$prob_distribution, "distcrete"),
