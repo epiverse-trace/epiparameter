@@ -40,10 +40,11 @@ in parentheses. When a disease is not vector-borne NA should be given.}
 
 \item{extrinsic}{A boolean value defining whether the data entry is an
 extrinsic delay distribution, such as the extrinsic incubation period.
-This field is required because intrinsic and extrinsic delay distributions
-are stored as separate entries in the database and can be linked.
-When the disease is not vector-borne FALSE should be given. See Details for
-explanation of extrinsic distribution.}
+It describes whether the epidemiological parameter is for the vector
+(\code{extrinsic = TRUE}) or the host (\code{extrinsic = FALSE}); intrinsic and
+extrinsic delay distributions are stored as separate entries in the
+database. When the disease is not vector-borne FALSE should be given. See
+Details for explanation of extrinsic distribution.}
 
 \item{inference_method}{The type of inference used to fit the delay
 distribution to the data. Abbreviations of model fitting techniques can be
