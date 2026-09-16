@@ -127,10 +127,11 @@ in parentheses. When a disease is not vector-borne NA should be given.</p></dd>
 <dt id="arg-extrinsic">extrinsic<a class="anchor" aria-label="anchor" href="#arg-extrinsic"></a></dt>
 <dd><p>A boolean value defining whether the data entry is an
 extrinsic delay distribution, such as the extrinsic incubation period.
-This field is required because intrinsic and extrinsic delay distributions
-are stored as separate entries in the database and can be linked.
-When the disease is not vector-borne FALSE should be given. See Details for
-explanation of extrinsic distribution.</p></dd>
+It describes whether the epidemiological parameter is for the vector
+(<code>extrinsic = TRUE</code>) or the host (<code>extrinsic = FALSE</code>); intrinsic and
+extrinsic delay distributions are stored as separate entries in the
+database. When the disease is not vector-borne FALSE should be given. See
+Details for explanation of extrinsic distribution.</p></dd>
 
 
 <dt id="arg-inference-method">inference_method<a class="anchor" aria-label="anchor" href="#arg-inference-method"></a></dt>

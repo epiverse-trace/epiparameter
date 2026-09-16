@@ -65,7 +65,11 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="epiparameter-development-version">epiparameter (development version)<a class="anchor" aria-label="anchor" href="#epiparameter-development-version"></a></h2>
-<ul><li><p>Update <code>.read_grepi()</code> and <code>.grepi_to_epiparameter()</code> for the grEPI v3.0.6 property renames on the <code>EpiParameterEstimates</code> endpoint (<code>epiParameter_Estimate_Type</code> -&gt; <code>parameter_type</code>, <code>epiParameter_Estimate_Subtype</code> -&gt; <code>parameter_subtype</code>, <code>epiParameter_EventFrom</code> -&gt; <code>delay_event_start</code>, <code>epiParameter_EventTo</code> -&gt; <code>delay_event_end</code>, <code>epiParameter_Estimate_Unit</code> -&gt; <code>estimate_unit</code>, <code>epiParameter_Distribution_Type</code> -&gt; <code>distribution_type</code>, <code>epi_Parameter_Method_Inference</code> -&gt; <code>inference_method</code>) (<a href="https://github.com/epiverse-trace/epiparameter/issues/498" class="external-link">#498</a>).</p></li>
+<div class="section level3">
+<h3 id="minor-changes-development-version">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-development-version"></a></h3>
+<ul><li><p>The <code>&lt;epiparameter&gt;</code> <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> and <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> methods now show <code>Extrinsic: TRUE</code> for extrinsic parameters, such as the extrinsic incubation period of a vector-borne disease. It is not shown for intrinsic parameters, so output is unchanged for all other entries (<a href="https://github.com/epiverse-trace/epiparameter/issues/363" class="external-link">#363</a>).</p></li>
+<li><p>The documentation of the <code>extrinsic</code> argument in <code><a href="../reference/create_metadata.html">create_metadata()</a></code> is updated to describe it as a descriptor of whether the parameter is for the vector or the host. The previous wording referred to linking intrinsic and extrinsic entries, which described the <code>&lt;vb_epidist&gt;</code> class removed in v0.3.0 (<a href="https://github.com/epiverse-trace/epiparameter/issues/363" class="external-link">#363</a>).</p></li>
+<li><p>Update <code>.read_grepi()</code> and <code>.grepi_to_epiparameter()</code> for the grEPI v3.0.6 property renames on the <code>EpiParameterEstimates</code> endpoint (<code>epiParameter_Estimate_Type</code> -&gt; <code>parameter_type</code>, <code>epiParameter_Estimate_Subtype</code> -&gt; <code>parameter_subtype</code>, <code>epiParameter_EventFrom</code> -&gt; <code>delay_event_start</code>, <code>epiParameter_EventTo</code> -&gt; <code>delay_event_end</code>, <code>epiParameter_Estimate_Unit</code> -&gt; <code>estimate_unit</code>, <code>epiParameter_Distribution_Type</code> -&gt; <code>distribution_type</code>, <code>epi_Parameter_Method_Inference</code> -&gt; <code>inference_method</code>) (<a href="https://github.com/epiverse-trace/epiparameter/issues/498" class="external-link">#498</a>).</p></li>
 <li>
 <p>Fix two further <code>.grepi_to_epiparameter()</code> parsing failures found while testing the above against grEPI UAT. Neither is caused by v3.0.6; both are pre-existing API behaviour that predates it and were only surfaced by this round of testing:</p>
 <ul><li>
@@ -74,13 +78,14 @@
 <code>epi_Parameter_Method_Inference_DataIsCensored</code>/<code>DataIsTruncated</code> have been split into <code>_Left</code>/<code>_Right</code>/<code>_Interval</code> fields, so the old (removed) field names always read as <code>NULL</code>. <code>censored</code> is now <code>TRUE</code> if any of the three censoring flags is <code>TRUE</code>; <code>right_truncated</code> now reads <code>..._DataIsTruncated_Right</code> directly (left-truncation has no equivalent slot in <code><a href="../reference/create_method_assess.html">create_method_assess()</a></code>).</li>
 </ul></li>
 <li><p>Update <code>.read_grepi()</code> and <code>.grepi_to_epiparameter()</code> for the grEPI v3.0.4 property renames on the <code>EpiParameterEstimates</code> endpoint (<code>disease_Name_Preferred</code> -&gt; <code>disease</code>, <code>pathogen_Species_Name_preferred</code> -&gt; <code>pathogen_species</code>) (<a href="https://github.com/epiverse-trace/epiparameter/issues/495" class="external-link">#495</a>).</p></li>
-</ul><div class="section level3">
+</ul></div>
+<div class="section level3">
 <h3 id="bug-fixes-development-version">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
 <ul><li>
 <code>.grepi_to_epiparameter()</code> now reads the article DOI from <code>article_Unique_Identifier</code> (gated on <code>article_Unique_Identifier_Type</code>) instead of the removed <code>article_DOI</code> field, to match the grEPI v3.0.1 API restructure (<a href="https://github.com/epiverse-trace/epiparameter/issues/490" class="external-link">#490</a>).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="minor-changes-development-version">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-development-version"></a></h3>
+<h3 id="minor-changes-development-version-1">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-development-version-1"></a></h3>
 <ul><li>
 <code>.read_grepi()</code> gains a <code>base_url</code> argument (defaulting to the production grEPI endpoint) so tests and manual checks can target the grEPI UAT environment (<a href="https://github.com/epiverse-trace/epiparameter/issues/490" class="external-link">#490</a>).</li>
 </ul></div>

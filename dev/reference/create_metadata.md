@@ -57,11 +57,12 @@ create_metadata(
 - extrinsic:
 
   A boolean value defining whether the data entry is an extrinsic delay
-  distribution, such as the extrinsic incubation period. This field is
-  required because intrinsic and extrinsic delay distributions are
-  stored as separate entries in the database and can be linked. When the
-  disease is not vector-borne FALSE should be given. See Details for
-  explanation of extrinsic distribution.
+  distribution, such as the extrinsic incubation period. It describes
+  whether the epidemiological parameter is for the vector
+  (`extrinsic = TRUE`) or the host (`extrinsic = FALSE`); intrinsic and
+  extrinsic delay distributions are stored as separate entries in the
+  database. When the disease is not vector-borne FALSE should be given.
+  See Details for explanation of extrinsic distribution.
 
 - inference_method:
 
