@@ -284,7 +284,7 @@ is_epiparameter_df <- function(x) {
     "Ebola virus" = "Ebola Virus Disease",
     "SARS-CoV" = "Severe Acute Respiratory Syndrome (SARS)",
     stop("Pathogen in {epireview} not recognised", call. = FALSE)
-  )
+  ) # nolint: unreachable_code_linter. false positive, r-lib/lintr#3084
   epi_name <- .unique(x$parameter_type, var_name = "parameter types")
   prob_dist <- .unique(x$distribution_type, var_name = "distribution types")
   sd_ <- NULL
@@ -304,7 +304,7 @@ is_epiparameter_df <- function(x) {
         "Probability distribution in epireview not recognised",
         call. = FALSE
       )
-    )
+    ) # nolint: unreachable_code_linter. false positive, r-lib/lintr#3084
     if (rlang::is_chr_na(prob_dist)) {
       stop(
         "epireview entry has Normal-log distribution, this is not currently ",
@@ -369,7 +369,7 @@ is_epiparameter_df <- function(x) {
     Other = NA_character_,
     "NA" = NULL,
     stop("Parameter value type not recognised", call. = FALSE)
-  )
+  ) # nolint: unreachable_code_linter. false positive, r-lib/lintr#3084
   # ensure param_type is unnamed vector as it is used for list subsetting
   param_type <- unlist(unname(param_type))
   is_other <- vapply(

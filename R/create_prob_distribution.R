@@ -187,7 +187,7 @@ create_prob_distribution <- function(prob_distribution,
         rate = prob_distribution_params[["rate"]]
       ),
       stop("Did not recognise distribution name", call. = FALSE)
-    )
+    ) # nolint: unreachable_code_linter. false positive, r-lib/lintr#3084
   }
 
   # apply truncation to distribution if specified
