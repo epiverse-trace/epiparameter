@@ -147,3 +147,52 @@ Please note that the `{epiparameter}` project is released with a [Contributor Co
 ```{r message=FALSE, warning=FALSE}
 citation("epiparameter")
 ```
+
+## Related projects
+
+`{epiparameter}` provides classes and helper functions for working with
+epidemiological parameters. It is not the only source of already-estimated
+parameters:
+
+- [`{epiparameterDB}`](https://CRAN.R-project.org/package=epiparameterDB) holds
+the library of epidemiological parameters loaded by `epiparameter_db()`.
+
+- [`{epireview}`](https://mrc-ide.github.io/epireview/) provides parameters for
+a range of pathogens extracted from the literature by the Pathogen Epidemiology
+Review Group (PERG) in systematic reviews. Its parameter tables can be
+converted with `as_epiparameter()`, as described in the
+[Using {epireview} with {epiparameter}](https://epiverse-trace.github.io/epiparameter/articles/data_from_epireview.html)
+article.
+
+- grEPI, the Global Epidemiological Parameters database hosted on the
+[WHO Collaboratory](https://collaboratory.who.int/), can be queried directly
+with `epiparameter_db(db = "grEPI")`.
+
+`{epiparameter}` also does not estimate parameters from data. The following
+packages do, and are intended to be used alongside `{epiparameter}`:
+
+- [`{primarycensored}`](https://primarycensored.epinowcast.org/) fits delay
+distributions while accounting for primary event censoring, secondary event
+interval censoring and right truncation. It extends
+[`{fitdistrplus}`](https://CRAN.R-project.org/package=fitdistrplus), and is a
+good starting point when fitting delays to individual-level data.
+
+- [`{epidist}`](https://epidist.epinowcast.org/) estimates epidemiological
+delay distributions in a Bayesian framework, also accounting for censoring and
+truncation.
+
+- [`{EpiNow2}`](https://epiforecasts.io/EpiNow2/) provides `estimate_delay()`
+for fitting delay distributions, and `estimate_truncation()` for estimating and
+adjusting for right truncation.
+
+- [`{fitdistrplus}`](https://CRAN.R-project.org/package=fitdistrplus) is a
+general-purpose distribution fitting package. It does not handle
+discretisation, censoring or truncation itself, so for epidemiological delays
+it is best used through `{primarycensored}`.
+
+- [`{epitrix}`](https://www.repidemicsconsortium.org/epitrix/) provides
+`fit_disc_gamma()` for fitting a discretised gamma distribution.
+
+Estimates obtained from completed delays alone can be subject to epidemic phase
+bias and right truncation, so we recommend the packages above that account for
+these.
