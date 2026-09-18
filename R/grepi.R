@@ -174,10 +174,12 @@
   has_dist <- !is.null(dist_raw) && !is.na(dist_raw) &&
               dist_raw %in% names(dist_lookup)
   dist <- if (has_dist) unname(dist_lookup[[dist_raw]]) else NA_character_
+  # nolint start: commented_code_linter.
   # availability is determined from the parameter values,
   # length is checked as the fields are absent for most records
   # `[[` is used rather than `$` to avoid partial matching `*_Value` to
   # `*_Value_Type`
+  # nolint end
   param1 <- x[["epiParameter_Distribution_Parameter1_Value"]]
   param2 <- x[["epiParameter_Distribution_Parameter2_Value"]]
   params_available <-
