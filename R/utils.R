@@ -75,4 +75,4 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
   cite
 }
 
-`%||%` <- function(x, y) if (is.null(x)) y else x # nolint
+`%||%` <- function(x, y) if (is.null(x)) y else x # nolint: coalesce_linter.

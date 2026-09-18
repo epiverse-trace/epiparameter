@@ -83,8 +83,8 @@ print.multi_epiparameter <- function(x, ..., n = NULL) {
         " Use `parameter_tbl()` to see a summary table of the parameters.\n",
         "# ", cli::symbol$info, " Explore database online at: ",
         cli::style_hyperlink(
-          text = "https://epiverse-trace.github.io/epiparameter/articles/database.html", # nolint line_length_linter
-          url = "https://epiverse-trace.github.io/epiparameter/articles/database.html" # nolint line_length_linter
+          text = "https://epiverse-trace.github.io/epiparameter/articles/database.html", # nolint: line_length_linter.
+          url = "https://epiverse-trace.github.io/epiparameter/articles/database.html" # nolint: line_length_linter.
         )
       )
     )

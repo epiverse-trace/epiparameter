@@ -29,7 +29,7 @@
 #'
 #' @return A named `numeric` vector with parameters.
 #' @keywords internal
-.calc_dist_params <- function(prob_distribution, # nolint cyclocomp
+.calc_dist_params <- function(prob_distribution,
                               summary_stats,
                               sample_size,
                               verbose = TRUE) {

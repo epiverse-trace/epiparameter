@@ -1,4 +1,3 @@
-# nolint start: line_length_linter
 #' Create `<epiparameter>` object(s) directly from the epiparameter library
 #' (database)
 #'
@@ -86,7 +85,8 @@
 #' epidemiological parameter from. Default is `"epiparameterDB"`, which loads
 #' from the \pkg{epiparameterDB} R package. The other option is `"grEPI"`,
 #' which loads from the
-#' [WHO Global Repository of Epidemiological Parameters](https://who-collaboratory.github.io/collaboratory-grepi-web/).
+#' [WHO Global Repository of Epidemiological
+#' Parameters](https://who-collaboratory.github.io/collaboratory-grepi-web/).
 #'
 #' @param verbose A `logical` controlling whether informational [message()]s
 #' are printed. Warnings and errors are not affected. Defaults to the
@@ -119,8 +119,7 @@
 #'   epi_name = "offspring_distribution",
 #'   single_epiparameter = TRUE
 #' )
-# nolint end: line_length_linter
-epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter
+epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter.
                             pathogen = "all",
                             epi_name = "all",
                             author = NULL,
@@ -382,7 +381,7 @@ epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter
         stop(
           cli::style_bold(epi_name_), " distribution not available for ",
           msg_str, " in the database. \n Please check the spelling of ",
-          "the disease/pathogen and epiparameter name.", # nolint
+          "the disease/pathogen and epiparameter name.", # nolint: nonportable_path_linter, line_length_linter.
           call. = FALSE
         )
       } else if (epi_name != "all") {
@@ -395,7 +394,7 @@ epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter
       } else {
         stop(
           msg_str, " not found as a disease/pathogen in the database. \n ",
-          "Please check the spelling of the disease/pathogen name.", # nolint
+          "Please check the spelling of the disease/pathogen name.", # nolint: nonportable_path_linter, line_length_linter.
           call. = FALSE
         )
       }

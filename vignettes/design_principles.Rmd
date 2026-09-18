@@ -38,7 +38,7 @@ Much of the {epiparameter} package is centred around the `<epiparameter>` class.
 
 ```{r, echo=FALSE, fig.width=8, fig.height=5}
 # read NAMESPACE
-namespace <- base::parseNamespaceFile("epiparameter", .libPaths()[1L]) # nolint: undesirable_function_linter
+namespace <- base::parseNamespaceFile("epiparameter", .libPaths()[1L]) # nolint: undesirable_function_linter, line_length_linter.
 s3methods <- namespace$S3methods
 epiparameter_class_methods <-
   s3methods[which(s3methods[, 2] == "epiparameter"), 1]

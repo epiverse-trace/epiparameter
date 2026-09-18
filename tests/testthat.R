@@ -6,9 +6,7 @@
 # * https://r-pkgs.org/tests.html
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
-# nolint start
 library(testthat)
 library(epiparameter)
-# nolint end
 
 test_check("epiparameter")
