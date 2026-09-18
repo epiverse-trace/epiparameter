@@ -508,7 +508,7 @@ density.epiparameter <- function(x, at, ...) {
   if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_distribution$d(at)
   } else {
-    out <- stats::density(x$prob_distribution, at = at)
+    out <- density(x$prob_distribution, at = at)
   }
   if (is.atomic(out)) {
     return(out)
@@ -518,7 +518,7 @@ density.epiparameter <- function(x, at, ...) {
 
 #' @importFrom distributional cdf
 #' @export
-distributional::cdf
+distributional::cdf  # nolint: namespace_linter. re-export requires `::`
 
 #' @rdname epiparameter_distribution_functions
 #' @importFrom distributional cdf
@@ -532,7 +532,7 @@ cdf.epiparameter <- function(x, q, ..., log = FALSE) {
     out <- x$prob_distribution$p(q)
     if (log) out <- log(out)
   } else {
-    out <- distributional::cdf(x$prob_distribution, q = q, ..., log = log)
+    out <- cdf(x$prob_distribution, q = q, ..., log = log)
   }
   if (is.atomic(out)) {
     return(out)
@@ -550,7 +550,7 @@ quantile.epiparameter <- function(x, p, ...) {
   if (inherits(x$prob_distribution, "distcrete")) {
     out <- x$prob_distribution$q(p)
   } else {
-    out <- stats::quantile(x$prob_distribution, p = p)
+    out <- quantile(x$prob_distribution, p = p)
   }
   offset <- attr(x$prob_distribution, "offset") %||% 0
   if (is.atomic(out)) {
@@ -561,7 +561,7 @@ quantile.epiparameter <- function(x, p, ...) {
 
 #' @importFrom distributional generate
 #' @export
-distributional::generate
+distributional::generate  # nolint: namespace_linter. re-export requires `::`
 
 #' @rdname epiparameter_distribution_functions
 #' @importFrom distributional generate
@@ -578,7 +578,7 @@ generate.epiparameter <- function(x, times, ...) {
     out <- if (unlist) unlist(out, recursive = FALSE) else out
   } else {
     recursive <- length(x$prob_distribution) == 1
-    out <- distributional::generate(x$prob_distribution, times = times)
+    out <- generate(x$prob_distribution, times = times)
     out <- unlist(out, recursive = recursive)
   }
   out <- out + (attr(x$prob_distribution, "offset") %||% 0)
