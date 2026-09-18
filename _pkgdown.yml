@@ -92,7 +92,7 @@ articles:
 - title: Parameter library
   navbar: Epiparameter Data
   contents:
-  - data_protocol
+  - data_sources
   - database
 
 - title: Data from other packages
