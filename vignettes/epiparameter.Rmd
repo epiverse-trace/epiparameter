@@ -61,8 +61,8 @@ parameter_tbl(multi_epiparameter = db)
 parameter_tbl(multi_epiparameter = db, disease = "Ebola")
 ```
 
-More details on the data collation and the library of parameters can be found in
-the [Data Collation and Synthesis Protocol vignette](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html).
+More details on where the parameters come from can be found in the
+[Epidemiological parameter data sources vignette](https://epiverse-trace.github.io/epiparameter/articles/data_sources.html).
 
 ### Single set of epidemiological parameters
 
@@ -210,4 +210,4 @@ tail(new_db, n = 3)
 
 Note that this only adds the parameters to the library in the environment, and does not save to the database file in the package. Hence, if you restart your R session, you will lose the changes. 
 
-The library of epidemiological parameters is a living database, so as new studies are published we hope to incorporate these. Searching for and recording parameters in the database is extremely time-consuming, so we welcome contributions of new parameters by either making a pull request to the package or adding information to the contributing spreadsheet. These will be incorporated into the database by the package maintainers and your contributions will be acknowledged. See the [Data Collation and Synthesis Protocol](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html) vignette on information about contributing to the library of epidemiological parameters.
+The library bundled with the package is a development and experimentation set rather than a comprehensive repository. Parameters curated for long-term use live in [grEPI](https://who-collaboratory.github.io/collaboratory-grepi-web/) and [`{epireview}`](https://mrc-ide.github.io/epireview/), and both can be read into `<epiparameter>` objects. See the [Epidemiological parameter data sources](https://epiverse-trace.github.io/epiparameter/articles/data_sources.html) vignette for each source and how to read it, and [Using {epireview} with {epiparameter}](https://epiverse-trace.github.io/epiparameter/articles/data_from_epireview.html) for a worked example of converting {epireview} parameter tables with `as_epiparameter()`.
