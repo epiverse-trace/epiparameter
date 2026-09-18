@@ -173,13 +173,16 @@
   has_dist <- !is.null(dist_raw) && !is.na(dist_raw) &&
               dist_raw %in% names(dist_lookup)
   dist <- if (has_dist) unname(dist_lookup[[dist_raw]]) else NA_character_
+  # availability is determined from the parameter values,
+  # length is checked as the fields are absent for most records
+  param1 <- x$epiParameter_Distribution_Parameter1_Value
+  param2 <- x$epiParameter_Distribution_Parameter2_Value
   params_available <-
-    isTRUE(x$epiParameter_Distribution_Parameter1_IsValueAvailable) &&
-    isTRUE(x$epiParameter_Distribution_Parameter2_IsValueAvailable)
+    length(param1) == 1L && !is.na(param1) &&
+    length(param2) == 1L && !is.na(param2)
   if (has_dist && params_available) {
     prob_distribution_params <- stats::setNames(
-      c(x$epiParameter_Distribution_Parameter1_Value,
-        x$epiParameter_Distribution_Parameter2_Value),
+      c(param1, param2),
       tolower(c(x$epiParameter_Distribution_Parameter1_Value_Type,
                 x$epiParameter_Distribution_Parameter2_Value_Type))
     )
@@ -197,7 +200,8 @@
     # the values as summary statistics (mean + SD) rather than the
     # distribution's canonical parameters. Carry the values forward as
     # summary stats and keep `prob_distribution` as the family name only.
-    sd_alias <- c("sd", "standard deviation (sd)")
+    # grEPI labels the standard deviation paired with a mean as "Mean sd"
+    sd_alias <- c("sd", "standard deviation (sd)", "mean sd")
     pp_names <- names(prob_distribution_params)
     is_mean_sd <- length(pp_names) == 2L &&
       "mean" %in% pp_names &&
