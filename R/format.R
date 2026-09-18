@@ -77,7 +77,7 @@ format.epiparameter <- function(x, ...) {
 
     writeLines(
       c(
-        sprintf(tr_("Parameters:")),
+        tr_("Parameters:"),
         sprintf(
           "  %s: %s",
           names(params),
