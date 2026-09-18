@@ -176,11 +176,13 @@
   dist <- if (has_dist) unname(dist_lookup[[dist_raw]]) else NA_character_
   # availability is determined from the parameter values,
   # length is checked as the fields are absent for most records
-  param1 <- x$epiParameter_Distribution_Parameter1_Value
-  param2 <- x$epiParameter_Distribution_Parameter2_Value
+  # `[[` is used rather than `$` to avoid partial matching `*_Value` to
+  # `*_Value_Type`
+  param1 <- x[["epiParameter_Distribution_Parameter1_Value"]]
+  param2 <- x[["epiParameter_Distribution_Parameter2_Value"]]
   params_available <-
-    length(param1) == 1L && !is.na(param1) &&
-    length(param2) == 1L && !is.na(param2)
+    length(param1) == 1L && is.numeric(param1) && !is.na(param1) &&
+    length(param2) == 1L && is.numeric(param2) && !is.na(param2)
   if (has_dist && params_available) {
     prob_distribution_params <- stats::setNames(
       c(param1, param2),
