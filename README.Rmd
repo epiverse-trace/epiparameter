@@ -122,11 +122,9 @@ The parameters of a probability distribution can also be extracted from other su
 
 ## Contributing to library of epidemiological parameters
 
-The library of epidemiological parameters that can be loaded by `{epiparameter}` using the `epiparameter_db()` function is stored in the [`{epiparameterDB}` R package](https://github.com/epiverse-trace/epiparameterDB). If you would like to contribute to the library of epiparameters you can either: 
+The library of epidemiological parameters that can be loaded by `{epiparameter}` using the `epiparameter_db()` function is stored in the [`{epiparameterDB}` R package](https://github.com/epiverse-trace/epiparameterDB). To contribute an entry, add it to the [JSON file holding the database](https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/parameters.json) via a pull request to that repository. The [Epiverse-TRACE contributing guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md) covers the pull request process; the format of an entry is described in the [Epidemiological parameter data sources](https://epiverse-trace.github.io/epiparameter/articles/data_sources.html) vignette.
 
-1. Add data to a public [google sheet](https://docs.google.com/spreadsheets/d/1eCL3n_woseg5Npu7XD7TcuNoLUIhMBu8ZoLCkVdATUE/edit?usp=sharing). This spreadsheet contains two example entries as a guide to what fields are accepted. We are monitoring this sheet for new entries that will subsequently be included in the package.
-
-2. Add to the [JSON file holding the database](https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/parameters.json) directly via a Pull Request. See the [contributing guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md) for instructions.
+The bundled library is a development and experimentation set rather than a comprehensive repository. Parameters intended for long-term curation are better contributed to [grEPI](https://who-collaboratory.github.io/collaboratory-grepi-web/) or [`{epireview}`](https://mrc-ide.github.io/epireview/) directly.
 
 You can find a description of the epidemiological parameter data structure and contents in the [data dictionary](https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/data_dictionary.json). This documents the valid format and data types to ensure consistency and accuracy. All entries in the parameter library are automatically validated against the data dictionary using an GitHub action workflow.
 
