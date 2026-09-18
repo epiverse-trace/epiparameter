@@ -31,7 +31,7 @@ test_that("create_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint: nonportable_path_linter.
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -45,7 +45,7 @@ test_that("create_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint: nonportable_path_linter.
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -57,7 +57,7 @@ test_that("create_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint: nonportable_path_linter.
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -69,7 +69,7 @@ test_that("create_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint: nonportable_path_linter.
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -81,7 +81,7 @@ test_that("create_citation works with different author inputs", {
     year = 2002,
     title = "COVID-19 incubation period",
     journal = "Epi Journal",
-    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+    doi = "10.19832/j.1366-9516.2012.09147.x" # nolint: nonportable_path_linter.
   ))
   expect_s3_class(cit, class = "bibentry")
   expect_s3_class(cit$author, class = "person")
@@ -100,7 +100,7 @@ test_that("create_citation is verbose by default", {
       year = 2002,
       title = "COVID-19 incubation period",
       journal = "Epi Journal",
-      doi = "10.19832/j.1366-9516.2012.09147.x" # nolint file.path
+      doi = "10.19832/j.1366-9516.2012.09147.x" # nolint: nonportable_path_linter.
     ),
     regexp = "Using"
   )
@@ -116,13 +116,13 @@ test_that("create_citation(verbose = FALSE) suppresses messages", {
       year = 2002,
       title = "COVID-19 incubation period",
       journal = "Epi Journal",
-      doi = "10.19832/j.1366-9516.2012.09147.x", # nolint file.path
+      doi = "10.19832/j.1366-9516.2012.09147.x", # nolint: nonportable_path_linter.
       verbose = FALSE
     )
   )
 })
 
-test_that("create_citation respects options(epiparameter = list(verbose = FALSE))", { # nolint line_length_linter
+test_that("create_citation respects options(epiparameter = list(verbose = FALSE))", { # nolint: line_length_linter.
   old <- options(epiparameter = list(verbose = FALSE))
   on.exit(options(old), add = TRUE)
   .set_epiparameter_options()

@@ -223,7 +223,7 @@ is_epiparameter_df <- function(x) {
 #'
 #' @inherit epiparameter return
 #' @keywords internal
-.epiparameter_df_to_epiparameter <- function(x, ...) { # nolint object_length_linter
+.epiparameter_df_to_epiparameter <- function(x, ...) { # nolint: object_length_linter, line_length_linter.
   prob_dist <- x$prob_distribution[[1]]
   if (inherits(prob_dist, "distribution")) {
     prob_distribution_params <- unlist(
@@ -263,7 +263,7 @@ is_epiparameter_df <- function(x) {
 #' @inherit epiparameter return
 #' @keywords internal
 #' @noRd
-.epireview_to_epiparameter <- function(x, ...) { # nolint cyclocomp_linter
+.epireview_to_epiparameter <- function(x, ...) { # nolint: cyclocomp_linter.
   # capture dots and extract article info if supplied
   dots <- list(...)
   article <- dots$article
@@ -360,7 +360,7 @@ is_epiparameter_df <- function(x) {
     uncertainty <- create_uncertainty()
   }
   # vectorise switch (cannot use vapply due to various return FUN.VALUE)
-  param_type <- sapply( # nolint undesirable_function_linter
+  param_type <- sapply( # nolint: undesirable_function_linter.
     x$parameter_value_type,
     switch,
     Mean = "mean",

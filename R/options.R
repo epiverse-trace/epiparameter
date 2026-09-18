@@ -42,6 +42,6 @@ epiparameter_default_options <- list(
     user_opts <- list()
   }
   merged <- utils::modifyList(epiparameter_default_options, user_opts)
-  options(epiparameter = merged) # nolint undesirable_function_linter.
+  options(epiparameter = merged) # nolint: undesirable_function_linter.
   invisible(merged)
 }

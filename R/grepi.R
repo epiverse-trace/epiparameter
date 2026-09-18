@@ -7,19 +7,19 @@
 #' nicer printing)
 #' @keywords internal
 #' @noRd
-.read_grepi <- function(disease, # nolint: cyclocomp_linter
+.read_grepi <- function(disease, # nolint: cyclocomp_linter.
                         pathogen,
                         epi_name,
                         author,
                         subset,
                         single_epiparameter,
                         verbose,
-                        base_url = "https://collaboratory.who.int/grepi/api/EpiParameterEstimates") { # nolint
+                        base_url = "https://collaboratory.who.int/grepi/api/EpiParameterEstimates") { # nolint: line_length_linter.
 
   if (!is.null(author)) {
     warning(
       "Subsetting the grEPI database by `author` is not yet implemented. \n",
-      "Returning all studies that match disease/pathogen and epidemiological ", # nolint
+      "Returning all studies that match disease/pathogen and epidemiological ", # nolint: nonportable_path_linter, line_length_linter.
       "parameter",
       call. = FALSE
     )
@@ -27,7 +27,7 @@
   if (!is.null(subset)) {
     warning(
       "Subsetting the grEPI database using `subset` is not yet implemented. \n",
-      "Returning all studies that match disease/pathogen and epidemiological ", # nolint
+      "Returning all studies that match disease/pathogen and epidemiological ", # nolint: nonportable_path_linter, line_length_linter.
       "parameter",
       call. = FALSE
     )
@@ -35,7 +35,7 @@
   if (single_epiparameter) {
     warning(
       "`single_epiparameter` is not yet implemented for the grEPI database. \n",
-      "Returning all studies that match disease/pathogen and epidemiological ", # nolint
+      "Returning all studies that match disease/pathogen and epidemiological ", # nolint: nonportable_path_linter, line_length_linter.
       "parameter",
       call. = FALSE
     )
@@ -105,7 +105,7 @@
           stop(
             cli::style_bold(epi_name), " not available for ",
             msg_str, " in the grEPI database. \n Please check the spelling of ",
-            "the disease/pathogen and epiparameter name.", # nolint
+            "the disease/pathogen and epiparameter name.", # nolint: nonportable_path_linter, line_length_linter.
             "\n", cli::symbol$info, " If the epidemiological parameter name ",
             "partially matches multiple \n parameter types in the grEPI ",
             "database please specify the full name.",
@@ -123,8 +123,8 @@
           )
         } else {
           stop(
-            msg_str, " not found as a disease/pathogen in the grEPI database. ", # nolint
-            "\n Please check the spelling of the disease/pathogen name.", # nolint
+            msg_str, " not found as a disease/pathogen in the grEPI database. ", # nolint: nonportable_path_linter, line_length_linter.
+            "\n Please check the spelling of the disease/pathogen name.",
             call. = FALSE
           )
         }
@@ -163,7 +163,7 @@
 #' @inherit epiparameter return
 #' @keywords internal
 #' @noRd
-.grepi_to_epiparameter <- function(x, ...) { # nolint: cyclocomp_linter
+.grepi_to_epiparameter <- function(x, ...) { # nolint: cyclocomp_linter.
 
   # parameterised-distribution support for 2-parameter families. To add a new
   # family, extend dist_lookup; the rest of the branch is family-agnostic.
@@ -359,7 +359,7 @@
     ),
     method_assess = create_method_assess(
       censored = censored,
-      right_truncated = x$epi_Parameter_Method_Inference_DataIsTruncated_Right %||% NA, # nolint
+      right_truncated = x$epi_Parameter_Method_Inference_DataIsTruncated_Right %||% NA, # nolint: line_length_linter.
       phase_bias_adjusted = x$epi_Parameter_Method_Inference_DataIsBiasAdjusted
     ),
     notes = paste0(

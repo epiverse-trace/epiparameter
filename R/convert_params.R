@@ -48,7 +48,7 @@
 #' # example using <epiparameter> and specifying summary stats
 #' epiparameter$summary_stats <- list()
 #' convert_summary_stats_to_params(epiparameter, mean = 10, sd = 2)
-convert_summary_stats_to_params <- function(x, ...) { # nolint object_length_linter
+convert_summary_stats_to_params <- function(x, ...) { # nolint: object_length_linter, line_length_linter.
   UseMethod("convert_summary_stats_to_params")
 }
 
@@ -180,7 +180,7 @@ convert_summary_stats_to_params.epiparameter <- function(x, ...) {
 #'   subset = prob_dist == "weibull"
 #' )
 #' convert_params_to_summary_stats(epiparameter[[2]], shape = 1, scale = 1)
-convert_params_to_summary_stats <- function(x, ...) { # nolint object_length_linter
+convert_params_to_summary_stats <- function(x, ...) { # nolint: object_length_linter, line_length_linter.
   UseMethod("convert_params_to_summary_stats")
 }
 

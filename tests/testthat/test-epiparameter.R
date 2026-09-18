@@ -1387,7 +1387,7 @@ test_that("epiparameter(verbose = FALSE) suppresses informational messages", {
   expect_s3_class(ebola_dist, class = "epiparameter")
 })
 
-test_that("epiparameter respects options(epiparameter = list(verbose = FALSE))", { # nolint line_length_linter
+test_that("epiparameter respects options(epiparameter = list(verbose = FALSE))", { # nolint: line_length_linter.
   old <- options(epiparameter = list(verbose = FALSE))
   on.exit(options(old), add = TRUE)
   .set_epiparameter_options()

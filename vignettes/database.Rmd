@@ -21,7 +21,7 @@ tbl <- lapply(db, function(x) {
     pathogen = x$pathogen,
     epi_name = x$epi_name,
     citation_info = paste0(
-      epiparameter:::.citet(x$citation), # nolint undesirable_operator_linter
+      epiparameter:::.citet(x$citation), # nolint: undesirable_operator_linter.
       ", DOI: ",
       "<a href=\"https://doi.org/", x$citation$doi, "\">",
       x$citation$doi, "</a>"

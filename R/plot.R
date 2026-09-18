@@ -104,7 +104,7 @@ plot.epiparameter <- function(x,
       )
     }
   } else {
-    if (cumulative) { # nolint
+    if (cumulative) { # nolint: unnecessary_nesting_linter.
       graphics::barplot(
         height = cdf(x, q = unique(round(xlim))),
         space = 0,
