@@ -168,7 +168,8 @@
   # parameterised-distribution support for 2-parameter families. To add a new
   # family, extend dist_lookup; the rest of the branch is family-agnostic.
   dist_lookup <- c(Weibull = "weibull", Gamma = "gamma",
-                   "Log-normal" = "lnorm")
+                   "Log-normal" = "lnorm", Normal = "norm",
+                   "Negative binomial" = "nbinom", Poisson = "pois")
   dist_raw <- x$distribution_type
   has_dist <- !is.null(dist_raw) && !is.na(dist_raw) &&
               dist_raw %in% names(dist_lookup)
@@ -203,7 +204,15 @@
     # grEPI labels the standard deviation paired with a mean as "Mean sd"
     sd_alias <- c("sd", "standard deviation (sd)", "mean sd")
     pp_names <- names(prob_distribution_params)
-    is_mean_sd <- length(pp_names) == 2L &&
+    # the mean and standard deviation are the canonical parameters of the
+    # normal distribution, so they are kept as parameters rather than being
+    # carried forward as summary statistics
+    if (identical(dist, "norm")) {
+      names(prob_distribution_params)[pp_names %in% sd_alias] <- "sd"
+      pp_names <- names(prob_distribution_params)
+    }
+    is_mean_sd <- !identical(dist, "norm") &&
+      length(pp_names) == 2L &&
       "mean" %in% pp_names &&
       any(sd_alias %in% pp_names)
     if (is_mean_sd) {
