@@ -243,20 +243,21 @@ or the median and range of the data. This can be done for:
 The library of epidemiological parameters that can be loaded by
 `{epiparameter}` using the `epiparameter_db()` function is stored in the
 [`{epiparameterDB}` R
-package](https://github.com/epiverse-trace/epiparameterDB). If you would
-like to contribute to the library of epiparameters you can either:
+package](https://github.com/epiverse-trace/epiparameterDB). To
+contribute an entry, add it to the [JSON file holding the
+database](https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/parameters.json)
+via a pull request to that repository. The [Epiverse-TRACE contributing
+guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md)
+covers the pull request process; the format of an entry is described in
+the [Epidemiological parameter data
+sources](https://epiverse-trace.github.io/epiparameter/articles/data_sources.html)
+vignette.
 
-1.  Add data to a public [google
-    sheet](https://docs.google.com/spreadsheets/d/1eCL3n_woseg5Npu7XD7TcuNoLUIhMBu8ZoLCkVdATUE/edit?usp=sharing).
-    This spreadsheet contains two example entries as a guide to what
-    fields are accepted. We are monitoring this sheet for new entries
-    that will subsequently be included in the package.
-
-2.  Add to the [JSON file holding the
-    database](https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/parameters.json)
-    directly via a Pull Request. See the [contributing
-    guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md)
-    for instructions.
+The bundled library is a development and experimentation set rather than
+a comprehensive repository. Parameters intended for long-term curation
+are better contributed to
+[grEPI](https://who-collaboratory.github.io/collaboratory-grepi-web/) or
+[`{epireview}`](https://mrc-ide.github.io/epireview/) directly.
 
 You can find a description of the epidemiological parameter data
 structure and contents in the [data
@@ -304,3 +305,57 @@ citation("epiparameter")
 #>     url = {https://epiverse-trace.github.io/epiparameter/},
 #>   }
 ```
+
+## Related projects
+
+`{epiparameter}` provides classes and helper functions for working with
+epidemiological parameters. It is not the only source of
+already-estimated parameters:
+
+- [`{epiparameterDB}`](https://CRAN.R-project.org/package=epiparameterDB)
+  holds the library of epidemiological parameters loaded by
+  `epiparameter_db()`.
+
+- [`{epireview}`](https://mrc-ide.github.io/epireview/) provides
+  parameters for a range of pathogens extracted from the literature by
+  the Pathogen Epidemiology Review Group (PERG) in systematic reviews.
+  Its parameter tables can be converted with `as_epiparameter()`, as
+  described in the [Using {epireview} with
+  {epiparameter}](https://epiverse-trace.github.io/epiparameter/articles/data_from_epireview.html)
+  article.
+
+- grEPI, the Global Epidemiological Parameters database hosted on the
+  [WHO Collaboratory](https://collaboratory.who.int/), can be queried
+  directly with `epiparameter_db(db = "grEPI")`.
+
+`{epiparameter}` also does not estimate parameters from data. The
+following packages do, and are intended to be used alongside
+`{epiparameter}`:
+
+- [`{primarycensored}`](https://primarycensored.epinowcast.org/) fits
+  delay distributions while accounting for primary event censoring,
+  secondary event interval censoring and right truncation. It extends
+  [`{fitdistrplus}`](https://CRAN.R-project.org/package=fitdistrplus),
+  and is a good starting point when fitting delays to individual-level
+  data.
+
+- [`{epidist}`](https://epidist.epinowcast.org/) estimates
+  epidemiological delay distributions in a Bayesian framework, also
+  accounting for censoring and truncation.
+
+- [`{EpiNow2}`](https://epiforecasts.io/EpiNow2/) provides
+  `estimate_delay()` for fitting delay distributions, and
+  `estimate_truncation()` for estimating and adjusting for right
+  truncation.
+
+- [`{fitdistrplus}`](https://CRAN.R-project.org/package=fitdistrplus) is
+  a general-purpose distribution fitting package. It does not handle
+  discretisation, censoring or truncation itself, so for epidemiological
+  delays it is best used through `{primarycensored}`.
+
+- [`{epitrix}`](https://www.repidemicsconsortium.org/epitrix/) provides
+  `fit_disc_gamma()` for fitting a discretised gamma distribution.
+
+Estimates obtained from completed delays alone can be subject to
+epidemic phase bias and right truncation, so we recommend the packages
+above that account for these.
