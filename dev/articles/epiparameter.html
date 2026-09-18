@@ -52,7 +52,7 @@
     <li><a class="dropdown-item" href="../articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6></li>
-    <li><a class="dropdown-item" href="../articles/data_protocol.html">Data Collation and Synthesis Protocol</a></li>
+    <li><a class="dropdown-item" href="../articles/data_sources.html">Epidemiological parameter data sources</a></li>
     <li><a class="dropdown-item" href="../articles/database.html">Current database</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Handling data from other packages</h6></li>
@@ -244,9 +244,8 @@ the function.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Ebola Virus Dis… Ebola V… notific… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">1</span>324</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Ebola Virus Dis… Ebola V… onset t… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">2</span>741</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Ebola Virus Dis… Ebola V… onset t… gamma             WHO E…  <span style="text-decoration: underline;">2</span>015        <span style="text-decoration: underline;">1</span>335</span></span></code></pre></div>
-<p>More details on the data collation and the library of parameters can
-be found in the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data
-Collation and Synthesis Protocol vignette</a>.</p>
+<p>More details on where the parameters come from can be found in the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_sources.html">Epidemiological
+parameter data sources vignette</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="single-set-of-epidemiological-parameters">Single set of epidemiological parameters<a class="anchor" aria-label="anchor" href="#single-set-of-epidemiological-parameters"></a>
@@ -628,15 +627,16 @@ database, these parameters can be manually added to the library.</p>
 <p>Note that this only adds the parameters to the library in the
 environment, and does not save to the database file in the package.
 Hence, if you restart your R session, you will lose the changes.</p>
-<p>The library of epidemiological parameters is a living database, so as
-new studies are published we hope to incorporate these. Searching for
-and recording parameters in the database is extremely time-consuming, so
-we welcome contributions of new parameters by either making a pull
-request to the package or adding information to the contributing
-spreadsheet. These will be incorporated into the database by the package
-maintainers and your contributions will be acknowledged. See the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html">Data
-Collation and Synthesis Protocol</a> vignette on information about
-contributing to the library of epidemiological parameters.</p>
+<p>The library bundled with the package is a development and
+experimentation set rather than a comprehensive repository. Parameters
+curated for long-term use live in <a href="https://who-collaboratory.github.io/collaboratory-grepi-web/" class="external-link">grEPI</a>
+and <a href="https://mrc-ide.github.io/epireview/" class="external-link"><code>{epireview}</code></a>,
+and both can be read into <code>&lt;epiparameter&gt;</code> objects. See
+the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_sources.html">Epidemiological
+parameter data sources</a> vignette for each source and how to read it,
+and <a href="https://epiverse-trace.github.io/epiparameter/articles/data_from_epireview.html">Using
+{epireview} with {epiparameter}</a> for a worked example of converting
+{epireview} parameter tables with <code><a href="../reference/as_epiparameter.html">as_epiparameter()</a></code>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

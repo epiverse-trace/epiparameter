@@ -55,7 +55,7 @@
     <li><a class="dropdown-item" href="articles/extract_convert.html">Parameter extraction and conversion in {epiparameter}</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Epiparameter Data</h6></li>
-    <li><a class="dropdown-item" href="articles/data_protocol.html">Data Collation and Synthesis Protocol</a></li>
+    <li><a class="dropdown-item" href="articles/data_sources.html">Epidemiological parameter data sources</a></li>
     <li><a class="dropdown-item" href="articles/database.html">Current database</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Handling data from other packages</h6></li>
@@ -267,11 +267,8 @@
 <div class="section level2">
 <h2 id="contributing-to-library-of-epidemiological-parameters">Contributing to library of epidemiological parameters<a class="anchor" aria-label="anchor" href="#contributing-to-library-of-epidemiological-parameters"></a>
 </h2>
-<p>The library of epidemiological parameters that can be loaded by <a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a> using the <code><a href="reference/epiparameter_db.html">epiparameter_db()</a></code> function is stored in the <a href="https://github.com/epiverse-trace/epiparameterDB" class="external-link"><code>{epiparameterDB}</code> R package</a>. If you would like to contribute to the library of epiparameters you can either:</p>
-<ol style="list-style-type: decimal">
-<li><p>Add data to a public <a href="https://docs.google.com/spreadsheets/d/1eCL3n_woseg5Npu7XD7TcuNoLUIhMBu8ZoLCkVdATUE/edit?usp=sharing" class="external-link">google sheet</a>. This spreadsheet contains two example entries as a guide to what fields are accepted. We are monitoring this sheet for new entries that will subsequently be included in the package.</p></li>
-<li><p>Add to the <a href="https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/parameters.json" class="external-link">JSON file holding the database</a> directly via a Pull Request. See the <a href="https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md" class="external-link">contributing guide</a> for instructions.</p></li>
-</ol>
+<p>The library of epidemiological parameters that can be loaded by <a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a> using the <code><a href="reference/epiparameter_db.html">epiparameter_db()</a></code> function is stored in the <a href="https://github.com/epiverse-trace/epiparameterDB" class="external-link"><code>{epiparameterDB}</code> R package</a>. To contribute an entry, add it to the <a href="https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/parameters.json" class="external-link">JSON file holding the database</a> via a pull request to that repository. The <a href="https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md" class="external-link">Epiverse-TRACE contributing guide</a> covers the pull request process; the format of an entry is described in the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_sources.html">Epidemiological parameter data sources</a> vignette.</p>
+<p>The bundled library is a development and experimentation set rather than a comprehensive repository. Parameters intended for long-term curation are better contributed to <a href="https://who-collaboratory.github.io/collaboratory-grepi-web/" class="external-link">grEPI</a> or <a href="https://mrc-ide.github.io/epireview/" class="external-link"><code>{epireview}</code></a> directly.</p>
 <p>You can find a description of the epidemiological parameter data structure and contents in the <a href="https://github.com/epiverse-trace/epiparameterDB/blob/main/inst/extdata/data_dictionary.json" class="external-link">data dictionary</a>. This documents the valid format and data types to ensure consistency and accuracy. All entries in the parameter library are automatically validated against the data dictionary using an GitHub action workflow.</p>
 </div>
 <div class="section level2">
@@ -311,6 +308,25 @@
 <span><span class="co">#&gt;     doi = {10.5281/zenodo.11110881},</span></span>
 <span><span class="co">#&gt;     url = {https://epiverse-trace.github.io/epiparameter/},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="related-projects">Related projects<a class="anchor" aria-label="anchor" href="#related-projects"></a>
+</h2>
+<p><a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a> provides classes and helper functions for working with epidemiological parameters. It is not the only source of already-estimated parameters:</p>
+<ul>
+<li><p><a href="https://CRAN.R-project.org/package=epiparameterDB" class="external-link"><code>{epiparameterDB}</code></a> holds the library of epidemiological parameters loaded by <code><a href="reference/epiparameter_db.html">epiparameter_db()</a></code>.</p></li>
+<li><p><a href="https://mrc-ide.github.io/epireview/" class="external-link"><code>{epireview}</code></a> provides parameters for a range of pathogens extracted from the literature by the Pathogen Epidemiology Review Group (PERG) in systematic reviews. Its parameter tables can be converted with <code><a href="reference/as_epiparameter.html">as_epiparameter()</a></code>, as described in the <a href="https://epiverse-trace.github.io/epiparameter/articles/data_from_epireview.html">Using {epireview} with {epiparameter}</a> article.</p></li>
+<li><p>grEPI, the Global Epidemiological Parameters database hosted on the <a href="https://collaboratory.who.int/" class="external-link">WHO Collaboratory</a>, can be queried directly with <code>epiparameter_db(db = "grEPI")</code>.</p></li>
+</ul>
+<p><a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a> also does not estimate parameters from data. The following packages do, and are intended to be used alongside <a href="https://github.com/epiverse-trace/epiparameter/" class="external-link">epiparameter</a>:</p>
+<ul>
+<li><p><a href="https://primarycensored.epinowcast.org/" class="external-link"><code>{primarycensored}</code></a> fits delay distributions while accounting for primary event censoring, secondary event interval censoring and right truncation. It extends <a href="https://CRAN.R-project.org/package=fitdistrplus" class="external-link"><code>{fitdistrplus}</code></a>, and is a good starting point when fitting delays to individual-level data.</p></li>
+<li><p><a href="https://epidist.epinowcast.org/" class="external-link"><code>{epidist}</code></a> estimates epidemiological delay distributions in a Bayesian framework, also accounting for censoring and truncation.</p></li>
+<li><p><a href="https://epiforecasts.io/EpiNow2/" class="external-link"><code>{EpiNow2}</code></a> provides <code>estimate_delay()</code> for fitting delay distributions, and <code>estimate_truncation()</code> for estimating and adjusting for right truncation.</p></li>
+<li><p><a href="https://CRAN.R-project.org/package=fitdistrplus" class="external-link"><code>{fitdistrplus}</code></a> is a general-purpose distribution fitting package. It does not handle discretisation, censoring or truncation itself, so for epidemiological delays it is best used through <a href="https://primarycensored.epinowcast.org" class="external-link">primarycensored</a>.</p></li>
+<li><p><a href="https://www.repidemicsconsortium.org/epitrix/" class="external-link"><code>{epitrix}</code></a> provides <code>fit_disc_gamma()</code> for fitting a discretised gamma distribution.</p></li>
+</ul>
+<p>Estimates obtained from completed delays alone can be subject to epidemic phase bias and right truncation, so we recommend the packages above that account for these.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

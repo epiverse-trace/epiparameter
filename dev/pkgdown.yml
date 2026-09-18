@@ -3,13 +3,13 @@ pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   articles/data_from_epireview: data_from_epireview.html
-  data_protocol: data_protocol.html
+  data_sources: data_sources.html
   database: database.html
   design_principles: design_principles.html
   epiparameter: epiparameter.html
   extract_convert: extract_convert.html
   articles/extract-bias: extract-bias.html
-last_built: 2026-09-16T16:13Z
+last_built: 2026-09-18T14:24Z
 urls:
   reference: https://epiverse-trace.github.io/epiparameter/reference
   article: https://epiverse-trace.github.io/epiparameter/articles

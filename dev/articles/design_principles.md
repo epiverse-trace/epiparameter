@@ -186,6 +186,7 @@ reasons for this change is to enable usage of the base R pipe (`|>`).
 
 In addition to the [package contributing
 guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md),
-please refer to the [{epiparameter} specific contributing guidelines for
-adding epidemiological parameter to the package
-library](https://epiverse-trace.github.io/epiparameter/articles/data_protocol.html#contributing-to-the-package).
+see the [Epidemiological parameter data
+sources](https://epiverse-trace.github.io/epiparameter/articles/data_sources.html)
+vignette for where epidemiological parameters are curated and how each
+source is read into the package.

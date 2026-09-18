@@ -9,8 +9,8 @@
 
 ### Parameter library
 
-- [Data Collation and Synthesis
-  Protocol](https://epiverse-trace.github.io/epiparameter/dev/articles/data_protocol.md):
+- [Epidemiological parameter data
+  sources](https://epiverse-trace.github.io/epiparameter/dev/articles/data_sources.md):
 - [Current
   database](https://epiverse-trace.github.io/epiparameter/dev/articles/database.md):
 
