@@ -314,3 +314,50 @@ test_that("convert_params_to_summary_stats gives an attainable nbinom mode", {
   expect_equal(stats::dnbinom(ss$mode, size = 2, prob = 0.3), max(pmf),
                tolerance = 1e-12)
 })
+
+test_that("convert_*() accept distribution names in any capitalisation", {
+  ss <- convert_params_to_summary_stats("gamma", shape = 2, scale = 3)
+
+  expect_identical(
+    convert_params_to_summary_stats("Gamma", shape = 2, scale = 3), ss
+  )
+  expect_identical(
+    convert_params_to_summary_stats("GAMMA", shape = 2, scale = 3), ss
+  )
+  expect_identical(
+    convert_summary_stats_to_params("Weibull", mean = 2, sd = 1),
+    convert_summary_stats_to_params("weibull", mean = 2, sd = 1)
+  )
+})
+
+test_that("convert_*() accept the full name of a distribution", {
+  expect_identical(
+    convert_params_to_summary_stats("Log-normal", meanlog = 1, sdlog = 1),
+    convert_params_to_summary_stats("lnorm", meanlog = 1, sdlog = 1)
+  )
+  expect_identical(
+    convert_params_to_summary_stats("Negative binomial", prob = 0.3,
+                                    dispersion = 4),
+    convert_params_to_summary_stats("nbinom", prob = 0.3, dispersion = 4)
+  )
+  expect_identical(
+    convert_params_to_summary_stats("Normal", mean = 1, sd = 1),
+    convert_params_to_summary_stats("norm", mean = 1, sd = 1)
+  )
+  expect_identical(
+    convert_summary_stats_to_params("Geometric", mean = 3),
+    convert_summary_stats_to_params("geom", mean = 3)
+  )
+})
+
+test_that("convert_*() still reject unrecognised distributions", {
+  expect_error(
+    convert_params_to_summary_stats("random", shape = 2, scale = 3),
+    regexp = "'arg' should be one of"
+  )
+  # a distribution that is not supported by these functions
+  expect_error(
+    convert_params_to_summary_stats("Poisson", lambda = 2),
+    regexp = "'arg' should be one of"
+  )
+})
