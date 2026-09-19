@@ -12,7 +12,7 @@ convert_summary_stats_to_params(x, ...)
 
 # S3 method for class 'character'
 convert_summary_stats_to_params(
-  x = c("lnorm", "gamma", "weibull", "nbinom", "geom"),
+  x = c("lnorm", "gamma", "weibull", "nbinom", "geom", "norm"),
   ...
 )
 
@@ -65,6 +65,10 @@ stating that the parameters cannot be calculated from the given input.
 The distribution names and parameter names follow the style of
 distributions in R, for example the lognormal distribution is `lnorm`,
 and its parameters are `meanlog` and `sdlog`.
+
+Distribution names are matched without regard to capitalisation, and the
+full name of a distribution can be given as well as its R name, so
+`"nbinom"`, `"negbinom"` and `"Negative binomial"` are all accepted.
 
 ## See also
 

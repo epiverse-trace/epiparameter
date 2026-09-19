@@ -110,6 +110,26 @@ overlapping).
   number of conversion functions in the package namespace compared to
   exporting a conversion function for every distribution.
 
+- Distribution names supplied by the user are standardised before they
+  are matched, rather than being required to match exactly. Names are
+  matched without regard to capitalisation, and the full name of a
+  distribution is accepted alongside the name used by , so `"nbinom"`,
+  `"negbinom"` and `"Negative binomial"` are equivalent. This is handled
+  by
+  [`.clean_distribution_name()`](https://epiverse-trace.github.io/epiparameter/dev/reference/dot-clean_distribution_name.md),
+  which cleans the name with
+  [`.clean_string()`](https://epiverse-trace.github.io/epiparameter/dev/reference/dot-clean_string.md)
+  and then maps a recognised full name onto its name. It is used by both
+  [`create_prob_distribution()`](https://epiverse-trace.github.io/epiparameter/dev/reference/create_prob_distribution.md)
+  and the conversion functions, and new functions taking a distribution
+  name from the user should use it too, so that the package behaves
+  consistently wherever a distribution is named. The names accepted as
+  aliases are those used by grEPI (see `R/grepi.R`), so that the package
+  has a single vocabulary for distributions rather than one per data
+  source. Internally the name is always the canonical form;
+  standardising on input keeps the tolerance at the package boundary and
+  leaves internal code able to match exactly.
+
 - If there are a large number of entries returned when reading
   epidemiological parameters from the library using the
   [`epiparameter_db()`](https://epiverse-trace.github.io/epiparameter/dev/reference/epiparameter_db.md)

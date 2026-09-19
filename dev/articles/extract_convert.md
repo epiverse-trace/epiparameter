@@ -77,7 +77,7 @@ convert_params_to_summary_stats("gamma", shape = 2.5, scale = 1.5)
 #> [1] 3.75
 #> 
 #> $median
-#> [1] 1.450487
+#> [1] 3.263595
 #> 
 #> $mode
 #> [1] 2.25
@@ -141,7 +141,7 @@ convert_params_to_summary_stats(ep)
 #> [1] 3.75
 #> 
 #> $median
-#> [1] 1.450487
+#> [1] 3.263595
 #> 
 #> $mode
 #> [1] 2.25
@@ -181,7 +181,7 @@ convert_params_to_summary_stats(ep, shape = 2.5, scale = 1.5)
 #> [1] 3.75
 #> 
 #> $median
-#> [1] 1.450487
+#> [1] 3.263595
 #> 
 #> $mode
 #> [1] 2.25
@@ -398,7 +398,7 @@ convert_params_to_summary_stats("nbinom", prob = 0.5, dispersion = 0.5)
 #> [1] 3
 #> 
 #> $ex_kurtosis
-#> [1] 12.25
+#> [1] 13
 ```
 
 ``` r

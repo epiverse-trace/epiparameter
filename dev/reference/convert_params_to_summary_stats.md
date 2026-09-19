@@ -11,7 +11,7 @@ convert_params_to_summary_stats(x, ...)
 
 # S3 method for class 'character'
 convert_params_to_summary_stats(
-  x = c("lnorm", "gamma", "weibull", "nbinom", "geom"),
+  x = c("lnorm", "gamma", "weibull", "nbinom", "geom", "norm"),
   ...
 )
 
@@ -43,6 +43,10 @@ skewness, and excess kurtosis (`ex_kurtosis`).
 The distribution names and parameter names follow the style of
 distributions in R, for example the lognormal distribution is `lnorm`,
 and its parameters are `meanlog` and `sdlog`.
+
+Distribution names are matched without regard to capitalisation, and the
+full name of a distribution can be given as well as its R name, so
+`"nbinom"`, `"negbinom"` and `"Negative binomial"` are all accepted.
 
 ## See also
 
@@ -125,7 +129,7 @@ convert_params_to_summary_stats("nbinom", prob = 0.5, dispersion = 2)
 #> [1] 1.5
 #> 
 #> $ex_kurtosis
-#> [1] 4
+#> [1] 3.25
 #> 
 
 # example using <epiparameter>

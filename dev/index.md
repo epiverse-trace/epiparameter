@@ -224,6 +224,7 @@ implement this for a variety of distributions:
 - Weibull
 - negative binomial
 - geometric
+- normal
 
 The parameters of a probability distribution can also be extracted from
 other summary statistics, for example, percentiles of the distribution,
