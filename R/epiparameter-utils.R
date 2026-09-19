@@ -773,6 +773,40 @@ is_epiparameter_params <- function(prob_distribution,
   gsub(pattern = "_|-", replacement = " ", x = trimws(tolower(x)))
 }
 
+#' Standardise a probability distribution name
+#'
+#' @description Converts a probability distribution name to the name used by
+#' \R, so that distributions can be given with any capitalisation and by their
+#' full name as well as the \R name. For example, `"Negative binomial"`,
+#' `"negbinom"` and `"nbinom"` all give `"nbinom"`.
+#'
+#' @details Names are cleaned with [.clean_string()] before being matched, so
+#' capitalisation, surrounding whitespace, and underscores or hyphens in place
+#' of spaces are all accepted. Names that are not recognised as an alias are
+#' returned cleaned but otherwise unchanged, leaving them to be validated by
+#' the calling function.
+#'
+#' @param x A `character` string with the name of a probability distribution.
+#'
+#' @return A `character` string.
+#' @keywords internal
+.clean_distribution_name <- function(x) {
+  x <- .clean_string(x)
+  # aliases follow the distribution names used by grEPI, see R/grepi.R
+  alias <- c(
+    "log normal", "lognormal", "normal", "negative binomial",
+    "neg binomial", "negbinom", "geometric", "poisson", "exponential"
+  )
+  r_name <- c(
+    "lnorm", "lnorm", "norm", "nbinom",
+    "nbinom", "nbinom", "geom", "pois", "exp"
+  )
+  idx <- match(x, alias)
+  x[!is.na(idx)] <- r_name[idx[!is.na(idx)]]
+  # return standardised distribution name
+  x
+}
+
 #' Standardise distribution parameter uncertainty
 #'
 #' @param x An `<epiparameter>` object.
