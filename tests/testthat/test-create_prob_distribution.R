@@ -263,3 +263,31 @@ test_that("create_prob_distribution errors for incorrect offset", {
     regexp = "(Assertion on)*(offset)*(failed)"
   )
 })
+
+test_that("create_prob_distribution accepts distribution name aliases", {
+  # an alias gives the same object as the R name
+  expect_identical(
+    create_prob_distribution("Log-normal", c(meanlog = 1, sdlog = 1)),
+    create_prob_distribution("lnorm", c(meanlog = 1, sdlog = 1))
+  )
+  expect_identical(
+    create_prob_distribution("Negative binomial", c(mean = 1, dispersion = 1)),
+    create_prob_distribution("nbinom", c(mean = 1, dispersion = 1))
+  )
+  expect_identical(
+    create_prob_distribution("Normal", c(mean = 1, sd = 1)),
+    create_prob_distribution("norm", c(mean = 1, sd = 1))
+  )
+  # capitalisation is ignored
+  expect_identical(
+    create_prob_distribution("GAMMA", c(shape = 2, scale = 3)),
+    create_prob_distribution("gamma", c(shape = 2, scale = 3))
+  )
+})
+
+test_that("create_prob_distribution still rejects unknown distributions", {
+  expect_error(
+    create_prob_distribution("random", c(shape = 1, scale = 1)),
+    regexp = "Incorrect parameters provided for probability distribution"
+  )
+})
