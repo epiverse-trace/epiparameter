@@ -24,6 +24,10 @@
 #' distributions in \R, for example the lognormal distribution is `lnorm`,
 #' and its parameters are `meanlog` and `sdlog`.
 #'
+#' Distribution names are matched without regard to capitalisation, and the
+#' full name of a distribution can be given as well as its \R name, so
+#' `"nbinom"`, `"negbinom"` and `"Negative binomial"` are all accepted.
+#'
 #' @param x An \R object.
 #' @param ... <[`dynamic-dots`][rlang::dyn-dots]> `Numeric` named summary
 #' statistics used to convert to parameter(s). An example is the `mean`
@@ -58,7 +62,9 @@ convert_summary_stats_to_params.character <- function(x = c("lnorm", "gamma",
                                                             "weibull", "nbinom",
                                                             "geom", "norm"),
                                                       ...) {
-  # check input
+  # check input, distribution names are standardised so that they can be
+  # given with any capitalisation and by their full name
+  x <- .clean_distribution_name(x)
   x <- match.arg(x)
   # capture dynamic dots
   dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
@@ -153,6 +159,10 @@ convert_summary_stats_to_params.epiparameter <- function(x, ...) {
 #' distributions in \R, for example the lognormal distribution is `lnorm`,
 #' and its parameters are `meanlog` and `sdlog`.
 #'
+#' Distribution names are matched without regard to capitalisation, and the
+#' full name of a distribution can be given as well as its \R name, so
+#' `"nbinom"`, `"negbinom"` and `"Negative binomial"` are all accepted.
+#'
 #' @inheritParams convert_summary_stats_to_params
 #' @param ... <[`dynamic-dots`][rlang::dyn-dots]> `Numeric` named parameter(s)
 #' used to convert to summary statistics. An example is the `meanlog` and
@@ -192,7 +202,9 @@ convert_params_to_summary_stats.character <- function(x = c("lnorm", "gamma",
                                                             "weibull", "nbinom",
                                                             "geom", "norm"),
                                                       ...) {
-  # check input
+  # check input, distribution names are standardised so that they can be
+  # given with any capitalisation and by their full name
+  x <- .clean_distribution_name(x)
   x <- match.arg(x)
   # capture dynamic dots
   dots <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
