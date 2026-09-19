@@ -9,7 +9,7 @@
 convert_summary_stats_to_params(x, ...)
 
 \method{convert_summary_stats_to_params}{character}(
-  x = c("lnorm", "gamma", "weibull", "nbinom", "geom"),
+  x = c("lnorm", "gamma", "weibull", "nbinom", "geom", "norm"),
   ...
 )
 
