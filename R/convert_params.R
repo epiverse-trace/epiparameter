@@ -462,7 +462,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
 
   # calculate metrics
   mean <- shape * scale
-  median <- stats::qgamma(0.5, shape, scale)
+  median <- stats::qgamma(0.5, shape = shape, scale = scale)
   mode <- max((shape - 1) * scale, 0)
   var <- shape * scale^2
   sd <- sqrt(var)
@@ -656,12 +656,12 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   # calculate metrics
   mean <- dispersion * (1 - prob) / prob
   median <- stats::qnbinom(p = 0.5, prob = prob, size = dispersion)
-  mode <- max((dispersion - 1) * (1 - prob) / prob, 0)
+  mode <- max(floor((dispersion - 1) * (1 - prob) / prob), 0)
   var <- dispersion * (1 - prob) / prob^2
   sd <- sqrt(var)
   cv <- sd / mean
   skewness <- (2 - prob) / sqrt((1 - prob) * dispersion)
-  ex_kurtosis <- 6 / dispersion + prob^2 / (1 - prob) * dispersion
+  ex_kurtosis <- 6 / dispersion + prob^2 / ((1 - prob) * dispersion)
 
   # return list of metrics
   list(
