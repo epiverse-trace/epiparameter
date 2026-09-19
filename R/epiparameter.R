@@ -850,18 +850,24 @@ is_continuous <- function(x) {
 #' mean(ep)
 mean.epiparameter <- function(x, ...) {
   chkDots(...)
-  # extract mean if given
-  if (!utils::hasName(x$summary_stats, "mean")) {
+  # extract mean if given, empty summary statistics are dropped when reading
+  # from the database so the mean may be absent rather than NA
+  if (!utils::hasName(x$summary_stats, "mean") && !is_parameterised(x)) {
     return(NA_real_)
   }
-  mean <- x$summary_stats$mean
+  mean <- x$summary_stats$mean %||% NA_real_
 
-  # if mean is not given try and convert from parameters
+  # if mean is not given try and convert from parameters, the conversion is
+  # not possible for every distribution and parameterisation so NA is returned
+  # rather than erroring when it fails
   if (is.na(mean) && is_parameterised(x)) {
     dist <- family(x)
     params <- get_parameters(x)
     args <- c(dist, as.list(params))
-    summary_stats <- do.call(convert_params_to_summary_stats, args = args)
+    summary_stats <- tryCatch(
+      do.call(convert_params_to_summary_stats, args = args),
+      error = function(e) list(mean = NA_real_)
+    )
     mean <- summary_stats$mean
   }
 
