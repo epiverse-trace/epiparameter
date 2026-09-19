@@ -114,8 +114,8 @@ create_prob_distribution <- function(prob_distribution,
   checkmate::assert_number(truncation, na.ok = TRUE)
   checkmate::assert_number(offset)
 
-  # set prob_distribution to lowercase for downstream case sensitive matching
-  prob_distribution <- .clean_string(prob_distribution)
+  # standardise the distribution name for downstream case sensitive matching
+  prob_distribution <- .clean_distribution_name(prob_distribution)
 
   stopifnot(
     "Incorrect parameters provided for probability distribution." =
