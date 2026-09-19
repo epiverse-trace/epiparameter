@@ -246,3 +246,58 @@ test_that(".chk_ss is working as expected", {
     regexp = "(Assertion)*(failed: Must be a subset)*(has additional elements)"
   )
 })
+
+test_that("convert_params_to_summary_stats.character works for norm", {
+  ss <- convert_params_to_summary_stats("norm", mean = 3.96, sd = 4.75)
+
+  expect_identical(ss$mean, 3.96)
+  # the normal distribution is symmetric
+  expect_identical(ss$median, 3.96)
+  expect_identical(ss$mode, 3.96)
+  expect_equal(ss$var, 4.75^2, tolerance = 1e-12)
+  expect_identical(ss$sd, 4.75)
+  expect_identical(ss$skewness, 0)
+  expect_identical(ss$ex_kurtosis, 0)
+})
+
+test_that("convert_params_to_summary_stats.character works for norm with a
+           negative mean", {
+  ss <- convert_params_to_summary_stats("norm", mean = -2, sd = 1)
+
+  expect_identical(ss$mean, -2)
+  expect_identical(ss$sd, 1)
+})
+
+test_that("convert_summary_stats_to_params.character works for norm", {
+  expect_identical(
+    convert_summary_stats_to_params("norm", mean = 3.96, sd = 4.75),
+    list(mean = 3.96, sd = 4.75)
+  )
+  # the standard deviation can be derived from the variance
+  expect_equal(
+    convert_summary_stats_to_params("norm", mean = 3.96, var = 4.75^2),
+    list(mean = 3.96, sd = 4.75),
+    tolerance = 1e-12
+  )
+  # the median of a normal distribution is its mean
+  expect_identical(
+    convert_summary_stats_to_params("norm", median = 3.96, sd = 4.75),
+    list(mean = 3.96, sd = 4.75)
+  )
+})
+
+test_that("convert_summary_stats_to_params.character fails for norm without
+           enough information", {
+  expect_error(
+    convert_summary_stats_to_params("norm", mean = 3.96, skewness = 0),
+    regexp = "Cannot calculate normal distribution parameters"
+  )
+})
+
+test_that("norm parameters round trip through both converters", {
+  params <- convert_summary_stats_to_params("norm", mean = -1.5, sd = 2.25)
+  ss <- do.call(convert_params_to_summary_stats, c("norm", params))
+
+  expect_identical(ss$mean, -1.5)
+  expect_identical(ss$sd, 2.25)
+})
