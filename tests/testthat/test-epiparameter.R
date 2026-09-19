@@ -1444,3 +1444,49 @@ test_that("epiparameter(verbose) input is validated", {
     regexp = "verbose"
   )
 })
+
+test_that("mean works as expected for a normal distribution", {
+  ep <- suppressMessages(
+    epiparameter(
+      disease = "COVID-19",
+      epi_name = "serial interval",
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "norm",
+        prob_distribution_params = c(mean = 3.96, sd = 4.75)
+      )
+    )
+  )
+  expect_identical(mean(ep), 3.96)
+})
+
+test_that("mean works when the summary statistics have no mean element", {
+  ep <- suppressMessages(
+    epiparameter(
+      disease = "COVID-19",
+      epi_name = "serial interval",
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "norm",
+        prob_distribution_params = c(mean = 3.96, sd = 4.75)
+      )
+    )
+  )
+  # empty summary statistics are dropped when reading from the database
+  ep$summary_stats <- ep$summary_stats[names(ep$summary_stats) != "mean"]
+  expect_false(utils::hasName(ep$summary_stats, "mean"))
+  expect_identical(mean(ep), 3.96)
+})
+
+test_that("mean returns NA when the parameters cannot be converted", {
+  ep <- suppressMessages(
+    epiparameter(
+      disease = "Ebola",
+      epi_name = "offspring distribution",
+      prob_distribution = create_prob_distribution(
+        prob_distribution = "nbinom",
+        prob_distribution_params = c(mean = 2, dispersion = 0.5)
+      )
+    )
+  )
+  ep$summary_stats <- ep$summary_stats[names(ep$summary_stats) != "mean"]
+  expect_identical(mean(ep), NA_real_)
+})
