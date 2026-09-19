@@ -301,3 +301,16 @@ test_that("norm parameters round trip through both converters", {
   expect_identical(ss$mean, -1.5)
   expect_identical(ss$sd, 2.25)
 })
+
+test_that("convert_params_to_summary_stats gives an attainable nbinom mode", {
+  ss <- convert_params_to_summary_stats("nbinom", prob = 0.3, dispersion = 2)
+
+  # the mode of a discrete distribution must be a value it can take
+  expect_identical(ss$mode, 2)
+  expect_identical(ss$mode, floor(ss$mode))
+  # and it must maximise the probability mass function
+  k <- 0:100
+  pmf <- stats::dnbinom(k, size = 2, prob = 0.3)
+  expect_equal(stats::dnbinom(ss$mode, size = 2, prob = 0.3), max(pmf),
+               tolerance = 1e-12)
+})
