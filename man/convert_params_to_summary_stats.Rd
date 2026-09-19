@@ -36,6 +36,10 @@ analytically given the parameters.
 The distribution names and parameter names follow the style of
 distributions in \R, for example the lognormal distribution is \code{lnorm},
 and its parameters are \code{meanlog} and \code{sdlog}.
+
+Distribution names are matched without regard to capitalisation, and the
+full name of a distribution can be given as well as its \R name, so
+\code{"nbinom"}, \code{"negbinom"} and \code{"Negative binomial"} are all accepted.
 }
 \examples{
 # example using characters
