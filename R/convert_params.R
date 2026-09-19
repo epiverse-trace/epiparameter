@@ -56,7 +56,7 @@ convert_summary_stats_to_params <- function(x, ...) { # nolint: object_length_li
 #' @export
 convert_summary_stats_to_params.character <- function(x = c("lnorm", "gamma",
                                                             "weibull", "nbinom",
-                                                            "geom"),
+                                                            "geom", "norm"),
                                                       ...) {
   # check input
   x <- match.arg(x)
@@ -76,7 +76,8 @@ convert_summary_stats_to_params.character <- function(x = c("lnorm", "gamma",
     gamma = .convert_summary_stats_gamma,
     weibull = .convert_summary_stats_weibull,
     nbinom = .convert_summary_stats_nbinom,
-    geom = .convert_summary_stats_geom
+    geom = .convert_summary_stats_geom,
+    norm = .convert_summary_stats_norm
   )
 
   # call selected function
@@ -122,7 +123,7 @@ convert_summary_stats_to_params.epiparameter <- function(x, ...) {
   # get and check distribution name
   distribution <- match.arg(
     family(x),
-    choices = c("lnorm", "gamma", "weibull", "nbinom", "geom")
+    choices = c("lnorm", "gamma", "weibull", "nbinom", "geom", "norm")
   )
 
   # dispatch to function based on distribution specified
@@ -131,7 +132,8 @@ convert_summary_stats_to_params.epiparameter <- function(x, ...) {
     gamma = .convert_summary_stats_gamma,
     weibull = .convert_summary_stats_weibull,
     nbinom = .convert_summary_stats_nbinom,
-    geom = .convert_summary_stats_geom
+    geom = .convert_summary_stats_geom,
+    norm = .convert_summary_stats_norm
   )
 
   # call selected function
@@ -188,7 +190,7 @@ convert_params_to_summary_stats <- function(x, ...) { # nolint: object_length_li
 #' @export
 convert_params_to_summary_stats.character <- function(x = c("lnorm", "gamma",
                                                             "weibull", "nbinom",
-                                                            "geom"),
+                                                            "geom", "norm"),
                                                       ...) {
   # check input
   x <- match.arg(x)
@@ -208,7 +210,8 @@ convert_params_to_summary_stats.character <- function(x = c("lnorm", "gamma",
     gamma = .convert_params_gamma,
     weibull = .convert_params_weibull,
     nbinom = .convert_params_nbinom,
-    geom = .convert_params_geom
+    geom = .convert_params_geom,
+    norm = .convert_params_norm
   )
 
   # call selected function
@@ -255,7 +258,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   # get and check distribution name
   distribution <- match.arg(
     family(x),
-    choices = c("lnorm", "gamma", "weibull", "nbinom", "geom")
+    choices = c("lnorm", "gamma", "weibull", "nbinom", "geom", "norm")
   )
 
   # dispatch to function based on distribution specified
@@ -264,7 +267,8 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
     gamma = .convert_params_gamma,
     weibull = .convert_params_weibull,
     nbinom = .convert_params_nbinom,
-    geom = .convert_params_geom
+    geom = .convert_params_geom,
+    norm = .convert_params_norm
   )
 
   # call selected function
@@ -824,6 +828,97 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   # if either parameter hasn't been calculated error
   stop(
     "Cannot calculate geometric distribution parameter from given input",
+    call. = FALSE
+  )
+}
+
+#' Converts the parameters of the normal distribution to summary statistics
+#'
+#' @description Convert the mean and standard deviation (`sd`) of the normal
+#' distribution to a number of summary statistics which can be calculated
+#' analytically given the normal distribution parameters.
+#'
+#' @details Unlike the other distributions handled by this function, the
+#' normal distribution has support over the entire real line, so its mean can
+#' be negative. This is the case for a serial interval that allows
+#' presymptomatic transmission.
+#'
+#' @inheritParams convert_params_to_summary_stats
+#'
+#' @inherit convert_params_to_summary_stats return
+#' @keywords internal
+#' @noRd
+.convert_params_norm <- function(...) {
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
+
+  # check input params
+  if (!all(c("mean", "sd") %in% names(x))) {
+    stop(
+      "normal distribution parameters must be named 'mean' and 'sd'",
+      call. = FALSE
+    )
+  }
+  mean <- x[["mean"]]
+  sd <- x[["sd"]]
+
+  # check input, the mean of a normal distribution can be negative
+  checkmate::assert_number(mean)
+  checkmate::assert_number(sd, lower = 0)
+
+  # calculate metrics, the normal distribution is symmetric so the mean,
+  # median and mode are equal, and it has no skew or excess kurtosis
+  var <- sd^2
+  cv <- sd / mean
+
+  # return list of metrics
+  list(
+    mean = mean,
+    median = mean,
+    mode = mean,
+    var = var,
+    sd = sd,
+    cv = cv,
+    skewness = 0,
+    ex_kurtosis = 0
+  )
+}
+
+#' Convert summary statistics to parameters of the normal distribution
+#'
+#' @description Convert summary statistics of the normal distribution to the
+#' mean and standard deviation (`sd`) parameters.
+#'
+#' @inheritParams convert_summary_stats_to_params
+#'
+#' @inherit convert_summary_stats_to_params return
+#' @keywords internal
+#' @noRd
+.convert_summary_stats_norm <- function(...) {
+  # capture dynamic dots
+  x <- rlang::dots_list(..., .ignore_empty = "none", .homonyms = "error")
+
+  # check input
+  .chk_ss(x)
+
+  # convert var or cv into sd if available
+  x <- .get_sd(x)
+
+  # the normal distribution is symmetric so the median and mode are the mean
+  if (is.null(x$mean)) {
+    x$mean <- x$median %||% x$mode
+  }
+
+  if (checkmate::test_number(x$mean) && checkmate::test_number(x$sd)) {
+    # the mean of a normal distribution can be negative
+    checkmate::assert_number(x$mean)
+    checkmate::assert_number(x$sd, lower = 0)
+    return(list(mean = x$mean, sd = x$sd))
+  }
+
+  # if either parameter hasn't been calculated, error
+  stop(
+    "Cannot calculate normal distribution parameters from given input",
     call. = FALSE
   )
 }
