@@ -113,5 +113,5 @@ extract_param(
 #> Stochastic numerical optimisation used. 
 #> Rerun function multiple times to check global optimum is found
 #>    shape    scale 
-#> 5.343915 1.993610 
+#> 5.342206 1.994304 
 ```

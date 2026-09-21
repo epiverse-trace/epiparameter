@@ -30,6 +30,8 @@ installed as a dependency and loaded by default. It exists so that the
 package has a small, stable, offline set of parameters to develop
 against: it is where new representations and bleeding-edge features are
 trialled, and where examples, tests and vignettes draw their data from.
+It also holds parameters needed by {epiparameter}, other Epiverse-TRACE
+packages or tutorials that are not available from grEPI or {epireview}.
 It is deliberately not intended to grow into a comprehensive repository
 – that role belongs to grEPI and {epireview}.
 

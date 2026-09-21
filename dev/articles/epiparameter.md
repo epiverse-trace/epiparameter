@@ -4,17 +4,27 @@ It is often the case that in an infectious disease outbreak
 epidemiological parameters are required in order to characterise and
 model the dynamics of disease transmission and evaluate control
 strategies. In those scenarios, epidemiological parameters are commonly
-retrieved from the literature, and there is currently no library of
-parameters in order to contrast and compare different reported
-parameters for a range of infectious diseases and pathogens, from
-different published studies over time, of which some may be
-meta-analyses.
+retrieved from the literature. Several databases now curate parameters
+extracted from published studies, notably the WHO Collaboratory [Global
+Repository of Epidemiological Parameters
+(grEPI)](https://who-collaboratory.github.io/collaboratory-grepi-web/)
+and the [`{epireview}`](https://mrc-ide.github.io/epireview/) R package.
+Each stores parameters in its own format, and a reported parameter is of
+limited use until it can be handled as a probability distribution in
+`R`, so that estimates for a range of infectious diseases and pathogens,
+from different published studies over time and some of which may be
+meta-analyses, can be contrasted and compared.
 
-The {epiparameter} R package is a library of epidemiological parameters,
-with classes to handle this data and a set of functions to manipulate
-and use epidemiological parameters and distributions. The package also
-contains functionality for converting and extracting distribution
-parameters from summary statistics.
+The {epiparameter} R package brings together three things: a library of
+epidemiological parameters, classes to represent a parameter and its
+provenance, and functions to manipulate and use epidemiological
+parameters and distributions, including converting and extracting
+distribution parameters from summary statistics. Parameters from grEPI
+and {epireview} are read into the same classes, so they can be used in
+the same way as those in the bundled library (see the [Epidemiological
+parameter data
+sources](https://epiverse-trace.github.io/epiparameter/dev/articles/data_sources.md)
+vignette).
 
 ### Use case
 

@@ -111,37 +111,119 @@ contributors.</p>
 <div class="section level2">
 <h2 id="scope">Scope<a class="anchor" aria-label="anchor" href="#scope"></a>
 </h2>
-<p>The {epiparameter} R package is a library of epidemiological
-parameters, and provides a class (i.e. data structure) and helper
-functions for working with epidemiological parameters and distributions.
-The <code>&lt;epiparameter&gt;</code> class is the main functional
-object for working with epidemiological parameters and can hold
-information on delay distributions (e.g. incubation period, serial
-interval, onset-to-death distribution) and offspring distributions. The
-class has a number of methods, including allowing the user to easily
-calculate the PDF, CDF, and quantile, generate random numbers, calculate
-the distribution mean, and plot the distribution. An
-<code>&lt;epiparameter&gt;</code> object can be created with the
-constructor function <code><a href="../reference/epiparameter.html">epiparameter()</a></code>, and if uncertain
-whether an object is an <code>&lt;epiparameter&gt;</code>, it can be
-validated with <code><a href="../reference/assert_epiparameter.html">assert_epiparameter()</a></code>.</p>
-<p>The package also converts distribution parameters to summary
-statistics, and vice versa. This is achieved either by conversion or
-extraction and both of these methods and the functions used are
-explained in the <a href="extract_convert.html">Parameter extraction and
-conversion in {epiparameter} vignette</a>.</p>
-<p>The package does not estimate epidemiological parameters from data.
-Fitting a distribution to individual-level data – for example observed
-delays in a line list – requires accounting for interval censoring,
-right truncation and epidemic phase bias, and is the domain of
-specialist packages such as <a href="https://primarycensored.epinowcast.org/" class="external-link">{primarycensored}</a>, <a href="https://epidist.epinowcast.org/" class="external-link">{epidist}</a> and <a href="https://epiforecasts.io/EpiNow2/" class="external-link">{EpiNow2}</a>. This boundary is
-worth drawing carefully, because <code><a href="../reference/extract_param.html">extract_param()</a></code> does
-perform an optimisation: it recovers distribution parameters from
-<em>reported summary statistics</em>, such as percentiles or a range,
-and not from observed data. Parameters estimated elsewhere can be
-brought into the package by constructing an
-<code>&lt;epiparameter&gt;</code> object with
-<code><a href="../reference/epiparameter.html">epiparameter()</a></code>.</p>
+<p>The {epiparameter} R package has three components: a library of
+epidemiological parameters, a class (i.e. data structure) for
+representing a parameter, and helper functions for working with
+parameters and distributions. What falls inside and outside the scope of
+each is set out below.</p>
+<p>The library is loaded from the <a href="https://CRAN.R-project.org/package=epiparameterDB" class="external-link">{epiparameterDB}</a>
+R package rather than being stored here, so that the parameters can be
+released under CC0; an package cannot be dual licensed.</p>
+<div class="section level3">
+<h3 id="library-of-epidemiological-parameters">Library of epidemiological parameters<a class="anchor" aria-label="anchor" href="#library-of-epidemiological-parameters"></a>
+</h3>
+<p>In scope:</p>
+<ul>
+<li>A relatively small set of parameters to develop and test the package
+against, and to draw on in examples, vignettes and tutorials.</li>
+<li>Parameters needed by {epiparameter}, other Epiverse-TRACE packages
+or tutorials that are not available from grEPI or {epireview}.</li>
+<li>Trialling new representations and features before they are adopted
+more widely.</li>
+</ul>
+<p>Out of scope:</p>
+<ul>
+<li>Growing into a comprehensive repository of epidemiological
+parameters. That role belongs to grEPI and {epireview}, both of which
+can be read into <code>&lt;epiparameter&gt;</code> objects (see the <a href="data_sources.html">Epidemiological parameter data sources</a>
+vignette).</li>
+<li>Individual-level data from which parameters were estimated.</li>
+<li>The methodology of systematic literature searching, extraction and
+review, which is carried out by the databases that curate
+parameters.</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="the-epiparameter-class-and-methods">The <code>&lt;epiparameter&gt;</code> class and methods<a class="anchor" aria-label="anchor" href="#the-epiparameter-class-and-methods"></a>
+</h3>
+<p>In scope:</p>
+<ul>
+<li>A single epidemiological parameter, reported by a single study, for
+a single disease. Delay distributions (e.g. incubation period, serial
+interval, onset-to-death) and offspring distributions were the original
+focus, and other parameters are also represented.</li>
+<li>A parameterised probability distribution, summary statistics, or
+both, supporting distribution families commonly used to represent
+epidemiological parameters. Distributions may be discretised, truncated,
+or offset to allow support below zero.</li>
+<li>The provenance and context of the estimate: its citation, the units,
+sample size, region, transmission mode, etc., and an assessment of
+whether the estimate accounts for censoring, truncation or phase
+bias.</li>
+<li>Methods giving the distribution functions of a parameterised
+<code>&lt;epiparameter&gt;</code> (e.g. the PDF or PMF, CDF, quantiles,
+random number generation and the mean).</li>
+<li>Methods for inspecting and displaying an
+<code>&lt;epiparameter&gt;</code> (e.g. <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> and
+<code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code>), the accessors <code><a href="../reference/get_parameters.html">get_parameters()</a></code>, and
+<code><a href="../reference/get_citation.html">get_citation()</a></code>, and coercion with
+<code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame()</a></code> and <code><a href="https://rdrr.io/r/base/as.function.html" class="external-link">as.function()</a></code>.</li>
+<li>Methods that return another <code>&lt;epiparameter&gt;</code>:
+<code><a href="../reference/discretise.html">discretise()</a></code> to discretise a continuous distribution, and
+<code><a href="https://rdrr.io/r/stats/aggregate.html" class="external-link">aggregate()</a></code> to combine a
+<code>&lt;multi_epiparameter&gt;</code> into a single
+<code>&lt;epiparameter&gt;</code> holding a mixture distribution.</li>
+</ul>
+<p>Out of scope:</p>
+<ul>
+<li>The individual-level data the estimate was derived from.</li>
+<li>Separate classes for particular kinds of parameter. A
+<code>&lt;vb_epidist&gt;</code> class for vector-borne parameters was
+introduced and later removed (#359).</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="helper-functions">Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"></a>
+</h3>
+<p>Helper functions are those that work with epidemiological parameters
+and distributions (not including <code>&lt;epiparameter&gt;</code> class
+methods).</p>
+<p>In scope:</p>
+<ul>
+<li>Converting between the parameters of a distribution and its summary
+statistics with <code><a href="../reference/convert_params_to_summary_stats.html">convert_params_to_summary_stats()</a></code> and
+<code><a href="../reference/convert_summary_stats_to_params.html">convert_summary_stats_to_params()</a></code>, and extracting
+parameters from reported summary statistics such as percentiles or a
+median and range with <code><a href="../reference/extract_param.html">extract_param()</a></code>. Both are explained
+in the <a href="extract_convert.html">Parameter extraction and
+conversion in {epiparameter} vignette</a>.</li>
+<li>Reading parameters from the supported databases with
+<code><a href="../reference/epiparameter_db.html">epiparameter_db()</a></code>, and coercing objects from other packages
+into <code>&lt;epiparameter&gt;</code> objects with
+<code><a href="../reference/as_epiparameter.html">as_epiparameter()</a></code>.</li>
+<li>Constructing the components of an <code>&lt;epiparameter&gt;</code>
+with the <code>create_*()</code> helpers, and summarising a set of
+parameters in tabular form with <code><a href="../reference/parameter_tbl.html">parameter_tbl()</a></code>.</li>
+</ul>
+<p>Out of scope:</p>
+<ul>
+<li>Estimating epidemiological parameters from data. Fitting a
+distribution to individual-level data – for example observed delays in a
+line list – requires accounting for interval censoring, right truncation
+and epidemic phase bias, and is the domain of specialist packages such
+as <a href="https://primarycensored.epinowcast.org/" class="external-link">{primarycensored}</a>, <a href="https://epidist.epinowcast.org/" class="external-link">{epidist}</a> and <a href="https://epiforecasts.io/EpiNow2/" class="external-link">{EpiNow2}</a>.
+<code><a href="../reference/extract_param.html">extract_param()</a></code> does perform an optimisation to recover
+distribution parameters from reported summary statistics, and not from
+observed data. Parameters estimated elsewhere can be brought into the
+package by constructing an <code>&lt;epiparameter&gt;</code> object with
+<code><a href="../reference/epiparameter.html">epiparameter()</a></code>.</li>
+<li>Epidemiological analyses that use parameters as an input, such as
+estimating the reproduction number or simulating an outbreak. These are
+the domain of other packages, and examples of {epiparameter} used
+alongside them are published in the <a href="https://epiverse-trace.github.io/howto/" class="external-link">Epiverse-TRACE how-to
+guides</a>.</li>
+</ul>
+</div>
 </div>
 <div class="section level2">
 <h2 id="output">Output<a class="anchor" aria-label="anchor" href="#output"></a>
