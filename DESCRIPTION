@@ -9,6 +9,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-8814-9421")),
     person("Carmen", "Tamayo Cuartero", , "carmen.tamayo-cuartero@lshtm.ac.uk", role = "aut",
            comment = c(ORCID = "0000-0003-4184-2864")),
+    person("Steve", "Kerr", , , role = "aut"),
     person("Hugo", "Gruson", , "hugo.gruson@data.org", role = c("ctb", "rev"),
            comment = c(ORCID = "0000-0002-4094-1476")),
     person("Sebastian", "Funk", , "sebastian.funk@lshtm.ac.uk", role = "ctb",
