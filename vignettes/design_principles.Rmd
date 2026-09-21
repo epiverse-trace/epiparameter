@@ -20,11 +20,105 @@ This document is primarily intended to be read by those interested in understand
 
 ## Scope
 
-The {epiparameter} R package is a library of epidemiological parameters, and provides a class (i.e. data structure) and helper functions for working with epidemiological parameters and distributions. The `<epiparameter>` class is the main functional object for working with epidemiological parameters and can hold information on delay distributions (e.g. incubation period, serial interval, onset-to-death distribution) and offspring distributions. The class has a number of methods, including allowing the user to easily calculate the PDF, CDF, and quantile, generate random numbers, calculate the distribution mean, and plot the distribution. An `<epiparameter>` object can be created with the constructor function `epiparameter()`, and if uncertain whether an object is an `<epiparameter>`, it can be validated with `assert_epiparameter()`.
+The {epiparameter} R package has three components: a library of epidemiological
+parameters, a class (i.e. data structure) for representing a parameter, and
+helper functions for working with parameters and distributions. What falls
+inside and outside the scope of each is set out below.
 
-The package also converts distribution parameters to summary statistics, and vice versa. This is achieved either by conversion or extraction and both of these methods and the functions used are explained in the [Parameter extraction and conversion in {epiparameter} vignette](extract_convert.html).
+The library is loaded from the
+[{epiparameterDB}](https://CRAN.R-project.org/package=epiparameterDB) R package
+rather than being stored here, so that the parameters can be released under CC0;
+an \R package cannot be dual licensed.
 
-The package does not estimate epidemiological parameters from data. Fitting a distribution to individual-level data -- for example observed delays in a line list -- requires accounting for interval censoring, right truncation and epidemic phase bias, and is the domain of specialist packages such as [{primarycensored}](https://primarycensored.epinowcast.org/), [{epidist}](https://epidist.epinowcast.org/) and [{EpiNow2}](https://epiforecasts.io/EpiNow2/). This boundary is worth drawing carefully, because `extract_param()` does perform an optimisation: it recovers distribution parameters from *reported summary statistics*, such as percentiles or a range, and not from observed data. Parameters estimated elsewhere can be brought into the package by constructing an `<epiparameter>` object with `epiparameter()`.
+### Library of epidemiological parameters
+
+In scope:
+
+* A relatively small set of parameters to develop and test the package against,
+and to draw on in examples, vignettes and tutorials.
+* Parameters needed by {epiparameter}, other Epiverse-TRACE packages or
+tutorials that are not available from grEPI or {epireview}.
+* Trialling new representations and features before they are adopted more
+widely.
+
+Out of scope:
+
+* Growing into a comprehensive repository of epidemiological parameters. That
+role belongs to grEPI and {epireview}, both of which can be read into
+`<epiparameter>` objects (see the
+[Epidemiological parameter data sources](data_sources.html) vignette).
+* Individual-level data from which parameters were estimated.
+* The methodology of systematic literature searching, extraction and review,
+which is carried out by the databases that curate parameters.
+
+### The `<epiparameter>` class and methods
+
+In scope:
+
+* A single epidemiological parameter, reported by a single study, for a single
+disease. Delay distributions (e.g. incubation period, serial interval,
+onset-to-death) and offspring distributions were the original focus, and other
+parameters are also represented.
+* A parameterised probability distribution, summary statistics, or both,
+supporting distribution families commonly used to represent epidemiological
+parameters. Distributions may be discretised, truncated, or offset to allow
+support below zero.
+* The provenance and context of the estimate: its citation, the units, sample
+size, region, transmission mode, etc., and an assessment of whether the
+estimate accounts for censoring, truncation or phase bias.
+* Methods giving the distribution functions of a parameterised
+`<epiparameter>` (e.g. the PDF or PMF, CDF, quantiles, random number
+generation and the mean).
+* Methods for inspecting and displaying an `<epiparameter>` (e.g. `print()` and
+`plot()`), the accessors `get_parameters()`, and `get_citation()`, and
+coercion with `as.data.frame()` and `as.function()`.
+* Methods that return another `<epiparameter>`: `discretise()` to discretise a
+continuous distribution, and `aggregate()` to combine a `<multi_epiparameter>`
+into a single `<epiparameter>` holding a mixture distribution.
+
+Out of scope:
+
+* The individual-level data the estimate was derived from.
+* Separate classes for particular kinds of parameter. A `<vb_epidist>` class
+for vector-borne parameters was introduced and later removed (#359).
+
+### Helper functions
+
+Helper functions are those that work with epidemiological parameters and
+distributions (not including `<epiparameter>` class methods).
+
+In scope:
+
+* Converting between the parameters of a distribution and its summary
+statistics with `convert_params_to_summary_stats()` and
+`convert_summary_stats_to_params()`, and extracting parameters from reported
+summary statistics such as percentiles or a median and range with
+`extract_param()`. Both are explained in the
+[Parameter extraction and conversion in {epiparameter} vignette](extract_convert.html).
+* Reading parameters from the supported databases with `epiparameter_db()`, and
+coercing objects from other packages into `<epiparameter>` objects with
+`as_epiparameter()`.
+* Constructing the components of an `<epiparameter>` with the `create_*()`
+helpers, and summarising a set of parameters in tabular form with
+`parameter_tbl()`.
+
+Out of scope:
+
+* Estimating epidemiological parameters from data. Fitting a distribution to
+individual-level data -- for example observed delays in a line list -- requires
+accounting for interval censoring, right truncation and epidemic phase bias,
+and is the domain of specialist packages such as
+[{primarycensored}](https://primarycensored.epinowcast.org/),
+[{epidist}](https://epidist.epinowcast.org/) and
+[{EpiNow2}](https://epiforecasts.io/EpiNow2/). `extract_param()` does perform
+an optimisation to recover distribution parameters from reported summary
+statistics, and not from observed data. Parameters estimated elsewhere can be
+brought into the package by constructing an `<epiparameter>` object with
+`epiparameter()`.
+* Epidemiological analyses that use parameters as an input, such as estimating
+the reproduction number or simulating an outbreak. These are the domain of other
+packages, and examples of {epiparameter} used alongside them are published in
+the [Epiverse-TRACE how-to guides](https://epiverse-trace.github.io/howto/).
 
 ## Output
 
