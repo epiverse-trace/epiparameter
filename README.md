@@ -254,9 +254,11 @@ the [Epidemiological parameter data
 sources](https://epiverse-trace.github.io/epiparameter/articles/data_sources.html)
 vignette.
 
-The bundled library is a development and experimentation set rather than
-a comprehensive repository. Parameters intended for long-term curation
-are better contributed to
+The library is a development and experimentation set rather than a
+comprehensive repository. It stores parameters needed by
+`{epiparameter}`, another Epiverse-TRACE package or a tutorial that are
+not available elsewhere. Parameters intended for long-term curation are
+better contributed to
 [grEPI](https://who-collaboratory.github.io/collaboratory-grepi-web/) or
 [`{epireview}`](https://mrc-ide.github.io/epireview/) directly.
 
