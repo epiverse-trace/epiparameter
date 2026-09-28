@@ -56,6 +56,7 @@
       
       # i 130 more elements
       # i Use `print(n = ...)` to see more elements.
+      # i 79 entries are different estimates from the same study, see `$notes`.
       # i Use `parameter_tbl()` to see a summary table of the parameters.
       # i Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 
@@ -97,6 +98,7 @@
         mean: 0.940
         dispersion: 0.170
       
+      # i 2 entries are different estimates from Lloyd-Smith et al. (2005), see `$notes`.
       # i Use `parameter_tbl()` to see a summary table of the parameters.
       # i Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 
