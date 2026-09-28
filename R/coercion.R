@@ -168,7 +168,7 @@ as_epiparameter.data.frame <- function(x, ...) {
     epiparameter <- .epireview_to_epiparameter(x, ...)
   } else {
     stop(
-      "<data.frame> input into as_epiparameter() cannot be converted to ",
+      "<data.frame> input into `as_epiparameter()` cannot be converted to ",
       "<epiparameter>",
       call. = FALSE
     )
@@ -271,7 +271,7 @@ is_epiparameter_df <- function(x) {
   # validate multi-row entries
   if (nrow(x) > 1) {
     stopifnot(
-      "Multiple entries passed to as_epiparameter() do not have the same ID" =
+      "Multiple entries passed to `as_epiparameter()` do not have the same ID" =
         length(unique(x$id)) == 1L
     )
   }
@@ -441,7 +441,7 @@ is_epiparameter_df <- function(x) {
     )
     warning(
       "Cannot create full citation for epidemiological parameters without ",
-      "bibliographic information \n see ?as_epiparameter for help.",
+      "bibliographic information \n see `?as_epiparameter()` for help.",
       call. = FALSE
     )
   } else {
