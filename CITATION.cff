@@ -33,6 +33,9 @@ authors:
   given-names: Carmen
   email: carmen.tamayo-cuartero@lshtm.ac.uk
   orcid: https://orcid.org/0000-0003-4184-2864
+- family-names: Kerr
+  given-names: Steve
+  orcid: https://orcid.org/0000-0001-8240-7899
 preferred-citation:
   type: manual
   title: 'epiparameter: Classes and Helper Functions for Working with Epidemiological
@@ -50,6 +53,9 @@ preferred-citation:
     given-names: Carmen
     email: carmen.tamayo-cuartero@lshtm.ac.uk
     orcid: https://orcid.org/0000-0003-4184-2864
+  - family-names: Kerr
+    given-names: Steve
+    orcid: https://orcid.org/0000-0001-8240-7899
   year: '2026'
   doi: 10.5281/zenodo.11110881
   url: https://epiverse-trace.github.io/epiparameter/
