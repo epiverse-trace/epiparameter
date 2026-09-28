@@ -59,7 +59,7 @@ aggregate.multi_epiparameter <- function(x,
 
   if (!all(vapply(x, is_parameterised, FUN.VALUE = logical(1)))) {
     stop(
-      "aggregate() requires all <epiparameter> objects to be parameterised",
+      "`aggregate()` requires all <epiparameter> objects to be parameterised",
       call. = FALSE
     )
   }
@@ -81,13 +81,13 @@ aggregate.multi_epiparameter <- function(x,
     if (missing(weights)) {
       stop(
         "`weights` are required for each distribution when ",
-        "`weighting = custom`.",
+        "`weighting = \"custom\"`.",
         call. = FALSE
       )
     }
     if (length(weights) != length(x)) {
       stop(
-        "The number of weights must equal the number of <epiparameter> ",
+        "The number of `weights` must equal the number of <epiparameter> ",
         "objects.",
         call. = FALSE
       )
@@ -106,7 +106,7 @@ aggregate.multi_epiparameter <- function(x,
         cli::pluralize(
           "Input distribution{?s} {cit} {?has/have} been dropped ",
           "because they don't report sample size and ",
-          "`weighing = 'sample_size'`."
+          "`weighting = \"sample_size\"`."
         ),
         call. = FALSE
       )

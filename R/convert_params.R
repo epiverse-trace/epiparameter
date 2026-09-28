@@ -355,7 +355,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
 
   # check input params
   if (!all(c("meanlog", "sdlog") %in% names(x))) {
-    stop("lnorm parameters must be named 'meanlog' and 'sdlog'", call. = FALSE)
+    stop("lnorm parameters must be named `meanlog` and `sdlog`", call. = FALSE)
   }
   meanlog <- x[["meanlog"]]
   sdlog <- x[["sdlog"]]
@@ -463,7 +463,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
 
   # check input params
   if (!all(c("shape", "scale") %in% names(x))) {
-    stop("gamma parameters must be named 'shape' and 'scale'", call. = FALSE)
+    stop("gamma parameters must be named `shape` and `scale`", call. = FALSE)
   }
   shape <- x[["shape"]]
   scale <- x[["scale"]]
@@ -548,7 +548,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
 
   # check input params
   if (!all(c("shape", "scale") %in% names(x))) {
-    stop("weibull parameters must be named 'shape' and 'scale'", call. = FALSE)
+    stop("weibull parameters must be named `shape` and `scale`", call. = FALSE)
   }
   shape <- x[["shape"]]
   scale <- x[["scale"]]
@@ -654,7 +654,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   # check input params
   if (!all(c("prob", "dispersion") %in% names(x))) {
     stop(
-      "nbinom parameters must be named 'prob' and 'dispersion'",
+      "nbinom parameters must be named `prob` and `dispersion`",
       call. = FALSE
     )
   }
@@ -764,7 +764,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
 
   # check input params
   if (!all("prob" %in% names(x))) {
-    stop("geom parameter must be named 'prob'", call. = FALSE)
+    stop("geom parameter must be named `prob`", call. = FALSE)
   }
   prob <- x[["prob"]]
 
@@ -867,7 +867,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   # check input params
   if (!all(c("mean", "sd") %in% names(x))) {
     stop(
-      "normal distribution parameters must be named 'mean' and 'sd'",
+      "normal distribution parameters must be named `mean` and `sd`",
       call. = FALSE
     )
   }

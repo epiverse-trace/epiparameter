@@ -851,7 +851,7 @@ test_that("discretise works as expected on discretised dist", {
   ))
   expect_message(
     discretise(ep),
-    regexp = "Distribution in `epiparameter` is already discretised"
+    regexp = "Distribution in <epiparameter> is already discretised"
   )
 
   expect_s3_class(ep$prob_distribution, "distcrete")
@@ -889,12 +889,12 @@ test_that("discretise works as expected on truncated dist", {
 test_that("discretise fails as expected on non-epiparameter object", {
   expect_error(
     discretise("epiparameter"),
-    regexp = "No discretise method defined for class character"
+    regexp = "No `discretise\\(\\)` method defined for class character"
   )
 
   expect_error(
     discretise(c(1, 2, 3)),
-    regexp = "No discretise method defined for class numeric"
+    regexp = "No `discretise\\(\\)` method defined for class numeric"
   )
 })
 

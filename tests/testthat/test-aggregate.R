@@ -81,7 +81,7 @@ test_that("aggregate fails as expected with unparameterised <epiparameter>", {
   )
   expect_error(
     aggregate(incub),
-    regexp = "(aggregate() requires all <epiparameter> objects)*(parameterised)"
+    regexp = "(`aggregate\\(\\)` requires all <epiparameter> objects)*(parameterised)"
   )
 })
 
@@ -96,6 +96,6 @@ test_that("aggregate fails as expected for with discretised <epiparmeter>", {
 test_that("aggregate fails as expected with custom weighting without weights", {
   expect_error(
     aggregate(ebola_si, weighting = "custom"),
-    regexp = "(weights)*(required for each distribution)*(weighting = custom)"
+    regexp = "(weights)*(required for each distribution)*(weighting = .custom.)"
   )
 })

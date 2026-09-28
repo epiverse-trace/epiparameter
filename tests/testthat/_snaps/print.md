@@ -4,8 +4,8 @@
       epiparameter_db()
     Message
       Returning 133 results that match the criteria (108 are parameterised). 
-      Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-      To retrieve the citation for each use the 'get_citation' function
+      Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+      To retrieve the citation for each use the `get_citation()` function
     Output
       # List of 133 <epiparameter> objects
       Number of diseases: 23
@@ -56,6 +56,7 @@
       
       # i 130 more elements
       # i Use `print(n = ...)` to see more elements.
+      # i 79 entries are different estimates from the same study, see `$notes`.
       # i Use `parameter_tbl()` to see a summary table of the parameters.
       # i Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 
@@ -65,8 +66,8 @@
       epiparameter_db(disease = "SARS", epi_name = "offspring distribution")
     Message
       Returning 2 results that match the criteria (2 are parameterised). 
-      Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-      To retrieve the citation for each use the 'get_citation' function
+      Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+      To retrieve the citation for each use the `get_citation()` function
     Output
       # List of 2 <epiparameter> objects
       Number of diseases: 1
@@ -97,6 +98,7 @@
         mean: 0.940
         dispersion: 0.170
       
+      # i 2 entries are different estimates from Lloyd-Smith et al. (2005), see `$notes`.
       # i Use `parameter_tbl()` to see a summary table of the parameters.
       # i Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 

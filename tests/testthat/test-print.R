@@ -97,3 +97,41 @@ test_that("print method omits extrinsic when the parameter is intrinsic", {
   out <- utils::capture.output(print(ep))
   expect_false(any(grepl("Extrinsic", out)))
 })
+
+test_that(".same_study_msg() groups by disease and parameter, not study alone", {
+  db <- epiparameter_db(verbose = FALSE)
+  doi <- vapply(
+    db, function(x) as.character(x$citation$doi), FUN.VALUE = character(1)
+  )
+  # this study reports incubation periods for several diseases, only the
+  # entries sharing a disease and parameter are ambiguous when printed
+  study <- db[doi == "10.1016/S1473-3099(09)70069-6"]
+  class(study) <- "multi_epiparameter"
+
+  expect_gt(length(study), 3L)
+  expect_match(
+    .same_study_msg(study),
+    "3 entries are different estimates from Lessler et al. (2009)",
+    fixed = TRUE
+  )
+})
+
+test_that(".same_study_msg() returns no message for a single entry", {
+  db <- epiparameter_db(disease = "RSV", author = "reich", verbose = FALSE)
+  expect_identical(.same_study_msg(db[1L]), "")
+})
+
+test_that(".same_study_msg() does not group entries without a study", {
+  ep <- epiparameter(
+    disease = "ebola",
+    epi_name = "incubation period",
+    prob_distribution = create_prob_distribution(
+      prob_distribution = "gamma",
+      prob_distribution_params = c(shape = 1, scale = 1)
+    ),
+    verbose = FALSE
+  )
+  # two entries with no citation are not estimates from the same study
+  db <- structure(list(ep, ep), class = "multi_epiparameter")
+  expect_identical(.same_study_msg(db), "")
+})
