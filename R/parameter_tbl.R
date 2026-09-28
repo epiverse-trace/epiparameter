@@ -35,7 +35,7 @@ parameter_tbl <- function(multi_epiparameter,
 
   # check data
   stopifnot(
-    "List of <epiparameter> objects should be supplied to multi_epiparameter" =
+    "`multi_epiparameter` should be a list of <epiparameter> objects" =
       all(
         vapply(multi_epiparameter, is_epiparameter, FUN.VALUE = logical(1))
       ) && length(multi_epiparameter) != 0

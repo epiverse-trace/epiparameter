@@ -620,7 +620,7 @@ discretize <- discretise
 discretise.epiparameter <- function(x, ...) {
   # check if distribution is already discretised if so return early
   if (inherits(x$prob_distribution, "distcrete")) { # nolint: unnecessary_nesting_linter, line_length_linter.
-    message("Distribution in `epiparameter` is already discretised")
+    message("Distribution in <epiparameter> is already discretised")
     return(x)
   } else {
     # extract prob dist and prob dist parameters from epiparameter
@@ -680,7 +680,7 @@ discretise.epiparameter <- function(x, ...) {
 #' @rdname discretise
 #' @export
 discretise.default <- function(x, ...) {
-  stop("No discretise method defined for class ", class(x), call. = FALSE)
+  stop("No `discretise()` method defined for class ", class(x), call. = FALSE)
 }
 
 #' Family method for the `<epiparameter>` class
@@ -776,7 +776,7 @@ family.epiparameter <- function(object, ..., base_dist = FALSE) {
 #' is_truncated(ep)
 is_truncated <- function(x) {
   stopifnot(
-    "is_truncated only works for `<epiparameter> objects`" =
+    "`is_truncated()` only works for <epiparameter> objects" =
       is_epiparameter(x)
   )
   return(identical(family(x), "truncated"))
@@ -818,7 +818,7 @@ is_truncated <- function(x) {
 #' is_continuous(ep)
 is_continuous <- function(x) {
   stopifnot(
-    "is_continuous only works for `<epiparameter> objects`" =
+    "`is_continuous()` only works for <epiparameter> objects" =
       is_epiparameter(x)
   )
   # get individual distributions out of mixture to check if continuous
