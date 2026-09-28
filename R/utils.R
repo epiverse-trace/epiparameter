@@ -96,7 +96,6 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
 #' Empty `character` string when no entries from the same study.
 #' @keywords internal
 .same_study_msg <- function(x) {
-  browser()
   if (length(x) < 2L) {
     return("")
   }
@@ -138,7 +137,6 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
 #' @return A `character` string.
 #' @keywords internal
 .study_key <- function(x, i) {
-  browser()
   doi <- x$citation$doi
   if (length(doi) == 1L && !is.na(doi) && nzchar(doi)) {
     study <- doi
