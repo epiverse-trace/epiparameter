@@ -158,7 +158,7 @@ test_that("parameter_tbl fails correctly", {
       multi_epiparameter = list(),
       epi_name = "incubation_period"
     ),
-    regexp = "List of <epiparameter> objects should be supplied to multi_epiparameter"
+    regexp = "`multi_epiparameter` should be a list of <epiparameter> objects"
   )
 
   expect_error(
