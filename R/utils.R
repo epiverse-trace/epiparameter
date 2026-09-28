@@ -75,4 +75,83 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
   cite
 }
 
+#' Create message reporting `<epiparameter>` objects that are estimates from
+#' the same study
+#'
+#' @description
+#' When a single study reports several estimates that all loaded from the
+#' database, they indistinguishable from each other, so this function
+#' writes a message that is printed in [print.multi_epiparameter()] notifying
+#' the user of multiple parameters from the same study.
+#'
+#' @details
+#' Entries are grouped by disease, epidemiological parameter name and study
+#' (DOI, when available), Entries without an identifiable study are never
+#' grouped together. The study is named in the message when all the entries
+#' come from one study.
+#'
+#' @param x A `<multi_epiparameter>` object.
+#'
+#' @return A `character` string for the [print.multi_epiparameter()] footer.
+#' Empty `character` string when no entries from the same study.
+#' @keywords internal
+.same_study_msg <- function(x) {
+  browser()
+  if (length(x) < 2L) {
+    return("")
+  }
+  key <- vapply(
+    seq_along(x),
+    function(i) .study_key(x[[i]], i),
+    FUN.VALUE = character(1)
+  )
+  groups <- split(seq_along(x), key)
+  # keep only the groups holding more than one entry
+  groups <- unname(groups[lengths(groups) > 1L])
+  if (length(groups) == 0L) {
+    return("")
+  }
+
+  n_same <- sum(lengths(groups))
+  if (length(groups) == 1L) {
+    study <- .citet(x[[groups[[1L]][1L]]]$citation)
+    msg <- sprintf(
+      tr_("%s entries are different estimates from %s, see `$notes`.\n"),
+      n_same, study
+    )
+  } else {
+    msg <- sprintf(
+      tr_("%s entries are different estimates from the same study, see `$notes`.\n"), # nolint: line_length_linter.
+      n_same
+    )
+  }
+  # prefix to match the other elements of the print footer
+  paste0("# ", cli::symbol$info, " ", msg)
+}
+
+#' Key identifying the disease, parameter and study of an `<epiparameter>`
+#'
+#' @inheritParams .same_study_msg
+#' @param i The index of `x` in the `<multi_epiparameter>`, used to keep
+#' entries without an identifiable study from being grouped together.
+#'
+#' @return A `character` string.
+#' @keywords internal
+.study_key <- function(x, i) {
+  browser()
+  doi <- x$citation$doi
+  if (length(doi) == 1L && !is.na(doi) && nzchar(doi)) {
+    study <- doi
+  } else {
+    study <- tryCatch(.citet(x$citation), error = function(e) NA_character_)
+    # an empty citation gives a string with no author or year, which does not
+    # identify a study, so the entry is given a key of its own
+    if (length(study) != 1L || is.na(study) || !grepl("[[:alnum:]]", study)) {
+      study <- paste0("no study ", i)
+    }
+  }
+  # \r cannot appear in the fields so is safe as a separator
+  paste(x$disease, x$epi_name, study, sep = "\r")
+}
+
 `%||%` <- function(x, y) if (is.null(x)) y else x # nolint: coalesce_linter.
