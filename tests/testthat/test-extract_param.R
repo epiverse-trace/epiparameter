@@ -240,7 +240,7 @@ test_that("extract_param fails as expected", {
       percentiles = c(0.125, 0.875),
       control = list(extra = 1)
     ),
-    regexp = "control list requires max_iter and tolerance elements"
+    regexp = "`control` list requires `max_iter` and `tolerance` elements"
   )
 })
 
@@ -398,7 +398,7 @@ test_that(".extract_param fails as expected", {
       values = c(8, 4, 13),
       distribution = "weibull"
     ),
-    regexp = "percentiles or samples arguments must be specified"
+    regexp = "`percentiles` or `samples` arguments must be specified"
   )
 })
 

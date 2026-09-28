@@ -4,8 +4,8 @@
       epiparameter_db()
     Message
       Returning 133 results that match the criteria (108 are parameterised). 
-      Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-      To retrieve the citation for each use the 'get_citation' function
+      Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+      To retrieve the citation for each use the `get_citation()` function
     Output
       # List of 133 <epiparameter> objects
       Number of diseases: 23
@@ -66,8 +66,8 @@
       epiparameter_db(disease = "SARS", epi_name = "offspring distribution")
     Message
       Returning 2 results that match the criteria (2 are parameterised). 
-      Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-      To retrieve the citation for each use the 'get_citation' function
+      Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+      To retrieve the citation for each use the `get_citation()` function
     Output
       # List of 2 <epiparameter> objects
       Number of diseases: 1
