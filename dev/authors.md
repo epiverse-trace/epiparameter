@@ -11,6 +11,8 @@
 - **Carmen Tamayo Cuartero**. Author.
   [](https://orcid.org/0000-0003-4184-2864)
 
+- **Steve Kerr**. Author. [](https://orcid.org/0000-0001-8240-7899)
+
 - **Hugo Gruson**. Contributor, reviewer.
   [](https://orcid.org/0000-0002-4094-1476)
 
@@ -35,14 +37,15 @@
 Source:
 [`inst/CITATION`](https://github.com/epiverse-trace/epiparameter/blob/main/inst/CITATION)
 
-Lambert J, Kucharski A, Tamayo Cuartero C (2026). *epiparameter: Classes
-and Helper Functions for Working with Epidemiological Parameters*.
+Lambert J, Kucharski A, Tamayo Cuartero C, Kerr S (2026). *epiparameter:
+Classes and Helper Functions for Working with Epidemiological
+Parameters*.
 [doi:10.5281/zenodo.11110881](https://doi.org/10.5281/zenodo.11110881).
 <https://epiverse-trace.github.io/epiparameter/>.
 
     @Manual{,
       title = {epiparameter: Classes and Helper Functions for Working with Epidemiological Parameters},
-      author = {Joshua W. Lambert and Adam Kucharski and Carmen {Tamayo Cuartero}},
+      author = {Joshua W. Lambert and Adam Kucharski and Carmen {Tamayo Cuartero} and Steve Kerr},
       year = {2026},
       doi = {10.5281/zenodo.11110881},
       url = {https://epiverse-trace.github.io/epiparameter/},

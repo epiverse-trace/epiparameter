@@ -31,6 +31,8 @@ Authors:
 - Carmen Tamayo Cuartero <carmen.tamayo-cuartero@lshtm.ac.uk>
   ([ORCID](https://orcid.org/0000-0003-4184-2864))
 
+- Steve Kerr ([ORCID](https://orcid.org/0000-0001-8240-7899))
+
 Other contributors:
 
 - Hugo Gruson <hugo.gruson@data.org>
