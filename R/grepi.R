@@ -185,6 +185,9 @@
   params_available <-
     length(param1) == 1L && is.numeric(param1) && !is.na(param1) &&
     length(param2) == 1L && is.numeric(param2) && !is.na(param2)
+  # a range-only record has both bounds but no point value
+  range_bounds <- .grepi_bounds(x, "epiParameter_Estimate_Range")
+  has_range <- !anyNA(range_bounds)
   # extra text appended to the <epiparameter> notes
   value_type_note <- ""
   if (has_dist && params_available) {
@@ -281,15 +284,13 @@
       create_summary_stats()
     )
     summary_stats$range <- range_src
-  } else if (!anyNA(.grepi_bounds(x, "epiParameter_Estimate_Range"))) {
+  } else if (has_range) {
     # Entry with a range but no point value: store the range as a reported
     # interval, which is kept as data only and not used for inference. As with
     # the point estimate above, the family is carried forward if declared.
     prob_distribution <- create_prob_distribution(prob_distribution = dist)
     uncertainty <- list(uncertainty = create_uncertainty())
-    summary_stats <- create_summary_stats(
-      reported_interval = .grepi_bounds(x, "epiParameter_Estimate_Range")
-    )
+    summary_stats <- create_summary_stats(reported_interval = range_bounds)
     # A reported interval does not record what it describes, so keep the
     # estimate value type in the notes when grEPI gives one.
     value_type <- as.character(x$epiParameter_Estimate_Value_Type)
