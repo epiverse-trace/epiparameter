@@ -10,7 +10,10 @@ grepi_record <- function(unique_id_type = "Digital Object Identifier (DOI)",
                          type1 = NA_character_,
                          value1 = NA_real_,
                          type2 = NA_character_,
-                         value2 = NA_real_) {
+                         value2 = NA_real_,
+                         point_value = 5,
+                         range_lower = NA_real_,
+                         range_upper = NA_real_) {
   list(
     disease = "Test Disease",
     pathogen_species = "Test Pathogen",
@@ -21,8 +24,9 @@ grepi_record <- function(unique_id_type = "Digital Object Identifier (DOI)",
     epiParameter_Distribution_Parameter1_Value = value1,
     epiParameter_Distribution_Parameter2_Value_Type = type2,
     epiParameter_Distribution_Parameter2_Value = value2,
-    epiParameter_Estimate_IsPoint = TRUE,
-    epiParameter_Estimate_Point_Value = 5,
+    epiParameter_Estimate_Point_Value = point_value,
+    epiParameter_Estimate_Range_Lower_Bound_Value = range_lower,
+    epiParameter_Estimate_Range_Upper_Bound_Value = range_upper,
     epiParameter_Estimate_Value_Type = "Mean",
     estimate_unit = "Days",
     epi_Parameter_Population_Sample_Size = 100,
@@ -177,4 +181,46 @@ test_that(".grepi_to_epiparameter() does not record a distribution family that
 
   expect_false(is_parameterised(ep))
   expect_identical(family(ep), NA_character_)
+})
+
+test_that(".grepi_to_epiparameter() converts a point estimate identified by its
+           point value, without the removed epiParameter_Estimate_IsPoint
+           flag", {
+  x <- grepi_record(point_value = 5)
+  expect_null(x$epiParameter_Estimate_IsPoint)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_s3_class(ep, "epiparameter")
+  expect_false(is_parameterised(ep))
+  expect_identical(ep$summary_stats$mean, 5)
+})
+
+test_that(".grepi_to_epiparameter() keeps the range of a point estimate", {
+  x <- grepi_record(point_value = 5, range_lower = 3, range_upper = 8)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_identical(ep$summary_stats$mean, 5)
+  expect_identical(ep$summary_stats$range, c(3, 8))
+})
+
+test_that(".grepi_to_epiparameter() skips a range-only record with a warning", {
+  x <- grepi_record(point_value = NA_real_, range_lower = 3, range_upper = 8)
+
+  expect_warning(
+    ep <- suppressMessages(.grepi_to_epiparameter(x)),
+    regexp = "unsupported distribution and not a point estimate"
+  )
+  expect_null(ep)
+})
+
+test_that(".grepi_to_epiparameter() skips a record when the point value field
+           is absent", {
+  x <- grepi_record()
+  x$epiParameter_Estimate_Point_Value <- NULL
+
+  expect_warning(
+    ep <- suppressMessages(.grepi_to_epiparameter(x)),
+    regexp = "unsupported distribution and not a point estimate"
+  )
+  expect_null(ep)
 })
