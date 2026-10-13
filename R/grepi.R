@@ -249,20 +249,22 @@
     # `epiParameter_Estimate_IsPoint` flag was removed in grEPI v3.0.7.
     prob_distribution <- create_prob_distribution(prob_distribution = dist)
     uncertainty <- list(uncertainty = create_uncertainty())
-    pv <- x$epiParameter_Estimate_Point_Value
+    # grEPI flags values stored as the reciprocal of the quantity they describe
+    # with `*_IsInverseValue`, these are inverted back (1 / value)
+    pv <- .grepi_invert(
+      x$epiParameter_Estimate_Point_Value,
+      x[["epiParameter_Estimate_PointIsInverseValue"]]
+    )
     is_ci <- isTRUE(grepl("Confidence|Credible",
                           x$epiParameter_Uncertainty_Value_Type %||% ""))
-    ci <- if (is_ci) c(x$epiParameter_Uncertainty_Range_Lower_Bound_Value,
-                       x$epiParameter_Uncertainty_Range_Upper_Bound_Value)
+    ci <- if (is_ci) .grepi_bounds(x, "epiParameter_Uncertainty_Range")
           else c(NA_real_, NA_real_)
     ci_level <- if (is_ci) 95 else NA_real_
     # Range comes from either Uncertainty_Range_* (when UT=Range) or from the
     # parallel Estimate_Range_* field grEPI also carries.
     range_src <- if (identical(x$epiParameter_Uncertainty_Value_Type, "Range"))
-      c(x$epiParameter_Uncertainty_Range_Lower_Bound_Value %||% NA_real_,
-        x$epiParameter_Uncertainty_Range_Upper_Bound_Value %||% NA_real_)
-    else c(x$epiParameter_Estimate_Range_Lower_Bound_Value %||% NA_real_,
-           x$epiParameter_Estimate_Range_Upper_Bound_Value %||% NA_real_)
+      .grepi_bounds(x, "epiParameter_Uncertainty_Range")
+    else .grepi_bounds(x, "epiParameter_Estimate_Range")
     summary_stats <- switch(
       as.character(x$epiParameter_Estimate_Value_Type),
       Mean = create_summary_stats(
@@ -374,4 +376,59 @@
     ),
     auto_calc_params = FALSE
   )
+}
+
+#' Invert a \pkg{grEPI} value flagged as an inverse value
+#'
+#' grEPI stores some values (e.g. a rate reported for a delay) as the
+#' reciprocal of the quantity they describe and flags them with a
+#' `*_IsInverseValue` property. The units (`estimate_unit`) are not adjusted.
+#'
+#' @param value A `numeric` value.
+#' @param is_inverse A `logical` flag, `TRUE` if `value` is an inverse value.
+#' Missing or absent (`NULL`) flags are treated as `FALSE`.
+#'
+#' @return A `numeric`, `1 / value` if `is_inverse` is `TRUE`, otherwise
+#' `value`. A value that cannot be inverted (zero) is returned as `NA`.
+#' @keywords internal
+#' @noRd
+.grepi_invert <- function(value, is_inverse) {
+  if (!isTRUE(is_inverse)) {
+    return(value)
+  }
+  inverted <- 1 / value
+  inverted[!is.finite(inverted)] <- NA_real_
+  inverted
+}
+
+#' Read the lower and upper bounds of a \pkg{grEPI} range
+#'
+#' Each bound is inverted if flagged as an inverse value by grEPI. The bounds
+#' are then ordered, as inverting reverses their order and grEPI does not
+#' always enter the lower bound first.
+#'
+#' @param x A single-row `<data.frame>` from \pkg{grEPI}.
+#' @param prefix A `character` string of the property name up to the bound
+#' side, e.g. `"epiParameter_Estimate_Range"` reads
+#' `epiParameter_Estimate_Range_Lower_Bound_Value` and its
+#' `epiParameter_Estimate_Range_Lower_Bound_IsInverseValue` flag.
+#'
+#' @return A `numeric` vector of length two, the lower and upper bounds
+#' (`NA` for bounds that are absent).
+#' @keywords internal
+#' @noRd
+.grepi_bounds <- function(x, prefix) {
+  bounds <- vapply(
+    c("Lower", "Upper"),
+    function(side) {
+      value <- x[[paste0(prefix, "_", side, "_Bound_Value")]] %||% NA_real_
+      is_inverse <- x[[paste0(prefix, "_", side, "_Bound_IsInverseValue")]]
+      .grepi_invert(value, is_inverse)
+    },
+    FUN.VALUE = numeric(1)
+  )
+  if (!anyNA(bounds)) {
+    bounds <- range(bounds)
+  }
+  unname(bounds)
 }
