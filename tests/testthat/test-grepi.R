@@ -10,7 +10,12 @@ grepi_record <- function(unique_id_type = "Digital Object Identifier (DOI)",
                          type1 = NA_character_,
                          value1 = NA_real_,
                          type2 = NA_character_,
-                         value2 = NA_real_) {
+                         value2 = NA_real_,
+                         point_value = 5,
+                         range_lower = NA_real_,
+                         range_upper = NA_real_,
+                         point_inverse = NA,
+                         range_inverse = NA) {
   list(
     disease = "Test Disease",
     pathogen_species = "Test Pathogen",
@@ -21,8 +26,12 @@ grepi_record <- function(unique_id_type = "Digital Object Identifier (DOI)",
     epiParameter_Distribution_Parameter1_Value = value1,
     epiParameter_Distribution_Parameter2_Value_Type = type2,
     epiParameter_Distribution_Parameter2_Value = value2,
-    epiParameter_Estimate_IsPoint = TRUE,
-    epiParameter_Estimate_Point_Value = 5,
+    epiParameter_Estimate_Point_Value = point_value,
+    epiParameter_Estimate_Range_Lower_Bound_Value = range_lower,
+    epiParameter_Estimate_Range_Upper_Bound_Value = range_upper,
+    epiParameter_Estimate_PointIsInverseValue = point_inverse,
+    epiParameter_Estimate_Range_Lower_Bound_IsInverseValue = range_inverse,
+    epiParameter_Estimate_Range_Upper_Bound_IsInverseValue = range_inverse,
     epiParameter_Estimate_Value_Type = "Mean",
     estimate_unit = "Days",
     epi_Parameter_Population_Sample_Size = 100,
@@ -177,4 +186,204 @@ test_that(".grepi_to_epiparameter() does not record a distribution family that
 
   expect_false(is_parameterised(ep))
   expect_identical(family(ep), NA_character_)
+})
+
+test_that(".grepi_to_epiparameter() converts a point estimate identified by its
+           point value, without the removed epiParameter_Estimate_IsPoint
+           flag", {
+  x <- grepi_record(point_value = 5)
+  expect_null(x$epiParameter_Estimate_IsPoint)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_s3_class(ep, "epiparameter")
+  expect_false(is_parameterised(ep))
+  expect_identical(ep$summary_stats$mean, 5)
+})
+
+test_that(".grepi_to_epiparameter() keeps the range of a point estimate", {
+  x <- grepi_record(point_value = 5, range_lower = 3, range_upper = 8)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_identical(ep$summary_stats$mean, 5)
+  expect_identical(ep$summary_stats$range, c(3, 8))
+})
+
+test_that(".grepi_to_epiparameter() converts a range-only record to a reported
+           interval", {
+  x <- grepi_record(point_value = NA_real_, range_lower = 3, range_upper = 8)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_s3_class(ep, "epiparameter")
+  expect_false(is_parameterised(ep))
+  expect_identical(ep$summary_stats$reported_interval, c(3, 8))
+  expect_null(ep$summary_stats$mean)
+  expect_output(print(ep), "Reported Interval: [3, 8]", fixed = TRUE)
+})
+
+test_that(".grepi_to_epiparameter() records the estimate value type in the notes
+           of a range-only record when it is Mean, Median or SD", {
+  value_types <- c("Mean", "Median", "Standard deviation (SD)")
+  for (value_type in value_types) {
+    x <- grepi_record(point_value = NA_real_, range_lower = 3, range_upper = 8)
+    x$epiParameter_Estimate_Value_Type <- value_type
+    ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+    expect_match(
+      ep$notes,
+      paste0("Estimate value type: ", value_type, "."),
+      fixed = TRUE
+    )
+  }
+  for (value_type in c("Unspecified", NA_character_)) {
+    x <- grepi_record(point_value = NA_real_, range_lower = 3, range_upper = 8)
+    x$epiParameter_Estimate_Value_Type <- value_type
+    ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+    expect_no_match(ep$notes, "Estimate value type")
+  }
+})
+
+test_that(".grepi_to_epiparameter() does not add the estimate value type to the
+           notes of a point estimate", {
+  ep <- suppressMessages(.grepi_to_epiparameter(grepi_record()))
+
+  expect_no_match(ep$notes, "Estimate value type")
+})
+
+test_that(".grepi_to_epiparameter() orders the bounds of a range-only record
+           entered in descending order", {
+  x <- grepi_record(point_value = NA_real_, range_lower = 0.11,
+                    range_upper = 0.07)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_identical(ep$summary_stats$reported_interval, c(0.07, 0.11))
+})
+
+test_that(".grepi_to_epiparameter() inverts and orders the bounds of a range-only
+           record flagged as an inverse value", {
+  x <- grepi_record(point_value = NA_real_, range_lower = 0.7,
+                    range_upper = 0.11, range_inverse = TRUE)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_equal(
+    ep$summary_stats$reported_interval,
+    c(1 / 0.7, 1 / 0.11)
+  )
+})
+
+test_that(".grepi_to_epiparameter() records the distribution family of a
+           range-only record when grEPI declares one", {
+  x <- grepi_record(distribution_type = "Gamma", point_value = NA_real_,
+                    range_lower = 3, range_upper = 8)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_false(is_parameterised(ep))
+  expect_identical(family(ep), "gamma")
+  expect_identical(ep$summary_stats$reported_interval, c(3, 8))
+})
+
+test_that(".grepi_to_epiparameter() skips a record with neither a point value
+           nor a complete range", {
+  skipped <- list(
+    grepi_record(point_value = NA_real_),
+    grepi_record(point_value = NA_real_, range_lower = 3),
+    grepi_record(point_value = NA_real_, range_upper = 8)
+  )
+  for (x in skipped) {
+    expect_warning(
+      ep <- suppressMessages(.grepi_to_epiparameter(x)),
+      regexp = "neither a point estimate nor a range"
+    )
+    expect_null(ep)
+  }
+})
+
+test_that(".grepi_to_epiparameter() skips a record when the point value and
+           range fields are absent", {
+  x <- grepi_record()
+  x$epiParameter_Estimate_Point_Value <- NULL
+  x$epiParameter_Estimate_Range_Lower_Bound_Value <- NULL
+  x$epiParameter_Estimate_Range_Upper_Bound_Value <- NULL
+
+  expect_warning(
+    ep <- suppressMessages(.grepi_to_epiparameter(x)),
+    regexp = "neither a point estimate nor a range"
+  )
+  expect_null(ep)
+})
+
+test_that(".grepi_to_epiparameter() inverts a point value flagged as an
+           inverse value", {
+  x <- grepi_record(point_value = 0.2, point_inverse = TRUE)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_equal(ep$summary_stats$mean, 5)
+})
+
+test_that(".grepi_to_epiparameter() does not invert a point value that is not
+           flagged as an inverse value", {
+  for (flag in list(FALSE, NA)) {
+    x <- grepi_record(point_value = 0.2, point_inverse = flag)
+    ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+    expect_identical(ep$summary_stats$mean, 0.2)
+  }
+  # inverse flags are absent from grEPI responses that pre-date them
+  x <- grepi_record(point_value = 0.2)
+  x$epiParameter_Estimate_PointIsInverseValue <- NULL
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_identical(ep$summary_stats$mean, 0.2)
+})
+
+test_that(".grepi_to_epiparameter() inverts and orders the range bounds of a
+           point estimate flagged as an inverse value", {
+  x <- grepi_record(
+    point_value = 0.5, range_lower = 0.25, range_upper = 0.5,
+    point_inverse = TRUE, range_inverse = TRUE
+  )
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_equal(ep$summary_stats$mean, 2)
+  expect_equal(ep$summary_stats$range, c(2, 4))
+})
+
+test_that(".grepi_to_epiparameter() orders range bounds entered in descending
+           order", {
+  x <- grepi_record(point_value = 5, range_lower = 0.11, range_upper = 0.07)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_identical(ep$summary_stats$range, c(0.07, 0.11))
+})
+
+test_that(".grepi_to_epiparameter() inverts the confidence interval limits of a
+           point estimate flagged as an inverse value", {
+  x <- grepi_record(point_value = 0.5, point_inverse = TRUE)
+  x$epiParameter_Uncertainty_Value_Type <- "Confidence interval"
+  x$epiParameter_Uncertainty_Range_Lower_Bound_Value <- 0.25
+  x$epiParameter_Uncertainty_Range_Upper_Bound_Value <- 1
+  x$epiParameter_Uncertainty_Range_Lower_Bound_IsInverseValue <- TRUE
+  x$epiParameter_Uncertainty_Range_Upper_Bound_IsInverseValue <- TRUE
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_equal(ep$summary_stats$mean, 2)
+  expect_equal(ep$summary_stats$mean_ci_limits, c(1, 4))
+})
+
+test_that(".grepi_invert() inverts only when flagged and handles zero", {
+  expect_identical(.grepi_invert(4, TRUE), 0.25)
+  expect_identical(.grepi_invert(4, FALSE), 4)
+  expect_identical(.grepi_invert(4, NA), 4)
+  expect_identical(.grepi_invert(4, NULL), 4)
+  expect_identical(.grepi_invert(NA_real_, TRUE), NA_real_)
+  expect_identical(.grepi_invert(0, TRUE), NA_real_)
+})
+
+test_that(".grepi_bounds() returns NA for absent bounds without ordering", {
+  x <- list(epiParameter_Estimate_Range_Lower_Bound_Value = 3)
+
+  expect_identical(
+    .grepi_bounds(x, "epiParameter_Estimate_Range"),
+    c(3, NA_real_)
+  )
 })
