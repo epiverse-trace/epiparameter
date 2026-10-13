@@ -13,6 +13,20 @@
   extrinsic entries, which described the `<vb_epidist>` class removed in
   v0.3.0 (#363).
 
+* `.grepi_to_epiparameter()` now applies the grEPI `*_IsInverseValue` flags.
+  grEPI stores some values as the reciprocal of the quantity they describe
+  (e.g. a rate for a delay) and flags them as inverse values, which were
+  previously converted as-is. Flagged point values, range bounds and
+  confidence interval limits are now inverted (1 / value) and range bounds are
+  ordered, as inverting reverses their order. The `estimate_unit` is not
+  adjusted for inverted values (#519).
+
+* Update `.grepi_to_epiparameter()` for the removal of the
+  `epiParameter_Estimate_IsPoint` property from the `EpiParameterEstimates`
+  endpoint in grEPI v3.0.7. A record without distribution parameters is now
+  treated as a point estimate when `epiParameter_Estimate_Point_Value` is
+  present, rather than when `epiParameter_Estimate_IsPoint` is `TRUE`. (#517)
+
 * Update `.read_grepi()` and `.grepi_to_epiparameter()` for the grEPI v3.0.6
   property renames on the `EpiParameterEstimates` endpoint
   (`epiParameter_Estimate_Type` -> `parameter_type`,
