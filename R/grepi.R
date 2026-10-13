@@ -240,11 +240,13 @@
       )
       summary_stats <- create_summary_stats()
     }
-  } else if (x$epiParameter_Estimate_IsPoint) {
+  } else if (isTRUE(!is.na(x[["epiParameter_Estimate_Point_Value"]]))) {
     # Entry without canonical distribution parameters: encode the typed point
     # value as a summary stat rather than fabricating a degenerate distribution.
     # If the family was declared (e.g. Mpox Log-normal with no shape/scale)
     # carry its name forward so the prob_distribution slot still records it.
+    # A point estimate is identified by the presence of a point value, as the
+    # `epiParameter_Estimate_IsPoint` flag was removed in grEPI v3.0.7.
     prob_distribution <- create_prob_distribution(prob_distribution = dist)
     uncertainty <- list(uncertainty = create_uncertainty())
     pv <- x$epiParameter_Estimate_Point_Value

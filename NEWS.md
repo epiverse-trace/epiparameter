@@ -13,6 +13,12 @@
   extrinsic entries, which described the `<vb_epidist>` class removed in
   v0.3.0 (#363).
 
+* Update `.grepi_to_epiparameter()` for the removal of the
+  `epiParameter_Estimate_IsPoint` property from the `EpiParameterEstimates`
+  endpoint in grEPI v3.0.7. A record without distribution parameters is now
+  treated as a point estimate when `epiParameter_Estimate_Point_Value` is
+  present, rather than when `epiParameter_Estimate_IsPoint` is `TRUE`. (#517)
+
 * Update `.read_grepi()` and `.grepi_to_epiparameter()` for the grEPI v3.0.6
   property renames on the `EpiParameterEstimates` endpoint
   (`epiParameter_Estimate_Type` -> `parameter_type`,
