@@ -185,6 +185,8 @@
   params_available <-
     length(param1) == 1L && is.numeric(param1) && !is.na(param1) &&
     length(param2) == 1L && is.numeric(param2) && !is.na(param2)
+  # extra text appended to the <epiparameter> notes
+  value_type_note <- ""
   if (has_dist && params_available) {
     prob_distribution_params <- stats::setNames(
       c(param1, param2),
@@ -279,9 +281,26 @@
       create_summary_stats()
     )
     summary_stats$range <- range_src
+  } else if (!anyNA(.grepi_bounds(x, "epiParameter_Estimate_Range"))) {
+    # Entry with a range but no point value: store the range as a reported
+    # interval, which is kept as data only and not used for inference. As with
+    # the point estimate above, the family is carried forward if declared.
+    prob_distribution <- create_prob_distribution(prob_distribution = dist)
+    uncertainty <- list(uncertainty = create_uncertainty())
+    summary_stats <- create_summary_stats(
+      reported_interval = .grepi_bounds(x, "epiParameter_Estimate_Range")
+    )
+    # A reported interval does not record what it describes, so keep the
+    # estimate value type in the notes when grEPI gives one.
+    value_type <- as.character(x$epiParameter_Estimate_Value_Type)
+    known_value_types <- c("Mean", "Median", "Standard deviation (SD)")
+    if (isTRUE(value_type %in% known_value_types)) {
+      value_type_note <- paste0(". Estimate value type: ", value_type, ".")
+    }
   } else {
     warning("Skipping grEPI record ", x$grEPI_ID,
-            ": unsupported distribution and not a point estimate",
+            ": unsupported distribution and neither a point estimate nor a ",
+            "range",
             call. = FALSE)
     return(NULL)
   }
@@ -372,7 +391,8 @@
       "The data was extracted by",
       x$epi_Parameter_Data_ExtractedBy_OrganizationGroup_Name, ". ",
       x$epi_Parameter_DataSource_Primary_Import_Comment, ": ",
-      x$epi_Parameter_DataSource_Primary_ImportedFrom_Project
+      x$epi_Parameter_DataSource_Primary_ImportedFrom_Project,
+      value_type_note
     ),
     auto_calc_params = FALSE
   )

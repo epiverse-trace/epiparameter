@@ -13,6 +13,14 @@
   extrinsic entries, which described the `<vb_epidist>` class removed in
   v0.3.0 (#363).
 
+* `.grepi_to_epiparameter()` now converts grEPI records that report a range but
+  no point value, which were previously skipped. The range is stored as the
+  `reported_interval` of the summary statistics, which is kept as data only and
+  not used for inference. As a reported interval does not record what it describes,
+   the `epiParameter_Estimate_Value_Type` is added to the `notes` when it is 
+   `Mean`, `Median` or `Standard deviation (SD)`. Records with neither a point 
+   value nor a complete range are still skipped (#521).
+
 * `.grepi_to_epiparameter()` now applies the grEPI `*_IsInverseValue` flags.
   grEPI stores some values as the reciprocal of the quantity they describe
   (e.g. a rate for a delay) and flags them as inverse values, which were
