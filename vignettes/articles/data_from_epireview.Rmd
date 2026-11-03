@@ -192,7 +192,7 @@ ebola_si_rows <- ebola_params[
 ebola_si_rows
 ```
 
-We will select an entry that has estimated and reported a Weibull distribution:
+We will select an entry that corresponds to a serial interval with a fitted Weibull distribution (chosen by hand):
 
 ```{r, select-ebola-entry}
 ebola_si <-  ebola_si_rows[
