@@ -248,6 +248,7 @@ ebola_si <- ebola_params[
       grepl(pattern = "serial", ebola_params$parameter_type, fixed = TRUE)
   ),
 ]
+ebola_si
 ```
 
 If we were to supply this data to `epiparameter::as_epiparameter()` we would get an unparameterised `<epiparameter>` object because no probability distribution is stated.
