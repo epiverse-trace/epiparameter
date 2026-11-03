@@ -25,7 +25,7 @@ This feature of interoperability of {epireview} and {epiparameter} is still unde
 
 The {epireview} package nicely provides epidemiological parameter data from systematically reviewing the literature, and {epiparameter} provides custom data structures for working with epidemiological data in R. Therefore, reading in data from the {epireview} R package and converting it to an `<epiparameter>` object will provide the greatest utility when applied in outbreak analytics. 
 
-Here we start with a simple example of reading in the Marburg data from {epireview} and converting to an `<epiparameter>` object using `as_epiparameter()` function from the {epiparameter} package.
+Here we start with a simple example of reading in the Marburg data from {epireview} and converting to an `<epiparameter>` object using `as_epiparameter()` function from the {epiparameter} package.^[Warnings and messages produced by {epireview} functions are documented by that package. Refer to the [{epireview} documentation](https://mrc-ide.github.io/epireview/) to interpret them.]
 
 ```{r, load-marburg}
 marburg_data <- load_epidata("marburg")
