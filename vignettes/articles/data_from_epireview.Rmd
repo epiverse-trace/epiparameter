@@ -43,7 +43,7 @@ We will start by just using the epidemiological parameter table to convert infor
 marburg_params <- marburg_data$params
 ```
 
-Out of these parameters, subset the data to only keep those rows that contain incubation periods for Marburg. `which()` drops rows where `parameter_type_short` is missing, so the same subset still returns only the matching rows when a pathogen's short labels are incomplete.
+Out of these parameters, subset the data to only keep those rows that contain incubation periods for Marburg.
 
 ```{r, subset-marburg-params}
 marburg_incubation_period <- marburg_params[
