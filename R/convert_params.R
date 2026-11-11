@@ -733,12 +733,11 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
     )
   }
 
-  return(
-    list(
-      prob = prob,
-      dispersion = dispersion
-    )
+  list(
+    prob = prob,
+    dispersion = dispersion
   )
+
 }
 
 #' Convert parameter of the geometric distribution to summary statistics

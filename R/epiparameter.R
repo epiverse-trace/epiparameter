@@ -351,7 +351,7 @@ test_epiparameter <- function(x) {
     message("<epiparameter> is invalid due to:\n", sprintf("  - %s\n", msg))
     return(FALSE)
   }
-  return(TRUE)
+  TRUE
 }
 
 #' Check if `<epiparameter>` is valid and return messages for each invalidation.
@@ -423,7 +423,7 @@ test_epiparameter <- function(x) {
       msg <- c(msg, "<epiparameter> $notes must be a character string.")
     }
   }
-  return(msg)
+  msg
 }
 
 #' Check object is an `<epiparameter>`
@@ -513,7 +513,7 @@ density.epiparameter <- function(x, at, ...) {
   if (is.atomic(out)) {
     return(out)
   }
-  return(unlist(out, recursive = FALSE))
+  unlist(out, recursive = FALSE)
 }
 
 #' @importFrom distributional cdf
@@ -537,7 +537,7 @@ cdf.epiparameter <- function(x, q, ..., log = FALSE) {
   if (is.atomic(out)) {
     return(out)
   }
-  return(unlist(out, recursive = FALSE))
+  unlist(out, recursive = FALSE)
 }
 
 #' @rdname epiparameter_distribution_functions
@@ -556,7 +556,8 @@ quantile.epiparameter <- function(x, p, ...) {
   if (is.atomic(out)) {
     return(out + offset)
   }
-  return(unlist(out, recursive = FALSE) + offset)
+  out <- unlist(out, recursive = FALSE) + offset
+  out
 }
 
 #' @importFrom distributional generate
@@ -737,7 +738,7 @@ family.epiparameter <- function(object, ..., base_dist = FALSE) {
     return(object$prob_distribution)
 
   # return NA when not <distcrete>, <distribution> or character
-  return(NA)
+  NA
 }
 
 #' Check if distribution in `<epiparameter>` is truncated
@@ -779,7 +780,7 @@ is_truncated <- function(x) {
     "`is_truncated()` only works for <epiparameter> objects" =
       is_epiparameter(x)
   )
-  return(identical(family(x), "truncated"))
+  identical(family(x), "truncated")
 }
 
 #' Check if distribution in `<epiparameter>` is continuous
