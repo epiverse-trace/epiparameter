@@ -24,6 +24,7 @@
 # vignette building
 /doc/
 /Meta/
+inst/doc
 
 # produced vignettes
 vignettes/*.html
@@ -54,4 +55,3 @@ rsconnect/
 
 # macOS hidden files
 .DS_Store
-inst/doc
