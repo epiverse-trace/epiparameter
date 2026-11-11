@@ -441,7 +441,7 @@ is_epiparameter_df <- function(x) {
     )
     warning(
       "Cannot create full citation for epidemiological parameters without ",
-      "bibliographic information \n see `?as_epiparameter()` for help.",
+      "bibliographic information \n see `?as_epiparameter` for help.",
       call. = FALSE
     )
   } else {
