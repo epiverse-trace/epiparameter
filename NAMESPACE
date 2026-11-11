@@ -62,11 +62,15 @@ export(is_parameterized)
 export(is_truncated)
 export(parameter_tbl)
 export(test_epiparameter)
-importFrom(distributional,cdf)
-importFrom(distributional,generate)
+importFrom(distributional,
+  cdf,
+  generate
+)
 importFrom(graphics,lines)
 importFrom(pillar,tbl_sum)
-importFrom(stats,aggregate)
-importFrom(stats,density)
-importFrom(stats,family)
-importFrom(stats,quantile)
+importFrom(stats,
+  aggregate,
+  density,
+  family,
+  quantile
+)
