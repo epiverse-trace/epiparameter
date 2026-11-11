@@ -189,7 +189,7 @@ general-purpose distribution fitting package. It does not handle
 discretisation, censoring or truncation itself, so for epidemiological delays
 it is best used through `{primarycensored}`.
 
-- [`{epitrix}`](https://www.repidemicsconsortium.org/epitrix/) provides
+- [`{epitrix}`](https://CRAN.R-project.org/package=epitrix) provides
 `fit_disc_gamma()` for fitting a discretised gamma distribution.
 
 Estimates obtained from completed delays alone can be subject to epidemic phase
