@@ -44,6 +44,22 @@
   (`disease_Name_Preferred` -> `disease`,
   `pathogen_Species_Name_preferred` -> `pathogen_species`) (#495).
 
+* The `<multi_epiparameter>` `print()` method now adds a message to the footer
+  when it contains multiple estimates of the same epidemiological parameter
+  for the same disease from the same study (e.g. different distributions fit
+  to the same data), which otherwise look like duplicate entries when printed.
+  The message names the study when there is one, or gives the number of
+  studies, and points to `$notes`, which usually describes how the estimates
+  differ. Studies are identified by DOI, or by citation when there is no DOI
+  (#42, #445).
+
+* Code is formatted consistently in messages, warnings and errors: function
+  names and arguments are in backticks (e.g. `` `get_citation()` ``) and
+  classes in angle brackets (e.g. `<epiparameter>`).
+
+* The translation template (`po/R-epiparameter.pot`) is updated to include the
+  new and renamed translatable strings.
+
 ## Bug fixes
 
 * `.grepi_to_epiparameter()` now reads the article DOI from `article_Unique_Identifier` (gated on `article_Unique_Identifier_Type`) instead of the removed `article_DOI` field, to match the grEPI v3.0.1 API restructure (#490).
