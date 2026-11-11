@@ -59,8 +59,8 @@ function. By default all entries in the library are returned.
 
 db <- epiparameter_db()
 #> Returning 133 results that match the criteria (108 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 db
 #> # List of 133 <epiparameter> objects
 #> Number of diseases: 23
@@ -111,6 +111,7 @@ db
 #> 
 #> # ℹ 130 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
+#> # ℹ 79 entries are different estimates from 18 studies, see `$notes`.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 ```
@@ -206,7 +207,7 @@ covid_incubation <- epiparameter_db(
 #> with Right Truncation: A Statistical Analysis of Publicly Available
 #> Case Data." _Journal of Clinical Medicine_. doi:10.3390/jcm9020538
 #> <https://doi.org/10.3390/jcm9020538>.. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 covid_incubation
 #> Disease: COVID-19
 #> Pathogen: SARS-CoV-2
@@ -251,7 +252,7 @@ covid_incubation <- epiparameter(
 )
 #> Using Smith J, Jones A (2022). "COVID Incubation Period." _Epi Journal_.
 #> doi:10.27861182.x <https://doi.org/10.27861182.x>. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 covid_incubation
 #> Disease: COVID-19
 #> Pathogen: SARS-CoV-2
@@ -319,8 +320,8 @@ epiparameter_db(
   author = "Linton"
 )
 #> Returning 3 results that match the criteria (3 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 #> # List of 3 <epiparameter> objects
 #> Number of diseases: 1
 #> ❯ COVID-19
@@ -371,6 +372,7 @@ epiparameter_db(
 #>   meanlog: 1.525
 #>   sdlog: 0.629
 #> 
+#> # ℹ 3 entries are different estimates from Linton et al. (2020), see `$notes`.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 ```
@@ -397,7 +399,7 @@ epiparameter_db(disease = "SARS", single_epiparameter = TRUE)
 #> review." _The Lancet Infectious Diseases_.
 #> doi:10.1016/S1473-3099(09)70069-6
 #> <https://doi.org/10.1016/S1473-3099%2809%2970069-6>.. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 #> Disease: SARS
 #> Pathogen: SARS-CoV-1
 #> Epi Parameter: incubation period
@@ -439,7 +441,7 @@ ebola_incubation <- epiparameter_db(
 #> Epidemic after One Year — Slowing but Not Yet under Control." _The New
 #> England Journal of Medicine_. doi:10.1056/NEJMc1414992
 #> <https://doi.org/10.1056/NEJMc1414992>.. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 
 density(ebola_incubation, at = 0.5)
 #> [1] 0.03608013

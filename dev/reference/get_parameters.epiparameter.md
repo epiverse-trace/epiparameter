@@ -47,7 +47,7 @@ ep <- epiparameter_db(
 #> coronavirus (COVID-19) infections.” _International Journal of
 #> Infectious Diseases_. doi:10.1016/j.ijid.2020.02.060
 #> <https://doi.org/10.1016/j.ijid.2020.02.060>.. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 get_parameters(ep)
 #>   meanlog     sdlog 
 #> 1.3862617 0.5679803 

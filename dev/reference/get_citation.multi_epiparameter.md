@@ -32,8 +32,8 @@ output `<bibentry>` is equal to the length of the list of
 # example with list of <epiparameter>
 db <- epiparameter_db()
 #> Returning 133 results that match the criteria (108 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 get_citation(db)
 #> Lessler J, Reich N, Brookmeyer R, Perl T, Nelson K, Cummings D (2009).
 #> “Incubation periods of acute respiratory viral infections: a systematic

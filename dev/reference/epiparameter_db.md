@@ -153,8 +153,8 @@ List of epidemiological parameters:
 ``` r
 epiparameter_db(disease = "influenza", epi_name = "serial_interval")
 #> Returning 1 results that match the criteria (1 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 #> Disease: Influenza
 #> Pathogen: Influenza-A-H1N1Pdm
 #> Epi Parameter: serial interval
@@ -176,8 +176,8 @@ eparam <- epiparameter_db(
   subset = sample_size > 40
 )
 #> Returning 1 results that match the criteria (1 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 
 # example using functional subsetting
 eparam <- epiparameter_db(
@@ -186,8 +186,8 @@ eparam <- epiparameter_db(
   subset = is_parameterised
 )
 #> Returning 11 results that match the criteria (11 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 
 # example forcing a single <epiparameter> to be returned
 eparam <- epiparameter_db(
@@ -198,5 +198,5 @@ eparam <- epiparameter_db(
 #> Using Lloyd-Smith J, Schreiber S, Kopp P, Getz W (2005). “Superspreading and
 #> the effect of individual variation on disease emergence.” _Nature_.
 #> doi:10.1038/nature04153 <https://doi.org/10.1038/nature04153>.. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 ```

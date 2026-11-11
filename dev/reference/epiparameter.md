@@ -229,5 +229,5 @@ ebola_incubation <- epiparameter(
 #> Using Smith J (2002). “COVID-19 incubation period.” _Epi Journal_.
 #> doi:10.19832/j.1366-9516.2012.09147.x
 #> <https://doi.org/10.19832/j.1366-9516.2012.09147.x>. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 ```

@@ -51,8 +51,8 @@ Joshua W. Lambert, Adam Kucharski
 ``` r
 epiparameter_list <- epiparameter_db(disease = "COVID-19")
 #> Returning 27 results that match the criteria (22 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 parameter_tbl(multi_epiparameter = epiparameter_list)
 #> # Parameter table:
 #> # A data frame:    27 × 7
@@ -73,8 +73,8 @@ parameter_tbl(multi_epiparameter = epiparameter_list)
 # example filtering an existing list to incubation periods
 epiparameter_list <- epiparameter_db(disease = "COVID-19")
 #> Returning 27 results that match the criteria (22 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 parameter_tbl(
   multi_epiparameter = epiparameter_list,
   epi_name = "incubation period"

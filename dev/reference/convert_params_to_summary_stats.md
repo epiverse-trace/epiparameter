@@ -140,7 +140,7 @@ epiparameter <- epiparameter_db(single_epiparameter = TRUE)
 #> with Right Truncation: A Statistical Analysis of Publicly Available
 #> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538
 #> <https://doi.org/10.3390/jcm9020538>.. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 convert_params_to_summary_stats(epiparameter)
 #> $mean
 #> [1] 9.7
@@ -174,8 +174,8 @@ epiparameter <- epiparameter_db(
   subset = prob_dist == "weibull"
 )
 #> Returning 4 results that match the criteria (3 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 convert_params_to_summary_stats(epiparameter[[2]], shape = 1, scale = 1)
 #> $mean
 #> [1] 1

@@ -27,8 +27,8 @@ An `<epiparameter>` or list of `<epiparameter>` objects.
 ``` r
 db <- epiparameter_db()
 #> Returning 133 results that match the criteria (108 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 
 # combine two <epiparameter> objects into a list
 c(db[[1]], db[[2]])
@@ -119,6 +119,7 @@ c(db, db[[1]])
 #> 
 #> # ℹ 131 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
+#> # ℹ 81 entries are different estimates from 18 studies, see `$notes`.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 ```

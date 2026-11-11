@@ -97,7 +97,7 @@ ep <- epiparameter_db(
 #> Epidemic after One Year — Slowing but Not Yet under Control." _The New
 #> England Journal of Medicine_. doi:10.1056/NEJMc1414992
 #> <https://doi.org/10.1056/NEJMc1414992>.. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 ep
 #> Disease: Ebola Virus Disease
 #> Pathogen: Ebola Virus

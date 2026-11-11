@@ -37,8 +37,8 @@ per row). The list columns can contain lists or S3 objects (e.g.
 ``` r
 db <- epiparameter_db()
 #> Returning 133 results that match the criteria (108 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 as.data.frame(db)
 #>                           disease                    pathogen
 #> 1                      Adenovirus                  Adenovirus

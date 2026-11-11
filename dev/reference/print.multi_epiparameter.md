@@ -38,8 +38,8 @@ Invisibly returns a `<multi_epiparameter>`. Called for side-effects.
 # entire database
 db <- epiparameter_db()
 #> Returning 133 results that match the criteria (108 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 db
 #> # List of 133 <epiparameter> objects
 #> Number of diseases: 23
@@ -90,14 +90,15 @@ db
 #> 
 #> # ℹ 130 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
+#> # ℹ 79 entries are different estimates from 18 studies, see `$notes`.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 
 # a single disease
 db <- epiparameter_db(disease = "Ebola")
 #> Returning 17 results that match the criteria (17 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 db
 #> # List of 17 <epiparameter> objects
 #> Number of diseases: 1
@@ -157,14 +158,15 @@ db
 #> 
 #> # ℹ 14 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
+#> # ℹ 8 entries are different estimates from WHO Ebola Response Team et al. (2015), see `$notes`.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 
 # a single epi parameter
 db <- epiparameter_db(epi_name = "offspring distribution")
 #> Returning 10 results that match the criteria (10 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 db
 #> # List of 10 <epiparameter> objects
 #> Number of diseases: 6
@@ -209,6 +211,7 @@ db
 #> 
 #> # ℹ 7 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
+#> # ℹ 6 entries are different estimates from Lloyd-Smith et al. (2005), see `$notes`.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 ```

@@ -122,9 +122,9 @@ to do the conversion.
 
 marburg_incub_epiparameter <- as_epiparameter(marburg_incub)
 #> Using Gear (1975). "<title not available>." _<journal not available>_. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 #> Warning: Cannot create full citation for epidemiological parameters without bibliographic information 
-#>  see ?as_epiparameter for help.
+#>  see `?as_epiparameter` for help.
 #> No adequate summary statistics available to calculate the parameters of the NA distribution
 #> Unparameterised <epiparameter> object
 marburg_incub_epiparameter
@@ -318,7 +318,7 @@ marburg_incub_epiparameter <- as_epiparameter(
 #> Using Gear (1975). "Outbreak of Marburg virus disease in Johannesburg." _The
 #> British Medical Journal_. doi:10.1136/bmj.4.5995.489
 #> <https://doi.org/10.1136/bmj.4.5995.489>. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 #> No adequate summary statistics available to calculate the parameters of the NA distribution
 #> Unparameterised <epiparameter> object
 marburg_incub_epiparameter
@@ -485,9 +485,9 @@ We can now convert this to an `<epiparameter>`.
 
 marburg_gt_epiparameter <- as_epiparameter(marburg_gt)
 #> Using Ajelli (2012). "<title not available>." _<journal not available>_. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 #> Warning: Cannot create full citation for epidemiological parameters without bibliographic information 
-#>  see ?as_epiparameter for help.
+#>  see `?as_epiparameter` for help.
 #> No adequate summary statistics available to calculate the parameters of the NA distribution
 #> Unparameterised <epiparameter> object
 marburg_gt_epiparameter
@@ -633,9 +633,9 @@ We can now convert this to an `<epiparameter>` object.
 
 ebola_si_epiparameter <- as_epiparameter(ebola_si)
 #> Using Marziano (2023). "<title not available>." _<journal not available>_. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 #> Warning: Cannot create full citation for epidemiological parameters without bibliographic information 
-#>  see ?as_epiparameter for help.
+#>  see `?as_epiparameter` for help.
 ebola_si_epiparameter
 #> Disease: Ebola Virus Disease
 #> Pathogen: Ebola virus
@@ -734,9 +734,9 @@ probability distribution is stated.
 
 ebola_si_epiparameter <- as_epiparameter(ebola_si)
 #> Using Faye (2015). "<title not available>." _<journal not available>_. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 #> Warning: Cannot create full citation for epidemiological parameters without bibliographic information 
-#>  see ?as_epiparameter for help.
+#>  see `?as_epiparameter` for help.
 #> No adequate summary statistics available to calculate the parameters of the NA distribution
 #> Unparameterised <epiparameter> object
 ebola_si_epiparameter
@@ -763,9 +763,9 @@ This uses the parameter conversion functions in {epiparameter} (see
 
 ebola_si_epiparameter <- as_epiparameter(ebola_si, prob_distribution = "gamma")
 #> Using Faye (2015). "<title not available>." _<journal not available>_. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 #> Warning: Cannot create full citation for epidemiological parameters without bibliographic information 
-#>  see ?as_epiparameter for help.
+#>  see `?as_epiparameter` for help.
 #> Parameterising the probability distribution with the summary statistics.
 #>  Probability distribution is assumed not to be discretised or truncated.
 ebola_si_epiparameter

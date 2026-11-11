@@ -65,8 +65,8 @@ distributions cannot be aggregated and the function will error.
 ``` r
 ebola_si <- epiparameter_db(epi_name = "serial interval", disease = "ebola")
 #> Returning 4 results that match the criteria (4 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 aggregate(ebola_si)
 #> Disease: Ebola Virus Disease
 #> Pathogen: Ebola Virus

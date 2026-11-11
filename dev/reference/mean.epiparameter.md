@@ -38,7 +38,7 @@ ep <- epiparameter_db(
 #> with Right Truncation: A Statistical Analysis of Publicly Available
 #> Case Data.” _Journal of Clinical Medicine_. doi:10.3390/jcm9020538
 #> <https://doi.org/10.3390/jcm9020538>.. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 mean(ep)
 #> [1] 5.6
 ```

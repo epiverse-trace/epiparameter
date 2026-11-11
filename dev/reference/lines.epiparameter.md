@@ -35,8 +35,8 @@ active graphics device.
 ``` r
 ebola_si <- epiparameter_db(disease = "Ebola", epi_name = "serial")
 #> Returning 4 results that match the criteria (4 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 plot(ebola_si[[1]])
 lines(ebola_si[[2]])
 ```
