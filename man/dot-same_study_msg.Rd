@@ -15,14 +15,14 @@ A \code{character} string for the \code{\link[=print.multi_epiparameter]{print.m
 Empty \code{character} string when no entries from the same study.
 }
 \description{
-When a single study reports several estimates that all loaded from the
-database, they indistinguishable from each other, so this function
+When a single study reports several estimates that are all loaded from the
+database, they are indistinguishable from each other, so this function
 writes a message that is printed in \code{\link[=print.multi_epiparameter]{print.multi_epiparameter()}} notifying
 the user of multiple parameters from the same study.
 }
 \details{
 Entries are grouped by disease, epidemiological parameter name and study
-(DOI, when available), Entries without an identifiable study are never
+(DOI, when available). Entries without an identifiable study are never
 grouped together. The study is named in the message when all the entries
 come from one study, otherwise the number of studies is given.
 }
