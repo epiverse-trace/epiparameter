@@ -10,10 +10,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(epiparameter)
-library(epireview)
-```
+We do not call the package libraries (e.g., `library(epiparameter)` in this vignette and call the namespaces instead (e.g., `epireview::load_epidata()`), to show which functions belong to each package.
 
 The article describes how to use the {epireview} R package with {epiparameter}. {epireview} provides epidemiological parameters for a range of pathogens extracted from the literature by the Pathogen Epidemiology Review Group (PERG) in systematic reviews. The {epiparameter} R package can use these epidemiological parameters and can convert them into `<epiparameter>` objects.
 
