@@ -252,7 +252,10 @@ epiparameter::is_parameterised(ebola_si_epiparameter)
 Given that we can convert the mean and standard deviation into parameters of a probability distribution if we assume a distribution form, we can supply this data to `epiparameter::as_epiparameter()`. This uses the parameter conversion functions in {epiparameter} (see `vignette("extract_convert", package = "epiparameter")`).
 
 ```{r, convert-to-epiparameter-assumed-prob-dist}
-ebola_si_epiparameter <- epiparameter::as_epiparameter(ebola_si, prob_distribution = "gamma")
+ebola_si_epiparameter <- epiparameter::as_epiparameter(
+  ebola_si,
+  prob_distribution = "gamma"
+)
 ebola_si_epiparameter
 epiparameter::is_parameterised(ebola_si_epiparameter)
 ```
