@@ -24,6 +24,6 @@ the user of multiple parameters from the same study.
 Entries are grouped by disease, epidemiological parameter name and study
 (DOI, when available), Entries without an identifiable study are never
 grouped together. The study is named in the message when all the entries
-come from one study.
+come from one study, otherwise the number of studies is given.
 }
 \keyword{internal}
