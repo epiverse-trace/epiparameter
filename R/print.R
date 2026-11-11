@@ -75,10 +75,14 @@ print.multi_epiparameter <- function(x, ..., n = NULL) {
     footer <- paste("#", cli::symbol$info, footer, collapse = "\n")
   }
 
+  # distinguish multiple estimates from the same study
+  same_study_msg <- .same_study_msg(x)
+
   writeLines(
     pillar::style_subtle(
       paste0(
         footer,
+        same_study_msg,
         "# ", cli::symbol$info,
         " Use `parameter_tbl()` to see a summary table of the parameters.\n",
         "# ", cli::symbol$info, " Explore database online at: ",
