@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: epiparameter 0.2.0.9000\n"
-"POT-Creation-Date: 2024-08-13 13:29+0200\n"
+"Project-Id-Version: epiparameter 0.4.1.9000\n"
+"POT-Creation-Date: 2026-11-11 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,35 +10,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: epiparameter.R:408
+#: format.R:22
 msgid "Disease: %s"
 msgstr ""
 
-#: epiparameter.R:409
+#: format.R:23
 msgid "Pathogen: %s"
 msgstr ""
 
-#: epiparameter.R:410
-msgid "Epi Distribution: %s"
+#: format.R:24
+msgid "Epi Parameter: %s"
 msgstr ""
 
-#: epiparameter.R:411
+#: format.R:26
 msgid "Study: %s"
 msgstr ""
 
-#: epiparameter.R:418
-msgid "Distribution: discrete %s"
+#: format.R:33
+msgid "Extrinsic: TRUE"
 msgstr ""
 
-#: epiparameter.R:419
-msgid "Distribution: %s"
+#: format.R:39
+msgid "Distribution: discrete %s (%s)"
 msgstr ""
 
-#: epiparameter.R:423
+#: format.R:40
+msgid "Distribution: %s (%s)"
+msgstr ""
+
+#: format.R:55
 msgid "Parameters: <no parameters>"
 msgstr ""
 
-#: epiparameter.R:438
+#: format.R:80
 msgid "Parameters:"
 msgstr ""
 
@@ -51,7 +55,7 @@ msgid "Number of diseases:"
 msgstr ""
 
 #: print.R:59
-msgid "Number of epi distributions:"
+msgid "Number of epi parameters:"
 msgstr ""
 
 #: print.R:72
@@ -60,4 +64,12 @@ msgstr ""
 
 #: print.R:73
 msgid "Use `print(n = ...)` to see more elements."
+msgstr ""
+
+#: utils.R:121
+msgid "%s entries are different estimates from %s, see `$notes`."
+msgstr ""
+
+#: utils.R:126
+msgid "%s entries are different estimates from %s studies, see `$notes`."
 msgstr ""
