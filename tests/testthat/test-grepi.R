@@ -208,24 +208,106 @@ test_that(".grepi_to_epiparameter() keeps the range of a point estimate", {
   expect_identical(ep$summary_stats$range, c(3, 8))
 })
 
-test_that(".grepi_to_epiparameter() skips a range-only record with a warning", {
+test_that(".grepi_to_epiparameter() converts a range-only record to a reported
+           interval", {
   x <- grepi_record(point_value = NA_real_, range_lower = 3, range_upper = 8)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
 
-  expect_warning(
-    ep <- suppressMessages(.grepi_to_epiparameter(x)),
-    regexp = "unsupported distribution and not a point estimate"
-  )
-  expect_null(ep)
+  expect_s3_class(ep, "epiparameter")
+  expect_false(is_parameterised(ep))
+  expect_identical(ep$summary_stats$reported_interval, c(3, 8))
+  expect_null(ep$summary_stats$mean)
+  expect_output(print(ep), "Reported Interval: [3, 8]", fixed = TRUE)
 })
 
-test_that(".grepi_to_epiparameter() skips a record when the point value field
-           is absent", {
+test_that(".grepi_to_epiparameter() records the estimate value type in the notes
+           of a range-only record when it is Mean, Median or SD", {
+  value_types <- c("Mean", "Median", "Standard deviation (SD)")
+  for (value_type in value_types) {
+    x <- grepi_record(point_value = NA_real_, range_lower = 3, range_upper = 8)
+    x$epiParameter_Estimate_Value_Type <- value_type
+    ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+    expect_match(
+      ep$notes,
+      paste0("Estimate value type: ", value_type, "."),
+      fixed = TRUE
+    )
+  }
+  for (value_type in c("Unspecified", NA_character_)) {
+    x <- grepi_record(point_value = NA_real_, range_lower = 3, range_upper = 8)
+    x$epiParameter_Estimate_Value_Type <- value_type
+    ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+    expect_no_match(ep$notes, "Estimate value type")
+  }
+})
+
+test_that(".grepi_to_epiparameter() does not add the estimate value type to the
+           notes of a point estimate", {
+  ep <- suppressMessages(.grepi_to_epiparameter(grepi_record()))
+
+  expect_no_match(ep$notes, "Estimate value type")
+})
+
+test_that(".grepi_to_epiparameter() orders the bounds of a range-only record
+           entered in descending order", {
+  x <- grepi_record(point_value = NA_real_, range_lower = 0.11,
+                    range_upper = 0.07)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_identical(ep$summary_stats$reported_interval, c(0.07, 0.11))
+})
+
+test_that(".grepi_to_epiparameter() inverts and orders the bounds of a range-only
+           record flagged as an inverse value", {
+  x <- grepi_record(point_value = NA_real_, range_lower = 0.7,
+                    range_upper = 0.11, range_inverse = TRUE)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_equal(
+    ep$summary_stats$reported_interval,
+    c(1 / 0.7, 1 / 0.11)
+  )
+})
+
+test_that(".grepi_to_epiparameter() records the distribution family of a
+           range-only record when grEPI declares one", {
+  x <- grepi_record(distribution_type = "Gamma", point_value = NA_real_,
+                    range_lower = 3, range_upper = 8)
+  ep <- suppressMessages(.grepi_to_epiparameter(x))
+
+  expect_false(is_parameterised(ep))
+  expect_identical(family(ep), "gamma")
+  expect_identical(ep$summary_stats$reported_interval, c(3, 8))
+})
+
+test_that(".grepi_to_epiparameter() skips a record with neither a point value
+           nor a complete range", {
+  skipped <- list(
+    grepi_record(point_value = NA_real_),
+    grepi_record(point_value = NA_real_, range_lower = 3),
+    grepi_record(point_value = NA_real_, range_upper = 8)
+  )
+  for (x in skipped) {
+    expect_warning(
+      ep <- suppressMessages(.grepi_to_epiparameter(x)),
+      regexp = "neither a point estimate nor a range"
+    )
+    expect_null(ep)
+  }
+})
+
+test_that(".grepi_to_epiparameter() skips a record when the point value and
+           range fields are absent", {
   x <- grepi_record()
   x$epiParameter_Estimate_Point_Value <- NULL
+  x$epiParameter_Estimate_Range_Lower_Bound_Value <- NULL
+  x$epiParameter_Estimate_Range_Upper_Bound_Value <- NULL
 
   expect_warning(
     ep <- suppressMessages(.grepi_to_epiparameter(x)),
-    regexp = "unsupported distribution and not a point estimate"
+    regexp = "neither a point estimate nor a range"
   )
   expect_null(ep)
 })
