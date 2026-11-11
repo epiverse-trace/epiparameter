@@ -49,7 +49,7 @@ new_epiparameter <- function(disease = character(),
       }
     }
     if (!inherits(prob_distribution, c("distribution", "distcrete")) &&
-        verbose) {
+          verbose) {
       message("Unparameterised <epiparameter> object")
     }
   }

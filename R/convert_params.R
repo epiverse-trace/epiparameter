@@ -417,7 +417,7 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   }
 
   if (checkmate::test_number(x$median) &&
-      checkmate::test_number(x$dispersion)) {
+        checkmate::test_number(x$dispersion)) {
     # median and dispersion to params
     checkmate::assert_number(x$median, lower = 0)
     checkmate::assert_number(x$dispersion, lower = 0)
@@ -565,9 +565,9 @@ convert_params_to_summary_stats.epiparameter <- function(x, ...) {
   sd <- sqrt(var)
   cv <- sd / mean
   skewness <- (gamma(1 + 3 / shape) * scale^3 - 3 *
-    mean * sd^2 - mean^3) / (sd^3)
+                 mean * sd^2 - mean^3) / (sd^3)
   ex_kurtosis <- ((gamma(1 + 4 / shape) * scale^4 - 4 * skewness * mean *
-    sd^3 -  6 * mean^2 * sd^2 - mean^4) / (sd^4)) - 3
+                     sd^3 -  6 * mean^2 * sd^2 - mean^4) / (sd^4)) - 3
 
 
   # return list of metrics
