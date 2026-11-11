@@ -140,16 +140,9 @@ multi_row_ids <- marburg_params$id[multi_row_entries]
 ```{r, subset-multi-row-entries}
 multi_row_marburg_params <-
   marburg_params[marburg_params$id %in% multi_row_ids, ]
-multi_row_marburg_params
 ```
 
-In this case there are two studies for Marburg with more than one entry (row) in the {epireview} database. Out of these studies we select the mean and standard deviation.
-
-```{r, check-multi-row-param-value-type}
-multi_row_marburg_params$parameter_value_type
-```
-
-In this case, we know that the mean and standard deviation from the chosen rows correspond to the same estimation process by having read the corresponding article. However, there is currently no identifiers on the {epireview} `params` database for Marburg, Ebola or Lassa to directly identify which of the two rows with mean values correspond to the standard deviation. The {epireview} team are currently working on rectifying this issue. 
+In this case there are two studies for Marburg with more than one entry (row) in the {epireview} database. Out of these studies we select the mean and standard deviation. We know that the mean and standard deviation from the chosen rows correspond to the same estimation process by having read the corresponding article. However, there is currently no identifiers on the {epireview} `params` database for Marburg, Ebola or Lassa to directly identify which of the two rows with mean values correspond to the standard deviation. The {epireview} team are currently working on rectifying this issue. 
 
 ***Therefore, we encourage readers to manually verify their data subsets, to ensure that the entries that have been selected are indeed multiple rows for the same reported epidemiological parameter.***
 
