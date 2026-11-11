@@ -88,7 +88,7 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
 #' Entries are grouped by disease, epidemiological parameter name and study
 #' (DOI, when available), Entries without an identifiable study are never
 #' grouped together. The study is named in the message when all the entries
-#' come from one study.
+#' come from one study, otherwise the number of studies is given.
 #'
 #' @param x A `<multi_epiparameter>` object.
 #'
@@ -112,7 +112,10 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
   }
 
   n_same <- sum(lengths(groups))
-  if (length(groups) == 1L) {
+  # a study can form several groups (e.g. estimates for multiple diseases), so
+  # count the distinct studies from the study component of the key
+  n_studies <- length(unique(sub("^.*\r", "", key[unlist(groups)])))
+  if (n_studies == 1L) {
     study <- .citet(x[[groups[[1L]][1L]]]$citation)
     msg <- sprintf(
       tr_("%s entries are different estimates from %s, see `$notes`.\n"),
@@ -120,8 +123,8 @@ calc_disc_dist_quantile <- function(prob, days, quantile) {
     )
   } else {
     msg <- sprintf(
-      tr_("%s entries are different estimates from the same study, see `$notes`.\n"), # nolint: line_length_linter.
-      n_same
+      tr_("%s entries are different estimates from %s studies, see `$notes`.\n"), # nolint: line_length_linter.
+      n_same, n_studies
     )
   }
   # prefix to match the other elements of the print footer
