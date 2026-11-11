@@ -39,7 +39,7 @@ It is the long-term home for curated epidemiological parameters, is
 maintained collaboratively with the WHO, and is served over a public API.
 
 **{epireview}** is the [R package](https://mrc-ide.github.io/epireview/) from
-the [Pathogen Epidemiology Review Group (PERG)](https://www.imperial.ac.uk/medicine/departments/school-public-health/infectious-disease-epidemiology/mrc-global-infectious-disease-analysis/related-initiatives/perg/),
+the [Pathogen Epidemiology Review Group (PERG)](https://www.imperial.ac.uk/mrc-global-infectious-disease-analysis/related-initiatives/perg/),
 containing parameters extracted from the literature through systematic
 reviews.
 
