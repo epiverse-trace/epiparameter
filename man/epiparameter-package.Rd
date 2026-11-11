@@ -7,7 +7,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Classes and helper functions for loading, extracting, converting, manipulating, plotting and aggregating epidemiological parameters for infectious diseases. Epidemiological parameters extracted from the literature are loaded from the 'epiparameterDB' R package.
+Classes and helper functions for loading, extracting, converting, manipulating, plotting and aggregating epidemiological parameters for infectious diseases. Epidemiological parameters can be loaded from the 'epiparameterDB' R package or the World Health Organization Global Repository of Epidemiological Parameters (grEPI) \url{https://who-collaboratory.github.io/collaboratory-grepi-web/}, and converted from parameter tables in the 'epireview' R package.
 }
 \seealso{
 Useful links:
