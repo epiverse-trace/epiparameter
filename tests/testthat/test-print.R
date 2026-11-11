@@ -116,6 +116,31 @@ test_that(".same_study_msg() groups by disease and parameter, not study alone", 
   )
 })
 
+test_that(".same_study_msg() names a study spanning several diseases", {
+  # Lloyd-Smith et al. (2005) reports offspring distributions for several
+  # diseases, giving more than one group but only one study
+  db <- epiparameter_db(author = "Lloyd-Smith", verbose = FALSE)
+  expect_match(
+    .same_study_msg(db),
+    "6 entries are different estimates from Lloyd-Smith et al. (2005)",
+    fixed = TRUE
+  )
+})
+
+test_that(".same_study_msg() counts studies when entries span several", {
+  lloyd_smith <- epiparameter_db(author = "Lloyd-Smith", verbose = FALSE)
+  lessler <- epiparameter_db(author = "Lessler", verbose = FALSE)
+  db <- structure(
+    c(unclass(lloyd_smith), unclass(lessler)),
+    class = "multi_epiparameter"
+  )
+  expect_match(
+    .same_study_msg(db),
+    "9 entries are different estimates from 2 studies",
+    fixed = TRUE
+  )
+})
+
 test_that(".same_study_msg() returns no message for a single entry", {
   db <- epiparameter_db(disease = "RSV", author = "reich", verbose = FALSE)
   expect_identical(.same_study_msg(db[1L]), "")
