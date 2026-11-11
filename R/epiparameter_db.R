@@ -265,7 +265,7 @@ epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter.
     if (verbose) {
       message(
         "Using ", format(get_citation(single_epiparameter)), ". \n",
-        "To retrieve the citation use the 'get_citation' function"
+        "To retrieve the citation use the `get_citation()` function"
       )
     }
 
@@ -276,10 +276,10 @@ epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter.
     message(
       "Returning ", length(multi_epiparameter), " results that match the ",
       "criteria (", sum(is_param), " are parameterised). \n",
-      "Use subset to filter by entry variables or ",
-      "single_epiparameter to return a single entry. \n",
+      "Use `subset` to filter by entry variables or ",
+      "`single_epiparameter` to return a single entry. \n",
       "To retrieve the citation for each use the ",
-      "'get_citation' function"
+      "`get_citation()` function"
     )
   }
 

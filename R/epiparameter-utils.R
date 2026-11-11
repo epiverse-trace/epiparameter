@@ -452,7 +452,7 @@ create_citation <- function(author = utils::person(),
   if (verbose) {
     message(
       "Using ", format(citation), " \n",
-      "To retrieve the citation use the 'get_citation' function"
+      "To retrieve the citation use the `get_citation()` function"
     )
   }
 

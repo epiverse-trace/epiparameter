@@ -86,9 +86,9 @@ extract_param <- function(type = c("percentiles", "range"),
 
   if (type == "percentiles") {
     stopifnot(
-      "percentiles need to be given for type = 'percentiles'" =
+      "`percentiles` need to be given for `type = \"percentiles\"`" =
         !missing(percentiles),
-      "values vector should be c(lower, upper) check values" =
+      "`values` vector should be `c(lower, upper)`, check `values`" =
         values[1] < values[2]
     )
     checkmate::assert_numeric(values, len = 2)
@@ -96,9 +96,9 @@ extract_param <- function(type = c("percentiles", "range"),
   }
   if (identical(type, "range")) {
     stopifnot(
-      "samples need to be given for type = 'range'" =
+      "`samples` need to be given for `type = \"range\"`" =
         !missing(samples),
-      "values vector should be c(median, min, max) check values" =
+      "`values` vector should be `c(median, min, max)`, check `values`" =
         values[2] < values[1] && values[1] < values[3]
     )
     checkmate::assert_number(samples, lower = 2)
@@ -113,14 +113,14 @@ extract_param <- function(type = c("percentiles", "range"),
   ctrl[names(control)] <- control
 
   stopifnot(
-    "control list requires max_iter and tolerance elements" =
+    "`control` list requires `max_iter` and `tolerance` elements" =
       identical(names(ctrl), c("max_iter", "tolerance"))
   )
 
   # Validate inputs
   if (type == "percentiles") {
     stopifnot(
-      "'values' and 'percentiles' need to be a vector of length 2" =
+      "`values` and `percentiles` need to be a vector of length 2" =
         length(values) == 2 || length(percentiles) == 2
     )
   }
@@ -210,7 +210,10 @@ extract_param <- function(type = c("percentiles", "range"),
     values_in <- c(values, n = samples)
     fit_func <- .fit_range
   } else {
-    stop("percentiles or samples arguments must be specified", call. = FALSE)
+    stop(
+      "`percentiles` or `samples` arguments must be specified",
+      call. = FALSE
+    )
   }
 
   if (distribution == "lnorm") {
