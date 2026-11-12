@@ -28,9 +28,11 @@ Authors@R: c(
   )
 Description: Classes and helper functions for loading, extracting,
     converting, manipulating, plotting and aggregating epidemiological
-    parameters for infectious diseases.  Epidemiological parameters
-    extracted from the literature are loaded from the 'epiparameterDB' R
-    package.
+    parameters for infectious diseases. Epidemiological parameters can be
+    loaded from the 'epiparameterDB' R package or the World Health
+    Organization Global Repository of Epidemiological Parameters (grEPI)
+    <https://who-collaboratory.github.io/collaboratory-grepi-web/>, and
+    converted from parameter tables in the 'epireview' R package.
 License: MIT + file LICENSE
 URL: https://github.com/epiverse-trace/epiparameter/,
     https://epiverse-trace.github.io/epiparameter/
@@ -69,7 +71,7 @@ Remotes:
 Config/Needs/check: mrc-ide/epireview
 Config/Needs/website: epiverse-trace/epiversetheme, mrc-ide/epireview
 Config/potools/style: explicit
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.1
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB

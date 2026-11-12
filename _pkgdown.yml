@@ -2,13 +2,13 @@ url: https://epiverse-trace.github.io/epiparameter
 template:
   package: epiversetheme
   bslib:
-    font_weight_base : 300
+    font_weight_base: 300
 
 development:
   mode: auto
 
 reference:
-  - title: epiparameter classes
+  - title: Classes
 
   - subtitle: epiparameter object
     desc: Class constructor, validator, and methods
@@ -28,13 +28,13 @@ reference:
     - get_citation
     - get_parameters
 
-  - title: epiparameter helper functions
+  - title: Helper functions
     desc: Functions to help construct `<epiparameter>` objects
     contents:
     - starts_with("create_")
 
-  - title: epiparameter from {epiparameter} library
-    desc: Retrieve `<epiparameter>` object directly from database
+  - title: epiparameter library
+    desc: Load `<epiparameter>` objects from {epiparameterDB} or grEPI
     contents:
     - epiparameter_db
 
@@ -64,12 +64,12 @@ reference:
     contents:
     - starts_with("convert_")
 
-  - title: Epi object checking
+  - title: Object checking
     desc: Check an object is of a certain type or feature
     contents:
     - starts_with("is_")
 
-  - title: Utility function
+  - title: Utility functions
     contents:
     - calc_disc_dist_quantile
 
@@ -80,17 +80,17 @@ reference:
 
   - title: Options
     contents:
-      - epiparameter_default_options
+    - epiparameter_default_options
 
 articles:
 - title: Get started
-  navbar: Intro
+  navbar: ~
   contents:
   - epiparameter
   - extract_convert
 
-- title: Parameter library
-  navbar: Epiparameter Data
+- title: epiparameter library
+  navbar: epiparameter library
   contents:
   - data_sources
   - database
@@ -105,7 +105,7 @@ articles:
   contents:
   - articles/extract-bias
 
-- title: Developer Documentation
-  navbar: Developer Documentation
+- title: Developer documentation
+  navbar: Developer documentation
   contents:
   - design_principles

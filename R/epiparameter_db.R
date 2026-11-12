@@ -574,7 +574,7 @@ epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter.
 
   # params and uncertainty
   ci_limits <- params[!is.na(names(params)) &
-    endsWith(names(params), suffix = "ci_limits")]
+                        endsWith(names(params), suffix = "ci_limits")]
   ci <- params[!is.na(names(params)) & endsWith(names(params), suffix = "ci")]
   ci_type <- switch(x$metadata$inference_method,
     mle = "confidence_interval",
@@ -622,7 +622,7 @@ epiparameter_db <- function(disease = "all",  # nolint: cyclocomp_linter.
   if (nse_subject == "prob_dist") {
     # special case to subset by dist as name is extracted first
     if (is.object(lst$prob_distribution) ||
-        is.character(lst$prob_distribution)) {
+          is.character(lst$prob_distribution)) {
       eval(expr = condition, envir = list(prob_dist = family(lst)))
     } else {
       FALSE

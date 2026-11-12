@@ -820,7 +820,7 @@ is_epiparameter_params <- function(prob_distribution,
   param_names <- names(get_parameters(x))
   param_names <- param_names %||% NA_character_
   if (uncertainty_missing ||
-      !identical(prob_distribution, x$prob_distribution)) {
+        !identical(prob_distribution, x$prob_distribution)) {
     # create uncertainty for each parameter if not provided or auto calculated
     x$uncertainty <- lapply(
       param_names,

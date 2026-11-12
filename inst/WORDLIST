@@ -1,6 +1,4 @@
-arxiv
 bayesian
-bioRxiv
 cachem
 ci
 CMD
@@ -15,7 +13,6 @@ discretised
 Discretises
 distcrete
 dplyr
-ebola
 epidist
 EpiNow
 EpiParameter
@@ -24,13 +21,10 @@ epiparameters
 epireview
 episoap
 Epiverse
-estimat
 etc
-EVD
 facetted
 grEPI
 Guzzetta
-jsq
 Lassa
 Lifecycle
 LSHTM
@@ -38,7 +32,6 @@ Marburg
 md
 meanlog
 medRxiv
-MERS
 monkeypox
 mpox
 Mpox
@@ -57,14 +50,11 @@ prob
 PubMed
 ROR
 SARS
-Scopus
 sd
 sdlog
-sensu
 stochasticity
 Tamayo
 th
 UAT
 un
 unparameterised
-zenodo

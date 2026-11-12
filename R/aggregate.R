@@ -38,7 +38,8 @@
 #' aggregate(ebola_si)
 aggregate.multi_epiparameter <- function(x,
                                          weighting = c(
-                                           "equal", "sample_size", "custom"),
+                                           "equal", "sample_size", "custom"
+                                         ),
                                          ...,
                                          weights) {
   chkDots(...)

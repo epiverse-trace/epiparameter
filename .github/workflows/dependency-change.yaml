@@ -53,7 +53,7 @@ jobs:
             message("Dependencies have changed! Analyzing...")
 
             if (nrow(deps_added) > 0) {
-              nudge <- "Reach out on slack (`#code-review` or `#help` channels) to double check if there are base R alternatives to the new dependencies.\n"
+              nudge <- "Reach out to package co-authors to double check if there are base R alternatives to the new dependencies.\n"
             } else {
               nudge <- ""
             }

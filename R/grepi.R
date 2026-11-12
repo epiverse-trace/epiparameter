@@ -131,7 +131,7 @@
       }
     )
     keep <- tolower(grepi_params$parameter_type) == en |
-            tolower(grepi_params$parameter_subtype) == en
+      tolower(grepi_params$parameter_subtype) == en
     keep[is.na(keep)] <- FALSE
     grepi_params <- grepi_params[keep, , drop = FALSE]
     if (nrow(grepi_params) == 0L) {
@@ -172,7 +172,7 @@
                    "Negative binomial" = "nbinom", Poisson = "pois")
   dist_raw <- x$distribution_type
   has_dist <- !is.null(dist_raw) && !is.na(dist_raw) &&
-              dist_raw %in% names(dist_lookup)
+    dist_raw %in% names(dist_lookup)
   dist <- if (has_dist) unname(dist_lookup[[dist_raw]]) else NA_character_
   # nolint start: commented_code_linter.
   # availability is determined from the parameter values,
@@ -199,7 +199,7 @@
     # lnorm in grEPI is sometimes parameterised as (mean, variance);
     # convert to the canonical (meanlog, sdlog) via the package's converter.
     if (dist == "lnorm" &&
-        setequal(names(prob_distribution_params), c("mean", "variance"))) {
+          setequal(names(prob_distribution_params), c("mean", "variance"))) {
       prob_distribution_params <- unlist(convert_summary_stats_to_params(
         "lnorm",
         mean = prob_distribution_params[["mean"]],
@@ -263,7 +263,7 @@
     is_ci <- isTRUE(grepl("Confidence|Credible",
                           x$epiParameter_Uncertainty_Value_Type %||% ""))
     ci <- if (is_ci) .grepi_bounds(x, "epiParameter_Uncertainty_Range")
-          else c(NA_real_, NA_real_)
+    else c(NA_real_, NA_real_)
     ci_level <- if (is_ci) 95 else NA_real_
     # Range comes from either Uncertainty_Range_* (when UT=Range) or from the
     # parallel Estimate_Range_* field grEPI also carries.

@@ -188,5 +188,5 @@ get_citation.multi_epiparameter <- function(x, ...) {
     },
     FUN.VALUE = character(1)
   )
-  return(unname(fam))
+  unname(fam)
 }

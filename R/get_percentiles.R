@@ -71,7 +71,7 @@
 
   # if upper or lower percentiles are not available return percentiles
   if (identical(length(lower_intervals), 0L) ||
-    identical(length(upper_intervals), 0L)) {
+        identical(length(upper_intervals), 0L)) {
     return(NA)
   }
 

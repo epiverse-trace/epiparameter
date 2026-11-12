@@ -161,7 +161,8 @@ lines.epiparameter <- function(x, cumulative = FALSE, ...) {
     stop(
       "Can only plot a line for a parameterised <epiparameter> object ",
       "with a continuous distribution.",
-      call. = FALSE)
+      call. = FALSE
+    )
   }
 
   if (cumulative) {

@@ -7,15 +7,12 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-^CODE_OF_CONDUCT\.md$
 ^doc$
 ^Meta$
-^.lintr$
+^\.lintr$
 ^CITATION\.cff$
 ^data-raw$
 ^tools$
-^vignettes/*.orig$
-^vignettes/figure$
 ^vignettes/articles$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$

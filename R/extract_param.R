@@ -261,8 +261,8 @@ extract_param <- function(type = c("percentiles", "range"),
 #' @return Boolean
 #' @keywords internal
 .check_optim_conv <- function(optim_params_list,
-                             optim_params,
-                             tolerance) {
+                              optim_params,
+                              tolerance) {
   optim_conv <- FALSE
   # no pairwise comparison on first iterations
   if (length(optim_params_list) > 1) {
@@ -280,7 +280,7 @@ extract_param <- function(type = c("percentiles", "range"),
     # any convergence within tolerance for function value
     res_diff <- res_diff &&
       (abs(optim_params_list[[length(optim_params_list)]]$value -
-        min(unlist(lapply(optim_params_list, "[[", "value")))) < tolerance)
+             min(unlist(lapply(optim_params_list, "[[", "value")))) < tolerance)
     optim_conv <- res_diff && optim_params$convergence == 0
   }
   optim_conv

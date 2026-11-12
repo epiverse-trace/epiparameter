@@ -14,10 +14,8 @@ linters: all_linters(
       )
     ),
     function_argument_linter = NULL,
-    indentation_linter = NULL, # unstable as of lintr 3.1.0
     one_call_pipe_linter = NULL,
     object_overwrite_linter = NULL,
-    return_linter = NULL,
     # Use minimum R declared in DESCRIPTION or fall back to current R version.
     # Install etdev package from https://github.com/epiverse-trace/etdev
     backport_linter(
