@@ -67,8 +67,8 @@ To load the library of epidemiological parameters into `R`:
 ``` r
 epiparameters <- epiparameter_db()
 #> Returning 133 results that match the criteria (108 are parameterised). 
-#> Use subset to filter by entry variables or single_epiparameter to return a single entry. 
-#> To retrieve the citation for each use the 'get_citation' function
+#> Use `subset` to filter by entry variables or `single_epiparameter` to return a single entry. 
+#> To retrieve the citation for each use the `get_citation()` function
 epiparameters
 #> # List of 133 <epiparameter> objects
 #> Number of diseases: 23
@@ -119,6 +119,7 @@ epiparameters
 #> 
 #> # ℹ 130 more elements
 #> # ℹ Use `print(n = ...)` to see more elements.
+#> # ℹ 79 entries are different estimates from 18 studies, see `$notes`.
 #> # ℹ Use `parameter_tbl()` to see a summary table of the parameters.
 #> # ℹ Explore database online at: https://epiverse-trace.github.io/epiparameter/articles/database.html
 ```
@@ -148,7 +149,7 @@ influenza_incubation <- epiparameter_db(
 #> Distribution of the Incubation Periods of Human Avian Influenza A(H7N9)
 #> Virus Infections." _American Journal of Epidemiology_.
 #> doi:10.1093/aje/kwv115 <https://doi.org/10.1093/aje/kwv115>.. 
-#> To retrieve the citation use the 'get_citation' function
+#> To retrieve the citation use the `get_citation()` function
 influenza_incubation
 #> Disease: Influenza
 #> Pathogen: Influenza-A-H7N9
@@ -292,9 +293,9 @@ By contributing to this project, you agree to abide by its terms.
 citation("epiparameter")
 #> To cite package 'epiparameter' in publications use:
 #> 
-#>   Lambert J, Kucharski A, Tamayo Cuartero C (2026). _epiparameter:
-#>   Classes and Helper Functions for Working with Epidemiological
-#>   Parameters_. doi:10.5281/zenodo.11110881
+#>   Lambert J, Kucharski A, Tamayo Cuartero C, Kerr S (2026).
+#>   _epiparameter: Classes and Helper Functions for Working with
+#>   Epidemiological Parameters_. doi:10.5281/zenodo.11110881
 #>   <https://doi.org/10.5281/zenodo.11110881>.
 #>   <https://epiverse-trace.github.io/epiparameter/>.
 #> 
@@ -302,7 +303,7 @@ citation("epiparameter")
 #> 
 #>   @Manual{,
 #>     title = {epiparameter: Classes and Helper Functions for Working with Epidemiological Parameters},
-#>     author = {Joshua W. Lambert and Adam Kucharski and Carmen {Tamayo Cuartero}},
+#>     author = {Joshua W. Lambert and Adam Kucharski and Carmen {Tamayo Cuartero} and Steve Kerr},
 #>     year = {2026},
 #>     doi = {10.5281/zenodo.11110881},
 #>     url = {https://epiverse-trace.github.io/epiparameter/},
@@ -356,7 +357,7 @@ following packages do, and are intended to be used alongside
   discretisation, censoring or truncation itself, so for epidemiological
   delays it is best used through `{primarycensored}`.
 
-- [`{epitrix}`](https://www.repidemicsconsortium.org/epitrix/) provides
+- [`{epitrix}`](https://CRAN.R-project.org/package=epitrix) provides
   `fit_disc_gamma()` for fitting a discretised gamma distribution.
 
 Estimates obtained from completed delays alone can be subject to
